@@ -1,60 +1,131 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
   <title id="title">Verifier-anchored taxonomy</title>
-  <desc id="desc">Taxonomy of reasoning data organized by verification contract, granularity, lineage, training use, and risk.</desc>
+  <desc id="desc">A taxonomy that starts from the verification contract, then expands into granularity, lineage, training use, and risk.</desc>
   <defs>
-    <style>
-      .bg{fill:#f8fafc}.panel{fill:#fff;stroke:#d8e2ef;stroke-width:2}.title{font:800 44px Arial,sans-serif;fill:#111827}.sub{font:500 21px Arial,sans-serif;fill:#475569}.h{font:800 24px Arial,sans-serif;fill:#0f172a}.b{font:500 17px Arial,sans-serif;fill:#475569}.m{font:700 16px Arial,sans-serif;fill:#334155}.axis{font:700 18px Arial,sans-serif;fill:#0f172a}.card{stroke-width:2}.line{stroke:#94a3b8;stroke-width:3;stroke-dasharray:7 7}
-    </style>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e5e7eb" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10a37f"/>
+      <stop offset="0.35" stop-color="#2b8fff"/>
+      <stop offset="0.7" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#64748b"/>
+    </marker>
+    <style><![CDATA[
+      .bg{fill:#fbfcfe;} .grid{fill:url(#grid);opacity:0.55;}
+      .panel{fill:#ffffff;stroke:#d8dee8;stroke-width:1.5;}
+      .title{font:800 44px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .subtitle{font:500 19px Inter,Arial,sans-serif;fill:#5b6472;letter-spacing:0;}
+      .eyebrow{font:800 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0.9px;text-transform:uppercase;}
+      .h{font:800 18px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .h-dark{font:800 18px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .body{font:500 13.5px Inter,Arial,sans-serif;fill:#4b5563;letter-spacing:0;}
+      .small{font:600 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0;}
+      .mono{font:700 13px "IBM Plex Mono",Menlo,monospace;fill:#334155;letter-spacing:0;}
+      .metric{font:900 30px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .chip{font:800 12px Inter,Arial,sans-serif;fill:#111827;letter-spacing:0;}
+      .chip-dark{font:800 12px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .arrow{stroke:#64748b;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);}
+      .soft-arrow{stroke:#94a3b8;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);opacity:0.85;}
+    ]]></style>
   </defs>
   <rect class="bg" width="1280" height="720"/>
-  <rect class="panel" x="40" y="38" width="1200" height="644" rx="28"/>
-  <text class="title" x="76" y="96">🗺️ Verifier-Anchored Taxonomy</text>
-  <text class="sub" x="78" y="132">Start with the feedback contract; then ask about domain, granularity, lineage, use, and risk.</text>
-
-  <g transform="translate(76 172)">
-    <rect class="card" x="0" y="0" width="360" height="238" rx="22" fill="#eff6ff" stroke="#2563eb"/>
-    <text class="h" x="24" y="42">🧮 Programmatic</text>
-    <text class="b" x="24" y="78">Math answer checkers</text>
-    <text class="b" x="24" y="106">Code execution and unit tests</text>
-    <text class="b" x="24" y="134">Formal proof checkers</text>
-    <text class="b" x="24" y="162">Canonicalization and tolerance</text>
-    <text class="m" x="24" y="206">Main risk: shortcutting the checker</text>
-
-    <rect class="card" x="404" y="0" width="360" height="238" rx="22" fill="#f0fdfa" stroke="#0d9488"/>
-    <text class="h" x="428" y="42">🌐 Environmental</text>
-    <text class="b" x="428" y="78">Tools, APIs, web, browser</text>
-    <text class="b" x="428" y="106">OS, app, and SWE episodes</text>
-    <text class="b" x="428" y="134">State, action, observation</text>
-    <text class="b" x="428" y="162">Terminal predicate and replay</text>
-    <text class="m" x="428" y="206">Main risk: unreplayable success</text>
-
-    <rect class="card" x="808" y="0" width="360" height="238" rx="22" fill="#fdf2f8" stroke="#db2777"/>
-    <text class="h" x="832" y="42">⚖️ Judgment-required</text>
-    <text class="b" x="832" y="78">Rubrics and expert review</text>
-    <text class="b" x="832" y="106">Safety, medical, legal, factuality</text>
-    <text class="b" x="832" y="134">LLM-as-judge and reward models</text>
-    <text class="b" x="832" y="162">Adjudication and calibration</text>
-    <text class="m" x="832" y="206">Main risk: judge sensitivity</text>
-  </g>
-
-  <line class="line" x1="118" y1="454" x2="1198" y2="454"/>
-  <text class="axis" x="80" y="492">Cross-cutting axes</text>
-
-  <g transform="translate(78 518)">
-    <rect x="0" y="0" width="270" height="84" rx="18" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
-    <text class="axis" x="20" y="33">🪜 Granularity</text>
-    <text class="b" x="20" y="59">answer · step · episode</text>
-
-    <rect x="296" y="0" width="270" height="84" rx="18" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
-    <text class="axis" x="316" y="33">🧬 Lineage</text>
-    <text class="b" x="316" y="59">human · teacher · search</text>
-
-    <rect x="592" y="0" width="270" height="84" rx="18" fill="#ecfdf5" stroke="#22c55e" stroke-width="2"/>
-    <text class="axis" x="612" y="33">🏋️ Training use</text>
-    <text class="b" x="612" y="59">SFT · RLVR · agent train</text>
-
-    <rect x="888" y="0" width="270" height="84" rx="18" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
-    <text class="axis" x="908" y="33">🧯 Risk</text>
-    <text class="b" x="908" y="59">leakage · gaming · attack</text>
-  </g>
+  <rect class="grid" width="1280" height="720"/>
+  <rect class="panel" x="44" y="38" width="1192" height="644" rx="28"/>
+  <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
+  <text class="title" x="76" y="92">Verifier-Anchored Taxonomy</text>
+  <text class="subtitle" x="78" y="126">Start with who decides correctness; then classify the sample, feedback granularity, lineage, training use, and failure risk.</text>
+  <rect x="76" y="168" width="352" height="186" rx="16" fill="Programmatic" stroke="['answer checkers', 'unit tests', 'proof checkers', 'canonicalizers']" stroke-width="1.8"/>
+  <text x="94" y="200" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#2b8fff</text>
+  <text class="h" x="128" y="199">🧮</text>
+  <text class="body" x="94" y="226">#</text>
+  <text class="body" x="94" y="243">e</text>
+  <text class="body" x="94" y="260">a</text>
+  <text class="body" x="94" y="277">f</text>
+  <text class="body" x="94" y="294">3</text>
+  <text class="body" x="94" y="311">f</text>
+  <text class="body" x="94" y="328">f</text>
+  <rect x="464" y="168" width="352" height="186" rx="16" fill="Environmental" stroke="['tool/web/OS state', 'actions and observations', 'terminal predicate', 'replay metadata']" stroke-width="1.8"/>
+  <text x="482" y="200" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#06b6d4</text>
+  <text class="h" x="516" y="199">🌐</text>
+  <text class="body" x="482" y="226">#</text>
+  <text class="body" x="482" y="243">e</text>
+  <text class="body" x="482" y="260">8</text>
+  <text class="body" x="482" y="277">f</text>
+  <text class="body" x="482" y="294">b</text>
+  <text class="body" x="482" y="311">f</text>
+  <text class="body" x="482" y="328">f</text>
+  <rect x="852" y="168" width="352" height="186" rx="16" fill="Judgment-required" stroke="['rubrics', 'LLM judges', 'domain experts', 'adjudication']" stroke-width="1.8"/>
+  <text x="870" y="200" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#e11d48</text>
+  <text class="h" x="904" y="199">⚖️</text>
+  <text class="body" x="870" y="226">#</text>
+  <text class="body" x="870" y="243">f</text>
+  <text class="body" x="870" y="260">f</text>
+  <text class="body" x="870" y="277">f</text>
+  <text class="body" x="870" y="294">1</text>
+  <text class="body" x="870" y="311">f</text>
+  <text class="body" x="870" y="328">2</text>
+  <rect x="76" y="404" width="216" height="172" rx="18" fill="#ffffff" stroke="#10a37f" stroke-width="1.7"/>
+  <text class="h" x="94" y="438">Granularity</text>
+  <rect x="94" y="460" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="106" y="476">answer</text>
+  <rect x="94" y="488" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="106" y="504">step</text>
+  <rect x="94" y="516" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="106" y="532">transition</text>
+  <rect x="94" y="544" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="106" y="560">episode</text>
+  <rect x="94" y="572" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="106" y="588">rollout set</text>
+  <rect x="332" y="404" width="216" height="172" rx="18" fill="#ffffff" stroke="#2b8fff" stroke-width="1.7"/>
+  <text class="h" x="350" y="438">Data object</text>
+  <rect x="350" y="460" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="362" y="476">prompt-answer</text>
+  <rect x="350" y="488" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="362" y="504">trace</text>
+  <rect x="350" y="516" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="362" y="532">PRM record</text>
+  <rect x="350" y="544" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="362" y="560">preference pair</text>
+  <rect x="350" y="572" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="362" y="588">trajectory</text>
+  <rect x="588" y="404" width="216" height="172" rx="18" fill="#ffffff" stroke="#7c3aed" stroke-width="1.7"/>
+  <text class="h" x="606" y="438">Lineage</text>
+  <rect x="606" y="460" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="618" y="476">human</text>
+  <rect x="606" y="488" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="618" y="504">teacher</text>
+  <rect x="606" y="516" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="618" y="532">search</text>
+  <rect x="606" y="544" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="618" y="560">self-play</text>
+  <rect x="606" y="572" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="618" y="588">environment</text>
+  <rect x="844" y="404" width="216" height="172" rx="18" fill="#ffffff" stroke="#f59e0b" stroke-width="1.7"/>
+  <text class="h" x="862" y="438">Training use</text>
+  <rect x="862" y="460" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="874" y="476">SFT</text>
+  <rect x="862" y="488" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="874" y="504">distill</text>
+  <rect x="862" y="516" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="874" y="532">reward model</text>
+  <rect x="862" y="544" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="874" y="560">RLVR</text>
+  <rect x="862" y="572" width="180" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="874" y="588">evaluation</text>
+  <rect x="1040" y="404" width="164" height="172" rx="18" fill="#ffffff" stroke="#e11d48" stroke-width="1.7"/>
+  <text class="h" x="1058" y="438">Risk</text>
+  <rect x="1058" y="460" width="128" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1070" y="476">leakage</text>
+  <rect x="1058" y="488" width="128" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1070" y="504">contamination</text>
+  <rect x="1058" y="516" width="128" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1070" y="532">gaming</text>
+  <rect x="1058" y="544" width="128" height="24" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1070" y="560">judge attack</text>
+  <text class="eyebrow" x="76" y="638">Rule of thumb</text>
+  <text class="mono" x="76" y="664">A domain label is secondary; the feedback contract determines what evidence must be released.</text>
 </svg>

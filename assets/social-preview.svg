@@ -1,44 +1,62 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
   <title id="title">Awesome LLM Reasoning Data social preview</title>
-  <desc id="desc">Social preview for a learning-first atlas of post-training reasoning data.</desc>
+  <desc id="desc">Social preview for the reasoning-data atlas.</desc>
   <defs>
-    <style>
-      .bg{fill:#0f172a}.band1{fill:#164e63}.band2{fill:#581c87}.panel{fill:#f8fafc}.title{font:900 58px Arial,sans-serif;fill:#f8fafc}.sub{font:600 25px Arial,sans-serif;fill:#cbd5e1}.h{font:800 24px Arial,sans-serif;fill:#0f172a}.p{font:600 16px Arial,sans-serif;fill:#475569}.chip{font:800 17px Arial,sans-serif;fill:#e2e8f0}.node{stroke-width:2}.rule{stroke:#334155;stroke-width:2}
-    </style>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e5e7eb" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10a37f"/>
+      <stop offset="0.35" stop-color="#2b8fff"/>
+      <stop offset="0.7" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#64748b"/>
+    </marker>
+    <style><![CDATA[
+      .bg{fill:#0e0f12;} .grid{fill:url(#grid);opacity:0.16;}
+      .panel{fill:#111827;stroke:#334155;stroke-width:1.5;}
+      .title{font:800 44px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .subtitle{font:500 19px Inter,Arial,sans-serif;fill:#cbd5e1;letter-spacing:0;}
+      .eyebrow{font:800 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0.9px;text-transform:uppercase;}
+      .h{font:800 18px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .h-dark{font:800 18px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .body{font:500 13.5px Inter,Arial,sans-serif;fill:#4b5563;letter-spacing:0;}
+      .small{font:600 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0;}
+      .mono{font:700 13px "IBM Plex Mono",Menlo,monospace;fill:#334155;letter-spacing:0;}
+      .metric{font:900 30px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .chip{font:800 12px Inter,Arial,sans-serif;fill:#111827;letter-spacing:0;}
+      .chip-dark{font:800 12px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .arrow{stroke:#64748b;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);}
+      .soft-arrow{stroke:#94a3b8;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);opacity:0.85;}
+    ]]></style>
   </defs>
   <rect class="bg" width="1280" height="640"/>
-  <rect class="band1" x="0" y="0" width="1280" height="28"/>
-  <rect class="band2" x="0" y="612" width="1280" height="28"/>
-  <line class="rule" x1="72" y1="268" x2="610" y2="268"/>
-
-  <text class="title" x="72" y="116">🌟 Awesome LLM</text>
-  <text class="title" x="72" y="184">Reasoning Data</text>
-  <text class="sub" x="76" y="238">Post-training data · Verifiers · Rewards · Recipes · Audit fields</text>
-
-  <g transform="translate(76 308)">
-    <rect x="0" y="0" width="188" height="44" rx="22" fill="#1e293b" stroke="#38bdf8"/>
-    <text class="chip" x="22" y="29">265 entries</text>
-    <rect x="208" y="0" width="188" height="44" rx="22" fill="#1e293b" stroke="#22c55e"/>
-    <text class="chip" x="230" y="29">26 verified</text>
-    <rect x="416" y="0" width="212" height="44" rx="22" fill="#1e293b" stroke="#f97316"/>
-    <text class="chip" x="438" y="29">living atlas</text>
-  </g>
-
-  <rect class="panel" x="690" y="92" width="430" height="404" rx="28"/>
-  <text class="h" x="728" y="148">Verifier-bearing sample</text>
-
-  <g transform="translate(730 184)">
-    <rect class="node" x="0" y="0" width="328" height="54" rx="16" fill="#ecfeff" stroke="#06b6d4"/>
-    <text class="p" x="18" y="34">🧭 task/context</text>
-    <rect class="node" x="0" y="68" width="328" height="54" rx="16" fill="#fff7ed" stroke="#f97316"/>
-    <text class="p" x="18" y="102">✍️ trace/actions</text>
-    <rect class="node" x="0" y="136" width="328" height="54" rx="16" fill="#f0fdf4" stroke="#22c55e"/>
-    <text class="p" x="18" y="170">✅ answer/artifact</text>
-    <rect class="node" x="0" y="204" width="328" height="54" rx="16" fill="#f5f3ff" stroke="#8b5cf6"/>
-    <text class="p" x="18" y="238">🧪 verifier/reward/judge/env</text>
-    <rect class="node" x="0" y="272" width="328" height="54" rx="16" fill="#fff1f2" stroke="#f43f5e"/>
-    <text class="p" x="18" y="306">🧬 attribution metadata</text>
-  </g>
-
-  <text class="sub" x="76" y="556">A practical homepage for reading, building, and auditing reasoning-model data.</text>
+  <rect class="grid" width="1280" height="640"/>
+  <rect x="0" y="0" width="1280" height="10" fill="url(#accent)"/>
+  <text class="title" x="72" y="112">Awesome LLM</text>
+  <text class="title" x="72" y="178">Reasoning Data</text>
+  <text class="subtitle" x="76" y="232">Post-training data · Verifiers · Rewards · Recipes · Audit fields</text>
+  <rect x="76" y="282" width="150" height="30" rx="15" fill="#111827" stroke="#10a37f" stroke-width="1.4"/><text class="chip-dark" x="151.0" y="302" text-anchor="middle">269 entries</text>
+  <rect x="244" y="282" width="148" height="30" rx="15" fill="#111827" stroke="#2b8fff" stroke-width="1.4"/><text class="chip-dark" x="318.0" y="302" text-anchor="middle">114 partial</text>
+  <rect x="410" y="282" width="170" height="30" rx="15" fill="#111827" stroke="#f59e0b" stroke-width="1.4"/><text class="chip-dark" x="495.0" y="302" text-anchor="middle">155 to verify</text>
+  <rect x="700" y="86" width="430" height="418" rx="30" fill="#f8fafc" stroke="#334155"/>
+  <text class="h" x="738" y="148">Verifier-bearing sample</text>
+  <rect x="738" y="184" width="354" height="44" rx="14" fill="#eaf3ff" stroke="#2b8fff" stroke-width="1.8"/>
+  <text class="h" x="766" y="213">task/context</text>
+  <path class="soft-arrow" d="M915 232 V244"/>
+  <rect x="738" y="248" width="354" height="44" rx="14" fill="#fff6df" stroke="#f59e0b" stroke-width="1.8"/>
+  <text class="h" x="766" y="277">trace/actions</text>
+  <path class="soft-arrow" d="M915 296 V308"/>
+  <rect x="738" y="312" width="354" height="44" rx="14" fill="#e8f7f2" stroke="#10a37f" stroke-width="1.8"/>
+  <text class="h" x="766" y="341">answer/artifact</text>
+  <path class="soft-arrow" d="M915 360 V372"/>
+  <rect x="738" y="376" width="354" height="44" rx="14" fill="#f4efff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text class="h" x="766" y="405">verifier/reward/judge/env</text>
+  <path class="soft-arrow" d="M915 424 V436"/>
+  <rect x="738" y="440" width="354" height="44" rx="14" fill="#ffecef" stroke="#e11d48" stroke-width="1.8"/>
+  <text class="h" x="766" y="469">attribution metadata</text>
+  <text class="subtitle" x="76" y="398">A learning-first atlas for the data layer behind reasoning-model post-training.</text>
+  <text class="subtitle" x="76" y="442">Use it to compare what was trained, what verified it, and what evidence is still missing.</text>
 </svg>

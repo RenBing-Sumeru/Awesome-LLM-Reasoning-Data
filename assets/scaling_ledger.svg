@@ -1,6 +1,112 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Scaling Attribution Ledger</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">Separate ceiling movement from efficiency movement</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Ceiling movers</text>
-<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Efficiency movers</text>
-<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Data uniqueness / reuse</text>
-<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Inference budget</text>
-<text x="80" y="378" font-family="Arial" font-size="28" fill="#243042">Verifier refresh</text>
-<text x="80" y="430" font-family="Arial" font-size="28" fill="#243042">Evaluation protocol</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Scaling attribution ledger</title>
+  <desc id="desc">A ledger for separating gains from data, verifier, optimizer, inference budget, and evaluation protocol changes.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e5e7eb" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10a37f"/>
+      <stop offset="0.35" stop-color="#2b8fff"/>
+      <stop offset="0.7" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#64748b"/>
+    </marker>
+    <style><![CDATA[
+      .bg{fill:#fbfcfe;} .grid{fill:url(#grid);opacity:0.55;}
+      .panel{fill:#ffffff;stroke:#d8dee8;stroke-width:1.5;}
+      .title{font:800 44px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .subtitle{font:500 19px Inter,Arial,sans-serif;fill:#5b6472;letter-spacing:0;}
+      .eyebrow{font:800 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0.9px;text-transform:uppercase;}
+      .h{font:800 18px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .h-dark{font:800 18px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .body{font:500 13.5px Inter,Arial,sans-serif;fill:#4b5563;letter-spacing:0;}
+      .small{font:600 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0;}
+      .mono{font:700 13px "IBM Plex Mono",Menlo,monospace;fill:#334155;letter-spacing:0;}
+      .metric{font:900 30px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .chip{font:800 12px Inter,Arial,sans-serif;fill:#111827;letter-spacing:0;}
+      .chip-dark{font:800 12px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .arrow{stroke:#64748b;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);}
+      .soft-arrow{stroke:#94a3b8;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);opacity:0.85;}
+    ]]></style>
+  </defs>
+  <rect class="bg" width="1280" height="640"/>
+  <rect class="grid" width="1280" height="640"/>
+  <rect class="panel" x="44" y="38" width="1192" height="564" rx="28"/>
+  <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
+  <text class="title" x="76" y="92">Scaling Attribution Ledger</text>
+  <text class="subtitle" x="78" y="126">Before believing a scaling claim, separate ceiling movement from efficiency movement and protocol movement.</text>
+  <rect x="78" y="182" width="222" height="300" rx="20" fill="#ffffff" stroke="#2b8fff" stroke-width="1.8"/>
+  <text x="102" y="230" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="26">📚</text>
+  <text class="h" x="140" y="227">Data</text>
+  <text class="body" x="102" y="264">unique examples · reuse</text>
+  <text class="body" x="102" y="282">· difficulty bands</text>
+  <rect x="102" y="310" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="189.0" y="328" text-anchor="middle">What changed?</text>
+  <rect x="102" y="349" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="189.0" y="367" text-anchor="middle">Who measured it?</text>
+  <rect x="102" y="388" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="189.0" y="406" text-anchor="middle">Can it be rerun?</text>
+  <rect x="102" y="427" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="189.0" y="445" text-anchor="middle">What fails first?</text>
+  <path class="soft-arrow" d="M308 332 H306"/>
+  <rect x="316" y="182" width="222" height="300" rx="20" fill="#ffffff" stroke="#10a37f" stroke-width="1.8"/>
+  <text x="340" y="230" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="26">🧪</text>
+  <text class="h" x="378" y="227">Verifier</text>
+  <text class="body" x="340" y="264">coverage · version ·</text>
+  <text class="body" x="340" y="282">independence</text>
+  <rect x="340" y="310" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="427.0" y="328" text-anchor="middle">What changed?</text>
+  <rect x="340" y="349" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="427.0" y="367" text-anchor="middle">Who measured it?</text>
+  <rect x="340" y="388" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="427.0" y="406" text-anchor="middle">Can it be rerun?</text>
+  <rect x="340" y="427" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="427.0" y="445" text-anchor="middle">What fails first?</text>
+  <path class="soft-arrow" d="M546 332 H544"/>
+  <rect x="554" y="182" width="222" height="300" rx="20" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="578" y="230" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="26">⚙️</text>
+  <text class="h" x="616" y="227">Optimizer</text>
+  <text class="body" x="578" y="264">SFT/RLVR mix · reward</text>
+  <text class="body" x="578" y="282">shaping</text>
+  <rect x="578" y="310" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="665.0" y="328" text-anchor="middle">What changed?</text>
+  <rect x="578" y="349" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="665.0" y="367" text-anchor="middle">Who measured it?</text>
+  <rect x="578" y="388" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="665.0" y="406" text-anchor="middle">Can it be rerun?</text>
+  <rect x="578" y="427" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="665.0" y="445" text-anchor="middle">What fails first?</text>
+  <path class="soft-arrow" d="M784 332 H782"/>
+  <rect x="792" y="182" width="222" height="300" rx="20" fill="#ffffff" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="816" y="230" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="26">⏱️</text>
+  <text class="h" x="854" y="227">Inference</text>
+  <text class="body" x="816" y="264">pass@k · budget forcing</text>
+  <text class="body" x="816" y="282">· search</text>
+  <rect x="816" y="310" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="903.0" y="328" text-anchor="middle">What changed?</text>
+  <rect x="816" y="349" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="903.0" y="367" text-anchor="middle">Who measured it?</text>
+  <rect x="816" y="388" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="903.0" y="406" text-anchor="middle">Can it be rerun?</text>
+  <rect x="816" y="427" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="903.0" y="445" text-anchor="middle">What fails first?</text>
+  <path class="soft-arrow" d="M1022 332 H1020"/>
+  <rect x="1030" y="182" width="222" height="300" rx="20" fill="#ffffff" stroke="#e11d48" stroke-width="1.8"/>
+  <text x="1054" y="230" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="26">📏</text>
+  <text class="h" x="1092" y="227">Evaluation</text>
+  <text class="body" x="1054" y="264">decontam · protocol ·</text>
+  <text class="body" x="1054" y="282">hidden tests</text>
+  <rect x="1054" y="310" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1141.0" y="328" text-anchor="middle">What changed?</text>
+  <rect x="1054" y="349" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1141.0" y="367" text-anchor="middle">Who measured it?</text>
+  <rect x="1054" y="388" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1141.0" y="406" text-anchor="middle">Can it be rerun?</text>
+  <rect x="1054" y="427" width="174" height="27" rx="13.5" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="small" x="1141.0" y="445" text-anchor="middle">What fails first?</text>
+  <rect x="200" y="522" width="880" height="44" rx="22" fill="#111827" stroke="#334155"/>
+  <text class="chip-dark" x="640" y="550" text-anchor="middle">Claim type: higher asymptote? better sample efficiency? larger inference budget? easier benchmark slice?</text>
+</svg>

@@ -54,4 +54,4 @@ The repo is now prepared for public GitHub release rather than anonymous review.
 
 ## 14. What still needs manual curation?
 
-The main remaining work is promoting long-tail BibTeX seeds, checking official links for 161 entries without artifact links, filling source mixture/split/license/lineage fields, and expanding author metadata.
+The main remaining work is promoting long-tail BibTeX seeds, checking official links for 156 entries without artifact links, filling source mixture/split/license/lineage fields, and expanding author metadata.

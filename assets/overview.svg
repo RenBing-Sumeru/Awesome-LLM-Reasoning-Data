@@ -1,81 +1,98 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
   <title id="title">Awesome LLM Reasoning Data overview</title>
-  <desc id="desc">A verifier-bearing sample flows from task context through model behavior, trace, answer, feedback, metadata, training use, and audit.</desc>
+  <desc id="desc">A verifier-bearing reasoning-data sample flows from task context to feedback, metadata, training use, and audit.</desc>
   <defs>
-    <style>
-      .bg{fill:#f8fafc}.panel{fill:#ffffff;stroke:#d8e2ef;stroke-width:2}.title{font:800 46px Arial, sans-serif;fill:#111827}.sub{font:500 22px Arial, sans-serif;fill:#475569}.label{font:700 22px Arial, sans-serif;fill:#0f172a}.small{font:500 17px Arial, sans-serif;fill:#475569}.tiny{font:600 15px Arial, sans-serif;fill:#334155}.chip{font:700 16px Arial, sans-serif;fill:#0f172a}.emoji{font:400 26px "Segoe UI Emoji","Apple Color Emoji",Arial,sans-serif}.arrow{stroke:#64748b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;fill:none}.node{stroke-width:2}.nodeText{font:700 18px Arial, sans-serif;fill:#0f172a}.nodeSub{font:500 13px Arial, sans-serif;fill:#475569}
-    </style>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
-      <path d="M2,2 L10,6 L2,10 Z" fill="#64748b"/>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e5e7eb" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10a37f"/>
+      <stop offset="0.35" stop-color="#2b8fff"/>
+      <stop offset="0.7" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#64748b"/>
     </marker>
+    <style><![CDATA[
+      .bg{fill:#fbfcfe;} .grid{fill:url(#grid);opacity:0.55;}
+      .panel{fill:#ffffff;stroke:#d8dee8;stroke-width:1.5;}
+      .title{font:800 44px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .subtitle{font:500 19px Inter,Arial,sans-serif;fill:#5b6472;letter-spacing:0;}
+      .eyebrow{font:800 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0.9px;text-transform:uppercase;}
+      .h{font:800 18px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .h-dark{font:800 18px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .body{font:500 13.5px Inter,Arial,sans-serif;fill:#4b5563;letter-spacing:0;}
+      .small{font:600 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0;}
+      .mono{font:700 13px "IBM Plex Mono",Menlo,monospace;fill:#334155;letter-spacing:0;}
+      .metric{font:900 30px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .chip{font:800 12px Inter,Arial,sans-serif;fill:#111827;letter-spacing:0;}
+      .chip-dark{font:800 12px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .arrow{stroke:#64748b;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);}
+      .soft-arrow{stroke:#94a3b8;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);opacity:0.85;}
+    ]]></style>
   </defs>
   <rect class="bg" width="1280" height="720"/>
-  <rect class="panel" x="40" y="38" width="1200" height="644" rx="28"/>
-
-  <text class="title" x="76" y="96">🌟 Awesome LLM Reasoning Data</text>
-  <text class="sub" x="78" y="132">A learning-first atlas for post-training reasoning records, feedback contracts, and audit fields.</text>
-
-  <g transform="translate(78 166)">
-    <rect x="0" y="0" width="238" height="70" rx="18" fill="#ecfeff" stroke="#06b6d4" class="node"/>
-    <text class="nodeText" x="20" y="30">🧭 Task / context</text>
-    <text class="nodeSub" x="20" y="52">prompt, state, source, split</text>
-
-    <path class="arrow" d="M248 35 H302" marker-end="url(#arrow)"/>
-
-    <rect x="312" y="0" width="238" height="70" rx="18" fill="#fff7ed" stroke="#f97316" class="node"/>
-    <text class="nodeText" x="332" y="30">✍️ Trace / actions</text>
-    <text class="nodeSub" x="332" y="52">steps, tool calls, rollouts</text>
-
-    <path class="arrow" d="M560 35 H614" marker-end="url(#arrow)"/>
-
-    <rect x="624" y="0" width="238" height="70" rx="18" fill="#f0fdf4" stroke="#22c55e" class="node"/>
-    <text class="nodeText" x="644" y="30">✅ Answer / artifact</text>
-    <text class="nodeSub" x="644" y="52">solution, patch, proof, outcome</text>
-
-    <path class="arrow" d="M872 35 H926" marker-end="url(#arrow)"/>
-
-    <rect x="936" y="0" width="238" height="70" rx="18" fill="#f5f3ff" stroke="#8b5cf6" class="node"/>
-    <text class="nodeText" x="956" y="30">🧪 Feedback</text>
-    <text class="nodeSub" x="956" y="52">verifier, reward, judge, env</text>
-  </g>
-
-  <g transform="translate(78 292)">
-    <rect x="0" y="0" width="350" height="160" rx="22" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
-    <text class="label" x="24" y="38">🧬 Attribution metadata</text>
-    <text class="small" x="24" y="70">teacher, base model, filtering rule</text>
-    <text class="small" x="24" y="98">sampling budget, verifier version</text>
-    <text class="small" x="24" y="126">license, split, lineage, leakage check</text>
-
-    <rect x="398" y="0" width="350" height="160" rx="22" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
-    <text class="label" x="422" y="38">🏋️ Training use</text>
-    <text class="small" x="422" y="70">SFT · distillation · PRM</text>
-    <text class="small" x="422" y="98">reward modeling · RLVR</text>
-    <text class="small" x="422" y="126">agent training · evaluation · audit</text>
-
-    <rect x="796" y="0" width="376" height="160" rx="22" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
-    <text class="label" x="820" y="38">🧯 Failure audit</text>
-    <text class="small" x="820" y="70">contamination · judge attacks</text>
-    <text class="small" x="820" y="98">reward hacking · leakage</text>
-    <text class="small" x="820" y="126">spurious verifier shortcuts</text>
-  </g>
-
-  <g transform="translate(78 500)">
-    <rect x="0" y="0" width="274" height="96" rx="18" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-    <text class="label" x="22" y="36">🧮 Programmatic</text>
-    <text class="small" x="22" y="64">math · code · proof</text>
-
-    <rect x="306" y="0" width="274" height="96" rx="18" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
-    <text class="label" x="328" y="36">🌐 Environmental</text>
-    <text class="small" x="328" y="64">tools · web · OS · SWE</text>
-
-    <rect x="612" y="0" width="274" height="96" rx="18" fill="#fdf2f8" stroke="#ec4899" stroke-width="2"/>
-    <text class="label" x="634" y="36">⚖️ Judgment</text>
-    <text class="small" x="634" y="64">rubric · safety · medical</text>
-
-    <rect x="918" y="0" width="254" height="96" rx="18" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
-    <text class="label" x="940" y="36">📚 Snapshot</text>
-    <text class="small" x="940" y="64">265 entries · 26 verified</text>
-  </g>
-
-  <text class="tiny" x="80" y="644">Mental model: keep the feedback interface and attribution fields attached to every reasoning-data claim.</text>
+  <rect class="grid" width="1280" height="720"/>
+  <rect class="panel" x="44" y="38" width="1192" height="644" rx="28"/>
+  <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
+  <text class="title" x="76" y="92">Awesome LLM Reasoning Data</text>
+  <text class="subtitle" x="78" y="126">A field guide to the data objects, feedback contracts, and audit fields behind reasoning-model post-training.</text>
+  <rect x="78" y="148" width="156" height="30" rx="15" fill="#ecfdf5" stroke="#10a37f" stroke-width="1.4"/><text class="chip" x="156.0" y="168" text-anchor="middle">269 entries</text>
+  <rect x="188" y="148" width="156" height="30" rx="15" fill="#eff6ff" stroke="#2b8fff" stroke-width="1.4"/><text class="chip" x="266.0" y="168" text-anchor="middle">114 partial</text>
+  <rect x="300" y="148" width="172" height="30" rx="15" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.4"/><text class="chip" x="386.0" y="168" text-anchor="middle">155 metadata queue</text>
+  <rect x="82" y="205" width="194" height="92" rx="16" fill="#eaf3ff" stroke="#2b8fff" stroke-width="1.8"/>
+  <text x="100" y="237" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">🧭</text>
+  <text class="h" x="134" y="236">Task / context</text>
+  <text class="body" x="100" y="263">prompt, state, source, split</text>
+  <path class="arrow" d="M282 251 H306"/>
+  <rect x="314" y="205" width="194" height="92" rx="16" fill="#fff6df" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="332" y="237" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">✍️</text>
+  <text class="h" x="366" y="236">Trace / actions</text>
+  <text class="body" x="332" y="263">steps, tool calls, rollouts</text>
+  <path class="arrow" d="M514 251 H538"/>
+  <rect x="546" y="205" width="194" height="92" rx="16" fill="#e8f7f2" stroke="#10a37f" stroke-width="1.8"/>
+  <text x="564" y="237" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">✅</text>
+  <text class="h" x="598" y="236">Answer / artifact</text>
+  <text class="body" x="564" y="263">solution, patch, proof, outcome</text>
+  <path class="arrow" d="M746 251 H770"/>
+  <rect x="778" y="205" width="194" height="92" rx="16" fill="#f4efff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="796" y="237" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">🧪</text>
+  <text class="h" x="830" y="236">Feedback</text>
+  <text class="body" x="796" y="263">checker, reward, judge, env</text>
+  <path class="arrow" d="M978 251 H1002"/>
+  <rect x="1010" y="205" width="194" height="92" rx="16" fill="#ffecef" stroke="#e11d48" stroke-width="1.8"/>
+  <text x="1028" y="237" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">🧬</text>
+  <text class="h" x="1062" y="236">Metadata</text>
+  <text class="body" x="1028" y="263">teacher, license, filters, risks</text>
+  <rect x="82" y="345" width="510" height="224" rx="22" fill="#f8fafc" stroke="#d8dee8" stroke-width="1.6"/>
+  <text class="h" x="110" y="388">Why this is different from a paper list</text>
+  <circle cx="116" cy="424" r="5" fill="#10a37f"/>
+  <text class="body" x="132" y="429">Reads each release as a data instrument, not only a benchmark result.</text>
+  <circle cx="116" cy="459" r="5" fill="#2b8fff"/>
+  <text class="body" x="132" y="464">Keeps verifier, reward, judge, environment, and lineage fields visible.</text>
+  <circle cx="116" cy="494" r="5" fill="#7c3aed"/>
+  <text class="body" x="132" y="499">Separates evidence-backed links from metadata still needing verification.</text>
+  <circle cx="116" cy="529" r="5" fill="#f59e0b"/>
+  <text class="body" x="132" y="534">Gives builders cards, docs, scripts, and an audit queue they can extend.</text>
+  <rect x="630" y="345" width="560" height="224" rx="22" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text class="h-dark" x="662" y="388">Reading route</text>
+  <rect x="662" y="398" width="42" height="26" rx="13" fill="#10a37f" opacity="0.95"/>
+  <text class="chip-dark" x="683" y="416" text-anchor="middle">01</text>
+  <text class="h-dark" x="720" y="416">Starter Pack</text>
+  <text class="small" x="890" y="416">20 papers to enter the field</text>
+  <rect x="662" y="436" width="42" height="26" rx="13" fill="#2b8fff" opacity="0.95"/>
+  <text class="chip-dark" x="683" y="454" text-anchor="middle">02</text>
+  <text class="h-dark" x="720" y="454">Paper Map</text>
+  <text class="small" x="890" y="454">clusters by data object and feedback contract</text>
+  <rect x="662" y="474" width="42" height="26" rx="13" fill="#7c3aed" opacity="0.95"/>
+  <text class="chip-dark" x="683" y="492" text-anchor="middle">03</text>
+  <text class="h-dark" x="720" y="492">Cards</text>
+  <text class="small" x="890" y="492">release, verifier, recipe, agent, failure templates</text>
+  <rect x="662" y="512" width="42" height="26" rx="13" fill="#f59e0b" opacity="0.95"/>
+  <text class="chip-dark" x="683" y="530" text-anchor="middle">04</text>
+  <text class="h-dark" x="720" y="530">Audit Queue</text>
+  <text class="small" x="890" y="530">metadata gaps stay visible until checked</text>
+  <text class="eyebrow" x="76" y="624">Mental model</text>
+  <text class="mono" x="76" y="652">prompt → trace/actions → answer/artifact → verifier/reward/judge/environment → attribution metadata</text>
 </svg>

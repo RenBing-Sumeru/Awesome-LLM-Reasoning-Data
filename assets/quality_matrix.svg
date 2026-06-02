@@ -1,4 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Reasoning Data Quality</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">A sample is useful only with context attached</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Correctness = verifier-relative</text>
-<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Trace quality = trajectory-relative</text>
-<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Difficulty = base-relative</text>
-<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Coverage = lineage-relative</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Reasoning data quality matrix</title>
+  <desc id="desc">A two-dimensional matrix for judging reasoning-data release quality by verifier strength and metadata completeness.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e5e7eb" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10a37f"/>
+      <stop offset="0.35" stop-color="#2b8fff"/>
+      <stop offset="0.7" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#64748b"/>
+    </marker>
+    <style><![CDATA[
+      .bg{fill:#fbfcfe;} .grid{fill:url(#grid);opacity:0.55;}
+      .panel{fill:#ffffff;stroke:#d8dee8;stroke-width:1.5;}
+      .title{font:800 44px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .subtitle{font:500 19px Inter,Arial,sans-serif;fill:#5b6472;letter-spacing:0;}
+      .eyebrow{font:800 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0.9px;text-transform:uppercase;}
+      .h{font:800 18px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .h-dark{font:800 18px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .body{font:500 13.5px Inter,Arial,sans-serif;fill:#4b5563;letter-spacing:0;}
+      .small{font:600 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0;}
+      .mono{font:700 13px "IBM Plex Mono",Menlo,monospace;fill:#334155;letter-spacing:0;}
+      .metric{font:900 30px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .chip{font:800 12px Inter,Arial,sans-serif;fill:#111827;letter-spacing:0;}
+      .chip-dark{font:800 12px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .arrow{stroke:#64748b;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);}
+      .soft-arrow{stroke:#94a3b8;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);opacity:0.85;}
+    ]]></style>
+  </defs>
+  <rect class="bg" width="1280" height="640"/>
+  <rect class="grid" width="1280" height="640"/>
+  <rect class="panel" x="44" y="38" width="1192" height="564" rx="28"/>
+  <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
+  <text class="title" x="76" y="92">Reasoning Data Quality Matrix</text>
+  <text class="subtitle" x="78" y="126">Correctness is verifier-relative; reuse is metadata-relative. Useful releases need both.</text>
+  <rect x="256" y="176" width="392" height="180" rx="18" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.8"/>
+  <text class="h" x="282" y="224">Strong verifier / weak metadata</text>
+  <text class="body" x="282" y="258">Works once; hard to trust or reuse</text>
+  <circle cx="290" cy="294" r="4.5" fill="#f59e0b"/>
+  <text class="small" x="304" y="299">missing link</text>
+  <circle cx="290" cy="318" r="4.5" fill="#f59e0b"/>
+  <text class="small" x="304" y="323">unknown filter</text>
+  <circle cx="290" cy="342" r="4.5" fill="#f59e0b"/>
+  <text class="small" x="304" y="347">unclear teacher</text>
+  <rect x="648" y="176" width="392" height="180" rx="18" fill="#ecfdf5" stroke="#10a37f" stroke-width="1.8"/>
+  <text class="h" x="674" y="224">Strong verifier / strong metadata</text>
+  <text class="body" x="674" y="258">Reusable, auditable, citation-worthy</text>
+  <circle cx="682" cy="294" r="4.5" fill="#10a37f"/>
+  <text class="small" x="696" y="299">verifier pinned</text>
+  <circle cx="682" cy="318" r="4.5" fill="#10a37f"/>
+  <text class="small" x="696" y="323">lineage clear</text>
+  <circle cx="682" cy="342" r="4.5" fill="#10a37f"/>
+  <text class="small" x="696" y="347">split/license known</text>
+  <rect x="256" y="356" width="392" height="180" rx="18" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.8"/>
+  <text class="h" x="282" y="404">Weak verifier / weak metadata</text>
+  <text class="body" x="282" y="438">Seed note only; keep out of claims</text>
+  <circle cx="290" cy="474" r="4.5" fill="#94a3b8"/>
+  <text class="small" x="304" y="479">missing link</text>
+  <circle cx="290" cy="498" r="4.5" fill="#94a3b8"/>
+  <text class="small" x="304" y="503">unknown filter</text>
+  <circle cx="290" cy="522" r="4.5" fill="#94a3b8"/>
+  <text class="small" x="304" y="527">unclear teacher</text>
+  <rect x="648" y="356" width="392" height="180" rx="18" fill="#eff6ff" stroke="#2b8fff" stroke-width="1.8"/>
+  <text class="h" x="674" y="404">Weak verifier / strong metadata</text>
+  <text class="body" x="674" y="438">Good for surveys; not optimization-ready</text>
+  <circle cx="682" cy="474" r="4.5" fill="#2b8fff"/>
+  <text class="small" x="696" y="479">verifier pinned</text>
+  <circle cx="682" cy="498" r="4.5" fill="#2b8fff"/>
+  <text class="small" x="696" y="503">lineage clear</text>
+  <circle cx="682" cy="522" r="4.5" fill="#2b8fff"/>
+  <text class="small" x="696" y="527">split/license known</text>
+  <text class="eyebrow" x="650" y="548" text-anchor="middle">Metadata completeness →</text>
+  <path d="M258 542 H1034" stroke="#0e0f12" stroke-width="2" marker-end="url(#arrow)"/>
+  <text class="eyebrow" x="146" y="364" text-anchor="middle">Verifier strength</text>
+  <path d="M174 542 V180" stroke="#0e0f12" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

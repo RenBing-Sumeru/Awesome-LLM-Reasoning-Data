@@ -80,6 +80,7 @@ Read this repository if you want to answer questions like:
 
 | Date | Update | Why it matters |
 |---|---|---|
+| 2026-06-02 | Academic visual refresh using downloaded diagram/writing skill resources. | Replaces placeholder-like figures with reusable SVG/PNG assets and fixes stale homepage counts. |
 | 2026-06-01 | Phase A README and visual redesign started from the v2 spec. | Turns the repo front page into a learning atlas instead of a short generated index. |
 | 2026-06-01 | Reference style study added in [`reports/reference_repo_redesign_study.md`](reports/reference_repo_redesign_study.md). | Captures what to borrow from strong Awesome lists and course repos without copying their categories. |
 | 2026-06-01 | Current structured snapshot: **269 entries**, **0 verified**, **114 partial**, **155 needs metadata/search**, **42 filled cards**. | Makes the atlas useful while keeping uncertainty visible. |
@@ -169,6 +170,10 @@ The same browser task can be a benchmark item, a replayable training episode, a 
 
 Use the construction stack from [`docs/05_construction_cookbook.md`](docs/05_construction_cookbook.md):
 
+<p align="center">
+  <img src="assets/construction_stack.svg" width="90%" alt="Reasoning dataset construction stack">
+</p>
+
 | Layer | Builder checklist | Common evidence |
 |---|---|---|
 | 1. 📥 Prompt sourcing | Describe source mix, license, split, difficulty, and base-model pass rate. | prompt pool, dedupe report, contamination checks |
@@ -189,6 +194,10 @@ Minimal release question:
 
 A verifier is not just a score. It is a data-producing instrument.
 Use [`docs/06_verifiers_and_rewards.md`](docs/06_verifiers_and_rewards.md) as the deeper guide.
+
+<p align="center">
+  <img src="assets/quality_matrix.svg" width="90%" alt="Reasoning data quality matrix">
+</p>
 
 | Verifier type | Audit focus | Red flag |
 |---|---|---|
@@ -234,6 +243,10 @@ Read [`docs/07_agent_trajectory_data.md`](docs/07_agent_trajectory_data.md) for 
 Scaling claims become much clearer when you treat the training data, verifier, and inference budget as part of the same ledger.
 Read [`docs/08_scaling_and_test_time_compute.md`](docs/08_scaling_and_test_time_compute.md) before comparing frontier reports.
 
+<p align="center">
+  <img src="assets/scaling_ledger.svg" width="90%" alt="Scaling attribution ledger">
+</p>
+
 | Claim | Ask for | Watch out |
 |---|---|---|
 | RLVR improves reasoning | reward contract, verifier coverage, base-model pass rate | reward hacking or easy-example filtering |
@@ -256,7 +269,7 @@ Use the structured files for the long view:
 | [`docs/assets/entries.json`](docs/assets/entries.json) | Site-ready entry data for search and filtering. |
 | [`docs/index.html`](docs/index.html) | Local static atlas experience. |
 | [`reports/counts.md`](reports/counts.md) | Snapshot counts by status, role, contract, use, layer, and year. |
-| [`reports/needs_search.md`](reports/needs_search.md) | 161 entries still missing official artifact links or metadata verification. |
+| [`reports/needs_search.md`](reports/needs_search.md) | 156 entries still missing official artifact links or metadata verification. |
 | [`reports/citation_audit.md`](reports/citation_audit.md) | Citation and source-confidence notes. |
 
 Current snapshot:
@@ -264,16 +277,16 @@ Current snapshot:
 | Metric | Count |
 |---|---:|
 | Total entries | 269 |
-| Verified | 22 |
-| Partial | 85 |
+| Verified | 0 |
+| Partial | 114 |
 | Needs metadata/search | 155 |
-| Data releases | 14 |
+| Data releases | 15 |
 | Verifiers / rewards | 10 |
 | Agent environments | 10 |
-| Scaling studies | 10 |
+| Scaling studies | 11 |
 | Programmatic verification | 21 |
 | Environmental verification | 12 |
-| Judgment-required verification | 10 |
+| Judgment-required verification | 13 |
 
 ---
 

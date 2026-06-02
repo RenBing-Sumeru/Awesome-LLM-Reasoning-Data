@@ -1,7 +1,96 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Construction Stack</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">Where reasoning data is made</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Prompt sourcing</text>
-<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Trace writing</text>
-<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Search substrate</text>
-<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Self-play anchor</text>
-<text x="80" y="378" font-family="Arial" font-size="28" fill="#243042">Reward / verifier layer</text>
-<text x="80" y="430" font-family="Arial" font-size="28" fill="#243042">Optimizer / scaffold</text>
-<text x="80" y="482" font-family="Arial" font-size="28" fill="#243042">Release metadata</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Construction stack</title>
+  <desc id="desc">The layered construction stack for reasoning datasets, from prompt sourcing through release metadata.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e5e7eb" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10a37f"/>
+      <stop offset="0.35" stop-color="#2b8fff"/>
+      <stop offset="0.7" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#64748b"/>
+    </marker>
+    <style><![CDATA[
+      .bg{fill:#fbfcfe;} .grid{fill:url(#grid);opacity:0.55;}
+      .panel{fill:#ffffff;stroke:#d8dee8;stroke-width:1.5;}
+      .title{font:800 44px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .subtitle{font:500 19px Inter,Arial,sans-serif;fill:#5b6472;letter-spacing:0;}
+      .eyebrow{font:800 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0.9px;text-transform:uppercase;}
+      .h{font:800 18px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .h-dark{font:800 18px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .body{font:500 13.5px Inter,Arial,sans-serif;fill:#4b5563;letter-spacing:0;}
+      .small{font:600 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0;}
+      .mono{font:700 13px "IBM Plex Mono",Menlo,monospace;fill:#334155;letter-spacing:0;}
+      .metric{font:900 30px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .chip{font:800 12px Inter,Arial,sans-serif;fill:#111827;letter-spacing:0;}
+      .chip-dark{font:800 12px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .arrow{stroke:#64748b;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);}
+      .soft-arrow{stroke:#94a3b8;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);opacity:0.85;}
+    ]]></style>
+  </defs>
+  <rect class="bg" width="1280" height="640"/>
+  <rect class="grid" width="1280" height="640"/>
+  <rect class="panel" x="44" y="38" width="1192" height="564" rx="28"/>
+  <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
+  <text class="title" x="76" y="92">Construction Stack</text>
+  <text class="subtitle" x="78" y="126">Where a reasoning-data record is made, filtered, optimized, documented, and made auditable.</text>
+  <rect x="84" y="170" width="782" height="44" rx="13" fill="#ffffff" stroke="#2b8fff" stroke-width="1.8"/>
+  <rect x="84" y="170" width="10" height="44" rx="5" fill="#2b8fff"/>
+  <text x="110" y="199" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="19">📥</text>
+  <text class="h" x="144" y="198">Prompt sourcing</text>
+  <text class="body" x="376" y="198">source mix · license · split · base pass rate</text>
+  <path class="soft-arrow" d="M476 218 V226"/>
+  <rect x="84" y="226" width="782" height="44" rx="13" fill="#ffffff" stroke="#f59e0b" stroke-width="1.8"/>
+  <rect x="84" y="226" width="10" height="44" rx="5" fill="#f59e0b"/>
+  <text x="110" y="255" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="19">✍️</text>
+  <text class="h" x="144" y="254">Trace writing</text>
+  <text class="body" x="376" y="254">human · teacher · search · self-play · environment</text>
+  <path class="soft-arrow" d="M476 274 V282"/>
+  <rect x="84" y="282" width="782" height="44" rx="13" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+  <rect x="84" y="282" width="10" height="44" rx="5" fill="#7c3aed"/>
+  <text x="110" y="311" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="19">🔍</text>
+  <text class="h" x="144" y="310">Search substrate</text>
+  <text class="body" x="376" y="310">rollouts · beam/MCTS · critique · scaffold budget</text>
+  <path class="soft-arrow" d="M476 330 V338"/>
+  <rect x="84" y="338" width="782" height="44" rx="13" fill="#ffffff" stroke="#10a37f" stroke-width="1.8"/>
+  <rect x="84" y="338" width="10" height="44" rx="5" fill="#10a37f"/>
+  <text x="110" y="367" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="19">🧪</text>
+  <text class="h" x="144" y="366">Verifier layer</text>
+  <text class="body" x="376" y="366">checker · tests · proof · judge · terminal predicate</text>
+  <path class="soft-arrow" d="M476 386 V394"/>
+  <rect x="84" y="394" width="782" height="44" rx="13" fill="#ffffff" stroke="#e11d48" stroke-width="1.8"/>
+  <rect x="84" y="394" width="10" height="44" rx="5" fill="#e11d48"/>
+  <text x="110" y="423" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="19">🧹</text>
+  <text class="h" x="144" y="422">Filtering</text>
+  <text class="body" x="376" y="422">pass/fail bands · rejection reasons · ambiguity set</text>
+  <path class="soft-arrow" d="M476 442 V450"/>
+  <rect x="84" y="450" width="782" height="44" rx="13" fill="#ffffff" stroke="#06b6d4" stroke-width="1.8"/>
+  <rect x="84" y="450" width="10" height="44" rx="5" fill="#06b6d4"/>
+  <text x="110" y="479" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="19">🏋️</text>
+  <text class="h" x="144" y="478">Optimizer/scaffold</text>
+  <text class="body" x="376" y="478">SFT · PRM · RM · RLVR · agent training</text>
+  <path class="soft-arrow" d="M476 498 V506"/>
+  <rect x="84" y="506" width="782" height="44" rx="13" fill="#ffffff" stroke="#64748b" stroke-width="1.8"/>
+  <rect x="84" y="506" width="10" height="44" rx="5" fill="#64748b"/>
+  <text x="110" y="535" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="19">🧬</text>
+  <text class="h" x="144" y="534">Release metadata</text>
+  <text class="body" x="376" y="534">lineage · cards · risks · reproducibility</text>
+  <rect x="928" y="170" width="284" height="376" rx="20" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text class="h-dark" x="958" y="214">Evidence artifacts</text>
+  <rect x="958" y="225" width="212" height="30" rx="15" fill="#1f2937" stroke="#10a37f"/>
+  <text class="chip-dark" x="1064" y="245" text-anchor="middle">dedupe report</text>
+  <rect x="958" y="269" width="212" height="30" rx="15" fill="#1f2937" stroke="#2b8fff"/>
+  <text class="chip-dark" x="1064" y="289" text-anchor="middle">verifier logs</text>
+  <rect x="958" y="313" width="212" height="30" rx="15" fill="#1f2937" stroke="#7c3aed"/>
+  <text class="chip-dark" x="1064" y="333" text-anchor="middle">filter script</text>
+  <rect x="958" y="357" width="212" height="30" rx="15" fill="#1f2937" stroke="#f59e0b"/>
+  <text class="chip-dark" x="1064" y="377" text-anchor="middle">teacher lineage</text>
+  <rect x="958" y="401" width="212" height="30" rx="15" fill="#1f2937" stroke="#e11d48"/>
+  <text class="chip-dark" x="1064" y="421" text-anchor="middle">dataset card</text>
+  <rect x="958" y="445" width="212" height="30" rx="15" fill="#1f2937" stroke="#06b6d4"/>
+  <text class="chip-dark" x="1064" y="465" text-anchor="middle">known failures</text>
+</svg>

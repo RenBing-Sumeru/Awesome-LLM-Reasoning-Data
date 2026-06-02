@@ -1,89 +1,137 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
   <title id="title">Core paper map</title>
-  <desc id="desc">A compact map from reasoning-data clusters to representative papers and audit questions.</desc>
+  <desc id="desc">A compact map from paper clusters to the data objects and audit questions they expose.</desc>
   <defs>
-    <style>
-      .bg{fill:#f8fafc}.panel{fill:#fff;stroke:#d8e2ef;stroke-width:2}.title{font:800 44px Arial,sans-serif;fill:#111827}.sub{font:500 21px Arial,sans-serif;fill:#475569}.center{font:800 25px Arial,sans-serif;fill:#0f172a}.h{font:800 20px Arial,sans-serif;fill:#0f172a}.p{font:500 14px Arial,sans-serif;fill:#475569}.tag{font:700 13px Arial,sans-serif;fill:#334155}.link{stroke:#cbd5e1;stroke-width:3}.card{stroke-width:2}
-    </style>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e5e7eb" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10a37f"/>
+      <stop offset="0.35" stop-color="#2b8fff"/>
+      <stop offset="0.7" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#64748b"/>
+    </marker>
+    <style><![CDATA[
+      .bg{fill:#fbfcfe;} .grid{fill:url(#grid);opacity:0.55;}
+      .panel{fill:#ffffff;stroke:#d8dee8;stroke-width:1.5;}
+      .title{font:800 44px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .subtitle{font:500 19px Inter,Arial,sans-serif;fill:#5b6472;letter-spacing:0;}
+      .eyebrow{font:800 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0.9px;text-transform:uppercase;}
+      .h{font:800 18px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .h-dark{font:800 18px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .body{font:500 13.5px Inter,Arial,sans-serif;fill:#4b5563;letter-spacing:0;}
+      .small{font:600 12px Inter,Arial,sans-serif;fill:#64748b;letter-spacing:0;}
+      .mono{font:700 13px "IBM Plex Mono",Menlo,monospace;fill:#334155;letter-spacing:0;}
+      .metric{font:900 30px Inter,Arial,sans-serif;fill:#0e0f12;letter-spacing:0;}
+      .chip{font:800 12px Inter,Arial,sans-serif;fill:#111827;letter-spacing:0;}
+      .chip-dark{font:800 12px Inter,Arial,sans-serif;fill:#f8fafc;letter-spacing:0;}
+      .arrow{stroke:#64748b;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);}
+      .soft-arrow{stroke:#94a3b8;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);opacity:0.85;}
+    ]]></style>
   </defs>
   <rect class="bg" width="1280" height="720"/>
-  <rect class="panel" x="40" y="38" width="1200" height="644" rx="28"/>
-  <text class="title" x="76" y="96">🧮 Core Paper Map</text>
-  <text class="sub" x="78" y="132">Use paper clusters as a reading route, then audit the data object behind each result.</text>
-
-  <circle cx="640" cy="364" r="104" fill="#f8fafc" stroke="#64748b" stroke-width="3"/>
-  <text class="center" x="543" y="344">Verifier-bearing</text>
-  <text class="center" x="574" y="378">reasoning</text>
-  <text class="center" x="607" y="412">data</text>
-
-  <line class="link" x1="544" y1="318" x2="284" y2="208"/>
-  <line class="link" x1="640" y1="260" x2="640" y2="196"/>
-  <line class="link" x1="736" y1="318" x2="1012" y2="208"/>
-  <line class="link" x1="536" y1="384" x2="286" y2="370"/>
-  <line class="link" x1="744" y1="384" x2="1012" y2="370"/>
-  <line class="link" x1="560" y1="438" x2="284" y2="542"/>
-  <line class="link" x1="640" y1="468" x2="640" y2="562"/>
-  <line class="link" x1="720" y1="438" x2="1012" y2="542"/>
-
-  <g transform="translate(78 164)">
-    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#eff6ff" stroke="#2563eb"/>
-    <text class="h" x="20" y="31">🧮 Programmatic</text>
-    <text class="p" x="20" y="58">OpenMathReasoning · DeepMath-103K</text>
-    <text class="p" x="20" y="80">Big-Math · OpenCodeReasoning-II</text>
-    <text class="tag" x="20" y="101">audit: checker, tests, pass-rate, decontamination</text>
-  </g>
-
-  <g transform="translate(463 156)">
-    <rect class="card" x="0" y="0" width="274" height="100" rx="18" fill="#fefce8" stroke="#eab308"/>
-    <text class="h" x="20" y="31">🪜 PRM</text>
-    <text class="p" x="20" y="58">Let's Verify · Math-Shepherd</text>
-    <text class="tag" x="20" y="82">audit: step labels, rollout values</text>
-  </g>
-
-  <g transform="translate(852 164)">
-    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#fff7ed" stroke="#f97316"/>
-    <text class="h" x="20" y="31">🏗️ Recipes</text>
-    <text class="p" x="20" y="58">OpenThoughts · DAPO · LIMO · s1</text>
-    <text class="p" x="20" y="80">trace writing · filtering · scaffold</text>
-    <text class="tag" x="20" y="101">audit: source mix, teacher, ablations</text>
-  </g>
-
-  <g transform="translate(78 318)">
-    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#f0fdfa" stroke="#0d9488"/>
-    <text class="h" x="20" y="31">🌐 Agents</text>
-    <text class="p" x="20" y="58">SWE-Gym · WebArena · OSWorld</text>
-    <text class="p" x="20" y="80">state · action · observation · replay</text>
-    <text class="tag" x="20" y="101">audit: terminal predicate, scaffold</text>
-  </g>
-
-  <g transform="translate(852 318)">
-    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#fdf2f8" stroke="#db2777"/>
-    <text class="h" x="20" y="31">⚖️ Rubrics</text>
-    <text class="p" x="20" y="58">HealthBench · RewardBench</text>
-    <text class="p" x="20" y="80">Safety Through Reasoning · OnlineRubrics</text>
-    <text class="tag" x="20" y="101">audit: judge prompt, expertise, calibration</text>
-  </g>
-
-  <g transform="translate(78 504)">
-    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#f5f3ff" stroke="#7c3aed"/>
-    <text class="h" x="20" y="31">🚀 Frontier reports</text>
-    <text class="p" x="20" y="58">DeepSeek-R1 · Kimi K1.5 · Qwen3</text>
-    <text class="p" x="20" y="80">Magistral · Llama-Nemotron</text>
-    <text class="tag" x="20" y="101">audit: disclosed data partitions</text>
-  </g>
-
-  <g transform="translate(470 526)">
-    <rect class="card" x="0" y="0" width="260" height="94" rx="18" fill="#ecfdf5" stroke="#22c55e"/>
-    <text class="h" x="20" y="31">📈 Scaling</text>
-    <text class="p" x="20" y="58">RL compute · pass@k · budget</text>
-    <text class="tag" x="20" y="80">audit: asymptote vs efficiency</text>
-  </g>
-
-  <g transform="translate(852 504)">
-    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#fff1f2" stroke="#f43f5e"/>
-    <text class="h" x="20" y="31">🧯 Audit failures</text>
-    <text class="p" x="20" y="58">Leaky Thoughts · One Token</text>
-    <text class="p" x="20" y="80">Spurious Rewards · Search-Time Contamination</text>
-    <text class="tag" x="20" y="101">audit: leakage, gaming, hidden transfer</text>
-  </g>
+  <rect class="grid" width="1280" height="720"/>
+  <rect class="panel" x="44" y="38" width="1192" height="644" rx="28"/>
+  <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
+  <text class="title" x="76" y="92">Core Paper Map</text>
+  <text class="subtitle" x="78" y="126">Read papers by the feedback contract they reveal: checkers, PRMs, recipes, reports, agents, rubrics, scaling, and failures.</text>
+  <circle cx="640" cy="354" r="104" fill="#ffffff" stroke="#0e0f12" stroke-width="2.6"/>
+  <text class="h" x="640" y="330" text-anchor="middle">Verifier-bearing</text>
+  <text class="h" x="640" y="360" text-anchor="middle">reasoning</text>
+  <text class="h" x="640" y="390" text-anchor="middle">data</text>
+  <path class="soft-arrow" d="M640 354 L248.0 216.0"/>
+  <path class="soft-arrow" d="M640 354 L600.0 201.0"/>
+  <path class="soft-arrow" d="M640 354 L992.0 216.0"/>
+  <path class="soft-arrow" d="M640 354 L248.0 370.0"/>
+  <path class="soft-arrow" d="M640 354 L992.0 370.0"/>
+  <path class="soft-arrow" d="M640 354 L248.0 544.0"/>
+  <path class="soft-arrow" d="M640 354 L600.0 575.0"/>
+  <path class="soft-arrow" d="M640 354 L992.0 544.0"/>
+  <rect x="86" y="164" width="324" height="104" rx="16" fill="Programmatic" stroke="['OpenMathReasoning', 'DeepMath-103K · Big-Math']" stroke-width="1.8"/>
+  <text x="104" y="196" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#2b8fff</text>
+  <text class="h" x="138" y="195">🧮</text>
+  <text class="body" x="104" y="222">#</text>
+  <text class="body" x="104" y="239">e</text>
+  <text class="body" x="104" y="256">a</text>
+  <text class="body" x="104" y="273">f</text>
+  <text class="body" x="104" y="290">3</text>
+  <text class="body" x="104" y="307">f</text>
+  <text class="body" x="104" y="324">f</text>
+  <rect x="458" y="154" width="284" height="94" rx="16" fill="Process supervision" stroke="['Step labels', 'PRMs · rollout values']" stroke-width="1.8"/>
+  <text x="476" y="186" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#f59e0b</text>
+  <text class="h" x="510" y="185">🪜</text>
+  <text class="body" x="476" y="212">#</text>
+  <text class="body" x="476" y="229">f</text>
+  <text class="body" x="476" y="246">f</text>
+  <text class="body" x="476" y="263">f</text>
+  <text class="body" x="476" y="280">b</text>
+  <text class="body" x="476" y="297">e</text>
+  <text class="body" x="476" y="314">8</text>
+  <rect x="820" y="164" width="344" height="104" rx="16" fill="Open recipes" stroke="['OpenThoughts · DAPO', 'LIMO · s1']" stroke-width="1.8"/>
+  <text x="838" y="196" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#10a37f</text>
+  <text class="h" x="872" y="195">🏗️</text>
+  <text class="body" x="838" y="222">#</text>
+  <text class="body" x="838" y="239">e</text>
+  <text class="body" x="838" y="256">c</text>
+  <text class="body" x="838" y="273">f</text>
+  <text class="body" x="838" y="290">d</text>
+  <text class="body" x="838" y="307">f</text>
+  <text class="body" x="838" y="324">5</text>
+  <rect x="86" y="318" width="324" height="104" rx="16" fill="Frontier reports" stroke="['DeepSeek-R1 · Kimi K1.5', 'Qwen3 · Magistral']" stroke-width="1.8"/>
+  <text x="104" y="350" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#7c3aed</text>
+  <text class="h" x="138" y="349">🚀</text>
+  <text class="body" x="104" y="376">#</text>
+  <text class="body" x="104" y="393">f</text>
+  <text class="body" x="104" y="410">4</text>
+  <text class="body" x="104" y="427">e</text>
+  <text class="body" x="104" y="444">f</text>
+  <text class="body" x="104" y="461">f</text>
+  <text class="body" x="104" y="478">f</text>
+  <rect x="820" y="318" width="344" height="104" rx="16" fill="Agent environments" stroke="['SWE-Gym · WebArena', 'OSWorld · OpenHands']" stroke-width="1.8"/>
+  <text x="838" y="350" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#06b6d4</text>
+  <text class="h" x="872" y="349">🌐</text>
+  <text class="body" x="838" y="376">#</text>
+  <text class="body" x="838" y="393">e</text>
+  <text class="body" x="838" y="410">8</text>
+  <text class="body" x="838" y="427">f</text>
+  <text class="body" x="838" y="444">b</text>
+  <text class="body" x="838" y="461">f</text>
+  <text class="body" x="838" y="478">f</text>
+  <rect x="86" y="492" width="324" height="104" rx="16" fill="Rubrics and judges" stroke="['HealthBench · RewardBench', 'OnlineRubrics']" stroke-width="1.8"/>
+  <text x="104" y="524" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#e11d48</text>
+  <text class="h" x="138" y="523">⚖️</text>
+  <text class="body" x="104" y="550">#</text>
+  <text class="body" x="104" y="567">f</text>
+  <text class="body" x="104" y="584">f</text>
+  <text class="body" x="104" y="601">f</text>
+  <text class="body" x="104" y="618">1</text>
+  <text class="body" x="104" y="635">f</text>
+  <text class="body" x="104" y="652">2</text>
+  <rect x="458" y="528" width="284" height="94" rx="16" fill="Scaling claims" stroke="['RL compute · pass@k', 'test-time budget']" stroke-width="1.8"/>
+  <text x="476" y="560" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#2b8fff</text>
+  <text class="h" x="510" y="559">📈</text>
+  <text class="body" x="476" y="586">#</text>
+  <text class="body" x="476" y="603">e</text>
+  <text class="body" x="476" y="620">f</text>
+  <text class="body" x="476" y="637">f</text>
+  <text class="body" x="476" y="654">6</text>
+  <text class="body" x="476" y="671">f</text>
+  <text class="body" x="476" y="688">f</text>
+  <rect x="820" y="492" width="344" height="104" rx="16" fill="Failure audits" stroke="['Leaky Thoughts · One Token', 'Spurious Rewards']" stroke-width="1.8"/>
+  <text x="838" y="524" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">#f59e0b</text>
+  <text class="h" x="872" y="523">🧯</text>
+  <text class="body" x="838" y="550">#</text>
+  <text class="body" x="838" y="567">f</text>
+  <text class="body" x="838" y="584">f</text>
+  <text class="body" x="838" y="601">f</text>
+  <text class="body" x="838" y="618">7</text>
+  <text class="body" x="838" y="635">e</text>
+  <text class="body" x="838" y="652">d</text>
+  <rect x="430" y="285" width="280" height="104" rx="18" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text class="eyebrow" x="640" y="318" text-anchor="middle">Audit question</text>
+  <text class="h" x="640" y="348" text-anchor="middle">What data object</text>
+  <text class="h" x="640" y="374" text-anchor="middle">made the gain possible?</text>
 </svg>

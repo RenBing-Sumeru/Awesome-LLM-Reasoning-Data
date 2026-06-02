@@ -65,6 +65,7 @@
 
 | 日期 | 更新 | 意义 |
 |---|---|---|
+| 2026-06-02 | 基于下载的图表/写作 skill 资源进行 academic visual refresh。 | 将占位感较强的图片升级为可复用 SVG/PNG，并修正首页旧统计。 |
 | 2026-06-01 | README 和视觉入口按 v2 spec 进行 Phase A redesign。 | 让仓库首页从短索引变成可学习的 atlas。 |
 | 2026-06-01 | 新增 [`reports/reference_repo_redesign_study.md`](reports/reference_repo_redesign_study.md)。 | 记录参考 Awesome list / course repo 的风格取舍。 |
 | 2026-06-01 | 当前快照：**269 entries**, **0 verified**, **114 partial**, **155 needs metadata/search**, **42 filled cards**。 | 在可用和谨慎之间保持平衡。 |
@@ -137,6 +138,10 @@
 
 构建 reasoning dataset 时，请至少记录：
 
+<p align="center">
+  <img src="assets/construction_stack.svg" width="90%" alt="Reasoning dataset construction stack">
+</p>
+
 - 📥 prompt 来源、license、split、难度、base model pass rate；
 - ✍️ trace 来源：人工、teacher、search、自博弈、环境交互；
 - 🧪 verifier/reward/judge/environment 的版本、输入、输出和失败模式；
@@ -145,6 +150,14 @@
 - 🧯 contamination、leakage、reward hacking、license risk。
 
 更完整的说明见：
+
+<p align="center">
+  <img src="assets/quality_matrix.svg" width="90%" alt="Reasoning data quality matrix">
+</p>
+
+<p align="center">
+  <img src="assets/scaling_ledger.svg" width="90%" alt="Scaling attribution ledger">
+</p>
 
 - [`docs/05_construction_cookbook.md`](docs/05_construction_cookbook.md)
 - [`docs/06_verifiers_and_rewards.md`](docs/06_verifiers_and_rewards.md)
