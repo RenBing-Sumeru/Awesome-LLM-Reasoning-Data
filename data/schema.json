@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Awesome LLM Reasoning Data entry",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "year",
+    "venue",
+    "authors",
+    "source_role",
+    "verification_contract",
+    "supervision_granularity",
+    "domains",
+    "training_use",
+    "construction_layer",
+    "artifacts",
+    "data_object",
+    "recipe_metadata",
+    "audit",
+    "inclusion_reason",
+    "related",
+    "tags",
+    "status"
+  ],
+  "enums": {
+    "source_role": [
+      "model_report",
+      "data_release",
+      "benchmark",
+      "verifier_reward",
+      "process_supervision",
+      "agent_environment",
+      "construction_recipe",
+      "scaling_study",
+      "audit_failure",
+      "survey_background",
+      "infrastructure",
+      "related_awesome_list"
+    ],
+    "verification_contract": [
+      "programmatic",
+      "environmental",
+      "judgment_required",
+      "mixed",
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "answer_level",
+      "step_level",
+      "state_action_level",
+      "full_episode",
+      "pairwise_preference",
+      "scalar_reward",
+      "process_reward",
+      "trajectory_value",
+      "unknown"
+    ],
+    "training_use": [
+      "sft",
+      "distillation",
+      "preference_learning",
+      "reward_modeling",
+      "process_supervision",
+      "rlvr",
+      "agent_training",
+      "evaluation",
+      "safety_alignment",
+      "test_time_compute",
+      "unknown"
+    ],
+    "construction_layer": [
+      "prompt_sourcing",
+      "trace_writing",
+      "search_substrate",
+      "self_play_anchor",
+      "reward_verifier_layer",
+      "optimizer_scaffold",
+      "frontier_pipeline",
+      "scaling_report",
+      "release_audit"
+    ],
+    "status": [
+      "verified",
+      "partial",
+      "needs_url",
+      "needs_metadata",
+      "needs_search",
+      "ambiguous",
+      "misattributed",
+      "duplicate",
+      "excluded"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Awesome LLM Reasoning Data</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">Task → behavior → feedback → attribution → training use</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Task / State</text>
+<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Model Behavior</text>
+<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Trace / Actions</text>
+<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Verifier / Reward / Judge / Environment</text>
+<text x="80" y="378" font-family="Arial" font-size="28" fill="#243042">Attribution Metadata</text>
+<text x="80" y="430" font-family="Arial" font-size="28" fill="#243042">Training Use</text></svg>

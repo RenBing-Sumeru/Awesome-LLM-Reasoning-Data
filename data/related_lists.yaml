@@ -1,0 +1,23 @@
+[
+  {
+    "id": "awesome-dataset-distillation",
+    "title": "Awesome Dataset Distillation",
+    "url": "https://github.com/Guang000/Awesome-Dataset-Distillation",
+    "why_related": "Reference for badges, citations, data files, and static-site structure.",
+    "status": "reference"
+  },
+  {
+    "id": "awesome-llm-post-training",
+    "title": "Awesome LLM Post-training",
+    "url": "https://github.com/mbzuai-oryx/awesome-llm-post-training",
+    "why_related": "Companion-style post-training list; this atlas stays narrower on reasoning data objects.",
+    "status": "reference"
+  },
+  {
+    "id": "awesome-llm-reasoning",
+    "title": "Awesome LLM Reasoning",
+    "url": "https://github.com/atfortes/awesome-llm-reasoning",
+    "why_related": "General reasoning-methods list; useful context beyond data.",
+    "status": "reference"
+  }
+]

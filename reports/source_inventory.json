@@ -1,0 +1,19 @@
+{
+  "note": "Absolute local source inventory omitted from the public submission folder.",
+  "included_public_artifacts": [
+    "README.md",
+    "README_zh.md",
+    "data",
+    "docs",
+    "cards",
+    "assets",
+    "scripts",
+    "reports",
+    ".github"
+  ],
+  "not_included": [
+    "local prompt.md",
+    "CODEX_BUILD_SPEC_Awesome_LLM_Reasoning_Data.md",
+    "companion paper PDF"
+  ]
+}

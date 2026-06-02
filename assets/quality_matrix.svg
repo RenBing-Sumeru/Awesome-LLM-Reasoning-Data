@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Reasoning Data Quality</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">A sample is useful only with context attached</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Correctness = verifier-relative</text>
+<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Trace quality = trajectory-relative</text>
+<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Difficulty = base-relative</text>
+<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Coverage = lineage-relative</text></svg>

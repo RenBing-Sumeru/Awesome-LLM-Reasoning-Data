@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Verifier-Anchored Taxonomy</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">Verification contract first, domain second</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Programmatic: math · code · formal proof</text>
+<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Environmental: tools · web · app/OS · SWE</text>
+<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Judgment-required: medical · safety · factuality · rubric</text>
+<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Cross-cutting: granularity · bounds · lineage</text></svg>

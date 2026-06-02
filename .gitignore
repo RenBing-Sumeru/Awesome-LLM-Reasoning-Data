@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local/generated scratch backups
+*.bak
+*.tmp
+.DS_Store
+
+# Logs
+*.log
+
+# Build artifacts
+site/
+dist/
+build/
