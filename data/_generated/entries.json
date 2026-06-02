@@ -44,7 +44,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deep-reinforcement-learning-from-human-preferences-2017",
@@ -91,7 +94,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "data-statements-for-natural-language-processing-2018",
@@ -138,7 +144,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "datasheets-for-datasets-2018",
@@ -185,7 +194,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "holist-an-environment-for-machine-learning-of-higher-order-logic-theorem-proving-2019",
@@ -232,7 +244,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "pubmedqa-a-dataset-for-biomedical-research-question-answering-2019",
@@ -279,7 +294,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "a-primer-in-bertology-what-we-know-about-how-bert-works-2020",
@@ -326,7 +344,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "fact-or-fiction-verifying-scientific-claims-2020",
@@ -373,7 +394,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks-2020",
@@ -420,7 +444,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "casehold-a-dataset-for-legal-holding-statement-prediction-2021",
@@ -467,7 +494,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021",
@@ -514,7 +544,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021",
@@ -561,7 +594,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "evaluating-large-language-models-trained-on-code-2021",
@@ -608,7 +644,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "finetuned-language-models-are-zero-shot-learners-2021",
@@ -655,7 +694,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021",
@@ -702,7 +744,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "measuring-coding-challenge-competence-with-apps-2021",
@@ -749,7 +794,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "measuring-mathematical-problem-solving-with-the-math-dataset-2021",
@@ -796,7 +844,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021",
@@ -843,7 +894,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "multitask-prompted-training-enables-zero-shot-task-generalization-2021",
@@ -890,7 +944,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021",
@@ -937,7 +994,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021",
@@ -984,7 +1044,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "training-verifiers-to-solve-math-word-problems-2021",
@@ -1031,7 +1094,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022",
@@ -1045,18 +1111,21 @@
       "unknown"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "prompting",
+      "reasoning"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation"
     ],
     "construction_layer": [
-      "release_audit"
+      "trace_writing"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2201.11903",
       "code": null,
       "data": null,
       "project": null,
@@ -1070,15 +1139,26 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key wei2022cot. Deduplicated title collision; dropped lower-confidence id: chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object.",
     "tags": [
-      "seeded-from-bib"
+      "foundation-starter",
+      "primary-link-checked"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2201.11903"
+      }
+    ],
+    "card": null,
+    "one_line": "Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object."
   },
   {
     "id": "coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022",
@@ -1125,7 +1205,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "codet-code-generation-with-generated-tests-2022",
@@ -1172,7 +1255,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "coliee-competition-on-legal-information-extraction-entailment-2022",
@@ -1219,7 +1305,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "constitutional-ai-harmlessness-from-ai-feedback-2022",
@@ -1227,24 +1316,31 @@
     "year": 2022,
     "venue": "arXiv preprint",
     "source_role": [
+      "construction_recipe",
       "survey_background"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "pairwise_preference"
     ],
-    "domains": [],
+    "domains": [
+      "safety",
+      "alignment"
+    ],
     "training_use": [
-      "unknown"
+      "preference_learning",
+      "safety_alignment"
     ],
     "construction_layer": [
-      "release_audit"
+      "trace_writing",
+      "reward_verifier_layer"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2212.08073",
       "code": null,
       "data": null,
       "project": null,
@@ -1258,15 +1354,26 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key constitutional2022. Deduplicated title collision; dropped lower-confidence id: constitutional-ai-harmlessness-from-ai-feedback-2022."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.",
     "tags": [
-      "seeded-from-bib"
+      "foundation-starter",
+      "primary-link-checked"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2212.08073"
+      }
+    ],
+    "card": null,
+    "one_line": "AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object."
   },
   {
     "id": "convfinqa-exploring-the-chain-of-numerical-reasoning-in-conversational-finance-q-2022",
@@ -1313,7 +1420,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "draft-sketch-and-prove-guiding-formal-theorem-provers-with-informal-proofs-2022",
@@ -1360,7 +1470,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "scaling-laws-for-reward-model-overoptimization-2022",
@@ -1407,7 +1520,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "scienceworld-is-your-agent-smarter-than-a-5th-grader-2022",
@@ -1454,7 +1570,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "solving-math-word-problems-with-process-and-outcome-based-feedback-2022",
@@ -1501,7 +1620,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "star-bootstrapping-reasoning-with-reasoning-2022",
@@ -1509,24 +1631,29 @@
     "year": 2022,
     "venue": "NeurIPS",
     "source_role": [
+      "construction_recipe",
       "survey_background"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "reasoning"
+    ],
     "training_use": [
-      "unknown"
+      "sft",
+      "distillation"
     ],
     "construction_layer": [
-      "release_audit"
+      "trace_writing",
+      "self_play_anchor"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2203.14465",
       "code": null,
       "data": null,
       "project": null,
@@ -1540,15 +1667,26 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key zelikman2022star. Deduplicated title collision; dropped lower-confidence id: star-bootstrapping-reasoning-with-reasoning-2022."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
     "tags": [
-      "seeded-from-bib"
+      "foundation-starter",
+      "primary-link-checked"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2203.14465"
+      }
+    ],
+    "card": null,
+    "one_line": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction."
   },
   {
     "id": "training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022",
@@ -1595,7 +1733,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "training-language-models-to-follow-instructions-with-human-feedback-2022",
@@ -1603,24 +1744,32 @@
     "year": 2022,
     "venue": "NeurIPS",
     "source_role": [
-      "survey_background"
+      "survey_background",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required"
     ],
     "supervision_granularity": [
-      "unknown"
+      "pairwise_preference",
+      "scalar_reward"
     ],
-    "domains": [],
+    "domains": [
+      "alignment",
+      "chat"
+    ],
     "training_use": [
-      "unknown"
+      "sft",
+      "preference_learning",
+      "reward_modeling"
     ],
     "construction_layer": [
-      "release_audit"
+      "prompt_sourcing",
+      "reward_verifier_layer"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2203.02155",
       "code": null,
       "data": null,
       "project": null,
@@ -1634,15 +1783,26 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key instructgpt2022. Deduplicated title collision; dropped lower-confidence id: training-language-models-to-follow-instructions-with-human-feedback-2022."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping.",
     "tags": [
-      "seeded-from-bib"
+      "foundation-starter",
+      "primary-link-checked"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2203.02155"
+      }
+    ],
+    "card": null,
+    "one_line": "InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping."
   },
   {
     "id": "truthfulqa-2022",
@@ -1689,7 +1849,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "alce-enabling-large-language-models-to-generate-text-with-citations-2023",
@@ -1736,7 +1899,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "api-bank-a-benchmark-for-tool-augmented-llms-2023",
@@ -1783,7 +1949,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "data-provenance-for-language-models-2023",
@@ -1830,7 +1999,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023",
@@ -1841,21 +2013,24 @@
       "survey_background"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required"
     ],
     "supervision_granularity": [
-      "unknown"
+      "pairwise_preference"
     ],
-    "domains": [],
+    "domains": [
+      "alignment",
+      "preference"
+    ],
     "training_use": [
-      "unknown"
+      "preference_learning"
     ],
     "construction_layer": [
-      "release_audit"
+      "optimizer_scaffold"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2305.18290",
       "code": null,
       "data": null,
       "project": null,
@@ -1869,15 +2044,26 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key dpo2023. Deduplicated title collision; dropped lower-confidence id: direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step.",
     "tags": [
-      "seeded-from-bib"
+      "foundation-starter",
+      "primary-link-checked"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2305.18290"
+      }
+    ],
+    "card": null,
+    "one_line": "Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step."
   },
   {
     "id": "distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023",
@@ -1924,7 +2110,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "factscore-2023",
@@ -1971,7 +2160,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "financebench-a-benchmark-for-financial-question-answering-2023",
@@ -2018,7 +2210,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "gorilla-2023",
@@ -2065,7 +2260,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "gpqa-2023",
@@ -2112,7 +2310,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "judgelm-fine-tuned-large-language-models-are-scalable-judges-2023",
@@ -2159,7 +2360,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023",
@@ -2206,7 +2410,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023",
@@ -2253,7 +2460,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "large-language-models-encode-clinical-knowledge-2023",
@@ -2300,7 +2510,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "leandojo-theorem-proving-with-retrieval-augmented-language-models-2023",
@@ -2347,7 +2560,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "legalbench-2023",
@@ -2394,7 +2610,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023",
@@ -2441,7 +2660,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023",
@@ -2488,7 +2710,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "maud-a-merger-agreement-understanding-dataset-2023",
@@ -2535,7 +2760,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "measuring-faithfulness-in-chain-of-thought-reasoning-2023",
@@ -2582,7 +2810,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023",
@@ -2629,7 +2860,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "mind2web-towards-a-generalist-agent-for-the-web-2023",
@@ -2676,7 +2910,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023",
@@ -2723,7 +2960,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "prm800k-2023",
@@ -2732,24 +2972,28 @@
     "venue": "arXiv",
     "source_role": [
       "process_supervision",
-      "verifier_reward"
+      "verifier_reward",
+      "data_release"
     ],
     "verification_contract": [
-      "programmatic",
-      "judgment_required"
+      "judgment_required",
+      "programmatic"
     ],
     "supervision_granularity": [
-      "step_level"
+      "step_level",
+      "process_reward"
     ],
     "domains": [
       "math"
     ],
     "training_use": [
       "process_supervision",
-      "reward_modeling"
+      "reward_modeling",
+      "evaluation"
     ],
     "construction_layer": [
-      "reward_verifier_layer"
+      "reward_verifier_layer",
+      "release_audit"
     ],
     "artifacts": {
       "paper": null,
@@ -2769,11 +3013,24 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: let-s-verify-step-by-step-2023."
+      "notes": "Primary arXiv link verified; exact annotation policy, annotator agreement, and data license still need local review.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Landmark process supervision dataset with explicit step labels.",
-    "tags": [],
-    "status": "verified"
+    "inclusion_reason": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2305.20050"
+      }
+    ],
+    "card": "cards/verifiers/prm800k.md",
+    "one_line": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning."
   },
   {
     "id": "proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023",
@@ -2820,7 +3077,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "react-synergizing-reasoning-and-acting-in-language-models-2023",
@@ -2867,7 +3127,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "reflexion-language-agents-with-verbal-reinforcement-learning-2023",
@@ -2914,7 +3177,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "rest-textsuperscriptem-2023",
@@ -2961,7 +3227,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023",
@@ -2969,24 +3238,29 @@
     "year": 2023,
     "venue": "ICLR",
     "source_role": [
-      "survey_background"
+      "survey_background",
+      "scaling_study"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "reasoning",
+      "test_time_compute"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "test_time_compute"
     ],
     "construction_layer": [
-      "release_audit"
+      "search_substrate"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2203.11171",
       "code": null,
       "data": null,
       "project": null,
@@ -3000,15 +3274,26 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key wang2022selfconsistency. Deduplicated title collision; dropped lower-confidence id: self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Introduces sampling-and-voting over reasoning paths, a precursor to pass@k, verifier selection, and test-time compute views.",
     "tags": [
-      "seeded-from-bib"
+      "foundation-starter",
+      "primary-link-checked"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2203.11171"
+      }
+    ],
+    "card": null,
+    "one_line": "Introduces sampling-and-voting over reasoning paths, a precursor to pass@k, verifier selection, and test-time compute views."
   },
   {
     "id": "self-instruct-aligning-language-models-with-self-generated-instructions-2023",
@@ -3016,24 +3301,28 @@
     "year": 2023,
     "venue": "ACL",
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "data_release"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "instruction_following"
+    ],
     "training_use": [
-      "unknown"
+      "sft"
     ],
     "construction_layer": [
-      "release_audit"
+      "prompt_sourcing",
+      "trace_writing"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2212.10560",
       "code": null,
       "data": null,
       "project": null,
@@ -3047,15 +3336,26 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key selfinstruct2022. Deduplicated title collision; dropped lower-confidence id: self-instruct-aligning-language-models-with-self-generated-instructions-2023."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.",
     "tags": [
-      "seeded-from-bib"
+      "foundation-starter",
+      "primary-link-checked"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2212.10560"
+      }
+    ],
+    "card": null,
+    "one_line": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline."
   },
   {
     "id": "self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023",
@@ -3102,7 +3402,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "selfcodealign-self-alignment-for-code-generation-2023",
@@ -3149,7 +3452,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-bench-can-language-models-resolve-real-world-github-issues-2023",
@@ -3196,7 +3502,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "toolformer-language-models-can-teach-themselves-to-use-tools-2023",
@@ -3243,7 +3552,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "ultrafeedback-boosting-language-models-with-high-quality-feedback-2023",
@@ -3290,7 +3602,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "webarena-a-realistic-web-environment-for-building-autonomous-agents-2023",
@@ -3298,24 +3613,30 @@
     "year": 2023,
     "venue": "ICLR",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode"
     ],
-    "domains": [],
+    "domains": [
+      "web",
+      "agents"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "agent_training"
     ],
     "construction_layer": [
+      "search_substrate",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2307.13854",
       "code": null,
       "data": null,
       "project": null,
@@ -3329,15 +3650,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key webarena2023. Deduplicated title collision; dropped lower-confidence id: webarena-a-realistic-web-environment-for-building-autonomous-agents-2023."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; environment versions, site snapshots, and task leakage still require curator review.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2307.13854"
+      }
+    ],
+    "card": "cards/agents/webarena.md",
+    "one_line": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment."
   },
   {
     "id": "wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023",
@@ -3384,7 +3717,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "ai-models-collapse-when-trained-on-recursively-generated-data-2024",
@@ -3431,7 +3767,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024",
@@ -3478,32 +3817,44 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024",
     "title": "AppWorld: A controllable world of apps and people for benchmarking interactive coding agents",
     "year": 2024,
-    "venue": "ACL",
+    "venue": "arXiv",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental",
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode",
+      "state_action_level"
     ],
-    "domains": [],
+    "domains": [
+      "apps",
+      "agents",
+      "code"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "agent_training"
     ],
     "construction_layer": [
+      "search_substrate",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2407.18901",
       "code": null,
       "data": null,
       "project": null,
@@ -3517,15 +3868,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key appworld2024. Deduplicated title collision; dropped lower-confidence id: appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; exact app database seeds and task splits should be checked before training reuse.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2407.18901"
+      }
+    ],
+    "card": "cards/agents/appworld.md",
+    "one_line": "Controllable app world for interactive agents where tool/API state and final task success form the feedback contract."
   },
   {
     "id": "bfcl-v3-2024",
@@ -3572,7 +3935,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024",
@@ -3619,7 +3985,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024",
@@ -3666,32 +4035,43 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "browsergym-a-gym-environment-for-web-agents-2024",
     "title": "BrowserGym: A gym environment for web agents",
     "year": 2024,
-    "venue": "unknown",
+    "venue": "arXiv",
     "source_role": [
-      "survey_background"
+      "infrastructure",
+      "agent_environment",
+      "benchmark"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode",
+      "state_action_level"
     ],
-    "domains": [],
+    "domains": [
+      "web",
+      "agents"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "agent_training"
     ],
     "construction_layer": [
+      "search_substrate",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2412.05467",
       "code": null,
       "data": null,
       "project": null,
@@ -3705,15 +4085,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key browsergym2024. Deduplicated title collision; dropped lower-confidence id: browsergym-a-gym-environment-for-web-agents-2024."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; benchmark variants and browser/runtime versions should be pinned in downstream cards.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2412.05467"
+      }
+    ],
+    "card": "cards/agents/browsergym.md",
+    "one_line": "A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation."
   },
   {
     "id": "chembench-a-benchmark-for-evaluating-large-language-models-in-chemistry-2024",
@@ -3760,7 +4152,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepseek-prover-advancing-theorem-proving-in-llms-2024",
@@ -3807,7 +4202,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024",
@@ -3854,7 +4252,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024",
@@ -3901,7 +4302,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "does-writing-with-lms-reduce-content-diversity-2024",
@@ -3948,7 +4352,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024",
@@ -3995,7 +4402,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024",
@@ -4042,7 +4452,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "gsm-symbolic-2024",
@@ -4089,7 +4502,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "harmbench-2024",
@@ -4136,7 +4552,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024",
@@ -4183,7 +4602,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024",
@@ -4230,7 +4652,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "introducing-swe-bench-verified-2024",
@@ -4277,7 +4702,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "is-model-collapse-inevitable-2024",
@@ -4324,7 +4752,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024",
@@ -4371,7 +4802,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024",
@@ -4418,7 +4852,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2407.21787"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "learning-to-reason-with-llms-2024",
@@ -4465,7 +4908,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024",
@@ -4512,7 +4958,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024",
@@ -4559,7 +5008,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "magicoder-empowering-code-generation-with-oss-instruct-2024",
@@ -4606,7 +5058,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "mammoth2-scaling-instructions-from-the-web-2024",
@@ -4653,7 +5108,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2405.03548"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "math-shepherd-2024",
@@ -4699,11 +5163,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Monte-Carlo-style process signal reference for step supervision.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2312.08935"
+      }
+    ],
+    "card": "cards/verifiers/math_shepherd.md",
+    "one_line": "Monte-Carlo-style process signal reference for step supervision."
   },
   {
     "id": "opencodeinterpreter-integrating-code-generation-with-execution-and-refinement-2024",
@@ -4750,7 +5224,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024",
@@ -4797,7 +5274,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024",
@@ -4805,24 +5285,31 @@
     "year": 2024,
     "venue": "NeurIPS",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode"
     ],
-    "domains": [],
+    "domains": [
+      "computer_use",
+      "agents",
+      "multimodal"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "agent_training"
     ],
     "construction_layer": [
+      "search_substrate",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2404.07972",
       "code": null,
       "data": null,
       "project": null,
@@ -4836,15 +5323,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key osworld2024. Deduplicated title collision; dropped lower-confidence id: osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; reproduce with exact environment/image/task versions before using results comparatively.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2404.07972"
+      }
+    ],
+    "card": "cards/agents/osworld.md",
+    "one_line": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation."
   },
   {
     "id": "overoptimization-in-direct-alignment-algorithms-2024",
@@ -4891,7 +5390,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024",
@@ -4938,7 +5440,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024",
@@ -4985,7 +5490,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024",
@@ -5032,7 +5540,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "r-tuning-2024",
@@ -5079,7 +5590,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "raft-adapting-language-model-to-domain-specific-rag-2024",
@@ -5126,7 +5640,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "rest-mcts-2024",
@@ -5173,32 +5690,45 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "rewardbench-evaluating-reward-models-for-language-modeling-2024",
-    "title": "RewardBench: Evaluating reward models for language modeling",
+    "title": "RewardBench: Evaluating Reward Models for Language Modeling",
     "year": 2024,
-    "venue": "arXiv preprint",
+    "venue": "NeurIPS",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "verifier_reward"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "pairwise_preference",
+      "scalar_reward"
     ],
-    "domains": [],
+    "domains": [
+      "preference",
+      "safety",
+      "chat"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "reward_modeling",
+      "preference_learning"
     ],
     "construction_layer": [
+      "reward_verifier_layer",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2403.13787",
       "code": null,
       "data": null,
       "project": null,
@@ -5212,15 +5742,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key rewardbench2024. Deduplicated title collision; dropped lower-confidence id: rewardbench-evaluating-reward-models-for-language-modeling-2024."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; dataset mixture, judge model versions, and safety-sensitive subsets need explicit review.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2403.13787"
+      }
+    ],
+    "card": "cards/verifiers/rewardbench.md",
+    "one_line": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift."
   },
   {
     "id": "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
@@ -5267,7 +5809,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024",
@@ -5314,7 +5859,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "self-rewarding-lms-2024",
@@ -5361,7 +5909,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024",
@@ -5408,7 +5959,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024",
@@ -5455,7 +6009,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-search-2024",
@@ -5502,7 +6059,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024",
@@ -5549,7 +6109,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "the-llama-3-herd-of-models-2024",
@@ -5596,7 +6159,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "toolace-winning-the-points-of-llm-function-calling-2024",
@@ -5643,32 +6209,46 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024",
     "title": "ToolLLM: Facilitating large language models to master 16000+ real-world APIs",
-    "year": 2024,
+    "year": 2023,
     "venue": "ICLR",
     "source_role": [
-      "survey_background"
+      "data_release",
+      "benchmark",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental",
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "state_action_level"
     ],
-    "domains": [],
+    "domains": [
+      "tools",
+      "apis",
+      "agents"
+    ],
     "training_use": [
-      "unknown"
+      "sft",
+      "agent_training",
+      "evaluation"
     ],
     "construction_layer": [
+      "prompt_sourcing",
+      "trace_writing",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2307.16789",
       "code": null,
       "data": null,
       "project": null,
@@ -5682,15 +6262,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key toolllm2023. Deduplicated title collision; dropped lower-confidence id: toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; API availability and generated-instruction lineage need review before reuse.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2307.16789"
+      }
+    ],
+    "card": "cards/agents/toolllm_toolbench.md",
+    "one_line": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback."
   },
   {
     "id": "toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024",
@@ -5737,7 +6329,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "tulu-3-pushing-frontiers-in-open-language-model-post-training-2024",
@@ -5784,7 +6379,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024",
@@ -5792,19 +6390,26 @@
     "year": 2024,
     "venue": "arXiv preprint",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode"
     ],
-    "domains": [],
+    "domains": [
+      "web",
+      "vision",
+      "agents"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "agent_training"
     ],
     "construction_layer": [
+      "search_substrate",
       "release_audit"
     ],
     "artifacts": {
@@ -5823,15 +6428,21 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key visualwebarena2024. Deduplicated title collision; dropped lower-confidence id: visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Needs official link promotion if this item becomes a card.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state."
   },
   {
     "id": "weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024",
@@ -5878,7 +6489,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "wildguard-2024",
@@ -5925,7 +6539,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024",
@@ -5972,7 +6589,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "xstest-2024",
@@ -6019,7 +6639,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025",
@@ -6066,7 +6689,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2503.19633"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025",
@@ -6113,7 +6745,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025",
@@ -6160,7 +6795,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.07086"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "a-survey-on-llm-mid-training-2025",
@@ -6207,7 +6851,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2510.23081"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025",
@@ -6215,20 +6868,27 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.03335",
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "scaling_study"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "code"
+    ],
     "training_use": [
-      "unknown"
+      "rlvr",
+      "evaluation"
     ],
     "construction_layer": [
-      "release_audit"
+      "self_play_anchor",
+      "reward_verifier_layer",
+      "optimizer_scaffold"
     ],
     "artifacts": {
       "paper": null,
@@ -6248,13 +6908,25 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seeded from BibTeX key zhao2025absolutezero. Deduplicated title collision; dropped lower-confidence id: absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025."
+      "notes": "Primary arXiv link verified; safety behavior, self-generated task distribution, and verifier independence need curator review.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.03335"
+      }
+    ],
+    "card": "cards/recipes/absolute_zero.md",
+    "one_line": "Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop."
   },
   {
     "id": "abstentionbench-2025",
@@ -6299,11 +6971,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Benchmark for epistemic boundaries and non-answering behavior.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.09038"
+      }
+    ],
+    "card": null,
+    "one_line": "Benchmark for epistemic boundaries and non-answering behavior."
   },
   {
     "id": "abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025",
@@ -6350,7 +7032,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.09038"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "acord-attorney-curated-open-research-dataset-2025",
@@ -6397,7 +7088,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025",
@@ -6444,7 +7138,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2501.09004"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "aegis2-2025",
@@ -6489,11 +7192,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Safety dataset with risk categories and label provenance.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2501.09004"
+      }
+    ],
+    "card": null,
+    "one_line": "Safety dataset with risk categories and label provenance."
   },
   {
     "id": "alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025",
@@ -6540,7 +7253,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.13131"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025",
@@ -6587,32 +7309,48 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.08311"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025",
     "title": "AndroidWorld: A dynamic benchmarking environment for autonomous agents",
-    "year": 2025,
-    "venue": "unknown",
+    "year": 2024,
+    "venue": "arXiv",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode",
+      "state_action_level"
     ],
-    "domains": [],
+    "domains": [
+      "mobile",
+      "agents"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "agent_training"
     ],
     "construction_layer": [
+      "search_substrate",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2405.14573",
       "code": null,
       "data": null,
       "project": null,
@@ -6626,15 +7364,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key androidworld2025. Deduplicated title collision; dropped lower-confidence id: androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; device images, app versions, and task resets should be pinned for reproducibility.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Android tasks turn mobile UI state and action histories into evaluable agent trajectories.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2405.14573"
+      }
+    ],
+    "card": "cards/agents/androidworld.md",
+    "one_line": "Android tasks turn mobile UI state and action histories into evaluable agent trajectories."
   },
   {
     "id": "beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025",
@@ -6681,7 +7431,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2509.03403"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "big-math-2025",
@@ -6689,7 +7448,8 @@
     "year": 2025,
     "venue": "arXiv",
     "source_role": [
-      "data_release"
+      "data_release",
+      "benchmark"
     ],
     "verification_contract": [
       "programmatic"
@@ -6702,10 +7462,13 @@
     ],
     "training_use": [
       "rlvr",
+      "sft",
       "evaluation"
     ],
     "construction_layer": [
-      "prompt_sourcing"
+      "prompt_sourcing",
+      "reward_verifier_layer",
+      "release_audit"
     ],
     "artifacts": {
       "paper": null,
@@ -6725,11 +7488,24 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Primary arXiv link verified; verifier false negatives and split/decontamination require explicit downstream audit.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Math data release used for base-relative pass-rate fields.",
-    "tags": [],
-    "status": "verified"
+    "inclusion_reason": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2502.17387"
+      }
+    ],
+    "card": "cards/releases/big_math.md",
+    "one_line": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering."
   },
   {
     "id": "big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025",
@@ -6776,7 +7552,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025",
@@ -6823,7 +7602,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025",
@@ -6870,7 +7652,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2509.26114"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025",
@@ -6917,7 +7708,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2503.01307"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "dapo-2025",
@@ -6962,11 +7762,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2503.14476"
+      }
+    ],
+    "card": "cards/releases/dapo.md",
+    "one_line": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient."
   },
   {
     "id": "dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025",
@@ -7013,7 +7823,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepmath-103k-2025",
@@ -7060,11 +7873,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Math release highlighted for verifier pinning and decontamination.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.11456"
+      }
+    ],
+    "card": "cards/releases/deepmath_103k.md",
+    "one_line": "Math release highlighted for verifier pinning and decontamination."
   },
   {
     "id": "deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025",
@@ -7111,7 +7934,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.11456"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025",
@@ -7158,7 +7990,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025",
@@ -7205,7 +8040,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepseek-r1-2025",
@@ -7252,11 +8090,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Frontier reasoning report central to public RLVR and reasoning post-training recipes.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2501.12948"
+      }
+    ],
+    "card": "cards/recipes/deepseek_r1.md",
+    "one_line": "Frontier reasoning report central to public RLVR and reasoning post-training recipes."
   },
   {
     "id": "deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025",
@@ -7303,7 +8151,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "deepseek-v3-2-pushing-the-frontier-of-open-large-language-models-2025",
@@ -7350,7 +8201,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2512.02556"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "distillation-scaling-laws-2025",
@@ -7397,7 +8257,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2502.08606"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
@@ -7444,7 +8313,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025",
@@ -7491,7 +8363,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "faithbench-a-diverse-hallucination-benchmark-for-summarization-by-modern-llms-2025",
@@ -7538,7 +8413,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2410.13210"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "finder-financial-data-extraction-and-reasoning-2025",
@@ -7585,7 +8469,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025",
@@ -7632,7 +8519,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.22203"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "from-system-1-to-system-2-a-survey-of-reasoning-large-language-models-2025",
@@ -7679,7 +8575,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "gaperon-a-peppered-english-french-generative-language-model-suite-2025",
@@ -7726,7 +8625,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2510.25771"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "general-reasoning-models-survey-and-perspectives-2025",
@@ -7773,7 +8681,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "goedel-prover-v2-scaling-formal-theorem-proving-with-scaffolded-data-synthesis-a-2025",
@@ -7820,7 +8731,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2508.03613"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "grpo-is-secretly-a-process-reward-model-2025",
@@ -7867,7 +8787,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2509.21154"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "healthbench-2025",
@@ -7882,18 +8811,22 @@
       "judgment_required"
     ],
     "supervision_granularity": [
-      "scalar_reward"
+      "scalar_reward",
+      "answer_level"
     ],
     "domains": [
-      "medical",
-      "rubric"
+      "health",
+      "safety",
+      "medical"
     ],
     "training_use": [
       "evaluation",
-      "reward_modeling"
+      "reward_modeling",
+      "safety_alignment"
     ],
     "construction_layer": [
-      "reward_verifier_layer"
+      "reward_verifier_layer",
+      "release_audit"
     ],
     "artifacts": {
       "paper": null,
@@ -7913,11 +8846,24 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Primary arXiv link verified; medical safety, rater expertise, and rubric drift should remain explicit audit fields.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Rubric-based health benchmark showing judgment-required data.",
-    "tags": [],
-    "status": "verified"
+    "inclusion_reason": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.08775"
+      }
+    ],
+    "card": "cards/verifiers/healthbench.md",
+    "one_line": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification."
   },
   {
     "id": "healthbench-evaluating-large-language-models-towards-improved-human-health-2025",
@@ -7964,7 +8910,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "humanity-s-last-exam-2025",
@@ -8011,7 +8960,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "introducing-openai-o3-and-o4-mini-2025",
@@ -8058,7 +9010,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "khatri-scaling-rl-2025",
@@ -8102,11 +9057,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: the-art-of-scaling-reinforcement-learning-compute-for-llms-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: the-art-of-scaling-reinforcement-learning-compute-for-llms-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Scaling study anchoring asymptote-versus-efficiency decomposition.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2510.13786"
+      }
+    ],
+    "card": null,
+    "one_line": "Scaling study anchoring asymptote-versus-efficiency decomposition."
   },
   {
     "id": "kimi-k1-5-2025",
@@ -8154,11 +9119,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: kimi-k1-5-scaling-reinforcement-learning-with-llms-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: kimi-k1-5-scaling-reinforcement-learning-with-llms-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Frontier report used for long-context RL and scaling discussion.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2501.12599"
+      }
+    ],
+    "card": "cards/recipes/kimi_k15.md",
+    "one_line": "Frontier report used for long-context RL and scaling discussion."
   },
   {
     "id": "kimi-k2-open-agentic-intelligence-2025",
@@ -8205,32 +9180,49 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2507.20534"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025",
-    "title": "KodCode: A diverse, challenging, and verifiable synthetic dataset for coding",
+    "title": "KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding",
     "year": 2025,
-    "venue": "unknown",
+    "venue": "ACL Findings",
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe",
+      "benchmark"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "code"
+    ],
     "training_use": [
-      "unknown"
+      "sft",
+      "rlvr",
+      "evaluation"
     ],
     "construction_layer": [
-      "release_audit"
+      "prompt_sourcing",
+      "trace_writing",
+      "reward_verifier_layer"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2503.02951",
       "code": null,
       "data": null,
       "project": null,
@@ -8244,15 +9236,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key kodcode2025. Deduplicated title collision; dropped lower-confidence id: kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; generated test strength, contamination against benchmarks, and license should be checked.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2503.02951"
+      }
+    ],
+    "card": "cards/releases/kodcode.md",
+    "one_line": "Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR."
   },
   {
     "id": "lastingbench-defend-benchmarks-against-knowledge-leakage-2025",
@@ -8299,7 +9303,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.21614"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "leaky-thoughts-2025",
@@ -8344,11 +9357,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Shows reasoning traces can expose private fields.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.15674"
+      }
+    ],
+    "card": null,
+    "one_line": "Shows reasoning traces can expose private fields."
   },
   {
     "id": "leaky-thoughts-large-reasoning-models-are-not-private-thinkers-2025",
@@ -8395,7 +9418,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.15674"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "limo-2025",
@@ -8440,11 +9472,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: limo-less-is-more-for-reasoning-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: limo-less-is-more-for-reasoning-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Small-set curation reference distinguishing elicitation from broad coverage.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2502.03387"
+      }
+    ],
+    "card": "cards/releases/limo.md",
+    "one_line": "Small-set curation reference distinguishing elicitation from broad coverage."
   },
   {
     "id": "llama-nemotron-2025",
@@ -8492,11 +9534,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: llama-nemotron-efficient-reasoning-models-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: llama-nemotron-efficient-reasoning-models-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Mixed post-training corpus reference for reasoning, chat, and safety partitions.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.00949"
+      }
+    ],
+    "card": "cards/recipes/llama_nemotron.md",
+    "one_line": "Mixed post-training corpus reference for reasoning, chat, and safety partitions."
   },
   {
     "id": "long-grounded-thoughts-2025",
@@ -8543,7 +9595,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2511.05705"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "magistral-2025",
@@ -8589,11 +9650,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: magistral-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: magistral-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.10910"
+      }
+    ],
+    "card": "cards/recipes/magistral.md",
+    "one_line": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling."
   },
   {
     "id": "math-perturb-2025",
@@ -8640,7 +9711,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "mcp-universe-tool-and-environment-infrastructure-for-agent-evaluation-and-traini-2025",
@@ -8687,7 +9761,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "medreason-eliciting-factual-medical-reasoning-steps-in-llms-via-knowledge-graphs-2025",
@@ -8734,7 +9811,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "megascience-a-benchmark-and-data-resource-for-scientific-reasoning-2025",
@@ -8781,7 +9861,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "mid-training-of-large-language-models-a-survey-2025",
@@ -8828,7 +9911,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2510.06826"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "min-k-2025",
@@ -8875,7 +9967,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025",
@@ -8883,25 +9978,40 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2506.13585",
     "source_role": [
-      "survey_background"
+      "model_report",
+      "scaling_study",
+      "construction_recipe"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed",
+      "programmatic",
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "full_episode"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "code",
+      "software_engineering",
+      "agents"
+    ],
     "training_use": [
-      "unknown"
+      "rlvr",
+      "test_time_compute",
+      "agent_training",
+      "evaluation"
     ],
     "construction_layer": [
-      "release_audit"
+      "frontier_pipeline",
+      "optimizer_scaffold",
+      "scaling_report"
     ],
     "artifacts": {
       "paper": null,
       "arxiv": "https://arxiv.org/abs/2506.13585",
-      "code": null,
+      "code": "https://github.com/MiniMax-AI/MiniMax-M1",
       "data": null,
       "project": null,
       "huggingface": null,
@@ -8916,13 +10026,30 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seeded from BibTeX key minimax2025m1. Deduplicated title collision; dropped lower-confidence id: minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025."
+      "notes": "Primary arXiv link and GitHub release link verified; data partitions, RL filters, and budget accounting need careful reading.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.13585"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/MiniMax-AI/MiniMax-M1"
+      }
+    ],
+    "card": "cards/recipes/minimax_m1.md",
+    "one_line": "Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces."
   },
   {
     "id": "multi-agent-evolve-llm-self-improve-through-co-evolution-2025",
@@ -8969,32 +10096,45 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025",
-    "title": "NaturalReasoning: Reasoning in natural language with large-scale verifiable data",
+    "title": "NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions",
     "year": 2025,
-    "venue": "unknown",
+    "venue": "arXiv",
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "stem",
+      "economics",
+      "social_science",
+      "general_reasoning"
+    ],
     "training_use": [
-      "unknown"
+      "sft",
+      "distillation",
+      "evaluation"
     ],
     "construction_layer": [
-      "release_audit"
+      "prompt_sourcing",
+      "trace_writing",
+      "reward_verifier_layer"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2502.13124",
       "code": null,
       "data": null,
       "project": null,
@@ -9008,15 +10148,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key naturalreasoning2025. Deduplicated title collision; dropped lower-confidence id: naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; exact source mixture and verifier design need curator review before reuse.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2502.13124"
+      }
+    ],
+    "card": "cards/releases/naturalreasoning.md",
+    "one_line": "Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens."
   },
   {
     "id": "nemotron-math-reasoning-data-with-tool-integrated-reasoning-variants-2025",
@@ -9063,7 +10215,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2512.15489"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "one-token-to-fool-2025",
@@ -9108,11 +10269,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: one-token-to-fool-llm-as-a-judge-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: one-token-to-fool-llm-as-a-judge-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2507.08794"
+      }
+    ],
+    "card": "cards/verifiers/one_token_to_fool_judge.md",
+    "one_line": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts."
   },
   {
     "id": "online-rubrics-elicitation-from-pairwise-comparisons-2025",
@@ -9159,7 +10330,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2510.07284"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "onlinerubrics-2025",
@@ -9206,7 +10386,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025",
@@ -9253,7 +10436,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "open-reasoner-zero-an-open-source-approach-to-scaling-up-reinforcement-learning--2025",
@@ -9300,7 +10486,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2503.24290"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "opencodereasoning-2-scalable-code-reasoning-data-2025",
@@ -9347,7 +10542,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "opencodereasoning-code-reasoning-traces-at-scale-2025",
@@ -9394,28 +10592,42 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025",
     "title": "OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique",
     "year": 2025,
-    "venue": "arXiv preprint arXiv:2507.09075",
+    "venue": "arXiv",
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe",
+      "scaling_study"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "scalar_reward"
     ],
-    "domains": [],
+    "domains": [
+      "code"
+    ],
     "training_use": [
-      "unknown"
+      "sft",
+      "distillation",
+      "test_time_compute",
+      "evaluation"
     ],
     "construction_layer": [
-      "release_audit"
+      "trace_writing",
+      "optimizer_scaffold",
+      "scaling_report"
     ],
     "artifacts": {
       "paper": null,
@@ -9435,41 +10647,62 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seeded from BibTeX key ahmad2025opencodereasoning2. Deduplicated title collision; dropped lower-confidence id: opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025."
+      "notes": "Primary arXiv link verified; dataset artifact and benchmark extension details need curator review.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2507.09075"
+      }
+    ],
+    "card": "cards/releases/opencodereasoning_ii.md",
+    "one_line": "Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique."
   },
   {
     "id": "openhands-2025",
-    "title": "OpenHands",
-    "year": 2025,
+    "title": "OpenHands: An Open Platform for AI Software Developers as Generalist Agents",
+    "year": 2024,
     "venue": "ICLR",
     "source_role": [
-      "survey_background"
+      "infrastructure",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode",
+      "state_action_level"
     ],
-    "domains": [],
+    "domains": [
+      "software_engineering",
+      "agents"
+    ],
     "training_use": [
-      "unknown"
+      "agent_training",
+      "evaluation"
     ],
     "construction_layer": [
+      "search_substrate",
+      "optimizer_scaffold",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
-      "code": null,
+      "arxiv": "https://arxiv.org/abs/2407.16741",
+      "code": "https://github.com/All-Hands-AI/OpenHands",
       "data": null,
-      "project": null,
+      "project": "https://www.openhands.dev/",
       "huggingface": null,
       "doi": null
     },
@@ -9480,15 +10713,37 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key openhands2025. Deduplicated title collision; dropped lower-confidence id: openhands-2025."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv, code, and project links verified; individual trajectory datasets built with OpenHands still need separate cards.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2407.16741"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/All-Hands-AI/OpenHands"
+      },
+      {
+        "kind": "project",
+        "label": "Project",
+        "url": "https://www.openhands.dev/"
+      }
+    ],
+    "card": "cards/agents/openhands.md",
+    "one_line": "Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds."
   },
   {
     "id": "openmathreasoning-2025",
@@ -9534,11 +10789,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: openmathreasoning-a-large-scale-dataset-of-math-reasoning-traces-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: openmathreasoning-a-large-scale-dataset-of-math-reasoning-traces-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Large-scale math reasoning trace release for programmatic verification.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.16891"
+      }
+    ],
+    "card": "cards/releases/openmathreasoning.md",
+    "one_line": "Large-scale math reasoning trace release for programmatic verification."
   },
   {
     "id": "openthoughts3-2025",
@@ -9566,15 +10831,16 @@
     ],
     "construction_layer": [
       "prompt_sourcing",
-      "trace_writing"
+      "trace_writing",
+      "release_audit"
     ],
     "artifacts": {
       "paper": null,
       "arxiv": "https://arxiv.org/abs/2506.04178",
-      "code": null,
+      "code": "https://github.com/open-thoughts/open-thoughts",
       "data": null,
       "project": null,
-      "huggingface": null,
+      "huggingface": "https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M",
       "doi": null
     },
     "audit": {
@@ -9586,11 +10852,34 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: openthoughts-data-recipes-for-reasoning-models-2025."
+      "notes": "Primary arXiv, code, and Hugging Face dataset links verified from public sources; exact split/license still needs local curator check.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Open reasoning-data recipe exposing trace sourcing, filtering, and ablation practice.",
-    "tags": [],
-    "status": "verified"
+    "inclusion_reason": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.04178"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/open-thoughts/open-thoughts"
+      },
+      {
+        "kind": "huggingface",
+        "label": "Hugging Face",
+        "url": "https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M"
+      }
+    ],
+    "card": "cards/releases/openthoughts.md",
+    "one_line": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation."
   },
   {
     "id": "phi-4-reasoning-2025",
@@ -9636,11 +10925,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: phi-4-reasoning-technical-report-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: phi-4-reasoning-technical-report-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Reasoning model report highlighting teacher distillation as trace writing.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.21318"
+      }
+    ],
+    "card": "cards/recipes/phi4_reasoning.md",
+    "one_line": "Reasoning model report highlighting teacher distillation as trace writing."
   },
   {
     "id": "prime-process-reinforcement-through-implicit-rewards-2025",
@@ -9687,32 +10986,45 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025",
     "title": "PRMBench: A fine-grained and challenging benchmark for process-level reward models",
     "year": 2025,
-    "venue": "unknown",
+    "venue": "arXiv",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "verifier_reward",
+      "process_supervision"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level",
+      "process_reward"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "reasoning"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "reward_modeling",
+      "process_supervision"
     ],
     "construction_layer": [
+      "reward_verifier_layer",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2501.03124",
       "code": null,
       "data": null,
       "project": null,
@@ -9726,15 +11038,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key prmbench2025. Deduplicated title collision; dropped lower-confidence id: prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; label policy and human/LLM annotation mix should be checked before treating as training data.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2501.03124"
+      }
+    ],
+    "card": "cards/verifiers/prmbench.md",
+    "one_line": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure."
   },
   {
     "id": "process-reward-models-for-code-reasoning-2025",
@@ -9781,32 +11105,43 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "processbench-identifying-process-errors-in-mathematical-reasoning-2025",
-    "title": "ProcessBench: Identifying process errors in mathematical reasoning",
-    "year": 2025,
-    "venue": "arXiv preprint",
+    "title": "ProcessBench: Identifying Process Errors in Mathematical Reasoning",
+    "year": 2024,
+    "venue": "arXiv",
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "process_supervision",
+      "verifier_reward"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required",
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level"
     ],
-    "domains": [],
+    "domains": [
+      "math"
+    ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "process_supervision",
+      "reward_modeling"
     ],
     "construction_layer": [
+      "reward_verifier_layer",
       "release_audit"
     ],
     "artifacts": {
       "paper": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2412.06559",
       "code": null,
       "data": null,
       "project": null,
@@ -9820,15 +11155,27 @@
       "license": "unknown",
       "lineage": "unknown",
       "known_failure_modes": [],
-      "citation_status": "needs_verification",
-      "confidence": "low",
-      "notes": "Seeded from BibTeX key processbench2025. Deduplicated title collision; dropped lower-confidence id: processbench-identifying-process-errors-in-mathematical-reasoning-2025."
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; annotation protocol and accepted error taxonomy should be verified by curators.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2412.06559"
+      }
+    ],
+    "card": "cards/verifiers/processbench.md",
+    "one_line": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training."
   },
   {
     "id": "qwen2-5-math-prm-2025",
@@ -9875,7 +11222,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "qwen3-2025",
@@ -9921,11 +11271,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: qwen3-technical-report-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: qwen3-technical-report-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Open model-family report useful for coordinated release-tick analysis.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.09388"
+      }
+    ],
+    "card": "cards/recipes/qwen3.md",
+    "one_line": "Open model-family report useful for coordinated release-tick analysis."
   },
   {
     "id": "r-zero-self-evolving-reasoning-llm-from-zero-data-2025",
@@ -9972,7 +11332,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2508.05004"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "r2e-gym-2025",
@@ -10019,11 +11388,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Verifiable SWE environment for reasoning-to-edit tasks.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.07164"
+      }
+    ],
+    "card": "cards/agents/r2e_gym.md",
+    "one_line": "Verifiable SWE environment for reasoning-to-edit tasks."
   },
   {
     "id": "r2e-gym-procedural-training-environments-for-repository-level-code-agents-2025",
@@ -10070,7 +11449,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "r3-robust-rubric-agnostic-reward-models-2025",
@@ -10117,7 +11499,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.13388"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025",
@@ -10164,7 +11555,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.14245"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "retool-reinforcement-learning-for-strategic-tool-use-in-llms-2025",
@@ -10211,7 +11611,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.11536"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "rstar-math-2025",
@@ -10258,7 +11667,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "rstar2-agent-agentic-reasoning-technical-report-2025",
@@ -10305,7 +11717,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2508.20722"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "rubrics-as-rewards-2025",
@@ -10352,7 +11773,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "s1-2025",
@@ -10398,11 +11822,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: s1-simple-test-time-scaling-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: s1-simple-test-time-scaling-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Small-pool and test-time scaling reference.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2501.19393"
+      }
+    ],
+    "card": "cards/releases/s1.md",
+    "one_line": "Small-pool and test-time scaling reference."
   },
   {
     "id": "safechain-safety-of-language-models-with-long-chain-of-thought-reasoning-capabil-2025",
@@ -10449,7 +11883,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2502.12025"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "safety-through-reasoning-an-empirical-study-of-reasoning-guardrail-models-2025",
@@ -10496,7 +11939,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.20087"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "scaling-behaviors-of-llm-reinforcement-learning-post-training-an-empirical-study-2025",
@@ -10543,7 +11995,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2509.25300"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "search-time-data-contamination-2025",
@@ -10590,7 +12051,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2508.13180"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "sky-t1-fully-open-reasoning-model-and-data-recipe-2025",
@@ -10637,7 +12107,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "skywork-open-reasoner-1-technical-report-2025",
@@ -10684,7 +12157,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.22312"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "spurious-rewards-2025",
@@ -10730,11 +12212,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: spurious-rewards-2025."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: spurious-rewards-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Reward-signal audit for spurious behavior in RLVR.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.10947"
+      }
+    ],
+    "card": "cards/verifiers/spurious_rewards.md",
+    "one_line": "Reward-signal audit for spurious behavior in RLVR."
   },
   {
     "id": "spurious-rewards-rethinking-training-signals-in-rlvr-2025",
@@ -10781,7 +12273,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2506.10947"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "subliminal-learning-2025",
@@ -10826,11 +12327,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Lineage-risk study for hidden trait transfer in synthetic data.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2507.14805"
+      }
+    ],
+    "card": null,
+    "one_line": "Lineage-risk study for hidden trait transfer in synthetic data."
   },
   {
     "id": "subliminal-learning-language-models-transmit-behavioral-traits-via-hidden-signal-2025",
@@ -10877,7 +12388,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2507.14805"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-gym-2025",
@@ -10926,11 +12446,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Repository-scale training environment showing substrate as data.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2412.21139"
+      }
+    ],
+    "card": "cards/agents/swe_gym.md",
+    "one_line": "Repository-scale training environment showing substrate as data."
   },
   {
     "id": "swe-rebench-an-automated-pipeline-for-task-collection-and-decontaminated-evaluat-2025",
@@ -10977,7 +12507,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.20411"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-rl-advancing-language-agents-for-software-engineering-via-reinforcement-lear-2025",
@@ -11024,7 +12563,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025",
@@ -11071,7 +12613,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2502.18449"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-smith-scaling-data-construction-for-software-engineering-agents-2025",
@@ -11118,7 +12669,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "tan-scaling-rl-2025",
@@ -11162,11 +12716,21 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seed entry; fields intentionally remain unknown until checked."
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
     },
     "inclusion_reason": "Scaling study for model-size and compute-axis views of RL post-training.",
     "tags": [],
-    "status": "verified"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2509.25300"
+      }
+    ],
+    "card": null,
+    "one_line": "Scaling study for model-size and compute-axis views of RL post-training."
   },
   {
     "id": "the-agent-company-benchmarking-and-analyzing-agent-work-in-enterprise-like-envir-2025",
@@ -11213,7 +12777,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "the-entropy-mechanism-of-reinforcement-learning-for-reasoning-language-models-2025",
@@ -11260,7 +12827,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.22617"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "the-invisible-leash-why-rlvr-may-or-may-not-escape-its-origin-2025",
@@ -11307,7 +12883,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2507.14843"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "the-markovian-thinker-architecture-agnostic-linear-scaling-of-reasoning-2025",
@@ -11354,7 +12939,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2510.06557"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "toward-conversational-diagnostic-ai-the-amie-system-2025",
@@ -11401,7 +12995,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "towards-understanding-self-play-for-llm-reasoning-2025",
@@ -11448,7 +13045,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2510.27072"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "ttrl-test-time-reinforcement-learning-2025",
@@ -11456,20 +13062,30 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2504.16084",
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "scaling_study",
+      "verifier_reward"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "scalar_reward",
+      "answer_level"
     ],
-    "domains": [],
+    "domains": [
+      "reasoning",
+      "unlabeled_data"
+    ],
     "training_use": [
-      "unknown"
+      "rlvr",
+      "test_time_compute",
+      "evaluation"
     ],
     "construction_layer": [
-      "release_audit"
+      "optimizer_scaffold",
+      "reward_verifier_layer",
+      "scaling_report"
     ],
     "artifacts": {
       "paper": null,
@@ -11489,13 +13105,25 @@
       "known_failure_modes": [],
       "citation_status": "verified",
       "confidence": "medium",
-      "notes": "Seeded from BibTeX key zuo2025ttrl. Deduplicated title collision; dropped lower-confidence id: ttrl-test-time-reinforcement-learning-2025."
+      "notes": "Primary arXiv link verified; reward construction, adaptation budget, and train/test boundary should be audited before comparing results.",
+      "metadata_status": "partial"
     },
-    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "inclusion_reason": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.",
     "tags": [
+      "curated-card",
+      "primary-link-checked",
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2504.16084"
+      }
+    ],
+    "card": "cards/recipes/ttrl.md",
+    "one_line": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training."
   },
   {
     "id": "var-math-2025",
@@ -11542,7 +13170,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "why-we-no-longer-evaluate-on-swe-bench-verified-2025",
@@ -11589,7 +13220,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025",
@@ -11636,7 +13270,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026",
@@ -11683,7 +13320,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.18292"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026",
@@ -11730,7 +13376,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.01511"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026",
@@ -11777,7 +13432,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.07666"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "autorubric-unifying-rubric-based-llm-evaluation-2026",
@@ -11824,7 +13488,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.00077"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026",
@@ -11871,7 +13544,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.20051"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026",
@@ -11918,7 +13600,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.17775"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026",
@@ -11965,7 +13656,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2605.16826"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026",
@@ -12012,7 +13712,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.16223"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026",
@@ -12059,7 +13768,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.12125"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026",
@@ -12106,7 +13824,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2511.13646"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026",
@@ -12153,7 +13880,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.15149"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026",
@@ -12200,7 +13936,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.00846"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026",
@@ -12247,7 +13992,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "rewardbench-2-2026",
@@ -12294,7 +14042,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "soft-contamination-means-benchmarks-test-shallow-generalization-2026",
@@ -12341,7 +14092,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.12413"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026",
@@ -12388,7 +14148,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2601.11061"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "swe-master-unleashing-the-potential-of-software-engineering-agents-via-post-trai-2026",
@@ -12435,7 +14204,16 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.03411"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026",
@@ -12482,7 +14260,10 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "needs_metadata"
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
   },
   {
     "id": "why-does-self-distillation-sometimes-degrade-the-reasoning-capability-of-llms-2026",
@@ -12529,6 +14310,301 @@
     "tags": [
       "seeded-from-bib"
     ],
-    "status": "partial"
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.24472"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "openr1-math-220k-2025",
+    "title": "OpenR1-Math-220k",
+    "year": 2025,
+    "venue": "Hugging Face / GitHub",
+    "source_role": [
+      "data_release",
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "programmatic"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "domains": [
+      "math"
+    ],
+    "training_use": [
+      "sft",
+      "distillation",
+      "rlvr"
+    ],
+    "construction_layer": [
+      "prompt_sourcing",
+      "trace_writing",
+      "reward_verifier_layer"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": "https://github.com/huggingface/open-r1",
+      "data": null,
+      "project": null,
+      "huggingface": "https://huggingface.co/datasets/open-r1/OpenR1-Math-220k",
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Official Hugging Face dataset and GitHub project links verified; no paper link is asserted here.",
+      "metadata_status": "partial"
+    },
+    "inclusion_reason": "Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/huggingface/open-r1"
+      },
+      {
+        "kind": "huggingface",
+        "label": "Hugging Face",
+        "url": "https://huggingface.co/datasets/open-r1/OpenR1-Math-220k"
+      }
+    ],
+    "card": "cards/releases/openr1.md",
+    "one_line": "Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields."
+  },
+  {
+    "id": "omegaprm-automated-process-supervision-2024",
+    "title": "OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
+    "year": 2024,
+    "venue": "arXiv",
+    "source_role": [
+      "process_supervision",
+      "verifier_reward",
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "programmatic",
+      "mixed"
+    ],
+    "supervision_granularity": [
+      "step_level",
+      "process_reward"
+    ],
+    "domains": [
+      "math"
+    ],
+    "training_use": [
+      "process_supervision",
+      "reward_modeling",
+      "test_time_compute"
+    ],
+    "construction_layer": [
+      "reward_verifier_layer",
+      "optimizer_scaffold"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2406.06592",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv link verified; search budget, verifier calibration, and generated-label noise require curator review.",
+      "metadata_status": "partial"
+    },
+    "inclusion_reason": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2406.06592"
+      }
+    ],
+    "card": "cards/verifiers/omegaprm.md",
+    "one_line": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels."
+  },
+  {
+    "id": "tinyv-2025",
+    "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
+    "year": 2025,
+    "venue": "arXiv",
+    "source_role": [
+      "verifier_reward",
+      "audit_failure",
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "programmatic",
+      "judgment_required",
+      "mixed"
+    ],
+    "supervision_granularity": [
+      "answer_level",
+      "scalar_reward"
+    ],
+    "domains": [
+      "math"
+    ],
+    "training_use": [
+      "rlvr",
+      "reward_modeling",
+      "evaluation"
+    ],
+    "construction_layer": [
+      "reward_verifier_layer",
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2505.14625",
+      "code": "https://github.com/uw-nsl/TinyV",
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Primary arXiv and GitHub links verified; false-negative estimates and extra compute cost should be independently checked.",
+      "metadata_status": "partial"
+    },
+    "inclusion_reason": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2505.14625"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/uw-nsl/TinyV"
+      }
+    ],
+    "card": "cards/verifiers/tinyv.md",
+    "one_line": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training."
+  },
+  {
+    "id": "qwen3-coder-2025",
+    "title": "Qwen3-Coder",
+    "year": 2025,
+    "venue": "GitHub / project report",
+    "source_role": [
+      "model_report",
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "programmatic",
+      "environmental",
+      "mixed"
+    ],
+    "supervision_granularity": [
+      "answer_level",
+      "full_episode"
+    ],
+    "domains": [
+      "code",
+      "software_engineering",
+      "agents"
+    ],
+    "training_use": [
+      "sft",
+      "rlvr",
+      "agent_training",
+      "evaluation"
+    ],
+    "construction_layer": [
+      "frontier_pipeline",
+      "optimizer_scaffold",
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": "https://github.com/QwenLM/Qwen3-Coder",
+      "data": null,
+      "project": "https://qwenlm.github.io/blog/qwen3-coder/",
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Official GitHub/project links verified; no arXiv paper is asserted for the 2025 Qwen3-Coder card.",
+      "metadata_status": "partial"
+    },
+    "inclusion_reason": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.",
+    "tags": [
+      "curated-card",
+      "primary-link-checked"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/QwenLM/Qwen3-Coder"
+      },
+      {
+        "kind": "project",
+        "label": "Project",
+        "url": "https://qwenlm.github.io/blog/qwen3-coder/"
+      }
+    ],
+    "card": "cards/recipes/qwen3_coder.md",
+    "one_line": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release."
   }
 ]

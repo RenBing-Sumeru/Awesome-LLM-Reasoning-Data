@@ -1,30 +1,29 @@
 # Repository Inventory
 
-This public-submission folder contains only the files intended for the GitHub repository.
+This folder contains the files intended for the GitHub repository release branch.
 
-## Included top-level artifacts
+## Included Top-Level Artifacts
 
 - `README.md`
 - `README_zh.md`
 - `data/`
 - `docs/`
 - `cards/`
+- `papers/`
 - `assets/`
 - `scripts/`
 - `reports/`
 - `.github/`
 - `CITATION.cff`
 - `CONTRIBUTING.md`
+- `LICENSE`
 - `requirements.txt`
 - `.gitignore`
 
-## Not included
+## Not Included
 
-- Original local prompt file.
-- `CODEX_BUILD_SPEC_Awesome_LLM_Reasoning_Data.md`.
-- Companion paper PDF.
-- Python caches, local backups, and temporary build artifacts.
+Local scratch prompts, private paper PDFs, Python caches, temporary build artifacts, and external notes outside this submission-ready folder are not included.
 
 ## Notes
 
-The structured atlas is in `data/papers.yaml`; generated display data is under `data/_generated/` and `docs/assets/`.
+The structured atlas is in `data/papers.yaml`; generated display data is under `data/_generated/` and `docs/assets/`; the static browsing experience starts at `docs/index.html`.

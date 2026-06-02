@@ -1,5 +1,137 @@
 # Link Check
 
-Network check is intentionally soft in local build.
+Link validation for local files, artifact URL formats, and optional live external probes.
 
-URLs discovered: 92
+- artifact URLs discovered: 123
+- markdown links checked: 1868
+- external markdown links discovered: 938
+- unique external URLs discovered: 127
+- live URLs checked: 0
+- failures: 0
+
+## Artifact URLs
+- `chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022` arxiv: https://arxiv.org/abs/2201.11903
+- `constitutional-ai-harmlessness-from-ai-feedback-2022` arxiv: https://arxiv.org/abs/2212.08073
+- `star-bootstrapping-reasoning-with-reasoning-2022` arxiv: https://arxiv.org/abs/2203.14465
+- `training-language-models-to-follow-instructions-with-human-feedback-2022` arxiv: https://arxiv.org/abs/2203.02155
+- `direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023` arxiv: https://arxiv.org/abs/2305.18290
+- `prm800k-2023` arxiv: https://arxiv.org/abs/2305.20050
+- `self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023` arxiv: https://arxiv.org/abs/2203.11171
+- `self-instruct-aligning-language-models-with-self-generated-instructions-2023` arxiv: https://arxiv.org/abs/2212.10560
+- `webarena-a-realistic-web-environment-for-building-autonomous-agents-2023` arxiv: https://arxiv.org/abs/2307.13854
+- `appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024` arxiv: https://arxiv.org/abs/2407.18901
+- `browsergym-a-gym-environment-for-web-agents-2024` arxiv: https://arxiv.org/abs/2412.05467
+- `large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024` arxiv: https://arxiv.org/abs/2407.21787
+- `mammoth2-scaling-instructions-from-the-web-2024` arxiv: https://arxiv.org/abs/2405.03548
+- `math-shepherd-2024` arxiv: https://arxiv.org/abs/2312.08935
+- `osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024` arxiv: https://arxiv.org/abs/2404.07972
+- `rewardbench-evaluating-reward-models-for-language-modeling-2024` arxiv: https://arxiv.org/abs/2403.13787
+- `toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024` arxiv: https://arxiv.org/abs/2307.16789
+- `1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025` arxiv: https://arxiv.org/abs/2503.19633
+- `a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025` arxiv: https://arxiv.org/abs/2504.07086
+- `a-survey-on-llm-mid-training-2025` arxiv: https://arxiv.org/abs/2510.23081
+- `absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025` arxiv: https://arxiv.org/abs/2505.03335
+- `abstentionbench-2025` arxiv: https://arxiv.org/abs/2506.09038
+- `abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025` arxiv: https://arxiv.org/abs/2506.09038
+- `aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025` arxiv: https://arxiv.org/abs/2501.09004
+- `aegis2-2025` arxiv: https://arxiv.org/abs/2501.09004
+- `alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025` arxiv: https://arxiv.org/abs/2506.13131
+- `am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025` arxiv: https://arxiv.org/abs/2505.08311
+- `androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025` arxiv: https://arxiv.org/abs/2405.14573
+- `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` arxiv: https://arxiv.org/abs/2509.03403
+- `big-math-2025` arxiv: https://arxiv.org/abs/2502.17387
+- `clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025` arxiv: https://arxiv.org/abs/2509.26114
+- `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` arxiv: https://arxiv.org/abs/2503.01307
+- `dapo-2025` arxiv: https://arxiv.org/abs/2503.14476
+- `deepmath-103k-2025` arxiv: https://arxiv.org/abs/2504.11456
+- `deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025` arxiv: https://arxiv.org/abs/2504.11456
+- `deepseek-r1-2025` arxiv: https://arxiv.org/abs/2501.12948
+- `deepseek-v3-2-pushing-the-frontier-of-open-large-language-models-2025` arxiv: https://arxiv.org/abs/2512.02556
+- `distillation-scaling-laws-2025` arxiv: https://arxiv.org/abs/2502.08606
+- `faithbench-a-diverse-hallucination-benchmark-for-summarization-by-modern-llms-2025` arxiv: https://arxiv.org/abs/2410.13210
+- `from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025` arxiv: https://arxiv.org/abs/2505.22203
+- `gaperon-a-peppered-english-french-generative-language-model-suite-2025` arxiv: https://arxiv.org/abs/2510.25771
+- `goedel-prover-v2-scaling-formal-theorem-proving-with-scaffolded-data-synthesis-a-2025` arxiv: https://arxiv.org/abs/2508.03613
+- `grpo-is-secretly-a-process-reward-model-2025` arxiv: https://arxiv.org/abs/2509.21154
+- `healthbench-2025` arxiv: https://arxiv.org/abs/2505.08775
+- `khatri-scaling-rl-2025` arxiv: https://arxiv.org/abs/2510.13786
+- `kimi-k1-5-2025` arxiv: https://arxiv.org/abs/2501.12599
+- `kimi-k2-open-agentic-intelligence-2025` arxiv: https://arxiv.org/abs/2507.20534
+- `kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025` arxiv: https://arxiv.org/abs/2503.02951
+- `lastingbench-defend-benchmarks-against-knowledge-leakage-2025` arxiv: https://arxiv.org/abs/2506.21614
+- `leaky-thoughts-2025` arxiv: https://arxiv.org/abs/2506.15674
+- `leaky-thoughts-large-reasoning-models-are-not-private-thinkers-2025` arxiv: https://arxiv.org/abs/2506.15674
+- `limo-2025` arxiv: https://arxiv.org/abs/2502.03387
+- `llama-nemotron-2025` arxiv: https://arxiv.org/abs/2505.00949
+- `long-grounded-thoughts-2025` arxiv: https://arxiv.org/abs/2511.05705
+- `magistral-2025` arxiv: https://arxiv.org/abs/2506.10910
+- `mid-training-of-large-language-models-a-survey-2025` arxiv: https://arxiv.org/abs/2510.06826
+- `minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025` arxiv: https://arxiv.org/abs/2506.13585
+- `minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025` code: https://github.com/MiniMax-AI/MiniMax-M1
+- `naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025` arxiv: https://arxiv.org/abs/2502.13124
+- `nemotron-math-reasoning-data-with-tool-integrated-reasoning-variants-2025` arxiv: https://arxiv.org/abs/2512.15489
+- `one-token-to-fool-2025` arxiv: https://arxiv.org/abs/2507.08794
+- `online-rubrics-elicitation-from-pairwise-comparisons-2025` arxiv: https://arxiv.org/abs/2510.07284
+- `open-reasoner-zero-an-open-source-approach-to-scaling-up-reinforcement-learning--2025` arxiv: https://arxiv.org/abs/2503.24290
+- `opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025` arxiv: https://arxiv.org/abs/2507.09075
+- `openhands-2025` arxiv: https://arxiv.org/abs/2407.16741
+- `openhands-2025` code: https://github.com/All-Hands-AI/OpenHands
+- `openhands-2025` project: https://www.openhands.dev/
+- `openmathreasoning-2025` arxiv: https://arxiv.org/abs/2504.16891
+- `openthoughts3-2025` arxiv: https://arxiv.org/abs/2506.04178
+- `openthoughts3-2025` code: https://github.com/open-thoughts/open-thoughts
+- `openthoughts3-2025` huggingface: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+- `phi-4-reasoning-2025` arxiv: https://arxiv.org/abs/2504.21318
+- `prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025` arxiv: https://arxiv.org/abs/2501.03124
+- `processbench-identifying-process-errors-in-mathematical-reasoning-2025` arxiv: https://arxiv.org/abs/2412.06559
+- `qwen3-2025` arxiv: https://arxiv.org/abs/2505.09388
+- `r-zero-self-evolving-reasoning-llm-from-zero-data-2025` arxiv: https://arxiv.org/abs/2508.05004
+- `r2e-gym-2025` arxiv: https://arxiv.org/abs/2504.07164
+- `r3-robust-rubric-agnostic-reward-models-2025` arxiv: https://arxiv.org/abs/2505.13388
+- `reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025` arxiv: https://arxiv.org/abs/2506.14245
+- `retool-reinforcement-learning-for-strategic-tool-use-in-llms-2025` arxiv: https://arxiv.org/abs/2504.11536
+- `rstar2-agent-agentic-reasoning-technical-report-2025` arxiv: https://arxiv.org/abs/2508.20722
+- `s1-2025` arxiv: https://arxiv.org/abs/2501.19393
+- `safechain-safety-of-language-models-with-long-chain-of-thought-reasoning-capabil-2025` arxiv: https://arxiv.org/abs/2502.12025
+- `safety-through-reasoning-an-empirical-study-of-reasoning-guardrail-models-2025` arxiv: https://arxiv.org/abs/2505.20087
+- `scaling-behaviors-of-llm-reinforcement-learning-post-training-an-empirical-study-2025` arxiv: https://arxiv.org/abs/2509.25300
+- `search-time-data-contamination-2025` arxiv: https://arxiv.org/abs/2508.13180
+- `skywork-open-reasoner-1-technical-report-2025` arxiv: https://arxiv.org/abs/2505.22312
+- `spurious-rewards-2025` arxiv: https://arxiv.org/abs/2506.10947
+- `spurious-rewards-rethinking-training-signals-in-rlvr-2025` arxiv: https://arxiv.org/abs/2506.10947
+- `subliminal-learning-2025` arxiv: https://arxiv.org/abs/2507.14805
+- `subliminal-learning-language-models-transmit-behavioral-traits-via-hidden-signal-2025` arxiv: https://arxiv.org/abs/2507.14805
+- `swe-gym-2025` arxiv: https://arxiv.org/abs/2412.21139
+- `swe-rebench-an-automated-pipeline-for-task-collection-and-decontaminated-evaluat-2025` arxiv: https://arxiv.org/abs/2505.20411
+- `swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025` arxiv: https://arxiv.org/abs/2502.18449
+- `tan-scaling-rl-2025` arxiv: https://arxiv.org/abs/2509.25300
+- `the-entropy-mechanism-of-reinforcement-learning-for-reasoning-language-models-2025` arxiv: https://arxiv.org/abs/2505.22617
+- `the-invisible-leash-why-rlvr-may-or-may-not-escape-its-origin-2025` arxiv: https://arxiv.org/abs/2507.14843
+- `the-markovian-thinker-architecture-agnostic-linear-scaling-of-reasoning-2025` arxiv: https://arxiv.org/abs/2510.06557
+- `towards-understanding-self-play-for-llm-reasoning-2025` arxiv: https://arxiv.org/abs/2510.27072
+- `ttrl-test-time-reinforcement-learning-2025` arxiv: https://arxiv.org/abs/2504.16084
+- `agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026` arxiv: https://arxiv.org/abs/2604.18292
+- `alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026` arxiv: https://arxiv.org/abs/2602.01511
+- `an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026` arxiv: https://arxiv.org/abs/2604.07666
+- `autorubric-unifying-rubric-based-llm-evaluation-2026` arxiv: https://arxiv.org/abs/2603.00077
+- `bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026` arxiv: https://arxiv.org/abs/2604.20051
+- `coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026` arxiv: https://arxiv.org/abs/2603.17775
+- `decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026` arxiv: https://arxiv.org/abs/2605.16826
+- `dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026` arxiv: https://arxiv.org/abs/2603.16223
+- `learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026` arxiv: https://arxiv.org/abs/2602.12125
+- `live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026` arxiv: https://arxiv.org/abs/2511.13646
+- `llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026` arxiv: https://arxiv.org/abs/2604.15149
+- `omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026` arxiv: https://arxiv.org/abs/2602.00846
+- `soft-contamination-means-benchmarks-test-shallow-generalization-2026` arxiv: https://arxiv.org/abs/2602.12413
+- `spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026` arxiv: https://arxiv.org/abs/2601.11061
+- `swe-master-unleashing-the-potential-of-software-engineering-agents-via-post-trai-2026` arxiv: https://arxiv.org/abs/2602.03411
+- `why-does-self-distillation-sometimes-degrade-the-reasoning-capability-of-llms-2026` arxiv: https://arxiv.org/abs/2603.24472
+- `openr1-math-220k-2025` code: https://github.com/huggingface/open-r1
+- `openr1-math-220k-2025` huggingface: https://huggingface.co/datasets/open-r1/OpenR1-Math-220k
+- `omegaprm-automated-process-supervision-2024` arxiv: https://arxiv.org/abs/2406.06592
+- `tinyv-2025` arxiv: https://arxiv.org/abs/2505.14625
+- `tinyv-2025` code: https://github.com/uw-nsl/TinyV
+- `qwen3-coder-2025` code: https://github.com/QwenLM/Qwen3-Coder
+- `qwen3-coder-2025` project: https://qwenlm.github.io/blog/qwen3-coder/
+
+Network probing skipped because `--soft` was used.

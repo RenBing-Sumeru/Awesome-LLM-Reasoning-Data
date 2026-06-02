@@ -1,0 +1,33 @@
+updates:
+- date: '2026-06-01'
+  title: Phase B paper atlas generated
+  summary: Added 11 category pages under papers/ plus a renderer and coverage report. Pages prioritize local papers.yaml metadata
+    and mark missing official links as needs_search.
+  links:
+  - papers/README.md
+  - reports/paper_coverage_report.md
+- date: '2026-06-01'
+  title: Starter packs defined
+  summary: Added beginner, builder, verifier/reward, agent, scaling, audit, and industry onboarding packs for learning-first
+    navigation.
+  links:
+  - data/starter_packs.yaml
+- date: '2026-06-01'
+  title: Taxonomy data added
+  summary: Added category metadata, emoji labels, related docs/cards, open questions, and selection rules for rendering the
+    paper atlas.
+  links:
+  - data/categories.yaml
+  - scripts/render_paper_pages.py
+- date: '2025-06-05'
+  title: OpenThoughts data recipe tracked
+  summary: Local metadata includes the OpenThoughts reasoning-data recipe with a verified arXiv link, making it a key construction
+    starter.
+  links:
+  - https://arxiv.org/abs/2506.04178
+- date: '2025-04-01'
+  title: Programmatic math releases highlighted
+  summary: OpenMathReasoning, Big-Math, and DeepMath-103K are surfaced as verified anchors for answer-verifiable reasoning
+    data.
+  links:
+  - papers/02_programmatic_math_code_proof.md

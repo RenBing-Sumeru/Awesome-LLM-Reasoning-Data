@@ -1,5 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Awesome LLM Reasoning Data</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">Post-training data · Verifiers · Recipes · Audit Fields</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Learning-first atlas</text>
-<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Verifier-bearing samples</text>
-<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Construction recipes</text>
-<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Release cards</text>
-<text x="80" y="378" font-family="Arial" font-size="28" fill="#243042">Audit fields</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Awesome LLM Reasoning Data social preview</title>
+  <desc id="desc">Social preview for a learning-first atlas of post-training reasoning data.</desc>
+  <defs>
+    <style>
+      .bg{fill:#0f172a}.band1{fill:#164e63}.band2{fill:#581c87}.panel{fill:#f8fafc}.title{font:900 58px Arial,sans-serif;fill:#f8fafc}.sub{font:600 25px Arial,sans-serif;fill:#cbd5e1}.h{font:800 24px Arial,sans-serif;fill:#0f172a}.p{font:600 16px Arial,sans-serif;fill:#475569}.chip{font:800 17px Arial,sans-serif;fill:#e2e8f0}.node{stroke-width:2}.rule{stroke:#334155;stroke-width:2}
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="640"/>
+  <rect class="band1" x="0" y="0" width="1280" height="28"/>
+  <rect class="band2" x="0" y="612" width="1280" height="28"/>
+  <line class="rule" x1="72" y1="268" x2="610" y2="268"/>
+
+  <text class="title" x="72" y="116">🌟 Awesome LLM</text>
+  <text class="title" x="72" y="184">Reasoning Data</text>
+  <text class="sub" x="76" y="238">Post-training data · Verifiers · Rewards · Recipes · Audit fields</text>
+
+  <g transform="translate(76 308)">
+    <rect x="0" y="0" width="188" height="44" rx="22" fill="#1e293b" stroke="#38bdf8"/>
+    <text class="chip" x="22" y="29">265 entries</text>
+    <rect x="208" y="0" width="188" height="44" rx="22" fill="#1e293b" stroke="#22c55e"/>
+    <text class="chip" x="230" y="29">26 verified</text>
+    <rect x="416" y="0" width="212" height="44" rx="22" fill="#1e293b" stroke="#f97316"/>
+    <text class="chip" x="438" y="29">living atlas</text>
+  </g>
+
+  <rect class="panel" x="690" y="92" width="430" height="404" rx="28"/>
+  <text class="h" x="728" y="148">Verifier-bearing sample</text>
+
+  <g transform="translate(730 184)">
+    <rect class="node" x="0" y="0" width="328" height="54" rx="16" fill="#ecfeff" stroke="#06b6d4"/>
+    <text class="p" x="18" y="34">🧭 task/context</text>
+    <rect class="node" x="0" y="68" width="328" height="54" rx="16" fill="#fff7ed" stroke="#f97316"/>
+    <text class="p" x="18" y="102">✍️ trace/actions</text>
+    <rect class="node" x="0" y="136" width="328" height="54" rx="16" fill="#f0fdf4" stroke="#22c55e"/>
+    <text class="p" x="18" y="170">✅ answer/artifact</text>
+    <rect class="node" x="0" y="204" width="328" height="54" rx="16" fill="#f5f3ff" stroke="#8b5cf6"/>
+    <text class="p" x="18" y="238">🧪 verifier/reward/judge/env</text>
+    <rect class="node" x="0" y="272" width="328" height="54" rx="16" fill="#fff1f2" stroke="#f43f5e"/>
+    <text class="p" x="18" y="306">🧬 attribution metadata</text>
+  </g>
+
+  <text class="sub" x="76" y="556">A practical homepage for reading, building, and auditing reasoning-model data.</text>
+</svg>

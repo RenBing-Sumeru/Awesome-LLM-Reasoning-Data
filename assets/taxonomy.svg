@@ -1,4 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Verifier-Anchored Taxonomy</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">Verification contract first, domain second</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Programmatic: math · code · formal proof</text>
-<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Environmental: tools · web · app/OS · SWE</text>
-<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Judgment-required: medical · safety · factuality · rubric</text>
-<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Cross-cutting: granularity · bounds · lineage</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Verifier-anchored taxonomy</title>
+  <desc id="desc">Taxonomy of reasoning data organized by verification contract, granularity, lineage, training use, and risk.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.panel{fill:#fff;stroke:#d8e2ef;stroke-width:2}.title{font:800 44px Arial,sans-serif;fill:#111827}.sub{font:500 21px Arial,sans-serif;fill:#475569}.h{font:800 24px Arial,sans-serif;fill:#0f172a}.b{font:500 17px Arial,sans-serif;fill:#475569}.m{font:700 16px Arial,sans-serif;fill:#334155}.axis{font:700 18px Arial,sans-serif;fill:#0f172a}.card{stroke-width:2}.line{stroke:#94a3b8;stroke-width:3;stroke-dasharray:7 7}
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="720"/>
+  <rect class="panel" x="40" y="38" width="1200" height="644" rx="28"/>
+  <text class="title" x="76" y="96">🗺️ Verifier-Anchored Taxonomy</text>
+  <text class="sub" x="78" y="132">Start with the feedback contract; then ask about domain, granularity, lineage, use, and risk.</text>
+
+  <g transform="translate(76 172)">
+    <rect class="card" x="0" y="0" width="360" height="238" rx="22" fill="#eff6ff" stroke="#2563eb"/>
+    <text class="h" x="24" y="42">🧮 Programmatic</text>
+    <text class="b" x="24" y="78">Math answer checkers</text>
+    <text class="b" x="24" y="106">Code execution and unit tests</text>
+    <text class="b" x="24" y="134">Formal proof checkers</text>
+    <text class="b" x="24" y="162">Canonicalization and tolerance</text>
+    <text class="m" x="24" y="206">Main risk: shortcutting the checker</text>
+
+    <rect class="card" x="404" y="0" width="360" height="238" rx="22" fill="#f0fdfa" stroke="#0d9488"/>
+    <text class="h" x="428" y="42">🌐 Environmental</text>
+    <text class="b" x="428" y="78">Tools, APIs, web, browser</text>
+    <text class="b" x="428" y="106">OS, app, and SWE episodes</text>
+    <text class="b" x="428" y="134">State, action, observation</text>
+    <text class="b" x="428" y="162">Terminal predicate and replay</text>
+    <text class="m" x="428" y="206">Main risk: unreplayable success</text>
+
+    <rect class="card" x="808" y="0" width="360" height="238" rx="22" fill="#fdf2f8" stroke="#db2777"/>
+    <text class="h" x="832" y="42">⚖️ Judgment-required</text>
+    <text class="b" x="832" y="78">Rubrics and expert review</text>
+    <text class="b" x="832" y="106">Safety, medical, legal, factuality</text>
+    <text class="b" x="832" y="134">LLM-as-judge and reward models</text>
+    <text class="b" x="832" y="162">Adjudication and calibration</text>
+    <text class="m" x="832" y="206">Main risk: judge sensitivity</text>
+  </g>
+
+  <line class="line" x1="118" y1="454" x2="1198" y2="454"/>
+  <text class="axis" x="80" y="492">Cross-cutting axes</text>
+
+  <g transform="translate(78 518)">
+    <rect x="0" y="0" width="270" height="84" rx="18" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
+    <text class="axis" x="20" y="33">🪜 Granularity</text>
+    <text class="b" x="20" y="59">answer · step · episode</text>
+
+    <rect x="296" y="0" width="270" height="84" rx="18" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+    <text class="axis" x="316" y="33">🧬 Lineage</text>
+    <text class="b" x="316" y="59">human · teacher · search</text>
+
+    <rect x="592" y="0" width="270" height="84" rx="18" fill="#ecfdf5" stroke="#22c55e" stroke-width="2"/>
+    <text class="axis" x="612" y="33">🏋️ Training use</text>
+    <text class="b" x="612" y="59">SFT · RLVR · agent train</text>
+
+    <rect x="888" y="0" width="270" height="84" rx="18" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text class="axis" x="908" y="33">🧯 Risk</text>
+    <text class="b" x="908" y="59">leakage · gaming · attack</text>
+  </g>
+</svg>

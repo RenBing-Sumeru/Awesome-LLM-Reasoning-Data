@@ -1,6 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"><rect width="1280" height="640" fill="#f7fafc"/><rect x="48" y="48" width="1184" height="544" rx="24" fill="#fff" stroke="#d7dee8"/><text x="80" y="108" font-family="Arial" font-size="46" font-weight="700" fill="#172033">Awesome LLM Reasoning Data</text><text x="82" y="145" font-family="Arial" font-size="22" fill="#5a6678">Task → behavior → feedback → attribution → training use</text><text x="80" y="170" font-family="Arial" font-size="28" fill="#243042">Task / State</text>
-<text x="80" y="222" font-family="Arial" font-size="28" fill="#243042">Model Behavior</text>
-<text x="80" y="274" font-family="Arial" font-size="28" fill="#243042">Trace / Actions</text>
-<text x="80" y="326" font-family="Arial" font-size="28" fill="#243042">Verifier / Reward / Judge / Environment</text>
-<text x="80" y="378" font-family="Arial" font-size="28" fill="#243042">Attribution Metadata</text>
-<text x="80" y="430" font-family="Arial" font-size="28" fill="#243042">Training Use</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Awesome LLM Reasoning Data overview</title>
+  <desc id="desc">A verifier-bearing sample flows from task context through model behavior, trace, answer, feedback, metadata, training use, and audit.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.panel{fill:#ffffff;stroke:#d8e2ef;stroke-width:2}.title{font:800 46px Arial, sans-serif;fill:#111827}.sub{font:500 22px Arial, sans-serif;fill:#475569}.label{font:700 22px Arial, sans-serif;fill:#0f172a}.small{font:500 17px Arial, sans-serif;fill:#475569}.tiny{font:600 15px Arial, sans-serif;fill:#334155}.chip{font:700 16px Arial, sans-serif;fill:#0f172a}.emoji{font:400 26px "Segoe UI Emoji","Apple Color Emoji",Arial,sans-serif}.arrow{stroke:#64748b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;fill:none}.node{stroke-width:2}.nodeText{font:700 18px Arial, sans-serif;fill:#0f172a}.nodeSub{font:500 13px Arial, sans-serif;fill:#475569}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1280" height="720"/>
+  <rect class="panel" x="40" y="38" width="1200" height="644" rx="28"/>
+
+  <text class="title" x="76" y="96">🌟 Awesome LLM Reasoning Data</text>
+  <text class="sub" x="78" y="132">A learning-first atlas for post-training reasoning records, feedback contracts, and audit fields.</text>
+
+  <g transform="translate(78 166)">
+    <rect x="0" y="0" width="238" height="70" rx="18" fill="#ecfeff" stroke="#06b6d4" class="node"/>
+    <text class="nodeText" x="20" y="30">🧭 Task / context</text>
+    <text class="nodeSub" x="20" y="52">prompt, state, source, split</text>
+
+    <path class="arrow" d="M248 35 H302" marker-end="url(#arrow)"/>
+
+    <rect x="312" y="0" width="238" height="70" rx="18" fill="#fff7ed" stroke="#f97316" class="node"/>
+    <text class="nodeText" x="332" y="30">✍️ Trace / actions</text>
+    <text class="nodeSub" x="332" y="52">steps, tool calls, rollouts</text>
+
+    <path class="arrow" d="M560 35 H614" marker-end="url(#arrow)"/>
+
+    <rect x="624" y="0" width="238" height="70" rx="18" fill="#f0fdf4" stroke="#22c55e" class="node"/>
+    <text class="nodeText" x="644" y="30">✅ Answer / artifact</text>
+    <text class="nodeSub" x="644" y="52">solution, patch, proof, outcome</text>
+
+    <path class="arrow" d="M872 35 H926" marker-end="url(#arrow)"/>
+
+    <rect x="936" y="0" width="238" height="70" rx="18" fill="#f5f3ff" stroke="#8b5cf6" class="node"/>
+    <text class="nodeText" x="956" y="30">🧪 Feedback</text>
+    <text class="nodeSub" x="956" y="52">verifier, reward, judge, env</text>
+  </g>
+
+  <g transform="translate(78 292)">
+    <rect x="0" y="0" width="350" height="160" rx="22" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
+    <text class="label" x="24" y="38">🧬 Attribution metadata</text>
+    <text class="small" x="24" y="70">teacher, base model, filtering rule</text>
+    <text class="small" x="24" y="98">sampling budget, verifier version</text>
+    <text class="small" x="24" y="126">license, split, lineage, leakage check</text>
+
+    <rect x="398" y="0" width="350" height="160" rx="22" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text class="label" x="422" y="38">🏋️ Training use</text>
+    <text class="small" x="422" y="70">SFT · distillation · PRM</text>
+    <text class="small" x="422" y="98">reward modeling · RLVR</text>
+    <text class="small" x="422" y="126">agent training · evaluation · audit</text>
+
+    <rect x="796" y="0" width="376" height="160" rx="22" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <text class="label" x="820" y="38">🧯 Failure audit</text>
+    <text class="small" x="820" y="70">contamination · judge attacks</text>
+    <text class="small" x="820" y="98">reward hacking · leakage</text>
+    <text class="small" x="820" y="126">spurious verifier shortcuts</text>
+  </g>
+
+  <g transform="translate(78 500)">
+    <rect x="0" y="0" width="274" height="96" rx="18" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text class="label" x="22" y="36">🧮 Programmatic</text>
+    <text class="small" x="22" y="64">math · code · proof</text>
+
+    <rect x="306" y="0" width="274" height="96" rx="18" fill="#f0fdfa" stroke="#14b8a6" stroke-width="2"/>
+    <text class="label" x="328" y="36">🌐 Environmental</text>
+    <text class="small" x="328" y="64">tools · web · OS · SWE</text>
+
+    <rect x="612" y="0" width="274" height="96" rx="18" fill="#fdf2f8" stroke="#ec4899" stroke-width="2"/>
+    <text class="label" x="634" y="36">⚖️ Judgment</text>
+    <text class="small" x="634" y="64">rubric · safety · medical</text>
+
+    <rect x="918" y="0" width="254" height="96" rx="18" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+    <text class="label" x="940" y="36">📚 Snapshot</text>
+    <text class="small" x="940" y="64">265 entries · 26 verified</text>
+  </g>
+
+  <text class="tiny" x="80" y="644">Mental model: keep the feedback interface and attribution fields attached to every reasoning-data claim.</text>
+</svg>

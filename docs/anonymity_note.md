@@ -1,3 +1,7 @@
-# Anonymity Note
+# Public Repository Note
 
-Citation metadata currently uses placeholders because the companion paper may still be subject to anonymous-review or identity-linkage constraints. Replace placeholders after public author metadata is safe.
+This repository is prepared for public GitHub release at `RenBing-Sumeru/Awesome-LLM-Reasoning-Data`.
+
+The previous review-safe citation wording has been removed from `CITATION.cff`. The citation file now identifies the public repository owner and repository URL. Private paper PDFs and old one-off build prompts are intentionally outside the submission-ready repository.
+
+If a companion paper receives public author metadata later, add that citation alongside the repository citation rather than replacing the living atlas citation.

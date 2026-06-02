@@ -1,0 +1,41 @@
+name: Metadata fix
+about: Correct an entry, link, card field, status, category, or verification contract.
+title: "[Metadata Fix] <entry id or card path>"
+labels: ["metadata", "fix"]
+body:
+  - type: input
+    id: target
+    attributes:
+      label: Entry ID or file path
+      description: Example deepseek-r1-2025 or cards/recipes/deepseek_r1.md
+    validations:
+      required: true
+  - type: dropdown
+    id: field
+    attributes:
+      label: Field type
+      options:
+        - official link
+        - title/year/venue
+        - source_role/category
+        - verification_contract
+        - supervision_granularity
+        - training_use
+        - card heading/content
+        - status
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current value
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed value and evidence
+      description: Include official links or quote the local file path/line that supports the change.
+    validations:
+      required: true

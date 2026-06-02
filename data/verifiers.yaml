@@ -1,1 +1,548 @@
-[]
+- id: data-statements-for-natural-language-processing-2018
+  title: Data statements for natural language processing
+  year: 2018
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: fact-or-fiction-verifying-scientific-claims-2020
+  title: 'Fact or fiction: Verifying scientific claims'
+  year: 2020
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: training-verifiers-to-solve-math-word-problems-2021
+  title: Training verifiers to solve math word problems
+  year: 2021
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: scaling-laws-for-reward-model-overoptimization-2022
+  title: Scaling laws for reward model overoptimization
+  year: 2022
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: solving-math-word-problems-with-process-and-outcome-based-feedback-2022
+  title: Solving math word problems with process- and outcome-based feedback
+  year: 2022
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
+  title: 'Direct preference optimization: Your language model is secretly a reward model'
+  year: 2023
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: judgelm-fine-tuned-large-language-models-are-scalable-judges-2023
+  title: 'JudgeLM: Fine-tuned large language models are scalable judges'
+  year: 2023
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023
+  title: Judging LLM-as-a-judge with MT-Bench and Chatbot Arena
+  year: 2023
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023
+  title: 'Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations'
+  year: 2023
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: prm800k-2023
+  title: Let's Verify Step by Step
+  year: 2023
+  kind: verifier
+  status: verified
+  verification_contract:
+  - programmatic
+  - judgment_required
+  training_use:
+  - process_supervision
+  - reward_modeling
+  link: https://arxiv.org/abs/2305.20050
+  note: Landmark process supervision dataset with explicit step labels.
+- id: improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024
+  title: Improve mathematical reasoning in language models by automated process supervision
+  year: 2024
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: mammoth2-scaling-instructions-from-the-web-2024
+  title: 'MAmmoTH2: Scaling Instructions from the Web'
+  year: 2024
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2405.03548
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: math-shepherd-2024
+  title: Math-Shepherd
+  year: 2024
+  kind: verifier
+  status: verified
+  verification_contract:
+  - programmatic
+  training_use:
+  - process_supervision
+  - reward_modeling
+  link: https://arxiv.org/abs/2312.08935
+  note: Monte-Carlo-style process signal reference for step supervision.
+- id: prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024
+  title: 'Prometheus 2: An open source language model specialized in evaluating other language models'
+  year: 2024
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: rewardbench-evaluating-reward-models-for-language-modeling-2024
+  title: 'RewardBench: Evaluating reward models for language modeling'
+  year: 2024
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024
+  title: 'Rewarding progress: Scaling automated process verifiers for LLM reasoning'
+  year: 2024
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: self-rewarding-lms-2024
+  title: Self-Rewarding LMs
+  year: 2024
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: aegis2-2025
+  title: Aegis2.0
+  year: 2025
+  kind: verifier
+  status: verified
+  verification_contract:
+  - judgment_required
+  training_use:
+  - safety_alignment
+  - evaluation
+  link: https://arxiv.org/abs/2501.09004
+  note: Safety dataset with risk categories and label provenance.
+- id: beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025
+  title: 'Beyond Correctness: Harmonizing Process and Outcome Rewards through RL Training (PROF)'
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2509.03403
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: dapo-2025
+  title: DAPO
+  year: 2025
+  kind: verifier
+  status: verified
+  verification_contract:
+  - programmatic
+  training_use:
+  - rlvr
+  link: https://arxiv.org/abs/2503.14476
+  note: GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
+- id: deepmath-103k-2025
+  title: DeepMath-103K
+  year: 2025
+  kind: verifier
+  status: verified
+  verification_contract:
+  - programmatic
+  training_use:
+  - sft
+  - rlvr
+  - evaluation
+  link: https://arxiv.org/abs/2504.11456
+  note: Math release highlighted for verifier pinning and decontamination.
+- id: from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025
+  title: 'From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning'
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2505.22203
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: grpo-is-secretly-a-process-reward-model-2025
+  title: GRPO is Secretly a Process Reward Model
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2509.21154
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: healthbench-2025
+  title: HealthBench
+  year: 2025
+  kind: verifier
+  status: verified
+  verification_contract:
+  - judgment_required
+  training_use:
+  - evaluation
+  - reward_modeling
+  link: https://arxiv.org/abs/2505.08775
+  note: Rubric-based health benchmark showing judgment-required data.
+- id: magistral-2025
+  title: Magistral
+  year: 2025
+  kind: verifier
+  status: verified
+  verification_contract:
+  - mixed
+  training_use:
+  - rlvr
+  link: https://arxiv.org/abs/2506.10910
+  note: Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.
+- id: one-token-to-fool-2025
+  title: One Token to Fool LLM-as-a-Judge
+  year: 2025
+  kind: verifier
+  status: verified
+  verification_contract:
+  - judgment_required
+  training_use:
+  - evaluation
+  - reward_modeling
+  link: https://arxiv.org/abs/2507.08794
+  note: Verifier-attack paper showing trivial cue tokens can flip judge verdicts.
+- id: online-rubrics-elicitation-from-pairwise-comparisons-2025
+  title: Online Rubrics Elicitation from Pairwise Comparisons
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2510.07284
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: onlinerubrics-2025
+  title: OnlineRubrics
+  year: 2025
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: prime-process-reinforcement-through-implicit-rewards-2025
+  title: 'PRIME: Process reinforcement through implicit rewards'
+  year: 2025
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025
+  title: 'PRMBench: A fine-grained and challenging benchmark for process-level reward models'
+  year: 2025
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: process-reward-models-for-code-reasoning-2025
+  title: Process reward models for code reasoning
+  year: 2025
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: processbench-identifying-process-errors-in-mathematical-reasoning-2025
+  title: 'ProcessBench: Identifying process errors in mathematical reasoning'
+  year: 2025
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: qwen2-5-math-prm-2025
+  title: Qwen2.5-Math-PRM
+  year: 2025
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: r3-robust-rubric-agnostic-reward-models-2025
+  title: 'R3: Robust Rubric-Agnostic Reward Models'
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2505.13388
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025
+  title: Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2506.14245
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: rubrics-as-rewards-2025
+  title: Rubrics as rewards
+  year: 2025
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: spurious-rewards-2025
+  title: Spurious Rewards
+  year: 2025
+  kind: verifier
+  status: verified
+  verification_contract:
+  - programmatic
+  training_use:
+  - rlvr
+  - evaluation
+  link: https://arxiv.org/abs/2506.10947
+  note: Reward-signal audit for spurious behavior in RLVR.
+- id: spurious-rewards-rethinking-training-signals-in-rlvr-2025
+  title: 'Spurious Rewards: Rethinking Training Signals in RLVR'
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2506.10947
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025
+  title: 'SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution'
+  year: 2025
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2502.18449
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026
+  title: Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM)
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2602.01511
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026
+  title: 'An Imperfect Verifier is Good Enough: Learning with Noisy Rewards'
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2604.07666
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: autorubric-unifying-rubric-based-llm-evaluation-2026
+  title: 'Autorubric: Unifying Rubric-based LLM Evaluation'
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2603.00077
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026
+  title: Bootstrapping Post-training Signals for Open-ended Tasks via Rubric-based Self-play on Pre-training Text (POP)
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2604.20051
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026
+  title: 'CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution'
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2603.17775
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026
+  title: 'Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation (G-OPD)'
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2602.12125
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026
+  title: 'LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking'
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2604.15149
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026
+  title: 'Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis'
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2602.00846
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: rewardbench-2-2026
+  title: RewardBench 2
+  year: 2026
+  kind: verifier
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026
+  title: 'Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs'
+  year: 2026
+  kind: verifier
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2601.11061
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.

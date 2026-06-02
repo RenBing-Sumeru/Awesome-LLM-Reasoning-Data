@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contribution guide
+    url: https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/CONTRIBUTING.md
+    about: Read contribution expectations before opening metadata-heavy issues.

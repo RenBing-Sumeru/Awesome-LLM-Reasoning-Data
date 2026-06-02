@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Core paper map</title>
+  <desc id="desc">A compact map from reasoning-data clusters to representative papers and audit questions.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.panel{fill:#fff;stroke:#d8e2ef;stroke-width:2}.title{font:800 44px Arial,sans-serif;fill:#111827}.sub{font:500 21px Arial,sans-serif;fill:#475569}.center{font:800 25px Arial,sans-serif;fill:#0f172a}.h{font:800 20px Arial,sans-serif;fill:#0f172a}.p{font:500 14px Arial,sans-serif;fill:#475569}.tag{font:700 13px Arial,sans-serif;fill:#334155}.link{stroke:#cbd5e1;stroke-width:3}.card{stroke-width:2}
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="720"/>
+  <rect class="panel" x="40" y="38" width="1200" height="644" rx="28"/>
+  <text class="title" x="76" y="96">🧮 Core Paper Map</text>
+  <text class="sub" x="78" y="132">Use paper clusters as a reading route, then audit the data object behind each result.</text>
+
+  <circle cx="640" cy="364" r="104" fill="#f8fafc" stroke="#64748b" stroke-width="3"/>
+  <text class="center" x="543" y="344">Verifier-bearing</text>
+  <text class="center" x="574" y="378">reasoning</text>
+  <text class="center" x="607" y="412">data</text>
+
+  <line class="link" x1="544" y1="318" x2="284" y2="208"/>
+  <line class="link" x1="640" y1="260" x2="640" y2="196"/>
+  <line class="link" x1="736" y1="318" x2="1012" y2="208"/>
+  <line class="link" x1="536" y1="384" x2="286" y2="370"/>
+  <line class="link" x1="744" y1="384" x2="1012" y2="370"/>
+  <line class="link" x1="560" y1="438" x2="284" y2="542"/>
+  <line class="link" x1="640" y1="468" x2="640" y2="562"/>
+  <line class="link" x1="720" y1="438" x2="1012" y2="542"/>
+
+  <g transform="translate(78 164)">
+    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#eff6ff" stroke="#2563eb"/>
+    <text class="h" x="20" y="31">🧮 Programmatic</text>
+    <text class="p" x="20" y="58">OpenMathReasoning · DeepMath-103K</text>
+    <text class="p" x="20" y="80">Big-Math · OpenCodeReasoning-II</text>
+    <text class="tag" x="20" y="101">audit: checker, tests, pass-rate, decontamination</text>
+  </g>
+
+  <g transform="translate(463 156)">
+    <rect class="card" x="0" y="0" width="274" height="100" rx="18" fill="#fefce8" stroke="#eab308"/>
+    <text class="h" x="20" y="31">🪜 PRM</text>
+    <text class="p" x="20" y="58">Let's Verify · Math-Shepherd</text>
+    <text class="tag" x="20" y="82">audit: step labels, rollout values</text>
+  </g>
+
+  <g transform="translate(852 164)">
+    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#fff7ed" stroke="#f97316"/>
+    <text class="h" x="20" y="31">🏗️ Recipes</text>
+    <text class="p" x="20" y="58">OpenThoughts · DAPO · LIMO · s1</text>
+    <text class="p" x="20" y="80">trace writing · filtering · scaffold</text>
+    <text class="tag" x="20" y="101">audit: source mix, teacher, ablations</text>
+  </g>
+
+  <g transform="translate(78 318)">
+    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#f0fdfa" stroke="#0d9488"/>
+    <text class="h" x="20" y="31">🌐 Agents</text>
+    <text class="p" x="20" y="58">SWE-Gym · WebArena · OSWorld</text>
+    <text class="p" x="20" y="80">state · action · observation · replay</text>
+    <text class="tag" x="20" y="101">audit: terminal predicate, scaffold</text>
+  </g>
+
+  <g transform="translate(852 318)">
+    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#fdf2f8" stroke="#db2777"/>
+    <text class="h" x="20" y="31">⚖️ Rubrics</text>
+    <text class="p" x="20" y="58">HealthBench · RewardBench</text>
+    <text class="p" x="20" y="80">Safety Through Reasoning · OnlineRubrics</text>
+    <text class="tag" x="20" y="101">audit: judge prompt, expertise, calibration</text>
+  </g>
+
+  <g transform="translate(78 504)">
+    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text class="h" x="20" y="31">🚀 Frontier reports</text>
+    <text class="p" x="20" y="58">DeepSeek-R1 · Kimi K1.5 · Qwen3</text>
+    <text class="p" x="20" y="80">Magistral · Llama-Nemotron</text>
+    <text class="tag" x="20" y="101">audit: disclosed data partitions</text>
+  </g>
+
+  <g transform="translate(470 526)">
+    <rect class="card" x="0" y="0" width="260" height="94" rx="18" fill="#ecfdf5" stroke="#22c55e"/>
+    <text class="h" x="20" y="31">📈 Scaling</text>
+    <text class="p" x="20" y="58">RL compute · pass@k · budget</text>
+    <text class="tag" x="20" y="80">audit: asymptote vs efficiency</text>
+  </g>
+
+  <g transform="translate(852 504)">
+    <rect class="card" x="0" y="0" width="354" height="112" rx="18" fill="#fff1f2" stroke="#f43f5e"/>
+    <text class="h" x="20" y="31">🧯 Audit failures</text>
+    <text class="p" x="20" y="58">Leaky Thoughts · One Token</text>
+    <text class="p" x="20" y="80">Spurious Rewards · Search-Time Contamination</text>
+    <text class="tag" x="20" y="101">audit: leakage, gaming, hidden transfer</text>
+  </g>
+</svg>

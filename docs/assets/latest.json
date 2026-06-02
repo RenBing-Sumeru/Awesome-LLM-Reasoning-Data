@@ -1,0 +1,1364 @@
+[
+  {
+    "id": "pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026",
+    "title": "pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL",
+    "year": 2026,
+    "venue": "arXiv preprint",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key zhai2026passkt. Deduplicated title collision; dropped lower-confidence id: pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "why-does-self-distillation-sometimes-degrade-the-reasoning-capability-of-llms-2026",
+    "title": "Why Does Self-Distillation (Sometimes) Degrade the Reasoning Capability of LLMs?",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2603.24472",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2603.24472",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key kim2026selfdistillationreasoning. Deduplicated title collision; dropped lower-confidence id: why-does-self-distillation-sometimes-degrade-the-reasoning-capability-of-llms-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.24472"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026",
+    "title": "Terminal-Bench: A benchmark and task environment for terminal agents",
+    "year": 2026,
+    "venue": "unknown",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key terminalbench2026. Deduplicated title collision; dropped lower-confidence id: terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026",
+    "title": "Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2601.11061",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2601.11061",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key yan2026spuriousrewardsparadox. Deduplicated title collision; dropped lower-confidence id: spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2601.11061"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "soft-contamination-means-benchmarks-test-shallow-generalization-2026",
+    "title": "Soft Contamination Means Benchmarks Test Shallow Generalization",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2602.12413",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2602.12413",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key spiesberger2026softcontam. Deduplicated title collision; dropped lower-confidence id: soft-contamination-means-benchmarks-test-shallow-generalization-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.12413"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "swe-master-unleashing-the-potential-of-software-engineering-agents-via-post-trai-2026",
+    "title": "SWE-Master: Unleashing the Potential of Software Engineering Agents via Post-Training",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2602.03411",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2602.03411",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key song2026swemaster. Deduplicated title collision; dropped lower-confidence id: swe-master-unleashing-the-potential-of-software-engineering-agents-via-post-trai-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.03411"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "rewardbench-2-2026",
+    "title": "RewardBench 2",
+    "year": 2026,
+    "venue": "ICLR",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key rewardbench2_2026. Deduplicated title collision; dropped lower-confidence id: rewardbench-2-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026",
+    "title": "Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2602.00846",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2602.00846",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key kong2026omnirrm. Deduplicated title collision; dropped lower-confidence id: omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.00846"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026",
+    "title": "Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly?",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2511.13646",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2511.13646",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key xia2026liveswagent. Deduplicated title collision; dropped lower-confidence id: live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2511.13646"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026",
+    "title": "Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation (G-OPD)",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2602.12125",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2602.12125",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key yang2026gopd. Deduplicated title collision; dropped lower-confidence id: learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.12125"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026",
+    "title": "LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2604.15149",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2604.15149",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key helff2026gamingverifiers. Deduplicated title collision; dropped lower-confidence id: llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.15149"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026",
+    "title": "Dual Consensus: Escaping from Spurious Majority in Unsupervised RLVR via Two-Stage Vote Mechanism",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2603.16223",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2603.16223",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key du2026dcrl. Deduplicated title collision; dropped lower-confidence id: dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.16223"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026",
+    "title": "Decoupling KL and Trajectories: A Unified Perspective for SFT, DAgger, Offline RL, and OPD in LLM Distillation",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2605.16826",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2605.16826",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key zhao2026decouplekl. Deduplicated title collision; dropped lower-confidence id: decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2605.16826"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026",
+    "title": "CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2603.17775",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2603.17775",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key pan2026coverrl. Deduplicated title collision; dropped lower-confidence id: coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.17775"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026",
+    "title": "Bootstrapping Post-training Signals for Open-ended Tasks via Rubric-based Self-play on Pre-training Text (POP)",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2604.20051",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2604.20051",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key huang2026pop. Deduplicated title collision; dropped lower-confidence id: bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.20051"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "autorubric-unifying-rubric-based-llm-evaluation-2026",
+    "title": "Autorubric: Unifying Rubric-based LLM Evaluation",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2603.00077",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2603.00077",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key rao2026autorubric. Deduplicated title collision; dropped lower-confidence id: autorubric-unifying-rubric-based-llm-evaluation-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2603.00077"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026",
+    "title": "An Imperfect Verifier is Good Enough: Learning with Noisy Rewards",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2604.07666",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2604.07666",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key plesner2026imperfectverifier. Deduplicated title collision; dropped lower-confidence id: an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.07666"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026",
+    "title": "Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM)",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2602.01511",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2602.01511",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key xu2026rubricarm. Deduplicated title collision; dropped lower-confidence id: alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2602.01511"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026",
+    "title": "Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2604.18292",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2604.18292",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key dong2026agentworld. Deduplicated title collision; dropped lower-confidence id: agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2604.18292"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025",
+    "title": "xLAM: A family of large action models to empower AI agent systems",
+    "year": 2025,
+    "venue": "NAACL",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key xlam2025. Deduplicated title collision; dropped lower-confidence id: xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "s1-2025",
+    "title": "s1: Simple Test-Time Scaling",
+    "year": 2025,
+    "venue": "arXiv",
+    "source_role": [
+      "construction_recipe",
+      "scaling_study"
+    ],
+    "verification_contract": [
+      "mixed"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "domains": [
+      "math"
+    ],
+    "training_use": [
+      "sft",
+      "test_time_compute"
+    ],
+    "construction_layer": [
+      "prompt_sourcing",
+      "scaling_report"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2501.19393",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: s1-simple-test-time-scaling-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.",
+      "metadata_status": "partial"
+    },
+    "inclusion_reason": "Small-pool and test-time scaling reference.",
+    "tags": [],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2501.19393"
+      }
+    ],
+    "card": "cards/releases/s1.md",
+    "one_line": "Small-pool and test-time scaling reference."
+  },
+  {
+    "id": "rstar2-agent-agentic-reasoning-technical-report-2025",
+    "title": "rStar2-Agent: Agentic Reasoning Technical Report",
+    "year": 2025,
+    "venue": "arXiv preprint arXiv:2508.20722",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": "https://arxiv.org/abs/2508.20722",
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "verified",
+      "confidence": "medium",
+      "notes": "Seeded from BibTeX key microsoft2025rstar2agent. Deduplicated title collision; dropped lower-confidence id: rstar2-agent-agentic-reasoning-technical-report-2025."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "partial",
+    "artifact_links": [
+      {
+        "kind": "arxiv",
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2508.20722"
+      }
+    ],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "rstar-math-2025",
+    "title": "rStar-Math",
+    "year": 2025,
+    "venue": "arXiv preprint",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key rstarmath2025. Deduplicated title collision; dropped lower-confidence id: rstar-math-2025."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "why-we-no-longer-evaluate-on-swe-bench-verified-2025",
+    "title": "Why we no longer evaluate on SWE-bench Verified",
+    "year": 2025,
+    "venue": "unknown",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key swebenchlifecycle2025. Deduplicated title collision; dropped lower-confidence id: why-we-no-longer-evaluate-on-swe-bench-verified-2025."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  },
+  {
+    "id": "var-math-2025",
+    "title": "VAR-MATH",
+    "year": 2025,
+    "venue": "arXiv preprint",
+    "source_role": [
+      "survey_background"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "domains": [],
+    "training_use": [
+      "unknown"
+    ],
+    "construction_layer": [
+      "release_audit"
+    ],
+    "artifacts": {
+      "paper": null,
+      "arxiv": null,
+      "code": null,
+      "data": null,
+      "project": null,
+      "huggingface": null,
+      "doi": null
+    },
+    "audit": {
+      "source_mixture": "unknown",
+      "split": "unknown",
+      "decontamination": "unknown",
+      "license": "unknown",
+      "lineage": "unknown",
+      "known_failure_modes": [],
+      "citation_status": "needs_verification",
+      "confidence": "low",
+      "notes": "Seeded from BibTeX key varmath2025. Deduplicated title collision; dropped lower-confidence id: var-math-2025."
+    },
+    "inclusion_reason": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+    "tags": [
+      "seeded-from-bib"
+    ],
+    "status": "needs_metadata",
+    "artifact_links": [],
+    "card": null,
+    "one_line": "Seeded from local BibTeX for later atlas classification; needs curator review."
+  }
+]

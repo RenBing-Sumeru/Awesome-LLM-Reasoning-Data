@@ -1,0 +1,45 @@
+name: Add dataset or release
+about: Propose a reasoning-data release with enough metadata to audit it
+title: "[Dataset] <name>"
+labels: [dataset, needs-review]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Dataset / release name
+      placeholder: OpenR1-Math-220k
+    validations:
+      required: true
+  - type: input
+    id: official_link
+    attributes:
+      label: Official paper/code/data/project link
+      placeholder: https://arxiv.org/abs/...
+    validations:
+      required: true
+  - type: dropdown
+    id: verification_contract
+    attributes:
+      label: Verification contract
+      options:
+        - programmatic
+        - environmental
+        - judgment_required
+        - mixed
+        - unknown
+    validations:
+      required: true
+  - type: textarea
+    id: data_object
+    attributes:
+      label: What is the data object?
+      description: Prompt source, trace author, answer format, process fields, environment/substrate, verifier/reward, terminal predicate.
+    validations:
+      required: true
+  - type: textarea
+    id: audit
+    attributes:
+      label: Audit notes
+      description: Source mixture, split policy, decontamination, license, lineage, and known failure modes.
+    validations:
+      required: true

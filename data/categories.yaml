@@ -1,0 +1,1593 @@
+paper_categories:
+- id: surveys_and_primers
+  order: 0
+  emoji: 🧭
+  title: Surveys and Primers
+  file: 00_surveys_and_primers.md
+  summary: Orientation material for post-training, reasoning models, verifier-bearing data, contamination, and data-centric
+    LLM practice.
+  reader_promise: 'Use this page when you need the map before the terrain: vocabulary, taxonomies, recurring claims, and the
+    major research lineages that make reasoning-data papers easier to read.'
+  why:
+  - Survey and primer papers are the atlas spine. A beginner can open a frontier reasoning report and see a blur of RLVR,
+    pass-rate filters, reward heads, distillation, search, long chain-of-thought, and benchmark contamination. The survey
+    layer slows that blur down. It separates the older instruction-following and preference-learning lineage from newer verifier-bearing
+    reasoning-data records, then shows which ideas were inherited and which were genuinely new.
+  - 'For practitioners, surveys are not passive background reading. They are a way to audit assumptions before committing
+    data budget. A post-training team deciding between math RLVR, rubric rewards, or agent trajectories needs to know which
+    supervision contracts can be automated, where human judgment remains expensive, and which evaluation claims are especially
+    vulnerable to contamination. Good surveys also expose missing metadata fields: prompt source, trace author, verifier identity,
+    decontamination rule, split policy, and training/evaluation overlap.'
+  - 'The trap is to treat a survey as a substitute for the primary papers. Use it instead as a routing layer. Read the taxonomy,
+    note the claims about scaling or data quality, then jump into the papers that define concrete records and verifiers. The
+    most useful survey notes are operational: what counts as a reasoning data object, what failure modes repeat across domains,
+    and what a release must disclose for another team to reproduce or safely reuse it.'
+  - This category is intentionally broad. It includes general reasoning-model surveys, mid-training and post-training context,
+    data documentation papers such as datasheets and data statements, and reproducibility or contamination analyses that teach
+    how to read empirical claims. When a paper is locally indexed but lacks an official URL in `data/papers.yaml`, this page
+    marks it as `needs_search` rather than inventing a link.
+  how_to_read:
+  - 'Extract the taxonomy first: what objects, feedback contracts, and training uses does the survey distinguish?'
+  - 'Track what the survey treats as evidence: benchmark deltas, release metadata, verifier design, human annotation studies,
+    or mechanistic analysis.'
+  - Inspect whether the survey separates SFT traces, preference data, reward models, process labels, and RLVR trajectories
+    instead of folding all post-training data together.
+  - Avoid copying paper lists without checking recency, official links, and whether the cited work is a dataset, benchmark,
+    model report, or commentary.
+  starter_match:
+  - From system 1 to system 2
+  - General reasoning models
+  - Mid-Training
+  - A Survey on LLM Mid-Training
+  - A primer in BERTology
+  - Datasheets for datasets
+  - Data statements
+  - Data provenance
+  - A Sober Look
+  - Soft Contamination
+  - AI models collapse
+  - Is model collapse inevitable
+  - Model collapse
+  - Learning to reason with LLMs
+  match_any:
+  - survey
+  - primer
+  - bertology
+  - datasheets
+  - data statements
+  - data provenance
+  - system 1
+  - system 2
+  - general reasoning
+  - mid-training
+  - post-training
+  - sober look
+  - reproducibility
+  - contamination
+  - collapse
+  - reasoning large language models
+  - learning to reason
+  roles:
+  - survey_background
+  - audit_failure
+  max_entries: 42
+  subtopics:
+  - name: 🧭 Reasoning-model surveys
+    keywords:
+    - survey
+    - system 1
+    - system 2
+    - general reasoning
+    - reasoning large language models
+  - name: 🧱 Post-training and mid-training context
+    keywords:
+    - post-training
+    - mid-training
+    - tulu
+    - llama 3
+    - learning to reason
+  - name: 🧬 Data documentation and provenance
+    keywords:
+    - datasheets
+    - data statements
+    - data provenance
+    - provenance
+  - name: 🧯 Reproducibility, collapse, and contamination primers
+    keywords:
+    - sober
+    - contamination
+    - collapse
+    - reproducibility
+    - soft contamination
+  open_questions:
+  - 'Which taxonomy best predicts downstream engineering decisions: verifier type, data object shape, training use, or audit
+    risk?'
+  - How should surveys represent partially open frontier reports whose datasets and reward functions are only described at
+    a high level?
+  - What metadata is needed to make survey tables reproducible rather than merely descriptive?
+  - How can a living atlas keep survey pages current without overstating completeness?
+  related_docs:
+  - ../docs/00_start_here.md
+  - ../docs/01_what_is_post_training_reasoning_data.md
+  - ../docs/02_verifier_anchored_taxonomy.md
+  - ../docs/09_audit_and_failure_modes.md
+  - ../reports/bib_index.md
+  related_cards:
+  - ../cards/release_card_template.md
+  - ../cards/recipe_card_template.md
+- id: foundations_instruction_preference_alignment
+  order: 1
+  emoji: 🧱
+  title: 'Foundations: Instruction, Preference, and Alignment Data'
+  file: 01_foundations_instruction_preference_alignment.md
+  summary: 'The older data objects that reasoning-data work inherits: instruction mixtures, demonstrations, preferences, reward
+    models, self-improvement traces, and chain-of-thought prompting.'
+  reader_promise: Read this category to understand how prompt-answer examples became richer feedback records with preferences,
+    rationales, rubrics, and reward surfaces.
+  why:
+  - Reasoning-data papers make more sense when you can see their older ancestry. InstructGPT, FLAN, T0, Self-Instruct, helpful-harmless
+    RLHF, Constitutional AI, UltraFeedback, and DPO all shaped the habit of treating post-training data as a deliberately
+    constructed behavior signal. They did not solve verifier-bearing reasoning data by themselves, but they taught the field
+    how to collect demonstrations, compare outputs, train reward models, and tune a model after pretraining.
+  - The foundation category is especially useful for spotting what changed. A preference pair says one answer is better than
+    another; a programmatic verifier can often say whether a final answer satisfies a predicate; a process label can identify
+    the first faulty step; an agent trajectory can attach feedback to a state-action episode. Reasoning data inherits the
+    engineering discipline of alignment data, then adds stronger structure around trace, verifier, environment, and terminal
+    condition.
+  - Practitioners should read these papers with a data-schema eye. Ask what the prompt source is, who authored the target
+    behavior, what form the feedback takes, whether the reward can be gamed, and how the training objective consumes the record.
+    The same questions apply later to RLVR and process reward models, but the answers become more domain-specific and easier
+    to audit when a verifier or environment is explicit.
+  - 'This page also guards against a common historical mistake: treating chain-of-thought, self-consistency, STaR, and distillation
+    as just prompting tricks. They are also data-construction ideas. They show how intermediate text can be generated, filtered,
+    reused, and trained against, which is exactly the habit that later open reasoning-data recipes make explicit.'
+  how_to_read:
+  - 'Identify the data object: demonstration, preference pair, constitutional critique, explanation trace, reward-model comparison,
+    or self-generated instruction.'
+  - 'Ask what supervision signal is trainable and where it enters the objective: SFT target, pairwise preference, scalar reward,
+    critique, or rationale.'
+  - Separate helpfulness/safety alignment from verifier-bearing reasoning claims; older alignment wins do not automatically
+    imply better math/code reasoning.
+  - Watch for reward overoptimization, annotation ambiguity, and hidden source mixtures that make later reuse difficult.
+  starter_match:
+  - Training language models to follow instructions
+  - Deep reinforcement learning from human preferences
+  - Training a helpful and harmless assistant
+  - Constitutional AI
+  - Direct preference optimization
+  - Scaling laws for reward model overoptimization
+  - UltraFeedback
+  - Self-Instruct
+  - Chain-of-thought
+  - STaR
+  - Self-consistency
+  - Distilling step-by-step
+  match_any:
+  - instruct
+  - instruction
+  - preference
+  - rlhf
+  - harmless
+  - constitutional
+  - dpo
+  - direct preference
+  - overoptimization
+  - ultrafeedback
+  - flan
+  - t0
+  - self-instruct
+  - chain-of-thought
+  - self-consistency
+  - star
+  - distilling step
+  - orca
+  - helpsteer
+  - self-rewarding
+  - r-tuning
+  - spin
+  - rest
+  - reflexion
+  - self-rag
+  roles:
+  - survey_background
+  max_entries: 54
+  subtopics:
+  - name: 🧑‍🏫 Instruction and demonstration mixtures
+    keywords:
+    - instruction
+    - instruct
+    - flan
+    - t0
+    - self-instruct
+    - tulu
+    - llama 3
+  - name: 💬 Preferences, RLHF, and reward models
+    keywords:
+    - preference
+    - rlhf
+    - reward
+    - harmless
+    - constitutional
+    - dpo
+    - ultrafeedback
+    - helpsteer
+    - overoptimization
+  - name: 🧠 Reasoning traces before RLVR
+    keywords:
+    - chain-of-thought
+    - self-consistency
+    - star
+    - distilling step
+    - orca
+    - mammoth
+    - metamath
+    - wizardmath
+  - name: 🔁 Self-improvement and critique loops
+    keywords:
+    - self-rewarding
+    - spin
+    - rest
+    - reflexion
+    - self-rag
+    - r-tuning
+  open_questions:
+  - Which parts of classic RLHF data remain useful once a task has a cheap programmatic verifier?
+  - How should preference datasets expose annotator/rubric context so they can be reused as reasoning rewards?
+  - When does training on chain-of-thought traces teach reasoning behavior, and when does it merely teach trace style?
+  - Can self-generated instruction data be audited for lineage and diversity strongly enough for high-stakes post-training?
+  related_docs:
+  - ../docs/01_what_is_post_training_reasoning_data.md
+  - ../docs/03_reasoning_data_objects.md
+  - ../docs/06_verifiers_and_rewards.md
+  - ../docs/05_construction_cookbook.md
+  related_cards:
+  - ../cards/release_card_template.md
+  - ../cards/verifier_card_template.md
+  - ../cards/recipe_card_template.md
+- id: programmatic_math_code_proof
+  order: 2
+  emoji: 🧮
+  title: Programmatic Math, Code, and Proof Data
+  file: 02_programmatic_math_code_proof.md
+  summary: Math answers, code execution, unit tests, theorem provers, and verifier robustness studies where correctness can
+    often be checked by a rule or external tool.
+  reader_promise: 'Use this category to study the cleanest verifier-bearing reasoning records: problems, traces, executable
+    checks, proof assistants, pass-rate filters, and decontamination claims.'
+  why:
+  - Programmatic domains are the workbench where many reasoning-data ideas become concrete. In math, the terminal predicate
+    may be an exact answer, symbolic equivalence, or a carefully normalized solution. In code, the substrate can be a compiler,
+    unit tests, hidden tests, or an execution trace. In formal proof, Lean or another prover turns a generated step into a
+    machine-checkable artifact. These domains make the feedback contract visible enough to train with RLVR, filter teacher
+    traces, and audit false positives.
+  - That visibility does not make the data simple. Answer-verifiable math records can still leak benchmark items, reward shortcuts,
+    or collapse diversity around familiar problem templates. Code datasets can overfit public tests, create brittle execution
+    sandboxes, or reward solutions that exploit task wording. Proof data can hide massive retrieval and autoformalization
+    assumptions. The useful question is not whether verification is automatic; it is what exactly is verified, what is ignored,
+    and how the construction recipe handles uncertainty.
+  - For builders, this category is the place to compare record designs. GSM8K and MATH made answer-level reasoning evaluation
+    mainstream. HumanEval, APPS, BigCodeBench, LiveCodeBench, OpenCodeReasoning, and KodCode move correctness into executable
+    code surfaces. DeepSeek-Prover, Goedel-Prover, LeanDojo, miniF2F, ProofNet, and HOList show how formal substrates can
+    support proof search and reinforcement. Newer math releases such as OpenMathReasoning, Big-Math, DeepMath-103K, and NaturalReasoning
+    expose post-training data recipes more directly.
+  - 'Read these papers as verifier specifications. The paper title may say dataset, benchmark, or model report, but the reusable
+    asset is often the contract: answer normalizer, test harness, proof checker, pass-rate band, source mixture, and filtering
+    rule. Whenever a link is not pinned in local metadata, the atlas keeps the entry but marks it for search rather than adding
+    an unverified URL.'
+  how_to_read:
+  - 'Name the verifier: exact answer, symbolic checker, unit tests, compiler, hidden judge, proof assistant, or learned verifier.'
+  - Check whether traces are human-written, teacher-distilled, model-sampled, search-generated, or tool-integrated.
+  - Look for pass-rate bands, difficulty filters, decontamination, public/private split policy, and verifier false-positive
+    analysis.
+  - Avoid assuming a high benchmark score implies reusable training data; inspect whether the release exposes prompts, solutions,
+    traces, and filtering code.
+  starter_match:
+  - GSM8K
+  - MATH dataset
+  - HumanEval
+  - APPS
+  - BigCodeBench
+  - LiveCodeBench
+  - OpenMathReasoning
+  - DeepMath-103K
+  - Big-Math
+  - OpenCodeReasoning
+  - KodCode
+  - DeepSeekMath
+  - DeepSeek-Prover
+  - Goedel-Prover-V2
+  - LeanDojo
+  - ProofNet
+  - miniF2F
+  - HOList
+  match_any:
+  - gsm
+  - math
+  - mathematical
+  - code
+  - coding
+  - humaneval
+  - apps
+  - bigcodebench
+  - livecodebench
+  - opencode
+  - kodcode
+  - scicode
+  - humaneval
+  - proof
+  - prover
+  - lean
+  - minif2f
+  - holist
+  - theorem
+  - openmath
+  - deepmath
+  - big-math
+  - naturalreasoning
+  - qwen2.5-math
+  - wizardmath
+  - metamath
+  - mammoth
+  - frontiermath
+  - var-math
+  - math-perturb
+  - execution
+  - unit
+  - programmatic
+  - numina
+  contracts:
+  - programmatic
+  max_entries: 78
+  subtopics:
+  - name: 📐 Math answer-verifiable data
+    keywords:
+    - gsm
+    - math
+    - mathematical
+    - openmath
+    - deepmath
+    - big-math
+    - naturalreasoning
+    - frontiermath
+    - var-math
+    - math-perturb
+    - qwen2.5-math
+    - mammoth
+    - metamath
+    - wizardmath
+    - rstar-math
+  - name: 💻 Code execution-verifiable data
+    keywords:
+    - code
+    - coding
+    - humaneval
+    - apps
+    - bigcodebench
+    - livecodebench
+    - opencode
+    - kodcode
+    - scicode
+    - magicoder
+    - codet
+    - coderl
+  - name: 🧾 Formal proof and theorem proving
+    keywords:
+    - proof
+    - prover
+    - lean
+    - minif2f
+    - holist
+    - theorem
+    - autoformalizing
+    - goedel
+  - name: 🧪 Verifier robustness in programmatic domains
+    keywords:
+    - verifier
+    - robustness
+    - spurious
+    - symbolic
+    - process
+    - gaming
+  open_questions:
+  - How should math releases expose answer normalizers and verifier edge cases so downstream RLVR does not optimize quirks?
+  - Can public code benchmarks remain useful for training when hidden tests and benchmark refresh cycles are expensive?
+  - 'What is the right metadata for proof traces: informal proof, formal statement, search tree, failed attempts, retrieved
+    lemmas, or final proof only?'
+  - How much diversity is lost when data construction filters aggressively by pass-rate or teacher agreement?
+  related_docs:
+  - ../docs/02_verifier_anchored_taxonomy.md
+  - ../docs/03_reasoning_data_objects.md
+  - ../docs/04_data_quality.md
+  - ../docs/05_construction_cookbook.md
+  related_cards:
+  - ../cards/examples/math_reasoning_release_card.md
+  - ../cards/verifier_card_template.md
+  - ../cards/recipe_card_template.md
+- id: process_supervision_prm
+  order: 3
+  emoji: 🪜
+  title: Process Supervision and Process Reward Models
+  file: 03_process_supervision_prm.md
+  summary: Step labels, rollout values, first-error localization, PRM datasets, process verifiers, and studies of when process
+    rewards help or fail.
+  reader_promise: Use this page to understand the move from final-answer feedback to intermediate feedback that can train,
+    rank, or debug reasoning traces.
+  why:
+  - 'Process supervision asks a different question from outcome supervision. Instead of only asking whether the final answer
+    is right, it asks where the reasoning path becomes reliable, uncertain, or wrong. That makes the data object richer: a
+    prompt, a chain of steps, step-level labels or values, sometimes a first-error marker, and a reward model or verifier
+    trained to score intermediate states. The extra structure is expensive, but it can make feedback denser and more diagnostic.'
+  - 'The category begins with landmark human-labeled step data such as PRM800K / Let’s Verify Step by Step, then follows automated
+    and semi-automated routes: Math-Shepherd-style rollout values, OmegaPRM, ProcessBench, PRMBench, Qwen2.5-Math-PRM, PRIME,
+    PROF, and newer analyses that connect GRPO, outcome rewards, and process-like credit assignment. For code and tool tasks,
+    process supervision can mean execution traces, first failing assertion, or partial credit for reaching a better state.'
+  - Practitioners should be skeptical and precise. A process reward model can improve search, reranking, and training, but
+    it can also reward plausible-looking steps, overfit annotation style, or disagree with the final verifier. A first-error
+    label is not the same as a scalar reward; a rollout value is not the same as human step correctness; an implicit process
+    signal in a policy-gradient method is not the same as a supervised PRM dataset. The page keeps those distinctions visible.
+  - 'When local metadata lacks official links, entries stay in the curated list as `needs_search`. That is deliberate: process
+    supervision has many fast-moving papers and near-duplicate names, so a clean atlas should mark uncertainty rather than
+    promote a guessed repository or paper URL.'
+  how_to_read:
+  - 'Identify the label granularity: step correctness, first-error position, rollout value, process reward, scalar trace score,
+    or implicit credit assignment.'
+  - 'Ask who or what labels the step: human annotator, final-answer verifier, Monte Carlo rollouts, judge model, code executor,
+    or theorem prover.'
+  - Check whether the PRM is used for training, reranking, search, evaluation, or diagnosis; these uses have different failure
+    modes.
+  - Avoid equating a fluent chain-of-thought score with faithful reasoning unless the paper audits verifier robustness and
+    reward hacking.
+  starter_match:
+  - Let's Verify Step by Step
+  - Math-Shepherd
+  - Improve mathematical reasoning
+  - ProcessBench
+  - PRMBench
+  - Qwen2.5-Math-PRM
+  - PRIME
+  - Beyond Correctness
+  - ReST-MCTS
+  - Rewarding progress
+  - GRPO is Secretly
+  - Process reward models for code
+  match_any:
+  - process
+  - prm
+  - step
+  - first-error
+  - math-shepherd
+  - omega
+  - processbench
+  - prmbench
+  - qwen2.5-math-prm
+  - prime
+  - prof
+  - rewarding progress
+  - rest-mcts
+  - grpo
+  - rollout
+  - outcome
+  - verifier
+  - verify
+  - progress
+  - code reasoning
+  - implicit rewards
+  roles:
+  - process_supervision
+  - verifier_reward
+  max_entries: 58
+  subtopics:
+  - name: 🧑‍🏫 Step-level human labels
+    keywords:
+    - verify step
+    - step
+    - first-error
+    - prm800k
+  - name: 🎲 Rollout values and automated process signals
+    keywords:
+    - math-shepherd
+    - omega
+    - rollout
+    - rewarding progress
+    - implicit
+    - prime
+  - name: 🧪 PRM benchmarks and robustness
+    keywords:
+    - processbench
+    - prmbench
+    - qwen2.5-math-prm
+    - robustness
+    - verifier
+  - name: 💻 Process rewards beyond math
+    keywords:
+    - code
+    - tool
+    - prof
+    - grpo
+    - outcome
+    - rest-mcts
+  open_questions:
+  - When does a process reward model add signal beyond a strong outcome verifier plus search?
+  - How should PRM datasets annotate uncertainty when human labels disagree about a step?
+  - Can process rewards scale to agent trajectories where state transitions are long and partially observable?
+  - What diagnostics reveal that a PRM is rewarding trace style rather than causal progress?
+  related_docs:
+  - ../docs/06_verifiers_and_rewards.md
+  - ../docs/03_reasoning_data_objects.md
+  - ../docs/04_data_quality.md
+  - ../docs/08_scaling_and_test_time_compute.md
+  related_cards:
+  - ../cards/verifier_card_template.md
+  - ../cards/examples/rubric_reward_release_card.md
+- id: environmental_agents_tools_web_swe
+  order: 4
+  emoji: 🌐
+  title: Environmental Agent, Tool, Web, and SWE Trajectory Data
+  file: 04_environmental_agents_tools_web_swe.md
+  summary: Tool calls, browser tasks, app worlds, OS environments, repository-level software engineering, and replayable state-action
+    episodes.
+  reader_promise: 'Use this page to learn how an environment becomes a data source: observations, actions, tools, traces,
+    tests, rewards, and replay metadata.'
+  why:
+  - Agent data turns reasoning from a static prompt-answer record into an interaction. A tool-using model chooses actions,
+    receives observations, updates state, and eventually succeeds, fails, or asks for help. The environment is not decoration;
+    it is the verifier-bearing substrate. In web tasks, it may be a browser state. In app and OS tasks, it may be a controllable
+    software world. In repository-level SWE tasks, it may be a Git diff plus tests. The training record is often an episode,
+    not a single completion.
+  - 'This category collects the lineage from ReAct and Toolformer through ToolLLM, API-Bank, Gorilla, APIGen, BFCL, ToolSandbox,
+    tau-bench, Mind2Web, WebLINX, BrowserGym, WebArena, VisualWebArena, WorkArena, OSWorld, AndroidWorld, AppWorld, OpenHands,
+    SWE-bench, SWE-bench Verified, SWE-Gym, R2E-Gym, SWE-RL, SWE-smith, SWE-rebench, Terminal-Bench, and The Agent Company.
+    The names vary, but the reusable questions are the same: what is the state, what actions are valid, what makes the task
+    complete, and can the episode be replayed?'
+  - For practitioners, environmental data is attractive because it produces realistic feedback and naturally supports reinforcement
+    learning. It is also expensive and fragile. Simulators drift, APIs change, hidden tests leak, browser pages mutate, and
+    a successful trajectory may contain accidental shortcuts. Good papers document environment versions, task generation,
+    action spaces, termination predicates, failure labels, and whether the same tasks are used for training and evaluation.
+  - Read the full list with an engineering lens. A benchmark can become a training environment only if it supports reproducible
+    rollouts and sufficiently cheap verification. A dataset of tool-call demonstrations may be useful for SFT but weak for
+    RL if the environment cannot execute the calls. The category pages mark missing official URLs as `needs_search` to avoid
+    inventing repository links for fast-moving agent systems.
+  how_to_read:
+  - 'Write down the episode schema: observation, model state, action, tool/environment response, reward, terminal predicate,
+    and replay metadata.'
+  - Check whether tasks are static demonstrations, executable benchmarks, live environments, or generated training worlds.
+  - Inspect decontamination and split policy carefully, especially for SWE tasks derived from public GitHub issues.
+  - Avoid assuming agent benchmark success transfers to training usefulness unless the environment can be reset, replayed,
+    and instrumented.
+  starter_match:
+  - ReAct
+  - Toolformer
+  - ToolLLM
+  - API-Bank
+  - Gorilla
+  - APIGen
+  - BFCL
+  - ToolSandbox
+  - tau-bench
+  - Mind2Web
+  - WebLINX
+  - BrowserGym
+  - WebArena
+  - VisualWebArena
+  - WorkArena
+  - OSWorld
+  - AndroidWorld
+  - AppWorld
+  - SWE-bench
+  - SWE-Gym
+  - R2E-Gym
+  - The Agent Company
+  match_any:
+  - agent
+  - tool
+  - api
+  - function
+  - browser
+  - web
+  - arena
+  - osworld
+  - android
+  - appworld
+  - swe
+  - software
+  - github
+  - terminal
+  - environment
+  - trajectory
+  - state
+  - action
+  - episode
+  - gorilla
+  - bfcl
+  - tau-bench
+  - mind2web
+  - weblinx
+  - openhands
+  - r2e
+  - mcp
+  - xlam
+  - react
+  - reflexion
+  - paperqa
+  - scienceworld
+  contracts:
+  - environmental
+  roles:
+  - agent_environment
+  max_entries: 82
+  subtopics:
+  - name: 🛠️ Tool-use and API datasets
+    keywords:
+    - tool
+    - api
+    - function
+    - gorilla
+    - bfcl
+    - xlam
+    - react
+  - name: 🌍 Web and browser environments
+    keywords:
+    - web
+    - browser
+    - arena
+    - mind2web
+    - weblinx
+    - workarena
+    - visualwebarena
+  - name: 🖥️ App, OS, and desktop worlds
+    keywords:
+    - appworld
+    - osworld
+    - android
+    - scienceworld
+    - mcp
+  - name: 💻 Software-engineering agents
+    keywords:
+    - swe
+    - software
+    - github
+    - r2e
+    - openhands
+    - terminal
+    - code agent
+  open_questions:
+  - What minimum replay metadata should every agent trajectory release include?
+  - How can benchmark maintainers refresh task pools without breaking comparability?
+  - When are generated environments realistic enough for post-training rather than merely curriculum pretraining?
+  - How should trajectories expose failed attempts so models learn recovery rather than just imitation of successful traces?
+  related_docs:
+  - ../docs/07_agent_trajectory_data.md
+  - ../docs/03_reasoning_data_objects.md
+  - ../docs/05_construction_cookbook.md
+  - ../docs/09_audit_and_failure_modes.md
+  related_cards:
+  - ../cards/examples/agent_environment_release_card.md
+  - ../cards/agent_trajectory_card_template.md
+- id: judgment_required_rubrics_safety_domain
+  order: 5
+  emoji: ⚖️
+  title: Judgment-Required Rubrics, Safety, Medical, and Domain Data
+  file: 05_judgment_required_rubrics_safety_domain.md
+  summary: Rubric rewards, health and safety benchmarks, factuality, legal/finance/science data, and LLM-as-judge systems
+    where correctness cannot be reduced to a cheap programmatic predicate.
+  reader_promise: Use this page when the answer needs expert judgment, calibrated uncertainty, policy interpretation, or rubric-grounded
+    scoring rather than a single executable check.
+  why:
+  - Not every reasoning task has a unit test or exact answer. Medical reasoning may require clinical nuance, evidence use,
+    and refusal behavior. Safety work may require taxonomy labels and policy-grounded judgments. Legal and financial tasks
+    often need document interpretation and citation. Factuality and hallucination benchmarks demand source attribution. Rubric
+    reward models try to turn this messy judgment into trainable feedback without pretending it is programmatic verification.
+  - This category collects HealthBench, FaithBench, Aegis2.0, WildGuard, HarmBench, AbstentionBench, Safety Through Reasoning,
+    RewardBench, JudgeLM, Prometheus 2, Rubrics as Rewards, OnlineRubrics, Omni-RRM, AutoRubric, Rubric-ARM, R3, FinanceBench,
+    FinQA, TAT-QA, LegalBench, CUAD, CaseHOLD, ContractNLI, PubMedQA, BioASQ, SciFact, GPQA, HLE, ChemBench, LAB-Bench, and
+    related domain benchmarks. The common thread is not the domain; it is the need to document the judging contract.
+  - For a builder, the practical question is how a rubric becomes data. Does the record include the rubric text, annotator
+    expertise, pairwise comparison, scalar score, evidence span, refusal label, risk taxonomy, or judge prompt? Can the same
+    rubric be applied consistently across model families? Does the dataset separate training, validation, and public leaderboard
+    use? Are sensitive domains licensed and documented well enough for reuse? These details decide whether judgment-required
+    data is a stable reward signal or a noisy leaderboard artifact.
+  - The key trap is automation theater. An LLM judge can make a task look scalable, but a judge is another model with its
+    own vulnerabilities. This page pairs rubric systems with judge-attack and reward-benchmark context elsewhere in the atlas
+    so readers keep asking whether feedback is reliable, calibrated, and hard to game. Missing links stay marked as `needs_search`.
+  how_to_read:
+  - 'Identify the rubric or policy source: expert-written criteria, pairwise preferences, risk taxonomy, domain guideline,
+    evidence requirement, or model-judge prompt.'
+  - Check annotator expertise, disagreement handling, calibration, and whether examples include rationales or just scalar
+    scores.
+  - Separate evaluation-only benchmarks from data releases meant for reward modeling or safety alignment.
+  - Avoid treating LLM-as-judge scores as ground truth without adversarial, bias, and one-token attack checks.
+  starter_match:
+  - HealthBench
+  - FaithBench
+  - Aegis2.0
+  - WildGuard
+  - HarmBench
+  - AbstentionBench
+  - Safety Through Reasoning
+  - RewardBench
+  - JudgeLM
+  - Prometheus
+  - Rubrics as rewards
+  - OnlineRubrics
+  - Omni-RRM
+  - Autorubric
+  - Rubric-ARM
+  - R3
+  - FinanceBench
+  - FinQA
+  - TAT-QA
+  - LegalBench
+  - PubMedQA
+  - BioASQ
+  - SciFact
+  - GPQA
+  - Humanity's Last Exam
+  match_any:
+  - rubric
+  - judge
+  - rewardbench
+  - health
+  - medical
+  - med
+  - clinical
+  - bio
+  - pubmed
+  - safety
+  - guardrail
+  - harm
+  - wildguard
+  - aegis
+  - abstention
+  - factual
+  - fact
+  - hallucination
+  - faith
+  - truthful
+  - legal
+  - contract
+  - casehold
+  - cuad
+  - coliee
+  - maud
+  - finance
+  - finqa
+  - tat-qa
+  - science
+  - gpqa
+  - hle
+  - humanity
+  - chem
+  - lab-bench
+  - qasper
+  - alce
+  - prometheus
+  - mt-bench
+  - chatbot arena
+  - domain
+  - expert
+  contracts:
+  - judgment_required
+  max_entries: 88
+  subtopics:
+  - name: 🧑‍⚖️ Rubric rewards and LLM judges
+    keywords:
+    - rubric
+    - judge
+    - rewardbench
+    - prometheus
+    - mt-bench
+    - chatbot
+    - r3
+    - omni
+    - autorubric
+  - name: 🛡️ Safety, refusal, and guardrails
+    keywords:
+    - safety
+    - guardrail
+    - harm
+    - wildguard
+    - aegis
+    - abstention
+    - truthful
+    - xstest
+  - name: 🩺 Medical and scientific reasoning
+    keywords:
+    - health
+    - medical
+    - med
+    - clinical
+    - bio
+    - pubmed
+    - science
+    - chem
+    - lab-bench
+    - gpqa
+    - qasper
+  - name: 🏦 Legal, financial, and evidence-grounded domains
+    keywords:
+    - legal
+    - contract
+    - casehold
+    - cuad
+    - coliee
+    - maud
+    - finance
+    - finqa
+    - tat-qa
+    - faith
+    - fact
+    - alce
+  open_questions:
+  - What should a reusable rubric-release card disclose about judge prompts, annotator expertise, and disagreement?
+  - How can domain benchmarks distinguish reasoning errors from missing knowledge or retrieval failure?
+  - When is LLM-as-judge acceptable for data construction, and when must expert review remain in the loop?
+  - How should safety reasoning datasets represent refusals, policy boundaries, and chain-of-thought privacy?
+  related_docs:
+  - ../docs/06_verifiers_and_rewards.md
+  - ../docs/04_data_quality.md
+  - ../docs/09_audit_and_failure_modes.md
+  - ../docs/10_industry_onboarding_path.md
+  related_cards:
+  - ../cards/examples/rubric_reward_release_card.md
+  - ../cards/verifier_card_template.md
+- id: construction_recipes_open_reasoning_data
+  order: 6
+  emoji: 🏗️
+  title: Construction Recipes and Open Reasoning Data
+  file: 06_construction_recipes_open_reasoning_data.md
+  summary: Prompt sourcing, teacher traces, filtering, self-play, generator-verifier loops, distill-then-RL, pure RL, and
+    open reproduction pipelines.
+  reader_promise: 'Use this page to move from paper claims to buildable recipes: source mixture, trace writer, verifier, filter,
+    optimizer, ablation, and release metadata.'
+  why:
+  - 'Construction-recipe papers are the practical heart of a reasoning-data atlas. They answer the question a builder actually
+    asks: how did the examples get made? A useful recipe exposes the prompt source, teacher or generator, sampling budget,
+    trace format, verifier, filter, pass-rate band, decontamination rule, training objective, and ablations. Without those
+    pieces, a model report may be inspiring but hard to reproduce.'
+  - OpenThoughts, OpenMathReasoning, Big-Math, DeepMath-103K, LIMO, s1, DAPO, DeepScaleR, Open-Reasoner-Zero, R-Zero, Absolute
+    Zero, TTRL, AlphaEvolve, CoVerRL, Multi-Agent Evolve, STaR, Self-Instruct, Orca, and related papers show different positions
+    in the recipe design space. Some rely on teacher traces and filtering. Some use self-play or generator-verifier co-evolution.
+    Some emphasize tiny high-quality seed sets; others scale rollouts and reinforcement. Some are open pipelines; others are
+    model reports with partial recipe disclosure.
+  - The useful habit is to read every recipe as a bill of materials. What raw tasks entered? Who wrote the reasoning traces?
+    How were failures removed or retained? What did the verifier see? Was the reward programmatic, learned, or judgment-based?
+    Did the authors show that the same source examples were not reused as evaluations? Did they publish enough artifacts to
+    let another team rerun the filter?
+  - Recipes are also where hidden risk enters. A strong teacher may leak benchmark behavior into student traces. A filter
+    can collapse diversity. A generator-verifier loop can converge on spurious consensus. A small curated set can be powerful
+    but fragile. This page links construction papers to audit pages so readers keep tracing lineage instead of treating data
+    recipes as magic.
+  how_to_read:
+  - 'Draw the pipeline: prompt source, generator/teacher, sampling, verifier, filter, training split, optimizer, evaluation
+    suite, and release artifacts.'
+  - Look for ablations that isolate data size, data quality, verifier choice, model initialization, and inference budget.
+  - Check whether the recipe exposes code/data links or only describes them; mark missing artifacts as `needs_search` before
+    reuse.
+  - Avoid assuming a recipe transfers across domains unless the paper explains how the verifier and prompt source change.
+  starter_match:
+  - OpenThoughts
+  - OpenMathReasoning
+  - DeepMath-103K
+  - Big-Math
+  - NaturalReasoning
+  - DAPO
+  - DeepScaleR
+  - s1
+  - LIMO
+  - STaR
+  - R-Zero
+  - Absolute Zero
+  - TTRL
+  - AlphaEvolve
+  - CoVerRL
+  - Multi-Agent Evolve
+  - Self-Instruct
+  - Orca
+  match_any:
+  - recipe
+  - recipes
+  - open
+  - openthoughts
+  - openmath
+  - deepmath
+  - big-math
+  - naturalreasoning
+  - dapo
+  - deepscaler
+  - tinyzero
+  - s1
+  - limo
+  - star
+  - r-zero
+  - absolute zero
+  - ttrl
+  - alphaevolve
+  - coverrl
+  - multi-agent evolve
+  - self-play
+  - self evolving
+  - self-improve
+  - distill
+  - distillation
+  - teacher
+  - filter
+  - source
+  - data
+  - construction
+  - synthetic
+  - trace
+  - open-reasoner
+  - sky-t1
+  - mammoth
+  - metamath
+  - wizardmath
+  - orca
+  - self-instruct
+  - retool
+  - deepseekmath
+  roles:
+  - construction_recipe
+  - data_release
+  max_entries: 82
+  subtopics:
+  - name: 📦 Open math/code reasoning releases
+    keywords:
+    - openmath
+    - opencode
+    - deepmath
+    - big-math
+    - naturalreasoning
+    - kodcode
+    - mammoth
+    - metamath
+    - wizardmath
+  - name: 🧑‍🏫 Teacher traces, distillation, and filtering
+    keywords:
+    - openthoughts
+    - distill
+    - teacher
+    - filter
+    - limo
+    - orca
+    - s1
+    - am-deepseek
+  - name: 🔁 Self-play and generator-verifier loops
+    keywords:
+    - self-play
+    - r-zero
+    - absolute zero
+    - coverrl
+    - multi-agent
+    - self-improve
+    - star
+    - self-instruct
+  - name: ⚙️ RLVR and open training pipelines
+    keywords:
+    - dapo
+    - deepscaler
+    - open-reasoner
+    - ttrl
+    - sky-t1
+    - retool
+    - rlvr
+    - reinforcement
+  open_questions:
+  - What is the smallest metadata card that makes a reasoning-data recipe reproducible?
+  - How can recipes report negative samples and failed traces without encouraging benchmark leakage?
+  - When does generator-verifier co-evolution escape teacher limitations, and when does it amplify spurious consensus?
+  - How should open pipelines balance release transparency with benchmark and safety leakage risks?
+  related_docs:
+  - ../docs/05_construction_cookbook.md
+  - ../docs/03_reasoning_data_objects.md
+  - ../docs/04_data_quality.md
+  - ../docs/08_scaling_and_test_time_compute.md
+  related_cards:
+  - ../cards/recipe_card_template.md
+  - ../cards/examples/math_reasoning_release_card.md
+- id: frontier_model_reports
+  order: 7
+  emoji: 🚀
+  title: Frontier Reasoning Model Reports
+  file: 07_frontier_model_reports.md
+  summary: Public reasoning-model reports and open-weight model reports that disclose post-training data, reward stacks, scaling
+    choices, or evaluation design.
+  reader_promise: Use this page to read frontier reports as data disclosures rather than only model announcements.
+  why:
+  - 'Frontier reasoning reports are often the first place new post-training patterns become visible. They may not publish
+    all data, but they reveal enough to shape the field: RLVR on verifiable tasks, long chain-of-thought behavior, distillation
+    from stronger teachers, reward-model stacks, rejection sampling, self-play, inference-budget scaling, and benchmark suites.
+    A data atlas reads these reports for their pipeline clues, not just their headline scores.'
+  - This category includes OpenAI o1 and o3/o4-mini context, DeepSeek-R1, DeepSeekMath, DeepSeek-V3.2 when relevant, Kimi
+    k1.5, Kimi K2, Qwen3, Qwen3-Coder if locally added later, Magistral, Phi-4-reasoning, Llama-Nemotron, MiniMax-M1, Skywork-OR1,
+    OpenReasoner-Zero, AM-Thinking-v1, rStar2-Agent, and related model reports. Some are verified in local metadata; others
+    are BibTeX seeds requiring link search or curator review.
+  - Practitioners should look for disclosure granularity. Does the report identify task domains, data sources, reward types,
+    verifier classes, teacher models, sampling budgets, safety filters, and decontamination? Does it separate SFT, distillation,
+    RL, and test-time compute? Does it show ablations that tie data design to capability rather than only presenting final
+    benchmark numbers? Those answers decide how much the report can teach a builder.
+  - The key caveat is opacity. Many frontier reports are necessarily partial. This page therefore treats model reports as
+    signals to triangulate with open recipes, benchmarks, and audit papers. If an entry lacks an official link in local data,
+    it is kept as a `needs_search` candidate rather than linked to a guessed blog, model card, or repository.
+  how_to_read:
+  - 'Extract the post-training stack: SFT, distillation, preference tuning, RLVR, process rewards, safety tuning, and test-time
+    compute.'
+  - Separate data disclosure from evaluation disclosure; a report can be strong on one and weak on the other.
+  - 'Track which artifacts are public: paper, model weights, datasets, training code, eval code, safety cards, or only a technical
+    report.'
+  - Avoid treating a frontier report as a reproducible recipe unless it exposes enough pipeline and source metadata.
+  starter_match:
+  - Learning to reason with LLMs
+  - DeepSeek-R1
+  - DeepSeekMath
+  - Kimi K1.5
+  - Kimi K2
+  - Qwen3
+  - Magistral
+  - Phi-4-reasoning
+  - Llama-Nemotron
+  - MiniMax-M1
+  - Skywork Open Reasoner
+  - Open-Reasoner-Zero
+  - AM-Thinking-v1
+  - rStar2-Agent
+  - DeepSeek-V3.2
+  match_any:
+  - technical report
+  - model
+  - openai
+  - o1
+  - o3
+  - deepseek
+  - kimi
+  - qwen
+  - magistral
+  - phi-4
+  - llama-nemotron
+  - minimax
+  - skywork
+  - open reasoner
+  - open-reasoner
+  - am-thinking
+  - rstar2
+  - reasoner
+  - frontier
+  - llama 3
+  - tulu
+  - xlam
+  - m1
+  roles:
+  - model_report
+  max_entries: 48
+  subtopics:
+  - name: 🚀 Public reasoning-model reports
+    keywords:
+    - openai
+    - learning to reason
+    - deepseek-r1
+    - kimi
+    - qwen
+    - magistral
+    - phi
+    - minimax
+    - skywork
+  - name: 🧪 Open-weight reasoning reports
+    keywords:
+    - llama-nemotron
+    - open-reasoner
+    - am-thinking
+    - sky-t1
+    - qwen
+    - phi
+  - name: 🌐 Agentic frontier reports
+    keywords:
+    - agent
+    - rstar2
+    - kimi k2
+    - xlam
+    - swe
+    - open agentic
+  - name: 🧬 Reports with post-training data clues
+    keywords:
+    - distill
+    - rl
+    - post-training
+    - deepseekmath
+    - tulu
+    - llama 3
+  open_questions:
+  - What is the minimum disclosure needed for a frontier report to be useful as a data-construction reference?
+  - How should an atlas represent proprietary pipelines without overclaiming reproducibility?
+  - Which model-report ablations actually isolate data quality, and which conflate model size, inference budget, and training
+    objective?
+  - How can public model reports document safety and chain-of-thought privacy without exposing sensitive traces?
+  related_docs:
+  - ../docs/08_scaling_and_test_time_compute.md
+  - ../docs/05_construction_cookbook.md
+  - ../docs/09_audit_and_failure_modes.md
+  - ../docs/10_industry_onboarding_path.md
+  related_cards:
+  - ../cards/release_card_template.md
+  - ../cards/recipe_card_template.md
+- id: scaling_test_time_compute_rlvr
+  order: 8
+  emoji: 📈
+  title: Scaling, Test-Time Compute, and RLVR
+  file: 08_scaling_test_time_compute_rlvr.md
+  summary: RLVR scaling, data reuse, distillation scaling, pass@k/pass@(k,T), inference budget, search topology, and test-time
+    reinforcement.
+  reader_promise: Use this page to separate scaling claims into data size, model size, RL compute, inference budget, search,
+    and verifier reliability.
+  why:
+  - Scaling papers turn reasoning-data design into a budget question. How many unique prompts are needed? How many rollouts
+    per prompt? How much inference compute should be spent before training? When does repeated sampling beat better data?
+    When does RLVR produce general reasoning and when does it exploit verifier shortcuts? These papers are valuable because
+    they expose axes that model-report leaderboards often compress into one number.
+  - This category includes Large Language Monkeys, s1, Kimi k1.5, The Art of Scaling Reinforcement Learning Compute for LLMs,
+    Scaling Behaviors of LLM RL Post-Training, Distillation Scaling Laws, pass@k and pass@(k,T) work, CoT-Pass@K, Markovian
+    Thinker, TTRL, entropy and clipping studies, DAPO, DeepScaleR, one-shot RLVR, data reuse papers, and RLVR audit studies.
+    Some are verified; many are local seeds that need link review.
+  - 'Practitioners should read every scaling curve as a measurement design. What exactly is on the x-axis: tokens, examples,
+    rollouts, unique tasks, optimizer steps, model size, inference calls, search depth, or wall-clock compute? What is held
+    fixed? Is the verifier stable across the scale sweep? Are public benchmarks contaminated or refreshed? Are failures reported
+    or only successful runs? Without those details, a scaling law can become a storytelling device.'
+  - This page connects scaling to construction and audit because the axes are inseparable. A pass-rate filter changes data
+    quality; a reward function changes which behaviors are selected; a test-time compute budget changes measured capability;
+    a benchmark refresh changes the target. Treat scaling claims as ledger entries, not magic.
+  how_to_read:
+  - 'Identify the compute axis: training RL steps, rollout count, sample count, inference budget, search width/depth, or model
+    size.'
+  - Check whether the paper controls for data uniqueness, source overlap, verifier choice, and benchmark contamination.
+  - 'Look for asymptote-versus-efficiency language: does more compute raise the ceiling or merely reach the same ceiling faster?'
+  - Avoid comparing pass@k, majority vote, budget forcing, and RL training curves unless the evaluation protocol is aligned.
+  starter_match:
+  - Large Language Monkeys
+  - s1
+  - Kimi K1.5
+  - The Art of Scaling
+  - Scaling Behaviors
+  - Distillation Scaling Laws
+  - pass@
+  - CoT-Pass
+  - Markovian Thinker
+  - TTRL
+  - The Entropy Mechanism
+  - Clip-Low
+  - DAPO
+  - DeepScaleR
+  - 1-shot RLVR
+  match_any:
+  - scaling
+  - scale
+  - test-time
+  - test time
+  - rlvr
+  - reinforcement learning
+  - pass@
+  - pass-k
+  - k,t
+  - monkeys
+  - repeated sampling
+  - distillation scaling
+  - entropy
+  - clip
+  - budget
+  - inference compute
+  - markovian
+  - ttrl
+  - dapo
+  - deepscaler
+  - one-shot
+  - 1-shot
+  - reuse
+  - generalizes
+  - rl really
+  - invisible leash
+  - pro
+  - data reuse
+  - compute
+  roles:
+  - scaling_study
+  training_use:
+  - rlvr
+  - test_time_compute
+  max_entries: 62
+  subtopics:
+  - name: 📈 RLVR scaling
+    keywords:
+    - rlvr
+    - reinforcement learning
+    - scaling behaviors
+    - dapo
+    - deepscaler
+    - one-shot
+    - 1-shot
+    - invisible leash
+  - name: ⏱️ Test-time compute and repeated sampling
+    keywords:
+    - test-time
+    - test time
+    - monkeys
+    - repeated sampling
+    - s1
+    - pass@
+    - budget
+    - inference
+  - name: 🧑‍🏫 Distillation and data reuse
+    keywords:
+    - distillation
+    - distill
+    - reuse
+    - memorize
+    - teacher
+    - self-distillation
+  - name: 🧪 Optimization and reward dynamics
+    keywords:
+    - entropy
+    - clip
+    - markovian
+    - grpo
+    - scaling laws
+    - reward
+  open_questions:
+  - 'Which scaling axes should be reported together for RLVR runs: unique tasks, rollouts, tokens, verifier calls, and optimizer
+    steps?'
+  - How can benchmark refresh cycles keep test-time compute papers from optimizing stale public tasks?
+  - When does distillation preserve reasoning capability, and when does it compress away search behavior?
+  - What failure telemetry should accompany successful scaling curves?
+  related_docs:
+  - ../docs/08_scaling_and_test_time_compute.md
+  - ../docs/05_construction_cookbook.md
+  - ../docs/09_audit_and_failure_modes.md
+  related_cards:
+  - ../cards/recipe_card_template.md
+  - ../cards/verifier_card_template.md
+- id: audit_failure_contamination_verifier_attacks
+  order: 9
+  emoji: 🧯
+  title: Audit, Failure, Contamination, and Verifier Attacks
+  file: 09_audit_failure_contamination_verifier_attacks.md
+  summary: CoT faithfulness, leakage, contamination, reward hacking, judge attacks, synthetic-data collapse, live benchmarks,
+    and verifier robustness.
+  reader_promise: 'Use this page as the hazard map for reasoning data: what can leak, what can be gamed, what can be contaminated,
+    and what can silently fail.'
+  why:
+  - Reasoning data creates new failure surfaces because the feedback signal is often more structured and more trusted than
+    ordinary labels. A verifier can be gamed. A judge can be attacked. A chain-of-thought can be unfaithful or leak private
+    information. A benchmark can be contaminated at training time or even search time. Synthetic traces can transmit hidden
+    traits. Data reuse can blur train/test boundaries. Audit papers make these hazards visible.
+  - This category includes Language Models Don’t Always Say What They Think, Measuring Faithfulness in Chain-of-Thought Reasoning,
+    GSM-Symbolic, Spurious Rewards, One Token to Fool LLM-as-a-Judge, Leaky Thoughts, Subliminal Learning, Search-Time Data
+    Contamination, LastingBench, LiveBench, HLE, A Sober Look at Progress in Language Model Reasoning, verifier robustness
+    studies, LLMs Gaming Verifiers, Imperfect Verifier Is Good Enough, model-collapse papers, soft contamination, and related
+    diagnostics.
+  - For practitioners, the audit lens should be active before data collection starts. If the final verifier can be exploited,
+    log adversarial examples. If a benchmark might appear in prompt sources, record decontamination. If a rubric judge can
+    be flipped by a token, test the judge before using it as a reward. If chain-of-thought is stored, check privacy and policy
+    exposure. If synthetic data is recursively reused, track lineage and diversity.
+  - 'The practical output of this category is an audit checklist: source lineage, split hygiene, verifier false positives,
+    judge robustness, privacy leakage, benchmark refresh, reward hacking, and failure telemetry. Entries with missing official
+    URLs remain marked as `needs_search`, because audit pages are especially vulnerable to citation drift and scary-sounding
+    but unverified claims.'
+  how_to_read:
+  - 'Classify the failure: contamination, leakage, unfaithful trace, verifier false positive, judge attack, reward hacking,
+    collapse, or benchmark drift.'
+  - Check whether the paper demonstrates the failure on training data, evaluation data, search-time behavior, or deployed
+    interaction.
+  - Look for proposed mitigations and whether they are operational enough to add to a release checklist.
+  - Avoid treating a negative result as universal unless the model family, domain, verifier, and evaluation protocol are clear.
+  starter_match:
+  - Language models do not always say
+  - Measuring faithfulness
+  - GSM-Symbolic
+  - Spurious Rewards
+  - One Token to Fool
+  - Leaky Thoughts
+  - Subliminal Learning
+  - Search-Time Data Contamination
+  - LastingBench
+  - LiveBench
+  - Humanity's Last Exam
+  - A Sober Look
+  - From Accuracy to Robustness
+  - LLMs Gaming Verifiers
+  - Imperfect Verifier
+  - AI models collapse
+  - Soft Contamination
+  match_any:
+  - faithfulness
+  - faithful
+  - do not always say
+  - contamination
+  - leak
+  - leaky
+  - subliminal
+  - spurious
+  - gaming
+  - fool
+  - attack
+  - reward hacking
+  - collapse
+  - sober
+  - robustness
+  - symbolic
+  - lastingbench
+  - livebench
+  - hle
+  - humanity
+  - soft contamination
+  - memorization
+  - privacy
+  - abstention
+  - unanswerable
+  - overoptimization
+  - 'false'
+  - failure
+  - pitfalls
+  - benchmark
+  - decontaminated
+  - no longer evaluate
+  roles:
+  - audit_failure
+  max_entries: 72
+  subtopics:
+  - name: 🧠 CoT faithfulness and privacy
+    keywords:
+    - faithfulness
+    - do not always say
+    - leaky
+    - privacy
+    - chain-of-thought
+    - safechain
+  - name: 🧬 Leakage and contamination
+    keywords:
+    - contamination
+    - lastingbench
+    - livebench
+    - decontaminated
+    - soft contamination
+    - no longer evaluate
+    - min-k
+  - name: 🧪 Verifier failure and reward hacking
+    keywords:
+    - spurious
+    - gaming
+    - verifier
+    - robustness
+    - imperfect
+    - reward hacking
+    - overoptimization
+  - name: 🧯 Judge attacks and synthetic-data collapse
+    keywords:
+    - fool
+    - judge
+    - collapse
+    - subliminal
+    - memorization
+    - unanswerable
+    - abstention
+  open_questions:
+  - What verifier-attack tests should be mandatory before using a reward signal for RLVR?
+  - How can live benchmarks remain useful without making longitudinal comparison impossible?
+  - What metadata proves that synthetic reasoning traces did not carry hidden benchmark or behavioral leakage?
+  - When should chain-of-thought be hidden, summarized, or omitted from public data releases for privacy and safety?
+  related_docs:
+  - ../docs/09_audit_and_failure_modes.md
+  - ../docs/04_data_quality.md
+  - ../docs/06_verifiers_and_rewards.md
+  - ../reports/needs_search.md
+  related_cards:
+  - ../cards/verifier_card_template.md
+  - ../cards/release_card_template.md
+- id: benchmarks_evaluation
+  order: 10
+  emoji: 🧰
+  title: Benchmarks and Evaluation Surfaces
+  file: 10_benchmarks_evaluation.md
+  summary: Math/code/live/agent/domain/process/reward benchmarks organized by what they measure and what feedback they can
+    support.
+  reader_promise: Use this page to tell evaluation surfaces apart from training data, and to understand when a benchmark can
+    become a verifier, reward, or environment.
+  why:
+  - Benchmarks are not just scoreboards in a reasoning-data repository. They define task distributions, answer formats, hidden
+    tests, judge prompts, and sometimes executable environments. A benchmark can become a filter for construction, a verifier
+    for RLVR, a source of prompts, a reward-model evaluation suite, or a contamination risk. The same artifact can be useful
+    and dangerous depending on how it is reused.
+  - 'This category reorganizes overlapping papers by evaluation surface: math and code benchmarks such as GSM8K, MATH, FrontierMath,
+    LiveCodeBench, BigCodeBench, HumanEval, APPS, SciCode, and KodCode; live and contamination-aware benchmarks such as LiveBench,
+    LastingBench, HLE, GSM-Symbolic, and SWE-bench lifecycle work; agent benchmarks such as WebArena, BrowserGym, OSWorld,
+    AndroidWorld, AppWorld, tau-bench, ToolSandbox, and The Agent Company; domain benchmarks such as HealthBench, FinanceBench,
+    LegalBench, PubMedQA, BioASQ, GPQA, LAB-Bench, ChemBench, SciFact, and Qasper; and process/reward benchmarks such as PRMBench,
+    ProcessBench, RewardBench, and MT-Bench.'
+  - For practitioners, the key distinction is evaluation-only versus trainable feedback. A benchmark with hidden tests may
+    evaluate code well but be hard to use as open training data. A public math benchmark may be excellent for history but
+    risky for RLVR if it leaks into prompt sources. A domain benchmark can expose expert reasoning requirements, but the labels
+    may be too expensive or ambiguous to turn into rewards. A live benchmark can improve contamination resistance while complicating
+    reproducibility.
+  - 'Read benchmark papers by writing down the surface: task source, answer type, judge/verifier, split, refresh policy, public
+    artifacts, and known leakage risk. Then decide whether the benchmark belongs in training, validation, evaluation, or audit
+    only. This page intentionally overlaps with every other category because evaluation is the mirror that reveals whether
+    a data recipe actually worked.'
+  how_to_read:
+  - 'Identify what is being measured: final answer, executable code, proof validity, tool task success, expert judgment, process
+    error, reward-model preference, or factuality.'
+  - Check whether the benchmark exposes trainable artifacts or only evaluation prompts and labels.
+  - Inspect public/private splits, benchmark refresh policy, contamination checks, and hidden-test availability.
+  - Avoid using benchmark prompts as training data unless the atlas and paper clearly document the split and downstream evaluation
+    risk.
+  starter_match:
+  - GSM8K
+  - MATH dataset
+  - HumanEval
+  - APPS
+  - BigCodeBench
+  - LiveCodeBench
+  - FrontierMath
+  - LiveBench
+  - GSM-Symbolic
+  - SWE-bench
+  - WebArena
+  - OSWorld
+  - AppWorld
+  - tau-bench
+  - HealthBench
+  - FinanceBench
+  - LegalBench
+  - PubMedQA
+  - GPQA
+  - HLE
+  - ProcessBench
+  - PRMBench
+  - RewardBench
+  match_any:
+  - benchmark
+  - bench
+  - eval
+  - evaluation
+  - gsm
+  - math
+  - humaneval
+  - apps
+  - code
+  - live
+  - symbolic
+  - frontiermath
+  - swe-bench
+  - arena
+  - osworld
+  - appworld
+  - android
+  - tau-bench
+  - toolsandbox
+  - healthbench
+  - financebench
+  - legalbench
+  - pubmed
+  - bioasq
+  - gpqa
+  - hle
+  - qasper
+  - scifact
+  - chembench
+  - lab-bench
+  - processbench
+  - prmbench
+  - rewardbench
+  - mt-bench
+  - truthfulqa
+  - casehold
+  - cuad
+  - contractnli
+  - tat-qa
+  - finqa
+  - sci
+  - terminal-bench
+  - agent company
+  - workarena
+  - weblinx
+  - mind2web
+  roles:
+  - benchmark
+  training_use:
+  - evaluation
+  max_entries: 110
+  subtopics:
+  - name: 📐 Math, code, and proof benchmarks
+    keywords:
+    - gsm
+    - math
+    - humaneval
+    - apps
+    - code
+    - frontiermath
+    - livecodebench
+    - bigcodebench
+    - scicode
+    - proof
+    - miniF2F
+  - name: 🧬 Live and contamination-aware benchmarks
+    keywords:
+    - live
+    - lasting
+    - symbolic
+    - contamination
+    - hle
+    - humanity
+    - no longer evaluate
+  - name: 🌐 Agent and environment benchmarks
+    keywords:
+    - arena
+    - osworld
+    - appworld
+    - android
+    - tau-bench
+    - toolsandbox
+    - agent
+    - swe-bench
+    - terminal
+    - weblinx
+    - mind2web
+  - name: ⚖️ Domain, process, and reward benchmarks
+    keywords:
+    - health
+    - finance
+    - legal
+    - pubmed
+    - bioasq
+    - gpqa
+    - qasper
+    - scifact
+    - chem
+    - lab-bench
+    - processbench
+    - prmbench
+    - rewardbench
+    - truthful
+  open_questions:
+  - Which benchmarks should be protected from training reuse, and which can safely serve as verifier-bearing training sources?
+  - How should benchmark maintainers publish contamination audits without exposing hidden-test content?
+  - What evaluation surfaces best predict industrial post-training usefulness rather than leaderboard specialization?
+  - How can benchmark cards encode refresh policy, hidden tests, license, and train/eval separation concisely?
+  related_docs:
+  - ../docs/02_verifier_anchored_taxonomy.md
+  - ../docs/04_data_quality.md
+  - ../docs/08_scaling_and_test_time_compute.md
+  - ../docs/09_audit_and_failure_modes.md
+  related_cards:
+  - ../cards/examples/math_reasoning_release_card.md
+  - ../cards/examples/agent_environment_release_card.md
+  - ../cards/verifier_card_template.md
+taxonomy:
+  core_fields:
+  - source_role
+  - verification_contract
+  - supervision_granularity
+  - training_use
+  - construction_layer
+  - status
+  status_policy: Entries without official paper/code/data links in data/papers.yaml remain visible but are marked needs_search
+    in generated pages. The atlas does not invent links.
+  emoji_legend:
+    🧭: survey / primer
+    🧱: foundation
+    🧮: programmatic verification
+    💻: code
+    📐: math
+    🧾: formal proof
+    🪜: process supervision
+    🧪: verifier / reward
+    🌐: agent / environment
+    🛠️: tool use
+    🧑‍⚖️: judgment / rubric
+    🛡️: safety
+    🩺: medical
+    🏦: finance/legal
+    🏗️: construction recipe
+    🚀: frontier model report
+    📈: scaling
+    ⏱️: test-time compute
+    🧯: audit / failure
+    🧬: lineage
+    📦: dataset
+    🤗: Hugging Face
+    🐙: code
+    📄: paper
+    🃏: card

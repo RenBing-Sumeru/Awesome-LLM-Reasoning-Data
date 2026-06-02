@@ -1,0 +1,33 @@
+name: Add or improve a card
+about: Add a release, verifier, agent, or recipe card with audit fields.
+title: "[Card] <work name>"
+labels: ["card", "metadata"]
+body:
+  - type: input
+    id: card_path
+    attributes:
+      label: Proposed card path
+      description: Example cards/releases/openthoughts.md or cards/verifiers/prm800k.md
+    validations:
+      required: true
+  - type: input
+    id: entry_id
+    attributes:
+      label: data/papers.yaml entry_id
+      description: The card should link to an existing entry_id when possible.
+    validations:
+      required: true
+  - type: textarea
+    id: data_object
+    attributes:
+      label: Data object fields
+      description: Prompt/source, trace/action, answer/artifact, feedback/verifier, and metadata. Use unknown for unverified fields.
+    validations:
+      required: true
+  - type: textarea
+    id: audit
+    attributes:
+      label: Audit notes
+      description: Verification contract, supervision granularity, construction recipe, known limitations, and missing official sources.
+    validations:
+      required: true

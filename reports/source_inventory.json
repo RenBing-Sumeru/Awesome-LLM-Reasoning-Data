@@ -1,19 +1,19 @@
 {
-  "note": "Absolute local source inventory omitted from the public submission folder.",
+  "note": "Public submission inventory for redesign-v2.",
   "included_public_artifacts": [
     "README.md",
     "README_zh.md",
     "data",
     "docs",
+    "papers",
     "cards",
     "assets",
     "scripts",
     "reports",
-    ".github"
+    ".github",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
+    "LICENSE"
   ],
-  "not_included": [
-    "local prompt.md",
-    "CODEX_BUILD_SPEC_Awesome_LLM_Reasoning_Data.md",
-    "companion paper PDF"
-  ]
+  "not_included_summary": "Local scratch prompts, private paper PDFs, caches, backups, and temporary build artifacts are outside this submission-ready folder."
 }

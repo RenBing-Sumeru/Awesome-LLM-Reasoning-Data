@@ -1,0 +1,216 @@
+starter_packs:
+- id: beginner_20
+  emoji: 🌱
+  title: 'Beginner 20: Reasoning Data Orientation'
+  goal: Build the vocabulary for post-training reasoning data before diving into recipes.
+  entries:
+  - Datasheets for datasets
+  - Data statements for natural language processing
+  - Training language models to follow instructions with human feedback
+  - Chain-of-thought prompting elicits reasoning in large language models
+  - Training verifiers to solve math word problems
+  - STaR
+  - Self-Instruct
+  - Direct preference optimization
+  - Let's Verify Step by Step
+  - GSM8K
+  - MATH dataset
+  - HumanEval
+  - SWE-bench
+  - RewardBench
+  - HealthBench
+  - LiveBench
+  - OpenThoughts
+  - DeepSeek-R1
+  - s1
+  - A Sober Look at Progress in Language Model Reasoning
+- id: builder_30
+  emoji: 🏗️
+  title: 'Builder 30: Data Construction and Release Practice'
+  goal: Learn how open reasoning-data recipes source prompts, write traces, filter, audit, and report artifacts.
+  entries:
+  - OpenThoughts
+  - OpenMathReasoning
+  - DeepMath-103K
+  - Big-Math
+  - NaturalReasoning
+  - LIMO
+  - s1
+  - DAPO
+  - DeepScaleR
+  - Open-Reasoner-Zero
+  - R-Zero
+  - Absolute Zero
+  - TTRL
+  - STaR
+  - Self-Instruct
+  - Orca
+  - MAmmoTH
+  - MetaMath
+  - WizardMath
+  - OpenCodeReasoning
+  - KodCode
+  - SWE-Gym
+  - R2E-Gym
+  - ToolLLM
+  - APIGen
+  - DeepSeekMath
+  - DeepSeek-Prover
+  - CoVerRL
+  - Multi-Agent Evolve
+  - Subliminal Learning
+- id: verifier_reward_25
+  emoji: 🧪
+  title: Verifier and Reward 25
+  goal: Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure diagnostics.
+  entries:
+  - Training verifiers to solve math word problems
+  - Let's Verify Step by Step
+  - Math-Shepherd
+  - OmegaPRM
+  - ProcessBench
+  - PRMBench
+  - Qwen2.5-Math-PRM
+  - PRIME
+  - PROF
+  - Rewarding progress
+  - RewardBench
+  - JudgeLM
+  - Prometheus 2
+  - Rubrics as rewards
+  - OnlineRubrics
+  - R3
+  - Omni-RRM
+  - Autorubric
+  - Rubric-ARM
+  - One Token to Fool LLM-as-a-Judge
+  - Spurious Rewards
+  - LLMs Gaming Verifiers
+  - From Accuracy to Robustness
+  - Imperfect Verifier
+  - Reward model overoptimization
+- id: agent_data_25
+  emoji: 🌐
+  title: Agent Data 25
+  goal: Understand trajectories, tool calls, browser/app/OS tasks, and SWE environments.
+  entries:
+  - ReAct
+  - Toolformer
+  - ToolLLM
+  - API-Bank
+  - Gorilla
+  - APIGen
+  - BFCL
+  - ToolSandbox
+  - tau-bench
+  - Mind2Web
+  - WebLINX
+  - BrowserGym
+  - WebArena
+  - VisualWebArena
+  - WorkArena
+  - OSWorld
+  - AndroidWorld
+  - AppWorld
+  - SWE-bench
+  - SWE-bench Verified
+  - SWE-Gym
+  - R2E-Gym
+  - OpenHands
+  - The Agent Company
+  - Terminal-Bench
+- id: scaling_20
+  emoji: 📈
+  title: Scaling 20
+  goal: Read scaling claims across RL compute, data size, distillation, and test-time inference budget.
+  entries:
+  - Large Language Monkeys
+  - s1
+  - Kimi K1.5
+  - The Art of Scaling Reinforcement Learning Compute
+  - Scaling Behaviors
+  - Distillation Scaling Laws
+  - pass@
+  - CoT-Pass
+  - Markovian Thinker
+  - TTRL
+  - The Entropy Mechanism
+  - Clip-Low
+  - DAPO
+  - DeepScaleR
+  - 1-shot RLVR
+  - Does RL really
+  - Does supervised fine-tuning memorize
+  - The Invisible Leash
+  - Why Does Self-Distillation
+  - Kimi K2
+- id: audit_failure_20
+  emoji: 🧯
+  title: Audit and Failure 20
+  goal: Build the habit of checking leakage, contamination, reward hacking, and judge robustness.
+  entries:
+  - Language models do not always say what they think
+  - Measuring faithfulness
+  - GSM-Symbolic
+  - Spurious Rewards
+  - One Token to Fool
+  - Leaky Thoughts
+  - Subliminal Learning
+  - Search-Time Data Contamination
+  - LastingBench
+  - LiveBench
+  - Humanity's Last Exam
+  - A Sober Look
+  - From Accuracy to Robustness
+  - LLMs Gaming Verifiers
+  - Imperfect Verifier
+  - AI models collapse
+  - Soft Contamination
+  - AbstentionBench
+  - SWE-bench Verified
+  - Reward model overoptimization
+- id: industry_onboarding_40
+  emoji: 🏭
+  title: Industry Onboarding 40
+  goal: A practical path for becoming useful on an LLM post-training data team.
+  entries:
+  - InstructGPT
+  - RLHF
+  - Constitutional AI
+  - DPO
+  - UltraFeedback
+  - Chain-of-thought
+  - STaR
+  - GSM8K
+  - MATH
+  - HumanEval
+  - SWE-bench
+  - Let's Verify Step by Step
+  - Math-Shepherd
+  - RewardBench
+  - HealthBench
+  - OpenThoughts
+  - OpenMathReasoning
+  - DeepMath-103K
+  - Big-Math
+  - LIMO
+  - s1
+  - DAPO
+  - DeepSeek-R1
+  - Kimi K1.5
+  - Qwen3
+  - Magistral
+  - SWE-Gym
+  - R2E-Gym
+  - WebArena
+  - OSWorld
+  - ToolSandbox
+  - ProcessBench
+  - PRMBench
+  - LiveBench
+  - LastingBench
+  - Spurious Rewards
+  - One Token to Fool
+  - Subliminal Learning
+  - Search-Time Data Contamination
+  - Datasheets for datasets

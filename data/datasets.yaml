@@ -1,1 +1,454 @@
-[]
+- id: datasheets-for-datasets-2018
+  title: Datasheets for datasets
+  year: 2018
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: pubmedqa-a-dataset-for-biomedical-research-question-answering-2019
+  title: 'PubMedQA: A dataset for biomedical research question answering'
+  year: 2019
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: casehold-a-dataset-for-legal-holding-statement-prediction-2021
+  title: 'CaseHOLD: A dataset for legal holding statement prediction'
+  year: 2021
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021
+  title: 'ContractNLI: A dataset for document-level natural language inference for contracts'
+  year: 2021
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021
+  title: 'CUAD: An expert-annotated NLP dataset for legal contract review'
+  year: 2021
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021
+  title: 'FinQA: A dataset of numerical reasoning over financial data'
+  year: 2021
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: measuring-mathematical-problem-solving-with-the-math-dataset-2021
+  title: Measuring mathematical problem solving with the MATH dataset
+  year: 2021
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021
+  title: 'Qasper: A dataset of information-seeking questions and answers over scientific research papers'
+  year: 2021
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: training-language-models-to-follow-instructions-with-human-feedback-2022
+  title: Training language models to follow instructions with human feedback
+  year: 2022
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023
+  title: Judging LLM-as-a-judge with MT-Bench and Chatbot Arena
+  year: 2023
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023
+  title: 'MAmmoTH: Building math generalist models through hybrid instruction tuning'
+  year: 2023
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: maud-a-merger-agreement-understanding-dataset-2023
+  title: 'MAUD: A merger agreement understanding dataset'
+  year: 2023
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: prm800k-2023
+  title: Let's Verify Step by Step
+  year: 2023
+  kind: dataset
+  status: verified
+  verification_contract:
+  - programmatic
+  - judgment_required
+  training_use:
+  - process_supervision
+  - reward_modeling
+  link: https://arxiv.org/abs/2305.20050
+  note: Landmark process supervision dataset with explicit step labels.
+- id: self-instruct-aligning-language-models-with-self-generated-instructions-2023
+  title: 'Self-Instruct: Aligning language models with self-generated instructions'
+  year: 2023
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: ultrafeedback-boosting-language-models-with-high-quality-feedback-2023
+  title: 'UltraFeedback: Boosting language models with high-quality feedback'
+  year: 2023
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023
+  title: 'WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct'
+  year: 2023
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024
+  title: 'APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets'
+  year: 2024
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024
+  title: 'BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions'
+  year: 2024
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: magicoder-empowering-code-generation-with-oss-instruct-2024
+  title: 'Magicoder: Empowering code generation with OSS-instruct'
+  year: 2024
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: mammoth2-scaling-instructions-from-the-web-2024
+  title: 'MAmmoTH2: Scaling Instructions from the Web'
+  year: 2024
+  kind: dataset
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2405.03548
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: opencodeinterpreter-integrating-code-generation-with-execution-and-refinement-2024
+  title: 'OpenCodeInterpreter: Integrating code generation with execution and refinement'
+  year: 2024
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024
+  title: 'OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data'
+  year: 2024
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: 1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025
+  title: 1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training (AM-DeepSeek-R1-Distilled)
+  year: 2025
+  kind: dataset
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2503.19633
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: acord-attorney-curated-open-research-dataset-2025
+  title: 'ACORD: Attorney-curated open research dataset'
+  year: 2025
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025
+  title: 'Aegis2.0: A Diverse AI Safety Dataset and Risks Taxonomy for Alignment of LLM Guardrails'
+  year: 2025
+  kind: dataset
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2501.09004
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: aegis2-2025
+  title: Aegis2.0
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - judgment_required
+  training_use:
+  - safety_alignment
+  - evaluation
+  link: https://arxiv.org/abs/2501.09004
+  note: Safety dataset with risk categories and label provenance.
+- id: big-math-2025
+  title: Big-Math-RL-Verified
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - programmatic
+  training_use:
+  - rlvr
+  - evaluation
+  link: https://arxiv.org/abs/2502.17387
+  note: Math data release used for base-relative pass-rate fields.
+- id: big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025
+  title: 'Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning'
+  year: 2025
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: deepmath-103k-2025
+  title: DeepMath-103K
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - programmatic
+  training_use:
+  - sft
+  - rlvr
+  - evaluation
+  link: https://arxiv.org/abs/2504.11456
+  note: Math release highlighted for verifier pinning and decontamination.
+- id: deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025
+  title: 'DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning'
+  year: 2025
+  kind: dataset
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2504.11456
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025
+  title: 'KodCode: A diverse, challenging, and verifiable synthetic dataset for coding'
+  year: 2025
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: limo-2025
+  title: 'LIMO: Less Is More for Reasoning'
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - mixed
+  training_use:
+  - sft
+  - distillation
+  link: https://arxiv.org/abs/2502.03387
+  note: Small-set curation reference distinguishing elicitation from broad coverage.
+- id: llama-nemotron-2025
+  title: 'Llama-Nemotron: Efficient Reasoning Models'
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - mixed
+  training_use:
+  - sft
+  - distillation
+  - rlvr
+  link: https://arxiv.org/abs/2505.00949
+  note: Mixed post-training corpus reference for reasoning, chat, and safety partitions.
+- id: naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025
+  title: 'NaturalReasoning: Reasoning in natural language with large-scale verifiable data'
+  year: 2025
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: opencodereasoning-2-scalable-code-reasoning-data-2025
+  title: 'OpenCodeReasoning-2: Scalable code reasoning data'
+  year: 2025
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: opencodereasoning-code-reasoning-traces-at-scale-2025
+  title: 'OpenCodeReasoning: Code reasoning traces at scale'
+  year: 2025
+  kind: dataset
+  status: needs_metadata
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: needs_search
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025
+  title: 'OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique'
+  year: 2025
+  kind: dataset
+  status: partial
+  verification_contract:
+  - unknown
+  training_use:
+  - unknown
+  link: https://arxiv.org/abs/2507.09075
+  note: Seeded from local BibTeX for later atlas classification; needs curator review.
+- id: openmathreasoning-2025
+  title: 'OpenMathReasoning: A large-scale dataset of math reasoning traces'
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - programmatic
+  training_use:
+  - sft
+  - distillation
+  - rlvr
+  link: https://arxiv.org/abs/2504.16891
+  note: Large-scale math reasoning trace release for programmatic verification.
+- id: openthoughts3-2025
+  title: 'OpenThoughts: Data recipes for reasoning models'
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - mixed
+  training_use:
+  - sft
+  - distillation
+  link: https://arxiv.org/abs/2506.04178
+  note: Open reasoning-data recipe exposing trace sourcing, filtering, and ablation practice.
+- id: swe-gym-2025
+  title: SWE-Gym
+  year: 2025
+  kind: dataset
+  status: verified
+  verification_contract:
+  - environmental
+  - programmatic
+  training_use:
+  - agent_training
+  - evaluation
+  link: https://arxiv.org/abs/2412.21139
+  note: Repository-scale training environment showing substrate as data.

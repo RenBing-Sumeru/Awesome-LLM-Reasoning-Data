@@ -1,4 +1,18 @@
 cff-version: 1.2.0
-message: "Citation metadata will be updated after the anonymous review period."
+message: "If you use this atlas, please cite the public GitHub repository."
 title: "Awesome LLM Reasoning Data"
+authors:
+  - name: "RenBing-Sumeru"
 repository-code: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
+url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
+date-released: 2026-06-02
+version: "redesign-v2"
+license: "MIT"
+keywords:
+  - large language models
+  - post-training
+  - reasoning data
+  - RLVR
+  - process supervision
+  - verifier
+  - agent trajectories

@@ -1,0 +1,60 @@
+name: Add a paper or release
+about: Suggest a reasoning-data paper, model report, benchmark, release, or audit study.
+title: "[Add Paper] <title>"
+labels: ["metadata", "paper"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Use the exact title from the official source.
+    validations:
+      required: true
+  - type: input
+    id: official_link
+    attributes:
+      label: Official paper/report link
+      description: arXiv, OpenReview, ACL Anthology, publisher page, or official project page. Do not use secondary blog links as the primary source.
+    validations:
+      required: true
+  - type: dropdown
+    id: source_role
+    attributes:
+      label: Source role
+      options:
+        - data_release
+        - benchmark
+        - verifier_reward
+        - process_supervision
+        - agent_environment
+        - construction_recipe
+        - scaling_study
+        - audit_failure
+        - model_report
+        - survey_background
+    validations:
+      required: true
+  - type: dropdown
+    id: verification_contract
+    attributes:
+      label: Verification contract
+      options:
+        - programmatic
+        - environmental
+        - judgment_required
+        - mixed
+        - unknown
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs in the atlas
+      description: Explain the data object, verifier/reward/environment, construction recipe, or audit lesson.
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Additional official links
+      description: Code, data, project page, Hugging Face, DOI, or release notes if official.

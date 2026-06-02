@@ -1,13 +1,20 @@
 # Source Inventory
 
-The original source-document inventory was used during local construction but is not preserved here with absolute workstation paths.
+This public submission folder contains only repository-facing artifacts for redesign v2.
 
-This submission keeps the public-facing outputs needed for repository review:
+## Included
 
-- Structured atlas data under `data/`.
-- Learning documents under `docs/`.
-- Release-card templates under `cards/`.
-- Build and validation scripts under `scripts/`.
-- Public reports under `reports/`.
+- README and bilingual README
+- Structured data under `data/`
+- Learning docs and static site under `docs/`
+- Paper atlas pages under `papers/`
+- Release, verifier, recipe, and agent cards under `cards/`
+- Visual assets, validation scripts, GitHub templates, and reports
 
-The original local prompt, one-off build specification file, and companion PDF are intentionally not included in this submission folder.
+## Excluded
+
+Local scratch prompts, private paper PDFs, caches, backups, and temporary build artifacts are outside this submission-ready folder.
+
+## Curation Note
+
+Long-tail entries seeded from local bibliography remain in `data/papers.yaml` as `needs_metadata` until primary sources and release metadata are checked.

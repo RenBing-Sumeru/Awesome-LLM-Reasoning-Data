@@ -1,0 +1,97 @@
+<!-- entry_id: prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025 -->
+<!-- card_type: verifiers -->
+# 🧪 PRMBench: A fine-grained and challenging benchmark for process-level reward models
+
+## One-line takeaway
+
+Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.
+
+## Why this matters
+
+This verifier card is included because it helps readers connect a citation to an engineering decision. Read it through three linked questions: what is the data object, what verifies it, and what would fail if the verifier or metadata were wrong?
+
+Local role metadata: `benchmark, verifier_reward, process_supervision`. Local verification contract: `judgment_required, mixed`. Local training/evaluation use: `evaluation, reward_modeling, process_supervision`. The current atlas status is `partial`, while citation/artifact status is `verified`. That separation is intentional: a working official link does not mean the source mixture, split, license, lineage, and verifier internals are fully curated.
+
+## What is the data object?
+
+| Field | Local value |
+|---|---|
+| Atlas type | Verifier card |
+| Domains | math, reasoning |
+| Prompt/source | reasoning problems with process annotations |
+| Trace/action author | model-generated or curated reasoning steps |
+| Answer/artifact format | step-level labels or scores |
+| Process fields | step, label, error type |
+| Environment/substrate | offline reasoning traces |
+| Verifier/reward | process-level reward model benchmark |
+| Terminal predicate | correct identification/scoring of process errors |
+
+## Verification contract
+
+- Check rubric text, rater expertise, judge model/version, calibration, and disagreement policy.
+- Locate the boundary between programmatic checks, environment feedback, human judgment, and model judgment.
+
+A reusable reasoning-data artifact should make the accept/reject or scoring signal reproducible. If the signal depends on a hidden judge prompt, moving service, undocumented code execution environment, missing unit tests, or unclear rubric, keep the entry `partial` until the gap is resolved.
+
+## Supervision granularity
+
+- Recorded granularity: `step_level, process_reward`.
+- Recorded training/evaluation use: `evaluation, reward_modeling, process_supervision`.
+- Construction layer: `reward_verifier_layer, release_audit`.
+
+Granularity controls reuse. Answer-level records, step labels, scalar rewards, preference pairs, and full environment episodes are not interchangeable. Match your training or evaluation objective to the feedback level that the source actually exposes.
+
+## Construction recipe
+
+| Recipe field | Local value |
+|---|---|
+| Base model | unknown |
+| Teacher | unknown |
+| Generator | unknown |
+| Filtering rule | unknown |
+| Sampling protocol | unknown |
+| Rollout count | unknown |
+| Temperature | unknown |
+| Inference budget | unknown |
+| Optimizer/scaffold | unknown |
+
+When reproducing this verifier or reward surface, fill these recipe fields before training. The missing knobs often matter more than the headline number of examples.
+
+## How it can be used
+
+- Reading map: compare it with neighboring entries in the same paper-category page.
+- Engineering map: decide whether it supports SFT, distillation, RLVR, process supervision, reward modeling, agent training, evaluation, or audit.
+- Audit map: open an issue for every `unknown` field that affects reproducibility, safety, or benchmark comparison.
+- Teaching map: use it to show how reasoning data differs from plain instruction data.
+
+## Audit checklist
+
+- [ ] Official paper, code, data, project, and dataset links are checked.
+- [ ] Source mixture, split policy, license, and lineage are recorded.
+- [ ] Verifier, reward, judge, rubric, environment, or test suite is reproducible.
+- [ ] Rejected/failed/ambiguous candidates are considered, not only successful examples.
+- [ ] Contamination, benchmark leakage, false positives, false negatives, and reward hacking are documented.
+- [ ] Training use is not broader than what the source supports.
+
+## Known limitations / failure modes
+
+- Source mixture: unknown.
+- Split: unknown.
+- Decontamination: unknown.
+- License: unknown.
+- Lineage: unknown.
+- Known failure modes: unknown; add false positives, false negatives, leakage, judge drift, and reward hacking notes when known.
+
+Local audit note: Primary arXiv link verified; label policy and human/LLM annotation mix should be checked before treating as training data.
+
+## Links
+
+- arXiv: [https://arxiv.org/abs/2501.03124](https://arxiv.org/abs/2501.03124)
+
+## Citation
+
+- Title: PRMBench: A fine-grained and challenging benchmark for process-level reward models
+- Year/source: 2025 · arXiv
+- Authors in local data: unknown
+- Local status: `partial`
+- Citation status: `verified` · metadata status: `partial`
