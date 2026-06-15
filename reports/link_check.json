@@ -1,12 +1,12 @@
 {
   "artifact_urls": 276,
-  "markdown_links_checked": 1599,
-  "external_markdown_links": 907,
+  "markdown_links_checked": 1646,
+  "external_markdown_links": 935,
   "unique_external_urls": 141,
-  "live_urls_checked": 0,
+  "live_urls_checked": 40,
   "failures": [],
   "bad_artifacts": [],
   "local_missing": [],
   "live_failures": [],
-  "mode": "soft"
+  "mode": "live"
 }

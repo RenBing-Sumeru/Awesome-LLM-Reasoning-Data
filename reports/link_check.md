@@ -3,10 +3,10 @@
 Link validation for local files, artifact URL formats, and optional live external probes.
 
 - artifact URLs discovered: 276
-- markdown links checked: 1599
-- external markdown links discovered: 907
+- markdown links checked: 1646
+- external markdown links discovered: 935
 - unique external URLs discovered: 141
-- live URLs checked: 0
+- live URLs checked: 40
 - failures: 0
 
 ## Artifact URLs
@@ -261,5 +261,3 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026` paper: https://arxiv.org/abs/2602.00846
 - `omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026` arxiv: https://arxiv.org/abs/2602.00846
 - ... 26 more
-
-Network probing skipped because `--soft` was used.

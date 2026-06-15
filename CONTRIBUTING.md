@@ -95,6 +95,7 @@ python scripts/validate_data.py
 python scripts/render_site.py --check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
+python scripts/render_cards.py --check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
 ```

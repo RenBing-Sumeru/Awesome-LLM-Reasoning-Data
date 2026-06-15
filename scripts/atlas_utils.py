@@ -22,6 +22,15 @@ CURATION_LEVELS = [
     "L5_audit_ready",
 ]
 
+PLACEHOLDER_MARKERS = [
+    "Local BibTeX seed",
+    "needs curator review",
+    "Official paper link is pinned",
+    "curator should next add",
+    "Needs curator summary",
+    "Needs curator rationale",
+]
+
 
 def as_list(value: Any) -> list[Any]:
     if isinstance(value, list):
@@ -55,6 +64,11 @@ def starter_packs() -> list[dict[str, Any]]:
 
 def artifacts(entry: dict[str, Any]) -> dict[str, Any]:
     return entry.get("artifacts") or {}
+
+
+def is_placeholder_text(value: Any) -> bool:
+    text = str(value or "")
+    return any(marker.lower() in text.lower() for marker in PLACEHOLDER_MARKERS)
 
 
 def primary_link(entry: dict[str, Any]) -> str | None:
@@ -97,6 +111,9 @@ def card_inventory() -> dict[str, str]:
 def curation_level(entry: dict[str, Any], card_path: str | None = None) -> str:
     explicit = entry.get("curation_level")
     if explicit in CURATION_LEVELS:
+        summary_bits = " ".join(str(entry.get(key) or "") for key in ["one_line", "one_line_summary", "why_it_matters", "inclusion_reason"])
+        if explicit in {"L3_summary_ready", "L4_carded", "L5_audit_ready"} and is_placeholder_text(summary_bits):
+            return "L1_link_verified" if primary_link(entry) else "L0_seeded"
         return explicit
     if not primary_link(entry):
         return "L0_seeded"
@@ -110,16 +127,22 @@ def curation_level(entry: dict[str, Any], card_path: str | None = None) -> str:
 
 
 def one_line(entry: dict[str, Any]) -> str:
-    return (
+    value = (
         entry.get("one_line_summary")
         or entry.get("one_line")
         or entry.get("inclusion_reason")
         or "Needs curator summary."
     )
+    if is_placeholder_text(value):
+        return "Official source is linked; detailed reasoning-data summary is still pending."
+    return value
 
 
 def why_it_matters(entry: dict[str, Any]) -> str:
-    return entry.get("why_it_matters") or entry.get("inclusion_reason") or "Needs curator rationale."
+    value = entry.get("why_it_matters") or entry.get("inclusion_reason") or "Needs curator rationale."
+    if is_placeholder_text(value):
+        return "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    return value
 
 
 def link_parts(entry: dict[str, Any], card_path: str | None = None) -> list[str]:

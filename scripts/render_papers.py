@@ -107,6 +107,10 @@ def links(entry: dict, cards: dict[str, str]) -> str:
     return " · ".join(link_parts(entry, cards.get(entry.get("id"))))
 
 
+def starter_link(label: str, href: str | None) -> str:
+    return f"[{label}]({href})" if href else "needs_search"
+
+
 def paper_item(entry: dict, cards: dict[str, str]) -> str:
     title = entry.get("title") or entry.get("id")
     title_md = f"[{title}]({primary_link(entry)})" if primary_link(entry) else title
@@ -218,8 +222,9 @@ def render_readme(cards: dict[str, str]) -> str:
     for index, title in enumerate(first_pack.get("entries", []), 1):
         entry = matches.get(title)
         if entry:
+            card_path = cards.get(entry.get("id"))
             starter_rows.append(
-                f"| {index} | {entry.get('title')} | {primary_link(entry) or 'needs_search'} | {('../' + cards[entry.get('id')]) if cards.get(entry.get('id')) else 'needs_card'} |"
+                f"| {index} | {entry.get('title')} | {starter_link('Paper', primary_link(entry))} | {starter_link('Card', '../' + card_path if card_path else None)} |"
             )
         else:
             starter_rows.append(f"| {index} | {title} | needs_search | needs_card |")

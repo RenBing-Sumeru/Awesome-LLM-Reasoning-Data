@@ -11,6 +11,7 @@ from atlas_utils import (
     card_inventory,
     curation_level,
     entries,
+    is_placeholder_text,
     norm,
     primary_link,
     starter_matches,
@@ -53,6 +54,18 @@ CARD_REQUIRED_ANY = [
     ["## 6. What should readers audit?", "## Audit checklist"],
     ["## 7. What is missing or risky?", "## Known limitations / failure modes"],
     ["## 9. Links and citation", "## Links"],
+]
+
+CARD_PLACEHOLDER_MARKERS = [
+    "needs curator review",
+    "Official paper link is pinned",
+    "curator should next add",
+    "Local BibTeX seed",
+    "Prompt/source: unknown",
+    "Trace/action author: unknown",
+    "Answer/artifact format: unknown",
+    "Recorded verifier/reward/environment: unknown",
+    "Known failure modes: unknown",
 ]
 
 
@@ -138,6 +151,10 @@ def validate_entries(data: list[dict], errors: list[str], warnings: list[str]) -
                 errors.append(f"{where}: verified entry missing one_line_summary")
             if not entry.get("why_it_matters"):
                 errors.append(f"{where}: verified entry missing why_it_matters")
+            if level in {"L3_summary_ready", "L4_carded", "L5_audit_ready"}:
+                summary_bits = " ".join(str(entry.get(key) or "") for key in ["one_line", "one_line_summary", "why_it_matters", "inclusion_reason"])
+                if is_placeholder_text(summary_bits):
+                    errors.append(f"{where}: {level} entry contains placeholder summary text")
             verification = entry.get("verification") or {}
             if verification.get("link_verified") is not True:
                 errors.append(f"{where}: verified entry missing verification.link_verified=true")
@@ -192,6 +209,12 @@ def validate_cards(data: list[dict], errors: list[str]) -> None:
             entry = matches.get(title)
             if entry and not cards_by_entry.get(entry.get("id")):
                 errors.append(f"beginner starter entry missing card: {title} -> {entry.get('id')}")
+            elif entry:
+                rel = cards_by_entry.get(entry.get("id"))
+                text = (ROOT / rel).read_text(encoding="utf-8")
+                for marker in CARD_PLACEHOLDER_MARKERS:
+                    if marker in text:
+                        errors.append(f"beginner starter card contains placeholder marker {marker!r}: {rel}")
 
 
 def scan_leakage(errors: list[str]) -> None:

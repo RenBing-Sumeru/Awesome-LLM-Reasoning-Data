@@ -24,7 +24,7 @@ Practitioners should read every scaling curve as a measurement design. What exac
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
 | Absolute Zero: Reinforced Self-play Reasoning with Zero Data | 2025 | arXiv preprint arXiv:2505.03335 | [Paper](https://arxiv.org/abs/2505.03335) · [Card](../cards/recipes/absolute_zero.md) | Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop. |
 | DAPO | 2025 | arXiv | [Paper](https://arxiv.org/abs/2503.14476) · [Card](../cards/releases/dapo.md) | GRPO-lineage RLVR recipe where filtering changes what reaches the gradient. |
-| DeepSeek-R1 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.12948) · [Card](../cards/recipes/deepseek_r1.md) | Frontier reasoning report central to public RLVR and reasoning post-training recipes. |
+| DeepSeek-R1 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.12948) · [Card](../cards/recipes/deepseek_r1.md) | It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior. |
 | Kimi K1.5: Scaling Reinforcement Learning with LLMs | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.12599) · [Card](../cards/recipes/kimi_k15.md) | Frontier report used for long-context RL and scaling discussion. |
 
 ## Full paper list
@@ -32,59 +32,59 @@ Practitioners should read every scaling curve as a measurement design. What exac
 ### 🧭 Survey Background
 
 - 🧭 **[Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM)](https://arxiv.org/abs/2602.01511)**
-  <sub>2026 · arXiv preprint arXiv:2602.01511 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2602.01511 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.01511)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Clip-Low Increases Entropy and Clip-High Decreases Entropy in Reinforcement Learning of Large Language Models](https://arxiv.org/abs/2509.26114)**
-  <sub>2025 · arXiv preprint arXiv:2509.26114 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2509.26114 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2509.26114)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Distillation Scaling Laws](https://arxiv.org/abs/2502.08606)**
-  <sub>2025 · Proceedings of the 42nd International Conference on Machine Learning (ICML) · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · Proceedings of the 42nd International Conference on Machine Learning (ICML) · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2502.08606)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction](https://arxiv.org/abs/2508.03613)**
-  <sub>2025 · arXiv preprint arXiv:2508.03613 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2508.03613 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2508.03613)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model](https://arxiv.org/abs/2503.24290)**
-  <sub>2025 · arXiv preprint arXiv:2503.24290 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2503.24290 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2503.24290)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[ReTool: Reinforcement Learning for Strategic Tool Use in LLMs](https://arxiv.org/abs/2504.11536)**
-  <sub>2025 · arXiv preprint arXiv:2504.11536 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2504.11536 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2504.11536)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs](https://arxiv.org/abs/2506.14245)**
-  <sub>2025 · arXiv preprint arXiv:2506.14245 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2506.14245 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2506.14245)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution](https://arxiv.org/abs/2502.18449)**
-  <sub>2025 · Advances in Neural Information Processing Systems (NeurIPS) · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · Advances in Neural Information Processing Systems (NeurIPS) · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2502.18449)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[The Entropy Mechanism of Reinforcement Learning for Reasoning Language Models](https://arxiv.org/abs/2505.22617)**
-  <sub>2025 · arXiv preprint arXiv:2505.22617 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2505.22617 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2505.22617)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[The Invisible Leash: Why RLVR May or May Not Escape Its Origin](https://arxiv.org/abs/2507.14843)**
-  <sub>2025 · arXiv preprint arXiv:2507.14843 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2507.14843 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2507.14843)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[The Markovian Thinker: Architecture-Agnostic Linear Scaling of Reasoning](https://arxiv.org/abs/2510.06557)**
-  <sub>2025 · arXiv preprint arXiv:2510.06557 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2510.06557 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2510.06557)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](https://arxiv.org/abs/2407.21787)**
-  <sub>2024 · arXiv preprint arXiv:2407.21787 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2024 · arXiv preprint arXiv:2407.21787 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2407.21787)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Training a helpful and harmless assistant with reinforcement learning from human feedback](https://arxiv.org/abs/2204.05862)**
-  <sub>2022 · arXiv · 🧭 survey background · judgment required · reward modeling · preference learning · L3_summary_ready</sub>
+  <sub>2022 · arXiv · 🧭 survey background · judgment required · reward modeling · preference learning · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2204.05862)
   _Why it matters:_ It provides the alignment-data lineage that later reasoning-data recipes inherit when they combine demonstrations, preferences, and reward models.
 - 🧭 **[Deep reinforcement learning from human preferences](https://arxiv.org/abs/1706.03741)**
-  <sub>2017 · NeurIPS · 🧭 survey background · judgment required · reward modeling · preference learning · L3_summary_ready</sub>
+  <sub>2017 · NeurIPS · 🧭 survey background · judgment required · reward modeling · preference learning · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/1706.03741)
   _Why it matters:_ It is a foundation for later post-training data records that turn comparisons into trainable reward signals.
 
@@ -105,7 +105,7 @@ Practitioners should read every scaling curve as a measurement design. What exac
 - 🏗️ **[s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393)**
   <sub>2025 · arXiv · 🏗️ construction recipe · 📈 scaling study · mixed · sft · test time compute · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2501.19393) · [Card](../cards/releases/s1.md)
-  _Why it matters:_ Small-pool and test-time scaling reference.
+  _Why it matters:_ It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.
 
 ### 📦 Data Release
 
@@ -139,7 +139,7 @@ Practitioners should read every scaling curve as a measurement design. What exac
 - 🚀 **[DeepSeek-R1](https://arxiv.org/abs/2501.12948)**
   <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · distillation · rlvr · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2501.12948) · [Card](../cards/recipes/deepseek_r1.md)
-  _Why it matters:_ Frontier reasoning report central to public RLVR and reasoning post-training recipes.
+  _Why it matters:_ It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.
 - 🚀 **[Kimi K1.5: Scaling Reinforcement Learning with LLMs](https://arxiv.org/abs/2501.12599)**
   <sub>2025 · arXiv · 🚀 model report · 📈 scaling study · mixed · rlvr · test time compute · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2501.12599) · [Card](../cards/recipes/kimi_k15.md)
@@ -202,63 +202,63 @@ Practitioners should read every scaling curve as a measurement design. What exac
 - 🧭 **pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL**
   <sub>2026 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **1-shot RLVR: Learning reasoning with minimal verifiable data**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DAPO: An open-source LLM reinforcement learning system at scale**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepScaleR: Scaling reinforcement learning for reasoning in open models**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Does RL really incentivize reasoning beyond base?**
   <sub>2025 · NeurIPS Oral · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Does supervised fine-tuning memorize while reinforcement learning generalizes?**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Open-Reasoner-Zero: An open-source approach to RLVR for reasoning**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **SWE-RL: Advancing language agents for software engineering via reinforcement learning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Rewarding progress: Scaling automated process verifiers for LLM reasoning**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Reflexion: Language agents with verbal reinforcement learning**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **CodeRL: Mastering code generation through pretrained models and deep reinforcement learning**
   <sub>2022 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ## What to audit
 

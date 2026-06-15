@@ -15,9 +15,9 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 ## Curation Levels
 
 - L0_seeded: 147
-- L1_link_verified: 0
+- L1_link_verified: 64
 - L2_artifact_verified: 0
-- L3_summary_ready: 72
+- L3_summary_ready: 8
 - L4_carded: 32
 - L5_audit_ready: 20
 

@@ -1,6 +1,6 @@
 <!-- entry_id: self-instruct-aligning-language-models-with-self-generated-instructions-2023 -->
 <!-- card_type: recipes -->
-# 🃏 Self-Instruct: Aligning language models with self-generated instructions
+# Self-Instruct: Aligning language models with self-generated instructions
 
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, foundations_instruction_preference_alignment
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.
+Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.
 
-Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: construction_recipe, data_release.
 - Domains: instruction_following.
 - Current status: verified.
-
-This work belongs in the atlas because: Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline..
+- Why it belongs: Core synthetic-data construction recipe for instruction generation, filtering, and SFT without large human-written task collections.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: small seed set of human-written tasks.
+- Trace/action author: model generates new instructions, optional inputs, and responses.
+- Answer/artifact format: instruction-input-output triples.
+- Process fields: generated task, generated response, filtering metadata.
+- Environment or substrate: offline instruction tuning corpus.
+- Terminal predicate: heuristic and model-assisted quality filtering.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: mixed.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: answer_level.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: mixed heuristic and human/model quality checks.
+- Recorded verifier/reward/environment: duplicate removal, invalid-output filtering, and task-quality screening.
+- Supervision granularity: example_level.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: instruction-capable language model used for generation.
+- Teacher: seed tasks and generator model.
+- Generator: model-generated instructions and responses.
+- Filtering rule: remove duplicates, invalid formats, classification-style leakage, and low-quality examples.
+- Sampling protocol: iterative prompting from seed pool.
+- Inference budget: generation budget controls corpus size and diversity.
+- Optimizer/scaffold: supervised fine-tuning on accepted triples.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: sft.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it to audit synthetic reasoning corpora: prompt diversity and filtering rules matter as much as the raw example count.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- What seed tasks drive the generation distribution?
+- Are generated tasks deduplicated against benchmarks?
+- Are safety and domain failures filtered?
+- Are invalid or rejected generations logged?
+- Does the generator model leak benchmark style into the corpus?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Synthetic corpora inherit generator blind spots.
+- Heuristic filtering can favor easy or stylistically uniform examples.
+- Without decontamination, generated tasks can echo benchmark items.
 
 ## 8. Why it matters for post-training reasoning data
 
-Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.
+It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

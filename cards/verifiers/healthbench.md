@@ -1,96 +1,80 @@
 <!-- entry_id: healthbench-2025 -->
 <!-- card_type: verifiers -->
-# 🧪 HealthBench
+# HealthBench
 
-## One-line takeaway
+> Curation level: L5_audit_ready
+> Category: judgment_required_rubrics_safety_domain, benchmarks_evaluation, audit_failure_contamination_verifier_attacks
+> Links: [📄 Paper](https://arxiv.org/abs/2505.08775)
 
-Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.
+## TL;DR
 
-## Why this matters
+HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.
 
-This verifier card is included because it helps readers connect a citation to an engineering decision. Read it through three linked questions: what is the data object, what verifies it, and what would fail if the verifier or metadata were wrong?
+It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.
 
-Local role metadata: `benchmark, verifier_reward`. Local verification contract: `judgment_required`. Local training/evaluation use: `evaluation, reward_modeling, safety_alignment`. The current atlas status is `partial`, while citation/artifact status is `verified`. That separation is intentional: a working official link does not mean the source mixture, split, license, lineage, and verifier internals are fully curated.
+## 1. What is this work?
 
-## What is the data object?
+- Year / venue: 2025 · arXiv.
+- Atlas role: benchmark, verifier_reward.
+- Domains: health, safety, medical.
+- Current status: verified.
+- Why it belongs: Core rubric-based domain benchmark for medical/health reasoning, safety, and LLM-as-judge or expert-judged evaluation design.
 
-| Field | Local value |
-|---|---|
-| Atlas type | Verifier card |
-| Domains | health, safety, medical |
-| Prompt/source | health-oriented evaluation prompts |
-| Trace/action author | candidate assistant responses |
-| Answer/artifact format | response with rubric/judge evaluation |
-| Process fields | prompt, response, rubric dimension, score or label |
-| Environment/substrate | offline health evaluation benchmark |
-| Verifier/reward | rubric-guided expert/LLM judgment |
-| Terminal predicate | response meets health-quality and safety criteria |
+## 2. What data object does it expose?
 
-## Verification contract
+- Prompt/source: multi-turn health conversations with users or healthcare professionals.
+- Trace/action author: model responses evaluated against physician-written criteria.
+- Answer/artifact format: conversation response plus rubric criterion outcomes.
+- Process fields: dialogue context, response, rubric criteria, score.
+- Environment or substrate: open-ended healthcare QA/dialogue setting.
+- Terminal predicate: rubric satisfaction across medically relevant criteria.
 
-- Check rubric text, rater expertise, judge model/version, calibration, and disagreement policy.
+## 3. What is the verifier / reward / judge / environment?
 
-A reusable reasoning-data artifact should make the accept/reject or scoring signal reproducible. If the signal depends on a hidden judge prompt, moving service, undocumented code execution environment, missing unit tests, or unclear rubric, keep the entry `partial` until the gap is resolved.
+- Verification contract: expert rubric judgment.
+- Recorded verifier/reward/environment: physician-created rubrics and benchmark variants.
+- Supervision granularity: rubric_item and conversation_level.
 
-## Supervision granularity
+## 4. How is the data constructed?
 
-- Recorded granularity: `scalar_reward, answer_level`.
-- Recorded training/evaluation use: `evaluation, reward_modeling, safety_alignment`.
-- Construction layer: `reward_verifier_layer, release_audit`.
+- Base model: evaluated models vary.
+- Teacher: physician rubric authors and benchmark designers.
+- Generator: model responses to health conversations.
+- Filtering rule: conversation and rubric quality control.
+- Sampling protocol: scenarios span emergencies, clinical data transformation, global health, and communication behavior.
+- Inference budget: model response generation; judging depends on rubric application.
+- Optimizer/scaffold: benchmark for evaluating health-oriented model behavior.
 
-Granularity controls reuse. Answer-level records, step labels, scalar rewards, preference pairs, and full environment episodes are not interchangeable. Match your training or evaluation objective to the feedback level that the source actually exposes.
+## 5. How can it enter post-training?
 
-## Construction recipe
+Recorded training/evaluation use: evaluation, reward_modeling, safety_alignment.
 
-| Recipe field | Local value |
-|---|---|
-| Base model | unknown |
-| Teacher | unknown |
-| Generator | unknown |
-| Filtering rule | unknown |
-| Sampling protocol | unknown |
-| Rollout count | unknown |
-| Temperature | unknown |
-| Inference budget | unknown |
-| Optimizer/scaffold | unknown |
+Use it as a rubric-data reference; do not reduce it to a single correctness label without preserving criteria and medical context.
 
-When reproducing this verifier or reward surface, fill these recipe fields before training. The missing knobs often matter more than the headline number of examples.
+## 6. What should readers audit?
 
-## How it can be used
+- Are rubrics written by qualified experts?
+- Can criteria be applied consistently?
+- Are high-risk medical errors separated from style issues?
+- Are model judges calibrated against experts?
+- Are hard and consensus subsets tracked separately?
 
-- Reading map: compare it with neighboring entries in the same paper-category page.
-- Engineering map: decide whether it supports SFT, distillation, RLVR, process supervision, reward modeling, agent training, evaluation, or audit.
-- Audit map: open an issue for every `unknown` field that affects reproducibility, safety, or benchmark comparison.
-- Teaching map: use it to show how reasoning data differs from plain instruction data.
+## 7. What is missing or risky?
 
-## Audit checklist
+- Rubric coverage may miss rare but severe harms.
+- Medical correctness can depend on context not captured in the prompt.
+- Automated judges need careful calibration in high-stakes settings.
 
-- [ ] Official paper, code, data, project, and dataset links are checked.
-- [ ] Source mixture, split policy, license, and lineage are recorded.
-- [ ] Verifier, reward, judge, rubric, environment, or test suite is reproducible.
-- [ ] Rejected/failed/ambiguous candidates are considered, not only successful examples.
-- [ ] Contamination, benchmark leakage, false positives, false negatives, and reward hacking are documented.
-- [ ] Training use is not broader than what the source supports.
+## 8. Why it matters for post-training reasoning data
 
-## Known limitations / failure modes
+It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown; add false positives, false negatives, leakage, judge drift, and reward hacking notes when known.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
-Local audit note: Primary arXiv link verified; medical safety, rater expertise, and rubric drift should remain explicit audit fields.
+## 9. Links and citation
 
-## Links
+[📄 Paper](https://arxiv.org/abs/2505.08775)
 
-- arXiv: [https://arxiv.org/abs/2505.08775](https://arxiv.org/abs/2505.08775)
-
-## Citation
-
-- Title: HealthBench
-- Year/source: 2025 · arXiv
-- Authors in local data: unknown
-- Local status: `partial`
-- Citation status: `verified` · metadata status: `partial`
+- Data ID: `healthbench-2025`
+- Citation status: verified
+- Confidence: high

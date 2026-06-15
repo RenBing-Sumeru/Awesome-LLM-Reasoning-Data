@@ -234,9 +234,10 @@ function bind() {
 }
 
 async function init() {
-  entries = await loadJson("assets/entries.json", []);
-  counts = await loadJson("assets/counts.json", {});
-  starterPacks = await loadJson("assets/starter_packs.json", []);
+  const bundled = window.ATLAS_DATA || {};
+  entries = await loadJson("assets/entries.json", bundled.entries || []);
+  counts = await loadJson("assets/counts.json", bundled.counts || {});
+  starterPacks = await loadJson("assets/starter_packs.json", bundled.starter_packs || []);
   setText("totalEntries", counts.total_entries || entries.length);
   setText("verifiedEntries", counts.verified_entries || 0);
   setText("cardedEntries", counts.carded_entries || 0);

@@ -1,6 +1,6 @@
 <!-- entry_id: star-bootstrapping-reasoning-with-reasoning-2022 -->
 <!-- card_type: recipes -->
-# 🃏 STaR: Bootstrapping reasoning with reasoning
+# STaR: Bootstrapping reasoning with reasoning
 
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, foundations_instruction_preference_alignment
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.
+STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.
 
-Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: construction_recipe, survey_background.
 - Domains: reasoning.
 - Current status: verified.
-
-This work belongs in the atlas because: Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction..
+- Why it belongs: Core bootstrapping recipe for synthetic rationale generation, correctness filtering, and iterative SFT.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: reasoning problems with final answers.
+- Trace/action author: model-generated rationales, optionally regenerated with answer hints.
+- Answer/artifact format: rationale plus final answer.
+- Process fields: generated rationale, answer, correctness filter outcome.
+- Environment or substrate: offline reasoning benchmarks.
+- Terminal predicate: final answer matches gold label.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: mixed.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: answer_level.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: answer_level programmatic or benchmark scoring.
+- Recorded verifier/reward/environment: correctness filter over generated rationales.
+- Supervision granularity: trace_level accepted through answer_level validation.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: pretrained language model refined over iterations.
+- Teacher: gold answers and accepted model rationales.
+- Generator: current model produces rationales.
+- Filtering rule: retain rationales that lead to correct answers.
+- Sampling protocol: iterative generation and fine-tuning loop.
+- Inference budget: multiple attempts can be used to find accepted rationales.
+- Optimizer/scaffold: supervised fine-tuning on accepted rationale traces.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: sft, distillation.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it as a warning that synthetic traces need acceptance evidence; rationale fluency alone is not a verifier.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Are rejected rationales preserved?
+- Does answer correctness imply step correctness?
+- Does the loop amplify model-specific shortcuts?
+- Are answer hints used and disclosed?
+- How many iterations and samples were required?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Filtering by final answer can keep unfaithful or lucky rationales.
+- Self-training may narrow diversity.
+- Rejected examples are often more informative than the retained set.
 
 ## 8. Why it matters for post-training reasoning data
 
-Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.
+It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

@@ -25,32 +25,32 @@ For practitioners, environmental data is attractive because it produces realisti
 | BrowserGym: A gym environment for web agents | 2024 | arXiv | [Paper](https://arxiv.org/abs/2412.05467) · [Card](../cards/agents/browsergym.md) | A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation. |
 | OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md) | Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation. |
 | OpenHands: An Open Platform for AI Software Developers as Generalist Agents | 2024 | ICLR | [Paper](https://arxiv.org/abs/2407.16741) · [Code](https://github.com/All-Hands-AI/OpenHands) · [Project](https://www.openhands.dev/) · [Card](../cards/agents/openhands.md) | Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds. |
-| SWE-bench: Can language models resolve real-world GitHub issues? | 2023 | ICLR | [Paper](https://arxiv.org/abs/2310.06770) · [OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [Code](https://github.com/swe-bench/SWE-bench) · [Project](https://www.swebench.com/original.html) · [Card](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) | SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes. |
+| SWE-bench: Can language models resolve real-world GitHub issues? | 2023 | ICLR | [Paper](https://arxiv.org/abs/2310.06770) · [OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [Code](https://github.com/swe-bench/SWE-bench) · [Project](https://www.swebench.com/original.html) · [Card](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) | It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes. |
 
 ## Full paper list
 
 ### 🧭 Survey Background
 
 - 🧭 **[Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence](https://arxiv.org/abs/2604.18292)**
-  <sub>2026 · arXiv preprint arXiv:2604.18292 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2604.18292 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2604.18292)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly?](https://arxiv.org/abs/2511.13646)**
-  <sub>2026 · arXiv preprint arXiv:2511.13646 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2511.13646 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2511.13646)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[SWE-Master: Unleashing the Potential of Software Engineering Agents via Post-Training](https://arxiv.org/abs/2602.03411)**
-  <sub>2026 · arXiv preprint arXiv:2602.03411 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2602.03411 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.03411)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution](https://arxiv.org/abs/2502.18449)**
-  <sub>2025 · Advances in Neural Information Processing Systems (NeurIPS) · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · Advances in Neural Information Processing Systems (NeurIPS) · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2502.18449)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents](https://arxiv.org/abs/2505.20411)**
-  <sub>2025 · arXiv preprint arXiv:2505.20411 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2505.20411 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2505.20411)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ### 🧰 Benchmark
 
@@ -73,7 +73,7 @@ For practitioners, environmental data is attractive because it produces realisti
 - 🧰 **[SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770)**
   <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2310.06770) · [OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [Code](https://github.com/swe-bench/SWE-bench) · [Project](https://www.swebench.com/original.html) · [Card](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md)
-  _Why it matters:_ SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes.
+  _Why it matters:_ It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.
 - 🧰 **[WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854)**
   <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2307.13854) · [Card](../cards/agents/webarena.md)
@@ -120,11 +120,11 @@ For practitioners, environmental data is attractive because it produces realisti
 - 🧭 **Terminal-Bench: A benchmark and task environment for terminal agents**
   <sub>2026 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **MCP-Universe: Tool and environment infrastructure for agent evaluation and training**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🚀 **Qwen3-Coder**
   <sub>2025 · GitHub / project report · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L0_seeded</sub>
   [Code](https://github.com/QwenLM/Qwen3-Coder) · [Project](https://qwenlm.github.io/blog/qwen3-coder/) · [Card](../cards/recipes/qwen3_coder.md)
@@ -132,51 +132,51 @@ For practitioners, environmental data is attractive because it produces realisti
 - 🧭 **R2E-Gym: Procedural training environments for repository-level code agents**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **SWE-RL: Advancing language agents for software engineering via reinforcement learning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **SWE-smith: Scaling data construction for software engineering agents**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Why we no longer evaluate on SWE-bench Verified**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **xLAM: A family of large action models to empower AI agent systems**
   <sub>2025 · NAACL · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets**
   <sub>2024 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Introducing SWE-bench Verified**
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **SWE-Gym: Advancing software engineering agents with training and evaluation environments**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ToolACE: Winning the points of LLM function calling**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧰 **VisualWebArena: Evaluating multimodal agents on realistic visual web tasks**
   <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L0_seeded</sub>
   needs_search
@@ -184,35 +184,35 @@ For practitioners, environmental data is attractive because it produces realisti
 - 🧭 **WorkArena: How capable are web agents at solving common knowledge work tasks?**
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **tau-bench: A benchmark for tool-agent-user interaction in real-world domains**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **API-Bank: A benchmark for tool-augmented LLMs**
   <sub>2023 · EMNLP · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Mind2Web: Towards a generalist agent for the web**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Reflexion: Language agents with verbal reinforcement learning**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Toolformer: Language models can teach themselves to use tools**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ScienceWorld: Is your agent smarter than a 5th grader?**
   <sub>2022 · EMNLP · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **HOList: An environment for machine learning of higher-order logic theorem proving**
   <sub>2019 · ICML · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ## What to audit
 

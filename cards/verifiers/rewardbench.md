@@ -1,97 +1,80 @@
 <!-- entry_id: rewardbench-evaluating-reward-models-for-language-modeling-2024 -->
 <!-- card_type: verifiers -->
-# 🧪 RewardBench: Evaluating Reward Models for Language Modeling
+# RewardBench: Evaluating Reward Models for Language Modeling
 
-## One-line takeaway
+> Curation level: L5_audit_ready
+> Category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+> Links: [📄 Paper](https://arxiv.org/abs/2403.13787)
 
-Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.
+## TL;DR
 
-## Why this matters
+RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.
 
-This verifier card is included because it helps readers connect a citation to an engineering decision. Read it through three linked questions: what is the data object, what verifies it, and what would fail if the verifier or metadata were wrong?
+It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.
 
-Local role metadata: `benchmark, verifier_reward`. Local verification contract: `judgment_required, mixed`. Local training/evaluation use: `evaluation, reward_modeling, preference_learning`. The current atlas status is `partial`, while citation/artifact status is `verified`. That separation is intentional: a working official link does not mean the source mixture, split, license, lineage, and verifier internals are fully curated.
+## 1. What is this work?
 
-## What is the data object?
+- Year / venue: 2024 · NeurIPS.
+- Atlas role: benchmark, verifier_reward.
+- Domains: preference, safety, chat.
+- Current status: verified.
+- Why it belongs: Core reward-model benchmark for preference-signal evaluation and RLHF/RLAIF audit.
 
-| Field | Local value |
-|---|---|
-| Atlas type | Verifier card |
-| Domains | preference, safety, chat |
-| Prompt/source | preference and instruction-following prompts |
-| Trace/action author | candidate model responses |
-| Answer/artifact format | pairwise or scalar reward decisions |
-| Process fields | prompt, chosen/rejected response, reward model score |
-| Environment/substrate | offline preference benchmark |
-| Verifier/reward | reward model or judge |
-| Terminal predicate | preference ranking correctness |
+## 2. What data object does it expose?
 
-## Verification contract
+- Prompt/source: curated prompts across chat, reasoning, and safety categories.
+- Trace/action author: candidate model responses paired as chosen/rejected.
+- Answer/artifact format: prompt, chosen response, rejected response.
+- Process fields: preference pair, category, reward-model score or ranking.
+- Environment or substrate: offline reward-model evaluation benchmark.
+- Terminal predicate: reward model assigns higher score to chosen response.
 
-- Check rubric text, rater expertise, judge model/version, calibration, and disagreement policy.
-- Locate the boundary between programmatic checks, environment feedback, human judgment, and model judgment.
+## 3. What is the verifier / reward / judge / environment?
 
-A reusable reasoning-data artifact should make the accept/reject or scoring signal reproducible. If the signal depends on a hidden judge prompt, moving service, undocumented code execution environment, missing unit tests, or unclear rubric, keep the entry `partial` until the gap is resolved.
+- Verification contract: judgment_required and mixed.
+- Recorded verifier/reward/environment: pairwise preference benchmark for reward models.
+- Supervision granularity: pairwise_preference and scalar_reward.
 
-## Supervision granularity
+## 4. How is the data constructed?
 
-- Recorded granularity: `pairwise_preference, scalar_reward`.
-- Recorded training/evaluation use: `evaluation, reward_modeling, preference_learning`.
-- Construction layer: `reward_verifier_layer, release_audit`.
+- Base model: evaluated reward models vary.
+- Teacher: benchmark preference labels.
+- Generator: candidate response sources vary by subset.
+- Filtering rule: curated subtle comparisons including reasoning and safety cases.
+- Sampling protocol: category-balanced benchmark subsets.
+- Inference budget: reward-model scoring, not rollout generation.
+- Optimizer/scaffold: evaluation harness and leaderboard.
 
-Granularity controls reuse. Answer-level records, step labels, scalar rewards, preference pairs, and full environment episodes are not interchangeable. Match your training or evaluation objective to the feedback level that the source actually exposes.
+## 5. How can it enter post-training?
 
-## Construction recipe
+Recorded training/evaluation use: evaluation, reward_modeling, preference_learning.
 
-| Recipe field | Local value |
-|---|---|
-| Base model | unknown |
-| Teacher | unknown |
-| Generator | unknown |
-| Filtering rule | unknown |
-| Sampling protocol | unknown |
-| Rollout count | unknown |
-| Temperature | unknown |
-| Inference budget | unknown |
-| Optimizer/scaffold | unknown |
+Use it to audit reward models before using them in post-training; a reward model that wins easy style pairs may still fail reasoning or safety comparisons.
 
-When reproducing this verifier or reward surface, fill these recipe fields before training. The missing knobs often matter more than the headline number of examples.
+## 6. What should readers audit?
 
-## How it can be used
+- Which subsets drive the score?
+- Does the reward model over-prefer verbosity or refusal?
+- Are reasoning examples separated from general chat?
+- Are preference labels stable under paraphrase?
+- Is leaderboard overfitting monitored?
 
-- Reading map: compare it with neighboring entries in the same paper-category page.
-- Engineering map: decide whether it supports SFT, distillation, RLVR, process supervision, reward modeling, agent training, evaluation, or audit.
-- Audit map: open an issue for every `unknown` field that affects reproducibility, safety, or benchmark comparison.
-- Teaching map: use it to show how reasoning data differs from plain instruction data.
+## 7. What is missing or risky?
 
-## Audit checklist
+- Reward benchmarks can become optimization targets.
+- Pairwise labels may encode hidden values.
+- OOD reasoning and safety cases can fail even when aggregate scores look good.
 
-- [ ] Official paper, code, data, project, and dataset links are checked.
-- [ ] Source mixture, split policy, license, and lineage are recorded.
-- [ ] Verifier, reward, judge, rubric, environment, or test suite is reproducible.
-- [ ] Rejected/failed/ambiguous candidates are considered, not only successful examples.
-- [ ] Contamination, benchmark leakage, false positives, false negatives, and reward hacking are documented.
-- [ ] Training use is not broader than what the source supports.
+## 8. Why it matters for post-training reasoning data
 
-## Known limitations / failure modes
+It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown; add false positives, false negatives, leakage, judge drift, and reward hacking notes when known.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
-Local audit note: Primary arXiv link verified; dataset mixture, judge model versions, and safety-sensitive subsets need explicit review.
+## 9. Links and citation
 
-## Links
+[📄 Paper](https://arxiv.org/abs/2403.13787)
 
-- arXiv: [https://arxiv.org/abs/2403.13787](https://arxiv.org/abs/2403.13787)
-
-## Citation
-
-- Title: RewardBench: Evaluating Reward Models for Language Modeling
-- Year/source: 2024 · NeurIPS
-- Authors in local data: unknown
-- Local status: `partial`
-- Citation status: `verified` · metadata status: `partial`
+- Data ID: `rewardbench-evaluating-reward-models-for-language-modeling-2024`
+- Citation status: verified
+- Confidence: high

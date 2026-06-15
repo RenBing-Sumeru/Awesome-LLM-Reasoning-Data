@@ -17,44 +17,44 @@ Practitioners should be skeptical and precise. A process reward model can improv
 | Work | Year | Venue | Links | Why it matters |
 |---|---:|---|---|---|
 | DeepMath-103K | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../cards/releases/deepmath_103k.md) | Math release highlighted for verifier pinning and decontamination. |
-| Let's Verify Step by Step | 2023 | arXiv | [Paper](https://arxiv.org/abs/2305.20050) · [Card](../cards/verifiers/prm800k.md) | Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning. |
-| Training verifiers to solve math word problems | 2021 | arXiv | [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/verifiers/training-verifiers-to-solve-math-word-problems.md) | It is an early anchor for treating math reasoning data as answer-level problems plus a verifier/reward selection surface. |
+| Let's Verify Step by Step | 2023 | arXiv | [Paper](https://arxiv.org/abs/2305.20050) · [Card](../cards/verifiers/prm800k.md) | It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation. |
+| Training verifiers to solve math word problems | 2021 | arXiv | [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/verifiers/training-verifiers-to-solve-math-word-problems.md) | It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows. |
 | One Token to Fool LLM-as-a-Judge | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md) | Verifier-attack paper showing trivial cue tokens can flip judge verdicts. |
 | PRMBench: A fine-grained and challenging benchmark for process-level reward models | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.03124) · [Card](../cards/verifiers/prmbench.md) | Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure. |
 | TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Card](../cards/verifiers/tinyv.md) | Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training. |
 | Math-Shepherd | 2024 | arXiv | [Paper](https://arxiv.org/abs/2312.08935) · [Card](../cards/verifiers/math_shepherd.md) | Monte-Carlo-style process signal reference for step supervision. |
 | OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision | 2024 | arXiv | [Paper](https://arxiv.org/abs/2406.06592) · [Card](../cards/verifiers/omegaprm.md) | Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels. |
 | ProcessBench: Identifying Process Errors in Mathematical Reasoning | 2024 | arXiv | [Paper](https://arxiv.org/abs/2412.06559) · [Card](../cards/verifiers/processbench.md) | Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training. |
-| An Imperfect Verifier is Good Enough: Learning with Noisy Rewards | 2026 | arXiv preprint arXiv:2604.07666 | [Paper](https://arxiv.org/abs/2604.07666) | Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note. |
+| An Imperfect Verifier is Good Enough: Learning with Noisy Rewards | 2026 | arXiv preprint arXiv:2604.07666 | [Paper](https://arxiv.org/abs/2604.07666) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 
 ## Full paper list
 
 ### 🧭 Survey Background
 
 - 🧭 **[An Imperfect Verifier is Good Enough: Learning with Noisy Rewards](https://arxiv.org/abs/2604.07666)**
-  <sub>2026 · arXiv preprint arXiv:2604.07666 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2604.07666 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2604.07666)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution](https://arxiv.org/abs/2603.17775)**
-  <sub>2026 · arXiv preprint arXiv:2603.17775 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2603.17775 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2603.17775)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking](https://arxiv.org/abs/2604.15149)**
-  <sub>2026 · arXiv preprint arXiv:2604.15149 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2604.15149 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2604.15149)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Beyond Correctness: Harmonizing Process and Outcome Rewards through RL Training (PROF)](https://arxiv.org/abs/2509.03403)**
-  <sub>2025 · arXiv preprint arXiv:2509.03403 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2509.03403 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2509.03403)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning](https://arxiv.org/abs/2505.22203)**
-  <sub>2025 · arXiv preprint arXiv:2505.22203 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2505.22203 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2505.22203)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[GRPO is Secretly a Process Reward Model](https://arxiv.org/abs/2509.21154)**
-  <sub>2025 · arXiv preprint arXiv:2509.21154 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2509.21154 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2509.21154)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ### 📦 Data Release
 
@@ -83,7 +83,7 @@ Practitioners should be skeptical and precise. A process reward model can improv
 - 🧰 **[Training verifiers to solve math word problems](https://arxiv.org/abs/2110.14168)**
   <sub>2021 · arXiv · 🧰 benchmark · 🧪 verifier reward · programmatic · judgment required · evaluation · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/verifiers/training-verifiers-to-solve-math-word-problems.md)
-  _Why it matters:_ It is an early anchor for treating math reasoning data as answer-level problems plus a verifier/reward selection surface.
+  _Why it matters:_ It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.
 
 ### 🧪 Verifier Reward
 
@@ -105,38 +105,38 @@ Practitioners should be skeptical and precise. A process reward model can improv
 - 🪜 **[Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)**
   <sub>2023 · arXiv · 🪜 process supervision · 🧪 verifier reward · judgment required · programmatic · process supervision · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2305.20050) · [Card](../cards/verifiers/prm800k.md)
-  _Why it matters:_ Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.
+  _Why it matters:_ It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.
 
 ### ⚠️ Needs search or metadata
 
 - 🧭 **PRIME: Process reinforcement through implicit rewards**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Process reward models for code reasoning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Qwen2.5-Math-PRM**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Improve mathematical reasoning in language models by automated process supervision**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Rewarding progress: Scaling automated process verifiers for LLM reasoning**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations**
   <sub>2023 · ACL · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Solving math word problems with process- and outcome-based feedback**
   <sub>2022 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ## What to audit
 

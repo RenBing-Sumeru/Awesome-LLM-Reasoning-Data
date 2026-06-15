@@ -22,9 +22,9 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 | OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.09075) · [Card](../cards/releases/opencodereasoning_ii.md) | Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique. |
 | OpenMathReasoning: A large-scale dataset of math reasoning traces | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.16891) · [Card](../cards/releases/openmathreasoning.md) | Large-scale math reasoning trace release for programmatic verification. |
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
-| GSM8K: Grade School Math 8K | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md) | GSM8K is the dataset anchor for early verifier-based math reasoning and remains a common sanity check for post-training reasoning data. |
-| HumanEval: Hand-Written Evaluation Set | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/humaneval-hand-written-evaluation-set.md) | HumanEval made executable unit tests a standard verifier for code reasoning, pass@k evaluation, and later code-data recipes. |
-| Measuring mathematical problem solving with the MATH dataset | 2021 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2103.03874) · [Code](https://github.com/hendrycks/math) · [Card](../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md) | MATH became a core answer-verifiable reasoning surface for evaluating and training math reasoning behavior. |
+| GSM8K: Grade School Math 8K | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md) | It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training. |
+| HumanEval: Hand-Written Evaluation Set | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/humaneval-hand-written-evaluation-set.md) | It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes. |
+| Measuring mathematical problem solving with the MATH dataset | 2021 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2103.03874) · [Code](https://github.com/hendrycks/math) · [Card](../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md) | MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems. |
 | Absolute Zero: Reinforced Self-play Reasoning with Zero Data | 2025 | arXiv preprint arXiv:2505.03335 | [Paper](https://arxiv.org/abs/2505.03335) · [Card](../cards/recipes/absolute_zero.md) | Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop. |
 
 ## Full paper list
@@ -70,13 +70,13 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 ### 🧭 Survey Background
 
 - 🧭 **[From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning](https://arxiv.org/abs/2505.22203)**
-  <sub>2025 · arXiv preprint arXiv:2505.22203 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2505.22203 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2505.22203)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction](https://arxiv.org/abs/2508.03613)**
-  <sub>2025 · arXiv preprint arXiv:2508.03613 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2508.03613 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2508.03613)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ### 🌐 Agent Environment
 
@@ -111,38 +111,38 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 - 🧰 **[GSM8K: Grade School Math 8K](https://arxiv.org/abs/2110.14168)**
   <sub>2021 · arXiv / OpenAI dataset · 🧰 benchmark · 📦 data release · programmatic · evaluation · sft · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md)
-  _Why it matters:_ GSM8K is the dataset anchor for early verifier-based math reasoning and remains a common sanity check for post-training reasoning data.
+  _Why it matters:_ It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training.
 - 🧰 **[HumanEval: Hand-Written Evaluation Set](https://arxiv.org/abs/2107.03374)**
   <sub>2021 · arXiv / OpenAI dataset · 🧰 benchmark · 📦 data release · programmatic · evaluation · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/humaneval-hand-written-evaluation-set.md)
-  _Why it matters:_ HumanEval made executable unit tests a standard verifier for code reasoning, pass@k evaluation, and later code-data recipes.
+  _Why it matters:_ It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.
 - 🧰 **[Measuring mathematical problem solving with the MATH dataset](https://arxiv.org/abs/2103.03874)**
   <sub>2021 · NeurIPS Datasets and Benchmarks · 🧰 benchmark · 📦 data release · programmatic · evaluation · sft · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2103.03874) · [Code](https://github.com/hendrycks/math) · [Card](../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md)
-  _Why it matters:_ MATH became a core answer-verifiable reasoning surface for evaluating and training math reasoning behavior.
+  _Why it matters:_ MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems.
 
 ### ⚠️ Needs search or metadata
 
 - 🧭 **Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **MATH-Perturb**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **OpenCodeReasoning-2: Scalable code reasoning data**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **OpenCodeReasoning: Code reasoning traces at scale**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 📦 **OpenR1-Math-220k**
   <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L0_seeded</sub>
   [Code](https://github.com/huggingface/open-r1) · [HF](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Card](../cards/releases/openr1.md)
@@ -150,95 +150,95 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 - 🧭 **Qwen2.5-Math-PRM**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **VAR-MATH**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions**
   <sub>2024 · ICLR · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeek-Prover: Advancing theorem proving in LLMs**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeekMath: Pushing the limits of mathematical reasoning in open language models**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Goedel-Prover: A frontier model for open-source automated theorem proving**
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Improve mathematical reasoning in language models by automated process supervision**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **LiveCodeBench: Holistic and contamination-free evaluation of large language models for code**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **OpenCodeInterpreter: Integrating code generation with execution and refinement**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **SciCode: A benchmark for scientific code generation and reasoning**
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **LeanDojo: Theorem proving with retrieval-augmented language models**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **MAmmoTH: Building math generalist models through hybrid instruction tuning**
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **MetaMath: Bootstrap your own mathematical questions for large language models**
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ProofNet: Autoformalizing and formally proving undergraduate-level mathematics**
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct**
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Draft, sketch, and prove: Guiding formal theorem provers with informal proofs**
   <sub>2022 · ICLR · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Measuring coding challenge competence with APPS**
   <sub>2021 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **miniF2F: A cross-system benchmark for formal olympiad-level mathematics**
   <sub>2021 · ICLR · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **HOList: An environment for machine learning of higher-order logic theorem proving**
   <sub>2019 · ICML · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ## What to audit
 

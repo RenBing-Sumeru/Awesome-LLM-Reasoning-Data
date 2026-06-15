@@ -17,44 +17,44 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 | Work | Year | Venue | Links | Why it matters |
 |---|---:|---|---|---|
 | Llama-Nemotron: Efficient Reasoning Models | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.00949) · [Card](../cards/recipes/llama_nemotron.md) | Mixed post-training corpus reference for reasoning, chat, and safety partitions. |
-| HealthBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md) | Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification. |
+| HealthBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md) | It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring. |
 | One Token to Fool LLM-as-a-Judge | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md) | Verifier-attack paper showing trivial cue tokens can flip judge verdicts. |
-| RewardBench: Evaluating Reward Models for Language Modeling | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2403.13787) · [Card](../cards/verifiers/rewardbench.md) | Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift. |
+| RewardBench: Evaluating Reward Models for Language Modeling | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2403.13787) · [Card](../cards/verifiers/rewardbench.md) | It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences. |
 | Aegis2.0 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.09004) | Safety dataset with risk categories and label provenance. |
-| Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM) | 2026 | arXiv preprint arXiv:2602.01511 | [Paper](https://arxiv.org/abs/2602.01511) | Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note. |
-| Autorubric: Unifying Rubric-based LLM Evaluation | 2026 | arXiv preprint arXiv:2603.00077 | [Paper](https://arxiv.org/abs/2603.00077) | Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note. |
-| Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis | 2026 | arXiv preprint arXiv:2602.00846 | [Paper](https://arxiv.org/abs/2602.00846) | Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note. |
+| Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM) | 2026 | arXiv preprint arXiv:2602.01511 | [Paper](https://arxiv.org/abs/2602.01511) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
+| Autorubric: Unifying Rubric-based LLM Evaluation | 2026 | arXiv preprint arXiv:2603.00077 | [Paper](https://arxiv.org/abs/2603.00077) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
+| Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis | 2026 | arXiv preprint arXiv:2602.00846 | [Paper](https://arxiv.org/abs/2602.00846) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 | AbstentionBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.09038) | Benchmark for epistemic boundaries and non-answering behavior. |
-| FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs | 2025 | arXiv preprint arXiv:2410.13210 | [Paper](https://arxiv.org/abs/2410.13210) | Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note. |
+| FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs | 2025 | arXiv preprint arXiv:2410.13210 | [Paper](https://arxiv.org/abs/2410.13210) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 
 ## Full paper list
 
 ### 🧭 Survey Background
 
 - 🧭 **[Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM)](https://arxiv.org/abs/2602.01511)**
-  <sub>2026 · arXiv preprint arXiv:2602.01511 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2602.01511 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.01511)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Autorubric: Unifying Rubric-based LLM Evaluation](https://arxiv.org/abs/2603.00077)**
-  <sub>2026 · arXiv preprint arXiv:2603.00077 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2603.00077 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2603.00077)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis](https://arxiv.org/abs/2602.00846)**
-  <sub>2026 · arXiv preprint arXiv:2602.00846 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2026 · arXiv preprint arXiv:2602.00846 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.00846)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs](https://arxiv.org/abs/2410.13210)**
-  <sub>2025 · arXiv preprint arXiv:2410.13210 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2410.13210 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2410.13210)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[R3: Robust Rubric-Agnostic Reward Models](https://arxiv.org/abs/2505.13388)**
-  <sub>2025 · arXiv preprint arXiv:2505.13388 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2505.13388 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2505.13388)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **[Safety Through Reasoning: An Empirical Study of Reasoning Guardrail Models](https://arxiv.org/abs/2505.20087)**
-  <sub>2025 · arXiv preprint arXiv:2505.20087 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  <sub>2025 · arXiv preprint arXiv:2505.20087 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2505.20087)
-  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ### 🧰 Benchmark
 
@@ -65,11 +65,11 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 - 🧰 **[HealthBench](https://arxiv.org/abs/2505.08775)**
   <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · evaluation · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md)
-  _Why it matters:_ Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.
+  _Why it matters:_ It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.
 - 🧰 **[RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787)**
   <sub>2024 · NeurIPS · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2403.13787) · [Card](../cards/verifiers/rewardbench.md)
-  _Why it matters:_ Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.
+  _Why it matters:_ It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.
 
 ### 📦 Data Release
 
@@ -101,107 +101,107 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 - 🧭 **RewardBench 2**
   <sub>2026 · ICLR · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **HealthBench: Evaluating large language models towards improved human health**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Humanity's Last Exam**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **OnlineRubrics**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Rubrics as rewards**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **HarmBench**
   <sub>2024 · ICML · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **LAB-Bench: Measuring capabilities of language models for biology research**
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Prometheus 2: An open source language model specialized in evaluating other language models**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **WildGuard**
   <sub>2024 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **FinanceBench: A benchmark for financial question answering**
   <sub>2023 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **GPQA**
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **JudgeLM: Fine-tuned large language models are scalable judges**
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Judging LLM-as-a-judge with MT-Bench and Chatbot Arena**
   <sub>2023 · NeurIPS Datasets and Benchmarks · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Large language models encode clinical knowledge**
   <sub>2023 · Nature · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **LegalBench**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **COLIEE: Competition on legal information extraction/entailment**
   <sub>2022 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering**
   <sub>2022 · EMNLP · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **TruthfulQA**
   <sub>2022 · ACL · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **CUAD: An expert-annotated NLP dataset for legal contract review**
   <sub>2021 · NeurIPS Datasets and Benchmarks · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **CaseHOLD: A dataset for legal holding statement prediction**
   <sub>2021 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ContractNLI: A dataset for document-level natural language inference for contracts**
   <sub>2021 · EMNLP · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **FinQA: A dataset of numerical reasoning over financial data**
   <sub>2021 · EMNLP · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance**
   <sub>2021 · ACL · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **PubMedQA: A dataset for biomedical research question answering**
   <sub>2019 · EMNLP · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition**
   <sub>2015 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
-  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
 ## What to audit
 

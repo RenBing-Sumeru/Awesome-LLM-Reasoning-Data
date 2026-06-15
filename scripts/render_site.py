@@ -107,12 +107,23 @@ def site_starter_packs(items: list[dict]) -> list[dict]:
 
 def render(target_root: Path = ROOT) -> None:
     items = site_entries()
+    counts = site_counts(items)
+    cats = categories()
+    packs = site_starter_packs(items)
     write_json(target_root / "docs/assets/entries.json", items)
-    write_json(target_root / "docs/assets/counts.json", site_counts(items))
-    write_json(target_root / "docs/assets/categories.json", categories())
-    write_json(target_root / "docs/assets/starter_packs.json", site_starter_packs(items))
+    write_json(target_root / "docs/assets/counts.json", counts)
+    write_json(target_root / "docs/assets/categories.json", cats)
+    write_json(target_root / "docs/assets/starter_packs.json", packs)
     write_json(target_root / "data/_generated/entries.json", items)
-    write_json(target_root / "data/_generated/counts.json", site_counts(items))
+    write_json(target_root / "data/_generated/counts.json", counts)
+    fallback = {
+        "entries": items,
+        "counts": counts,
+        "categories": cats,
+        "starter_packs": packs,
+    }
+    payload = json.dumps(fallback, ensure_ascii=False, indent=2)
+    (target_root / "docs/assets/atlas-data.js").write_text(f"window.ATLAS_DATA = {payload};\n", encoding="utf-8")
 
 
 def check() -> int:
@@ -126,16 +137,23 @@ def check() -> int:
             ("docs/assets/counts.json", ROOT / "docs/assets/counts.json"),
             ("docs/assets/categories.json", ROOT / "docs/assets/categories.json"),
             ("docs/assets/starter_packs.json", ROOT / "docs/assets/starter_packs.json"),
+            ("docs/assets/atlas-data.js", ROOT / "docs/assets/atlas-data.js"),
         ]
         problems = []
         for rel, actual in checks:
-            expected = json.loads((temp / rel).read_text(encoding="utf-8"))
             if not actual.exists():
                 problems.append(f"missing {actual.relative_to(ROOT)}")
                 continue
-            current = json.loads(actual.read_text(encoding="utf-8"))
-            if current != expected:
-                problems.append(f"out of date: {actual.relative_to(ROOT)}")
+            if rel.endswith(".json"):
+                expected = json.loads((temp / rel).read_text(encoding="utf-8"))
+                current = json.loads(actual.read_text(encoding="utf-8"))
+                if current != expected:
+                    problems.append(f"out of date: {actual.relative_to(ROOT)}")
+            else:
+                expected = (temp / rel).read_text(encoding="utf-8")
+                current = actual.read_text(encoding="utf-8")
+                if current != expected:
+                    problems.append(f"out of date: {actual.relative_to(ROOT)}")
         if problems:
             for problem in problems:
                 print("ERROR:", problem)

@@ -1,6 +1,6 @@
 <!-- entry_id: chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022 -->
 <!-- card_type: releases -->
-# 🃏 Chain-of-thought prompting elicits reasoning in large language models
+# Chain-of-thought prompting elicits reasoning in large language models
 
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object.
+Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large language models.
 
-Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: survey_background.
 - Domains: prompting, reasoning.
 - Current status: verified.
-
-This work belongs in the atlas because: Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object..
+- Why it belongs: Foundational trace-elicitation paper for understanding why reasoning data often stores intermediate natural-language steps rather than only final answers.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: few-shot exemplars containing questions, reasoning chains, and final answers.
+- Trace/action author: human-written demonstration rationales and model-generated rationales at inference time.
+- Answer/artifact format: chain-of-thought trace plus final answer.
+- Process fields: exemplar reasoning steps, generated reasoning steps, answer.
+- Environment or substrate: benchmark prompting setup.
+- Terminal predicate: benchmark answer correctness after rationale-conditioned decoding.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: unknown.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: answer_level.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: task-specific benchmark scoring.
+- Recorded verifier/reward/environment: final-answer evaluation on arithmetic, commonsense, and symbolic reasoning benchmarks.
+- Supervision granularity: trace_level for elicitation, answer_level for scoring.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: large pretrained language models evaluated by prompting.
+- Teacher: human-written exemplars.
+- Generator: prompted model at inference time.
+- Filtering rule: benchmark answer scoring.
+- Sampling protocol: few-shot prompting with rationale exemplars.
+- Inference budget: longer generations expose intermediate reasoning tokens.
+- Optimizer/scaffold: prompt scaffold rather than parameter update.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: evaluation.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it to distinguish elicited traces from verified traces: a chain can improve accuracy without being faithful or reusable as ground-truth process supervision.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Are rationales human-written, model-generated, or filtered?
+- Is correctness checked only at the final answer?
+- Does the prompt format control the result?
+- Are trace faithfulness and shortcut behavior tested?
+- Can generated rationales be separated from gold explanations?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Natural-language traces may be unfaithful to the model computation.
+- Prompt sensitivity can look like data quality.
+- Final-answer scoring does not certify every intermediate step.
 
 ## 8. Why it matters for post-training reasoning data
 
-Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object.
+It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

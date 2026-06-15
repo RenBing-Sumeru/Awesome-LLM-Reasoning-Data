@@ -169,7 +169,7 @@ Cards turn citations into engineering decisions. They explain the data object, v
 
 ## Searchable Website
 
-Open [docs/index.html](docs/index.html) locally or through GitHub Pages. The site is generated from [docs/assets/entries.json](docs/assets/entries.json) and supports search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability.
+Open [docs/index.html](docs/index.html) locally or through GitHub Pages. The site loads generated JSON on hosted pages and includes [docs/assets/atlas-data.js](docs/assets/atlas-data.js) as a local fallback for browsers that block direct JSON loading. It supports search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability.
 
 ## Curation Levels
 

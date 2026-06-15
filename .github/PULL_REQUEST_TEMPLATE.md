@@ -53,4 +53,5 @@
 - [ ] `python scripts/render_site.py --check` passes.
 - [ ] `python scripts/render_papers.py --check` passes.
 - [ ] `python scripts/render_readme.py --check` passes.
+- [ ] `python scripts/render_cards.py --check` passes.
 - [ ] `python scripts/check_links.py --soft` passes.

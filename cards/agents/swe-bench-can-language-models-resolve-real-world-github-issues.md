@@ -1,6 +1,6 @@
 <!-- entry_id: swe-bench-can-language-models-resolve-real-world-github-issues-2023 -->
 <!-- card_type: agents -->
-# 🃏 SWE-bench: Can language models resolve real-world GitHub issues?
+# SWE-bench: Can language models resolve real-world GitHub issues?
 
 > Curation level: L5_audit_ready
 > Category: environmental_agents_tools_web_swe, benchmarks_evaluation
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Introduces repository-level software-engineering tasks validated by issue resolution and tests.
+SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.
 
-SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: benchmark, agent_environment.
 - Domains: software_engineering, code.
 - Current status: verified.
-
-This work belongs in the atlas because: Seeded from local BibTeX for later atlas classification; needs curator review..
+- Why it belongs: Core software-engineering benchmark for environmental reasoning data, replayable repository state, and patch-verification workflows.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: real GitHub issues and repository snapshots.
+- Trace/action author: models or agents inspect files and produce patches.
+- Answer/artifact format: code patch submitted against a specific repo state.
+- Process fields: issue text, repository commit, file edits, test outcomes.
+- Environment or substrate: software repository with dependency and test environment.
+- Terminal predicate: patch resolves issue according to tests.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: environmental, programmatic.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: full_episode, state_action_level.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: environmental and programmatic.
+- Recorded verifier/reward/environment: repository checkout plus tests.
+- Supervision granularity: full_episode and executable_artifact.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: not applicable to benchmark release.
+- Teacher: historical human issue fixes define target behavior.
+- Generator: evaluated SWE agents produce patches.
+- Filtering rule: issue/task extraction and test-based validation.
+- Sampling protocol: repository tasks sampled from real projects.
+- Inference budget: agent context, tool calls, and edit attempts matter.
+- Optimizer/scaffold: benchmark environment for agent evaluation and data collection.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: evaluation, agent_training.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it when the verifier is an environment, not a static answer key; record repository commit, dependency setup, and tests before comparing agents.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Is the repository state pinned?
+- Are tests sufficient to prevent superficial patches?
+- Are dependencies and timeouts reproducible?
+- Are failed trajectories preserved?
+- Is task contamination from public GitHub history considered?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Tests may not fully capture issue resolution.
+- Environment setup can be brittle.
+- Public repository history can leak into training data.
 
 ## 8. Why it matters for post-training reasoning data
 
-SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes.
+It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

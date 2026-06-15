@@ -1,6 +1,6 @@
 <!-- entry_id: datasheets-for-datasets-2018 -->
 <!-- card_type: releases -->
-# 🃏 Datasheets for datasets
+# Datasheets for datasets
 
 > Curation level: L5_audit_ready
 > Category: surveys_and_primers
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Introduces dataset datasheets as a structured documentation practice for dataset provenance, composition, collection, and intended use.
+Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.
 
-Reasoning-data releases need the same discipline: source mixture, split policy, lineage, licensing, and known limitations should be visible before reuse.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: survey_background.
 - Domains: data_documentation.
 - Current status: verified.
-
-This work belongs in the atlas because: Seeded from local BibTeX for later atlas classification; needs curator review..
+- Why it belongs: Foundational dataset-documentation reference for auditing source mixture, lineage, licensing, intended use, and known limitations in reasoning-data releases.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: not a training set; a documentation schema attached to datasets.
+- Trace/action author: dataset creators complete the datasheet.
+- Answer/artifact format: structured answers about motivation, composition, collection, preprocessing, distribution, maintenance, and legal/ethical constraints.
+- Process fields: provenance, population, splits, collection procedure, recommended and discouraged uses.
+- Environment or substrate: dataset release documentation.
+- Terminal predicate: completeness and traceability of dataset documentation, not model accuracy.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: unknown.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: unknown.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: documentation_audit.
+- Recorded verifier/reward/environment: human-readable disclosure checklist for dataset users and maintainers.
+- Supervision granularity: dataset_release_level.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: not applicable.
+- Teacher: not applicable.
+- Generator: dataset creators and maintainers.
+- Filtering rule: disclose what was included, excluded, transformed, or withheld.
+- Sampling protocol: recorded as part of the datasheet when relevant.
+- Inference budget: not applicable.
+- Optimizer/scaffold: not applicable.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: audit.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it as a release checklist for any reasoning corpus: if source mixture, splits, license, lineage, and intended use are missing, the data should not be treated as audit-ready.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Does the release disclose where prompts, traces, labels, and answers came from?
+- Are split policy, license, and maintenance expectations explicit?
+- Are intended and discouraged uses separated?
+- Are known biases, missing populations, and collection constraints recorded?
+- Can downstream users cite the exact release version they used?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Datasheets can become checkbox compliance if not tied to concrete artifacts.
+- They do not verify correctness of individual examples.
+- A release can look well documented while still being contaminated or poorly licensed.
 
 ## 8. Why it matters for post-training reasoning data
 
-Reasoning-data releases need the same discipline: source mixture, split policy, lineage, licensing, and known limitations should be visible before reuse.
+It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

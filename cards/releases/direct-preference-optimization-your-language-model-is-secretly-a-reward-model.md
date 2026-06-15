@@ -1,6 +1,6 @@
 <!-- entry_id: direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023 -->
 <!-- card_type: releases -->
-# 🃏 Direct preference optimization: Your language model is secretly a reward model
+# Direct preference optimization: Your language model is secretly a reward model
 
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step.
+DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.
 
-Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: survey_background.
 - Domains: alignment, preference.
 - Current status: verified.
-
-This work belongs in the atlas because: Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step..
+- Why it belongs: Core preference-learning objective for reasoning-data readers who need to distinguish data format from optimizer choice.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: preference datasets containing prompts and paired responses.
+- Trace/action author: candidate responses from models; chosen/rejected labels from humans or preference sources.
+- Answer/artifact format: prompt, chosen response, rejected response.
+- Process fields: pairwise comparison and reference-policy likelihoods during training.
+- Environment or substrate: offline preference-learning dataset.
+- Terminal predicate: chosen response should be preferred under the target preference distribution.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: judgment_required.
-- Recorded verifier/reward/environment: unknown.
+- Verification contract: pairwise human/model preference.
+- Recorded verifier/reward/environment: implicit reward induced by preference labels and reference policy.
 - Supervision granularity: pairwise_preference.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: supervised or pretrained policy plus reference policy.
+- Teacher: preference labels.
+- Generator: candidate response models.
+- Filtering rule: retain reliable chosen/rejected pairs.
+- Sampling protocol: offline preference dataset sampling.
+- Inference budget: not central; training uses stored pairs.
+- Optimizer/scaffold: DPO objective with temperature/beta controlling preference strength.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: preference_learning.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it when the artifact is comparison data; do not treat DPO as evidence that preference labels are correct or complete.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Who produced preference labels?
+- Are chosen/rejected responses diverse enough?
+- Does the objective overfit style rather than correctness?
+- Is the reference policy specified?
+- Are reasoning tasks evaluated separately from general helpfulness?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Preference labels can reward style over truth.
+- The beta/reference-policy choice changes behavior.
+- Pairwise wins may not imply robust reasoning under distribution shift.
 
 ## 8. Why it matters for post-training reasoning data
 
-Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step.
+It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

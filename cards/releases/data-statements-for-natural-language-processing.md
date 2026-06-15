@@ -1,6 +1,6 @@
 <!-- entry_id: data-statements-for-natural-language-processing-2018 -->
 <!-- card_type: releases -->
-# 🃏 Data statements for natural language processing
+# Data statements for natural language processing
 
 > Curation level: L5_audit_ready
 > Category: surveys_and_primers
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Proposes data statements for NLP datasets so dataset users can inspect population, language, annotation, and deployment context.
+Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context, and intended deployment boundaries.
 
-It gives the atlas a documentation baseline for asking what a reasoning dataset discloses about source population, provenance, and generalization limits.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: survey_background.
 - Domains: data_documentation, nlp.
 - Current status: verified.
-
-This work belongs in the atlas because: Seeded from local BibTeX for later atlas classification; needs curator review..
+- Why it belongs: Dataset-documentation foundation for asking which populations, languages, domains, and annotation contexts a reasoning-data artifact represents.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: not a dataset; a disclosure schema for language data.
+- Trace/action author: dataset authors document source populations and annotation conditions.
+- Answer/artifact format: data statement covering language variety, speakers, annotators, collection situation, curation, and intended uses.
+- Process fields: language/community metadata, annotation context, provenance, curation decisions.
+- Environment or substrate: NLP dataset release documentation.
+- Terminal predicate: transparency of population and context assumptions.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: unknown.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: unknown.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: documentation_audit.
+- Recorded verifier/reward/environment: checklist-style source and population disclosure.
+- Supervision granularity: dataset_release_level.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: not applicable.
+- Teacher: not applicable.
+- Generator: dataset creators and annotators.
+- Filtering rule: document inclusion, exclusion, and normalization decisions.
+- Sampling protocol: disclosed when language population sampling matters.
+- Inference budget: not applicable.
+- Optimizer/scaffold: not applicable.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: audit.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it to audit whether reasoning-data claims travel across language, domain, and annotator populations, especially for multilingual or domain-specialized corpora.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Are source populations and annotation populations described separately?
+- Does the release identify language varieties and domains?
+- Are collection and annotation settings visible?
+- Are deployment limits stated?
+- Can benchmark failures be traced back to population mismatch?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Population metadata may be unavailable for scraped or synthetic corpora.
+- The statement improves transparency but does not make labels correct.
+- Readers still need contamination and license checks.
 
 ## 8. Why it matters for post-training reasoning data
 
-It gives the atlas a documentation baseline for asking what a reasoning dataset discloses about source population, provenance, and generalization limits.
+Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

@@ -1,6 +1,6 @@
 <!-- entry_id: humaneval-code-generation-benchmark-2021 -->
 <!-- card_type: benchmarks -->
-# 🃏 HumanEval: Hand-Written Evaluation Set
+# HumanEval: Hand-Written Evaluation Set
 
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, benchmarks_evaluation
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Hand-written Python code-generation benchmark with unit-test-based correctness checks.
+HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.
 
-HumanEval made executable unit tests a standard verifier for code reasoning, pass@k evaluation, and later code-data recipes.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: benchmark, data_release.
 - Domains: code.
 - Current status: verified.
-
-This work belongs in the atlas because: Canonical programmatic code benchmark where executable tests define the feedback contract for code reasoning..
+- Why it belongs: Core code benchmark for executable answer verification and pass@k evaluation.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: hand-written Python function prompts.
-- Trace/action author: benchmark authors.
+- Prompt/source: hand-written Python function specifications and docstrings.
+- Trace/action author: benchmark authors write prompts and tests; models generate code.
 - Answer/artifact format: Python function completion.
-- Process fields: prompt, canonical solution, unit tests.
-- Environment or substrate: Python execution harness.
-- Terminal predicate: generated code passes tests.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Process fields: prompt, generated code, unit-test outcomes.
+- Environment or substrate: Python execution sandbox.
+- Terminal predicate: generated code passes the test suite.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: programmatic.
-- Recorded verifier/reward/environment: unit tests.
-- Supervision granularity: answer_level.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: programmatic unit tests.
+- Recorded verifier/reward/environment: Python test execution.
+- Supervision granularity: executable_artifact and answer_level.
 
 ## 4. How is the data constructed?
 
-- Base model: Codex evaluated in paper.
-- Teacher: unknown.
-- Generator: benchmark authors.
-- Filtering rule: hand-written benchmark curation.
-- Sampling protocol: pass@k evaluation.
-- Inference budget: pass@k samples in evaluation.
-- Optimizer/scaffold: code generation evaluation harness.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: not applicable to dataset release.
+- Teacher: benchmark authors.
+- Generator: evaluated code models.
+- Filtering rule: hand-written tasks and tests.
+- Sampling protocol: pass@k over multiple generated samples.
+- Inference budget: k samples per problem affects score.
+- Optimizer/scaffold: evaluation benchmark; later reused for filtering and RLVR-style code tasks.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: evaluation.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it to reason about executable verification, but remember that passing public tests is weaker than proving functional correctness.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Are tests hidden or public?
+- Can generated code exploit test weakness?
+- Is pass@k computed correctly?
+- Is the execution environment pinned?
+- Has the small benchmark been memorized?
 
 ## 7. What is missing or risky?
 
-- Source mixture: hand-written Python tasks.
-- Split: evaluation set.
-- Decontamination: unknown.
-- License: MIT in official repository.
-- Lineage: OpenAI HumanEval release.
-- Known failure modes: public benchmark contamination, unit-test coverage gaps.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Small benchmark size encourages overfitting.
+- Unit tests can be incomplete.
+- Sandbox and dependency assumptions affect reproducibility.
 
 ## 8. Why it matters for post-training reasoning data
 
-HumanEval made executable unit tests a standard verifier for code reasoning, pass@k evaluation, and later code-data recipes.
+It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

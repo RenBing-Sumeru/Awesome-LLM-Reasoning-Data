@@ -1,6 +1,6 @@
 <!-- entry_id: livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024 -->
 <!-- card_type: failures -->
-# 🃏 LiveBench: A challenging, contamination-free benchmark for large language models
+# LiveBench: A challenging, contamination-free benchmark for large language models
 
 > Curation level: L5_audit_ready
 > Category: surveys_and_primers, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-Presents a frequently updated benchmark with objective scoring to reduce test-set contamination.
+LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.
 
 It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: benchmark, audit_failure.
 - Domains: evaluation, math, code, reasoning.
 - Current status: verified.
-
-This work belongs in the atlas because: Seeded from local BibTeX for later atlas classification; needs curator review..
+- Why it belongs: Core contamination-audit benchmark for fresh item sourcing, objective scoring, and benchmark-refresh methodology.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: recently released math competitions, arXiv papers, news, datasets, and harder variants of existing tasks.
+- Trace/action author: models generate final answers; benchmark authors construct fresh tasks.
+- Answer/artifact format: task prompt and model answer.
+- Process fields: task source, expected answer, scoring rule, release/update cycle.
+- Environment or substrate: online/offline benchmark leaderboard with refreshed tasks.
+- Terminal predicate: automatic objective score against ground truth.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: programmatic, mixed.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: answer_level.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: programmatic/objective scoring.
+- Recorded verifier/reward/environment: automatic scoring functions over refreshed benchmark items.
+- Supervision granularity: answer_level and benchmark_release_level.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: evaluated models vary.
+- Teacher: benchmark task sources and answer keys.
+- Generator: benchmark authors source and transform recent tasks.
+- Filtering rule: avoid stale, contaminated, or judge-biased items.
+- Sampling protocol: periodic updates across task families.
+- Inference budget: model evaluation settings must be reported.
+- Optimizer/scaffold: benchmark refresh and leaderboard infrastructure.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: evaluation, audit.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it as an audit reference whenever a paper claims reasoning gains on static benchmarks.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Are tasks recent enough to reduce contamination?
+- Is scoring objective rather than judge-dependent?
+- Are update dates and versions cited?
+- Can models exploit source patterns?
+- Are prompt and decoding settings reported?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Fresh tasks can still leak after release.
+- Automatic scoring may miss partial-credit reasoning.
+- Version drift makes comparisons hard unless benchmark snapshots are cited.
 
 ## 8. Why it matters for post-training reasoning data
 
 It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

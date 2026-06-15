@@ -16,8 +16,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deep-reinforcement-learning-from-human-preferences-2017",
@@ -25,7 +25,7 @@
     "year": 2017,
     "venue": "NeurIPS",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/1706.03741",
     "arxiv": "https://arxiv.org/abs/1706.03741",
     "paper": "https://arxiv.org/abs/1706.03741",
@@ -56,8 +56,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "audit",
-    "one_line_summary": "Proposes data statements for NLP datasets so dataset users can inspect population, language, annotation, and deployment context.",
-    "why_it_matters": "It gives the atlas a documentation baseline for asking what a reasoning dataset discloses about source population, provenance, and generalization limits."
+    "one_line_summary": "Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context, and intended deployment boundaries.",
+    "why_it_matters": "Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization."
   },
   {
     "id": "datasheets-for-datasets-2018",
@@ -76,8 +76,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "audit",
-    "one_line_summary": "Introduces dataset datasheets as a structured documentation practice for dataset provenance, composition, collection, and intended use.",
-    "why_it_matters": "Reasoning-data releases need the same discipline: source mixture, split policy, lineage, licensing, and known limitations should be visible before reuse."
+    "one_line_summary": "Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.",
+    "why_it_matters": "It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items."
   },
   {
     "id": "holist-an-environment-for-machine-learning-of-higher-order-logic-theorem-proving-2019",
@@ -96,8 +96,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "pubmedqa-a-dataset-for-biomedical-research-question-answering-2019",
@@ -116,8 +116,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "a-primer-in-bertology-what-we-know-about-how-bert-works-2020",
@@ -136,8 +136,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "fact-or-fiction-verifying-scientific-claims-2020",
@@ -156,8 +156,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks-2020",
@@ -176,8 +176,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "casehold-a-dataset-for-legal-holding-statement-prediction-2021",
@@ -196,8 +196,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021",
@@ -216,8 +216,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021",
@@ -236,8 +236,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "evaluating-large-language-models-trained-on-code-2021",
@@ -245,7 +245,7 @@
     "year": 2021,
     "venue": "arXiv",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2107.03374",
     "arxiv": "https://arxiv.org/abs/2107.03374",
     "paper": "https://arxiv.org/abs/2107.03374",
@@ -276,8 +276,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021",
@@ -296,8 +296,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "measuring-coding-challenge-competence-with-apps-2021",
@@ -316,8 +316,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "measuring-mathematical-problem-solving-with-the-math-dataset-2021",
@@ -336,8 +336,8 @@
     "source_role": "benchmark;data_release",
     "verification_contract": "programmatic",
     "training_use": "evaluation;sft",
-    "one_line_summary": "Introduces the MATH benchmark with competition-style problems and step-by-step solutions.",
-    "why_it_matters": "MATH became a core answer-verifiable reasoning surface for evaluating and training math reasoning behavior."
+    "one_line_summary": "Introduces MATH, a competition-style math benchmark with challenging problems, subject categories, and step-by-step solutions.",
+    "why_it_matters": "MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems."
   },
   {
     "id": "minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021",
@@ -356,8 +356,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "multitask-prompted-training-enables-zero-shot-task-generalization-2021",
@@ -376,8 +376,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021",
@@ -396,8 +396,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧰 Benchmarks and Evaluation Surfaces map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021",
@@ -416,8 +416,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "training-verifiers-to-solve-math-word-problems-2021",
@@ -436,8 +436,8 @@
     "source_role": "benchmark;verifier_reward;data_release",
     "verification_contract": "programmatic;judgment_required",
     "training_use": "evaluation;reward_modeling",
-    "one_line_summary": "Introduces GSM8K and studies verifier-based selection over generated math solutions.",
-    "why_it_matters": "It is an early anchor for treating math reasoning data as answer-level problems plus a verifier/reward selection surface."
+    "one_line_summary": "Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.",
+    "why_it_matters": "It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows."
   },
   {
     "id": "chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022",
@@ -456,8 +456,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "evaluation",
-    "one_line_summary": "Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object.",
-    "why_it_matters": "Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object."
+    "one_line_summary": "Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large language models.",
+    "why_it_matters": "It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets."
   },
   {
     "id": "coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022",
@@ -476,8 +476,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "codet-code-generation-with-generated-tests-2022",
@@ -496,8 +496,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "coliee-competition-on-legal-information-extraction-entailment-2022",
@@ -516,8 +516,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "constitutional-ai-harmlessness-from-ai-feedback-2022",
@@ -556,8 +556,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "draft-sketch-and-prove-guiding-formal-theorem-provers-with-informal-proofs-2022",
@@ -576,8 +576,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "scaling-laws-for-reward-model-overoptimization-2022",
@@ -596,8 +596,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "scienceworld-is-your-agent-smarter-than-a-5th-grader-2022",
@@ -616,8 +616,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "solving-math-word-problems-with-process-and-outcome-based-feedback-2022",
@@ -636,8 +636,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "star-bootstrapping-reasoning-with-reasoning-2022",
@@ -656,8 +656,8 @@
     "source_role": "construction_recipe;survey_background",
     "verification_contract": "mixed",
     "training_use": "sft;distillation",
-    "one_line_summary": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
-    "why_it_matters": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction."
+    "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
+    "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering."
   },
   {
     "id": "training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022",
@@ -665,7 +665,7 @@
     "year": 2022,
     "venue": "arXiv",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2204.05862",
     "arxiv": "https://arxiv.org/abs/2204.05862",
     "paper": "https://arxiv.org/abs/2204.05862",
@@ -696,8 +696,8 @@
     "source_role": "survey_background;model_report",
     "verification_contract": "judgment_required",
     "training_use": "sft;preference_learning;reward_modeling",
-    "one_line_summary": "InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping.",
-    "why_it_matters": "InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping."
+    "one_line_summary": "InstructGPT establishes the demonstration, preference-comparison, reward-model, and PPO pipeline that many later post-training recipes inherit.",
+    "why_it_matters": "It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models."
   },
   {
     "id": "truthfulqa-2022",
@@ -716,8 +716,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "alce-enabling-large-language-models-to-generate-text-with-citations-2023",
@@ -736,8 +736,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "api-bank-a-benchmark-for-tool-augmented-llms-2023",
@@ -756,8 +756,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "data-provenance-for-language-models-2023",
@@ -776,8 +776,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023",
@@ -796,8 +796,8 @@
     "source_role": "survey_background",
     "verification_contract": "judgment_required",
     "training_use": "preference_learning",
-    "one_line_summary": "Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step.",
-    "why_it_matters": "Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step."
+    "one_line_summary": "DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.",
+    "why_it_matters": "It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization."
   },
   {
     "id": "distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023",
@@ -816,8 +816,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "factscore-2023",
@@ -836,8 +836,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "financebench-a-benchmark-for-financial-question-answering-2023",
@@ -856,8 +856,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "gorilla-2023",
@@ -876,8 +876,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "gpqa-2023",
@@ -896,8 +896,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "judgelm-fine-tuned-large-language-models-are-scalable-judges-2023",
@@ -916,8 +916,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023",
@@ -936,8 +936,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023",
@@ -956,8 +956,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "large-language-models-encode-clinical-knowledge-2023",
@@ -976,8 +976,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "leandojo-theorem-proving-with-retrieval-augmented-language-models-2023",
@@ -996,8 +996,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "legalbench-2023",
@@ -1016,8 +1016,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023",
@@ -1036,8 +1036,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023",
@@ -1056,8 +1056,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "maud-a-merger-agreement-understanding-dataset-2023",
@@ -1076,8 +1076,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "measuring-faithfulness-in-chain-of-thought-reasoning-2023",
@@ -1096,8 +1096,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023",
@@ -1116,8 +1116,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "mind2web-towards-a-generalist-agent-for-the-web-2023",
@@ -1136,8 +1136,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023",
@@ -1156,8 +1156,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "prm800k-2023",
@@ -1176,8 +1176,8 @@
     "source_role": "process_supervision;verifier_reward;data_release",
     "verification_contract": "judgment_required;programmatic",
     "training_use": "process_supervision;reward_modeling;evaluation",
-    "one_line_summary": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
-    "why_it_matters": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning."
+    "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
+    "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation."
   },
   {
     "id": "proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023",
@@ -1196,8 +1196,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "react-synergizing-reasoning-and-acting-in-language-models-2023",
@@ -1216,8 +1216,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "reflexion-language-agents-with-verbal-reinforcement-learning-2023",
@@ -1236,8 +1236,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "rest-textsuperscriptem-2023",
@@ -1256,8 +1256,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023",
@@ -1296,8 +1296,8 @@
     "source_role": "construction_recipe;data_release",
     "verification_contract": "mixed",
     "training_use": "sft",
-    "one_line_summary": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.",
-    "why_it_matters": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline."
+    "one_line_summary": "Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.",
+    "why_it_matters": "It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion."
   },
   {
     "id": "self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023",
@@ -1316,8 +1316,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "selfcodealign-self-alignment-for-code-generation-2023",
@@ -1336,8 +1336,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-bench-can-language-models-resolve-real-world-github-issues-2023",
@@ -1356,8 +1356,8 @@
     "source_role": "benchmark;agent_environment",
     "verification_contract": "environmental;programmatic",
     "training_use": "evaluation;agent_training",
-    "one_line_summary": "Introduces repository-level software-engineering tasks validated by issue resolution and tests.",
-    "why_it_matters": "SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes."
+    "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
+    "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes."
   },
   {
     "id": "toolformer-language-models-can-teach-themselves-to-use-tools-2023",
@@ -1376,8 +1376,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "ultrafeedback-boosting-language-models-with-high-quality-feedback-2023",
@@ -1396,8 +1396,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "webarena-a-realistic-web-environment-for-building-autonomous-agents-2023",
@@ -1436,8 +1436,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "ai-models-collapse-when-trained-on-recursively-generated-data-2024",
@@ -1456,8 +1456,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024",
@@ -1476,8 +1476,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024",
@@ -1516,8 +1516,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024",
@@ -1536,8 +1536,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024",
@@ -1556,8 +1556,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "browsergym-a-gym-environment-for-web-agents-2024",
@@ -1596,8 +1596,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepseek-prover-advancing-theorem-proving-in-llms-2024",
@@ -1616,8 +1616,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024",
@@ -1636,8 +1636,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024",
@@ -1656,8 +1656,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "does-writing-with-lms-reduce-content-diversity-2024",
@@ -1676,8 +1676,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024",
@@ -1696,8 +1696,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024",
@@ -1716,8 +1716,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "gsm-symbolic-2024",
@@ -1736,8 +1736,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "harmbench-2024",
@@ -1756,8 +1756,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024",
@@ -1776,8 +1776,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024",
@@ -1796,8 +1796,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "introducing-swe-bench-verified-2024",
@@ -1816,8 +1816,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "is-model-collapse-inevitable-2024",
@@ -1836,8 +1836,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024",
@@ -1856,8 +1856,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024",
@@ -1865,7 +1865,7 @@
     "year": 2024,
     "venue": "arXiv preprint arXiv:2407.21787",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2407.21787",
     "arxiv": "https://arxiv.org/abs/2407.21787",
     "paper": "https://arxiv.org/abs/2407.21787",
@@ -1876,8 +1876,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "learning-to-reason-with-llms-2024",
@@ -1896,8 +1896,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024",
@@ -1916,7 +1916,7 @@
     "source_role": "benchmark;audit_failure",
     "verification_contract": "programmatic;mixed",
     "training_use": "evaluation;audit",
-    "one_line_summary": "Presents a frequently updated benchmark with objective scoring to reduce test-set contamination.",
+    "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
     "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items."
   },
   {
@@ -1936,8 +1936,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "magicoder-empowering-code-generation-with-oss-instruct-2024",
@@ -1956,8 +1956,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "mammoth2-scaling-instructions-from-the-web-2024",
@@ -1965,7 +1965,7 @@
     "year": 2024,
     "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2405.03548",
     "arxiv": "https://arxiv.org/abs/2405.03548",
     "paper": "https://arxiv.org/abs/2405.03548",
@@ -1976,8 +1976,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "math-shepherd-2024",
@@ -2016,8 +2016,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024",
@@ -2036,8 +2036,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024",
@@ -2076,8 +2076,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024",
@@ -2096,8 +2096,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024",
@@ -2116,8 +2116,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024",
@@ -2136,8 +2136,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "r-tuning-2024",
@@ -2156,8 +2156,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "raft-adapting-language-model-to-domain-specific-rag-2024",
@@ -2176,8 +2176,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "rest-mcts-2024",
@@ -2196,8 +2196,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "rewardbench-evaluating-reward-models-for-language-modeling-2024",
@@ -2216,8 +2216,8 @@
     "source_role": "benchmark;verifier_reward",
     "verification_contract": "judgment_required;mixed",
     "training_use": "evaluation;reward_modeling;preference_learning",
-    "one_line_summary": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
-    "why_it_matters": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift."
+    "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
+    "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences."
   },
   {
     "id": "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
@@ -2236,8 +2236,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024",
@@ -2256,8 +2256,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "self-rewarding-lms-2024",
@@ -2276,8 +2276,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024",
@@ -2296,8 +2296,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024",
@@ -2316,8 +2316,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-search-2024",
@@ -2336,8 +2336,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024",
@@ -2356,8 +2356,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "the-llama-3-herd-of-models-2024",
@@ -2376,8 +2376,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🚀 Frontier Reasoning Model Reports map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "toolace-winning-the-points-of-llm-function-calling-2024",
@@ -2396,8 +2396,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024",
@@ -2436,8 +2436,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "tulu-3-pushing-frontiers-in-open-language-model-post-training-2024",
@@ -2456,8 +2456,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024",
@@ -2496,8 +2496,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "wildguard-2024",
@@ -2516,8 +2516,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024",
@@ -2536,8 +2536,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "xstest-2024",
@@ -2556,8 +2556,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025",
@@ -2565,7 +2565,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2503.19633",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2503.19633",
     "arxiv": "https://arxiv.org/abs/2503.19633",
     "paper": "https://arxiv.org/abs/2503.19633",
@@ -2576,8 +2576,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025",
@@ -2596,8 +2596,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025",
@@ -2616,8 +2616,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding, seeds, prompt format, and environment details.",
+    "why_it_matters": "It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains."
   },
   {
     "id": "a-survey-on-llm-mid-training-2025",
@@ -2625,7 +2625,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2510.23081",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2510.23081",
     "arxiv": "https://arxiv.org/abs/2510.23081",
     "paper": "https://arxiv.org/abs/2510.23081",
@@ -2636,8 +2636,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025",
@@ -2685,7 +2685,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2506.09038",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2506.09038",
     "arxiv": "https://arxiv.org/abs/2506.09038",
     "paper": "https://arxiv.org/abs/2506.09038",
@@ -2696,8 +2696,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "acord-attorney-curated-open-research-dataset-2025",
@@ -2716,8 +2716,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025",
@@ -2725,7 +2725,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2501.09004",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2501.09004",
     "arxiv": "https://arxiv.org/abs/2501.09004",
     "paper": "https://arxiv.org/abs/2501.09004",
@@ -2736,8 +2736,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "aegis2-2025",
@@ -2765,7 +2765,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2506.13131",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2506.13131",
     "arxiv": "https://arxiv.org/abs/2506.13131",
     "paper": "https://arxiv.org/abs/2506.13131",
@@ -2776,8 +2776,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025",
@@ -2785,7 +2785,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.08311",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2505.08311",
     "arxiv": "https://arxiv.org/abs/2505.08311",
     "paper": "https://arxiv.org/abs/2505.08311",
@@ -2796,8 +2796,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025",
@@ -2825,7 +2825,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2509.03403",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2509.03403",
     "arxiv": "https://arxiv.org/abs/2509.03403",
     "paper": "https://arxiv.org/abs/2509.03403",
@@ -2836,8 +2836,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "big-math-2025",
@@ -2876,8 +2876,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025",
@@ -2896,8 +2896,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧰 Benchmarks and Evaluation Surfaces map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025",
@@ -2905,7 +2905,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2509.26114",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2509.26114",
     "arxiv": "https://arxiv.org/abs/2509.26114",
     "paper": "https://arxiv.org/abs/2509.26114",
@@ -2916,8 +2916,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025",
@@ -2925,7 +2925,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2503.01307",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2503.01307",
     "arxiv": "https://arxiv.org/abs/2503.01307",
     "paper": "https://arxiv.org/abs/2503.01307",
@@ -2936,8 +2936,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "dapo-2025",
@@ -2976,8 +2976,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepmath-103k-2025",
@@ -3005,7 +3005,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2504.11456",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2504.11456",
     "arxiv": "https://arxiv.org/abs/2504.11456",
     "paper": "https://arxiv.org/abs/2504.11456",
@@ -3016,8 +3016,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025",
@@ -3036,8 +3036,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025",
@@ -3056,8 +3056,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepseek-r1-2025",
@@ -3076,8 +3076,8 @@
     "source_role": "model_report;construction_recipe",
     "verification_contract": "mixed",
     "training_use": "distillation;rlvr",
-    "one_line_summary": "Frontier reasoning report central to public RLVR and reasoning post-training recipes.",
-    "why_it_matters": "Frontier reasoning report central to public RLVR and reasoning post-training recipes."
+    "one_line_summary": "DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.",
+    "why_it_matters": "It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior."
   },
   {
     "id": "deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025",
@@ -3096,8 +3096,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🚀 Frontier Reasoning Model Reports map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "deepseek-v3-2-pushing-the-frontier-of-open-large-language-models-2025",
@@ -3105,7 +3105,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2512.02556",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2512.02556",
     "arxiv": "https://arxiv.org/abs/2512.02556",
     "paper": "https://arxiv.org/abs/2512.02556",
@@ -3116,8 +3116,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "distillation-scaling-laws-2025",
@@ -3125,7 +3125,7 @@
     "year": 2025,
     "venue": "Proceedings of the 42nd International Conference on Machine Learning (ICML)",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2502.08606",
     "arxiv": "https://arxiv.org/abs/2502.08606",
     "paper": "https://arxiv.org/abs/2502.08606",
@@ -3136,8 +3136,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
@@ -3156,8 +3156,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025",
@@ -3176,8 +3176,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "faithbench-a-diverse-hallucination-benchmark-for-summarization-by-modern-llms-2025",
@@ -3185,7 +3185,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2410.13210",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2410.13210",
     "arxiv": "https://arxiv.org/abs/2410.13210",
     "paper": "https://arxiv.org/abs/2410.13210",
@@ -3196,8 +3196,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "finder-financial-data-extraction-and-reasoning-2025",
@@ -3216,8 +3216,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025",
@@ -3225,7 +3225,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.22203",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2505.22203",
     "arxiv": "https://arxiv.org/abs/2505.22203",
     "paper": "https://arxiv.org/abs/2505.22203",
@@ -3236,8 +3236,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "from-system-1-to-system-2-a-survey-of-reasoning-large-language-models-2025",
@@ -3256,8 +3256,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "gaperon-a-peppered-english-french-generative-language-model-suite-2025",
@@ -3265,7 +3265,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2510.25771",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2510.25771",
     "arxiv": "https://arxiv.org/abs/2510.25771",
     "paper": "https://arxiv.org/abs/2510.25771",
@@ -3276,8 +3276,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "general-reasoning-models-survey-and-perspectives-2025",
@@ -3296,8 +3296,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "goedel-prover-v2-scaling-formal-theorem-proving-with-scaffolded-data-synthesis-a-2025",
@@ -3305,7 +3305,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2508.03613",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2508.03613",
     "arxiv": "https://arxiv.org/abs/2508.03613",
     "paper": "https://arxiv.org/abs/2508.03613",
@@ -3316,8 +3316,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "grpo-is-secretly-a-process-reward-model-2025",
@@ -3325,7 +3325,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2509.21154",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2509.21154",
     "arxiv": "https://arxiv.org/abs/2509.21154",
     "paper": "https://arxiv.org/abs/2509.21154",
@@ -3336,8 +3336,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "healthbench-2025",
@@ -3356,8 +3356,8 @@
     "source_role": "benchmark;verifier_reward",
     "verification_contract": "judgment_required",
     "training_use": "evaluation;reward_modeling;safety_alignment",
-    "one_line_summary": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.",
-    "why_it_matters": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification."
+    "one_line_summary": "HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.",
+    "why_it_matters": "It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring."
   },
   {
     "id": "healthbench-evaluating-large-language-models-towards-improved-human-health-2025",
@@ -3376,8 +3376,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "humanity-s-last-exam-2025",
@@ -3396,8 +3396,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "introducing-openai-o3-and-o4-mini-2025",
@@ -3416,8 +3416,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🚀 Frontier Reasoning Model Reports map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "khatri-scaling-rl-2025",
@@ -3465,7 +3465,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2507.20534",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2507.20534",
     "arxiv": "https://arxiv.org/abs/2507.20534",
     "paper": "https://arxiv.org/abs/2507.20534",
@@ -3476,8 +3476,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025",
@@ -3505,7 +3505,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2506.21614",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2506.21614",
     "arxiv": "https://arxiv.org/abs/2506.21614",
     "paper": "https://arxiv.org/abs/2506.21614",
@@ -3516,8 +3516,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "leaky-thoughts-2025",
@@ -3545,7 +3545,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2506.15674",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2506.15674",
     "arxiv": "https://arxiv.org/abs/2506.15674",
     "paper": "https://arxiv.org/abs/2506.15674",
@@ -3556,8 +3556,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "limo-2025",
@@ -3605,7 +3605,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2511.05705",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2511.05705",
     "arxiv": "https://arxiv.org/abs/2511.05705",
     "paper": "https://arxiv.org/abs/2511.05705",
@@ -3616,8 +3616,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "magistral-2025",
@@ -3656,8 +3656,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "mcp-universe-tool-and-environment-infrastructure-for-agent-evaluation-and-traini-2025",
@@ -3676,8 +3676,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "medreason-eliciting-factual-medical-reasoning-steps-in-llms-via-knowledge-graphs-2025",
@@ -3696,8 +3696,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "megascience-a-benchmark-and-data-resource-for-scientific-reasoning-2025",
@@ -3716,8 +3716,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "mid-training-of-large-language-models-a-survey-2025",
@@ -3725,7 +3725,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2510.06826",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2510.06826",
     "arxiv": "https://arxiv.org/abs/2510.06826",
     "paper": "https://arxiv.org/abs/2510.06826",
@@ -3736,8 +3736,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "min-k-2025",
@@ -3756,8 +3756,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025",
@@ -3796,8 +3796,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025",
@@ -3825,7 +3825,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2512.15489",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2512.15489",
     "arxiv": "https://arxiv.org/abs/2512.15489",
     "paper": "https://arxiv.org/abs/2512.15489",
@@ -3836,8 +3836,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "one-token-to-fool-2025",
@@ -3865,7 +3865,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2510.07284",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2510.07284",
     "arxiv": "https://arxiv.org/abs/2510.07284",
     "paper": "https://arxiv.org/abs/2510.07284",
@@ -3876,8 +3876,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "onlinerubrics-2025",
@@ -3896,8 +3896,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025",
@@ -3916,8 +3916,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "open-reasoner-zero-an-open-source-approach-to-scaling-up-reinforcement-learning--2025",
@@ -3925,7 +3925,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2503.24290",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2503.24290",
     "arxiv": "https://arxiv.org/abs/2503.24290",
     "paper": "https://arxiv.org/abs/2503.24290",
@@ -3936,8 +3936,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "opencodereasoning-2-scalable-code-reasoning-data-2025",
@@ -3956,8 +3956,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "opencodereasoning-code-reasoning-traces-at-scale-2025",
@@ -3976,8 +3976,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025",
@@ -4056,8 +4056,8 @@
     "source_role": "data_release;construction_recipe",
     "verification_contract": "mixed",
     "training_use": "sft;distillation",
-    "one_line_summary": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
-    "why_it_matters": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation."
+    "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
+    "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance."
   },
   {
     "id": "phi-4-reasoning-2025",
@@ -4096,8 +4096,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025",
@@ -4136,8 +4136,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "processbench-identifying-process-errors-in-mathematical-reasoning-2025",
@@ -4176,8 +4176,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "qwen3-2025",
@@ -4205,7 +4205,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2508.05004",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2508.05004",
     "arxiv": "https://arxiv.org/abs/2508.05004",
     "paper": "https://arxiv.org/abs/2508.05004",
@@ -4216,8 +4216,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "r2e-gym-2025",
@@ -4256,8 +4256,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "r3-robust-rubric-agnostic-reward-models-2025",
@@ -4265,7 +4265,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.13388",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2505.13388",
     "arxiv": "https://arxiv.org/abs/2505.13388",
     "paper": "https://arxiv.org/abs/2505.13388",
@@ -4276,8 +4276,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025",
@@ -4285,7 +4285,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2506.14245",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2506.14245",
     "arxiv": "https://arxiv.org/abs/2506.14245",
     "paper": "https://arxiv.org/abs/2506.14245",
@@ -4296,8 +4296,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "retool-reinforcement-learning-for-strategic-tool-use-in-llms-2025",
@@ -4305,7 +4305,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2504.11536",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2504.11536",
     "arxiv": "https://arxiv.org/abs/2504.11536",
     "paper": "https://arxiv.org/abs/2504.11536",
@@ -4316,8 +4316,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "rstar-math-2025",
@@ -4336,8 +4336,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "rstar2-agent-agentic-reasoning-technical-report-2025",
@@ -4345,7 +4345,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2508.20722",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2508.20722",
     "arxiv": "https://arxiv.org/abs/2508.20722",
     "paper": "https://arxiv.org/abs/2508.20722",
@@ -4356,8 +4356,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "rubrics-as-rewards-2025",
@@ -4376,8 +4376,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "s1-2025",
@@ -4396,8 +4396,8 @@
     "source_role": "construction_recipe;scaling_study",
     "verification_contract": "mixed",
     "training_use": "sft;test_time_compute",
-    "one_line_summary": "Small-pool and test-time scaling reference.",
-    "why_it_matters": "Small-pool and test-time scaling reference."
+    "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
+    "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance."
   },
   {
     "id": "safechain-safety-of-language-models-with-long-chain-of-thought-reasoning-capabil-2025",
@@ -4405,7 +4405,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2502.12025",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2502.12025",
     "arxiv": "https://arxiv.org/abs/2502.12025",
     "paper": "https://arxiv.org/abs/2502.12025",
@@ -4416,8 +4416,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "safety-through-reasoning-an-empirical-study-of-reasoning-guardrail-models-2025",
@@ -4425,7 +4425,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.20087",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2505.20087",
     "arxiv": "https://arxiv.org/abs/2505.20087",
     "paper": "https://arxiv.org/abs/2505.20087",
@@ -4436,8 +4436,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "scaling-behaviors-of-llm-reinforcement-learning-post-training-an-empirical-study-2025",
@@ -4445,7 +4445,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2509.25300",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2509.25300",
     "arxiv": "https://arxiv.org/abs/2509.25300",
     "paper": "https://arxiv.org/abs/2509.25300",
@@ -4456,8 +4456,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "search-time-data-contamination-2025",
@@ -4465,7 +4465,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2508.13180",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2508.13180",
     "arxiv": "https://arxiv.org/abs/2508.13180",
     "paper": "https://arxiv.org/abs/2508.13180",
@@ -4476,8 +4476,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "sky-t1-fully-open-reasoning-model-and-data-recipe-2025",
@@ -4496,8 +4496,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "skywork-open-reasoner-1-technical-report-2025",
@@ -4505,7 +4505,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.22312",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2505.22312",
     "arxiv": "https://arxiv.org/abs/2505.22312",
     "paper": "https://arxiv.org/abs/2505.22312",
@@ -4516,8 +4516,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "spurious-rewards-2025",
@@ -4545,7 +4545,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2506.10947",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2506.10947",
     "arxiv": "https://arxiv.org/abs/2506.10947",
     "paper": "https://arxiv.org/abs/2506.10947",
@@ -4556,8 +4556,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "subliminal-learning-2025",
@@ -4585,7 +4585,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2507.14805",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2507.14805",
     "arxiv": "https://arxiv.org/abs/2507.14805",
     "paper": "https://arxiv.org/abs/2507.14805",
@@ -4596,8 +4596,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-gym-2025",
@@ -4625,7 +4625,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.20411",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2505.20411",
     "arxiv": "https://arxiv.org/abs/2505.20411",
     "paper": "https://arxiv.org/abs/2505.20411",
@@ -4636,8 +4636,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-rl-advancing-language-agents-for-software-engineering-via-reinforcement-lear-2025",
@@ -4656,8 +4656,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025",
@@ -4665,7 +4665,7 @@
     "year": 2025,
     "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2502.18449",
     "arxiv": "https://arxiv.org/abs/2502.18449",
     "paper": "https://arxiv.org/abs/2502.18449",
@@ -4676,8 +4676,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-smith-scaling-data-construction-for-software-engineering-agents-2025",
@@ -4696,8 +4696,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "tan-scaling-rl-2025",
@@ -4736,8 +4736,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "the-entropy-mechanism-of-reinforcement-learning-for-reasoning-language-models-2025",
@@ -4745,7 +4745,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2505.22617",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2505.22617",
     "arxiv": "https://arxiv.org/abs/2505.22617",
     "paper": "https://arxiv.org/abs/2505.22617",
@@ -4756,8 +4756,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "the-invisible-leash-why-rlvr-may-or-may-not-escape-its-origin-2025",
@@ -4765,7 +4765,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2507.14843",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2507.14843",
     "arxiv": "https://arxiv.org/abs/2507.14843",
     "paper": "https://arxiv.org/abs/2507.14843",
@@ -4776,8 +4776,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "the-markovian-thinker-architecture-agnostic-linear-scaling-of-reasoning-2025",
@@ -4785,7 +4785,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2510.06557",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2510.06557",
     "arxiv": "https://arxiv.org/abs/2510.06557",
     "paper": "https://arxiv.org/abs/2510.06557",
@@ -4796,8 +4796,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "toward-conversational-diagnostic-ai-the-amie-system-2025",
@@ -4816,8 +4816,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Seeded from local BibTeX for later atlas classification; needs curator review.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "towards-understanding-self-play-for-llm-reasoning-2025",
@@ -4825,7 +4825,7 @@
     "year": 2025,
     "venue": "arXiv preprint arXiv:2510.27072",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2510.27072",
     "arxiv": "https://arxiv.org/abs/2510.27072",
     "paper": "https://arxiv.org/abs/2510.27072",
@@ -4836,8 +4836,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "ttrl-test-time-reinforcement-learning-2025",
@@ -4876,8 +4876,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "why-we-no-longer-evaluate-on-swe-bench-verified-2025",
@@ -4896,8 +4896,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025",
@@ -4916,8 +4916,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026",
@@ -4925,7 +4925,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2604.18292",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2604.18292",
     "arxiv": "https://arxiv.org/abs/2604.18292",
     "paper": "https://arxiv.org/abs/2604.18292",
@@ -4936,8 +4936,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026",
@@ -4945,7 +4945,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2602.01511",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2602.01511",
     "arxiv": "https://arxiv.org/abs/2602.01511",
     "paper": "https://arxiv.org/abs/2602.01511",
@@ -4956,8 +4956,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026",
@@ -4965,7 +4965,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2604.07666",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2604.07666",
     "arxiv": "https://arxiv.org/abs/2604.07666",
     "paper": "https://arxiv.org/abs/2604.07666",
@@ -4976,8 +4976,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "autorubric-unifying-rubric-based-llm-evaluation-2026",
@@ -4985,7 +4985,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2603.00077",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2603.00077",
     "arxiv": "https://arxiv.org/abs/2603.00077",
     "paper": "https://arxiv.org/abs/2603.00077",
@@ -4996,8 +4996,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026",
@@ -5005,7 +5005,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2604.20051",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2604.20051",
     "arxiv": "https://arxiv.org/abs/2604.20051",
     "paper": "https://arxiv.org/abs/2604.20051",
@@ -5016,8 +5016,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026",
@@ -5025,7 +5025,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2603.17775",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2603.17775",
     "arxiv": "https://arxiv.org/abs/2603.17775",
     "paper": "https://arxiv.org/abs/2603.17775",
@@ -5036,8 +5036,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026",
@@ -5045,7 +5045,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2605.16826",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2605.16826",
     "arxiv": "https://arxiv.org/abs/2605.16826",
     "paper": "https://arxiv.org/abs/2605.16826",
@@ -5056,8 +5056,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026",
@@ -5065,7 +5065,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2603.16223",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2603.16223",
     "arxiv": "https://arxiv.org/abs/2603.16223",
     "paper": "https://arxiv.org/abs/2603.16223",
@@ -5076,8 +5076,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026",
@@ -5085,7 +5085,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2602.12125",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2602.12125",
     "arxiv": "https://arxiv.org/abs/2602.12125",
     "paper": "https://arxiv.org/abs/2602.12125",
@@ -5096,8 +5096,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026",
@@ -5105,7 +5105,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2511.13646",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2511.13646",
     "arxiv": "https://arxiv.org/abs/2511.13646",
     "paper": "https://arxiv.org/abs/2511.13646",
@@ -5116,8 +5116,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026",
@@ -5125,7 +5125,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2604.15149",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2604.15149",
     "arxiv": "https://arxiv.org/abs/2604.15149",
     "paper": "https://arxiv.org/abs/2604.15149",
@@ -5136,8 +5136,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026",
@@ -5145,7 +5145,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2602.00846",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2602.00846",
     "arxiv": "https://arxiv.org/abs/2602.00846",
     "paper": "https://arxiv.org/abs/2602.00846",
@@ -5156,8 +5156,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026",
@@ -5176,8 +5176,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "rewardbench-2-2026",
@@ -5196,8 +5196,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "soft-contamination-means-benchmarks-test-shallow-generalization-2026",
@@ -5205,7 +5205,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2602.12413",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2602.12413",
     "arxiv": "https://arxiv.org/abs/2602.12413",
     "paper": "https://arxiv.org/abs/2602.12413",
@@ -5216,8 +5216,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026",
@@ -5225,7 +5225,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2601.11061",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2601.11061",
     "arxiv": "https://arxiv.org/abs/2601.11061",
     "paper": "https://arxiv.org/abs/2601.11061",
@@ -5236,8 +5236,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "swe-master-unleashing-the-potential-of-software-engineering-agents-via-post-trai-2026",
@@ -5245,7 +5245,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2602.03411",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2602.03411",
     "arxiv": "https://arxiv.org/abs/2602.03411",
     "paper": "https://arxiv.org/abs/2602.03411",
@@ -5256,8 +5256,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026",
@@ -5276,8 +5276,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "why-does-self-distillation-sometimes-degrade-the-reasoning-capability-of-llms-2026",
@@ -5285,7 +5285,7 @@
     "year": 2026,
     "venue": "arXiv preprint arXiv:2603.24472",
     "status": "verified",
-    "curation_level": "L3_summary_ready",
+    "curation_level": "L1_link_verified",
     "primary_link": "https://arxiv.org/abs/2603.24472",
     "arxiv": "https://arxiv.org/abs/2603.24472",
     "paper": "https://arxiv.org/abs/2603.24472",
@@ -5296,8 +5296,8 @@
     "source_role": "survey_background",
     "verification_contract": "unknown",
     "training_use": "unknown",
-    "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-    "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note."
+    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
   },
   {
     "id": "openr1-math-220k-2025",
@@ -5396,8 +5396,8 @@
     "source_role": "benchmark;data_release",
     "verification_contract": "programmatic",
     "training_use": "evaluation;sft;reward_modeling",
-    "one_line_summary": "Canonical grade-school math benchmark with natural-language solutions and final numeric answers.",
-    "why_it_matters": "GSM8K is the dataset anchor for early verifier-based math reasoning and remains a common sanity check for post-training reasoning data."
+    "one_line_summary": "Canonical grade-school math benchmark with natural-language word problems, worked solutions, and final numeric answers.",
+    "why_it_matters": "It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training."
   },
   {
     "id": "humaneval-code-generation-benchmark-2021",
@@ -5416,7 +5416,7 @@
     "source_role": "benchmark;data_release",
     "verification_contract": "programmatic",
     "training_use": "evaluation",
-    "one_line_summary": "Hand-written Python code-generation benchmark with unit-test-based correctness checks.",
-    "why_it_matters": "HumanEval made executable unit tests a standard verifier for code reasoning, pass@k evaluation, and later code-data recipes."
+    "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
+    "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes."
   }
 ]

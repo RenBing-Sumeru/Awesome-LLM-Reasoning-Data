@@ -1,6 +1,6 @@
 <!-- entry_id: training-language-models-to-follow-instructions-with-human-feedback-2022 -->
 <!-- card_type: recipes -->
-# 🃏 Training language models to follow instructions with human feedback
+# Training language models to follow instructions with human feedback
 
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment
@@ -8,11 +8,9 @@
 
 ## TL;DR
 
-InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping.
+InstructGPT establishes the demonstration, preference-comparison, reward-model, and PPO pipeline that many later post-training recipes inherit.
 
-InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping.
-
-This card is written for readers who need to decide whether the work is a foundation, a reusable data source, a verifier surface, a benchmark, or an audit reference before opening the paper.
+It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models.
 
 ## 1. What is this work?
 
@@ -20,72 +18,58 @@ This card is written for readers who need to decide whether the work is a founda
 - Atlas role: survey_background, model_report.
 - Domains: alignment, chat.
 - Current status: verified.
-
-This work belongs in the atlas because: InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping..
+- Why it belongs: Core RLHF reference for understanding how human demonstrations and preferences become post-training data and reward signals.
 
 ## 2. What data object does it expose?
 
-- Prompt/source: unknown.
-- Trace/action author: unknown.
-- Answer/artifact format: unknown.
-- Process fields: unknown.
-- Environment or substrate: unknown.
-- Terminal predicate: unknown.
-
-If a field is `unknown`, treat it as a metadata gap rather than an absence claim.
+- Prompt/source: prompts sampled from user-facing API traffic and labeler-written prompts.
+- Trace/action author: human labelers write demonstrations and rank model outputs.
+- Answer/artifact format: demonstrations, candidate responses, pairwise/ranked preferences, and reward-model training examples.
+- Process fields: prompt, demonstration, sampled responses, preference ranking, reward score.
+- Environment or substrate: offline instruction-following tasks plus PPO training loop.
+- Terminal predicate: labeler preference and reward-model score, not exact-answer correctness.
 
 ## 3. What is the verifier / reward / judge / environment?
 
-- Verification contract: judgment_required.
-- Recorded verifier/reward/environment: unknown.
-- Supervision granularity: pairwise_preference, scalar_reward.
-
-Readers should identify whether correctness comes from exact answers, unit tests, proof checkers, environment terminal predicates, human labels, rubric judgments, learned reward models, or LLM judges.
+- Verification contract: human_preference / learned_reward.
+- Recorded verifier/reward/environment: reward model trained on labeler comparisons.
+- Supervision granularity: demonstration, pairwise_preference, scalar_reward.
 
 ## 4. How is the data constructed?
 
-- Base model: unknown.
-- Teacher: unknown.
-- Generator: unknown.
-- Filtering rule: unknown.
-- Sampling protocol: unknown.
-- Inference budget: unknown.
-- Optimizer/scaffold: unknown.
-
-The important construction question is whether another team could recreate the accepted examples, rejected examples, and feedback signal from the public record.
+- Base model: pretrained GPT-3 family model.
+- Teacher: human labelers and reward model.
+- Generator: supervised fine-tuned policy samples candidate responses.
+- Filtering rule: labeler quality process and prompt/task selection.
+- Sampling protocol: candidate responses are generated for ranking.
+- Inference budget: multiple model outputs per prompt for comparison.
+- Optimizer/scaffold: SFT followed by reward modeling and PPO.
 
 ## 5. How can it enter post-training?
 
 Recorded training/evaluation use: sft, preference_learning, reward_modeling.
 
-Depending on the exposed fields, this work may support SFT, distillation, preference learning, reward modeling, process supervision, RLVR, agent training, evaluation, or audit. Do not reuse it for a training objective broader than its released data object supports.
+Use it as a template for mapping data stages: SFT data teaches behavior, preference data trains the reward model, and PPO consumes reward feedback.
 
 ## 6. What should readers audit?
 
-- Is the official paper or venue link pinned and stable?
-- Is the verifier deterministic, replayable, or tied to a moving service?
-- Are failures, rejected samples, ambiguous labels, or near-misses preserved?
-- Is contamination or train/eval overlap checked?
-- Are the base model, teacher, generator, and filtering rules disclosed?
-- Is the source mixture, split policy, license, and lineage clear?
-- Is inference budget or scaffold behavior disclosed when it affects the result?
+- Are prompt sources and labeler instructions disclosed?
+- Are demonstrations and preference comparisons separated?
+- Is reward-model overoptimization monitored?
+- Are labeler demographics and disagreement policy visible?
+- Can safety/helpfulness tradeoffs be inspected?
 
 ## 7. What is missing or risky?
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown.
-
-Unknown fields should become follow-up issues before the entry is used as strong evidence.
+- Preference data can encode labeler and prompt-distribution bias.
+- Reward models can be exploited by the policy.
+- The released paper describes the recipe but does not release the full proprietary data.
 
 ## 8. Why it matters for post-training reasoning data
 
-InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping.
+It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models.
 
-The broader lesson is to look past the paper title and ask what feedback-bearing record the work contributes: a prompt-answer pair, trace, label, preference, reward, verifier, trajectory, benchmark item, or audit failure.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
 ## 9. Links and citation
 

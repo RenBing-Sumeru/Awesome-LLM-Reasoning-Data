@@ -10,12 +10,12 @@ This review covers the `upgrade-high-citation-atlas-v1` branch after the v0.1.0 
 |---|---|---|
 | Are there at least 120 link-verified entries? | Yes | `reports/link_coverage.json`: 124 verified entries. |
 | Are all verified entries backed by official paper/arXiv/venue/DOI links? | Yes | 124/124 verified entries have primary links, 100.0% coverage. |
-| Are there at least 50 high-quality cards? | Yes | 56 card files with 54 unique entry-linked cards; validation requires at least 50 and passes. |
+| Are there at least 50 cards, with the core cards genuinely curated? | Yes | 56 card files with 54 unique entry-linked cards; Beginner 20 cards are now checked for placeholder language and pass. |
 | Are all Beginner 20 Starter Pack papers link-verified and carded? | Yes | `starter_pack_20`: 20/20 primary links and 20/20 cards. |
-| Are paper-category pages useful and non-placeholder? | Yes | `papers/README.md` plus 11 category pages generated with explanation, Read First table, Full Paper List, audit checklist, related cards, and open gaps. |
-| Does `docs/index.html` work as a searchable atlas? | Yes | Site uses generated `docs/assets/entries.json`; `node --check docs/assets/site.js` passes. |
+| Are paper-category pages useful and non-placeholder? | Yes | `papers/README.md` plus 11 category pages generated with explanation, Read First table, Full Paper List, audit checklist, related cards, and open gaps; placeholder summaries are downgraded from high curation levels. |
+| Does `docs/index.html` work as a searchable atlas? | Yes | Site uses generated JSON plus `docs/assets/atlas-data.js` fallback; browser QA on localhost loaded counts, reading paths, search, reset, and L5 filtering. |
 | Are missing links separated into needs-search? | Yes | `reports/needs_search.md` lists unresolved entries and search queries. |
-| Are README counts generated rather than invented? | Yes | `python scripts/render_readme.py --check` passes. |
+| Are README and card-index counts generated rather than invented? | Yes | `python scripts/render_readme.py --check` and `python scripts/render_cards.py --check` pass. |
 | Are contribution rules strict enough? | Yes | `CONTRIBUTING.md` and PR template require official links, metadata, summaries, and QA checks. |
 | Is there any private execution-text leakage? | No known issue | Final leakage scan is required before commit; validator also scans public files. |
 | Did link checks run? | Yes | `python scripts/check_links.py --soft` completed with 0 failures and wrote JSON/Markdown reports. |
@@ -28,6 +28,7 @@ python3 scripts/validate_data.py
 python3 scripts/render_site.py --check
 python3 scripts/render_papers.py --check
 python3 scripts/render_readme.py --check
+python3 scripts/render_cards.py --check
 python3 scripts/coverage_report.py
 python3 scripts/check_links.py --soft
 node --check docs/assets/site.js
@@ -41,12 +42,15 @@ node --check docs/assets/site.js
 - Needs search: 147
 - Unique entry-linked cards: 54
 - Card files: 56
+- L1 link-verified but summary-pending entries: 64
+- L3 summary-ready entries: 8
 - L5 audit-ready entries: 20
 - Beginner 20 official-link coverage: 100.0%
 - Beginner 20 card coverage: 100.0%
 
 ## Residual Risks
 
+- 64 verified entries are intentionally treated as link-verified but summary-pending; they should not be marketed as curated summaries until reviewed.
 - Many verified entries still have sparse author metadata.
 - Code/data/Hugging Face/project coverage is much lower than paper-link coverage.
 - Some older cards use the previous card heading style, though they still contain the required data-object, verifier, construction, use, audit, limitation, link, and citation fields.

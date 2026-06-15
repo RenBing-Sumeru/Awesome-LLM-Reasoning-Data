@@ -39,8 +39,8 @@
             "provenance",
             "audit"
           ],
-          "one_line_summary": "Introduces dataset datasheets as a structured documentation practice for dataset provenance, composition, collection, and intended use.",
-          "why_it_matters": "Reasoning-data releases need the same discipline: source mixture, split policy, lineage, licensing, and known limitations should be visible before reuse.",
+          "one_line_summary": "Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.",
+          "why_it_matters": "It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -97,8 +97,8 @@
             "provenance",
             "nlp"
           ],
-          "one_line_summary": "Proposes data statements for NLP datasets so dataset users can inspect population, language, annotation, and deployment context.",
-          "why_it_matters": "It gives the atlas a documentation baseline for asking what a reasoning dataset discloses about source population, provenance, and generalization limits.",
+          "one_line_summary": "Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context, and intended deployment boundaries.",
+          "why_it_matters": "Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -157,8 +157,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping.",
-          "why_it_matters": "InstructGPT/RLHF reference for demonstrations, preference comparisons, reward models, and post-training behavior shaping.",
+          "one_line_summary": "InstructGPT establishes the demonstration, preference-comparison, reward-model, and PPO pipeline that many later post-training recipes inherit.",
+          "why_it_matters": "It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -213,8 +213,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object.",
-          "why_it_matters": "Foundational chain-of-thought prompting paper; useful for understanding traces as elicited reasoning behavior before trace data became a release object.",
+          "one_line_summary": "Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large language models.",
+          "why_it_matters": "It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -276,8 +276,8 @@
             "verifier",
             "benchmark"
           ],
-          "one_line_summary": "Introduces GSM8K and studies verifier-based selection over generated math solutions.",
-          "why_it_matters": "It is an early anchor for treating math reasoning data as answer-level problems plus a verifier/reward selection surface.",
+          "one_line_summary": "Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.",
+          "why_it_matters": "It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -334,8 +334,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
-          "why_it_matters": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
+          "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
+          "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -391,8 +391,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.",
-          "why_it_matters": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.",
+          "one_line_summary": "Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.",
+          "why_it_matters": "It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -447,8 +447,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step.",
-          "why_it_matters": "Preference-learning objective that shows how comparison data can train policy behavior without an explicit reward-model deployment step.",
+          "one_line_summary": "DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.",
+          "why_it_matters": "It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -509,8 +509,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
-          "why_it_matters": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
+          "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
+          "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -572,8 +572,8 @@
             "benchmark",
             "verifier"
           ],
-          "one_line_summary": "Canonical grade-school math benchmark with natural-language solutions and final numeric answers.",
-          "why_it_matters": "GSM8K is the dataset anchor for early verifier-based math reasoning and remains a common sanity check for post-training reasoning data.",
+          "one_line_summary": "Canonical grade-school math benchmark with natural-language word problems, worked solutions, and final numeric answers.",
+          "why_it_matters": "It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -632,8 +632,8 @@
             "benchmark",
             "dataset"
           ],
-          "one_line_summary": "Introduces the MATH benchmark with competition-style problems and step-by-step solutions.",
-          "why_it_matters": "MATH became a core answer-verifiable reasoning surface for evaluating and training math reasoning behavior.",
+          "one_line_summary": "Introduces MATH, a competition-style math benchmark with challenging problems, subject categories, and step-by-step solutions.",
+          "why_it_matters": "MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -693,8 +693,8 @@
             "unit-tests",
             "benchmark"
           ],
-          "one_line_summary": "Hand-written Python code-generation benchmark with unit-test-based correctness checks.",
-          "why_it_matters": "HumanEval made executable unit tests a standard verifier for code reasoning, pass@k evaluation, and later code-data recipes.",
+          "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
+          "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -757,8 +757,8 @@
             "agent",
             "environment"
           ],
-          "one_line_summary": "Introduces repository-level software-engineering tasks validated by issue resolution and tests.",
-          "why_it_matters": "SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes.",
+          "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
+          "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -821,8 +821,8 @@
             "primary-link-checked",
             "seeded-from-bib"
           ],
-          "one_line_summary": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
-          "why_it_matters": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
+          "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
+          "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -884,8 +884,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.",
-          "why_it_matters": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.",
+          "one_line_summary": "HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.",
+          "why_it_matters": "It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -950,7 +950,7 @@
             "benchmark",
             "evaluation"
           ],
-          "one_line_summary": "Presents a frequently updated benchmark with objective scoring to reduce test-set contamination.",
+          "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
           "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
@@ -1010,8 +1010,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
-          "why_it_matters": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
+          "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
+          "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -1069,8 +1069,8 @@
             "scaling_test_time_compute_rlvr"
           ],
           "tags": [],
-          "one_line_summary": "Frontier reasoning report central to public RLVR and reasoning post-training recipes.",
-          "why_it_matters": "Frontier reasoning report central to public RLVR and reasoning post-training recipes.",
+          "one_line_summary": "DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.",
+          "why_it_matters": "It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -1124,8 +1124,8 @@
             "scaling_test_time_compute_rlvr"
           ],
           "tags": [],
-          "one_line_summary": "Small-pool and test-time scaling reference.",
-          "why_it_matters": "Small-pool and test-time scaling reference.",
+          "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
+          "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -1178,8 +1178,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
+          "one_line_summary": "Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding, seeds, prompt format, and environment details.",
+          "why_it_matters": "It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -1246,8 +1246,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
-          "why_it_matters": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
+          "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
+          "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -1596,8 +1596,8 @@
             "scaling_test_time_compute_rlvr"
           ],
           "tags": [],
-          "one_line_summary": "Small-pool and test-time scaling reference.",
-          "why_it_matters": "Small-pool and test-time scaling reference.",
+          "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
+          "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -1704,8 +1704,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -1758,8 +1758,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -1810,9 +1810,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2508.05004",
@@ -1992,8 +1992,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
-          "why_it_matters": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
+          "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
+          "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -2049,8 +2049,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.",
-          "why_it_matters": "Instruction-generation recipe showing how synthetic prompts, filtering, and tuning data become an alignment data pipeline.",
+          "one_line_summary": "Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.",
+          "why_it_matters": "It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -2102,8 +2102,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2155,9 +2155,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2405.03548",
@@ -2208,8 +2208,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2262,8 +2262,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2315,8 +2315,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2613,8 +2613,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2667,8 +2667,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2720,8 +2720,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2773,9 +2773,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2603.17775",
@@ -2825,8 +2825,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -2953,8 +2953,8 @@
             "verifier",
             "benchmark"
           ],
-          "one_line_summary": "Introduces GSM8K and studies verifier-based selection over generated math solutions.",
-          "why_it_matters": "It is an early anchor for treating math reasoning data as answer-level problems plus a verifier/reward selection surface.",
+          "one_line_summary": "Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.",
+          "why_it_matters": "It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -3015,8 +3015,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
-          "why_it_matters": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
+          "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
+          "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -3315,8 +3315,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -3367,8 +3367,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -3421,9 +3421,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2509.03403",
@@ -3474,8 +3474,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -3538,8 +3538,8 @@
             "primary-link-checked",
             "seeded-from-bib"
           ],
-          "one_line_summary": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
-          "why_it_matters": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
+          "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
+          "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -3590,8 +3590,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -3643,8 +3643,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -3695,8 +3695,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -3747,8 +3747,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -3799,9 +3799,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2505.13388",
@@ -3852,9 +3852,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2602.00846",
@@ -3905,9 +3905,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2603.00077",
@@ -3959,9 +3959,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2602.01511",
@@ -4129,9 +4129,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2604.15149",
@@ -4184,9 +4184,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2505.22203",
@@ -4237,9 +4237,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2604.07666",
@@ -4290,8 +4290,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4348,8 +4348,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4400,8 +4400,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4519,8 +4519,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4569,8 +4569,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4621,8 +4621,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4671,8 +4671,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4725,8 +4725,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4779,8 +4779,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4832,8 +4832,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -4882,8 +4882,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -5117,8 +5117,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -5367,8 +5367,8 @@
             "agent",
             "environment"
           ],
-          "one_line_summary": "Introduces repository-level software-engineering tasks validated by issue resolution and tests.",
-          "why_it_matters": "SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes.",
+          "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
+          "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -5420,8 +5420,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -5655,8 +5655,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -5709,8 +5709,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -5771,9 +5771,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2407.21787",
@@ -5826,8 +5826,8 @@
             "scaling_test_time_compute_rlvr"
           ],
           "tags": [],
-          "one_line_summary": "Small-pool and test-time scaling reference.",
-          "why_it_matters": "Small-pool and test-time scaling reference.",
+          "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
+          "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -6047,9 +6047,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2502.08606",
@@ -6099,8 +6099,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -6157,9 +6157,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2510.06557",
@@ -6272,9 +6272,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2505.22617",
@@ -6326,9 +6326,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2509.26114",
@@ -6434,8 +6434,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -6486,8 +6486,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -6538,8 +6538,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -6590,8 +6590,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -6642,9 +6642,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2507.14843",
@@ -6694,9 +6694,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2603.24472",
@@ -6746,9 +6746,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2507.20534",
@@ -6807,8 +6807,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -6860,8 +6860,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -6913,8 +6913,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -7198,9 +7198,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2508.13180",
@@ -7251,9 +7251,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2506.21614",
@@ -7317,7 +7317,7 @@
             "benchmark",
             "evaluation"
           ],
-          "one_line_summary": "Presents a frequently updated benchmark with objective scoring to reduce test-set contamination.",
+          "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
           "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
@@ -7370,8 +7370,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -7424,8 +7424,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
+          "one_line_summary": "Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding, seeds, prompt format, and environment details.",
+          "why_it_matters": "It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -7479,9 +7479,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2505.22203",
@@ -7532,9 +7532,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2604.15149",
@@ -7585,9 +7585,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2604.07666",
@@ -7638,8 +7638,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -7692,9 +7692,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2602.12413",
@@ -7803,8 +7803,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -7856,8 +7856,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -7993,8 +7993,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -8046,8 +8046,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -8104,8 +8104,8 @@
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
-          "why_it_matters": "Self-training recipe that turns generated rationales into new supervision, connecting prompting, filtering, and iterative reasoning data construction.",
+          "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
+          "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8167,8 +8167,8 @@
             "benchmark",
             "verifier"
           ],
-          "one_line_summary": "Canonical grade-school math benchmark with natural-language solutions and final numeric answers.",
-          "why_it_matters": "GSM8K is the dataset anchor for early verifier-based math reasoning and remains a common sanity check for post-training reasoning data.",
+          "one_line_summary": "Canonical grade-school math benchmark with natural-language word problems, worked solutions, and final numeric answers.",
+          "why_it_matters": "It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8219,8 +8219,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -8280,8 +8280,8 @@
             "unit-tests",
             "benchmark"
           ],
-          "one_line_summary": "Hand-written Python code-generation benchmark with unit-test-based correctness checks.",
-          "why_it_matters": "HumanEval made executable unit tests a standard verifier for code reasoning, pass@k evaluation, and later code-data recipes.",
+          "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
+          "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8344,8 +8344,8 @@
             "agent",
             "environment"
           ],
-          "one_line_summary": "Introduces repository-level software-engineering tasks validated by issue resolution and tests.",
-          "why_it_matters": "SWE-bench turns real GitHub issue fixing into an environmental reasoning-data object with codebase state, patch actions, and test-backed outcomes.",
+          "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
+          "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8406,8 +8406,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
-          "why_it_matters": "Landmark process-supervision dataset for step-level correctness labels in mathematical reasoning.",
+          "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
+          "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8528,8 +8528,8 @@
             "primary-link-checked",
             "seeded-from-bib"
           ],
-          "one_line_summary": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
-          "why_it_matters": "Reward-model benchmark for understanding where preference/judge signals generalize and where they fail under distribution shift.",
+          "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
+          "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8591,8 +8591,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.",
-          "why_it_matters": "Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.",
+          "one_line_summary": "HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.",
+          "why_it_matters": "It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8651,8 +8651,8 @@
             "curated-card",
             "primary-link-checked"
           ],
-          "one_line_summary": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
-          "why_it_matters": "Open reasoning-data recipe with controlled ablations around question sourcing, filtering, and answer generation.",
+          "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
+          "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -8938,8 +8938,8 @@
             "scaling_test_time_compute_rlvr"
           ],
           "tags": [],
-          "one_line_summary": "Small-pool and test-time scaling reference.",
-          "why_it_matters": "Small-pool and test-time scaling reference.",
+          "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
+          "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -9052,8 +9052,8 @@
             "scaling_test_time_compute_rlvr"
           ],
           "tags": [],
-          "one_line_summary": "Frontier reasoning report central to public RLVR and reasoning post-training recipes.",
-          "why_it_matters": "Frontier reasoning report central to public RLVR and reasoning post-training recipes.",
+          "one_line_summary": "DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.",
+          "why_it_matters": "It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
@@ -9526,8 +9526,8 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Seeded from local BibTeX for later atlas classification; needs curator review.",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
           "curation_level": "L0_seeded",
           "status": "needs_metadata",
           "artifacts": {
@@ -9719,7 +9719,7 @@
             "benchmark",
             "evaluation"
           ],
-          "one_line_summary": "Presents a frequently updated benchmark with objective scoring to reduce test-set contamination.",
+          "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
           "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
@@ -9772,9 +9772,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2506.21614",
@@ -9999,9 +9999,9 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.",
-          "why_it_matters": "Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+          "curation_level": "L1_link_verified",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2508.13180",
@@ -10056,8 +10056,8 @@
             "provenance",
             "audit"
           ],
-          "one_line_summary": "Introduces dataset datasheets as a structured documentation practice for dataset provenance, composition, collection, and intended use.",
-          "why_it_matters": "Reasoning-data releases need the same discipline: source mixture, split policy, lineage, licensing, and known limitations should be visible before reuse.",
+          "one_line_summary": "Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.",
+          "why_it_matters": "It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.",
           "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {

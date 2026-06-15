@@ -1,96 +1,80 @@
 <!-- entry_id: deepseek-r1-2025 -->
 <!-- card_type: recipes -->
-# 🏗️ DeepSeek-R1
+# DeepSeek-R1
 
-## One-line takeaway
+> Curation level: L5_audit_ready
+> Category: surveys_and_primers, construction_recipes_open_reasoning_data, frontier_model_reports, scaling_test_time_compute_rlvr
+> Links: [📄 Paper](https://arxiv.org/abs/2501.12948)
 
-Frontier reasoning report central to public RLVR and reasoning post-training recipes.
+## TL;DR
 
-## Why this matters
+DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.
 
-This recipe card is included because it helps readers connect a citation to an engineering decision. Read it through three linked questions: what is the data object, what verifies it, and what would fail if the verifier or metadata were wrong?
+It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.
 
-Local role metadata: `model_report, construction_recipe`. Local verification contract: `mixed`. Local training/evaluation use: `distillation, rlvr`. The current atlas status is `partial`, while citation/artifact status is `verified`. That separation is intentional: a working official link does not mean the source mixture, split, license, lineage, and verifier internals are fully curated.
+## 1. What is this work?
 
-## What is the data object?
+- Year / venue: 2025 · arXiv.
+- Atlas role: model_report, construction_recipe.
+- Domains: math, code, reasoning.
+- Current status: verified.
+- Why it belongs: Core frontier reasoning-model report for RLVR, cold-start reasoning data, distillation, and open-weight reasoning-model analysis.
 
-| Field | Local value |
-|---|---|
-| Atlas type | Recipe card |
-| Domains | math, code, reasoning |
-| Prompt/source | unknown |
-| Trace/action author | unknown |
-| Answer/artifact format | unknown |
-| Process fields | unknown |
-| Environment/substrate | unknown |
-| Verifier/reward | unknown |
-| Terminal predicate | unknown |
+## 2. What data object does it expose?
 
-## Verification contract
+- Prompt/source: verifiable reasoning tasks and cold-start examples described in the report.
+- Trace/action author: base and RL-trained models generate long reasoning traces.
+- Answer/artifact format: reasoning trace plus final answer; distilled examples for smaller models.
+- Process fields: prompt, reasoning trajectory, answer, reward outcome, distillation target.
+- Environment or substrate: offline RL and distillation pipeline over verifiable tasks.
+- Terminal predicate: task-specific verifiable reward or final-answer correctness.
 
-- Locate the boundary between programmatic checks, environment feedback, human judgment, and model judgment.
+## 3. What is the verifier / reward / judge / environment?
 
-A reusable reasoning-data artifact should make the accept/reject or scoring signal reproducible. If the signal depends on a hidden judge prompt, moving service, undocumented code execution environment, missing unit tests, or unclear rubric, keep the entry `partial` until the gap is resolved.
+- Verification contract: verifiable reward, mainly programmatic answer checking for suitable tasks.
+- Recorded verifier/reward/environment: RL reward signals and distillation pipeline disclosed at report level.
+- Supervision granularity: answer_level reward with trace-level behavior emerging from training.
 
-## Supervision granularity
+## 4. How is the data constructed?
 
-- Recorded granularity: `answer_level`.
-- Recorded training/evaluation use: `distillation, rlvr`.
-- Construction layer: `frontier_pipeline`.
+- Base model: DeepSeek-V3-style base model family.
+- Teacher: cold-start data and RL-trained reasoning model for distillation.
+- Generator: RL policy rollouts and distillation outputs.
+- Filtering rule: reward correctness and safety/readability constraints described at high level.
+- Sampling protocol: report-level rather than fully released raw corpus protocol.
+- Inference budget: long reasoning rollouts are central to behavior.
+- Optimizer/scaffold: RL with verifiable rewards plus SFT/distillation stages.
 
-Granularity controls reuse. Answer-level records, step labels, scalar rewards, preference pairs, and full environment episodes are not interchangeable. Match your training or evaluation objective to the feedback level that the source actually exposes.
+## 5. How can it enter post-training?
 
-## Construction recipe
+Recorded training/evaluation use: distillation, rlvr.
 
-| Recipe field | Local value |
-|---|---|
-| Base model | unknown |
-| Teacher | unknown |
-| Generator | unknown |
-| Filtering rule | unknown |
-| Sampling protocol | unknown |
-| Rollout count | unknown |
-| Temperature | unknown |
-| Inference budget | unknown |
-| Optimizer/scaffold | unknown |
+Use it as a model-report anchor; do not treat it as a fully reproducible dataset release unless raw prompts, filters, and reward code are pinned.
 
-When reproducing this recipe or model-report pipeline, fill these recipe fields before training. The missing knobs often matter more than the headline number of examples.
+## 6. What should readers audit?
 
-## How it can be used
+- Which verifiable tasks enter RL?
+- Are reward functions public and deterministic?
+- How are cold-start examples selected?
+- What data enters distillation?
+- Can improvements be separated from inference budget?
 
-- Reading map: compare it with neighboring entries in the same paper-category page.
-- Engineering map: decide whether it supports SFT, distillation, RLVR, process supervision, reward modeling, agent training, evaluation, or audit.
-- Audit map: open an issue for every `unknown` field that affects reproducibility, safety, or benchmark comparison.
-- Teaching map: use it to show how reasoning data differs from plain instruction data.
+## 7. What is missing or risky?
 
-## Audit checklist
+- Many data details remain report-level.
+- Verifiable rewards can bias toward tasks with cheap answer checks.
+- Distillation may hide the original reward and sampling distribution.
 
-- [ ] Official paper, code, data, project, and dataset links are checked.
-- [ ] Source mixture, split policy, license, and lineage are recorded.
-- [ ] Verifier, reward, judge, rubric, environment, or test suite is reproducible.
-- [ ] Rejected/failed/ambiguous candidates are considered, not only successful examples.
-- [ ] Contamination, benchmark leakage, false positives, false negatives, and reward hacking are documented.
-- [ ] Training use is not broader than what the source supports.
+## 8. Why it matters for post-training reasoning data
 
-## Known limitations / failure modes
+It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown; add false positives, false negatives, leakage, judge drift, and reward hacking notes when known.
+The reusable lesson is to identify the feedback-bearing record: prompt, trace, label, preference, reward, verifier, environment state, benchmark item, or audit evidence.
 
-Local audit note: Seed entry; fields intentionally remain unknown until checked.
+## 9. Links and citation
 
-## Links
+[📄 Paper](https://arxiv.org/abs/2501.12948)
 
-- arXiv: [https://arxiv.org/abs/2501.12948](https://arxiv.org/abs/2501.12948)
-
-## Citation
-
-- Title: DeepSeek-R1
-- Year/source: 2025 · arXiv
-- Authors in local data: unknown
-- Local status: `partial`
-- Citation status: `verified` · metadata status: `partial`
+- Data ID: `deepseek-r1-2025`
+- Citation status: verified
+- Confidence: high

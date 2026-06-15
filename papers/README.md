@@ -24,26 +24,26 @@ Use this folder when the README is too compact. Each category page gives a begin
 
 | # | Work | Link | Card |
 |---:|---|---|---|
-| 1 | Datasheets for datasets | https://arxiv.org/abs/1803.09010 | ../cards/releases/datasheets-for-datasets.md |
-| 2 | Data statements for natural language processing | https://aclanthology.org/Q18-1041/ | ../cards/releases/data-statements-for-natural-language-processing.md |
-| 3 | Training language models to follow instructions with human feedback | https://arxiv.org/abs/2203.02155 | ../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md |
-| 4 | Chain-of-thought prompting elicits reasoning in large language models | https://arxiv.org/abs/2201.11903 | ../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md |
-| 5 | Training verifiers to solve math word problems | https://arxiv.org/abs/2110.14168 | ../cards/verifiers/training-verifiers-to-solve-math-word-problems.md |
-| 6 | STaR: Bootstrapping reasoning with reasoning | https://arxiv.org/abs/2203.14465 | ../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md |
-| 7 | Self-Instruct: Aligning language models with self-generated instructions | https://arxiv.org/abs/2212.10560 | ../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md |
-| 8 | Direct preference optimization: Your language model is secretly a reward model | https://arxiv.org/abs/2305.18290 | ../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md |
-| 9 | Let's Verify Step by Step | https://arxiv.org/abs/2305.20050 | ../cards/verifiers/prm800k.md |
-| 10 | GSM8K: Grade School Math 8K | https://arxiv.org/abs/2110.14168 | ../cards/benchmarks/gsm8k-grade-school-math-8k.md |
-| 11 | Measuring mathematical problem solving with the MATH dataset | https://arxiv.org/abs/2103.03874 | ../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md |
-| 12 | HumanEval: Hand-Written Evaluation Set | https://arxiv.org/abs/2107.03374 | ../cards/benchmarks/humaneval-hand-written-evaluation-set.md |
-| 13 | SWE-bench: Can language models resolve real-world GitHub issues? | https://arxiv.org/abs/2310.06770 | ../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md |
-| 14 | RewardBench: Evaluating Reward Models for Language Modeling | https://arxiv.org/abs/2403.13787 | ../cards/verifiers/rewardbench.md |
-| 15 | HealthBench | https://arxiv.org/abs/2505.08775 | ../cards/verifiers/healthbench.md |
-| 16 | LiveBench: A challenging, contamination-free benchmark for large language models | https://arxiv.org/abs/2406.19314 | ../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md |
-| 17 | OpenThoughts: Data recipes for reasoning models | https://arxiv.org/abs/2506.04178 | ../cards/releases/openthoughts.md |
-| 18 | DeepSeek-R1 | https://arxiv.org/abs/2501.12948 | ../cards/recipes/deepseek_r1.md |
-| 19 | s1: Simple Test-Time Scaling | https://arxiv.org/abs/2501.19393 | ../cards/releases/s1.md |
-| 20 | A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility | https://arxiv.org/abs/2504.07086 | ../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md |
+| 1 | Datasheets for datasets | [Paper](https://arxiv.org/abs/1803.09010) | [Card](../cards/releases/datasheets-for-datasets.md) |
+| 2 | Data statements for natural language processing | [Paper](https://aclanthology.org/Q18-1041/) | [Card](../cards/releases/data-statements-for-natural-language-processing.md) |
+| 3 | Training language models to follow instructions with human feedback | [Paper](https://arxiv.org/abs/2203.02155) | [Card](../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md) |
+| 4 | Chain-of-thought prompting elicits reasoning in large language models | [Paper](https://arxiv.org/abs/2201.11903) | [Card](../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md) |
+| 5 | Training verifiers to solve math word problems | [Paper](https://arxiv.org/abs/2110.14168) | [Card](../cards/verifiers/training-verifiers-to-solve-math-word-problems.md) |
+| 6 | STaR: Bootstrapping reasoning with reasoning | [Paper](https://arxiv.org/abs/2203.14465) | [Card](../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md) |
+| 7 | Self-Instruct: Aligning language models with self-generated instructions | [Paper](https://arxiv.org/abs/2212.10560) | [Card](../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) |
+| 8 | Direct preference optimization: Your language model is secretly a reward model | [Paper](https://arxiv.org/abs/2305.18290) | [Card](../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) |
+| 9 | Let's Verify Step by Step | [Paper](https://arxiv.org/abs/2305.20050) | [Card](../cards/verifiers/prm800k.md) |
+| 10 | GSM8K: Grade School Math 8K | [Paper](https://arxiv.org/abs/2110.14168) | [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md) |
+| 11 | Measuring mathematical problem solving with the MATH dataset | [Paper](https://arxiv.org/abs/2103.03874) | [Card](../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md) |
+| 12 | HumanEval: Hand-Written Evaluation Set | [Paper](https://arxiv.org/abs/2107.03374) | [Card](../cards/benchmarks/humaneval-hand-written-evaluation-set.md) |
+| 13 | SWE-bench: Can language models resolve real-world GitHub issues? | [Paper](https://arxiv.org/abs/2310.06770) | [Card](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) |
+| 14 | RewardBench: Evaluating Reward Models for Language Modeling | [Paper](https://arxiv.org/abs/2403.13787) | [Card](../cards/verifiers/rewardbench.md) |
+| 15 | HealthBench | [Paper](https://arxiv.org/abs/2505.08775) | [Card](../cards/verifiers/healthbench.md) |
+| 16 | LiveBench: A challenging, contamination-free benchmark for large language models | [Paper](https://arxiv.org/abs/2406.19314) | [Card](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md) |
+| 17 | OpenThoughts: Data recipes for reasoning models | [Paper](https://arxiv.org/abs/2506.04178) | [Card](../cards/releases/openthoughts.md) |
+| 18 | DeepSeek-R1 | [Paper](https://arxiv.org/abs/2501.12948) | [Card](../cards/recipes/deepseek_r1.md) |
+| 19 | s1: Simple Test-Time Scaling | [Paper](https://arxiv.org/abs/2501.19393) | [Card](../cards/releases/s1.md) |
+| 20 | A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility | [Paper](https://arxiv.org/abs/2504.07086) | [Card](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) |
 
 ## Legend
 
