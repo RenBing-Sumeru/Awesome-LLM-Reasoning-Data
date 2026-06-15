@@ -90,6 +90,10 @@ For practitioners, the audit lens should be active before data collection starts
   <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2501.03124) · [Card](../cards/verifiers/prmbench.md)
   _Why it matters:_ Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.
+- 🧰 **[Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/)**
+  <sub>2024 · OpenAI / SWE-bench report · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
+  [Paper](https://openai.com/index/introducing-swe-bench-verified/) · [Venue](https://www.swebench.com/verified.html) · [Code](https://github.com/swe-bench/SWE-bench) · [Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified) · [Card](../cards/agents/swe-bench-verified.md)
+  _Why it matters:_ It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.
 - 🧰 **[LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314)**
   <sub>2024 · arXiv · 🧰 benchmark · 🧯 audit failure · programmatic · mixed · evaluation · audit · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2406.19314) · [OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [Project](https://livebench.ai/) · [Card](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
@@ -202,10 +206,6 @@ For practitioners, the audit lens should be active before data collection starts
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **SciCode: A benchmark for scientific code generation and reasoning**
-  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -257,6 +257,7 @@ For practitioners, the audit lens should be active before data collection starts
 - [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
 - [Subliminal Learning](../cards/failures/subliminal-learning.md)
 - [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../cards/verifiers/tinyv.md)
+- [Introducing SWE-bench Verified](../cards/agents/swe-bench-verified.md)
 - [LiveBench: A challenging, contamination-free benchmark for large language models](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
 - [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](../cards/benchmarks/livecodebench.md)
 - [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](../cards/agents/osworld.md)

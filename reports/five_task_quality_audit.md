@@ -9,14 +9,14 @@ Status: pass.
 Evidence:
 
 - `data/papers.yaml` contains 271 structured entries.
-- `reports/link_coverage.json` reports 136 verified entries.
-- 136/136 verified entries have an official paper, arXiv, venue, OpenReview, ACL, DOI, or equivalent primary link.
-- 135 entries remain visible as needs-search or needs-metadata items instead of being silently promoted.
+- `reports/link_coverage.json` reports 148 verified entries.
+- 148/148 verified entries have an official paper, arXiv, venue, OpenReview, ACL, DOI, or equivalent primary link.
+- 123 entries remain visible as needs-search or needs-metadata items instead of being silently promoted.
 - `exports/papers.csv`, `exports/papers.json`, `exports/papers.bib`, and `data/citations.bib` are generated from the structured atlas.
 
 Residual gap:
 
-- Artifact coverage is still lower than paper-link coverage, but the first v0.2.0 artifact round raised it to 26 code links, 17 data links, 9 Hugging Face links, and 11 project links. The next quality jump should prioritize official artifacts for the most reused remaining verified entries.
+- Artifact coverage is still lower than paper-link coverage, but the v0.2.0 artifact rounds raised it to 35 code links, 24 data links, 18 Hugging Face links, and 20 project links. The next quality jump should prioritize official artifacts for the most reused remaining verified entries.
 
 ## Task 2: Paper Navigation Map
 
@@ -38,10 +38,10 @@ Status: pass.
 
 Evidence:
 
-- 77 filled card files exist.
-- 75 cards are linked to structured entries.
+- 89 filled card files exist.
+- 87 cards are linked to structured entries.
 - The Beginner 20 Starter Pack is fully carded.
-- 41 entries are `L5_audit_ready`.
+- 53 entries are `L5_audit_ready`.
 - Cards cover releases, verifiers, agents, recipes, benchmarks, and failure/audit cases.
 - `scripts/validate_data.py` now rejects placeholder markers in every `L5_audit_ready` card, not only the Starter Pack.
 
@@ -83,4 +83,4 @@ Residual gap:
 
 ## Overall Quality Judgment
 
-The repository now satisfies the original five upgrade tasks at a usable release-candidate level and has begun the v0.2.0 artifact-verification pass. The strongest parts are official-link separation, the searchable site, generated navigation, and the Starter Pack/L5 audit-card workflow. The remaining weakness is breadth of deep curation: 136 entries are verified, 41 are audit-ready, and 63 are link-only waypoints. That is an honest and maintainable state for a public Awesome atlas, and the next milestone should keep promoting the most cited remaining entries before adding long-tail seeds.
+The repository now satisfies the original five upgrade tasks at a usable release-candidate level and has completed two v0.2.0 artifact-verification rounds. The strongest parts are official-link separation, the searchable site, generated navigation, and the Starter Pack/L5 audit-card workflow. The remaining weakness is breadth of deep curation: 148 entries are verified, 53 are audit-ready, 63 are link-only waypoints, and 123 remain in the needs-search queue. That is an honest and maintainable state for a public Awesome atlas, and the next milestone should keep promoting the most cited remaining entries before adding long-tail seeds.

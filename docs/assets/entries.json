@@ -2908,36 +2908,56 @@
     "id": "orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023",
     "title": "Orca: Progressive learning from complex explanation traces of GPT-4",
     "year": 2023,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "arXiv",
+    "authors": [
+      "Subhabrata Mukherjee",
+      "Arindam Mitra",
+      "Ganesh Jawahar",
+      "Sahaj Agarwal",
+      "Hamid Palangi",
+      "Ahmed Awadallah"
+    ],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level",
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "distillation",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "explanation-traces",
+      "distillation",
+      "synthetic-data"
+    ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data"
+      "construction_recipes_open_reasoning_data",
+      "frontier_model_reports",
+      "foundations_instruction_preference_alignment"
     ],
     "tags": [
-      "seeded-from-bib"
+      "distillation",
+      "explanation-traces",
+      "seeded-from-bib",
+      "synthetic-data"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation of final answers.",
+    "why_it_matters": "It is an early and influential reasoning-distillation recipe: the reusable object is teacher-assisted explanation data plus careful evaluation against style-only imitation.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2306.02707",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2306.02707",
       "openreview": null,
       "acl": null,
       "pmlr": null,
@@ -2946,11 +2966,11 @@
       "code": null,
       "data": null,
       "huggingface": null,
-      "project": null,
+      "project": "https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/orca.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2306.02707"
   },
   {
     "id": "prm800k-2023",
@@ -3332,48 +3352,70 @@
     "id": "self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023",
     "title": "Self-RAG: Learning to retrieve, generate, and critique through self-reflection",
     "year": 2023,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "ICLR",
+    "authors": [
+      "Akari Asai",
+      "Zeqiu Wu",
+      "Yizhong Wang",
+      "Avirup Sil",
+      "Hannaneh Hajishirzi"
+    ],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "data_release",
+      "agent_environment"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed",
+      "judgment_required"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level",
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "evaluation",
+      "agent_training",
+      "audit"
     ],
-    "domains": [],
+    "domains": [
+      "retrieval",
+      "critique",
+      "factuality"
+    ],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "construction_recipes_open_reasoning_data",
+      "environmental_agents_tools_web_swe",
+      "judgment_required_rubrics_safety_domain"
     ],
     "tags": [
+      "critique",
+      "factuality",
+      "retrieval",
       "seeded-from-bib"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "Self-RAG trains models to decide when to retrieve, generate with evidence, and critique outputs using reflection tokens.",
+    "why_it_matters": "It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
-      "venue": null,
-      "arxiv": null,
+      "paper": "https://arxiv.org/abs/2310.11511",
+      "venue": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html",
+      "arxiv": "https://arxiv.org/abs/2310.11511",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "code": "https://github.com/akariasai/self-rag",
+      "data": "https://huggingface.co/datasets/selfrag/selfrag_train_data",
+      "huggingface": "https://huggingface.co/selfrag/selfrag_llama2_7b",
+      "project": "https://selfrag.github.io/",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/self-rag.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2310.11511"
   },
   {
     "id": "selfcodealign-self-alignment-for-code-generation-2023",
@@ -4131,98 +4173,155 @@
     "id": "deepseek-prover-advancing-theorem-proving-in-llms-2024",
     "title": "DeepSeek-Prover: Advancing theorem proving in LLMs",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "arXiv",
+    "authors": [
+      "Huajian Xin",
+      "Daya Guo",
+      "Zhihong Shao",
+      "Zhizhou Ren",
+      "Qihao Zhu",
+      "Bo Liu",
+      "Chong Ruan",
+      "Wenda Li",
+      "Xiaodan Liang"
+    ],
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level",
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "agent_training",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "formal-math",
+      "lean",
+      "synthetic-data"
+    ],
     "category": [
       "programmatic_math_code_proof",
+      "construction_recipes_open_reasoning_data",
       "frontier_model_reports"
     ],
     "tags": [
-      "seeded-from-bib"
+      "formal-math",
+      "lean",
+      "seeded-from-bib",
+      "synthetic-data"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal proof model.",
+    "why_it_matters": "It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2405.14333",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2405.14333",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
       "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "data": "https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1",
+      "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
+      "project": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/deepseek-prover.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2405.14333"
   },
   {
     "id": "deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024",
     "title": "DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "arXiv",
+    "authors": [
+      "Huajian Xin",
+      "Z. Z. Ren",
+      "Junxiao Song",
+      "Zhihong Shao",
+      "Wanjia Zhao",
+      "Haocheng Wang",
+      "Bo Liu",
+      "Liyue Zhang",
+      "Xuan Lu",
+      "Qiushi Du",
+      "Wenjun Gao",
+      "Qihao Zhu",
+      "Dejian Yang",
+      "Zhibin Gou",
+      "Z. F. Wu",
+      "Fuli Luo",
+      "Chong Ruan"
+    ],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "model_report",
+      "scaling_study"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "environmental"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level",
+      "scalar_reward",
+      "full_episode"
     ],
     "training_use": [
-      "unknown"
+      "rlvr",
+      "agent_training",
+      "evaluation",
+      "test_time_compute"
     ],
-    "domains": [],
+    "domains": [
+      "formal-math",
+      "lean",
+      "rl"
+    ],
     "category": [
       "programmatic_math_code_proof",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "scaling_test_time_compute_rlvr",
+      "construction_recipes_open_reasoning_data"
     ],
     "tags": [
+      "formal-math",
+      "lean",
+      "rl",
       "seeded-from-bib"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "DeepSeek-Prover-V1.5 adds proof-assistant feedback, RL, and RMaxTS search on top of DeepSeek-Prover-style formal proof data.",
+    "why_it_matters": "It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2408.08152",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2408.08152",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
-      "code": null,
+      "code": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
       "data": null,
-      "huggingface": null,
-      "project": null,
+      "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL",
+      "project": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/deepseek-prover-v1-5.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2408.08152"
   },
   {
     "id": "deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024",
@@ -4639,49 +4738,67 @@
     "id": "introducing-swe-bench-verified-2024",
     "title": "Introducing SWE-bench Verified",
     "year": 2024,
-    "venue": "unknown",
-    "authors": [],
+    "venue": "OpenAI / SWE-bench report",
+    "authors": [
+      "SWE-bench Team",
+      "OpenAI Preparedness"
+    ],
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "agent_environment",
+      "audit_failure"
     ],
     "verification_contract": [
-      "unknown"
+      "environmental",
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "full_episode",
+      "state_action_level"
     ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "agent_training",
+      "audit"
     ],
-    "domains": [],
+    "domains": [
+      "software-engineering",
+      "agents",
+      "unit-tests"
+    ],
     "category": [
       "environmental_agents_tools_web_swe",
+      "programmatic_math_code_proof",
+      "audit_failure_contamination_verifier_attacks",
       "benchmarks_evaluation"
     ],
     "tags": [
-      "seeded-from-bib"
+      "agents",
+      "seeded-from-bib",
+      "software-engineering",
+      "unit-tests"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.",
+    "why_it_matters": "It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
-      "venue": null,
+      "paper": "https://openai.com/index/introducing-swe-bench-verified/",
+      "venue": "https://www.swebench.com/verified.html",
       "arxiv": null,
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "code": "https://github.com/swe-bench/SWE-bench",
+      "data": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+      "huggingface": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+      "project": "https://www.swebench.com/verified.html",
       "bibtex": null,
-      "card": null
+      "card": "cards/agents/swe-bench-verified.md"
     },
-    "primary_link": null
+    "primary_link": "https://openai.com/index/introducing-swe-bench-verified/"
   },
   {
     "id": "is-model-collapse-inevitable-2024",
@@ -5012,48 +5129,69 @@
     "id": "magicoder-empowering-code-generation-with-oss-instruct-2024",
     "title": "Magicoder: Empowering code generation with OSS-instruct",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "ICML",
+    "authors": [
+      "Yuxiang Wei",
+      "Zhe Wang",
+      "Jiawei Liu",
+      "Yifeng Ding",
+      "Lingming Zhang"
+    ],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "data_release",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "step_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "evaluation",
+      "distillation"
     ],
-    "domains": [],
+    "domains": [
+      "code",
+      "synthetic-data",
+      "open-source-context"
+    ],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "programmatic_math_code_proof",
+      "construction_recipes_open_reasoning_data",
+      "benchmarks_evaluation"
     ],
     "tags": [
-      "seeded-from-bib"
+      "code",
+      "open-source-context",
+      "seeded-from-bib",
+      "synthetic-data"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate more realistic instruction data.",
+    "why_it_matters": "It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2312.02120",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2312.02120",
       "openreview": null,
       "acl": null,
-      "pmlr": null,
+      "pmlr": "https://proceedings.mlr.press/v235/wei24h.html",
       "cvf": null,
       "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
+      "code": "https://github.com/ise-uiuc/magicoder",
+      "data": "https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K",
+      "huggingface": "https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B",
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/magicoder.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2312.02120"
   },
   {
     "id": "mammoth2-scaling-instructions-from-the-web-2024",
@@ -5207,50 +5345,70 @@
     "id": "openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024",
     "title": "OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "ICLR",
+    "authors": [
+      "Shubham Toshniwal",
+      "Wei Du",
+      "Ivan Moshkov",
+      "Branislav Kisacanin",
+      "Alexan Ayrapetyan",
+      "Igor Gitman"
+    ],
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe",
+      "scaling_study"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "step_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "distillation",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "synthetic-data",
+      "instruction-tuning"
+    ],
     "category": [
-      "foundations_instruction_preference_alignment",
       "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "construction_recipes_open_reasoning_data",
+      "scaling_test_time_compute_rlvr"
     ],
     "tags": [
-      "seeded-from-bib"
+      "instruction-tuning",
+      "math",
+      "seeded-from-bib",
+      "synthetic-data"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open synthesis pipeline.",
+    "why_it_matters": "It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2410.01560",
       "venue": null,
-      "arxiv": null,
-      "openreview": null,
+      "arxiv": "https://arxiv.org/abs/2410.01560",
+      "openreview": "https://openreview.net/forum?id=mTCbq2QssD",
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "code": "https://github.com/NVIDIA-NeMo/Skills",
+      "data": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-2",
+      "huggingface": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-2",
+      "project": "https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/",
       "bibtex": null,
-      "card": null
+      "card": "cards/releases/openmathinstruct-2.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2410.01560"
   },
   {
     "id": "osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024",
@@ -5408,98 +5566,142 @@
     "id": "prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024",
     "title": "Prometheus 2: An open source language model specialized in evaluating other language models",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "EMNLP",
+    "authors": [
+      "Seungone Kim",
+      "Juyoung Suk",
+      "Shayne Longpre",
+      "Bill Yuchen Lin",
+      "Jamin Shin",
+      "Sean Welleck",
+      "Graham Neubig",
+      "Moontae Lee",
+      "Kyungjae Lee",
+      "Minjoon Seo"
+    ],
     "source_role": [
-      "survey_background"
+      "verifier_reward",
+      "model_report",
+      "data_release"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "pairwise_preference",
+      "scalar_reward"
     ],
     "training_use": [
-      "unknown"
+      "reward_modeling",
+      "preference_learning",
+      "evaluation",
+      "audit"
     ],
-    "domains": [],
+    "domains": [
+      "llm-as-judge",
+      "rubrics",
+      "evaluation-models"
+    ],
     "category": [
       "judgment_required_rubrics_safety_domain",
-      "construction_recipes_open_reasoning_data"
+      "foundations_instruction_preference_alignment",
+      "benchmarks_evaluation"
     ],
     "tags": [
+      "evaluation-models",
+      "llm-as-judge",
+      "rubrics",
       "seeded-from-bib"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "Prometheus 2 is an open evaluator model for both direct assessment and pairwise ranking under user-defined criteria.",
+    "why_it_matters": "It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2405.01535",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2405.01535",
       "openreview": null,
-      "acl": null,
+      "acl": "https://aclanthology.org/2024.emnlp-main.248/",
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
+      "doi": "https://doi.org/10.18653/v1/2024.emnlp-main.248",
+      "code": "https://github.com/prometheus-eval/prometheus-eval",
+      "data": "https://aclanthology.org/2024.emnlp-main.248.data.zip",
+      "huggingface": "https://huggingface.co/prometheus-eval/prometheus-7b-v2.0",
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/verifiers/prometheus-2.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2405.01535"
   },
   {
     "id": "qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024",
     "title": "Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "arXiv",
+    "authors": [
+      "Qwen Team"
+    ],
     "source_role": [
-      "survey_background"
+      "model_report",
+      "construction_recipe",
+      "verifier_reward"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "scalar_reward"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "reward_modeling",
+      "rlvr",
+      "evaluation",
+      "test_time_compute"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "tool-integrated-reasoning",
+      "reward-modeling"
+    ],
     "category": [
       "programmatic_math_code_proof",
       "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "frontier_model_reports",
+      "scaling_test_time_compute_rlvr"
     ],
     "tags": [
-      "seeded-from-bib"
+      "math",
+      "reward-modeling",
+      "seeded-from-bib",
+      "tool-integrated-reasoning"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "Qwen2.5-Math reports a math-specialized model family supporting chain-style and tool-integrated reasoning with base, instruct, and reward-model variants.",
+    "why_it_matters": "It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning, and multilingual math evaluation are tied together.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2409.12122",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2409.12122",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
-      "code": null,
+      "code": "https://github.com/QwenLM/Qwen2.5-Math",
       "data": null,
-      "huggingface": null,
-      "project": null,
+      "huggingface": "https://huggingface.co/Qwen/Qwen2.5-Math-7B",
+      "project": "https://qwenlm.github.io/blog/qwen2.5-math/",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/qwen2-5-math.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2409.12122"
   },
   {
     "id": "r-tuning-2024",
@@ -5703,37 +5905,63 @@
     "id": "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
     "title": "Rewarding progress: Scaling automated process verifiers for LLM reasoning",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "authors": [],
+    "venue": "ICLR",
+    "authors": [
+      "Amrith Setlur",
+      "Chirag Nagpal",
+      "Adam Fisch",
+      "Xinyang Geng",
+      "Jacob Eisenstein",
+      "Rishabh Agarwal",
+      "Alekh Agarwal",
+      "Jonathan Berant",
+      "Aviral Kumar"
+    ],
     "source_role": [
-      "survey_background"
+      "verifier_reward",
+      "process_supervision",
+      "scaling_study"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level",
+      "process_reward",
+      "scalar_reward"
     ],
     "training_use": [
-      "unknown"
+      "process_supervision",
+      "reward_modeling",
+      "rlvr",
+      "test_time_compute"
     ],
-    "domains": [],
+    "domains": [
+      "process-reward-models",
+      "rlvr",
+      "math"
+    ],
     "category": [
       "process_supervision_prm",
-      "scaling_test_time_compute_rlvr"
+      "scaling_test_time_compute_rlvr",
+      "construction_recipes_open_reasoning_data"
     ],
     "tags": [
+      "math",
+      "process-reward-models",
+      "rlvr",
       "seeded-from-bib"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases future correctness probability.",
+    "why_it_matters": "It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2410.08146",
       "venue": null,
-      "arxiv": null,
-      "openreview": null,
+      "arxiv": "https://arxiv.org/abs/2410.08146",
+      "openreview": "https://openreview.net/forum?id=A6Y7AqlzLW",
       "acl": null,
       "pmlr": null,
       "cvf": null,
@@ -5743,58 +5971,101 @@
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/verifiers/rewarding-progress.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2410.08146"
   },
   {
     "id": "scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024",
     "title": "SciCode: A benchmark for scientific code generation and reasoning",
     "year": 2024,
-    "venue": "unknown",
-    "authors": [],
+    "venue": "NeurIPS Datasets and Benchmarks",
+    "authors": [
+      "Minyang Tian",
+      "Luyu Gao",
+      "Shizhuo Dylan Zhang",
+      "Xinan Chen",
+      "Cunwei Fan",
+      "Xuefei Guo",
+      "Roland Haas",
+      "Pan Ji",
+      "Kittithat Krongchon",
+      "Yao Li",
+      "Shengyan Liu",
+      "Di Luo",
+      "Yutao Ma",
+      "Hao Tong",
+      "Kha Trinh",
+      "Chenyu Tian",
+      "Zihan Wang",
+      "Bohao Wu",
+      "Yanyu Xiong",
+      "Shengzhu Yin",
+      "Minhui Zhu",
+      "Kilian Lieret",
+      "Yanxin Lu",
+      "Genglin Liu",
+      "Yufeng Du",
+      "Tianhua Tao",
+      "Ofir Press",
+      "Jamie Callan",
+      "Eliu Huerta",
+      "Hao Peng"
+    ],
     "source_role": [
-      "survey_background"
+      "benchmark",
+      "data_release"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "judgment_required"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "step_level"
     ],
     "training_use": [
-      "unknown"
+      "evaluation",
+      "audit",
+      "test_time_compute"
     ],
-    "domains": [],
+    "domains": [
+      "scientific-code",
+      "research-problems",
+      "execution"
+    ],
     "category": [
       "programmatic_math_code_proof",
-      "audit_failure_contamination_verifier_attacks",
+      "judgment_required_rubrics_safety_domain",
       "benchmarks_evaluation"
     ],
     "tags": [
+      "execution",
+      "research-problems",
+      "scientific-code",
       "seeded-from-bib"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "SciCode evaluates code generation for realistic scientific research problems decomposed into subproblems with tests and gold solutions.",
+    "why_it_matters": "It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
-      "venue": null,
-      "arxiv": null,
+      "paper": "https://arxiv.org/abs/2407.13168",
+      "venue": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html",
+      "arxiv": "https://arxiv.org/abs/2407.13168",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
-      "code": null,
+      "code": "https://github.com/scicode-bench/SciCode",
       "data": null,
       "huggingface": null,
-      "project": null,
+      "project": "https://scicode-bench.github.io/",
       "bibtex": null,
-      "card": null
+      "card": "cards/benchmarks/scicode.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2407.13168"
   },
   {
     "id": "self-rewarding-lms-2024",
@@ -7777,50 +8048,86 @@
     "id": "deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025",
     "title": "DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning",
     "year": 2025,
-    "venue": "unknown",
-    "authors": [],
+    "venue": "arXiv",
+    "authors": [
+      "Z. Z. Ren",
+      "Zhihong Shao",
+      "Junxiao Song",
+      "Huajian Xin",
+      "Haocheng Wang",
+      "Wanjia Zhao",
+      "Liyue Zhang",
+      "Zhe Fu",
+      "Qihao Zhu",
+      "Dejian Yang",
+      "Z. F. Wu",
+      "Zhibin Gou",
+      "Shirong Ma",
+      "Hongxuan Tang",
+      "Yuxuan Liu",
+      "Wenjun Gao",
+      "Daya Guo",
+      "Chong Ruan"
+    ],
     "source_role": [
-      "survey_background"
+      "model_report",
+      "construction_recipe",
+      "data_release"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "environmental",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "step_level",
+      "full_episode",
+      "scalar_reward"
     ],
     "training_use": [
-      "unknown"
+      "rlvr",
+      "sft",
+      "agent_training",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "formal-math",
+      "lean",
+      "subgoal-decomposition"
+    ],
     "category": [
       "programmatic_math_code_proof",
+      "construction_recipes_open_reasoning_data",
       "frontier_model_reports",
       "scaling_test_time_compute_rlvr"
     ],
     "tags": [
-      "seeded-from-bib"
+      "formal-math",
+      "lean",
+      "seeded-from-bib",
+      "subgoal-decomposition"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
+    "one_line_summary": "DeepSeek-Prover-V2 uses recursive subgoal decomposition and RL to connect informal reasoning with formal Lean theorem proving.",
+    "why_it_matters": "It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification.",
+    "curation_level": "L5_audit_ready",
+    "status": "verified",
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2504.21801",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2504.21801",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
       "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "code": "https://github.com/deepseek-ai/DeepSeek-Prover-V2",
+      "data": "https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench",
+      "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B",
+      "project": "https://github.com/deepseek-ai/DeepSeek-Prover-V2",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/deepseek-prover-v2.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2504.21801"
   },
   {
     "id": "deepseek-r1-2025",

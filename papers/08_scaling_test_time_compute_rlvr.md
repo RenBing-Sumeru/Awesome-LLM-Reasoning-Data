@@ -18,14 +18,14 @@ Practitioners should read every scaling curve as a measurement design. What exac
 |---|---:|---|---|---|
 | Big-Math-RL-Verified | 2025 | arXiv | [Paper](https://arxiv.org/abs/2502.17387) · [Card](../cards/releases/big_math.md) | Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering. |
 | DeepMath-103K | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../cards/releases/deepmath_103k.md) | Math release highlighted for verifier pinning and decontamination. |
+| DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.21801) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) · [Card](../cards/recipes/deepseek-prover-v2.md) | It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification. |
 | Llama-Nemotron: Efficient Reasoning Models | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.00949) · [Card](../cards/recipes/llama_nemotron.md) | Mixed post-training corpus reference for reasoning, chat, and safety partitions. |
 | OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.09075) · [Card](../cards/releases/opencodereasoning_ii.md) | Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique. |
 | OpenMathReasoning: A large-scale dataset of math reasoning traces | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.16891) · [Card](../cards/releases/openmathreasoning.md) | Large-scale math reasoning trace release for programmatic verification. |
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
+| OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data | 2024 | ICLR | [Paper](https://arxiv.org/abs/2410.01560) · [OpenReview](https://openreview.net/forum?id=mTCbq2QssD) · [Code](https://github.com/NVIDIA-NeMo/Skills) · [Data](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2) · [Project](https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/) · [Card](../cards/releases/openmathinstruct-2.md) | It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models. |
 | Tulu 3: Pushing frontiers in open language model post-training | 2024 | arXiv | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../cards/recipes/tulu-3.md) | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
 | Absolute Zero: Reinforced Self-play Reasoning with Zero Data | 2025 | arXiv preprint arXiv:2505.03335 | [Paper](https://arxiv.org/abs/2505.03335) · [Card](../cards/recipes/absolute_zero.md) | Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop. |
-| DAPO | 2025 | arXiv | [Paper](https://arxiv.org/abs/2503.14476) · [Card](../cards/releases/dapo.md) | GRPO-lineage RLVR recipe where filtering changes what reaches the gradient. |
-| DeepSeek-R1 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.12948) · [Card](../cards/recipes/deepseek_r1.md) | It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior. |
 
 ## Full paper list
 
@@ -106,6 +106,10 @@ Practitioners should read every scaling curve as a measurement design. What exac
   <sub>2025 · arXiv · 🏗️ construction recipe · 📈 scaling study · mixed · sft · test time compute · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2501.19393) · [Card](../cards/releases/s1.md)
   _Why it matters:_ It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.
+- 🏗️ **[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152)**
+  <sub>2024 · arXiv · 🏗️ construction recipe · 🚀 model report · programmatic · environmental · rlvr · agent training · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2408.08152) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL) · [Card](../cards/recipes/deepseek-prover-v1-5.md)
+  _Why it matters:_ It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.
 
 ### 📦 Data Release
 
@@ -129,9 +133,17 @@ Practitioners should read every scaling curve as a measurement design. What exac
   <sub>2025 · arXiv · 📦 data release · 🌐 agent environment · environmental · programmatic · agent training · evaluation · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md)
   _Why it matters:_ Repository-scale training environment showing substrate as data.
+- 📦 **[OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](https://arxiv.org/abs/2410.01560)**
+  <sub>2024 · ICLR · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2410.01560) · [OpenReview](https://openreview.net/forum?id=mTCbq2QssD) · [Code](https://github.com/NVIDIA-NeMo/Skills) · [Data](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2) · [Project](https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/) · [Card](../cards/releases/openmathinstruct-2.md)
+  _Why it matters:_ It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models.
 
 ### 🚀 Model Report
 
+- 🚀 **[DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801)**
+  <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · rlvr · sft · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.21801) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) · [Card](../cards/recipes/deepseek-prover-v2.md)
+  _Why it matters:_ It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification.
 - 🚀 **[DeepSeek-R1](https://arxiv.org/abs/2501.12948)**
   <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · distillation · rlvr · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2501.12948) · [Card](../cards/recipes/deepseek_r1.md)
@@ -160,6 +172,10 @@ Practitioners should read every scaling curve as a measurement design. What exac
   <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · rlvr · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2402.03300) · [Code](https://github.com/deepseek-ai/deepseek-math) · [HF](https://huggingface.co/collections/deepseek-ai/deepseek-math) · [Card](../cards/recipes/deepseekmath.md)
   _Why it matters:_ It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.
+- 🚀 **[Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122)**
+  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2409.12122) · [Code](https://github.com/QwenLM/Qwen2.5-Math) · [HF](https://huggingface.co/Qwen/Qwen2.5-Math-7B) · [Project](https://qwenlm.github.io/blog/qwen2.5-math/) · [Card](../cards/recipes/qwen2-5-math.md)
+  _Why it matters:_ It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning, and multilingual math evaluation are tied together.
 - 🚀 **[Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124)**
   <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · programmatic · sft · preference learning · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../cards/recipes/tulu-3.md)
@@ -193,6 +209,10 @@ Practitioners should read every scaling curve as a measurement design. What exac
   <sub>2025 · arXiv · 🧪 verifier reward · 🧯 audit failure · programmatic · judgment required · rlvr · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Card](../cards/verifiers/tinyv.md)
   _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+- 🧪 **[Rewarding progress: Scaling automated process verifiers for LLM reasoning](https://arxiv.org/abs/2410.08146)**
+  <sub>2024 · ICLR · 🧪 verifier reward · 🪜 process supervision · programmatic · mixed · process supervision · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2410.08146) · [OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW) · [Card](../cards/verifiers/rewarding-progress.md)
+  _Why it matters:_ It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.
 
 ### 🪜 Process Supervision
 
@@ -227,10 +247,6 @@ Practitioners should read every scaling curve as a measurement design. What exac
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning**
-  <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning**
   <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -249,14 +265,6 @@ Practitioners should read every scaling curve as a measurement design. What exac
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **SWE-RL: Advancing language agents for software engineering via reinforcement learning**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **Rewarding progress: Scaling automated process verifiers for LLM reasoning**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Reflexion: Language agents with verbal reinforcement learning**
@@ -280,6 +288,7 @@ Practitioners should read every scaling curve as a measurement design. What exac
 - [Big-Math-RL-Verified](../cards/releases/big_math.md)
 - [DAPO](../cards/releases/dapo.md)
 - [DeepMath-103K](../cards/releases/deepmath_103k.md)
+- [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](../cards/recipes/deepseek-prover-v2.md)
 - [DeepSeek-R1](../cards/recipes/deepseek_r1.md)
 - [Kimi K1.5: Scaling Reinforcement Learning with LLMs](../cards/recipes/kimi_k15.md)
 - [Llama-Nemotron: Efficient Reasoning Models](../cards/recipes/llama_nemotron.md)
@@ -293,7 +302,6 @@ Practitioners should read every scaling curve as a measurement design. What exac
 - [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
 - [TTRL: Test-Time Reinforcement Learning](../cards/recipes/ttrl.md)
 - [The Art of Scaling Reinforcement Learning Compute for LLMs](../cards/recipes/the-art-of-scaling-rl-compute.md)
-- [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../cards/verifiers/tinyv.md)
 
 ## Open gaps
 

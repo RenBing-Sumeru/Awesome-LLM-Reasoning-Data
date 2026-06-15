@@ -665,23 +665,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Mind2Web: Towards a generalist agent for the web" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Orca: Progressive learning from complex explanation traces of GPT-4
-
-- Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Orca: Progressive learning from complex explanation traces of GPT-4" arXiv`
-  - `"Orca: Progressive learning from complex explanation traces of GPT-4" OpenReview`
-  - `"Orca: Progressive learning from complex explanation traces of GPT-4" GitHub`
-  - `"Orca: Progressive learning from complex explanation traces of GPT-4" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## ProofNet: Autoformalizing and formally proving undergraduate-level mathematics
 
 - Current status: `needs_metadata`
@@ -731,23 +714,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ReST\textsuperscriptEM" OpenReview`
   - `"ReST\textsuperscriptEM" GitHub`
   - `"ReST\textsuperscriptEM" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Self-RAG: Learning to retrieve, generate, and critique through self-reflection
-
-- Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" arXiv`
-  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" OpenReview`
-  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" GitHub`
-  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## SelfCodeAlign: Self-alignment for code generation
@@ -886,40 +852,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ChemBench: A benchmark for evaluating large language models in chemistry" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## DeepSeek-Prover: Advancing theorem proving in LLMs
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, frontier_model_reports
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" arXiv`
-  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" OpenReview`
-  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" GitHub`
-  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, frontier_model_reports, scaling_test_time_compute_rlvr
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" arXiv`
-  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" OpenReview`
-  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" GitHub`
-  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Does writing with LMs reduce content diversity?
 
 - Current status: `needs_metadata`
@@ -1039,23 +971,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Improve mathematical reasoning in language models by automated process supervision" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Introducing SWE-bench Verified
-
-- Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Introducing SWE-bench Verified" arXiv`
-  - `"Introducing SWE-bench Verified" OpenReview`
-  - `"Introducing SWE-bench Verified" GitHub`
-  - `"Introducing SWE-bench Verified" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Is model collapse inevitable?
 
 - Current status: `needs_metadata`
@@ -1107,23 +1022,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Learning to reason with LLMs" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Magicoder: Empowering code generation with OSS-instruct
-
-- Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Magicoder: Empowering code generation with OSS-instruct" arXiv`
-  - `"Magicoder: Empowering code generation with OSS-instruct" OpenReview`
-  - `"Magicoder: Empowering code generation with OSS-instruct" GitHub`
-  - `"Magicoder: Empowering code generation with OSS-instruct" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## OpenCodeInterpreter: Integrating code generation with execution and refinement
 
 - Current status: `needs_metadata`
@@ -1139,23 +1037,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"OpenCodeInterpreter: Integrating code generation with execution and refinement" OpenReview`
   - `"OpenCodeInterpreter: Integrating code generation with execution and refinement" GitHub`
   - `"OpenCodeInterpreter: Integrating code generation with execution and refinement" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data
-
-- Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof, construction_recipes_open_reasoning_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" arXiv`
-  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" OpenReview`
-  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" GitHub`
-  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Overoptimization in direct alignment algorithms
@@ -1190,40 +1071,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" OpenReview`
   - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" GitHub`
   - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Prometheus 2: An open source language model specialized in evaluating other language models
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, construction_recipes_open_reasoning_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Prometheus 2: An open source language model specialized in evaluating other language models" arXiv`
-  - `"Prometheus 2: An open source language model specialized in evaluating other language models" OpenReview`
-  - `"Prometheus 2: An open source language model specialized in evaluating other language models" GitHub`
-  - `"Prometheus 2: An open source language model specialized in evaluating other language models" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" arXiv`
-  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" OpenReview`
-  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" GitHub`
-  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## R-Tuning
@@ -1275,40 +1122,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ReST-MCTS*" OpenReview`
   - `"ReST-MCTS*" GitHub`
   - `"ReST-MCTS*" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Rewarding progress: Scaling automated process verifiers for LLM reasoning
-
-- Current status: `needs_metadata`
-- Possible category: process_supervision_prm, scaling_test_time_compute_rlvr
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" arXiv`
-  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" OpenReview`
-  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" GitHub`
-  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## SciCode: A benchmark for scientific code generation and reasoning
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"SciCode: A benchmark for scientific code generation and reasoning" arXiv`
-  - `"SciCode: A benchmark for scientific code generation and reasoning" OpenReview`
-  - `"SciCode: A benchmark for scientific code generation and reasoning" GitHub`
-  - `"SciCode: A benchmark for scientific code generation and reasoning" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Self-Rewarding LMs
@@ -1632,23 +1445,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"DeepScaleR: Scaling reinforcement learning for reasoning in open models" OpenReview`
   - `"DeepScaleR: Scaling reinforcement learning for reasoning in open models" GitHub`
   - `"DeepScaleR: Scaling reinforcement learning for reasoning in open models" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, frontier_model_reports, scaling_test_time_compute_rlvr
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" arXiv`
-  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" OpenReview`
-  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" GitHub`
-  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning

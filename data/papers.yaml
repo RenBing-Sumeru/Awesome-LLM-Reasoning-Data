@@ -4927,25 +4927,40 @@
 - id: orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023
   title: 'Orca: Progressive learning from complex explanation traces of GPT-4'
   year: 2023
-  venue: arXiv preprint
-  authors: []
+  venue: arXiv
+  authors:
+  - Subhabrata Mukherjee
+  - Arindam Mitra
+  - Ganesh Jawahar
+  - Sahaj Agarwal
+  - Hamid Palangi
+  - Ahmed Awadallah
   source_role:
-  - survey_background
+  - construction_recipe
+  - model_report
   verification_contract:
-  - unknown
+  - judgment_required
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - answer_level
+  domains:
+  - explanation-traces
+  - distillation
+  - synthetic-data
   training_use:
-  - unknown
+  - sft
+  - distillation
+  - evaluation
   construction_layer:
-  - release_audit
+  - trace_writing
+  - frontier_pipeline
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2306.02707
+    arxiv: https://arxiv.org/abs/2306.02707
     code: null
     data: null
-    project: null
+    project: https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/
     huggingface: null
     doi: null
     venue: null
@@ -4955,58 +4970,67 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: large-scale diverse instruction prompts sampled for complex reasoning and explanation learning.
+    trace_author: large teacher models produce explanation traces and stepwise guidance for a smaller model.
+    answer_format: instruction response with detailed explanation, intermediate reasoning, and final answer.
+    process_fields:
+    - prompt source, teacher identity, explanation trace, task type, response, evaluation benchmark.
+    environment_or_substrate: offline synthetic-data distillation and evaluation pipeline.
+    verifier_or_reward: downstream reasoning, exam, and benchmark evaluation rather than a single automatic verifier.
+    terminal_predicate: student model improves reasoning benchmarks without merely copying teacher style.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: 13B student model in the original report.
+    teacher: large foundation models that produce explanation traces and stepwise guidance.
+    generator: teacher-assisted data-generation pipeline over diverse instructions.
+    filtering_rule: progressive learning emphasizes rich signals and diverse tasks instead of shallow responses.
+    sampling_protocol: pin teacher, task mixture, explanation style, and evaluation suite.
+    inference_budget: teacher generation budget controls dataset scale and trace richness.
+    optimizer_or_scaffold: supervised distillation on complex explanation traces.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key orca2023. Deduplicated title collision; dropped lower-confidence id: orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which instruction sources and task types dominate the synthetic traces?
+    split: Are teacher-generated training tasks separate from evaluation suites?
+    decontamination: Can benchmark tasks or explanations leak through teacher generation?
+    lineage: Which teacher model and prompt template produced each trace?
+    known_failure_modes:
+    - Students can learn teacher style without robust reasoning.
+    - Synthetic traces can include teacher errors.
+    - Closed teacher data makes lineage hard to audit.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Distillation recipe entry for explanation-trace supervision and synthetic reasoning data.
   related: []
   tags:
+  - distillation
+  - explanation-traces
   - seeded-from-bib
-  status: needs_metadata
+  - synthetic-data
+  status: verified
   category:
-  - foundations_instruction_preference_alignment
   - construction_recipes_open_reasoning_data
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
+  - frontier_model_reports
+  - foundations_instruction_preference_alignment
+  one_line: Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation of final
+    answers.
+  card: cards/recipes/orca.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation
+    of final answers.
+  why_it_matters: 'It is an early and influential reasoning-distillation recipe: the reusable object is teacher-assisted explanation
+    data plus careful evaluation against style-only imitation.'
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: prm800k-2023
   title: Let's Verify Step by Step
   year: 2023
@@ -5647,85 +5671,113 @@
 - id: self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023
   title: 'Self-RAG: Learning to retrieve, generate, and critique through self-reflection'
   year: 2023
-  venue: arXiv preprint
-  authors: []
+  venue: ICLR
+  authors:
+  - Akari Asai
+  - Zeqiu Wu
+  - Yizhong Wang
+  - Avirup Sil
+  - Hannaneh Hajishirzi
   source_role:
-  - survey_background
+  - construction_recipe
+  - data_release
+  - agent_environment
   verification_contract:
-  - unknown
+  - mixed
+  - judgment_required
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - answer_level
+  domains:
+  - retrieval
+  - critique
+  - factuality
   training_use:
-  - unknown
+  - sft
+  - evaluation
+  - agent_training
+  - audit
   construction_layer:
-  - release_audit
+  - trace_writing
+  - reward_verifier_layer
+  - search_substrate
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
+    paper: https://arxiv.org/abs/2310.11511
+    arxiv: https://arxiv.org/abs/2310.11511
+    code: https://github.com/akariasai/self-rag
+    data: https://huggingface.co/datasets/selfrag/selfrag_train_data
+    project: https://selfrag.github.io/
+    huggingface: https://huggingface.co/selfrag/selfrag_llama2_7b
     doi: null
-    venue: null
+    venue: https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: instruction-following and knowledge-intensive tasks augmented with retrieval and critique supervision.
+    trace_author: model emits reflection/control tokens, retrieves passages, generates text, and critiques support.
+    answer_format: generation with retrieval decisions, critique signals, and final answer.
+    process_fields:
+    - query, retrieval decision token, retrieved passage, support critique, utility critique, final answer.
+    environment_or_substrate: retriever plus generation model with special reflection tokens.
+    verifier_or_reward: critique signals and task-specific factuality/answer-quality evaluation.
+    terminal_predicate: model retrieves only when useful and produces supported, high-quality answers.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Llama-2 style base models in the original release.
+    teacher: critic and retrieval-supervision signals derived from task data and evidence checks.
+    generator: model learns special reflection tokens for retrieval and critique behavior.
+    filtering_rule: retrieval and critique labels identify when evidence helps or hurts.
+    sampling_protocol: pin retriever, model checkpoint, task, and reflection-token policy.
+    inference_budget: number of retrieval calls and critique steps changes latency and quality.
+    optimizer_or_scaffold: SFT over data with reflection tokens plus retrieval-augmented inference.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key selfrag2023. Deduplicated title collision; dropped lower-confidence id: self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which tasks provide retrieval/critique supervision?
+    split: Are retrieval corpora and evaluation queries separated?
+    decontamination: Could retrieved passages contain benchmark answers?
+    lineage: Which critic model produced support/utility labels?
+    known_failure_modes:
+    - A model can retrieve irrelevant passages confidently.
+    - Critique tokens can become style markers without true verification.
+    - Retriever choice changes benchmark conclusions.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Construction recipe entry for retrieval-on-demand, critique supervision, and factuality-oriented post-training
+    data.
   related: []
   tags:
+  - critique
+  - factuality
+  - retrieval
   - seeded-from-bib
-  status: needs_metadata
+  status: verified
   category:
-  - foundations_instruction_preference_alignment
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
+  - construction_recipes_open_reasoning_data
+  - environmental_agents_tools_web_swe
+  - judgment_required_rubrics_safety_domain
+  one_line: Self-RAG trains models to decide when to retrieve, generate with evidence, and critique outputs using reflection
+    tokens.
+  card: cards/recipes/self-rag.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: Self-RAG trains models to decide when to retrieve, generate with evidence, and critique outputs using
+    reflection tokens.
+  why_it_matters: It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved
+    passages, critiques, and final generations.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: selfcodealign-self-alignment-for-code-generation-2023
   title: 'SelfCodeAlign: Self-alignment for code generation'
   year: 2023
@@ -6998,26 +7050,46 @@
 - id: deepseek-prover-advancing-theorem-proving-in-llms-2024
   title: 'DeepSeek-Prover: Advancing theorem proving in LLMs'
   year: 2024
-  venue: arXiv preprint
-  authors: []
+  venue: arXiv
+  authors:
+  - Huajian Xin
+  - Daya Guo
+  - Zhihong Shao
+  - Zhizhou Ren
+  - Qihao Zhu
+  - Bo Liu
+  - Chong Ruan
+  - Wenda Li
+  - Xiaodan Liang
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - model_report
   verification_contract:
-  - unknown
+  - programmatic
+  - environmental
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - answer_level
+  domains:
+  - formal-math
+  - lean
+  - synthetic-data
   training_use:
-  - unknown
+  - sft
+  - agent_training
+  - evaluation
   construction_layer:
+  - trace_writing
+  - reward_verifier_layer
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2405.14333
+    arxiv: https://arxiv.org/abs/2405.14333
     code: null
-    data: null
-    project: null
-    huggingface: null
+    data: https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1
+    project: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1
+    huggingface: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1
     doi: null
     venue: null
     openreview: null
@@ -7026,81 +7098,120 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: high-school and undergraduate mathematical competition problems translated into Lean 4 formal statements.
+    trace_author: models translate problems, generate formal statements, and synthesize proofs.
+    answer_format: Lean 4 theorem statement and proof script checked by Lean.
+    process_fields:
+    - informal problem, formal statement, generated proof, Lean result, benchmark split.
+    environment_or_substrate: Lean 4 proof assistant and formal theorem-proving benchmark harness.
+    verifier_or_reward: Lean kernel/checker acceptance.
+    terminal_predicate: proof verifies in Lean under the target theorem statement.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: DeepSeekMath 7B fine-tuned for Lean theorem proving.
+    teacher: formalization and proof-generation pipeline with Lean feedback.
+    generator: synthetic data pipeline translates informal math into formal statements and proofs.
+    filtering_rule: low-quality formal statements and invalid proofs are filtered by Lean and pipeline rules.
+    sampling_protocol: pin Lean version, benchmark split, and sample count for pass@k.
+    inference_budget: whole-proof generation uses multiple samples; reported gains depend on sample budget.
+    optimizer_or_scaffold: SFT over synthetic formal statement/proof data.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key deepseekprover2024. Deduplicated title collision; dropped lower-confidence id: deepseek-prover-advancing-theorem-proving-in-llms-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which informal math sources seed formalization?
+    split: Are miniF2F and FIMO examples excluded from training?
+    decontamination: Can synthetic statements duplicate benchmark theorems?
+    lineage: Can each proof be traced to formalization and Lean checker output?
+    known_failure_modes:
+    - Formal statements can be wrong even if proofs verify.
+    - Pass@k hides low single-shot reliability.
+    - Lean/mathlib version drift can break reproducibility.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Formal theorem-proving recipe entry for large-scale synthetic Lean data and model release.
   related: []
   tags:
+  - formal-math
+  - lean
   - seeded-from-bib
-  status: needs_metadata
+  - synthetic-data
+  status: verified
   category:
   - programmatic_math_code_proof
+  - construction_recipes_open_reasoning_data
   - frontier_model_reports
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
+  one_line: DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal
+    proof model.
+  card: cards/recipes/deepseek-prover.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains
+    a formal proof model.
+  why_it_matters: It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification
+    form a reusable post-training object.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024
   title: 'DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search'
   year: 2024
-  venue: arXiv preprint
-  authors: []
+  venue: arXiv
+  authors:
+  - Huajian Xin
+  - Z. Z. Ren
+  - Junxiao Song
+  - Zhihong Shao
+  - Wanjia Zhao
+  - Haocheng Wang
+  - Bo Liu
+  - Liyue Zhang
+  - Xuan Lu
+  - Qiushi Du
+  - Wenjun Gao
+  - Qihao Zhu
+  - Dejian Yang
+  - Zhibin Gou
+  - Z. F. Wu
+  - Fuli Luo
+  - Chong Ruan
   source_role:
-  - survey_background
+  - construction_recipe
+  - model_report
+  - scaling_study
   verification_contract:
-  - unknown
+  - programmatic
+  - environmental
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - scalar_reward
+  - full_episode
+  domains:
+  - formal-math
+  - lean
+  - rl
   training_use:
-  - unknown
+  - rlvr
+  - agent_training
+  - evaluation
+  - test_time_compute
   construction_layer:
-  - release_audit
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - search_substrate
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
+    paper: https://arxiv.org/abs/2408.08152
+    arxiv: https://arxiv.org/abs/2408.08152
+    code: https://github.com/deepseek-ai/DeepSeek-Prover-V1.5
     data: null
-    project: null
-    huggingface: null
+    project: https://github.com/deepseek-ai/DeepSeek-Prover-V1.5
+    huggingface: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL
     doi: null
     venue: null
     openreview: null
@@ -7109,59 +7220,67 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: formal theorem-proving tasks derived from DeepSeek-Prover data and benchmarks such as miniF2F and ProofNet.
+    trace_author: model generates proof attempts and search trajectories under Lean feedback.
+    answer_format: Lean proof script, proof-search path, feedback signal, and verification result.
+    process_fields:
+    - theorem, proof attempt, Lean feedback, reward, search node, final proof, pass/fail result.
+    environment_or_substrate: Lean 4 proof assistant plus RMaxTS search procedure.
+    verifier_or_reward: proof assistant feedback used for RL and search selection.
+    terminal_predicate: proof is accepted by Lean within the inference/search budget.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: DeepSeek-Prover-V1 / DeepSeekMath-derived formal model.
+    teacher: Lean checker feedback and prior formal-proof dataset.
+    generator: model samples proof candidates and tree-search paths.
+    filtering_rule: Lean feedback identifies valid, invalid, and useful proof states.
+    sampling_protocol: pin search budget, theorem split, Lean version, and model checkpoint.
+    inference_budget: RMaxTS and pass@k settings directly affect reported gains.
+    optimizer_or_scaffold: RL from proof-assistant feedback plus Monte-Carlo-style tree search.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key deepseekprover15_2024. Deduplicated title collision; dropped lower-confidence id: deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which proofs come from V1 data versus newly generated attempts?
+    split: Are ProofNet/miniF2F test theorems excluded from training and search tuning?
+    decontamination: Can theorem statements or formal proofs leak through public corpora?
+    lineage: Which proof attempts received which Lean feedback?
+    known_failure_modes:
+    - Search budget can dominate model quality.
+    - Checker feedback is sparse and version-dependent.
+    - RL can optimize toward easy theorem families.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Formal-proof RL recipe entry for proof-assistant feedback, reinforcement learning, and tree-search inference.
   related: []
   tags:
+  - formal-math
+  - lean
+  - rl
   - seeded-from-bib
-  status: needs_metadata
+  status: verified
   category:
   - programmatic_math_code_proof
-  - frontier_model_reports
   - scaling_test_time_compute_rlvr
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
+  - construction_recipes_open_reasoning_data
+  one_line: DeepSeek-Prover-V1.5 adds proof-assistant feedback, RL, and RMaxTS search on top of DeepSeek-Prover-style formal
+    proof data.
+  card: cards/recipes/deepseek-prover-v1-5.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: DeepSeek-Prover-V1.5 adds proof-assistant feedback, RL, and RMaxTS search on top of DeepSeek-Prover-style
+    formal proof data.
+  why_it_matters: It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical
+    reasoning.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024
   title: 'DeepSeekMath: Pushing the limits of mathematical reasoning in open language models'
   year: 2024
@@ -7860,86 +7979,108 @@
 - id: introducing-swe-bench-verified-2024
   title: Introducing SWE-bench Verified
   year: 2024
-  venue: unknown
-  authors: []
+  venue: OpenAI / SWE-bench report
+  authors:
+  - SWE-bench Team
+  - OpenAI Preparedness
   source_role:
-  - survey_background
+  - benchmark
+  - agent_environment
+  - audit_failure
   verification_contract:
-  - unknown
+  - environmental
+  - programmatic
   supervision_granularity:
-  - unknown
-  domains: []
+  - full_episode
+  - state_action_level
+  domains:
+  - software-engineering
+  - agents
+  - unit-tests
   training_use:
-  - unknown
+  - evaluation
+  - agent_training
+  - audit
   construction_layer:
   - release_audit
+  - search_substrate
   artifacts:
-    paper: null
+    paper: https://openai.com/index/introducing-swe-bench-verified/
     arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
+    code: https://github.com/swe-bench/SWE-bench
+    data: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified
+    project: https://www.swebench.com/verified.html
+    huggingface: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified
     doi: null
-    venue: null
+    venue: https://www.swebench.com/verified.html
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: human-reviewed SWE-bench issue/PR pairs from real Python repositories.
+    trace_author: agent models inspect repositories, edit code, and submit patches.
+    answer_format: patch diff applied to a repository plus test execution results.
+    process_fields:
+    - repository, issue, base commit, patch, FAIL_TO_PASS tests, PASS_TO_PASS tests, human validation notes.
+    environment_or_substrate: Dockerized repository checkout and unit-test harness.
+    verifier_or_reward: post-patch unit tests plus human filtering of task validity.
+    terminal_predicate: patch resolves the issue without breaking preserved tests.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: evaluated coding agents and frontier models vary by leaderboard submission.
+    teacher: resolved GitHub pull requests and human validators.
+    generator: dataset curation filters original SWE-bench instances for clarity, solvability, and test validity.
+    filtering_rule: human annotators remove ambiguous, unsolvable, or misleading tasks.
+    sampling_protocol: pin benchmark split, repository versions, harness, and submission scaffold.
+    inference_budget: agent step budget, tool access, and retries materially affect scores.
+    optimizer_or_scaffold: SWE-bench evaluation harness and agent scaffolds.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key swebenchverified2024. Deduplicated title collision; dropped lower-confidence id: introducing-swe-bench-verified-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which repositories dominate the 500-task subset?
+    split: Are tasks separated by repository, timestamp, and scaffold tuning use?
+    decontamination: Can agents train on public issue/PR pairs from the benchmark repositories?
+    lineage: Which SWE-bench release and OpenAI collaboration notes define the task list?
+    known_failure_modes:
+    - Leaderboard scores can depend strongly on scaffold design.
+    - Tests may not cover all acceptable patches.
+    - Public benchmark tasks can become training targets over time.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Agent-environment benchmark entry for human-validated software-issue tasks and unit-test-backed evaluation.
   related: []
   tags:
+  - agents
   - seeded-from-bib
-  status: needs_metadata
+  - software-engineering
+  - unit-tests
+  status: verified
   category:
   - environmental_agents_tools_web_swe
+  - programmatic_math_code_proof
+  - audit_failure_contamination_verifier_attacks
   - benchmarks_evaluation
-  one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
-    paper's data object, verifier contract, and release metadata before promoting it.
-  card: null
+  one_line: SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable,
+    or incorrectly tested software-engineering tasks.
+  card: cards/agents/swe-bench-verified.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect
-    the paper's data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous,
+    unsolvable, or incorrectly tested software-engineering tasks.
+  why_it_matters: It is now a central coding-agent evaluation surface because the data object contains issue text, repository
+    state, proposed patch, and test-backed success criteria.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: is-model-collapse-inevitable-2024
   title: Is model collapse inevitable?
   year: 2024
@@ -8480,85 +8621,111 @@
 - id: magicoder-empowering-code-generation-with-oss-instruct-2024
   title: 'Magicoder: Empowering code generation with OSS-instruct'
   year: 2024
-  venue: arXiv preprint
-  authors: []
+  venue: ICML
+  authors:
+  - Yuxiang Wei
+  - Zhe Wang
+  - Jiawei Liu
+  - Yifeng Ding
+  - Lingming Zhang
   source_role:
-  - survey_background
+  - construction_recipe
+  - data_release
+  - model_report
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - step_level
+  domains:
+  - code
+  - synthetic-data
+  - open-source-context
   training_use:
-  - unknown
+  - sft
+  - evaluation
+  - distillation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
+    paper: https://arxiv.org/abs/2312.02120
+    arxiv: https://arxiv.org/abs/2312.02120
+    code: https://github.com/ise-uiuc/magicoder
+    data: https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K
     project: null
-    huggingface: null
+    huggingface: https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B
     doi: null
     venue: null
     openreview: null
     acl: null
-    pmlr: null
+    pmlr: https://proceedings.mlr.press/v235/wei24h.html
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: open-source code snippets used as references for synthetic instruction generation.
+    trace_author: teacher model generates coding instructions and responses conditioned on open-source snippets.
+    answer_format: instruction-response coding example, often linked to a code reference or task scaffold.
+    process_fields:
+    - source snippet, generated instruction, solution response, model family, benchmark result.
+    environment_or_substrate: offline code-data generation and code benchmark evaluation.
+    verifier_or_reward: coding benchmark pass rates and optional executable checks.
+    terminal_predicate: fine-tuned code model solves programming benchmarks better than comparable baselines.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: CodeLlama and DeepSeek-Coder variants in the Magicoder family.
+    teacher: GPT-3.5-series teacher model for synthetic instruction generation.
+    generator: OSS-Instruct prompts the teacher with open-source code snippets.
+    filtering_rule: open-source references are used to reduce bias and improve realism of generated tasks.
+    sampling_protocol: pin dataset version, teacher model, source-code sampling, and benchmark suite.
+    inference_budget: teacher calls scale with the 75K instruction-generation target.
+    optimizer_or_scaffold: SFT over OSS-Instruct code examples.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key magicoder2024. Deduplicated title collision; dropped lower-confidence id: magicoder-empowering-code-generation-with-oss-instruct-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which repositories and licenses source the snippets?
+    split: Are code references separated from benchmark problems?
+    decontamination: Could benchmark solutions appear in open-source snippets?
+    lineage: Can each instruction be traced back to its source snippet?
+    known_failure_modes:
+    - Synthetic code tasks can inherit license issues.
+    - Reference snippets may leak benchmark patterns.
+    - Teacher-generated solutions can be plausible but wrong.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Code-data recipe entry for OSS-Instruct, synthetic instruction generation, and code-model SFT.
   related: []
   tags:
+  - code
+  - open-source-context
   - seeded-from-bib
-  status: needs_metadata
+  - synthetic-data
+  status: verified
   category:
-  - foundations_instruction_preference_alignment
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
+  - programmatic_math_code_proof
+  - construction_recipes_open_reasoning_data
+  - benchmarks_evaluation
+  one_line: Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate more realistic
+    instruction data.
+  card: cards/recipes/magicoder.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate
+    more realistic instruction data.
+  why_it_matters: It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source
+    references rather than free-floating prompt invention.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: mammoth2-scaling-instructions-from-the-web-2024
   title: 'MAmmoTH2: Scaling Instructions from the Web'
   year: 2024
@@ -8813,87 +8980,112 @@
 - id: openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024
   title: 'OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data'
   year: 2024
-  venue: arXiv preprint
-  authors: []
+  venue: ICLR
+  authors:
+  - Shubham Toshniwal
+  - Wei Du
+  - Ivan Moshkov
+  - Branislav Kisacanin
+  - Alexan Ayrapetyan
+  - Igor Gitman
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - scaling_study
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - step_level
+  domains:
+  - math
+  - synthetic-data
+  - instruction-tuning
   training_use:
-  - unknown
+  - sft
+  - distillation
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
+    paper: https://arxiv.org/abs/2410.01560
+    arxiv: https://arxiv.org/abs/2410.01560
+    code: https://github.com/NVIDIA-NeMo/Skills
+    data: https://huggingface.co/datasets/nvidia/OpenMathInstruct-2
+    project: https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/
+    huggingface: https://huggingface.co/datasets/nvidia/OpenMathInstruct-2
     doi: null
     venue: null
-    openreview: null
+    openreview: https://openreview.net/forum?id=mTCbq2QssD
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: GSM8K/MATH training problems plus augmented math questions produced by the data-generation pipeline.
+    trace_author: Llama3.1-405B-Instruct and pipeline components generate solutions for original and augmented questions.
+    answer_format: problem-solution pair with natural-language mathematical reasoning and final answer.
+    process_fields:
+    - source problem, augmented problem, generated solution, teacher model, filtering metadata, dataset split.
+    environment_or_substrate: NVIDIA NeMo-Skills generation, training, and evaluation pipeline.
+    verifier_or_reward: answer checks and benchmark evaluation over math tasks.
+    terminal_predicate: fine-tuned model improves math benchmark performance under pinned evaluation settings.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Llama-3.1-8B-Base is fine-tuned in reported experiments.
+    teacher: Llama3.1-405B-Instruct generates large-scale math solutions.
+    generator: NeMo-Skills pipeline performs problem/solution augmentation and model training.
+    filtering_rule: paper studies solution verbosity, teacher quality, filtering tolerance, and question diversity.
+    sampling_protocol: pin dataset version, augmentation mode, teacher model, and benchmark split.
+    inference_budget: generation cost is dominated by teacher calls over hundreds of thousands of unique questions.
+    optimizer_or_scaffold: SFT over OpenMathInstruct-2 with evaluation through NeMo-Skills.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key openmathinstruct2_2024. Deduplicated title collision; dropped lower-confidence id: openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: How many examples come from original GSM8K/MATH versus augmented questions?
+    split: Are original benchmark training/test boundaries preserved?
+    decontamination: Can augmented questions drift toward evaluation examples?
+    lineage: Which teacher and pipeline version produced each shard?
+    known_failure_modes:
+    - Synthetic solutions can encode teacher shortcuts.
+    - Large scale can hide duplicated or near-duplicated questions.
+    - Verbose traces may hurt rather than help SFT.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Open math instruction-data release for synthetic solution generation, SFT, and dataset-construction ablations.
   related: []
   tags:
+  - instruction-tuning
+  - math
   - seeded-from-bib
-  status: needs_metadata
+  - synthetic-data
+  status: verified
   category:
-  - foundations_instruction_preference_alignment
   - programmatic_math_code_proof
   - construction_recipes_open_reasoning_data
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
+  - scaling_test_time_compute_rlvr
+  one_line: OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open synthesis
+    pipeline.
+  card: cards/releases/openmathinstruct-2.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open
+    synthesis pipeline.
+  why_it_matters: It is a major open math-data release for studying teacher strength, solution format, question diversity,
+    and SFT scaling in reasoning models.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024
   title: 'OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments'
   year: 2024
@@ -9160,109 +9352,152 @@
 - id: prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024
   title: 'Prometheus 2: An open source language model specialized in evaluating other language models'
   year: 2024
-  venue: arXiv preprint
-  authors: []
+  venue: EMNLP
+  authors:
+  - Seungone Kim
+  - Juyoung Suk
+  - Shayne Longpre
+  - Bill Yuchen Lin
+  - Jamin Shin
+  - Sean Welleck
+  - Graham Neubig
+  - Moontae Lee
+  - Kyungjae Lee
+  - Minjoon Seo
   source_role:
-  - survey_background
+  - verifier_reward
+  - model_report
+  - data_release
   verification_contract:
-  - unknown
+  - judgment_required
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - pairwise_preference
+  - scalar_reward
+  domains:
+  - llm-as-judge
+  - rubrics
+  - evaluation-models
   training_use:
-  - unknown
+  - reward_modeling
+  - preference_learning
+  - evaluation
+  - audit
   construction_layer:
+  - reward_verifier_layer
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
+    paper: https://arxiv.org/abs/2405.01535
+    arxiv: https://arxiv.org/abs/2405.01535
+    code: https://github.com/prometheus-eval/prometheus-eval
+    data: https://aclanthology.org/2024.emnlp-main.248.data.zip
     project: null
-    huggingface: null
-    doi: null
+    huggingface: https://huggingface.co/prometheus-eval/prometheus-7b-v2.0
+    doi: https://doi.org/10.18653/v1/2024.emnlp-main.248
     venue: null
     openreview: null
-    acl: null
+    acl: https://aclanthology.org/2024.emnlp-main.248/
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: direct-assessment and pairwise-ranking evaluation prompts with user-defined criteria.
+    trace_author: candidate models produce responses; Prometheus 2 assigns scores or rankings.
+    answer_format: rubric-conditioned scalar score, critique, or pairwise preference output.
+    process_fields:
+    - instruction, candidate response, evaluation criterion, assessment format, score/ranking, reference judgment.
+    environment_or_substrate: open evaluator model, GitHub code, ACL software/data artifacts, and HF weights.
+    verifier_or_reward: Prometheus 2 judge output aligned against human/proprietary-judge benchmarks.
+    terminal_predicate: judge decision correlates with human preference or criterion-specific assessment.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Prometheus evaluator model family.
+    teacher: human judgments and strong evaluator references across direct and pairwise tasks.
+    generator: training pipeline merges evaluator capabilities across formats.
+    filtering_rule: rubric criteria and benchmark sources define evaluation records.
+    sampling_protocol: pin assessment format, rubric, model checkpoint, and benchmark source.
+    inference_budget: judge calls scale with number of responses and criteria.
+    optimizer_or_scaffold: open evaluator training/inference package.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key prometheus2_2024. Deduplicated title collision; dropped lower-confidence id: prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which direct-assessment and pairwise datasets train the judge?
+    split: Are judge-training examples separated from judge-evaluation benchmarks?
+    decontamination: Can candidate model outputs leak into judge training?
+    lineage: Which Prometheus 2 checkpoint and prompt template produced each score?
+    known_failure_modes:
+    - Open judges can inherit rubric bias.
+    - Agreement with another judge is not the same as correctness.
+    - Pairwise and scalar formats can disagree.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Verifier/reward entry for rubric-conditioned evaluator models and LLM-as-a-judge replacement workflows.
   related: []
   tags:
+  - evaluation-models
+  - llm-as-judge
+  - rubrics
   - seeded-from-bib
-  status: needs_metadata
+  status: verified
   category:
   - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
-  one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
-    the paper's data object, verifier contract, and release metadata before promoting it.
-  card: null
+  - foundations_instruction_preference_alignment
+  - benchmarks_evaluation
+  one_line: Prometheus 2 is an open evaluator model for both direct assessment and pairwise ranking under user-defined criteria.
+  card: cards/verifiers/prometheus-2.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to
-    inspect the paper's data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: Prometheus 2 is an open evaluator model for both direct assessment and pairwise ranking under user-defined
+    criteria.
+  why_it_matters: It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead
+    of treating proprietary judges as black boxes.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024
   title: 'Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement'
   year: 2024
-  venue: arXiv preprint
-  authors: []
+  venue: arXiv
+  authors:
+  - Qwen Team
   source_role:
-  - survey_background
+  - model_report
+  - construction_recipe
+  - verifier_reward
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - scalar_reward
+  domains:
+  - math
+  - tool-integrated-reasoning
+  - reward-modeling
   training_use:
-  - unknown
+  - sft
+  - reward_modeling
+  - rlvr
+  - evaluation
+  - test_time_compute
   construction_layer:
-  - release_audit
+  - frontier_pipeline
+  - reward_verifier_layer
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
+    paper: https://arxiv.org/abs/2409.12122
+    arxiv: https://arxiv.org/abs/2409.12122
+    code: https://github.com/QwenLM/Qwen2.5-Math
     data: null
-    project: null
-    huggingface: null
+    project: https://qwenlm.github.io/blog/qwen2.5-math/
+    huggingface: https://huggingface.co/Qwen/Qwen2.5-Math-7B
     doi: null
     venue: null
     openreview: null
@@ -9271,59 +9506,68 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: math pretraining, SFT, reward-model, and evaluation tasks curated by the Qwen team.
+    trace_author: Qwen2.5-Math variants generate math solutions with chain-style or tool-integrated reasoning.
+    answer_format: math solution, final answer, optional tool/code execution trace, and reward-model score.
+    process_fields:
+    - model stage, problem source, reasoning mode, tool use, answer, reward score, benchmark result.
+    environment_or_substrate: Qwen math model family, GitHub evaluation scripts, and Hugging Face model releases.
+    verifier_or_reward: math answer checks, reward model signals, and benchmark evaluations.
+    terminal_predicate: model solves math problems under CoT or tool-integrated evaluation settings.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Qwen2.5 base models specialized for mathematics.
+    teacher: self-improvement pipeline and math reward/evaluation signals.
+    generator: math-specialized models generate solutions and tool-integrated traces.
+    filtering_rule: model family separates base, instruct, and reward-model artifacts for evaluation.
+    sampling_protocol: pin model size, reasoning mode, benchmark, and tool-access setting.
+    inference_budget: tool calls and solution sampling should be reported separately from model size.
+    optimizer_or_scaffold: math SFT, reward modeling, and evaluation scripts.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key qwen25math2024. Deduplicated title collision; dropped lower-confidence id: qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which math corpora feed pretraining, SFT, and reward modeling?
+    split: Are Chinese/English and tool/no-tool evaluations separated?
+    decontamination: Could training data overlap with math benchmark items?
+    lineage: Which model size and stage produced each reported score?
+    known_failure_modes:
+    - Tool-integrated results are not comparable to no-tool results.
+    - Reward models can favor format over proof validity.
+    - Model-family reports can blur data and inference effects.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Math model-report and recipe entry for self-improvement, reward modeling, and tool-integrated reasoning.
   related: []
   tags:
+  - math
+  - reward-modeling
   - seeded-from-bib
-  status: needs_metadata
+  - tool-integrated-reasoning
+  status: verified
   category:
   - programmatic_math_code_proof
   - construction_recipes_open_reasoning_data
   - frontier_model_reports
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
+  - scaling_test_time_compute_rlvr
+  one_line: Qwen2.5-Math reports a math-specialized model family supporting chain-style and tool-integrated reasoning with
+    base, instruct, and reward-model variants.
+  card: cards/recipes/qwen2-5-math.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: Qwen2.5-Math reports a math-specialized model family supporting chain-style and tool-integrated reasoning
+    with base, instruct, and reward-model variants.
+  why_it_matters: It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning,
+    and multilingual math evaluation are tied together.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: r-tuning-2024
   title: R-Tuning
   year: 2024
@@ -9669,170 +9913,249 @@
 - id: rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024
   title: 'Rewarding progress: Scaling automated process verifiers for LLM reasoning'
   year: 2024
-  venue: arXiv preprint
-  authors: []
+  venue: ICLR
+  authors:
+  - Amrith Setlur
+  - Chirag Nagpal
+  - Adam Fisch
+  - Xinyang Geng
+  - Jacob Eisenstein
+  - Rishabh Agarwal
+  - Alekh Agarwal
+  - Jonathan Berant
+  - Aviral Kumar
   source_role:
-  - survey_background
+  - verifier_reward
+  - process_supervision
+  - scaling_study
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - process_reward
+  - scalar_reward
+  domains:
+  - process-reward-models
+  - rlvr
+  - math
   training_use:
-  - unknown
+  - process_supervision
+  - reward_modeling
+  - rlvr
+  - test_time_compute
   construction_layer:
-  - release_audit
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - scaling_report
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2410.08146
+    arxiv: https://arxiv.org/abs/2410.08146
     code: null
     data: null
     project: null
     huggingface: null
     doi: null
     venue: null
-    openreview: null
+    openreview: https://openreview.net/forum?id=A6Y7AqlzLW
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: multi-step reasoning traces with intermediate steps and final correctness outcomes.
+    trace_author: prover policies generate reasoning steps; verifiers estimate progress after each step.
+    answer_format: step-level process advantage score plus final answer/correctness signal.
+    process_fields:
+    - problem, partial trace before step, step, future success estimate, verifier score, final outcome.
+    environment_or_substrate: reasoning search and online RL setup using process rewards.
+    verifier_or_reward: Process Advantage Verifier trained to predict progress toward correct answer.
+    terminal_predicate: search or RL with process rewards improves correctness and compute efficiency.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: base and prover policies for reasoning tasks.
+    teacher: automated success estimates from prover policies and final correctness signals.
+    generator: policies produce traces used to train process verifiers.
+    filtering_rule: process reward targets advantage-like progress, not just local plausibility.
+    sampling_protocol: pin prover policy, base policy, trace collection, and reward target definition.
+    inference_budget: test-time search budget and online RL sample budget must be reported.
+    optimizer_or_scaffold: process-verifier-guided search and RL.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key rewardingprogress2024. Deduplicated title collision; dropped lower-confidence id: rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which tasks and prover policies generate training traces?
+    split: Are verifier-training traces separated from search/RL evaluation tasks?
+    decontamination: Can the verifier memorize problem-level success patterns?
+    lineage: Which prover policy defines the progress target?
+    known_failure_modes:
+    - Progress estimates can be policy-specific.
+    - Verifier-guided search can exploit reward artifacts.
+    - Step rewards can encourage short-term progress that hurts final correctness.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Process-verifier entry for automated step-level rewards, process advantage modeling, and RL/search scaling.
   related: []
   tags:
+  - math
+  - process-reward-models
+  - rlvr
   - seeded-from-bib
-  status: needs_metadata
+  status: verified
   category:
   - process_supervision_prm
   - scaling_test_time_compute_rlvr
-  one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
-    object, verifier contract, and release metadata before promoting it.
-  card: null
+  - construction_recipes_open_reasoning_data
+  one_line: Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases future correctness
+    probability.
+  card: cards/verifiers/rewarding-progress.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases
+    future correctness probability.
+  why_it_matters: 'It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy
+    and use that signal for search or RL.'
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024
   title: 'SciCode: A benchmark for scientific code generation and reasoning'
   year: 2024
-  venue: unknown
-  authors: []
+  venue: NeurIPS Datasets and Benchmarks
+  authors:
+  - Minyang Tian
+  - Luyu Gao
+  - Shizhuo Dylan Zhang
+  - Xinan Chen
+  - Cunwei Fan
+  - Xuefei Guo
+  - Roland Haas
+  - Pan Ji
+  - Kittithat Krongchon
+  - Yao Li
+  - Shengyan Liu
+  - Di Luo
+  - Yutao Ma
+  - Hao Tong
+  - Kha Trinh
+  - Chenyu Tian
+  - Zihan Wang
+  - Bohao Wu
+  - Yanyu Xiong
+  - Shengzhu Yin
+  - Minhui Zhu
+  - Kilian Lieret
+  - Yanxin Lu
+  - Genglin Liu
+  - Yufeng Du
+  - Tianhua Tao
+  - Ofir Press
+  - Jamie Callan
+  - Eliu Huerta
+  - Hao Peng
   source_role:
-  - survey_background
+  - benchmark
+  - data_release
   verification_contract:
-  - unknown
+  - programmatic
+  - judgment_required
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - step_level
+  domains:
+  - scientific-code
+  - research-problems
+  - execution
   training_use:
-  - unknown
+  - evaluation
+  - audit
+  - test_time_compute
   construction_layer:
   - release_audit
+  - search_substrate
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
+    paper: https://arxiv.org/abs/2407.13168
+    arxiv: https://arxiv.org/abs/2407.13168
+    code: https://github.com/scicode-bench/SciCode
     data: null
-    project: null
+    project: https://scicode-bench.github.io/
     huggingface: null
     doi: null
-    venue: null
+    venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: scientist-curated research coding problems across natural-science and math domains.
+    trace_author: models generate code for main problems or decomposed subproblems.
+    answer_format: code solution evaluated with scientist-annotated tests or expected outputs.
+    process_fields:
+    - domain, main problem, subproblem, background text, generated code, tests, gold solution, pass/fail.
+    environment_or_substrate: scientific Python/code execution benchmark harness.
+    verifier_or_reward: test cases and scientist-curated gold solutions.
+    terminal_predicate: code solves the scientific subproblem or main problem under tests.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: evaluated frontier and open models vary by benchmark study.
+    teacher: scientists and AI researchers curate problems, decompositions, solutions, and tests.
+    generator: models produce code for subproblems and main problems.
+    filtering_rule: problems are selected from real research needs and decomposed for graded evaluation.
+    sampling_protocol: pin benchmark version, subproblem mode, provided background, and execution environment.
+    inference_budget: tool access, retries, and subproblem solving mode change results.
+    optimizer_or_scaffold: scientific code benchmark harness.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key scicode2024. Deduplicated title collision; dropped lower-confidence id: scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which scientific domains and subdomains dominate the benchmark?
+    split: Are background materials and tests held out from model training?
+    decontamination: Can research problems or code solutions be found in public repositories?
+    lineage: Which scientist annotations define each gold solution and test?
+    known_failure_modes:
+    - Models can pass narrow tests without scientific validity.
+    - Domain background can leak solution hints.
+    - Execution environments can change numerical results.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Scientific code benchmark entry for research-problem decomposition, programmatic checking, and domain
+    expert curation.
   related: []
   tags:
+  - execution
+  - research-problems
+  - scientific-code
   - seeded-from-bib
-  status: needs_metadata
+  status: verified
   category:
   - programmatic_math_code_proof
-  - audit_failure_contamination_verifier_attacks
+  - judgment_required_rubrics_safety_domain
   - benchmarks_evaluation
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
+  one_line: SciCode evaluates code generation for realistic scientific research problems decomposed into subproblems with
+    tests and gold solutions.
+  card: cards/benchmarks/scicode.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: SciCode evaluates code generation for realistic scientific research problems decomposed into subproblems
+    with tests and gold solutions.
+  why_it_matters: It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition,
+    code synthesis, and executable tests.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: self-rewarding-lms-2024
   title: Self-Rewarding LMs
   year: 2024
@@ -13203,26 +13526,58 @@
 - id: deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025
   title: 'DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning'
   year: 2025
-  venue: unknown
-  authors: []
+  venue: arXiv
+  authors:
+  - Z. Z. Ren
+  - Zhihong Shao
+  - Junxiao Song
+  - Huajian Xin
+  - Haocheng Wang
+  - Wanjia Zhao
+  - Liyue Zhang
+  - Zhe Fu
+  - Qihao Zhu
+  - Dejian Yang
+  - Z. F. Wu
+  - Zhibin Gou
+  - Shirong Ma
+  - Hongxuan Tang
+  - Yuxuan Liu
+  - Wenjun Gao
+  - Daya Guo
+  - Chong Ruan
   source_role:
-  - survey_background
+  - model_report
+  - construction_recipe
+  - data_release
   verification_contract:
-  - unknown
+  - programmatic
+  - environmental
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - full_episode
+  - scalar_reward
+  domains:
+  - formal-math
+  - lean
+  - subgoal-decomposition
   training_use:
-  - unknown
+  - rlvr
+  - sft
+  - agent_training
+  - evaluation
   construction_layer:
-  - release_audit
+  - trace_writing
+  - reward_verifier_layer
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
+    paper: https://arxiv.org/abs/2504.21801
+    arxiv: https://arxiv.org/abs/2504.21801
+    code: https://github.com/deepseek-ai/DeepSeek-Prover-V2
+    data: https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench
+    project: https://github.com/deepseek-ai/DeepSeek-Prover-V2
+    huggingface: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B
     doi: null
     venue: null
     openreview: null
@@ -13231,59 +13586,68 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: formal theorem-proving tasks, decomposed subgoals, and ProverBench-style evaluation problems.
+    trace_author: DeepSeek-V3-powered pipeline decomposes problems; prover models synthesize formal proofs.
+    answer_format: subgoal chain, informal reasoning trace, Lean proof, and checker result.
+    process_fields:
+    - problem, subgoal decomposition, synthesized proof, Lean feedback, reward, benchmark result.
+    environment_or_substrate: Lean 4 environment plus recursive theorem-proving pipeline.
+    verifier_or_reward: Lean verification and RL reward over formal proof success.
+    terminal_predicate: formal proof verifies and solves the target theorem.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: DeepSeek-Prover-V2 7B/671B variants built on DeepSeek model families.
+    teacher: DeepSeek-V3-style decomposition and formal proof feedback.
+    generator: recursive pipeline creates subgoals and proof attempts.
+    filtering_rule: resolved subgoals and successful formal proofs seed cold-start and RL training.
+    sampling_protocol: pin model size, ProverBench version, Lean version, and search budget.
+    inference_budget: formal proof success depends on search/sample count and subgoal decomposition budget.
+    optimizer_or_scaffold: cold-start training plus reinforcement learning for formal proof generation.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key deepseekproverv2_2025. Deduplicated title collision; dropped lower-confidence id: deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Which theorem families enter cold-start and RL stages?
+    split: Are ProverBench and AIME-style formalized examples separated from training?
+    decontamination: Can public formalizations leak benchmark proofs?
+    lineage: Can every proof be traced through subgoal decomposition to Lean feedback?
+    known_failure_modes:
+    - Subgoal decomposition can introduce false intermediate claims.
+    - Formal and informal reasoning scores are not directly comparable.
+    - Large-model teacher lineage can hide data provenance.
+    license: Check official artifact license before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Promoted in artifact-verification round 2 with paper-specific atlas card and official primary links.
+    metadata_status: carded
+  inclusion_reason: Formal mathematical reasoning entry for subgoal-decomposition data, proof RL, and ProverBench-style evaluation.
   related: []
   tags:
+  - formal-math
+  - lean
   - seeded-from-bib
-  status: needs_metadata
+  - subgoal-decomposition
+  status: verified
   category:
   - programmatic_math_code_proof
+  - construction_recipes_open_reasoning_data
   - frontier_model_reports
   - scaling_test_time_compute_rlvr
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
+  one_line: DeepSeek-Prover-V2 uses recursive subgoal decomposition and RL to connect informal reasoning with formal Lean
+    theorem proving.
+  card: cards/recipes/deepseek-prover-v2.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_artifact_review: extend artifact coverage if additional official releases appear'
+  one_line_summary: DeepSeek-Prover-V2 uses recursive subgoal decomposition and RL to connect informal reasoning with formal
+    Lean theorem proving.
+  why_it_matters: It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal
+    proofs, and proof-assistant verification.
+  curation_level: L5_audit_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-15'
+    verified_by: curation
+    confidence: high
+    notes: Official primary link and available artifacts pinned in artifacts.
 - id: deepseek-r1-2025
   title: DeepSeek-R1
   year: 2025

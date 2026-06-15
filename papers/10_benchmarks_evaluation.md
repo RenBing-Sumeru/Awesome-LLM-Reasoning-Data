@@ -23,9 +23,9 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 | NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions | 2025 | arXiv | [Paper](https://arxiv.org/abs/2502.13124) · [Card](../cards/releases/naturalreasoning.md) | Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens. |
 | OpenMathReasoning: A large-scale dataset of math reasoning traces | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.16891) · [Card](../cards/releases/openmathreasoning.md) | Large-scale math reasoning trace release for programmatic verification. |
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
-| LeanDojo: Theorem proving with retrieval-augmented language models | 2023 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://zenodo.org/records/10114157) · [Project](https://leandojo.org/) · [Card](../cards/agents/leandojo.md) | It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record. |
-| Let's Verify Step by Step | 2023 | arXiv | [Paper](https://arxiv.org/abs/2305.20050) · [Card](../cards/verifiers/prm800k.md) | It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation. |
-| ToolLLM: Facilitating large language models to master 16000+ real-world APIs | 2023 | ICLR | [Paper](https://arxiv.org/abs/2307.16789) · [Card](../cards/agents/toolllm_toolbench.md) | Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback. |
+| Magicoder: Empowering code generation with OSS-instruct | 2024 | ICML | [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../cards/recipes/magicoder.md) | It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention. |
+| Prometheus 2: An open source language model specialized in evaluating other language models | 2024 | EMNLP | [Paper](https://arxiv.org/abs/2405.01535) · [ACL](https://aclanthology.org/2024.emnlp-main.248/) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [Code](https://github.com/prometheus-eval/prometheus-eval) · [Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0) · [Card](../cards/verifiers/prometheus-2.md) | It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes. |
+| SciCode: A benchmark for scientific code generation and reasoning | 2024 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2407.13168) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/scicode-bench/SciCode) · [Project](https://scicode-bench.github.io/) · [Card](../cards/benchmarks/scicode.md) | It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests. |
 
 ## Full paper list
 
@@ -74,6 +74,10 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
   <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2407.18901) · [Card](../cards/agents/appworld.md)
   _Why it matters:_ Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
+- 🧰 **[Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/)**
+  <sub>2024 · OpenAI / SWE-bench report · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
+  [Paper](https://openai.com/index/introducing-swe-bench-verified/) · [Venue](https://www.swebench.com/verified.html) · [Code](https://github.com/swe-bench/SWE-bench) · [Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified) · [Card](../cards/agents/swe-bench-verified.md)
+  _Why it matters:_ It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.
 - 🧰 **[LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314)**
   <sub>2024 · arXiv · 🧰 benchmark · 🧯 audit failure · programmatic · mixed · evaluation · audit · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2406.19314) · [OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [Project](https://livebench.ai/) · [Card](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
@@ -94,6 +98,10 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
   <sub>2024 · NeurIPS · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2403.13787) · [Card](../cards/verifiers/rewardbench.md)
   _Why it matters:_ It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.
+- 🧰 **[SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168)**
+  <sub>2024 · NeurIPS Datasets and Benchmarks · 🧰 benchmark · 📦 data release · programmatic · judgment required · evaluation · audit · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2407.13168) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/scicode-bench/SciCode) · [Project](https://scicode-bench.github.io/) · [Card](../cards/benchmarks/scicode.md)
+  _Why it matters:_ It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests.
 - 🧰 **[GPQA](https://arxiv.org/abs/2311.12022)**
   <sub>2023 · arXiv · 🧰 benchmark · judgment required · evaluation · audit · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2311.12022) · [OpenReview](https://openreview.net/forum?id=Ti67584b98) · [Code](https://github.com/idavidrein/gpqa) · [Card](../cards/benchmarks/gpqa.md)
@@ -204,6 +212,13 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
   [Paper](https://arxiv.org/abs/2504.07164) · [Card](../cards/agents/r2e_gym.md)
   _Why it matters:_ Verifiable SWE environment for reasoning-to-edit tasks.
 
+### 🏗️ Construction Recipe
+
+- 🏗️ **[Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120)**
+  <sub>2024 · ICML · 🏗️ construction recipe · 📦 data release · programmatic · mixed · sft · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../cards/recipes/magicoder.md)
+  _Why it matters:_ It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention.
+
 ### 🪜 Process Supervision
 
 - 🪜 **[Math-Shepherd](https://arxiv.org/abs/2312.08935)**
@@ -214,6 +229,13 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
   <sub>2023 · arXiv · 🪜 process supervision · 🧪 verifier reward · judgment required · programmatic · process supervision · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2305.20050) · [Card](../cards/verifiers/prm800k.md)
   _Why it matters:_ It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.
+
+### 🧪 Verifier Reward
+
+- 🧪 **[Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535)**
+  <sub>2024 · EMNLP · 🧪 verifier reward · 🚀 model report · judgment required · reward modeling · preference learning · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2405.01535) · [ACL](https://aclanthology.org/2024.emnlp-main.248/) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [Code](https://github.com/prometheus-eval/prometheus-eval) · [Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0) · [Card](../cards/verifiers/prometheus-2.md)
+  _Why it matters:_ It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes.
 
 ### ⚠️ Needs search or metadata
 
@@ -273,20 +295,12 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **Introducing SWE-bench Verified**
-  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **LAB-Bench: Measuring capabilities of language models for biology research**
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **SWE-Gym: Advancing software engineering agents with training and evaluation environments**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **SciCode: A benchmark for scientific code generation and reasoning**
-  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use**
@@ -367,7 +381,7 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 - [Subliminal Learning](../cards/failures/subliminal-learning.md)
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../cards/agents/androidworld.md)
 - [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](../cards/agents/appworld.md)
-- [LiveBench: A challenging, contamination-free benchmark for large language models](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
+- [Introducing SWE-bench Verified](../cards/agents/swe-bench-verified.md)
 
 ## Open gaps
 

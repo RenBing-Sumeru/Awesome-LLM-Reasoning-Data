@@ -2080,36 +2080,56 @@
           "id": "orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023",
           "title": "Orca: Progressive learning from complex explanation traces of GPT-4",
           "year": 2023,
-          "venue": "arXiv preprint",
-          "authors": [],
+          "venue": "arXiv",
+          "authors": [
+            "Subhabrata Mukherjee",
+            "Arindam Mitra",
+            "Ganesh Jawahar",
+            "Sahaj Agarwal",
+            "Hamid Palangi",
+            "Ahmed Awadallah"
+          ],
           "source_role": [
-            "survey_background"
+            "construction_recipe",
+            "model_report"
           ],
           "verification_contract": [
-            "unknown"
+            "judgment_required",
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "step_level",
+            "answer_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "distillation",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "explanation-traces",
+            "distillation",
+            "synthetic-data"
+          ],
           "category": [
-            "foundations_instruction_preference_alignment",
-            "construction_recipes_open_reasoning_data"
+            "construction_recipes_open_reasoning_data",
+            "frontier_model_reports",
+            "foundations_instruction_preference_alignment"
           ],
           "tags": [
-            "seeded-from-bib"
+            "distillation",
+            "explanation-traces",
+            "seeded-from-bib",
+            "synthetic-data"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation of final answers.",
+          "why_it_matters": "It is an early and influential reasoning-distillation recipe: the reusable object is teacher-assisted explanation data plus careful evaluation against style-only imitation.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2306.02707",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2306.02707",
             "openreview": null,
             "acl": null,
             "pmlr": null,
@@ -2118,11 +2138,11 @@
             "code": null,
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/",
             "bibtex": null,
-            "card": null
+            "card": "cards/recipes/orca.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2306.02707"
         }
       },
       {
@@ -2725,49 +2745,73 @@
           "id": "deepseek-prover-advancing-theorem-proving-in-llms-2024",
           "title": "DeepSeek-Prover: Advancing theorem proving in LLMs",
           "year": 2024,
-          "venue": "arXiv preprint",
-          "authors": [],
+          "venue": "arXiv",
+          "authors": [
+            "Huajian Xin",
+            "Daya Guo",
+            "Zhihong Shao",
+            "Zhizhou Ren",
+            "Qihao Zhu",
+            "Bo Liu",
+            "Chong Ruan",
+            "Wenda Li",
+            "Xiaodan Liang"
+          ],
           "source_role": [
-            "survey_background"
+            "data_release",
+            "construction_recipe",
+            "model_report"
           ],
           "verification_contract": [
-            "unknown"
+            "programmatic",
+            "environmental"
           ],
           "supervision_granularity": [
-            "unknown"
+            "step_level",
+            "answer_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "agent_training",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "formal-math",
+            "lean",
+            "synthetic-data"
+          ],
           "category": [
             "programmatic_math_code_proof",
+            "construction_recipes_open_reasoning_data",
             "frontier_model_reports"
           ],
           "tags": [
-            "seeded-from-bib"
+            "formal-math",
+            "lean",
+            "seeded-from-bib",
+            "synthetic-data"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal proof model.",
+          "why_it_matters": "It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2405.14333",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2405.14333",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
             "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "data": "https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1",
+            "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
+            "project": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
             "bibtex": null,
-            "card": null
+            "card": "cards/recipes/deepseek-prover.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2405.14333"
         }
       },
       {
@@ -3482,37 +3526,63 @@
           "id": "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
           "title": "Rewarding progress: Scaling automated process verifiers for LLM reasoning",
           "year": 2024,
-          "venue": "arXiv preprint",
-          "authors": [],
+          "venue": "ICLR",
+          "authors": [
+            "Amrith Setlur",
+            "Chirag Nagpal",
+            "Adam Fisch",
+            "Xinyang Geng",
+            "Jacob Eisenstein",
+            "Rishabh Agarwal",
+            "Alekh Agarwal",
+            "Jonathan Berant",
+            "Aviral Kumar"
+          ],
           "source_role": [
-            "survey_background"
+            "verifier_reward",
+            "process_supervision",
+            "scaling_study"
           ],
           "verification_contract": [
-            "unknown"
+            "programmatic",
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "step_level",
+            "process_reward",
+            "scalar_reward"
           ],
           "training_use": [
-            "unknown"
+            "process_supervision",
+            "reward_modeling",
+            "rlvr",
+            "test_time_compute"
           ],
-          "domains": [],
+          "domains": [
+            "process-reward-models",
+            "rlvr",
+            "math"
+          ],
           "category": [
             "process_supervision_prm",
-            "scaling_test_time_compute_rlvr"
+            "scaling_test_time_compute_rlvr",
+            "construction_recipes_open_reasoning_data"
           ],
           "tags": [
+            "math",
+            "process-reward-models",
+            "rlvr",
             "seeded-from-bib"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases future correctness probability.",
+          "why_it_matters": "It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2410.08146",
             "venue": null,
-            "arxiv": null,
-            "openreview": null,
+            "arxiv": "https://arxiv.org/abs/2410.08146",
+            "openreview": "https://openreview.net/forum?id=A6Y7AqlzLW",
             "acl": null,
             "pmlr": null,
             "cvf": null,
@@ -3522,9 +3592,9 @@
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/verifiers/rewarding-progress.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2410.08146"
         }
       },
       {
@@ -3651,49 +3721,75 @@
           "id": "prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024",
           "title": "Prometheus 2: An open source language model specialized in evaluating other language models",
           "year": 2024,
-          "venue": "arXiv preprint",
-          "authors": [],
+          "venue": "EMNLP",
+          "authors": [
+            "Seungone Kim",
+            "Juyoung Suk",
+            "Shayne Longpre",
+            "Bill Yuchen Lin",
+            "Jamin Shin",
+            "Sean Welleck",
+            "Graham Neubig",
+            "Moontae Lee",
+            "Kyungjae Lee",
+            "Minjoon Seo"
+          ],
           "source_role": [
-            "survey_background"
+            "verifier_reward",
+            "model_report",
+            "data_release"
           ],
           "verification_contract": [
-            "unknown"
+            "judgment_required"
           ],
           "supervision_granularity": [
-            "unknown"
+            "answer_level",
+            "pairwise_preference",
+            "scalar_reward"
           ],
           "training_use": [
-            "unknown"
+            "reward_modeling",
+            "preference_learning",
+            "evaluation",
+            "audit"
           ],
-          "domains": [],
+          "domains": [
+            "llm-as-judge",
+            "rubrics",
+            "evaluation-models"
+          ],
           "category": [
             "judgment_required_rubrics_safety_domain",
-            "construction_recipes_open_reasoning_data"
+            "foundations_instruction_preference_alignment",
+            "benchmarks_evaluation"
           ],
           "tags": [
+            "evaluation-models",
+            "llm-as-judge",
+            "rubrics",
             "seeded-from-bib"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "Prometheus 2 is an open evaluator model for both direct assessment and pairwise ranking under user-defined criteria.",
+          "why_it_matters": "It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2405.01535",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2405.01535",
             "openreview": null,
-            "acl": null,
+            "acl": "https://aclanthology.org/2024.emnlp-main.248/",
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
+            "doi": "https://doi.org/10.18653/v1/2024.emnlp-main.248",
+            "code": "https://github.com/prometheus-eval/prometheus-eval",
+            "data": "https://aclanthology.org/2024.emnlp-main.248.data.zip",
+            "huggingface": "https://huggingface.co/prometheus-eval/prometheus-7b-v2.0",
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/verifiers/prometheus-2.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2405.01535"
         }
       },
       {
@@ -5472,49 +5568,67 @@
           "id": "introducing-swe-bench-verified-2024",
           "title": "Introducing SWE-bench Verified",
           "year": 2024,
-          "venue": "unknown",
-          "authors": [],
+          "venue": "OpenAI / SWE-bench report",
+          "authors": [
+            "SWE-bench Team",
+            "OpenAI Preparedness"
+          ],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "agent_environment",
+            "audit_failure"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "agent_training",
+            "audit"
           ],
-          "domains": [],
+          "domains": [
+            "software-engineering",
+            "agents",
+            "unit-tests"
+          ],
           "category": [
             "environmental_agents_tools_web_swe",
+            "programmatic_math_code_proof",
+            "audit_failure_contamination_verifier_attacks",
             "benchmarks_evaluation"
           ],
           "tags": [
-            "seeded-from-bib"
+            "agents",
+            "seeded-from-bib",
+            "software-engineering",
+            "unit-tests"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.",
+          "why_it_matters": "It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
-            "venue": null,
+            "paper": "https://openai.com/index/introducing-swe-bench-verified/",
+            "venue": "https://www.swebench.com/verified.html",
             "arxiv": null,
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "code": "https://github.com/swe-bench/SWE-bench",
+            "data": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+            "huggingface": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+            "project": "https://www.swebench.com/verified.html",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/swe-bench-verified.md"
           },
-          "primary_link": null
+          "primary_link": "https://openai.com/index/introducing-swe-bench-verified/"
         }
       },
       {
@@ -7871,49 +7985,67 @@
           "id": "introducing-swe-bench-verified-2024",
           "title": "Introducing SWE-bench Verified",
           "year": 2024,
-          "venue": "unknown",
-          "authors": [],
+          "venue": "OpenAI / SWE-bench report",
+          "authors": [
+            "SWE-bench Team",
+            "OpenAI Preparedness"
+          ],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "agent_environment",
+            "audit_failure"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "agent_training",
+            "audit"
           ],
-          "domains": [],
+          "domains": [
+            "software-engineering",
+            "agents",
+            "unit-tests"
+          ],
           "category": [
             "environmental_agents_tools_web_swe",
+            "programmatic_math_code_proof",
+            "audit_failure_contamination_verifier_attacks",
             "benchmarks_evaluation"
           ],
           "tags": [
-            "seeded-from-bib"
+            "agents",
+            "seeded-from-bib",
+            "software-engineering",
+            "unit-tests"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.",
+          "why_it_matters": "It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
-            "venue": null,
+            "paper": "https://openai.com/index/introducing-swe-bench-verified/",
+            "venue": "https://www.swebench.com/verified.html",
             "arxiv": null,
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "code": "https://github.com/swe-bench/SWE-bench",
+            "data": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+            "huggingface": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+            "project": "https://www.swebench.com/verified.html",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/swe-bench-verified.md"
           },
-          "primary_link": null
+          "primary_link": "https://openai.com/index/introducing-swe-bench-verified/"
         }
       },
       {

@@ -36,16 +36,17 @@ Private scratch work, if needed, must stay under `.codex_scratch/`, which is ign
 ## Latest Completion Snapshot
 
 - Total structured entries: 271
-- Verified entries with official primary links: 136/136
-- Entries still needing primary-source search: 135
-- Unique entry-linked cards: 75
-- Card files: 77
-- `L5_audit_ready` cards: 41
+- Verified entries with official primary links: 148/148
+- Entries still needing primary-source search: 123
+- Unique entry-linked cards: 87
+- Card files: 89
+- `L5_audit_ready` cards: 53
 - Beginner 20 official-link coverage: 20/20
 - Beginner 20 card coverage: 20/20
 - Searchable site assets regenerated from structured metadata.
 - Public reports regenerated from the current branch state.
-- v0.2.0 artifact verification round promoted 12 high-impact seed entries into verified, carded atlas objects.
+- v0.2.0 artifact verification rounds promoted 24 high-impact seed entries into verified, carded atlas objects, including the second round recorded in `reports/v0.2.0_artifact_round_2.md`.
+- Current artifact coverage: 35 code links, 24 data links, 18 Hugging Face links, and 20 project links.
 
 ## Validation Gates
 
@@ -59,6 +60,7 @@ python scripts/render_readme.py --check
 python scripts/render_cards.py --check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
+python scripts/check_links.py --live --limit 100 --workers 4
 node --check docs/assets/site.js
 git diff --check
 ```

@@ -5,36 +5,36 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 ## Summary
 
 - Total entries: 271
-- Verified entries: 136
-- Verified entries with official paper/arXiv/venue/DOI links: 136 (100.0%)
-- Needs search: 135
+- Verified entries: 148
+- Verified entries with official paper/arXiv/venue/DOI links: 148 (100.0%)
+- Needs search: 123
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 75
+- Cards: 87
 
 ## Curation Levels
 
-- L0_seeded: 135
+- L0_seeded: 123
 - L1_link_verified: 63
 - L2_artifact_verified: 0
 - L3_summary_ready: 0
 - L4_carded: 32
-- L5_audit_ready: 41
+- L5_audit_ready: 53
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 136
-- arXiv coverage: 135
-- OpenReview coverage: 12
-- ACL coverage: 4
-- PMLR coverage: 0
+- Official primary paper/arXiv/venue/DOI coverage: 148
+- arXiv coverage: 146
+- OpenReview coverage: 14
+- ACL coverage: 5
+- PMLR coverage: 1
 - CVF coverage: 0
-- DOI coverage: 0
-- Code coverage: 26
-- Data coverage: 17
-- Hugging Face coverage: 9
-- Project page coverage: 11
-- Card coverage: 75
+- DOI coverage: 1
+- Code coverage: 35
+- Data coverage: 24
+- Hugging Face coverage: 18
+- Project page coverage: 20
+- Card coverage: 87
 
 ## Starter Pack Coverage
 
@@ -84,11 +84,9 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `measuring-faithfulness-in-chain-of-thought-reasoning-2023` · Measuring faithfulness in chain-of-thought reasoning · status `needs_metadata`
 - `metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023` · MetaMath: Bootstrap your own mathematical questions for large language models · status `needs_metadata`
 - `mind2web-towards-a-generalist-agent-for-the-web-2023` · Mind2Web: Towards a generalist agent for the web · status `needs_metadata`
-- `orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023` · Orca: Progressive learning from complex explanation traces of GPT-4 · status `needs_metadata`
 - `proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023` · ProofNet: Autoformalizing and formally proving undergraduate-level mathematics · status `needs_metadata`
 - `reflexion-language-agents-with-verbal-reinforcement-learning-2023` · Reflexion: Language agents with verbal reinforcement learning · status `needs_metadata`
 - `rest-textsuperscriptem-2023` · ReST\textsuperscriptEM · status `needs_metadata`
-- `self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023` · Self-RAG: Learning to retrieve, generate, and critique through self-reflection · status `needs_metadata`
 - `selfcodealign-self-alignment-for-code-generation-2023` · SelfCodeAlign: Self-alignment for code generation · status `needs_metadata`
 - `wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023` · WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct · status `needs_metadata`
 - `ai-models-collapse-when-trained-on-recursively-generated-data-2024` · AI models collapse when trained on recursively generated data · status `needs_metadata`
@@ -97,8 +95,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024` · BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions · status `needs_metadata`
 - `bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024` · BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval · status `needs_metadata`
 - `chembench-a-benchmark-for-evaluating-large-language-models-in-chemistry-2024` · ChemBench: A benchmark for evaluating large language models in chemistry · status `needs_metadata`
-- `deepseek-prover-advancing-theorem-proving-in-llms-2024` · DeepSeek-Prover: Advancing theorem proving in LLMs · status `needs_metadata`
-- `deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024` · DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search · status `needs_metadata`
 - `does-writing-with-lms-reduce-content-diversity-2024` · Does writing with LMs reduce content diversity? · status `needs_metadata`
 - `frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024` · FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI · status `needs_metadata`
 - `goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024` · Goedel-Prover: A frontier model for open-source automated theorem proving · status `needs_metadata`
@@ -106,22 +102,15 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `harmbench-2024` · HarmBench · status `needs_metadata`
 - `helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024` · HelpSteer2: Open-source preference data for helpfulness and safety · status `needs_metadata`
 - `improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024` · Improve mathematical reasoning in language models by automated process supervision · status `needs_metadata`
-- `introducing-swe-bench-verified-2024` · Introducing SWE-bench Verified · status `needs_metadata`
 - `is-model-collapse-inevitable-2024` · Is model collapse inevitable? · status `needs_metadata`
 - `lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024` · LAB-Bench: Measuring capabilities of language models for biology research · status `needs_metadata`
 - `learning-to-reason-with-llms-2024` · Learning to reason with LLMs · status `needs_metadata`
-- `magicoder-empowering-code-generation-with-oss-instruct-2024` · Magicoder: Empowering code generation with OSS-instruct · status `needs_metadata`
 - `opencodeinterpreter-integrating-code-generation-with-execution-and-refinement-2024` · OpenCodeInterpreter: Integrating code generation with execution and refinement · status `needs_metadata`
-- `openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024` · OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data · status `needs_metadata`
 - `overoptimization-in-direct-alignment-algorithms-2024` · Overoptimization in direct alignment algorithms · status `needs_metadata`
 - `paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024` · PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge · status `needs_metadata`
-- `prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024` · Prometheus 2: An open source language model specialized in evaluating other language models · status `needs_metadata`
-- `qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024` · Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement · status `needs_metadata`
 - `r-tuning-2024` · R-Tuning · status `needs_metadata`
 - `raft-adapting-language-model-to-domain-specific-rag-2024` · RAFT: Adapting language model to domain-specific RAG · status `needs_metadata`
 - `rest-mcts-2024` · ReST-MCTS* · status `needs_metadata`
-- `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` · Rewarding progress: Scaling automated process verifiers for LLM reasoning · status `needs_metadata`
-- `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` · SciCode: A benchmark for scientific code generation and reasoning · status `needs_metadata`
 - `self-rewarding-lms-2024` · Self-Rewarding LMs · status `needs_metadata`
 - `spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024` · SPIN: Self-play fine-tuning converts weak language models to strong language models · status `needs_metadata`
 - `swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024` · SWE-Gym: Advancing software engineering agents with training and evaluation environments · status `needs_metadata`
@@ -141,7 +130,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025` · ChemLLMBench and chemistry reasoning evaluations for language models · status `needs_metadata`
 - `dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025` · DAPO: An open-source LLM reinforcement learning system at scale · status `needs_metadata`
 - `deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025` · DeepScaleR: Scaling reinforcement learning for reasoning in open models · status `needs_metadata`
-- `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025` · DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning · status `needs_metadata`
 - `deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025` · DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning · status `needs_metadata`
 - `does-rl-really-incentivize-reasoning-beyond-base-2025` · Does RL really incentivize reasoning beyond base? · status `needs_metadata`
 - `does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025` · Does supervised fine-tuning memorize while reinforcement learning generalizes? · status `needs_metadata`
@@ -165,4 +153,16 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `process-reward-models-for-code-reasoning-2025` · Process reward models for code reasoning · status `needs_metadata`
 - `qwen2-5-math-prm-2025` · Qwen2.5-Math-PRM · status `needs_metadata`
 - `r2e-gym-procedural-training-environments-for-repository-level-code-agents-2025` · R2E-Gym: Procedural training environments for repository-level code agents · status `needs_metadata`
-- ... 15 more
+- `rstar-math-2025` · rStar-Math · status `needs_metadata`
+- `rubrics-as-rewards-2025` · Rubrics as rewards · status `needs_metadata`
+- `sky-t1-fully-open-reasoning-model-and-data-recipe-2025` · Sky-T1: Fully open reasoning model and data recipe · status `needs_metadata`
+- `swe-rl-advancing-language-agents-for-software-engineering-via-reinforcement-lear-2025` · SWE-RL: Advancing language agents for software engineering via reinforcement learning · status `needs_metadata`
+- `swe-smith-scaling-data-construction-for-software-engineering-agents-2025` · SWE-smith: Scaling data construction for software engineering agents · status `needs_metadata`
+- `the-agent-company-benchmarking-and-analyzing-agent-work-in-enterprise-like-envir-2025` · The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments · status `needs_metadata`
+- `toward-conversational-diagnostic-ai-the-amie-system-2025` · Toward conversational diagnostic AI: The AMIE system · status `needs_metadata`
+- `var-math-2025` · VAR-MATH · status `needs_metadata`
+- `why-we-no-longer-evaluate-on-swe-bench-verified-2025` · Why we no longer evaluate on SWE-bench Verified · status `needs_metadata`
+- `xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025` · xLAM: A family of large action models to empower AI agent systems · status `needs_metadata`
+- `pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026` · pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL · status `needs_metadata`
+- `rewardbench-2-2026` · RewardBench 2 · status `needs_metadata`
+- ... 3 more

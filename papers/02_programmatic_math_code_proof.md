@@ -18,14 +18,14 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 |---|---:|---|---|---|
 | Big-Math-RL-Verified | 2025 | arXiv | [Paper](https://arxiv.org/abs/2502.17387) · [Card](../cards/releases/big_math.md) | Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering. |
 | DeepMath-103K | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../cards/releases/deepmath_103k.md) | Math release highlighted for verifier pinning and decontamination. |
+| DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.21801) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) · [Card](../cards/recipes/deepseek-prover-v2.md) | It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification. |
 | KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding | 2025 | ACL Findings | [Paper](https://arxiv.org/abs/2503.02951) · [Card](../cards/releases/kodcode.md) | Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR. |
 | OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.09075) · [Card](../cards/releases/opencodereasoning_ii.md) | Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique. |
 | OpenMathReasoning: A large-scale dataset of math reasoning traces | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.16891) · [Card](../cards/releases/openmathreasoning.md) | Large-scale math reasoning trace release for programmatic verification. |
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
-| LeanDojo: Theorem proving with retrieval-augmented language models | 2023 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://zenodo.org/records/10114157) · [Project](https://leandojo.org/) · [Card](../cards/agents/leandojo.md) | It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record. |
-| Evaluating large language models trained on code | 2021 | arXiv | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md) | It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions. |
-| GSM8K: Grade School Math 8K | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md) | It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training. |
-| HumanEval: Hand-Written Evaluation Set | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/humaneval-hand-written-evaluation-set.md) | It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes. |
+| DeepSeek-Prover: Advancing theorem proving in LLMs | 2024 | arXiv | [Paper](https://arxiv.org/abs/2405.14333) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1) · [Card](../cards/recipes/deepseek-prover.md) | It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object. |
+| Magicoder: Empowering code generation with OSS-instruct | 2024 | ICML | [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../cards/recipes/magicoder.md) | It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention. |
+| OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data | 2024 | ICLR | [Paper](https://arxiv.org/abs/2410.01560) · [OpenReview](https://openreview.net/forum?id=mTCbq2QssD) · [Code](https://github.com/NVIDIA-NeMo/Skills) · [Data](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2) · [Project](https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/) · [Card](../cards/releases/openmathinstruct-2.md) | It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models. |
 
 ## Full paper list
 
@@ -39,6 +39,14 @@ For builders, this category is the place to compare record designs. GSM8K and MA
   <sub>2025 · arXiv · 🏗️ construction recipe · 📈 scaling study · programmatic · rlvr · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2503.14476) · [Card](../cards/releases/dapo.md)
   _Why it matters:_ GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
+- 🏗️ **[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152)**
+  <sub>2024 · arXiv · 🏗️ construction recipe · 🚀 model report · programmatic · environmental · rlvr · agent training · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2408.08152) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL) · [Card](../cards/recipes/deepseek-prover-v1-5.md)
+  _Why it matters:_ It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.
+- 🏗️ **[Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120)**
+  <sub>2024 · ICML · 🏗️ construction recipe · 📦 data release · programmatic · mixed · sft · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../cards/recipes/magicoder.md)
+  _Why it matters:_ It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention.
 
 ### 📦 Data Release
 
@@ -66,10 +74,33 @@ For builders, this category is the place to compare record designs. GSM8K and MA
   <sub>2025 · arXiv · 📦 data release · 🌐 agent environment · environmental · programmatic · agent training · evaluation · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md)
   _Why it matters:_ Repository-scale training environment showing substrate as data.
+- 📦 **[DeepSeek-Prover: Advancing theorem proving in LLMs](https://arxiv.org/abs/2405.14333)**
+  <sub>2024 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · environmental · sft · agent training · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2405.14333) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1) · [Card](../cards/recipes/deepseek-prover.md)
+  _Why it matters:_ It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object.
+- 📦 **[OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](https://arxiv.org/abs/2410.01560)**
+  <sub>2024 · ICLR · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2410.01560) · [OpenReview](https://openreview.net/forum?id=mTCbq2QssD) · [Code](https://github.com/NVIDIA-NeMo/Skills) · [Data](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2) · [Project](https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/) · [Card](../cards/releases/openmathinstruct-2.md)
+  _Why it matters:_ It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models.
 - 📦 **[LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626)**
   <sub>2023 · NeurIPS Datasets and Benchmarks · 📦 data release · 🧰 benchmark · environmental · programmatic · agent training · sft · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://zenodo.org/records/10114157) · [Project](https://leandojo.org/) · [Card](../cards/agents/leandojo.md)
   _Why it matters:_ It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record.
+
+### 🚀 Model Report
+
+- 🚀 **[DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801)**
+  <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · rlvr · sft · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.21801) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) · [Card](../cards/recipes/deepseek-prover-v2.md)
+  _Why it matters:_ It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification.
+- 🚀 **[DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300)**
+  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · rlvr · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2402.03300) · [Code](https://github.com/deepseek-ai/deepseek-math) · [HF](https://huggingface.co/collections/deepseek-ai/deepseek-math) · [Card](../cards/recipes/deepseekmath.md)
+  _Why it matters:_ It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.
+- 🚀 **[Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122)**
+  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2409.12122) · [Code](https://github.com/QwenLM/Qwen2.5-Math) · [HF](https://huggingface.co/Qwen/Qwen2.5-Math-7B) · [Project](https://qwenlm.github.io/blog/qwen2.5-math/) · [Card](../cards/recipes/qwen2-5-math.md)
+  _Why it matters:_ It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning, and multilingual math evaluation are tied together.
 
 ### 🧭 Survey Background
 
@@ -103,19 +134,20 @@ For builders, this category is the place to compare record designs. GSM8K and MA
   [Paper](https://arxiv.org/abs/2506.10947) · [Card](../cards/verifiers/spurious_rewards.md)
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
 
-### 🚀 Model Report
-
-- 🚀 **[DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300)**
-  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · rlvr · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2402.03300) · [Code](https://github.com/deepseek-ai/deepseek-math) · [HF](https://huggingface.co/collections/deepseek-ai/deepseek-math) · [Card](../cards/recipes/deepseekmath.md)
-  _Why it matters:_ It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.
-
 ### 🧰 Benchmark
 
+- 🧰 **[Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/)**
+  <sub>2024 · OpenAI / SWE-bench report · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
+  [Paper](https://openai.com/index/introducing-swe-bench-verified/) · [Venue](https://www.swebench.com/verified.html) · [Code](https://github.com/swe-bench/SWE-bench) · [Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified) · [Card](../cards/agents/swe-bench-verified.md)
+  _Why it matters:_ It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.
 - 🧰 **[LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](https://arxiv.org/abs/2403.07974)**
   <sub>2024 · arXiv · 🧰 benchmark · 🧯 audit failure · programmatic · evaluation · audit · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2403.07974) · [OpenReview](https://openreview.net/forum?id=chfJJYC3iL) · [Code](https://github.com/livecodebench/livecodebench) · [Project](https://livecodebench.github.io/) · [Card](../cards/benchmarks/livecodebench.md)
   _Why it matters:_ It gives code-reasoning evaluation a moving-time-window design, making it harder to confuse memorized public problems with genuine coding capability.
+- 🧰 **[SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168)**
+  <sub>2024 · NeurIPS Datasets and Benchmarks · 🧰 benchmark · 📦 data release · programmatic · judgment required · evaluation · audit · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2407.13168) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/scicode-bench/SciCode) · [Project](https://scicode-bench.github.io/) · [Card](../cards/benchmarks/scicode.md)
+  _Why it matters:_ It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests.
 - 🧰 **[Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374)**
   <sub>2021 · arXiv · 🧰 benchmark · 📦 data release · programmatic · evaluation · test time compute · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md)
@@ -154,10 +186,6 @@ For builders, this category is the place to compare record designs. GSM8K and MA
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning**
-  <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **MATH-Perturb**
   <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -186,14 +214,6 @@ For builders, this category is the place to compare record designs. GSM8K and MA
   <sub>2024 · ICLR · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **DeepSeek-Prover: Advancing theorem proving in LLMs**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -208,18 +228,6 @@ For builders, this category is the place to compare record designs. GSM8K and MA
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **OpenCodeInterpreter: Integrating code generation with execution and refinement**
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **SciCode: A benchmark for scientific code generation and reasoning**
-  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **MAmmoTH: Building math generalist models through hybrid instruction tuning**
@@ -259,6 +267,7 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 - [Big-Math-RL-Verified](../cards/releases/big_math.md)
 - [DAPO](../cards/releases/dapo.md)
 - [DeepMath-103K](../cards/releases/deepmath_103k.md)
+- [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](../cards/recipes/deepseek-prover-v2.md)
 - [KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](../cards/releases/kodcode.md)
 - [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](../cards/releases/opencodereasoning_ii.md)
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](../cards/releases/openmathreasoning.md)
@@ -266,13 +275,12 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 - [SWE-Gym](../cards/agents/swe_gym.md)
 - [Scaling Behaviors of LLM Reinforcement Learning Post-Training](../cards/recipes/scaling-behaviors-rl-post-training.md)
 - [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
+- [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](../cards/recipes/deepseek-prover-v1-5.md)
+- [DeepSeek-Prover: Advancing theorem proving in LLMs](../cards/recipes/deepseek-prover.md)
 - [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](../cards/recipes/deepseekmath.md)
+- [Introducing SWE-bench Verified](../cards/agents/swe-bench-verified.md)
 - [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](../cards/benchmarks/livecodebench.md)
-- [Math-Shepherd](../cards/verifiers/math_shepherd.md)
-- [LeanDojo: Theorem proving with retrieval-augmented language models](../cards/agents/leandojo.md)
-- [Evaluating large language models trained on code](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md)
-- [GSM8K: Grade School Math 8K](../cards/benchmarks/gsm8k-grade-school-math-8k.md)
-- [HumanEval: Hand-Written Evaluation Set](../cards/benchmarks/humaneval-hand-written-evaluation-set.md)
+- [Magicoder: Empowering code generation with OSS-instruct](../cards/recipes/magicoder.md)
 
 ## Open gaps
 

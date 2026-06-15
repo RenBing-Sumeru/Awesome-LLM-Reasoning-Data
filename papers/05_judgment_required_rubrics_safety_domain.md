@@ -18,14 +18,14 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 |---|---:|---|---|---|
 | Aegis2.0 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.09004) · [ACL](https://aclanthology.org/2025.naacl-long.306/) · [Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) · [Card](../cards/verifiers/aegis2.md) | It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification. |
 | Llama-Nemotron: Efficient Reasoning Models | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.00949) · [Card](../cards/recipes/llama_nemotron.md) | Mixed post-training corpus reference for reasoning, chat, and safety partitions. |
+| Prometheus 2: An open source language model specialized in evaluating other language models | 2024 | EMNLP | [Paper](https://arxiv.org/abs/2405.01535) · [ACL](https://aclanthology.org/2024.emnlp-main.248/) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [Code](https://github.com/prometheus-eval/prometheus-eval) · [Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0) · [Card](../cards/verifiers/prometheus-2.md) | It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes. |
+| SciCode: A benchmark for scientific code generation and reasoning | 2024 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2407.13168) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/scicode-bench/SciCode) · [Project](https://scicode-bench.github.io/) · [Card](../cards/benchmarks/scicode.md) | It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests. |
+| Self-RAG: Learning to retrieve, generate, and critique through self-reflection | 2023 | ICLR | [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../cards/recipes/self-rag.md) | It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations. |
 | UltraFeedback: Boosting language models with high-quality feedback | 2023 | ICML | [Paper](https://arxiv.org/abs/2310.01377) · [Code](https://github.com/OpenBMB/UltraFeedback) · [Data](https://huggingface.co/datasets/openbmb/UltraFeedback) · [Card](../cards/releases/ultrafeedback.md) | It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels. |
 | AbstentionBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.09038) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/facebookresearch/AbstentionBench) · [Data](https://huggingface.co/datasets/facebook/AbstentionBench) · [Card](../cards/benchmarks/abstentionbench.md) | It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining. |
 | HealthBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md) | It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring. |
 | Leaky Thoughts | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../cards/failures/leaky-thoughts.md) | It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface. |
 | One Token to Fool LLM-as-a-Judge | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md) | Verifier-attack paper showing trivial cue tokens can flip judge verdicts. |
-| RewardBench: Evaluating Reward Models for Language Modeling | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2403.13787) · [Card](../cards/verifiers/rewardbench.md) | It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences. |
-| GPQA | 2023 | arXiv | [Paper](https://arxiv.org/abs/2311.12022) · [OpenReview](https://openreview.net/forum?id=Ti67584b98) · [Code](https://github.com/idavidrein/gpqa) · [Card](../cards/benchmarks/gpqa.md) | It is a scalable-oversight benchmark: the data object tests whether models can answer expert questions that are difficult for ordinary validators to check. |
-| Judging LLM-as-a-judge with MT-Bench and Chatbot Arena | 2023 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2306.05685) · [Venue](https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html) · [OpenReview](https://openreview.net/forum?id=uccHPGDlao) · [Code](https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge) · [Card](../cards/verifiers/mt-bench-chatbot-arena.md) | It is the standard cautionary reference for judge data: scalable model judges are useful, but position, verbosity, self-enhancement, and limited-reasoning biases must be audited. |
 
 ## Full paper list
 
@@ -70,6 +70,10 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
   <sub>2024 · NeurIPS · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2403.13787) · [Card](../cards/verifiers/rewardbench.md)
   _Why it matters:_ It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.
+- 🧰 **[SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168)**
+  <sub>2024 · NeurIPS Datasets and Benchmarks · 🧰 benchmark · 📦 data release · programmatic · judgment required · evaluation · audit · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2407.13168) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/scicode-bench/SciCode) · [Project](https://scicode-bench.github.io/) · [Card](../cards/benchmarks/scicode.md)
+  _Why it matters:_ It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests.
 - 🧰 **[GPQA](https://arxiv.org/abs/2311.12022)**
   <sub>2023 · arXiv · 🧰 benchmark · judgment required · evaluation · audit · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2311.12022) · [OpenReview](https://openreview.net/forum?id=Ti67584b98) · [Code](https://github.com/idavidrein/gpqa) · [Card](../cards/benchmarks/gpqa.md)
@@ -112,6 +116,20 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
   [Paper](https://arxiv.org/abs/2505.00949) · [Card](../cards/recipes/llama_nemotron.md)
   _Why it matters:_ Mixed post-training corpus reference for reasoning, chat, and safety partitions.
 
+### 🧪 Verifier Reward
+
+- 🧪 **[Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535)**
+  <sub>2024 · EMNLP · 🧪 verifier reward · 🚀 model report · judgment required · reward modeling · preference learning · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2405.01535) · [ACL](https://aclanthology.org/2024.emnlp-main.248/) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [Code](https://github.com/prometheus-eval/prometheus-eval) · [Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0) · [Card](../cards/verifiers/prometheus-2.md)
+  _Why it matters:_ It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes.
+
+### 🏗️ Construction Recipe
+
+- 🏗️ **[Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511)**
+  <sub>2023 · ICLR · 🏗️ construction recipe · 📦 data release · mixed · judgment required · sft · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../cards/recipes/self-rag.md)
+  _Why it matters:_ It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.
+
 ### ⚠️ Needs search or metadata
 
 - 🧭 **RewardBench 2**
@@ -144,10 +162,6 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **LAB-Bench: Measuring capabilities of language models for biology research**
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **Prometheus 2: An open source language model specialized in evaluating other language models**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **WildGuard**
@@ -221,9 +235,12 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 - [Leaky Thoughts](../cards/failures/leaky-thoughts.md)
 - [Llama-Nemotron: Efficient Reasoning Models](../cards/recipes/llama_nemotron.md)
 - [One Token to Fool LLM-as-a-Judge](../cards/verifiers/one_token_to_fool_judge.md)
+- [Prometheus 2: An open source language model specialized in evaluating other language models](../cards/verifiers/prometheus-2.md)
 - [RewardBench: Evaluating Reward Models for Language Modeling](../cards/verifiers/rewardbench.md)
+- [SciCode: A benchmark for scientific code generation and reasoning](../cards/benchmarks/scicode.md)
 - [GPQA](../cards/benchmarks/gpqa.md)
 - [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](../cards/verifiers/mt-bench-chatbot-arena.md)
+- [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](../cards/recipes/self-rag.md)
 - [UltraFeedback: Boosting language models with high-quality feedback](../cards/releases/ultrafeedback.md)
 - [TruthfulQA](../cards/benchmarks/truthfulqa.md)
 

@@ -18,6 +18,7 @@ For practitioners, environmental data is attractive because it produces realisti
 |---|---:|---|---|---|
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
 | LeanDojo: Theorem proving with retrieval-augmented language models | 2023 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://zenodo.org/records/10114157) · [Project](https://leandojo.org/) · [Card](../cards/agents/leandojo.md) | It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record. |
+| Self-RAG: Learning to retrieve, generate, and critique through self-reflection | 2023 | ICLR | [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../cards/recipes/self-rag.md) | It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations. |
 | ToolLLM: Facilitating large language models to master 16000+ real-world APIs | 2023 | ICLR | [Paper](https://arxiv.org/abs/2307.16789) · [Card](../cards/agents/toolllm_toolbench.md) | Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback. |
 | Leaky Thoughts | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../cards/failures/leaky-thoughts.md) | It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface. |
 | MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention | 2025 | arXiv preprint arXiv:2506.13585 | [Paper](https://arxiv.org/abs/2506.13585) · [Code](https://github.com/MiniMax-AI/MiniMax-M1) · [Card](../cards/recipes/minimax_m1.md) | Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces. |
@@ -25,7 +26,6 @@ For practitioners, environmental data is attractive because it produces realisti
 | AndroidWorld: A dynamic benchmarking environment for autonomous agents | 2024 | arXiv | [Paper](https://arxiv.org/abs/2405.14573) · [Card](../cards/agents/androidworld.md) | Android tasks turn mobile UI state and action histories into evaluable agent trajectories. |
 | AppWorld: A controllable world of apps and people for benchmarking interactive coding agents | 2024 | arXiv | [Paper](https://arxiv.org/abs/2407.18901) · [Card](../cards/agents/appworld.md) | Controllable app world for interactive agents where tool/API state and final task success form the feedback contract. |
 | BrowserGym: A gym environment for web agents | 2024 | arXiv | [Paper](https://arxiv.org/abs/2412.05467) · [Card](../cards/agents/browsergym.md) | A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation. |
-| OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md) | Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation. |
 
 ## Full paper list
 
@@ -102,6 +102,10 @@ For practitioners, environmental data is attractive because it produces realisti
   <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2407.18901) · [Card](../cards/agents/appworld.md)
   _Why it matters:_ Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
+- 🧰 **[Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/)**
+  <sub>2024 · OpenAI / SWE-bench report · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
+  [Paper](https://openai.com/index/introducing-swe-bench-verified/) · [Venue](https://www.swebench.com/verified.html) · [Code](https://github.com/swe-bench/SWE-bench) · [Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified) · [Card](../cards/agents/swe-bench-verified.md)
+  _Why it matters:_ It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.
 - 🧰 **[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972)**
   <sub>2024 · NeurIPS · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md)
@@ -128,6 +132,10 @@ For practitioners, environmental data is attractive because it produces realisti
 
 ### 🏗️ Construction Recipe
 
+- 🏗️ **[Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511)**
+  <sub>2023 · ICLR · 🏗️ construction recipe · 📦 data release · mixed · judgment required · sft · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../cards/recipes/self-rag.md)
+  _Why it matters:_ It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.
 - 🏗️ **[Toolformer: Language models can teach themselves to use tools](https://arxiv.org/abs/2302.04761)**
   <sub>2023 · NeurIPS · 🏗️ construction recipe · 🌐 agent environment · mixed · sft · agent training · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2302.04761) · [OpenReview](https://openreview.net/forum?id=Yacmpz84TH) · [Card](../cards/agents/toolformer.md)
@@ -173,10 +181,6 @@ For practitioners, environmental data is attractive because it produces realisti
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets**
   <sub>2024 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **Introducing SWE-bench Verified**
-  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge**
@@ -243,11 +247,13 @@ For practitioners, environmental data is attractive because it produces realisti
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../cards/agents/androidworld.md)
 - [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](../cards/agents/appworld.md)
 - [BrowserGym: A gym environment for web agents](../cards/agents/browsergym.md)
+- [Introducing SWE-bench Verified](../cards/agents/swe-bench-verified.md)
 - [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](../cards/agents/osworld.md)
 - [OpenHands: An Open Platform for AI Software Developers as Generalist Agents](../cards/agents/openhands.md)
 - [LeanDojo: Theorem proving with retrieval-augmented language models](../cards/agents/leandojo.md)
 - [ReAct: Synergizing reasoning and acting in language models](../cards/agents/react.md)
 - [SWE-bench: Can language models resolve real-world GitHub issues?](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md)
+- [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](../cards/recipes/self-rag.md)
 - [ToolLLM: Facilitating large language models to master 16000+ real-world APIs](../cards/agents/toolllm_toolbench.md)
 - [Toolformer: Language models can teach themselves to use tools](../cards/agents/toolformer.md)
 - [WebArena: A realistic web environment for building autonomous agents](../cards/agents/webarena.md)

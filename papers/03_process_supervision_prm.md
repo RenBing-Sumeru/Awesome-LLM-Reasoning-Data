@@ -25,7 +25,7 @@ Practitioners should be skeptical and precise. A process reward model can improv
 | Math-Shepherd | 2024 | arXiv | [Paper](https://arxiv.org/abs/2312.08935) · [Card](../cards/verifiers/math_shepherd.md) | Monte-Carlo-style process signal reference for step supervision. |
 | OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision | 2024 | arXiv | [Paper](https://arxiv.org/abs/2406.06592) · [Card](../cards/verifiers/omegaprm.md) | Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels. |
 | ProcessBench: Identifying Process Errors in Mathematical Reasoning | 2024 | arXiv | [Paper](https://arxiv.org/abs/2412.06559) · [Card](../cards/verifiers/processbench.md) | Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training. |
-| An Imperfect Verifier is Good Enough: Learning with Noisy Rewards | 2026 | arXiv preprint arXiv:2604.07666 | [Paper](https://arxiv.org/abs/2604.07666) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
+| Rewarding progress: Scaling automated process verifiers for LLM reasoning | 2024 | ICLR | [Paper](https://arxiv.org/abs/2410.08146) · [OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW) · [Card](../cards/verifiers/rewarding-progress.md) | It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL. |
 
 ## Full paper list
 
@@ -91,6 +91,10 @@ Practitioners should be skeptical and precise. A process reward model can improv
   <sub>2025 · arXiv · 🧪 verifier reward · 🧯 audit failure · programmatic · judgment required · rlvr · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Card](../cards/verifiers/tinyv.md)
   _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+- 🧪 **[Rewarding progress: Scaling automated process verifiers for LLM reasoning](https://arxiv.org/abs/2410.08146)**
+  <sub>2024 · ICLR · 🧪 verifier reward · 🪜 process supervision · programmatic · mixed · process supervision · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2410.08146) · [OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW) · [Card](../cards/verifiers/rewarding-progress.md)
+  _Why it matters:_ It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.
 
 ### 🪜 Process Supervision
 
@@ -125,10 +129,6 @@ Practitioners should be skeptical and precise. A process reward model can improv
   <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **Rewarding progress: Scaling automated process verifiers for LLM reasoning**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations**
   <sub>2023 · ACL · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -153,6 +153,7 @@ Practitioners should be skeptical and precise. A process reward model can improv
 - [Math-Shepherd](../cards/verifiers/math_shepherd.md)
 - [OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](../cards/verifiers/omegaprm.md)
 - [ProcessBench: Identifying Process Errors in Mathematical Reasoning](../cards/verifiers/processbench.md)
+- [Rewarding progress: Scaling automated process verifiers for LLM reasoning](../cards/verifiers/rewarding-progress.md)
 - [Let's Verify Step by Step](../cards/verifiers/prm800k.md)
 - [Training verifiers to solve math word problems](../cards/verifiers/training-verifiers-to-solve-math-word-problems.md)
 
