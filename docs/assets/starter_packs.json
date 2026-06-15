@@ -2644,50 +2644,77 @@
           "id": "deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024",
           "title": "DeepSeekMath: Pushing the limits of mathematical reasoning in open language models",
           "year": 2024,
-          "venue": "arXiv preprint",
-          "authors": [],
+          "venue": "arXiv",
+          "authors": [
+            "Zhihong Shao",
+            "Peiyi Wang",
+            "Qihao Zhu",
+            "Runxin Xu",
+            "Junxiao Song",
+            "Xiao Bi",
+            "Haowei Zhang",
+            "Mingchuan Zhang",
+            "Y. K. Li",
+            "Y. Wu",
+            "Daya Guo"
+          ],
           "source_role": [
-            "survey_background"
+            "model_report",
+            "construction_recipe",
+            "scaling_study"
           ],
           "verification_contract": [
-            "unknown"
+            "programmatic",
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "answer_level",
+            "scalar_reward"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "rlvr",
+            "evaluation",
+            "test_time_compute"
           ],
-          "domains": [],
+          "domains": [
+            "math",
+            "rlvr",
+            "web-data"
+          ],
           "category": [
             "programmatic_math_code_proof",
             "construction_recipes_open_reasoning_data",
+            "scaling_test_time_compute_rlvr",
             "frontier_model_reports"
           ],
           "tags": [
-            "seeded-from-bib"
+            "math",
+            "rlvr",
+            "seeded-from-bib",
+            "web-data"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.",
+          "why_it_matters": "It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2402.03300",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2402.03300",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/deepseek-ai/deepseek-math",
             "data": null,
-            "huggingface": null,
-            "project": null,
+            "huggingface": "https://huggingface.co/collections/deepseek-ai/deepseek-math",
+            "project": "https://github.com/deepseek-ai/deepseek-math",
             "bibtex": null,
-            "card": null
+            "card": "cards/recipes/deepseekmath.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2402.03300"
         }
       },
       {
@@ -4333,45 +4360,68 @@
           "title": "ReAct: Synergizing reasoning and acting in language models",
           "year": 2023,
           "venue": "ICLR",
-          "authors": [],
+          "authors": [
+            "Shunyu Yao",
+            "Jeffrey Zhao",
+            "Dian Yu",
+            "Nan Du",
+            "Izhak Shafran",
+            "Karthik Narasimhan",
+            "Yuan Cao"
+          ],
           "source_role": [
-            "survey_background"
+            "agent_environment",
+            "construction_recipe"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "state_action_level",
+            "full_episode"
           ],
           "training_use": [
-            "unknown"
+            "agent_training",
+            "evaluation",
+            "test_time_compute"
           ],
-          "domains": [],
-          "category": [],
+          "domains": [
+            "agents",
+            "tools",
+            "reasoning-acting"
+          ],
+          "category": [
+            "environmental_agents_tools_web_swe",
+            "construction_recipes_open_reasoning_data"
+          ],
           "tags": [
-            "seeded-from-bib"
+            "agents",
+            "reasoning-acting",
+            "seeded-from-bib",
+            "tools"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.",
+          "why_it_matters": "It is a foundational agent-data pattern: the training/evaluation record is not just an answer but a trajectory of thought-like notes, actions, observations, and final response.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2210.03629",
             "venue": null,
-            "arxiv": null,
-            "openreview": null,
+            "arxiv": "https://arxiv.org/abs/2210.03629",
+            "openreview": "https://openreview.net/forum?id=WE_vluYUL-X",
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/ysymyth/ReAct",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://react-lm.github.io/",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/react.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2210.03629"
         }
       },
       {
@@ -4383,35 +4433,56 @@
           "title": "Toolformer: Language models can teach themselves to use tools",
           "year": 2023,
           "venue": "NeurIPS",
-          "authors": [],
+          "authors": [
+            "Timo Schick",
+            "Jane Dwivedi-Yu",
+            "Roberto Dessi",
+            "Roberta Raileanu",
+            "Maria Lomeli",
+            "Luke Zettlemoyer",
+            "Nicola Cancedda",
+            "Thomas Scialom"
+          ],
           "source_role": [
-            "survey_background"
+            "construction_recipe",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "step_level",
+            "answer_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "agent_training",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "tools",
+            "api-calls",
+            "self-supervision"
+          ],
           "category": [
-            "environmental_agents_tools_web_swe"
+            "environmental_agents_tools_web_swe",
+            "construction_recipes_open_reasoning_data"
           ],
           "tags": [
-            "seeded-from-bib"
+            "api-calls",
+            "seeded-from-bib",
+            "self-supervision",
+            "tools"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model likelihood.",
+          "why_it_matters": "It is a classic construction recipe for tool-call supervision: models learn when to call tools, what arguments to pass, and how to fold observations back into text.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2302.04761",
             "venue": null,
-            "arxiv": null,
-            "openreview": null,
+            "arxiv": "https://arxiv.org/abs/2302.04761",
+            "openreview": "https://openreview.net/forum?id=Yacmpz84TH",
             "acl": null,
             "pmlr": null,
             "cvf": null,
@@ -4421,9 +4492,9 @@
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/toolformer.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2302.04761"
         }
       },
       {
@@ -7995,48 +8066,77 @@
           "id": "ultrafeedback-boosting-language-models-with-high-quality-feedback-2023",
           "title": "UltraFeedback: Boosting language models with high-quality feedback",
           "year": 2023,
-          "venue": "arXiv preprint",
-          "authors": [],
+          "venue": "ICML",
+          "authors": [
+            "Ganqu Cui",
+            "Lifan Yuan",
+            "Ning Ding",
+            "Guanming Yao",
+            "Bingxiang He",
+            "Wei Zhu",
+            "Yuan Ni",
+            "Guotong Xie",
+            "Ruobing Xie",
+            "Yankai Lin",
+            "Zhiyuan Liu",
+            "Maosong Sun"
+          ],
           "source_role": [
-            "survey_background"
+            "data_release",
+            "verifier_reward",
+            "construction_recipe"
           ],
           "verification_contract": [
-            "unknown"
+            "judgment_required"
           ],
           "supervision_granularity": [
-            "unknown"
+            "answer_level",
+            "scalar_reward",
+            "pairwise_preference"
           ],
           "training_use": [
-            "unknown"
+            "preference_learning",
+            "reward_modeling",
+            "sft",
+            "safety_alignment"
           ],
-          "domains": [],
+          "domains": [
+            "preference-data",
+            "ai-feedback",
+            "reward-modeling"
+          ],
           "category": [
-            "foundations_instruction_preference_alignment"
+            "foundations_instruction_preference_alignment",
+            "judgment_required_rubrics_safety_domain",
+            "construction_recipes_open_reasoning_data"
           ],
           "tags": [
+            "ai-feedback",
+            "preference-data",
+            "reward-modeling",
             "seeded-from-bib"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
+          "one_line_summary": "UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response pairs.",
+          "why_it_matters": "It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels.",
+          "curation_level": "L5_audit_ready",
+          "status": "verified",
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2310.01377",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2310.01377",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
+            "code": "https://github.com/OpenBMB/UltraFeedback",
+            "data": "https://huggingface.co/datasets/openbmb/UltraFeedback",
+            "huggingface": "https://huggingface.co/datasets/openbmb/UltraFeedback",
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/releases/ultrafeedback.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2310.01377"
         }
       },
       {

@@ -738,48 +738,70 @@ window.ATLAS_DATA = {
       "title": "Measuring coding challenge competence with APPS",
       "year": 2021,
       "venue": "NeurIPS",
-      "authors": [],
+      "authors": [
+        "Dan Hendrycks",
+        "Steven Basart",
+        "Saurav Kadavath",
+        "Mantas Mazeika",
+        "Akul Arora",
+        "Ethan Guo",
+        "Collin Burns",
+        "Samir Puranik",
+        "Horace He",
+        "Dawn Song",
+        "Jacob Steinhardt"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "sft",
+        "test_time_compute"
       ],
-      "domains": [],
+      "domains": [
+        "code",
+        "programming",
+        "unit-tests"
+      ],
       "category": [
         "programmatic_math_code_proof",
         "benchmarks_evaluation"
       ],
       "tags": [
-        "seeded-from-bib"
+        "code",
+        "programming",
+        "seeded-from-bib",
+        "unit-tests"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "APPS evaluates code-generation competence with 10,000 programming problems checked by executable test cases.",
+      "why_it_matters": "It is a pre-HumanEval large-scale code benchmark where the feedback-bearing object is a problem statement, generated program, and unit-test outcome.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2105.09938",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2105.09938",
+        "openreview": "https://openreview.net/forum?id=sD93GOzH3i5",
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/hendrycks/apps",
+        "data": "https://github.com/hendrycks/apps",
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/benchmarks/apps.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2105.09938"
     },
     {
       "id": "measuring-mathematical-problem-solving-with-the-math-dataset-2021",
@@ -841,49 +863,64 @@ window.ATLAS_DATA = {
       "title": "miniF2F: A cross-system benchmark for formal olympiad-level mathematics",
       "year": 2021,
       "venue": "ICLR",
-      "authors": [],
+      "authors": [
+        "Kunhao Zheng",
+        "Jesse Michael Han",
+        "Stanislas Polu"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "environmental"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "step_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "agent_training",
+        "sft"
       ],
-      "domains": [],
+      "domains": [
+        "formal-math",
+        "theorem-proving",
+        "proof-assistants"
+      ],
       "category": [
         "programmatic_math_code_proof",
-        "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
       "tags": [
-        "seeded-from-bib"
+        "formal-math",
+        "proof-assistants",
+        "seeded-from-bib",
+        "theorem-proving"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "miniF2F is a cross-system formal mathematics benchmark for comparing theorem provers across Lean, Metamath, Isabelle, and HOL Light targets.",
+      "why_it_matters": "It is a compact formal-proof evaluation surface where the verifier is not a text judge but a proof assistant accepting or rejecting a proof.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2109.00110",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2109.00110",
+        "openreview": "https://openreview.net/forum?id=9ZPegFuFTFv",
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/openai/miniF2F",
+        "data": "https://github.com/openai/miniF2F",
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/benchmarks/minif2f.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2109.00110"
     },
     {
       "id": "multitask-prompted-training-enables-zero-shot-task-generalization-2021",
@@ -1738,48 +1775,64 @@ window.ATLAS_DATA = {
       "title": "TruthfulQA",
       "year": 2022,
       "venue": "ACL",
-      "authors": [],
+      "authors": [
+        "Stephanie Lin",
+        "Jacob Hilton",
+        "Owain Evans"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "audit_failure"
       ],
       "verification_contract": [
-        "unknown"
+        "judgment_required",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "safety_alignment",
+        "audit"
       ],
-      "domains": [],
+      "domains": [
+        "truthfulness",
+        "factuality",
+        "safety"
+      ],
       "category": [
         "judgment_required_rubrics_safety_domain",
+        "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
       "tags": [
-        "seeded-from-bib"
+        "factuality",
+        "safety",
+        "seeded-from-bib",
+        "truthfulness"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "TruthfulQA is a benchmark for measuring whether models imitate common human falsehoods instead of giving truthful answers.",
+      "why_it_matters": "It is a canonical truthfulness audit surface for reasoning models because stronger generation can still amplify persuasive false answers learned from web text.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2109.07958",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2109.07958",
         "openreview": null,
-        "acl": null,
+        "acl": "https://aclanthology.org/2022.acl-long.229/",
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/sylinrl/TruthfulQA",
+        "data": "https://github.com/sylinrl/TruthfulQA",
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/benchmarks/truthfulqa.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2109.07958"
     },
     {
       "id": "alce-enabling-large-language-models-to-generate-text-with-citations-2023",
@@ -2164,49 +2217,67 @@ window.ATLAS_DATA = {
       "id": "gpqa-2023",
       "title": "GPQA",
       "year": 2023,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "David Rein",
+        "Betty Li Hou",
+        "Asa Cooper Stickland",
+        "Jackson Petty",
+        "Richard Yuanzhe Pang",
+        "Julien Dirani",
+        "Julian Michael",
+        "Samuel R. Bowman"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark"
       ],
       "verification_contract": [
-        "unknown"
+        "judgment_required"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "audit"
       ],
-      "domains": [],
+      "domains": [
+        "science",
+        "expert-evaluation",
+        "scalable-oversight"
+      ],
       "category": [
         "judgment_required_rubrics_safety_domain",
-        "benchmarks_evaluation"
+        "benchmarks_evaluation",
+        "audit_failure_contamination_verifier_attacks"
       ],
       "tags": [
+        "expert-evaluation",
+        "scalable-oversight",
+        "science",
         "seeded-from-bib"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "GPQA is a graduate-level science Q&A benchmark designed so skilled non-experts with web access still struggle.",
+      "why_it_matters": "It is a scalable-oversight benchmark: the data object tests whether models can answer expert questions that are difficult for ordinary validators to check.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2311.12022",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2311.12022",
+        "openreview": "https://openreview.net/forum?id=Ti67584b98",
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/idavidrein/gpqa",
+        "data": "https://github.com/idavidrein/gpqa",
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/benchmarks/gpqa.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2311.12022"
     },
     {
       "id": "judgelm-fine-tuned-large-language-models-are-scalable-judges-2023",
@@ -2260,48 +2331,79 @@ window.ATLAS_DATA = {
       "title": "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena",
       "year": 2023,
       "venue": "NeurIPS Datasets and Benchmarks",
-      "authors": [],
+      "authors": [
+        "Lianmin Zheng",
+        "Wei-Lin Chiang",
+        "Ying Sheng",
+        "Siyuan Zhuang",
+        "Zhanghao Wu",
+        "Yonghao Zhuang",
+        "Zi Lin",
+        "Zhuohan Li",
+        "Dacheng Li",
+        "Eric P. Xing",
+        "Hao Zhang",
+        "Joseph E. Gonzalez",
+        "Ion Stoica"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "verifier_reward",
+        "audit_failure"
       ],
       "verification_contract": [
-        "unknown"
+        "judgment_required",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "pairwise_preference",
+        "scalar_reward"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "reward_modeling",
+        "preference_learning",
+        "audit"
       ],
-      "domains": [],
+      "domains": [
+        "llm-as-judge",
+        "preference-evaluation",
+        "chat"
+      ],
       "category": [
         "judgment_required_rubrics_safety_domain",
-        "benchmarks_evaluation"
+        "benchmarks_evaluation",
+        "audit_failure_contamination_verifier_attacks",
+        "foundations_instruction_preference_alignment"
       ],
       "tags": [
+        "chat",
+        "llm-as-judge",
+        "preference-evaluation",
         "seeded-from-bib"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "MT-Bench and Chatbot Arena establish LLM-as-a-judge and pairwise human-preference evaluation surfaces for open-ended chat models.",
+      "why_it_matters": "It is the standard cautionary reference for judge data: scalable model judges are useful, but position, verbosity, self-enhancement, and limited-reasoning biases must be audited.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "paper": "https://arxiv.org/abs/2306.05685",
+        "venue": "https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html",
+        "arxiv": "https://arxiv.org/abs/2306.05685",
+        "openreview": "https://openreview.net/forum?id=uccHPGDlao",
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge",
+        "data": "https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge",
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/verifiers/mt-bench-chatbot-arena.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2306.05685"
     },
     {
       "id": "language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023",
@@ -2402,48 +2504,74 @@ window.ATLAS_DATA = {
       "id": "leandojo-theorem-proving-with-retrieval-augmented-language-models-2023",
       "title": "LeanDojo: Theorem proving with retrieval-augmented language models",
       "year": 2023,
-      "venue": "NeurIPS",
-      "authors": [],
+      "venue": "NeurIPS Datasets and Benchmarks",
+      "authors": [
+        "Kaiyu Yang",
+        "Aidan M. Swope",
+        "Alex Gu",
+        "Rahul Chalamala",
+        "Peiyang Song",
+        "Shixing Yu",
+        "Saad Godil",
+        "Ryan Prenger",
+        "Anima Anandkumar"
+      ],
       "source_role": [
-        "survey_background"
+        "data_release",
+        "benchmark",
+        "agent_environment"
       ],
       "verification_contract": [
-        "unknown"
+        "environmental",
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "state_action_level",
+        "step_level",
+        "full_episode"
       ],
       "training_use": [
-        "unknown"
+        "agent_training",
+        "sft",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "formal-math",
+        "lean",
+        "retrieval"
+      ],
       "category": [
-        "programmatic_math_code_proof"
+        "programmatic_math_code_proof",
+        "environmental_agents_tools_web_swe",
+        "benchmarks_evaluation"
       ],
       "tags": [
+        "formal-math",
+        "lean",
+        "retrieval",
         "seeded-from-bib"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "LeanDojo releases an open Lean theorem-proving environment, benchmark, and retrieval-augmented prover pipeline.",
+      "why_it_matters": "It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
+        "paper": "https://arxiv.org/abs/2306.15626",
+        "venue": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
+        "arxiv": "https://arxiv.org/abs/2306.15626",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/lean-dojo/LeanDojo",
+        "data": "https://zenodo.org/records/10114157",
         "huggingface": null,
-        "project": null,
+        "project": "https://leandojo.org/",
         "bibtex": null,
-        "card": null
+        "card": "cards/agents/leandojo.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2306.15626"
     },
     {
       "id": "legalbench-2023",
@@ -2934,45 +3062,68 @@ window.ATLAS_DATA = {
       "title": "ReAct: Synergizing reasoning and acting in language models",
       "year": 2023,
       "venue": "ICLR",
-      "authors": [],
+      "authors": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik Narasimhan",
+        "Yuan Cao"
+      ],
       "source_role": [
-        "survey_background"
+        "agent_environment",
+        "construction_recipe"
       ],
       "verification_contract": [
-        "unknown"
+        "environmental",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "state_action_level",
+        "full_episode"
       ],
       "training_use": [
-        "unknown"
+        "agent_training",
+        "evaluation",
+        "test_time_compute"
       ],
-      "domains": [],
-      "category": [],
+      "domains": [
+        "agents",
+        "tools",
+        "reasoning-acting"
+      ],
+      "category": [
+        "environmental_agents_tools_web_swe",
+        "construction_recipes_open_reasoning_data"
+      ],
       "tags": [
-        "seeded-from-bib"
+        "agents",
+        "reasoning-acting",
+        "seeded-from-bib",
+        "tools"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.",
+      "why_it_matters": "It is a foundational agent-data pattern: the training/evaluation record is not just an answer but a trajectory of thought-like notes, actions, observations, and final response.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2210.03629",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2210.03629",
+        "openreview": "https://openreview.net/forum?id=WE_vluYUL-X",
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
+        "code": "https://github.com/ysymyth/ReAct",
         "data": null,
         "huggingface": null,
-        "project": null,
+        "project": "https://react-lm.github.io/",
         "bibtex": null,
-        "card": null
+        "card": "cards/agents/react.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2210.03629"
     },
     {
       "id": "reflexion-language-agents-with-verbal-reinforcement-learning-2023",
@@ -3334,35 +3485,56 @@ window.ATLAS_DATA = {
       "title": "Toolformer: Language models can teach themselves to use tools",
       "year": 2023,
       "venue": "NeurIPS",
-      "authors": [],
+      "authors": [
+        "Timo Schick",
+        "Jane Dwivedi-Yu",
+        "Roberto Dessi",
+        "Roberta Raileanu",
+        "Maria Lomeli",
+        "Luke Zettlemoyer",
+        "Nicola Cancedda",
+        "Thomas Scialom"
+      ],
       "source_role": [
-        "survey_background"
+        "construction_recipe",
+        "agent_environment"
       ],
       "verification_contract": [
-        "unknown"
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "step_level",
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "sft",
+        "agent_training",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "tools",
+        "api-calls",
+        "self-supervision"
+      ],
       "category": [
-        "environmental_agents_tools_web_swe"
+        "environmental_agents_tools_web_swe",
+        "construction_recipes_open_reasoning_data"
       ],
       "tags": [
-        "seeded-from-bib"
+        "api-calls",
+        "seeded-from-bib",
+        "self-supervision",
+        "tools"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model likelihood.",
+      "why_it_matters": "It is a classic construction recipe for tool-call supervision: models learn when to call tools, what arguments to pass, and how to fold observations back into text.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2302.04761",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2302.04761",
+        "openreview": "https://openreview.net/forum?id=Yacmpz84TH",
         "acl": null,
         "pmlr": null,
         "cvf": null,
@@ -3372,56 +3544,85 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/agents/toolformer.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2302.04761"
     },
     {
       "id": "ultrafeedback-boosting-language-models-with-high-quality-feedback-2023",
       "title": "UltraFeedback: Boosting language models with high-quality feedback",
       "year": 2023,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "ICML",
+      "authors": [
+        "Ganqu Cui",
+        "Lifan Yuan",
+        "Ning Ding",
+        "Guanming Yao",
+        "Bingxiang He",
+        "Wei Zhu",
+        "Yuan Ni",
+        "Guotong Xie",
+        "Ruobing Xie",
+        "Yankai Lin",
+        "Zhiyuan Liu",
+        "Maosong Sun"
+      ],
       "source_role": [
-        "survey_background"
+        "data_release",
+        "verifier_reward",
+        "construction_recipe"
       ],
       "verification_contract": [
-        "unknown"
+        "judgment_required"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "scalar_reward",
+        "pairwise_preference"
       ],
       "training_use": [
-        "unknown"
+        "preference_learning",
+        "reward_modeling",
+        "sft",
+        "safety_alignment"
       ],
-      "domains": [],
+      "domains": [
+        "preference-data",
+        "ai-feedback",
+        "reward-modeling"
+      ],
       "category": [
-        "foundations_instruction_preference_alignment"
+        "foundations_instruction_preference_alignment",
+        "judgment_required_rubrics_safety_domain",
+        "construction_recipes_open_reasoning_data"
       ],
       "tags": [
+        "ai-feedback",
+        "preference-data",
+        "reward-modeling",
         "seeded-from-bib"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response pairs.",
+      "why_it_matters": "It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2310.01377",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2310.01377",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
+        "code": "https://github.com/OpenBMB/UltraFeedback",
+        "data": "https://huggingface.co/datasets/openbmb/UltraFeedback",
+        "huggingface": "https://huggingface.co/datasets/openbmb/UltraFeedback",
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/releases/ultrafeedback.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2310.01377"
     },
     {
       "id": "webarena-a-realistic-web-environment-for-building-autonomous-agents-2023",
@@ -4028,50 +4229,77 @@ window.ATLAS_DATA = {
       "id": "deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024",
       "title": "DeepSeekMath: Pushing the limits of mathematical reasoning in open language models",
       "year": 2024,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Zhihong Shao",
+        "Peiyi Wang",
+        "Qihao Zhu",
+        "Runxin Xu",
+        "Junxiao Song",
+        "Xiao Bi",
+        "Haowei Zhang",
+        "Mingchuan Zhang",
+        "Y. K. Li",
+        "Y. Wu",
+        "Daya Guo"
+      ],
       "source_role": [
-        "survey_background"
+        "model_report",
+        "construction_recipe",
+        "scaling_study"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "scalar_reward"
       ],
       "training_use": [
-        "unknown"
+        "sft",
+        "rlvr",
+        "evaluation",
+        "test_time_compute"
       ],
-      "domains": [],
+      "domains": [
+        "math",
+        "rlvr",
+        "web-data"
+      ],
       "category": [
         "programmatic_math_code_proof",
         "construction_recipes_open_reasoning_data",
+        "scaling_test_time_compute_rlvr",
         "frontier_model_reports"
       ],
       "tags": [
-        "seeded-from-bib"
+        "math",
+        "rlvr",
+        "seeded-from-bib",
+        "web-data"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.",
+      "why_it_matters": "It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2402.03300",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2402.03300",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
+        "code": "https://github.com/deepseek-ai/deepseek-math",
         "data": null,
-        "huggingface": null,
-        "project": null,
+        "huggingface": "https://huggingface.co/collections/deepseek-ai/deepseek-math",
+        "project": "https://github.com/deepseek-ai/deepseek-math",
         "bibtex": null,
-        "card": null
+        "card": "cards/recipes/deepseekmath.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2402.03300"
     },
     {
       "id": "does-writing-with-lms-reduce-content-diversity-2024",
@@ -4714,51 +4942,72 @@ window.ATLAS_DATA = {
       "id": "livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024",
       "title": "LiveCodeBench: Holistic and contamination-free evaluation of large language models for code",
       "year": 2024,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Naman Jain",
+        "King Han",
+        "Alex Gu",
+        "Wen-Ding Li",
+        "Fanjia Yan",
+        "Tianjun Zhang",
+        "Sida Wang",
+        "Armando Solar-Lezama",
+        "Koushik Sen",
+        "Ion Stoica"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "audit_failure"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "full_episode"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "audit",
+        "test_time_compute"
       ],
-      "domains": [],
+      "domains": [
+        "code",
+        "contamination",
+        "execution"
+      ],
       "category": [
-        "surveys_and_primers",
         "programmatic_math_code_proof",
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
       "tags": [
+        "code",
+        "contamination",
+        "execution",
         "seeded-from-bib"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "LiveCodeBench continuously collects recent programming problems to evaluate code generation, execution, repair, and test-output prediction under lower contamination risk.",
+      "why_it_matters": "It gives code-reasoning evaluation a moving-time-window design, making it harder to confuse memorized public problems with genuine coding capability.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2403.07974",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2403.07974",
+        "openreview": "https://openreview.net/forum?id=chfJJYC3iL",
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/livecodebench/livecodebench",
+        "data": "https://github.com/livecodebench/livecodebench",
         "huggingface": null,
-        "project": null,
+        "project": "https://livecodebench.github.io/",
         "bibtex": null,
-        "card": null
+        "card": "cards/benchmarks/livecodebench.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2403.07974"
     },
     {
       "id": "magicoder-empowering-code-generation-with-oss-instruct-2024",
@@ -5992,49 +6241,91 @@ window.ATLAS_DATA = {
       "id": "tulu-3-pushing-frontiers-in-open-language-model-post-training-2024",
       "title": "Tulu 3: Pushing frontiers in open language model post-training",
       "year": 2024,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Nathan Lambert",
+        "Jacob Morrison",
+        "Valentina Pyatkin",
+        "Shengyi Huang",
+        "Hamish Ivison",
+        "Faeze Brahman",
+        "Lester James V. Miranda",
+        "Alisa Liu",
+        "Nouha Dziri",
+        "Shane Lyu",
+        "Yuling Gu",
+        "Saumya Malik",
+        "Victoria Graf",
+        "Jena D. Hwang",
+        "Jiangjiang Yang",
+        "Ronan Le Bras",
+        "Oyvind Tafjord",
+        "Chris Wilhelm",
+        "Luca Soldaini",
+        "Noah A. Smith",
+        "Yizhong Wang",
+        "Pradeep Dasigi",
+        "Hannaneh Hajishirzi"
+      ],
       "source_role": [
-        "survey_background"
+        "model_report",
+        "construction_recipe",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "mixed",
+        "programmatic",
+        "judgment_required"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "pairwise_preference",
+        "scalar_reward"
       ],
       "training_use": [
-        "unknown"
+        "sft",
+        "preference_learning",
+        "rlvr",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "open-post-training",
+        "instruction-tuning",
+        "rlvr"
+      ],
       "category": [
-        "surveys_and_primers",
-        "frontier_model_reports"
+        "frontier_model_reports",
+        "construction_recipes_open_reasoning_data",
+        "scaling_test_time_compute_rlvr",
+        "foundations_instruction_preference_alignment"
       ],
       "tags": [
+        "instruction-tuning",
+        "open-post-training",
+        "rlvr",
         "seeded-from-bib"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "Tulu 3 releases an open post-training stack with SFT data, preference data, RLVR recipes, code, models, and evaluation guidance.",
+      "why_it_matters": "It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2411.15124",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2411.15124",
+        "openreview": "https://openreview.net/forum?id=i1uGbfHHpH",
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
+        "code": "https://github.com/allenai/open-instruct",
+        "data": "https://huggingface.co/collections/allenai/tulu-3-datasets",
+        "huggingface": "https://huggingface.co/collections/allenai/tulu-3-datasets",
+        "project": "https://allenai.org/blog/tulu-3-technical",
         "bibtex": null,
-        "card": null
+        "card": "cards/recipes/tulu-3.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2411.15124"
     },
     {
       "id": "visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024",
@@ -13396,13 +13687,13 @@ window.ATLAS_DATA = {
   ],
   "counts": {
     "total_entries": 271,
-    "verified_entries": 124,
-    "carded_entries": 63,
-    "data_releases": 20,
-    "verifiers_rewards": 12,
-    "agent_environments": 11,
-    "scaling_studies": 12,
-    "needs_search": 147
+    "verified_entries": 136,
+    "carded_entries": 75,
+    "data_releases": 25,
+    "verifiers_rewards": 14,
+    "agent_environments": 14,
+    "scaling_studies": 13,
+    "needs_search": 135
   },
   "categories": [
     {
@@ -17673,50 +17964,77 @@ window.ATLAS_DATA = {
             "id": "deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024",
             "title": "DeepSeekMath: Pushing the limits of mathematical reasoning in open language models",
             "year": 2024,
-            "venue": "arXiv preprint",
-            "authors": [],
+            "venue": "arXiv",
+            "authors": [
+              "Zhihong Shao",
+              "Peiyi Wang",
+              "Qihao Zhu",
+              "Runxin Xu",
+              "Junxiao Song",
+              "Xiao Bi",
+              "Haowei Zhang",
+              "Mingchuan Zhang",
+              "Y. K. Li",
+              "Y. Wu",
+              "Daya Guo"
+            ],
             "source_role": [
-              "survey_background"
+              "model_report",
+              "construction_recipe",
+              "scaling_study"
             ],
             "verification_contract": [
-              "unknown"
+              "programmatic",
+              "mixed"
             ],
             "supervision_granularity": [
-              "unknown"
+              "answer_level",
+              "scalar_reward"
             ],
             "training_use": [
-              "unknown"
+              "sft",
+              "rlvr",
+              "evaluation",
+              "test_time_compute"
             ],
-            "domains": [],
+            "domains": [
+              "math",
+              "rlvr",
+              "web-data"
+            ],
             "category": [
               "programmatic_math_code_proof",
               "construction_recipes_open_reasoning_data",
+              "scaling_test_time_compute_rlvr",
               "frontier_model_reports"
             ],
             "tags": [
-              "seeded-from-bib"
+              "math",
+              "rlvr",
+              "seeded-from-bib",
+              "web-data"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
+            "one_line_summary": "DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.",
+            "why_it_matters": "It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2402.03300",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2402.03300",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
               "doi": null,
-              "code": null,
+              "code": "https://github.com/deepseek-ai/deepseek-math",
               "data": null,
-              "huggingface": null,
-              "project": null,
+              "huggingface": "https://huggingface.co/collections/deepseek-ai/deepseek-math",
+              "project": "https://github.com/deepseek-ai/deepseek-math",
               "bibtex": null,
-              "card": null
+              "card": "cards/recipes/deepseekmath.md"
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2402.03300"
           }
         },
         {
@@ -19362,45 +19680,68 @@ window.ATLAS_DATA = {
             "title": "ReAct: Synergizing reasoning and acting in language models",
             "year": 2023,
             "venue": "ICLR",
-            "authors": [],
+            "authors": [
+              "Shunyu Yao",
+              "Jeffrey Zhao",
+              "Dian Yu",
+              "Nan Du",
+              "Izhak Shafran",
+              "Karthik Narasimhan",
+              "Yuan Cao"
+            ],
             "source_role": [
-              "survey_background"
+              "agent_environment",
+              "construction_recipe"
             ],
             "verification_contract": [
-              "unknown"
+              "environmental",
+              "mixed"
             ],
             "supervision_granularity": [
-              "unknown"
+              "state_action_level",
+              "full_episode"
             ],
             "training_use": [
-              "unknown"
+              "agent_training",
+              "evaluation",
+              "test_time_compute"
             ],
-            "domains": [],
-            "category": [],
+            "domains": [
+              "agents",
+              "tools",
+              "reasoning-acting"
+            ],
+            "category": [
+              "environmental_agents_tools_web_swe",
+              "construction_recipes_open_reasoning_data"
+            ],
             "tags": [
-              "seeded-from-bib"
+              "agents",
+              "reasoning-acting",
+              "seeded-from-bib",
+              "tools"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
+            "one_line_summary": "ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.",
+            "why_it_matters": "It is a foundational agent-data pattern: the training/evaluation record is not just an answer but a trajectory of thought-like notes, actions, observations, and final response.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2210.03629",
               "venue": null,
-              "arxiv": null,
-              "openreview": null,
+              "arxiv": "https://arxiv.org/abs/2210.03629",
+              "openreview": "https://openreview.net/forum?id=WE_vluYUL-X",
               "acl": null,
               "pmlr": null,
               "cvf": null,
               "doi": null,
-              "code": null,
+              "code": "https://github.com/ysymyth/ReAct",
               "data": null,
               "huggingface": null,
-              "project": null,
+              "project": "https://react-lm.github.io/",
               "bibtex": null,
-              "card": null
+              "card": "cards/agents/react.md"
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2210.03629"
           }
         },
         {
@@ -19412,35 +19753,56 @@ window.ATLAS_DATA = {
             "title": "Toolformer: Language models can teach themselves to use tools",
             "year": 2023,
             "venue": "NeurIPS",
-            "authors": [],
+            "authors": [
+              "Timo Schick",
+              "Jane Dwivedi-Yu",
+              "Roberto Dessi",
+              "Roberta Raileanu",
+              "Maria Lomeli",
+              "Luke Zettlemoyer",
+              "Nicola Cancedda",
+              "Thomas Scialom"
+            ],
             "source_role": [
-              "survey_background"
+              "construction_recipe",
+              "agent_environment"
             ],
             "verification_contract": [
-              "unknown"
+              "mixed"
             ],
             "supervision_granularity": [
-              "unknown"
+              "step_level",
+              "answer_level"
             ],
             "training_use": [
-              "unknown"
+              "sft",
+              "agent_training",
+              "evaluation"
             ],
-            "domains": [],
+            "domains": [
+              "tools",
+              "api-calls",
+              "self-supervision"
+            ],
             "category": [
-              "environmental_agents_tools_web_swe"
+              "environmental_agents_tools_web_swe",
+              "construction_recipes_open_reasoning_data"
             ],
             "tags": [
-              "seeded-from-bib"
+              "api-calls",
+              "seeded-from-bib",
+              "self-supervision",
+              "tools"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
+            "one_line_summary": "Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model likelihood.",
+            "why_it_matters": "It is a classic construction recipe for tool-call supervision: models learn when to call tools, what arguments to pass, and how to fold observations back into text.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2302.04761",
               "venue": null,
-              "arxiv": null,
-              "openreview": null,
+              "arxiv": "https://arxiv.org/abs/2302.04761",
+              "openreview": "https://openreview.net/forum?id=Yacmpz84TH",
               "acl": null,
               "pmlr": null,
               "cvf": null,
@@ -19450,9 +19812,9 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "card": "cards/agents/toolformer.md"
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2302.04761"
           }
         },
         {
@@ -23024,48 +23386,77 @@ window.ATLAS_DATA = {
             "id": "ultrafeedback-boosting-language-models-with-high-quality-feedback-2023",
             "title": "UltraFeedback: Boosting language models with high-quality feedback",
             "year": 2023,
-            "venue": "arXiv preprint",
-            "authors": [],
+            "venue": "ICML",
+            "authors": [
+              "Ganqu Cui",
+              "Lifan Yuan",
+              "Ning Ding",
+              "Guanming Yao",
+              "Bingxiang He",
+              "Wei Zhu",
+              "Yuan Ni",
+              "Guotong Xie",
+              "Ruobing Xie",
+              "Yankai Lin",
+              "Zhiyuan Liu",
+              "Maosong Sun"
+            ],
             "source_role": [
-              "survey_background"
+              "data_release",
+              "verifier_reward",
+              "construction_recipe"
             ],
             "verification_contract": [
-              "unknown"
+              "judgment_required"
             ],
             "supervision_granularity": [
-              "unknown"
+              "answer_level",
+              "scalar_reward",
+              "pairwise_preference"
             ],
             "training_use": [
-              "unknown"
+              "preference_learning",
+              "reward_modeling",
+              "sft",
+              "safety_alignment"
             ],
-            "domains": [],
+            "domains": [
+              "preference-data",
+              "ai-feedback",
+              "reward-modeling"
+            ],
             "category": [
-              "foundations_instruction_preference_alignment"
+              "foundations_instruction_preference_alignment",
+              "judgment_required_rubrics_safety_domain",
+              "construction_recipes_open_reasoning_data"
             ],
             "tags": [
+              "ai-feedback",
+              "preference-data",
+              "reward-modeling",
               "seeded-from-bib"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
+            "one_line_summary": "UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response pairs.",
+            "why_it_matters": "It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2310.01377",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2310.01377",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
               "doi": null,
-              "code": null,
-              "data": null,
-              "huggingface": null,
+              "code": "https://github.com/OpenBMB/UltraFeedback",
+              "data": "https://huggingface.co/datasets/openbmb/UltraFeedback",
+              "huggingface": "https://huggingface.co/datasets/openbmb/UltraFeedback",
               "project": null,
               "bibtex": null,
-              "card": null
+              "card": "cards/releases/ultrafeedback.md"
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2310.01377"
           }
         },
         {

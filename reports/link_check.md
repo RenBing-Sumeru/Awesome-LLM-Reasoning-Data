@@ -2,11 +2,11 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 291
-- markdown links checked: 1796
-- external markdown links discovered: 1033
-- unique external URLs discovered: 154
-- live URLs checked: 60
+- artifact URLs discovered: 354
+- markdown links checked: 2152
+- external markdown links discovered: 1308
+- unique external URLs discovered: 196
+- live URLs checked: 80
 - failures: 0
 
 ## Artifact URLs
@@ -20,10 +20,20 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `evaluating-large-language-models-trained-on-code-2021` arxiv: https://arxiv.org/abs/2107.03374
 - `evaluating-large-language-models-trained-on-code-2021` code: https://github.com/openai/human-eval
 - `evaluating-large-language-models-trained-on-code-2021` data: https://github.com/openai/human-eval
+- `measuring-coding-challenge-competence-with-apps-2021` paper: https://arxiv.org/abs/2105.09938
+- `measuring-coding-challenge-competence-with-apps-2021` arxiv: https://arxiv.org/abs/2105.09938
+- `measuring-coding-challenge-competence-with-apps-2021` code: https://github.com/hendrycks/apps
+- `measuring-coding-challenge-competence-with-apps-2021` data: https://github.com/hendrycks/apps
+- `measuring-coding-challenge-competence-with-apps-2021` openreview: https://openreview.net/forum?id=sD93GOzH3i5
 - `measuring-mathematical-problem-solving-with-the-math-dataset-2021` paper: https://arxiv.org/abs/2103.03874
 - `measuring-mathematical-problem-solving-with-the-math-dataset-2021` arxiv: https://arxiv.org/abs/2103.03874
 - `measuring-mathematical-problem-solving-with-the-math-dataset-2021` code: https://github.com/hendrycks/math
 - `measuring-mathematical-problem-solving-with-the-math-dataset-2021` data: https://github.com/hendrycks/math
+- `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` paper: https://arxiv.org/abs/2109.00110
+- `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` arxiv: https://arxiv.org/abs/2109.00110
+- `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` code: https://github.com/openai/miniF2F
+- `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` data: https://github.com/openai/miniF2F
+- `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` openreview: https://openreview.net/forum?id=9ZPegFuFTFv
 - `training-verifiers-to-solve-math-word-problems-2021` paper: https://arxiv.org/abs/2110.14168
 - `training-verifiers-to-solve-math-word-problems-2021` arxiv: https://arxiv.org/abs/2110.14168
 - `training-verifiers-to-solve-math-word-problems-2021` code: https://github.com/openai/grade-school-math
@@ -40,10 +50,37 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022` arxiv: https://arxiv.org/abs/2204.05862
 - `training-language-models-to-follow-instructions-with-human-feedback-2022` paper: https://arxiv.org/abs/2203.02155
 - `training-language-models-to-follow-instructions-with-human-feedback-2022` arxiv: https://arxiv.org/abs/2203.02155
+- `truthfulqa-2022` paper: https://arxiv.org/abs/2109.07958
+- `truthfulqa-2022` arxiv: https://arxiv.org/abs/2109.07958
+- `truthfulqa-2022` code: https://github.com/sylinrl/TruthfulQA
+- `truthfulqa-2022` data: https://github.com/sylinrl/TruthfulQA
+- `truthfulqa-2022` acl: https://aclanthology.org/2022.acl-long.229/
 - `direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023` paper: https://arxiv.org/abs/2305.18290
 - `direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023` arxiv: https://arxiv.org/abs/2305.18290
+- `gpqa-2023` paper: https://arxiv.org/abs/2311.12022
+- `gpqa-2023` arxiv: https://arxiv.org/abs/2311.12022
+- `gpqa-2023` code: https://github.com/idavidrein/gpqa
+- `gpqa-2023` data: https://github.com/idavidrein/gpqa
+- `gpqa-2023` openreview: https://openreview.net/forum?id=Ti67584b98
+- `judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023` paper: https://arxiv.org/abs/2306.05685
+- `judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023` arxiv: https://arxiv.org/abs/2306.05685
+- `judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023` code: https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge
+- `judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023` data: https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge
+- `judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023` venue: https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html
+- `judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023` openreview: https://openreview.net/forum?id=uccHPGDlao
+- `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` paper: https://arxiv.org/abs/2306.15626
+- `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` arxiv: https://arxiv.org/abs/2306.15626
+- `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` code: https://github.com/lean-dojo/LeanDojo
+- `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` data: https://zenodo.org/records/10114157
+- `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` project: https://leandojo.org/
+- `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` venue: https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html
 - `prm800k-2023` paper: https://arxiv.org/abs/2305.20050
 - `prm800k-2023` arxiv: https://arxiv.org/abs/2305.20050
+- `react-synergizing-reasoning-and-acting-in-language-models-2023` paper: https://arxiv.org/abs/2210.03629
+- `react-synergizing-reasoning-and-acting-in-language-models-2023` arxiv: https://arxiv.org/abs/2210.03629
+- `react-synergizing-reasoning-and-acting-in-language-models-2023` code: https://github.com/ysymyth/ReAct
+- `react-synergizing-reasoning-and-acting-in-language-models-2023` project: https://react-lm.github.io/
+- `react-synergizing-reasoning-and-acting-in-language-models-2023` openreview: https://openreview.net/forum?id=WE_vluYUL-X
 - `self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023` paper: https://arxiv.org/abs/2203.11171
 - `self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023` arxiv: https://arxiv.org/abs/2203.11171
 - `self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023` openreview: https://openreview.net/forum?id=1PL1NIMMrw
@@ -55,18 +92,37 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `swe-bench-can-language-models-resolve-real-world-github-issues-2023` data: https://github.com/swe-bench/SWE-bench
 - `swe-bench-can-language-models-resolve-real-world-github-issues-2023` project: https://www.swebench.com/original.html
 - `swe-bench-can-language-models-resolve-real-world-github-issues-2023` openreview: https://openreview.net/forum?id=VTF8yNQM66
+- `toolformer-language-models-can-teach-themselves-to-use-tools-2023` paper: https://arxiv.org/abs/2302.04761
+- `toolformer-language-models-can-teach-themselves-to-use-tools-2023` arxiv: https://arxiv.org/abs/2302.04761
+- `toolformer-language-models-can-teach-themselves-to-use-tools-2023` openreview: https://openreview.net/forum?id=Yacmpz84TH
+- `ultrafeedback-boosting-language-models-with-high-quality-feedback-2023` paper: https://arxiv.org/abs/2310.01377
+- `ultrafeedback-boosting-language-models-with-high-quality-feedback-2023` arxiv: https://arxiv.org/abs/2310.01377
+- `ultrafeedback-boosting-language-models-with-high-quality-feedback-2023` code: https://github.com/OpenBMB/UltraFeedback
+- `ultrafeedback-boosting-language-models-with-high-quality-feedback-2023` data: https://huggingface.co/datasets/openbmb/UltraFeedback
+- `ultrafeedback-boosting-language-models-with-high-quality-feedback-2023` huggingface: https://huggingface.co/datasets/openbmb/UltraFeedback
 - `webarena-a-realistic-web-environment-for-building-autonomous-agents-2023` paper: https://arxiv.org/abs/2307.13854
 - `webarena-a-realistic-web-environment-for-building-autonomous-agents-2023` arxiv: https://arxiv.org/abs/2307.13854
 - `appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024` paper: https://arxiv.org/abs/2407.18901
 - `appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024` arxiv: https://arxiv.org/abs/2407.18901
 - `browsergym-a-gym-environment-for-web-agents-2024` paper: https://arxiv.org/abs/2412.05467
 - `browsergym-a-gym-environment-for-web-agents-2024` arxiv: https://arxiv.org/abs/2412.05467
+- `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` paper: https://arxiv.org/abs/2402.03300
+- `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` arxiv: https://arxiv.org/abs/2402.03300
+- `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` code: https://github.com/deepseek-ai/deepseek-math
+- `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` project: https://github.com/deepseek-ai/deepseek-math
+- `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` huggingface: https://huggingface.co/collections/deepseek-ai/deepseek-math
 - `large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024` paper: https://arxiv.org/abs/2407.21787
 - `large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024` arxiv: https://arxiv.org/abs/2407.21787
 - `livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024` paper: https://arxiv.org/abs/2406.19314
 - `livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024` arxiv: https://arxiv.org/abs/2406.19314
 - `livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024` project: https://livebench.ai/
 - `livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024` openreview: https://openreview.net/forum?id=sKYHBTAxVa
+- `livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024` paper: https://arxiv.org/abs/2403.07974
+- `livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024` arxiv: https://arxiv.org/abs/2403.07974
+- `livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024` code: https://github.com/livecodebench/livecodebench
+- `livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024` data: https://github.com/livecodebench/livecodebench
+- `livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024` project: https://livecodebench.github.io/
+- `livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024` openreview: https://openreview.net/forum?id=chfJJYC3iL
 - `mammoth2-scaling-instructions-from-the-web-2024` paper: https://arxiv.org/abs/2405.03548
 - `mammoth2-scaling-instructions-from-the-web-2024` arxiv: https://arxiv.org/abs/2405.03548
 - `math-shepherd-2024` paper: https://arxiv.org/abs/2312.08935
@@ -77,6 +133,13 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `rewardbench-evaluating-reward-models-for-language-modeling-2024` arxiv: https://arxiv.org/abs/2403.13787
 - `toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024` paper: https://arxiv.org/abs/2307.16789
 - `toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024` arxiv: https://arxiv.org/abs/2307.16789
+- `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` paper: https://arxiv.org/abs/2411.15124
+- `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` arxiv: https://arxiv.org/abs/2411.15124
+- `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` code: https://github.com/allenai/open-instruct
+- `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` data: https://huggingface.co/collections/allenai/tulu-3-datasets
+- `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` project: https://allenai.org/blog/tulu-3-technical
+- `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` huggingface: https://huggingface.co/collections/allenai/tulu-3-datasets
+- `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` openreview: https://openreview.net/forum?id=i1uGbfHHpH
 - `1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025` paper: https://arxiv.org/abs/2503.19633
 - `1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025` arxiv: https://arxiv.org/abs/2503.19633
 - `a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025` paper: https://arxiv.org/abs/2504.07086
@@ -197,67 +260,4 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `processbench-identifying-process-errors-in-mathematical-reasoning-2025` paper: https://arxiv.org/abs/2412.06559
 - `processbench-identifying-process-errors-in-mathematical-reasoning-2025` arxiv: https://arxiv.org/abs/2412.06559
 - `qwen3-2025` paper: https://arxiv.org/abs/2505.09388
-- `qwen3-2025` arxiv: https://arxiv.org/abs/2505.09388
-- `r-zero-self-evolving-reasoning-llm-from-zero-data-2025` paper: https://arxiv.org/abs/2508.05004
-- `r-zero-self-evolving-reasoning-llm-from-zero-data-2025` arxiv: https://arxiv.org/abs/2508.05004
-- `r2e-gym-2025` paper: https://arxiv.org/abs/2504.07164
-- `r2e-gym-2025` arxiv: https://arxiv.org/abs/2504.07164
-- `r3-robust-rubric-agnostic-reward-models-2025` paper: https://arxiv.org/abs/2505.13388
-- `r3-robust-rubric-agnostic-reward-models-2025` arxiv: https://arxiv.org/abs/2505.13388
-- `reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025` paper: https://arxiv.org/abs/2506.14245
-- `reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025` arxiv: https://arxiv.org/abs/2506.14245
-- `retool-reinforcement-learning-for-strategic-tool-use-in-llms-2025` paper: https://arxiv.org/abs/2504.11536
-- `retool-reinforcement-learning-for-strategic-tool-use-in-llms-2025` arxiv: https://arxiv.org/abs/2504.11536
-- `rstar2-agent-agentic-reasoning-technical-report-2025` paper: https://arxiv.org/abs/2508.20722
-- `rstar2-agent-agentic-reasoning-technical-report-2025` arxiv: https://arxiv.org/abs/2508.20722
-- `s1-2025` paper: https://arxiv.org/abs/2501.19393
-- `s1-2025` arxiv: https://arxiv.org/abs/2501.19393
-- `safechain-safety-of-language-models-with-long-chain-of-thought-reasoning-capabil-2025` paper: https://arxiv.org/abs/2502.12025
-- `safechain-safety-of-language-models-with-long-chain-of-thought-reasoning-capabil-2025` arxiv: https://arxiv.org/abs/2502.12025
-- `safety-through-reasoning-an-empirical-study-of-reasoning-guardrail-models-2025` paper: https://arxiv.org/abs/2505.20087
-- `safety-through-reasoning-an-empirical-study-of-reasoning-guardrail-models-2025` arxiv: https://arxiv.org/abs/2505.20087
-- `scaling-behaviors-of-llm-reinforcement-learning-post-training-an-empirical-study-2025` paper: https://arxiv.org/abs/2509.25300
-- `scaling-behaviors-of-llm-reinforcement-learning-post-training-an-empirical-study-2025` arxiv: https://arxiv.org/abs/2509.25300
-- `search-time-data-contamination-2025` paper: https://arxiv.org/abs/2508.13180
-- `search-time-data-contamination-2025` arxiv: https://arxiv.org/abs/2508.13180
-- `skywork-open-reasoner-1-technical-report-2025` paper: https://arxiv.org/abs/2505.22312
-- `skywork-open-reasoner-1-technical-report-2025` arxiv: https://arxiv.org/abs/2505.22312
-- `spurious-rewards-2025` paper: https://arxiv.org/abs/2506.10947
-- `spurious-rewards-2025` arxiv: https://arxiv.org/abs/2506.10947
-- `spurious-rewards-rethinking-training-signals-in-rlvr-2025` paper: https://arxiv.org/abs/2506.10947
-- `spurious-rewards-rethinking-training-signals-in-rlvr-2025` arxiv: https://arxiv.org/abs/2506.10947
-- `subliminal-learning-2025` paper: https://arxiv.org/abs/2507.14805
-- `subliminal-learning-2025` arxiv: https://arxiv.org/abs/2507.14805
-- `subliminal-learning-2025` code: https://github.com/MinhxLe/subliminal-learning
-- `subliminal-learning-2025` project: https://subliminal-learning.com/
-- `subliminal-learning-2025` venue: https://www.nature.com/articles/s41586-026-10319-8
-- `subliminal-learning-language-models-transmit-behavioral-traits-via-hidden-signal-2025` paper: https://arxiv.org/abs/2507.14805
-- `subliminal-learning-language-models-transmit-behavioral-traits-via-hidden-signal-2025` arxiv: https://arxiv.org/abs/2507.14805
-- `swe-gym-2025` paper: https://arxiv.org/abs/2412.21139
-- `swe-gym-2025` arxiv: https://arxiv.org/abs/2412.21139
-- `swe-rebench-an-automated-pipeline-for-task-collection-and-decontaminated-evaluat-2025` paper: https://arxiv.org/abs/2505.20411
-- `swe-rebench-an-automated-pipeline-for-task-collection-and-decontaminated-evaluat-2025` arxiv: https://arxiv.org/abs/2505.20411
-- `swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025` paper: https://arxiv.org/abs/2502.18449
-- `swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025` arxiv: https://arxiv.org/abs/2502.18449
-- `tan-scaling-rl-2025` paper: https://arxiv.org/abs/2509.25300
-- `tan-scaling-rl-2025` arxiv: https://arxiv.org/abs/2509.25300
-- `the-entropy-mechanism-of-reinforcement-learning-for-reasoning-language-models-2025` paper: https://arxiv.org/abs/2505.22617
-- `the-entropy-mechanism-of-reinforcement-learning-for-reasoning-language-models-2025` arxiv: https://arxiv.org/abs/2505.22617
-- `the-invisible-leash-why-rlvr-may-or-may-not-escape-its-origin-2025` paper: https://arxiv.org/abs/2507.14843
-- `the-invisible-leash-why-rlvr-may-or-may-not-escape-its-origin-2025` arxiv: https://arxiv.org/abs/2507.14843
-- `the-markovian-thinker-architecture-agnostic-linear-scaling-of-reasoning-2025` paper: https://arxiv.org/abs/2510.06557
-- `the-markovian-thinker-architecture-agnostic-linear-scaling-of-reasoning-2025` arxiv: https://arxiv.org/abs/2510.06557
-- `towards-understanding-self-play-for-llm-reasoning-2025` paper: https://arxiv.org/abs/2510.27072
-- `towards-understanding-self-play-for-llm-reasoning-2025` arxiv: https://arxiv.org/abs/2510.27072
-- `ttrl-test-time-reinforcement-learning-2025` paper: https://arxiv.org/abs/2504.16084
-- `ttrl-test-time-reinforcement-learning-2025` arxiv: https://arxiv.org/abs/2504.16084
-- `agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026` paper: https://arxiv.org/abs/2604.18292
-- `agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026` arxiv: https://arxiv.org/abs/2604.18292
-- `alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026` paper: https://arxiv.org/abs/2602.01511
-- `alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026` arxiv: https://arxiv.org/abs/2602.01511
-- `an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026` paper: https://arxiv.org/abs/2604.07666
-- `an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026` arxiv: https://arxiv.org/abs/2604.07666
-- `autorubric-unifying-rubric-based-llm-evaluation-2026` paper: https://arxiv.org/abs/2603.00077
-- `autorubric-unifying-rubric-based-llm-evaluation-2026` arxiv: https://arxiv.org/abs/2603.00077
-- `bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026` paper: https://arxiv.org/abs/2604.20051
-- ... 41 more
+- ... 104 more

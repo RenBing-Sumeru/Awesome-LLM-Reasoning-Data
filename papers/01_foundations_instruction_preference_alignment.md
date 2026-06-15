@@ -16,16 +16,16 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
 
 | Work | Year | Venue | Links | Why it matters |
 |---|---:|---|---|---|
+| Tulu 3: Pushing frontiers in open language model post-training | 2024 | arXiv | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../cards/recipes/tulu-3.md) | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
 | Self-Instruct: Aligning language models with self-generated instructions | 2023 | ACL | [Paper](https://arxiv.org/abs/2212.10560) · [Card](../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) | It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion. |
+| UltraFeedback: Boosting language models with high-quality feedback | 2023 | ICML | [Paper](https://arxiv.org/abs/2310.01377) · [Code](https://github.com/OpenBMB/UltraFeedback) · [Data](https://huggingface.co/datasets/openbmb/UltraFeedback) · [Card](../cards/releases/ultrafeedback.md) | It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels. |
 | A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility | 2025 | Conference on Language Modeling (COLM) | [Paper](https://arxiv.org/abs/2504.07086) · [Card](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) | It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains. |
 | Direct preference optimization: Your language model is secretly a reward model | 2023 | NeurIPS | [Paper](https://arxiv.org/abs/2305.18290) · [Card](../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) | It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization. |
+| Judging LLM-as-a-judge with MT-Bench and Chatbot Arena | 2023 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2306.05685) · [Venue](https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html) · [OpenReview](https://openreview.net/forum?id=uccHPGDlao) · [Code](https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge) · [Card](../cards/verifiers/mt-bench-chatbot-arena.md) | It is the standard cautionary reference for judge data: scalable model judges are useful, but position, verbosity, self-enhancement, and limited-reasoning biases must be audited. |
 | Self-consistency improves chain of thought reasoning in language models | 2023 | ICLR | [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../cards/recipes/self-consistency-chain-of-thought.md) | It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data. |
 | Chain-of-thought prompting elicits reasoning in large language models | 2022 | NeurIPS | [Paper](https://arxiv.org/abs/2201.11903) · [Card](../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md) | It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets. |
 | Constitutional AI: Harmlessness from AI feedback | 2022 | arXiv preprint | [Paper](https://arxiv.org/abs/2212.08073) · [Project](https://github.com/anthropics/ConstitutionalHarmlessnessPaper) · [Card](../cards/recipes/constitutional-ai.md) | It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data. |
 | STaR: Bootstrapping reasoning with reasoning | 2022 | NeurIPS | [Paper](https://arxiv.org/abs/2203.14465) · [Card](../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md) | It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering. |
-| Training language models to follow instructions with human feedback | 2022 | NeurIPS | [Paper](https://arxiv.org/abs/2203.02155) · [Card](../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md) | It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models. |
-| Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis | 2026 | arXiv preprint arXiv:2602.00846 | [Paper](https://arxiv.org/abs/2602.00846) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
-| 1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training (AM-DeepSeek-R1-Distilled) | 2025 | arXiv preprint arXiv:2503.19633 | [Paper](https://arxiv.org/abs/2503.19633) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 
 ## Full paper list
 
@@ -140,6 +140,20 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
   [Paper](https://arxiv.org/abs/1706.03741)
   _Why it matters:_ It is a foundation for later post-training data records that turn comparisons into trainable reward signals.
 
+### 🚀 Model Report
+
+- 🚀 **[Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124)**
+  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · programmatic · sft · preference learning · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../cards/recipes/tulu-3.md)
+  _Why it matters:_ It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together.
+
+### 🧰 Benchmark
+
+- 🧰 **[Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685)**
+  <sub>2023 · NeurIPS Datasets and Benchmarks · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2306.05685) · [Venue](https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html) · [OpenReview](https://openreview.net/forum?id=uccHPGDlao) · [Code](https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge) · [Card](../cards/verifiers/mt-bench-chatbot-arena.md)
+  _Why it matters:_ It is the standard cautionary reference for judge data: scalable model judges are useful, but position, verbosity, self-enhancement, and limited-reasoning biases must be audited.
+
 ### 🏗️ Construction Recipe
 
 - 🏗️ **[Self-Instruct: Aligning language models with self-generated instructions](https://arxiv.org/abs/2212.10560)**
@@ -161,6 +175,13 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
   <sub>2023 · ICLR · 📈 scaling study · 🧭 survey background · mixed · programmatic · evaluation · test time compute · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../cards/recipes/self-consistency-chain-of-thought.md)
   _Why it matters:_ It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.
+
+### 📦 Data Release
+
+- 📦 **[UltraFeedback: Boosting language models with high-quality feedback](https://arxiv.org/abs/2310.01377)**
+  <sub>2023 · ICML · 📦 data release · 🧪 verifier reward · judgment required · preference learning · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2310.01377) · [Code](https://github.com/OpenBMB/UltraFeedback) · [Data](https://huggingface.co/datasets/openbmb/UltraFeedback) · [Card](../cards/releases/ultrafeedback.md)
+  _Why it matters:_ It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels.
 
 ### ⚠️ Needs search or metadata
 
@@ -236,10 +257,6 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **UltraFeedback: Boosting language models with high-quality feedback**
-  <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct**
   <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -258,9 +275,12 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
 ## Related cards
 
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
+- [Tulu 3: Pushing frontiers in open language model post-training](../cards/recipes/tulu-3.md)
 - [Direct preference optimization: Your language model is secretly a reward model](../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)
+- [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](../cards/verifiers/mt-bench-chatbot-arena.md)
 - [Self-Instruct: Aligning language models with self-generated instructions](../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md)
 - [Self-consistency improves chain of thought reasoning in language models](../cards/recipes/self-consistency-chain-of-thought.md)
+- [UltraFeedback: Boosting language models with high-quality feedback](../cards/releases/ultrafeedback.md)
 - [Chain-of-thought prompting elicits reasoning in large language models](../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md)
 - [Constitutional AI: Harmlessness from AI feedback](../cards/recipes/constitutional-ai.md)
 - [STaR: Bootstrapping reasoning with reasoning](../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)

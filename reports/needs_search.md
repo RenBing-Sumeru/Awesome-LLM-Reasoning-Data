@@ -189,40 +189,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"FinQA: A dataset of numerical reasoning over financial data" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Measuring coding challenge competence with APPS
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Measuring coding challenge competence with APPS" arXiv`
-  - `"Measuring coding challenge competence with APPS" OpenReview`
-  - `"Measuring coding challenge competence with APPS" GitHub`
-  - `"Measuring coding challenge competence with APPS" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## miniF2F: A cross-system benchmark for formal olympiad-level mathematics
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" arXiv`
-  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" OpenReview`
-  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" GitHub`
-  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Multitask prompted training enables zero-shot task generalization
 
 - Current status: `needs_metadata`
@@ -410,23 +376,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Solving math word problems with process- and outcome-based feedback" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## TruthfulQA
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"TruthfulQA" arXiv`
-  - `"TruthfulQA" OpenReview`
-  - `"TruthfulQA" GitHub`
-  - `"TruthfulQA" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## ALCE: Enabling large language models to generate text with citations
 
 - Current status: `needs_metadata`
@@ -546,23 +495,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Gorilla" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## GPQA
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"GPQA" arXiv`
-  - `"GPQA" OpenReview`
-  - `"GPQA" GitHub`
-  - `"GPQA" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## JudgeLM: Fine-tuned large language models are scalable judges
 
 - Current status: `needs_metadata`
@@ -578,23 +510,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"JudgeLM: Fine-tuned large language models are scalable judges" OpenReview`
   - `"JudgeLM: Fine-tuned large language models are scalable judges" GitHub`
   - `"JudgeLM: Fine-tuned large language models are scalable judges" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Judging LLM-as-a-judge with MT-Bench and Chatbot Arena
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" arXiv`
-  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" OpenReview`
-  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" GitHub`
-  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting
@@ -629,23 +544,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Large language models encode clinical knowledge" OpenReview`
   - `"Large language models encode clinical knowledge" GitHub`
   - `"Large language models encode clinical knowledge" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## LeanDojo: Theorem proving with retrieval-augmented language models
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"LeanDojo: Theorem proving with retrieval-augmented language models" arXiv`
-  - `"LeanDojo: Theorem proving with retrieval-augmented language models" OpenReview`
-  - `"LeanDojo: Theorem proving with retrieval-augmented language models" GitHub`
-  - `"LeanDojo: Theorem proving with retrieval-augmented language models" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## LegalBench
@@ -801,23 +699,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## ReAct: Synergizing reasoning and acting in language models
-
-- Current status: `needs_metadata`
-- Possible category: unknown
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"ReAct: Synergizing reasoning and acting in language models" arXiv`
-  - `"ReAct: Synergizing reasoning and acting in language models" OpenReview`
-  - `"ReAct: Synergizing reasoning and acting in language models" GitHub`
-  - `"ReAct: Synergizing reasoning and acting in language models" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Reflexion: Language agents with verbal reinforcement learning
 
 - Current status: `needs_metadata`
@@ -884,40 +765,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"SelfCodeAlign: Self-alignment for code generation" OpenReview`
   - `"SelfCodeAlign: Self-alignment for code generation" GitHub`
   - `"SelfCodeAlign: Self-alignment for code generation" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Toolformer: Language models can teach themselves to use tools
-
-- Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Toolformer: Language models can teach themselves to use tools" arXiv`
-  - `"Toolformer: Language models can teach themselves to use tools" OpenReview`
-  - `"Toolformer: Language models can teach themselves to use tools" GitHub`
-  - `"Toolformer: Language models can teach themselves to use tools" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## UltraFeedback: Boosting language models with high-quality feedback
-
-- Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"UltraFeedback: Boosting language models with high-quality feedback" arXiv`
-  - `"UltraFeedback: Boosting language models with high-quality feedback" OpenReview`
-  - `"UltraFeedback: Boosting language models with high-quality feedback" GitHub`
-  - `"UltraFeedback: Boosting language models with high-quality feedback" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct
@@ -1071,23 +918,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" OpenReview`
   - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" GitHub`
   - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## DeepSeekMath: Pushing the limits of mathematical reasoning in open language models
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" arXiv`
-  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" OpenReview`
-  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" GitHub`
-  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Does writing with LMs reduce content diversity?
@@ -1275,23 +1105,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Learning to reason with LLMs" OpenReview`
   - `"Learning to reason with LLMs" GitHub`
   - `"Learning to reason with LLMs" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## LiveCodeBench: Holistic and contamination-free evaluation of large language models for code
-
-- Current status: `needs_metadata`
-- Possible category: surveys_and_primers, programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" arXiv`
-  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" OpenReview`
-  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" GitHub`
-  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Magicoder: Empowering code generation with OSS-instruct
@@ -1632,23 +1445,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" OpenReview`
   - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" GitHub`
   - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Tulu 3: Pushing frontiers in open language model post-training
-
-- Current status: `needs_metadata`
-- Possible category: surveys_and_primers, frontier_model_reports
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Tulu 3: Pushing frontiers in open language model post-training" arXiv`
-  - `"Tulu 3: Pushing frontiers in open language model post-training" OpenReview`
-  - `"Tulu 3: Pushing frontiers in open language model post-training" GitHub`
-  - `"Tulu 3: Pushing frontiers in open language model post-training" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## VisualWebArena: Evaluating multimodal agents on realistic visual web tasks

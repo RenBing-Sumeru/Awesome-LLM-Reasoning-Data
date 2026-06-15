@@ -8,17 +8,17 @@ Use this folder when the README is too compact. Each category page gives a begin
 
 | Category | What it helps with | Entries |
 |---|---|---:|
-| 🧭 [Surveys and Primers](00_surveys_and_primers.md) | Orientation material for post-training, reasoning models, verifier-bearing data, contamination, and data-centric LLM practice. | 36 |
-| 🧱 [Foundations: Instruction, Preference, and Alignment Data](01_foundations_instruction_preference_alignment.md) | The older data objects that reasoning-data work inherits: instruction mixtures, demonstrations, preferences, reward models, self-improvement traces, and chain-of-thought prompting. | 52 |
+| 🧭 [Surveys and Primers](00_surveys_and_primers.md) | Orientation material for post-training, reasoning models, verifier-bearing data, contamination, and data-centric LLM practice. | 34 |
+| 🧱 [Foundations: Instruction, Preference, and Alignment Data](01_foundations_instruction_preference_alignment.md) | The older data objects that reasoning-data work inherits: instruction mixtures, demonstrations, preferences, reward models, self-improvement traces, and chain-of-thought prompting. | 54 |
 | 🧮 [Programmatic Math, Code, and Proof Data](02_programmatic_math_code_proof.md) | Math answers, code execution, unit tests, theorem provers, and verifier robustness studies where correctness can often be checked by a rule or external tool. | 47 |
 | 🪜 [Process Supervision and Process Reward Models](03_process_supervision_prm.md) | Step labels, rollout values, first-error localization, PRM datasets, process verifiers, and studies of when process rewards help or fail. | 22 |
-| 🌐 [Environmental Agent, Tool, Web, and SWE Trajectory Data](04_environmental_agents_tools_web_swe.md) | Tool calls, browser tasks, app worlds, OS environments, repository-level software engineering, and replayable state-action episodes. | 41 |
-| ⚖️ [Judgment-Required Rubrics, Safety, Medical, and Domain Data](05_judgment_required_rubrics_safety_domain.md) | Rubric rewards, health and safety benchmarks, factuality, legal/finance/science data, and LLM-as-judge systems where correctness cannot be reduced to a cheap programmatic predicate. | 39 |
-| 🏗️ [Construction Recipes and Open Reasoning Data](06_construction_recipes_open_reasoning_data.md) | Prompt sourcing, teacher traces, filtering, self-play, generator-verifier loops, distill-then-RL, pure RL, and open reproduction pipelines. | 64 |
+| 🌐 [Environmental Agent, Tool, Web, and SWE Trajectory Data](04_environmental_agents_tools_web_swe.md) | Tool calls, browser tasks, app worlds, OS environments, repository-level software engineering, and replayable state-action episodes. | 43 |
+| ⚖️ [Judgment-Required Rubrics, Safety, Medical, and Domain Data](05_judgment_required_rubrics_safety_domain.md) | Rubric rewards, health and safety benchmarks, factuality, legal/finance/science data, and LLM-as-judge systems where correctness cannot be reduced to a cheap programmatic predicate. | 40 |
+| 🏗️ [Construction Recipes and Open Reasoning Data](06_construction_recipes_open_reasoning_data.md) | Prompt sourcing, teacher traces, filtering, self-play, generator-verifier loops, distill-then-RL, pure RL, and open reproduction pipelines. | 68 |
 | 🚀 [Frontier Reasoning Model Reports](07_frontier_model_reports.md) | Public reasoning-model reports and open-weight model reports that disclose post-training data, reward stacks, scaling choices, or evaluation design. | 33 |
-| 📈 [Scaling, Test-Time Compute, and RLVR](08_scaling_test_time_compute_rlvr.md) | RLVR scaling, data reuse, distillation scaling, pass@k/pass@(k,T), inference budget, search topology, and test-time reinforcement. | 51 |
-| 🧯 [Audit, Failure, Contamination, and Verifier Attacks](09_audit_failure_contamination_verifier_attacks.md) | CoT faithfulness, leakage, contamination, reward hacking, judge attacks, synthetic-data collapse, live benchmarks, and verifier robustness. | 46 |
-| 🧰 [Benchmarks and Evaluation Surfaces](10_benchmarks_evaluation.md) | Math/code/live/agent/domain/process/reward benchmarks organized by what they measure and what feedback they can support. | 72 |
+| 📈 [Scaling, Test-Time Compute, and RLVR](08_scaling_test_time_compute_rlvr.md) | RLVR scaling, data reuse, distillation scaling, pass@k/pass@(k,T), inference budget, search topology, and test-time reinforcement. | 53 |
+| 🧯 [Audit, Failure, Contamination, and Verifier Attacks](09_audit_failure_contamination_verifier_attacks.md) | CoT faithfulness, leakage, contamination, reward hacking, judge attacks, synthetic-data collapse, live benchmarks, and verifier robustness. | 48 |
+| 🧰 [Benchmarks and Evaluation Surfaces](10_benchmarks_evaluation.md) | Math/code/live/agent/domain/process/reward benchmarks organized by what they measure and what feedback they can support. | 73 |
 
 ## Starter Pack: 20 Must-Read Papers
 

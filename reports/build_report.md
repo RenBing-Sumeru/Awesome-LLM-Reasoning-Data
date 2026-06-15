@@ -36,15 +36,16 @@ Private scratch work, if needed, must stay under `.codex_scratch/`, which is ign
 ## Latest Completion Snapshot
 
 - Total structured entries: 271
-- Verified entries with official primary links: 124/124
-- Entries still needing primary-source search: 147
-- Unique entry-linked cards: 63
-- Card files: 65
-- `L5_audit_ready` cards: 29
+- Verified entries with official primary links: 136/136
+- Entries still needing primary-source search: 135
+- Unique entry-linked cards: 75
+- Card files: 77
+- `L5_audit_ready` cards: 41
 - Beginner 20 official-link coverage: 20/20
 - Beginner 20 card coverage: 20/20
 - Searchable site assets regenerated from structured metadata.
 - Public reports regenerated from the current branch state.
+- v0.2.0 artifact verification round promoted 12 high-impact seed entries into verified, carded atlas objects.
 
 ## Validation Gates
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse
@@ -10,6 +11,10 @@ from common import ROOT, load_yaml_json
 
 MD_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 URL_RE = re.compile(r"^https?://[^\s<>]+$")
+PROBE_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (compatible; Awesome-LLM-Reasoning-Data/1.0; +https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data)",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+}
 
 
 def is_external(target: str) -> bool:
@@ -74,15 +79,21 @@ def collect_markdown_links():
 
 
 def probe(url: str) -> tuple[str, bool, str]:
-    for method, timeout in [("HEAD", 6), ("GET", 8)]:
-        try:
-            req = urllib.request.Request(url, method=method, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                if resp.status < 400:
-                    return url, True, str(resp.status)
-                last = str(resp.status)
-        except Exception as exc:
-            last = type(exc).__name__
+    last = "not checked"
+    # A few official archives intermittently reject short HEAD probes or slow
+    # requests. Retry politely before treating an official URL as broken.
+    for attempt in range(3):
+        for method, timeout in [("HEAD", 12), ("GET", 20)]:
+            try:
+                req = urllib.request.Request(url, method=method, headers=PROBE_HEADERS)
+                with urllib.request.urlopen(req, timeout=timeout) as resp:
+                    if resp.status < 400:
+                        return url, True, str(resp.status)
+                    last = str(resp.status)
+            except Exception as exc:
+                last = type(exc).__name__
+        if attempt < 2:
+            time.sleep(1 + attempt)
     return url, False, last
 
 

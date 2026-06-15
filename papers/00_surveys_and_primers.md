@@ -174,14 +174,6 @@ The trap is to treat a survey as a substitute for the primary papers. Use it ins
   <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **LiveCodeBench: Holistic and contamination-free evaluation of large language models for code**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
-- 🧭 **Tulu 3: Pushing frontiers in open language model post-training**
-  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 - 🧭 **Data provenance for language models**
   <sub>2023 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
