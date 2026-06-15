@@ -24,8 +24,8 @@ Practitioners should look for disclosure granularity. Does the report identify t
 | MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention | 2025 | arXiv preprint arXiv:2506.13585 | [Paper](https://arxiv.org/abs/2506.13585) · [Code](https://github.com/MiniMax-AI/MiniMax-M1) · [Card](../cards/recipes/minimax_m1.md) | Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces. |
 | Phi-4-reasoning Technical Report | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.21318) · [Card](../cards/recipes/phi4_reasoning.md) | Reasoning model report highlighting teacher distillation as trace writing. |
 | Qwen3 Technical Report | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.09388) · [Card](../cards/recipes/qwen3.md) | Open model-family report useful for coordinated release-tick analysis. |
+| Scaling Behaviors of LLM Reinforcement Learning Post-Training | 2025 | arXiv | [Paper](https://arxiv.org/abs/2509.25300) · [Card](../cards/recipes/scaling-behaviors-rl-post-training.md) | It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance. |
 | OpenHands: An Open Platform for AI Software Developers as Generalist Agents | 2024 | ICLR | [Paper](https://arxiv.org/abs/2407.16741) · [Code](https://github.com/All-Hands-AI/OpenHands) · [Project](https://www.openhands.dev/) · [Card](../cards/agents/openhands.md) | Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds. |
-| 1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training (AM-DeepSeek-R1-Distilled) | 2025 | arXiv preprint arXiv:2503.19633 | [Paper](https://arxiv.org/abs/2503.19633) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 
 ## Full paper list
 
@@ -105,9 +105,9 @@ Practitioners should look for disclosure granularity. Does the report identify t
 ### 📈 Scaling Study
 
 - 📈 **[Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300)**
-  <sub>2025 · arXiv · 📈 scaling study · programmatic · rlvr · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2509.25300)
-  _Why it matters:_ Scaling study for model-size and compute-axis views of RL post-training.
+  <sub>2025 · arXiv · 📈 scaling study · 🏗️ construction recipe · programmatic · rlvr · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2509.25300) · [Card](../cards/recipes/scaling-behaviors-rl-post-training.md)
+  _Why it matters:_ It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.
 
 ### 🛠️ Infrastructure
 
@@ -195,6 +195,7 @@ Practitioners should look for disclosure granularity. Does the report identify t
 - [OpenThoughts: Data recipes for reasoning models](../cards/releases/openthoughts.md)
 - [Phi-4-reasoning Technical Report](../cards/recipes/phi4_reasoning.md)
 - [Qwen3 Technical Report](../cards/recipes/qwen3.md)
+- [Scaling Behaviors of LLM Reinforcement Learning Post-Training](../cards/recipes/scaling-behaviors-rl-post-training.md)
 - [OpenHands: An Open Platform for AI Software Developers as Generalist Agents](../cards/agents/openhands.md)
 - [Qwen3-Coder](../cards/recipes/qwen3_coder.md)
 

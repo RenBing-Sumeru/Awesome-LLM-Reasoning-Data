@@ -2,11 +2,11 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 276
-- markdown links checked: 1646
-- external markdown links discovered: 935
-- unique external URLs discovered: 141
-- live URLs checked: 40
+- artifact URLs discovered: 291
+- markdown links checked: 1796
+- external markdown links discovered: 1033
+- unique external URLs discovered: 154
+- live URLs checked: 60
 - failures: 0
 
 ## Artifact URLs
@@ -33,6 +33,7 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022` arxiv: https://arxiv.org/abs/2201.11903
 - `constitutional-ai-harmlessness-from-ai-feedback-2022` paper: https://arxiv.org/abs/2212.08073
 - `constitutional-ai-harmlessness-from-ai-feedback-2022` arxiv: https://arxiv.org/abs/2212.08073
+- `constitutional-ai-harmlessness-from-ai-feedback-2022` project: https://github.com/anthropics/ConstitutionalHarmlessnessPaper
 - `star-bootstrapping-reasoning-with-reasoning-2022` paper: https://arxiv.org/abs/2203.14465
 - `star-bootstrapping-reasoning-with-reasoning-2022` arxiv: https://arxiv.org/abs/2203.14465
 - `training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022` paper: https://arxiv.org/abs/2204.05862
@@ -45,6 +46,7 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `prm800k-2023` arxiv: https://arxiv.org/abs/2305.20050
 - `self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023` paper: https://arxiv.org/abs/2203.11171
 - `self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023` arxiv: https://arxiv.org/abs/2203.11171
+- `self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023` openreview: https://openreview.net/forum?id=1PL1NIMMrw
 - `self-instruct-aligning-language-models-with-self-generated-instructions-2023` paper: https://arxiv.org/abs/2212.10560
 - `self-instruct-aligning-language-models-with-self-generated-instructions-2023` arxiv: https://arxiv.org/abs/2212.10560
 - `swe-bench-can-language-models-resolve-real-world-github-issues-2023` paper: https://arxiv.org/abs/2310.06770
@@ -85,12 +87,19 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025` arxiv: https://arxiv.org/abs/2505.03335
 - `abstentionbench-2025` paper: https://arxiv.org/abs/2506.09038
 - `abstentionbench-2025` arxiv: https://arxiv.org/abs/2506.09038
+- `abstentionbench-2025` code: https://github.com/facebookresearch/AbstentionBench
+- `abstentionbench-2025` data: https://huggingface.co/datasets/facebook/AbstentionBench
+- `abstentionbench-2025` huggingface: https://huggingface.co/datasets/facebook/AbstentionBench
+- `abstentionbench-2025` venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html
 - `abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025` paper: https://arxiv.org/abs/2506.09038
 - `abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025` arxiv: https://arxiv.org/abs/2506.09038
 - `aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025` paper: https://arxiv.org/abs/2501.09004
 - `aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025` arxiv: https://arxiv.org/abs/2501.09004
 - `aegis2-2025` paper: https://arxiv.org/abs/2501.09004
 - `aegis2-2025` arxiv: https://arxiv.org/abs/2501.09004
+- `aegis2-2025` data: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
+- `aegis2-2025` huggingface: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
+- `aegis2-2025` acl: https://aclanthology.org/2025.naacl-long.306/
 - `alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025` paper: https://arxiv.org/abs/2506.13131
 - `alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025` arxiv: https://arxiv.org/abs/2506.13131
 - `am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025` paper: https://arxiv.org/abs/2505.08311
@@ -131,6 +140,7 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `healthbench-2025` arxiv: https://arxiv.org/abs/2505.08775
 - `khatri-scaling-rl-2025` paper: https://arxiv.org/abs/2510.13786
 - `khatri-scaling-rl-2025` arxiv: https://arxiv.org/abs/2510.13786
+- `khatri-scaling-rl-2025` openreview: https://openreview.net/forum?id=FMjeC9Msws
 - `kimi-k1-5-2025` paper: https://arxiv.org/abs/2501.12599
 - `kimi-k1-5-2025` arxiv: https://arxiv.org/abs/2501.12599
 - `kimi-k2-open-agentic-intelligence-2025` paper: https://arxiv.org/abs/2507.20534
@@ -141,6 +151,8 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `lastingbench-defend-benchmarks-against-knowledge-leakage-2025` arxiv: https://arxiv.org/abs/2506.21614
 - `leaky-thoughts-2025` paper: https://arxiv.org/abs/2506.15674
 - `leaky-thoughts-2025` arxiv: https://arxiv.org/abs/2506.15674
+- `leaky-thoughts-2025` code: https://github.com/parameterlab/leaky_thoughts
+- `leaky-thoughts-2025` acl: https://aclanthology.org/2025.emnlp-main.1347/
 - `leaky-thoughts-large-reasoning-models-are-not-private-thinkers-2025` paper: https://arxiv.org/abs/2506.15674
 - `leaky-thoughts-large-reasoning-models-are-not-private-thinkers-2025` arxiv: https://arxiv.org/abs/2506.15674
 - `limo-2025` paper: https://arxiv.org/abs/2502.03387
@@ -216,6 +228,9 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `spurious-rewards-rethinking-training-signals-in-rlvr-2025` arxiv: https://arxiv.org/abs/2506.10947
 - `subliminal-learning-2025` paper: https://arxiv.org/abs/2507.14805
 - `subliminal-learning-2025` arxiv: https://arxiv.org/abs/2507.14805
+- `subliminal-learning-2025` code: https://github.com/MinhxLe/subliminal-learning
+- `subliminal-learning-2025` project: https://subliminal-learning.com/
+- `subliminal-learning-2025` venue: https://www.nature.com/articles/s41586-026-10319-8
 - `subliminal-learning-language-models-transmit-behavioral-traits-via-hidden-signal-2025` paper: https://arxiv.org/abs/2507.14805
 - `subliminal-learning-language-models-transmit-behavioral-traits-via-hidden-signal-2025` arxiv: https://arxiv.org/abs/2507.14805
 - `swe-gym-2025` paper: https://arxiv.org/abs/2412.21139
@@ -245,19 +260,4 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `autorubric-unifying-rubric-based-llm-evaluation-2026` paper: https://arxiv.org/abs/2603.00077
 - `autorubric-unifying-rubric-based-llm-evaluation-2026` arxiv: https://arxiv.org/abs/2603.00077
 - `bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026` paper: https://arxiv.org/abs/2604.20051
-- `bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026` arxiv: https://arxiv.org/abs/2604.20051
-- `coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026` paper: https://arxiv.org/abs/2603.17775
-- `coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026` arxiv: https://arxiv.org/abs/2603.17775
-- `decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026` paper: https://arxiv.org/abs/2605.16826
-- `decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026` arxiv: https://arxiv.org/abs/2605.16826
-- `dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026` paper: https://arxiv.org/abs/2603.16223
-- `dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026` arxiv: https://arxiv.org/abs/2603.16223
-- `learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026` paper: https://arxiv.org/abs/2602.12125
-- `learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026` arxiv: https://arxiv.org/abs/2602.12125
-- `live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026` paper: https://arxiv.org/abs/2511.13646
-- `live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026` arxiv: https://arxiv.org/abs/2511.13646
-- `llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026` paper: https://arxiv.org/abs/2604.15149
-- `llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026` arxiv: https://arxiv.org/abs/2604.15149
-- `omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026` paper: https://arxiv.org/abs/2602.00846
-- `omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026` arxiv: https://arxiv.org/abs/2602.00846
-- ... 26 more
+- ... 41 more

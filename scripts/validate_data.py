@@ -180,6 +180,7 @@ def validate_starter_pack(data: list[dict], errors: list[str]) -> None:
 
 def validate_cards(data: list[dict], errors: list[str]) -> None:
     entry_ids = {entry.get("id") for entry in data}
+    entries_by_id = {entry.get("id"): entry for entry in data if entry.get("id")}
     filled_cards = []
     cards_by_entry = card_inventory()
     for path in sorted((ROOT / "cards").glob("**/*.md")):
@@ -193,11 +194,19 @@ def validate_cards(data: list[dict], errors: list[str]) -> None:
         match = re.search(r"<!--\s*entry_id:\s*([^\s]+)\s*-->", text)
         if not match:
             errors.append(f"card missing entry_id comment: {rel}")
-        elif match.group(1) not in entry_ids:
-            errors.append(f"card entry_id not found in data/papers.yaml: {rel} -> {match.group(1)}")
+            matched_entry_id = None
+        else:
+            matched_entry_id = match.group(1)
+            if matched_entry_id not in entry_ids:
+                errors.append(f"card entry_id not found in data/papers.yaml: {rel} -> {matched_entry_id}")
         for alternatives in CARD_REQUIRED_ANY:
             if not any(heading in text for heading in alternatives):
                 errors.append(f"card missing required section {alternatives[0]!r}: {rel}")
+        entry = entries_by_id.get(matched_entry_id)
+        if entry and curation_level(entry, rel) == "L5_audit_ready":
+            for marker in CARD_PLACEHOLDER_MARKERS:
+                if marker in text:
+                    errors.append(f"L5 audit-ready card contains placeholder marker {marker!r}: {rel}")
     if len(filled_cards) < 50:
         errors.append(f"expected at least 50 filled cards; found {len(filled_cards)}")
 

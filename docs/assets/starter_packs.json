@@ -2859,48 +2859,51 @@
           "venue": "arXiv",
           "authors": [],
           "source_role": [
-            "audit_failure"
+            "audit_failure",
+            "construction_recipe"
           ],
           "verification_contract": [
             "mixed"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "full_episode"
           ],
           "training_use": [
             "distillation",
-            "evaluation"
+            "evaluation",
+            "audit"
           ],
           "domains": [
             "synthetic-data",
-            "lineage"
+            "lineage",
+            "distillation"
           ],
           "category": [
-            "surveys_and_primers",
             "construction_recipes_open_reasoning_data",
             "audit_failure_contamination_verifier_attacks",
             "benchmarks_evaluation"
           ],
           "tags": [],
-          "one_line_summary": "Lineage-risk study for hidden trait transfer in synthetic data.",
-          "why_it_matters": "Lineage-risk study for hidden trait transfer in synthetic data.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.",
+          "why_it_matters": "It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2507.14805",
-            "venue": null,
+            "venue": "https://www.nature.com/articles/s41586-026-10319-8",
             "arxiv": "https://arxiv.org/abs/2507.14805",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/MinhxLe/subliminal-learning",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://subliminal-learning.com/",
             "bibtex": null,
-            "card": null
+            "card": "cards/failures/subliminal-learning.md"
           },
           "primary_link": "https://arxiv.org/abs/2507.14805"
         }
@@ -5917,34 +5920,39 @@
           "venue": "arXiv",
           "authors": [],
           "source_role": [
-            "scaling_study"
+            "scaling_study",
+            "construction_recipe"
           ],
           "verification_contract": [
             "mixed"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "scalar_reward"
           ],
           "training_use": [
             "rlvr",
-            "test_time_compute"
+            "test_time_compute",
+            "evaluation"
           ],
           "domains": [
-            "scaling"
+            "scaling",
+            "rlvr"
           ],
           "category": [
-            "scaling_test_time_compute_rlvr"
+            "scaling_test_time_compute_rlvr",
+            "construction_recipes_open_reasoning_data"
           ],
           "tags": [],
-          "one_line_summary": "Scaling study anchoring asymptote-versus-efficiency decomposition.",
-          "why_it_matters": "Scaling study anchoring asymptote-versus-efficiency decomposition.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.",
+          "why_it_matters": "It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2510.13786",
             "venue": null,
             "arxiv": "https://arxiv.org/abs/2510.13786",
-            "openreview": null,
+            "openreview": "https://openreview.net/forum?id=FMjeC9Msws",
             "acl": null,
             "pmlr": null,
             "cvf": null,
@@ -5954,7 +5962,7 @@
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/recipes/the-art-of-scaling-rl-compute.md"
           },
           "primary_link": "https://arxiv.org/abs/2510.13786"
         }
@@ -5970,31 +5978,34 @@
           "venue": "arXiv",
           "authors": [],
           "source_role": [
-            "scaling_study"
+            "scaling_study",
+            "construction_recipe"
           ],
           "verification_contract": [
             "programmatic"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "scalar_reward"
           ],
           "training_use": [
-            "rlvr"
+            "rlvr",
+            "evaluation"
           ],
           "domains": [
             "math",
-            "scaling"
+            "scaling",
+            "rlvr"
           ],
           "category": [
-            "surveys_and_primers",
             "programmatic_math_code_proof",
-            "frontier_model_reports",
-            "scaling_test_time_compute_rlvr"
+            "scaling_test_time_compute_rlvr",
+            "frontier_model_reports"
           ],
           "tags": [],
-          "one_line_summary": "Scaling study for model-size and compute-axis views of RL post-training.",
-          "why_it_matters": "Scaling study for model-size and compute-axis views of RL post-training.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.",
+          "why_it_matters": "It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2509.25300",
@@ -6010,7 +6021,7 @@
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/recipes/scaling-behaviors-rl-post-training.md"
           },
           "primary_link": "https://arxiv.org/abs/2509.25300"
         }
@@ -7064,49 +7075,53 @@
           "venue": "arXiv",
           "authors": [],
           "source_role": [
-            "audit_failure"
+            "audit_failure",
+            "benchmark"
           ],
           "verification_contract": [
-            "judgment_required"
+            "judgment_required",
+            "environmental"
           ],
           "supervision_granularity": [
-            "step_level"
+            "step_level",
+            "full_episode"
           ],
           "training_use": [
             "evaluation",
-            "safety_alignment"
+            "safety_alignment",
+            "audit"
           ],
           "domains": [
             "privacy",
-            "agent"
+            "agent",
+            "security"
           ],
           "category": [
-            "surveys_and_primers",
             "judgment_required_rubrics_safety_domain",
-            "construction_recipes_open_reasoning_data",
+            "environmental_agents_tools_web_swe",
             "audit_failure_contamination_verifier_attacks",
             "benchmarks_evaluation"
           ],
           "tags": [],
-          "one_line_summary": "Shows reasoning traces can expose private fields.",
-          "why_it_matters": "Shows reasoning traces can expose private fields.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through prompt injection or accidental leakage.",
+          "why_it_matters": "It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2506.15674",
             "venue": null,
             "arxiv": "https://arxiv.org/abs/2506.15674",
             "openreview": null,
-            "acl": null,
+            "acl": "https://aclanthology.org/2025.emnlp-main.1347/",
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/parameterlab/leaky_thoughts",
             "data": null,
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/failures/leaky-thoughts.md"
           },
           "primary_link": "https://arxiv.org/abs/2506.15674"
         }
@@ -7122,48 +7137,51 @@
           "venue": "arXiv",
           "authors": [],
           "source_role": [
-            "audit_failure"
+            "audit_failure",
+            "construction_recipe"
           ],
           "verification_contract": [
             "mixed"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "full_episode"
           ],
           "training_use": [
             "distillation",
-            "evaluation"
+            "evaluation",
+            "audit"
           ],
           "domains": [
             "synthetic-data",
-            "lineage"
+            "lineage",
+            "distillation"
           ],
           "category": [
-            "surveys_and_primers",
             "construction_recipes_open_reasoning_data",
             "audit_failure_contamination_verifier_attacks",
             "benchmarks_evaluation"
           ],
           "tags": [],
-          "one_line_summary": "Lineage-risk study for hidden trait transfer in synthetic data.",
-          "why_it_matters": "Lineage-risk study for hidden trait transfer in synthetic data.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.",
+          "why_it_matters": "It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2507.14805",
-            "venue": null,
+            "venue": "https://www.nature.com/articles/s41586-026-10319-8",
             "arxiv": "https://arxiv.org/abs/2507.14805",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/MinhxLe/subliminal-learning",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://subliminal-learning.com/",
             "bibtex": null,
-            "card": null
+            "card": "cards/failures/subliminal-learning.md"
           },
           "primary_link": "https://arxiv.org/abs/2507.14805"
         }
@@ -7730,45 +7748,46 @@
             "audit_failure"
           ],
           "verification_contract": [
-            "judgment_required"
+            "judgment_required",
+            "mixed"
           ],
           "supervision_granularity": [
             "answer_level"
           ],
           "training_use": [
-            "evaluation"
+            "evaluation",
+            "safety_alignment"
           ],
           "domains": [
             "abstention",
-            "factuality"
+            "factuality",
+            "uncertainty"
           ],
           "category": [
-            "surveys_and_primers",
-            "environmental_agents_tools_web_swe",
             "judgment_required_rubrics_safety_domain",
             "audit_failure_contamination_verifier_attacks",
             "benchmarks_evaluation"
           ],
           "tags": [],
-          "one_line_summary": "Benchmark for epistemic boundaries and non-answering behavior.",
-          "why_it_matters": "Benchmark for epistemic boundaries and non-answering behavior.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise, subjective, and stale-information questions.",
+          "why_it_matters": "It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2506.09038",
-            "venue": null,
+            "venue": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html",
             "arxiv": "https://arxiv.org/abs/2506.09038",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
+            "code": "https://github.com/facebookresearch/AbstentionBench",
+            "data": "https://huggingface.co/datasets/facebook/AbstentionBench",
+            "huggingface": "https://huggingface.co/datasets/facebook/AbstentionBench",
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/benchmarks/abstentionbench.md"
           },
           "primary_link": "https://arxiv.org/abs/2506.09038"
         }
@@ -7918,26 +7937,30 @@
             "mixed"
           ],
           "supervision_granularity": [
-            "pairwise_preference"
+            "step_level",
+            "pairwise_preference",
+            "scalar_reward"
           ],
           "training_use": [
             "preference_learning",
-            "safety_alignment"
+            "safety_alignment",
+            "reward_modeling"
           ],
           "domains": [
             "safety",
             "alignment"
           ],
           "category": [
-            "foundations_instruction_preference_alignment"
+            "foundations_instruction_preference_alignment",
+            "construction_recipes_open_reasoning_data"
           ],
           "tags": [
             "foundation-starter",
             "primary-link-checked"
           ],
-          "one_line_summary": "AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.",
-          "why_it_matters": "AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Constitutional AI trains harmless behavior from AI-generated critiques, revisions, and AI preference feedback guided by a written constitution.",
+          "why_it_matters": "It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2212.08073",
@@ -7951,9 +7974,9 @@
             "code": null,
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://github.com/anthropics/ConstitutionalHarmlessnessPaper",
             "bibtex": null,
-            "card": null
+            "card": "cards/recipes/constitutional-ai.md"
           },
           "primary_link": "https://arxiv.org/abs/2212.08073"
         }
@@ -9923,48 +9946,51 @@
           "venue": "arXiv",
           "authors": [],
           "source_role": [
-            "audit_failure"
+            "audit_failure",
+            "construction_recipe"
           ],
           "verification_contract": [
             "mixed"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "full_episode"
           ],
           "training_use": [
             "distillation",
-            "evaluation"
+            "evaluation",
+            "audit"
           ],
           "domains": [
             "synthetic-data",
-            "lineage"
+            "lineage",
+            "distillation"
           ],
           "category": [
-            "surveys_and_primers",
             "construction_recipes_open_reasoning_data",
             "audit_failure_contamination_verifier_attacks",
             "benchmarks_evaluation"
           ],
           "tags": [],
-          "one_line_summary": "Lineage-risk study for hidden trait transfer in synthetic data.",
-          "why_it_matters": "Lineage-risk study for hidden trait transfer in synthetic data.",
-          "curation_level": "L3_summary_ready",
+          "one_line_summary": "Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.",
+          "why_it_matters": "It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "artifacts": {
             "paper": "https://arxiv.org/abs/2507.14805",
-            "venue": null,
+            "venue": "https://www.nature.com/articles/s41586-026-10319-8",
             "arxiv": "https://arxiv.org/abs/2507.14805",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/MinhxLe/subliminal-learning",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://subliminal-learning.com/",
             "bibtex": null,
-            "card": null
+            "card": "cards/failures/subliminal-learning.md"
           },
           "primary_link": "https://arxiv.org/abs/2507.14805"
         }

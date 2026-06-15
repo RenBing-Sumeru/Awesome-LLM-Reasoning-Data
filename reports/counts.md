@@ -1,7 +1,7 @@
 # Paper Coverage Report
 
 total entries: 271
-filled cards: 56
+filled cards: 65
 missing primary paper/arXiv/DOI links: 147
 needs search / partial metadata: 147
 
@@ -12,26 +12,26 @@ needs search / partial metadata: 147
 
 ## category
 - benchmarks_evaluation: 72
-- construction_recipes_open_reasoning_data: 63
+- construction_recipes_open_reasoning_data: 64
 - foundations_instruction_preference_alignment: 52
 - scaling_test_time_compute_rlvr: 51
+- programmatic_math_code_proof: 47
 - audit_failure_contamination_verifier_attacks: 46
-- programmatic_math_code_proof: 46
 - environmental_agents_tools_web_swe: 41
-- surveys_and_primers: 40
 - judgment_required_rubrics_safety_domain: 39
+- surveys_and_primers: 36
 - frontier_model_reports: 33
 - unknown: 27
 - process_supervision_prm: 22
 
 ## source_role
 - survey_background: 216
-- benchmark: 23
+- benchmark: 24
+- construction_recipe: 22
 - data_release: 20
-- construction_recipe: 19
+- scaling_study: 12
+- verifier_reward: 12
 - agent_environment: 11
-- scaling_study: 11
-- verifier_reward: 11
 - model_report: 9
 - audit_failure: 7
 - process_supervision: 5
@@ -39,34 +39,34 @@ needs search / partial metadata: 147
 
 ## verification_contract
 - unknown: 209
-- programmatic: 28
-- mixed: 26
+- programmatic: 29
+- mixed: 28
 - judgment_required: 16
-- environmental: 13
+- environmental: 14
 
 ## training_use
 - unknown: 206
-- evaluation: 40
+- evaluation: 42
 - sft: 20
 - rlvr: 19
-- reward_modeling: 14
+- reward_modeling: 16
 - agent_training: 13
 - distillation: 11
-- test_time_compute: 8
+- test_time_compute: 9
 - preference_learning: 6
+- safety_alignment: 6
+- audit: 5
 - process_supervision: 5
-- safety_alignment: 5
-- audit: 3
 
 ## construction_layer
-- release_audit: 238
+- release_audit: 239
 - reward_verifier_layer: 23
 - prompt_sourcing: 13
-- trace_writing: 12
-- search_substrate: 10
-- optimizer_scaffold: 9
+- trace_writing: 13
+- optimizer_scaffold: 11
+- search_substrate: 11
 - frontier_pipeline: 8
-- scaling_report: 7
+- scaling_report: 8
 - self_play_anchor: 2
 
 ## year
@@ -84,11 +84,11 @@ needs search / partial metadata: 147
 
 ## cards
 - agents: 10
-- benchmarks: 4
-- failures: 2
-- recipes: 13
+- benchmarks: 6
+- failures: 4
+- recipes: 17
 - releases: 16
-- verifiers: 11
+- verifiers: 12
 
 ## missing primary links (first 80)
 - `an-overview-of-the-bioasq-large-scale-biomedical-semantic-indexing-and-question--2015` · An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition · status `needs_metadata`

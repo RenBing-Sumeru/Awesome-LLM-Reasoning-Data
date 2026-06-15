@@ -33,6 +33,19 @@ Private scratch work, if needed, must stay under `.codex_scratch/`, which is ign
 - A searchable static website that supports filtering beyond what the README can reasonably provide.
 - Upgraded QA scripts, contribution guidance, PR template, release notes, and self-review.
 
+## Latest Completion Snapshot
+
+- Total structured entries: 271
+- Verified entries with official primary links: 124/124
+- Entries still needing primary-source search: 147
+- Unique entry-linked cards: 63
+- Card files: 65
+- `L5_audit_ready` cards: 29
+- Beginner 20 official-link coverage: 20/20
+- Beginner 20 card coverage: 20/20
+- Searchable site assets regenerated from structured metadata.
+- Public reports regenerated from the current branch state.
+
 ## Validation Gates
 
 The final branch should run:
@@ -42,8 +55,11 @@ python scripts/validate_data.py
 python scripts/render_site.py --check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
+python scripts/render_cards.py --check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
+node --check docs/assets/site.js
+git diff --check
 ```
 
 A prompt/conversation leakage scan must also pass before commit.

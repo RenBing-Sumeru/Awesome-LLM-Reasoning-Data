@@ -78,7 +78,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deep-reinforcement-learning-from-human-preferences-2017
   title: Deep reinforcement learning from human preferences
   year: 2017
@@ -165,7 +164,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: data-statements-for-natural-language-processing-2018
   title: Data statements for natural language processing
   year: 2018
@@ -250,7 +248,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: datasheets-for-datasets-2018
   title: Datasheets for datasets
   year: 2018
@@ -334,7 +331,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: holist-an-environment-for-machine-learning-of-higher-order-logic-theorem-proving-2019
   title: 'HOList: An environment for machine learning of higher-order logic theorem proving'
   year: 2019
@@ -416,7 +412,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: pubmedqa-a-dataset-for-biomedical-research-question-answering-2019
   title: 'PubMedQA: A dataset for biomedical research question answering'
   year: 2019
@@ -498,7 +493,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: a-primer-in-bertology-what-we-know-about-how-bert-works-2020
   title: 'A primer in BERTology: What we know about how BERT works'
   year: 2020
@@ -579,7 +573,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: fact-or-fiction-verifying-scientific-claims-2020
   title: 'Fact or fiction: Verifying scientific claims'
   year: 2020
@@ -659,7 +652,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks-2020
   title: Retrieval-augmented generation for knowledge-intensive NLP tasks
   year: 2020
@@ -739,7 +731,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: casehold-a-dataset-for-legal-holding-statement-prediction-2021
   title: 'CaseHOLD: A dataset for legal holding statement prediction'
   year: 2021
@@ -821,7 +812,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021
   title: 'ContractNLI: A dataset for document-level natural language inference for contracts'
   year: 2021
@@ -903,7 +893,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021
   title: 'CUAD: An expert-annotated NLP dataset for legal contract review'
   year: 2021
@@ -984,7 +973,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: evaluating-large-language-models-trained-on-code-2021
   title: Evaluating large language models trained on code
   year: 2021
@@ -993,16 +981,20 @@
   source_role:
   - benchmark
   - data_release
+  - scaling_study
   verification_contract:
   - programmatic
   supervision_granularity:
   - answer_level
   domains:
   - code
+  - software_engineering
   training_use:
   - evaluation
+  - test_time_compute
   construction_layer:
   - release_audit
+  - search_substrate
   artifacts:
     paper: https://arxiv.org/abs/2107.03374
     arxiv: https://arxiv.org/abs/2107.03374
@@ -1018,34 +1010,39 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: hand-written programming tasks expressed as Python docstrings or function signatures.
+    trace_author: models generate Python code completions.
+    answer_format: executable Python function.
+    process_fields:
+    - prompt, generated code, unit-test results, sample count.
+    environment_or_substrate: Python execution sandbox and test suite.
+    verifier_or_reward: HumanEval tests and pass@k evaluation.
+    terminal_predicate: generated function passes tests.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Codex-style code model evaluated in the paper.
+    teacher: benchmark authors and public code pretraining corpus context.
+    generator: model samples code completions.
+    filtering_rule: tests determine functional correctness, while broader safety/security limits require separate review.
+    sampling_protocol: repeated sampling with pass@k estimates.
+    inference_budget: number of generated samples per problem strongly affects score.
+    optimizer_or_scaffold: evaluation harness for executable code generation.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Are tests hidden, complete, and deterministic?
+    split: Is pass@k computed with the right estimator?
+    decontamination: Can generated code exploit weak tests?
+    license: Check official artifact license before reuse.
+    lineage: Is the execution sandbox pinned?
+    known_failure_modes:
+    - Small public benchmarks are easy to memorize.
+    - Unit tests can miss incorrect or insecure behavior.
+    - Repeated sampling can hide low single-sample reliability.
     citation_status: verified
     confidence: high
-    notes: 'Seeded from BibTeX key chen2021humaneval. Deduplicated title collision; dropped lower-confidence id: evaluating-large-language-models-trained-on-code-2021.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Core code-model evaluation paper and HumanEval release entry for programmatic verification, pass@k, and code-generation safety limitations.
   related: []
   tags:
   - seeded-from-bib
@@ -1055,13 +1052,14 @@
   - benchmark
   status: verified
   category:
+  - programmatic_math_code_proof
   - benchmarks_evaluation
-  one_line: Local BibTeX seed for the 🧰 Benchmarks and Evaluation Surfaces map; use it to inspect the paper's data object, verifier contract, and release metadata before promoting it.
-  card: null
+  one_line: The Codex evaluation paper introduces HumanEval and studies code generation through functional correctness, repeated sampling, and pass@k.
+  card: cards/benchmarks/evaluating-large-language-models-trained-on-code.md
   needs:
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Introduces HumanEval for measuring functional correctness of code generation with executable tests.
-  why_it_matters: HumanEval made unit-test-backed code generation a standard programmatic verifier surface for reasoning-capable models.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: The Codex evaluation paper introduces HumanEval and studies code generation through functional correctness, repeated sampling, and pass@k.
+  why_it_matters: 'It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions.'
   verification:
     link_verified: true
     artifact_verified: true
@@ -1069,8 +1067,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L1_link_verified
-
+  curation_level: L5_audit_ready
 - id: finetuned-language-models-are-zero-shot-learners-2021
   title: Finetuned language models are zero-shot learners
   year: 2021
@@ -1150,7 +1147,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021
   title: 'FinQA: A dataset of numerical reasoning over financial data'
   year: 2021
@@ -1231,7 +1227,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: measuring-coding-challenge-competence-with-apps-2021
   title: Measuring coding challenge competence with APPS
   year: 2021
@@ -1313,7 +1308,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: measuring-mathematical-problem-solving-with-the-math-dataset-2021
   title: Measuring mathematical problem solving with the MATH dataset
   year: 2021
@@ -1400,7 +1394,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021
   title: 'miniF2F: A cross-system benchmark for formal olympiad-level mathematics'
   year: 2021
@@ -1483,7 +1476,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: multitask-prompted-training-enables-zero-shot-task-generalization-2021
   title: Multitask prompted training enables zero-shot task generalization
   year: 2021
@@ -1563,7 +1555,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021
   title: 'Qasper: A dataset of information-seeking questions and answers over scientific research papers'
   year: 2021
@@ -1644,7 +1635,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021
   title: 'TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance'
   year: 2021
@@ -1727,7 +1717,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: training-verifiers-to-solve-math-word-problems-2021
   title: Training verifiers to solve math word problems
   year: 2021
@@ -1818,7 +1807,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022
   title: Chain-of-thought prompting elicits reasoning in large language models
   year: 2022
@@ -1902,7 +1890,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022
   title: 'CodeRL: Mastering code generation through pretrained models and deep reinforcement learning'
   year: 2022
@@ -1983,7 +1970,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: codet-code-generation-with-generated-tests-2022
   title: 'CodeT: Code generation with generated tests'
   year: 2022
@@ -2063,7 +2049,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: coliee-competition-on-legal-information-extraction-entailment-2022
   title: 'COLIEE: Competition on legal information extraction/entailment'
   year: 2022
@@ -2144,7 +2129,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: constitutional-ai-harmlessness-from-ai-feedback-2022
   title: 'Constitutional AI: Harmlessness from AI feedback'
   year: 2022
@@ -2157,13 +2141,16 @@
   - judgment_required
   - mixed
   supervision_granularity:
+  - step_level
   - pairwise_preference
+  - scalar_reward
   domains:
   - safety
   - alignment
   training_use:
   - preference_learning
   - safety_alignment
+  - reward_modeling
   construction_layer:
   - trace_writing
   - reward_verifier_layer
@@ -2172,7 +2159,7 @@
     arxiv: https://arxiv.org/abs/2212.08073
     code: null
     data: null
-    project: null
+    project: https://github.com/anthropics/ConstitutionalHarmlessnessPaper
     huggingface: null
     doi: null
     venue: null
@@ -2182,35 +2169,39 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: helpful/harmless assistant prompts and harmful-query scenarios.
+    trace_author: model generates initial responses, critiques, and revisions using constitutional principles.
+    answer_format: original answer, self-critique, revised answer, preference pair, reward-model score.
+    process_fields:
+    - principle used, critique, revision, comparison, preference label.
+    environment_or_substrate: offline SL and RLHF/RLAIF alignment pipeline.
+    verifier_or_reward: AI preference model trained from comparisons guided by constitutional principles.
+    terminal_predicate: AI or human preference for harmless but non-evasive responses.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: initial assistant model sampled for responses.
+    teacher: constitution/principles plus critique-and-revision model behavior.
+    generator: model produces critiques, revisions, and response pairs.
+    filtering_rule: select/revise responses according to constitutional principles.
+    sampling_protocol: supervised critique/revision phase followed by RL phase over AI preferences.
+    inference_budget: model-generated critiques and pairwise comparisons add generation budget.
+    optimizer_or_scaffold: supervised learning on revisions plus RL from AI feedback.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: What principles are in the constitution?
+    split: Are critiques and revisions stored separately from final answers?
+    decontamination: Can AI feedback drift or self-reinforce blind spots?
+    license: Check official artifact license before reuse.
+    lineage: Are harmlessness and helpfulness tradeoffs measured?
+    known_failure_modes:
+    - AI feedback can encode model bias at scale.
+    - Principles may be underspecified or culturally narrow.
+    - A model can become safe-looking but evasive if helpfulness is not audited.
     citation_status: verified
     confidence: high
-    notes: Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.
-    metadata_status: partial
-  inclusion_reason: AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Foundational RLAIF and safety-alignment recipe for principle-guided critique/revision data and AI preference modeling.
   related: []
   tags:
   - foundation-starter
@@ -2218,12 +2209,13 @@
   status: verified
   category:
   - foundations_instruction_preference_alignment
-  one_line: AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.
-  card: null
+  - construction_recipes_open_reasoning_data
+  one_line: Constitutional AI trains harmless behavior from AI-generated critiques, revisions, and AI preference feedback guided by a written constitution.
+  card: cards/recipes/constitutional-ai.md
   needs:
-  - 'needs_metadata: foundation entry still needs full source mixture/license/lineage review'
-  one_line_summary: AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.
-  why_it_matters: AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: Constitutional AI trains harmless behavior from AI-generated critiques, revisions, and AI preference feedback guided by a written constitution.
+  why_it_matters: It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data.
   verification:
     link_verified: true
     artifact_verified: false
@@ -2231,8 +2223,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: convfinqa-exploring-the-chain-of-numerical-reasoning-in-conversational-finance-q-2022
   title: 'ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering'
   year: 2022
@@ -2313,7 +2304,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: draft-sketch-and-prove-guiding-formal-theorem-provers-with-informal-proofs-2022
   title: 'Draft, sketch, and prove: Guiding formal theorem provers with informal proofs'
   year: 2022
@@ -2394,7 +2384,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: scaling-laws-for-reward-model-overoptimization-2022
   title: Scaling laws for reward model overoptimization
   year: 2022
@@ -2476,7 +2465,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: scienceworld-is-your-agent-smarter-than-a-5th-grader-2022
   title: 'ScienceWorld: Is your agent smarter than a 5th grader?'
   year: 2022
@@ -2557,7 +2545,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: solving-math-word-problems-with-process-and-outcome-based-feedback-2022
   title: Solving math word problems with process- and outcome-based feedback
   year: 2022
@@ -2638,7 +2625,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: star-bootstrapping-reasoning-with-reasoning-2022
   title: 'STaR: Bootstrapping reasoning with reasoning'
   year: 2022
@@ -2725,7 +2711,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022
   title: Training a helpful and harmless assistant with reinforcement learning from human feedback
   year: 2022
@@ -2814,7 +2799,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: training-language-models-to-follow-instructions-with-human-feedback-2022
   title: Training language models to follow instructions with human feedback
   year: 2022
@@ -2903,7 +2887,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: truthfulqa-2022
   title: TruthfulQA
   year: 2022
@@ -2985,7 +2968,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: alce-enabling-large-language-models-to-generate-text-with-citations-2023
   title: 'ALCE: Enabling large language models to generate text with citations'
   year: 2023
@@ -3065,7 +3047,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: api-bank-a-benchmark-for-tool-augmented-llms-2023
   title: 'API-Bank: A benchmark for tool-augmented LLMs'
   year: 2023
@@ -3148,7 +3129,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: data-provenance-for-language-models-2023
   title: Data provenance for language models
   year: 2023
@@ -3229,7 +3209,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
   title: 'Direct preference optimization: Your language model is secretly a reward model'
   year: 2023
@@ -3313,7 +3292,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023
   title: 'Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes'
   year: 2023
@@ -3395,7 +3373,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: factscore-2023
   title: FActScore
   year: 2023
@@ -3475,7 +3452,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: financebench-a-benchmark-for-financial-question-answering-2023
   title: 'FinanceBench: A benchmark for financial question answering'
   year: 2023
@@ -3558,7 +3534,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: gorilla-2023
   title: Gorilla
   year: 2023
@@ -3638,7 +3613,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: gpqa-2023
   title: GPQA
   year: 2023
@@ -3720,7 +3694,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: judgelm-fine-tuned-large-language-models-are-scalable-judges-2023
   title: 'JudgeLM: Fine-tuned large language models are scalable judges'
   year: 2023
@@ -3801,7 +3774,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023
   title: Judging LLM-as-a-judge with MT-Bench and Chatbot Arena
   year: 2023
@@ -3883,7 +3855,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023
   title: 'Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting'
   year: 2023
@@ -3965,7 +3936,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: large-language-models-encode-clinical-knowledge-2023
   title: Large language models encode clinical knowledge
   year: 2023
@@ -4046,7 +4016,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: leandojo-theorem-proving-with-retrieval-augmented-language-models-2023
   title: 'LeanDojo: Theorem proving with retrieval-augmented language models'
   year: 2023
@@ -4127,7 +4096,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: legalbench-2023
   title: LegalBench
   year: 2023
@@ -4209,7 +4177,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023
   title: 'MAmmoTH: Building math generalist models through hybrid instruction tuning'
   year: 2023
@@ -4291,7 +4258,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023
   title: 'Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations'
   year: 2023
@@ -4372,7 +4338,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: maud-a-merger-agreement-understanding-dataset-2023
   title: 'MAUD: A merger agreement understanding dataset'
   year: 2023
@@ -4452,7 +4417,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: measuring-faithfulness-in-chain-of-thought-reasoning-2023
   title: Measuring faithfulness in chain-of-thought reasoning
   year: 2023
@@ -4534,7 +4498,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023
   title: 'MetaMath: Bootstrap your own mathematical questions for large language models'
   year: 2023
@@ -4616,7 +4579,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: mind2web-towards-a-generalist-agent-for-the-web-2023
   title: 'Mind2Web: Towards a generalist agent for the web'
   year: 2023
@@ -4698,7 +4660,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023
   title: 'Orca: Progressive learning from complex explanation traces of GPT-4'
   year: 2023
@@ -4780,7 +4741,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: prm800k-2023
   title: Let's Verify Step by Step
   year: 2023
@@ -4874,7 +4834,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023
   title: 'ProofNet: Autoformalizing and formally proving undergraduate-level mathematics'
   year: 2023
@@ -4955,7 +4914,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: react-synergizing-reasoning-and-acting-in-language-models-2023
   title: 'ReAct: Synergizing reasoning and acting in language models'
   year: 2023
@@ -5035,7 +4993,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: reflexion-language-agents-with-verbal-reinforcement-learning-2023
   title: 'Reflexion: Language agents with verbal reinforcement learning'
   year: 2023
@@ -5118,7 +5075,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: rest-textsuperscriptem-2023
   title: ReST\textsuperscriptEM
   year: 2023
@@ -5199,19 +5155,20 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023
   title: Self-consistency improves chain of thought reasoning in language models
   year: 2023
   venue: ICLR
   authors: []
   source_role:
-  - survey_background
   - scaling_study
+  - survey_background
   verification_contract:
   - mixed
+  - programmatic
   supervision_granularity:
   - answer_level
+  - step_level
   domains:
   - reasoning
   - test_time_compute
@@ -5220,6 +5177,7 @@
   - test_time_compute
   construction_layer:
   - search_substrate
+  - scaling_report
   artifacts:
     paper: https://arxiv.org/abs/2203.11171
     arxiv: https://arxiv.org/abs/2203.11171
@@ -5229,41 +5187,45 @@
     huggingface: null
     doi: null
     venue: null
-    openreview: null
+    openreview: https://openreview.net/forum?id=1PL1NIMMrw
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: reasoning benchmark prompts with chain-of-thought exemplars.
+    trace_author: model samples diverse reasoning paths at inference time.
+    answer_format: multiple rationales and final answers for the same prompt.
+    process_fields:
+    - sampling temperature, number of paths, answer extraction, aggregation rule.
+    environment_or_substrate: benchmark prompting setup.
+    verifier_or_reward: majority or marginalization over sampled answers.
+    terminal_predicate: most-consistent final answer matches the benchmark target.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: prompted language model; no parameter update required.
+    teacher: few-shot chain-of-thought exemplars.
+    generator: model samples many reasoning paths.
+    filtering_rule: aggregate answers by consistency, not by individually verifying every step.
+    sampling_protocol: sample diverse rationales and marginalize over answers.
+    inference_budget: number of sampled paths is the main compute knob.
+    optimizer_or_scaffold: decoding-time search/aggregation scaffold.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: How many samples were used?
+    split: Are traces diverse or near-duplicates?
+    decontamination: Is answer extraction reliable?
+    license: Check official artifact license before reuse.
+    lineage: Does majority vote fail on correlated wrong reasoning?
+    known_failure_modes:
+    - More samples can amplify benchmark-specific shortcuts.
+    - Aggregation does not guarantee step faithfulness.
+    - Unmatched inference budgets can make methods look better than they are.
     citation_status: verified
     confidence: high
-    notes: Primary arXiv link verified for foundations starter set; release-internal metadata remains partial.
-    metadata_status: partial
-  inclusion_reason: Introduces sampling-and-voting over reasoning paths, a precursor to pass@k, verifier selection, and test-time compute views.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Foundational decoding/test-time-scaling recipe connecting chain-of-thought traces, pass@k-style sampling, and answer aggregation.
   related: []
   tags:
   - foundation-starter
@@ -5271,12 +5233,13 @@
   status: verified
   category:
   - foundations_instruction_preference_alignment
-  one_line: Introduces sampling-and-voting over reasoning paths, a precursor to pass@k, verifier selection, and test-time compute views.
-  card: null
+  - scaling_test_time_compute_rlvr
+  one_line: Self-consistency samples multiple chain-of-thought reasoning paths and chooses the answer that is most consistent across samples.
+  card: cards/recipes/self-consistency-chain-of-thought.md
   needs:
-  - 'needs_metadata: foundation entry still needs full source mixture/license/lineage review'
-  one_line_summary: Introduces sampling-and-voting over reasoning paths, a precursor to pass@k, verifier selection, and test-time compute views.
-  why_it_matters: Introduces sampling-and-voting over reasoning paths, a precursor to pass@k, verifier selection, and test-time compute views.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: Self-consistency samples multiple chain-of-thought reasoning paths and chooses the answer that is most consistent across samples.
+  why_it_matters: 'It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.'
   verification:
     link_verified: true
     artifact_verified: false
@@ -5284,8 +5247,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: self-instruct-aligning-language-models-with-self-generated-instructions-2023
   title: 'Self-Instruct: Aligning language models with self-generated instructions'
   year: 2023
@@ -5371,7 +5333,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023
   title: 'Self-RAG: Learning to retrieve, generate, and critique through self-reflection'
   year: 2023
@@ -5452,7 +5413,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: selfcodealign-self-alignment-for-code-generation-2023
   title: 'SelfCodeAlign: Self-alignment for code generation'
   year: 2023
@@ -5532,7 +5492,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: swe-bench-can-language-models-resolve-real-world-github-issues-2023
   title: 'SWE-bench: Can language models resolve real-world GitHub issues?'
   year: 2023
@@ -5623,7 +5582,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: toolformer-language-models-can-teach-themselves-to-use-tools-2023
   title: 'Toolformer: Language models can teach themselves to use tools'
   year: 2023
@@ -5704,7 +5662,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: ultrafeedback-boosting-language-models-with-high-quality-feedback-2023
   title: 'UltraFeedback: Boosting language models with high-quality feedback'
   year: 2023
@@ -5785,7 +5742,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: webarena-a-realistic-web-environment-for-building-autonomous-agents-2023
   title: 'WebArena: A realistic web environment for building autonomous agents'
   year: 2023
@@ -5878,7 +5834,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023
   title: 'WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct'
   year: 2023
@@ -5961,7 +5916,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: ai-models-collapse-when-trained-on-recursively-generated-data-2024
   title: AI models collapse when trained on recursively generated data
   year: 2024
@@ -6043,7 +5997,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024
   title: 'APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets'
   year: 2024
@@ -6124,7 +6077,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024
   title: 'AppWorld: A controllable world of apps and people for benchmarking interactive coding agents'
   year: 2024
@@ -6220,7 +6172,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: bfcl-v3-2024
   title: BFCL v3
   year: 2024
@@ -6300,7 +6251,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024
   title: 'BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions'
   year: 2024
@@ -6384,7 +6334,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024
   title: 'BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval'
   year: 2024
@@ -6466,7 +6415,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: browsergym-a-gym-environment-for-web-agents-2024
   title: 'BrowserGym: A gym environment for web agents'
   year: 2024
@@ -6559,7 +6507,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: chembench-a-benchmark-for-evaluating-large-language-models-in-chemistry-2024
   title: 'ChemBench: A benchmark for evaluating large language models in chemistry'
   year: 2024
@@ -6641,7 +6588,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deepseek-prover-advancing-theorem-proving-in-llms-2024
   title: 'DeepSeek-Prover: Advancing theorem proving in LLMs'
   year: 2024
@@ -6723,7 +6669,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024
   title: 'DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search'
   year: 2024
@@ -6806,7 +6751,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024
   title: 'DeepSeekMath: Pushing the limits of mathematical reasoning in open language models'
   year: 2024
@@ -6889,7 +6833,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: does-writing-with-lms-reduce-content-diversity-2024
   title: Does writing with LMs reduce content diversity?
   year: 2024
@@ -6969,7 +6912,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024
   title: 'FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI'
   year: 2024
@@ -7053,7 +6995,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024
   title: 'Goedel-Prover: A frontier model for open-source automated theorem proving'
   year: 2024
@@ -7136,7 +7077,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: gsm-symbolic-2024
   title: GSM-Symbolic
   year: 2024
@@ -7218,7 +7158,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: harmbench-2024
   title: HarmBench
   year: 2024
@@ -7299,7 +7238,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024
   title: 'HelpSteer2: Open-source preference data for helpfulness and safety'
   year: 2024
@@ -7381,7 +7319,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024
   title: Improve mathematical reasoning in language models by automated process supervision
   year: 2024
@@ -7463,7 +7400,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: introducing-swe-bench-verified-2024
   title: Introducing SWE-bench Verified
   year: 2024
@@ -7545,7 +7481,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: is-model-collapse-inevitable-2024
   title: Is model collapse inevitable?
   year: 2024
@@ -7627,7 +7562,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024
   title: 'LAB-Bench: Measuring capabilities of language models for biology research'
   year: 2024
@@ -7709,7 +7643,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024
   title: 'Large Language Monkeys: Scaling Inference Compute with Repeated Sampling'
   year: 2024
@@ -7790,7 +7723,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: learning-to-reason-with-llms-2024
   title: Learning to reason with LLMs
   year: 2024
@@ -7872,7 +7804,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024
   title: 'LiveBench: A challenging, contamination-free benchmark for large language models'
   year: 2024
@@ -7965,7 +7896,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024
   title: 'LiveCodeBench: Holistic and contamination-free evaluation of large language models for code'
   year: 2024
@@ -8049,7 +7979,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: magicoder-empowering-code-generation-with-oss-instruct-2024
   title: 'Magicoder: Empowering code generation with OSS-instruct'
   year: 2024
@@ -8130,7 +8059,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: mammoth2-scaling-instructions-from-the-web-2024
   title: 'MAmmoTH2: Scaling Instructions from the Web'
   year: 2024
@@ -8210,7 +8138,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: math-shepherd-2024
   title: Math-Shepherd
   year: 2024
@@ -8297,7 +8224,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: opencodeinterpreter-integrating-code-generation-with-execution-and-refinement-2024
   title: 'OpenCodeInterpreter: Integrating code generation with execution and refinement'
   year: 2024
@@ -8378,7 +8304,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024
   title: 'OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data'
   year: 2024
@@ -8461,7 +8386,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024
   title: 'OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments'
   year: 2024
@@ -8556,7 +8480,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: overoptimization-in-direct-alignment-algorithms-2024
   title: Overoptimization in direct alignment algorithms
   year: 2024
@@ -8638,7 +8561,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024
   title: PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge
   year: 2024
@@ -8719,7 +8641,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024
   title: 'Prometheus 2: An open source language model specialized in evaluating other language models'
   year: 2024
@@ -8801,7 +8722,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024
   title: 'Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement'
   year: 2024
@@ -8884,7 +8804,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: r-tuning-2024
   title: R-Tuning
   year: 2024
@@ -8965,7 +8884,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: raft-adapting-language-model-to-domain-specific-rag-2024
   title: 'RAFT: Adapting language model to domain-specific RAG'
   year: 2024
@@ -9045,7 +8963,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: rest-mcts-2024
   title: ReST-MCTS*
   year: 2024
@@ -9126,7 +9043,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: rewardbench-evaluating-reward-models-for-language-modeling-2024
   title: 'RewardBench: Evaluating Reward Models for Language Modeling'
   year: 2024
@@ -9222,7 +9138,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024
   title: 'Rewarding progress: Scaling automated process verifiers for LLM reasoning'
   year: 2024
@@ -9304,7 +9219,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024
   title: 'SciCode: A benchmark for scientific code generation and reasoning'
   year: 2024
@@ -9387,7 +9301,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: self-rewarding-lms-2024
   title: Self-Rewarding LMs
   year: 2024
@@ -9468,7 +9381,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024
   title: 'SPIN: Self-play fine-tuning converts weak language models to strong language models'
   year: 2024
@@ -9550,7 +9462,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024
   title: 'SWE-Gym: Advancing software engineering agents with training and evaluation environments'
   year: 2024
@@ -9632,7 +9543,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: swe-search-2024
   title: SWE-Search
   year: 2024
@@ -9712,7 +9622,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024
   title: 'tau-bench: A benchmark for tool-agent-user interaction in real-world domains'
   year: 2024
@@ -9795,7 +9704,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: the-llama-3-herd-of-models-2024
   title: The Llama 3 Herd of models
   year: 2024
@@ -9876,7 +9784,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: toolace-winning-the-points-of-llm-function-calling-2024
   title: 'ToolACE: Winning the points of LLM function calling'
   year: 2024
@@ -9957,7 +9864,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024
   title: 'ToolLLM: Facilitating large language models to master 16000+ real-world APIs'
   year: 2023
@@ -10056,7 +9962,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024
   title: 'ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use'
   year: 2024
@@ -10139,7 +10044,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: tulu-3-pushing-frontiers-in-open-language-model-post-training-2024
   title: 'Tulu 3: Pushing frontiers in open language model post-training'
   year: 2024
@@ -10221,7 +10125,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024
   title: 'VisualWebArena: Evaluating multimodal agents on realistic visual web tasks'
   year: 2024
@@ -10311,7 +10214,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024
   title: 'WebLINX: Real-world website navigation with multi-turn dialogue'
   year: 2024
@@ -10391,7 +10293,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: wildguard-2024
   title: WildGuard
   year: 2024
@@ -10472,7 +10373,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024
   title: 'WorkArena: How capable are web agents at solving common knowledge work tasks?'
   year: 2024
@@ -10554,7 +10454,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: xstest-2024
   title: XSTest
   year: 2024
@@ -10634,7 +10533,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: 1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025
   title: 1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training (AM-DeepSeek-R1-Distilled)
   year: 2025
@@ -10716,7 +10614,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: 1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025
   title: '1-shot RLVR: Learning reasoning with minimal verifiable data'
   year: 2025
@@ -10797,7 +10694,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025
   title: 'A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility'
   year: 2025
@@ -10878,7 +10774,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: a-survey-on-llm-mid-training-2025
   title: A Survey on LLM Mid-Training
   year: 2025
@@ -10958,7 +10853,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025
   title: 'Absolute Zero: Reinforced Self-play Reasoning with Zero Data'
   year: 2025
@@ -11052,7 +10946,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: abstentionbench-2025
   title: AbstentionBench
   year: 2025
@@ -11063,74 +10956,79 @@
   - audit_failure
   verification_contract:
   - judgment_required
+  - mixed
   supervision_granularity:
   - answer_level
   domains:
   - abstention
   - factuality
+  - uncertainty
   training_use:
   - evaluation
+  - safety_alignment
   construction_layer:
   - release_audit
   artifacts:
     paper: https://arxiv.org/abs/2506.09038
     arxiv: https://arxiv.org/abs/2506.09038
-    code: null
-    data: null
+    code: https://github.com/facebookresearch/AbstentionBench
+    data: https://huggingface.co/datasets/facebook/AbstentionBench
     project: null
-    huggingface: null
+    huggingface: https://huggingface.co/datasets/facebook/AbstentionBench
     doi: null
-    venue: null
+    venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: benchmark questions drawn from 20 datasets plus new underspecified reasoning challenges.
+    trace_author: evaluated models produce answers or abstentions.
+    answer_format: model response, abstention decision, and correctness/abstention judgment.
+    process_fields:
+    - scenario type, source dataset, answerability label, judge/validation metadata.
+    environment_or_substrate: offline benchmark with model-evaluation harness.
+    verifier_or_reward: human-validated judges and benchmark labels for abstention scenarios.
+    terminal_predicate: answer correctly when answerable and abstain when the prompt is unanswerable or underspecified.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: evaluated frontier/open models vary.
+    teacher: dataset labels and human-validated abstention judgments.
+    generator: benchmark authors assemble unanswerable and answerable prompts.
+    filtering_rule: scenario definitions for unknown answer, underspecification, false premise, subjectivity, and outdated information.
+    sampling_protocol: 20-dataset benchmark mixture should be cited with version.
+    inference_budget: prompt and instruction choices affect abstention behavior.
+    optimizer_or_scaffold: evaluation harness for answer/abstain decisions.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Are abstention and correctness judged separately?
+    split: Which scenario types dominate model failures?
+    decontamination: Does reasoning fine-tuning improve accuracy but reduce abstention?
+    license: Check official artifact license before reuse.
+    lineage: Are instruction prompts allowed, and are they reported?
+    known_failure_modes:
+    - A model can game abstention by refusing too often.
+    - Benchmark labels around subjectivity and underspecification can be ambiguous.
+    - Prompt tuning may improve benchmark score without improving epistemic reasoning.
     citation_status: verified
     confidence: high
-    notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.
-    metadata_status: partial
-  inclusion_reason: Benchmark for epistemic boundaries and non-answering behavior.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Benchmark and failure-mode entry for epistemic boundaries, uncertainty handling, and refusal/abstention evaluation.
   related: []
   tags: []
   status: verified
   category:
-  - surveys_and_primers
-  - environmental_agents_tools_web_swe
   - judgment_required_rubrics_safety_domain
   - audit_failure_contamination_verifier_attacks
   - benchmarks_evaluation
-  one_line: Benchmark for epistemic boundaries and non-answering behavior.
-  card: null
+  one_line: AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise, subjective, and stale-information questions.
+  card: cards/benchmarks/abstentionbench.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Benchmark for epistemic boundaries and non-answering behavior.
-  why_it_matters: Benchmark for epistemic boundaries and non-answering behavior.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise, subjective, and stale-information questions.
+  why_it_matters: 'It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining.'
   verification:
     link_verified: true
     artifact_verified: false
@@ -11138,8 +11036,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025
   title: 'AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions'
   year: 2025
@@ -11218,7 +11115,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: acord-attorney-curated-open-research-dataset-2025
   title: 'ACORD: Attorney-curated open research dataset'
   year: 2025
@@ -11299,7 +11195,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025
   title: 'Aegis2.0: A Diverse AI Safety Dataset and Risks Taxonomy for Alignment of LLM Guardrails'
   year: 2025
@@ -11379,7 +11274,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: aegis2-2025
   title: Aegis2.0
   year: 2025
@@ -11388,75 +11282,85 @@
   source_role:
   - data_release
   - benchmark
+  - verifier_reward
   verification_contract:
   - judgment_required
+  - mixed
   supervision_granularity:
+  - answer_level
   - scalar_reward
   domains:
   - safety
+  - guardrails
+  - alignment
   training_use:
   - safety_alignment
   - evaluation
+  - reward_modeling
   construction_layer:
   - reward_verifier_layer
+  - release_audit
   artifacts:
     paper: https://arxiv.org/abs/2501.09004
     arxiv: https://arxiv.org/abs/2501.09004
     code: null
-    data: null
+    data: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
     project: null
-    huggingface: null
+    huggingface: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
     doi: null
     venue: null
     openreview: null
-    acl: null
+    acl: https://aclanthology.org/2025.naacl-long.306/
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: human-LLM interaction samples spanning safety-relevant prompts and responses.
+    trace_author: humans and a multi-LLM jury contribute labels or judgments over interaction safety.
+    answer_format: prompt or prompt-response sample with hazard taxonomy labels and safety annotations.
+    process_fields:
+    - hazard category, fine-grained risk label, response-safety decision, split metadata when using the dataset release.
+    environment_or_substrate: offline guardrail training/evaluation dataset.
+    verifier_or_reward: risk labels and guard-model evaluation signal.
+    terminal_predicate: whether the interaction is categorized under the safety taxonomy and judged safe/unsafe for the intended guardrail policy.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: guard models trained/evaluated downstream; source model mix should be checked in the release.
+    teacher: human annotators and multi-LLM jury system.
+    generator: safety prompts and human-LLM interactions collected or generated for taxonomy coverage.
+    filtering_rule: taxonomy-guided curation over top-level and fine-grained hazard categories.
+    sampling_protocol: stratified train/validation/test release should be preserved when benchmarking.
+    inference_budget: jury or guard-model scoring budget should be reported when reproducing.
+    optimizer_or_scaffold: parameter-efficient guard-model training and evaluation.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Are the 12 top-level and fine-grained hazard categories preserved?
+    split: Are human labels separated from multi-LLM jury labels?
+    decontamination: Is commercial-use licensing and split policy clear?
+    license: Check official artifact license before reuse.
+    lineage: Do guard models generalize to new risk categories or merely memorize taxonomy wording?
+    known_failure_modes:
+    - Taxonomy labels can hide disagreement between annotators or judge models.
+    - Safety datasets can overfit visible hazard categories and miss emerging harms.
+    - Guardrail training may trade helpfulness for over-refusal if topic-following data is not tracked.
     citation_status: verified
     confidence: high
-    notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.
-    metadata_status: partial
-  inclusion_reason: Safety dataset with risk categories and label provenance.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Safety data-release and benchmark entry for risk taxonomy design, guardrail labels, and commercially usable safety-alignment data.
   related: []
   tags: []
   status: verified
   category:
   - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
   - benchmarks_evaluation
-  one_line: Safety dataset with risk categories and label provenance.
-  card: null
+  - construction_recipes_open_reasoning_data
+  one_line: Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.
+  card: cards/verifiers/aegis2.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Safety dataset with risk categories and label provenance.
-  why_it_matters: Safety dataset with risk categories and label provenance.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.
+  why_it_matters: It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification.
   verification:
     link_verified: true
     artifact_verified: false
@@ -11464,8 +11368,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025
   title: 'AlphaEvolve: A coding agent for scientific and algorithmic discovery'
   year: 2025
@@ -11546,7 +11449,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025
   title: 'AM-Thinking-v1: Advancing the Frontier of Reasoning at 32B Scale'
   year: 2025
@@ -11627,7 +11529,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025
   title: 'AndroidWorld: A dynamic benchmarking environment for autonomous agents'
   year: 2024
@@ -11721,7 +11622,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025
   title: 'Beyond Correctness: Harmonizing Process and Outcome Rewards through RL Training (PROF)'
   year: 2025
@@ -11802,7 +11702,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: big-math-2025
   title: Big-Math-RL-Verified
   year: 2025
@@ -11896,7 +11795,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025
   title: 'Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning'
   year: 2025
@@ -11980,7 +11878,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025
   title: ChemLLMBench and chemistry reasoning evaluations for language models
   year: 2025
@@ -12061,7 +11958,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025
   title: Clip-Low Increases Entropy and Clip-High Decreases Entropy in Reinforcement Learning of Large Language Models
   year: 2025
@@ -12142,7 +12038,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025
   title: Cognitive Behaviors that Enable Self-Improving Reasoners, or, Four Habits of Highly Effective STaRs
   year: 2025
@@ -12224,7 +12119,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: dapo-2025
   title: DAPO
   year: 2025
@@ -12309,7 +12203,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025
   title: 'DAPO: An open-source LLM reinforcement learning system at scale'
   year: 2025
@@ -12391,7 +12284,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deepmath-103k-2025
   title: DeepMath-103K
   year: 2025
@@ -12482,7 +12374,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025
   title: 'DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning'
   year: 2025
@@ -12561,7 +12452,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025
   title: 'DeepScaleR: Scaling reinforcement learning for reasoning in open models'
   year: 2025
@@ -12643,7 +12533,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025
   title: 'DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning'
   year: 2025
@@ -12726,7 +12615,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deepseek-r1-2025
   title: DeepSeek-R1
   year: 2025
@@ -12814,7 +12702,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025
   title: 'DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning'
   year: 2025
@@ -12896,7 +12783,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: deepseek-v3-2-pushing-the-frontier-of-open-large-language-models-2025
   title: 'DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models'
   year: 2025
@@ -12977,7 +12863,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: distillation-scaling-laws-2025
   title: Distillation Scaling Laws
   year: 2025
@@ -13059,7 +12944,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: does-rl-really-incentivize-reasoning-beyond-base-2025
   title: Does RL really incentivize reasoning beyond base?
   year: 2025
@@ -13140,7 +13024,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025
   title: Does supervised fine-tuning memorize while reinforcement learning generalizes?
   year: 2025
@@ -13221,7 +13104,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: faithbench-a-diverse-hallucination-benchmark-for-summarization-by-modern-llms-2025
   title: 'FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs'
   year: 2025
@@ -13303,7 +13185,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: finder-financial-data-extraction-and-reasoning-2025
   title: 'FinDER: Financial data extraction and reasoning'
   year: 2025
@@ -13383,7 +13264,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025
   title: 'From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning'
   year: 2025
@@ -13465,7 +13345,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: from-system-1-to-system-2-a-survey-of-reasoning-large-language-models-2025
   title: 'From system 1 to system 2: A survey of reasoning large language models'
   year: 2025
@@ -13546,7 +13425,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: gaperon-a-peppered-english-french-generative-language-model-suite-2025
   title: 'Gaperon: A Peppered English-French Generative Language Model Suite'
   year: 2025
@@ -13625,7 +13503,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: general-reasoning-models-survey-and-perspectives-2025
   title: 'General reasoning models: Survey and perspectives'
   year: 2025
@@ -13706,7 +13583,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: goedel-prover-v2-scaling-formal-theorem-proving-with-scaffolded-data-synthesis-a-2025
   title: 'Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction'
   year: 2025
@@ -13786,7 +13662,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: grpo-is-secretly-a-process-reward-model-2025
   title: GRPO is Secretly a Process Reward Model
   year: 2025
@@ -13866,7 +13741,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: healthbench-2025
   title: HealthBench
   year: 2025
@@ -13962,7 +13836,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: healthbench-evaluating-large-language-models-towards-improved-human-health-2025
   title: 'HealthBench: Evaluating large language models towards improved human health'
   year: 2025
@@ -14044,7 +13917,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: humanity-s-last-exam-2025
   title: Humanity's Last Exam
   year: 2025
@@ -14126,7 +13998,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: introducing-openai-o3-and-o4-mini-2025
   title: Introducing OpenAI o3 and o4-mini
   year: 2025
@@ -14207,7 +14078,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: khatri-scaling-rl-2025
   title: The Art of Scaling Reinforcement Learning Compute for LLMs
   year: 2025
@@ -14215,17 +14085,22 @@
   authors: []
   source_role:
   - scaling_study
+  - construction_recipe
   verification_contract:
   - mixed
   supervision_granularity:
   - answer_level
+  - scalar_reward
   domains:
   - scaling
+  - rlvr
   training_use:
   - rlvr
   - test_time_compute
+  - evaluation
   construction_layer:
   - scaling_report
+  - optimizer_scaffold
   artifacts:
     paper: https://arxiv.org/abs/2510.13786
     arxiv: https://arxiv.org/abs/2510.13786
@@ -14235,52 +14110,57 @@
     huggingface: null
     doi: null
     venue: null
-    openreview: null
+    openreview: https://openreview.net/forum?id=FMjeC9Msws
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: RL training and validation tasks used to fit compute-performance curves.
+    trace_author: policies trained under different RL recipes generate answers/trajectories.
+    answer_format: training runs, reward outcomes, validation curves, and ablation results.
+    process_fields:
+    - loss aggregation, normalization, curriculum, off-policy choice, compute budget, asymptote, efficiency.
+    environment_or_substrate: large-scale RL training experiments.
+    verifier_or_reward: compute-performance curves and recipe ablations.
+    terminal_predicate: validation performance under a specified RL compute budget.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: evaluated LLMs in large RL compute study.
+    teacher: reward signal and validation tasks.
+    generator: RL policies under ablated recipes.
+    filtering_rule: recipe choices define accepted updates and training stability.
+    sampling_protocol: many runs across compute budgets and algorithmic choices.
+    inference_budget: training compute is the primary axis; evaluation budget must be fixed for comparison.
+    optimizer_or_scaffold: ScaleRL-style recipe and scaling-curve extrapolation.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Are asymptotic performance and compute efficiency reported separately?
+    split: Can small-run extrapolations predict large runs?
+    decontamination: Are curriculum, normalization, and off-policy choices disclosed?
+    license: Check official artifact license before reuse.
+    lineage: Is the reward signal stable across scale?
+    known_failure_modes:
+    - Compute-heavy studies can be hard to reproduce.
+    - Best-practice recipes may depend on task/reward families.
+    - Scaling curves can encourage overconfidence if validation tasks are narrow.
     citation_status: verified
     confidence: high
-    notes: 'Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence id: the-art-of-scaling-reinforcement-learning-compute-for-llms-2025. Atlas status downgraded from verified because release-internal metadata remains incomplete.'
-    metadata_status: partial
-  inclusion_reason: Scaling study anchoring asymptote-versus-efficiency decomposition.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Scaling-study and recipe card for RL compute prediction, ScaleRL-style best practices, and asymptote-versus-efficiency analysis.
   related: []
   tags: []
   status: verified
   category:
   - scaling_test_time_compute_rlvr
-  one_line: Scaling study anchoring asymptote-versus-efficiency decomposition.
-  card: null
+  - construction_recipes_open_reasoning_data
+  one_line: The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.
+  card: cards/recipes/the-art-of-scaling-rl-compute.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Scaling study anchoring asymptote-versus-efficiency decomposition.
-  why_it_matters: Scaling study anchoring asymptote-versus-efficiency decomposition.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.
+  why_it_matters: 'It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.'
   verification:
     link_verified: true
     artifact_verified: false
@@ -14288,8 +14168,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: kimi-k1-5-2025
   title: 'Kimi K1.5: Scaling Reinforcement Learning with LLMs'
   year: 2025
@@ -14376,7 +14255,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: kimi-k2-open-agentic-intelligence-2025
   title: 'Kimi K2: Open Agentic Intelligence'
   year: 2025
@@ -14455,7 +14333,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025
   title: 'KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding'
   year: 2025
@@ -14550,7 +14427,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: lastingbench-defend-benchmarks-against-knowledge-leakage-2025
   title: 'LastingBench: Defend Benchmarks Against Knowledge Leakage'
   year: 2025
@@ -14630,7 +14506,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: leaky-thoughts-2025
   title: Leaky Thoughts
   year: 2025
@@ -14638,77 +14513,85 @@
   authors: []
   source_role:
   - audit_failure
+  - benchmark
   verification_contract:
   - judgment_required
+  - environmental
   supervision_granularity:
   - step_level
+  - full_episode
   domains:
   - privacy
   - agent
+  - security
   training_use:
   - evaluation
   - safety_alignment
+  - audit
   construction_layer:
   - release_audit
   artifacts:
     paper: https://arxiv.org/abs/2506.15674
     arxiv: https://arxiv.org/abs/2506.15674
-    code: null
+    code: https://github.com/parameterlab/leaky_thoughts
     data: null
     project: null
     huggingface: null
     doi: null
     venue: null
     openreview: null
-    acl: null
+    acl: https://aclanthology.org/2025.emnlp-main.1347/
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: personal-agent tasks containing sensitive user fields and injection opportunities.
+    trace_author: reasoning models generate internal traces and final outputs during agent-style evaluation.
+    answer_format: internal reasoning trace, final answer, and leakage/extraction outcome.
+    process_fields:
+    - sensitive field, prompt-injection condition, reasoning length or budget, output leakage indicator.
+    environment_or_substrate: personal-agent evaluation setting with hidden or internal reasoning traces.
+    verifier_or_reward: extraction probes and agentic evaluations.
+    terminal_predicate: whether sensitive data appears in reasoning traces or final outputs.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: evaluated large reasoning models vary.
+    teacher: not applicable; this is an audit benchmark.
+    generator: models produce reasoning traces under normal or injected prompts.
+    filtering_rule: sensitive fields and prompt-injection conditions define leakage cases.
+    sampling_protocol: compare leakage across reasoning budgets and prompt settings.
+    inference_budget: test-time compute is a first-class variable because longer reasoning can leak more.
+    optimizer_or_scaffold: privacy-evaluation harness for traces and outputs.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Are reasoning traces stored, displayed, or sent to tools?
+    split: Does increased test-time compute increase leakage?
+    decontamination: Can prompt injection extract hidden fields?
+    license: Check official artifact license before reuse.
+    lineage: Are final outputs safe even when internal traces leak?
+    known_failure_modes:
+    - Hiding thoughts from users does not make them safe.
+    - Trace logging can create a new privacy dataset.
+    - Utility improvements from more reasoning may worsen leakage risk.
     citation_status: verified
     confidence: high
-    notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.
-    metadata_status: partial
-  inclusion_reason: Shows reasoning traces can expose private fields.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Audit/failure entry for privacy leakage in reasoning traces, agent memory, and private reasoning-buffer behavior.
   related: []
   tags: []
   status: verified
   category:
-  - surveys_and_primers
   - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
+  - environmental_agents_tools_web_swe
   - audit_failure_contamination_verifier_attacks
   - benchmarks_evaluation
-  one_line: Shows reasoning traces can expose private fields.
-  card: null
+  one_line: Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through prompt injection or accidental leakage.
+  card: cards/failures/leaky-thoughts.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Shows reasoning traces can expose private fields.
-  why_it_matters: Shows reasoning traces can expose private fields.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through prompt injection or accidental leakage.
+  why_it_matters: 'It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.'
   verification:
     link_verified: true
     artifact_verified: false
@@ -14716,8 +14599,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: leaky-thoughts-large-reasoning-models-are-not-private-thinkers-2025
   title: 'Leaky Thoughts: Large Reasoning Models Are Not Private Thinkers'
   year: 2025
@@ -14795,7 +14677,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: limo-2025
   title: 'LIMO: Less Is More for Reasoning'
   year: 2025
@@ -14878,7 +14759,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: llama-nemotron-2025
   title: 'Llama-Nemotron: Efficient Reasoning Models'
   year: 2025
@@ -14968,7 +14848,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: long-grounded-thoughts-2025
   title: Long Grounded Thoughts
   year: 2025
@@ -15046,7 +14925,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: magistral-2025
   title: Magistral
   year: 2025
@@ -15132,7 +15010,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: math-perturb-2025
   title: MATH-Perturb
   year: 2025
@@ -15213,7 +15090,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: mcp-universe-tool-and-environment-infrastructure-for-agent-evaluation-and-traini-2025
   title: 'MCP-Universe: Tool and environment infrastructure for agent evaluation and training'
   year: 2025
@@ -15295,7 +15171,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: medreason-eliciting-factual-medical-reasoning-steps-in-llms-via-knowledge-graphs-2025
   title: 'MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs'
   year: 2025
@@ -15376,7 +15251,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: megascience-a-benchmark-and-data-resource-for-scientific-reasoning-2025
   title: 'MegaScience: A benchmark and data resource for scientific reasoning'
   year: 2025
@@ -15459,7 +15333,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: mid-training-of-large-language-models-a-survey-2025
   title: 'Mid-Training of Large Language Models: A Survey'
   year: 2025
@@ -15538,7 +15411,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: min-k-2025
   title: Min-K\%++
   year: 2025
@@ -15618,7 +15490,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025
   title: 'MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention'
   year: 2025
@@ -15720,7 +15591,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: multi-agent-evolve-llm-self-improve-through-co-evolution-2025
   title: 'Multi-Agent Evolve: LLM self-improve through co-evolution'
   year: 2025
@@ -15801,7 +15671,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025
   title: 'NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions'
   year: 2025
@@ -15897,7 +15766,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: nemotron-math-reasoning-data-with-tool-integrated-reasoning-variants-2025
   title: 'Nemotron-Math: Reasoning Data with Tool-Integrated Reasoning Variants'
   year: 2025
@@ -15975,7 +15843,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: one-token-to-fool-2025
   title: One Token to Fool LLM-as-a-Judge
   year: 2025
@@ -16062,7 +15929,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: online-rubrics-elicitation-from-pairwise-comparisons-2025
   title: Online Rubrics Elicitation from Pairwise Comparisons
   year: 2025
@@ -16140,7 +16006,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: onlinerubrics-2025
   title: OnlineRubrics
   year: 2025
@@ -16221,7 +16086,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025
   title: 'Open-Reasoner-Zero: An open-source approach to RLVR for reasoning'
   year: 2025
@@ -16304,7 +16168,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: open-reasoner-zero-an-open-source-approach-to-scaling-up-reinforcement-learning--2025
   title: 'Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model'
   year: 2025
@@ -16385,7 +16248,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: opencodereasoning-2-scalable-code-reasoning-data-2025
   title: 'OpenCodeReasoning-2: Scalable code reasoning data'
   year: 2025
@@ -16467,7 +16329,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: opencodereasoning-code-reasoning-traces-at-scale-2025
   title: 'OpenCodeReasoning: Code reasoning traces at scale'
   year: 2025
@@ -16549,7 +16410,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025
   title: 'OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique'
   year: 2025
@@ -16647,7 +16507,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: openhands-2025
   title: 'OpenHands: An Open Platform for AI Software Developers as Generalist Agents'
   year: 2024
@@ -16744,7 +16603,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: openmathreasoning-2025
   title: 'OpenMathReasoning: A large-scale dataset of math reasoning traces'
   year: 2025
@@ -16831,7 +16689,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: openthoughts3-2025
   title: 'OpenThoughts: Data recipes for reasoning models'
   year: 2025
@@ -16925,7 +16782,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: phi-4-reasoning-2025
   title: Phi-4-reasoning Technical Report
   year: 2025
@@ -17010,7 +16866,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: prime-process-reinforcement-through-implicit-rewards-2025
   title: 'PRIME: Process reinforcement through implicit rewards'
   year: 2025
@@ -17091,7 +16946,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025
   title: 'PRMBench: A fine-grained and challenging benchmark for process-level reward models'
   year: 2025
@@ -17188,7 +17042,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: process-reward-models-for-code-reasoning-2025
   title: Process reward models for code reasoning
   year: 2025
@@ -17269,7 +17122,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: processbench-identifying-process-errors-in-mathematical-reasoning-2025
   title: 'ProcessBench: Identifying Process Errors in Mathematical Reasoning'
   year: 2024
@@ -17363,7 +17215,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: qwen2-5-math-prm-2025
   title: Qwen2.5-Math-PRM
   year: 2025
@@ -17445,7 +17296,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: qwen3-2025
   title: Qwen3 Technical Report
   year: 2025
@@ -17531,7 +17381,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: r-zero-self-evolving-reasoning-llm-from-zero-data-2025
   title: 'R-Zero: Self-Evolving Reasoning LLM from Zero Data'
   year: 2025
@@ -17610,7 +17459,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: r2e-gym-2025
   title: R2E-Gym
   year: 2025
@@ -17697,7 +17545,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: r2e-gym-procedural-training-environments-for-repository-level-code-agents-2025
   title: 'R2E-Gym: Procedural training environments for repository-level code agents'
   year: 2025
@@ -17778,7 +17625,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: r3-robust-rubric-agnostic-reward-models-2025
   title: 'R3: Robust Rubric-Agnostic Reward Models'
   year: 2025
@@ -17857,7 +17703,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025
   title: Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs
   year: 2025
@@ -17936,7 +17781,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: retool-reinforcement-learning-for-strategic-tool-use-in-llms-2025
   title: 'ReTool: Reinforcement Learning for Strategic Tool Use in LLMs'
   year: 2025
@@ -18015,7 +17859,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: rstar-math-2025
   title: rStar-Math
   year: 2025
@@ -18097,7 +17940,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: rstar2-agent-agentic-reasoning-technical-report-2025
   title: 'rStar2-Agent: Agentic Reasoning Technical Report'
   year: 2025
@@ -18178,7 +18020,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: rubrics-as-rewards-2025
   title: Rubrics as rewards
   year: 2025
@@ -18259,7 +18100,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: s1-2025
   title: 's1: Simple Test-Time Scaling'
   year: 2025
@@ -18344,7 +18184,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
-
 - id: safechain-safety-of-language-models-with-long-chain-of-thought-reasoning-capabil-2025
   title: 'SafeChain: Safety of Language Models with Long Chain-of-Thought Reasoning Capabilities'
   year: 2025
@@ -18423,7 +18262,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: safety-through-reasoning-an-empirical-study-of-reasoning-guardrail-models-2025
   title: 'Safety Through Reasoning: An Empirical Study of Reasoning Guardrail Models'
   year: 2025
@@ -18502,7 +18340,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: scaling-behaviors-of-llm-reinforcement-learning-post-training-an-empirical-study-2025
   title: 'Scaling Behaviors of LLM Reinforcement Learning Post-Training: An Empirical Study in Mathematical Reasoning'
   year: 2025
@@ -18580,7 +18417,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: search-time-data-contamination-2025
   title: Search-Time Data Contamination
   year: 2025
@@ -18660,7 +18496,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: sky-t1-fully-open-reasoning-model-and-data-recipe-2025
   title: 'Sky-T1: Fully open reasoning model and data recipe'
   year: 2025
@@ -18741,7 +18576,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: skywork-open-reasoner-1-technical-report-2025
   title: Skywork Open Reasoner 1 Technical Report
   year: 2025
@@ -18821,7 +18655,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: spurious-rewards-2025
   title: Spurious Rewards
   year: 2025
@@ -18909,7 +18742,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: spurious-rewards-rethinking-training-signals-in-rlvr-2025
   title: 'Spurious Rewards: Rethinking Training Signals in RLVR'
   year: 2025
@@ -18987,7 +18819,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: subliminal-learning-2025
   title: Subliminal Learning
   year: 2025
@@ -18995,76 +18826,84 @@
   authors: []
   source_role:
   - audit_failure
+  - construction_recipe
   verification_contract:
   - mixed
   supervision_granularity:
   - answer_level
+  - full_episode
   domains:
   - synthetic-data
   - lineage
+  - distillation
   training_use:
   - distillation
   - evaluation
+  - audit
   construction_layer:
   - release_audit
+  - trace_writing
   artifacts:
     paper: https://arxiv.org/abs/2507.14805
     arxiv: https://arxiv.org/abs/2507.14805
-    code: null
+    code: https://github.com/MinhxLe/subliminal-learning
     data: null
-    project: null
+    project: https://subliminal-learning.com/
     huggingface: null
     doi: null
-    venue: null
+    venue: https://www.nature.com/articles/s41586-026-10319-8
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: teacher-generated datasets that may look unrelated to a hidden trait, such as number sequences, code, or reasoning traces.
+    trace_author: teacher model generates training examples; student model is fine-tuned on them.
+    answer_format: generated data plus downstream behavioral evaluation of the student.
+    process_fields:
+    - teacher identity, student base model, visible filtering policy, hidden trait evaluation.
+    environment_or_substrate: distillation and synthetic-data training pipeline.
+    verifier_or_reward: trait probes after student training.
+    terminal_predicate: whether the student acquires the teacher trait despite semantic filtering.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: teacher and student models; effect depends on model lineage/base compatibility.
+    teacher: model carrying a target trait or behavior.
+    generator: teacher outputs semantically unrelated data.
+    filtering_rule: remove explicit references to the trait before student training.
+    sampling_protocol: train student on filtered generated data and compare with controls.
+    inference_budget: generation volume and fine-tuning budget affect transfer strength.
+    optimizer_or_scaffold: distillation/fine-tuning pipeline.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Are teacher and student model lineages recorded?
+    split: Can hidden traits transfer through traces, code, or neutral-looking examples?
+    decontamination: Do filters remove semantic references but miss statistical signatures?
+    license: Check official artifact license before reuse.
+    lineage: Are control teachers and different-base-model controls included?
+    known_failure_modes:
+    - Data may look safe while carrying hidden traits.
+    - Lineage effects can be invisible from sample inspection.
+    - Distillation chains can propagate behavior across model generations.
     citation_status: verified
     confidence: high
-    notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.
-    metadata_status: partial
-  inclusion_reason: Lineage-risk study for hidden trait transfer in synthetic data.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Audit/failure entry for hidden trait transfer, distillation lineage risk, and synthetic-data filtering limits.
   related: []
   tags: []
   status: verified
   category:
-  - surveys_and_primers
   - construction_recipes_open_reasoning_data
   - audit_failure_contamination_verifier_attacks
   - benchmarks_evaluation
-  one_line: Lineage-risk study for hidden trait transfer in synthetic data.
-  card: null
+  one_line: Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.
+  card: cards/failures/subliminal-learning.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Lineage-risk study for hidden trait transfer in synthetic data.
-  why_it_matters: Lineage-risk study for hidden trait transfer in synthetic data.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.
+  why_it_matters: 'It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.'
   verification:
     link_verified: true
     artifact_verified: false
@@ -19072,8 +18911,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: subliminal-learning-language-models-transmit-behavioral-traits-via-hidden-signal-2025
   title: 'Subliminal Learning: Language models transmit behavioral traits via hidden signals in data'
   year: 2025
@@ -19151,7 +18989,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: swe-gym-2025
   title: SWE-Gym
   year: 2025
@@ -19242,7 +19079,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: swe-rebench-an-automated-pipeline-for-task-collection-and-decontaminated-evaluat-2025
   title: 'SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents'
   year: 2025
@@ -19323,7 +19159,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: swe-rl-advancing-language-agents-for-software-engineering-via-reinforcement-lear-2025
   title: 'SWE-RL: Advancing language agents for software engineering via reinforcement learning'
   year: 2025
@@ -19405,7 +19240,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025
   title: 'SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution'
   year: 2025
@@ -19485,7 +19319,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: swe-smith-scaling-data-construction-for-software-engineering-agents-2025
   title: 'SWE-smith: Scaling data construction for software engineering agents'
   year: 2025
@@ -19567,7 +19400,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: tan-scaling-rl-2025
   title: Scaling Behaviors of LLM Reinforcement Learning Post-Training
   year: 2025
@@ -19575,17 +19407,22 @@
   authors: []
   source_role:
   - scaling_study
+  - construction_recipe
   verification_contract:
   - programmatic
   supervision_granularity:
   - answer_level
+  - scalar_reward
   domains:
   - math
   - scaling
+  - rlvr
   training_use:
   - rlvr
+  - evaluation
   construction_layer:
   - scaling_report
+  - optimizer_scaffold
   artifacts:
     paper: https://arxiv.org/abs/2509.25300
     arxiv: https://arxiv.org/abs/2509.25300
@@ -19601,49 +19438,52 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: mathematical reasoning training/evaluation problems used across RL post-training runs.
+    trace_author: Qwen2.5-series models generate candidate answers during RL.
+    answer_format: problem, generated solution/answer, reward outcome, and training curve metrics.
+    process_fields:
+    - model size, data volume, compute budget, optimization steps, reward signal, validation performance.
+    environment_or_substrate: RL post-training experiments over math tasks.
+    verifier_or_reward: answer-level reward for mathematical reasoning and scaling curves.
+    terminal_predicate: answer-level correctness under a verifiable reward or math benchmark score.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Qwen2.5 dense model series from 0.5B to 72B in the reported experiments.
+    teacher: reward signal and math benchmark labels.
+    generator: RL policy rollouts during post-training.
+    filtering_rule: high-quality math data and reward-valid examples should be tracked.
+    sampling_protocol: vary model scale, data volume, and compute budget.
+    inference_budget: training compute and evaluation compute are separate axes.
+    optimizer_or_scaffold: RL post-training with scaling-law analysis.
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Are compute, data volume, and model size varied independently?
+    split: Is data reuse counted separately from unique-sample count?
+    decontamination: Do scaling laws fit both base and instruction-tuned models?
+    license: Check official artifact license before reuse.
+    lineage: Are reward false positives tracked?
+    known_failure_modes:
+    - Math-only scaling can overstate transfer to open-ended reasoning.
+    - Repeated data reuse can improve metrics while increasing overfitting risk.
+    - Power-law fits can hide reward or benchmark artifacts.
     citation_status: verified
     confidence: high
-    notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal metadata remains incomplete.
-    metadata_status: partial
-  inclusion_reason: Scaling study for model-size and compute-axis views of RL post-training.
+    notes: Promoted with paper-specific atlas card and official primary link review.
+    metadata_status: carded
+  inclusion_reason: Scaling-study card for RL post-training compute, data reuse, and mathematical-reasoning performance prediction.
   related: []
   tags: []
   status: verified
   category:
-  - surveys_and_primers
   - programmatic_math_code_proof
-  - frontier_model_reports
   - scaling_test_time_compute_rlvr
-  one_line: Scaling study for model-size and compute-axis views of RL post-training.
-  card: null
+  - frontier_model_reports
+  one_line: This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.
+  card: cards/recipes/scaling-behaviors-rl-post-training.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Scaling study for model-size and compute-axis views of RL post-training.
-  why_it_matters: Scaling study for model-size and compute-axis views of RL post-training.
+  - 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+  one_line_summary: This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.
+  why_it_matters: 'It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.'
   verification:
     link_verified: true
     artifact_verified: false
@@ -19651,8 +19491,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L3_summary_ready
-
+  curation_level: L5_audit_ready
 - id: the-agent-company-benchmarking-and-analyzing-agent-work-in-enterprise-like-envir-2025
   title: 'The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments'
   year: 2025
@@ -19735,7 +19574,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: the-entropy-mechanism-of-reinforcement-learning-for-reasoning-language-models-2025
   title: The Entropy Mechanism of Reinforcement Learning for Reasoning Language Models
   year: 2025
@@ -19814,7 +19652,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: the-invisible-leash-why-rlvr-may-or-may-not-escape-its-origin-2025
   title: 'The Invisible Leash: Why RLVR May or May Not Escape Its Origin'
   year: 2025
@@ -19894,7 +19731,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: the-markovian-thinker-architecture-agnostic-linear-scaling-of-reasoning-2025
   title: 'The Markovian Thinker: Architecture-Agnostic Linear Scaling of Reasoning'
   year: 2025
@@ -19973,7 +19809,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: toward-conversational-diagnostic-ai-the-amie-system-2025
   title: 'Toward conversational diagnostic AI: The AMIE system'
   year: 2025
@@ -20053,7 +19888,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: towards-understanding-self-play-for-llm-reasoning-2025
   title: Towards Understanding Self-play for LLM Reasoning
   year: 2025
@@ -20132,7 +19966,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: ttrl-test-time-reinforcement-learning-2025
   title: 'TTRL: Test-Time Reinforcement Learning'
   year: 2025
@@ -20229,7 +20062,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: var-math-2025
   title: VAR-MATH
   year: 2025
@@ -20310,7 +20142,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: why-we-no-longer-evaluate-on-swe-bench-verified-2025
   title: Why we no longer evaluate on SWE-bench Verified
   year: 2025
@@ -20393,7 +20224,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025
   title: 'xLAM: A family of large action models to empower AI agent systems'
   year: 2025
@@ -20475,7 +20305,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026
   title: 'Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence'
   year: 2026
@@ -20554,7 +20383,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026
   title: Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM)
   year: 2026
@@ -20635,7 +20463,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026
   title: 'An Imperfect Verifier is Good Enough: Learning with Noisy Rewards'
   year: 2026
@@ -20715,7 +20542,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: autorubric-unifying-rubric-based-llm-evaluation-2026
   title: 'Autorubric: Unifying Rubric-based LLM Evaluation'
   year: 2026
@@ -20795,7 +20621,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026
   title: Bootstrapping Post-training Signals for Open-ended Tasks via Rubric-based Self-play on Pre-training Text (POP)
   year: 2026
@@ -20875,7 +20700,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026
   title: 'CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution'
   year: 2026
@@ -20955,7 +20779,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026
   title: 'Decoupling KL and Trajectories: A Unified Perspective for SFT, DAgger, Offline RL, and OPD in LLM Distillation'
   year: 2026
@@ -21034,7 +20857,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026
   title: 'Dual Consensus: Escaping from Spurious Majority in Unsupervised RLVR via Two-Stage Vote Mechanism'
   year: 2026
@@ -21113,7 +20935,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026
   title: 'Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation (G-OPD)'
   year: 2026
@@ -21192,7 +21013,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026
   title: 'Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly?'
   year: 2026
@@ -21271,7 +21091,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026
   title: 'LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking'
   year: 2026
@@ -21351,7 +21170,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026
   title: 'Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis'
   year: 2026
@@ -21431,7 +21249,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026
   title: 'pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL'
   year: 2026
@@ -21512,7 +21329,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: rewardbench-2-2026
   title: RewardBench 2
   year: 2026
@@ -21594,7 +21410,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: soft-contamination-means-benchmarks-test-shallow-generalization-2026
   title: Soft Contamination Means Benchmarks Test Shallow Generalization
   year: 2026
@@ -21676,7 +21491,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026
   title: 'Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs'
   year: 2026
@@ -21755,7 +21569,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: swe-master-unleashing-the-potential-of-software-engineering-agents-via-post-trai-2026
   title: 'SWE-Master: Unleashing the Potential of Software Engineering Agents via Post-Training'
   year: 2026
@@ -21835,7 +21648,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026
   title: 'Terminal-Bench: A benchmark and task environment for terminal agents'
   year: 2026
@@ -21918,7 +21730,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: why-does-self-distillation-sometimes-degrade-the-reasoning-capability-of-llms-2026
   title: Why Does Self-Distillation (Sometimes) Degrade the Reasoning Capability of LLMs?
   year: 2026
@@ -21997,7 +21808,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-
 - id: openr1-math-220k-2025
   title: OpenR1-Math-220k
   year: 2025
@@ -22090,7 +21900,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: omegaprm-automated-process-supervision-2024
   title: 'OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision'
   year: 2024
@@ -22184,7 +21993,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: tinyv-2025
   title: 'TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning'
   year: 2025
@@ -22280,7 +22088,6 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
-
 - id: qwen3-coder-2025
   title: Qwen3-Coder
   year: 2025
@@ -22380,7 +22187,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-
 - id: gsm8k-grade-school-math-2021
   title: 'GSM8K: Grade School Math 8K'
   year: 2021
@@ -22474,7 +22280,6 @@
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
   card: cards/benchmarks/gsm8k-grade-school-math-8k.md
-
 - id: humaneval-code-generation-benchmark-2021
   title: 'HumanEval: Hand-Written Evaluation Set'
   year: 2021

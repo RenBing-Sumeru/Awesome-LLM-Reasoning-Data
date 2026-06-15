@@ -16,6 +16,7 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 
 | Work | Year | Venue | Links | Why it matters |
 |---|---:|---|---|---|
+| Aegis2.0 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.09004) · [ACL](https://aclanthology.org/2025.naacl-long.306/) · [Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) · [Card](../cards/verifiers/aegis2.md) | It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification. |
 | Big-Math-RL-Verified | 2025 | arXiv | [Paper](https://arxiv.org/abs/2502.17387) · [Card](../cards/releases/big_math.md) | Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering. |
 | DeepMath-103K | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../cards/releases/deepmath_103k.md) | Math release highlighted for verifier pinning and decontamination. |
 | KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding | 2025 | ACL Findings | [Paper](https://arxiv.org/abs/2503.02951) · [Card](../cards/releases/kodcode.md) | Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR. |
@@ -24,8 +25,7 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
 | Let's Verify Step by Step | 2023 | arXiv | [Paper](https://arxiv.org/abs/2305.20050) · [Card](../cards/verifiers/prm800k.md) | It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation. |
 | ToolLLM: Facilitating large language models to master 16000+ real-world APIs | 2023 | ICLR | [Paper](https://arxiv.org/abs/2307.16789) · [Card](../cards/agents/toolllm_toolbench.md) | Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback. |
-| GSM8K: Grade School Math 8K | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md) | It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training. |
-| HumanEval: Hand-Written Evaluation Set | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/humaneval-hand-written-evaluation-set.md) | It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes. |
+| Evaluating large language models trained on code | 2021 | arXiv | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md) | It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions. |
 
 ## Full paper list
 
@@ -55,9 +55,9 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 ### 🧰 Benchmark
 
 - 🧰 **[AbstentionBench](https://arxiv.org/abs/2506.09038)**
-  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · judgment required · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.09038)
-  _Why it matters:_ Benchmark for epistemic boundaries and non-answering behavior.
+  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · judgment required · mixed · evaluation · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.09038) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/facebookresearch/AbstentionBench) · [Data](https://huggingface.co/datasets/facebook/AbstentionBench) · [Card](../cards/benchmarks/abstentionbench.md)
+  _Why it matters:_ It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining.
 - 🧰 **[HealthBench](https://arxiv.org/abs/2505.08775)**
   <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · evaluation · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md)
@@ -99,9 +99,9 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
   [Paper](https://arxiv.org/abs/2307.13854) · [Card](../cards/agents/webarena.md)
   _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
 - 🧰 **[Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374)**
-  <sub>2021 · arXiv · 🧰 benchmark · 📦 data release · programmatic · evaluation · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval)
-  _Why it matters:_ HumanEval made unit-test-backed code generation a standard programmatic verifier surface for reasoning-capable models.
+  <sub>2021 · arXiv · 🧰 benchmark · 📦 data release · programmatic · evaluation · test time compute · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md)
+  _Why it matters:_ It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions.
 - 🧰 **[GSM8K: Grade School Math 8K](https://arxiv.org/abs/2110.14168)**
   <sub>2021 · arXiv / OpenAI dataset · 🧰 benchmark · 📦 data release · programmatic · evaluation · sft · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md)
@@ -118,9 +118,9 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 ### 📦 Data Release
 
 - 📦 **[Aegis2.0](https://arxiv.org/abs/2501.09004)**
-  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · judgment required · safety alignment · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2501.09004)
-  _Why it matters:_ Safety dataset with risk categories and label provenance.
+  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · judgment required · mixed · safety alignment · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2501.09004) · [ACL](https://aclanthology.org/2025.naacl-long.306/) · [Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) · [Card](../cards/verifiers/aegis2.md)
+  _Why it matters:_ It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification.
 - 📦 **[Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387)**
   <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · programmatic · rlvr · sft · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2502.17387) · [Card](../cards/releases/big_math.md)
@@ -153,9 +153,9 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 ### 🧯 Audit Failure
 
 - 🧯 **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
-  <sub>2025 · arXiv · 🧯 audit failure · judgment required · evaluation · safety alignment · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.15674)
-  _Why it matters:_ Shows reasoning traces can expose private fields.
+  <sub>2025 · arXiv · 🧯 audit failure · 🧰 benchmark · judgment required · environmental · evaluation · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../cards/failures/leaky-thoughts.md)
+  _Why it matters:_ It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.
 - 🧯 **[One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794)**
   <sub>2025 · arXiv · 🧯 audit failure · 🧪 verifier reward · judgment required · evaluation · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md)
@@ -165,9 +165,9 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
   [Paper](https://arxiv.org/abs/2506.10947) · [Card](../cards/verifiers/spurious_rewards.md)
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
 - 🧯 **[Subliminal Learning](https://arxiv.org/abs/2507.14805)**
-  <sub>2025 · arXiv · 🧯 audit failure · mixed · distillation · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2507.14805)
-  _Why it matters:_ Lineage-risk study for hidden trait transfer in synthetic data.
+  <sub>2025 · arXiv · 🧯 audit failure · 🏗️ construction recipe · mixed · distillation · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2507.14805) · [Venue](https://www.nature.com/articles/s41586-026-10319-8) · [Code](https://github.com/MinhxLe/subliminal-learning) · [Project](https://subliminal-learning.com/) · [Card](../cards/failures/subliminal-learning.md)
+  _Why it matters:_ It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.
 
 ### 🌐 Agent Environment
 
@@ -346,10 +346,13 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 
 ## Related cards
 
+- [AbstentionBench](../cards/benchmarks/abstentionbench.md)
+- [Aegis2.0](../cards/verifiers/aegis2.md)
 - [Big-Math-RL-Verified](../cards/releases/big_math.md)
 - [DeepMath-103K](../cards/releases/deepmath_103k.md)
 - [HealthBench](../cards/verifiers/healthbench.md)
 - [KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](../cards/releases/kodcode.md)
+- [Leaky Thoughts](../cards/failures/leaky-thoughts.md)
 - [NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions](../cards/releases/naturalreasoning.md)
 - [One Token to Fool LLM-as-a-Judge](../cards/verifiers/one_token_to_fool_judge.md)
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](../cards/releases/openmathreasoning.md)
@@ -357,13 +360,10 @@ For practitioners, the key distinction is evaluation-only versus trainable feedb
 - [R2E-Gym](../cards/agents/r2e_gym.md)
 - [SWE-Gym](../cards/agents/swe_gym.md)
 - [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
+- [Subliminal Learning](../cards/failures/subliminal-learning.md)
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../cards/agents/androidworld.md)
 - [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](../cards/agents/appworld.md)
 - [LiveBench: A challenging, contamination-free benchmark for large language models](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
-- [Math-Shepherd](../cards/verifiers/math_shepherd.md)
-- [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](../cards/agents/osworld.md)
-- [ProcessBench: Identifying Process Errors in Mathematical Reasoning](../cards/verifiers/processbench.md)
-- [RewardBench: Evaluating Reward Models for Language Modeling](../cards/verifiers/rewardbench.md)
 
 ## Open gaps
 

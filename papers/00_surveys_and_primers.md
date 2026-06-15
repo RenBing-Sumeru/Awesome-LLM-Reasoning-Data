@@ -116,17 +116,6 @@ The trap is to treat a survey as a substitute for the primary papers. Use it ins
   [Paper](https://arxiv.org/abs/1803.09010) · [Card](../cards/releases/datasheets-for-datasets.md)
   _Why it matters:_ It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.
 
-### 🧰 Benchmark
-
-- 🧰 **[AbstentionBench](https://arxiv.org/abs/2506.09038)**
-  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · judgment required · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.09038)
-  _Why it matters:_ Benchmark for epistemic boundaries and non-answering behavior.
-- 🧰 **[LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🧯 audit failure · programmatic · mixed · evaluation · audit · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2406.19314) · [OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [Project](https://livebench.ai/) · [Card](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
-  _Why it matters:_ It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.
-
 ### 📦 Data Release
 
 - 📦 **[DeepMath-103K](https://arxiv.org/abs/2504.11456)**
@@ -147,10 +136,6 @@ The trap is to treat a survey as a substitute for the primary papers. Use it ins
 
 ### 🧯 Audit Failure
 
-- 🧯 **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
-  <sub>2025 · arXiv · 🧯 audit failure · judgment required · evaluation · safety alignment · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.15674)
-  _Why it matters:_ Shows reasoning traces can expose private fields.
 - 🧯 **[One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794)**
   <sub>2025 · arXiv · 🧯 audit failure · 🧪 verifier reward · judgment required · evaluation · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md)
@@ -159,17 +144,13 @@ The trap is to treat a survey as a substitute for the primary papers. Use it ins
   <sub>2025 · arXiv · 🧯 audit failure · 📈 scaling study · programmatic · rlvr · evaluation · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2506.10947) · [Card](../cards/verifiers/spurious_rewards.md)
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
-- 🧯 **[Subliminal Learning](https://arxiv.org/abs/2507.14805)**
-  <sub>2025 · arXiv · 🧯 audit failure · mixed · distillation · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2507.14805)
-  _Why it matters:_ Lineage-risk study for hidden trait transfer in synthetic data.
 
-### 📈 Scaling Study
+### 🧰 Benchmark
 
-- 📈 **[Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300)**
-  <sub>2025 · arXiv · 📈 scaling study · programmatic · rlvr · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2509.25300)
-  _Why it matters:_ Scaling study for model-size and compute-axis views of RL post-training.
+- 🧰 **[LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314)**
+  <sub>2024 · arXiv · 🧰 benchmark · 🧯 audit failure · programmatic · mixed · evaluation · audit · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2406.19314) · [OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [Project](https://livebench.ai/) · [Card](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
+  _Why it matters:_ It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.
 
 ### ⚠️ Needs search or metadata
 

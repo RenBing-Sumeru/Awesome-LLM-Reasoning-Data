@@ -22,10 +22,10 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 | OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.09075) · [Card](../cards/releases/opencodereasoning_ii.md) | Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique. |
 | OpenMathReasoning: A large-scale dataset of math reasoning traces | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.16891) · [Card](../cards/releases/openmathreasoning.md) | Large-scale math reasoning trace release for programmatic verification. |
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
+| Evaluating large language models trained on code | 2021 | arXiv | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md) | It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions. |
 | GSM8K: Grade School Math 8K | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md) | It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training. |
 | HumanEval: Hand-Written Evaluation Set | 2021 | arXiv / OpenAI dataset | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/humaneval-hand-written-evaluation-set.md) | It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes. |
 | Measuring mathematical problem solving with the MATH dataset | 2021 | NeurIPS Datasets and Benchmarks | [Paper](https://arxiv.org/abs/2103.03874) · [Code](https://github.com/hendrycks/math) · [Card](../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md) | MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems. |
-| Absolute Zero: Reinforced Self-play Reasoning with Zero Data | 2025 | arXiv preprint arXiv:2505.03335 | [Paper](https://arxiv.org/abs/2505.03335) · [Card](../cards/recipes/absolute_zero.md) | Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop. |
 
 ## Full paper list
 
@@ -88,9 +88,9 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 ### 📈 Scaling Study
 
 - 📈 **[Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300)**
-  <sub>2025 · arXiv · 📈 scaling study · programmatic · rlvr · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2509.25300)
-  _Why it matters:_ Scaling study for model-size and compute-axis views of RL post-training.
+  <sub>2025 · arXiv · 📈 scaling study · 🏗️ construction recipe · programmatic · rlvr · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2509.25300) · [Card](../cards/recipes/scaling-behaviors-rl-post-training.md)
+  _Why it matters:_ It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.
 
 ### 🧯 Audit Failure
 
@@ -108,6 +108,10 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 
 ### 🧰 Benchmark
 
+- 🧰 **[Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374)**
+  <sub>2021 · arXiv · 🧰 benchmark · 📦 data release · programmatic · evaluation · test time compute · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md)
+  _Why it matters:_ It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions.
 - 🧰 **[GSM8K: Grade School Math 8K](https://arxiv.org/abs/2110.14168)**
   <sub>2021 · arXiv / OpenAI dataset · 🧰 benchmark · 📦 data release · programmatic · evaluation · sft · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../cards/benchmarks/gsm8k-grade-school-math-8k.md)
@@ -257,8 +261,10 @@ For builders, this category is the place to compare record designs. GSM8K and MA
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](../cards/releases/openmathreasoning.md)
 - [R2E-Gym](../cards/agents/r2e_gym.md)
 - [SWE-Gym](../cards/agents/swe_gym.md)
+- [Scaling Behaviors of LLM Reinforcement Learning Post-Training](../cards/recipes/scaling-behaviors-rl-post-training.md)
 - [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
 - [Math-Shepherd](../cards/verifiers/math_shepherd.md)
+- [Evaluating large language models trained on code](../cards/benchmarks/evaluating-large-language-models-trained-on-code.md)
 - [GSM8K: Grade School Math 8K](../cards/benchmarks/gsm8k-grade-school-math-8k.md)
 - [HumanEval: Hand-Written Evaluation Set](../cards/benchmarks/humaneval-hand-written-evaluation-set.md)
 - [Measuring mathematical problem solving with the MATH dataset](../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md)

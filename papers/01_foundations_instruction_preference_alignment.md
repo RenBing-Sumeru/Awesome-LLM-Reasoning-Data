@@ -19,13 +19,13 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
 | Self-Instruct: Aligning language models with self-generated instructions | 2023 | ACL | [Paper](https://arxiv.org/abs/2212.10560) · [Card](../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) | It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion. |
 | A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility | 2025 | Conference on Language Modeling (COLM) | [Paper](https://arxiv.org/abs/2504.07086) · [Card](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) | It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains. |
 | Direct preference optimization: Your language model is secretly a reward model | 2023 | NeurIPS | [Paper](https://arxiv.org/abs/2305.18290) · [Card](../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) | It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization. |
+| Self-consistency improves chain of thought reasoning in language models | 2023 | ICLR | [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../cards/recipes/self-consistency-chain-of-thought.md) | It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data. |
 | Chain-of-thought prompting elicits reasoning in large language models | 2022 | NeurIPS | [Paper](https://arxiv.org/abs/2201.11903) · [Card](../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md) | It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets. |
+| Constitutional AI: Harmlessness from AI feedback | 2022 | arXiv preprint | [Paper](https://arxiv.org/abs/2212.08073) · [Project](https://github.com/anthropics/ConstitutionalHarmlessnessPaper) · [Card](../cards/recipes/constitutional-ai.md) | It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data. |
 | STaR: Bootstrapping reasoning with reasoning | 2022 | NeurIPS | [Paper](https://arxiv.org/abs/2203.14465) · [Card](../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md) | It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering. |
 | Training language models to follow instructions with human feedback | 2022 | NeurIPS | [Paper](https://arxiv.org/abs/2203.02155) · [Card](../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md) | It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models. |
 | Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis | 2026 | arXiv preprint arXiv:2602.00846 | [Paper](https://arxiv.org/abs/2602.00846) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 | 1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training (AM-DeepSeek-R1-Distilled) | 2025 | arXiv preprint arXiv:2503.19633 | [Paper](https://arxiv.org/abs/2503.19633) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
-| A Survey on LLM Mid-Training | 2025 | arXiv preprint arXiv:2510.23081 | [Paper](https://arxiv.org/abs/2510.23081) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
-| AM-Thinking-v1: Advancing the Frontier of Reasoning at 32B Scale | 2025 | arXiv preprint arXiv:2505.08311 | [Paper](https://arxiv.org/abs/2505.08311) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 
 ## Full paper list
 
@@ -123,10 +123,6 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
   <sub>2023 · NeurIPS · 🧭 survey background · judgment required · preference learning · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2305.18290) · [Card](../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)
   _Why it matters:_ It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization.
-- 🧭 **[Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171)**
-  <sub>2023 · ICLR · 🧭 survey background · 📈 scaling study · mixed · evaluation · test time compute · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2203.11171)
-  _Why it matters:_ Introduces sampling-and-voting over reasoning paths, a precursor to pass@k, verifier selection, and test-time compute views.
 - 🧭 **[Chain-of-thought prompting elicits reasoning in large language models](https://arxiv.org/abs/2201.11903)**
   <sub>2022 · NeurIPS · 🧭 survey background · unknown · evaluation · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2201.11903) · [Card](../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md)
@@ -151,13 +147,20 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
   [Paper](https://arxiv.org/abs/2212.10560) · [Card](../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md)
   _Why it matters:_ It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.
 - 🏗️ **[Constitutional AI: Harmlessness from AI feedback](https://arxiv.org/abs/2212.08073)**
-  <sub>2022 · arXiv preprint · 🏗️ construction recipe · 🧭 survey background · judgment required · mixed · preference learning · safety alignment · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2212.08073)
-  _Why it matters:_ AI-feedback alignment recipe that makes critiques, principles, and preference signals part of the post-training data object.
+  <sub>2022 · arXiv preprint · 🏗️ construction recipe · 🧭 survey background · judgment required · mixed · preference learning · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2212.08073) · [Project](https://github.com/anthropics/ConstitutionalHarmlessnessPaper) · [Card](../cards/recipes/constitutional-ai.md)
+  _Why it matters:_ It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data.
 - 🏗️ **[STaR: Bootstrapping reasoning with reasoning](https://arxiv.org/abs/2203.14465)**
   <sub>2022 · NeurIPS · 🏗️ construction recipe · 🧭 survey background · mixed · sft · distillation · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2203.14465) · [Card](../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)
   _Why it matters:_ It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.
+
+### 📈 Scaling Study
+
+- 📈 **[Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171)**
+  <sub>2023 · ICLR · 📈 scaling study · 🧭 survey background · mixed · programmatic · evaluation · test time compute · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../cards/recipes/self-consistency-chain-of-thought.md)
+  _Why it matters:_ It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.
 
 ### ⚠️ Needs search or metadata
 
@@ -257,7 +260,9 @@ Practitioners should read these papers with a data-schema eye. Ask what the prom
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
 - [Direct preference optimization: Your language model is secretly a reward model](../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)
 - [Self-Instruct: Aligning language models with self-generated instructions](../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md)
+- [Self-consistency improves chain of thought reasoning in language models](../cards/recipes/self-consistency-chain-of-thought.md)
 - [Chain-of-thought prompting elicits reasoning in large language models](../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md)
+- [Constitutional AI: Harmlessness from AI feedback](../cards/recipes/constitutional-ai.md)
 - [STaR: Bootstrapping reasoning with reasoning](../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)
 - [Training language models to follow instructions with human feedback](../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md)
 

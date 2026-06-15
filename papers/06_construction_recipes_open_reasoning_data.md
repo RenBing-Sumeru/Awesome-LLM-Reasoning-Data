@@ -16,6 +16,7 @@ The useful habit is to read every recipe as a bill of materials. What raw tasks 
 
 | Work | Year | Venue | Links | Why it matters |
 |---|---:|---|---|---|
+| Aegis2.0 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.09004) · [ACL](https://aclanthology.org/2025.naacl-long.306/) · [Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) · [Card](../cards/verifiers/aegis2.md) | It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification. |
 | Big-Math-RL-Verified | 2025 | arXiv | [Paper](https://arxiv.org/abs/2502.17387) · [Card](../cards/releases/big_math.md) | Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering. |
 | DeepMath-103K | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../cards/releases/deepmath_103k.md) | Math release highlighted for verifier pinning and decontamination. |
 | KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding | 2025 | ACL Findings | [Paper](https://arxiv.org/abs/2503.02951) · [Card](../cards/releases/kodcode.md) | Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR. |
@@ -25,7 +26,6 @@ The useful habit is to read every recipe as a bill of materials. What raw tasks 
 | OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.09075) · [Card](../cards/releases/opencodereasoning_ii.md) | Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique. |
 | OpenMathReasoning: A large-scale dataset of math reasoning traces | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.16891) · [Card](../cards/releases/openmathreasoning.md) | Large-scale math reasoning trace release for programmatic verification. |
 | OpenThoughts: Data recipes for reasoning models | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.04178) · [Code](https://github.com/open-thoughts/open-thoughts) · [HF](https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M) · [Card](../cards/releases/openthoughts.md) | It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance. |
-| SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
 
 ## Full paper list
 
@@ -110,6 +110,10 @@ The useful habit is to read every recipe as a bill of materials. What raw tasks 
   <sub>2023 · ACL · 🏗️ construction recipe · 📦 data release · mixed · sft · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2212.10560) · [Card](../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md)
   _Why it matters:_ It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.
+- 🏗️ **[Constitutional AI: Harmlessness from AI feedback](https://arxiv.org/abs/2212.08073)**
+  <sub>2022 · arXiv preprint · 🏗️ construction recipe · 🧭 survey background · judgment required · mixed · preference learning · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2212.08073) · [Project](https://github.com/anthropics/ConstitutionalHarmlessnessPaper) · [Card](../cards/recipes/constitutional-ai.md)
+  _Why it matters:_ It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data.
 - 🏗️ **[STaR: Bootstrapping reasoning with reasoning](https://arxiv.org/abs/2203.14465)**
   <sub>2022 · NeurIPS · 🏗️ construction recipe · 🧭 survey background · mixed · sft · distillation · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2203.14465) · [Card](../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)
@@ -118,9 +122,9 @@ The useful habit is to read every recipe as a bill of materials. What raw tasks 
 ### 📦 Data Release
 
 - 📦 **[Aegis2.0](https://arxiv.org/abs/2501.09004)**
-  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · judgment required · safety alignment · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2501.09004)
-  _Why it matters:_ Safety dataset with risk categories and label provenance.
+  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · judgment required · mixed · safety alignment · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2501.09004) · [ACL](https://aclanthology.org/2025.naacl-long.306/) · [Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) · [Card](../cards/verifiers/aegis2.md)
+  _Why it matters:_ It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification.
 - 📦 **[Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387)**
   <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · programmatic · rlvr · sft · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2502.17387) · [Card](../cards/releases/big_math.md)
@@ -187,14 +191,17 @@ The useful habit is to read every recipe as a bill of materials. What raw tasks 
 
 ### 🧯 Audit Failure
 
-- 🧯 **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
-  <sub>2025 · arXiv · 🧯 audit failure · judgment required · evaluation · safety alignment · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.15674)
-  _Why it matters:_ Shows reasoning traces can expose private fields.
 - 🧯 **[Subliminal Learning](https://arxiv.org/abs/2507.14805)**
-  <sub>2025 · arXiv · 🧯 audit failure · mixed · distillation · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2507.14805)
-  _Why it matters:_ Lineage-risk study for hidden trait transfer in synthetic data.
+  <sub>2025 · arXiv · 🧯 audit failure · 🏗️ construction recipe · mixed · distillation · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2507.14805) · [Venue](https://www.nature.com/articles/s41586-026-10319-8) · [Code](https://github.com/MinhxLe/subliminal-learning) · [Project](https://subliminal-learning.com/) · [Card](../cards/failures/subliminal-learning.md)
+  _Why it matters:_ It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.
+
+### 📈 Scaling Study
+
+- 📈 **[The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786)**
+  <sub>2025 · arXiv · 📈 scaling study · 🏗️ construction recipe · mixed · rlvr · test time compute · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2510.13786) · [OpenReview](https://openreview.net/forum?id=FMjeC9Msws) · [Card](../cards/recipes/the-art-of-scaling-rl-compute.md)
+  _Why it matters:_ It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.
 
 ### ⚠️ Needs search or metadata
 
@@ -308,6 +315,7 @@ The useful habit is to read every recipe as a bill of materials. What raw tasks 
 ## Related cards
 
 - [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](../cards/recipes/absolute_zero.md)
+- [Aegis2.0](../cards/verifiers/aegis2.md)
 - [Big-Math-RL-Verified](../cards/releases/big_math.md)
 - [DAPO](../cards/releases/dapo.md)
 - [DeepMath-103K](../cards/releases/deepmath_103k.md)
@@ -323,8 +331,7 @@ The useful habit is to read every recipe as a bill of materials. What raw tasks 
 - [Phi-4-reasoning Technical Report](../cards/recipes/phi4_reasoning.md)
 - [Qwen3 Technical Report](../cards/recipes/qwen3.md)
 - [SWE-Gym](../cards/agents/swe_gym.md)
-- [TTRL: Test-Time Reinforcement Learning](../cards/recipes/ttrl.md)
-- [s1: Simple Test-Time Scaling](../cards/releases/s1.md)
+- [Subliminal Learning](../cards/failures/subliminal-learning.md)
 
 ## Open gaps
 

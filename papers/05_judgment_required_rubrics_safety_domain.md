@@ -16,16 +16,16 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 
 | Work | Year | Venue | Links | Why it matters |
 |---|---:|---|---|---|
+| Aegis2.0 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.09004) · [ACL](https://aclanthology.org/2025.naacl-long.306/) · [Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) · [Card](../cards/verifiers/aegis2.md) | It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification. |
 | Llama-Nemotron: Efficient Reasoning Models | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.00949) · [Card](../cards/recipes/llama_nemotron.md) | Mixed post-training corpus reference for reasoning, chat, and safety partitions. |
+| AbstentionBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.09038) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/facebookresearch/AbstentionBench) · [Data](https://huggingface.co/datasets/facebook/AbstentionBench) · [Card](../cards/benchmarks/abstentionbench.md) | It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining. |
 | HealthBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md) | It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring. |
+| Leaky Thoughts | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../cards/failures/leaky-thoughts.md) | It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface. |
 | One Token to Fool LLM-as-a-Judge | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md) | Verifier-attack paper showing trivial cue tokens can flip judge verdicts. |
 | RewardBench: Evaluating Reward Models for Language Modeling | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2403.13787) · [Card](../cards/verifiers/rewardbench.md) | It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences. |
-| Aegis2.0 | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.09004) | Safety dataset with risk categories and label provenance. |
 | Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM) | 2026 | arXiv preprint arXiv:2602.01511 | [Paper](https://arxiv.org/abs/2602.01511) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 | Autorubric: Unifying Rubric-based LLM Evaluation | 2026 | arXiv preprint arXiv:2603.00077 | [Paper](https://arxiv.org/abs/2603.00077) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 | Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis | 2026 | arXiv preprint arXiv:2602.00846 | [Paper](https://arxiv.org/abs/2602.00846) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
-| AbstentionBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.09038) | Benchmark for epistemic boundaries and non-answering behavior. |
-| FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs | 2025 | arXiv preprint arXiv:2410.13210 | [Paper](https://arxiv.org/abs/2410.13210) | Use this entry as a verified citation waypoint until a paper-specific audit note is added. |
 
 ## Full paper list
 
@@ -59,9 +59,9 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 ### 🧰 Benchmark
 
 - 🧰 **[AbstentionBench](https://arxiv.org/abs/2506.09038)**
-  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · judgment required · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.09038)
-  _Why it matters:_ Benchmark for epistemic boundaries and non-answering behavior.
+  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · judgment required · mixed · evaluation · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.09038) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/facebookresearch/AbstentionBench) · [Data](https://huggingface.co/datasets/facebook/AbstentionBench) · [Card](../cards/benchmarks/abstentionbench.md)
+  _Why it matters:_ It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining.
 - 🧰 **[HealthBench](https://arxiv.org/abs/2505.08775)**
   <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · evaluation · reward modeling · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md)
@@ -74,16 +74,16 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 ### 📦 Data Release
 
 - 📦 **[Aegis2.0](https://arxiv.org/abs/2501.09004)**
-  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · judgment required · safety alignment · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2501.09004)
-  _Why it matters:_ Safety dataset with risk categories and label provenance.
+  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · judgment required · mixed · safety alignment · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2501.09004) · [ACL](https://aclanthology.org/2025.naacl-long.306/) · [Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) · [Card](../cards/verifiers/aegis2.md)
+  _Why it matters:_ It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification.
 
 ### 🧯 Audit Failure
 
 - 🧯 **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
-  <sub>2025 · arXiv · 🧯 audit failure · judgment required · evaluation · safety alignment · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.15674)
-  _Why it matters:_ Shows reasoning traces can expose private fields.
+  <sub>2025 · arXiv · 🧯 audit failure · 🧰 benchmark · judgment required · environmental · evaluation · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../cards/failures/leaky-thoughts.md)
+  _Why it matters:_ It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.
 - 🧯 **[One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794)**
   <sub>2025 · arXiv · 🧯 audit failure · 🧪 verifier reward · judgment required · evaluation · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md)
@@ -211,7 +211,10 @@ For a builder, the practical question is how a rubric becomes data. Does the rec
 
 ## Related cards
 
+- [AbstentionBench](../cards/benchmarks/abstentionbench.md)
+- [Aegis2.0](../cards/verifiers/aegis2.md)
 - [HealthBench](../cards/verifiers/healthbench.md)
+- [Leaky Thoughts](../cards/failures/leaky-thoughts.md)
 - [Llama-Nemotron: Efficient Reasoning Models](../cards/recipes/llama_nemotron.md)
 - [One Token to Fool LLM-as-a-Judge](../cards/verifiers/one_token_to_fool_judge.md)
 - [RewardBench: Evaluating Reward Models for Language Modeling](../cards/verifiers/rewardbench.md)

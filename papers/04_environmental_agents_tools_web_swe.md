@@ -18,6 +18,7 @@ For practitioners, environmental data is attractive because it produces realisti
 |---|---:|---|---|---|
 | SWE-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../cards/agents/swe_gym.md) | Repository-scale training environment showing substrate as data. |
 | ToolLLM: Facilitating large language models to master 16000+ real-world APIs | 2023 | ICLR | [Paper](https://arxiv.org/abs/2307.16789) · [Card](../cards/agents/toolllm_toolbench.md) | Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback. |
+| Leaky Thoughts | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../cards/failures/leaky-thoughts.md) | It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface. |
 | MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention | 2025 | arXiv preprint arXiv:2506.13585 | [Paper](https://arxiv.org/abs/2506.13585) · [Code](https://github.com/MiniMax-AI/MiniMax-M1) · [Card](../cards/recipes/minimax_m1.md) | Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces. |
 | R2E-Gym | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.07164) · [Card](../cards/agents/r2e_gym.md) | Verifiable SWE environment for reasoning-to-edit tasks. |
 | AndroidWorld: A dynamic benchmarking environment for autonomous agents | 2024 | arXiv | [Paper](https://arxiv.org/abs/2405.14573) · [Card](../cards/agents/androidworld.md) | Android tasks turn mobile UI state and action histories into evaluable agent trajectories. |
@@ -25,7 +26,6 @@ For practitioners, environmental data is attractive because it produces realisti
 | BrowserGym: A gym environment for web agents | 2024 | arXiv | [Paper](https://arxiv.org/abs/2412.05467) · [Card](../cards/agents/browsergym.md) | A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation. |
 | OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md) | Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation. |
 | OpenHands: An Open Platform for AI Software Developers as Generalist Agents | 2024 | ICLR | [Paper](https://arxiv.org/abs/2407.16741) · [Code](https://github.com/All-Hands-AI/OpenHands) · [Project](https://www.openhands.dev/) · [Card](../cards/agents/openhands.md) | Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds. |
-| SWE-bench: Can language models resolve real-world GitHub issues? | 2023 | ICLR | [Paper](https://arxiv.org/abs/2310.06770) · [OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [Code](https://github.com/swe-bench/SWE-bench) · [Project](https://www.swebench.com/original.html) · [Card](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) | It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes. |
 
 ## Full paper list
 
@@ -52,32 +52,12 @@ For practitioners, environmental data is attractive because it produces realisti
   [Paper](https://arxiv.org/abs/2505.20411)
   _Why it matters:_ Use this entry as a verified citation waypoint until a paper-specific audit note is added.
 
-### 🧰 Benchmark
+### 🧯 Audit Failure
 
-- 🧰 **[AbstentionBench](https://arxiv.org/abs/2506.09038)**
-  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · judgment required · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.09038)
-  _Why it matters:_ Benchmark for epistemic boundaries and non-answering behavior.
-- 🧰 **[AndroidWorld: A dynamic benchmarking environment for autonomous agents](https://arxiv.org/abs/2405.14573)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2405.14573) · [Card](../cards/agents/androidworld.md)
-  _Why it matters:_ Android tasks turn mobile UI state and action histories into evaluable agent trajectories.
-- 🧰 **[AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](https://arxiv.org/abs/2407.18901)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2407.18901) · [Card](../cards/agents/appworld.md)
-  _Why it matters:_ Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
-- 🧰 **[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972)**
-  <sub>2024 · NeurIPS · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md)
-  _Why it matters:_ Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
-- 🧰 **[SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770)**
-  <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2310.06770) · [OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [Code](https://github.com/swe-bench/SWE-bench) · [Project](https://www.swebench.com/original.html) · [Card](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md)
-  _Why it matters:_ It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.
-- 🧰 **[WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854)**
-  <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2307.13854) · [Card](../cards/agents/webarena.md)
-  _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
+- 🧯 **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
+  <sub>2025 · arXiv · 🧯 audit failure · 🧰 benchmark · judgment required · environmental · evaluation · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../cards/failures/leaky-thoughts.md)
+  _Why it matters:_ It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.
 
 ### 🚀 Model Report
 
@@ -103,6 +83,29 @@ For practitioners, environmental data is attractive because it produces realisti
   <sub>2023 · ICLR · 📦 data release · 🧰 benchmark · environmental · programmatic · sft · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2307.16789) · [Card](../cards/agents/toolllm_toolbench.md)
   _Why it matters:_ Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.
+
+### 🧰 Benchmark
+
+- 🧰 **[AndroidWorld: A dynamic benchmarking environment for autonomous agents](https://arxiv.org/abs/2405.14573)**
+  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2405.14573) · [Card](../cards/agents/androidworld.md)
+  _Why it matters:_ Android tasks turn mobile UI state and action histories into evaluable agent trajectories.
+- 🧰 **[AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](https://arxiv.org/abs/2407.18901)**
+  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2407.18901) · [Card](../cards/agents/appworld.md)
+  _Why it matters:_ Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
+- 🧰 **[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972)**
+  <sub>2024 · NeurIPS · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md)
+  _Why it matters:_ Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
+- 🧰 **[SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770)**
+  <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2310.06770) · [OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [Code](https://github.com/swe-bench/SWE-bench) · [Project](https://www.swebench.com/original.html) · [Card](../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md)
+  _Why it matters:_ It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.
+- 🧰 **[WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854)**
+  <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2307.13854) · [Card](../cards/agents/webarena.md)
+  _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
 
 ### 🛠️ Infrastructure
 
@@ -222,6 +225,7 @@ For practitioners, environmental data is attractive because it produces realisti
 
 ## Related cards
 
+- [Leaky Thoughts](../cards/failures/leaky-thoughts.md)
 - [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](../cards/recipes/minimax_m1.md)
 - [R2E-Gym](../cards/agents/r2e_gym.md)
 - [SWE-Gym](../cards/agents/swe_gym.md)

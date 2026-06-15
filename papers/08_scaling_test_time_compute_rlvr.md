@@ -109,10 +109,6 @@ Practitioners should read every scaling curve as a measurement design. What exac
 
 ### 📦 Data Release
 
-- 📦 **[Aegis2.0](https://arxiv.org/abs/2501.09004)**
-  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · judgment required · safety alignment · evaluation · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2501.09004)
-  _Why it matters:_ Safety dataset with risk categories and label provenance.
 - 📦 **[Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387)**
   <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · programmatic · rlvr · sft · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2502.17387) · [Card](../cards/releases/big_math.md)
@@ -164,13 +160,17 @@ Practitioners should read every scaling curve as a measurement design. What exac
 ### 📈 Scaling Study
 
 - 📈 **[Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300)**
-  <sub>2025 · arXiv · 📈 scaling study · programmatic · rlvr · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2509.25300)
-  _Why it matters:_ Scaling study for model-size and compute-axis views of RL post-training.
+  <sub>2025 · arXiv · 📈 scaling study · 🏗️ construction recipe · programmatic · rlvr · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2509.25300) · [Card](../cards/recipes/scaling-behaviors-rl-post-training.md)
+  _Why it matters:_ It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.
 - 📈 **[The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786)**
-  <sub>2025 · arXiv · 📈 scaling study · mixed · rlvr · test time compute · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2510.13786)
-  _Why it matters:_ Scaling study anchoring asymptote-versus-efficiency decomposition.
+  <sub>2025 · arXiv · 📈 scaling study · 🏗️ construction recipe · mixed · rlvr · test time compute · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2510.13786) · [OpenReview](https://openreview.net/forum?id=FMjeC9Msws) · [Card](../cards/recipes/the-art-of-scaling-rl-compute.md)
+  _Why it matters:_ It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.
+- 📈 **[Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171)**
+  <sub>2023 · ICLR · 📈 scaling study · 🧭 survey background · mixed · programmatic · evaluation · test time compute · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../cards/recipes/self-consistency-chain-of-thought.md)
+  _Why it matters:_ It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.
 
 ### 🧯 Audit Failure
 
@@ -281,11 +281,11 @@ Practitioners should read every scaling curve as a measurement design. What exac
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](../cards/releases/openmathreasoning.md)
 - [Qwen3 Technical Report](../cards/recipes/qwen3.md)
 - [SWE-Gym](../cards/agents/swe_gym.md)
+- [Scaling Behaviors of LLM Reinforcement Learning Post-Training](../cards/recipes/scaling-behaviors-rl-post-training.md)
 - [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
 - [TTRL: Test-Time Reinforcement Learning](../cards/recipes/ttrl.md)
+- [The Art of Scaling Reinforcement Learning Compute for LLMs](../cards/recipes/the-art-of-scaling-rl-compute.md)
 - [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../cards/verifiers/tinyv.md)
-- [s1: Simple Test-Time Scaling](../cards/releases/s1.md)
-- [Math-Shepherd](../cards/verifiers/math_shepherd.md)
 
 ## Open gaps
 

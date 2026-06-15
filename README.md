@@ -6,7 +6,7 @@
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Entries](https://img.shields.io/badge/entries-271-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-124-0f766e)](reports/link_coverage.md)
-[![Cards](https://img.shields.io/badge/cards-54-7c3aed)](cards/README.md)
+[![Cards](https://img.shields.io/badge/cards-63-7c3aed)](cards/README.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 <p align="center">
@@ -27,7 +27,7 @@ Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/ab
 
 | Date | Update | Why it matters |
 |---|---|---|
-| 2026-06-15 | Upgraded atlas metadata to **124 verified entries** and **54 cards**. | Readers can now separate official-link-verified work from the needs-search queue. |
+| 2026-06-15 | Upgraded atlas metadata to **124 verified entries** and **63 cards**. | Readers can now separate official-link-verified work from the needs-search queue. |
 | 2026-06-15 | Added generated coverage, exports, paper pages, and searchable-site data. | Counts and public reports are reproducible from structured metadata. |
 | 2026-06-15 | Prepared v0.1.0 release notes and stricter contribution workflow. | Future PRs must include official links, classification metadata, and clear audit fields. |
 
@@ -52,10 +52,10 @@ Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/ab
 | Total entries | 271 |
 | Verified official primary links | 124 |
 | Entries with paper/arXiv/venue/DOI links | 124 |
-| Cards | 54 |
+| Cards | 63 |
 | Needs search | 147 |
 | Data releases | 20 |
-| Verifiers / rewards | 11 |
+| Verifiers / rewards | 12 |
 | Agent / environment entries | 11 |
 
 ## Starter Pack: 20 Must-Read Papers
