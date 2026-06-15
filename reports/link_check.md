@@ -3,10 +3,10 @@
 Link validation for local files, artifact URL formats, and optional live external probes.
 
 - artifact URLs discovered: 419
-- markdown links checked: 2565
-- external markdown links discovered: 1644
-- unique external URLs discovered: 243
-- live URLs checked: 100
+- markdown links checked: 2671
+- external markdown links discovered: 1667
+- unique external URLs discovered: 245
+- live URLs checked: 0
 - failures: 0
 
 ## Artifact URLs
@@ -261,3 +261,5 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `gaperon-a-peppered-english-french-generative-language-model-suite-2025` paper: https://arxiv.org/abs/2510.25771
 - `gaperon-a-peppered-english-french-generative-language-model-suite-2025` arxiv: https://arxiv.org/abs/2510.25771
 - ... 169 more
+
+Network probing skipped because `--soft` was used.
