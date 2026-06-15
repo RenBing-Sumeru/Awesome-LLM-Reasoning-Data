@@ -1,49 +1,63 @@
 # 📚 Paper Atlas
 
-> A learning-first map of post-training reasoning data papers, verifiers, reward signals, construction recipes, scaling studies, and audit work.
+> A small-field navigation map for post-training reasoning data papers, verifiers, data releases, construction recipes, frontier reports, and audit work.
 
-The pages in this folder are generated from local metadata in `data/papers.yaml`, `data/categories.yaml`, and `data/starter_packs.yaml`. They intentionally keep uncertain entries visible but mark missing official links as `needs_search` instead of inventing URLs.
+Use this folder when the README is too compact. Each category page gives a beginner-friendly explanation, read-first papers, full paper list, audit checklist, related cards, and open gaps.
 
 ## Category Map
 
-| Page | What it helps with | Entries |
+| Category | What it helps with | Entries |
 |---|---|---:|
-| 🧭 [Surveys and Primers](00_surveys_and_primers.md) | Orientation material for post-training, reasoning models, verifier-bearing data, contamination, and data-centric LLM practice. | 42 |
-| 🧱 [Foundations: Instruction, Preference, and Alignment Data](01_foundations_instruction_preference_alignment.md) | The older data objects that reasoning-data work inherits: instruction mixtures, demonstrations, preferences, reward models, self-improvement traces, and chain-of-thought prompting. | 54 |
-| 🧮 [Programmatic Math, Code, and Proof Data](02_programmatic_math_code_proof.md) | Math answers, code execution, unit tests, theorem provers, and verifier robustness studies where correctness can often be checked by a rule or external tool. | 53 |
-| 🪜 [Process Supervision and Process Reward Models](03_process_supervision_prm.md) | Step labels, rollout values, first-error localization, PRM datasets, process verifiers, and studies of when process rewards help or fail. | 23 |
-| 🌐 [Environmental Agent, Tool, Web, and SWE Trajectory Data](04_environmental_agents_tools_web_swe.md) | Tool calls, browser tasks, app worlds, OS environments, repository-level software engineering, and replayable state-action episodes. | 35 |
-| ⚖️ [Judgment-Required Rubrics, Safety, Medical, and Domain Data](05_judgment_required_rubrics_safety_domain.md) | Rubric rewards, health and safety benchmarks, factuality, legal/finance/science data, and LLM-as-judge systems where correctness cannot be reduced to a cheap programmatic predicate. | 47 |
-| 🏗️ [Construction Recipes and Open Reasoning Data](06_construction_recipes_open_reasoning_data.md) | Prompt sourcing, teacher traces, filtering, self-play, generator-verifier loops, distill-then-RL, pure RL, and open reproduction pipelines. | 73 |
-| 🚀 [Frontier Reasoning Model Reports](07_frontier_model_reports.md) | Public reasoning-model reports and open-weight model reports that disclose post-training data, reward stacks, scaling choices, or evaluation design. | 38 |
-| 📈 [Scaling, Test-Time Compute, and RLVR](08_scaling_test_time_compute_rlvr.md) | RLVR scaling, data reuse, distillation scaling, pass@k/pass@(k,T), inference budget, search topology, and test-time reinforcement. | 59 |
-| 🧯 [Audit, Failure, Contamination, and Verifier Attacks](09_audit_failure_contamination_verifier_attacks.md) | CoT faithfulness, leakage, contamination, reward hacking, judge attacks, synthetic-data collapse, live benchmarks, and verifier robustness. | 51 |
-| 🧰 [Benchmarks and Evaluation Surfaces](10_benchmarks_evaluation.md) | Math/code/live/agent/domain/process/reward benchmarks organized by what they measure and what feedback they can support. | 79 |
+| 🧭 [Surveys and Primers](00_surveys_and_primers.md) | Orientation material for post-training, reasoning models, verifier-bearing data, contamination, and data-centric LLM practice. | 40 |
+| 🧱 [Foundations: Instruction, Preference, and Alignment Data](01_foundations_instruction_preference_alignment.md) | The older data objects that reasoning-data work inherits: instruction mixtures, demonstrations, preferences, reward models, self-improvement traces, and chain-of-thought prompting. | 52 |
+| 🧮 [Programmatic Math, Code, and Proof Data](02_programmatic_math_code_proof.md) | Math answers, code execution, unit tests, theorem provers, and verifier robustness studies where correctness can often be checked by a rule or external tool. | 46 |
+| 🪜 [Process Supervision and Process Reward Models](03_process_supervision_prm.md) | Step labels, rollout values, first-error localization, PRM datasets, process verifiers, and studies of when process rewards help or fail. | 22 |
+| 🌐 [Environmental Agent, Tool, Web, and SWE Trajectory Data](04_environmental_agents_tools_web_swe.md) | Tool calls, browser tasks, app worlds, OS environments, repository-level software engineering, and replayable state-action episodes. | 41 |
+| ⚖️ [Judgment-Required Rubrics, Safety, Medical, and Domain Data](05_judgment_required_rubrics_safety_domain.md) | Rubric rewards, health and safety benchmarks, factuality, legal/finance/science data, and LLM-as-judge systems where correctness cannot be reduced to a cheap programmatic predicate. | 39 |
+| 🏗️ [Construction Recipes and Open Reasoning Data](06_construction_recipes_open_reasoning_data.md) | Prompt sourcing, teacher traces, filtering, self-play, generator-verifier loops, distill-then-RL, pure RL, and open reproduction pipelines. | 63 |
+| 🚀 [Frontier Reasoning Model Reports](07_frontier_model_reports.md) | Public reasoning-model reports and open-weight model reports that disclose post-training data, reward stacks, scaling choices, or evaluation design. | 33 |
+| 📈 [Scaling, Test-Time Compute, and RLVR](08_scaling_test_time_compute_rlvr.md) | RLVR scaling, data reuse, distillation scaling, pass@k/pass@(k,T), inference budget, search topology, and test-time reinforcement. | 51 |
+| 🧯 [Audit, Failure, Contamination, and Verifier Attacks](09_audit_failure_contamination_verifier_attacks.md) | CoT faithfulness, leakage, contamination, reward hacking, judge attacks, synthetic-data collapse, live benchmarks, and verifier robustness. | 46 |
+| 🧰 [Benchmarks and Evaluation Surfaces](10_benchmarks_evaluation.md) | Math/code/live/agent/domain/process/reward benchmarks organized by what they measure and what feedback they can support. | 72 |
 
-## Starter Packs
+## Starter Pack: 20 Must-Read Papers
 
-| Starter pack | Goal |
-|---|---|
-| 🌱 **Beginner 20: Reasoning Data Orientation** | Build the vocabulary for post-training reasoning data before diving into recipes. |
-| 🏗️ **Builder 30: Data Construction and Release Practice** | Learn how open reasoning-data recipes source prompts, write traces, filter, audit, and report artifacts. |
-| 🧪 **Verifier and Reward 25** | Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure diagnostics. |
-| 🌐 **Agent Data 25** | Understand trajectories, tool calls, browser/app/OS tasks, and SWE environments. |
-| 📈 **Scaling 20** | Read scaling claims across RL compute, data size, distillation, and test-time inference budget. |
-| 🧯 **Audit and Failure 20** | Build the habit of checking leakage, contamination, reward hacking, and judge robustness. |
-| 🏭 **Industry Onboarding 40** | A practical path for becoming useful on an LLM post-training data team. |
+| # | Work | Link | Card |
+|---:|---|---|---|
+| 1 | Datasheets for datasets | https://arxiv.org/abs/1803.09010 | ../cards/releases/datasheets-for-datasets.md |
+| 2 | Data statements for natural language processing | https://aclanthology.org/Q18-1041/ | ../cards/releases/data-statements-for-natural-language-processing.md |
+| 3 | Training language models to follow instructions with human feedback | https://arxiv.org/abs/2203.02155 | ../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md |
+| 4 | Chain-of-thought prompting elicits reasoning in large language models | https://arxiv.org/abs/2201.11903 | ../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md |
+| 5 | Training verifiers to solve math word problems | https://arxiv.org/abs/2110.14168 | ../cards/verifiers/training-verifiers-to-solve-math-word-problems.md |
+| 6 | STaR: Bootstrapping reasoning with reasoning | https://arxiv.org/abs/2203.14465 | ../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md |
+| 7 | Self-Instruct: Aligning language models with self-generated instructions | https://arxiv.org/abs/2212.10560 | ../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md |
+| 8 | Direct preference optimization: Your language model is secretly a reward model | https://arxiv.org/abs/2305.18290 | ../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md |
+| 9 | Let's Verify Step by Step | https://arxiv.org/abs/2305.20050 | ../cards/verifiers/prm800k.md |
+| 10 | GSM8K: Grade School Math 8K | https://arxiv.org/abs/2110.14168 | ../cards/benchmarks/gsm8k-grade-school-math-8k.md |
+| 11 | Measuring mathematical problem solving with the MATH dataset | https://arxiv.org/abs/2103.03874 | ../cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md |
+| 12 | HumanEval: Hand-Written Evaluation Set | https://arxiv.org/abs/2107.03374 | ../cards/benchmarks/humaneval-hand-written-evaluation-set.md |
+| 13 | SWE-bench: Can language models resolve real-world GitHub issues? | https://arxiv.org/abs/2310.06770 | ../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md |
+| 14 | RewardBench: Evaluating Reward Models for Language Modeling | https://arxiv.org/abs/2403.13787 | ../cards/verifiers/rewardbench.md |
+| 15 | HealthBench | https://arxiv.org/abs/2505.08775 | ../cards/verifiers/healthbench.md |
+| 16 | LiveBench: A challenging, contamination-free benchmark for large language models | https://arxiv.org/abs/2406.19314 | ../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md |
+| 17 | OpenThoughts: Data recipes for reasoning models | https://arxiv.org/abs/2506.04178 | ../cards/releases/openthoughts.md |
+| 18 | DeepSeek-R1 | https://arxiv.org/abs/2501.12948 | ../cards/recipes/deepseek_r1.md |
+| 19 | s1: Simple Test-Time Scaling | https://arxiv.org/abs/2501.19393 | ../cards/releases/s1.md |
+| 20 | A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility | https://arxiv.org/abs/2504.07086 | ../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md |
 
-## Reading Strategy
+## Legend
 
-Start with 🧭 surveys if the vocabulary is new, then move into 🧮 programmatic data or ⚖️ judgment-required data depending on your domain. Builders should pair 🏗️ construction recipes with 🧯 audit failures before reusing any source mixture. Agent teams should read 🌐 environmental trajectory data together with 🧰 benchmark surfaces so training and evaluation splits stay clean.
+- 📄 paper link, 🏛️ venue link, 🐙 code, 🤗 data/model, 🌐 project, 🃏 card.
+- ✅ verified entries have an official primary paper/arXiv/venue/DOI link.
+- ⚠️ needs_search entries remain visible but are not promoted as verified.
+- Curation levels run from `L0_seeded` to `L5_audit_ready`.
 
-## Local Caveats
+## Searchable Site
 
-- `data/papers.yaml` contains many BibTeX-seeded records whose metadata is intentionally conservative.
-- `needs_search` means an official paper, code, data, project, or Hugging Face link should be verified before promotion.
-- The atlas repeats important papers across categories when they play multiple roles, such as benchmark plus training environment, or model report plus construction recipe.
+- [Open the searchable atlas](../docs/index.html)
+- [Link coverage report](../reports/link_coverage.md)
 
 ## Reports
 
-- [Paper coverage report](../reports/paper_coverage_report.md)
-- [BibTeX index](../reports/bib_index.md)
 - [Needs-search report](../reports/needs_search.md)
+- [Self-review](../reports/self_review.md)

@@ -89,6 +89,7 @@ def probe(url: str) -> tuple[str, bool, str]:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--soft", action="store_true", help="skip live network probes but still fail on local Markdown/artifact URL problems")
+    parser.add_argument("--strict", action="store_true", help="probe external URLs and fail on broken verified links")
     parser.add_argument("--live", action="store_true", help="probe external URLs with HEAD/GET requests")
     parser.add_argument("--limit", type=int, default=0, help="optional maximum live URLs to probe; 0 means all")
     parser.add_argument("--workers", type=int, default=12, help="parallel workers for --live")
@@ -111,6 +112,9 @@ def main():
     offline_failures = list(failures)
     live_failures = []
     live_checked = 0
+    if args.strict:
+        args.live = True
+
     if args.live:
         targets = all_external[: args.limit or None]
         with ThreadPoolExecutor(max_workers=max(1, args.workers)) as ex:
@@ -148,6 +152,19 @@ def main():
     if args.soft:
         lines.append("\nNetwork probing skipped because `--soft` was used.")
     (ROOT / "reports/link_check.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    from common import write_json
+    write_json(ROOT / "reports/link_check.json", {
+        "artifact_urls": len(artifact_urls),
+        "markdown_links_checked": md_checked,
+        "external_markdown_links": len(md_external),
+        "unique_external_urls": len(all_external),
+        "live_urls_checked": live_checked,
+        "failures": failures,
+        "bad_artifacts": bad_artifacts,
+        "local_missing": local_missing,
+        "live_failures": live_failures,
+        "mode": "strict" if args.strict else "live" if args.live else "soft" if args.soft else "offline",
+    })
     print(f"artifact_urls: {len(artifact_urls)} markdown_links: {md_checked} external_urls: {len(all_external)} live_checked: {live_checked} failures: {len(failures)}")
     if offline_failures:
         return 1

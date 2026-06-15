@@ -65,6 +65,7 @@
       "rlvr",
       "agent_training",
       "evaluation",
+      "audit",
       "safety_alignment",
       "test_time_compute",
       "unknown"

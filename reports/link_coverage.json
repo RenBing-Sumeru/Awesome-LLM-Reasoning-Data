@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-06-15",
+  "total_entries": 271,
+  "verified_entries": 124,
+  "verified_with_primary_link": 124,
+  "verified_primary_link_coverage": "100.0%",
+  "curation_levels": {
+    "L0_seeded": 147,
+    "L1_link_verified": 0,
+    "L2_artifact_verified": 0,
+    "L3_summary_ready": 72,
+    "L4_carded": 32,
+    "L5_audit_ready": 20
+  },
+  "official_link_coverage": {
+    "paper_or_primary": 124,
+    "paper": 124,
+    "arxiv": 123,
+    "venue": 0,
+    "openreview": 2,
+    "acl": 1,
+    "pmlr": 0,
+    "cvf": 0,
+    "doi": 0,
+    "code": 12,
+    "data": 6,
+    "huggingface": 4,
+    "project": 4,
+    "bibtex": 0
+  },
+  "starter_pack_20": {
+    "total_matched": 20,
+    "with_primary_link": 20,
+    "carded": 20,
+    "primary_link_coverage": "100.0%",
+    "card_coverage": "100.0%"
+  },
+  "needs_search": 147,
+  "ambiguous": 0,
+  "duplicate": 0,
+  "missing_primary_link": 147,
+  "cards": 54,
+  "artifact_verified_entries": 126
+}

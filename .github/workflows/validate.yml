@@ -18,10 +18,14 @@ jobs:
           pip install -r requirements.txt
       - name: Validate data
         run: python scripts/validate_data.py
-      - name: Render site data
-        run: python scripts/render_site_data.py
+      - name: Check site data
+        run: python scripts/render_site.py --check
+      - name: Check paper pages
+        run: python scripts/render_papers.py --check
       - name: Check README generated sections
         run: python scripts/render_readme.py --check
+      - name: Coverage report
+        run: python scripts/coverage_report.py
       - name: Link check soft
         run: python scripts/check_links.py --soft
       - name: Summarize counts

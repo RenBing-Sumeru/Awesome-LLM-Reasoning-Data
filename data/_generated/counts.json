@@ -1,55 +1,10 @@
 {
-  "total": 269,
-  "cards": 42,
-  "verified": 0,
-  "source_role": {
-    "survey_background": 221,
-    "construction_recipe": 19,
-    "benchmark": 16,
-    "data_release": 15,
-    "scaling_study": 11,
-    "agent_environment": 10,
-    "verifier_reward": 10,
-    "model_report": 9,
-    "audit_failure": 6,
-    "process_supervision": 5,
-    "infrastructure": 2
-  },
-  "verification_contract": {
-    "unknown": 216,
-    "mixed": 25,
-    "programmatic": 21,
-    "judgment_required": 13,
-    "environmental": 12
-  },
-  "training_use": {
-    "unknown": 215,
-    "evaluation": 33,
-    "rlvr": 19,
-    "sft": 18,
-    "agent_training": 12,
-    "distillation": 11,
-    "reward_modeling": 10,
-    "test_time_compute": 8,
-    "process_supervision": 5,
-    "preference_learning": 4,
-    "safety_alignment": 4
-  },
-  "status": {
-    "needs_metadata": 155,
-    "partial": 114
-  },
-  "year": {
-    "2025": 118,
-    "2024": 59,
-    "2023": 37,
-    "2026": 19,
-    "2022": 14,
-    "2021": 13,
-    "2020": 3,
-    "2018": 2,
-    "2019": 2,
-    "2015": 1,
-    "2017": 1
-  }
+  "total_entries": 271,
+  "verified_entries": 124,
+  "carded_entries": 54,
+  "data_releases": 20,
+  "verifiers_rewards": 11,
+  "agent_environments": 11,
+  "scaling_studies": 11,
+  "needs_search": 147
 }

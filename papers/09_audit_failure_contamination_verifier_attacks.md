@@ -2,7 +2,9 @@
 
 > CoT faithfulness, leakage, contamination, reward hacking, judge attacks, synthetic-data collapse, live benchmarks, and verifier robustness.
 
-## Why this category matters
+## What this category means
+
+Use this page as the hazard map for reasoning data: what can leak, what can be gamed, what can be contaminated, and what can silently fail.
 
 Reasoning data creates new failure surfaces because the feedback signal is often more structured and more trusted than ordinary labels. A verifier can be gamed. A judge can be attacked. A chain-of-thought can be unfaithful or leak private information. A benchmark can be contaminated at training time or even search time. Synthetic traces can transmit hidden traits. Data reuse can blur train/test boundaries. Audit papers make these hazards visible.
 
@@ -10,277 +12,251 @@ This category includes Language Models Don’t Always Say What They Think, Measu
 
 For practitioners, the audit lens should be active before data collection starts. If the final verifier can be exploited, log adversarial examples. If a benchmark might appear in prompt sources, record decontamination. If a rubric judge can be flipped by a token, test the judge before using it as a reward. If chain-of-thought is stored, check privacy and policy exposure. If synthetic data is recursively reused, track lineage and diversity.
 
-The practical output of this category is an audit checklist: source lineage, split hygiene, verifier false positives, judge robustness, privacy leakage, benchmark refresh, reward hacking, and failure telemetry. Entries with missing official URLs remain marked as `needs_search`, because audit pages are especially vulnerable to citation drift and scary-sounding but unverified claims.
+## Read first
 
-## How to read this category
+| Work | Year | Venue | Links | Why it matters |
+|---|---:|---|---|---|
+| DeepMath-103K | 2025 | arXiv | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../cards/releases/deepmath_103k.md) | Math release highlighted for verifier pinning and decontamination. |
+| A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility | 2025 | Conference on Language Modeling (COLM) | [Paper](https://arxiv.org/abs/2504.07086) · [Card](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) | Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note. |
+| HealthBench | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md) | Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification. |
+| One Token to Fool LLM-as-a-Judge | 2025 | arXiv | [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md) | Verifier-attack paper showing trivial cue tokens can flip judge verdicts. |
+| PRMBench: A fine-grained and challenging benchmark for process-level reward models | 2025 | arXiv | [Paper](https://arxiv.org/abs/2501.03124) · [Card](../cards/verifiers/prmbench.md) | Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure. |
+| Spurious Rewards | 2025 | arXiv | [Paper](https://arxiv.org/abs/2506.10947) · [Card](../cards/verifiers/spurious_rewards.md) | Reward-signal audit for spurious behavior in RLVR. |
+| TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning | 2025 | arXiv | [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Card](../cards/verifiers/tinyv.md) | Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training. |
+| LiveBench: A challenging, contamination-free benchmark for large language models | 2024 | arXiv | [Paper](https://arxiv.org/abs/2406.19314) · [OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [Project](https://livebench.ai/) · [Card](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md) | It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items. |
+| OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments | 2024 | NeurIPS | [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md) | Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation. |
+| An Imperfect Verifier is Good Enough: Learning with Noisy Rewards | 2026 | arXiv preprint arXiv:2604.07666 | [Paper](https://arxiv.org/abs/2604.07666) | Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note. |
 
-- Classify the failure: contamination, leakage, unfaithful trace, verifier false positive, judge attack, reward hacking, collapse, or benchmark drift.
-- Check whether the paper demonstrates the failure on training data, evaluation data, search-time behavior, or deployed interaction.
-- Look for proposed mitigations and whether they are operational enough to add to a release checklist.
-- Avoid treating a negative result as universal unless the model family, domain, verifier, and evaluation protocol are clear.
+## Full paper list
 
-## Must-read starter set
+### 🧭 Survey Background
 
-| Paper | Year | Why start here | Link status |
-|---|---:|---|---|
-| [Spurious Rewards](https://arxiv.org/abs/2506.10947) (2025) · 🟡 partial | 2025 | Reward-signal audit for spurious behavior in RLVR. | linked |
-| [One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794) (2025) · 🟡 partial | 2025 | Verifier-attack paper showing trivial cue tokens can flip judge verdicts. | linked |
-| [Leaky Thoughts](https://arxiv.org/abs/2506.15674) (2025) · 🟡 partial | 2025 | Shows reasoning traces can expose private fields. | linked |
-| [Subliminal Learning](https://arxiv.org/abs/2507.14805) (2025) · 🟡 partial | 2025 | Lineage-risk study for hidden trait transfer in synthetic data. | linked |
-| [AbstentionBench](https://arxiv.org/abs/2506.09038) (2025) · 🟡 partial | 2025 | Benchmark for epistemic boundaries and non-answering behavior. | linked |
-| [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://arxiv.org/abs/2505.14625) (2025) · 🟡 partial | 2025 | Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training. | linked |
-| [DeepMath-103K](https://arxiv.org/abs/2504.11456) (2025) · 🟡 partial | 2025 | Math release highlighted for verifier pinning and decontamination. | linked |
-| [HealthBench](https://arxiv.org/abs/2505.08775) (2025) · 🟡 partial | 2025 | Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification. | linked |
-| [Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387) (2025) · 🟡 partial | 2025 | Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering. | linked |
+- 🧭 **[An Imperfect Verifier is Good Enough: Learning with Noisy Rewards](https://arxiv.org/abs/2604.07666)**
+  <sub>2026 · arXiv preprint arXiv:2604.07666 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2604.07666)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[Dual Consensus: Escaping from Spurious Majority in Unsupervised RLVR via Two-Stage Vote Mechanism](https://arxiv.org/abs/2603.16223)**
+  <sub>2026 · arXiv preprint arXiv:2603.16223 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2603.16223)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking](https://arxiv.org/abs/2604.15149)**
+  <sub>2026 · arXiv preprint arXiv:2604.15149 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2604.15149)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
+  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2602.12413)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs](https://arxiv.org/abs/2601.11061)**
+  <sub>2026 · arXiv preprint arXiv:2601.11061 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2601.11061)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](https://arxiv.org/abs/2504.07086)**
+  <sub>2025 · Conference on Language Modeling (COLM) · 🧭 survey background · unknown · unknown · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.07086) · [Card](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs](https://arxiv.org/abs/2410.13210)**
+  <sub>2025 · arXiv preprint arXiv:2410.13210 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2410.13210)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning](https://arxiv.org/abs/2505.22203)**
+  <sub>2025 · arXiv preprint arXiv:2505.22203 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2505.22203)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[LastingBench: Defend Benchmarks Against Knowledge Leakage](https://arxiv.org/abs/2506.21614)**
+  <sub>2025 · arXiv preprint arXiv:2506.21614 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.21614)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents](https://arxiv.org/abs/2505.20411)**
+  <sub>2025 · arXiv preprint arXiv:2505.20411 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2505.20411)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+- 🧭 **[Search-Time Data Contamination](https://arxiv.org/abs/2508.13180)**
+  <sub>2025 · arXiv preprint arXiv:2508.13180 · 🧭 survey background · unknown · unknown · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2508.13180)
+  _Why it matters:_ Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
 
-## Promoted linked entries
+### 🧰 Benchmark
 
-This section only includes entries with at least one official artifact link and a non-seed local description. BibTeX-seeded records stay visible in the queue below until a curator checks primary sources and writes paper-specific metadata.
+- 🧰 **[AbstentionBench](https://arxiv.org/abs/2506.09038)**
+  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · judgment required · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.09038)
+  _Why it matters:_ Benchmark for epistemic boundaries and non-answering behavior.
+- 🧰 **[HealthBench](https://arxiv.org/abs/2505.08775)**
+  <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · evaluation · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2505.08775) · [Card](../cards/verifiers/healthbench.md)
+  _Why it matters:_ Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.
+- 🧰 **[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124)**
+  <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2501.03124) · [Card](../cards/verifiers/prmbench.md)
+  _Why it matters:_ Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.
+- 🧰 **[LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314)**
+  <sub>2024 · arXiv · 🧰 benchmark · 🧯 audit failure · programmatic · mixed · evaluation · audit · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2406.19314) · [OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [Project](https://livebench.ai/) · [Card](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
+  _Why it matters:_ It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.
+- 🧰 **[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972)**
+  <sub>2024 · NeurIPS · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2404.07972) · [Card](../cards/agents/osworld.md)
+  _Why it matters:_ Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
 
-### 🧠 CoT faithfulness and privacy
+### 📦 Data Release
 
-- **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
-  <sub>2025 · arXiv · 🧯 audit failure · ⚖️ judgment required · 🪜 step level · 🎯 evaluation, safety alignment · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2506.15674) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Shows reasoning traces can expose private fields.
-
-### 🧬 Leakage and contamination
-
-- **[DeepMath-103K](https://arxiv.org/abs/2504.11456)**
-  <sub>2025 · arXiv · 📦 data release · 🧮 programmatic · 🪜 answer level · 🎯 sft, rlvr · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2504.11456) · [📚 BibTeX index](../reports/bib_index.md)
+- 📦 **[DeepMath-103K](https://arxiv.org/abs/2504.11456)**
+  <sub>2025 · arXiv · 📦 data release · programmatic · sft · rlvr · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2504.11456) · [Card](../cards/releases/deepmath_103k.md)
   _Why it matters:_ Math release highlighted for verifier pinning and decontamination.
 
-### 🧪 Verifier failure and reward hacking
+### 🧯 Audit Failure
 
-- **[One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794)**
-  <sub>2025 · arXiv · 🧯 audit failure · 🧪 verifier reward · ⚖️ judgment required · 🪜 scalar reward · 🎯 evaluation, reward modeling · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2507.08794) · [📚 BibTeX index](../reports/bib_index.md)
+- 🧯 **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
+  <sub>2025 · arXiv · 🧯 audit failure · judgment required · evaluation · safety alignment · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.15674)
+  _Why it matters:_ Shows reasoning traces can expose private fields.
+- 🧯 **[One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794)**
+  <sub>2025 · arXiv · 🧯 audit failure · 🧪 verifier reward · judgment required · evaluation · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2507.08794) · [Card](../cards/verifiers/one_token_to_fool_judge.md)
   _Why it matters:_ Verifier-attack paper showing trivial cue tokens can flip judge verdicts.
-- **[Spurious Rewards](https://arxiv.org/abs/2506.10947)**
-  <sub>2025 · arXiv · 🧯 audit failure · 📈 scaling study · 🧮 programmatic · 🪜 scalar reward · 🎯 rlvr, evaluation · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2506.10947) · [📚 BibTeX index](../reports/bib_index.md)
+- 🧯 **[Spurious Rewards](https://arxiv.org/abs/2506.10947)**
+  <sub>2025 · arXiv · 🧯 audit failure · 📈 scaling study · programmatic · rlvr · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2506.10947) · [Card](../cards/verifiers/spurious_rewards.md)
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
-- **[TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://arxiv.org/abs/2505.14625)**
-  <sub>2025 · arXiv · 🧪 verifier reward · 🧯 audit failure · 🏗️ construction recipe · 🧮 programmatic · ⚖️ judgment required · 🪜 answer level, scalar reward · 🎯 rlvr, reward modeling · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2505.14625) · [🐙 Code](https://github.com/uw-nsl/TinyV) · [📚 BibTeX index](../reports/bib_index.md)
+- 🧯 **[Subliminal Learning](https://arxiv.org/abs/2507.14805)**
+  <sub>2025 · arXiv · 🧯 audit failure · mixed · distillation · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2507.14805)
+  _Why it matters:_ Lineage-risk study for hidden trait transfer in synthetic data.
+
+### 🧪 Verifier Reward
+
+- 🧪 **[TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://arxiv.org/abs/2505.14625)**
+  <sub>2025 · arXiv · 🧪 verifier reward · 🧯 audit failure · programmatic · judgment required · rlvr · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Card](../cards/verifiers/tinyv.md)
   _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
 
-### 🧯 Judge attacks and synthetic-data collapse
+### ⚠️ Needs search or metadata
 
-- **[Subliminal Learning](https://arxiv.org/abs/2507.14805)**
-  <sub>2025 · arXiv · 🧯 audit failure · 🔀 mixed · 🪜 answer level · 🎯 distillation, evaluation · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2507.14805) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Lineage-risk study for hidden trait transfer in synthetic data.
-- **[AbstentionBench](https://arxiv.org/abs/2506.09038)**
-  <sub>2025 · arXiv · 🧰 benchmark · 🧯 audit failure · ⚖️ judgment required · 🪜 answer level · 🎯 evaluation · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2506.09038) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Benchmark for epistemic boundaries and non-answering behavior.
+- 🧭 **Terminal-Bench: A benchmark and task environment for terminal agents**
+  <sub>2026 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **Humanity's Last Exam**
+  <sub>2025 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **MegaScience: A benchmark and data resource for scientific reasoning**
+  <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments**
+  <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **Why we no longer evaluate on SWE-bench Verified**
+  <sub>2025 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **AI models collapse when trained on recursively generated data**
+  <sub>2024 · Nature · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions**
+  <sub>2024 · ICLR · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **ChemBench: A benchmark for evaluating large language models in chemistry**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **GSM-Symbolic**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **Is model collapse inevitable?**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **LiveCodeBench: Holistic and contamination-free evaluation of large language models for code**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **Overoptimization in direct alignment algorithms**
+  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **SciCode: A benchmark for scientific code generation and reasoning**
+  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **tau-bench: A benchmark for tool-agent-user interaction in real-world domains**
+  <sub>2024 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **API-Bank: A benchmark for tool-augmented LLMs**
+  <sub>2023 · EMNLP · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **FinanceBench: A benchmark for financial question answering**
+  <sub>2023 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting**
+  <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **Measuring faithfulness in chain-of-thought reasoning**
+  <sub>2023 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **Scaling laws for reward model overoptimization**
+  <sub>2022 · ICML · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance**
+  <sub>2021 · ACL · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
+- 🧭 **miniF2F: A cross-system benchmark for formal olympiad-level mathematics**
+  <sub>2021 · ICLR · 🧭 survey background · unknown · unknown · L0_seeded</sub>
+  needs_search
+  _Why it matters:_ Seeded from local BibTeX for later atlas classification; needs curator review.
 
-### 📚 Additional local seeds
+## What to audit
 
-- **[HealthBench](https://arxiv.org/abs/2505.08775)**
-  <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · ⚖️ judgment required · 🪜 scalar reward, answer level · 🎯 evaluation, reward modeling · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2505.08775) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Health-domain benchmark where rubric/judgment design matters more than simple exact-match verification.
-- **[Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387)**
-  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · 🧮 programmatic · 🪜 answer level · 🎯 rlvr, sft · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2502.17387) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
+- What can leak, contaminate, or be optimized as a shortcut?
+- Is the attack tested against the actual judge/verifier setup?
+- Does the paper preserve enough evidence to reproduce the failure?
 
-## Needs-search / metadata queue
+## Related cards
 
-These records are intentionally separated from the starter set. They are useful bibliography leads, but the atlas should not promote them until official links and paper-specific notes are added.
+- [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
+- [DeepMath-103K](../cards/releases/deepmath_103k.md)
+- [HealthBench](../cards/verifiers/healthbench.md)
+- [One Token to Fool LLM-as-a-Judge](../cards/verifiers/one_token_to_fool_judge.md)
+- [PRMBench: A fine-grained and challenging benchmark for process-level reward models](../cards/verifiers/prmbench.md)
+- [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
+- [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../cards/verifiers/tinyv.md)
+- [LiveBench: A challenging, contamination-free benchmark for large language models](../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
+- [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](../cards/agents/osworld.md)
 
-- **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
-  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📄 arXiv](https://arxiv.org/abs/2602.12413) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **LiveBench: A challenging, contamination-free benchmark for large language models**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[LastingBench: Defend Benchmarks Against Knowledge Leakage](https://arxiv.org/abs/2506.21614)**
-  <sub>2025 · arXiv preprint arXiv:2506.21614 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2506.21614) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs](https://arxiv.org/abs/2601.11061)**
-  <sub>2026 · arXiv preprint arXiv:2601.11061 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2601.11061) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting**
-  <sub>2023 · NeurIPS · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Measuring faithfulness in chain-of-thought reasoning**
-  <sub>2023 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](https://arxiv.org/abs/2504.07086)**
-  <sub>2025 · Conference on Language Modeling (COLM) · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2504.07086) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking](https://arxiv.org/abs/2604.15149)**
-  <sub>2026 · arXiv preprint arXiv:2604.15149 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2604.15149) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning](https://arxiv.org/abs/2505.22203)**
-  <sub>2025 · arXiv preprint arXiv:2505.22203 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2505.22203) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[Search-Time Data Contamination](https://arxiv.org/abs/2508.13180)**
-  <sub>2025 · arXiv preprint arXiv:2508.13180 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2508.13180) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **AI models collapse when trained on recursively generated data**
-  <sub>2024 · Nature · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **GSM-Symbolic**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Humanity's Last Exam**
-  <sub>2025 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[ProcessBench: Identifying Process Errors in Mathematical Reasoning](https://arxiv.org/abs/2412.06559)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🪜 process supervision · 🧪 verifier reward · ⚖️ judgment required · 🧮 programmatic · 🪜 step level · 🎯 evaluation, process supervision · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2412.06559) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124)**
-  <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · 🪜 process supervision · ⚖️ judgment required · 🔀 mixed · 🪜 step level, process reward · 🎯 evaluation, reward modeling · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2501.03124) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[An Imperfect Verifier is Good Enough: Learning with Noisy Rewards](https://arxiv.org/abs/2604.07666)**
-  <sub>2026 · arXiv preprint arXiv:2604.07666 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2604.07666) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[AndroidWorld: A dynamic benchmarking environment for autonomous agents](https://arxiv.org/abs/2405.14573)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · 🌐 environmental · 🪜 full episode, state action level · 🎯 evaluation, agent training · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2405.14573) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](https://arxiv.org/abs/2407.18901)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · 🌐 environmental · 🧮 programmatic · 🪜 full episode, state action level · 🎯 evaluation, agent training · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2407.18901) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972)**
-  <sub>2024 · NeurIPS · 🧰 benchmark · 🌐 agent environment · 🌐 environmental · 🪜 full episode · 🎯 evaluation, agent training · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2404.07972) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787)**
-  <sub>2024 · NeurIPS · 🧰 benchmark · 🧪 verifier reward · ⚖️ judgment required · 🔀 mixed · 🪜 pairwise preference, scalar reward · 🎯 evaluation, reward modeling · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2403.13787) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs](https://arxiv.org/abs/2410.13210)**
-  <sub>2025 · arXiv preprint arXiv:2410.13210 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2410.13210) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents](https://arxiv.org/abs/2505.20411)**
-  <sub>2025 · arXiv preprint arXiv:2505.20411 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2505.20411) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **[Dual Consensus: Escaping from Spurious Majority in Unsupervised RLVR via Two-Stage Vote Mechanism](https://arxiv.org/abs/2603.16223)**
-  <sub>2026 · arXiv preprint arXiv:2603.16223 · 🧭 survey background · ❔ unknown · 🟡 partial</sub>
-  [📄 arXiv](https://arxiv.org/abs/2603.16223) · [📚 BibTeX index](../reports/bib_index.md)
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance**
-  <sub>2021 · ACL · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **miniF2F: A cross-system benchmark for formal olympiad-level mathematics**
-  <sub>2021 · ICLR · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Scaling laws for reward model overoptimization**
-  <sub>2022 · ICML · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **API-Bank: A benchmark for tool-augmented LLMs**
-  <sub>2023 · EMNLP · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **FinanceBench: A benchmark for financial question answering**
-  <sub>2023 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions**
-  <sub>2024 · ICLR · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **ChemBench: A benchmark for evaluating large language models in chemistry**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Is model collapse inevitable?**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **LiveCodeBench: Holistic and contamination-free evaluation of large language models for code**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Overoptimization in direct alignment algorithms**
-  <sub>2024 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **SciCode: A benchmark for scientific code generation and reasoning**
-  <sub>2024 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **tau-bench: A benchmark for tool-agent-user interaction in real-world domains**
-  <sub>2024 · arXiv preprint · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **MegaScience: A benchmark and data resource for scientific reasoning**
-  <sub>2025 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments**
-  <sub>2025 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Why we no longer evaluate on SWE-bench Verified**
-  <sub>2025 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-- **Terminal-Bench: A benchmark and task environment for terminal agents**
-  <sub>2026 · unknown · 🧭 survey background · ❔ unknown · 🔎 needs_search</sub>
-  [📚 BibTeX index](../reports/bib_index.md) · `needs_search: official links not pinned locally`
-  _Why it matters:_ Bibliography lead awaiting primary-source link and paper-specific metadata before promotion.
-
-## Open questions
+## Open gaps
 
 - What verifier-attack tests should be mandatory before using a reward signal for RLVR?
 - How can live benchmarks remain useful without making longitudinal comparison impossible?
 - What metadata proves that synthetic reasoning traces did not carry hidden benchmark or behavioral leakage?
 - When should chain-of-thought be hidden, summarized, or omitted from public data releases for privacy and safety?
 
-## Related docs
-
-- [09_audit_and_failure_modes.md](../docs/09_audit_and_failure_modes.md)
-- [04_data_quality.md](../docs/04_data_quality.md)
-- [06_verifiers_and_rewards.md](../docs/06_verifiers_and_rewards.md)
-- [needs_search.md](../reports/needs_search.md)
-
-## Related cards
-
-- [verifier_card_template.md](../cards/verifier_card_template.md)
-- [release_card_template.md](../cards/release_card_template.md)
-
 ## Back to map
 
-- [📚 Paper atlas README](README.md)
-- [🌟 Repository README](../README.md)
+- [Paper atlas README](README.md)
+- [Repository README](../README.md)

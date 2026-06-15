@@ -1,57 +1,61 @@
 # Self Review
 
-## 1. Does the repo now look interesting and lively?
+## Summary
 
-Yes. The README now uses a clear learning-atlas structure, visual SVG maps, emoji-guided navigation, starter papers, and release-card pathways instead of a flat folder index.
+This review covers the `upgrade-high-citation-atlas-v1` branch after the v0.1.0 atlas upgrade.
 
-## 2. Can a beginner understand post-training reasoning data from the README and docs?
+## Completion Checklist
 
-Mostly yes. `docs/00` through `docs/10` provide a staged route from definitions to verifier contracts, construction recipes, agent trajectories, scaling claims, and industry onboarding.
+| Question | Status | Evidence |
+|---|---|---|
+| Are there at least 120 link-verified entries? | Yes | `reports/link_coverage.json`: 124 verified entries. |
+| Are all verified entries backed by official paper/arXiv/venue/DOI links? | Yes | 124/124 verified entries have primary links, 100.0% coverage. |
+| Are there at least 50 high-quality cards? | Yes | 56 card files with 54 unique entry-linked cards; validation requires at least 50 and passes. |
+| Are all Beginner 20 Starter Pack papers link-verified and carded? | Yes | `starter_pack_20`: 20/20 primary links and 20/20 cards. |
+| Are paper-category pages useful and non-placeholder? | Yes | `papers/README.md` plus 11 category pages generated with explanation, Read First table, Full Paper List, audit checklist, related cards, and open gaps. |
+| Does `docs/index.html` work as a searchable atlas? | Yes | Site uses generated `docs/assets/entries.json`; `node --check docs/assets/site.js` passes. |
+| Are missing links separated into needs-search? | Yes | `reports/needs_search.md` lists unresolved entries and search queries. |
+| Are README counts generated rather than invented? | Yes | `python scripts/render_readme.py --check` passes. |
+| Are contribution rules strict enough? | Yes | `CONTRIBUTING.md` and PR template require official links, metadata, summaries, and QA checks. |
+| Is there any private execution-text leakage? | No known issue | Final leakage scan is required before commit; validator also scans public files. |
+| Did link checks run? | Yes | `python scripts/check_links.py --soft` completed with 0 failures and wrote JSON/Markdown reports. |
+| Did validation pass? | Yes | `python scripts/validate_data.py` completed with 0 errors and 0 warnings. |
 
-## 3. Are paper lists broad enough to reflect the survey?
+## QA Commands Run
 
-The atlas now has 269 local entries and 11 generated paper-category pages. It is broad enough for an initial public release, while `reports/needs_search.md` keeps unfinished long-tail entries honest.
+```bash
+python3 scripts/validate_data.py
+python3 scripts/render_site.py --check
+python3 scripts/render_papers.py --check
+python3 scripts/render_readme.py --check
+python3 scripts/coverage_report.py
+python3 scripts/check_links.py --soft
+node --check docs/assets/site.js
+```
 
-## 4. Are categories meaningful rather than arbitrary?
+## Current Metrics
 
-Yes, with caveats. Category pages are organized around verifier/data-object roles, and the renderer now has stricter gates to avoid obvious leakage such as math datasets appearing in environment pages.
+- Total entries: 271
+- Verified entries: 124
+- Verified primary-link coverage: 100.0%
+- Needs search: 147
+- Unique entry-linked cards: 54
+- Card files: 56
+- L5 audit-ready entries: 20
+- Beginner 20 official-link coverage: 100.0%
+- Beginner 20 card coverage: 100.0%
 
-## 5. Are entries annotated with why they matter?
+## Residual Risks
 
-Core card entries have one-line reasons, data-object notes, verification contracts, and audit notes. Many BibTeX-seeded entries still need richer reasons before promotion.
+- Many verified entries still have sparse author metadata.
+- Code/data/Hugging Face/project coverage is much lower than paper-link coverage.
+- Some older cards use the previous card heading style, though they still contain the required data-object, verifier, construction, use, audit, limitation, link, and citation fields.
+- Soft link checking validates local links and URL formats but does not perform live network probing.
 
-## 6. Are cards useful for auditing real releases?
+## Next v0.2.0 Milestone
 
-Yes, with explicit caveats. There are 42 filled cards covering releases, verifiers, agents, recipes, benchmarks, and failure lenses. They separate data object, verifier, granularity, construction recipe, use, limitations, links, and citation status, while keeping incomplete metadata as `partial` rather than `verified`.
-
-## 7. Are verifiers, rewards, environments, recipes, and scaling claims represented?
-
-Yes. The redesign includes PRM/process supervision, reward benchmarks, rubric/judge benchmarks, web/OS/app/SWE environments, open data recipes, frontier reports, RLVR, and test-time-scaling entries.
-
-## 8. Are empty placeholder files removed or filled?
-
-Previously empty YAML payloads were populated, docs were deepened, and cards were filled. Templates remain intentionally as templates.
-
-## 9. Are unknown fields marked honestly?
-
-Yes. All entries with incomplete release-internal fields are kept as `partial` or `needs_metadata`; `audit.citation_status: verified` records link/citation checks without implying full metadata verification.
-
-## 10. Are unverified items separated from verified ones?
-
-Yes. `reports/needs_search.md`, paper pages, and the data status fields separate verified, partial, and needs-metadata entries.
-
-## 11. Does the website work?
-
-The static site assets are generated by `scripts/render_site_data.py`; `docs/index.html` and `docs/assets/site.js` are present and should pass syntax checks.
-
-## 12. Does the README invite stars, citations, and contributions without overclaiming?
-
-Yes. It positions the repository as a living atlas, links citation metadata, and asks contributors to add structured metadata rather than only links.
-
-## 13. Is the repo safe for anonymous review, if applicable?
-
-The repo is now prepared for public GitHub release rather than anonymous review. `docs/anonymity_note.md` explains the public repository citation policy.
-
-## 14. What still needs manual curation?
-
-The main remaining work is promoting long-tail BibTeX seeds, checking official links for 156 entries without artifact links, filling source mixture/split/license/lineage fields, and expanding author metadata.
+- Raise artifact coverage by verifying official code, data, Hugging Face, and project pages for the 124 verified entries.
+- Add author metadata and BibTeX keys for verified entries.
+- Convert older cards to the newer numbered card format where useful.
+- Promote another 50 unresolved entries from `L0_seeded` to `L3_summary_ready` or higher.
+- Enable GitHub Pages for the searchable atlas.

@@ -7,61 +7,75 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="atlas-header">
-    <nav class="topbar" aria-label="Primary">
+  <header class="site-header">
+    <nav class="topbar" aria-label="Primary navigation">
       <a class="brand" href="../README.md">Awesome LLM Reasoning Data</a>
-      <div class="toplinks">
-        <a href="00_start_here.md">Docs</a>
+      <div class="navlinks">
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
+        <a href="../README.md">README</a>
+        <a href="../papers/README.md">Papers</a>
         <a href="../cards/README.md">Cards</a>
-        <a href="../data/papers.yaml">Data</a>
-        <a href="../CONTRIBUTING.md">Contribute</a>
+        <a href="../reports/link_coverage.md">Coverage</a>
       </div>
     </nav>
     <section class="hero">
       <div>
-        <p class="eyebrow">Learning-first atlas</p>
-        <h1>Post-training reasoning data, mapped by feedback signal.</h1>
-        <p class="lede">Search papers, releases, verifiers, agent environments, construction recipes, scaling reports, and audit failures through the fields that make data trainable: object, verifier, granularity, use, status, and lineage.</p>
+        <p class="eyebrow">Searchable atlas</p>
+        <h1>Find reasoning-data papers by verifier, training use, and evidence level.</h1>
+        <p class="lede">The README is the front door. This page is the working table: search entries, combine filters, inspect summaries, and jump to official papers, code, data, project pages, and local cards.</p>
       </div>
-      <div class="hero-panel" aria-label="Atlas summary">
-        <div><strong id="totalCount">0</strong><span>entries</span></div>
-        <div><strong id="cardCount">0</strong><span>cards</span></div>
-        <div><strong id="verifiedCount">0</strong><span>verified links</span></div>
+      <div class="stat-panel" aria-label="Atlas statistics">
+        <div><strong id="totalEntries">0</strong><span>entries</span></div>
+        <div><strong id="verifiedEntries">0</strong><span>verified</span></div>
+        <div><strong id="cardedEntries">0</strong><span>carded</span></div>
+        <div><strong id="needsSearch">0</strong><span>needs search</span></div>
       </div>
     </section>
   </header>
 
   <main>
-    <section class="control-band" aria-label="Search and filters">
-      <label class="searchbox"><span>Search</span><input id="q" type="search" placeholder="title, tag, domain, why it matters"></label>
-      <label><span>Category</span><select id="role"><option value="">All categories</option></select></label>
-      <label><span>Contract</span><select id="contract"><option value="">All contracts</option></select></label>
-      <label><span>Training use</span><select id="use"><option value="">All uses</option></select></label>
-      <label><span>Status</span><select id="status"><option value="">All statuses</option></select></label>
+    <section class="quick-stats" aria-label="Role statistics">
+      <div><strong id="dataReleases">0</strong><span>data releases</span></div>
+      <div><strong id="verifiersRewards">0</strong><span>verifiers/rewards</span></div>
+      <div><strong id="agentEnvironments">0</strong><span>agent environments</span></div>
+      <div><strong id="scalingStudies">0</strong><span>scaling studies</span></div>
     </section>
 
-    <section class="dashboard-grid">
-      <article class="panel">
-        <div class="panel-head"><h2>Category Counts</h2><button id="resetFilters" type="button">Reset</button></div>
-        <div id="countChips" class="chip-grid"></div>
-      </article>
-      <article class="panel">
-        <div class="panel-head"><h2>Latest High-Signal Entries</h2><span id="shownCount">0 shown</span></div>
-        <div id="latestList" class="mini-list"></div>
-      </article>
+    <section class="controls" aria-label="Search and filters">
+      <label class="search"><span>Search</span><input id="q" type="search" placeholder="title, author, tag, summary, venue"></label>
+      <label><span>Year</span><select id="year"><option value="">All years</option></select></label>
+      <label><span>Venue</span><select id="venue"><option value="">All venues</option></select></label>
+      <label><span>Source role</span><select id="sourceRole"><option value="">All roles</option></select></label>
+      <label><span>Contract</span><select id="contract"><option value="">All contracts</option></select></label>
+      <label><span>Granularity</span><select id="granularity"><option value="">All granularities</option></select></label>
+      <label><span>Training use</span><select id="trainingUse"><option value="">All uses</option></select></label>
+      <label><span>Curation</span><select id="curation"><option value="">All levels</option></select></label>
+      <label><span>Status</span><select id="status"><option value="">All statuses</option></select></label>
+      <label><span>Artifact</span><select id="artifact"><option value="">Any artifact</option></select></label>
+      <button id="reset" type="button">Reset</button>
+    </section>
+
+    <section class="path-section">
+      <div class="section-head">
+        <h2>Reading Paths</h2>
+        <p>Starter packs are generated from `data/starter_packs.yaml` and matched to structured entries.</p>
+      </div>
+      <div id="pathTabs" class="path-tabs"></div>
+      <div id="pathPanel" class="path-panel"></div>
     </section>
 
     <section class="results-head">
-      <h2>Search Results</h2>
+      <h2>Results</h2>
       <p id="resultSummary">Loading atlas data...</p>
     </section>
-    <section id="cards" class="entry-grid" aria-live="polite"></section>
+    <section id="results" class="result-grid" aria-live="polite"></section>
   </main>
 
-  <footer class="atlas-footer">
-    <span>Built from local metadata and card files.</span>
-    <a href="../reports/paper_coverage_report.md">Coverage report</a>
-    <a href="../reports/link_check.md">Link check</a>
+  <footer class="site-footer">
+    <span>Generated from structured atlas metadata.</span>
+    <a href="../data/papers.yaml">data/papers.yaml</a>
+    <a href="assets/entries.json">entries.json</a>
+    <a href="../reports/link_check.md">link check</a>
   </footer>
 
   <script src="assets/site.js"></script>

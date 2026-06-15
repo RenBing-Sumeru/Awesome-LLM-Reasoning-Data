@@ -1,289 +1,2498 @@
-# Needs Search and Metadata Review
+# Needs Search
 
-Generated from `data/papers.yaml`. Missing links are not treated as absence of a project. `partial` means at least one useful source may be present, but release-internal metadata still needs curation.
+Entries below are intentionally not promoted as verified until an official primary source is pinned.
 
-## Summary
+## An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition
 
-- Total entries: 269
-- Entries with at least one artifact link: 115
-- Entries missing artifact links: 154
-- Entries needing metadata review: 269
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition" arXiv`
+  - `"An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition" OpenReview`
+  - `"An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition" GitHub`
+  - `"An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Missing Official Artifact Links
+## HOList: An environment for machine learning of higher-order logic theorem proving
 
-| Title | Year | Status | Local reason |
-|---|---:|---|---|
-| pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL | 2026 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Terminal-Bench: A benchmark and task environment for terminal agents | 2026 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| RewardBench 2 | 2026 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| xLAM: A family of large action models to empower AI agent systems | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| rStar-Math | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Why we no longer evaluate on SWE-bench Verified | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| VAR-MATH | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Toward conversational diagnostic AI: The AMIE system | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Sky-T1: Fully open reasoning model and data recipe | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SWE-smith: Scaling data construction for software engineering agents | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SWE-RL: Advancing language agents for software engineering via reinforcement learning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Rubrics as rewards | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| R2E-Gym: Procedural training environments for repository-level code agents | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Qwen2.5-Math-PRM | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Process reward models for code reasoning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| PRIME: Process reinforcement through implicit rewards | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| OpenCodeReasoning: Code reasoning traces at scale | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| OpenCodeReasoning-2: Scalable code reasoning data | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Open-Reasoner-Zero: An open-source approach to RLVR for reasoning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| OnlineRubrics | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Multi-Agent Evolve: LLM self-improve through co-evolution | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Min-K\%++ | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| MegaScience: A benchmark and data resource for scientific reasoning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| MCP-Universe: Tool and environment infrastructure for agent evaluation and training | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| MATH-Perturb | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Introducing OpenAI o3 and o4-mini | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Humanity's Last Exam | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| HealthBench: Evaluating large language models towards improved human health | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| General reasoning models: Survey and perspectives | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| From system 1 to system 2: A survey of reasoning large language models | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| FinDER: Financial data extraction and reasoning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Does supervised fine-tuning memorize while reinforcement learning generalizes? | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Does RL really incentivize reasoning beyond base? | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| DeepScaleR: Scaling reinforcement learning for reasoning in open models | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| DAPO: An open-source LLM reinforcement learning system at scale | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ChemLLMBench and chemistry reasoning evaluations for language models | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ACORD: Attorney-curated open research dataset | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| 1-shot RLVR: Learning reasoning with minimal verifiable data | 2025 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| tau-bench: A benchmark for tool-agent-user interaction in real-world domains | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| XSTest | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| WorkArena: How capable are web agents at solving common knowledge work tasks? | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| WildGuard | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| WebLINX: Real-world website navigation with multi-turn dialogue | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| VisualWebArena: Evaluating multimodal agents on realistic visual web tasks | 2024 | `partial` | Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state. |
-| Tulu 3: Pushing frontiers in open language model post-training | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ToolACE: Winning the points of LLM function calling | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| The Llama 3 Herd of models | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Self-Rewarding LMs | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SciCode: A benchmark for scientific code generation and reasoning | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SWE-Search | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SWE-Gym: Advancing software engineering agents with training and evaluation environments | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SPIN: Self-play fine-tuning converts weak language models to strong language models | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Rewarding progress: Scaling automated process verifiers for LLM reasoning | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ReST-MCTS* | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| RAFT: Adapting language model to domain-specific RAG | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| R-Tuning | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Prometheus 2: An open source language model specialized in evaluating other language models | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Overoptimization in direct alignment algorithms | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| OpenCodeInterpreter: Integrating code generation with execution and refinement | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Magicoder: Empowering code generation with OSS-instruct | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| LiveCodeBench: Holistic and contamination-free evaluation of large language models for code | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| LiveBench: A challenging, contamination-free benchmark for large language models | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Learning to reason with LLMs | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| LAB-Bench: Measuring capabilities of language models for biology research | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Is model collapse inevitable? | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Introducing SWE-bench Verified | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Improve mathematical reasoning in language models by automated process supervision | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| HelpSteer2: Open-source preference data for helpfulness and safety | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| HarmBench | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Goedel-Prover: A frontier model for open-source automated theorem proving | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| GSM-Symbolic | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Does writing with LMs reduce content diversity? | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| DeepSeekMath: Pushing the limits of mathematical reasoning in open language models | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| DeepSeek-Prover: Advancing theorem proving in LLMs | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ChemBench: A benchmark for evaluating large language models in chemistry | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| BFCL v3 | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| AI models collapse when trained on recursively generated data | 2024 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| UltraFeedback: Boosting language models with high-quality feedback | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Toolformer: Language models can teach themselves to use tools | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SelfCodeAlign: Self-alignment for code generation | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Self-RAG: Learning to retrieve, generate, and critique through self-reflection | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| SWE-bench: Can language models resolve real-world GitHub issues? | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Reflexion: Language agents with verbal reinforcement learning | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ReST\textsuperscriptEM | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ReAct: Synergizing reasoning and acting in language models | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ProofNet: Autoformalizing and formally proving undergraduate-level mathematics | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Orca: Progressive learning from complex explanation traces of GPT-4 | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Mind2Web: Towards a generalist agent for the web | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| MetaMath: Bootstrap your own mathematical questions for large language models | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Measuring faithfulness in chain-of-thought reasoning | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| MAmmoTH: Building math generalist models through hybrid instruction tuning | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| MAUD: A merger agreement understanding dataset | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| LegalBench | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| LeanDojo: Theorem proving with retrieval-augmented language models | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Large language models encode clinical knowledge | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Judging LLM-as-a-judge with MT-Bench and Chatbot Arena | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| JudgeLM: Fine-tuned large language models are scalable judges | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Gorilla | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| GPQA | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| FinanceBench: A benchmark for financial question answering | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| FActScore | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Data provenance for language models | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| API-Bank: A benchmark for tool-augmented LLMs | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ALCE: Enabling large language models to generate text with citations | 2023 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| TruthfulQA | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Training a helpful and harmless assistant with reinforcement learning from human feedback | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Solving math word problems with process- and outcome-based feedback | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ScienceWorld: Is your agent smarter than a 5th grader? | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Scaling laws for reward model overoptimization | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Draft, sketch, and prove: Guiding formal theorem provers with informal proofs | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| CodeT: Code generation with generated tests | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| CodeRL: Mastering code generation through pretrained models and deep reinforcement learning | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| COLIEE: Competition on legal information extraction/entailment | 2022 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| miniF2F: A cross-system benchmark for formal olympiad-level mathematics | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Training verifiers to solve math word problems | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Qasper: A dataset of information-seeking questions and answers over scientific research papers | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Multitask prompted training enables zero-shot task generalization | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Measuring mathematical problem solving with the MATH dataset | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Measuring coding challenge competence with APPS | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Finetuned language models are zero-shot learners | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| FinQA: A dataset of numerical reasoning over financial data | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Evaluating large language models trained on code | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| ContractNLI: A dataset for document-level natural language inference for contracts | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| CaseHOLD: A dataset for legal holding statement prediction | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| CUAD: An expert-annotated NLP dataset for legal contract review | 2021 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Retrieval-augmented generation for knowledge-intensive NLP tasks | 2020 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Fact or fiction: Verifying scientific claims | 2020 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| A primer in BERTology: What we know about how BERT works | 2020 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| PubMedQA: A dataset for biomedical research question answering | 2019 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| HOList: An environment for machine learning of higher-order logic theorem proving | 2019 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Datasheets for datasets | 2018 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Data statements for natural language processing | 2018 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| Deep reinforcement learning from human preferences | 2017 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
-| An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition | 2015 | `needs_metadata` | Seeded from local BibTeX for later atlas classification; needs curator review. |
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, environmental_agents_tools_web_swe
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"HOList: An environment for machine learning of higher-order logic theorem proving" arXiv`
+  - `"HOList: An environment for machine learning of higher-order logic theorem proving" OpenReview`
+  - `"HOList: An environment for machine learning of higher-order logic theorem proving" GitHub`
+  - `"HOList: An environment for machine learning of higher-order logic theorem proving" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Linked But Still Partial
+## PubMedQA: A dataset for biomedical research question answering
 
-| Title | Year | Links | Needs |
-|---|---:|---|---|
-| Why Does Self-Distillation (Sometimes) Degrade the Reasoning Capability of LLMs? | 2026 | arxiv: https://arxiv.org/abs/2603.24472 | metadata review |
-| Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs | 2026 | arxiv: https://arxiv.org/abs/2601.11061 | metadata review |
-| Soft Contamination Means Benchmarks Test Shallow Generalization | 2026 | arxiv: https://arxiv.org/abs/2602.12413 | needs_metadata: curator should verify atlas fields |
-| SWE-Master: Unleashing the Potential of Software Engineering Agents via Post-Training | 2026 | arxiv: https://arxiv.org/abs/2602.03411 | metadata review |
-| Omni-RRM: Advancing Omni Reward Modeling via Automatic Rubric-Grounded Preference Synthesis | 2026 | arxiv: https://arxiv.org/abs/2602.00846 | metadata review |
-| Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly? | 2026 | arxiv: https://arxiv.org/abs/2511.13646 | metadata review |
-| Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation (G-OPD) | 2026 | arxiv: https://arxiv.org/abs/2602.12125 | metadata review |
-| LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking | 2026 | arxiv: https://arxiv.org/abs/2604.15149 | metadata review |
-| Dual Consensus: Escaping from Spurious Majority in Unsupervised RLVR via Two-Stage Vote Mechanism | 2026 | arxiv: https://arxiv.org/abs/2603.16223 | metadata review |
-| Decoupling KL and Trajectories: A Unified Perspective for SFT, DAgger, Offline RL, and OPD in LLM Distillation | 2026 | arxiv: https://arxiv.org/abs/2605.16826 | metadata review |
-| CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution | 2026 | arxiv: https://arxiv.org/abs/2603.17775 | metadata review |
-| Bootstrapping Post-training Signals for Open-ended Tasks via Rubric-based Self-play on Pre-training Text (POP) | 2026 | arxiv: https://arxiv.org/abs/2604.20051 | metadata review |
-| Autorubric: Unifying Rubric-based LLM Evaluation | 2026 | arxiv: https://arxiv.org/abs/2603.00077 | metadata review |
-| An Imperfect Verifier is Good Enough: Learning with Noisy Rewards | 2026 | arxiv: https://arxiv.org/abs/2604.07666 | metadata review |
-| Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM) | 2026 | arxiv: https://arxiv.org/abs/2602.01511 | metadata review |
-| Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence | 2026 | arxiv: https://arxiv.org/abs/2604.18292 | metadata review |
-| s1: Simple Test-Time Scaling | 2025 | arxiv: https://arxiv.org/abs/2501.19393 | needs_metadata: release-internal fields require curator review |
-| rStar2-Agent: Agentic Reasoning Technical Report | 2025 | arxiv: https://arxiv.org/abs/2508.20722 | metadata review |
-| Towards Understanding Self-play for LLM Reasoning | 2025 | arxiv: https://arxiv.org/abs/2510.27072 | metadata review |
-| TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning | 2025 | arxiv: https://arxiv.org/abs/2505.14625; code: https://github.com/uw-nsl/TinyV | needs_metadata: release-internal fields require curator review |
-| The Markovian Thinker: Architecture-Agnostic Linear Scaling of Reasoning | 2025 | arxiv: https://arxiv.org/abs/2510.06557 | metadata review |
-| The Invisible Leash: Why RLVR May or May Not Escape Its Origin | 2025 | arxiv: https://arxiv.org/abs/2507.14843 | needs_metadata: curator should verify atlas fields |
-| The Entropy Mechanism of Reinforcement Learning for Reasoning Language Models | 2025 | arxiv: https://arxiv.org/abs/2505.22617 | metadata review |
-| The Art of Scaling Reinforcement Learning Compute for LLMs | 2025 | arxiv: https://arxiv.org/abs/2510.13786 | needs_metadata: release-internal fields require curator review |
-| TTRL: Test-Time Reinforcement Learning | 2025 | arxiv: https://arxiv.org/abs/2504.16084 | needs_metadata: release-internal fields require curator review |
-| Subliminal Learning: Language models transmit behavioral traits via hidden signals in data | 2025 | arxiv: https://arxiv.org/abs/2507.14805 | metadata review |
-| Subliminal Learning | 2025 | arxiv: https://arxiv.org/abs/2507.14805 | needs_metadata: release-internal fields require curator review |
-| Spurious Rewards: Rethinking Training Signals in RLVR | 2025 | arxiv: https://arxiv.org/abs/2506.10947 | metadata review |
-| Spurious Rewards | 2025 | arxiv: https://arxiv.org/abs/2506.10947 | needs_metadata: release-internal fields require curator review |
-| Skywork Open Reasoner 1 Technical Report | 2025 | arxiv: https://arxiv.org/abs/2505.22312 | metadata review |
-| Search-Time Data Contamination | 2025 | arxiv: https://arxiv.org/abs/2508.13180 | metadata review |
-| Scaling Behaviors of LLM Reinforcement Learning Post-Training: An Empirical Study in Mathematical Reasoning | 2025 | arxiv: https://arxiv.org/abs/2509.25300 | metadata review |
-| Scaling Behaviors of LLM Reinforcement Learning Post-Training | 2025 | arxiv: https://arxiv.org/abs/2509.25300 | needs_metadata: release-internal fields require curator review |
-| Safety Through Reasoning: An Empirical Study of Reasoning Guardrail Models | 2025 | arxiv: https://arxiv.org/abs/2505.20087 | metadata review |
-| SafeChain: Safety of Language Models with Long Chain-of-Thought Reasoning Capabilities | 2025 | arxiv: https://arxiv.org/abs/2502.12025 | metadata review |
-| SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents | 2025 | arxiv: https://arxiv.org/abs/2505.20411 | metadata review |
-| SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution | 2025 | arxiv: https://arxiv.org/abs/2502.18449 | metadata review |
-| SWE-Gym | 2025 | arxiv: https://arxiv.org/abs/2412.21139 | needs_metadata: release-internal fields require curator review |
-| Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs | 2025 | arxiv: https://arxiv.org/abs/2506.14245 | metadata review |
-| ReTool: Reinforcement Learning for Strategic Tool Use in LLMs | 2025 | arxiv: https://arxiv.org/abs/2504.11536 | metadata review |
-| R3: Robust Rubric-Agnostic Reward Models | 2025 | arxiv: https://arxiv.org/abs/2505.13388 | metadata review |
-| R2E-Gym | 2025 | arxiv: https://arxiv.org/abs/2504.07164 | needs_metadata: release-internal fields require curator review |
-| R-Zero: Self-Evolving Reasoning LLM from Zero Data | 2025 | arxiv: https://arxiv.org/abs/2508.05004 | metadata review |
-| Qwen3-Coder | 2025 | code: https://github.com/QwenLM/Qwen3-Coder; project: https://qwenlm.github.io/blog/qwen3-coder/ | needs_metadata: release-internal fields require curator review |
-| Qwen3 Technical Report | 2025 | arxiv: https://arxiv.org/abs/2505.09388 | needs_metadata: release-internal fields require curator review |
-| Phi-4-reasoning Technical Report | 2025 | arxiv: https://arxiv.org/abs/2504.21318 | needs_metadata: release-internal fields require curator review |
-| PRMBench: A fine-grained and challenging benchmark for process-level reward models | 2025 | arxiv: https://arxiv.org/abs/2501.03124 | needs_metadata: release-internal fields require curator review |
-| OpenThoughts: Data recipes for reasoning models | 2025 | arxiv: https://arxiv.org/abs/2506.04178; code: https://github.com/open-thoughts/open-thoughts; huggingface: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M | needs_metadata: release-internal fields require curator review |
-| OpenR1-Math-220k | 2025 | code: https://github.com/huggingface/open-r1; huggingface: https://huggingface.co/datasets/open-r1/OpenR1-Math-220k | needs_metadata: release-internal fields require curator review |
-| OpenMathReasoning: A large-scale dataset of math reasoning traces | 2025 | arxiv: https://arxiv.org/abs/2504.16891 | needs_metadata: release-internal fields require curator review |
-| OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique | 2025 | arxiv: https://arxiv.org/abs/2507.09075 | needs_metadata: release-internal fields require curator review |
-| Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model | 2025 | arxiv: https://arxiv.org/abs/2503.24290 | metadata review |
-| Online Rubrics Elicitation from Pairwise Comparisons | 2025 | arxiv: https://arxiv.org/abs/2510.07284 | metadata review |
-| One Token to Fool LLM-as-a-Judge | 2025 | arxiv: https://arxiv.org/abs/2507.08794 | needs_metadata: release-internal fields require curator review |
-| Nemotron-Math: Reasoning Data with Tool-Integrated Reasoning Variants | 2025 | arxiv: https://arxiv.org/abs/2512.15489 | metadata review |
-| NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions | 2025 | arxiv: https://arxiv.org/abs/2502.13124 | needs_metadata: release-internal fields require curator review |
-| MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention | 2025 | arxiv: https://arxiv.org/abs/2506.13585; code: https://github.com/MiniMax-AI/MiniMax-M1 | needs_metadata: release-internal fields require curator review |
-| Mid-Training of Large Language Models: A Survey | 2025 | arxiv: https://arxiv.org/abs/2510.06826 | metadata review |
-| Magistral | 2025 | arxiv: https://arxiv.org/abs/2506.10910 | needs_metadata: release-internal fields require curator review |
-| Long Grounded Thoughts | 2025 | arxiv: https://arxiv.org/abs/2511.05705 | metadata review |
-| Llama-Nemotron: Efficient Reasoning Models | 2025 | arxiv: https://arxiv.org/abs/2505.00949 | needs_metadata: release-internal fields require curator review |
-| Leaky Thoughts: Large Reasoning Models Are Not Private Thinkers | 2025 | arxiv: https://arxiv.org/abs/2506.15674 | metadata review |
-| Leaky Thoughts | 2025 | arxiv: https://arxiv.org/abs/2506.15674 | needs_metadata: release-internal fields require curator review |
-| LastingBench: Defend Benchmarks Against Knowledge Leakage | 2025 | arxiv: https://arxiv.org/abs/2506.21614 | metadata review |
-| LIMO: Less Is More for Reasoning | 2025 | arxiv: https://arxiv.org/abs/2502.03387 | needs_metadata: release-internal fields require curator review |
-| KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding | 2025 | arxiv: https://arxiv.org/abs/2503.02951 | needs_metadata: release-internal fields require curator review |
-| Kimi K2: Open Agentic Intelligence | 2025 | arxiv: https://arxiv.org/abs/2507.20534 | metadata review |
-| Kimi K1.5: Scaling Reinforcement Learning with LLMs | 2025 | arxiv: https://arxiv.org/abs/2501.12599 | needs_metadata: release-internal fields require curator review |
-| HealthBench | 2025 | arxiv: https://arxiv.org/abs/2505.08775 | needs_metadata: release-internal fields require curator review |
-| Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction | 2025 | arxiv: https://arxiv.org/abs/2508.03613 | metadata review |
-| Gaperon: A Peppered English-French Generative Language Model Suite | 2025 | arxiv: https://arxiv.org/abs/2510.25771 | metadata review |
-| GRPO is Secretly a Process Reward Model | 2025 | arxiv: https://arxiv.org/abs/2509.21154 | metadata review |
-| From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning | 2025 | arxiv: https://arxiv.org/abs/2505.22203 | metadata review |
-| FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs | 2025 | arxiv: https://arxiv.org/abs/2410.13210 | metadata review |
-| Distillation Scaling Laws | 2025 | arxiv: https://arxiv.org/abs/2502.08606 | metadata review |
-| DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models | 2025 | arxiv: https://arxiv.org/abs/2512.02556 | metadata review |
-| DeepSeek-R1 | 2025 | arxiv: https://arxiv.org/abs/2501.12948 | needs_metadata: release-internal fields require curator review |
-| DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning | 2025 | arxiv: https://arxiv.org/abs/2504.11456 | metadata review |
-| DeepMath-103K | 2025 | arxiv: https://arxiv.org/abs/2504.11456 | needs_metadata: release-internal fields require curator review |
-| DAPO | 2025 | arxiv: https://arxiv.org/abs/2503.14476 | needs_metadata: release-internal fields require curator review |
-| Cognitive Behaviors that Enable Self-Improving Reasoners, or, Four Habits of Highly Effective STaRs | 2025 | arxiv: https://arxiv.org/abs/2503.01307 | metadata review |
-| Clip-Low Increases Entropy and Clip-High Decreases Entropy in Reinforcement Learning of Large Language Models | 2025 | arxiv: https://arxiv.org/abs/2509.26114 | metadata review |
-| Big-Math-RL-Verified | 2025 | arxiv: https://arxiv.org/abs/2502.17387 | needs_metadata: release-internal fields require curator review |
-| Beyond Correctness: Harmonizing Process and Outcome Rewards through RL Training (PROF) | 2025 | arxiv: https://arxiv.org/abs/2509.03403 | metadata review |
-| AlphaEvolve: A coding agent for scientific and algorithmic discovery | 2025 | arxiv: https://arxiv.org/abs/2506.13131 | metadata review |
-| Aegis2.0: A Diverse AI Safety Dataset and Risks Taxonomy for Alignment of LLM Guardrails | 2025 | arxiv: https://arxiv.org/abs/2501.09004 | metadata review |
-| Aegis2.0 | 2025 | arxiv: https://arxiv.org/abs/2501.09004 | needs_metadata: release-internal fields require curator review |
-| AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions | 2025 | arxiv: https://arxiv.org/abs/2506.09038 | metadata review |
-| AbstentionBench | 2025 | arxiv: https://arxiv.org/abs/2506.09038 | needs_metadata: release-internal fields require curator review |
-| Absolute Zero: Reinforced Self-play Reasoning with Zero Data | 2025 | arxiv: https://arxiv.org/abs/2505.03335 | needs_metadata: release-internal fields require curator review |
-| AM-Thinking-v1: Advancing the Frontier of Reasoning at 32B Scale | 2025 | arxiv: https://arxiv.org/abs/2505.08311 | metadata review |
-| A Survey on LLM Mid-Training | 2025 | arxiv: https://arxiv.org/abs/2510.23081 | metadata review |
-| A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility | 2025 | arxiv: https://arxiv.org/abs/2504.07086 | metadata review |
-| 1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training (AM-DeepSeek-R1-Distilled) | 2025 | arxiv: https://arxiv.org/abs/2503.19633 | metadata review |
-| RewardBench: Evaluating Reward Models for Language Modeling | 2024 | arxiv: https://arxiv.org/abs/2403.13787 | needs_metadata: release-internal fields require curator review |
-| ProcessBench: Identifying Process Errors in Mathematical Reasoning | 2024 | arxiv: https://arxiv.org/abs/2412.06559 | needs_metadata: release-internal fields require curator review |
-| OpenHands: An Open Platform for AI Software Developers as Generalist Agents | 2024 | arxiv: https://arxiv.org/abs/2407.16741; code: https://github.com/All-Hands-AI/OpenHands; project: https://www.openhands.dev/ | needs_metadata: release-internal fields require curator review |
-| OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision | 2024 | arxiv: https://arxiv.org/abs/2406.06592 | needs_metadata: release-internal fields require curator review |
-| OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments | 2024 | arxiv: https://arxiv.org/abs/2404.07972 | needs_metadata: release-internal fields require curator review |
-| Math-Shepherd | 2024 | arxiv: https://arxiv.org/abs/2312.08935 | needs_metadata: release-internal fields require curator review |
-| MAmmoTH2: Scaling Instructions from the Web | 2024 | arxiv: https://arxiv.org/abs/2405.03548 | metadata review |
-| Large Language Monkeys: Scaling Inference Compute with Repeated Sampling | 2024 | arxiv: https://arxiv.org/abs/2407.21787 | metadata review |
-| BrowserGym: A gym environment for web agents | 2024 | arxiv: https://arxiv.org/abs/2412.05467 | needs_metadata: release-internal fields require curator review |
-| AppWorld: A controllable world of apps and people for benchmarking interactive coding agents | 2024 | arxiv: https://arxiv.org/abs/2407.18901 | needs_metadata: release-internal fields require curator review |
-| AndroidWorld: A dynamic benchmarking environment for autonomous agents | 2024 | arxiv: https://arxiv.org/abs/2405.14573 | needs_metadata: release-internal fields require curator review |
-| WebArena: A realistic web environment for building autonomous agents | 2023 | arxiv: https://arxiv.org/abs/2307.13854 | needs_metadata: release-internal fields require curator review |
-| ToolLLM: Facilitating large language models to master 16000+ real-world APIs | 2023 | arxiv: https://arxiv.org/abs/2307.16789 | needs_metadata: release-internal fields require curator review |
-| Self-consistency improves chain of thought reasoning in language models | 2023 | arxiv: https://arxiv.org/abs/2203.11171 | needs_metadata: foundation entry still needs full source mixture/license/lineage review |
-| Self-Instruct: Aligning language models with self-generated instructions | 2023 | arxiv: https://arxiv.org/abs/2212.10560 | needs_metadata: foundation entry still needs full source mixture/license/lineage review |
-| Let's Verify Step by Step | 2023 | arxiv: https://arxiv.org/abs/2305.20050 | needs_metadata: release-internal fields require curator review |
-| Direct preference optimization: Your language model is secretly a reward model | 2023 | arxiv: https://arxiv.org/abs/2305.18290 | needs_metadata: foundation entry still needs full source mixture/license/lineage review |
-| Training language models to follow instructions with human feedback | 2022 | arxiv: https://arxiv.org/abs/2203.02155 | needs_metadata: foundation entry still needs full source mixture/license/lineage review |
-| STaR: Bootstrapping reasoning with reasoning | 2022 | arxiv: https://arxiv.org/abs/2203.14465 | needs_metadata: foundation entry still needs full source mixture/license/lineage review |
-| Constitutional AI: Harmlessness from AI feedback | 2022 | arxiv: https://arxiv.org/abs/2212.08073 | needs_metadata: foundation entry still needs full source mixture/license/lineage review |
-| Chain-of-thought prompting elicits reasoning in large language models | 2022 | arxiv: https://arxiv.org/abs/2201.11903 | needs_metadata: foundation entry still needs full source mixture/license/lineage review |
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"PubMedQA: A dataset for biomedical research question answering" arXiv`
+  - `"PubMedQA: A dataset for biomedical research question answering" OpenReview`
+  - `"PubMedQA: A dataset for biomedical research question answering" GitHub`
+  - `"PubMedQA: A dataset for biomedical research question answering" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## A primer in BERTology: What we know about how BERT works
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"A primer in BERTology: What we know about how BERT works" arXiv`
+  - `"A primer in BERTology: What we know about how BERT works" OpenReview`
+  - `"A primer in BERTology: What we know about how BERT works" GitHub`
+  - `"A primer in BERTology: What we know about how BERT works" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Fact or fiction: Verifying scientific claims
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Fact or fiction: Verifying scientific claims" arXiv`
+  - `"Fact or fiction: Verifying scientific claims" OpenReview`
+  - `"Fact or fiction: Verifying scientific claims" GitHub`
+  - `"Fact or fiction: Verifying scientific claims" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Retrieval-augmented generation for knowledge-intensive NLP tasks
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Retrieval-augmented generation for knowledge-intensive NLP tasks" arXiv`
+  - `"Retrieval-augmented generation for knowledge-intensive NLP tasks" OpenReview`
+  - `"Retrieval-augmented generation for knowledge-intensive NLP tasks" GitHub`
+  - `"Retrieval-augmented generation for knowledge-intensive NLP tasks" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## CaseHOLD: A dataset for legal holding statement prediction
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"CaseHOLD: A dataset for legal holding statement prediction" arXiv`
+  - `"CaseHOLD: A dataset for legal holding statement prediction" OpenReview`
+  - `"CaseHOLD: A dataset for legal holding statement prediction" GitHub`
+  - `"CaseHOLD: A dataset for legal holding statement prediction" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ContractNLI: A dataset for document-level natural language inference for contracts
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ContractNLI: A dataset for document-level natural language inference for contracts" arXiv`
+  - `"ContractNLI: A dataset for document-level natural language inference for contracts" OpenReview`
+  - `"ContractNLI: A dataset for document-level natural language inference for contracts" GitHub`
+  - `"ContractNLI: A dataset for document-level natural language inference for contracts" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## CUAD: An expert-annotated NLP dataset for legal contract review
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"CUAD: An expert-annotated NLP dataset for legal contract review" arXiv`
+  - `"CUAD: An expert-annotated NLP dataset for legal contract review" OpenReview`
+  - `"CUAD: An expert-annotated NLP dataset for legal contract review" GitHub`
+  - `"CUAD: An expert-annotated NLP dataset for legal contract review" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Finetuned language models are zero-shot learners
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Finetuned language models are zero-shot learners" arXiv`
+  - `"Finetuned language models are zero-shot learners" OpenReview`
+  - `"Finetuned language models are zero-shot learners" GitHub`
+  - `"Finetuned language models are zero-shot learners" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## FinQA: A dataset of numerical reasoning over financial data
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"FinQA: A dataset of numerical reasoning over financial data" arXiv`
+  - `"FinQA: A dataset of numerical reasoning over financial data" OpenReview`
+  - `"FinQA: A dataset of numerical reasoning over financial data" GitHub`
+  - `"FinQA: A dataset of numerical reasoning over financial data" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Measuring coding challenge competence with APPS
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Measuring coding challenge competence with APPS" arXiv`
+  - `"Measuring coding challenge competence with APPS" OpenReview`
+  - `"Measuring coding challenge competence with APPS" GitHub`
+  - `"Measuring coding challenge competence with APPS" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## miniF2F: A cross-system benchmark for formal olympiad-level mathematics
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" arXiv`
+  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" OpenReview`
+  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" GitHub`
+  - `"miniF2F: A cross-system benchmark for formal olympiad-level mathematics" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Multitask prompted training enables zero-shot task generalization
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Multitask prompted training enables zero-shot task generalization" arXiv`
+  - `"Multitask prompted training enables zero-shot task generalization" OpenReview`
+  - `"Multitask prompted training enables zero-shot task generalization" GitHub`
+  - `"Multitask prompted training enables zero-shot task generalization" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Qasper: A dataset of information-seeking questions and answers over scientific research papers
+
+- Current status: `needs_metadata`
+- Possible category: benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Qasper: A dataset of information-seeking questions and answers over scientific research papers" arXiv`
+  - `"Qasper: A dataset of information-seeking questions and answers over scientific research papers" OpenReview`
+  - `"Qasper: A dataset of information-seeking questions and answers over scientific research papers" GitHub`
+  - `"Qasper: A dataset of information-seeking questions and answers over scientific research papers" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" arXiv`
+  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" OpenReview`
+  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" GitHub`
+  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## CodeRL: Mastering code generation through pretrained models and deep reinforcement learning
+
+- Current status: `needs_metadata`
+- Possible category: scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" arXiv`
+  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" OpenReview`
+  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" GitHub`
+  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## CodeT: Code generation with generated tests
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"CodeT: Code generation with generated tests" arXiv`
+  - `"CodeT: Code generation with generated tests" OpenReview`
+  - `"CodeT: Code generation with generated tests" GitHub`
+  - `"CodeT: Code generation with generated tests" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## COLIEE: Competition on legal information extraction/entailment
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"COLIEE: Competition on legal information extraction/entailment" arXiv`
+  - `"COLIEE: Competition on legal information extraction/entailment" OpenReview`
+  - `"COLIEE: Competition on legal information extraction/entailment" GitHub`
+  - `"COLIEE: Competition on legal information extraction/entailment" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering" arXiv`
+  - `"ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering" OpenReview`
+  - `"ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering" GitHub`
+  - `"ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Draft, sketch, and prove: Guiding formal theorem provers with informal proofs
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Draft, sketch, and prove: Guiding formal theorem provers with informal proofs" arXiv`
+  - `"Draft, sketch, and prove: Guiding formal theorem provers with informal proofs" OpenReview`
+  - `"Draft, sketch, and prove: Guiding formal theorem provers with informal proofs" GitHub`
+  - `"Draft, sketch, and prove: Guiding formal theorem provers with informal proofs" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Scaling laws for reward model overoptimization
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Scaling laws for reward model overoptimization" arXiv`
+  - `"Scaling laws for reward model overoptimization" OpenReview`
+  - `"Scaling laws for reward model overoptimization" GitHub`
+  - `"Scaling laws for reward model overoptimization" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ScienceWorld: Is your agent smarter than a 5th grader?
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ScienceWorld: Is your agent smarter than a 5th grader?" arXiv`
+  - `"ScienceWorld: Is your agent smarter than a 5th grader?" OpenReview`
+  - `"ScienceWorld: Is your agent smarter than a 5th grader?" GitHub`
+  - `"ScienceWorld: Is your agent smarter than a 5th grader?" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Solving math word problems with process- and outcome-based feedback
+
+- Current status: `needs_metadata`
+- Possible category: process_supervision_prm
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Solving math word problems with process- and outcome-based feedback" arXiv`
+  - `"Solving math word problems with process- and outcome-based feedback" OpenReview`
+  - `"Solving math word problems with process- and outcome-based feedback" GitHub`
+  - `"Solving math word problems with process- and outcome-based feedback" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## TruthfulQA
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"TruthfulQA" arXiv`
+  - `"TruthfulQA" OpenReview`
+  - `"TruthfulQA" GitHub`
+  - `"TruthfulQA" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ALCE: Enabling large language models to generate text with citations
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ALCE: Enabling large language models to generate text with citations" arXiv`
+  - `"ALCE: Enabling large language models to generate text with citations" OpenReview`
+  - `"ALCE: Enabling large language models to generate text with citations" GitHub`
+  - `"ALCE: Enabling large language models to generate text with citations" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## API-Bank: A benchmark for tool-augmented LLMs
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"API-Bank: A benchmark for tool-augmented LLMs" arXiv`
+  - `"API-Bank: A benchmark for tool-augmented LLMs" OpenReview`
+  - `"API-Bank: A benchmark for tool-augmented LLMs" GitHub`
+  - `"API-Bank: A benchmark for tool-augmented LLMs" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Data provenance for language models
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Data provenance for language models" arXiv`
+  - `"Data provenance for language models" OpenReview`
+  - `"Data provenance for language models" GitHub`
+  - `"Data provenance for language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" arXiv`
+  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" OpenReview`
+  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" GitHub`
+  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## FActScore
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"FActScore" arXiv`
+  - `"FActScore" OpenReview`
+  - `"FActScore" GitHub`
+  - `"FActScore" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## FinanceBench: A benchmark for financial question answering
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"FinanceBench: A benchmark for financial question answering" arXiv`
+  - `"FinanceBench: A benchmark for financial question answering" OpenReview`
+  - `"FinanceBench: A benchmark for financial question answering" GitHub`
+  - `"FinanceBench: A benchmark for financial question answering" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Gorilla
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Gorilla" arXiv`
+  - `"Gorilla" OpenReview`
+  - `"Gorilla" GitHub`
+  - `"Gorilla" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## GPQA
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"GPQA" arXiv`
+  - `"GPQA" OpenReview`
+  - `"GPQA" GitHub`
+  - `"GPQA" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## JudgeLM: Fine-tuned large language models are scalable judges
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"JudgeLM: Fine-tuned large language models are scalable judges" arXiv`
+  - `"JudgeLM: Fine-tuned large language models are scalable judges" OpenReview`
+  - `"JudgeLM: Fine-tuned large language models are scalable judges" GitHub`
+  - `"JudgeLM: Fine-tuned large language models are scalable judges" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Judging LLM-as-a-judge with MT-Bench and Chatbot Arena
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" arXiv`
+  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" OpenReview`
+  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" GitHub`
+  - `"Judging LLM-as-a-judge with MT-Bench and Chatbot Arena" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" arXiv`
+  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" OpenReview`
+  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" GitHub`
+  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Large language models encode clinical knowledge
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Large language models encode clinical knowledge" arXiv`
+  - `"Large language models encode clinical knowledge" OpenReview`
+  - `"Large language models encode clinical knowledge" GitHub`
+  - `"Large language models encode clinical knowledge" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## LeanDojo: Theorem proving with retrieval-augmented language models
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"LeanDojo: Theorem proving with retrieval-augmented language models" arXiv`
+  - `"LeanDojo: Theorem proving with retrieval-augmented language models" OpenReview`
+  - `"LeanDojo: Theorem proving with retrieval-augmented language models" GitHub`
+  - `"LeanDojo: Theorem proving with retrieval-augmented language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## LegalBench
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"LegalBench" arXiv`
+  - `"LegalBench" OpenReview`
+  - `"LegalBench" GitHub`
+  - `"LegalBench" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## MAmmoTH: Building math generalist models through hybrid instruction tuning
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" arXiv`
+  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" OpenReview`
+  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" GitHub`
+  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations
+
+- Current status: `needs_metadata`
+- Possible category: process_supervision_prm
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" arXiv`
+  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" OpenReview`
+  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" GitHub`
+  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## MAUD: A merger agreement understanding dataset
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"MAUD: A merger agreement understanding dataset" arXiv`
+  - `"MAUD: A merger agreement understanding dataset" OpenReview`
+  - `"MAUD: A merger agreement understanding dataset" GitHub`
+  - `"MAUD: A merger agreement understanding dataset" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Measuring faithfulness in chain-of-thought reasoning
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Measuring faithfulness in chain-of-thought reasoning" arXiv`
+  - `"Measuring faithfulness in chain-of-thought reasoning" OpenReview`
+  - `"Measuring faithfulness in chain-of-thought reasoning" GitHub`
+  - `"Measuring faithfulness in chain-of-thought reasoning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## MetaMath: Bootstrap your own mathematical questions for large language models
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"MetaMath: Bootstrap your own mathematical questions for large language models" arXiv`
+  - `"MetaMath: Bootstrap your own mathematical questions for large language models" OpenReview`
+  - `"MetaMath: Bootstrap your own mathematical questions for large language models" GitHub`
+  - `"MetaMath: Bootstrap your own mathematical questions for large language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Mind2Web: Towards a generalist agent for the web
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Mind2Web: Towards a generalist agent for the web" arXiv`
+  - `"Mind2Web: Towards a generalist agent for the web" OpenReview`
+  - `"Mind2Web: Towards a generalist agent for the web" GitHub`
+  - `"Mind2Web: Towards a generalist agent for the web" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Orca: Progressive learning from complex explanation traces of GPT-4
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Orca: Progressive learning from complex explanation traces of GPT-4" arXiv`
+  - `"Orca: Progressive learning from complex explanation traces of GPT-4" OpenReview`
+  - `"Orca: Progressive learning from complex explanation traces of GPT-4" GitHub`
+  - `"Orca: Progressive learning from complex explanation traces of GPT-4" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ProofNet: Autoformalizing and formally proving undergraduate-level mathematics
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" arXiv`
+  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" OpenReview`
+  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" GitHub`
+  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ReAct: Synergizing reasoning and acting in language models
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ReAct: Synergizing reasoning and acting in language models" arXiv`
+  - `"ReAct: Synergizing reasoning and acting in language models" OpenReview`
+  - `"ReAct: Synergizing reasoning and acting in language models" GitHub`
+  - `"ReAct: Synergizing reasoning and acting in language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Reflexion: Language agents with verbal reinforcement learning
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, environmental_agents_tools_web_swe, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Reflexion: Language agents with verbal reinforcement learning" arXiv`
+  - `"Reflexion: Language agents with verbal reinforcement learning" OpenReview`
+  - `"Reflexion: Language agents with verbal reinforcement learning" GitHub`
+  - `"Reflexion: Language agents with verbal reinforcement learning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ReST\textsuperscriptEM
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ReST\textsuperscriptEM" arXiv`
+  - `"ReST\textsuperscriptEM" OpenReview`
+  - `"ReST\textsuperscriptEM" GitHub`
+  - `"ReST\textsuperscriptEM" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Self-RAG: Learning to retrieve, generate, and critique through self-reflection
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" arXiv`
+  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" OpenReview`
+  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" GitHub`
+  - `"Self-RAG: Learning to retrieve, generate, and critique through self-reflection" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## SelfCodeAlign: Self-alignment for code generation
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"SelfCodeAlign: Self-alignment for code generation" arXiv`
+  - `"SelfCodeAlign: Self-alignment for code generation" OpenReview`
+  - `"SelfCodeAlign: Self-alignment for code generation" GitHub`
+  - `"SelfCodeAlign: Self-alignment for code generation" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Toolformer: Language models can teach themselves to use tools
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Toolformer: Language models can teach themselves to use tools" arXiv`
+  - `"Toolformer: Language models can teach themselves to use tools" OpenReview`
+  - `"Toolformer: Language models can teach themselves to use tools" GitHub`
+  - `"Toolformer: Language models can teach themselves to use tools" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## UltraFeedback: Boosting language models with high-quality feedback
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"UltraFeedback: Boosting language models with high-quality feedback" arXiv`
+  - `"UltraFeedback: Boosting language models with high-quality feedback" OpenReview`
+  - `"UltraFeedback: Boosting language models with high-quality feedback" GitHub`
+  - `"UltraFeedback: Boosting language models with high-quality feedback" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" arXiv`
+  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" OpenReview`
+  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" GitHub`
+  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## AI models collapse when trained on recursively generated data
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers, audit_failure_contamination_verifier_attacks
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"AI models collapse when trained on recursively generated data" arXiv`
+  - `"AI models collapse when trained on recursively generated data" OpenReview`
+  - `"AI models collapse when trained on recursively generated data" GitHub`
+  - `"AI models collapse when trained on recursively generated data" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" arXiv`
+  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" OpenReview`
+  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" GitHub`
+  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## BFCL v3
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"BFCL v3" arXiv`
+  - `"BFCL v3" OpenReview`
+  - `"BFCL v3" GitHub`
+  - `"BFCL v3" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" arXiv`
+  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" OpenReview`
+  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" GitHub`
+  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval
+
+- Current status: `needs_metadata`
+- Possible category: audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval" arXiv`
+  - `"BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval" OpenReview`
+  - `"BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval" GitHub`
+  - `"BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ChemBench: A benchmark for evaluating large language models in chemistry
+
+- Current status: `needs_metadata`
+- Possible category: audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ChemBench: A benchmark for evaluating large language models in chemistry" arXiv`
+  - `"ChemBench: A benchmark for evaluating large language models in chemistry" OpenReview`
+  - `"ChemBench: A benchmark for evaluating large language models in chemistry" GitHub`
+  - `"ChemBench: A benchmark for evaluating large language models in chemistry" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## DeepSeek-Prover: Advancing theorem proving in LLMs
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" arXiv`
+  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" OpenReview`
+  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" GitHub`
+  - `"DeepSeek-Prover: Advancing theorem proving in LLMs" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, frontier_model_reports, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" arXiv`
+  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" OpenReview`
+  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" GitHub`
+  - `"DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## DeepSeekMath: Pushing the limits of mathematical reasoning in open language models
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" arXiv`
+  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" OpenReview`
+  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" GitHub`
+  - `"DeepSeekMath: Pushing the limits of mathematical reasoning in open language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Does writing with LMs reduce content diversity?
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Does writing with LMs reduce content diversity?" arXiv`
+  - `"Does writing with LMs reduce content diversity?" OpenReview`
+  - `"Does writing with LMs reduce content diversity?" GitHub`
+  - `"Does writing with LMs reduce content diversity?" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, frontier_model_reports, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" arXiv`
+  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" OpenReview`
+  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" GitHub`
+  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Goedel-Prover: A frontier model for open-source automated theorem proving
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Goedel-Prover: A frontier model for open-source automated theorem proving" arXiv`
+  - `"Goedel-Prover: A frontier model for open-source automated theorem proving" OpenReview`
+  - `"Goedel-Prover: A frontier model for open-source automated theorem proving" GitHub`
+  - `"Goedel-Prover: A frontier model for open-source automated theorem proving" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## GSM-Symbolic
+
+- Current status: `needs_metadata`
+- Possible category: audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"GSM-Symbolic" arXiv`
+  - `"GSM-Symbolic" OpenReview`
+  - `"GSM-Symbolic" GitHub`
+  - `"GSM-Symbolic" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## HarmBench
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"HarmBench" arXiv`
+  - `"HarmBench" OpenReview`
+  - `"HarmBench" GitHub`
+  - `"HarmBench" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## HelpSteer2: Open-source preference data for helpfulness and safety
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"HelpSteer2: Open-source preference data for helpfulness and safety" arXiv`
+  - `"HelpSteer2: Open-source preference data for helpfulness and safety" OpenReview`
+  - `"HelpSteer2: Open-source preference data for helpfulness and safety" GitHub`
+  - `"HelpSteer2: Open-source preference data for helpfulness and safety" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Improve mathematical reasoning in language models by automated process supervision
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, process_supervision_prm
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Improve mathematical reasoning in language models by automated process supervision" arXiv`
+  - `"Improve mathematical reasoning in language models by automated process supervision" OpenReview`
+  - `"Improve mathematical reasoning in language models by automated process supervision" GitHub`
+  - `"Improve mathematical reasoning in language models by automated process supervision" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Introducing SWE-bench Verified
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Introducing SWE-bench Verified" arXiv`
+  - `"Introducing SWE-bench Verified" OpenReview`
+  - `"Introducing SWE-bench Verified" GitHub`
+  - `"Introducing SWE-bench Verified" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Is model collapse inevitable?
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers, audit_failure_contamination_verifier_attacks
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Is model collapse inevitable?" arXiv`
+  - `"Is model collapse inevitable?" OpenReview`
+  - `"Is model collapse inevitable?" GitHub`
+  - `"Is model collapse inevitable?" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## LAB-Bench: Measuring capabilities of language models for biology research
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"LAB-Bench: Measuring capabilities of language models for biology research" arXiv`
+  - `"LAB-Bench: Measuring capabilities of language models for biology research" OpenReview`
+  - `"LAB-Bench: Measuring capabilities of language models for biology research" GitHub`
+  - `"LAB-Bench: Measuring capabilities of language models for biology research" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Learning to reason with LLMs
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Learning to reason with LLMs" arXiv`
+  - `"Learning to reason with LLMs" OpenReview`
+  - `"Learning to reason with LLMs" GitHub`
+  - `"Learning to reason with LLMs" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## LiveCodeBench: Holistic and contamination-free evaluation of large language models for code
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers, programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" arXiv`
+  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" OpenReview`
+  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" GitHub`
+  - `"LiveCodeBench: Holistic and contamination-free evaluation of large language models for code" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Magicoder: Empowering code generation with OSS-instruct
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Magicoder: Empowering code generation with OSS-instruct" arXiv`
+  - `"Magicoder: Empowering code generation with OSS-instruct" OpenReview`
+  - `"Magicoder: Empowering code generation with OSS-instruct" GitHub`
+  - `"Magicoder: Empowering code generation with OSS-instruct" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## OpenCodeInterpreter: Integrating code generation with execution and refinement
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"OpenCodeInterpreter: Integrating code generation with execution and refinement" arXiv`
+  - `"OpenCodeInterpreter: Integrating code generation with execution and refinement" OpenReview`
+  - `"OpenCodeInterpreter: Integrating code generation with execution and refinement" GitHub`
+  - `"OpenCodeInterpreter: Integrating code generation with execution and refinement" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" arXiv`
+  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" OpenReview`
+  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" GitHub`
+  - `"OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Overoptimization in direct alignment algorithms
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Overoptimization in direct alignment algorithms" arXiv`
+  - `"Overoptimization in direct alignment algorithms" OpenReview`
+  - `"Overoptimization in direct alignment algorithms" GitHub`
+  - `"Overoptimization in direct alignment algorithms" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" arXiv`
+  - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" OpenReview`
+  - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" GitHub`
+  - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Prometheus 2: An open source language model specialized in evaluating other language models
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Prometheus 2: An open source language model specialized in evaluating other language models" arXiv`
+  - `"Prometheus 2: An open source language model specialized in evaluating other language models" OpenReview`
+  - `"Prometheus 2: An open source language model specialized in evaluating other language models" GitHub`
+  - `"Prometheus 2: An open source language model specialized in evaluating other language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" arXiv`
+  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" OpenReview`
+  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" GitHub`
+  - `"Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## R-Tuning
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"R-Tuning" arXiv`
+  - `"R-Tuning" OpenReview`
+  - `"R-Tuning" GitHub`
+  - `"R-Tuning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## RAFT: Adapting language model to domain-specific RAG
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"RAFT: Adapting language model to domain-specific RAG" arXiv`
+  - `"RAFT: Adapting language model to domain-specific RAG" OpenReview`
+  - `"RAFT: Adapting language model to domain-specific RAG" GitHub`
+  - `"RAFT: Adapting language model to domain-specific RAG" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ReST-MCTS*
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ReST-MCTS*" arXiv`
+  - `"ReST-MCTS*" OpenReview`
+  - `"ReST-MCTS*" GitHub`
+  - `"ReST-MCTS*" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Rewarding progress: Scaling automated process verifiers for LLM reasoning
+
+- Current status: `needs_metadata`
+- Possible category: process_supervision_prm, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" arXiv`
+  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" OpenReview`
+  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" GitHub`
+  - `"Rewarding progress: Scaling automated process verifiers for LLM reasoning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## SciCode: A benchmark for scientific code generation and reasoning
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"SciCode: A benchmark for scientific code generation and reasoning" arXiv`
+  - `"SciCode: A benchmark for scientific code generation and reasoning" OpenReview`
+  - `"SciCode: A benchmark for scientific code generation and reasoning" GitHub`
+  - `"SciCode: A benchmark for scientific code generation and reasoning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Self-Rewarding LMs
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Self-Rewarding LMs" arXiv`
+  - `"Self-Rewarding LMs" OpenReview`
+  - `"Self-Rewarding LMs" GitHub`
+  - `"Self-Rewarding LMs" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## SPIN: Self-play fine-tuning converts weak language models to strong language models
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" arXiv`
+  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" OpenReview`
+  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" GitHub`
+  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## SWE-Gym: Advancing software engineering agents with training and evaluation environments
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"SWE-Gym: Advancing software engineering agents with training and evaluation environments" arXiv`
+  - `"SWE-Gym: Advancing software engineering agents with training and evaluation environments" OpenReview`
+  - `"SWE-Gym: Advancing software engineering agents with training and evaluation environments" GitHub`
+  - `"SWE-Gym: Advancing software engineering agents with training and evaluation environments" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## SWE-Search
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"SWE-Search" arXiv`
+  - `"SWE-Search" OpenReview`
+  - `"SWE-Search" GitHub`
+  - `"SWE-Search" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## tau-bench: A benchmark for tool-agent-user interaction in real-world domains
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" arXiv`
+  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" OpenReview`
+  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" GitHub`
+  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## The Llama 3 Herd of models
+
+- Current status: `needs_metadata`
+- Possible category: frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"The Llama 3 Herd of models" arXiv`
+  - `"The Llama 3 Herd of models" OpenReview`
+  - `"The Llama 3 Herd of models" GitHub`
+  - `"The Llama 3 Herd of models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ToolACE: Winning the points of LLM function calling
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ToolACE: Winning the points of LLM function calling" arXiv`
+  - `"ToolACE: Winning the points of LLM function calling" OpenReview`
+  - `"ToolACE: Winning the points of LLM function calling" GitHub`
+  - `"ToolACE: Winning the points of LLM function calling" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" arXiv`
+  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" OpenReview`
+  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" GitHub`
+  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Tulu 3: Pushing frontiers in open language model post-training
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Tulu 3: Pushing frontiers in open language model post-training" arXiv`
+  - `"Tulu 3: Pushing frontiers in open language model post-training" OpenReview`
+  - `"Tulu 3: Pushing frontiers in open language model post-training" GitHub`
+  - `"Tulu 3: Pushing frontiers in open language model post-training" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## VisualWebArena: Evaluating multimodal agents on realistic visual web tasks
+
+- Current status: `partial`
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" arXiv`
+  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" OpenReview`
+  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" GitHub`
+  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" Hugging Face`
+- Notes: Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
+
+## WebLINX: Real-world website navigation with multi-turn dialogue
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"WebLINX: Real-world website navigation with multi-turn dialogue" arXiv`
+  - `"WebLINX: Real-world website navigation with multi-turn dialogue" OpenReview`
+  - `"WebLINX: Real-world website navigation with multi-turn dialogue" GitHub`
+  - `"WebLINX: Real-world website navigation with multi-turn dialogue" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## WildGuard
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"WildGuard" arXiv`
+  - `"WildGuard" OpenReview`
+  - `"WildGuard" GitHub`
+  - `"WildGuard" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## WorkArena: How capable are web agents at solving common knowledge work tasks?
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" arXiv`
+  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" OpenReview`
+  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" GitHub`
+  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## XSTest
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"XSTest" arXiv`
+  - `"XSTest" OpenReview`
+  - `"XSTest" GitHub`
+  - `"XSTest" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## 1-shot RLVR: Learning reasoning with minimal verifiable data
+
+- Current status: `needs_metadata`
+- Possible category: scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"1-shot RLVR: Learning reasoning with minimal verifiable data" arXiv`
+  - `"1-shot RLVR: Learning reasoning with minimal verifiable data" OpenReview`
+  - `"1-shot RLVR: Learning reasoning with minimal verifiable data" GitHub`
+  - `"1-shot RLVR: Learning reasoning with minimal verifiable data" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ACORD: Attorney-curated open research dataset
+
+- Current status: `needs_metadata`
+- Possible category: construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ACORD: Attorney-curated open research dataset" arXiv`
+  - `"ACORD: Attorney-curated open research dataset" OpenReview`
+  - `"ACORD: Attorney-curated open research dataset" GitHub`
+  - `"ACORD: Attorney-curated open research dataset" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" arXiv`
+  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" OpenReview`
+  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" GitHub`
+  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## ChemLLMBench and chemistry reasoning evaluations for language models
+
+- Current status: `needs_metadata`
+- Possible category: benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"ChemLLMBench and chemistry reasoning evaluations for language models" arXiv`
+  - `"ChemLLMBench and chemistry reasoning evaluations for language models" OpenReview`
+  - `"ChemLLMBench and chemistry reasoning evaluations for language models" GitHub`
+  - `"ChemLLMBench and chemistry reasoning evaluations for language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## DAPO: An open-source LLM reinforcement learning system at scale
+
+- Current status: `needs_metadata`
+- Possible category: construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"DAPO: An open-source LLM reinforcement learning system at scale" arXiv`
+  - `"DAPO: An open-source LLM reinforcement learning system at scale" OpenReview`
+  - `"DAPO: An open-source LLM reinforcement learning system at scale" GitHub`
+  - `"DAPO: An open-source LLM reinforcement learning system at scale" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## DeepScaleR: Scaling reinforcement learning for reasoning in open models
+
+- Current status: `needs_metadata`
+- Possible category: construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"DeepScaleR: Scaling reinforcement learning for reasoning in open models" arXiv`
+  - `"DeepScaleR: Scaling reinforcement learning for reasoning in open models" OpenReview`
+  - `"DeepScaleR: Scaling reinforcement learning for reasoning in open models" GitHub`
+  - `"DeepScaleR: Scaling reinforcement learning for reasoning in open models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, frontier_model_reports, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" arXiv`
+  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" OpenReview`
+  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" GitHub`
+  - `"DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning
+
+- Current status: `needs_metadata`
+- Possible category: frontier_model_reports, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning" arXiv`
+  - `"DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning" OpenReview`
+  - `"DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning" GitHub`
+  - `"DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Does RL really incentivize reasoning beyond base?
+
+- Current status: `needs_metadata`
+- Possible category: scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Does RL really incentivize reasoning beyond base?" arXiv`
+  - `"Does RL really incentivize reasoning beyond base?" OpenReview`
+  - `"Does RL really incentivize reasoning beyond base?" GitHub`
+  - `"Does RL really incentivize reasoning beyond base?" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Does supervised fine-tuning memorize while reinforcement learning generalizes?
+
+- Current status: `needs_metadata`
+- Possible category: scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Does supervised fine-tuning memorize while reinforcement learning generalizes?" arXiv`
+  - `"Does supervised fine-tuning memorize while reinforcement learning generalizes?" OpenReview`
+  - `"Does supervised fine-tuning memorize while reinforcement learning generalizes?" GitHub`
+  - `"Does supervised fine-tuning memorize while reinforcement learning generalizes?" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## FinDER: Financial data extraction and reasoning
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"FinDER: Financial data extraction and reasoning" arXiv`
+  - `"FinDER: Financial data extraction and reasoning" OpenReview`
+  - `"FinDER: Financial data extraction and reasoning" GitHub`
+  - `"FinDER: Financial data extraction and reasoning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## From system 1 to system 2: A survey of reasoning large language models
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"From system 1 to system 2: A survey of reasoning large language models" arXiv`
+  - `"From system 1 to system 2: A survey of reasoning large language models" OpenReview`
+  - `"From system 1 to system 2: A survey of reasoning large language models" GitHub`
+  - `"From system 1 to system 2: A survey of reasoning large language models" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## General reasoning models: Survey and perspectives
+
+- Current status: `needs_metadata`
+- Possible category: surveys_and_primers
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"General reasoning models: Survey and perspectives" arXiv`
+  - `"General reasoning models: Survey and perspectives" OpenReview`
+  - `"General reasoning models: Survey and perspectives" GitHub`
+  - `"General reasoning models: Survey and perspectives" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## HealthBench: Evaluating large language models towards improved human health
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"HealthBench: Evaluating large language models towards improved human health" arXiv`
+  - `"HealthBench: Evaluating large language models towards improved human health" OpenReview`
+  - `"HealthBench: Evaluating large language models towards improved human health" GitHub`
+  - `"HealthBench: Evaluating large language models towards improved human health" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Humanity's Last Exam
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Humanity's Last Exam" arXiv`
+  - `"Humanity's Last Exam" OpenReview`
+  - `"Humanity's Last Exam" GitHub`
+  - `"Humanity's Last Exam" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Introducing OpenAI o3 and o4-mini
+
+- Current status: `needs_metadata`
+- Possible category: frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Introducing OpenAI o3 and o4-mini" arXiv`
+  - `"Introducing OpenAI o3 and o4-mini" OpenReview`
+  - `"Introducing OpenAI o3 and o4-mini" GitHub`
+  - `"Introducing OpenAI o3 and o4-mini" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## MATH-Perturb
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"MATH-Perturb" arXiv`
+  - `"MATH-Perturb" OpenReview`
+  - `"MATH-Perturb" GitHub`
+  - `"MATH-Perturb" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## MCP-Universe: Tool and environment infrastructure for agent evaluation and training
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"MCP-Universe: Tool and environment infrastructure for agent evaluation and training" arXiv`
+  - `"MCP-Universe: Tool and environment infrastructure for agent evaluation and training" OpenReview`
+  - `"MCP-Universe: Tool and environment infrastructure for agent evaluation and training" GitHub`
+  - `"MCP-Universe: Tool and environment infrastructure for agent evaluation and training" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs" arXiv`
+  - `"MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs" OpenReview`
+  - `"MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs" GitHub`
+  - `"MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## MegaScience: A benchmark and data resource for scientific reasoning
+
+- Current status: `needs_metadata`
+- Possible category: construction_recipes_open_reasoning_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"MegaScience: A benchmark and data resource for scientific reasoning" arXiv`
+  - `"MegaScience: A benchmark and data resource for scientific reasoning" OpenReview`
+  - `"MegaScience: A benchmark and data resource for scientific reasoning" GitHub`
+  - `"MegaScience: A benchmark and data resource for scientific reasoning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Min-K\%++
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Min-K\%++" arXiv`
+  - `"Min-K\%++" OpenReview`
+  - `"Min-K\%++" GitHub`
+  - `"Min-K\%++" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Multi-Agent Evolve: LLM self-improve through co-evolution
+
+- Current status: `needs_metadata`
+- Possible category: construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Multi-Agent Evolve: LLM self-improve through co-evolution" arXiv`
+  - `"Multi-Agent Evolve: LLM self-improve through co-evolution" OpenReview`
+  - `"Multi-Agent Evolve: LLM self-improve through co-evolution" GitHub`
+  - `"Multi-Agent Evolve: LLM self-improve through co-evolution" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## OnlineRubrics
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"OnlineRubrics" arXiv`
+  - `"OnlineRubrics" OpenReview`
+  - `"OnlineRubrics" GitHub`
+  - `"OnlineRubrics" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Open-Reasoner-Zero: An open-source approach to RLVR for reasoning
+
+- Current status: `needs_metadata`
+- Possible category: construction_recipes_open_reasoning_data, frontier_model_reports, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Open-Reasoner-Zero: An open-source approach to RLVR for reasoning" arXiv`
+  - `"Open-Reasoner-Zero: An open-source approach to RLVR for reasoning" OpenReview`
+  - `"Open-Reasoner-Zero: An open-source approach to RLVR for reasoning" GitHub`
+  - `"Open-Reasoner-Zero: An open-source approach to RLVR for reasoning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## OpenCodeReasoning-2: Scalable code reasoning data
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"OpenCodeReasoning-2: Scalable code reasoning data" arXiv`
+  - `"OpenCodeReasoning-2: Scalable code reasoning data" OpenReview`
+  - `"OpenCodeReasoning-2: Scalable code reasoning data" GitHub`
+  - `"OpenCodeReasoning-2: Scalable code reasoning data" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## OpenCodeReasoning: Code reasoning traces at scale
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"OpenCodeReasoning: Code reasoning traces at scale" arXiv`
+  - `"OpenCodeReasoning: Code reasoning traces at scale" OpenReview`
+  - `"OpenCodeReasoning: Code reasoning traces at scale" GitHub`
+  - `"OpenCodeReasoning: Code reasoning traces at scale" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## PRIME: Process reinforcement through implicit rewards
+
+- Current status: `needs_metadata`
+- Possible category: process_supervision_prm
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"PRIME: Process reinforcement through implicit rewards" arXiv`
+  - `"PRIME: Process reinforcement through implicit rewards" OpenReview`
+  - `"PRIME: Process reinforcement through implicit rewards" GitHub`
+  - `"PRIME: Process reinforcement through implicit rewards" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Process reward models for code reasoning
+
+- Current status: `needs_metadata`
+- Possible category: process_supervision_prm
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Process reward models for code reasoning" arXiv`
+  - `"Process reward models for code reasoning" OpenReview`
+  - `"Process reward models for code reasoning" GitHub`
+  - `"Process reward models for code reasoning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Qwen2.5-Math-PRM
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof, process_supervision_prm
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Qwen2.5-Math-PRM" arXiv`
+  - `"Qwen2.5-Math-PRM" OpenReview`
+  - `"Qwen2.5-Math-PRM" GitHub`
+  - `"Qwen2.5-Math-PRM" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## R2E-Gym: Procedural training environments for repository-level code agents
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"R2E-Gym: Procedural training environments for repository-level code agents" arXiv`
+  - `"R2E-Gym: Procedural training environments for repository-level code agents" OpenReview`
+  - `"R2E-Gym: Procedural training environments for repository-level code agents" GitHub`
+  - `"R2E-Gym: Procedural training environments for repository-level code agents" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## rStar-Math
+
+- Current status: `needs_metadata`
+- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"rStar-Math" arXiv`
+  - `"rStar-Math" OpenReview`
+  - `"rStar-Math" GitHub`
+  - `"rStar-Math" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Rubrics as rewards
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Rubrics as rewards" arXiv`
+  - `"Rubrics as rewards" OpenReview`
+  - `"Rubrics as rewards" GitHub`
+  - `"Rubrics as rewards" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Sky-T1: Fully open reasoning model and data recipe
+
+- Current status: `needs_metadata`
+- Possible category: construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Sky-T1: Fully open reasoning model and data recipe" arXiv`
+  - `"Sky-T1: Fully open reasoning model and data recipe" OpenReview`
+  - `"Sky-T1: Fully open reasoning model and data recipe" GitHub`
+  - `"Sky-T1: Fully open reasoning model and data recipe" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## SWE-RL: Advancing language agents for software engineering via reinforcement learning
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"SWE-RL: Advancing language agents for software engineering via reinforcement learning" arXiv`
+  - `"SWE-RL: Advancing language agents for software engineering via reinforcement learning" OpenReview`
+  - `"SWE-RL: Advancing language agents for software engineering via reinforcement learning" GitHub`
+  - `"SWE-RL: Advancing language agents for software engineering via reinforcement learning" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## SWE-smith: Scaling data construction for software engineering agents
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"SWE-smith: Scaling data construction for software engineering agents" arXiv`
+  - `"SWE-smith: Scaling data construction for software engineering agents" OpenReview`
+  - `"SWE-smith: Scaling data construction for software engineering agents" GitHub`
+  - `"SWE-smith: Scaling data construction for software engineering agents" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments" arXiv`
+  - `"The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments" OpenReview`
+  - `"The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments" GitHub`
+  - `"The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Toward conversational diagnostic AI: The AMIE system
+
+- Current status: `needs_metadata`
+- Possible category: unknown
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Toward conversational diagnostic AI: The AMIE system" arXiv`
+  - `"Toward conversational diagnostic AI: The AMIE system" OpenReview`
+  - `"Toward conversational diagnostic AI: The AMIE system" GitHub`
+  - `"Toward conversational diagnostic AI: The AMIE system" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## VAR-MATH
+
+- Current status: `needs_metadata`
+- Possible category: programmatic_math_code_proof
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"VAR-MATH" arXiv`
+  - `"VAR-MATH" OpenReview`
+  - `"VAR-MATH" GitHub`
+  - `"VAR-MATH" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Why we no longer evaluate on SWE-bench Verified
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Why we no longer evaluate on SWE-bench Verified" arXiv`
+  - `"Why we no longer evaluate on SWE-bench Verified" OpenReview`
+  - `"Why we no longer evaluate on SWE-bench Verified" GitHub`
+  - `"Why we no longer evaluate on SWE-bench Verified" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## xLAM: A family of large action models to empower AI agent systems
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"xLAM: A family of large action models to empower AI agent systems" arXiv`
+  - `"xLAM: A family of large action models to empower AI agent systems" OpenReview`
+  - `"xLAM: A family of large action models to empower AI agent systems" GitHub`
+  - `"xLAM: A family of large action models to empower AI agent systems" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL
+
+- Current status: `needs_metadata`
+- Possible category: scaling_test_time_compute_rlvr
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL" arXiv`
+  - `"pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL" OpenReview`
+  - `"pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL" GitHub`
+  - `"pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## RewardBench 2
+
+- Current status: `needs_metadata`
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"RewardBench 2" arXiv`
+  - `"RewardBench 2" OpenReview`
+  - `"RewardBench 2" GitHub`
+  - `"RewardBench 2" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## Terminal-Bench: A benchmark and task environment for terminal agents
+
+- Current status: `needs_metadata`
+- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - code
+  - data
+  - huggingface
+  - project
+- Search queries:
+  - `"Terminal-Bench: A benchmark and task environment for terminal agents" arXiv`
+  - `"Terminal-Bench: A benchmark and task environment for terminal agents" OpenReview`
+  - `"Terminal-Bench: A benchmark and task environment for terminal agents" GitHub`
+  - `"Terminal-Bench: A benchmark and task environment for terminal agents" Hugging Face`
+- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
+
+## OpenR1-Math-220k
+
+- Current status: `partial`
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - data
+  - project
+- Search queries:
+  - `"OpenR1-Math-220k" arXiv`
+  - `"OpenR1-Math-220k" OpenReview`
+  - `"OpenR1-Math-220k" GitHub`
+  - `"OpenR1-Math-220k" Hugging Face`
+- Notes: Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
+
+## Qwen3-Coder
+
+- Current status: `partial`
+- Possible category: environmental_agents_tools_web_swe, construction_recipes_open_reasoning_data, frontier_model_reports
+- Missing:
+  - official paper / arXiv / venue / DOI
+  - data
+  - huggingface
+- Search queries:
+  - `"Qwen3-Coder" arXiv`
+  - `"Qwen3-Coder" OpenReview`
+  - `"Qwen3-Coder" GitHub`
+  - `"Qwen3-Coder" Hugging Face`
+- Notes: Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
