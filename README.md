@@ -317,7 +317,7 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 | [cards/](cards/README.md) | Learning cards: paper/data/verifier/recipe/benchmark/failure summaries with links and audit questions. |
 | [data/papers.yaml](data/papers.yaml) | Structured source of truth for paper metadata, roles, contracts, summaries, links, and curation levels. |
 | [docs/index.html](docs/index.html) | Searchable web atlas generated from structured data. |
-| [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, self-review, and live-link reports. |
+| [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, quality audits, and live-link reports. |
 | [exports/](exports/) | CSV, JSON, and BibTeX exports for readers who want to reuse the atlas data. |
 | [scripts/](scripts/) | Reproducible generators and validators for README, paper pages, cards, site data, exports, and QA. |
 

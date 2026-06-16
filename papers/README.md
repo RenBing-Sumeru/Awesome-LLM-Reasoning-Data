@@ -60,4 +60,4 @@ Use this folder when the README is too compact. Each category page gives a begin
 ## Reports
 
 - [Needs-search report](../reports/needs_search.md)
-- [Self-review](../reports/self_review.md)
+- [Quality audit](../reports/five_task_quality_audit.md)

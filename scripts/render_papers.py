@@ -259,7 +259,7 @@ def render_readme(cards: dict[str, str]) -> str:
         "## Reports",
         "",
         "- [Needs-search report](../reports/needs_search.md)",
-        "- [Self-review](../reports/self_review.md)",
+        "- [Quality audit](../reports/five_task_quality_audit.md)",
     ]) + "\n"
 
 

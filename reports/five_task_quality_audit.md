@@ -75,7 +75,7 @@ Evidence:
 - Render-check scripts exist for the site, paper atlas, README files, and card index.
 - `scripts/check_links.py --soft` validates local links and URL formatting.
 - `CONTRIBUTING.md` and `.github/pull_request_template.md` require official links, structured metadata, summaries, and QA commands.
-- `reports/self_review.md`, `reports/v0.1.0_release_notes.md`, `reports/link_coverage.md`, `reports/needs_search.md`, and `reports/research_log_public.md` document public status.
+- `reports/five_task_quality_audit.md`, `reports/v0.1.0_release_notes.md`, `reports/link_coverage.md`, `reports/needs_search.md`, and `reports/research_log_public.md` document public status.
 
 Residual gap:
 

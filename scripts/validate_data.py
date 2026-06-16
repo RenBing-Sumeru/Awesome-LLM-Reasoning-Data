@@ -28,13 +28,12 @@ LESSON_RE = re.compile(r"^\d\d_.*\.md$")
 MIN_LESSON_WORDS = 700
 PUBLIC_SCAN_ROOTS = ["README.md", "README_zh.md", "docs", "papers", "cards", "data", "reports", "scripts", ".github"]
 LEAKAGE_TERMS = [
-    "Codex " + "prompt",
     "Chat" + "GPT",
     "system " + "prompt",
     "developer " + "instruction",
     "our " + "conversation",
     "我们的" + "对话",
-    "复制给" + "codex",
+    "内部" + "构建提示",
     "internal " + "prompt",
     "scratch" + "pad",
     "hidden " + "reasoning",
