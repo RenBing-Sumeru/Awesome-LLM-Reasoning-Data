@@ -4,7 +4,7 @@
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
-[![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)](docs/index.html)
+[![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![Entries](https://img.shields.io/badge/entries-280-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-165-0f766e)](reports/link_coverage.md)
 [![Cards](https://img.shields.io/badge/cards-87-7c3aed)](cards/README.md)
@@ -439,7 +439,7 @@ Read this repository if you want to answer questions like:
 | 🪜 study process supervision | [papers/03_process_supervision_prm.md](papers/03_process_supervision_prm.md) |
 | 🌐 study agent trajectories | [papers/04_environmental_agents_tools_web_swe.md](papers/04_environmental_agents_tools_web_swe.md) |
 | 🚀 study frontier model reports | [papers/07_frontier_model_reports.md](papers/07_frontier_model_reports.md) |
-| 🔎 use the searchable atlas | [docs/index.html](docs/index.html) |
+| 🔎 use the searchable atlas | [live atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) |
 | 📊 inspect link coverage | [reports/link_coverage.md](reports/link_coverage.md) |
 | 🤝 contribute a paper/card | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
@@ -676,7 +676,7 @@ Cards turn citations into engineering decisions. They explain the data object, v
 
 ## 🔎 Searchable Website
 
-Open [docs/index.html](docs/index.html) locally or through GitHub Pages. The site loads generated JSON on hosted pages and includes [docs/assets/atlas-data.js](docs/assets/atlas-data.js) as a local fallback for browsers that block direct JSON loading. It supports search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability.
+Open [the live atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) or [docs/index.html](docs/index.html) locally. The site loads generated JSON on hosted pages and includes [docs/assets/atlas-data.js](docs/assets/atlas-data.js) as a local fallback for browsers that block direct JSON loading. It supports search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability.
 
 ## 🧱 Curation Levels
 

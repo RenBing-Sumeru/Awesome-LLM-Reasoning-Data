@@ -33,6 +33,7 @@ from common import ROOT
 _ENTRIES_CACHE: list[dict] | None = None
 _CARDS_CACHE: dict[str, str] | None = None
 _TRACKS_CACHE: list[dict] | None = None
+PAGES_URL = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
 
 
 def all_entries() -> list[dict]:
@@ -414,7 +415,7 @@ def readme_en() -> str:
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
-[![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)](docs/index.html)
+[![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)]({PAGES_URL})
 [![Entries](https://img.shields.io/badge/entries-{s['total']}-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-{s['verified']}-0f766e)](reports/link_coverage.md)
 [![Cards](https://img.shields.io/badge/cards-{s['cards']}-7c3aed)](cards/README.md)
@@ -579,7 +580,7 @@ Read this repository if you want to answer questions like:
 | 🪜 study process supervision | [papers/03_process_supervision_prm.md](papers/03_process_supervision_prm.md) |
 | 🌐 study agent trajectories | [papers/04_environmental_agents_tools_web_swe.md](papers/04_environmental_agents_tools_web_swe.md) |
 | 🚀 study frontier model reports | [papers/07_frontier_model_reports.md](papers/07_frontier_model_reports.md) |
-| 🔎 use the searchable atlas | [docs/index.html](docs/index.html) |
+| 🔎 use the searchable atlas | [live atlas]({PAGES_URL}) |
 | 📊 inspect link coverage | [reports/link_coverage.md](reports/link_coverage.md) |
 | 🤝 contribute a paper/card | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
@@ -795,7 +796,7 @@ Cards turn citations into engineering decisions. They explain the data object, v
 
 ## 🔎 Searchable Website
 
-Open [docs/index.html](docs/index.html) locally or through GitHub Pages. The site loads generated JSON on hosted pages and includes [docs/assets/atlas-data.js](docs/assets/atlas-data.js) as a local fallback for browsers that block direct JSON loading. It supports search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability.
+Open [the live atlas]({PAGES_URL}) or [docs/index.html](docs/index.html) locally. The site loads generated JSON on hosted pages and includes [docs/assets/atlas-data.js](docs/assets/atlas-data.js) as a local fallback for browsers that block direct JSON loading. It supports search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability.
 
 ## 🧱 Curation Levels
 
@@ -934,7 +935,7 @@ def readme_zh() -> str:
 | 🧮 看数学/代码/证明数据 | [papers/02_programmatic_math_code_proof.md](papers/02_programmatic_math_code_proof.md) |
 | 🪜 看过程监督/PRM | [papers/03_process_supervision_prm.md](papers/03_process_supervision_prm.md) |
 | 🌐 看 Agent 环境数据 | [papers/04_environmental_agents_tools_web_swe.md](papers/04_environmental_agents_tools_web_swe.md) |
-| 🔎 看可搜索网页 | [docs/index.html](docs/index.html) |
+| 🔎 看可搜索网页 | [在线网页]({PAGES_URL}) |
 | 🗂️ 看卡片库 | [cards/README.md](cards/README.md) |
 | 📊 看链接覆盖率 | [reports/link_coverage.md](reports/link_coverage.md) |
 | 🤝 贡献论文或卡片 | [CONTRIBUTING.md](CONTRIBUTING.md) |
@@ -1032,7 +1033,7 @@ def readme_zh() -> str:
 
 ## 🔎 可搜索网页
 
-本地或 GitHub Pages 可直接打开 [docs/index.html](docs/index.html)。它支持按 year、venue、source role、verification contract、granularity、training use、curation level、status、artifact availability 过滤。
+可以直接打开 [在线网页]({PAGES_URL})，也可以本地打开 [docs/index.html](docs/index.html)。它支持按 year、venue、source role、verification contract、granularity、training use、curation level、status、artifact availability 过滤。
 
 ## 📖 引用
 

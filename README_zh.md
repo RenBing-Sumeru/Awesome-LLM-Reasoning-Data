@@ -292,7 +292,7 @@
 | 🧮 看数学/代码/证明数据 | [papers/02_programmatic_math_code_proof.md](papers/02_programmatic_math_code_proof.md) |
 | 🪜 看过程监督/PRM | [papers/03_process_supervision_prm.md](papers/03_process_supervision_prm.md) |
 | 🌐 看 Agent 环境数据 | [papers/04_environmental_agents_tools_web_swe.md](papers/04_environmental_agents_tools_web_swe.md) |
-| 🔎 看可搜索网页 | [docs/index.html](docs/index.html) |
+| 🔎 看可搜索网页 | [在线网页](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) |
 | 🗂️ 看卡片库 | [cards/README.md](cards/README.md) |
 | 📊 看链接覆盖率 | [reports/link_coverage.md](reports/link_coverage.md) |
 | 🤝 贡献论文或卡片 | [CONTRIBUTING.md](CONTRIBUTING.md) |
@@ -418,7 +418,7 @@
 
 ## 🔎 可搜索网页
 
-本地或 GitHub Pages 可直接打开 [docs/index.html](docs/index.html)。它支持按 year、venue、source role、verification contract、granularity、training use、curation level、status、artifact availability 过滤。
+可以直接打开 [在线网页](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)，也可以本地打开 [docs/index.html](docs/index.html)。它支持按 year、venue、source role、verification contract、granularity、training use、curation level、status、artifact availability 过滤。
 
 ## 📖 引用
 
