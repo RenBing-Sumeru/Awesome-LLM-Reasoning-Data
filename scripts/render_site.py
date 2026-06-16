@@ -10,10 +10,15 @@ from atlas_utils import (
     artifacts,
     card_inventory,
     categories,
+    compact_audit,
+    compact_data_object,
+    compact_feedback,
     curation_level,
     entries,
+    infer_subfield,
     one_line,
     primary_link,
+    research_tracks,
     starter_matches,
     starter_packs,
     why_it_matters,
@@ -27,6 +32,11 @@ def site_entries() -> list[dict]:
     for entry in entries():
         card_path = cards.get(entry.get("id"))
         art = artifacts(entry)
+        category_ids = entry.get("category") or []
+        first_category = category_ids[0] if category_ids else None
+        subfield = infer_subfield(entry, first_category)
+        link = primary_link(entry)
+        needs_search = entry.get("status") != "verified" or not link
         out.append({
             "id": entry.get("id"),
             "title": entry.get("title"),
@@ -38,12 +48,17 @@ def site_entries() -> list[dict]:
             "supervision_granularity": entry.get("supervision_granularity") or [],
             "training_use": entry.get("training_use") or [],
             "domains": entry.get("domains") or [],
-            "category": entry.get("category") or [],
+            "category": category_ids,
+            "subfield": subfield.get("name") if subfield else "Other related work",
             "tags": entry.get("tags") or [],
             "one_line_summary": one_line(entry),
             "why_it_matters": why_it_matters(entry),
+            "data_object": compact_data_object(entry),
+            "feedback_verifier": compact_feedback(entry),
+            "audit_focus": compact_audit(entry),
             "curation_level": curation_level(entry, card_path),
             "status": entry.get("status"),
+            "needs_search": needs_search,
             "artifacts": {
                 "paper": art.get("paper"),
                 "venue": art.get("venue"),
@@ -60,7 +75,7 @@ def site_entries() -> list[dict]:
                 "bibtex": art.get("bibtex"),
                 "card": card_path,
             },
-            "primary_link": primary_link(entry),
+            "primary_link": link,
         })
     return out
 
@@ -77,7 +92,7 @@ def site_counts(items: list[dict]) -> dict:
         "verifiers_rewards": count_if(lambda item: "verifier_reward" in item.get("source_role", [])),
         "agent_environments": count_if(lambda item: "agent_environment" in item.get("source_role", [])),
         "scaling_studies": count_if(lambda item: "scaling_study" in item.get("source_role", [])),
-        "needs_search": count_if(lambda item: item.get("status") != "verified" or not item.get("primary_link")),
+        "needs_search": count_if(lambda item: item.get("needs_search")),
     }
 
 
@@ -105,14 +120,114 @@ def site_starter_packs(items: list[dict]) -> list[dict]:
     return packs
 
 
+def render_index_html(counts: dict) -> str:
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Awesome LLM Reasoning Data Atlas</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="topbar" aria-label="Primary navigation">
+      <a class="brand" href="../README.md">Awesome LLM Reasoning Data</a>
+      <div class="navlinks">
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
+        <a href="../README.md">README</a>
+        <a href="../papers/README.md">Papers</a>
+        <a href="../cards/README.md">Cards</a>
+        <a href="../reports/link_coverage.md">Coverage</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Searchable research atlas</p>
+        <h1>Browse reasoning-data papers by research track, data object, verifier, and audit signal.</h1>
+        <p class="lede">Use this page like a lightweight literature database: start from a field tab, narrow by subfield or feedback contract, then open the paper, card, code, data, or project link.</p>
+      </div>
+      <div class="stat-panel" aria-label="Atlas statistics">
+        <div><strong id="totalEntries">{counts.get('total_entries', 0)}</strong><span>entries</span></div>
+        <div><strong id="verifiedEntries">{counts.get('verified_entries', 0)}</strong><span>verified</span></div>
+        <div><strong id="cardedEntries">{counts.get('carded_entries', 0)}</strong><span>carded</span></div>
+        <div><strong id="needsSearch">{counts.get('needs_search', 0)}</strong><span>needs search</span></div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="quick-stats" aria-label="Role statistics">
+      <div><strong id="dataReleases">{counts.get('data_releases', 0)}</strong><span>data releases</span></div>
+      <div><strong id="verifiersRewards">{counts.get('verifiers_rewards', 0)}</strong><span>verifiers/rewards</span></div>
+      <div><strong id="agentEnvironments">{counts.get('agent_environments', 0)}</strong><span>agent environments</span></div>
+      <div><strong id="scalingStudies">{counts.get('scaling_studies', 0)}</strong><span>scaling studies</span></div>
+    </section>
+
+    <section class="track-section">
+      <div class="section-head">
+        <h2>Research Tracks</h2>
+        <p>Jump by field first, then use filters for data object, verifier, training use, and artifact coverage.</p>
+      </div>
+      <div id="trackTabs" class="track-tabs"></div>
+    </section>
+
+    <section class="controls" aria-label="Search and filters">
+      <label class="search"><span>Search</span><input id="q" type="search" placeholder="title, author, tag, summary, venue"></label>
+      <label><span>Research area</span><select id="category"><option value="">All areas</option></select></label>
+      <label><span>Subfield</span><select id="subfield"><option value="">All subfields</option></select></label>
+      <label><span>Year</span><select id="year"><option value="">All years</option></select></label>
+      <label><span>Venue</span><select id="venue"><option value="">All venues</option></select></label>
+      <label><span>Source role</span><select id="sourceRole"><option value="">All roles</option></select></label>
+      <label><span>Contract</span><select id="contract"><option value="">All contracts</option></select></label>
+      <label><span>Granularity</span><select id="granularity"><option value="">All granularities</option></select></label>
+      <label><span>Training use</span><select id="trainingUse"><option value="">All uses</option></select></label>
+      <label><span>Curation</span><select id="curation"><option value="">All levels</option></select></label>
+      <label><span>Status</span><select id="status"><option value="">All statuses</option></select></label>
+      <label><span>Artifact</span><select id="artifact"><option value="">Any artifact</option></select></label>
+      <button id="reset" type="button">Reset</button>
+    </section>
+
+    <section class="path-section">
+      <div class="section-head">
+        <h2>Reading Paths</h2>
+        <p>Curated paths for different readers: begin with the essentials, then branch into verifiers, agent environments, construction recipes, or audit work.</p>
+      </div>
+      <div id="pathTabs" class="path-tabs"></div>
+      <div id="pathPanel" class="path-panel"></div>
+    </section>
+
+    <section class="results-head">
+      <h2>Results</h2>
+      <p id="resultSummary">Loading atlas data...</p>
+    </section>
+    <section id="results" class="result-grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Generated from structured atlas metadata.</span>
+    <a href="../data/papers.yaml">data/papers.yaml</a>
+    <a href="assets/entries.json">entries.json</a>
+    <a href="../reports/link_check.md">link check</a>
+  </footer>
+
+  <script src="assets/atlas-data.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
+"""
+
+
 def render(target_root: Path = ROOT) -> None:
     items = site_entries()
     counts = site_counts(items)
     cats = categories()
+    tracks = research_tracks()
     packs = site_starter_packs(items)
     write_json(target_root / "docs/assets/entries.json", items)
     write_json(target_root / "docs/assets/counts.json", counts)
     write_json(target_root / "docs/assets/categories.json", cats)
+    write_json(target_root / "docs/assets/research_tracks.json", tracks)
     write_json(target_root / "docs/assets/starter_packs.json", packs)
     write_json(target_root / "data/_generated/entries.json", items)
     write_json(target_root / "data/_generated/counts.json", counts)
@@ -120,10 +235,12 @@ def render(target_root: Path = ROOT) -> None:
         "entries": items,
         "counts": counts,
         "categories": cats,
+        "research_tracks": tracks,
         "starter_packs": packs,
     }
     payload = json.dumps(fallback, ensure_ascii=False, indent=2)
     (target_root / "docs/assets/atlas-data.js").write_text(f"window.ATLAS_DATA = {payload};\n", encoding="utf-8")
+    (target_root / "docs/index.html").write_text(render_index_html(counts), encoding="utf-8")
 
 
 def check() -> int:
@@ -136,8 +253,10 @@ def check() -> int:
             ("docs/assets/entries.json", ROOT / "docs/assets/entries.json"),
             ("docs/assets/counts.json", ROOT / "docs/assets/counts.json"),
             ("docs/assets/categories.json", ROOT / "docs/assets/categories.json"),
+            ("docs/assets/research_tracks.json", ROOT / "docs/assets/research_tracks.json"),
             ("docs/assets/starter_packs.json", ROOT / "docs/assets/starter_packs.json"),
             ("docs/assets/atlas-data.js", ROOT / "docs/assets/atlas-data.js"),
+            ("docs/index.html", ROOT / "docs/index.html"),
         ]
         problems = []
         for rel, actual in checks:

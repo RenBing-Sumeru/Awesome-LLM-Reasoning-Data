@@ -114,7 +114,7 @@ h1 {
   top: 0;
   z-index: 5;
   display: grid;
-  grid-template-columns: minmax(260px, 1.4fr) repeat(9, minmax(118px, 1fr)) 86px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 9px;
   background: rgba(255,255,255,.95);
   border: 1px solid var(--line);
@@ -124,8 +124,11 @@ h1 {
   backdrop-filter: blur(10px);
 }
 
-label { display: grid; gap: 5px; color: var(--muted); font-size: 12px; font-weight: 780; }
+label { display: grid; gap: 5px; min-width: 0; color: var(--muted); font-size: 12px; font-weight: 780; }
+.search { grid-column: span 2; }
 input, select, button {
+  width: 100%;
+  min-width: 0;
   min-height: 38px;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
@@ -135,7 +138,7 @@ input, select, button {
 }
 button { cursor: pointer; font-weight: 800; color: var(--green); }
 
-.path-section, .results-head {
+.track-section, .path-section, .results-head {
   margin: 20px 0 12px;
 }
 
@@ -149,19 +152,19 @@ button { cursor: pointer; font-weight: 800; color: var(--green); }
 h2 { margin: 0; font-size: 22px; }
 .section-head p, .results-head p { margin: 0; color: var(--muted); }
 
-.path-tabs {
+.track-tabs, .path-tabs {
   display: flex;
   gap: 8px;
   overflow-x: auto;
   padding: 12px 0 8px;
 }
 
-.path-tabs button {
+.track-tabs button, .path-tabs button {
   flex: 0 0 auto;
   border: 1px solid var(--line);
   color: #334155;
 }
-.path-tabs button.active {
+.track-tabs button.active, .path-tabs button.active {
   background: var(--green);
   border-color: var(--green);
   color: white;
@@ -223,6 +226,36 @@ h2 { margin: 0; font-size: 22px; }
 .meta { color: var(--muted); font-size: 13px; }
 .summary, .why { margin: 0; color: #334155; line-height: 1.5; }
 .why { border-left: 3px solid #dbeafe; padding-left: 10px; }
+
+.facts {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #e5edf5;
+  border-radius: 6px;
+  background: #fbfdff;
+}
+
+.facts div {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.facts dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.facts dd {
+  margin: 0;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
 
 .tags, .links { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {

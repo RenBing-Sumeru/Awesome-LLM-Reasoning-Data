@@ -238,6 +238,7 @@
   status: verified
   category:
   - surveys_and_primers
+  - construction_recipes_open_reasoning_data
   one_line: Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context,
     and intended deployment boundaries.
   card: cards/releases/data-statements-for-natural-language-processing.md
@@ -325,6 +326,7 @@
   status: verified
   category:
   - surveys_and_primers
+  - construction_recipes_open_reasoning_data
   one_line: 'Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process,
     recommended uses, and limitations.'
   card: cards/releases/datasheets-for-datasets.md
@@ -653,7 +655,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -732,7 +736,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - construction_recipes_open_reasoning_data
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -1158,7 +1164,8 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - foundations_instruction_preference_alignment
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -1180,27 +1187,30 @@
   venue: EMNLP
   authors: []
   source_role:
-  - survey_background
+  - benchmark
+  - data_release
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
+  - answer_level
+  - step_level
   domains: []
   training_use:
-  - unknown
+  - evaluation
+  - sft
   construction_layer:
   - release_audit
   artifacts:
-    paper: null
+    paper: https://aclanthology.org/2021.emnlp-main.300/
     arxiv: null
     code: null
     data: null
-    project: null
+    project: https://finqasite.github.io/
     huggingface: null
     doi: null
     venue: null
     openreview: null
-    acl: null
+    acl: https://aclanthology.org/2021.emnlp-main.300/
     pmlr: null
     cvf: null
     bibtex: null
@@ -1229,33 +1239,37 @@
     license: unknown
     lineage: unknown
     known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
+    citation_status: verified
+    confidence: high
     notes: 'Seeded from BibTeX key finqa2021. Deduplicated title collision; dropped lower-confidence id: finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021.'
   inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - finance
+  - numerical-reasoning
+  - tabular-textual-qa
+  status: verified
   category:
   - judgment_required_rubrics_safety_domain
-  one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
-    the paper's data object, verifier contract, and release metadata before promoting it.
+  - benchmarks_evaluation
+  one_line: FinQA introduces financial-document QA with expert-written questions and gold reasoning programs for numerical
+    reasoning over financial reports.
   card: null
   needs:
-  - 'needs_search: official links not pinned locally'
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to
-    inspect the paper's data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line_summary: FinQA introduces financial-document QA with expert-written questions and gold reasoning programs for
+    numerical reasoning over financial reports.
+  why_it_matters: It is a finance-domain reasoning benchmark where the data object includes questions, evidence from financial
+    reports, answers, and reasoning programs rather than only free-form responses.
+  curation_level: L2_artifact_verified
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official ACL paper and project page pinned after source review.
 - id: measuring-coding-challenge-competence-with-apps-2021
   title: Measuring coding challenge competence with APPS
   year: 2021
@@ -1619,7 +1633,8 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - foundations_instruction_preference_alignment
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -1723,27 +1738,30 @@
   venue: ACL
   authors: []
   source_role:
-  - survey_background
+  - benchmark
+  - data_release
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
+  - answer_level
+  - step_level
   domains: []
   training_use:
-  - unknown
+  - evaluation
+  - sft
   construction_layer:
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
+    paper: https://aclanthology.org/2021.acl-long.254/
+    arxiv: https://arxiv.org/abs/2105.07624
+    code: https://github.com/NExTplusplus/TAT-QA
+    data: https://github.com/NExTplusplus/TAT-QA
+    project: https://nextplusplus.github.io/TAT-QA/
     huggingface: null
     doi: null
     venue: null
     openreview: null
-    acl: null
+    acl: https://aclanthology.org/2021.acl-long.254/
     pmlr: null
     cvf: null
     bibtex: null
@@ -1772,35 +1790,37 @@
     license: unknown
     lineage: unknown
     known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
+    citation_status: verified
+    confidence: high
     notes: 'Seeded from BibTeX key tatqa2021. Deduplicated title collision; dropped lower-confidence id: tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021.'
   inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - finance
+  - table-text-reasoning
+  - numerical-reasoning
+  status: verified
   category:
   - judgment_required_rubrics_safety_domain
   - audit_failure_contamination_verifier_attacks
   - benchmarks_evaluation
-  one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
-    the paper's data object, verifier contract, and release metadata before promoting it.
+  one_line: TAT-QA evaluates numerical reasoning over hybrid financial tables and text, with annotated derivations and answers.
   card: null
   needs:
-  - 'needs_search: official links not pinned locally'
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to
-    inspect the paper's data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line_summary: TAT-QA evaluates numerical reasoning over hybrid financial tables and text, with annotated derivations
+    and answers.
+  why_it_matters: It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection,
+    table-text grounding, arithmetic, and answer normalization all matter.
+  curation_level: L2_artifact_verified
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official ACL/arXiv paper, project page, and GitHub data/code links pinned after source review.
 - id: training-verifiers-to-solve-math-word-problems-2021
   title: Training verifiers to solve math word problems
   year: 2021
@@ -2125,7 +2145,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - programmatic_math_code_proof
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -3172,7 +3194,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -3587,7 +3611,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -3606,26 +3632,28 @@
 - id: financebench-a-benchmark-for-financial-question-answering-2023
   title: 'FinanceBench: A benchmark for financial question answering'
   year: 2023
-  venue: unknown
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - benchmark
+  - data_release
   verification_contract:
-  - unknown
+  - judgment_required
+  - mixed
   supervision_granularity:
-  - unknown
+  - answer_level
   domains: []
   training_use:
-  - unknown
+  - evaluation
   construction_layer:
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
+    paper: https://arxiv.org/abs/2311.11944
+    arxiv: https://arxiv.org/abs/2311.11944
+    code: https://github.com/patronus-ai/financebench
+    data: https://github.com/patronus-ai/financebench
+    project: https://github.com/patronus-ai/financebench
+    huggingface: https://huggingface.co/datasets/PatronusAI/financebench
     doi: null
     venue: null
     openreview: null
@@ -3658,35 +3686,37 @@
     license: unknown
     lineage: unknown
     known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
+    citation_status: verified
+    confidence: high
     notes: 'Seeded from BibTeX key financebench2023. Deduplicated title collision; dropped lower-confidence id: financebench-a-benchmark-for-financial-question-answering-2023.'
   inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - finance
+  - domain-benchmark
+  - factuality
+  status: verified
   category:
   - judgment_required_rubrics_safety_domain
   - audit_failure_contamination_verifier_attacks
   - benchmarks_evaluation
-  one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
-    the paper's data object, verifier contract, and release metadata before promoting it.
+  one_line: FinanceBench benchmarks financial question answering over public company filings and expert-authored answers.
   card: null
   needs:
-  - 'needs_search: official links not pinned locally'
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to
-    inspect the paper's data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line_summary: FinanceBench benchmarks financial question answering over public company filings and expert-authored
+    answers.
+  why_it_matters: It is a domain-specific reasoning benchmark where grounding, evidence retrieval, expert answers, and
+    current filing data matter more than generic exact-match reasoning.
+  curation_level: L2_artifact_verified
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv, GitHub, and Hugging Face links pinned after source review.
 - id: gorilla-2023
   title: Gorilla
   year: 2023
@@ -3750,7 +3780,8 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - environmental_agents_tools_web_swe
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -4354,23 +4385,25 @@
   venue: NeurIPS
   authors: []
   source_role:
-  - survey_background
+  - benchmark
+  - data_release
   verification_contract:
-  - unknown
+  - judgment_required
+  - mixed
   supervision_granularity:
-  - unknown
+  - answer_level
   domains: []
   training_use:
-  - unknown
+  - evaluation
   construction_layer:
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
+    paper: https://arxiv.org/abs/2308.11462
+    arxiv: https://arxiv.org/abs/2308.11462
+    code: https://github.com/HazyResearch/legalbench
+    data: https://github.com/HazyResearch/legalbench
+    project: https://hazyresearch.stanford.edu/legalbench/
+    huggingface: https://huggingface.co/datasets/nguha/legalbench
     doi: null
     venue: null
     openreview: null
@@ -4403,34 +4436,36 @@
     license: unknown
     lineage: unknown
     known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
+    citation_status: verified
+    confidence: high
     notes: 'Seeded from BibTeX key legalbench2023. Deduplicated title collision; dropped lower-confidence id: legalbench-2023.'
   inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - legal
+  - domain-benchmark
+  - legal-reasoning
+  status: verified
   category:
   - judgment_required_rubrics_safety_domain
   - benchmarks_evaluation
-  one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
-    the paper's data object, verifier contract, and release metadata before promoting it.
+  one_line: LegalBench provides a collaboratively built benchmark suite for legal reasoning tasks across many legal domains.
   card: null
   needs:
-  - 'needs_search: official links not pinned locally'
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to
-    inspect the paper's data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line_summary: LegalBench provides a collaboratively built benchmark suite for legal reasoning tasks across many legal
+    domains.
+  why_it_matters: It anchors the legal side of judgment-required reasoning data, where task definitions, legal-domain splits,
+    expert validity, and answer rubrics are often more important than a simple verifier.
+  curation_level: L2_artifact_verified
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv, project, GitHub, and Hugging Face links pinned after source review.
 - id: mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023
   title: 'MAmmoTH: Building math generalist models through hybrid instruction tuning'
   year: 2023
@@ -4514,88 +4549,6 @@
     verified_by: null
     confidence: low
     notes: Official primary link not pinned yet.
-- id: math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023
-  title: 'Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations'
-  year: 2023
-  venue: ACL
-  authors: []
-  source_role:
-  - survey_background
-  verification_contract:
-  - unknown
-  supervision_granularity:
-  - unknown
-  domains: []
-  training_use:
-  - unknown
-  construction_layer:
-  - release_audit
-  artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
-    openreview: null
-    acl: null
-    pmlr: null
-    cvf: null
-    bibtex: null
-  data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
-  recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
-    temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
-  audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key mathshepherd2023. Deduplicated title collision; dropped lower-confidence id: math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
-  related: []
-  tags:
-  - seeded-from-bib
-  status: needs_metadata
-  category:
-  - process_supervision_prm
-  one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
-    object, verifier contract, and release metadata before promoting it.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
-  verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
 - id: maud-a-merger-agreement-understanding-dataset-2023
   title: 'MAUD: A merger agreement understanding dataset'
   year: 2023
@@ -4659,7 +4612,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -5011,7 +4966,6 @@
   - synthetic-data
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
   - frontier_model_reports
   - foundations_instruction_preference_alignment
   one_line: Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation of final
@@ -5841,7 +5795,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - programmatic_math_code_proof
+  - construction_recipes_open_reasoning_data
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -6682,7 +6638,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - environmental_agents_tools_web_swe
+  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -7460,7 +7418,8 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - audit_failure_contamination_verifier_attacks
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -7884,89 +7843,6 @@
   - 'needs_metadata: curator should verify atlas fields'
   one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
     the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
-  verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
-- id: improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024
-  title: Improve mathematical reasoning in language models by automated process supervision
-  year: 2024
-  venue: arXiv preprint
-  authors: []
-  source_role:
-  - survey_background
-  verification_contract:
-  - unknown
-  supervision_granularity:
-  - unknown
-  domains: []
-  training_use:
-  - unknown
-  construction_layer:
-  - release_audit
-  artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
-    openreview: null
-    acl: null
-    pmlr: null
-    cvf: null
-    bibtex: null
-  data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
-  recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
-    temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
-  audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key omegaprm2024. Deduplicated title collision; dropped lower-confidence id: improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
-  related: []
-  tags:
-  - seeded-from-bib
-  status: needs_metadata
-  category:
-  - programmatic_math_code_proof
-  - process_supervision_prm
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
   why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
   curation_level: L0_seeded
   verification:
@@ -8843,36 +8719,44 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: math reasoning problems
+    trace_author: model-generated reasoning solutions
+    answer_format: step-level rollout-value labels
+    process_fields:
+    - reasoning step
+    - rollout result
+    - process reward score
+    environment_or_substrate: offline math reasoning traces
+    verifier_or_reward: rollout-derived process reward signal
+    terminal_predicate: final-answer correctness after rollouts
   recipe_metadata:
     base_model: unknown
     teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    generator: model rollouts from intermediate reasoning steps
+    filtering_rule: rollout success rate converted to step reward
+    sampling_protocol: Monte-Carlo rollouts from partial solutions
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: process reward model training
   audit:
     source_mixture: unknown
     split: unknown
     decontamination: unknown
     license: unknown
     lineage: unknown
-    known_failure_modes: []
+    known_failure_modes:
+    - rollout policy strength can leak into labels
+    - step rewards may favor locally plausible continuations
+    - generated solutions can inherit base-model shortcuts
     citation_status: verified
     confidence: high
     notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal
       metadata remains incomplete.
     metadata_status: partial
-  inclusion_reason: Monte-Carlo-style process signal reference for step supervision.
+  inclusion_reason: >-
+    Math-Shepherd is a key rollout-value supervision reference: it turns intermediate math steps into process rewards by
+    sampling continuations and checking final outcomes.
   related: []
   tags: []
   status: verified
@@ -8881,12 +8765,14 @@
   - process_supervision_prm
   - scaling_test_time_compute_rlvr
   - benchmarks_evaluation
-  one_line: Monte-Carlo-style process signal reference for step supervision.
+  one_line: Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.
   card: cards/verifiers/math_shepherd.md
   needs:
   - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Monte-Carlo-style process signal reference for step supervision.
-  why_it_matters: Monte-Carlo-style process signal reference for step supervision.
+  one_line_summary: Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.
+  why_it_matters: >-
+    It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment
+    but a rollout-derived estimate of whether a partial step can still reach the right answer.
   verification:
     link_verified: true
     artifact_verified: false
@@ -9713,7 +9599,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - construction_recipes_open_reasoning_data
+  - judgment_required_rubrics_safety_domain
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -9732,22 +9620,32 @@
 - id: rest-mcts-2024
   title: ReST-MCTS*
   year: 2024
-  venue: arXiv preprint
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - process_supervision
+  - construction_recipe
+  - scaling_study
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - process_reward
+  domains:
+  - math
+  - reasoning
   training_use:
-  - unknown
+  - process_supervision
+  - reward_modeling
+  - test_time_compute
   construction_layer:
-  - release_audit
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - search_substrate
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2406.03816
+    arxiv: https://arxiv.org/abs/2406.03816
     code: null
     data: null
     project: null
@@ -9760,57 +9658,64 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: math reasoning problems
+    trace_author: model rollouts under tree search
+    answer_format: reasoning trajectory with intermediate search states
+    process_fields:
+    - node state
+    - rollout candidate
+    - process reward score
+    environment_or_substrate: MCTS-style reasoning tree
+    verifier_or_reward: process reward guided tree search
+    terminal_predicate: final-answer correctness under search
   recipe_metadata:
     base_model: unknown
     teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    generator: policy rollouts expanded by MCTS
+    filtering_rule: process-reward-guided trajectory selection
+    sampling_protocol: tree search over intermediate reasoning states
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: ReST-style self-training with MCTS
   audit:
     source_mixture: unknown
     split: unknown
     decontamination: unknown
     license: unknown
     lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key restmcts2024. Deduplicated title collision; dropped lower-confidence id: rest-mcts-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    known_failure_modes:
+    - search policy may overfit process reward artifacts
+    - accepted traces can hide rejected rollout distribution
+    - inference budget may be conflated with data quality
+    citation_status: verified
+    confidence: high
+    notes: Primary arXiv link verified during the research-navigation pass; release-internal recipe details still need curator review.
+  inclusion_reason: ReST-MCTS connects self-training, process rewards, and tree search, making it a useful bridge between PRM data and test-time compute.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - primary-link-checked
+  status: verified
   category:
   - foundations_instruction_preference_alignment
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
+  - process_supervision_prm
+  - construction_recipes_open_reasoning_data
+  - scaling_test_time_compute_rlvr
+  one_line: Process-reward-guided tree search recipe for self-training reasoning traces.
   card: null
   needs:
-  - 'needs_search: official links not pinned locally'
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line_summary: Process-reward-guided tree search recipe for self-training reasoning traces.
+  why_it_matters: It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
+  curation_level: L1_link_verified
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv primary link pinned in artifacts.
 - id: rewardbench-evaluating-reward-models-for-language-modeling-2024
   title: 'RewardBench: Evaluating Reward Models for Language Modeling'
   year: 2024
@@ -10467,7 +10372,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - environmental_agents_tools_web_swe
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -11204,7 +11111,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - environmental_agents_tools_web_swe
+  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -11450,7 +11359,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -14302,7 +14213,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -15763,7 +15676,9 @@
   tags:
   - seeded-from-bib
   status: verified
-  category: []
+  category:
+  - audit_failure_contamination_verifier_attacks
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -16016,7 +15931,9 @@
   tags:
   - seeded-from-bib
   status: verified
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - construction_recipes_open_reasoning_data
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -16594,7 +16511,8 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - audit_failure_contamination_verifier_attacks
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -16960,7 +16878,10 @@
   tags:
   - seeded-from-bib
   status: verified
-  category: []
+  category:
+  - frontier_model_reports
+  - programmatic_math_code_proof
+  - construction_recipes_open_reasoning_data
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -17044,8 +16965,6 @@
   tags: []
   status: verified
   category:
-  - surveys_and_primers
-  - process_supervision_prm
   - judgment_required_rubrics_safety_domain
   - audit_failure_contamination_verifier_attacks
   - benchmarks_evaluation
@@ -17126,7 +17045,9 @@
   tags:
   - seeded-from-bib
   status: verified
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - construction_recipes_open_reasoning_data
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -18033,22 +17954,223 @@
 - id: prime-process-reinforcement-through-implicit-rewards-2025
   title: 'PRIME: Process reinforcement through implicit rewards'
   year: 2025
-  venue: arXiv preprint
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - process_supervision
+  - verifier_reward
+  - construction_recipe
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - step_level
+  - process_reward
+  - answer_level
+  domains:
+  - math
+  - code
+  - reasoning
   training_use:
-  - unknown
+  - rlvr
+  - process_supervision
+  - reward_modeling
   construction_layer:
-  - release_audit
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - trace_writing
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2502.01456
+    arxiv: https://arxiv.org/abs/2502.01456
+    code: https://github.com/PRIME-RL/PRIME
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: competition math and coding tasks
+    trace_author: policy rollouts
+    answer_format: rollout with implicit process reward signal
+    process_fields:
+    - policy rollout
+    - outcome label
+    - implicit process reward
+    environment_or_substrate: online RL training loop
+    verifier_or_reward: implicit process rewards derived from outcome labels
+    terminal_predicate: final-answer or code-task correctness
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: policy rollouts
+    filtering_rule: outcome labels converted into implicit process rewards
+    sampling_protocol: online RL rollouts
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: PRIME online process-reinforcement pipeline
+  audit:
+    source_mixture: unknown
+    split: unknown
+    decontamination: unknown
+    license: unknown
+    lineage: unknown
+    known_failure_modes:
+    - implicit rewards can inherit outcome-verifier shortcuts
+    - online reward updates may introduce reward hacking
+    - benchmark improvements may conflate optimizer and reward-contract changes
+    citation_status: verified
+    confidence: high
+    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; data/model details should still be checked before L4/L5 promotion.
+  inclusion_reason: PRIME is a core PRM/RLVR recipe because it trains with implicit process rewards from policy rollouts and outcome labels rather than dense human step labels.
+  related: []
+  tags:
+  - seeded-from-bib
+  - primary-link-checked
+  status: verified
+  category:
+  - process_supervision_prm
+  - construction_recipes_open_reasoning_data
+  - scaling_test_time_compute_rlvr
+  one_line: Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.
+  card: null
+  needs:
+  - 'needs_metadata: curator should verify atlas fields'
+  one_line_summary: Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.
+  why_it_matters: It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
+  curation_level: L2_artifact_verified
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv primary link and GitHub artifact pinned.
+- id: autopsv-automated-process-supervised-verifier-2024
+  title: 'AutoPSV: Automated Process-Supervised Verifier'
+  year: 2024
+  venue: arXiv
+  authors: []
+  source_role:
+  - process_supervision
+  - verifier_reward
+  - construction_recipe
+  verification_contract:
+  - programmatic
+  - mixed
+  supervision_granularity:
+  - step_level
+  - process_reward
+  domains:
+  - math
+  - commonsense
+  - reasoning
+  training_use:
+  - process_supervision
+  - reward_modeling
+  - evaluation
+  construction_layer:
+  - reward_verifier_layer
+  - trace_writing
+  artifacts:
+    paper: https://arxiv.org/abs/2405.16802
+    arxiv: https://arxiv.org/abs/2405.16802
+    code: https://github.com/rookie-joe/AutoPSV
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: math and commonsense reasoning tasks
+    trace_author: model-generated reasoning steps
+    answer_format: step-level confidence-change annotations
+    process_fields:
+    - reasoning step
+    - verifier confidence
+    - relative confidence change
+    environment_or_substrate: offline reasoning traces
+    verifier_or_reward: answer-trained verifier converted into process annotations
+    terminal_predicate: correct final answer or selected correct candidate
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: model-generated candidate reasoning
+    filtering_rule: changes in verifier confidence across steps
+    sampling_protocol: automatic process annotation from final-answer verifier scores
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: automated process-supervised verifier training
+  audit:
+    source_mixture: unknown
+    split: unknown
+    decontamination: unknown
+    license: unknown
+    lineage: unknown
+    known_failure_modes:
+    - answer-level verifier confidence can mislabel intermediate steps
+    - relative confidence changes may not identify causal first errors
+    - commonsense and math tasks may require different error taxonomies
+    citation_status: verified
+    confidence: high
+    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; annotation protocol should be audited before L4/L5 promotion.
+  inclusion_reason: AutoPSV is a representative automatic process-supervision paper because it turns an answer-level verifier into step annotations without dense manual labels.
+  related: []
+  tags:
+  - primary-link-checked
+  status: verified
+  category:
+  - process_supervision_prm
+  - construction_recipes_open_reasoning_data
+  one_line: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
+  card: null
+  needs:
+  - 'needs_metadata: curator should verify atlas fields'
+  one_line_summary: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
+  why_it_matters: It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.
+  curation_level: L2_artifact_verified
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv primary link and GitHub artifact pinned.
+- id: step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024
+  title: 'Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs'
+  year: 2024
+  venue: arXiv
+  authors: []
+  source_role:
+  - process_supervision
+  - construction_recipe
+  verification_contract:
+  - mixed
+  supervision_granularity:
+  - step_level
+  domains:
+  - math
+  - reasoning
+  training_use:
+  - process_supervision
+  - preference_learning
+  construction_layer:
+  - trace_writing
+  - optimizer_scaffold
+  artifacts:
+    paper: https://arxiv.org/abs/2406.18629
+    arxiv: https://arxiv.org/abs/2406.18629
     code: null
     data: null
     project: null
@@ -18061,57 +18183,158 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: long-chain reasoning problems
+    trace_author: model-generated long-chain reasoning steps
+    answer_format: step-wise preference pairs
+    process_fields:
+    - reasoning step
+    - preferred continuation
+    - rejected continuation
+    environment_or_substrate: offline long-chain reasoning traces
+    verifier_or_reward: step-wise preference optimization objective
+    terminal_predicate: improved long-chain final-answer correctness
   recipe_metadata:
     base_model: unknown
     teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    generator: multi-step reasoning policy
+    filtering_rule: step-wise preferences over reasoning continuations
+    sampling_protocol: long-chain trace decomposition into preference steps
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: step-wise DPO
   audit:
     source_mixture: unknown
     split: unknown
     decontamination: unknown
     license: unknown
     lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key prime2025. Deduplicated title collision; dropped lower-confidence id: prime-process-reinforcement-through-implicit-rewards-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    known_failure_modes:
+    - local step preference may not align with final correctness
+    - preference construction can hide teacher or scorer bias
+    - long-chain traces can overfit style instead of reasoning validity
+    citation_status: verified
+    confidence: high
+    notes: Primary arXiv link verified during the research-navigation pass; code/data artifacts not pinned.
+  inclusion_reason: Step-DPO is a useful bridge between DPO-style preference learning and process supervision because the preference object is attached to intermediate reasoning steps.
   related: []
   tags:
-  - seeded-from-bib
-  status: needs_metadata
+  - primary-link-checked
+  status: verified
   category:
+  - foundations_instruction_preference_alignment
   - process_supervision_prm
-  one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
-    object, verifier contract, and release metadata before promoting it.
+  - construction_recipes_open_reasoning_data
+  one_line: Step-wise preference optimization method for long-chain reasoning traces.
   card: null
   needs:
-  - 'needs_search: official links not pinned locally'
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line_summary: Step-wise preference optimization method for long-chain reasoning traces.
+  why_it_matters: It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected object is an intermediate continuation rather than a whole answer.
+  curation_level: L1_link_verified
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv primary link pinned in artifacts.
+- id: rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025
+  title: 'ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding'
+  year: 2025
+  venue: arXiv
+  authors: []
+  source_role:
+  - process_supervision
+  - verifier_reward
+  - construction_recipe
+  verification_contract:
+  - mixed
+  supervision_granularity:
+  - step_level
+  - process_reward
+  domains:
+  - retrieval
+  - multi-hop reasoning
+  training_use:
+  - process_supervision
+  - preference_learning
+  - test_time_compute
+  construction_layer:
+  - reward_verifier_layer
+  - search_substrate
+  - optimizer_scaffold
+  artifacts:
+    paper: https://arxiv.org/abs/2501.07861
+    arxiv: https://arxiv.org/abs/2501.07861
+    code: https://github.com/Jeryi-Sun/ReARTeR
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: retrieval-augmented multi-step reasoning tasks
+    trace_author: retrieval-augmented reasoning rollouts
+    answer_format: step-level preference data with process scores and explanations
+    process_fields:
+    - retrieval context
+    - reasoning step
+    - process reward score
+    environment_or_substrate: RAG reasoning pipeline
+    verifier_or_reward: process reward model plus process explanation model
+    terminal_predicate: final answer quality under retrieval-augmented reasoning
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: MCTS-guided retrieval-augmented rollouts
+    filtering_rule: trustworthy process rewarding and iterative preference optimization
+    sampling_protocol: tree search over retrieval-augmented reasoning steps
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: iterative preference optimization with PRM/PEM feedback
+  audit:
+    source_mixture: unknown
+    split: unknown
+    decontamination: unknown
+    license: unknown
+    lineage: unknown
+    known_failure_modes:
+    - PRM and explanation model may disagree
+    - retrieval context can leak answer evidence unevenly
+    - early-step PRM bias can distort search
+    citation_status: verified
+    confidence: high
+    notes: Primary arXiv and project GitHub link verified during the research-navigation pass; artifact details should be checked before L4/L5 promotion.
+  inclusion_reason: ReARTeR shows how PRMs interact with retrieval and preference optimization, making it valuable for readers who study process rewards beyond pure math final-answer checking.
+  related: []
+  tags:
+  - primary-link-checked
+  status: verified
+  category:
+  - process_supervision_prm
+  - construction_recipes_open_reasoning_data
+  - scaling_test_time_compute_rlvr
+  one_line: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level preference data.
+  card: null
+  needs:
+  - 'needs_metadata: curator should verify atlas fields'
+  one_line_summary: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level preference data.
+  why_it_matters: It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
+  curation_level: L2_artifact_verified
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv primary link and GitHub artifact pinned.
 - id: prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025
   title: 'PRMBench: A fine-grained and challenging benchmark for process-level reward models'
   year: 2025
@@ -18544,7 +18767,6 @@
   tags: []
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
   - frontier_model_reports
   - scaling_test_time_compute_rlvr
   one_line: Open model-family report useful for coordinated release-tick analysis.
@@ -19618,7 +19840,9 @@
   tags:
   - seeded-from-bib
   status: verified
-  category: []
+  category:
+  - scaling_test_time_compute_rlvr
+  - programmatic_math_code_proof
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -20031,7 +20255,9 @@
   tags:
   - seeded-from-bib
   status: verified
-  category: []
+  category:
+  - audit_failure_contamination_verifier_attacks
+  - scaling_test_time_compute_rlvr
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -20126,7 +20352,6 @@
   category:
   - construction_recipes_open_reasoning_data
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated
     data, even after visible trait references are filtered.
   card: cards/failures/subliminal-learning.md
@@ -20207,7 +20432,8 @@
   tags:
   - seeded-from-bib
   status: verified
-  category: []
+  category:
+  - audit_failure_contamination_verifier_attacks
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -21130,7 +21356,9 @@
   tags:
   - seeded-from-bib
   status: needs_metadata
-  category: []
+  category:
+  - judgment_required_rubrics_safety_domain
+  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -23718,3 +23946,804 @@
     notes: Official primary link pinned in artifacts.
   curation_level: L5_audit_ready
   card: cards/benchmarks/humaneval-hand-written-evaluation-set.md
+- id: reasoning-with-large-language-models-a-survey-2024
+  title: 'Reasoning with Large Language Models, a Survey'
+  year: 2024
+  venue: arXiv
+  authors: []
+  source_role:
+  - survey_background
+  verification_contract:
+  - unknown
+  supervision_granularity:
+  - unknown
+  domains:
+  - reasoning
+  - survey
+  training_use:
+  - audit
+  construction_layer:
+  - release_audit
+  artifacts:
+    paper: https://arxiv.org/abs/2407.11511
+    arxiv: https://arxiv.org/abs/2407.11511
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: unknown
+    trace_author: unknown
+    answer_format: survey taxonomy and literature map.
+    process_fields: []
+    environment_or_substrate: literature survey.
+    verifier_or_reward: unknown
+    terminal_predicate: unknown
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: unknown
+    filtering_rule: unknown
+    sampling_protocol: unknown
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: unknown
+  audit:
+    source_mixture: unknown
+    split: unknown
+    decontamination: unknown
+    license: unknown
+    lineage: unknown
+    known_failure_modes: []
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv link pinned after source review.
+  inclusion_reason: Reasoning-LLM survey entry for readers who need a field map before opening primary reasoning-data papers.
+  related: []
+  tags:
+  - survey
+  - reasoning-llms
+  status: verified
+  category:
+  - surveys_and_primers
+  one_line: Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and evaluation
+    patterns.
+  card: null
+  needs:
+  - 'needs_metadata: curator should add paper-specific survey scope and relation to post-training data'
+  one_line_summary: Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and
+    evaluation patterns.
+  why_it_matters: It fills the reasoning-LLM survey lane of the atlas so readers can separate model-centric reasoning work
+    from data-object and verifier-centric papers.
+  curation_level: L1_link_verified
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv link pinned after source review.
+- id: a-survey-of-reinforcement-learning-from-human-feedback-2023
+  title: A Survey of Reinforcement Learning from Human Feedback
+  year: 2023
+  venue: TMLR
+  authors:
+  - Timo Kaufmann
+  - Paul Weng
+  - Viktor Bengs
+  - Eyke Hüllermeier
+  source_role:
+  - survey_background
+  verification_contract:
+  - judgment_required
+  - mixed
+  supervision_granularity:
+  - pairwise_preference
+  - scalar_reward
+  domains:
+  - rlhf
+  - reward-modeling
+  - alignment
+  training_use:
+  - reward_modeling
+  - preference_learning
+  - audit
+  construction_layer:
+  - release_audit
+  - reward_verifier_layer
+  artifacts:
+    paper: https://arxiv.org/abs/2312.14925
+    arxiv: https://arxiv.org/abs/2312.14925
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: https://doi.org/10.48550/arXiv.2312.14925
+    venue: https://openreview.net/forum?id=f7OkIurx4b
+    openreview: https://openreview.net/forum?id=f7OkIurx4b
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: human-feedback and preference-learning literature across RLHF settings.
+    trace_author: survey authors synthesize prior RLHF systems and feedback pipelines.
+    answer_format: survey taxonomy over feedback collection, reward modeling, and policy optimization.
+    process_fields:
+    - feedback source
+    - preference format
+    - reward model objective
+    - policy optimization loop
+    environment_or_substrate: RLHF pipelines spanning LLMs and broader RL settings.
+    verifier_or_reward: learned reward model from human feedback.
+    terminal_predicate: survey routing signal for deciding whether a work uses human feedback as the reward source.
+  recipe_metadata:
+    base_model: unknown
+    teacher: human preference and feedback providers summarized across the literature.
+    generator: survey taxonomy
+    filtering_rule: scope emphasizes learned reward models trained from human feedback.
+    sampling_protocol: literature review
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: RLHF reward-model and policy-optimization scaffold
+  audit:
+    source_mixture: literature survey
+    split: not applicable
+    decontamination: unknown
+    license: Check arXiv/OpenReview license before reuse.
+    lineage: public RLHF literature
+    known_failure_modes:
+    - Human feedback can be noisy, subjective, sparse, or expensive.
+    - Reward models can overfit annotator preferences and become exploitable objectives.
+    - LLM readers may overgeneralize broad RLHF lessons to verifiable-reasoning settings.
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv and TMLR/OpenReview links verified for the RLHF survey subfield.
+    metadata_status: summary_ready
+  inclusion_reason: Core RLHF survey for routing readers from preference data to reward models and policy optimization before they study reasoning-specific RLVR.
+  related:
+  - training-language-models-to-follow-instructions-with-human-feedback-2022
+  - deep-reinforcement-learning-from-human-preferences-2017
+  tags:
+  - rlhf
+  - reward-model-survey
+  - human-feedback
+  - preference-learning
+  status: verified
+  category:
+  - surveys_and_primers
+  - foundations_instruction_preference_alignment
+  one_line: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference data and learned reward models.
+  card: null
+  needs:
+  - 'needs_card: add a local survey card if this becomes a teaching anchor'
+  one_line_summary: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference data and learned reward models.
+  why_it_matters: It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization before readers compare them with verifiable-reward reasoning data.
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv, DOI, and OpenReview links pinned.
+- id: a-comprehensive-survey-of-reward-models-taxonomy-applications-challenges-and-future-2025
+  title: 'A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future'
+  year: 2025
+  venue: arXiv
+  authors:
+  - Jialun Zhong
+  - Wei Shen
+  - Yanzeng Li
+  - Songyang Gao
+  - Hua Lu
+  - Yicheng Chen
+  - Yang Zhang
+  - Wei Zhou
+  - Jinjie Gu
+  - Lei Zou
+  source_role:
+  - survey_background
+  verification_contract:
+  - judgment_required
+  - mixed
+  supervision_granularity:
+  - pairwise_preference
+  - scalar_reward
+  domains:
+  - reward-modeling
+  - rlhf
+  - alignment
+  training_use:
+  - reward_modeling
+  - preference_learning
+  - evaluation
+  - audit
+  construction_layer:
+  - release_audit
+  - reward_verifier_layer
+  artifacts:
+    paper: https://arxiv.org/abs/2504.12328
+    arxiv: https://arxiv.org/abs/2504.12328
+    code: null
+    data: null
+    project: https://github.com/JLZhong23/awesome-reward-models
+    huggingface: null
+    doi: https://doi.org/10.48550/arXiv.2504.12328
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: reward-model literature covering preference collection, reward modeling, use, applications, and benchmarks.
+    trace_author: survey authors organize reward model research and associated resources.
+    answer_format: taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.
+    process_fields:
+    - preference source
+    - reward model architecture
+    - usage mode
+    - benchmark
+    - challenge
+    environment_or_substrate: LLM reward-model training and evaluation pipelines.
+    verifier_or_reward: reward model as proxy objective for downstream post-training.
+    terminal_predicate: survey helps identify whether a paper's reward signal is learned, rubric-based, preference-derived, or benchmarked.
+  recipe_metadata:
+    base_model: unknown
+    teacher: human and AI preference sources summarized across reward-model literature.
+    generator: survey taxonomy and accompanying awesome list
+    filtering_rule: emphasizes parameterized reward models in the LLM era.
+    sampling_protocol: literature review
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: reward-model training, evaluation, and use taxonomy
+  audit:
+    source_mixture: literature survey plus public resource list
+    split: not applicable
+    decontamination: unknown
+    license: Check arXiv and companion repository license before reuse.
+    lineage: reward-modeling literature
+    known_failure_modes:
+    - Reward models may encode annotator bias, style bias, or length preference.
+    - Proxy rewards can be overoptimized or attacked when used as training objectives.
+    - Benchmark scores can obscure whether the reward model is useful for reasoning data.
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv link and companion awesome-reward-models project link pinned.
+    metadata_status: summary_ready
+  inclusion_reason: Reward-model survey that directly supports the atlas distinction between human feedback, rubric signals, reward models, and verifier rewards.
+  related:
+  - rewardbench-evaluating-reward-models-for-language-modeling-2024
+  - ultrafeedback-boosting-language-models-with-high-quality-feedback-2023
+  tags:
+  - reward-model-survey
+  - reward-modeling
+  - rlhf
+  - preference-data
+  status: verified
+  category:
+  - surveys_and_primers
+  - foundations_instruction_preference_alignment
+  - judgment_required_rubrics_safety_domain
+  one_line: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure modes.
+  card: null
+  needs:
+  - 'needs_card: add a local card if reward-model surveys become a teaching module'
+  one_line_summary: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure modes.
+  why_it_matters: It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv, DOI, and companion project links pinned.
+- id: a-survey-on-human-preference-learning-for-large-language-models-2024
+  title: A Survey on Human Preference Learning for Large Language Models
+  year: 2024
+  venue: arXiv
+  authors:
+  - Ruili Jiang
+  - Kehai Chen
+  - Xuefeng Bai
+  - Zhixuan He
+  - Juntao Li
+  - Muyun Yang
+  - Tiejun Zhao
+  - Liqiang Nie
+  - Min Zhang
+  source_role:
+  - survey_background
+  verification_contract:
+  - judgment_required
+  - mixed
+  supervision_granularity:
+  - pairwise_preference
+  - scalar_reward
+  domains:
+  - human-preference
+  - preference-learning
+  - alignment
+  training_use:
+  - preference_learning
+  - reward_modeling
+  - evaluation
+  construction_layer:
+  - release_audit
+  - reward_verifier_layer
+  artifacts:
+    paper: https://arxiv.org/abs/2406.11191
+    arxiv: https://arxiv.org/abs/2406.11191
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: https://doi.org/10.48550/arXiv.2406.11191
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: human preference learning literature for LLM alignment.
+    trace_author: survey authors organize preference sources, formats, models, usage, and evaluation.
+    answer_format: preference-centered taxonomy over feedback data, preference modeling, preference usage, and aligned-model evaluation.
+    process_fields:
+    - preference source
+    - preference format
+    - preference model
+    - optimization objective
+    - evaluation protocol
+    environment_or_substrate: LLM alignment pipelines using human preference signals.
+    verifier_or_reward: human preference signal transformed into reward, preference loss, or evaluation judgment.
+    terminal_predicate: survey helps readers identify what form of preference data is being collected and how it is used.
+  recipe_metadata:
+    base_model: unknown
+    teacher: human preference providers and preference-labeled datasets summarized by the survey.
+    generator: survey taxonomy
+    filtering_rule: preference-centered scope for LLM alignment.
+    sampling_protocol: literature review
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: preference modeling and preference optimization taxonomy
+  audit:
+    source_mixture: literature survey
+    split: not applicable
+    decontamination: unknown
+    license: Check arXiv license before reuse.
+    lineage: human preference learning literature
+    known_failure_modes:
+    - Preference labels can be noisy, culturally variable, or underspecified.
+    - Pairwise preferences may not preserve reasoning correctness or factual grounding.
+    - Evaluation of aligned models can conflate helpfulness, style, and reasoning quality.
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv link pinned for the human preference learning survey.
+    metadata_status: summary_ready
+  inclusion_reason: Preference-learning survey for readers who need to understand the data formats behind RLHF, DPO, RLAIF, and reward-model training.
+  related:
+  - direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
+  - training-language-models-to-follow-instructions-with-human-feedback-2022
+  tags:
+  - preference-learning
+  - human-preference
+  - rlhf
+  - reward-modeling
+  status: verified
+  category:
+  - surveys_and_primers
+  - foundations_instruction_preference_alignment
+  one_line: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for LLM alignment.
+  card: null
+  needs:
+  - 'needs_card: add a local card if preference-learning surveys become a teaching module'
+  one_line_summary: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for LLM alignment.
+  why_it_matters: It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv and DOI links pinned.
+- id: reinforcement-learning-for-llm-post-training-a-survey-2024
+  title: 'Reinforcement Learning for LLM Post-Training: A Survey'
+  year: 2024
+  venue: arXiv
+  authors:
+  - Zhichao Wang
+  - Kiran Ramnath
+  - Bin Bi
+  - Shiva Kumar Pentyala
+  - Sougata Chaudhuri
+  - Shubham Mehrotra
+  - Zixu Zhu
+  - Xiang-Bo Mao
+  - Sitaram Asur
+  - Na Cheng
+  source_role:
+  - survey_background
+  - scaling_study
+  verification_contract:
+  - mixed
+  - programmatic
+  supervision_granularity:
+  - scalar_reward
+  - answer_level
+  domains:
+  - post-training
+  - rlhf
+  - rlvr
+  - preference-learning
+  training_use:
+  - reward_modeling
+  - preference_learning
+  - rlvr
+  - test_time_compute
+  - audit
+  construction_layer:
+  - release_audit
+  - reward_verifier_layer
+  - optimizer_scaffold
+  artifacts:
+    paper: https://arxiv.org/abs/2407.16216
+    arxiv: https://arxiv.org/abs/2407.16216
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: https://doi.org/10.48550/arXiv.2407.16216
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: RL-based LLM post-training literature across SFT, RLHF, RLVR, PPO, GRPO, and DPO variants.
+    trace_author: survey authors unify post-training objectives and implementation details.
+    answer_format: technical survey comparing RLHF and RLVR policy-gradient style post-training methods.
+    process_fields:
+    - prompt sampling
+    - response sampling
+    - reward source
+    - gradient coefficient
+    - optimizer family
+    environment_or_substrate: LLM post-training algorithms and reasoning tasks such as math and coding.
+    verifier_or_reward: learned preference rewards, verifiable rewards, and policy-gradient objectives.
+    terminal_predicate: survey routes readers between RLHF, DPO, PPO, GRPO, and RLVR-style post-training recipes.
+  recipe_metadata:
+    base_model: unknown
+    teacher: literature covering human feedback, verifiable rewards, and post-training optimization.
+    generator: technical survey and unified policy-gradient framework
+    filtering_rule: focuses on reinforcement-learning-based LLM post-training.
+    sampling_protocol: literature review
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: unified policy-gradient view of SFT, RLHF, RLVR, PPO, GRPO, and DPO
+  audit:
+    source_mixture: literature survey
+    split: not applicable
+    decontamination: unknown
+    license: Check arXiv license before reuse.
+    lineage: RL-based LLM post-training literature
+    known_failure_modes:
+    - Method comparisons can mix data effects with optimizer and sampling-budget effects.
+    - RLHF and RLVR rewards are often discussed together despite different verification contracts.
+    - Implementation details can dominate reported gains if not separated from data quality.
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv link and DOI pinned; latest arXiv revision observed in 2026.
+    metadata_status: summary_ready
+  inclusion_reason: Technical post-training survey that bridges RLHF, DPO, PPO/GRPO, and RLVR for readers comparing human feedback with verifiable-reward reasoning training.
+  related:
+  - direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
+  - deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learning-2025
+  tags:
+  - rlhf
+  - rlvr
+  - reward-model-survey
+  - post-training
+  - policy-optimization
+  status: verified
+  category:
+  - surveys_and_primers
+  - foundations_instruction_preference_alignment
+  - scaling_test_time_compute_rlvr
+  one_line: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards, and optimization details.
+  card: null
+  needs:
+  - 'needs_card: add a local card if RL post-training methods become a teaching module'
+  one_line_summary: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards, and optimization details.
+  why_it_matters: It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv and arXiv DOI links pinned.
+- id: survey-of-reasoning-large-language-models-2025
+  title: 'A Survey of Reasoning with Foundation Models'
+  year: 2025
+  venue: arXiv
+  authors: []
+  source_role:
+  - survey_background
+  verification_contract:
+  - unknown
+  supervision_granularity:
+  - unknown
+  domains:
+  - reasoning
+  - survey
+  training_use:
+  - audit
+  construction_layer:
+  - release_audit
+  artifacts:
+    paper: https://arxiv.org/abs/2502.17419
+    arxiv: https://arxiv.org/abs/2502.17419
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: unknown
+    trace_author: unknown
+    answer_format: survey taxonomy and literature map.
+    process_fields: []
+    environment_or_substrate: literature survey.
+    verifier_or_reward: unknown
+    terminal_predicate: unknown
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: unknown
+    filtering_rule: unknown
+    sampling_protocol: unknown
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: unknown
+  audit:
+    source_mixture: unknown
+    split: unknown
+    decontamination: unknown
+    license: unknown
+    lineage: unknown
+    known_failure_modes: []
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv link pinned after source review.
+  inclusion_reason: Broad reasoning survey for connecting foundation-model reasoning methods to post-training data questions.
+  related: []
+  tags:
+  - survey
+  - reasoning-llms
+  - foundation-models
+  status: verified
+  category:
+  - surveys_and_primers
+  one_line: Surveys reasoning with foundation models, including tasks, methods, and evaluation patterns that reasoning-data
+    readers need as context.
+  card: null
+  needs:
+  - 'needs_metadata: curator should add paper-specific survey scope and relation to post-training data'
+  one_line_summary: Surveys reasoning with foundation models, including tasks, methods, and evaluation patterns that reasoning-data
+    readers need as context.
+  why_it_matters: It gives the atlas a second reasoning-survey waypoint so readers can orient before choosing math, code,
+    agent, rubric, or scaling tracks.
+  curation_level: L1_link_verified
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv link pinned after source review.
+- id: survey-on-evaluation-of-llm-based-agents-2025
+  title: 'A Survey on Evaluation of LLM-based Agents'
+  year: 2025
+  venue: arXiv
+  authors: []
+  source_role:
+  - survey_background
+  verification_contract:
+  - environmental
+  - mixed
+  supervision_granularity:
+  - full_episode
+  - state_action_level
+  domains:
+  - agents
+  - evaluation
+  training_use:
+  - evaluation
+  - audit
+  construction_layer:
+  - release_audit
+  artifacts:
+    paper: https://arxiv.org/abs/2503.16416
+    arxiv: https://arxiv.org/abs/2503.16416
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: unknown
+    trace_author: unknown
+    answer_format: survey taxonomy for agent evaluation tasks and environments.
+    process_fields:
+    - task, environment, trajectory, evaluator, terminal predicate.
+    environment_or_substrate: LLM-agent evaluation literature.
+    verifier_or_reward: environmental and benchmark evaluators summarized by the survey.
+    terminal_predicate: unknown
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: unknown
+    filtering_rule: unknown
+    sampling_protocol: unknown
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: unknown
+  audit:
+    source_mixture: unknown
+    split: unknown
+    decontamination: unknown
+    license: unknown
+    lineage: unknown
+    known_failure_modes: []
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv link pinned after source review.
+  inclusion_reason: Agent-evaluation survey for readers mapping tool/web/OS/SWE trajectories and terminal predicates.
+  related: []
+  tags:
+  - survey
+  - agent-evaluation
+  - tool-use
+  status: verified
+  category:
+  - surveys_and_primers
+  - environmental_agents_tools_web_swe
+  - benchmarks_evaluation
+  one_line: Surveys how LLM-based agents are evaluated across tasks, environments, metrics, and interaction settings.
+  card: null
+  needs:
+  - 'needs_metadata: curator should add paper-specific coverage notes for agent-data reuse'
+  one_line_summary: Surveys how LLM-based agents are evaluated across tasks, environments, metrics, and interaction settings.
+  why_it_matters: It gives the atlas an agent-survey waypoint for readers who need to understand environment data before
+    comparing SWE, web, app, or OS agent benchmarks.
+  curation_level: L1_link_verified
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv link pinned after source review.
+- id: language-model-developers-should-report-train-test-overlap-2024
+  title: Language Model Developers Should Report Train-Test Overlap
+  year: 2024
+  venue: arXiv
+  authors: []
+  source_role:
+  - audit_failure
+  - survey_background
+  verification_contract:
+  - unknown
+  supervision_granularity:
+  - unknown
+  domains:
+  - contamination
+  - data-reuse
+  training_use:
+  - audit
+  construction_layer:
+  - release_audit
+  artifacts:
+    paper: https://arxiv.org/abs/2410.08385
+    arxiv: https://arxiv.org/abs/2410.08385
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: null
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: unknown
+    trace_author: unknown
+    answer_format: overlap and reporting analysis.
+    process_fields:
+    - training corpus, evaluation set, overlap estimate, reporting policy.
+    environment_or_substrate: benchmark and training-data documentation.
+    verifier_or_reward: overlap analysis rather than a reward model.
+    terminal_predicate: unknown
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: unknown
+    filtering_rule: overlap reporting and audit policy.
+    sampling_protocol: unknown
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: unknown
+  audit:
+    source_mixture: Are training and evaluation corpora compared for overlap?
+    split: Are train/test overlaps quantified and reported?
+    decontamination: Does benchmark reporting include overlap estimates?
+    license: unknown
+    lineage: unknown
+    known_failure_modes:
+    - Reported benchmark gains can be inflated when train-test overlap is not disclosed.
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv link pinned after source review.
+  inclusion_reason: Data-reuse and uniqueness audit entry for interpreting benchmark claims and reasoning-data scaling.
+  related: []
+  tags:
+  - train-test-overlap
+  - data-reuse
+  - contamination
+  status: verified
+  category:
+  - scaling_test_time_compute_rlvr
+  - audit_failure_contamination_verifier_attacks
+  - surveys_and_primers
+  one_line: Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted with
+    data reuse in mind.
+  card: null
+  needs:
+  - 'needs_metadata: curator should add paper-specific overlap methodology notes'
+  one_line_summary: Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted
+    with data reuse in mind.
+  why_it_matters: It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated
+    or overlapping examples are counted as fresh evidence.
+  curation_level: L1_link_verified
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-06-16'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv link pinned after source review.

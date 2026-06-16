@@ -1,6 +1,6 @@
-# Link Sources Checked for Redesign v2
+# Verified Link Sources
 
-Checked during the redesign-v2 repair pass on 2026-06-02. The repository still treats release-internal metadata separately from citation/artifact-link verification.
+Checked during public atlas curation. The repository treats release-internal metadata separately from citation/artifact-link verification.
 
 | Entry | URL | Use |
 |---|---|---|

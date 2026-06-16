@@ -17,7 +17,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "deep-reinforcement-learning-from-human-preferences-2017",
@@ -97,7 +97,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "pubmedqa-a-dataset-for-biomedical-research-question-answering-2019",
@@ -117,7 +117,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "a-primer-in-bertology-what-we-know-about-how-bert-works-2020",
@@ -137,7 +137,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "fact-or-fiction-verifying-scientific-claims-2020",
@@ -157,7 +157,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks-2020",
@@ -177,7 +177,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "casehold-a-dataset-for-legal-holding-statement-prediction-2021",
@@ -197,7 +197,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021",
@@ -217,7 +217,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021",
@@ -237,7 +237,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "evaluating-large-language-models-trained-on-code-2021",
@@ -277,27 +277,27 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021",
     "title": "FinQA: A dataset of numerical reasoning over financial data",
     "year": 2021,
     "venue": "EMNLP",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
+    "status": "verified",
+    "curation_level": "L2_artifact_verified",
+    "primary_link": "https://aclanthology.org/2021.emnlp-main.300/",
     "arxiv": null,
-    "paper": null,
+    "paper": "https://aclanthology.org/2021.emnlp-main.300/",
     "code": null,
     "data": null,
     "huggingface": null,
-    "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "project": "https://finqasite.github.io/",
+    "source_role": "benchmark;data_release",
+    "verification_contract": "mixed",
+    "training_use": "evaluation;sft",
+    "one_line_summary": "FinQA introduces financial-document QA with expert-written questions and gold reasoning programs for numerical reasoning over financial reports.",
+    "why_it_matters": "It is a finance-domain reasoning benchmark where the data object includes questions, evidence from financial reports, answers, and reasoning programs rather than only free-form responses."
   },
   {
     "id": "measuring-coding-challenge-competence-with-apps-2021",
@@ -377,7 +377,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021",
@@ -397,27 +397,27 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021",
     "title": "TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance",
     "year": 2021,
     "venue": "ACL",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
-    "arxiv": null,
-    "paper": null,
-    "code": null,
-    "data": null,
+    "status": "verified",
+    "curation_level": "L2_artifact_verified",
+    "primary_link": "https://aclanthology.org/2021.acl-long.254/",
+    "arxiv": "https://arxiv.org/abs/2105.07624",
+    "paper": "https://aclanthology.org/2021.acl-long.254/",
+    "code": "https://github.com/NExTplusplus/TAT-QA",
+    "data": "https://github.com/NExTplusplus/TAT-QA",
     "huggingface": null,
-    "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "project": "https://nextplusplus.github.io/TAT-QA/",
+    "source_role": "benchmark;data_release",
+    "verification_contract": "mixed",
+    "training_use": "evaluation;sft",
+    "one_line_summary": "TAT-QA evaluates numerical reasoning over hybrid financial tables and text, with annotated derivations and answers.",
+    "why_it_matters": "It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter."
   },
   {
     "id": "training-verifiers-to-solve-math-word-problems-2021",
@@ -477,7 +477,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "codet-code-generation-with-generated-tests-2022",
@@ -497,7 +497,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "coliee-competition-on-legal-information-extraction-entailment-2022",
@@ -517,7 +517,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "constitutional-ai-harmlessness-from-ai-feedback-2022",
@@ -557,7 +557,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "draft-sketch-and-prove-guiding-formal-theorem-provers-with-informal-proofs-2022",
@@ -577,7 +577,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "scaling-laws-for-reward-model-overoptimization-2022",
@@ -597,7 +597,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "scienceworld-is-your-agent-smarter-than-a-5th-grader-2022",
@@ -617,7 +617,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "solving-math-word-problems-with-process-and-outcome-based-feedback-2022",
@@ -637,7 +637,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "star-bootstrapping-reasoning-with-reasoning-2022",
@@ -737,7 +737,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "api-bank-a-benchmark-for-tool-augmented-llms-2023",
@@ -757,7 +757,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "data-provenance-for-language-models-2023",
@@ -777,7 +777,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023",
@@ -817,7 +817,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "factscore-2023",
@@ -837,27 +837,27 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "financebench-a-benchmark-for-financial-question-answering-2023",
     "title": "FinanceBench: A benchmark for financial question answering",
     "year": 2023,
-    "venue": "unknown",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
-    "arxiv": null,
-    "paper": null,
-    "code": null,
-    "data": null,
-    "huggingface": null,
-    "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L2_artifact_verified",
+    "primary_link": "https://arxiv.org/abs/2311.11944",
+    "arxiv": "https://arxiv.org/abs/2311.11944",
+    "paper": "https://arxiv.org/abs/2311.11944",
+    "code": "https://github.com/patronus-ai/financebench",
+    "data": "https://github.com/patronus-ai/financebench",
+    "huggingface": "https://huggingface.co/datasets/PatronusAI/financebench",
+    "project": "https://github.com/patronus-ai/financebench",
+    "source_role": "benchmark;data_release",
+    "verification_contract": "judgment_required;mixed",
+    "training_use": "evaluation",
+    "one_line_summary": "FinanceBench benchmarks financial question answering over public company filings and expert-authored answers.",
+    "why_it_matters": "It is a domain-specific reasoning benchmark where grounding, evidence retrieval, expert answers, and current filing data matter more than generic exact-match reasoning."
   },
   {
     "id": "gorilla-2023",
@@ -877,7 +877,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "gpqa-2023",
@@ -917,7 +917,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023",
@@ -957,7 +957,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "large-language-models-encode-clinical-knowledge-2023",
@@ -977,7 +977,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "leandojo-theorem-proving-with-retrieval-augmented-language-models-2023",
@@ -1004,20 +1004,20 @@
     "title": "LegalBench",
     "year": 2023,
     "venue": "NeurIPS",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
-    "arxiv": null,
-    "paper": null,
-    "code": null,
-    "data": null,
-    "huggingface": null,
-    "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "status": "verified",
+    "curation_level": "L2_artifact_verified",
+    "primary_link": "https://arxiv.org/abs/2308.11462",
+    "arxiv": "https://arxiv.org/abs/2308.11462",
+    "paper": "https://arxiv.org/abs/2308.11462",
+    "code": "https://github.com/HazyResearch/legalbench",
+    "data": "https://github.com/HazyResearch/legalbench",
+    "huggingface": "https://huggingface.co/datasets/nguha/legalbench",
+    "project": "https://hazyresearch.stanford.edu/legalbench/",
+    "source_role": "benchmark;data_release",
+    "verification_contract": "judgment_required;mixed",
+    "training_use": "evaluation",
+    "one_line_summary": "LegalBench provides a collaboratively built benchmark suite for legal reasoning tasks across many legal domains.",
+    "why_it_matters": "It anchors the legal side of judgment-required reasoning data, where task definitions, legal-domain splits, expert validity, and answer rubrics are often more important than a simple verifier."
   },
   {
     "id": "mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023",
@@ -1037,27 +1037,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
-  },
-  {
-    "id": "math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023",
-    "title": "Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations",
-    "year": 2023,
-    "venue": "ACL",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
-    "arxiv": null,
-    "paper": null,
-    "code": null,
-    "data": null,
-    "huggingface": null,
-    "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "maud-a-merger-agreement-understanding-dataset-2023",
@@ -1077,7 +1057,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "measuring-faithfulness-in-chain-of-thought-reasoning-2023",
@@ -1097,7 +1077,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023",
@@ -1117,7 +1097,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "mind2web-towards-a-generalist-agent-for-the-web-2023",
@@ -1137,7 +1117,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023",
@@ -1197,7 +1177,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "react-synergizing-reasoning-and-acting-in-language-models-2023",
@@ -1237,7 +1217,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "rest-textsuperscriptem-2023",
@@ -1257,7 +1237,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023",
@@ -1337,7 +1317,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-bench-can-language-models-resolve-real-world-github-issues-2023",
@@ -1437,7 +1417,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "ai-models-collapse-when-trained-on-recursively-generated-data-2024",
@@ -1457,7 +1437,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024",
@@ -1477,7 +1457,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024",
@@ -1517,7 +1497,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024",
@@ -1537,7 +1517,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024",
@@ -1557,7 +1537,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "browsergym-a-gym-environment-for-web-agents-2024",
@@ -1597,7 +1577,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "deepseek-prover-advancing-theorem-proving-in-llms-2024",
@@ -1677,7 +1657,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024",
@@ -1697,7 +1677,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024",
@@ -1717,7 +1697,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "gsm-symbolic-2024",
@@ -1737,7 +1717,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "harmbench-2024",
@@ -1757,7 +1737,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024",
@@ -1777,27 +1757,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
-  },
-  {
-    "id": "improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024",
-    "title": "Improve mathematical reasoning in language models by automated process supervision",
-    "year": 2024,
-    "venue": "arXiv preprint",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
-    "arxiv": null,
-    "paper": null,
-    "code": null,
-    "data": null,
-    "huggingface": null,
-    "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "introducing-swe-bench-verified-2024",
@@ -1837,7 +1797,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024",
@@ -1857,7 +1817,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024",
@@ -1877,7 +1837,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "learning-to-reason-with-llms-2024",
@@ -1897,7 +1857,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024",
@@ -1977,7 +1937,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "math-shepherd-2024",
@@ -1996,8 +1956,8 @@
     "source_role": "process_supervision;verifier_reward",
     "verification_contract": "programmatic",
     "training_use": "process_supervision;reward_modeling",
-    "one_line_summary": "Monte-Carlo-style process signal reference for step supervision.",
-    "why_it_matters": "Monte-Carlo-style process signal reference for step supervision."
+    "one_line_summary": "Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.",
+    "why_it_matters": "It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer."
   },
   {
     "id": "opencodeinterpreter-integrating-code-generation-with-execution-and-refinement-2024",
@@ -2017,7 +1977,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024",
@@ -2077,7 +2037,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024",
@@ -2097,7 +2057,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024",
@@ -2157,7 +2117,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "raft-adapting-language-model-to-domain-specific-rag-2024",
@@ -2177,27 +2137,27 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "rest-mcts-2024",
     "title": "ReST-MCTS*",
     "year": 2024,
-    "venue": "arXiv preprint",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
-    "arxiv": null,
-    "paper": null,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L1_link_verified",
+    "primary_link": "https://arxiv.org/abs/2406.03816",
+    "arxiv": "https://arxiv.org/abs/2406.03816",
+    "paper": "https://arxiv.org/abs/2406.03816",
     "code": null,
     "data": null,
     "huggingface": null,
     "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "source_role": "process_supervision;construction_recipe;scaling_study",
+    "verification_contract": "programmatic;mixed",
+    "training_use": "process_supervision;reward_modeling;test_time_compute",
+    "one_line_summary": "Process-reward-guided tree search recipe for self-training reasoning traces.",
+    "why_it_matters": "It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects."
   },
   {
     "id": "rewardbench-evaluating-reward-models-for-language-modeling-2024",
@@ -2277,7 +2237,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024",
@@ -2297,7 +2257,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024",
@@ -2317,7 +2277,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-search-2024",
@@ -2337,7 +2297,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024",
@@ -2357,7 +2317,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "the-llama-3-herd-of-models-2024",
@@ -2377,7 +2337,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "toolace-winning-the-points-of-llm-function-calling-2024",
@@ -2397,7 +2357,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024",
@@ -2437,7 +2397,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "tulu-3-pushing-frontiers-in-open-language-model-post-training-2024",
@@ -2497,7 +2457,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "wildguard-2024",
@@ -2517,7 +2477,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024",
@@ -2537,7 +2497,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "xstest-2024",
@@ -2557,7 +2517,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025",
@@ -2577,7 +2537,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025",
@@ -2597,7 +2557,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025",
@@ -2637,7 +2597,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025",
@@ -2697,7 +2657,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "acord-attorney-curated-open-research-dataset-2025",
@@ -2717,7 +2677,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025",
@@ -2737,7 +2697,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "aegis2-2025",
@@ -2777,7 +2737,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025",
@@ -2797,7 +2757,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025",
@@ -2837,7 +2797,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "big-math-2025",
@@ -2877,7 +2837,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025",
@@ -2897,7 +2857,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025",
@@ -2917,7 +2877,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025",
@@ -2937,7 +2897,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "dapo-2025",
@@ -2977,7 +2937,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "deepmath-103k-2025",
@@ -3017,7 +2977,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025",
@@ -3037,7 +2997,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025",
@@ -3097,7 +3057,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "deepseek-v3-2-pushing-the-frontier-of-open-large-language-models-2025",
@@ -3117,7 +3077,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "distillation-scaling-laws-2025",
@@ -3137,7 +3097,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
@@ -3157,7 +3117,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025",
@@ -3177,7 +3137,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "faithbench-a-diverse-hallucination-benchmark-for-summarization-by-modern-llms-2025",
@@ -3197,7 +3157,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "finder-financial-data-extraction-and-reasoning-2025",
@@ -3217,7 +3177,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025",
@@ -3237,7 +3197,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "from-system-1-to-system-2-a-survey-of-reasoning-large-language-models-2025",
@@ -3257,7 +3217,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "gaperon-a-peppered-english-french-generative-language-model-suite-2025",
@@ -3277,7 +3237,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "general-reasoning-models-survey-and-perspectives-2025",
@@ -3297,7 +3257,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "goedel-prover-v2-scaling-formal-theorem-proving-with-scaffolded-data-synthesis-a-2025",
@@ -3317,7 +3277,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "grpo-is-secretly-a-process-reward-model-2025",
@@ -3337,7 +3297,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "healthbench-2025",
@@ -3377,7 +3337,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "humanity-s-last-exam-2025",
@@ -3397,7 +3357,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "introducing-openai-o3-and-o4-mini-2025",
@@ -3417,7 +3377,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "khatri-scaling-rl-2025",
@@ -3477,7 +3437,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025",
@@ -3517,7 +3477,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "leaky-thoughts-2025",
@@ -3557,7 +3517,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "limo-2025",
@@ -3617,7 +3577,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "magistral-2025",
@@ -3657,7 +3617,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "mcp-universe-tool-and-environment-infrastructure-for-agent-evaluation-and-traini-2025",
@@ -3677,7 +3637,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "medreason-eliciting-factual-medical-reasoning-steps-in-llms-via-knowledge-graphs-2025",
@@ -3697,7 +3657,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "megascience-a-benchmark-and-data-resource-for-scientific-reasoning-2025",
@@ -3717,7 +3677,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "mid-training-of-large-language-models-a-survey-2025",
@@ -3737,7 +3697,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "min-k-2025",
@@ -3757,7 +3717,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025",
@@ -3797,7 +3757,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025",
@@ -3837,7 +3797,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "one-token-to-fool-2025",
@@ -3877,7 +3837,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "onlinerubrics-2025",
@@ -3897,7 +3857,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025",
@@ -3917,7 +3877,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "open-reasoner-zero-an-open-source-approach-to-scaling-up-reinforcement-learning--2025",
@@ -3937,7 +3897,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "opencodereasoning-2-scalable-code-reasoning-data-2025",
@@ -3957,7 +3917,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "opencodereasoning-code-reasoning-traces-at-scale-2025",
@@ -3977,7 +3937,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025",
@@ -4083,21 +4043,81 @@
     "id": "prime-process-reinforcement-through-implicit-rewards-2025",
     "title": "PRIME: Process reinforcement through implicit rewards",
     "year": 2025,
-    "venue": "arXiv preprint",
-    "status": "needs_metadata",
-    "curation_level": "L0_seeded",
-    "primary_link": null,
-    "arxiv": null,
-    "paper": null,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L2_artifact_verified",
+    "primary_link": "https://arxiv.org/abs/2502.01456",
+    "arxiv": "https://arxiv.org/abs/2502.01456",
+    "paper": "https://arxiv.org/abs/2502.01456",
+    "code": "https://github.com/PRIME-RL/PRIME",
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "process_supervision;verifier_reward;construction_recipe",
+    "verification_contract": "programmatic;mixed",
+    "training_use": "rlvr;process_supervision;reward_modeling",
+    "one_line_summary": "Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.",
+    "why_it_matters": "It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds."
+  },
+  {
+    "id": "autopsv-automated-process-supervised-verifier-2024",
+    "title": "AutoPSV: Automated Process-Supervised Verifier",
+    "year": 2024,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L2_artifact_verified",
+    "primary_link": "https://arxiv.org/abs/2405.16802",
+    "arxiv": "https://arxiv.org/abs/2405.16802",
+    "paper": "https://arxiv.org/abs/2405.16802",
+    "code": "https://github.com/rookie-joe/AutoPSV",
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "process_supervision;verifier_reward;construction_recipe",
+    "verification_contract": "programmatic;mixed",
+    "training_use": "process_supervision;reward_modeling;evaluation",
+    "one_line_summary": "Automated process-supervision recipe that derives step annotations from verifier confidence changes.",
+    "why_it_matters": "It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision."
+  },
+  {
+    "id": "step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024",
+    "title": "Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs",
+    "year": 2024,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L1_link_verified",
+    "primary_link": "https://arxiv.org/abs/2406.18629",
+    "arxiv": "https://arxiv.org/abs/2406.18629",
+    "paper": "https://arxiv.org/abs/2406.18629",
     "code": null,
     "data": null,
     "huggingface": null,
     "project": null,
-    "source_role": "survey_background",
-    "verification_contract": "unknown",
-    "training_use": "unknown",
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "source_role": "process_supervision;construction_recipe",
+    "verification_contract": "mixed",
+    "training_use": "process_supervision;preference_learning",
+    "one_line_summary": "Step-wise preference optimization method for long-chain reasoning traces.",
+    "why_it_matters": "It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected object is an intermediate continuation rather than a whole answer."
+  },
+  {
+    "id": "rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025",
+    "title": "ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding",
+    "year": 2025,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L2_artifact_verified",
+    "primary_link": "https://arxiv.org/abs/2501.07861",
+    "arxiv": "https://arxiv.org/abs/2501.07861",
+    "paper": "https://arxiv.org/abs/2501.07861",
+    "code": "https://github.com/Jeryi-Sun/ReARTeR",
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "process_supervision;verifier_reward;construction_recipe",
+    "verification_contract": "mixed",
+    "training_use": "process_supervision;preference_learning;test_time_compute",
+    "one_line_summary": "Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level preference data.",
+    "why_it_matters": "It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object."
   },
   {
     "id": "prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025",
@@ -4137,7 +4157,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "processbench-identifying-process-errors-in-mathematical-reasoning-2025",
@@ -4177,7 +4197,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "qwen3-2025",
@@ -4217,7 +4237,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "r2e-gym-2025",
@@ -4257,7 +4277,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "r3-robust-rubric-agnostic-reward-models-2025",
@@ -4277,7 +4297,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025",
@@ -4297,7 +4317,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "retool-reinforcement-learning-for-strategic-tool-use-in-llms-2025",
@@ -4317,7 +4337,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "rstar-math-2025",
@@ -4337,7 +4357,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "rstar2-agent-agentic-reasoning-technical-report-2025",
@@ -4357,7 +4377,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "rubrics-as-rewards-2025",
@@ -4377,7 +4397,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "s1-2025",
@@ -4417,7 +4437,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "safety-through-reasoning-an-empirical-study-of-reasoning-guardrail-models-2025",
@@ -4437,7 +4457,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "scaling-behaviors-of-llm-reinforcement-learning-post-training-an-empirical-study-2025",
@@ -4457,7 +4477,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "search-time-data-contamination-2025",
@@ -4477,7 +4497,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "sky-t1-fully-open-reasoning-model-and-data-recipe-2025",
@@ -4497,7 +4517,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "skywork-open-reasoner-1-technical-report-2025",
@@ -4517,7 +4537,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "spurious-rewards-2025",
@@ -4557,7 +4577,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "subliminal-learning-2025",
@@ -4597,7 +4617,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-gym-2025",
@@ -4637,7 +4657,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-rl-advancing-language-agents-for-software-engineering-via-reinforcement-lear-2025",
@@ -4657,7 +4677,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-rl-advancing-llm-reasoning-via-reinforcement-learning-on-open-software-evolu-2025",
@@ -4677,7 +4697,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-smith-scaling-data-construction-for-software-engineering-agents-2025",
@@ -4697,7 +4717,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "tan-scaling-rl-2025",
@@ -4737,7 +4757,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "the-entropy-mechanism-of-reinforcement-learning-for-reasoning-language-models-2025",
@@ -4757,7 +4777,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "the-invisible-leash-why-rlvr-may-or-may-not-escape-its-origin-2025",
@@ -4777,7 +4797,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "the-markovian-thinker-architecture-agnostic-linear-scaling-of-reasoning-2025",
@@ -4797,7 +4817,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "toward-conversational-diagnostic-ai-the-amie-system-2025",
@@ -4817,7 +4837,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "towards-understanding-self-play-for-llm-reasoning-2025",
@@ -4837,7 +4857,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "ttrl-test-time-reinforcement-learning-2025",
@@ -4877,7 +4897,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "why-we-no-longer-evaluate-on-swe-bench-verified-2025",
@@ -4897,7 +4917,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025",
@@ -4917,7 +4937,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "agent-world-scaling-real-world-environment-synthesis-for-evolving-general-agent--2026",
@@ -4937,7 +4957,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "alternating-reinforcement-learning-for-rubric-based-reward-modeling-in-non-verif-2026",
@@ -4957,7 +4977,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026",
@@ -4977,7 +4997,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "autorubric-unifying-rubric-based-llm-evaluation-2026",
@@ -4997,7 +5017,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "bootstrapping-post-training-signals-for-open-ended-tasks-via-rubric-based-self-p-2026",
@@ -5017,7 +5037,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026",
@@ -5037,7 +5057,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "decoupling-kl-and-trajectories-a-unified-perspective-for-sft-dagger-offline-rl-a-2026",
@@ -5057,7 +5077,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "dual-consensus-escaping-from-spurious-majority-in-unsupervised-rlvr-via-two-stag-2026",
@@ -5077,7 +5097,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "learning-beyond-teacher-generalized-on-policy-distillation-with-reward-extrapola-2026",
@@ -5097,7 +5117,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-2026",
@@ -5117,7 +5137,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026",
@@ -5137,7 +5157,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "omni-rrm-advancing-omni-reward-modeling-via-automatic-rubric-grounded-preference-2026",
@@ -5157,7 +5177,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026",
@@ -5177,7 +5197,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "rewardbench-2-2026",
@@ -5197,7 +5217,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "soft-contamination-means-benchmarks-test-shallow-generalization-2026",
@@ -5217,7 +5237,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026",
@@ -5237,7 +5257,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "swe-master-unleashing-the-potential-of-software-engineering-agents-via-post-trai-2026",
@@ -5257,7 +5277,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026",
@@ -5277,7 +5297,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "why-does-self-distillation-sometimes-degrade-the-reasoning-capability-of-llms-2026",
@@ -5297,7 +5317,7 @@
     "verification_contract": "unknown",
     "training_use": "unknown",
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
   },
   {
     "id": "openr1-math-220k-2025",
@@ -5418,5 +5438,165 @@
     "training_use": "evaluation",
     "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
     "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes."
+  },
+  {
+    "id": "reasoning-with-large-language-models-a-survey-2024",
+    "title": "Reasoning with Large Language Models, a Survey",
+    "year": 2024,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L1_link_verified",
+    "primary_link": "https://arxiv.org/abs/2407.11511",
+    "arxiv": "https://arxiv.org/abs/2407.11511",
+    "paper": "https://arxiv.org/abs/2407.11511",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "survey_background",
+    "verification_contract": "unknown",
+    "training_use": "audit",
+    "one_line_summary": "Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and evaluation patterns.",
+    "why_it_matters": "It fills the reasoning-LLM survey lane of the atlas so readers can separate model-centric reasoning work from data-object and verifier-centric papers."
+  },
+  {
+    "id": "a-survey-of-reinforcement-learning-from-human-feedback-2023",
+    "title": "A Survey of Reinforcement Learning from Human Feedback",
+    "year": 2023,
+    "venue": "TMLR",
+    "status": "verified",
+    "curation_level": "L3_summary_ready",
+    "primary_link": "https://arxiv.org/abs/2312.14925",
+    "arxiv": "https://arxiv.org/abs/2312.14925",
+    "paper": "https://arxiv.org/abs/2312.14925",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "survey_background",
+    "verification_contract": "judgment_required;mixed",
+    "training_use": "reward_modeling;preference_learning;audit",
+    "one_line_summary": "Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference data and learned reward models.",
+    "why_it_matters": "It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization before readers compare them with verifiable-reward reasoning data."
+  },
+  {
+    "id": "a-comprehensive-survey-of-reward-models-taxonomy-applications-challenges-and-future-2025",
+    "title": "A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future",
+    "year": 2025,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L3_summary_ready",
+    "primary_link": "https://arxiv.org/abs/2504.12328",
+    "arxiv": "https://arxiv.org/abs/2504.12328",
+    "paper": "https://arxiv.org/abs/2504.12328",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": "https://github.com/JLZhong23/awesome-reward-models",
+    "source_role": "survey_background",
+    "verification_contract": "judgment_required;mixed",
+    "training_use": "reward_modeling;preference_learning;evaluation;audit",
+    "one_line_summary": "Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure modes.",
+    "why_it_matters": "It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers."
+  },
+  {
+    "id": "a-survey-on-human-preference-learning-for-large-language-models-2024",
+    "title": "A Survey on Human Preference Learning for Large Language Models",
+    "year": 2024,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L3_summary_ready",
+    "primary_link": "https://arxiv.org/abs/2406.11191",
+    "arxiv": "https://arxiv.org/abs/2406.11191",
+    "paper": "https://arxiv.org/abs/2406.11191",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "survey_background",
+    "verification_contract": "judgment_required;mixed",
+    "training_use": "preference_learning;reward_modeling;evaluation",
+    "one_line_summary": "Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for LLM alignment.",
+    "why_it_matters": "It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments."
+  },
+  {
+    "id": "reinforcement-learning-for-llm-post-training-a-survey-2024",
+    "title": "Reinforcement Learning for LLM Post-Training: A Survey",
+    "year": 2024,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L3_summary_ready",
+    "primary_link": "https://arxiv.org/abs/2407.16216",
+    "arxiv": "https://arxiv.org/abs/2407.16216",
+    "paper": "https://arxiv.org/abs/2407.16216",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "survey_background;scaling_study",
+    "verification_contract": "mixed;programmatic",
+    "training_use": "reward_modeling;preference_learning;rlvr;test_time_compute;audit",
+    "one_line_summary": "Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards, and optimization details.",
+    "why_it_matters": "It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards."
+  },
+  {
+    "id": "survey-of-reasoning-large-language-models-2025",
+    "title": "A Survey of Reasoning with Foundation Models",
+    "year": 2025,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L1_link_verified",
+    "primary_link": "https://arxiv.org/abs/2502.17419",
+    "arxiv": "https://arxiv.org/abs/2502.17419",
+    "paper": "https://arxiv.org/abs/2502.17419",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "survey_background",
+    "verification_contract": "unknown",
+    "training_use": "audit",
+    "one_line_summary": "Surveys reasoning with foundation models, including tasks, methods, and evaluation patterns that reasoning-data readers need as context.",
+    "why_it_matters": "It gives the atlas a second reasoning-survey waypoint so readers can orient before choosing math, code, agent, rubric, or scaling tracks."
+  },
+  {
+    "id": "survey-on-evaluation-of-llm-based-agents-2025",
+    "title": "A Survey on Evaluation of LLM-based Agents",
+    "year": 2025,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L1_link_verified",
+    "primary_link": "https://arxiv.org/abs/2503.16416",
+    "arxiv": "https://arxiv.org/abs/2503.16416",
+    "paper": "https://arxiv.org/abs/2503.16416",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "survey_background",
+    "verification_contract": "environmental;mixed",
+    "training_use": "evaluation;audit",
+    "one_line_summary": "Surveys how LLM-based agents are evaluated across tasks, environments, metrics, and interaction settings.",
+    "why_it_matters": "It gives the atlas an agent-survey waypoint for readers who need to understand environment data before comparing SWE, web, app, or OS agent benchmarks."
+  },
+  {
+    "id": "language-model-developers-should-report-train-test-overlap-2024",
+    "title": "Language Model Developers Should Report Train-Test Overlap",
+    "year": 2024,
+    "venue": "arXiv",
+    "status": "verified",
+    "curation_level": "L1_link_verified",
+    "primary_link": "https://arxiv.org/abs/2410.08385",
+    "arxiv": "https://arxiv.org/abs/2410.08385",
+    "paper": "https://arxiv.org/abs/2410.08385",
+    "code": null,
+    "data": null,
+    "huggingface": null,
+    "project": null,
+    "source_role": "audit_failure;survey_background",
+    "verification_contract": "unknown",
+    "training_use": "audit",
+    "one_line_summary": "Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted with data reuse in mind.",
+    "why_it_matters": "It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence."
   }
 ]

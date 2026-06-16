@@ -1,13 +1,18 @@
 cff-version: 1.2.0
-message: "If you use this atlas, please cite the public GitHub repository."
+message: "If you use this atlas, please cite the companion paper and link the public repository."
 title: "Awesome LLM Reasoning Data"
 authors:
   - name: "RenBing-Sumeru"
 repository-code: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
 url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
-date-released: 2026-06-02
-version: "redesign-v2"
+date-released: 2026-06-15
+version: "0.2.0"
 license: "MIT"
+abstract: "A curated, link-verified learning atlas for post-training reasoning data, covering data objects, verifier contracts, process supervision, RLVR, agent trajectories, frontier reports, benchmarks, and audit failures."
+identifiers:
+  - type: url
+    value: "https://arxiv.org/abs/2606.02113"
+    description: "Companion paper: A Primer in Post-Training Reasoning Data"
 keywords:
   - large language models
   - post-training
@@ -16,3 +21,5 @@ keywords:
   - process supervision
   - verifier
   - agent trajectories
+  - benchmark contamination
+  - reward modeling

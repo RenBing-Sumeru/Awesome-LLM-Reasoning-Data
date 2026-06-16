@@ -73,7 +73,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Fact or fiction: Verifying scientific claims
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -90,7 +90,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Retrieval-augmented generation for knowledge-intensive NLP tasks
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, construction_recipes_open_reasoning_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -158,7 +158,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Finetuned language models are zero-shot learners
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: foundations_instruction_preference_alignment
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -172,27 +172,10 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Finetuned language models are zero-shot learners" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## FinQA: A dataset of numerical reasoning over financial data
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"FinQA: A dataset of numerical reasoning over financial data" arXiv`
-  - `"FinQA: A dataset of numerical reasoning over financial data" OpenReview`
-  - `"FinQA: A dataset of numerical reasoning over financial data" GitHub`
-  - `"FinQA: A dataset of numerical reasoning over financial data" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Multitask prompted training enables zero-shot task generalization
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: foundations_instruction_preference_alignment
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -223,23 +206,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Qasper: A dataset of information-seeking questions and answers over scientific research papers" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" arXiv`
-  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" OpenReview`
-  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" GitHub`
-  - `"TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## CodeRL: Mastering code generation through pretrained models and deep reinforcement learning
 
 - Current status: `needs_metadata`
@@ -260,7 +226,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## CodeT: Code generation with generated tests
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: programmatic_math_code_proof, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -379,7 +345,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ALCE: Enabling large language models to generate text with citations
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -447,7 +413,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## FActScore
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -461,27 +427,10 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"FActScore" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## FinanceBench: A benchmark for financial question answering
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"FinanceBench: A benchmark for financial question answering" arXiv`
-  - `"FinanceBench: A benchmark for financial question answering" OpenReview`
-  - `"FinanceBench: A benchmark for financial question answering" GitHub`
-  - `"FinanceBench: A benchmark for financial question answering" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Gorilla
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: environmental_agents_tools_web_swe
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -546,23 +495,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Large language models encode clinical knowledge" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## LegalBench
-
-- Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"LegalBench" arXiv`
-  - `"LegalBench" OpenReview`
-  - `"LegalBench" GitHub`
-  - `"LegalBench" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## MAmmoTH: Building math generalist models through hybrid instruction tuning
 
 - Current status: `needs_metadata`
@@ -580,27 +512,10 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations
-
-- Current status: `needs_metadata`
-- Possible category: process_supervision_prm
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" arXiv`
-  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" OpenReview`
-  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" GitHub`
-  - `"Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## MAUD: A merger agreement understanding dataset
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -719,7 +634,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SelfCodeAlign: Self-alignment for code generation
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -787,7 +702,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## BFCL v3
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -855,7 +770,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Does writing with LMs reduce content diversity?
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -952,23 +867,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"HelpSteer2: Open-source preference data for helpfulness and safety" OpenReview`
   - `"HelpSteer2: Open-source preference data for helpfulness and safety" GitHub`
   - `"HelpSteer2: Open-source preference data for helpfulness and safety" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Improve mathematical reasoning in language models by automated process supervision
-
-- Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, process_supervision_prm
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Improve mathematical reasoning in language models by automated process supervision" arXiv`
-  - `"Improve mathematical reasoning in language models by automated process supervision" OpenReview`
-  - `"Improve mathematical reasoning in language models by automated process supervision" GitHub`
-  - `"Improve mathematical reasoning in language models by automated process supervision" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Is model collapse inevitable?
@@ -1093,7 +991,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## RAFT: Adapting language model to domain-specific RAG
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: construction_recipes_open_reasoning_data, judgment_required_rubrics_safety_domain
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1105,23 +1003,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"RAFT: Adapting language model to domain-specific RAG" OpenReview`
   - `"RAFT: Adapting language model to domain-specific RAG" GitHub`
   - `"RAFT: Adapting language model to domain-specific RAG" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## ReST-MCTS*
-
-- Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"ReST-MCTS*" arXiv`
-  - `"ReST-MCTS*" OpenReview`
-  - `"ReST-MCTS*" GitHub`
-  - `"ReST-MCTS*" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Self-Rewarding LMs
@@ -1178,7 +1059,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SWE-Search
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1280,7 +1161,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## WebLINX: Real-world website navigation with multi-turn dialogue
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1331,7 +1212,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## XSTest
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1501,7 +1382,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## FinDER: Financial data extraction and reasoning
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1671,7 +1552,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Min-K\%++
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1768,23 +1649,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"OpenCodeReasoning: Code reasoning traces at scale" OpenReview`
   - `"OpenCodeReasoning: Code reasoning traces at scale" GitHub`
   - `"OpenCodeReasoning: Code reasoning traces at scale" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## PRIME: Process reinforcement through implicit rewards
-
-- Current status: `needs_metadata`
-- Possible category: process_supervision_prm
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"PRIME: Process reinforcement through implicit rewards" arXiv`
-  - `"PRIME: Process reinforcement through implicit rewards" OpenReview`
-  - `"PRIME: Process reinforcement through implicit rewards" GitHub`
-  - `"PRIME: Process reinforcement through implicit rewards" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Process reward models for code reasoning
@@ -1943,7 +1807,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Toward conversational diagnostic AI: The AMIE system
 
 - Current status: `needs_metadata`
-- Possible category: unknown
+- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 - Missing:
   - official paper / arXiv / venue / DOI
   - code

@@ -42,7 +42,7 @@ def main():
     needs_search = [e for e in entries if e.get("status") in {"needs_search", "needs_url", "needs_metadata", "partial"}]
 
     lines = [
-        "# Paper Coverage Report",
+        "# Counts Report",
         "",
         f"total entries: {len(entries)}",
         f"filled cards: {len(card_files)}",

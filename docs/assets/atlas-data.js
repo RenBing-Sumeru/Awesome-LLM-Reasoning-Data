@@ -22,13 +22,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🩺 Medical reasoning / health rubrics",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -74,6 +79,7 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🤝 Human preference data / RLHF",
       "tags": [
         "seeded-from-bib",
         "rlhf",
@@ -82,8 +88,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Shows how human preference comparisons can train reward models for reinforcement learning.",
       "why_it_matters": "It is a foundation for later post-training data records that turn comparisons into trainable reward signals.",
+      "data_object": "pairwise preference; scalar reward",
+      "feedback_verifier": "judgment required",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/1706.03741",
         "venue": null,
@@ -125,8 +135,10 @@ window.ATLAS_DATA = {
         "nlp"
       ],
       "category": [
-        "surveys_and_primers"
+        "surveys_and_primers",
+        "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "📦 Data documentation / datasheets",
       "tags": [
         "seeded-from-bib",
         "dataset-documentation",
@@ -135,8 +147,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context, and intended deployment boundaries.",
       "why_it_matters": "Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://aclanthology.org/Q18-1041/",
         "venue": null,
@@ -177,8 +193,10 @@ window.ATLAS_DATA = {
         "data_documentation"
       ],
       "category": [
-        "surveys_and_primers"
+        "surveys_and_primers",
+        "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "📦 Data documentation / datasheets",
       "tags": [
         "seeded-from-bib",
         "dataset-documentation",
@@ -187,8 +205,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.",
       "why_it_matters": "It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/1803.09010",
         "venue": null,
@@ -230,13 +252,18 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -278,13 +305,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🩺 Medical reasoning / health rubrics",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -325,13 +357,18 @@ window.ATLAS_DATA = {
       "category": [
         "surveys_and_primers"
       ],
+      "subfield": "🧭 Post-training surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -369,14 +406,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -414,14 +459,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "construction_recipes_open_reasoning_data"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -463,13 +516,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "⚖️ Legal reasoning",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -511,13 +569,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -558,13 +621,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "⚖️ Legal reasoning",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -612,6 +680,7 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "benchmarks_evaluation"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "seeded-from-bib",
         "humaneval",
@@ -621,8 +690,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "The Codex evaluation paper introduces HumanEval and studies code generation through functional correctness, repeated sampling, and pass@k.",
       "why_it_matters": "It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions.",
+      "data_object": "executable Python function.; process: prompt, generated code, unit-test results, sample count.; Python execution sandbox and test suite.",
+      "feedback_verifier": "HumanEval tests and pass@k evaluation.",
+      "audit_focus": "Small public benchmarks are easy to memorize., Unit tests can miss incorrect or insecure behavior., Repeated sampling can hide low single-sample reliability.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2107.03374",
         "venue": null,
@@ -660,14 +733,21 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "foundations_instruction_preference_alignment"
+      ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -693,45 +773,57 @@ window.ATLAS_DATA = {
       "venue": "EMNLP",
       "authors": [],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "step_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "sft"
       ],
       "domains": [],
       "category": [
-        "judgment_required_rubrics_safety_domain"
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
       ],
+      "subfield": "🏦 Financial reasoning",
       "tags": [
-        "seeded-from-bib"
+        "seeded-from-bib",
+        "finance",
+        "numerical-reasoning",
+        "tabular-textual-qa"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "FinQA introduces financial-document QA with expert-written questions and gold reasoning programs for numerical reasoning over financial reports.",
+      "why_it_matters": "It is a finance-domain reasoning benchmark where the data object includes questions, evidence from financial reports, answers, and reasoning programs rather than only free-form responses.",
+      "data_object": "answer level; step level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L2_artifact_verified",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://aclanthology.org/2021.emnlp-main.300/",
         "venue": null,
         "arxiv": null,
         "openreview": null,
-        "acl": null,
+        "acl": "https://aclanthology.org/2021.emnlp-main.300/",
         "pmlr": null,
         "cvf": null,
         "doi": null,
         "code": null,
         "data": null,
         "huggingface": null,
-        "project": null,
+        "project": "https://finqasite.github.io/",
         "bibtex": null,
         "card": null
       },
-      "primary_link": null
+      "primary_link": "https://aclanthology.org/2021.emnlp-main.300/"
     },
     {
       "id": "measuring-coding-challenge-competence-with-apps-2021",
@@ -775,6 +867,7 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "benchmarks_evaluation"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "code",
         "programming",
@@ -783,8 +876,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "APPS evaluates code-generation competence with 10,000 programming problems checked by executable test cases.",
       "why_it_matters": "It is a pre-HumanEval large-scale code benchmark where the feedback-bearing object is a problem statement, generated program, and unit-test outcome.",
+      "data_object": "Python code submission evaluated against test cases.; process: difficulty, prompt, starter code where available, generated solution, public/hidden test outcomes.; offline programming benchmark with executable Python tests.",
+      "feedback_verifier": "unit-test pass/fail signal.",
+      "audit_focus": "Programs can overfit weak tests., Syntax validity is not the same as functional correctness., Contamination can inflate code benchmark scores.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2105.09938",
         "venue": null,
@@ -830,6 +927,7 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "benchmarks_evaluation"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "seeded-from-bib",
         "math",
@@ -838,8 +936,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Introduces MATH, a competition-style math benchmark with challenging problems, subject categories, and step-by-step solutions.",
       "why_it_matters": "MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems.",
+      "data_object": "answer level",
+      "feedback_verifier": "programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2103.03874",
         "venue": null,
@@ -894,6 +996,7 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "formal-math",
         "proof-assistants",
@@ -902,8 +1005,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "miniF2F is a cross-system formal mathematics benchmark for comparing theorem provers across Lean, Metamath, Isabelle, and HOL Light targets.",
       "why_it_matters": "It is a compact formal-proof evaluation surface where the verifier is not a text judge but a proof assistant accepting or rejecting a proof.",
+      "data_object": "formal proof accepted by a target proof assistant.; process: formal system, theorem statement, split, generated proof/tactics, verifier result.; Lean, Metamath, Isabelle, and HOL Light style theorem proving environments.",
+      "feedback_verifier": "proof assistant kernel/checker acceptance.",
+      "audit_focus": "A theorem can be easier in one formal system than another., Search budget can dominate model differences., Forks can drift from the original benchmark.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2109.00110",
         "venue": null,
@@ -941,14 +1048,21 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "foundations_instruction_preference_alignment"
+      ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -989,13 +1103,18 @@ window.ATLAS_DATA = {
       "category": [
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1021,16 +1140,19 @@ window.ATLAS_DATA = {
       "venue": "ACL",
       "authors": [],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "step_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "sft"
       ],
       "domains": [],
       "category": [
@@ -1038,30 +1160,38 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🏦 Financial reasoning",
       "tags": [
-        "seeded-from-bib"
+        "seeded-from-bib",
+        "finance",
+        "table-text-reasoning",
+        "numerical-reasoning"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "TAT-QA evaluates numerical reasoning over hybrid financial tables and text, with annotated derivations and answers.",
+      "why_it_matters": "It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter.",
+      "data_object": "answer level; step level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L2_artifact_verified",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://aclanthology.org/2021.acl-long.254/",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2105.07624",
         "openreview": null,
-        "acl": null,
+        "acl": "https://aclanthology.org/2021.acl-long.254/",
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
+        "code": "https://github.com/NExTplusplus/TAT-QA",
+        "data": "https://github.com/NExTplusplus/TAT-QA",
         "huggingface": null,
-        "project": null,
+        "project": "https://nextplusplus.github.io/TAT-QA/",
         "bibtex": null,
         "card": null
       },
-      "primary_link": null
+      "primary_link": "https://aclanthology.org/2021.acl-long.254/"
     },
     {
       "id": "training-verifiers-to-solve-math-word-problems-2021",
@@ -1092,6 +1222,7 @@ window.ATLAS_DATA = {
       "category": [
         "process_supervision_prm"
       ],
+      "subfield": "🧪 Process reward models",
       "tags": [
         "seeded-from-bib",
         "gsm8k",
@@ -1101,8 +1232,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.",
       "why_it_matters": "It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.",
+      "data_object": "answer level; scalar reward",
+      "feedback_verifier": "programmatic, judgment required",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2110.14168",
         "venue": null,
@@ -1146,14 +1281,19 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🧠 Chain-of-thought / rationale data",
       "tags": [
         "foundation-starter",
         "primary-link-checked"
       ],
       "one_line_summary": "Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large language models.",
       "why_it_matters": "It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.",
+      "data_object": "answer level",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2201.11903",
         "venue": null,
@@ -1194,13 +1334,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1238,14 +1383,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "programmatic_math_code_proof",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1286,13 +1439,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "⚖️ Legal reasoning",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1343,14 +1501,19 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🤖 RLAIF / synthetic feedback",
       "tags": [
         "foundation-starter",
         "primary-link-checked"
       ],
       "one_line_summary": "Constitutional AI trains harmless behavior from AI-generated critiques, revisions, and AI preference feedback guided by a written constitution.",
       "why_it_matters": "It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data.",
+      "data_object": "original answer, self-critique, revised answer, preference pair, reward-model score.; process: principle used, critique, revision, comparison, preference label.; offline SL and RLHF/RLAIF alignment pipeline.",
+      "feedback_verifier": "AI preference model trained from comparisons guided by constitutional principles.",
+      "audit_focus": "AI feedback can encode model bias at scale., Principles may be underspecified or culturally narrow., A model can become safe-looking but evasive if helpfulness is not audited.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2212.08073",
         "venue": null,
@@ -1391,13 +1554,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🏦 Financial reasoning",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1438,13 +1606,18 @@ window.ATLAS_DATA = {
       "category": [
         "programmatic_math_code_proof"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1486,13 +1659,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1533,13 +1711,18 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1580,13 +1763,18 @@ window.ATLAS_DATA = {
       "category": [
         "process_supervision_prm"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1632,14 +1820,19 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🧪 Filtering and verifier refresh",
       "tags": [
         "foundation-starter",
         "primary-link-checked"
       ],
       "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
       "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2203.14465",
         "venue": null,
@@ -1687,6 +1880,7 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🤝 Human preference data / RLHF",
       "tags": [
         "seeded-from-bib",
         "rlhf",
@@ -1695,8 +1889,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Documents preference and RLHF data for helpfulness and harmlessness assistant behavior.",
       "why_it_matters": "It provides the alignment-data lineage that later reasoning-data recipes inherit when they combine demonstrations, preferences, and reward models.",
+      "data_object": "pairwise preference; scalar reward",
+      "feedback_verifier": "judgment required",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2204.05862",
         "venue": null,
@@ -1744,14 +1942,19 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🤝 Human preference data / RLHF",
       "tags": [
         "foundation-starter",
         "primary-link-checked"
       ],
       "one_line_summary": "InstructGPT establishes the demonstration, preference-comparison, reward-model, and PPO pipeline that many later post-training recipes inherit.",
       "why_it_matters": "It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models.",
+      "data_object": "pairwise preference; scalar reward",
+      "feedback_verifier": "judgment required",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2203.02155",
         "venue": null,
@@ -1806,6 +2009,7 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍⚖️ Human/expert judgment",
       "tags": [
         "factuality",
         "safety",
@@ -1814,8 +2018,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "TruthfulQA is a benchmark for measuring whether models imitate common human falsehoods instead of giving truthful answers.",
       "why_it_matters": "It is a canonical truthfulness audit surface for reasoning models because stronger generation can still amplify persuasive false answers learned from web text.",
+      "data_object": "free-form generation or multiple-choice answer with truthfulness and informativeness labels.; process: question category, reference true answers, reference false answers, model answer, truthfulness score, informativeness score.; offline benchmark with human-written items and evaluator scripts.",
+      "feedback_verifier": "human references plus automated/human scoring protocols for truthfulness and informativeness.",
+      "audit_focus": "A model can be uninformative but truthful., A model can sound confident while reproducing a human misconception., Multiple-choice and generation modes can lead to different conclusions.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2109.07958",
         "venue": null,
@@ -1853,14 +2061,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1903,13 +2119,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -1950,13 +2171,18 @@ window.ATLAS_DATA = {
       "category": [
         "surveys_and_primers"
       ],
+      "subfield": "📦 Data documentation / datasheets",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2000,14 +2226,19 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "⚖️ DPO / preference optimization",
       "tags": [
         "foundation-starter",
         "primary-link-checked"
       ],
       "one_line_summary": "DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.",
       "why_it_matters": "It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization.",
+      "data_object": "pairwise preference",
+      "feedback_verifier": "judgment required",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2305.18290",
         "venue": null,
@@ -2049,13 +2280,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧠 Chain-of-thought / rationale data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2093,14 +2329,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2123,19 +2367,21 @@ window.ATLAS_DATA = {
       "id": "financebench-a-benchmark-for-financial-question-answering-2023",
       "title": "FinanceBench: A benchmark for financial question answering",
       "year": 2023,
-      "venue": "unknown",
+      "venue": "arXiv",
       "authors": [],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "judgment_required",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation"
       ],
       "domains": [],
       "category": [
@@ -2143,30 +2389,38 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🏦 Financial reasoning",
       "tags": [
-        "seeded-from-bib"
+        "seeded-from-bib",
+        "finance",
+        "domain-benchmark",
+        "factuality"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "FinanceBench benchmarks financial question answering over public company filings and expert-authored answers.",
+      "why_it_matters": "It is a domain-specific reasoning benchmark where grounding, evidence retrieval, expert answers, and current filing data matter more than generic exact-match reasoning.",
+      "data_object": "answer level",
+      "feedback_verifier": "judgment required, mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L2_artifact_verified",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2311.11944",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2311.11944",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
+        "code": "https://github.com/patronus-ai/financebench",
+        "data": "https://github.com/patronus-ai/financebench",
+        "huggingface": "https://huggingface.co/datasets/PatronusAI/financebench",
+        "project": "https://github.com/patronus-ai/financebench",
         "bibtex": null,
         "card": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2311.11944"
     },
     {
       "id": "gorilla-2023",
@@ -2187,14 +2441,21 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "environmental_agents_tools_web_swe"
+      ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2251,6 +2512,7 @@ window.ATLAS_DATA = {
         "benchmarks_evaluation",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🩺 Medical reasoning / health rubrics",
       "tags": [
         "expert-evaluation",
         "scalable-oversight",
@@ -2259,8 +2521,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "GPQA is a graduate-level science Q&A benchmark designed so skilled non-experts with web access still struggle.",
       "why_it_matters": "It is a scalable-oversight benchmark: the data object tests whether models can answer expert questions that are difficult for ordinary validators to check.",
+      "data_object": "multiple-choice answer with optional rationale and expert label.; process: domain, question, answer options, expert label, validation metadata, canary/string metadata.; offline expert Q&A benchmark.",
+      "feedback_verifier": "expert-authored answer key and validation protocol.",
+      "audit_focus": "Multiple-choice guessing can inflate scores., Non-expert validators may not catch subtle mistakes., Tool access changes what the benchmark measures.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2311.12022",
         "venue": null,
@@ -2301,13 +2567,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2377,6 +2648,7 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "⚖️ LLM-as-judge data",
       "tags": [
         "chat",
         "llm-as-judge",
@@ -2385,8 +2657,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "MT-Bench and Chatbot Arena establish LLM-as-a-judge and pairwise human-preference evaluation surfaces for open-ended chat models.",
       "why_it_matters": "It is the standard cautionary reference for judge data: scalable model judges are useful, but position, verbosity, self-enhancement, and limited-reasoning biases must be audited.",
+      "data_object": "model response, judge score, pairwise preference, or arena battle outcome.; process: question, turn, model identity, response, judge prompt template, score, preference label, bias-control setting.; offline judge harness and crowd-sourced arena platform.",
+      "feedback_verifier": "strong model judge and human preference comparisons.",
+      "audit_focus": "Judge scores can be position-biased., Verbose answers can be over-rewarded., A model judge may share weaknesses with the evaluated model.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2306.05685",
         "venue": "https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html",
@@ -2428,13 +2704,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧠 Chain-of-thought / rationale data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2475,13 +2756,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2545,6 +2831,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "formal-math",
         "lean",
@@ -2553,8 +2840,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "LeanDojo releases an open Lean theorem-proving environment, benchmark, and retrieval-augmented prover pipeline.",
       "why_it_matters": "It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record.",
+      "data_object": "Lean tactic sequence or proof script checked by Lean.; process: repository commit, theorem, proof state, premises, retrieved context, tactic, Lean feedback, split.; Lean proof assistant environment and traced math-library repositories.",
+      "feedback_verifier": "Lean checker and environment feedback.",
+      "audit_focus": "A prover can rely on retrieval leakage., Lean version drift can break proofs., Premise accessibility rules can change task difficulty.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2306.15626",
         "venue": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
@@ -2580,46 +2871,56 @@ window.ATLAS_DATA = {
       "venue": "NeurIPS",
       "authors": [],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "judgment_required",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation"
       ],
       "domains": [],
       "category": [
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍⚖️ Human/expert judgment",
       "tags": [
-        "seeded-from-bib"
+        "seeded-from-bib",
+        "legal",
+        "domain-benchmark",
+        "legal-reasoning"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "LegalBench provides a collaboratively built benchmark suite for legal reasoning tasks across many legal domains.",
+      "why_it_matters": "It anchors the legal side of judgment-required reasoning data, where task definitions, legal-domain splits, expert validity, and answer rubrics are often more important than a simple verifier.",
+      "data_object": "answer level",
+      "feedback_verifier": "judgment required, mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L2_artifact_verified",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2308.11462",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2308.11462",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
+        "code": "https://github.com/HazyResearch/legalbench",
+        "data": "https://github.com/HazyResearch/legalbench",
+        "huggingface": "https://huggingface.co/datasets/nguha/legalbench",
+        "project": "https://hazyresearch.stanford.edu/legalbench/",
         "bibtex": null,
         "card": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2308.11462"
     },
     {
       "id": "mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023",
@@ -2644,60 +2945,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "programmatic_math_code_proof"
       ],
+      "subfield": "🧱 Instruction tuning / SFT data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
-      "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "card": null
-      },
-      "primary_link": null
-    },
-    {
-      "id": "math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023",
-      "title": "Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations",
-      "year": 2023,
-      "venue": "ACL",
-      "authors": [],
-      "source_role": [
-        "survey_background"
-      ],
-      "verification_contract": [
-        "unknown"
-      ],
-      "supervision_granularity": [
-        "unknown"
-      ],
-      "training_use": [
-        "unknown"
-      ],
-      "domains": [],
-      "category": [
-        "process_supervision_prm"
-      ],
-      "tags": [
-        "seeded-from-bib"
-      ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2735,14 +2994,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2784,13 +3051,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧠 Chain-of-thought / rationale data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2832,13 +3104,18 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧪 Verifier robustness and answer extraction",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2880,13 +3157,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🌍 Web/browser agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -2941,10 +3223,10 @@ window.ATLAS_DATA = {
         "synthetic-data"
       ],
       "category": [
-        "construction_recipes_open_reasoning_data",
         "frontier_model_reports",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🧬 What is disclosed vs hidden",
       "tags": [
         "distillation",
         "explanation-traces",
@@ -2953,8 +3235,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation of final answers.",
       "why_it_matters": "It is an early and influential reasoning-distillation recipe: the reusable object is teacher-assisted explanation data plus careful evaluation against style-only imitation.",
+      "data_object": "instruction response with detailed explanation, intermediate reasoning, and final answer.; process: prompt source, teacher identity, explanation trace, task type, response, evaluation benchmark.; offline synthetic-data distillation and evaluation pipeline.",
+      "feedback_verifier": "downstream reasoning, exam, and benchmark evaluation rather than a single automatic verifier.",
+      "audit_focus": "Students can learn teacher style without robust reasoning., Synthetic traces can include teacher errors., Closed teacher data makes lineage hard to audit.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2306.02707",
         "venue": null,
@@ -3004,14 +3290,19 @@ window.ATLAS_DATA = {
         "process_supervision_prm",
         "benchmarks_evaluation"
       ],
+      "subfield": "🪜 Human step-level labels",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
       "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
+      "data_object": "step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces",
+      "feedback_verifier": "process reward model trained from step labels",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2305.20050",
         "venue": null,
@@ -3052,13 +3343,18 @@ window.ATLAS_DATA = {
       "category": [
         "programmatic_math_code_proof"
       ],
+      "subfield": "🧪 Verifier robustness and answer extraction",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3117,6 +3413,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🔁 Replayable trajectory data",
       "tags": [
         "agents",
         "reasoning-acting",
@@ -3125,8 +3422,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.",
       "why_it_matters": "It is a foundational agent-data pattern: the training/evaluation record is not just an answer but a trajectory of thought-like notes, actions, observations, and final response.",
+      "data_object": "trajectory containing reasoning note, action, observation, and final answer or task completion.; process: task state, action string, observation, reasoning note, final answer, success indicator.; Wikipedia API, embodied/web shopping environments, and task-specific simulators.",
+      "feedback_verifier": "environment success, answer correctness, or task-specific evaluation.",
+      "audit_focus": "Reasoning notes can rationalize bad actions., Environment wrappers can change task difficulty., Few-shot exemplars may encode brittle action formats.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2210.03629",
         "venue": null,
@@ -3169,13 +3470,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🔁 Self-training / STaR / Self-Instruct",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3216,13 +3522,18 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3271,14 +3582,19 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧠 Chain-of-thought / rationale data",
       "tags": [
         "foundation-starter",
         "primary-link-checked"
       ],
       "one_line_summary": "Self-consistency samples multiple chain-of-thought reasoning paths and chooses the answer that is most consistent across samples.",
       "why_it_matters": "It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.",
+      "data_object": "multiple rationales and final answers for the same prompt.; process: sampling temperature, number of paths, answer extraction, aggregation rule.; benchmark prompting setup.",
+      "feedback_verifier": "majority or marginalization over sampled answers.",
+      "audit_focus": "More samples can amplify benchmark-specific shortcuts., Aggregation does not guarantee step faithfulness., Unmatched inference budgets can make methods look better than they are.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2203.11171",
         "venue": null,
@@ -3323,14 +3639,19 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "foundation-starter",
         "primary-link-checked"
       ],
       "one_line_summary": "Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.",
       "why_it_matters": "It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2212.10560",
         "venue": null,
@@ -3390,6 +3711,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "Other related work",
       "tags": [
         "critique",
         "factuality",
@@ -3398,8 +3720,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Self-RAG trains models to decide when to retrieve, generate with evidence, and critique outputs using reflection tokens.",
       "why_it_matters": "It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.",
+      "data_object": "generation with retrieval decisions, critique signals, and final answer.; process: query, retrieval decision token, retrieved passage, support critique, utility critique, final answer.; retriever plus generation model with special reflection tokens.",
+      "feedback_verifier": "critique signals and task-specific factuality/answer-quality evaluation.",
+      "audit_focus": "A model can retrieve irrelevant passages confidently., Critique tokens can become style markers without true verification., Retriever choice changes benchmark conclusions.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2310.11511",
         "venue": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html",
@@ -3437,14 +3763,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "programmatic_math_code_proof",
+        "construction_recipes_open_reasoning_data"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3493,6 +3827,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib",
         "swe-bench",
@@ -3502,8 +3837,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
       "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
+      "data_object": "full episode; state action level",
+      "feedback_verifier": "environmental, programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2310.06770",
         "venue": null,
@@ -3562,6 +3901,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "api-calls",
         "seeded-from-bib",
@@ -3570,8 +3910,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model likelihood.",
       "why_it_matters": "It is a classic construction recipe for tool-call supervision: models learn when to call tools, what arguments to pass, and how to fold observations back into text.",
+      "data_object": "text sequence with inserted API call and tool result markup.; process: candidate call location, API name, arguments, tool output, likelihood improvement, retained annotation.; external tool APIs used during data construction and evaluation.",
+      "feedback_verifier": "language-model likelihood improvement after including tool result.",
+      "audit_focus": "Likelihood improvement may not equal truthful tool use., Tools can return stale or wrong outputs., The model can learn call syntax without robust tool-selection judgment.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2302.04761",
         "venue": null,
@@ -3638,6 +3982,7 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🤖 RLAIF / synthetic feedback",
       "tags": [
         "ai-feedback",
         "preference-data",
@@ -3646,8 +3991,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response pairs.",
       "why_it_matters": "It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels.",
+      "data_object": "instruction, candidate responses, fine-grained ratings, textual critiques, and derived preference pairs.; process: source dataset, model identity, response, rating dimension, critique text, corrected overall score.; offline feedback generation and reward-model training pipeline.",
+      "feedback_verifier": "AI-generated scalar and textual feedback over response quality dimensions.",
+      "audit_focus": "AI feedback can encode judge-model bias., A corrected dataset version can change reward-model behavior., Fine-grained scores may not translate cleanly into pairwise preferences.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2310.01377",
         "venue": null,
@@ -3694,6 +4043,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🌍 Web/browser agents",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -3701,8 +4051,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.",
       "why_it_matters": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.",
+      "data_object": "environment interaction trajectory; process: observation, action, state; browser-accessible web environment",
+      "feedback_verifier": "task-specific success evaluator",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2307.13854",
         "venue": null,
@@ -3745,13 +4099,18 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧱 Instruction tuning / SFT data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3793,13 +4152,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧯 Contamination / evaluation surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3840,13 +4204,18 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3896,6 +4265,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "📱 App/mobile agents",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -3903,8 +4273,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.",
       "why_it_matters": "Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.",
+      "data_object": "API/tool action trajectory; process: tool call, state transition, observation; simulated app ecosystem with users and APIs",
+      "feedback_verifier": "programmatic environment assertions",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2407.18901",
         "venue": null,
@@ -3942,14 +4316,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "environmental_agents_tools_web_swe",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -3993,13 +4375,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4041,13 +4428,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧯 Benchmark contamination",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4095,6 +4487,7 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "🌍 Web/browser agents",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -4102,8 +4495,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.",
       "why_it_matters": "A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.",
+      "data_object": "browser trajectory; process: DOM/state observation, action, reward/result; gym-style browser environment",
+      "feedback_verifier": "environment task evaluator",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2412.05467",
         "venue": null,
@@ -4145,13 +4542,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧯 Benchmark contamination",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4214,6 +4616,7 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "formal-math",
         "lean",
@@ -4222,8 +4625,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal proof model.",
       "why_it_matters": "It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object.",
+      "data_object": "Lean 4 theorem statement and proof script checked by Lean.; process: informal problem, formal statement, generated proof, Lean result, benchmark split.; Lean 4 proof assistant and formal theorem-proving benchmark harness.",
+      "feedback_verifier": "Lean kernel/checker acceptance.",
+      "audit_focus": "Formal statements can be wrong even if proofs verify., Pass@k hides low single-shot reliability., Lean/mathlib version drift can break reproducibility.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2405.14333",
         "venue": null,
@@ -4296,6 +4703,7 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "formal-math",
         "lean",
@@ -4304,8 +4712,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "DeepSeek-Prover-V1.5 adds proof-assistant feedback, RL, and RMaxTS search on top of DeepSeek-Prover-style formal proof data.",
       "why_it_matters": "It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.",
+      "data_object": "Lean proof script, proof-search path, feedback signal, and verification result.; process: theorem, proof attempt, Lean feedback, reward, search node, final proof, pass/fail result.; Lean 4 proof assistant plus RMaxTS search procedure.",
+      "feedback_verifier": "proof assistant feedback used for RL and search selection.",
+      "audit_focus": "Search budget can dominate model quality., Checker feedback is sparse and version-dependent., RL can optimize toward easy theorem families.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2408.08152",
         "venue": null,
@@ -4372,6 +4784,7 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "frontier_model_reports"
       ],
+      "subfield": "🧮 Math RLVR datasets",
       "tags": [
         "math",
         "rlvr",
@@ -4380,8 +4793,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.",
       "why_it_matters": "It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.",
+      "data_object": "natural-language mathematical solution plus final answer, sometimes sampled multiple times.; process: data-selection score, training stage, problem, solution, final answer, verifier/evaluation result, sampling count.; offline math training and benchmark evaluation pipeline.",
+      "feedback_verifier": "answer correctness and GRPO-style reward over math tasks.",
+      "audit_focus": "Self-consistency can hide weak single-sample accuracy., Web-data mining may import benchmark leakage., Final-answer rewards can miss flawed derivations.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2402.03300",
         "venue": null,
@@ -4419,14 +4836,21 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "🧪 Verifier gaming",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4470,13 +4894,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4519,13 +4948,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4567,13 +5001,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧪 Verifier gaming",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4614,13 +5053,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4662,61 +5106,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🤝 Human preference data / RLHF",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
-      "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "card": null
-      },
-      "primary_link": null
-    },
-    {
-      "id": "improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024",
-      "title": "Improve mathematical reasoning in language models by automated process supervision",
-      "year": 2024,
-      "venue": "arXiv preprint",
-      "authors": [],
-      "source_role": [
-        "survey_background"
-      ],
-      "verification_contract": [
-        "unknown"
-      ],
-      "supervision_granularity": [
-        "unknown"
-      ],
-      "training_use": [
-        "unknown"
-      ],
-      "domains": [],
-      "category": [
-        "programmatic_math_code_proof",
-        "process_supervision_prm"
-      ],
-      "tags": [
-        "seeded-from-bib"
-      ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4773,6 +5174,7 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "agents",
         "seeded-from-bib",
@@ -4781,8 +5183,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.",
       "why_it_matters": "It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.",
+      "data_object": "patch diff applied to a repository plus test execution results.; process: repository, issue, base commit, patch, FAIL TO PASS tests, PASS TO PASS tests, human validation notes.; Dockerized repository checkout and unit-test harness.",
+      "feedback_verifier": "post-patch unit tests plus human filtering of task validity.",
+      "audit_focus": "Leaderboard scores can depend strongly on scaffold design., Tests may not cover all acceptable patches., Public benchmark tasks can become training targets over time.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://openai.com/index/introducing-swe-bench-verified/",
         "venue": "https://www.swebench.com/verified.html",
@@ -4824,13 +5230,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧯 Contamination / evaluation surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4872,13 +5283,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -4921,13 +5337,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2407.21787",
         "venue": null,
@@ -4969,13 +5390,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "frontier_model_reports"
       ],
+      "subfield": "🧠 Reasoning LLM surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -5026,6 +5452,7 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧯 Contamination / evaluation surveys",
       "tags": [
         "seeded-from-bib",
         "livebench",
@@ -5035,8 +5462,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
       "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.",
+      "data_object": "answer level",
+      "feedback_verifier": "programmatic, mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2406.19314",
         "venue": null,
@@ -5098,6 +5529,7 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "code",
         "contamination",
@@ -5106,8 +5538,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "LiveCodeBench continuously collects recent programming problems to evaluate code generation, execution, repair, and test-output prediction under lower contamination risk.",
       "why_it_matters": "It gives code-reasoning evaluation a moving-time-window design, making it harder to confuse memorized public problems with genuine coding capability.",
+      "data_object": "program submission or code-related output evaluated by tests or task-specific checks.; process: problem release date, platform, prompt, generated code, tests, pass/fail result, evaluation window.; code execution and benchmark leaderboard infrastructure.",
+      "feedback_verifier": "programmatic tests and task-specific correctness checks.",
+      "audit_focus": "Live benchmarks still become stale after release., Execution settings can affect pass/fail outcomes., Public leaderboard feedback can shape future training.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2403.07974",
         "venue": null,
@@ -5166,6 +5602,7 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "benchmarks_evaluation"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "code",
         "open-source-context",
@@ -5174,8 +5611,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate more realistic instruction data.",
       "why_it_matters": "It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention.",
+      "data_object": "instruction-response coding example, often linked to a code reference or task scaffold.; process: source snippet, generated instruction, solution response, model family, benchmark result.; offline code-data generation and code benchmark evaluation.",
+      "feedback_verifier": "coding benchmark pass rates and optional executable checks.",
+      "audit_focus": "Synthetic code tasks can inherit license issues., Reference snippets may leak benchmark patterns., Teacher-generated solutions can be plausible but wrong.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2312.02120",
         "venue": null,
@@ -5217,13 +5658,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2405.03548",
         "venue": null,
@@ -5272,11 +5718,16 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "benchmarks_evaluation"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [],
-      "one_line_summary": "Monte-Carlo-style process signal reference for step supervision.",
-      "why_it_matters": "Monte-Carlo-style process signal reference for step supervision.",
+      "one_line_summary": "Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.",
+      "why_it_matters": "It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer.",
+      "data_object": "step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces",
+      "feedback_verifier": "rollout-derived process reward signal",
+      "audit_focus": "rollout policy strength can leak into labels, step rewards may favor locally plausible continuations, generated solutions can inherit base-model shortcuts",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2312.08935",
         "venue": null,
@@ -5317,13 +5768,18 @@ window.ATLAS_DATA = {
       "category": [
         "programmatic_math_code_proof"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -5383,6 +5839,7 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "instruction-tuning",
         "math",
@@ -5391,8 +5848,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open synthesis pipeline.",
       "why_it_matters": "It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models.",
+      "data_object": "problem-solution pair with natural-language mathematical reasoning and final answer.; process: source problem, augmented problem, generated solution, teacher model, filtering metadata, dataset split.; NVIDIA NeMo-Skills generation, training, and evaluation pipeline.",
+      "feedback_verifier": "answer checks and benchmark evaluation over math tasks.",
+      "audit_focus": "Synthetic solutions can encode teacher shortcuts., Large scale can hide duplicated or near-duplicated questions., Verbose traces may hurt rather than help SFT.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2410.01560",
         "venue": null,
@@ -5441,6 +5902,7 @@ window.ATLAS_DATA = {
         "benchmarks_evaluation",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🖥️ OS/desktop agents",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -5448,8 +5910,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.",
       "why_it_matters": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.",
+      "data_object": "GUI/OS action trajectory; process: observation, action, environment state; desktop operating-system environment",
+      "feedback_verifier": "task completion evaluator",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2404.07972",
         "venue": null,
@@ -5491,13 +5957,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -5538,13 +6009,18 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -5609,6 +6085,7 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "benchmarks_evaluation"
       ],
+      "subfield": "⚖️ LLM-as-judge data",
       "tags": [
         "evaluation-models",
         "llm-as-judge",
@@ -5617,8 +6094,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Prometheus 2 is an open evaluator model for both direct assessment and pairwise ranking under user-defined criteria.",
       "why_it_matters": "It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes.",
+      "data_object": "rubric-conditioned scalar score, critique, or pairwise preference output.; process: instruction, candidate response, evaluation criterion, assessment format, score/ranking, reference judgment.; open evaluator model, GitHub code, ACL software/data artifacts, and HF weights.",
+      "feedback_verifier": "Prometheus 2 judge output aligned against human/proprietary-judge benchmarks.",
+      "audit_focus": "Open judges can inherit rubric bias., Agreement with another judge is not the same as correctness., Pairwise and scalar formats can disagree.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2405.01535",
         "venue": null,
@@ -5676,6 +6157,7 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "math",
         "reward-modeling",
@@ -5684,8 +6166,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Qwen2.5-Math reports a math-specialized model family supporting chain-style and tool-integrated reasoning with base, instruct, and reward-model variants.",
       "why_it_matters": "It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning, and multilingual math evaluation are tied together.",
+      "data_object": "math solution, final answer, optional tool/code execution trace, and reward-model score.; process: model stage, problem source, reasoning mode, tool use, answer, reward score, benchmark result.; Qwen math model family, GitHub evaluation scripts, and Hugging Face model releases.",
+      "feedback_verifier": "math answer checks, reward model signals, and benchmark evaluations.",
+      "audit_focus": "Tool-integrated results are not comparable to no-tool results., Reward models can favor format over proof validity., Model-family reports can blur data and inference effects.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2409.12122",
         "venue": null,
@@ -5726,13 +6212,18 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -5770,14 +6261,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "construction_recipes_open_reasoning_data",
+        "judgment_required_rubrics_safety_domain"
+      ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -5800,35 +6299,53 @@ window.ATLAS_DATA = {
       "id": "rest-mcts-2024",
       "title": "ReST-MCTS*",
       "year": 2024,
-      "venue": "arXiv preprint",
+      "venue": "arXiv",
       "authors": [],
       "source_role": [
-        "survey_background"
+        "process_supervision",
+        "construction_recipe",
+        "scaling_study"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "step_level",
+        "process_reward"
       ],
       "training_use": [
-        "unknown"
+        "process_supervision",
+        "reward_modeling",
+        "test_time_compute"
       ],
-      "domains": [],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
       "category": [
-        "foundations_instruction_preference_alignment"
+        "foundations_instruction_preference_alignment",
+        "process_supervision_prm",
+        "construction_recipes_open_reasoning_data",
+        "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🔁 Self-training / STaR / Self-Instruct",
       "tags": [
-        "seeded-from-bib"
+        "seeded-from-bib",
+        "primary-link-checked"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "Process-reward-guided tree search recipe for self-training reasoning traces.",
+      "why_it_matters": "It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.",
+      "data_object": "reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree",
+      "feedback_verifier": "process reward guided tree search",
+      "audit_focus": "search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality",
+      "curation_level": "L1_link_verified",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2406.03816",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2406.03816",
         "openreview": null,
         "acl": null,
         "pmlr": null,
@@ -5841,7 +6358,7 @@ window.ATLAS_DATA = {
         "bibtex": null,
         "card": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2406.03816"
     },
     {
       "id": "rewardbench-evaluating-reward-models-for-language-modeling-2024",
@@ -5875,6 +6392,7 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧪 Rubric reward models",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -5882,8 +6400,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
       "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.",
+      "data_object": "pairwise or scalar reward decisions; process: prompt, chosen/rejected response, reward model score; offline preference benchmark",
+      "feedback_verifier": "reward model or judge",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2403.13787",
         "venue": null,
@@ -5948,6 +6470,7 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🔁 Rollout-value supervision",
       "tags": [
         "math",
         "process-reward-models",
@@ -5956,8 +6479,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases future correctness probability.",
       "why_it_matters": "It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.",
+      "data_object": "step-level process advantage score plus final answer/correctness signal.; process: problem, partial trace before step, step, future success estimate, verifier score, final outcome.; reasoning search and online RL setup using process rewards.",
+      "feedback_verifier": "Process Advantage Verifier trained to predict progress toward correct answer.",
+      "audit_focus": "Progress estimates can be policy-specific., Verifier-guided search can exploit reward artifacts., Step rewards can encourage short-term progress that hurts final correctness.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2410.08146",
         "venue": null,
@@ -6040,6 +6567,7 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [
         "execution",
         "research-problems",
@@ -6048,8 +6576,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "SciCode evaluates code generation for realistic scientific research problems decomposed into subproblems with tests and gold solutions.",
       "why_it_matters": "It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests.",
+      "data_object": "code solution evaluated with scientist-annotated tests or expected outputs.; process: domain, main problem, subproblem, background text, generated code, tests, gold solution, pass/fail.; scientific Python/code execution benchmark harness.",
+      "feedback_verifier": "test cases and scientist-curated gold solutions.",
+      "audit_focus": "Models can pass narrow tests without scientific validity., Domain background can leak solution hints., Execution environments can change numerical results.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2407.13168",
         "venue": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html",
@@ -6090,13 +6622,18 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🤖 RLAIF / synthetic feedback",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6138,13 +6675,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "⚖️ DPO / preference optimization",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6186,13 +6728,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6230,14 +6777,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "environmental_agents_tools_web_swe",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6280,13 +6835,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6327,13 +6887,18 @@ window.ATLAS_DATA = {
       "category": [
         "frontier_model_reports"
       ],
+      "subfield": "🧠 Magistral / Phi / Nemotron style reports",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6374,13 +6939,18 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6432,6 +7002,7 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "benchmarks_evaluation"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -6439,8 +7010,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.",
       "why_it_matters": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.",
+      "data_object": "tool-call trajectory plus final response; process: API call, arguments, tool response; real-world API/tool catalog",
+      "feedback_verifier": "tool response validity and task success checks",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2307.16789",
         "venue": null,
@@ -6483,13 +7058,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6570,6 +7150,7 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🧪 RLVR recipe reports",
       "tags": [
         "instruction-tuning",
         "open-post-training",
@@ -6578,8 +7159,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Tulu 3 releases an open post-training stack with SFT data, preference data, RLVR recipes, code, models, and evaluation guidance.",
       "why_it_matters": "It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together.",
+      "data_object": "instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases.",
+      "feedback_verifier": "mixture of preference labels, reward models, and verifiable rewards depending on stage.",
+      "audit_focus": "Full-stack releases can obscure which component caused a gain., Evaluation suites can leak into data curation loops., RLVR improvements may be domain-specific.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2411.15124",
         "venue": null,
@@ -6627,6 +7212,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🌍 Web/browser agents",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -6634,8 +7220,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
       "why_it_matters": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
+      "data_object": "visual web tasks with screenshots and browser state",
+      "feedback_verifier": "task success checks",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "partial",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6673,14 +7263,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "environmental_agents_tools_web_swe",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🌍 Web/browser agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6721,13 +7319,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🛡️ Safety reasoning data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6769,13 +7372,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🌍 Web/browser agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6813,14 +7421,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6864,13 +7480,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2503.19633",
         "venue": null,
@@ -6911,13 +7532,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -6960,13 +7586,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧯 Contamination / evaluation surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding, seeds, prompt format, and environment details.",
       "why_it_matters": "It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.07086",
         "venue": null,
@@ -7008,13 +7639,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🧭 Post-training surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2510.23081",
         "venue": null,
@@ -7062,6 +7698,7 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "programmatic_math_code_proof"
       ],
+      "subfield": "🔁 Self-play / self-improvement",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -7069,8 +7706,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop.",
       "why_it_matters": "Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop.",
+      "data_object": "generated task, solution, and verified answer; process: proposed task, solution, verifier result; code executor / verifiable task substrate",
+      "feedback_verifier": "executor-backed verifiable reward",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.03335",
         "venue": null,
@@ -7120,11 +7761,16 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🛡️ Safety reasoning data",
       "tags": [],
       "one_line_summary": "AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise, subjective, and stale-information questions.",
       "why_it_matters": "It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining.",
+      "data_object": "model response, abstention decision, and correctness/abstention judgment.; process: scenario type, source dataset, answerability label, judge/validation metadata.; offline benchmark with model-evaluation harness.",
+      "feedback_verifier": "human-validated judges and benchmark labels for abstention scenarios.",
+      "audit_focus": "A model can game abstention by refusing too often., Benchmark labels around subjectivity and underspecification can be ambiguous., Prompt tuning may improve benchmark score without improving epistemic reasoning.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.09038",
         "venue": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html",
@@ -7165,13 +7811,18 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.09038",
         "venue": null,
@@ -7212,13 +7863,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -7260,13 +7916,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2501.09004",
         "venue": null,
@@ -7319,11 +7980,16 @@ window.ATLAS_DATA = {
         "benchmarks_evaluation",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧑‍⚖️ Human/expert judgment",
       "tags": [],
       "one_line_summary": "Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.",
       "why_it_matters": "It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification.",
+      "data_object": "prompt or prompt-response sample with hazard taxonomy labels and safety annotations.; process: hazard category, fine-grained risk label, response-safety decision, split metadata when using the dataset release.; offline guardrail training/evaluation dataset.",
+      "feedback_verifier": "risk labels and guard-model evaluation signal.",
+      "audit_focus": "Taxonomy labels can hide disagreement between annotators or judge models., Safety datasets can overfit visible hazard categories and miss emerging harms., Guardrail training may trade helpfulness for over-refusal if topic-following data is not tracked.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2501.09004",
         "venue": null,
@@ -7366,13 +8032,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.13131",
         "venue": null,
@@ -7415,13 +8086,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "frontier_model_reports"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.08311",
         "venue": null,
@@ -7469,6 +8145,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "📱 App/mobile agents",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -7476,8 +8153,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Android tasks turn mobile UI state and action histories into evaluable agent trajectories.",
       "why_it_matters": "Android tasks turn mobile UI state and action histories into evaluable agent trajectories.",
+      "data_object": "Android action trajectory; process: screen observation, UI action, state transition; Android device/emulator environment",
+      "feedback_verifier": "task-specific success evaluator",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2405.14573",
         "venue": null,
@@ -7520,13 +8201,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "process_supervision_prm"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2509.03403",
         "venue": null,
@@ -7575,14 +8261,19 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧮 Math RLVR datasets",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
       "why_it_matters": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
+      "data_object": "math problem, answer, and verification signal; process: problem, answer, verification label; offline math verifier substrate",
+      "feedback_verifier": "answer-level math verifier",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2502.17387",
         "venue": null,
@@ -7626,13 +8317,18 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "benchmarks_evaluation"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -7673,13 +8369,18 @@ window.ATLAS_DATA = {
       "category": [
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -7722,13 +8423,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2509.26114",
         "venue": null,
@@ -7772,13 +8478,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2503.01307",
         "venue": null,
@@ -7824,11 +8535,16 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [],
       "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
       "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
+      "data_object": "answer level",
+      "feedback_verifier": "programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2503.14476",
         "venue": null,
@@ -7870,13 +8586,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -7927,11 +8648,16 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [],
       "one_line_summary": "Math release highlighted for verifier pinning and decontamination.",
       "why_it_matters": "Math release highlighted for verifier pinning and decontamination.",
+      "data_object": "answer level",
+      "feedback_verifier": "programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.11456",
         "venue": null,
@@ -7972,13 +8698,18 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.11456",
         "venue": null,
@@ -8020,13 +8751,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8102,6 +8838,7 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "formal-math",
         "lean",
@@ -8110,8 +8847,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "DeepSeek-Prover-V2 uses recursive subgoal decomposition and RL to connect informal reasoning with formal Lean theorem proving.",
       "why_it_matters": "It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification.",
+      "data_object": "subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: problem, subgoal decomposition, synthesized proof, Lean feedback, reward, benchmark result.; Lean 4 environment plus recursive theorem-proving pipeline.",
+      "feedback_verifier": "Lean verification and RL reward over formal proof success.",
+      "audit_focus": "Subgoal decomposition can introduce false intermediate claims., Formal and informal reasoning scores are not directly comparable., Large-model teacher lineage can hide data provenance.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.21801",
         "venue": null,
@@ -8161,11 +8902,16 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "Other related work",
       "tags": [],
       "one_line_summary": "DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.",
       "why_it_matters": "It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2501.12948",
         "venue": null,
@@ -8207,13 +8953,18 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🚀 DeepSeek-R1 family",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8256,13 +9007,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "frontier_model_reports"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2512.02556",
         "venue": null,
@@ -8306,13 +9062,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2502.08606",
         "venue": null,
@@ -8353,13 +9114,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧪 Verifier scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8400,13 +9166,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🔁 Data reuse and uniqueness",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8450,13 +9221,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2410.13210",
         "venue": null,
@@ -8494,14 +9270,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🏦 Financial reasoning",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8545,13 +9329,18 @@ window.ATLAS_DATA = {
         "process_supervision_prm",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.22203",
         "venue": null,
@@ -8592,13 +9381,18 @@ window.ATLAS_DATA = {
       "category": [
         "surveys_and_primers"
       ],
+      "subfield": "🧭 Post-training surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8639,13 +9433,18 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2510.25771",
         "venue": null,
@@ -8686,13 +9485,18 @@ window.ATLAS_DATA = {
       "category": [
         "surveys_and_primers"
       ],
+      "subfield": "🧭 Post-training surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8734,13 +9538,18 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2508.03613",
         "venue": null,
@@ -8782,13 +9591,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "process_supervision_prm"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2509.21154",
         "venue": null,
@@ -8839,14 +9653,19 @@ window.ATLAS_DATA = {
         "benchmarks_evaluation",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧪 Rubric reward models",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.",
       "why_it_matters": "It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.",
+      "data_object": "response with rubric/judge evaluation; process: prompt, response, rubric dimension; offline health evaluation benchmark",
+      "feedback_verifier": "rubric-guided expert/LLM judgment",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.08775",
         "venue": null,
@@ -8888,13 +9707,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍⚖️ Human/expert judgment",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8936,13 +9760,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -8983,13 +9812,18 @@ window.ATLAS_DATA = {
       "category": [
         "frontier_model_reports"
       ],
+      "subfield": "🧪 RLVR recipe reports",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -9038,11 +9872,16 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "⏱️ Test-time compute",
       "tags": [],
       "one_line_summary": "The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.",
       "why_it_matters": "It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.",
+      "data_object": "training runs, reward outcomes, validation curves, and ablation results.; process: loss aggregation, normalization, curriculum, off-policy choice, compute budget, asymptote, efficiency.; large-scale RL training experiments.",
+      "feedback_verifier": "compute-performance curves and recipe ablations.",
+      "audit_focus": "Compute-heavy studies can be hard to reproduce., Best-practice recipes may depend on task/reward families., Scaling curves can encourage overconfidence if validation tasks are narrow.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2510.13786",
         "venue": null,
@@ -9090,11 +9929,16 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🌙 Kimi reasoning reports",
       "tags": [],
       "one_line_summary": "Frontier report used for long-context RL and scaling discussion.",
       "why_it_matters": "Frontier report used for long-context RL and scaling discussion.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2501.12599",
         "venue": null,
@@ -9135,13 +9979,18 @@ window.ATLAS_DATA = {
       "category": [
         "frontier_model_reports"
       ],
+      "subfield": "🌙 Kimi reasoning reports",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2507.20534",
         "venue": null,
@@ -9190,6 +10039,7 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧮 Math RLVR datasets",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -9197,8 +10047,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.",
       "why_it_matters": "Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.",
+      "data_object": "question-solution-test triplet; process: problem, solution, unit tests; code execution and unit-test substrate",
+      "feedback_verifier": "test-based self-verification",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2503.02951",
         "venue": null,
@@ -9240,13 +10094,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧯 Benchmark contamination",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.21614",
         "venue": null,
@@ -9299,11 +10158,16 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🛡️ Safety reasoning data",
       "tags": [],
       "one_line_summary": "Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through prompt injection or accidental leakage.",
       "why_it_matters": "It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.",
+      "data_object": "internal reasoning trace, final answer, and leakage/extraction outcome.; process: sensitive field, prompt-injection condition, reasoning length or budget, output leakage indicator.; personal-agent evaluation setting with hidden or internal reasoning traces.",
+      "feedback_verifier": "extraction probes and agentic evaluations.",
+      "audit_focus": "Hiding thoughts from users does not make them safe., Trace logging can create a new privacy dataset., Utility improvements from more reasoning may worsen leakage risk.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.15674",
         "venue": null,
@@ -9341,14 +10205,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "audit_failure_contamination_verifier_attacks",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧬 Hidden lineage / teacher leakage",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.15674",
         "venue": null,
@@ -9393,11 +10265,16 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "Other related work",
       "tags": [],
       "one_line_summary": "Small-set curation reference distinguishing elicitation from broad coverage.",
       "why_it_matters": "Small-set curation reference distinguishing elicitation from broad coverage.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2502.03387",
         "venue": null,
@@ -9449,11 +10326,16 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "Other related work",
       "tags": [],
       "one_line_summary": "Mixed post-training corpus reference for reasoning, chat, and safety partitions.",
       "why_it_matters": "Mixed post-training corpus reference for reasoning, chat, and safety partitions.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.00949",
         "venue": null,
@@ -9491,14 +10373,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "construction_recipes_open_reasoning_data"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2511.05705",
         "venue": null,
@@ -9545,11 +10435,16 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [],
       "one_line_summary": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.",
       "why_it_matters": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.10910",
         "venue": null,
@@ -9590,13 +10485,18 @@ window.ATLAS_DATA = {
       "category": [
         "programmatic_math_code_proof"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -9638,13 +10538,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -9685,13 +10590,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🩺 Medical reasoning / health rubrics",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -9734,13 +10644,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -9781,13 +10696,18 @@ window.ATLAS_DATA = {
       "category": [
         "surveys_and_primers"
       ],
+      "subfield": "🧭 Post-training surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2510.06826",
         "venue": null,
@@ -9825,14 +10745,21 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "🧪 Verifier gaming",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -9888,6 +10815,7 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "🧠 Magistral / Phi / Nemotron style reports",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -9895,8 +10823,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.",
       "why_it_matters": "Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.",
+      "data_object": "reasoning output, code/tool result, or agent task output; process: reasoning output, benchmark result, thinking budget; math, code, SWE, tool-use, and long-context evaluation surfaces",
+      "feedback_verifier": "programmatic, environment, and benchmark feedback",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.13585",
         "venue": null,
@@ -9937,13 +10869,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🔁 Self-play / self-improvement",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -9993,6 +10930,7 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -10000,8 +10938,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.",
       "why_it_matters": "Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.",
+      "data_object": "question with reference answer or reasoning target; process: question, reference answer, domain label; offline natural-language tasks",
+      "feedback_verifier": "reference answers, reward models, or self-rewarding depending on split",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2502.13124",
         "venue": null,
@@ -10039,14 +10981,23 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "frontier_model_reports",
+        "programmatic_math_code_proof",
+        "construction_recipes_open_reasoning_data"
+      ],
+      "subfield": "🧠 Magistral / Phi / Nemotron style reports",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2512.15489",
         "venue": null,
@@ -10089,17 +11040,20 @@ window.ATLAS_DATA = {
         "judge"
       ],
       "category": [
-        "surveys_and_primers",
-        "process_supervision_prm",
         "judgment_required_rubrics_safety_domain",
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "⚖️ LLM-as-judge data",
       "tags": [],
       "one_line_summary": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
       "why_it_matters": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
+      "data_object": "scalar reward",
+      "feedback_verifier": "judgment required",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2507.08794",
         "venue": null,
@@ -10137,14 +11091,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "construction_recipes_open_reasoning_data"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2510.07284",
         "venue": null,
@@ -10185,13 +11147,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -10234,13 +11201,18 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -10283,13 +11255,18 @@ window.ATLAS_DATA = {
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2503.24290",
         "venue": null,
@@ -10331,13 +11308,18 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -10379,13 +11361,18 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -10437,6 +11424,7 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -10444,8 +11432,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.",
       "why_it_matters": "Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.",
+      "data_object": "question-solution-critique triple; process: solution, critique, language/runtime label; coding benchmark / compiler substrate",
+      "feedback_verifier": "tests and critique model signals",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2507.09075",
         "venue": null,
@@ -10494,6 +11486,7 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "frontier_model_reports"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -10501,8 +11494,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.",
       "why_it_matters": "Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.",
+      "data_object": "tool/action/observation trajectory; process: plan, shell command, file edit; sandboxed software-development runtime",
+      "feedback_verifier": "task, test, or human-review outcome depending on benchmark",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2407.16741",
         "venue": null,
@@ -10550,11 +11547,16 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "benchmarks_evaluation"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [],
       "one_line_summary": "Large-scale math reasoning trace release for programmatic verification.",
       "why_it_matters": "Large-scale math reasoning trace release for programmatic verification.",
+      "data_object": "answer level",
+      "feedback_verifier": "programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.16891",
         "venue": null,
@@ -10602,14 +11604,19 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "🏗️ Open reasoning data releases",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
       "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.",
+      "data_object": "reasoning traces and final answers; process: question, reasoning trace, answer; offline reasoning corpus",
+      "feedback_verifier": "filters, benchmark feedback, and recipe ablations",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.04178",
         "venue": null,
@@ -10655,11 +11662,16 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "✍️ Teacher trace generation",
       "tags": [],
       "one_line_summary": "Reasoning model report highlighting teacher distillation as trace writing.",
       "why_it_matters": "Reasoning model report highlighting teacher distillation as trace writing.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.21318",
         "venue": null,
@@ -10682,35 +11694,176 @@ window.ATLAS_DATA = {
       "id": "prime-process-reinforcement-through-implicit-rewards-2025",
       "title": "PRIME: Process reinforcement through implicit rewards",
       "year": 2025,
-      "venue": "arXiv preprint",
+      "venue": "arXiv",
       "authors": [],
       "source_role": [
-        "survey_background"
+        "process_supervision",
+        "verifier_reward",
+        "construction_recipe"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "step_level",
+        "process_reward",
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "rlvr",
+        "process_supervision",
+        "reward_modeling"
       ],
-      "domains": [],
+      "domains": [
+        "math",
+        "code",
+        "reasoning"
+      ],
       "category": [
-        "process_supervision_prm"
+        "process_supervision_prm",
+        "construction_recipes_open_reasoning_data",
+        "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🛠️ Automatic process supervision",
       "tags": [
-        "seeded-from-bib"
+        "seeded-from-bib",
+        "primary-link-checked"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
+      "one_line_summary": "Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.",
+      "why_it_matters": "It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.",
+      "data_object": "rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop",
+      "feedback_verifier": "implicit process rewards derived from outcome labels",
+      "audit_focus": "implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes",
+      "curation_level": "L2_artifact_verified",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2502.01456",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2502.01456",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/PRIME-RL/PRIME",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2502.01456"
+    },
+    {
+      "id": "autopsv-automated-process-supervised-verifier-2024",
+      "title": "AutoPSV: Automated Process-Supervised Verifier",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "reward_modeling",
+        "evaluation"
+      ],
+      "domains": [
+        "math",
+        "commonsense",
+        "reasoning"
+      ],
+      "category": [
+        "process_supervision_prm",
+        "construction_recipes_open_reasoning_data"
+      ],
+      "subfield": "🛠️ Automatic process supervision",
+      "tags": [
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Automated process-supervision recipe that derives step annotations from verifier confidence changes.",
+      "why_it_matters": "It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.",
+      "data_object": "step-level confidence-change annotations; process: reasoning step, verifier confidence, relative confidence change; offline reasoning traces",
+      "feedback_verifier": "answer-trained verifier converted into process annotations",
+      "audit_focus": "answer-level verifier confidence can mislabel intermediate steps, relative confidence changes may not identify causal first errors, commonsense and math tasks may require different error taxonomies",
+      "curation_level": "L2_artifact_verified",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2405.16802",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2405.16802",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/rookie-joe/AutoPSV",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2405.16802"
+    },
+    {
+      "id": "step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024",
+      "title": "Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [],
+      "source_role": [
+        "process_supervision",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level"
+      ],
+      "training_use": [
+        "process_supervision",
+        "preference_learning"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "foundations_instruction_preference_alignment",
+        "process_supervision_prm",
+        "construction_recipes_open_reasoning_data"
+      ],
+      "subfield": "⚖️ DPO / preference optimization",
+      "tags": [
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Step-wise preference optimization method for long-chain reasoning traces.",
+      "why_it_matters": "It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected object is an intermediate continuation rather than a whole answer.",
+      "data_object": "step-wise preference pairs; process: reasoning step, preferred continuation, rejected continuation; offline long-chain reasoning traces",
+      "feedback_verifier": "step-wise preference optimization objective",
+      "audit_focus": "local step preference may not align with final correctness, preference construction can hide teacher or scorer bias, long-chain traces can overfit style instead of reasoning validity",
+      "curation_level": "L1_link_verified",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2406.18629",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2406.18629",
         "openreview": null,
         "acl": null,
         "pmlr": null,
@@ -10723,7 +11876,69 @@ window.ATLAS_DATA = {
         "bibtex": null,
         "card": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2406.18629"
+    },
+    {
+      "id": "rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025",
+      "title": "ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
+      ],
+      "domains": [
+        "retrieval",
+        "multi-hop reasoning"
+      ],
+      "category": [
+        "process_supervision_prm",
+        "construction_recipes_open_reasoning_data",
+        "scaling_test_time_compute_rlvr"
+      ],
+      "subfield": "🧪 Process reward models",
+      "tags": [
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level preference data.",
+      "why_it_matters": "It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.",
+      "data_object": "step-level preference data with process scores and explanations; process: retrieval context, reasoning step, process reward score; RAG reasoning pipeline",
+      "feedback_verifier": "process reward model plus process explanation model",
+      "audit_focus": "PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search",
+      "curation_level": "L2_artifact_verified",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.07861",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.07861",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/Jeryi-Sun/ReARTeR",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2501.07861"
     },
     {
       "id": "prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025",
@@ -10758,6 +11973,7 @@ window.ATLAS_DATA = {
         "benchmarks_evaluation",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "📊 PRM benchmarks and evaluation",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -10765,8 +11981,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.",
       "why_it_matters": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.",
+      "data_object": "step-level labels or scores; process: step, label, error type; offline reasoning traces",
+      "feedback_verifier": "process-level reward model benchmark",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2501.03124",
         "venue": null,
@@ -10807,13 +12027,18 @@ window.ATLAS_DATA = {
       "category": [
         "process_supervision_prm"
       ],
+      "subfield": "🧪 Process reward models",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -10862,6 +12087,7 @@ window.ATLAS_DATA = {
         "process_supervision_prm",
         "benchmarks_evaluation"
       ],
+      "subfield": "📊 PRM benchmarks and evaluation",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -10869,8 +12095,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.",
       "why_it_matters": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.",
+      "data_object": "step labels or first-error markers; process: reasoning step, error marker, diagnostic label; offline math traces",
+      "feedback_verifier": "process-error detector",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2412.06559",
         "venue": null,
@@ -10912,13 +12142,18 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "process_supervision_prm"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -10962,15 +12197,19 @@ window.ATLAS_DATA = {
         "general"
       ],
       "category": [
-        "construction_recipes_open_reasoning_data",
         "frontier_model_reports",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🐉 Qwen reasoning/math/code reports",
       "tags": [],
       "one_line_summary": "Open model-family report useful for coordinated release-tick analysis.",
       "why_it_matters": "Open model-family report useful for coordinated release-tick analysis.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.09388",
         "venue": null,
@@ -11011,13 +12250,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2508.05004",
         "venue": null,
@@ -11066,11 +12310,16 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [],
       "one_line_summary": "Verifiable SWE environment for reasoning-to-edit tasks.",
       "why_it_matters": "Verifiable SWE environment for reasoning-to-edit tasks.",
+      "data_object": "full episode; state action level",
+      "feedback_verifier": "environmental, programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.07164",
         "venue": null,
@@ -11111,13 +12360,18 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -11158,13 +12412,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🧪 Rubric reward models",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.13388",
         "venue": null,
@@ -11205,13 +12464,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.14245",
         "venue": null,
@@ -11252,13 +12516,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.11536",
         "venue": null,
@@ -11300,13 +12569,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -11349,13 +12623,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2508.20722",
         "venue": null,
@@ -11396,13 +12675,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🧪 Rubric reward models",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -11448,11 +12732,16 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [],
       "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
       "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
+      "data_object": "answer level",
+      "feedback_verifier": "mixed",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2501.19393",
         "venue": null,
@@ -11493,13 +12782,18 @@ window.ATLAS_DATA = {
       "category": [
         "foundations_instruction_preference_alignment"
       ],
+      "subfield": "🧠 Chain-of-thought / rationale data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2502.12025",
         "venue": null,
@@ -11540,13 +12834,18 @@ window.ATLAS_DATA = {
       "category": [
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🛡️ Safety reasoning data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.20087",
         "venue": null,
@@ -11584,14 +12883,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "scaling_test_time_compute_rlvr",
+        "programmatic_math_code_proof"
+      ],
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2509.25300",
         "venue": null,
@@ -11633,13 +12940,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧯 Contamination / evaluation surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2508.13180",
         "venue": null,
@@ -11680,13 +12992,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🏗️ Open reasoning data releases",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -11728,13 +13045,18 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.22312",
         "venue": null,
@@ -11784,11 +13106,16 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [],
       "one_line_summary": "Reward-signal audit for spurious behavior in RLVR.",
       "why_it_matters": "Reward-signal audit for spurious behavior in RLVR.",
+      "data_object": "scalar reward",
+      "feedback_verifier": "programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.10947",
         "venue": null,
@@ -11826,14 +13153,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "audit_failure_contamination_verifier_attacks",
+        "scaling_test_time_compute_rlvr"
+      ],
+      "subfield": "🧨 Spurious rewards",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2506.10947",
         "venue": null,
@@ -11881,14 +13216,18 @@ window.ATLAS_DATA = {
       ],
       "category": [
         "construction_recipes_open_reasoning_data",
-        "audit_failure_contamination_verifier_attacks",
-        "benchmarks_evaluation"
+        "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "✍️ Teacher trace generation",
       "tags": [],
       "one_line_summary": "Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.",
       "why_it_matters": "It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.",
+      "data_object": "generated data plus downstream behavioral evaluation of the student.; process: teacher identity, student base model, visible filtering policy, hidden trait evaluation.; distillation and synthetic-data training pipeline.",
+      "feedback_verifier": "trait probes after student training.",
+      "audit_focus": "Data may look safe while carrying hidden traits., Lineage effects can be invisible from sample inspection., Distillation chains can propagate behavior across model generations.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2507.14805",
         "venue": "https://www.nature.com/articles/s41586-026-10319-8",
@@ -11926,14 +13265,21 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "🧬 Hidden lineage / teacher leakage",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2507.14805",
         "venue": null,
@@ -11985,11 +13331,16 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [],
       "one_line_summary": "Repository-scale training environment showing substrate as data.",
       "why_it_matters": "Repository-scale training environment showing substrate as data.",
+      "data_object": "full episode; state action level",
+      "feedback_verifier": "environmental, programmatic",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2412.21139",
         "venue": null,
@@ -12032,13 +13383,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.20411",
         "venue": null,
@@ -12080,13 +13436,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -12128,13 +13489,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2502.18449",
         "venue": null,
@@ -12176,13 +13542,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -12232,11 +13603,16 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "frontier_model_reports"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [],
       "one_line_summary": "This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.",
       "why_it_matters": "It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.",
+      "data_object": "problem, generated solution/answer, reward outcome, and training curve metrics.; process: model size, data volume, compute budget, optimization steps, reward signal, validation performance.; RL post-training experiments over math tasks.",
+      "feedback_verifier": "answer-level reward for mathematical reasoning and scaling curves.",
+      "audit_focus": "Math-only scaling can overstate transfer to open-ended reasoning., Repeated data reuse can improve metrics while increasing overfitting risk., Power-law fits can hide reward or benchmark artifacts.",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2509.25300",
         "venue": null,
@@ -12279,13 +13655,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -12326,13 +13707,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.22617",
         "venue": null,
@@ -12373,13 +13759,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🔍 Scaling attribution",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2507.14843",
         "venue": null,
@@ -12420,13 +13811,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🧪 Verifier scaling",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2510.06557",
         "venue": null,
@@ -12464,14 +13860,22 @@ window.ATLAS_DATA = {
         "unknown"
       ],
       "domains": [],
-      "category": [],
+      "category": [
+        "judgment_required_rubrics_safety_domain",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🧾 Factuality / grounding",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -12512,13 +13916,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🔁 Self-play / self-improvement",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2510.27072",
         "venue": null,
@@ -12568,6 +13977,7 @@ window.ATLAS_DATA = {
         "scaling_test_time_compute_rlvr",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "⏱️ Test-time compute",
       "tags": [
         "curated-card",
         "primary-link-checked",
@@ -12575,8 +13985,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.",
       "why_it_matters": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.",
+      "data_object": "candidate response with reward/adaptation signal; process: unlabeled input, rollout, reward signal; test-time task distribution",
+      "feedback_verifier": "task-specific or learned reward used during adaptation",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2504.16084",
         "venue": null,
@@ -12617,13 +14031,18 @@ window.ATLAS_DATA = {
       "category": [
         "programmatic_math_code_proof"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -12666,13 +14085,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -12714,13 +14138,18 @@ window.ATLAS_DATA = {
         "environmental_agents_tools_web_swe",
         "frontier_model_reports"
       ],
+      "subfield": "🔁 Replayable trajectory data",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -12761,13 +14190,18 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2604.18292",
         "venue": null,
@@ -12810,13 +14244,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2602.01511",
         "venue": null,
@@ -12858,13 +14297,18 @@ window.ATLAS_DATA = {
         "process_supervision_prm",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2604.07666",
         "venue": null,
@@ -12906,13 +14350,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧑‍⚖️ Human/expert judgment",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2603.00077",
         "venue": null,
@@ -12954,13 +14403,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2604.20051",
         "venue": null,
@@ -13002,13 +14456,18 @@ window.ATLAS_DATA = {
         "process_supervision_prm",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🪜 Human step-level labels",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2603.17775",
         "venue": null,
@@ -13049,13 +14508,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2605.16826",
         "venue": null,
@@ -13096,13 +14560,18 @@ window.ATLAS_DATA = {
       "category": [
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🎮 Reward hacking",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2603.16223",
         "venue": null,
@@ -13143,13 +14612,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "✍️ Teacher trace generation",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2602.12125",
         "venue": null,
@@ -13190,13 +14664,18 @@ window.ATLAS_DATA = {
       "category": [
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "🧑‍💻 SWE/repository agents",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2511.13646",
         "venue": null,
@@ -13238,13 +14717,18 @@ window.ATLAS_DATA = {
         "process_supervision_prm",
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2604.15149",
         "venue": null,
@@ -13286,13 +14770,18 @@ window.ATLAS_DATA = {
         "foundations_instruction_preference_alignment",
         "judgment_required_rubrics_safety_domain"
       ],
+      "subfield": "🤝 Human preference data / RLHF",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2602.00846",
         "venue": null,
@@ -13333,13 +14822,18 @@ window.ATLAS_DATA = {
       "category": [
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🎲 pass@k / sampling budget",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -13381,13 +14875,18 @@ window.ATLAS_DATA = {
         "judgment_required_rubrics_safety_domain",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧪 Rubric reward models",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -13430,13 +14929,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧯 Contamination / evaluation surveys",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2602.12413",
         "venue": null,
@@ -13477,13 +14981,18 @@ window.ATLAS_DATA = {
       "category": [
         "audit_failure_contamination_verifier_attacks"
       ],
+      "subfield": "🧨 Spurious rewards",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2601.11061",
         "venue": null,
@@ -13525,13 +15034,18 @@ window.ATLAS_DATA = {
         "surveys_and_primers",
         "environmental_agents_tools_web_swe"
       ],
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "survey background",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2602.03411",
         "venue": null,
@@ -13574,13 +15088,18 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "benchmarks_evaluation"
       ],
+      "subfield": "🧰 Agent benchmarks and terminal predicates",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "needs_metadata",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -13621,13 +15140,18 @@ window.ATLAS_DATA = {
       "category": [
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧱 Prompt sourcing",
       "tags": [
         "seeded-from-bib"
       ],
       "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+      "data_object": "metadata pending",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L1_link_verified",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2603.24472",
         "venue": null,
@@ -13674,14 +15198,19 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "construction_recipes_open_reasoning_data"
       ],
+      "subfield": "🧮 Math RLVR datasets",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.",
       "why_it_matters": "Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.",
+      "data_object": "math problem with reasoning trace and final answer; process: problem, reasoning trace, answer; offline math corpus",
+      "feedback_verifier": "math answer verifier / filtering pipeline",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "partial",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -13731,14 +15260,19 @@ window.ATLAS_DATA = {
         "process_supervision_prm",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "🛠️ Automatic process supervision",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.",
       "why_it_matters": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.",
+      "data_object": "process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree",
+      "feedback_verifier": "automated process reward signal",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2406.06592",
         "venue": null,
@@ -13790,14 +15324,19 @@ window.ATLAS_DATA = {
         "audit_failure_contamination_verifier_attacks",
         "scaling_test_time_compute_rlvr"
       ],
+      "subfield": "Other related work",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
       "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
+      "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
+      "feedback_verifier": "small LLM verifier augmenting rules",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L4_carded",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2505.14625",
         "venue": null,
@@ -13851,14 +15390,19 @@ window.ATLAS_DATA = {
         "construction_recipes_open_reasoning_data",
         "frontier_model_reports"
       ],
+      "subfield": "🛠️ Tool-use data",
       "tags": [
         "curated-card",
         "primary-link-checked"
       ],
       "one_line_summary": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.",
       "why_it_matters": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.",
+      "data_object": "code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments",
+      "feedback_verifier": "unit tests, execution feedback, and agent task success signals",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
       "curation_level": "L0_seeded",
       "status": "partial",
+      "needs_search": true,
       "artifacts": {
         "paper": null,
         "venue": null,
@@ -13907,6 +15451,7 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "benchmarks_evaluation"
       ],
+      "subfield": "📐 Math answer-verifiable data",
       "tags": [
         "gsm8k",
         "math",
@@ -13915,8 +15460,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "Canonical grade-school math benchmark with natural-language word problems, worked solutions, and final numeric answers.",
       "why_it_matters": "It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training.",
+      "data_object": "natural-language solution with final numeric answer; process: question, solution, final answer; offline math benchmark",
+      "feedback_verifier": "answer extraction and arithmetic correctness checks",
+      "audit_focus": "answer extraction errors, contamination through benchmark reuse",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2110.14168",
         "venue": null,
@@ -13963,6 +15512,7 @@ window.ATLAS_DATA = {
         "programmatic_math_code_proof",
         "benchmarks_evaluation"
       ],
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
         "humaneval",
         "code",
@@ -13971,8 +15521,12 @@ window.ATLAS_DATA = {
       ],
       "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
       "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.",
+      "data_object": "Python function completion; process: prompt, canonical solution, unit tests; Python execution harness",
+      "feedback_verifier": "unit tests",
+      "audit_focus": "public benchmark contamination, unit-test coverage gaps",
       "curation_level": "L5_audit_ready",
       "status": "verified",
+      "needs_search": false,
       "artifacts": {
         "paper": "https://arxiv.org/abs/2107.03374",
         "venue": null,
@@ -13990,17 +15544,553 @@ window.ATLAS_DATA = {
         "card": "cards/benchmarks/humaneval-hand-written-evaluation-set.md"
       },
       "primary_link": "https://arxiv.org/abs/2107.03374"
+    },
+    {
+      "id": "reasoning-with-large-language-models-a-survey-2024",
+      "title": "Reasoning with Large Language Models, a Survey",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [],
+      "source_role": [
+        "survey_background"
+      ],
+      "verification_contract": [
+        "unknown"
+      ],
+      "supervision_granularity": [
+        "unknown"
+      ],
+      "training_use": [
+        "audit"
+      ],
+      "domains": [
+        "reasoning",
+        "survey"
+      ],
+      "category": [
+        "surveys_and_primers"
+      ],
+      "subfield": "🧠 Reasoning LLM surveys",
+      "tags": [
+        "survey",
+        "reasoning-llms"
+      ],
+      "one_line_summary": "Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and evaluation patterns.",
+      "why_it_matters": "It fills the reasoning-LLM survey lane of the atlas so readers can separate model-centric reasoning work from data-object and verifier-centric papers.",
+      "data_object": "survey taxonomy and literature map.; literature survey.",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L1_link_verified",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2407.11511",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2407.11511",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2407.11511"
+    },
+    {
+      "id": "a-survey-of-reinforcement-learning-from-human-feedback-2023",
+      "title": "A Survey of Reinforcement Learning from Human Feedback",
+      "year": 2023,
+      "venue": "TMLR",
+      "authors": [
+        "Timo Kaufmann",
+        "Paul Weng",
+        "Viktor Bengs",
+        "Eyke Hüllermeier"
+      ],
+      "source_role": [
+        "survey_background"
+      ],
+      "verification_contract": [
+        "judgment_required",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "pairwise_preference",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "preference_learning",
+        "audit"
+      ],
+      "domains": [
+        "rlhf",
+        "reward-modeling",
+        "alignment"
+      ],
+      "category": [
+        "surveys_and_primers",
+        "foundations_instruction_preference_alignment"
+      ],
+      "subfield": "🧭 Post-training surveys",
+      "tags": [
+        "rlhf",
+        "reward-model-survey",
+        "human-feedback",
+        "preference-learning"
+      ],
+      "one_line_summary": "Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference data and learned reward models.",
+      "why_it_matters": "It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization before readers compare them with verifiable-reward reasoning data.",
+      "data_object": "survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL settings.",
+      "feedback_verifier": "learned reward model from human feedback.",
+      "audit_focus": "Human feedback can be noisy, subjective, sparse, or expensive., Reward models can overfit annotator preferences and become exploitable objectives., LLM readers may overgeneralize broad RLHF lessons to verifiable-reasoning settings.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2312.14925",
+        "venue": "https://openreview.net/forum?id=f7OkIurx4b",
+        "arxiv": "https://arxiv.org/abs/2312.14925",
+        "openreview": "https://openreview.net/forum?id=f7OkIurx4b",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2312.14925",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2312.14925"
+    },
+    {
+      "id": "a-comprehensive-survey-of-reward-models-taxonomy-applications-challenges-and-future-2025",
+      "title": "A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Jialun Zhong",
+        "Wei Shen",
+        "Yanzeng Li",
+        "Songyang Gao",
+        "Hua Lu",
+        "Yicheng Chen",
+        "Yang Zhang",
+        "Wei Zhou",
+        "Jinjie Gu",
+        "Lei Zou"
+      ],
+      "source_role": [
+        "survey_background"
+      ],
+      "verification_contract": [
+        "judgment_required",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "pairwise_preference",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "preference_learning",
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "reward-modeling",
+        "rlhf",
+        "alignment"
+      ],
+      "category": [
+        "surveys_and_primers",
+        "foundations_instruction_preference_alignment",
+        "judgment_required_rubrics_safety_domain"
+      ],
+      "subfield": "🧭 Post-training surveys",
+      "tags": [
+        "reward-model-survey",
+        "reward-modeling",
+        "rlhf",
+        "preference-data"
+      ],
+      "one_line_summary": "Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure modes.",
+      "why_it_matters": "It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.",
+      "data_object": "taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.; process: preference source, reward model architecture, usage mode; LLM reward-model training and evaluation pipelines.",
+      "feedback_verifier": "reward model as proxy objective for downstream post-training.",
+      "audit_focus": "Reward models may encode annotator bias, style bias, or length preference., Proxy rewards can be overoptimized or attacked when used as training objectives., Benchmark scores can obscure whether the reward model is useful for reasoning data.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2504.12328",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2504.12328",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2504.12328",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": "https://github.com/JLZhong23/awesome-reward-models",
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2504.12328"
+    },
+    {
+      "id": "a-survey-on-human-preference-learning-for-large-language-models-2024",
+      "title": "A Survey on Human Preference Learning for Large Language Models",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Ruili Jiang",
+        "Kehai Chen",
+        "Xuefeng Bai",
+        "Zhixuan He",
+        "Juntao Li",
+        "Muyun Yang",
+        "Tiejun Zhao",
+        "Liqiang Nie",
+        "Min Zhang"
+      ],
+      "source_role": [
+        "survey_background"
+      ],
+      "verification_contract": [
+        "judgment_required",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "pairwise_preference",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "preference_learning",
+        "reward_modeling",
+        "evaluation"
+      ],
+      "domains": [
+        "human-preference",
+        "preference-learning",
+        "alignment"
+      ],
+      "category": [
+        "surveys_and_primers",
+        "foundations_instruction_preference_alignment"
+      ],
+      "subfield": "🧪 RLHF / reward-model surveys",
+      "tags": [
+        "preference-learning",
+        "human-preference",
+        "rlhf",
+        "reward-modeling"
+      ],
+      "one_line_summary": "Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for LLM alignment.",
+      "why_it_matters": "It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.",
+      "data_object": "preference-centered taxonomy over feedback data, preference modeling, preference usage, and aligned-model evaluation.; process: preference source, preference format, preference model; LLM alignment pipelines using human preference signals.",
+      "feedback_verifier": "human preference signal transformed into reward, preference loss, or evaluation judgment.",
+      "audit_focus": "Preference labels can be noisy, culturally variable, or underspecified., Pairwise preferences may not preserve reasoning correctness or factual grounding., Evaluation of aligned models can conflate helpfulness, style, and reasoning quality.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2406.11191",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2406.11191",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.11191",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2406.11191"
+    },
+    {
+      "id": "reinforcement-learning-for-llm-post-training-a-survey-2024",
+      "title": "Reinforcement Learning for LLM Post-Training: A Survey",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Zhichao Wang",
+        "Kiran Ramnath",
+        "Bin Bi",
+        "Shiva Kumar Pentyala",
+        "Sougata Chaudhuri",
+        "Shubham Mehrotra",
+        "Zixu Zhu",
+        "Xiang-Bo Mao",
+        "Sitaram Asur",
+        "Na Cheng"
+      ],
+      "source_role": [
+        "survey_background",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed",
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "scalar_reward",
+        "answer_level"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "preference_learning",
+        "rlvr",
+        "test_time_compute",
+        "audit"
+      ],
+      "domains": [
+        "post-training",
+        "rlhf",
+        "rlvr",
+        "preference-learning"
+      ],
+      "category": [
+        "surveys_and_primers",
+        "foundations_instruction_preference_alignment",
+        "scaling_test_time_compute_rlvr"
+      ],
+      "subfield": "🧭 Post-training surveys",
+      "tags": [
+        "rlhf",
+        "rlvr",
+        "reward-model-survey",
+        "post-training",
+        "policy-optimization"
+      ],
+      "one_line_summary": "Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards, and optimization details.",
+      "why_it_matters": "It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.",
+      "data_object": "technical survey comparing RLHF and RLVR policy-gradient style post-training methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.",
+      "feedback_verifier": "learned preference rewards, verifiable rewards, and policy-gradient objectives.",
+      "audit_focus": "Method comparisons can mix data effects with optimizer and sampling-budget effects., RLHF and RLVR rewards are often discussed together despite different verification contracts., Implementation details can dominate reported gains if not separated from data quality.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2407.16216",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2407.16216",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2407.16216",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2407.16216"
+    },
+    {
+      "id": "survey-of-reasoning-large-language-models-2025",
+      "title": "A Survey of Reasoning with Foundation Models",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [],
+      "source_role": [
+        "survey_background"
+      ],
+      "verification_contract": [
+        "unknown"
+      ],
+      "supervision_granularity": [
+        "unknown"
+      ],
+      "training_use": [
+        "audit"
+      ],
+      "domains": [
+        "reasoning",
+        "survey"
+      ],
+      "category": [
+        "surveys_and_primers"
+      ],
+      "subfield": "🧠 Reasoning LLM surveys",
+      "tags": [
+        "survey",
+        "reasoning-llms",
+        "foundation-models"
+      ],
+      "one_line_summary": "Surveys reasoning with foundation models, including tasks, methods, and evaluation patterns that reasoning-data readers need as context.",
+      "why_it_matters": "It gives the atlas a second reasoning-survey waypoint so readers can orient before choosing math, code, agent, rubric, or scaling tracks.",
+      "data_object": "survey taxonomy and literature map.; literature survey.",
+      "feedback_verifier": "metadata pending",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L1_link_verified",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2502.17419",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2502.17419",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2502.17419"
+    },
+    {
+      "id": "survey-on-evaluation-of-llm-based-agents-2025",
+      "title": "A Survey on Evaluation of LLM-based Agents",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [],
+      "source_role": [
+        "survey_background"
+      ],
+      "verification_contract": [
+        "environmental",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "state_action_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "agents",
+        "evaluation"
+      ],
+      "category": [
+        "surveys_and_primers",
+        "environmental_agents_tools_web_swe",
+        "benchmarks_evaluation"
+      ],
+      "subfield": "🌐 Agent data / tool-use surveys",
+      "tags": [
+        "survey",
+        "agent-evaluation",
+        "tool-use"
+      ],
+      "one_line_summary": "Surveys how LLM-based agents are evaluated across tasks, environments, metrics, and interaction settings.",
+      "why_it_matters": "It gives the atlas an agent-survey waypoint for readers who need to understand environment data before comparing SWE, web, app, or OS agent benchmarks.",
+      "data_object": "survey taxonomy for agent evaluation tasks and environments.; process: task, environment, trajectory, evaluator, terminal predicate.; LLM-agent evaluation literature.",
+      "feedback_verifier": "environmental and benchmark evaluators summarized by the survey.",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L1_link_verified",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2503.16416",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2503.16416",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2503.16416"
+    },
+    {
+      "id": "language-model-developers-should-report-train-test-overlap-2024",
+      "title": "Language Model Developers Should Report Train-Test Overlap",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [],
+      "source_role": [
+        "audit_failure",
+        "survey_background"
+      ],
+      "verification_contract": [
+        "unknown"
+      ],
+      "supervision_granularity": [
+        "unknown"
+      ],
+      "training_use": [
+        "audit"
+      ],
+      "domains": [
+        "contamination",
+        "data-reuse"
+      ],
+      "category": [
+        "scaling_test_time_compute_rlvr",
+        "audit_failure_contamination_verifier_attacks",
+        "surveys_and_primers"
+      ],
+      "subfield": "🔁 Data reuse and uniqueness",
+      "tags": [
+        "train-test-overlap",
+        "data-reuse",
+        "contamination"
+      ],
+      "one_line_summary": "Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted with data reuse in mind.",
+      "why_it_matters": "It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence.",
+      "data_object": "overlap and reporting analysis.; process: training corpus, evaluation set, overlap estimate, reporting policy.; benchmark and training-data documentation.",
+      "feedback_verifier": "overlap analysis rather than a reward model.",
+      "audit_focus": "Reported benchmark gains can be inflated when train-test overlap is not disclosed.",
+      "curation_level": "L1_link_verified",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2410.08385",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2410.08385",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "card": null
+      },
+      "primary_link": "https://arxiv.org/abs/2410.08385"
     }
   ],
   "counts": {
-    "total_entries": 271,
-    "verified_entries": 148,
+    "total_entries": 280,
+    "verified_entries": 165,
     "carded_entries": 87,
-    "data_releases": 32,
-    "verifiers_rewards": 17,
+    "data_releases": 36,
+    "verifiers_rewards": 20,
     "agent_environments": 16,
-    "scaling_studies": 16,
-    "needs_search": 123
+    "scaling_studies": 18,
+    "needs_search": 115
   },
   "categories": [
     {
@@ -15625,6 +17715,1009 @@ window.ATLAS_DATA = {
       ]
     }
   ],
+  "research_tracks": [
+    {
+      "category_id": "surveys_and_primers",
+      "short_title": "Surveys & Primers",
+      "navigator_title": "🧭 Surveys & Primers",
+      "best_for": "building the field map before reading primary papers",
+      "subfields": [
+        {
+          "name": "🧭 Post-training surveys",
+          "focus": "field-level maps of post-training, reasoning models, and data-centric LLM practice",
+          "key_risk": "survey taxonomy hides concrete data objects",
+          "keywords": [
+            "survey",
+            "primer",
+            "mid-training",
+            "system 1",
+            "system 2",
+            "field map"
+          ]
+        },
+        {
+          "name": "🧠 Reasoning LLM surveys",
+          "focus": "reasoning model lineages, claims, and recurring evaluation patterns",
+          "key_risk": "model-centric framing obscures data and verifier details",
+          "keywords": [
+            "reasoning large language models",
+            "reasoning with large language models",
+            "reasoning with foundation models",
+            "learning to reason",
+            "general reasoning models",
+            "reasoning survey"
+          ]
+        },
+        {
+          "name": "📦 Data documentation / datasheets",
+          "focus": "datasheets, data statements, lineage, license, and release metadata",
+          "key_risk": "reusable data lacks provenance or consent context",
+          "keywords": [
+            "datasheets",
+            "data statements",
+            "data provenance",
+            "provenance"
+          ]
+        },
+        {
+          "name": "🧪 RLHF / reward-model surveys",
+          "focus": "background needed to connect preference data, reward models, and reasoning rewards",
+          "key_risk": "generic alignment lessons are over-applied to verifiable reasoning",
+          "keywords": [
+            "rlhf",
+            "reward model",
+            "preference",
+            "overoptimization"
+          ]
+        },
+        {
+          "name": "🌐 Agent data / tool-use surveys",
+          "focus": "orientation for tools, web tasks, OS tasks, and repository agents",
+          "key_risk": "agent traces are treated as transcripts rather than replayable episodes",
+          "keywords": [
+            "agent survey",
+            "llm-based agents",
+            "evaluation of llm-based agents",
+            "tool-use survey",
+            "agent data",
+            "web agent survey",
+            "swe agent"
+          ]
+        },
+        {
+          "name": "🧯 Contamination / evaluation surveys",
+          "focus": "reproducibility, contamination, model collapse, and benchmark refresh",
+          "key_risk": "benchmark deltas are accepted without data-overlap checks",
+          "keywords": [
+            "contamination",
+            "reproducibility",
+            "collapse",
+            "sober",
+            "livebench"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "foundations_instruction_preference_alignment",
+      "short_title": "Foundations",
+      "navigator_title": "🧱 Foundations",
+      "best_for": "understanding where reasoning-data objects came from",
+      "subfields": [
+        {
+          "name": "🧱 Instruction tuning / SFT data",
+          "focus": "demonstrations, instruction mixtures, and target-answer records",
+          "key_risk": "prompt sources and mixture weights are undisclosed",
+          "keywords": [
+            "instruction",
+            "instruct",
+            "flan",
+            "t0",
+            "tulu",
+            "llama"
+          ]
+        },
+        {
+          "name": "🤝 Human preference data / RLHF",
+          "focus": "comparisons, scalar rewards, reward models, and human feedback pipelines",
+          "key_risk": "annotator or reward-model assumptions are hidden",
+          "keywords": [
+            "preference",
+            "rlhf",
+            "human feedback",
+            "helpful",
+            "harmless"
+          ]
+        },
+        {
+          "name": "⚖️ DPO / preference optimization",
+          "focus": "direct preference learning and pairwise data as policy supervision",
+          "key_risk": "preference pairs are reused outside their collection context",
+          "keywords": [
+            "dpo",
+            "direct preference",
+            "preference optimization",
+            "spin"
+          ]
+        },
+        {
+          "name": "🧠 Chain-of-thought / rationale data",
+          "focus": "rationales, traces, self-consistency, and reasoning-style supervision",
+          "key_risk": "trace style is mistaken for faithful reasoning",
+          "keywords": [
+            "chain-of-thought",
+            "cot",
+            "self-consistency",
+            "rationale",
+            "distilling step"
+          ]
+        },
+        {
+          "name": "🔁 Self-training / STaR / Self-Instruct",
+          "focus": "self-generated instructions, bootstrapped traces, critique loops, and filtering",
+          "key_risk": "generated data collapses diversity or repeats teacher artifacts",
+          "keywords": [
+            "self-instruct",
+            "star",
+            "bootstrapping",
+            "self-training",
+            "reflexion"
+          ]
+        },
+        {
+          "name": "🤖 RLAIF / synthetic feedback",
+          "focus": "model-generated preferences, critiques, and constitutional feedback",
+          "key_risk": "synthetic feedback encodes hidden judge behavior",
+          "keywords": [
+            "constitutional",
+            "constitutional",
+            "rlaif",
+            "self-rewarding",
+            "critique",
+            "ultrafeedback",
+            "ai feedback"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "programmatic_math_code_proof",
+      "short_title": "Programmatic Verification",
+      "navigator_title": "🧮 Programmatic Verification",
+      "best_for": "RLVR, answer-verifiable data, and executable reasoning tasks",
+      "subfields": [
+        {
+          "name": "📐 Math answer-verifiable data",
+          "focus": "math problems, final answers, solution traces, and answer checkers",
+          "key_risk": "answer extraction and normalization inflate scores",
+          "keywords": [
+            "gsm8k",
+            "math",
+            "numina",
+            "deepmath",
+            "openmath",
+            "math reasoning"
+          ]
+        },
+        {
+          "name": "🧮 Math RLVR datasets",
+          "focus": "math records used for rejection sampling, SFT, PRMs, and RLVR",
+          "key_risk": "data reuse and contamination are not reported",
+          "keywords": [
+            "rlvr",
+            "deepseekmath",
+            "openr1",
+            "big-math",
+            "math-prm"
+          ]
+        },
+        {
+          "name": "💻 Code execution / unit-test data",
+          "focus": "code problems, unit tests, generated tests, execution logs, and repair tasks",
+          "key_risk": "flaky or leaked tests become the reward",
+          "keywords": [
+            "humaneval",
+            "mbpp",
+            "apps",
+            "livecodebench",
+            "code",
+            "unit test"
+          ]
+        },
+        {
+          "name": "🧾 Formal proof / Lean / theorem proving",
+          "focus": "Lean, proof scripts, tactic environments, theorem statements, and proof checkers",
+          "key_risk": "proof succeeds only under an undocumented environment",
+          "keywords": [
+            "lean",
+            "proof",
+            "prover",
+            "theorem",
+            "minif2f",
+            "leandojo"
+          ]
+        },
+        {
+          "name": "🧪 Verifier robustness and answer extraction",
+          "focus": "false positives, false negatives, checker brittleness, and adversarial formats",
+          "key_risk": "model learns verifier quirks instead of task skill",
+          "keywords": [
+            "verifier",
+            "answer extraction",
+            "robustness",
+            "symbolic",
+            "checker"
+          ]
+        },
+        {
+          "name": "🧰 Programmatic benchmarks",
+          "focus": "evaluation sets whose scoring can become a post-training signal",
+          "key_risk": "benchmark scoring is treated as a reusable training verifier without audit",
+          "keywords": [
+            "benchmark",
+            "evaluation",
+            "scicode",
+            "gpqa",
+            "frontiermath"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "process_supervision_prm",
+      "short_title": "Process Supervision & PRMs",
+      "navigator_title": "🪜 Process Supervision & PRMs",
+      "best_for": "step-level rewards, PRM research, and verifier-model design",
+      "subfields": [
+        {
+          "name": "🪜 Human step-level labels",
+          "focus": "human-labeled intermediate steps and first-error annotations",
+          "key_risk": "step boundaries and label policy are ambiguous",
+          "keywords": [
+            "human step",
+            "human",
+            "label",
+            "first-error",
+            "prm800k"
+          ]
+        },
+        {
+          "name": "🧪 Process reward models",
+          "focus": "PRMs, process verifiers, calibration, and reward-model training",
+          "key_risk": "process reward rises while final correctness does not",
+          "keywords": [
+            "prm",
+            "process reward",
+            "process verifier",
+            "reward model"
+          ]
+        },
+        {
+          "name": "🔁 Rollout-value supervision",
+          "focus": "rollout values, search-derived labels, and automated progress signals",
+          "key_risk": "rollout policy leaks solver strength into labels",
+          "keywords": [
+            "rollout",
+            "value",
+            "math-shepherd",
+            "math-shepherd",
+            "rewarding progress"
+          ]
+        },
+        {
+          "name": "🛠️ Automatic process supervision",
+          "focus": "programmatic or model-generated process labels without dense human annotation",
+          "key_risk": "automatic labels silently inherit verifier bias",
+          "keywords": [
+            "automatic",
+            "automated process",
+            "implicit rewards",
+            "prime",
+            "prof"
+          ]
+        },
+        {
+          "name": "❌ First-error localization",
+          "focus": "where a solution first becomes invalid and how that signal is used",
+          "key_risk": "localized errors are not causally linked to final correction",
+          "keywords": [
+            "first error",
+            "localization",
+            "error",
+            "step-dpo"
+          ]
+        },
+        {
+          "name": "📊 PRM benchmarks and evaluation",
+          "focus": "ProcessBench, PRMBench, Qwen PRM, and evaluation surfaces for process rewards",
+          "key_risk": "PRM benchmark success does not transfer to training-time use",
+          "keywords": [
+            "processbench",
+            "prmbench",
+            "prmbench",
+            "qwen",
+            "benchmark"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "environmental_agents_tools_web_swe",
+      "short_title": "Agent & Environment Data",
+      "navigator_title": "🌐 Agent & Environment Data",
+      "best_for": "tool, web, OS, app, and repository-level trajectory data",
+      "subfields": [
+        {
+          "name": "🛠️ Tool-use data",
+          "focus": "tool calls, function signatures, API banks, and tool-use traces",
+          "key_risk": "tool schemas change or hide execution failures",
+          "keywords": [
+            "tool",
+            "api",
+            "function",
+            "gorilla",
+            "toolformer",
+            "toolllm"
+          ]
+        },
+        {
+          "name": "🌍 Web/browser agents",
+          "focus": "web tasks, browser state, navigation traces, and page observations",
+          "key_risk": "web state is not replayable after collection",
+          "keywords": [
+            "web",
+            "browser",
+            "webarena",
+            "mind2web",
+            "weblinx",
+            "browsergym"
+          ]
+        },
+        {
+          "name": "📱 App/mobile agents",
+          "focus": "mobile apps, app-world tasks, UI actions, and user simulators",
+          "key_risk": "UI state and app versions are not pinned",
+          "keywords": [
+            "app",
+            "android",
+            "mobile",
+            "appworld"
+          ]
+        },
+        {
+          "name": "🖥️ OS/desktop agents",
+          "focus": "desktop/OS tasks, filesystem state, shell actions, and multi-app workflows",
+          "key_risk": "hidden environment state makes episodes non-reproducible",
+          "keywords": [
+            "osworld",
+            "desktop",
+            "computer",
+            "workarena"
+          ]
+        },
+        {
+          "name": "🧑‍💻 SWE/repository agents",
+          "focus": "GitHub issues, code patches, tests, commits, and repository repair episodes",
+          "key_risk": "repository commit, tests, and scaffold are not pinned",
+          "keywords": [
+            "swe",
+            "repository",
+            "software",
+            "swe-bench",
+            "r2e",
+            "terminal-bench"
+          ]
+        },
+        {
+          "name": "🔁 Replayable trajectory data",
+          "focus": "state-action-observation schemas, terminal predicates, and failure traces",
+          "key_risk": "success transcript cannot be replayed or audited",
+          "keywords": [
+            "trajectory",
+            "state",
+            "action",
+            "observation",
+            "terminal",
+            "replay"
+          ]
+        },
+        {
+          "name": "🧰 Agent benchmarks and terminal predicates",
+          "focus": "agent evaluation suites, task resets, terminal predicates, and success/failure labels",
+          "key_risk": "benchmark score is reported without a replayable terminal predicate",
+          "keywords": [
+            "agent benchmark",
+            "terminal predicate",
+            "terminal",
+            "benchmark",
+            "swe-bench",
+            "webarena",
+            "osworld",
+            "appworld",
+            "terminal-bench"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "judgment_required_rubrics_safety_domain",
+      "short_title": "Judgment-Required Data",
+      "navigator_title": "⚖️ Judgment-Required Data",
+      "best_for": "rubrics, LLM judges, high-stakes domains, and expert evaluation",
+      "subfields": [
+        {
+          "name": "⚖️ LLM-as-judge data",
+          "focus": "model judges, preference judgments, judge prompts, and evaluator models",
+          "key_risk": "judge is sensitive to style, position, or prompt attacks",
+          "keywords": [
+            "judge",
+            "llm-as-judge",
+            "mt-bench",
+            "arena",
+            "prometheus"
+          ]
+        },
+        {
+          "name": "🧑‍⚖️ Human/expert judgment",
+          "focus": "human labels, expert adjudication, disagreement handling, and rubric design",
+          "key_risk": "expertise and adjudication policy are not disclosed",
+          "keywords": [
+            "human",
+            "expert",
+            "adjudication",
+            "rubric"
+          ]
+        },
+        {
+          "name": "🩺 Medical reasoning / health rubrics",
+          "focus": "health, biomedical, scientific, and evidence-grounded reasoning tasks",
+          "key_risk": "rubrics are not calibrated for high-stakes error",
+          "keywords": [
+            "medical",
+            "health",
+            "biomedical",
+            "science",
+            "gpqa",
+            "chem"
+          ]
+        },
+        {
+          "name": "🛡️ Safety reasoning data",
+          "focus": "safety reasoning, refusals, jailbreaks, harmfulness, and guardrail data",
+          "key_risk": "safe-looking refusals replace correct domain reasoning",
+          "keywords": [
+            "safety",
+            "harm",
+            "refusal",
+            "guard",
+            "wildguard",
+            "aegis"
+          ]
+        },
+        {
+          "name": "🧾 Factuality / grounding",
+          "focus": "claims, citations, retrieval grounding, fact checking, and evidence quality",
+          "key_risk": "citation style masks unsupported claims",
+          "keywords": [
+            "factuality",
+            "fact",
+            "citation",
+            "retrieval",
+            "grounding",
+            "qasper"
+          ]
+        },
+        {
+          "name": "⚖️ Legal reasoning",
+          "focus": "legal QA, statutes, case reasoning, contracts, and expert legal rubrics",
+          "key_risk": "legal splits leak templates, memorized cases, or jurisdiction-specific assumptions",
+          "keywords": [
+            "legal",
+            "law",
+            "contract",
+            "casehold",
+            "statute",
+            "case"
+          ]
+        },
+        {
+          "name": "🏦 Financial reasoning",
+          "focus": "financial QA, tabular/text numerical reasoning, filings, and analyst-style judgments",
+          "key_risk": "financial splits leak templates, reports, or memorized company facts",
+          "keywords": [
+            "finance",
+            "financial",
+            "finqa",
+            "tat-qa",
+            "financebench",
+            "filing",
+            "table"
+          ]
+        },
+        {
+          "name": "🧪 Rubric reward models",
+          "focus": "rubrics as trainable rewards and domain-conditioned reward models",
+          "key_risk": "rubric scores are optimized without semantic robustness",
+          "keywords": [
+            "rubric",
+            "reward",
+            "rewardbench",
+            "rewardbench",
+            "healthbench",
+            "rubrics as rewards"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "construction_recipes_open_reasoning_data",
+      "short_title": "Construction Recipes",
+      "navigator_title": "🏗️ Construction Recipes",
+      "best_for": "building, filtering, releasing, and reproducing reasoning datasets",
+      "subfields": [
+        {
+          "name": "🧱 Prompt sourcing",
+          "focus": "question pools, seed sources, licenses, difficulty, and base-model pass rates",
+          "key_risk": "prompt sources are mixed without attribution or deduplication",
+          "keywords": [
+            "prompt",
+            "source",
+            "seed",
+            "question",
+            "dataset"
+          ]
+        },
+        {
+          "name": "✍️ Teacher trace generation",
+          "focus": "teacher models, trace policies, sampling settings, and distillation targets",
+          "key_risk": "teacher identity or sampling protocol is hidden",
+          "keywords": [
+            "teacher",
+            "trace",
+            "distill",
+            "solution",
+            "rationale"
+          ]
+        },
+        {
+          "name": "🔎 Rejection sampling / search-generated data",
+          "focus": "candidate generation, search budget, filtering, and accepted/rejected examples",
+          "key_risk": "only accepted traces are released, hiding verifier behavior",
+          "keywords": [
+            "rejection",
+            "sampling",
+            "search",
+            "candidate",
+            "filter"
+          ]
+        },
+        {
+          "name": "🔁 Self-play / self-improvement",
+          "focus": "self-improvement, co-evolution, generator-verifier cycles, and curricula",
+          "key_risk": "feedback loop amplifies hidden biases or shortcuts",
+          "keywords": [
+            "self-play",
+            "self-improvement",
+            "co-evolution",
+            "generator",
+            "verifier"
+          ]
+        },
+        {
+          "name": "🧪 Filtering and verifier refresh",
+          "focus": "answer filters, judge filters, decontamination, and verifier updates",
+          "key_risk": "filter thresholds become undocumented training objectives",
+          "keywords": [
+            "filtering",
+            "verifier",
+            "decontamination",
+            "dedup",
+            "refresh"
+          ]
+        },
+        {
+          "name": "🏗️ Open reasoning data releases",
+          "focus": "open datasets, code, HF releases, recipes, ablations, and reproducibility",
+          "key_risk": "headline dataset is open but recipe details are not",
+          "keywords": [
+            "openthoughts",
+            "openmath",
+            "openr1",
+            "open reasoning",
+            "release"
+          ]
+        },
+        {
+          "name": "🧬 Data lineage and release metadata",
+          "focus": "datasheets, splits, lineage, licensing, versioning, and known failure modes",
+          "key_risk": "downstream reuse loses the release context",
+          "keywords": [
+            "lineage",
+            "metadata",
+            "license",
+            "datasheet",
+            "datasheets",
+            "datasheets",
+            "data statements",
+            "data statements",
+            "split"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "frontier_model_reports",
+      "short_title": "Frontier Reports",
+      "navigator_title": "🚀 Frontier Reports",
+      "best_for": "reading model reports as partial data disclosures",
+      "subfields": [
+        {
+          "name": "🚀 DeepSeek-R1 family",
+          "focus": "RLVR, distillation, reasoning traces, and public recipe disclosure",
+          "key_risk": "public report describes outcomes but not enough data partitions",
+          "keywords": [
+            "deepseek-r1",
+            "deepseek",
+            "r1",
+            "distill"
+          ]
+        },
+        {
+          "name": "🌙 Kimi reasoning reports",
+          "focus": "long-context reasoning, RL compute, and frontier inference budgets",
+          "key_risk": "test-time compute is mixed with training-data effects",
+          "keywords": [
+            "kimi",
+            "k1.5",
+            "k2",
+            "moonshot"
+          ]
+        },
+        {
+          "name": "🐉 Qwen reasoning/math/code reports",
+          "focus": "math, code, PRM, and open-weight reasoning model families",
+          "key_risk": "release cards do not separate SFT, RLVR, and evaluation data",
+          "keywords": [
+            "qwen",
+            "qwen2.5",
+            "qwen3"
+          ]
+        },
+        {
+          "name": "🧠 Magistral / Phi / Nemotron style reports",
+          "focus": "open-weight reasoning reports with partial data and reward disclosures",
+          "key_risk": "model-card claims cannot be mapped to concrete data objects",
+          "keywords": [
+            "magistral",
+            "phi",
+            "nemotron",
+            "minimax",
+            "llama"
+          ]
+        },
+        {
+          "name": "🧪 RLVR recipe reports",
+          "focus": "reports that expose reward contracts, rollout policies, or RL scaffolds",
+          "key_risk": "RL gains are attributed without verifier coverage",
+          "keywords": [
+            "rlvr",
+            "reinforcement",
+            "reward",
+            "verifier",
+            "dapo"
+          ]
+        },
+        {
+          "name": "🧬 What is disclosed vs hidden",
+          "focus": "how reports reveal or hide data sources, filters, lineage, and safety mixtures",
+          "key_risk": "opaque mixtures are reused as if they were open recipes",
+          "keywords": [
+            "technical report",
+            "data",
+            "mixture",
+            "disclosed",
+            "hidden"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "scaling_test_time_compute_rlvr",
+      "short_title": "Scaling & Test-Time Compute",
+      "navigator_title": "📈 Scaling & Test-Time Compute",
+      "best_for": "interpreting RLVR, data scaling, and inference-budget claims",
+      "subfields": [
+        {
+          "name": "📈 Data scaling",
+          "focus": "how number, diversity, and difficulty of examples affect reasoning performance",
+          "key_risk": "unique examples and repeated rollouts are conflated",
+          "keywords": [
+            "data scaling",
+            "large-scale",
+            "distillation scaling",
+            "data scale"
+          ]
+        },
+        {
+          "name": "🔁 Data reuse and uniqueness",
+          "focus": "reuse counts, deduplication, repeated prompts, and train/test overlap",
+          "key_risk": "same source examples are counted as fresh supervision",
+          "keywords": [
+            "reuse",
+            "dedup",
+            "unique",
+            "memorize",
+            "generalizes",
+            "train-test overlap",
+            "overlap"
+          ]
+        },
+        {
+          "name": "⏱️ Test-time compute",
+          "focus": "sampling, search, self-critique, thinking budgets, and inference-time scaling",
+          "key_risk": "performance is compared under different inference budgets",
+          "keywords": [
+            "test-time",
+            "inference",
+            "compute",
+            "s1",
+            "self-critique"
+          ]
+        },
+        {
+          "name": "🎲 pass@k / sampling budget",
+          "focus": "pass@k, pass@(k,T), repeated sampling, and budget-aware evaluation",
+          "key_risk": "reported gains hide selection or budget changes",
+          "keywords": [
+            "pass@",
+            "pass k",
+            "sampling",
+            "budget",
+            "large language monkeys",
+            "large language monkeys",
+            "repeated sampling",
+            "repeated sampling"
+          ]
+        },
+        {
+          "name": "🧪 Verifier scaling",
+          "focus": "how verifier strength, refresh, and coverage scale with training",
+          "key_risk": "the verifier becomes stale or easy to exploit",
+          "keywords": [
+            "verifier",
+            "reward",
+            "refresh",
+            "coverage"
+          ]
+        },
+        {
+          "name": "🏋️ RLVR optimization scaling",
+          "focus": "policy optimization, reward contracts, curriculum, and rollout policy",
+          "key_risk": "optimizer/scaffold improvements are mistaken for data improvements",
+          "keywords": [
+            "rlvr",
+            "reinforcement",
+            "dapo",
+            "deepscaler",
+            "open-reasoner"
+          ]
+        },
+        {
+          "name": "🔍 Scaling attribution",
+          "focus": "separating data, verifier, optimizer, model, and inference-budget effects",
+          "key_risk": "ablation tables do not isolate the source of improvement",
+          "keywords": [
+            "attribution",
+            "ablation",
+            "claim",
+            "sober",
+            "invisible leash",
+            "invisible leash",
+            "origin"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "audit_failure_contamination_verifier_attacks",
+      "short_title": "Audit & Failure Modes",
+      "navigator_title": "🧯 Audit & Failure Modes",
+      "best_for": "auditing leakage, contamination, verifier gaming, and judge attacks",
+      "subfields": [
+        {
+          "name": "🧯 Benchmark contamination",
+          "focus": "train/test overlap, stale evaluations, and benchmark refresh",
+          "key_risk": "memorized items are reported as reasoning progress",
+          "keywords": [
+            "contamination",
+            "benchmark",
+            "livebench",
+            "lastingbench"
+          ]
+        },
+        {
+          "name": "🔍 Search-time contamination",
+          "focus": "contamination introduced by search, tools, retrieval, or inference scaffolds",
+          "key_risk": "test-time tool access leaks answer traces",
+          "keywords": [
+            "search-time",
+            "retrieval",
+            "tool",
+            "contamination"
+          ]
+        },
+        {
+          "name": "🧬 Hidden lineage / teacher leakage",
+          "focus": "teacher-model traces, synthetic data inheritance, and hidden trait transfer",
+          "key_risk": "student behavior inherits undisclosed teacher artifacts",
+          "keywords": [
+            "lineage",
+            "teacher",
+            "subliminal",
+            "leaky",
+            "hidden"
+          ]
+        },
+        {
+          "name": "🎮 Reward hacking",
+          "focus": "ways reward models, tests, or judges can be optimized as shortcuts",
+          "key_risk": "reward rises while real task quality falls",
+          "keywords": [
+            "reward hacking",
+            "spurious",
+            "gaming",
+            "overoptimization"
+          ]
+        },
+        {
+          "name": "🧪 Verifier gaming",
+          "focus": "models exploiting checkers, answer formats, or judge blind spots",
+          "key_risk": "verifier-passing examples are semantically wrong",
+          "keywords": [
+            "verifier",
+            "gaming",
+            "imperfect",
+            "attack",
+            "robustness"
+          ]
+        },
+        {
+          "name": "⚖️ LLM-as-judge attacks",
+          "focus": "one-token attacks, position bias, verbosity bias, and prompt attacks",
+          "key_risk": "judge score changes for non-semantic reasons",
+          "keywords": [
+            "judge",
+            "one token",
+            "attack",
+            "bias",
+            "llm-as-a-judge"
+          ]
+        },
+        {
+          "name": "🧨 Spurious rewards",
+          "focus": "shortcut rewards, memorization-triggered rewards, and reward signals that correlate with the wrong behavior",
+          "key_risk": "the reward signal improves while the model learns a shortcut rather than reasoning",
+          "keywords": [
+            "spurious",
+            "spurious reward",
+            "spurious rewards",
+            "shortcut",
+            "memorization shortcut",
+            "reward paradox"
+          ]
+        },
+        {
+          "name": "📉 Reproducibility failures",
+          "focus": "decoding, evaluation, scaffold, and data reporting failures",
+          "key_risk": "reported gains disappear under controlled reruns",
+          "keywords": [
+            "reproducibility",
+            "sober",
+            "decoding",
+            "evaluation"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "benchmarks_evaluation",
+      "short_title": "Benchmarks & Evaluation",
+      "navigator_title": "🧰 Benchmarks & Evaluation",
+      "best_for": "choosing evaluation surfaces and reusable feedback contracts",
+      "subfields": [
+        {
+          "name": "📐 Math benchmarks",
+          "focus": "math problem sets, answer extraction, verifier compatibility, and difficulty",
+          "key_risk": "short-answer normalization hides reasoning errors",
+          "keywords": [
+            "math",
+            "gsm8k",
+            "frontiermath",
+            "math-perturb"
+          ]
+        },
+        {
+          "name": "💻 Code benchmarks",
+          "focus": "coding tasks, generated tests, hidden tests, repair tasks, and live coding",
+          "key_risk": "unit tests are brittle, leaked, or too narrow",
+          "keywords": [
+            "code",
+            "humaneval",
+            "apps",
+            "livecodebench",
+            "bigcodebench"
+          ]
+        },
+        {
+          "name": "🧾 Proof benchmarks",
+          "focus": "formal proof datasets, proof assistants, theorem statements, and checking",
+          "key_risk": "proof checker version and imports are not pinned",
+          "keywords": [
+            "proof",
+            "theorem",
+            "minif2f",
+            "proofnet",
+            "holist"
+          ]
+        },
+        {
+          "name": "🌐 Agent benchmarks",
+          "focus": "web, tool, OS, app, and SWE environments with terminal predicates",
+          "key_risk": "benchmark episodes cannot be replayed",
+          "keywords": [
+            "agent",
+            "web",
+            "swe",
+            "os",
+            "tool",
+            "app"
+          ]
+        },
+        {
+          "name": "⚖️ Rubric/domain benchmarks",
+          "focus": "medical, safety, legal, finance, science, factuality, and expert rubrics",
+          "key_risk": "rubric or judge expertise is insufficiently disclosed",
+          "keywords": [
+            "medical",
+            "safety",
+            "legal",
+            "finance",
+            "factuality",
+            "abstention",
+            "uncertainty",
+            "science",
+            "healthbench",
+            "gpqa"
+          ]
+        },
+        {
+          "name": "🧪 Reward-model benchmarks",
+          "focus": "reward model, LLM-judge, PRM, and rubric evaluation suites",
+          "key_risk": "benchmark reward preference does not reflect downstream training value",
+          "keywords": [
+            "rewardbench",
+            "rewardbench",
+            "prmbench",
+            "prmbench",
+            "processbench",
+            "judge"
+          ]
+        },
+        {
+          "name": "🧯 Live / contamination-resistant benchmarks",
+          "focus": "live, refreshed, hidden, or contamination-aware evaluation",
+          "key_risk": "static benchmark becomes a training target",
+          "keywords": [
+            "live",
+            "contamination",
+            "fresh",
+            "hidden",
+            "lasting"
+          ]
+        }
+      ]
+    }
+  ],
   "starter_packs": [
     {
       "id": "beginner_20",
@@ -15658,8 +18751,10 @@ window.ATLAS_DATA = {
               "data_documentation"
             ],
             "category": [
-              "surveys_and_primers"
+              "surveys_and_primers",
+              "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "📦 Data documentation / datasheets",
             "tags": [
               "seeded-from-bib",
               "dataset-documentation",
@@ -15668,8 +18763,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.",
             "why_it_matters": "It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/1803.09010",
               "venue": null,
@@ -15716,8 +18815,10 @@ window.ATLAS_DATA = {
               "nlp"
             ],
             "category": [
-              "surveys_and_primers"
+              "surveys_and_primers",
+              "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "📦 Data documentation / datasheets",
             "tags": [
               "seeded-from-bib",
               "dataset-documentation",
@@ -15726,8 +18827,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context, and intended deployment boundaries.",
             "why_it_matters": "Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://aclanthology.org/Q18-1041/",
               "venue": null,
@@ -15780,14 +18885,19 @@ window.ATLAS_DATA = {
             "category": [
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🤝 Human preference data / RLHF",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "InstructGPT establishes the demonstration, preference-comparison, reward-model, and PPO pipeline that many later post-training recipes inherit.",
             "why_it_matters": "It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models.",
+            "data_object": "pairwise preference; scalar reward",
+            "feedback_verifier": "judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2203.02155",
               "venue": null,
@@ -15836,14 +18946,19 @@ window.ATLAS_DATA = {
             "category": [
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🧠 Chain-of-thought / rationale data",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large language models.",
             "why_it_matters": "It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.",
+            "data_object": "answer level",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2201.11903",
               "venue": null,
@@ -15896,6 +19011,7 @@ window.ATLAS_DATA = {
             "category": [
               "process_supervision_prm"
             ],
+            "subfield": "🧪 Process reward models",
             "tags": [
               "seeded-from-bib",
               "gsm8k",
@@ -15905,8 +19021,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.",
             "why_it_matters": "It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.",
+            "data_object": "answer level; scalar reward",
+            "feedback_verifier": "programmatic, judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2110.14168",
               "venue": null,
@@ -15957,14 +19077,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🧪 Filtering and verifier refresh",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
             "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2203.14465",
               "venue": null,
@@ -16014,14 +19139,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.",
             "why_it_matters": "It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2212.10560",
               "venue": null,
@@ -16070,14 +19200,19 @@ window.ATLAS_DATA = {
             "category": [
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "⚖️ DPO / preference optimization",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.",
             "why_it_matters": "It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization.",
+            "data_object": "pairwise preference",
+            "feedback_verifier": "judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2305.18290",
               "venue": null,
@@ -16132,14 +19267,19 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "benchmarks_evaluation"
             ],
+            "subfield": "🪜 Human step-level labels",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
             "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
+            "data_object": "step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces",
+            "feedback_verifier": "process reward model trained from step labels",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2305.20050",
               "venue": null,
@@ -16193,6 +19333,7 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "benchmarks_evaluation"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [
               "gsm8k",
               "math",
@@ -16201,8 +19342,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Canonical grade-school math benchmark with natural-language word problems, worked solutions, and final numeric answers.",
             "why_it_matters": "It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training.",
+            "data_object": "natural-language solution with final numeric answer; process: question, solution, final answer; offline math benchmark",
+            "feedback_verifier": "answer extraction and arithmetic correctness checks",
+            "audit_focus": "answer extraction errors, contamination through benchmark reuse",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2110.14168",
               "venue": null,
@@ -16253,6 +19398,7 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "benchmarks_evaluation"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [
               "seeded-from-bib",
               "math",
@@ -16261,8 +19407,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Introduces MATH, a competition-style math benchmark with challenging problems, subject categories, and step-by-step solutions.",
             "why_it_matters": "MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2103.03874",
               "venue": null,
@@ -16314,6 +19464,7 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "benchmarks_evaluation"
             ],
+            "subfield": "💻 Code execution / unit-test data",
             "tags": [
               "humaneval",
               "code",
@@ -16322,8 +19473,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
             "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.",
+            "data_object": "Python function completion; process: prompt, canonical solution, unit tests; Python execution harness",
+            "feedback_verifier": "unit tests",
+            "audit_focus": "public benchmark contamination, unit-test coverage gaps",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2107.03374",
               "venue": null,
@@ -16377,6 +19532,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧑‍💻 SWE/repository agents",
             "tags": [
               "seeded-from-bib",
               "swe-bench",
@@ -16386,8 +19542,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
             "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2310.06770",
               "venue": null,
@@ -16443,6 +19603,7 @@ window.ATLAS_DATA = {
               "judgment_required_rubrics_safety_domain",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧪 Rubric reward models",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -16450,8 +19611,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
             "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.",
+            "data_object": "pairwise or scalar reward decisions; process: prompt, chosen/rejected response, reward model score; offline preference benchmark",
+            "feedback_verifier": "reward model or judge",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2403.13787",
               "venue": null,
@@ -16507,14 +19672,19 @@ window.ATLAS_DATA = {
               "benchmarks_evaluation",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧪 Rubric reward models",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.",
             "why_it_matters": "It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.",
+            "data_object": "response with rubric/judge evaluation; process: prompt, response, rubric dimension; offline health evaluation benchmark",
+            "feedback_verifier": "rubric-guided expert/LLM judgment",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2505.08775",
               "venue": null,
@@ -16570,6 +19740,7 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib",
               "livebench",
@@ -16579,8 +19750,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
             "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic, mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2406.19314",
               "venue": null,
@@ -16633,14 +19808,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "frontier_model_reports"
             ],
+            "subfield": "🏗️ Open reasoning data releases",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
             "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.",
+            "data_object": "reasoning traces and final answers; process: question, reasoning trace, answer; offline reasoning corpus",
+            "feedback_verifier": "filters, benchmark feedback, and recipe ablations",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.04178",
               "venue": null,
@@ -16695,11 +19875,16 @@ window.ATLAS_DATA = {
               "frontier_model_reports",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.",
             "why_it_matters": "It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.12948",
               "venue": null,
@@ -16750,11 +19935,16 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [],
             "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
             "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.19393",
               "venue": null,
@@ -16802,13 +19992,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding, seeds, prompt format, and environment details.",
             "why_it_matters": "It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.07086",
               "venue": null,
@@ -16869,14 +20064,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "frontier_model_reports"
             ],
+            "subfield": "🏗️ Open reasoning data releases",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
             "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.",
+            "data_object": "reasoning traces and final answers; process: question, reasoning trace, answer; offline reasoning corpus",
+            "feedback_verifier": "filters, benchmark feedback, and recipe ablations",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.04178",
               "venue": null,
@@ -16929,11 +20129,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
             "one_line_summary": "Large-scale math reasoning trace release for programmatic verification.",
             "why_it_matters": "Large-scale math reasoning trace release for programmatic verification.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.16891",
               "venue": null,
@@ -16989,11 +20194,16 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "Math release highlighted for verifier pinning and decontamination.",
             "why_it_matters": "Math release highlighted for verifier pinning and decontamination.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.11456",
               "venue": null,
@@ -17047,14 +20257,19 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧮 Math RLVR datasets",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
             "why_it_matters": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
+            "data_object": "math problem, answer, and verification signal; process: problem, answer, verification label; offline math verifier substrate",
+            "feedback_verifier": "answer-level math verifier",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2502.17387",
               "venue": null,
@@ -17109,6 +20324,7 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "benchmarks_evaluation"
             ],
+            "subfield": "Other related work",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -17116,8 +20332,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.",
             "why_it_matters": "Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.",
+            "data_object": "question with reference answer or reasoning target; process: question, reference answer, domain label; offline natural-language tasks",
+            "feedback_verifier": "reference answers, reward models, or self-rewarding depending on split",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2502.13124",
               "venue": null,
@@ -17167,11 +20387,16 @@ window.ATLAS_DATA = {
             "category": [
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "Small-set curation reference distinguishing elicitation from broad coverage.",
             "why_it_matters": "Small-set curation reference distinguishing elicitation from broad coverage.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2502.03387",
               "venue": null,
@@ -17222,11 +20447,16 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [],
             "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
             "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.19393",
               "venue": null,
@@ -17277,11 +20507,16 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
             "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
             "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2503.14476",
               "venue": null,
@@ -17328,13 +20563,18 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -17382,13 +20622,18 @@ window.ATLAS_DATA = {
               "frontier_model_reports",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -17434,13 +20679,18 @@ window.ATLAS_DATA = {
             "category": [
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2508.05004",
               "venue": null,
@@ -17493,6 +20743,7 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "programmatic_math_code_proof"
             ],
+            "subfield": "🔁 Self-play / self-improvement",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -17500,8 +20751,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop.",
             "why_it_matters": "Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop.",
+            "data_object": "generated task, solution, and verified answer; process: proposed task, solution, verifier result; code executor / verifiable task substrate",
+            "feedback_verifier": "executor-backed verifiable reward",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2505.03335",
               "venue": null,
@@ -17556,6 +20811,7 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "⏱️ Test-time compute",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -17563,8 +20819,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.",
             "why_it_matters": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.",
+            "data_object": "candidate response with reward/adaptation signal; process: unlabeled input, rollout, reward signal; test-time task distribution",
+            "feedback_verifier": "task-specific or learned reward used during adaptation",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.16084",
               "venue": null,
@@ -17615,14 +20875,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🧪 Filtering and verifier refresh",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
             "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2203.14465",
               "venue": null,
@@ -17672,14 +20937,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.",
             "why_it_matters": "It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2212.10560",
               "venue": null,
@@ -17739,10 +21009,10 @@ window.ATLAS_DATA = {
               "synthetic-data"
             ],
             "category": [
-              "construction_recipes_open_reasoning_data",
               "frontier_model_reports",
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🧬 What is disclosed vs hidden",
             "tags": [
               "distillation",
               "explanation-traces",
@@ -17751,8 +21021,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation of final answers.",
             "why_it_matters": "It is an early and influential reasoning-distillation recipe: the reusable object is teacher-assisted explanation data plus careful evaluation against style-only imitation.",
+            "data_object": "instruction response with detailed explanation, intermediate reasoning, and final answer.; process: prompt source, teacher identity, explanation trace, task type, response, evaluation benchmark.; offline synthetic-data distillation and evaluation pipeline.",
+            "feedback_verifier": "downstream reasoning, exam, and benchmark evaluation rather than a single automatic verifier.",
+            "audit_focus": "Students can learn teacher style without robust reasoning., Synthetic traces can include teacher errors., Closed teacher data makes lineage hard to audit.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2306.02707",
               "venue": null,
@@ -17799,13 +21073,18 @@ window.ATLAS_DATA = {
               "surveys_and_primers",
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2405.03548",
               "venue": null,
@@ -17852,13 +21131,18 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🧪 Verifier robustness and answer extraction",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -17906,13 +21190,18 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🧱 Instruction tuning / SFT data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -17959,13 +21248,18 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "💻 Code execution / unit-test data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -18019,6 +21313,7 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧮 Math RLVR datasets",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -18026,8 +21321,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.",
             "why_it_matters": "Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.",
+            "data_object": "question-solution-test triplet; process: problem, solution, unit tests; code execution and unit-test substrate",
+            "feedback_verifier": "test-based self-verification",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2503.02951",
               "venue": null,
@@ -18084,11 +21383,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧰 Programmatic benchmarks",
             "tags": [],
             "one_line_summary": "Repository-scale training environment showing substrate as data.",
             "why_it_matters": "Repository-scale training environment showing substrate as data.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2412.21139",
               "venue": null,
@@ -18142,11 +21446,16 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧰 Programmatic benchmarks",
             "tags": [],
             "one_line_summary": "Verifiable SWE environment for reasoning-to-edit tasks.",
             "why_it_matters": "Verifiable SWE environment for reasoning-to-edit tasks.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.07164",
               "venue": null,
@@ -18203,6 +21512,7 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -18210,8 +21520,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.",
             "why_it_matters": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.",
+            "data_object": "tool-call trajectory plus final response; process: API call, arguments, tool response; real-world API/tool catalog",
+            "feedback_verifier": "tool response validity and task success checks",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2307.16789",
               "venue": null,
@@ -18257,13 +21571,18 @@ window.ATLAS_DATA = {
             "category": [
               "environmental_agents_tools_web_swe"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -18335,6 +21654,7 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "frontier_model_reports"
             ],
+            "subfield": "🧮 Math RLVR datasets",
             "tags": [
               "math",
               "rlvr",
@@ -18343,8 +21663,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.",
             "why_it_matters": "It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.",
+            "data_object": "natural-language mathematical solution plus final answer, sometimes sampled multiple times.; process: data-selection score, training stage, problem, solution, final answer, verifier/evaluation result, sampling count.; offline math training and benchmark evaluation pipeline.",
+            "feedback_verifier": "answer correctness and GRPO-style reward over math tasks.",
+            "audit_focus": "Self-consistency can hide weak single-sample accuracy., Web-data mining may import benchmark leakage., Final-answer rewards can miss flawed derivations.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2402.03300",
               "venue": null,
@@ -18412,6 +21736,7 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "frontier_model_reports"
             ],
+            "subfield": "🧾 Formal proof / Lean / theorem proving",
             "tags": [
               "formal-math",
               "lean",
@@ -18420,8 +21745,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal proof model.",
             "why_it_matters": "It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object.",
+            "data_object": "Lean 4 theorem statement and proof script checked by Lean.; process: informal problem, formal statement, generated proof, Lean result, benchmark split.; Lean 4 proof assistant and formal theorem-proving benchmark harness.",
+            "feedback_verifier": "Lean kernel/checker acceptance.",
+            "audit_focus": "Formal statements can be wrong even if proofs verify., Pass@k hides low single-shot reliability., Lean/mathlib version drift can break reproducibility.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2405.14333",
               "venue": null,
@@ -18468,13 +21797,18 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🪜 Human step-level labels",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2603.17775",
               "venue": null,
@@ -18520,13 +21854,18 @@ window.ATLAS_DATA = {
             "category": [
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🔁 Self-play / self-improvement",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -18579,14 +21918,18 @@ window.ATLAS_DATA = {
             ],
             "category": [
               "construction_recipes_open_reasoning_data",
-              "audit_failure_contamination_verifier_attacks",
-              "benchmarks_evaluation"
+              "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "✍️ Teacher trace generation",
             "tags": [],
             "one_line_summary": "Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.",
             "why_it_matters": "It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.",
+            "data_object": "generated data plus downstream behavioral evaluation of the student.; process: teacher identity, student base model, visible filtering policy, hidden trait evaluation.; distillation and synthetic-data training pipeline.",
+            "feedback_verifier": "trait probes after student training.",
+            "audit_focus": "Data may look safe while carrying hidden traits., Lineage effects can be invisible from sample inspection., Distillation chains can propagate behavior across model generations.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.14805",
               "venue": "https://www.nature.com/articles/s41586-026-10319-8",
@@ -18647,6 +21990,7 @@ window.ATLAS_DATA = {
             "category": [
               "process_supervision_prm"
             ],
+            "subfield": "🧪 Process reward models",
             "tags": [
               "seeded-from-bib",
               "gsm8k",
@@ -18656,8 +22000,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.",
             "why_it_matters": "It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.",
+            "data_object": "answer level; scalar reward",
+            "feedback_verifier": "programmatic, judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2110.14168",
               "venue": null,
@@ -18712,14 +22060,19 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "benchmarks_evaluation"
             ],
+            "subfield": "🪜 Human step-level labels",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
             "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
+            "data_object": "step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces",
+            "feedback_verifier": "process reward model trained from step labels",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2305.20050",
               "venue": null,
@@ -18773,11 +22126,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
-            "one_line_summary": "Monte-Carlo-style process signal reference for step supervision.",
-            "why_it_matters": "Monte-Carlo-style process signal reference for step supervision.",
+            "one_line_summary": "Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.",
+            "why_it_matters": "It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer.",
+            "data_object": "step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces",
+            "feedback_verifier": "rollout-derived process reward signal",
+            "audit_focus": "rollout policy strength can leak into labels, step rewards may favor locally plausible continuations, generated solutions can inherit base-model shortcuts",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2312.08935",
               "venue": null,
@@ -18832,14 +22190,19 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🛠️ Automatic process supervision",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.",
             "why_it_matters": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.",
+            "data_object": "process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree",
+            "feedback_verifier": "automated process reward signal",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2406.06592",
               "venue": null,
@@ -18893,6 +22256,7 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "benchmarks_evaluation"
             ],
+            "subfield": "📊 PRM benchmarks and evaluation",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -18900,8 +22264,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.",
             "why_it_matters": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.",
+            "data_object": "step labels or first-error markers; process: reasoning step, error marker, diagnostic label; offline math traces",
+            "feedback_verifier": "process-error detector",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2412.06559",
               "venue": null,
@@ -18958,6 +22326,7 @@ window.ATLAS_DATA = {
               "benchmarks_evaluation",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "📊 PRM benchmarks and evaluation",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -18965,8 +22334,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.",
             "why_it_matters": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.",
+            "data_object": "step-level labels or scores; process: step, label, error type; offline reasoning traces",
+            "feedback_verifier": "process-level reward model benchmark",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.03124",
               "venue": null,
@@ -19013,13 +22386,18 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "process_supervision_prm"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -19047,48 +22425,67 @@ window.ATLAS_DATA = {
             "id": "prime-process-reinforcement-through-implicit-rewards-2025",
             "title": "PRIME: Process reinforcement through implicit rewards",
             "year": 2025,
-            "venue": "arXiv preprint",
+            "venue": "arXiv",
             "authors": [],
             "source_role": [
-              "survey_background"
+              "process_supervision",
+              "verifier_reward",
+              "construction_recipe"
             ],
             "verification_contract": [
-              "unknown"
+              "programmatic",
+              "mixed"
             ],
             "supervision_granularity": [
-              "unknown"
+              "step_level",
+              "process_reward",
+              "answer_level"
             ],
             "training_use": [
-              "unknown"
+              "rlvr",
+              "process_supervision",
+              "reward_modeling"
             ],
-            "domains": [],
+            "domains": [
+              "math",
+              "code",
+              "reasoning"
+            ],
             "category": [
-              "process_supervision_prm"
+              "process_supervision_prm",
+              "construction_recipes_open_reasoning_data",
+              "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🛠️ Automatic process supervision",
             "tags": [
-              "seeded-from-bib"
+              "seeded-from-bib",
+              "primary-link-checked"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
+            "one_line_summary": "Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.",
+            "why_it_matters": "It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.",
+            "data_object": "rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop",
+            "feedback_verifier": "implicit process rewards derived from outcome labels",
+            "audit_focus": "implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes",
+            "curation_level": "L2_artifact_verified",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2502.01456",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2502.01456",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
               "doi": null,
-              "code": null,
+              "code": "https://github.com/PRIME-RL/PRIME",
               "data": null,
               "huggingface": null,
               "project": null,
               "bibtex": null,
               "card": null
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2502.01456"
           }
         },
         {
@@ -19119,13 +22516,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "process_supervision_prm"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2509.03403",
               "venue": null,
@@ -19195,6 +22597,7 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🔁 Rollout-value supervision",
             "tags": [
               "math",
               "process-reward-models",
@@ -19203,8 +22606,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases future correctness probability.",
             "why_it_matters": "It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.",
+            "data_object": "step-level process advantage score plus final answer/correctness signal.; process: problem, partial trace before step, step, future success estimate, verifier score, final outcome.; reasoning search and online RL setup using process rewards.",
+            "feedback_verifier": "Process Advantage Verifier trained to predict progress toward correct answer.",
+            "audit_focus": "Progress estimates can be policy-specific., Verifier-guided search can exploit reward artifacts., Step rewards can encourage short-term progress that hurts final correctness.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2410.08146",
               "venue": null,
@@ -19260,6 +22667,7 @@ window.ATLAS_DATA = {
               "judgment_required_rubrics_safety_domain",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧪 Rubric reward models",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -19267,8 +22675,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
             "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.",
+            "data_object": "pairwise or scalar reward decisions; process: prompt, chosen/rejected response, reward model score; offline preference benchmark",
+            "feedback_verifier": "reward model or judge",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2403.13787",
               "venue": null,
@@ -19314,13 +22726,18 @@ window.ATLAS_DATA = {
             "category": [
               "judgment_required_rubrics_safety_domain"
             ],
+            "subfield": "🧾 Factuality / grounding",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -19390,6 +22807,7 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "benchmarks_evaluation"
             ],
+            "subfield": "⚖️ LLM-as-judge data",
             "tags": [
               "evaluation-models",
               "llm-as-judge",
@@ -19398,8 +22816,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Prometheus 2 is an open evaluator model for both direct assessment and pairwise ranking under user-defined criteria.",
             "why_it_matters": "It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes.",
+            "data_object": "rubric-conditioned scalar score, critique, or pairwise preference output.; process: instruction, candidate response, evaluation criterion, assessment format, score/ranking, reference judgment.; open evaluator model, GitHub code, ACL software/data artifacts, and HF weights.",
+            "feedback_verifier": "Prometheus 2 judge output aligned against human/proprietary-judge benchmarks.",
+            "audit_focus": "Open judges can inherit rubric bias., Agreement with another judge is not the same as correctness., Pairwise and scalar formats can disagree.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2405.01535",
               "venue": null,
@@ -19445,13 +22867,18 @@ window.ATLAS_DATA = {
             "category": [
               "judgment_required_rubrics_safety_domain"
             ],
+            "subfield": "🧪 Rubric reward models",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -19497,13 +22924,18 @@ window.ATLAS_DATA = {
             "category": [
               "judgment_required_rubrics_safety_domain"
             ],
+            "subfield": "🧾 Factuality / grounding",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -19549,13 +22981,18 @@ window.ATLAS_DATA = {
             "category": [
               "judgment_required_rubrics_safety_domain"
             ],
+            "subfield": "🧪 Rubric reward models",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2505.13388",
               "venue": null,
@@ -19602,13 +23039,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "judgment_required_rubrics_safety_domain"
             ],
+            "subfield": "🤝 Human preference data / RLHF",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2602.00846",
               "venue": null,
@@ -19655,13 +23097,18 @@ window.ATLAS_DATA = {
               "judgment_required_rubrics_safety_domain",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧑‍⚖️ Human/expert judgment",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2603.00077",
               "venue": null,
@@ -19709,13 +23156,18 @@ window.ATLAS_DATA = {
               "judgment_required_rubrics_safety_domain",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2602.01511",
               "venue": null,
@@ -19763,17 +23215,20 @@ window.ATLAS_DATA = {
               "judge"
             ],
             "category": [
-              "surveys_and_primers",
-              "process_supervision_prm",
               "judgment_required_rubrics_safety_domain",
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "⚖️ LLM-as-judge data",
             "tags": [],
             "one_line_summary": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
             "why_it_matters": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
+            "data_object": "scalar reward",
+            "feedback_verifier": "judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.08794",
               "venue": null,
@@ -19828,11 +23283,16 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "Reward-signal audit for spurious behavior in RLVR.",
             "why_it_matters": "Reward-signal audit for spurious behavior in RLVR.",
+            "data_object": "scalar reward",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.10947",
               "venue": null,
@@ -19879,13 +23339,18 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2604.15149",
               "venue": null,
@@ -19934,13 +23399,18 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2505.22203",
               "venue": null,
@@ -19987,13 +23457,18 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2604.07666",
               "venue": null,
@@ -20040,13 +23515,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20118,6 +23598,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🔁 Replayable trajectory data",
             "tags": [
               "agents",
               "reasoning-acting",
@@ -20126,8 +23607,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.",
             "why_it_matters": "It is a foundational agent-data pattern: the training/evaluation record is not just an answer but a trajectory of thought-like notes, actions, observations, and final response.",
+            "data_object": "trajectory containing reasoning note, action, observation, and final answer or task completion.; process: task state, action string, observation, reasoning note, final answer, success indicator.; Wikipedia API, embodied/web shopping environments, and task-specific simulators.",
+            "feedback_verifier": "environment success, answer correctness, or task-specific evaluation.",
+            "audit_focus": "Reasoning notes can rationalize bad actions., Environment wrappers can change task difficulty., Few-shot exemplars may encode brittle action formats.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2210.03629",
               "venue": null,
@@ -20191,6 +23676,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "api-calls",
               "seeded-from-bib",
@@ -20199,8 +23685,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model likelihood.",
             "why_it_matters": "It is a classic construction recipe for tool-call supervision: models learn when to call tools, what arguments to pass, and how to fold observations back into text.",
+            "data_object": "text sequence with inserted API call and tool result markup.; process: candidate call location, API name, arguments, tool output, likelihood improvement, retained annotation.; external tool APIs used during data construction and evaluation.",
+            "feedback_verifier": "language-model likelihood improvement after including tool result.",
+            "audit_focus": "Likelihood improvement may not equal truthful tool use., Tools can return stale or wrong outputs., The model can learn call syntax without robust tool-selection judgment.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2302.04761",
               "venue": null,
@@ -20257,6 +23747,7 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -20264,8 +23755,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.",
             "why_it_matters": "Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.",
+            "data_object": "tool-call trajectory plus final response; process: API call, arguments, tool response; real-world API/tool catalog",
+            "feedback_verifier": "tool response validity and task success checks",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2307.16789",
               "venue": null,
@@ -20313,13 +23808,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20362,14 +23862,21 @@ window.ATLAS_DATA = {
               "unknown"
             ],
             "domains": [],
-            "category": [],
+            "category": [
+              "environmental_agents_tools_web_swe"
+            ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20415,13 +23922,18 @@ window.ATLAS_DATA = {
             "category": [
               "environmental_agents_tools_web_swe"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20464,14 +23976,22 @@ window.ATLAS_DATA = {
               "unknown"
             ],
             "domains": [],
-            "category": [],
+            "category": [
+              "environmental_agents_tools_web_swe",
+              "benchmarks_evaluation"
+            ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20519,13 +24039,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20573,13 +24098,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20626,13 +24156,18 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🌍 Web/browser agents",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20675,14 +24210,22 @@ window.ATLAS_DATA = {
               "unknown"
             ],
             "domains": [],
-            "category": [],
+            "category": [
+              "environmental_agents_tools_web_swe",
+              "benchmarks_evaluation"
+            ],
+            "subfield": "🌍 Web/browser agents",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20735,6 +24278,7 @@ window.ATLAS_DATA = {
             "category": [
               "environmental_agents_tools_web_swe"
             ],
+            "subfield": "🌍 Web/browser agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -20742,8 +24286,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.",
             "why_it_matters": "A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.",
+            "data_object": "browser trajectory; process: DOM/state observation, action, reward/result; gym-style browser environment",
+            "feedback_verifier": "environment task evaluator",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2412.05467",
               "venue": null,
@@ -20795,6 +24343,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🌍 Web/browser agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -20802,8 +24351,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.",
             "why_it_matters": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.",
+            "data_object": "environment interaction trajectory; process: observation, action, state; browser-accessible web environment",
+            "feedback_verifier": "task-specific success evaluator",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2307.13854",
               "venue": null,
@@ -20856,6 +24409,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🌍 Web/browser agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -20863,8 +24417,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
             "why_it_matters": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
+            "data_object": "visual web tasks with screenshots and browser state",
+            "feedback_verifier": "task success checks",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "partial",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20911,13 +24469,18 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🌍 Web/browser agents",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -20971,6 +24534,7 @@ window.ATLAS_DATA = {
               "benchmarks_evaluation",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🖥️ OS/desktop agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -20978,8 +24542,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.",
             "why_it_matters": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.",
+            "data_object": "GUI/OS action trajectory; process: observation, action, environment state; desktop operating-system environment",
+            "feedback_verifier": "task completion evaluator",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2404.07972",
               "venue": null,
@@ -21032,6 +24600,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "📱 App/mobile agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -21039,8 +24608,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Android tasks turn mobile UI state and action histories into evaluable agent trajectories.",
             "why_it_matters": "Android tasks turn mobile UI state and action histories into evaluable agent trajectories.",
+            "data_object": "Android action trajectory; process: screen observation, UI action, state transition; Android device/emulator environment",
+            "feedback_verifier": "task-specific success evaluator",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2405.14573",
               "venue": null,
@@ -21095,6 +24668,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "📱 App/mobile agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -21102,8 +24676,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.",
             "why_it_matters": "Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.",
+            "data_object": "API/tool action trajectory; process: tool call, state transition, observation; simulated app ecosystem with users and APIs",
+            "feedback_verifier": "programmatic environment assertions",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2407.18901",
               "venue": null,
@@ -21157,6 +24735,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧑‍💻 SWE/repository agents",
             "tags": [
               "seeded-from-bib",
               "swe-bench",
@@ -21166,8 +24745,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
             "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2310.06770",
               "venue": null,
@@ -21229,6 +24812,7 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧑‍💻 SWE/repository agents",
             "tags": [
               "agents",
               "seeded-from-bib",
@@ -21237,8 +24821,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.",
             "why_it_matters": "It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.",
+            "data_object": "patch diff applied to a repository plus test execution results.; process: repository, issue, base commit, patch, FAIL TO PASS tests, PASS TO PASS tests, human validation notes.; Dockerized repository checkout and unit-test harness.",
+            "feedback_verifier": "post-patch unit tests plus human filtering of task validity.",
+            "audit_focus": "Leaderboard scores can depend strongly on scaffold design., Tests may not cover all acceptable patches., Public benchmark tasks can become training targets over time.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://openai.com/index/introducing-swe-bench-verified/",
               "venue": "https://www.swebench.com/verified.html",
@@ -21295,11 +24883,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧰 Programmatic benchmarks",
             "tags": [],
             "one_line_summary": "Repository-scale training environment showing substrate as data.",
             "why_it_matters": "Repository-scale training environment showing substrate as data.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2412.21139",
               "venue": null,
@@ -21353,11 +24946,16 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧰 Programmatic benchmarks",
             "tags": [],
             "one_line_summary": "Verifiable SWE environment for reasoning-to-edit tasks.",
             "why_it_matters": "Verifiable SWE environment for reasoning-to-edit tasks.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.07164",
               "venue": null,
@@ -21411,6 +25009,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "frontier_model_reports"
             ],
+            "subfield": "🧑‍💻 SWE/repository agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -21418,8 +25017,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.",
             "why_it_matters": "Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.",
+            "data_object": "tool/action/observation trajectory; process: plan, shell command, file edit; sandboxed software-development runtime",
+            "feedback_verifier": "task, test, or human-review outcome depending on benchmark",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2407.16741",
               "venue": null,
@@ -21467,13 +25070,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -21521,13 +25129,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧰 Agent benchmarks and terminal predicates",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -21583,13 +25196,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2407.21787",
               "venue": null,
@@ -21640,11 +25258,16 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [],
             "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
             "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.19393",
               "venue": null,
@@ -21697,11 +25320,16 @@ window.ATLAS_DATA = {
               "frontier_model_reports",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🌙 Kimi reasoning reports",
             "tags": [],
             "one_line_summary": "Frontier report used for long-context RL and scaling discussion.",
             "why_it_matters": "Frontier report used for long-context RL and scaling discussion.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.12599",
               "venue": null,
@@ -21755,11 +25383,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "⏱️ Test-time compute",
             "tags": [],
             "one_line_summary": "The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.",
             "why_it_matters": "It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.",
+            "data_object": "training runs, reward outcomes, validation curves, and ablation results.; process: loss aggregation, normalization, curriculum, off-policy choice, compute budget, asymptote, efficiency.; large-scale RL training experiments.",
+            "feedback_verifier": "compute-performance curves and recipe ablations.",
+            "audit_focus": "Compute-heavy studies can be hard to reproduce., Best-practice recipes may depend on task/reward families., Scaling curves can encourage overconfidence if validation tasks are narrow.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2510.13786",
               "venue": null,
@@ -21814,11 +25447,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "frontier_model_reports"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
             "one_line_summary": "This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.",
             "why_it_matters": "It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.",
+            "data_object": "problem, generated solution/answer, reward outcome, and training curve metrics.; process: model size, data volume, compute budget, optimization steps, reward signal, validation performance.; RL post-training experiments over math tasks.",
+            "feedback_verifier": "answer-level reward for mathematical reasoning and scaling curves.",
+            "audit_focus": "Math-only scaling can overstate transfer to open-ended reasoning., Repeated data reuse can improve metrics while increasing overfitting risk., Power-law fits can hide reward or benchmark artifacts.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2509.25300",
               "venue": null,
@@ -21867,13 +25505,18 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2502.08606",
               "venue": null,
@@ -21919,13 +25562,18 @@ window.ATLAS_DATA = {
             "category": [
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🎲 pass@k / sampling budget",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -21977,13 +25625,18 @@ window.ATLAS_DATA = {
             "category": [
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧪 Verifier scaling",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2510.06557",
               "venue": null,
@@ -22038,6 +25691,7 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "⏱️ Test-time compute",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -22045,8 +25699,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.",
             "why_it_matters": "Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.",
+            "data_object": "candidate response with reward/adaptation signal; process: unlabeled input, rollout, reward signal; test-time task distribution",
+            "feedback_verifier": "task-specific or learned reward used during adaptation",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.16084",
               "venue": null,
@@ -22092,13 +25750,18 @@ window.ATLAS_DATA = {
             "category": [
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🏋️ RLVR optimization scaling",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2505.22617",
               "venue": null,
@@ -22146,13 +25809,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2509.26114",
               "venue": null,
@@ -22203,11 +25871,16 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
             "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
             "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2503.14476",
               "venue": null,
@@ -22254,13 +25927,18 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -22306,13 +25984,18 @@ window.ATLAS_DATA = {
             "category": [
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🏋️ RLVR optimization scaling",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -22358,13 +26041,18 @@ window.ATLAS_DATA = {
             "category": [
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧪 Verifier scaling",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -22410,13 +26098,18 @@ window.ATLAS_DATA = {
             "category": [
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🔁 Data reuse and uniqueness",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -22462,13 +26155,18 @@ window.ATLAS_DATA = {
             "category": [
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🔍 Scaling attribution",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.14843",
               "venue": null,
@@ -22514,13 +26212,18 @@ window.ATLAS_DATA = {
             "category": [
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2603.24472",
               "venue": null,
@@ -22566,13 +26269,18 @@ window.ATLAS_DATA = {
             "category": [
               "frontier_model_reports"
             ],
+            "subfield": "🌙 Kimi reasoning reports",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.20534",
               "venue": null,
@@ -22627,13 +26335,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧠 Chain-of-thought / rationale data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -22680,13 +26393,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧠 Chain-of-thought / rationale data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -22733,13 +26451,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧪 Verifier gaming",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -22794,11 +26517,16 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "Reward-signal audit for spurious behavior in RLVR.",
             "why_it_matters": "Reward-signal audit for spurious behavior in RLVR.",
+            "data_object": "scalar reward",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.10947",
               "venue": null,
@@ -22846,17 +26574,20 @@ window.ATLAS_DATA = {
               "judge"
             ],
             "category": [
-              "surveys_and_primers",
-              "process_supervision_prm",
               "judgment_required_rubrics_safety_domain",
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "⚖️ LLM-as-judge data",
             "tags": [],
             "one_line_summary": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
             "why_it_matters": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
+            "data_object": "scalar reward",
+            "feedback_verifier": "judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.08794",
               "venue": null,
@@ -22914,11 +26645,16 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛡️ Safety reasoning data",
             "tags": [],
             "one_line_summary": "Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through prompt injection or accidental leakage.",
             "why_it_matters": "It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.",
+            "data_object": "internal reasoning trace, final answer, and leakage/extraction outcome.; process: sensitive field, prompt-injection condition, reasoning length or budget, output leakage indicator.; personal-agent evaluation setting with hidden or internal reasoning traces.",
+            "feedback_verifier": "extraction probes and agentic evaluations.",
+            "audit_focus": "Hiding thoughts from users does not make them safe., Trace logging can create a new privacy dataset., Utility improvements from more reasoning may worsen leakage risk.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.15674",
               "venue": null,
@@ -22971,14 +26707,18 @@ window.ATLAS_DATA = {
             ],
             "category": [
               "construction_recipes_open_reasoning_data",
-              "audit_failure_contamination_verifier_attacks",
-              "benchmarks_evaluation"
+              "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "✍️ Teacher trace generation",
             "tags": [],
             "one_line_summary": "Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.",
             "why_it_matters": "It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.",
+            "data_object": "generated data plus downstream behavioral evaluation of the student.; process: teacher identity, student base model, visible filtering policy, hidden trait evaluation.; distillation and synthetic-data training pipeline.",
+            "feedback_verifier": "trait probes after student training.",
+            "audit_focus": "Data may look safe while carrying hidden traits., Lineage effects can be invisible from sample inspection., Distillation chains can propagate behavior across model generations.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.14805",
               "venue": "https://www.nature.com/articles/s41586-026-10319-8",
@@ -23025,13 +26765,18 @@ window.ATLAS_DATA = {
               "surveys_and_primers",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2508.13180",
               "venue": null,
@@ -23078,13 +26823,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧯 Benchmark contamination",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.21614",
               "venue": null,
@@ -23140,6 +26890,7 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib",
               "livebench",
@@ -23149,8 +26900,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
             "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic, mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2406.19314",
               "venue": null,
@@ -23197,13 +26952,18 @@ window.ATLAS_DATA = {
               "judgment_required_rubrics_safety_domain",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧾 Factuality / grounding",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -23251,13 +27011,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding, seeds, prompt format, and environment details.",
             "why_it_matters": "It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.07086",
               "venue": null,
@@ -23306,13 +27071,18 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2505.22203",
               "venue": null,
@@ -23359,13 +27129,18 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2604.15149",
               "venue": null,
@@ -23412,13 +27187,18 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2604.07666",
               "venue": null,
@@ -23465,13 +27245,18 @@ window.ATLAS_DATA = {
               "surveys_and_primers",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -23519,13 +27304,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2602.12413",
               "venue": null,
@@ -23580,11 +27370,16 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛡️ Safety reasoning data",
             "tags": [],
             "one_line_summary": "AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise, subjective, and stale-information questions.",
             "why_it_matters": "It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining.",
+            "data_object": "model response, abstention decision, and correctness/abstention judgment.; process: scenario type, source dataset, answerability label, judge/validation metadata.; offline benchmark with model-evaluation harness.",
+            "feedback_verifier": "human-validated judges and benchmark labels for abstention scenarios.",
+            "audit_focus": "A model can game abstention by refusing too often., Benchmark labels around subjectivity and underspecification can be ambiguous., Prompt tuning may improve benchmark score without improving epistemic reasoning.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.09038",
               "venue": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html",
@@ -23646,6 +27441,7 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧑‍💻 SWE/repository agents",
             "tags": [
               "agents",
               "seeded-from-bib",
@@ -23654,8 +27450,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.",
             "why_it_matters": "It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.",
+            "data_object": "patch diff applied to a repository plus test execution results.; process: repository, issue, base commit, patch, FAIL TO PASS tests, PASS TO PASS tests, human validation notes.; Dockerized repository checkout and unit-test harness.",
+            "feedback_verifier": "post-patch unit tests plus human filtering of task validity.",
+            "audit_focus": "Leaderboard scores can depend strongly on scaffold design., Tests may not cover all acceptable patches., Public benchmark tasks can become training targets over time.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://openai.com/index/introducing-swe-bench-verified/",
               "venue": "https://www.swebench.com/verified.html",
@@ -23702,13 +27502,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "Other related work",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -23784,14 +27589,19 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🤖 RLAIF / synthetic feedback",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "Constitutional AI trains harmless behavior from AI-generated critiques, revisions, and AI preference feedback guided by a written constitution.",
             "why_it_matters": "It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data.",
+            "data_object": "original answer, self-critique, revised answer, preference pair, reward-model score.; process: principle used, critique, revision, comparison, preference label.; offline SL and RLHF/RLAIF alignment pipeline.",
+            "feedback_verifier": "AI preference model trained from comparisons guided by constitutional principles.",
+            "audit_focus": "AI feedback can encode model bias at scale., Principles may be underspecified or culturally narrow., A model can become safe-looking but evasive if helpfulness is not audited.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2212.08073",
               "venue": null,
@@ -23813,9 +27623,67 @@ window.ATLAS_DATA = {
         },
         {
           "title": "DPO",
-          "entry_id": null,
-          "matched": false,
-          "entry": null
+          "entry_id": "step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024",
+          "matched": true,
+          "entry": {
+            "id": "step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024",
+            "title": "Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "process_supervision",
+              "construction_recipe"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "step_level"
+            ],
+            "training_use": [
+              "process_supervision",
+              "preference_learning"
+            ],
+            "domains": [
+              "math",
+              "reasoning"
+            ],
+            "category": [
+              "foundations_instruction_preference_alignment",
+              "process_supervision_prm",
+              "construction_recipes_open_reasoning_data"
+            ],
+            "subfield": "⚖️ DPO / preference optimization",
+            "tags": [
+              "primary-link-checked"
+            ],
+            "one_line_summary": "Step-wise preference optimization method for long-chain reasoning traces.",
+            "why_it_matters": "It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected object is an intermediate continuation rather than a whole answer.",
+            "data_object": "step-wise preference pairs; process: reasoning step, preferred continuation, rejected continuation; offline long-chain reasoning traces",
+            "feedback_verifier": "step-wise preference optimization objective",
+            "audit_focus": "local step preference may not align with final correctness, preference construction can hide teacher or scorer bias, long-chain traces can overfit style instead of reasoning validity",
+            "curation_level": "L1_link_verified",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2406.18629",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2406.18629",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "card": null
+            },
+            "primary_link": "https://arxiv.org/abs/2406.18629"
+          }
         },
         {
           "title": "UltraFeedback",
@@ -23869,6 +27737,7 @@ window.ATLAS_DATA = {
               "judgment_required_rubrics_safety_domain",
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "🤖 RLAIF / synthetic feedback",
             "tags": [
               "ai-feedback",
               "preference-data",
@@ -23877,8 +27746,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response pairs.",
             "why_it_matters": "It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels.",
+            "data_object": "instruction, candidate responses, fine-grained ratings, textual critiques, and derived preference pairs.; process: source dataset, model identity, response, rating dimension, critique text, corrected overall score.; offline feedback generation and reward-model training pipeline.",
+            "feedback_verifier": "AI-generated scalar and textual feedback over response quality dimensions.",
+            "audit_focus": "AI feedback can encode judge-model bias., A corrected dataset version can change reward-model behavior., Fine-grained scores may not translate cleanly into pairwise preferences.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2310.01377",
               "venue": null,
@@ -23925,13 +27798,18 @@ window.ATLAS_DATA = {
               "foundations_instruction_preference_alignment",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧠 Chain-of-thought / rationale data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -23982,14 +27860,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "foundations_instruction_preference_alignment"
             ],
+            "subfield": "🧪 Filtering and verifier refresh",
             "tags": [
               "foundation-starter",
               "primary-link-checked"
             ],
             "one_line_summary": "STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.",
             "why_it_matters": "It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2203.14465",
               "venue": null,
@@ -24043,6 +27926,7 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "benchmarks_evaluation"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [
               "gsm8k",
               "math",
@@ -24051,8 +27935,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Canonical grade-school math benchmark with natural-language word problems, worked solutions, and final numeric answers.",
             "why_it_matters": "It remains a compact sanity check for answer-verifiable reasoning data, verifier reranking, SFT, and RLVR-style math training.",
+            "data_object": "natural-language solution with final numeric answer; process: question, solution, final answer; offline math benchmark",
+            "feedback_verifier": "answer extraction and arithmetic correctness checks",
+            "audit_focus": "answer extraction errors, contamination through benchmark reuse",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2110.14168",
               "venue": null,
@@ -24098,13 +27986,18 @@ window.ATLAS_DATA = {
             "category": [
               "programmatic_math_code_proof"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -24156,6 +28049,7 @@ window.ATLAS_DATA = {
               "programmatic_math_code_proof",
               "benchmarks_evaluation"
             ],
+            "subfield": "💻 Code execution / unit-test data",
             "tags": [
               "humaneval",
               "code",
@@ -24164,8 +28058,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
             "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.",
+            "data_object": "Python function completion; process: prompt, canonical solution, unit tests; Python execution harness",
+            "feedback_verifier": "unit tests",
+            "audit_focus": "public benchmark contamination, unit-test coverage gaps",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2107.03374",
               "venue": null,
@@ -24219,6 +28117,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧑‍💻 SWE/repository agents",
             "tags": [
               "seeded-from-bib",
               "swe-bench",
@@ -24228,8 +28127,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
             "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2310.06770",
               "venue": null,
@@ -24284,14 +28187,19 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "benchmarks_evaluation"
             ],
+            "subfield": "🪜 Human step-level labels",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
             "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
+            "data_object": "step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces",
+            "feedback_verifier": "process reward model trained from step labels",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2305.20050",
               "venue": null,
@@ -24345,11 +28253,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
-            "one_line_summary": "Monte-Carlo-style process signal reference for step supervision.",
-            "why_it_matters": "Monte-Carlo-style process signal reference for step supervision.",
+            "one_line_summary": "Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.",
+            "why_it_matters": "It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer.",
+            "data_object": "step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces",
+            "feedback_verifier": "rollout-derived process reward signal",
+            "audit_focus": "rollout policy strength can leak into labels, step rewards may favor locally plausible continuations, generated solutions can inherit base-model shortcuts",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2312.08935",
               "venue": null,
@@ -24405,6 +28318,7 @@ window.ATLAS_DATA = {
               "judgment_required_rubrics_safety_domain",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧪 Rubric reward models",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -24412,8 +28326,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including structured preference failures.",
             "why_it_matters": "It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.",
+            "data_object": "pairwise or scalar reward decisions; process: prompt, chosen/rejected response, reward model score; offline preference benchmark",
+            "feedback_verifier": "reward model or judge",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2403.13787",
               "venue": null,
@@ -24469,14 +28387,19 @@ window.ATLAS_DATA = {
               "benchmarks_evaluation",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧪 Rubric reward models",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.",
             "why_it_matters": "It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring.",
+            "data_object": "response with rubric/judge evaluation; process: prompt, response, rubric dimension; offline health evaluation benchmark",
+            "feedback_verifier": "rubric-guided expert/LLM judgment",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2505.08775",
               "venue": null,
@@ -24529,14 +28452,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "frontier_model_reports"
             ],
+            "subfield": "🏗️ Open reasoning data releases",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.",
             "why_it_matters": "It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.",
+            "data_object": "reasoning traces and final answers; process: question, reasoning trace, answer; offline reasoning corpus",
+            "feedback_verifier": "filters, benchmark feedback, and recipe ablations",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.04178",
               "venue": null,
@@ -24589,11 +28517,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
             "one_line_summary": "Large-scale math reasoning trace release for programmatic verification.",
             "why_it_matters": "Large-scale math reasoning trace release for programmatic verification.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.16891",
               "venue": null,
@@ -24649,11 +28582,16 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "Math release highlighted for verifier pinning and decontamination.",
             "why_it_matters": "Math release highlighted for verifier pinning and decontamination.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.11456",
               "venue": null,
@@ -24707,14 +28645,19 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧮 Math RLVR datasets",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
             "why_it_matters": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
+            "data_object": "math problem, answer, and verification signal; process: problem, answer, verification label; offline math verifier substrate",
+            "feedback_verifier": "answer-level math verifier",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2502.17387",
               "venue": null,
@@ -24764,11 +28707,16 @@ window.ATLAS_DATA = {
             "category": [
               "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "Small-set curation reference distinguishing elicitation from broad coverage.",
             "why_it_matters": "Small-set curation reference distinguishing elicitation from broad coverage.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2502.03387",
               "venue": null,
@@ -24819,11 +28767,16 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [],
             "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
             "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.19393",
               "venue": null,
@@ -24874,11 +28827,16 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "📐 Math answer-verifiable data",
             "tags": [],
             "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
             "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2503.14476",
               "venue": null,
@@ -24933,11 +28891,16 @@ window.ATLAS_DATA = {
               "frontier_model_reports",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.",
             "why_it_matters": "It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.12948",
               "venue": null,
@@ -24990,11 +28953,16 @@ window.ATLAS_DATA = {
               "frontier_model_reports",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🌙 Kimi reasoning reports",
             "tags": [],
             "one_line_summary": "Frontier report used for long-context RL and scaling discussion.",
             "why_it_matters": "Frontier report used for long-context RL and scaling discussion.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.12599",
               "venue": null,
@@ -25053,14 +29021,19 @@ window.ATLAS_DATA = {
               "construction_recipes_open_reasoning_data",
               "frontier_model_reports"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "curated-card",
               "primary-link-checked"
             ],
             "one_line_summary": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.",
             "why_it_matters": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.",
+            "data_object": "code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments",
+            "feedback_verifier": "unit tests, execution feedback, and agent task success signals",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "partial",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -25112,11 +29085,16 @@ window.ATLAS_DATA = {
               "frontier_model_reports",
               "scaling_test_time_compute_rlvr"
             ],
+            "subfield": "🧱 Prompt sourcing",
             "tags": [],
             "one_line_summary": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.",
             "why_it_matters": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.10910",
               "venue": null,
@@ -25173,11 +29151,16 @@ window.ATLAS_DATA = {
               "scaling_test_time_compute_rlvr",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧰 Programmatic benchmarks",
             "tags": [],
             "one_line_summary": "Repository-scale training environment showing substrate as data.",
             "why_it_matters": "Repository-scale training environment showing substrate as data.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2412.21139",
               "venue": null,
@@ -25231,11 +29214,16 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧰 Programmatic benchmarks",
             "tags": [],
             "one_line_summary": "Verifiable SWE environment for reasoning-to-edit tasks.",
             "why_it_matters": "Verifiable SWE environment for reasoning-to-edit tasks.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2504.07164",
               "venue": null,
@@ -25287,6 +29275,7 @@ window.ATLAS_DATA = {
               "environmental_agents_tools_web_swe",
               "benchmarks_evaluation"
             ],
+            "subfield": "🌍 Web/browser agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -25294,8 +29283,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.",
             "why_it_matters": "Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.",
+            "data_object": "environment interaction trajectory; process: observation, action, state; browser-accessible web environment",
+            "feedback_verifier": "task-specific success evaluator",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2307.13854",
               "venue": null,
@@ -25349,6 +29342,7 @@ window.ATLAS_DATA = {
               "benchmarks_evaluation",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🖥️ OS/desktop agents",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -25356,8 +29350,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.",
             "why_it_matters": "Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.",
+            "data_object": "GUI/OS action trajectory; process: observation, action, environment state; desktop operating-system environment",
+            "feedback_verifier": "task completion evaluator",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2404.07972",
               "venue": null,
@@ -25405,13 +29403,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🛠️ Tool-use data",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L0_seeded",
             "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
               "paper": null,
               "venue": null,
@@ -25465,6 +29468,7 @@ window.ATLAS_DATA = {
               "process_supervision_prm",
               "benchmarks_evaluation"
             ],
+            "subfield": "📊 PRM benchmarks and evaluation",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -25472,8 +29476,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.",
             "why_it_matters": "Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.",
+            "data_object": "step labels or first-error markers; process: reasoning step, error marker, diagnostic label; offline math traces",
+            "feedback_verifier": "process-error detector",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2412.06559",
               "venue": null,
@@ -25530,6 +29538,7 @@ window.ATLAS_DATA = {
               "benchmarks_evaluation",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "📊 PRM benchmarks and evaluation",
             "tags": [
               "curated-card",
               "primary-link-checked",
@@ -25537,8 +29546,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.",
             "why_it_matters": "Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.",
+            "data_object": "step-level labels or scores; process: step, label, error type; offline reasoning traces",
+            "feedback_verifier": "process-level reward model benchmark",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2501.03124",
               "venue": null,
@@ -25594,6 +29607,7 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib",
               "livebench",
@@ -25603,8 +29617,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.",
             "why_it_matters": "It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic, mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2406.19314",
               "venue": null,
@@ -25651,13 +29669,18 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "🧯 Benchmark contamination",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.21614",
               "venue": null,
@@ -25712,11 +29735,16 @@ window.ATLAS_DATA = {
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "Other related work",
             "tags": [],
             "one_line_summary": "Reward-signal audit for spurious behavior in RLVR.",
             "why_it_matters": "Reward-signal audit for spurious behavior in RLVR.",
+            "data_object": "scalar reward",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2506.10947",
               "venue": null,
@@ -25764,17 +29792,20 @@ window.ATLAS_DATA = {
               "judge"
             ],
             "category": [
-              "surveys_and_primers",
-              "process_supervision_prm",
               "judgment_required_rubrics_safety_domain",
               "audit_failure_contamination_verifier_attacks",
               "benchmarks_evaluation"
             ],
+            "subfield": "⚖️ LLM-as-judge data",
             "tags": [],
             "one_line_summary": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
             "why_it_matters": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
+            "data_object": "scalar reward",
+            "feedback_verifier": "judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L4_carded",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.08794",
               "venue": null,
@@ -25827,14 +29858,18 @@ window.ATLAS_DATA = {
             ],
             "category": [
               "construction_recipes_open_reasoning_data",
-              "audit_failure_contamination_verifier_attacks",
-              "benchmarks_evaluation"
+              "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "✍️ Teacher trace generation",
             "tags": [],
             "one_line_summary": "Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.",
             "why_it_matters": "It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that are invisible to content filters.",
+            "data_object": "generated data plus downstream behavioral evaluation of the student.; process: teacher identity, student base model, visible filtering policy, hidden trait evaluation.; distillation and synthetic-data training pipeline.",
+            "feedback_verifier": "trait probes after student training.",
+            "audit_focus": "Data may look safe while carrying hidden traits., Lineage effects can be invisible from sample inspection., Distillation chains can propagate behavior across model generations.",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2507.14805",
               "venue": "https://www.nature.com/articles/s41586-026-10319-8",
@@ -25881,13 +29916,18 @@ window.ATLAS_DATA = {
               "surveys_and_primers",
               "audit_failure_contamination_verifier_attacks"
             ],
+            "subfield": "🧯 Contamination / evaluation surveys",
             "tags": [
               "seeded-from-bib"
             ],
             "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Use this entry as a verified citation waypoint until a paper-specific audit note is added.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L1_link_verified",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/2508.13180",
               "venue": null,
@@ -25933,8 +29973,10 @@ window.ATLAS_DATA = {
               "data_documentation"
             ],
             "category": [
-              "surveys_and_primers"
+              "surveys_and_primers",
+              "construction_recipes_open_reasoning_data"
             ],
+            "subfield": "📦 Data documentation / datasheets",
             "tags": [
               "seeded-from-bib",
               "dataset-documentation",
@@ -25943,8 +29985,12 @@ window.ATLAS_DATA = {
             ],
             "one_line_summary": "Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.",
             "why_it_matters": "It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
             "curation_level": "L5_audit_ready",
             "status": "verified",
+            "needs_search": false,
             "artifacts": {
               "paper": "https://arxiv.org/abs/1803.09010",
               "venue": null,

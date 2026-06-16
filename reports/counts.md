@@ -1,77 +1,76 @@
-# Paper Coverage Report
+# Counts Report
 
-total entries: 271
+total entries: 280
 filled cards: 89
-missing primary paper/arXiv/DOI links: 123
-needs search / partial metadata: 123
+missing primary paper/arXiv/DOI links: 115
+needs search / partial metadata: 115
 
 ## status
-- verified: 148
-- needs_metadata: 120
+- verified: 165
+- needs_metadata: 112
 - partial: 3
 
 ## category
-- benchmarks_evaluation: 75
-- construction_recipes_open_reasoning_data: 73
-- scaling_test_time_compute_rlvr: 55
-- foundations_instruction_preference_alignment: 52
-- programmatic_math_code_proof: 49
-- audit_failure_contamination_verifier_attacks: 48
-- environmental_agents_tools_web_swe: 44
-- judgment_required_rubrics_safety_domain: 42
-- surveys_and_primers: 34
-- frontier_model_reports: 33
-- unknown: 26
-- process_supervision_prm: 22
+- benchmarks_evaluation: 88
+- construction_recipes_open_reasoning_data: 84
+- scaling_test_time_compute_rlvr: 62
+- foundations_instruction_preference_alignment: 59
+- audit_failure_contamination_verifier_attacks: 54
+- judgment_required_rubrics_safety_domain: 54
+- programmatic_math_code_proof: 52
+- environmental_agents_tools_web_swe: 49
+- surveys_and_primers: 41
+- frontier_model_reports: 34
+- process_supervision_prm: 23
 
 ## source_role
 - survey_background: 192
-- construction_recipe: 35
-- benchmark: 33
-- data_release: 32
+- construction_recipe: 40
+- benchmark: 37
+- data_release: 36
+- verifier_reward: 20
 - model_report: 18
-- verifier_reward: 17
+- scaling_study: 18
 - agent_environment: 16
-- scaling_study: 16
-- audit_failure: 11
-- process_supervision: 6
+- audit_failure: 12
+- process_supervision: 11
 - infrastructure: 2
 
 ## verification_contract
-- unknown: 185
-- programmatic: 44
-- mixed: 41
-- judgment_required: 25
-- environmental: 21
+- unknown: 180
+- mixed: 55
+- programmatic: 48
+- judgment_required: 30
+- environmental: 22
 
 ## training_use
-- unknown: 182
-- evaluation: 64
-- sft: 34
-- rlvr: 25
+- unknown: 174
+- evaluation: 72
+- sft: 36
+- reward_modeling: 28
+- rlvr: 27
 - agent_training: 22
-- reward_modeling: 21
-- test_time_compute: 17
+- audit: 20
+- test_time_compute: 20
+- preference_learning: 16
 - distillation: 14
-- audit: 13
-- preference_learning: 10
+- process_supervision: 11
 - safety_alignment: 8
-- process_supervision: 6
 
 ## construction_layer
-- release_audit: 230
-- reward_verifier_layer: 35
-- trace_writing: 21
-- search_substrate: 19
-- optimizer_scaffold: 17
+- release_audit: 234
+- reward_verifier_layer: 43
+- trace_writing: 24
+- optimizer_scaffold: 22
+- search_substrate: 21
 - prompt_sourcing: 17
 - frontier_pipeline: 11
 - scaling_report: 10
 - self_play_anchor: 2
 
 ## year
-- 2025: 118
-- 2024: 59
+- 2025: 122
+- 2024: 64
 - 2023: 37
 - 2026: 19
 - 2021: 15
@@ -101,10 +100,8 @@ needs search / partial metadata: 123
 - `contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021` · ContractNLI: A dataset for document-level natural language inference for contracts · status `needs_metadata`
 - `cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021` · CUAD: An expert-annotated NLP dataset for legal contract review · status `needs_metadata`
 - `finetuned-language-models-are-zero-shot-learners-2021` · Finetuned language models are zero-shot learners · status `needs_metadata`
-- `finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021` · FinQA: A dataset of numerical reasoning over financial data · status `needs_metadata`
 - `multitask-prompted-training-enables-zero-shot-task-generalization-2021` · Multitask prompted training enables zero-shot task generalization · status `needs_metadata`
 - `qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021` · Qasper: A dataset of information-seeking questions and answers over scientific research papers · status `needs_metadata`
-- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` · TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance · status `needs_metadata`
 - `coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022` · CodeRL: Mastering code generation through pretrained models and deep reinforcement learning · status `needs_metadata`
 - `codet-code-generation-with-generated-tests-2022` · CodeT: Code generation with generated tests · status `needs_metadata`
 - `coliee-competition-on-legal-information-extraction-entailment-2022` · COLIEE: Competition on legal information extraction/entailment · status `needs_metadata`
@@ -118,14 +115,11 @@ needs search / partial metadata: 123
 - `data-provenance-for-language-models-2023` · Data provenance for language models · status `needs_metadata`
 - `distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023` · Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes · status `needs_metadata`
 - `factscore-2023` · FActScore · status `needs_metadata`
-- `financebench-a-benchmark-for-financial-question-answering-2023` · FinanceBench: A benchmark for financial question answering · status `needs_metadata`
 - `gorilla-2023` · Gorilla · status `needs_metadata`
 - `judgelm-fine-tuned-large-language-models-are-scalable-judges-2023` · JudgeLM: Fine-tuned large language models are scalable judges · status `needs_metadata`
 - `language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023` · Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting · status `needs_metadata`
 - `large-language-models-encode-clinical-knowledge-2023` · Large language models encode clinical knowledge · status `needs_metadata`
-- `legalbench-2023` · LegalBench · status `needs_metadata`
 - `mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023` · MAmmoTH: Building math generalist models through hybrid instruction tuning · status `needs_metadata`
-- `math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023` · Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations · status `needs_metadata`
 - `maud-a-merger-agreement-understanding-dataset-2023` · MAUD: A merger agreement understanding dataset · status `needs_metadata`
 - `measuring-faithfulness-in-chain-of-thought-reasoning-2023` · Measuring faithfulness in chain-of-thought reasoning · status `needs_metadata`
 - `metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023` · MetaMath: Bootstrap your own mathematical questions for large language models · status `needs_metadata`
@@ -147,7 +141,6 @@ needs search / partial metadata: 123
 - `gsm-symbolic-2024` · GSM-Symbolic · status `needs_metadata`
 - `harmbench-2024` · HarmBench · status `needs_metadata`
 - `helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024` · HelpSteer2: Open-source preference data for helpfulness and safety · status `needs_metadata`
-- `improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024` · Improve mathematical reasoning in language models by automated process supervision · status `needs_metadata`
 - `is-model-collapse-inevitable-2024` · Is model collapse inevitable? · status `needs_metadata`
 - `lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024` · LAB-Bench: Measuring capabilities of language models for biology research · status `needs_metadata`
 - `learning-to-reason-with-llms-2024` · Learning to reason with LLMs · status `needs_metadata`
@@ -156,7 +149,6 @@ needs search / partial metadata: 123
 - `paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024` · PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge · status `needs_metadata`
 - `r-tuning-2024` · R-Tuning · status `needs_metadata`
 - `raft-adapting-language-model-to-domain-specific-rag-2024` · RAFT: Adapting language model to domain-specific RAG · status `needs_metadata`
-- `rest-mcts-2024` · ReST-MCTS* · status `needs_metadata`
 - `self-rewarding-lms-2024` · Self-Rewarding LMs · status `needs_metadata`
 - `spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024` · SPIN: Self-play fine-tuning converts weak language models to strong language models · status `needs_metadata`
 - `swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024` · SWE-Gym: Advancing software engineering agents with training and evaluation environments · status `needs_metadata`
@@ -171,7 +163,14 @@ needs search / partial metadata: 123
 - `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` · WorkArena: How capable are web agents at solving common knowledge work tasks? · status `needs_metadata`
 - `xstest-2024` · XSTest · status `needs_metadata`
 - `1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025` · 1-shot RLVR: Learning reasoning with minimal verifiable data · status `needs_metadata`
-- ... 43 more
+- `acord-attorney-curated-open-research-dataset-2025` · ACORD: Attorney-curated open research dataset · status `needs_metadata`
+- `big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025` · Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning · status `needs_metadata`
+- `chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025` · ChemLLMBench and chemistry reasoning evaluations for language models · status `needs_metadata`
+- `dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025` · DAPO: An open-source LLM reinforcement learning system at scale · status `needs_metadata`
+- `deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025` · DeepScaleR: Scaling reinforcement learning for reasoning in open models · status `needs_metadata`
+- `deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025` · DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning · status `needs_metadata`
+- `does-rl-really-incentivize-reasoning-beyond-base-2025` · Does RL really incentivize reasoning beyond base? · status `needs_metadata`
+- ... 35 more
 
 ## needs search / partial metadata (first 80)
 - `an-overview-of-the-bioasq-large-scale-biomedical-semantic-indexing-and-question--2015` · An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition · status `needs_metadata`
@@ -184,10 +183,8 @@ needs search / partial metadata: 123
 - `contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021` · ContractNLI: A dataset for document-level natural language inference for contracts · status `needs_metadata`
 - `cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021` · CUAD: An expert-annotated NLP dataset for legal contract review · status `needs_metadata`
 - `finetuned-language-models-are-zero-shot-learners-2021` · Finetuned language models are zero-shot learners · status `needs_metadata`
-- `finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021` · FinQA: A dataset of numerical reasoning over financial data · status `needs_metadata`
 - `multitask-prompted-training-enables-zero-shot-task-generalization-2021` · Multitask prompted training enables zero-shot task generalization · status `needs_metadata`
 - `qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021` · Qasper: A dataset of information-seeking questions and answers over scientific research papers · status `needs_metadata`
-- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` · TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance · status `needs_metadata`
 - `coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022` · CodeRL: Mastering code generation through pretrained models and deep reinforcement learning · status `needs_metadata`
 - `codet-code-generation-with-generated-tests-2022` · CodeT: Code generation with generated tests · status `needs_metadata`
 - `coliee-competition-on-legal-information-extraction-entailment-2022` · COLIEE: Competition on legal information extraction/entailment · status `needs_metadata`
@@ -201,14 +198,11 @@ needs search / partial metadata: 123
 - `data-provenance-for-language-models-2023` · Data provenance for language models · status `needs_metadata`
 - `distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023` · Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes · status `needs_metadata`
 - `factscore-2023` · FActScore · status `needs_metadata`
-- `financebench-a-benchmark-for-financial-question-answering-2023` · FinanceBench: A benchmark for financial question answering · status `needs_metadata`
 - `gorilla-2023` · Gorilla · status `needs_metadata`
 - `judgelm-fine-tuned-large-language-models-are-scalable-judges-2023` · JudgeLM: Fine-tuned large language models are scalable judges · status `needs_metadata`
 - `language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023` · Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting · status `needs_metadata`
 - `large-language-models-encode-clinical-knowledge-2023` · Large language models encode clinical knowledge · status `needs_metadata`
-- `legalbench-2023` · LegalBench · status `needs_metadata`
 - `mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023` · MAmmoTH: Building math generalist models through hybrid instruction tuning · status `needs_metadata`
-- `math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023` · Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations · status `needs_metadata`
 - `maud-a-merger-agreement-understanding-dataset-2023` · MAUD: A merger agreement understanding dataset · status `needs_metadata`
 - `measuring-faithfulness-in-chain-of-thought-reasoning-2023` · Measuring faithfulness in chain-of-thought reasoning · status `needs_metadata`
 - `metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023` · MetaMath: Bootstrap your own mathematical questions for large language models · status `needs_metadata`
@@ -230,7 +224,6 @@ needs search / partial metadata: 123
 - `gsm-symbolic-2024` · GSM-Symbolic · status `needs_metadata`
 - `harmbench-2024` · HarmBench · status `needs_metadata`
 - `helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024` · HelpSteer2: Open-source preference data for helpfulness and safety · status `needs_metadata`
-- `improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024` · Improve mathematical reasoning in language models by automated process supervision · status `needs_metadata`
 - `is-model-collapse-inevitable-2024` · Is model collapse inevitable? · status `needs_metadata`
 - `lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024` · LAB-Bench: Measuring capabilities of language models for biology research · status `needs_metadata`
 - `learning-to-reason-with-llms-2024` · Learning to reason with LLMs · status `needs_metadata`
@@ -239,7 +232,6 @@ needs search / partial metadata: 123
 - `paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024` · PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge · status `needs_metadata`
 - `r-tuning-2024` · R-Tuning · status `needs_metadata`
 - `raft-adapting-language-model-to-domain-specific-rag-2024` · RAFT: Adapting language model to domain-specific RAG · status `needs_metadata`
-- `rest-mcts-2024` · ReST-MCTS* · status `needs_metadata`
 - `self-rewarding-lms-2024` · Self-Rewarding LMs · status `needs_metadata`
 - `spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024` · SPIN: Self-play fine-tuning converts weak language models to strong language models · status `needs_metadata`
 - `swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024` · SWE-Gym: Advancing software engineering agents with training and evaluation environments · status `needs_metadata`
@@ -254,4 +246,11 @@ needs search / partial metadata: 123
 - `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` · WorkArena: How capable are web agents at solving common knowledge work tasks? · status `needs_metadata`
 - `xstest-2024` · XSTest · status `needs_metadata`
 - `1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025` · 1-shot RLVR: Learning reasoning with minimal verifiable data · status `needs_metadata`
-- ... 43 more
+- `acord-attorney-curated-open-research-dataset-2025` · ACORD: Attorney-curated open research dataset · status `needs_metadata`
+- `big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025` · Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning · status `needs_metadata`
+- `chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025` · ChemLLMBench and chemistry reasoning evaluations for language models · status `needs_metadata`
+- `dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025` · DAPO: An open-source LLM reinforcement learning system at scale · status `needs_metadata`
+- `deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025` · DeepScaleR: Scaling reinforcement learning for reasoning in open models · status `needs_metadata`
+- `deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025` · DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning · status `needs_metadata`
+- `does-rl-really-incentivize-reasoning-beyond-base-2025` · Does RL really incentivize reasoning beyond base? · status `needs_metadata`
+- ... 35 more

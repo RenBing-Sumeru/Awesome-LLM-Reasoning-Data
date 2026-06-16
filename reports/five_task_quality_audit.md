@@ -8,15 +8,15 @@ Status: pass.
 
 Evidence:
 
-- `data/papers.yaml` contains 271 structured entries.
-- `reports/link_coverage.json` reports 148 verified entries.
-- 148/148 verified entries have an official paper, arXiv, venue, OpenReview, ACL, DOI, or equivalent primary link.
-- 123 entries remain visible as needs-search or needs-metadata items instead of being silently promoted.
+- `data/papers.yaml` contains 277 structured entries.
+- `reports/link_coverage.json` reports 161 verified entries.
+- 161/161 verified entries have an official paper, arXiv, venue, OpenReview, ACL, DOI, or equivalent primary link.
+- 116 entries remain visible as needs-search or needs-metadata items instead of being silently promoted.
 - `exports/papers.csv`, `exports/papers.json`, `exports/papers.bib`, and `data/citations.bib` are generated from the structured atlas.
 
 Residual gap:
 
-- Artifact coverage is still lower than paper-link coverage, but the v0.2.0 artifact rounds raised it to 35 code links, 24 data links, 18 Hugging Face links, and 20 project links. The next quality jump should prioritize official artifacts for the most reused remaining verified entries.
+- Artifact coverage is still lower than paper-link coverage, but the current atlas now pins 41 code links, 27 data links, 20 Hugging Face links, and 24 project links. The next quality jump should prioritize official artifacts for the most reused remaining verified entries.
 
 ## Task 2: Paper Navigation Map
 
@@ -30,7 +30,7 @@ Evidence:
 
 Residual gap:
 
-- Some verified but not yet curated entries intentionally appear as `L1_link_verified` with conservative waypoint text. That is better than pretending they are summarized, but v0.2.0 should promote the highest-impact L1 entries into deeper notes.
+- Some verified but not yet curated entries intentionally appear as `L1_link_verified` with conservative waypoint text. That is better than pretending they are summarized, but the next milestone should promote the highest-impact L1 entries into deeper notes.
 
 ## Task 3: Paper/Data/Verifier/Recipe Cards
 
@@ -75,7 +75,7 @@ Evidence:
 - Render-check scripts exist for the site, paper atlas, README files, and card index.
 - `scripts/check_links.py --soft` validates local links and URL formatting.
 - `CONTRIBUTING.md` and `.github/pull_request_template.md` require official links, structured metadata, summaries, and QA commands.
-- `reports/self_review.md`, `reports/v0.1.0_release_notes.md`, `reports/link_coverage.md`, `reports/needs_search.md`, and `reports/research_log_public.md` document public status.
+- `reports/v0.1.0_release_notes.md`, `reports/link_coverage.md`, `reports/needs_search.md`, and `reports/research_log_public.md` document public status.
 
 Residual gap:
 
@@ -83,4 +83,4 @@ Residual gap:
 
 ## Overall Quality Judgment
 
-The repository now satisfies the original five upgrade tasks at a usable release-candidate level and has completed two v0.2.0 artifact-verification rounds. The strongest parts are official-link separation, the searchable site, generated navigation, and the Starter Pack/L5 audit-card workflow. The remaining weakness is breadth of deep curation: 148 entries are verified, 53 are audit-ready, 63 are link-only waypoints, and 123 remain in the needs-search queue. That is an honest and maintainable state for a public Awesome atlas, and the next milestone should keep promoting the most cited remaining entries before adding long-tail seeds.
+The repository now satisfies the original five upgrade tasks at a usable release-candidate level and has completed the research-track navigation pass requested on 2026-06-16. The strongest parts are official-link separation, the searchable site, generated navigation, the Starter Pack/L5 audit-card workflow, and the richer PRM/process-supervision paper map. The remaining weakness is breadth of deep curation: 161 entries are verified, 53 are audit-ready, 69 are link-only waypoints, and 116 remain in the needs-search queue. That is an honest and maintainable state for a public Awesome atlas, and the next milestone should keep promoting the most cited remaining entries before adding long-tail seeds.

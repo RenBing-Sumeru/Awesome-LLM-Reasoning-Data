@@ -4,36 +4,36 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 
 ## Summary
 
-- Total entries: 271
-- Verified entries: 148
-- Verified entries with official paper/arXiv/venue/DOI links: 148 (100.0%)
-- Needs search: 123
+- Total entries: 280
+- Verified entries: 165
+- Verified entries with official paper/arXiv/venue/DOI links: 165 (100.0%)
+- Needs search: 115
 - Ambiguous: 0
 - Duplicate: 0
 - Cards: 87
 
 ## Curation Levels
 
-- L0_seeded: 123
-- L1_link_verified: 63
-- L2_artifact_verified: 0
-- L3_summary_ready: 0
+- L0_seeded: 115
+- L1_link_verified: 69
+- L2_artifact_verified: 7
+- L3_summary_ready: 4
 - L4_carded: 32
 - L5_audit_ready: 53
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 148
-- arXiv coverage: 146
-- OpenReview coverage: 14
-- ACL coverage: 5
+- Official primary paper/arXiv/venue/DOI coverage: 165
+- arXiv coverage: 162
+- OpenReview coverage: 15
+- ACL coverage: 7
 - PMLR coverage: 1
 - CVF coverage: 0
-- DOI coverage: 1
-- Code coverage: 35
-- Data coverage: 24
-- Hugging Face coverage: 18
-- Project page coverage: 20
+- DOI coverage: 5
+- Code coverage: 41
+- Data coverage: 27
+- Hugging Face coverage: 20
+- Project page coverage: 25
 - Card coverage: 87
 
 ## Starter Pack Coverage
@@ -55,10 +55,8 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `contractnli-a-dataset-for-document-level-natural-language-inference-for-contract-2021` · ContractNLI: A dataset for document-level natural language inference for contracts · status `needs_metadata`
 - `cuad-an-expert-annotated-nlp-dataset-for-legal-contract-review-2021` · CUAD: An expert-annotated NLP dataset for legal contract review · status `needs_metadata`
 - `finetuned-language-models-are-zero-shot-learners-2021` · Finetuned language models are zero-shot learners · status `needs_metadata`
-- `finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021` · FinQA: A dataset of numerical reasoning over financial data · status `needs_metadata`
 - `multitask-prompted-training-enables-zero-shot-task-generalization-2021` · Multitask prompted training enables zero-shot task generalization · status `needs_metadata`
 - `qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021` · Qasper: A dataset of information-seeking questions and answers over scientific research papers · status `needs_metadata`
-- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` · TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance · status `needs_metadata`
 - `coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022` · CodeRL: Mastering code generation through pretrained models and deep reinforcement learning · status `needs_metadata`
 - `codet-code-generation-with-generated-tests-2022` · CodeT: Code generation with generated tests · status `needs_metadata`
 - `coliee-competition-on-legal-information-extraction-entailment-2022` · COLIEE: Competition on legal information extraction/entailment · status `needs_metadata`
@@ -72,14 +70,11 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `data-provenance-for-language-models-2023` · Data provenance for language models · status `needs_metadata`
 - `distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023` · Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes · status `needs_metadata`
 - `factscore-2023` · FActScore · status `needs_metadata`
-- `financebench-a-benchmark-for-financial-question-answering-2023` · FinanceBench: A benchmark for financial question answering · status `needs_metadata`
 - `gorilla-2023` · Gorilla · status `needs_metadata`
 - `judgelm-fine-tuned-large-language-models-are-scalable-judges-2023` · JudgeLM: Fine-tuned large language models are scalable judges · status `needs_metadata`
 - `language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023` · Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting · status `needs_metadata`
 - `large-language-models-encode-clinical-knowledge-2023` · Large language models encode clinical knowledge · status `needs_metadata`
-- `legalbench-2023` · LegalBench · status `needs_metadata`
 - `mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023` · MAmmoTH: Building math generalist models through hybrid instruction tuning · status `needs_metadata`
-- `math-shepherd-verify-and-reinforce-llms-step-by-step-without-human-annotations-2023` · Math-Shepherd: Verify and reinforce LLMs step-by-step without human annotations · status `needs_metadata`
 - `maud-a-merger-agreement-understanding-dataset-2023` · MAUD: A merger agreement understanding dataset · status `needs_metadata`
 - `measuring-faithfulness-in-chain-of-thought-reasoning-2023` · Measuring faithfulness in chain-of-thought reasoning · status `needs_metadata`
 - `metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023` · MetaMath: Bootstrap your own mathematical questions for large language models · status `needs_metadata`
@@ -101,7 +96,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `gsm-symbolic-2024` · GSM-Symbolic · status `needs_metadata`
 - `harmbench-2024` · HarmBench · status `needs_metadata`
 - `helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024` · HelpSteer2: Open-source preference data for helpfulness and safety · status `needs_metadata`
-- `improve-mathematical-reasoning-in-language-models-by-automated-process-supervisi-2024` · Improve mathematical reasoning in language models by automated process supervision · status `needs_metadata`
 - `is-model-collapse-inevitable-2024` · Is model collapse inevitable? · status `needs_metadata`
 - `lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024` · LAB-Bench: Measuring capabilities of language models for biology research · status `needs_metadata`
 - `learning-to-reason-with-llms-2024` · Learning to reason with LLMs · status `needs_metadata`
@@ -110,7 +104,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024` · PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge · status `needs_metadata`
 - `r-tuning-2024` · R-Tuning · status `needs_metadata`
 - `raft-adapting-language-model-to-domain-specific-rag-2024` · RAFT: Adapting language model to domain-specific RAG · status `needs_metadata`
-- `rest-mcts-2024` · ReST-MCTS* · status `needs_metadata`
 - `self-rewarding-lms-2024` · Self-Rewarding LMs · status `needs_metadata`
 - `spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024` · SPIN: Self-play fine-tuning converts weak language models to strong language models · status `needs_metadata`
 - `swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024` · SWE-Gym: Advancing software engineering agents with training and evaluation environments · status `needs_metadata`
@@ -149,7 +142,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025` · Open-Reasoner-Zero: An open-source approach to RLVR for reasoning · status `needs_metadata`
 - `opencodereasoning-2-scalable-code-reasoning-data-2025` · OpenCodeReasoning-2: Scalable code reasoning data · status `needs_metadata`
 - `opencodereasoning-code-reasoning-traces-at-scale-2025` · OpenCodeReasoning: Code reasoning traces at scale · status `needs_metadata`
-- `prime-process-reinforcement-through-implicit-rewards-2025` · PRIME: Process reinforcement through implicit rewards · status `needs_metadata`
 - `process-reward-models-for-code-reasoning-2025` · Process reward models for code reasoning · status `needs_metadata`
 - `qwen2-5-math-prm-2025` · Qwen2.5-Math-PRM · status `needs_metadata`
 - `r2e-gym-procedural-training-environments-for-repository-level-code-agents-2025` · R2E-Gym: Procedural training environments for repository-level code agents · status `needs_metadata`
@@ -165,4 +157,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025` · xLAM: A family of large action models to empower AI agent systems · status `needs_metadata`
 - `pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026` · pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL · status `needs_metadata`
 - `rewardbench-2-2026` · RewardBench 2 · status `needs_metadata`
-- ... 3 more
+- `terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026` · Terminal-Bench: A benchmark and task environment for terminal agents · status `needs_metadata`
+- `openr1-math-220k-2025` · OpenR1-Math-220k · status `partial`
+- `qwen3-coder-2025` · Qwen3-Coder · status `partial`

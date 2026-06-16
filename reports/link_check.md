@@ -2,10 +2,10 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 419
-- markdown links checked: 2671
-- external markdown links discovered: 1667
-- unique external URLs discovered: 245
+- artifact URLs discovered: 476
+- markdown links checked: 4180
+- external markdown links discovered: 2399
+- unique external URLs discovered: 280
 - live URLs checked: 0
 - failures: 0
 
@@ -20,6 +20,9 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `evaluating-large-language-models-trained-on-code-2021` arxiv: https://arxiv.org/abs/2107.03374
 - `evaluating-large-language-models-trained-on-code-2021` code: https://github.com/openai/human-eval
 - `evaluating-large-language-models-trained-on-code-2021` data: https://github.com/openai/human-eval
+- `finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021` paper: https://aclanthology.org/2021.emnlp-main.300/
+- `finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021` project: https://finqasite.github.io/
+- `finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021` acl: https://aclanthology.org/2021.emnlp-main.300/
 - `measuring-coding-challenge-competence-with-apps-2021` paper: https://arxiv.org/abs/2105.09938
 - `measuring-coding-challenge-competence-with-apps-2021` arxiv: https://arxiv.org/abs/2105.09938
 - `measuring-coding-challenge-competence-with-apps-2021` code: https://github.com/hendrycks/apps
@@ -34,6 +37,12 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` code: https://github.com/openai/miniF2F
 - `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` data: https://github.com/openai/miniF2F
 - `minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021` openreview: https://openreview.net/forum?id=9ZPegFuFTFv
+- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` paper: https://aclanthology.org/2021.acl-long.254/
+- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` arxiv: https://arxiv.org/abs/2105.07624
+- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` code: https://github.com/NExTplusplus/TAT-QA
+- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` data: https://github.com/NExTplusplus/TAT-QA
+- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` project: https://nextplusplus.github.io/TAT-QA/
+- `tat-qa-a-question-answering-benchmark-on-a-hybrid-of-tabular-and-textual-content-2021` acl: https://aclanthology.org/2021.acl-long.254/
 - `training-verifiers-to-solve-math-word-problems-2021` paper: https://arxiv.org/abs/2110.14168
 - `training-verifiers-to-solve-math-word-problems-2021` arxiv: https://arxiv.org/abs/2110.14168
 - `training-verifiers-to-solve-math-word-problems-2021` code: https://github.com/openai/grade-school-math
@@ -57,6 +66,12 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `truthfulqa-2022` acl: https://aclanthology.org/2022.acl-long.229/
 - `direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023` paper: https://arxiv.org/abs/2305.18290
 - `direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023` arxiv: https://arxiv.org/abs/2305.18290
+- `financebench-a-benchmark-for-financial-question-answering-2023` paper: https://arxiv.org/abs/2311.11944
+- `financebench-a-benchmark-for-financial-question-answering-2023` arxiv: https://arxiv.org/abs/2311.11944
+- `financebench-a-benchmark-for-financial-question-answering-2023` code: https://github.com/patronus-ai/financebench
+- `financebench-a-benchmark-for-financial-question-answering-2023` data: https://github.com/patronus-ai/financebench
+- `financebench-a-benchmark-for-financial-question-answering-2023` project: https://github.com/patronus-ai/financebench
+- `financebench-a-benchmark-for-financial-question-answering-2023` huggingface: https://huggingface.co/datasets/PatronusAI/financebench
 - `gpqa-2023` paper: https://arxiv.org/abs/2311.12022
 - `gpqa-2023` arxiv: https://arxiv.org/abs/2311.12022
 - `gpqa-2023` code: https://github.com/idavidrein/gpqa
@@ -74,6 +89,12 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` data: https://zenodo.org/records/10114157
 - `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` project: https://leandojo.org/
 - `leandojo-theorem-proving-with-retrieval-augmented-language-models-2023` venue: https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html
+- `legalbench-2023` paper: https://arxiv.org/abs/2308.11462
+- `legalbench-2023` arxiv: https://arxiv.org/abs/2308.11462
+- `legalbench-2023` code: https://github.com/HazyResearch/legalbench
+- `legalbench-2023` data: https://github.com/HazyResearch/legalbench
+- `legalbench-2023` project: https://hazyresearch.stanford.edu/legalbench/
+- `legalbench-2023` huggingface: https://huggingface.co/datasets/nguha/legalbench
 - `orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023` paper: https://arxiv.org/abs/2306.02707
 - `orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023` arxiv: https://arxiv.org/abs/2306.02707
 - `orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023` project: https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/
@@ -180,6 +201,8 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024` code: https://github.com/QwenLM/Qwen2.5-Math
 - `qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024` project: https://qwenlm.github.io/blog/qwen2.5-math/
 - `qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024` huggingface: https://huggingface.co/Qwen/Qwen2.5-Math-7B
+- `rest-mcts-2024` paper: https://arxiv.org/abs/2406.03816
+- `rest-mcts-2024` arxiv: https://arxiv.org/abs/2406.03816
 - `rewardbench-evaluating-reward-models-for-language-modeling-2024` paper: https://arxiv.org/abs/2403.13787
 - `rewardbench-evaluating-reward-models-for-language-modeling-2024` arxiv: https://arxiv.org/abs/2403.13787
 - `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` paper: https://arxiv.org/abs/2410.08146
@@ -237,29 +260,6 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` paper: https://arxiv.org/abs/2503.01307
 - `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` arxiv: https://arxiv.org/abs/2503.01307
 - `dapo-2025` paper: https://arxiv.org/abs/2503.14476
-- `dapo-2025` arxiv: https://arxiv.org/abs/2503.14476
-- `deepmath-103k-2025` paper: https://arxiv.org/abs/2504.11456
-- `deepmath-103k-2025` arxiv: https://arxiv.org/abs/2504.11456
-- `deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025` paper: https://arxiv.org/abs/2504.11456
-- `deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025` arxiv: https://arxiv.org/abs/2504.11456
-- `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025` paper: https://arxiv.org/abs/2504.21801
-- `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025` arxiv: https://arxiv.org/abs/2504.21801
-- `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025` code: https://github.com/deepseek-ai/DeepSeek-Prover-V2
-- `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025` data: https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench
-- `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025` project: https://github.com/deepseek-ai/DeepSeek-Prover-V2
-- `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025` huggingface: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B
-- `deepseek-r1-2025` paper: https://arxiv.org/abs/2501.12948
-- `deepseek-r1-2025` arxiv: https://arxiv.org/abs/2501.12948
-- `deepseek-v3-2-pushing-the-frontier-of-open-large-language-models-2025` paper: https://arxiv.org/abs/2512.02556
-- `deepseek-v3-2-pushing-the-frontier-of-open-large-language-models-2025` arxiv: https://arxiv.org/abs/2512.02556
-- `distillation-scaling-laws-2025` paper: https://arxiv.org/abs/2502.08606
-- `distillation-scaling-laws-2025` arxiv: https://arxiv.org/abs/2502.08606
-- `faithbench-a-diverse-hallucination-benchmark-for-summarization-by-modern-llms-2025` paper: https://arxiv.org/abs/2410.13210
-- `faithbench-a-diverse-hallucination-benchmark-for-summarization-by-modern-llms-2025` arxiv: https://arxiv.org/abs/2410.13210
-- `from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025` paper: https://arxiv.org/abs/2505.22203
-- `from-accuracy-to-robustness-a-study-of-rule-and-model-based-verifiers-in-mathema-2025` arxiv: https://arxiv.org/abs/2505.22203
-- `gaperon-a-peppered-english-french-generative-language-model-suite-2025` paper: https://arxiv.org/abs/2510.25771
-- `gaperon-a-peppered-english-french-generative-language-model-suite-2025` arxiv: https://arxiv.org/abs/2510.25771
-- ... 169 more
+- ... 226 more
 
 Network probing skipped because `--soft` was used.

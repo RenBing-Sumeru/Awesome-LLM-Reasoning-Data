@@ -20,29 +20,39 @@
     </nav>
     <section class="hero">
       <div>
-        <p class="eyebrow">Searchable atlas</p>
-        <h1>Find reasoning-data papers by verifier, training use, and evidence level.</h1>
-        <p class="lede">Use this page to compare papers by data object, verifier contract, training use, and curation level before opening the source paper.</p>
+        <p class="eyebrow">Searchable research atlas</p>
+        <h1>Browse reasoning-data papers by research track, data object, verifier, and audit signal.</h1>
+        <p class="lede">Use this page like a lightweight literature database: start from a field tab, narrow by subfield or feedback contract, then open the paper, card, code, data, or project link.</p>
       </div>
       <div class="stat-panel" aria-label="Atlas statistics">
-        <div><strong id="totalEntries">0</strong><span>entries</span></div>
-        <div><strong id="verifiedEntries">0</strong><span>verified</span></div>
-        <div><strong id="cardedEntries">0</strong><span>carded</span></div>
-        <div><strong id="needsSearch">0</strong><span>needs search</span></div>
+        <div><strong id="totalEntries">280</strong><span>entries</span></div>
+        <div><strong id="verifiedEntries">165</strong><span>verified</span></div>
+        <div><strong id="cardedEntries">87</strong><span>carded</span></div>
+        <div><strong id="needsSearch">115</strong><span>needs search</span></div>
       </div>
     </section>
   </header>
 
   <main>
     <section class="quick-stats" aria-label="Role statistics">
-      <div><strong id="dataReleases">0</strong><span>data releases</span></div>
-      <div><strong id="verifiersRewards">0</strong><span>verifiers/rewards</span></div>
-      <div><strong id="agentEnvironments">0</strong><span>agent environments</span></div>
-      <div><strong id="scalingStudies">0</strong><span>scaling studies</span></div>
+      <div><strong id="dataReleases">36</strong><span>data releases</span></div>
+      <div><strong id="verifiersRewards">20</strong><span>verifiers/rewards</span></div>
+      <div><strong id="agentEnvironments">16</strong><span>agent environments</span></div>
+      <div><strong id="scalingStudies">18</strong><span>scaling studies</span></div>
+    </section>
+
+    <section class="track-section">
+      <div class="section-head">
+        <h2>Research Tracks</h2>
+        <p>Jump by field first, then use filters for data object, verifier, training use, and artifact coverage.</p>
+      </div>
+      <div id="trackTabs" class="track-tabs"></div>
     </section>
 
     <section class="controls" aria-label="Search and filters">
       <label class="search"><span>Search</span><input id="q" type="search" placeholder="title, author, tag, summary, venue"></label>
+      <label><span>Research area</span><select id="category"><option value="">All areas</option></select></label>
+      <label><span>Subfield</span><select id="subfield"><option value="">All subfields</option></select></label>
       <label><span>Year</span><select id="year"><option value="">All years</option></select></label>
       <label><span>Venue</span><select id="venue"><option value="">All venues</option></select></label>
       <label><span>Source role</span><select id="sourceRole"><option value="">All roles</option></select></label>

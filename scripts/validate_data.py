@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from collections import Counter
 import re
+import subprocess
 from pathlib import Path
 
 from atlas_utils import (
@@ -27,7 +28,20 @@ DOI_RE = re.compile(r"^(https?://doi\.org/)?10\.\d{4,9}/\S+$", re.I)
 LESSON_RE = re.compile(r"^\d\d_.*\.md$")
 MIN_LESSON_WORDS = 700
 PUBLIC_SCAN_ROOTS = ["README.md", "README_zh.md", "docs", "papers", "cards", "data", "reports", "scripts", ".github"]
+FORBIDDEN_PUBLIC_PATH_TERMS = [
+    ".ds_store",
+    "CODEX" + "_",
+    "codex" + "_redesign",
+    "redesign" + "_spec",
+    "reference" + "_repo_redesign",
+]
 LEAKAGE_TERMS = [
+    "CODEX" + "_REDESIGN",
+    "build" + " prompt",
+    "build" + "-specification",
+    "spec" + " reread",
+    "prompt" + "-like",
+    "internal " + "agent logs",
     "Codex " + "prompt",
     "Chat" + "GPT",
     "system " + "prompt",
@@ -239,9 +253,36 @@ def scan_leakage(errors: list[str]) -> None:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
+        relative_path = path.relative_to(ROOT).as_posix()
         for term in LEAKAGE_TERMS:
-            if term in text:
-                errors.append(f"possible prompt/conversation leakage term {term!r} in {path.relative_to(ROOT)}")
+            if term in relative_path or term in text:
+                errors.append(f"possible non-public workflow marker {term!r} in {path.relative_to(ROOT)}")
+
+
+def validate_public_file_hygiene(errors: list[str]) -> None:
+    tracked = subprocess.run(
+        ["git", "-C", str(ROOT), "ls-files"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if tracked.returncode == 0:
+        for rel in tracked.stdout.splitlines():
+            rel_lower = rel.lower()
+            for term in FORBIDDEN_PUBLIC_PATH_TERMS:
+                if term.lower() in rel_lower:
+                    errors.append(f"forbidden tracked workflow/junk file path: {rel}")
+    for root in PUBLIC_SCAN_ROOTS:
+        path = ROOT / root
+        candidates = [path] if path.exists() else []
+        if path.is_dir():
+            candidates = [item for item in path.glob("**/*") if item.is_file() and ".git" not in item.parts]
+        for candidate in candidates:
+            rel = candidate.relative_to(ROOT).as_posix()
+            rel_lower = rel.lower()
+            for term in FORBIDDEN_PUBLIC_PATH_TERMS:
+                if term.lower() in rel_lower:
+                    errors.append(f"forbidden public workflow/junk file path: {rel}")
 
 
 def validate_site(errors: list[str]) -> None:
@@ -263,6 +304,7 @@ def main() -> int:
     validate_starter_pack(data, errors)
     validate_cards(data, errors)
     validate_site(errors)
+    validate_public_file_hygiene(errors)
     scan_leakage(errors)
 
     print(f"entries: {len(data)}")

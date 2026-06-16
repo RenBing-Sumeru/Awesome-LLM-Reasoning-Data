@@ -31,6 +31,11 @@ PLACEHOLDER_MARKERS = [
     "Needs curator rationale",
 ]
 
+_ENTRIES_CACHE: list[dict[str, Any]] | None = None
+_CATEGORIES_CACHE: list[dict[str, Any]] | None = None
+_RESEARCH_TRACKS_CACHE: list[dict[str, Any]] | None = None
+_STARTER_PACKS_CACHE: list[dict[str, Any]] | None = None
+
 
 def as_list(value: Any) -> list[Any]:
     if isinstance(value, list):
@@ -42,24 +47,52 @@ def norm(value: Any) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
 
 
+def contains_term(haystack: str, keyword: str) -> bool:
+    key = norm(keyword)
+    if not key:
+        return False
+    return re.search(rf"(^|\s){re.escape(key)}($|\s)", haystack) is not None
+
+
 def slugify(value: Any, fallback: str = "entry") -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", str(value or "").lower()).strip("-")
     return slug or fallback
 
 
 def entries() -> list[dict[str, Any]]:
-    payload = load_yaml_json(ROOT / "data/papers.yaml")
-    return payload if isinstance(payload, list) else []
+    global _ENTRIES_CACHE
+    if _ENTRIES_CACHE is None:
+        payload = load_yaml_json(ROOT / "data/papers.yaml")
+        _ENTRIES_CACHE = payload if isinstance(payload, list) else []
+    return _ENTRIES_CACHE
 
 
 def categories() -> list[dict[str, Any]]:
-    payload = load_yaml_json(ROOT / "data/categories.yaml") or {}
-    return payload.get("paper_categories", [])
+    global _CATEGORIES_CACHE
+    if _CATEGORIES_CACHE is None:
+        payload = load_yaml_json(ROOT / "data/categories.yaml") or {}
+        _CATEGORIES_CACHE = payload.get("paper_categories", [])
+    return _CATEGORIES_CACHE
+
+
+def research_tracks() -> list[dict[str, Any]]:
+    global _RESEARCH_TRACKS_CACHE
+    if _RESEARCH_TRACKS_CACHE is None:
+        payload = load_yaml_json(ROOT / "data/research_tracks.yaml") or {}
+        _RESEARCH_TRACKS_CACHE = payload.get("research_tracks", [])
+    return _RESEARCH_TRACKS_CACHE
+
+
+def track_by_category() -> dict[str, dict[str, Any]]:
+    return {track.get("category_id"): track for track in research_tracks()}
 
 
 def starter_packs() -> list[dict[str, Any]]:
-    payload = load_yaml_json(ROOT / "data/starter_packs.yaml") or {}
-    return payload.get("starter_packs", [])
+    global _STARTER_PACKS_CACHE
+    if _STARTER_PACKS_CACHE is None:
+        payload = load_yaml_json(ROOT / "data/starter_packs.yaml") or {}
+        _STARTER_PACKS_CACHE = payload.get("starter_packs", [])
+    return _STARTER_PACKS_CACHE
 
 
 def artifacts(entry: dict[str, Any]) -> dict[str, Any]:
@@ -141,8 +174,232 @@ def one_line(entry: dict[str, Any]) -> str:
 def why_it_matters(entry: dict[str, Any]) -> str:
     value = entry.get("why_it_matters") or entry.get("inclusion_reason") or "Needs curator rationale."
     if is_placeholder_text(value):
-        return "Use this entry as a verified citation waypoint until a paper-specific audit note is added."
+        return "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read."
     return value
+
+
+def compact_data_object(entry: dict[str, Any]) -> str:
+    data = entry.get("data_object") or {}
+    fields = []
+    categories_ = set(as_list(entry.get("category")))
+    answer = data.get("answer_format")
+    substrate = data.get("environment_or_substrate")
+    process_fields = data.get("process_fields") or []
+    if answer and answer != "unknown" and (answer != "survey_background" or "surveys_and_primers" in categories_):
+        fields.append(str(answer).replace("_", " "))
+    if process_fields:
+        fields.append("process: " + ", ".join(str(item).replace("_", " ") for item in process_fields[:3]))
+    if substrate and substrate != "unknown":
+        fields.append(str(substrate).replace("_", " "))
+    if not fields:
+        granularities = [str(item).replace("_", " ") for item in as_list(entry.get("supervision_granularity")) if item != "unknown"]
+        roles = [
+            str(item).replace("_", " ")
+            for item in as_list(entry.get("source_role"))[:2]
+            if item != "survey_background" or "surveys_and_primers" in categories_
+        ]
+        fields = granularities or roles or ["metadata pending"]
+    return "; ".join(fields[:3])
+
+
+def compact_feedback(entry: dict[str, Any]) -> str:
+    data = entry.get("data_object") or {}
+    verifier = data.get("verifier_or_reward")
+    if verifier and verifier != "unknown":
+        return str(verifier).replace("_", " ")
+    contracts = [str(item).replace("_", " ") for item in as_list(entry.get("verification_contract")) if item != "unknown"]
+    if contracts:
+        return ", ".join(contracts[:2])
+    return "metadata pending"
+
+
+def compact_recipe(entry: dict[str, Any]) -> str:
+    recipe = entry.get("recipe_metadata") or {}
+    fields = []
+    for key in ["teacher", "generator", "filtering_rule", "optimizer_or_scaffold"]:
+        value = recipe.get(key)
+        if value and value != "unknown":
+            fields.append(f"{key.replace('_', ' ')}: {value}")
+    if fields:
+        return "; ".join(fields[:2])
+    layers = [str(item).replace("_", " ") for item in as_list(entry.get("construction_layer"))]
+    uses = [str(item).replace("_", " ") for item in as_list(entry.get("training_use")) if item != "unknown"]
+    return "; ".join((layers + uses)[:3]) or "recipe pending"
+
+
+def compact_audit(entry: dict[str, Any]) -> str:
+    audit = entry.get("audit") or {}
+    failures = audit.get("known_failure_modes") or []
+    if failures:
+        return ", ".join(str(item).replace("_", " ") for item in failures[:3])
+    checks = []
+    for key in ["decontamination", "lineage", "license", "split"]:
+        value = audit.get(key)
+        if value and value != "unknown":
+            checks.append(f"{key}: {value}")
+    if checks:
+        return "; ".join(checks[:2])
+    return "check links, lineage, verifier, split, and contamination"
+
+
+def entry_search_text(entry: dict[str, Any]) -> str:
+    data = entry.get("data_object") or {}
+    audit = entry.get("audit") or {}
+    recipe = entry.get("recipe_metadata") or {}
+    fields: list[str] = [
+        norm(entry.get("id")),
+        norm(entry.get("title")),
+        norm(entry.get("venue")),
+        " ".join(norm(item) for item in as_list(entry.get("source_role"))),
+        " ".join(norm(item) for item in as_list(entry.get("verification_contract"))),
+        " ".join(norm(item) for item in as_list(entry.get("training_use"))),
+        " ".join(norm(item) for item in as_list(entry.get("domains"))),
+        " ".join(norm(item) for item in as_list(entry.get("tags"))),
+        " ".join(norm(item) for item in as_list(entry.get("construction_layer"))),
+        norm(one_line(entry)),
+        norm(why_it_matters(entry)),
+        " ".join(norm(value) for value in data.values() if not isinstance(value, list)),
+        " ".join(norm(item) for value in data.values() if isinstance(value, list) for item in value),
+        " ".join(norm(value) for value in audit.values() if not isinstance(value, list)),
+        " ".join(norm(item) for value in audit.values() if isinstance(value, list) for item in value),
+        " ".join(norm(value) for value in recipe.values() if not isinstance(value, list)),
+    ]
+    return " ".join(item for item in fields if item)
+
+
+def infer_subfield(entry: dict[str, Any], category_id: str | None = None) -> dict[str, Any] | None:
+    category_id = category_id or (as_list(entry.get("category"))[0] if as_list(entry.get("category")) else None)
+    track = track_by_category().get(category_id)
+    if not track:
+        return None
+    title_hay = norm(entry.get("title"))
+    hay = " ".join([
+        title_hay,
+        norm(entry.get("venue")),
+        " ".join(norm(item) for item in as_list(entry.get("verification_contract"))),
+        " ".join(norm(item) for item in as_list(entry.get("training_use"))),
+        " ".join(norm(item) for item in as_list(entry.get("domains"))),
+        " ".join(norm(item) for item in as_list(entry.get("tags"))),
+        norm(one_line(entry)),
+        norm(why_it_matters(entry)),
+    ])
+    subfields = track.get("subfields") or []
+    best = None
+    best_score = -1
+    for subfield in subfields:
+        score = 0
+        for keyword in subfield.get("keywords", []):
+            if contains_term(title_hay, keyword):
+                score += 3
+            elif contains_term(hay, keyword):
+                score += 1
+        if score > best_score:
+            best = subfield
+            best_score = score
+    return best if best_score > 0 else None
+
+
+def force_include_subfield(entry: dict[str, Any], category_id: str | None, subfield_name: str | None) -> bool:
+    """Allow a few cross-cutting research doors to reuse strong verified entries."""
+    if not category_id or not subfield_name:
+        return False
+    name = norm(subfield_name)
+    hay = entry_search_text(entry)
+    label_hay = " ".join([
+        norm(entry.get("id")),
+        norm(entry.get("title")),
+        norm(entry.get("venue")),
+        " ".join(norm(item) for item in as_list(entry.get("domains"))),
+        " ".join(norm(item) for item in as_list(entry.get("tags"))),
+    ])
+    roles = set(as_list(entry.get("source_role")))
+
+    if category_id == "environmental_agents_tools_web_swe" and "agent benchmarks" in name:
+        if {"benchmark", "agent_environment"} <= roles:
+            return True
+        return any(contains_term(hay, term) for term in [
+            "agentbench",
+            "appworld",
+            "androidworld",
+            "browsergym",
+            "terminal bench",
+            "tau bench",
+            "webarena",
+            "web arena",
+            "osworld",
+            "os world",
+            "swe bench",
+            "swebench",
+            "r2e gym",
+            "terminal predicate",
+            "environment predicate",
+        ])
+
+    if category_id == "surveys_and_primers" and "rlhf reward model surveys" in name:
+        has_survey_signal = contains_term(label_hay, "survey") or contains_term(label_hay, "reward model survey")
+        has_reward_signal = any(contains_term(label_hay, term) for term in [
+            "rlhf",
+            "reinforcement learning from human feedback",
+            "reward model",
+            "reward models",
+            "reward modeling",
+            "human preference",
+            "preference learning",
+            "preference modeling",
+            "preference optimization",
+        ])
+        return has_survey_signal and has_reward_signal
+
+    if category_id == "judgment_required_rubrics_safety_domain" and "legal reasoning" in name:
+        return any(contains_term(label_hay, term) for term in [
+            "legal",
+            "legalbench",
+            "law",
+            "statute",
+            "casehold",
+            "contract",
+            "court",
+            "jurisdiction",
+        ])
+
+    if category_id == "judgment_required_rubrics_safety_domain" and "financial reasoning" in name:
+        return any(contains_term(label_hay, term) for term in [
+            "finance",
+            "financial",
+            "financebench",
+            "finqa",
+            "tat qa",
+            "earnings",
+            "filing",
+            "financial statement",
+        ])
+
+    if category_id == "audit_failure_contamination_verifier_attacks" and "spurious rewards" in name:
+        return any(contains_term(hay, term) for term in [
+            "spurious",
+            "spurious reward",
+            "spurious rewards",
+            "shortcut",
+            "shortcuts",
+            "memorization shortcut",
+            "reward paradox",
+        ])
+
+    return False
+
+
+def subfield_matches(entry: dict[str, Any], category_id: str | None, subfield: dict[str, Any]) -> bool:
+    inferred = infer_subfield(entry, category_id)
+    name = subfield.get("name")
+    return (
+        bool(inferred and inferred.get("name") == name)
+        or force_include_subfield(entry, category_id, name)
+    )
+
+
+def subfield_name(entry: dict[str, Any], category_id: str | None = None) -> str:
+    subfield = infer_subfield(entry, category_id)
+    return subfield.get("name", "Other related work") if subfield else "Other related work"
 
 
 def link_parts(entry: dict[str, Any], card_path: str | None = None) -> list[str]:

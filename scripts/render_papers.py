@@ -9,13 +9,21 @@ from atlas_utils import (
     as_list,
     card_inventory,
     categories,
+    compact_audit,
+    compact_data_object,
+    compact_feedback,
+    compact_recipe,
     curation_level,
     entries,
+    entry_search_text,
+    infer_subfield,
     link_parts,
     one_line,
     primary_link,
+    research_tracks,
     starter_matches,
     starter_packs,
+    subfield_matches,
     why_it_matters,
 )
 from common import ROOT
@@ -35,6 +43,16 @@ ROLE_EMOJI = {
     "audit_failure": "🧯",
     "infrastructure": "🛠️",
 }
+
+CROSSWALK_ROWS = [
+    ("Math", "answer checker / symbolic verifier", "answer + trace / rollout", "SFT, PRM, RLVR, evaluation", "answer extraction, contamination, data reuse"),
+    ("Code", "unit tests / execution", "code + tests + logs", "SFT, RLVR, evaluation", "flaky tests, hidden tests, generated-test leakage"),
+    ("Formal proof", "proof checker", "theorem + proof script + imports", "SFT, RL/search, evaluation", "environment/version mismatch"),
+    ("Agents", "terminal predicate / environment", "state-action-observation episode", "agent training, evaluation, RL", "non-replayable scaffold, hidden state"),
+    ("Medical / safety", "rubric / expert judge", "question + rationale + rubric record", "RM, RLAIF, evaluation, audit", "judge bias, high-stakes errors"),
+    ("Frontier reports", "partial reward/verifier disclosure", "data mixture + recipe clues", "distillation, RLVR, safety tuning", "undisclosed data partitions"),
+    ("Audit work", "attack / contamination probe", "failure case + evaluator evidence", "evaluation, release audit", "benchmark leakage, verifier gaming"),
+]
 
 AUDIT_CHECKLISTS = {
     "surveys_and_primers": [
@@ -95,8 +113,16 @@ AUDIT_CHECKLISTS = {
 }
 
 
+def display_roles(entry: dict) -> list[str]:
+    categories_ = set(as_list(entry.get("category")))
+    return [
+        role for role in as_list(entry.get("source_role"))
+        if role != "survey_background" or "surveys_and_primers" in categories_
+    ]
+
+
 def entry_badges(entry: dict) -> str:
-    roles = " · ".join(f"{ROLE_EMOJI.get(role, '🏷️')} {role.replace('_', ' ')}" for role in as_list(entry.get("source_role"))[:2])
+    roles = " · ".join(f"{ROLE_EMOJI.get(role, '🏷️')} {role.replace('_', ' ')}" for role in display_roles(entry)[:2])
     contracts = " · ".join(contract.replace("_", " ") for contract in as_list(entry.get("verification_contract"))[:2])
     uses = " · ".join(use.replace("_", " ") for use in as_list(entry.get("training_use"))[:2])
     bits = [roles, contracts, uses, curation_level(entry)]
@@ -107,6 +133,98 @@ def links(entry: dict, cards: dict[str, str]) -> str:
     return " · ".join(link_parts(entry, cards.get(entry.get("id"))))
 
 
+def track_for_category(category_id: str) -> dict:
+    for track in research_tracks():
+        if track.get("category_id") == category_id:
+            return track
+    return {}
+
+
+def subfield_slug(name: str) -> str:
+    import re
+    text = re.sub(r"<[^>]+>", "", name)
+    text = re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff]+", "-", text).strip("-").lower()
+    return text or "subfield"
+
+
+def subfield_links(track: dict) -> str:
+    lines = []
+    for subfield in track.get("subfields", []):
+        name = subfield.get("name", "Subfield")
+        lines.append(f"- [{name}](#{subfield_slug(name)})")
+    return "\n".join(lines)
+
+
+def subfield_navigator(track: dict) -> str:
+    rows = ["| Subfield | What it helps you read | Key audit risk |", "|---|---|---|"]
+    for subfield in track.get("subfields", []):
+        rows.append(
+            f"| {subfield.get('name')} | {subfield.get('focus', '')} | {subfield.get('key_risk', '')} |"
+        )
+    return "\n".join(rows)
+
+
+def grouped_by_subfield(entries_: list[dict], category_id: str) -> list[tuple[str, list[dict]]]:
+    track = track_for_category(category_id)
+    ordered_names = [subfield.get("name") for subfield in track.get("subfields", [])]
+    groups: dict[str, list[dict]] = {name: [] for name in ordered_names}
+    groups["Other related work"] = []
+    seen_by_group: dict[str, set[str]] = {name: set() for name in groups}
+    for entry in entries_:
+        subfield = infer_subfield(entry, category_id)
+        primary_name = subfield.get("name") if subfield else "Other related work"
+        groups.setdefault(primary_name, [])
+        seen_by_group.setdefault(primary_name, set())
+        entry_id = entry.get("id") or entry.get("title") or ""
+        if entry_id not in seen_by_group[primary_name]:
+            groups[primary_name].append(entry)
+            seen_by_group[primary_name].add(entry_id)
+        for candidate in track.get("subfields", []):
+            candidate_name = candidate.get("name")
+            if not candidate_name or candidate_name == primary_name:
+                continue
+            if subfield_matches(entry, category_id, candidate):
+                groups.setdefault(candidate_name, [])
+                seen_by_group.setdefault(candidate_name, set())
+                if entry_id not in seen_by_group[candidate_name]:
+                    groups[candidate_name].append(entry)
+                    seen_by_group[candidate_name].add(entry_id)
+    for grouped in groups.values():
+        grouped.sort(key=paper_list_score)
+    return [(name, groups[name]) for name in ordered_names + ["Other related work"] if groups.get(name)]
+
+
+def compact_entry_table(entries_: list[dict], cards: dict[str, str], limit: int = 12) -> str:
+    rows = [
+        "| Work | Year | Links | Data object | Feedback / verifier | Why it matters |",
+        "|---|---:|---|---|---|---|",
+    ]
+    for entry in entries_[:limit]:
+        title = entry.get("title") or entry.get("id")
+        title_md = f"[{title}]({primary_link(entry)})" if primary_link(entry) else title
+        rows.append(
+            f"| {title_md} | {entry.get('year') or ''} | {links(entry, cards)} | {compact_data_object(entry)} | {compact_feedback(entry)} | {why_it_matters(entry)} |"
+        )
+    return "\n".join(rows)
+
+
+READ_FIRST_OVERRIDES = {
+    "process_supervision_prm": [
+        "prm800k-2023",
+        "math-shepherd-2024",
+        "rest-mcts-2024",
+        "autopsv-automated-process-supervised-verifier-2024",
+        "omegaprm-automated-process-supervision-2024",
+        "step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024",
+        "prime-process-reinforcement-through-implicit-rewards-2025",
+        "rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025",
+        "prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025",
+        "processbench-identifying-process-errors-in-mathematical-reasoning-2025",
+        "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
+    ],
+}
+
+
 def starter_link(label: str, href: str | None) -> str:
     return f"[{label}]({href})" if href else "needs_search"
 
@@ -114,30 +232,127 @@ def starter_link(label: str, href: str | None) -> str:
 def paper_item(entry: dict, cards: dict[str, str]) -> str:
     title = entry.get("title") or entry.get("id")
     title_md = f"[{title}]({primary_link(entry)})" if primary_link(entry) else title
+    roles = display_roles(entry)
     return (
-        f"- {ROLE_EMOJI.get(as_list(entry.get('source_role'))[0], '📄') if as_list(entry.get('source_role')) else '📄'} "
+        f"- {ROLE_EMOJI.get(roles[0], '📄') if roles else '📄'} "
         f"**{title_md}**\n"
         f"  <sub>{entry.get('year') or 'n.d.'} · {entry.get('venue') or 'unknown venue'} · {entry_badges(entry)}</sub>\n"
         f"  {links(entry, cards)}\n"
+        f"  _Data object:_ {compact_data_object(entry)}\n"
+        f"  _Feedback / verifier:_ {compact_feedback(entry)}\n"
+        f"  _Recipe signal:_ {compact_recipe(entry)}\n"
+        f"  _Audit focus:_ {compact_audit(entry)}\n"
         f"  _Why it matters:_ {why_it_matters(entry)}"
     )
 
 
-def read_first(entries_: list[dict], cards: dict[str, str]) -> str:
-    picks = [entry for entry in entries_ if primary_link(entry) and entry.get("status") == "verified"]
-    picks.sort(key=lambda entry: (
-        0 if cards.get(entry.get("id")) else 1,
-        0 if "data_release" in as_list(entry.get("source_role")) else 1,
+def is_metadata_rich(entry: dict) -> bool:
+    if not primary_link(entry):
+        return False
+    if compact_data_object(entry) == "metadata pending":
+        return False
+    if compact_feedback(entry) == "metadata pending":
+        return False
+    if why_it_matters(entry).startswith("Verified citation waypoint"):
+        return False
+    return True
+
+
+def is_prm_core_entry(entry: dict) -> bool:
+    """Keep PRM core focused on process-level feedback rather than all verifier work."""
+    if not is_metadata_rich(entry):
+        return False
+    hay = entry_search_text(entry)
+    core_signals = [
+        "process",
+        "step-level",
+        "step wise",
+        "step-wise",
+        "first-error",
+        "first error",
+        "rollout",
+        "intermediate",
+        "prm800k",
+        "prmbench",
+        "processbench",
+        "math-shepherd",
+        "omegaprm",
+        "autopsv",
+    ]
+    return any(signal in hay for signal in core_signals)
+
+
+def emerging_item(entry: dict, cards: dict[str, str]) -> str:
+    title = entry.get("title") or entry.get("id")
+    title_md = f"[{title}]({primary_link(entry)})" if primary_link(entry) else title
+    return (
+        f"- **{title_md}** "
+        f"<sub>{entry.get('year') or 'n.d.'} · {entry.get('venue') or 'unknown venue'} · {curation_level(entry, cards.get(entry.get('id')))}</sub>\n"
+        f"  {links(entry, cards)}\n"
+        "  _Curation note:_ link verified; add paper-specific data object, verifier/reward contract, recipe signal, and audit notes before promoting it into the core PRM list."
+    )
+
+
+def paper_list_score(entry: dict) -> tuple:
+    level_rank = {
+        "L5_audit_ready": 0,
+        "L4_carded": 1,
+        "L3_summary_ready": 2,
+        "L2_artifact_verified": 3,
+        "L1_link_verified": 4,
+        "L0_seeded": 5,
+    }
+    roles = set(as_list(entry.get("source_role")))
+    category_bonus = 0 if roles - {"survey_background"} else 1
+    return (
+        level_rank.get(curation_level(entry), 6),
+        category_bonus,
+        0 if primary_link(entry) else 1,
         -(entry.get("year") or 0),
         entry.get("title") or "",
-    ))
-    rows = ["| Work | Year | Venue | Links | Why it matters |", "|---|---:|---|---|---|"]
-    for entry in picks[:10]:
-        title = entry.get("title") or entry.get("id")
-        rows.append(
-            f"| {title} | {entry.get('year') or ''} | {entry.get('venue') or 'unknown'} | {links(entry, cards)} | {why_it_matters(entry)} |"
-        )
-    return "\n".join(rows)
+    )
+
+
+def read_first_score(entry: dict, cards: dict[str, str], category_id: str | None = None) -> tuple:
+    roles = set(as_list(entry.get("source_role")))
+    uses = set(as_list(entry.get("training_use")))
+    level_rank = {
+        "L5_audit_ready": 0,
+        "L4_carded": 1,
+        "L3_summary_ready": 2,
+        "L2_artifact_verified": 3,
+        "L1_link_verified": 4,
+        "L0_seeded": 5,
+    }
+    if category_id == "process_supervision_prm":
+        category_bonus = 0 if roles & {"process_supervision", "verifier_reward"} else 2
+        use_bonus = 0 if uses & {"process_supervision", "reward_modeling", "rlvr"} else 1
+    else:
+        category_bonus = 0 if "data_release" in roles else 1
+        use_bonus = 0
+    return (
+        category_bonus,
+        use_bonus,
+        level_rank.get(curation_level(entry, cards.get(entry.get("id"))), 6),
+        0 if cards.get(entry.get("id")) else 1,
+        -(entry.get("year") or 0),
+        entry.get("title") or "",
+    )
+
+
+def read_first(entries_: list[dict], cards: dict[str, str], category_id: str | None = None) -> str:
+    picks = [entry for entry in entries_ if primary_link(entry) and entry.get("status") == "verified"]
+    overrides = READ_FIRST_OVERRIDES.get(category_id or "", [])
+    if overrides:
+        by_id = {entry.get("id"): entry for entry in picks}
+        selected = [by_id[item] for item in overrides if item in by_id]
+        selected_ids = {entry.get("id") for entry in selected}
+        tail = [entry for entry in picks if entry.get("id") not in selected_ids]
+        tail.sort(key=lambda entry: read_first_score(entry, cards, category_id))
+        picks = selected + tail
+    else:
+        picks.sort(key=lambda entry: read_first_score(entry, cards, category_id))
+    return compact_entry_table(picks, cards, limit=10)
 
 
 def group_entries(entries_: list[dict]) -> dict[str, list[dict]]:
@@ -169,8 +384,50 @@ def related_cards(entries_: list[dict], cards: dict[str, str]) -> list[str]:
     return out[:18]
 
 
+def paper_track_table() -> str:
+    rows = ["| Track | Subfields | Best for | Entries | Jump |", "|---|---|---|---:|---|"]
+    for cat in categories():
+        track = track_for_category(cat["id"])
+        subfields = "<br>".join(
+            f"[{item.get('name')}]({cat.get('file')}#{subfield_slug(item.get('name', 'Subfield'))})"
+            for item in (track.get("subfields") or [])
+        )
+        rows.append(
+            f"| {track.get('navigator_title', cat.get('title'))} | {subfields} | {track.get('best_for', cat.get('summary', ''))} | {len(category_entries(cat['id']))} | [{cat.get('file')}]({cat.get('file')}) |"
+        )
+    return "\n".join(rows)
+
+
+def crosswalk_matrix() -> str:
+    rows = ["| Domain | Common feedback | Common data object | Common training use | Main risks |", "|---|---|---|---|---|"]
+    for row in CROSSWALK_ROWS:
+        rows.append("| " + " | ".join(row) + " |")
+    return "\n".join(rows)
+
+
+def awesome_contents() -> str:
+    lines = ["- 📚 Main Research Tracks"]
+    for cat in categories():
+        track = track_for_category(cat["id"])
+        title = track.get("navigator_title", cat.get("title"))
+        lines.append(f"  - [{title}]({cat.get('file')})")
+        for subfield in (track.get("subfields") or []):
+            name = subfield.get("name", "Subfield")
+            lines.append(f"    - [{name}]({cat.get('file')}#{subfield_slug(name)})")
+    lines += [
+        "- 🧩 Browse by Data Object",
+        "  - prompt-answer, trace-answer, step label, rollout value, preference pair, reward record, agent trajectory, rubric record",
+        "- 🛠️ Browse by Training Use",
+        "  - SFT, distillation, reward modeling, process supervision, RLVR, agent training, evaluation, audit",
+        "- 🧪 Browse by Feedback Contract",
+        "  - programmatic, environmental, judgment-required, mixed, unknown",
+    ]
+    return "\n".join(lines)
+
+
 def render_category(cat: dict, cards: dict[str, str]) -> str:
     cid = cat["id"]
+    track = track_for_category(cid)
     entries_ = category_entries(cid)
     verified = [entry for entry in entries_ if entry.get("status") == "verified" and primary_link(entry)]
     needs = [entry for entry in entries_ if entry not in verified]
@@ -179,33 +436,127 @@ def render_category(cat: dict, cards: dict[str, str]) -> str:
         "",
         f"> {cat.get('summary', '')}",
         "",
-        "## What this category means",
+        "## 1. What This Track Studies",
         "",
         cat.get("reader_promise") or cat.get("summary") or "This category groups related post-training reasoning-data work.",
         "",
     ]
-    for paragraph in (cat.get("why") or [])[:3]:
+    for paragraph in (cat.get("why") or []):
         lines += [paragraph, ""]
 
-    lines += ["## Read first", "", read_first(entries_, cards), "", "## Full paper list", ""]
-    for group, grouped in group_entries(verified).items():
-        lines += [f"### {group}", ""]
-        lines += [paper_item(entry, cards) for entry in grouped[:80]]
-        lines.append("")
-    if needs:
-        lines += ["### ⚠️ Needs search or metadata", ""]
-        lines += [paper_item(entry, cards) for entry in needs[:60]]
-        lines.append("")
+    lines += [
+        "## 2. Why It Matters for Post-Training Reasoning Data",
+        "",
+        "Read this page as a data map, not only a bibliography. For each paper, ask what record is being produced, what feedback contract makes it trainable or evaluable, how it could enter SFT/RM/PRM/RLVR/agent training, and which audit failure would make the claim misleading.",
+        "",
+        "## 3. Subfield Navigator",
+        "",
+        subfield_navigator(track) if track else "No structured subfield navigator is available yet.",
+        "",
+        "### Contents",
+        "",
+        subfield_links(track) if track else "- [Other related work](#other-related-work)",
+        "",
+        "## 4. Read First",
+        "",
+        read_first(entries_, cards, cid),
+        "",
+    ]
 
-    lines += ["## What to audit", ""]
+    if cid == "process_supervision_prm":
+        metadata_rich_verified = [entry for entry in verified if is_metadata_rich(entry)]
+        core_verified = [entry for entry in metadata_rich_verified if is_prm_core_entry(entry)]
+        adjacent_verified = [entry for entry in metadata_rich_verified if entry not in core_verified]
+        emerging_verified = [entry for entry in verified if entry not in metadata_rich_verified]
+        lines += [
+            "## 5. Core PRM Paper List",
+            "",
+            "These entries are promoted into the core list because they already expose a paper-specific data object, feedback/verifier contract, recipe signal, and audit focus. Link-only waypoints are kept in a separate section so they do not dilute the learning path.",
+            "",
+        ]
+        group_map = dict(grouped_by_subfield(core_verified, cid))
+        if track:
+            for subfield in track.get("subfields") or []:
+                group = subfield.get("name", "Subfield")
+                grouped = group_map.get(group, [])
+                lines += [f"### <a id=\"{subfield_slug(group)}\"></a>{group}", ""]
+                if grouped:
+                    lines += [paper_item(entry, cards) for entry in grouped[:80]]
+                else:
+                    lines += ["_No metadata-rich primary-source entries are assigned here yet. Keep link-only papers in Emerging Verified Work until their data object and verifier fields are curated._"]
+                lines.append("")
+        section_number = 6
+        if adjacent_verified:
+            lines += [
+                f"## {section_number}. Adjacent Verified Work",
+                "",
+                "These entries are useful context for PRM readers, but they are not promoted as core PRM papers because they do not yet map cleanly onto a process-supervision subfield. Keep them visible without giving them equal weight in the main learning path.",
+                "",
+            ]
+            lines += [paper_item(entry, cards) for entry in adjacent_verified[:80]]
+            lines.append("")
+            section_number += 1
+        if emerging_verified:
+            lines += [
+                f"## {section_number}. Emerging Verified Work",
+                "",
+                "These papers have official primary links but still need paper-specific metadata before they become core teaching entries. Treat them as a watchlist, not as equal-weight canonical reads.",
+                "",
+            ]
+            for group, grouped in grouped_by_subfield(emerging_verified, cid):
+                lines += [f"### {group}", ""]
+                lines += [emerging_item(entry, cards) for entry in grouped[:80]]
+                lines.append("")
+            section_number += 1
+        if needs:
+            lines += [
+                f"## {section_number}. Needs Search or Metadata",
+                "",
+                "These entries are intentionally separated from verified work. Add official links and enough metadata to identify the data object and verifier before promoting them.",
+                "",
+            ]
+            lines += [paper_item(entry, cards) for entry in needs[:60]]
+            lines.append("")
+            section_number += 1
+        next_section = section_number
+    else:
+        lines += ["## 5. Full Paper List", ""]
+        group_map = dict(grouped_by_subfield(verified, cid))
+        if track:
+            for subfield in track.get("subfields") or []:
+                group = subfield.get("name", "Subfield")
+                grouped = group_map.get(group, [])
+                lines += [f"### <a id=\"{subfield_slug(group)}\"></a>{group}", ""]
+                if grouped:
+                    lines += [paper_item(entry, cards) for entry in grouped[:80]]
+                else:
+                    lines += ["_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._"]
+                lines.append("")
+            other = group_map.get("Other related work", [])
+            if other:
+                lines += [f"### <a id=\"{subfield_slug('Other related work')}\"></a>Other related work", ""]
+                lines += [paper_item(entry, cards) for entry in other[:80]]
+                lines.append("")
+        else:
+            for group, grouped in grouped_by_subfield(verified, cid):
+                lines += [f"### <a id=\"{subfield_slug(group)}\"></a>{group}", ""]
+                lines += [paper_item(entry, cards) for entry in grouped[:80]]
+                lines.append("")
+        if needs:
+            lines += ["### ⚠️ Needs search or metadata", ""]
+            lines += [paper_item(entry, cards) for entry in needs[:60]]
+            lines.append("")
+        next_section = 6
+
+    lines += [f"## {next_section}. What to Audit", ""]
     lines += [f"- {item}" for item in AUDIT_CHECKLISTS.get(cid, ["Check official links, data object, verifier contract, training use, and missing metadata."])]
-    lines += ["", "## Related cards", ""]
-    card_lines = related_cards(entries_, cards)
-    lines += card_lines if card_lines else ["- No cards are linked for this category yet."]
-    lines += ["", "## Open gaps", ""]
+    lines += ["", f"## {next_section + 1}. Open Problems", ""]
     gaps = cat.get("open_questions") or ["More official links, cards, and audit notes are needed for this category."]
     lines += [f"- {gap}" for gap in gaps[:6]]
-    lines += ["", "## Back to map", "", "- [Paper atlas README](README.md)", "- [Repository README](../README.md)"]
+    lines += ["", f"## {next_section + 2}. Related Cards", ""]
+    card_lines = related_cards(entries_, cards)
+    lines += card_lines if card_lines else ["- No cards are linked for this category yet."]
+    lines += ["", "## Back to Map", "", "- [Paper atlas README](README.md)", "- [Repository README](../README.md)"]
     return "\n".join(lines) + "\n"
 
 
@@ -232,13 +583,23 @@ def render_readme(cards: dict[str, str]) -> str:
     return "\n".join([
         "# 📚 Paper Atlas",
         "",
-        "> A small-field navigation map for post-training reasoning data papers, verifiers, data releases, construction recipes, frontier reports, and audit work.",
+        "> A review-style Awesome map for post-training reasoning data papers, verifiers, data releases, construction recipes, frontier reports, and audit work.",
         "",
-        "Use this folder when the README is too compact. Each category page gives a beginner-friendly explanation, read-first papers, full paper list, audit checklist, related cards, and open gaps.",
+        "Use this folder when you want the repo to behave like a living survey. Each category page explains what the track studies, why it matters for post-training reasoning data, which subfields exist, what papers to read first, what each paper's data object/verifier/recipe looks like, and how to audit the claims.",
         "",
-        "## Category Map",
+        "## Awesome-Style Contents",
         "",
-        "\n".join(cat_rows),
+        awesome_contents(),
+        "",
+        "## Research Track Navigator",
+        "",
+        paper_track_table(),
+        "",
+        "## Crosswalk Matrix",
+        "",
+        "The same paper can sit on multiple axes. Use this matrix to translate a domain into the data object, feedback signal, training use, and audit risk that matter for post-training reasoning.",
+        "",
+        crosswalk_matrix(),
         "",
         "## Starter Pack: 20 Must-Read Papers",
         "",
@@ -259,7 +620,6 @@ def render_readme(cards: dict[str, str]) -> str:
         "## Reports",
         "",
         "- [Needs-search report](../reports/needs_search.md)",
-        "- [Self-review](../reports/self_review.md)",
     ]) + "\n"
 
 

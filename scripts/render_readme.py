@@ -2,27 +2,63 @@
 from __future__ import annotations
 
 import argparse
+import re
 import tempfile
 from pathlib import Path
 
 from atlas_utils import (
     CURATION_LEVELS,
     ARTIFACT_KEYS,
+    as_list,
     artifacts,
+    categories,
     card_inventory,
+    compact_data_object,
+    compact_feedback,
     curation_level,
     entries,
+    entry_search_text,
+    link_parts,
+    one_line,
     primary_link,
+    primary_link_kind,
+    research_tracks,
     starter_matches,
     starter_packs,
+    subfield_matches,
     why_it_matters,
 )
 from common import ROOT
 
+_ENTRIES_CACHE: list[dict] | None = None
+_CARDS_CACHE: dict[str, str] | None = None
+_TRACKS_CACHE: list[dict] | None = None
+
+
+def all_entries() -> list[dict]:
+    global _ENTRIES_CACHE
+    if _ENTRIES_CACHE is None:
+        _ENTRIES_CACHE = entries()
+    return _ENTRIES_CACHE
+
+
+def all_cards() -> dict[str, str]:
+    global _CARDS_CACHE
+    if _CARDS_CACHE is None:
+        _CARDS_CACHE = card_inventory()
+    return _CARDS_CACHE
+
+
+def all_tracks() -> list[dict]:
+    global _TRACKS_CACHE
+    if _TRACKS_CACHE is None:
+        _TRACKS_CACHE = research_tracks()
+    return _TRACKS_CACHE
+
 
 def stats() -> dict:
-    data = entries()
-    cards = card_inventory()
+    data = all_entries()
+    cards = all_cards()
     levels = [curation_level(entry, cards.get(entry.get("id"))) for entry in data]
     artifact_counts = {
         key: sum(1 for entry in data if artifacts(entry).get(key))
@@ -49,8 +85,23 @@ def stats() -> dict:
     }
 
 
+TRACK_BEST_FOR_ZH = {
+    "surveys_and_primers": "先建立领域地图，再进入一手论文",
+    "foundations_instruction_preference_alignment": "理解推理数据对象从指令、偏好和对齐数据中如何演化",
+    "programmatic_math_code_proof": "学习 RLVR、可验证答案数据和可执行推理任务",
+    "process_supervision_prm": "定位 step-level reward、PRM 和过程验证器设计",
+    "environmental_agents_tools_web_swe": "研究工具、网页、OS、App 和代码仓库级轨迹数据",
+    "judgment_required_rubrics_safety_domain": "理解 rubric、LLM judge、高风险领域和专家评估数据",
+    "construction_recipes_open_reasoning_data": "学习推理数据如何构造、过滤、发布和复现",
+    "frontier_model_reports": "把前沿模型报告当作部分公开的数据配方来阅读",
+    "scaling_test_time_compute_rlvr": "拆解 RLVR、数据规模和 test-time compute 的贡献",
+    "audit_failure_contamination_verifier_attacks": "审计污染、泄漏、verifier gaming、reward hacking 和 judge attack",
+    "benchmarks_evaluation": "选择评测面、benchmark 和可复用反馈契约",
+}
+
+
 def by_id() -> dict[str, dict]:
-    return {entry.get("id"): entry for entry in entries()}
+    return {entry.get("id"): entry for entry in all_entries()}
 
 
 def entry_md(entry_id: str, label: str | None = None) -> str:
@@ -63,7 +114,7 @@ def entry_md(entry_id: str, label: str | None = None) -> str:
 
 
 def card_md(entry_id: str, label: str = "Card") -> str:
-    path = card_inventory().get(entry_id)
+    path = all_cards().get(entry_id)
     return f"[{label}]({path})" if path else "needs_card"
 
 
@@ -92,8 +143,8 @@ STARTER_LENS = {
 
 
 def starter_table() -> str:
-    data = entries()
-    cards = card_inventory()
+    data = all_entries()
+    cards = all_cards()
     matches = starter_matches(data)
     beginner = next((pack for pack in starter_packs() if pack.get("id") == "beginner_20"), starter_packs()[0])
     rows = ["| # | Paper / report | Lens | Start with this question | Card |", "|---:|---|---|---|---|"]
@@ -135,6 +186,226 @@ def latest_updates() -> str:
     ])
 
 
+def category_count(category_id: str) -> int:
+    return sum(1 for entry in all_entries() if category_id in (entry.get("category") or []))
+
+
+def category_file(category_id: str) -> str:
+    for category in categories():
+        if category.get("id") == category_id:
+            return category.get("file") or "README.md"
+    return "README.md"
+
+
+def subfield_slug(name: str) -> str:
+    text = re.sub(r"<[^>]+>", "", name)
+    text = re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff]+", "-", text).strip("-").lower()
+    return text or "subfield"
+
+
+def cell(text: str) -> str:
+    return str(text or "").replace("\n", " ").replace("|", "\\|")
+
+
+def short(text: str, limit: int = 115) -> str:
+    text = " ".join(str(text or "").split())
+    if len(text) <= limit:
+        return text
+    return text[: limit - 1].rstrip() + "…"
+
+
+def category_entries(category_id: str) -> list[dict]:
+    data = [
+        entry for entry in all_entries()
+        if category_id in as_list(entry.get("category")) and primary_link(entry) and entry.get("status") == "verified"
+    ]
+    cards = all_cards()
+    data.sort(key=lambda entry: (
+        0 if cards.get(entry.get("id")) else 1,
+        0 if curation_level(entry, cards.get(entry.get("id"))) == "L5_audit_ready" else 1,
+        -sum(1 for key in ["code", "data", "huggingface", "project"] if artifacts(entry).get(key)),
+        -(entry.get("year") or 0),
+        entry.get("title") or "",
+    ))
+    return data
+
+
+def homepage_rich_entry(entry: dict) -> bool:
+    if not primary_link(entry):
+        return False
+    if compact_data_object(entry) == "metadata pending":
+        return False
+    if compact_feedback(entry) == "metadata pending":
+        return False
+    if why_it_matters(entry).startswith("Verified citation waypoint"):
+        return False
+    return True
+
+
+def homepage_prm_core_entry(entry: dict) -> bool:
+    hay = entry_search_text(entry)
+    core_signals = [
+        "process",
+        "step-level",
+        "step wise",
+        "step-wise",
+        "first-error",
+        "first error",
+        "rollout",
+        "intermediate",
+        "prm800k",
+        "prmbench",
+        "processbench",
+        "math-shepherd",
+        "omegaprm",
+        "autopsv",
+    ]
+    return any(signal in hay for signal in core_signals)
+
+
+def subfield_entries(category_id: str, subfield: dict, limit: int = 4) -> list[dict]:
+    matched = []
+    cards = all_cards()
+    for entry in category_entries(category_id):
+        if subfield_matches(entry, category_id, subfield):
+            if category_id == "process_supervision_prm" and not homepage_prm_core_entry(entry):
+                continue
+            matched.append(entry)
+    rich = [
+        entry for entry in matched
+        if homepage_rich_entry(entry) and (
+            cards.get(entry.get("id")) or curation_level(entry, cards.get(entry.get("id"))) in {
+            "L2_artifact_verified",
+            "L3_summary_ready",
+            "L4_carded",
+            "L5_audit_ready",
+            }
+        )
+    ]
+    if len(rich) >= min(2, limit):
+        return rich[:limit]
+    metadata_rich = [entry for entry in matched if homepage_rich_entry(entry)]
+    return metadata_rich[:limit]
+
+
+def paper_chip(entry: dict, cards: dict[str, str]) -> str:
+    title = cell(entry.get("title") or entry.get("id"))
+    href = primary_link(entry)
+    year = entry.get("year") or "n.d."
+    venue = cell(entry.get("venue") or primary_link_kind(entry) or "primary")
+    card = f" · [Card]({cards[entry.get('id')]})" if cards.get(entry.get("id")) else ""
+    link = f"[{title}]({href})" if href else title
+    return f"{link} ({year}, {venue}){card}"
+
+
+def representative_papers(category_id: str, subfield: dict, limit: int = 4) -> str:
+    cards = all_cards()
+    picks = subfield_entries(category_id, subfield, limit=limit)
+    if not picks:
+        return "Needs verified primary-source additions; see [needs_search](reports/needs_search.md)."
+    lines = []
+    for entry in picks:
+        data = short(compact_data_object(entry), 86)
+        feedback = short(compact_feedback(entry), 76)
+        lines.append(f"{paper_chip(entry, cards)}<br><sub>data: {cell(data)}; feedback: {cell(feedback)}</sub>")
+    return "<br>".join(lines)
+
+
+def research_track_table(prefix: str = "papers/", zh: bool = False) -> str:
+    if zh:
+        rows = ["| 研究轨道 | 二级方向 | 适合用来做什么 | 条目数 | 入口 |", "|---|---|---|---:|---|"]
+    else:
+        rows = ["| Track | Subfields | Best for | Entries | Jump |", "|---|---|---|---:|---|"]
+    for track in all_tracks():
+        subfields = "<br>".join(item.get("name") or "" for item in (track.get("subfields") or []))
+        cid = track.get("category_id")
+        best_for = TRACK_BEST_FOR_ZH.get(cid, track.get("best_for")) if zh else track.get("best_for")
+        jump_label = "进入" if zh else "Papers"
+        rows.append(
+            f"| {track.get('navigator_title')} | {cell(subfields)} | {cell(best_for)} | {category_count(cid)} | [{jump_label}]({prefix}{category_file(cid)}) |"
+        )
+    return "\n".join(rows)
+
+
+def research_contents(prefix: str = "papers/") -> str:
+    lines = [
+        "- 📚 Main Research Tracks",
+    ]
+    for track in all_tracks():
+        cid = track.get("category_id")
+        lines.append(f"  - {track.get('navigator_title')}: [{track.get('short_title')}]({prefix}{category_file(cid)})")
+        for subfield in (track.get("subfields") or []):
+            lines.append(f"    - [{subfield.get('name')}]({prefix}{category_file(cid)}#{subfield_slug(subfield.get('name', 'subfield'))})")
+    lines += [
+        "- 🧩 Browse by Data Object",
+        "  - Prompt-answer, trace-answer, step label, rollout value, preference pair, reward record, agent trajectory, rubric record",
+        "- 🛠️ Browse by Training Use",
+        "  - SFT, distillation, reward modeling, process supervision, RLVR, agent training, evaluation, audit",
+    ]
+    return "\n".join(lines)
+
+
+def detailed_paper_directory(prefix: str = "papers/", zh: bool = False) -> str:
+    intro = (
+        "下面只展示已经有官方主链接的代表论文；如果某个子方向还没有 verified 条目，它会明确标成 needs search，而不是伪造链接。每行的 `data` 和 `feedback` 帮你判断这篇论文是不是你要读的那类后训练推理数据。"
+        if zh else
+        "Only entries with verified official primary links are listed here. If a subfield still lacks verified entries, it is explicitly marked as needs search instead of receiving invented links. The `data` and `feedback` hints tell you whether a paper is the right kind of post-training reasoning-data work to open next."
+    )
+    labels = {
+        "subfield": "子方向" if zh else "Subfield",
+        "focus": "这个方向看什么" if zh else "What this subfield studies",
+        "papers": "代表论文直达" if zh else "Representative papers with official links",
+        "risk": "审计风险" if zh else "Key audit risk",
+        "full": "完整页面" if zh else "Full track page",
+    }
+    lines = [intro, ""]
+    for track in all_tracks():
+        cid = track.get("category_id")
+        file = category_file(cid)
+        lines += [
+            f"### {track.get('navigator_title')}",
+            "",
+            f"> {track.get('best_for')} · [{labels['full']}]({prefix}{file})",
+            "",
+            f"| {labels['subfield']} | {labels['focus']} | {labels['papers']} | {labels['risk']} |",
+            "|---|---|---|---|",
+        ]
+        for subfield in track.get("subfields") or []:
+            name = subfield.get("name", "Subfield")
+            anchor = f"{prefix}{file}#{subfield_slug(name)}"
+            lines.append(
+                f"| [{cell(name)}]({anchor}) | {cell(subfield.get('focus', ''))} | {representative_papers(cid, subfield)} | {cell(subfield.get('key_risk', ''))} |"
+            )
+        lines.append("")
+    return "\n".join(lines).rstrip()
+
+
+def four_views_table() -> str:
+    return "\n".join([
+        "| View | Question | Examples | Use it when... |",
+        "|---|---|---|---|",
+        "| 🔍 By feedback contract | Who decides correctness? | programmatic, environmental, judgment-required, mixed | you need to understand the verifier/reward/judge/environment behind a paper. |",
+        "| 📦 By data object | What is serialized? | answer, trace, step label, preference pair, reward, trajectory, rubric | you need to compare what the dataset actually stores. |",
+        "| 🛠️ By training use | How does it enter post-training? | SFT, distillation, PRM, RM, RLHF, RLVR, agent training, evaluation | you need to map papers to an engineering pipeline. |",
+        "| 🧪 By task domain | Where does it operate? | math, code, proof, tools, SWE, web, medical, safety, legal, finance | you need a domain-specific literature route. |",
+    ])
+
+
+def research_question_table() -> str:
+    return "\n".join([
+        "| Research question | Best entry |",
+        "|---|---|",
+        "| What counts as post-training reasoning data? | [docs/01](docs/01_what_is_post_training_reasoning_data.md) + [Surveys](papers/00_surveys_and_primers.md) |",
+        "| How do we verify reasoning data? | [Programmatic](papers/02_programmatic_math_code_proof.md) + [Process supervision](papers/03_process_supervision_prm.md) + [Verifiers](docs/06_verifiers_and_rewards.md) |",
+        "| How are open reasoning datasets constructed? | [Construction recipes](papers/06_construction_recipes_open_reasoning_data.md) + [Release cards](cards/releases/) |",
+        "| What data does RLVR actually need? | [Programmatic verification](papers/02_programmatic_math_code_proof.md) + [Scaling/RLVR](papers/08_scaling_test_time_compute_rlvr.md) |",
+        "| How should agent trajectories be serialized? | [Agent data](papers/04_environmental_agents_tools_web_swe.md) + [docs/07](docs/07_agent_trajectory_data.md) |",
+        "| How do frontier reports disclose or hide data recipes? | [Frontier reports](papers/07_frontier_model_reports.md) |",
+        "| How do contamination and verifier gaming affect claims? | [Audit/failure modes](papers/09_audit_failure_contamination_verifier_attacks.md) |",
+        "| Which benchmarks are still useful for reasoning data? | [Benchmarks and evaluation](papers/10_benchmarks_evaluation.md) |",
+    ])
+
+
 def readme_en() -> str:
     s = stats()
     return f"""# 🌟 Awesome LLM Reasoning Data
@@ -169,6 +440,38 @@ To answer that, the repo combines four layers:
 - 🔎 **Searchable structured metadata** so readers can filter by verifier type, training use, curation level, and artifact availability.
 
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
+
+---
+
+## 🔥 Latest Updates
+
+{latest_updates()}
+
+> The atlas is intentionally conservative about metadata. If a paper/code/data/project link is not verified locally, it stays in [reports/needs_search.md](reports/needs_search.md) instead of being promoted into the verified lists.
+
+## 🧭 Research Track Navigator
+
+Most Awesome lists stop at "which papers exist." This atlas is organized around the extra questions that make post-training reasoning data reusable: **what data object is released, what verifies it, how it enters training, and how a reader should audit the claim**.
+
+{research_track_table()}
+
+## 📚 Detailed Paper Directory
+
+{detailed_paper_directory()}
+
+## 🧭 Contents
+
+{research_contents()}
+
+## 🧩 Browse by Four Views
+
+Post-training reasoning data is multi-axis. A math paper can be a benchmark, an SFT trace release, a PRM source, an RLVR verifier, and a contamination risk at the same time. Use these four views before deciding where a paper belongs.
+
+{four_views_table()}
+
+## 🔎 Browse by Research Question
+
+{research_question_table()}
 
 ---
 
@@ -232,6 +535,10 @@ Read this repository if you want to answer questions like:
 | 🧑‍💻 Who It Is For | Paths for students, builders, researchers, and auditors | [jump](#-who-is-this-for) |
 | 🧠 60-second Model | The verifier-bearing sample mental model | [jump](#-60-second-version) |
 | 🔥 Latest Updates | What changed recently in this atlas | [jump](#latest-updates) |
+| 🧭 Research Tracks | Browse the field like an Awesome paper atlas | [jump](#-research-track-navigator) |
+| 📚 Detailed Paper Directory | Subfield-level paper links with data/feedback hints | [jump](#-detailed-paper-directory) |
+| 🧩 Four Views | Feedback contract, data object, training use, and domain | [jump](#-browse-by-four-views) |
+| 🔎 Research Questions | Jump from a question to the right paper track | [jump](#-browse-by-research-question) |
 | 📊 Snapshot | Current verified/card/artifact coverage | [jump](#snapshot-stats) |
 | 🛣️ Learning Roadmap | Learn the field in 6 stages | [jump](#-learning-roadmap) |
 | 🧭 Starter Pack | 20 papers to read first | [jump](#-starter-pack-20-must-read-papers) |
@@ -243,13 +550,8 @@ Read this repository if you want to answer questions like:
 | 📈 Scaling Claims | RLVR, reuse, pass@k, test-time compute, inference budget | [jump](#-how-to-interpret-scaling-claims) |
 | 🧩 Repo Structure | How files, docs, cards, and reports fit together | [jump](#-repository-structure) |
 | 📚 Paper Atlas | Category pages, cards, exports, searchable website | [jump](#-full-paper-atlas) |
+| 🌱 Roadmap | High-impact priorities for making the atlas more citable | [ROADMAP](ROADMAP.md) |
 | 🤝 Contribute | Add papers with metadata, not only links | [CONTRIBUTING](CONTRIBUTING.md) |
-
-## Latest Updates
-
-{latest_updates()}
-
-> The atlas is intentionally conservative about metadata. If a paper/code/data/project link is not verified locally, it stays in [reports/needs_search.md](reports/needs_search.md) instead of being promoted into the verified lists.
 
 ## Snapshot Stats
 
@@ -434,6 +736,7 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 | [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, self-review, and live-link reports. |
 | [exports/](exports/) | CSV, JSON, and BibTeX exports for readers who want to reuse the atlas data. |
 | [scripts/](scripts/) | Reproducible generators and validators for README, paper pages, cards, site data, exports, and QA. |
+| [ROADMAP.md](ROADMAP.md) | Public priorities for making the atlas more useful, citable, and contribution-friendly. |
 
 ## 🧪 How to Use This Repo in Practice
 
@@ -445,6 +748,20 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 | "I want to understand RLVR." | Follow programmatic math/code/proof papers, verifier cards, and scaling/RLVR category pages. |
 | "I want to study agents." | Follow [agent papers](papers/04_environmental_agents_tools_web_swe.md), then inspect action schema, terminal predicate, and replay fields. |
 | "I want to contribute." | Pick an item from [needs_search](reports/needs_search.md), verify official links, then add structured metadata and a card. |
+
+---
+
+## 🌱 High-Citation Roadmap
+
+The repository becomes more useful and citable when it improves depth, trust, and reuse rather than raw length. The public roadmap is in [ROADMAP.md](ROADMAP.md).
+
+| Priority | What to improve next | Why it helps readers cite or reuse the atlas |
+|---:|---|---|
+| P0 | Keep public hygiene clean: no private planning files, prompt/spec artifacts, or local OS metadata. | Readers should see a maintained research resource, not a build workspace. |
+| P1 | Promote high-impact `L1_link_verified` entries into `L4_carded` or `L5_audit_ready`. | Deep cards are what make the repo useful beyond a paper list. |
+| P1 | Add official code, data, Hugging Face, and project links for already verified papers. | Builders can jump from survey reading to reusable artifacts. |
+| P1 | Strengthen thin subfields before adding long-tail seeds. | Researchers can trust the taxonomy as a balanced field map. |
+| P2 | Improve bilingual polish and paper-specific citation metadata. | The atlas becomes easier to share in reading groups, surveys, and course notes. |
 
 ---
 
@@ -528,6 +845,41 @@ def readme_zh() -> str:
 
 `任务/上下文 -> 推理轨迹/动作 -> 答案/产物 -> 验证器/奖励/裁判/环境 -> 元数据`
 
+## 🔥 最新状态
+
+| 指标 | 数量 |
+|---|---:|
+| 总条目 | {s['total']} |
+| 已验证官方主链接 | {s['verified']} |
+| 有 paper/arXiv/venue/DOI 链接 | {s['primary']} |
+| entry-linked 卡片 | {s['cards']} |
+| L5 audit-ready | {s['l5']} |
+| 仍需搜索 | {s['needs_search']} |
+| 官方 code 链接 | {s['code']} |
+| 官方 data 链接 | {s['data']} |
+| Hugging Face 链接 | {s['hf']} |
+| project 链接 | {s['project']} |
+
+## 🧭 按研究领域浏览
+
+其他 Awesome 往往只告诉读者“有哪些论文”。这个仓库还需要告诉读者：每类后训练推理数据解决什么问题、论文公开了什么 data object、verifier/reward/recipe 是什么、以及应该如何审计。
+
+{research_track_table(zh=True)}
+
+## 📚 详细论文分类目录
+
+{detailed_paper_directory(zh=True)}
+
+## 🧩 四种浏览视角
+
+后训练推理数据不是单一树状分类。同一篇 math paper 可能同时是 benchmark、SFT trace release、PRM 数据源、RLVR verifier 和 contamination 风险。因此首页需要提供四个视角：
+
+{four_views_table()}
+
+## 🔎 按研究问题进入
+
+{research_question_table()}
+
 ## 🎯 你可以在这里学到什么
 
 | 学习目标 | 这个仓库提供什么 |
@@ -574,6 +926,9 @@ def readme_zh() -> str:
 
 | 我想要... | 入口 |
 |---|---|
+| 📚 按研究领域找论文 | [papers/README.md](papers/README.md) |
+| 🧭 看完整 Research Track Navigator | [按研究领域浏览](#-按研究领域浏览) |
+| 📚 看细分方向代表论文 | [详细论文分类目录](#-详细论文分类目录) |
 | 🧭 快速理解领域 | [docs/00_start_here.md](docs/00_start_here.md) |
 | 📚 找论文地图 | [papers/README.md](papers/README.md) |
 | 🧮 看数学/代码/证明数据 | [papers/02_programmatic_math_code_proof.md](papers/02_programmatic_math_code_proof.md) |
@@ -596,21 +951,6 @@ def readme_zh() -> str:
 | 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[cards/releases/](cards/releases/)、[cards/recipes/](cards/recipes/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
 | 5 | 专题深入 | [math/code/proof](papers/02_programmatic_math_code_proof.md)、[agents](papers/04_environmental_agents_tools_web_swe.md)、[rubrics](papers/05_judgment_required_rubrics_safety_domain.md)、[scaling](papers/08_scaling_test_time_compute_rlvr.md) | 能沿一个子领域继续读论文、看卡片、查官方链接。 |
 | 6 | 审计与贡献 | [docs/09](docs/09_audit_and_failure_modes.md)、[reports/link_coverage.md](reports/link_coverage.md)、[CONTRIBUTING.md](CONTRIBUTING.md) | 能判断什么已经验证、什么还缺失，并且可以给仓库补高质量条目。 |
-
-## 🔥 最新状态
-
-| 指标 | 数量 |
-|---|---:|
-| 总条目 | {s['total']} |
-| 已验证官方主链接 | {s['verified']} |
-| 有 paper/arXiv/venue/DOI 链接 | {s['primary']} |
-| entry-linked 卡片 | {s['cards']} |
-| L5 audit-ready | {s['l5']} |
-| 仍需搜索 | {s['needs_search']} |
-| 官方 code 链接 | {s['code']} |
-| 官方 data 链接 | {s['data']} |
-| Hugging Face 链接 | {s['hf']} |
-| project 链接 | {s['project']} |
 
 ## 🧭 Starter Pack：20 篇必读
 
@@ -661,6 +1001,7 @@ def readme_zh() -> str:
 | [docs/index.html](docs/index.html) | 可搜索网页 atlas：可以按 year、role、contract、training use、curation level 等过滤。 |
 | [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、self review、link check。 |
 | [exports/](exports/) | CSV、JSON、BibTeX，方便复用这个 atlas。 |
+| [ROADMAP.md](ROADMAP.md) | 高引用路线和后续贡献优先级。 |
 
 ## 🧪 实际怎么用？
 
@@ -672,6 +1013,18 @@ def readme_zh() -> str:
 | “我想理解 RLVR。” | 看 [programmatic data](papers/02_programmatic_math_code_proof.md)、verifier cards、scaling/RLVR 页面。 |
 | “我想研究 Agent 数据。” | 看 [agent papers](papers/04_environmental_agents_tools_web_swe.md)，重点检查 action schema、terminal predicate、replay metadata。 |
 | “我想给仓库贡献。” | 从 [needs_search](reports/needs_search.md) 找条目，验证官方链接，再补 metadata 和 card。 |
+
+## 🌱 高引用路线
+
+这个仓库想要变得更容易被收藏、引用和复用，关键不是继续堆最长列表，而是提升**深度、可信度和可复用性**。完整路线见 [ROADMAP.md](ROADMAP.md)。
+
+| 优先级 | 下一步最值得做什么 | 为什么有助于高引用 |
+|---:|---|---|
+| P0 | 保持公开仓库干净：不能出现私有规划文件、prompt/spec 文件、本地系统文件。 | 读者看到的是维护良好的研究资源，而不是构建工作区。 |
+| P1 | 把高影响力 `L1_link_verified` 条目提升到 `L4_carded` 或 `L5_audit_ready`。 | 深度卡片让仓库不只是 paper list。 |
+| P1 | 给已 verified 的核心论文补官方 code/data/Hugging Face/project 链接。 | 数据构造者可以直接复用官方资源。 |
+| P1 | 优先补薄弱子方向，再加长尾条目。 | 科研读者更容易把它当作平衡的领域地图。 |
+| P2 | 继续润色中文版和论文引用元数据。 | 更适合读书会、课程、综述和中文社区传播。 |
 
 ## 🧱 Curation Levels
 

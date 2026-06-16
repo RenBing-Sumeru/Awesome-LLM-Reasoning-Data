@@ -1,10 +1,12 @@
 let entries = [];
 let counts = {};
 let starterPacks = [];
+let researchTracks = [];
 let activePackId = "";
+let activeTrackId = "";
 
 const ids = [
-  "q", "year", "venue", "sourceRole", "contract", "granularity",
+  "q", "category", "subfield", "year", "venue", "sourceRole", "contract", "granularity",
   "trainingUse", "curation", "status", "artifact"
 ];
 
@@ -13,6 +15,7 @@ Object.assign(els, {
   reset: document.getElementById("reset"),
   results: document.getElementById("results"),
   resultSummary: document.getElementById("resultSummary"),
+  trackTabs: document.getElementById("trackTabs"),
   pathTabs: document.getElementById("pathTabs"),
   pathPanel: document.getElementById("pathPanel"),
   totalEntries: document.getElementById("totalEntries"),
@@ -40,6 +43,16 @@ function esc(value) {
 
 function display(value) {
   return String(value ?? "unknown").replaceAll("_", " ");
+}
+
+function shortText(value, limit = 150) {
+  const text = String(value ?? "").replace(/\s+/g, " ").trim();
+  return text.length > limit ? `${text.slice(0, limit - 1)}…` : text;
+}
+
+function categoryLabel(value) {
+  const track = researchTracks.find(item => item.category_id === value);
+  return track?.navigator_title || display(value);
 }
 
 function setText(id, value) {
@@ -76,10 +89,16 @@ function haystack(entry) {
     ...arr(entry.verification_contract),
     ...arr(entry.supervision_granularity),
     ...arr(entry.training_use),
+    ...arr(entry.category),
+    entry.subfield,
     entry.one_line_summary,
     entry.why_it_matters,
+    entry.data_object,
+    entry.feedback_verifier,
+    entry.audit_focus,
     entry.curation_level,
-    entry.status
+    entry.status,
+    entry.needs_search ? "needs search missing primary link needs metadata" : ""
   ].join(" ").toLowerCase();
 }
 
@@ -87,13 +106,16 @@ function matches(entry) {
   const query = els.q.value.trim().toLowerCase();
   if (query && !haystack(entry).includes(query)) return false;
   if (els.year.value && String(entry.year) !== els.year.value) return false;
+  if (els.category.value && !arr(entry.category).includes(els.category.value)) return false;
+  if (els.subfield.value && entry.subfield !== els.subfield.value) return false;
   if (els.venue.value && entry.venue !== els.venue.value) return false;
   if (els.sourceRole.value && !arr(entry.source_role).includes(els.sourceRole.value)) return false;
   if (els.contract.value && !arr(entry.verification_contract).includes(els.contract.value)) return false;
   if (els.granularity.value && !arr(entry.supervision_granularity).includes(els.granularity.value)) return false;
   if (els.trainingUse.value && !arr(entry.training_use).includes(els.trainingUse.value)) return false;
   if (els.curation.value && entry.curation_level !== els.curation.value) return false;
-  if (els.status.value && entry.status !== els.status.value) return false;
+  if (els.status.value === "needs_search" && !entry.needs_search) return false;
+  if (els.status.value && els.status.value !== "needs_search" && entry.status !== els.status.value) return false;
   if (!artifactAvailable(entry, els.artifact.value)) return false;
   return true;
 }
@@ -146,10 +168,17 @@ function card(entry) {
     <div class="tags">
       ${arr(entry.source_role).slice(0, 2).map(v => tag(v)).join("")}
       ${arr(entry.verification_contract).slice(0, 2).map(v => tag(v)).join("")}
+      ${arr(entry.category).slice(0, 1).map(v => tag(categoryLabel(v))).join("")}
+      ${entry.subfield ? tag(entry.subfield) : ""}
       ${tag(entry.status || "unknown", entry.status === "verified" ? "verified" : "needs")}
       ${tag(entry.curation_level || "L0_seeded", entry.curation_level)}
     </div>
     <p class="summary">${esc(entry.one_line_summary || "No local summary yet.")}</p>
+    <dl class="facts">
+      <div><dt>Data</dt><dd>${esc(shortText(entry.data_object || "metadata pending"))}</dd></div>
+      <div><dt>Feedback</dt><dd>${esc(shortText(entry.feedback_verifier || "metadata pending"))}</dd></div>
+      <div><dt>Audit</dt><dd>${esc(shortText(entry.audit_focus || "check links, lineage, verifier, split, and contamination"))}</dd></div>
+    </dl>
     <p class="why">${esc(entry.why_it_matters || "Needs curator rationale.")}</p>
     <div class="links">${links(entry) || "<span class='tag needs'>needs search</span>"}</div>
   </article>`;
@@ -161,6 +190,15 @@ function render() {
   els.results.innerHTML = shown.length
     ? shown.slice(0, 220).map(card).join("")
     : "<div class='empty'>No entries match these filters.</div>";
+}
+
+function renderTracks() {
+  if (!els.trackTabs) return;
+  const allButton = `<button type="button" class="${!activeTrackId ? "active" : ""}" data-track="">All</button>`;
+  const buttons = researchTracks.map(track => (
+    `<button type="button" class="${track.category_id === activeTrackId ? "active" : ""}" data-track="${esc(track.category_id)}">${esc(track.navigator_title || track.short_title || track.category_id)}</button>`
+  )).join("");
+  els.trackTabs.innerHTML = allButton + buttons;
 }
 
 function renderPaths() {
@@ -197,6 +235,11 @@ async function loadJson(path, fallback) {
 }
 
 function populateFilters() {
+  loadOptions("category", entries.flatMap(entry => arr(entry.category)));
+  [...els.category.options].forEach(option => {
+    if (option.value) option.textContent = categoryLabel(option.value);
+  });
+  loadOptions("subfield", entries.map(entry => entry.subfield));
   loadOptions("year", entries.map(entry => entry.year).sort((a, b) => b - a));
   loadOptions("venue", entries.map(entry => entry.venue));
   loadOptions("sourceRole", entries.flatMap(entry => arr(entry.source_role)));
@@ -205,6 +248,10 @@ function populateFilters() {
   loadOptions("trainingUse", entries.flatMap(entry => arr(entry.training_use)));
   loadOptions("curation", entries.map(entry => entry.curation_level));
   loadOptions("status", entries.map(entry => entry.status));
+  const needsSearchOption = document.createElement("option");
+  needsSearchOption.value = "needs_search";
+  needsSearchOption.textContent = "needs search / missing primary link";
+  els.status.appendChild(needsSearchOption);
   [
     ["primary", "Paper / venue / DOI"],
     ["code", "Code"],
@@ -223,6 +270,16 @@ function bind() {
   ids.forEach(id => els[id].addEventListener("input", render));
   els.reset.addEventListener("click", () => {
     ids.forEach(id => { els[id].value = ""; });
+    activeTrackId = "";
+    renderTracks();
+    render();
+  });
+  els.trackTabs?.addEventListener("click", event => {
+    const button = event.target.closest("[data-track]");
+    if (!button) return;
+    activeTrackId = button.dataset.track || "";
+    els.category.value = activeTrackId;
+    renderTracks();
     render();
   });
   els.pathTabs.addEventListener("click", event => {
@@ -237,6 +294,7 @@ async function init() {
   const bundled = window.ATLAS_DATA || {};
   entries = await loadJson("assets/entries.json", bundled.entries || []);
   counts = await loadJson("assets/counts.json", bundled.counts || {});
+  researchTracks = await loadJson("assets/research_tracks.json", bundled.research_tracks || []);
   starterPacks = await loadJson("assets/starter_packs.json", bundled.starter_packs || []);
   setText("totalEntries", counts.total_entries || entries.length);
   setText("verifiedEntries", counts.verified_entries || 0);
@@ -252,6 +310,7 @@ async function init() {
     return;
   }
   populateFilters();
+  renderTracks();
   renderPaths();
   bind();
   render();

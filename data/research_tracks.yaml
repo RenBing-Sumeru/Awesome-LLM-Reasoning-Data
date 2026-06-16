@@ -1,0 +1,362 @@
+research_tracks:
+  - category_id: surveys_and_primers
+    short_title: Surveys & Primers
+    navigator_title: "🧭 Surveys & Primers"
+    best_for: "building the field map before reading primary papers"
+    subfields:
+      - name: "🧭 Post-training surveys"
+        focus: "field-level maps of post-training, reasoning models, and data-centric LLM practice"
+        key_risk: "survey taxonomy hides concrete data objects"
+        keywords: ["survey", "primer", "mid-training", "system 1", "system 2", "field map"]
+      - name: "🧠 Reasoning LLM surveys"
+        focus: "reasoning model lineages, claims, and recurring evaluation patterns"
+        key_risk: "model-centric framing obscures data and verifier details"
+        keywords: ["reasoning large language models", "reasoning with large language models", "reasoning with foundation models", "learning to reason", "general reasoning models", "reasoning survey"]
+      - name: "📦 Data documentation / datasheets"
+        focus: "datasheets, data statements, lineage, license, and release metadata"
+        key_risk: "reusable data lacks provenance or consent context"
+        keywords: ["datasheets", "data statements", "data provenance", "provenance"]
+      - name: "🧪 RLHF / reward-model surveys"
+        focus: "background needed to connect preference data, reward models, and reasoning rewards"
+        key_risk: "generic alignment lessons are over-applied to verifiable reasoning"
+        keywords: ["rlhf", "reward model", "preference", "overoptimization"]
+      - name: "🌐 Agent data / tool-use surveys"
+        focus: "orientation for tools, web tasks, OS tasks, and repository agents"
+        key_risk: "agent traces are treated as transcripts rather than replayable episodes"
+        keywords: ["agent survey", "llm-based agents", "evaluation of llm-based agents", "tool-use survey", "agent data", "web agent survey", "swe agent"]
+      - name: "🧯 Contamination / evaluation surveys"
+        focus: "reproducibility, contamination, model collapse, and benchmark refresh"
+        key_risk: "benchmark deltas are accepted without data-overlap checks"
+        keywords: ["contamination", "reproducibility", "collapse", "sober", "livebench"]
+
+  - category_id: foundations_instruction_preference_alignment
+    short_title: Foundations
+    navigator_title: "🧱 Foundations"
+    best_for: "understanding where reasoning-data objects came from"
+    subfields:
+      - name: "🧱 Instruction tuning / SFT data"
+        focus: "demonstrations, instruction mixtures, and target-answer records"
+        key_risk: "prompt sources and mixture weights are undisclosed"
+        keywords: ["instruction", "instruct", "flan", "t0", "tulu", "llama"]
+      - name: "🤝 Human preference data / RLHF"
+        focus: "comparisons, scalar rewards, reward models, and human feedback pipelines"
+        key_risk: "annotator or reward-model assumptions are hidden"
+        keywords: ["preference", "rlhf", "human feedback", "helpful", "harmless"]
+      - name: "⚖️ DPO / preference optimization"
+        focus: "direct preference learning and pairwise data as policy supervision"
+        key_risk: "preference pairs are reused outside their collection context"
+        keywords: ["dpo", "direct preference", "preference optimization", "spin"]
+      - name: "🧠 Chain-of-thought / rationale data"
+        focus: "rationales, traces, self-consistency, and reasoning-style supervision"
+        key_risk: "trace style is mistaken for faithful reasoning"
+        keywords: ["chain-of-thought", "cot", "self-consistency", "rationale", "distilling step"]
+      - name: "🔁 Self-training / STaR / Self-Instruct"
+        focus: "self-generated instructions, bootstrapped traces, critique loops, and filtering"
+        key_risk: "generated data collapses diversity or repeats teacher artifacts"
+        keywords: ["self-instruct", "star", "bootstrapping", "self-training", "reflexion"]
+      - name: "🤖 RLAIF / synthetic feedback"
+        focus: "model-generated preferences, critiques, and constitutional feedback"
+        key_risk: "synthetic feedback encodes hidden judge behavior"
+        keywords: ["constitutional", "constitutional", "rlaif", "self-rewarding", "critique", "ultrafeedback", "ai feedback"]
+
+  - category_id: programmatic_math_code_proof
+    short_title: Programmatic Verification
+    navigator_title: "🧮 Programmatic Verification"
+    best_for: "RLVR, answer-verifiable data, and executable reasoning tasks"
+    subfields:
+      - name: "📐 Math answer-verifiable data"
+        focus: "math problems, final answers, solution traces, and answer checkers"
+        key_risk: "answer extraction and normalization inflate scores"
+        keywords: ["gsm8k", "math", "numina", "deepmath", "openmath", "math reasoning"]
+      - name: "🧮 Math RLVR datasets"
+        focus: "math records used for rejection sampling, SFT, PRMs, and RLVR"
+        key_risk: "data reuse and contamination are not reported"
+        keywords: ["rlvr", "deepseekmath", "openr1", "big-math", "math-prm"]
+      - name: "💻 Code execution / unit-test data"
+        focus: "code problems, unit tests, generated tests, execution logs, and repair tasks"
+        key_risk: "flaky or leaked tests become the reward"
+        keywords: ["humaneval", "mbpp", "apps", "livecodebench", "code", "unit test"]
+      - name: "🧾 Formal proof / Lean / theorem proving"
+        focus: "Lean, proof scripts, tactic environments, theorem statements, and proof checkers"
+        key_risk: "proof succeeds only under an undocumented environment"
+        keywords: ["lean", "proof", "prover", "theorem", "minif2f", "leandojo"]
+      - name: "🧪 Verifier robustness and answer extraction"
+        focus: "false positives, false negatives, checker brittleness, and adversarial formats"
+        key_risk: "model learns verifier quirks instead of task skill"
+        keywords: ["verifier", "answer extraction", "robustness", "symbolic", "checker"]
+      - name: "🧰 Programmatic benchmarks"
+        focus: "evaluation sets whose scoring can become a post-training signal"
+        key_risk: "benchmark scoring is treated as a reusable training verifier without audit"
+        keywords: ["benchmark", "evaluation", "scicode", "gpqa", "frontiermath"]
+
+  - category_id: process_supervision_prm
+    short_title: Process Supervision & PRMs
+    navigator_title: "🪜 Process Supervision & PRMs"
+    best_for: "step-level rewards, PRM research, and verifier-model design"
+    subfields:
+      - name: "🪜 Human step-level labels"
+        focus: "human-labeled intermediate steps and first-error annotations"
+        key_risk: "step boundaries and label policy are ambiguous"
+        keywords: ["human step", "human", "label", "first-error", "prm800k"]
+      - name: "🧪 Process reward models"
+        focus: "PRMs, process verifiers, calibration, and reward-model training"
+        key_risk: "process reward rises while final correctness does not"
+        keywords: ["prm", "process reward", "process verifier", "reward model"]
+      - name: "🔁 Rollout-value supervision"
+        focus: "rollout values, search-derived labels, and automated progress signals"
+        key_risk: "rollout policy leaks solver strength into labels"
+        keywords: ["rollout", "value", "math-shepherd", "math-shepherd", "rewarding progress"]
+      - name: "🛠️ Automatic process supervision"
+        focus: "programmatic or model-generated process labels without dense human annotation"
+        key_risk: "automatic labels silently inherit verifier bias"
+        keywords: ["automatic", "automated process", "implicit rewards", "prime", "prof"]
+      - name: "❌ First-error localization"
+        focus: "where a solution first becomes invalid and how that signal is used"
+        key_risk: "localized errors are not causally linked to final correction"
+        keywords: ["first error", "localization", "error", "step-dpo"]
+      - name: "📊 PRM benchmarks and evaluation"
+        focus: "ProcessBench, PRMBench, Qwen PRM, and evaluation surfaces for process rewards"
+        key_risk: "PRM benchmark success does not transfer to training-time use"
+        keywords: ["processbench", "prmbench", "prmbench", "qwen", "benchmark"]
+
+  - category_id: environmental_agents_tools_web_swe
+    short_title: Agent & Environment Data
+    navigator_title: "🌐 Agent & Environment Data"
+    best_for: "tool, web, OS, app, and repository-level trajectory data"
+    subfields:
+      - name: "🛠️ Tool-use data"
+        focus: "tool calls, function signatures, API banks, and tool-use traces"
+        key_risk: "tool schemas change or hide execution failures"
+        keywords: ["tool", "api", "function", "gorilla", "toolformer", "toolllm"]
+      - name: "🌍 Web/browser agents"
+        focus: "web tasks, browser state, navigation traces, and page observations"
+        key_risk: "web state is not replayable after collection"
+        keywords: ["web", "browser", "webarena", "mind2web", "weblinx", "browsergym"]
+      - name: "📱 App/mobile agents"
+        focus: "mobile apps, app-world tasks, UI actions, and user simulators"
+        key_risk: "UI state and app versions are not pinned"
+        keywords: ["app", "android", "mobile", "appworld"]
+      - name: "🖥️ OS/desktop agents"
+        focus: "desktop/OS tasks, filesystem state, shell actions, and multi-app workflows"
+        key_risk: "hidden environment state makes episodes non-reproducible"
+        keywords: ["osworld", "desktop", "computer", "workarena"]
+      - name: "🧑‍💻 SWE/repository agents"
+        focus: "GitHub issues, code patches, tests, commits, and repository repair episodes"
+        key_risk: "repository commit, tests, and scaffold are not pinned"
+        keywords: ["swe", "repository", "software", "swe-bench", "r2e", "terminal-bench"]
+      - name: "🔁 Replayable trajectory data"
+        focus: "state-action-observation schemas, terminal predicates, and failure traces"
+        key_risk: "success transcript cannot be replayed or audited"
+        keywords: ["trajectory", "state", "action", "observation", "terminal", "replay"]
+      - name: "🧰 Agent benchmarks and terminal predicates"
+        focus: "agent evaluation suites, task resets, terminal predicates, and success/failure labels"
+        key_risk: "benchmark score is reported without a replayable terminal predicate"
+        keywords: ["agent benchmark", "terminal predicate", "terminal", "benchmark", "swe-bench", "webarena", "osworld", "appworld", "terminal-bench"]
+
+  - category_id: judgment_required_rubrics_safety_domain
+    short_title: Judgment-Required Data
+    navigator_title: "⚖️ Judgment-Required Data"
+    best_for: "rubrics, LLM judges, high-stakes domains, and expert evaluation"
+    subfields:
+      - name: "⚖️ LLM-as-judge data"
+        focus: "model judges, preference judgments, judge prompts, and evaluator models"
+        key_risk: "judge is sensitive to style, position, or prompt attacks"
+        keywords: ["judge", "llm-as-judge", "mt-bench", "arena", "prometheus"]
+      - name: "🧑‍⚖️ Human/expert judgment"
+        focus: "human labels, expert adjudication, disagreement handling, and rubric design"
+        key_risk: "expertise and adjudication policy are not disclosed"
+        keywords: ["human", "expert", "adjudication", "rubric"]
+      - name: "🩺 Medical reasoning / health rubrics"
+        focus: "health, biomedical, scientific, and evidence-grounded reasoning tasks"
+        key_risk: "rubrics are not calibrated for high-stakes error"
+        keywords: ["medical", "health", "biomedical", "science", "gpqa", "chem"]
+      - name: "🛡️ Safety reasoning data"
+        focus: "safety reasoning, refusals, jailbreaks, harmfulness, and guardrail data"
+        key_risk: "safe-looking refusals replace correct domain reasoning"
+        keywords: ["safety", "harm", "refusal", "guard", "wildguard", "aegis"]
+      - name: "🧾 Factuality / grounding"
+        focus: "claims, citations, retrieval grounding, fact checking, and evidence quality"
+        key_risk: "citation style masks unsupported claims"
+        keywords: ["factuality", "fact", "citation", "retrieval", "grounding", "qasper"]
+      - name: "⚖️ Legal reasoning"
+        focus: "legal QA, statutes, case reasoning, contracts, and expert legal rubrics"
+        key_risk: "legal splits leak templates, memorized cases, or jurisdiction-specific assumptions"
+        keywords: ["legal", "law", "contract", "casehold", "statute", "case"]
+      - name: "🏦 Financial reasoning"
+        focus: "financial QA, tabular/text numerical reasoning, filings, and analyst-style judgments"
+        key_risk: "financial splits leak templates, reports, or memorized company facts"
+        keywords: ["finance", "financial", "finqa", "tat-qa", "financebench", "filing", "table"]
+      - name: "🧪 Rubric reward models"
+        focus: "rubrics as trainable rewards and domain-conditioned reward models"
+        key_risk: "rubric scores are optimized without semantic robustness"
+        keywords: ["rubric", "reward", "rewardbench", "rewardbench", "healthbench", "rubrics as rewards"]
+
+  - category_id: construction_recipes_open_reasoning_data
+    short_title: Construction Recipes
+    navigator_title: "🏗️ Construction Recipes"
+    best_for: "building, filtering, releasing, and reproducing reasoning datasets"
+    subfields:
+      - name: "🧱 Prompt sourcing"
+        focus: "question pools, seed sources, licenses, difficulty, and base-model pass rates"
+        key_risk: "prompt sources are mixed without attribution or deduplication"
+        keywords: ["prompt", "source", "seed", "question", "dataset"]
+      - name: "✍️ Teacher trace generation"
+        focus: "teacher models, trace policies, sampling settings, and distillation targets"
+        key_risk: "teacher identity or sampling protocol is hidden"
+        keywords: ["teacher", "trace", "distill", "solution", "rationale"]
+      - name: "🔎 Rejection sampling / search-generated data"
+        focus: "candidate generation, search budget, filtering, and accepted/rejected examples"
+        key_risk: "only accepted traces are released, hiding verifier behavior"
+        keywords: ["rejection", "sampling", "search", "candidate", "filter"]
+      - name: "🔁 Self-play / self-improvement"
+        focus: "self-improvement, co-evolution, generator-verifier cycles, and curricula"
+        key_risk: "feedback loop amplifies hidden biases or shortcuts"
+        keywords: ["self-play", "self-improvement", "co-evolution", "generator", "verifier"]
+      - name: "🧪 Filtering and verifier refresh"
+        focus: "answer filters, judge filters, decontamination, and verifier updates"
+        key_risk: "filter thresholds become undocumented training objectives"
+        keywords: ["filtering", "verifier", "decontamination", "dedup", "refresh"]
+      - name: "🏗️ Open reasoning data releases"
+        focus: "open datasets, code, HF releases, recipes, ablations, and reproducibility"
+        key_risk: "headline dataset is open but recipe details are not"
+        keywords: ["openthoughts", "openmath", "openr1", "open reasoning", "release"]
+      - name: "🧬 Data lineage and release metadata"
+        focus: "datasheets, splits, lineage, licensing, versioning, and known failure modes"
+        key_risk: "downstream reuse loses the release context"
+        keywords: ["lineage", "metadata", "license", "datasheet", "datasheets", "datasheets", "data statements", "data statements", "split"]
+
+  - category_id: frontier_model_reports
+    short_title: Frontier Reports
+    navigator_title: "🚀 Frontier Reports"
+    best_for: "reading model reports as partial data disclosures"
+    subfields:
+      - name: "🚀 DeepSeek-R1 family"
+        focus: "RLVR, distillation, reasoning traces, and public recipe disclosure"
+        key_risk: "public report describes outcomes but not enough data partitions"
+        keywords: ["deepseek-r1", "deepseek", "r1", "distill"]
+      - name: "🌙 Kimi reasoning reports"
+        focus: "long-context reasoning, RL compute, and frontier inference budgets"
+        key_risk: "test-time compute is mixed with training-data effects"
+        keywords: ["kimi", "k1.5", "k2", "moonshot"]
+      - name: "🐉 Qwen reasoning/math/code reports"
+        focus: "math, code, PRM, and open-weight reasoning model families"
+        key_risk: "release cards do not separate SFT, RLVR, and evaluation data"
+        keywords: ["qwen", "qwen2.5", "qwen3"]
+      - name: "🧠 Magistral / Phi / Nemotron style reports"
+        focus: "open-weight reasoning reports with partial data and reward disclosures"
+        key_risk: "model-card claims cannot be mapped to concrete data objects"
+        keywords: ["magistral", "phi", "nemotron", "minimax", "llama"]
+      - name: "🧪 RLVR recipe reports"
+        focus: "reports that expose reward contracts, rollout policies, or RL scaffolds"
+        key_risk: "RL gains are attributed without verifier coverage"
+        keywords: ["rlvr", "reinforcement", "reward", "verifier", "dapo"]
+      - name: "🧬 What is disclosed vs hidden"
+        focus: "how reports reveal or hide data sources, filters, lineage, and safety mixtures"
+        key_risk: "opaque mixtures are reused as if they were open recipes"
+        keywords: ["technical report", "data", "mixture", "disclosed", "hidden"]
+
+  - category_id: scaling_test_time_compute_rlvr
+    short_title: Scaling & Test-Time Compute
+    navigator_title: "📈 Scaling & Test-Time Compute"
+    best_for: "interpreting RLVR, data scaling, and inference-budget claims"
+    subfields:
+      - name: "📈 Data scaling"
+        focus: "how number, diversity, and difficulty of examples affect reasoning performance"
+        key_risk: "unique examples and repeated rollouts are conflated"
+        keywords: ["data scaling", "large-scale", "distillation scaling", "data scale"]
+      - name: "🔁 Data reuse and uniqueness"
+        focus: "reuse counts, deduplication, repeated prompts, and train/test overlap"
+        key_risk: "same source examples are counted as fresh supervision"
+        keywords: ["reuse", "dedup", "unique", "memorize", "generalizes", "train-test overlap", "overlap"]
+      - name: "⏱️ Test-time compute"
+        focus: "sampling, search, self-critique, thinking budgets, and inference-time scaling"
+        key_risk: "performance is compared under different inference budgets"
+        keywords: ["test-time", "inference", "compute", "s1", "self-critique"]
+      - name: "🎲 pass@k / sampling budget"
+        focus: "pass@k, pass@(k,T), repeated sampling, and budget-aware evaluation"
+        key_risk: "reported gains hide selection or budget changes"
+        keywords: ["pass@", "pass k", "sampling", "budget", "large language monkeys", "large language monkeys", "repeated sampling", "repeated sampling"]
+      - name: "🧪 Verifier scaling"
+        focus: "how verifier strength, refresh, and coverage scale with training"
+        key_risk: "the verifier becomes stale or easy to exploit"
+        keywords: ["verifier", "reward", "refresh", "coverage"]
+      - name: "🏋️ RLVR optimization scaling"
+        focus: "policy optimization, reward contracts, curriculum, and rollout policy"
+        key_risk: "optimizer/scaffold improvements are mistaken for data improvements"
+        keywords: ["rlvr", "reinforcement", "dapo", "deepscaler", "open-reasoner"]
+      - name: "🔍 Scaling attribution"
+        focus: "separating data, verifier, optimizer, model, and inference-budget effects"
+        key_risk: "ablation tables do not isolate the source of improvement"
+        keywords: ["attribution", "ablation", "claim", "sober", "invisible leash", "invisible leash", "origin"]
+
+  - category_id: audit_failure_contamination_verifier_attacks
+    short_title: Audit & Failure Modes
+    navigator_title: "🧯 Audit & Failure Modes"
+    best_for: "auditing leakage, contamination, verifier gaming, and judge attacks"
+    subfields:
+      - name: "🧯 Benchmark contamination"
+        focus: "train/test overlap, stale evaluations, and benchmark refresh"
+        key_risk: "memorized items are reported as reasoning progress"
+        keywords: ["contamination", "benchmark", "livebench", "lastingbench"]
+      - name: "🔍 Search-time contamination"
+        focus: "contamination introduced by search, tools, retrieval, or inference scaffolds"
+        key_risk: "test-time tool access leaks answer traces"
+        keywords: ["search-time", "retrieval", "tool", "contamination"]
+      - name: "🧬 Hidden lineage / teacher leakage"
+        focus: "teacher-model traces, synthetic data inheritance, and hidden trait transfer"
+        key_risk: "student behavior inherits undisclosed teacher artifacts"
+        keywords: ["lineage", "teacher", "subliminal", "leaky", "hidden"]
+      - name: "🎮 Reward hacking"
+        focus: "ways reward models, tests, or judges can be optimized as shortcuts"
+        key_risk: "reward rises while real task quality falls"
+        keywords: ["reward hacking", "spurious", "gaming", "overoptimization"]
+      - name: "🧪 Verifier gaming"
+        focus: "models exploiting checkers, answer formats, or judge blind spots"
+        key_risk: "verifier-passing examples are semantically wrong"
+        keywords: ["verifier", "gaming", "imperfect", "attack", "robustness"]
+      - name: "⚖️ LLM-as-judge attacks"
+        focus: "one-token attacks, position bias, verbosity bias, and prompt attacks"
+        key_risk: "judge score changes for non-semantic reasons"
+        keywords: ["judge", "one token", "attack", "bias", "llm-as-a-judge"]
+      - name: "🧨 Spurious rewards"
+        focus: "shortcut rewards, memorization-triggered rewards, and reward signals that correlate with the wrong behavior"
+        key_risk: "the reward signal improves while the model learns a shortcut rather than reasoning"
+        keywords: ["spurious", "spurious reward", "spurious rewards", "shortcut", "memorization shortcut", "reward paradox"]
+      - name: "📉 Reproducibility failures"
+        focus: "decoding, evaluation, scaffold, and data reporting failures"
+        key_risk: "reported gains disappear under controlled reruns"
+        keywords: ["reproducibility", "sober", "decoding", "evaluation"]
+
+  - category_id: benchmarks_evaluation
+    short_title: Benchmarks & Evaluation
+    navigator_title: "🧰 Benchmarks & Evaluation"
+    best_for: "choosing evaluation surfaces and reusable feedback contracts"
+    subfields:
+      - name: "📐 Math benchmarks"
+        focus: "math problem sets, answer extraction, verifier compatibility, and difficulty"
+        key_risk: "short-answer normalization hides reasoning errors"
+        keywords: ["math", "gsm8k", "frontiermath", "math-perturb"]
+      - name: "💻 Code benchmarks"
+        focus: "coding tasks, generated tests, hidden tests, repair tasks, and live coding"
+        key_risk: "unit tests are brittle, leaked, or too narrow"
+        keywords: ["code", "humaneval", "apps", "livecodebench", "bigcodebench"]
+      - name: "🧾 Proof benchmarks"
+        focus: "formal proof datasets, proof assistants, theorem statements, and checking"
+        key_risk: "proof checker version and imports are not pinned"
+        keywords: ["proof", "theorem", "minif2f", "proofnet", "holist"]
+      - name: "🌐 Agent benchmarks"
+        focus: "web, tool, OS, app, and SWE environments with terminal predicates"
+        key_risk: "benchmark episodes cannot be replayed"
+        keywords: ["agent", "web", "swe", "os", "tool", "app"]
+      - name: "⚖️ Rubric/domain benchmarks"
+        focus: "medical, safety, legal, finance, science, factuality, and expert rubrics"
+        key_risk: "rubric or judge expertise is insufficiently disclosed"
+        keywords: ["medical", "safety", "legal", "finance", "factuality", "abstention", "uncertainty", "science", "healthbench", "gpqa"]
+      - name: "🧪 Reward-model benchmarks"
+        focus: "reward model, LLM-judge, PRM, and rubric evaluation suites"
+        key_risk: "benchmark reward preference does not reflect downstream training value"
+        keywords: ["rewardbench", "rewardbench", "prmbench", "prmbench", "processbench", "judge"]
+      - name: "🧯 Live / contamination-resistant benchmarks"
+        focus: "live, refreshed, hidden, or contamination-aware evaluation"
+        key_risk: "static benchmark becomes a training target"
+        keywords: ["live", "contamination", "fresh", "hidden", "lasting"]
