@@ -409,7 +409,7 @@ def research_question_table() -> str:
 
 def readme_en() -> str:
     s = stats()
-    return f"""# 🌟 Awesome LLM Reasoning Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://english.pku.edu.cn/"><img src="assets/institutions/peking-university.png" height="51" alt="Peking University"></a> <a href="https://www.tsinghua.edu.cn/en/"><img src="assets/institutions/tsinghua-university.png" height="51" alt="Tsinghua University"></a>
+    return f"""# 🌟 Awesome LLM Reasoning Data&nbsp;&nbsp;&nbsp;<sub><a href="https://english.pku.edu.cn/"><img src="assets/institutions/peking-university.png" height="51" alt="Peking University"></a> <a href="https://www.tsinghua.edu.cn/en/"><img src="assets/institutions/tsinghua-university.png" height="51" alt="Tsinghua University"></a></sub>
 
 > A learning repository for understanding post-training reasoning data: what it is, how it is built, how it is verified, how it enters training, and how to audit it.
 
@@ -441,6 +441,7 @@ To answer that, the repo combines four layers:
 - 🔎 **Searchable structured metadata** so readers can filter by verifier type, training use, curation level, and artifact availability.
 
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
+网页展示：[Awesome-LLM-Reasoning-Data.github.io]({PAGES_URL}).
 
 ---
 
