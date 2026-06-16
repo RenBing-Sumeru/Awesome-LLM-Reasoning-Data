@@ -4,6 +4,7 @@ let starterPacks = [];
 let researchTracks = [];
 let activePackId = "";
 let activeTrackId = "";
+const REPO_BLOB_ROOT = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main";
 
 const ids = [
   "q", "category", "subfield", "year", "venue", "sourceRole", "contract", "granularity",
@@ -43,6 +44,10 @@ function esc(value) {
 
 function display(value) {
   return String(value ?? "unknown").replaceAll("_", " ");
+}
+
+function repoBlob(path) {
+  return `${REPO_BLOB_ROOT}/${String(path || "").replace(/^\.\.\//, "")}`;
 }
 
 function shortText(value, limit = 150) {
@@ -154,7 +159,7 @@ function links(entry) {
       seen.add(url);
     }
   });
-  if (entry.artifacts?.card) out.push(`<a href="../${esc(entry.artifacts.card)}">Card</a>`);
+  if (entry.artifacts?.card) out.push(`<a href="${esc(repoBlob(entry.artifacts.card))}" target="_blank" rel="noreferrer">Card</a>`);
   return out.join("");
 }
 
@@ -213,12 +218,12 @@ function renderPaths() {
   const pack = starterPacks.find(item => item.id === activePackId) || starterPacks[0];
   const items = pack.entries.slice(0, 20).map((item, index) => {
     const entry = item.entry;
-    const href = entry?.primary_link || "../reports/needs_search.md";
+    const href = entry?.primary_link || repoBlob("reports/needs_search.md");
     const cardPath = entry?.artifacts?.card;
     return `<li>
       <strong>${index + 1}. <a href="${esc(href)}">${esc(entry?.title || item.title)}</a></strong>
       <small>${esc(entry?.year || "pending")} · ${esc(entry?.status || "needs_search")} · ${esc(entry?.curation_level || "L0_seeded")}</small>
-      ${cardPath ? `<a href="../${esc(cardPath)}">Card</a>` : ""}
+      ${cardPath ? `<a href="${esc(repoBlob(cardPath))}" target="_blank" rel="noreferrer">Card</a>` : ""}
     </li>`;
   }).join("");
   els.pathPanel.innerHTML = `<h3>${esc(pack.title)}</h3><p>${esc(pack.goal || "")}</p><ol>${items}</ol>`;

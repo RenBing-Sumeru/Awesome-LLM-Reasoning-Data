@@ -25,6 +25,9 @@ from atlas_utils import (
 )
 from common import ROOT, write_json
 
+REPO_URL = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
+REPO_BLOB = f"{REPO_URL}/blob/main"
+
 
 def site_entries() -> list[dict]:
     cards = card_inventory()
@@ -132,13 +135,13 @@ def render_index_html(counts: dict) -> str:
 <body>
   <header class="site-header">
     <nav class="topbar" aria-label="Primary navigation">
-      <a class="brand" href="../README.md">Awesome LLM Reasoning Data</a>
+      <a class="brand" href="{REPO_URL}">Awesome LLM Reasoning Data</a>
       <div class="navlinks">
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
-        <a href="../README.md">README</a>
-        <a href="../papers/README.md">Papers</a>
-        <a href="../cards/README.md">Cards</a>
-        <a href="../reports/link_coverage.md">Coverage</a>
+        <a href="{REPO_URL}">GitHub</a>
+        <a href="{REPO_URL}#readme">README</a>
+        <a href="{REPO_BLOB}/papers/README.md">Papers</a>
+        <a href="{REPO_BLOB}/cards/README.md">Cards</a>
+        <a href="{REPO_BLOB}/reports/link_coverage.md">Coverage</a>
       </div>
     </nav>
     <section class="hero">
@@ -206,9 +209,9 @@ def render_index_html(counts: dict) -> str:
 
   <footer class="site-footer">
     <span>Generated from structured atlas metadata.</span>
-    <a href="../data/papers.yaml">data/papers.yaml</a>
+    <a href="{REPO_BLOB}/data/papers.yaml">data/papers.yaml</a>
     <a href="assets/entries.json">entries.json</a>
-    <a href="../reports/link_check.md">link check</a>
+    <a href="{REPO_BLOB}/reports/link_check.md">link check</a>
   </footer>
 
   <script src="assets/atlas-data.js"></script>
