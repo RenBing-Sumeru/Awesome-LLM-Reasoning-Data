@@ -15,6 +15,8 @@ EXCLUDED_PATH_TERMS = [
 
 def is_public_source(path):
     rel = path.relative_to(ROOT).as_posix()
+    if rel == "reports/source_inventory.md":
+        return False
     if any(part in EXCLUDED_PARTS for part in path.parts):
         return False
     return not any(term.lower() in rel.lower() for term in EXCLUDED_PATH_TERMS)
@@ -28,7 +30,8 @@ def main():
             if not is_public_source(path): continue
             text = path.read_text(encoding="utf-8", errors="replace")
             heads = [l for l in text.splitlines() if l.startswith("#")][:12]
-            records.append({"path": str(path), "bytes": path.stat().st_size, "urls": URL.findall(text)[:50], "arxiv_ids": sorted(set(ARXIV.findall(text)))[:50], "headings": heads})
+            rel = path.relative_to(ROOT).as_posix()
+            records.append({"path": rel, "bytes": path.stat().st_size, "urls": URL.findall(text)[:50], "arxiv_ids": sorted(set(ARXIV.findall(text)))[:50], "headings": heads})
     write_json(ROOT/"reports/source_inventory.json", {"records": records})
     lines = ["# Source Inventory", "", f"Files scanned: {len(records)}", ""]
     for r in records:

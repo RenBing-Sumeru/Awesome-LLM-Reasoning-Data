@@ -378,7 +378,7 @@
 | [cards/](cards/README.md) | 学习卡片：解释论文/数据/验证器/recipe/benchmark/failure 的核心观点、数据对象、风险和链接。 |
 | [data/papers.yaml](data/papers.yaml) | 结构化数据源：记录 metadata、role、contract、summary、link、curation level。 |
 | [docs/index.html](docs/index.html) | 可搜索网页 atlas：可以按 year、role、contract、training use、curation level 等过滤。 |
-| [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、self review、link check。 |
+| [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、质量审查、link check。 |
 | [exports/](exports/) | CSV、JSON、BibTeX，方便复用这个 atlas。 |
 | [ROADMAP.md](ROADMAP.md) | 高引用路线和后续贡献优先级。 |
 

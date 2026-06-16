@@ -408,7 +408,7 @@ def research_question_table() -> str:
 
 def readme_en() -> str:
     s = stats()
-    return f"""# 🌟 Awesome LLM Reasoning Data
+    return f"""# 🌟 Awesome LLM Reasoning Data <a href="https://english.pku.edu.cn/"><img src="assets/institutions/peking-university.png" height="64" alt="Peking University"></a> <a href="https://www.tsinghua.edu.cn/en/"><img src="assets/institutions/tsinghua-university.png" height="64" alt="Tsinghua University"></a>
 
 > A learning repository for understanding post-training reasoning data: what it is, how it is built, how it is verified, how it enters training, and how to audit it.
 
@@ -733,7 +733,7 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 | [cards/](cards/README.md) | Learning cards: paper/data/verifier/recipe/benchmark/failure summaries with links and audit questions. |
 | [data/papers.yaml](data/papers.yaml) | Structured source of truth for paper metadata, roles, contracts, summaries, links, and curation levels. |
 | [docs/index.html](docs/index.html) | Searchable web atlas generated from structured data. |
-| [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, self-review, and live-link reports. |
+| [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, quality audits, and live-link reports. |
 | [exports/](exports/) | CSV, JSON, and BibTeX exports for readers who want to reuse the atlas data. |
 | [scripts/](scripts/) | Reproducible generators and validators for README, paper pages, cards, site data, exports, and QA. |
 | [ROADMAP.md](ROADMAP.md) | Public priorities for making the atlas more useful, citable, and contribution-friendly. |
@@ -999,7 +999,7 @@ def readme_zh() -> str:
 | [cards/](cards/README.md) | 学习卡片：解释论文/数据/验证器/recipe/benchmark/failure 的核心观点、数据对象、风险和链接。 |
 | [data/papers.yaml](data/papers.yaml) | 结构化数据源：记录 metadata、role、contract、summary、link、curation level。 |
 | [docs/index.html](docs/index.html) | 可搜索网页 atlas：可以按 year、role、contract、training use、curation level 等过滤。 |
-| [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、self review、link check。 |
+| [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、质量审查、link check。 |
 | [exports/](exports/) | CSV、JSON、BibTeX，方便复用这个 atlas。 |
 | [ROADMAP.md](ROADMAP.md) | 高引用路线和后续贡献优先级。 |
 

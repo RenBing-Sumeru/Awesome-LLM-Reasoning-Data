@@ -48,6 +48,7 @@ LEAKAGE_TERMS = [
     "developer " + "instruction",
     "our " + "conversation",
     "我们的" + "对话",
+    "内部" + "构建提示",
     "复制给" + "codex",
     "internal " + "prompt",
     "scratch" + "pad",

@@ -1,16 +1,18 @@
 {
   "records": [
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/requirements.txt",
+      "path": "requirements.txt",
       "bytes": 29,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/README.md",
-      "bytes": 122116,
+      "path": "README.md",
+      "bytes": 122391,
       "urls": [
+        "https://english.pku.edu.cn/",
+        "https://www.tsinghua.edu.cn/en/",
         "https://awesome.re/badge.svg",
         "https://awesome.re",
         "https://img.shields.io/badge/arXiv-2606.02113-b31b1b",
@@ -58,16 +60,14 @@
         "https://arxiv.org/abs/2107.03374",
         "https://arxiv.org/abs/2504.21801",
         "https://arxiv.org/abs/2408.08152",
-        "https://arxiv.org/abs/2405.14333",
-        "https://arxiv.org/abs/2306.15626",
-        "https://openai.com/index/introducing-swe-bench-verified/"
+        "https://arxiv.org/abs/2405.14333"
       ],
       "arxiv_ids": [
         "2505.03335",
         "2506.13585"
       ],
       "headings": [
-        "# 🌟 Awesome LLM Reasoning Data",
+        "# 🌟 Awesome LLM Reasoning Data <a href=\"https://english.pku.edu.cn/\"><img src=\"assets/institutions/peking-university.png\" height=\"64\" alt=\"Peking University\"></a> <a href=\"https://www.tsinghua.edu.cn/en/\"><img src=\"assets/institutions/tsinghua-university.png\" height=\"64\" alt=\"Tsinghua University\"></a>",
         "## 🔥 Latest Updates",
         "## 🧭 Research Track Navigator",
         "## 📚 Detailed Paper Directory",
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/ROADMAP.md",
+      "path": "ROADMAP.md",
       "bytes": 3975,
       "urls": [],
       "arxiv_ids": [],
@@ -97,7 +97,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/CONTRIBUTING.md",
+      "path": "CONTRIBUTING.md",
       "bytes": 3928,
       "urls": [],
       "arxiv_ids": [],
@@ -113,8 +113,8 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/README_zh.md",
-      "bytes": 98230,
+      "path": "README_zh.md",
+      "bytes": 98231,
       "urls": [
         "https://arxiv.org/abs/2606.02113",
         "https://arxiv.org/abs/2504.12328",
@@ -187,7 +187,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/02_programmatic_math_code_proof.md",
+      "path": "papers/02_programmatic_math_code_proof.md",
       "bytes": 58118,
       "urls": [
         "https://arxiv.org/abs/2504.21801",
@@ -264,7 +264,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/08_scaling_test_time_compute_rlvr.md",
+      "path": "papers/08_scaling_test_time_compute_rlvr.md",
       "bytes": 60537,
       "urls": [
         "https://arxiv.org/abs/2504.21801",
@@ -351,7 +351,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/03_process_supervision_prm.md",
+      "path": "papers/03_process_supervision_prm.md",
       "bytes": 29564,
       "urls": [
         "https://arxiv.org/abs/2305.20050",
@@ -429,7 +429,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/04_environmental_agents_tools_web_swe.md",
+      "path": "papers/04_environmental_agents_tools_web_swe.md",
       "bytes": 59543,
       "urls": [
         "https://arxiv.org/abs/2306.15626",
@@ -506,7 +506,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/09_audit_failure_contamination_verifier_attacks.md",
+      "path": "papers/09_audit_failure_contamination_verifier_attacks.md",
       "bytes": 51763,
       "urls": [
         "https://arxiv.org/abs/2504.11456",
@@ -591,7 +591,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/00_surveys_and_primers.md",
+      "path": "papers/00_surveys_and_primers.md",
       "bytes": 42961,
       "urls": [
         "https://arxiv.org/abs/2504.11456",
@@ -679,7 +679,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/06_construction_recipes_open_reasoning_data.md",
+      "path": "papers/06_construction_recipes_open_reasoning_data.md",
       "bytes": 82084,
       "urls": [
         "https://arxiv.org/abs/2501.09004",
@@ -769,8 +769,8 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/README.md",
-      "bytes": 24400,
+      "path": "papers/README.md",
+      "bytes": 24457,
       "urls": [
         "https://arxiv.org/abs/1803.09010",
         "https://aclanthology.org/Q18-1041/",
@@ -806,7 +806,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/10_benchmarks_evaluation.md",
+      "path": "papers/10_benchmarks_evaluation.md",
       "bytes": 80403,
       "urls": [
         "https://arxiv.org/abs/2501.09004",
@@ -884,7 +884,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/07_frontier_model_reports.md",
+      "path": "papers/07_frontier_model_reports.md",
       "bytes": 40482,
       "urls": [
         "https://arxiv.org/abs/2504.21801",
@@ -966,7 +966,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/05_judgment_required_rubrics_safety_domain.md",
+      "path": "papers/05_judgment_required_rubrics_safety_domain.md",
       "bytes": 54023,
       "urls": [
         "https://arxiv.org/abs/2501.09004",
@@ -1046,7 +1046,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/01_foundations_instruction_preference_alignment.md",
+      "path": "papers/01_foundations_instruction_preference_alignment.md",
       "bytes": 58658,
       "urls": [
         "https://arxiv.org/abs/2405.01535",
@@ -1137,7 +1137,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifier_card_template.md",
+      "path": "cards/verifier_card_template.md",
       "bytes": 458,
       "urls": [],
       "arxiv_ids": [],
@@ -1156,7 +1156,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/release_card_template.md",
+      "path": "cards/release_card_template.md",
       "bytes": 1241,
       "urls": [],
       "arxiv_ids": [],
@@ -1173,7 +1173,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/README.md",
+      "path": "cards/README.md",
       "bytes": 20369,
       "urls": [],
       "arxiv_ids": [],
@@ -1190,7 +1190,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agent_trajectory_card_template.md",
+      "path": "cards/agent_trajectory_card_template.md",
       "bytes": 317,
       "urls": [],
       "arxiv_ids": [],
@@ -1210,7 +1210,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipe_card_template.md",
+      "path": "cards/recipe_card_template.md",
       "bytes": 393,
       "urls": [],
       "arxiv_ids": [],
@@ -1230,7 +1230,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/06_verifiers_and_rewards.md",
+      "path": "docs/06_verifiers_and_rewards.md",
       "bytes": 8054,
       "urls": [],
       "arxiv_ids": [],
@@ -1250,7 +1250,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/license_note.md",
+      "path": "docs/license_note.md",
       "bytes": 405,
       "urls": [],
       "arxiv_ids": [],
@@ -1259,7 +1259,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/09_audit_and_failure_modes.md",
+      "path": "docs/09_audit_and_failure_modes.md",
       "bytes": 8316,
       "urls": [],
       "arxiv_ids": [],
@@ -1279,7 +1279,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/02_verifier_anchored_taxonomy.md",
+      "path": "docs/02_verifier_anchored_taxonomy.md",
       "bytes": 8296,
       "urls": [],
       "arxiv_ids": [],
@@ -1299,7 +1299,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/08_scaling_and_test_time_compute.md",
+      "path": "docs/08_scaling_and_test_time_compute.md",
       "bytes": 8280,
       "urls": [],
       "arxiv_ids": [],
@@ -1319,7 +1319,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/glossary.md",
+      "path": "docs/glossary.md",
       "bytes": 1199,
       "urls": [],
       "arxiv_ids": [],
@@ -1337,7 +1337,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/anonymity_note.md",
+      "path": "docs/anonymity_note.md",
       "bytes": 561,
       "urls": [],
       "arxiv_ids": [],
@@ -1346,7 +1346,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/10_industry_onboarding_path.md",
+      "path": "docs/10_industry_onboarding_path.md",
       "bytes": 8597,
       "urls": [],
       "arxiv_ids": [],
@@ -1366,7 +1366,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/04_data_quality.md",
+      "path": "docs/04_data_quality.md",
       "bytes": 8259,
       "urls": [],
       "arxiv_ids": [],
@@ -1386,7 +1386,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/01_what_is_post_training_reasoning_data.md",
+      "path": "docs/01_what_is_post_training_reasoning_data.md",
       "bytes": 8341,
       "urls": [],
       "arxiv_ids": [],
@@ -1406,7 +1406,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/03_reasoning_data_objects.md",
+      "path": "docs/03_reasoning_data_objects.md",
       "bytes": 8930,
       "urls": [],
       "arxiv_ids": [],
@@ -1426,7 +1426,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/05_construction_cookbook.md",
+      "path": "docs/05_construction_cookbook.md",
       "bytes": 8243,
       "urls": [],
       "arxiv_ids": [],
@@ -1446,7 +1446,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/_sidebar.md",
+      "path": "docs/_sidebar.md",
       "bytes": 881,
       "urls": [],
       "arxiv_ids": [],
@@ -1456,7 +1456,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/07_agent_trajectory_data.md",
+      "path": "docs/07_agent_trajectory_data.md",
       "bytes": 8755,
       "urls": [],
       "arxiv_ids": [],
@@ -1476,7 +1476,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/docs/00_start_here.md",
+      "path": "docs/00_start_here.md",
       "bytes": 8083,
       "urls": [],
       "arxiv_ids": [],
@@ -1496,7 +1496,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/exports/papers.bib",
+      "path": "exports/papers.bib",
       "bytes": 43052,
       "urls": [
         "https://arxiv.org/abs/1706.03741",
@@ -1554,7 +1554,7 @@
       "headings": []
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/.github/PULL_REQUEST_TEMPLATE.md",
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
       "bytes": 1442,
       "urls": [],
       "arxiv_ids": [],
@@ -1567,7 +1567,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/data/citations.bib",
+      "path": "data/citations.bib",
       "bytes": 43052,
       "urls": [
         "https://arxiv.org/abs/1706.03741",
@@ -1625,7 +1625,7 @@
       "headings": []
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/link_sources_v2.md",
+      "path": "reports/link_sources_v2.md",
       "bytes": 3551,
       "urls": [
         "https://arxiv.org/abs/2307.13854",
@@ -1685,7 +1685,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/v0.2.0_artifact_round_1.md",
+      "path": "reports/v0.2.0_artifact_round_1.md",
       "bytes": 3400,
       "urls": [],
       "arxiv_ids": [],
@@ -1697,7 +1697,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/needs_search.md",
+      "path": "reports/needs_search.md",
       "bytes": 78056,
       "urls": [],
       "arxiv_ids": [],
@@ -1717,7 +1717,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/bib_index.md",
+      "path": "reports/bib_index.md",
       "bytes": 23554,
       "urls": [],
       "arxiv_ids": [],
@@ -1726,7 +1726,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/counts.md",
+      "path": "reports/counts.md",
       "bytes": 26804,
       "urls": [],
       "arxiv_ids": [],
@@ -1745,7 +1745,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/inventory.md",
+      "path": "reports/inventory.md",
       "bytes": 716,
       "urls": [],
       "arxiv_ids": [],
@@ -1757,8 +1757,8 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/v0.1.0_release_notes.md",
-      "bytes": 3557,
+      "path": "reports/v0.1.0_release_notes.md",
+      "bytes": 3559,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -1773,8 +1773,8 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/five_task_quality_audit.md",
-      "bytes": 4900,
+      "path": "reports/five_task_quality_audit.md",
+      "bytes": 4938,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -1788,7 +1788,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/link_coverage.md",
+      "path": "reports/link_coverage.md",
       "bytes": 18139,
       "urls": [],
       "arxiv_ids": [],
@@ -1802,7 +1802,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/link_check.md",
+      "path": "reports/link_check.md",
       "bytes": 29055,
       "urls": [
         "https://arxiv.org/abs/1706.03741",
@@ -1863,7 +1863,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/paper_coverage_report.md",
+      "path": "reports/paper_coverage_report.md",
       "bytes": 2377,
       "urls": [],
       "arxiv_ids": [],
@@ -1876,27 +1876,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/source_inventory.md",
-      "bytes": 22648,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# Source Inventory",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/requirements.txt`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/README.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/ROADMAP.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/CONTRIBUTING.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/README_zh.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/02_programmatic_math_code_proof.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/08_scaling_test_time_compute_rlvr.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/03_process_supervision_prm.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/04_environmental_agents_tools_web_swe.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/09_audit_failure_contamination_verifier_attacks.md`",
-        "## `/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/papers/00_surveys_and_primers.md`"
-      ]
-    },
-    {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/citation_audit.md",
+      "path": "reports/citation_audit.md",
       "bytes": 973,
       "urls": [],
       "arxiv_ids": [],
@@ -1909,7 +1889,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/research_log_public.md",
+      "path": "reports/research_log_public.md",
       "bytes": 725,
       "urls": [],
       "arxiv_ids": [],
@@ -1919,7 +1899,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/reports/v0.2.0_artifact_round_2.md",
+      "path": "reports/v0.2.0_artifact_round_2.md",
       "bytes": 3907,
       "urls": [],
       "arxiv_ids": [],
@@ -1931,7 +1911,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md",
+      "path": "cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md",
       "bytes": 3797,
       "urls": [
         "https://arxiv.org/abs/2406.19314",
@@ -1957,7 +1937,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/failures/subliminal-learning.md",
+      "path": "cards/failures/subliminal-learning.md",
       "bytes": 4205,
       "urls": [
         "https://arxiv.org/abs/2507.14805",
@@ -1985,7 +1965,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/failures/spurious_rewards.md",
+      "path": "cards/failures/spurious_rewards.md",
       "bytes": 3282,
       "urls": [
         "https://arxiv.org/abs/2506.10947",
@@ -2008,7 +1988,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/failures/leaky-thoughts.md",
+      "path": "cards/failures/leaky-thoughts.md",
       "bytes": 4077,
       "urls": [
         "https://arxiv.org/abs/2506.15674",
@@ -2034,7 +2014,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/kodcode.md",
+      "path": "cards/releases/kodcode.md",
       "bytes": 4659,
       "urls": [
         "https://arxiv.org/abs/2503.02951",
@@ -2057,7 +2037,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md",
+      "path": "cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md",
       "bytes": 3659,
       "urls": [
         "https://arxiv.org/abs/2201.11903",
@@ -2079,7 +2059,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/openthoughts.md",
+      "path": "cards/releases/openthoughts.md",
       "bytes": 3801,
       "urls": [
         "https://arxiv.org/abs/2506.04178",
@@ -2105,7 +2085,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/data-statements-for-natural-language-processing.md",
+      "path": "cards/releases/data-statements-for-natural-language-processing.md",
       "bytes": 3533,
       "urls": [
         "https://aclanthology.org/Q18-1041/",
@@ -2127,7 +2107,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/openmathreasoning.md",
+      "path": "cards/releases/openmathreasoning.md",
       "bytes": 4376,
       "urls": [
         "https://arxiv.org/abs/2504.16891",
@@ -2150,7 +2130,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/dapo.md",
+      "path": "cards/releases/dapo.md",
       "bytes": 4110,
       "urls": [
         "https://arxiv.org/abs/2503.14476",
@@ -2173,7 +2153,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/openr1.md",
+      "path": "cards/releases/openr1.md",
       "bytes": 4698,
       "urls": [
         "https://github.com/huggingface/open-r1",
@@ -2198,7 +2178,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/opencodereasoning_ii.md",
+      "path": "cards/releases/opencodereasoning_ii.md",
       "bytes": 4843,
       "urls": [
         "https://arxiv.org/abs/2507.09075",
@@ -2221,7 +2201,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/openmathinstruct-2.md",
+      "path": "cards/releases/openmathinstruct-2.md",
       "bytes": 4679,
       "urls": [
         "https://arxiv.org/abs/2410.01560",
@@ -2251,7 +2231,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md",
+      "path": "cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md",
       "bytes": 3520,
       "urls": [
         "https://arxiv.org/abs/2305.18290",
@@ -2273,7 +2253,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md",
+      "path": "cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md",
       "bytes": 3782,
       "urls": [
         "https://arxiv.org/abs/2504.07086",
@@ -2295,7 +2275,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/s1.md",
+      "path": "cards/releases/s1.md",
       "bytes": 3391,
       "urls": [
         "https://arxiv.org/abs/2501.19393",
@@ -2317,7 +2297,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/datasheets-for-datasets.md",
+      "path": "cards/releases/datasheets-for-datasets.md",
       "bytes": 3520,
       "urls": [
         "https://arxiv.org/abs/1803.09010",
@@ -2339,7 +2319,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/limo.md",
+      "path": "cards/releases/limo.md",
       "bytes": 4247,
       "urls": [
         "https://arxiv.org/abs/2502.03387",
@@ -2362,7 +2342,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/deepmath_103k.md",
+      "path": "cards/releases/deepmath_103k.md",
       "bytes": 4152,
       "urls": [
         "https://arxiv.org/abs/2504.11456",
@@ -2385,7 +2365,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/ultrafeedback.md",
+      "path": "cards/releases/ultrafeedback.md",
       "bytes": 4479,
       "urls": [
         "https://arxiv.org/abs/2310.01377",
@@ -2411,7 +2391,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/naturalreasoning.md",
+      "path": "cards/releases/naturalreasoning.md",
       "bytes": 4774,
       "urls": [
         "https://arxiv.org/abs/2502.13124",
@@ -2434,7 +2414,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/releases/big_math.md",
+      "path": "cards/releases/big_math.md",
       "bytes": 4465,
       "urls": [
         "https://arxiv.org/abs/2502.17387",
@@ -2457,7 +2437,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/one_token_to_fool_judge.md",
+      "path": "cards/verifiers/one_token_to_fool_judge.md",
       "bytes": 4291,
       "urls": [
         "https://arxiv.org/abs/2507.08794",
@@ -2480,7 +2460,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/prometheus-2.md",
+      "path": "cards/verifiers/prometheus-2.md",
       "bytes": 4704,
       "urls": [
         "https://arxiv.org/abs/2405.01535",
@@ -2512,7 +2492,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/mt-bench-chatbot-arena.md",
+      "path": "cards/verifiers/mt-bench-chatbot-arena.md",
       "bytes": 4596,
       "urls": [
         "https://arxiv.org/abs/2306.05685",
@@ -2540,7 +2520,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/rewardbench.md",
+      "path": "cards/verifiers/rewardbench.md",
       "bytes": 3453,
       "urls": [
         "https://arxiv.org/abs/2403.13787",
@@ -2562,7 +2542,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/math_shepherd.md",
+      "path": "cards/verifiers/math_shepherd.md",
       "bytes": 4194,
       "urls": [
         "https://arxiv.org/abs/2312.08935",
@@ -2585,7 +2565,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/omegaprm.md",
+      "path": "cards/verifiers/omegaprm.md",
       "bytes": 4928,
       "urls": [
         "https://arxiv.org/abs/2406.06592",
@@ -2608,7 +2588,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/healthbench.md",
+      "path": "cards/verifiers/healthbench.md",
       "bytes": 3467,
       "urls": [
         "https://arxiv.org/abs/2505.08775",
@@ -2630,7 +2610,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/processbench.md",
+      "path": "cards/verifiers/processbench.md",
       "bytes": 4783,
       "urls": [
         "https://arxiv.org/abs/2412.06559",
@@ -2653,7 +2633,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/prmbench.md",
+      "path": "cards/verifiers/prmbench.md",
       "bytes": 4888,
       "urls": [
         "https://arxiv.org/abs/2501.03124",
@@ -2676,7 +2656,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/training-verifiers-to-solve-math-word-problems.md",
+      "path": "cards/verifiers/training-verifiers-to-solve-math-word-problems.md",
       "bytes": 3716,
       "urls": [
         "https://arxiv.org/abs/2110.14168",
@@ -2702,7 +2682,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/prm800k.md",
+      "path": "cards/verifiers/prm800k.md",
       "bytes": 3250,
       "urls": [
         "https://arxiv.org/abs/2305.20050",
@@ -2724,7 +2704,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/tinyv.md",
+      "path": "cards/verifiers/tinyv.md",
       "bytes": 4980,
       "urls": [
         "https://arxiv.org/abs/2505.14625",
@@ -2749,7 +2729,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/aegis2.md",
+      "path": "cards/verifiers/aegis2.md",
       "bytes": 4502,
       "urls": [
         "https://arxiv.org/abs/2501.09004",
@@ -2775,7 +2755,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/spurious_rewards.md",
+      "path": "cards/verifiers/spurious_rewards.md",
       "bytes": 4216,
       "urls": [
         "https://arxiv.org/abs/2506.10947",
@@ -2798,7 +2778,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/verifiers/rewarding-progress.md",
+      "path": "cards/verifiers/rewarding-progress.md",
       "bytes": 4150,
       "urls": [
         "https://arxiv.org/abs/2410.08146",
@@ -2822,7 +2802,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/appworld.md",
+      "path": "cards/agents/appworld.md",
       "bytes": 4861,
       "urls": [
         "https://arxiv.org/abs/2407.18901",
@@ -2845,7 +2825,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/leandojo.md",
+      "path": "cards/agents/leandojo.md",
       "bytes": 4466,
       "urls": [
         "https://arxiv.org/abs/2306.15626",
@@ -2875,7 +2855,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/openhands.md",
+      "path": "cards/agents/openhands.md",
       "bytes": 5040,
       "urls": [
         "https://arxiv.org/abs/2407.16741",
@@ -2902,7 +2882,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/toolformer.md",
+      "path": "cards/agents/toolformer.md",
       "bytes": 4029,
       "urls": [
         "https://arxiv.org/abs/2302.04761",
@@ -2926,7 +2906,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/browsergym.md",
+      "path": "cards/agents/browsergym.md",
       "bytes": 4569,
       "urls": [
         "https://arxiv.org/abs/2412.05467",
@@ -2949,7 +2929,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/swe-bench-verified.md",
+      "path": "cards/agents/swe-bench-verified.md",
       "bytes": 4413,
       "urls": [
         "https://openai.com/index/introducing-swe-bench-verified/",
@@ -2977,7 +2957,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/osworld.md",
+      "path": "cards/agents/osworld.md",
       "bytes": 4744,
       "urls": [
         "https://arxiv.org/abs/2404.07972",
@@ -3000,7 +2980,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/webarena.md",
+      "path": "cards/agents/webarena.md",
       "bytes": 4654,
       "urls": [
         "https://arxiv.org/abs/2307.13854",
@@ -3023,7 +3003,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/androidworld.md",
+      "path": "cards/agents/androidworld.md",
       "bytes": 4630,
       "urls": [
         "https://arxiv.org/abs/2405.14573",
@@ -3046,7 +3026,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/r2e_gym.md",
+      "path": "cards/agents/r2e_gym.md",
       "bytes": 4305,
       "urls": [
         "https://arxiv.org/abs/2504.07164",
@@ -3069,7 +3049,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/react.md",
+      "path": "cards/agents/react.md",
       "bytes": 4217,
       "urls": [
         "https://arxiv.org/abs/2210.03629",
@@ -3097,7 +3077,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/swe_gym.md",
+      "path": "cards/agents/swe_gym.md",
       "bytes": 4341,
       "urls": [
         "https://arxiv.org/abs/2412.21139",
@@ -3120,7 +3100,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md",
+      "path": "cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md",
       "bytes": 3810,
       "urls": [
         "https://arxiv.org/abs/2310.06770",
@@ -3148,7 +3128,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/agents/toolllm_toolbench.md",
+      "path": "cards/agents/toolllm_toolbench.md",
       "bytes": 4860,
       "urls": [
         "https://arxiv.org/abs/2307.16789",
@@ -3171,7 +3151,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/minimax_m1.md",
+      "path": "cards/recipes/minimax_m1.md",
       "bytes": 5291,
       "urls": [
         "https://arxiv.org/abs/2506.13585",
@@ -3198,7 +3178,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/scaling-behaviors-rl-post-training.md",
+      "path": "cards/recipes/scaling-behaviors-rl-post-training.md",
       "bytes": 3756,
       "urls": [
         "https://arxiv.org/abs/2509.25300",
@@ -3220,7 +3200,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/phi4_reasoning.md",
+      "path": "cards/recipes/phi4_reasoning.md",
       "bytes": 4269,
       "urls": [
         "https://arxiv.org/abs/2504.21318",
@@ -3243,7 +3223,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/tulu-3.md",
+      "path": "cards/recipes/tulu-3.md",
       "bytes": 4798,
       "urls": [
         "https://arxiv.org/abs/2411.15124",
@@ -3273,7 +3253,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/qwen2-5-math.md",
+      "path": "cards/recipes/qwen2-5-math.md",
       "bytes": 4490,
       "urls": [
         "https://arxiv.org/abs/2409.12122",
@@ -3301,7 +3281,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/ttrl.md",
+      "path": "cards/recipes/ttrl.md",
       "bytes": 4758,
       "urls": [
         "https://arxiv.org/abs/2504.16084",
@@ -3326,7 +3306,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/deepseekmath.md",
+      "path": "cards/recipes/deepseekmath.md",
       "bytes": 4335,
       "urls": [
         "https://arxiv.org/abs/2402.03300",
@@ -3352,7 +3332,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/qwen3.md",
+      "path": "cards/recipes/qwen3.md",
       "bytes": 4203,
       "urls": [
         "https://arxiv.org/abs/2505.09388",
@@ -3375,7 +3355,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/absolute_zero.md",
+      "path": "cards/recipes/absolute_zero.md",
       "bytes": 4693,
       "urls": [
         "https://arxiv.org/abs/2505.03335",
@@ -3400,7 +3380,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/constitutional-ai.md",
+      "path": "cards/recipes/constitutional-ai.md",
       "bytes": 4063,
       "urls": [
         "https://arxiv.org/abs/2212.08073",
@@ -3424,7 +3404,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/self-rag.md",
+      "path": "cards/recipes/self-rag.md",
       "bytes": 4807,
       "urls": [
         "https://arxiv.org/abs/2310.11511",
@@ -3456,7 +3436,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/orca.md",
+      "path": "cards/recipes/orca.md",
       "bytes": 4387,
       "urls": [
         "https://arxiv.org/abs/2306.02707",
@@ -3480,7 +3460,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/deepseek-prover.md",
+      "path": "cards/recipes/deepseek-prover.md",
       "bytes": 4107,
       "urls": [
         "https://arxiv.org/abs/2405.14333",
@@ -3506,7 +3486,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/deepseek_r1.md",
+      "path": "cards/recipes/deepseek_r1.md",
       "bytes": 3647,
       "urls": [
         "https://arxiv.org/abs/2501.12948",
@@ -3528,7 +3508,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/magistral.md",
+      "path": "cards/recipes/magistral.md",
       "bytes": 4200,
       "urls": [
         "https://arxiv.org/abs/2506.10910",
@@ -3551,7 +3531,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/llama_nemotron.md",
+      "path": "cards/recipes/llama_nemotron.md",
       "bytes": 4327,
       "urls": [
         "https://arxiv.org/abs/2505.00949",
@@ -3574,7 +3554,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/the-art-of-scaling-rl-compute.md",
+      "path": "cards/recipes/the-art-of-scaling-rl-compute.md",
       "bytes": 3843,
       "urls": [
         "https://arxiv.org/abs/2510.13786",
@@ -3598,7 +3578,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/self-consistency-chain-of-thought.md",
+      "path": "cards/recipes/self-consistency-chain-of-thought.md",
       "bytes": 3827,
       "urls": [
         "https://arxiv.org/abs/2203.11171",
@@ -3622,7 +3602,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/deepseek-prover-v1-5.md",
+      "path": "cards/recipes/deepseek-prover-v1-5.md",
       "bytes": 4202,
       "urls": [
         "https://arxiv.org/abs/2408.08152",
@@ -3648,7 +3628,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/kimi_k15.md",
+      "path": "cards/recipes/kimi_k15.md",
       "bytes": 4351,
       "urls": [
         "https://arxiv.org/abs/2501.12599",
@@ -3671,7 +3651,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/deepseek-prover-v2.md",
+      "path": "cards/recipes/deepseek-prover-v2.md",
       "bytes": 4547,
       "urls": [
         "https://arxiv.org/abs/2504.21801",
@@ -3699,7 +3679,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/magicoder.md",
+      "path": "cards/recipes/magicoder.md",
       "bytes": 4471,
       "urls": [
         "https://arxiv.org/abs/2312.02120",
@@ -3729,7 +3709,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/star-bootstrapping-reasoning-with-reasoning.md",
+      "path": "cards/recipes/star-bootstrapping-reasoning-with-reasoning.md",
       "bytes": 3330,
       "urls": [
         "https://arxiv.org/abs/2203.14465",
@@ -3751,7 +3731,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/qwen3_coder.md",
+      "path": "cards/recipes/qwen3_coder.md",
       "bytes": 5014,
       "urls": [
         "https://github.com/QwenLM/Qwen3-Coder",
@@ -3776,7 +3756,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md",
+      "path": "cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md",
       "bytes": 3583,
       "urls": [
         "https://arxiv.org/abs/2212.10560",
@@ -3798,7 +3778,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md",
+      "path": "cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md",
       "bytes": 3748,
       "urls": [
         "https://arxiv.org/abs/2203.02155",
@@ -3820,7 +3800,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/examples/agent_environment_release_card.md",
+      "path": "cards/examples/agent_environment_release_card.md",
       "bytes": 285,
       "urls": [],
       "arxiv_ids": [],
@@ -3831,7 +3811,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/examples/rubric_reward_release_card.md",
+      "path": "cards/examples/rubric_reward_release_card.md",
       "bytes": 281,
       "urls": [],
       "arxiv_ids": [],
@@ -3842,7 +3822,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/examples/math_reasoning_release_card.md",
+      "path": "cards/examples/math_reasoning_release_card.md",
       "bytes": 282,
       "urls": [],
       "arxiv_ids": [],
@@ -3853,7 +3833,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/minif2f.md",
+      "path": "cards/benchmarks/minif2f.md",
       "bytes": 4026,
       "urls": [
         "https://arxiv.org/abs/2109.00110",
@@ -3879,7 +3859,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/truthfulqa.md",
+      "path": "cards/benchmarks/truthfulqa.md",
       "bytes": 4273,
       "urls": [
         "https://arxiv.org/abs/2109.07958",
@@ -3905,7 +3885,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/livecodebench.md",
+      "path": "cards/benchmarks/livecodebench.md",
       "bytes": 4278,
       "urls": [
         "https://arxiv.org/abs/2403.07974",
@@ -3933,7 +3913,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/evaluating-large-language-models-trained-on-code.md",
+      "path": "cards/benchmarks/evaluating-large-language-models-trained-on-code.md",
       "bytes": 3639,
       "urls": [
         "https://arxiv.org/abs/2107.03374",
@@ -3957,7 +3937,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/scicode.md",
+      "path": "cards/benchmarks/scicode.md",
       "bytes": 4495,
       "urls": [
         "https://arxiv.org/abs/2407.13168",
@@ -3985,7 +3965,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/rewardbench.md",
+      "path": "cards/benchmarks/rewardbench.md",
       "bytes": 3386,
       "urls": [
         "https://arxiv.org/abs/2403.13787",
@@ -4008,7 +3988,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/gsm8k-grade-school-math-8k.md",
+      "path": "cards/benchmarks/gsm8k-grade-school-math-8k.md",
       "bytes": 3369,
       "urls": [
         "https://arxiv.org/abs/2110.14168",
@@ -4034,7 +4014,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/abstentionbench.md",
+      "path": "cards/benchmarks/abstentionbench.md",
       "bytes": 4477,
       "urls": [
         "https://arxiv.org/abs/2506.09038",
@@ -4062,7 +4042,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/gpqa.md",
+      "path": "cards/benchmarks/gpqa.md",
       "bytes": 3678,
       "urls": [
         "https://arxiv.org/abs/2311.12022",
@@ -4088,7 +4068,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/humaneval-hand-written-evaluation-set.md",
+      "path": "cards/benchmarks/humaneval-hand-written-evaluation-set.md",
       "bytes": 3139,
       "urls": [
         "https://arxiv.org/abs/2107.03374",
@@ -4112,7 +4092,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/apps.md",
+      "path": "cards/benchmarks/apps.md",
       "bytes": 3911,
       "urls": [
         "https://arxiv.org/abs/2105.09938",
@@ -4138,7 +4118,7 @@
       ]
     },
     {
-      "path": "/Users/liyaoming/Downloads/文件资料/Awesome-LLM-Reasoning-Data/cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md",
+      "path": "cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md",
       "bytes": 3389,
       "urls": [
         "https://arxiv.org/abs/2103.03874",
