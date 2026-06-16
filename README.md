@@ -1,4 +1,4 @@
-# 🌟 Awesome LLM Reasoning Data
+# 🌟 Awesome LLM Reasoning Data <a href="https://english.pku.edu.cn/"><img src="assets/institutions/peking-university.png" height="64" alt="Peking University"></a> <a href="https://www.tsinghua.edu.cn/en/"><img src="assets/institutions/tsinghua-university.png" height="64" alt="Tsinghua University"></a>
 
 > A learning repository for understanding post-training reasoning data: what it is, how it is built, how it is verified, how it enters training, and how to audit it.
 
