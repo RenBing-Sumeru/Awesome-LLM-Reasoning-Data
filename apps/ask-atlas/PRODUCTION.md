@@ -202,6 +202,24 @@ URL and the configured public `ASK_ATLAS_BASE_URL` both return an Ask the Atlas
 case where CI deploys one Vercel project or alias but GitHub Pages and GitHub
 OAuth still point at an older or different backend.
 
+The deployment workflow also stages the browser-visible Pages config with:
+
+```bash
+python3 scripts/set_ask_backend_url.py "$ASK_ATLAS_BASE_URL"
+python3 scripts/set_ask_backend_url.py --check --require-url
+```
+
+After the deployed backend passes the smoke launch check, a separate
+`publish-pages-config` job can commit `docs/assets/ask-config.js` back to
+`main` and trigger the normal GitHub Pages deployment. This publish job does
+not inject model, OAuth, database, Redis, or session secrets; it only reads the
+public `ASK_ATLAS_BASE_URL` value and runs the safe config helper. The behavior
+is controlled by the manual workflow input `publish_pages_config`, which
+defaults to `true`. Set it to `false` only when you want to test the backend
+without promoting the public `/ask/` frontend yet. The helper still rejects
+non-HTTPS, localhost, query strings, fragments, credentials, and secret-like
+values before anything browser-visible is written.
+
 To print the required Vercel variable names without exposing values:
 
 ```bash

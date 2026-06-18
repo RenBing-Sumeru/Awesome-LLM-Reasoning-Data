@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import fs from "node:fs";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { extractUrlFromText, normalizeUrl } from "../scripts/verify-deployment-target.mjs";
 import { storageSmokeReady } from "../scripts/launch-check.mjs";
 
 const appRoot = fileURLToPath(new URL("..", import.meta.url));
+const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
 const launchCheckScript = fileURLToPath(new URL("../scripts/launch-check.mjs", import.meta.url));
 
 test("deployment target verifier extracts the final Vercel deployment URL", () => {
@@ -44,4 +46,18 @@ test("launch check redacted mode omits URLs and cap values", () => {
   assert.match(result.stdout, /pages-config-backend/);
   assert.doesNotMatch(result.stdout, /https?:\/\/\S+/);
   assert.doesNotMatch(result.stdout, /User token cap|user cost cap|single request cap|global cap|\$0\.|150000/);
+});
+
+test("Vercel deploy workflow separates production secrets from Pages config publishing", () => {
+  const workflow = fs.readFileSync(`${repoRoot}/.github/workflows/deploy-ask-atlas-vercel.yml`, "utf8");
+  const deployJob = workflow.match(/\n  deploy:\n([\s\S]*?)\n  publish-pages-config:/)?.[1] || "";
+  const publishJob = workflow.match(/\n  publish-pages-config:\n([\s\S]*)$/)?.[1] || "";
+
+  assert.match(workflow, /\npermissions:\n  contents: read\n/);
+  assert.match(deployJob, /\n    permissions:\n      contents: read\n/);
+  assert.doesNotMatch(deployJob, /git push|git commit -m "Activate Ask Atlas backend config"/);
+  assert.match(publishJob, /\n    permissions:\n      contents: write\n/);
+  assert.match(publishJob, /scripts\/set_ask_backend_url\.py "\$ASK_ATLAS_BASE_URL"/);
+  assert.match(publishJob, /git commit -m "Activate Ask Atlas backend config"/);
+  assert.doesNotMatch(publishJob, /\$\{\{\s*secrets\./);
 });

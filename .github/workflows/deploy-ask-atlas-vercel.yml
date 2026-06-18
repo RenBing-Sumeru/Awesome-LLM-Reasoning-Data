@@ -2,6 +2,15 @@ name: Deploy Ask Atlas backend to Vercel
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_pages_config:
+        description: "Commit docs/assets/ask-config.js after the backend passes smoke checks"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
 
 permissions:
   contents: read
@@ -10,6 +19,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: production
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -19,7 +30,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: npm
           cache-dependency-path: apps/ask-atlas/package-lock.json
 
@@ -133,6 +144,14 @@ jobs:
           ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
         run: node scripts/verify-deployment-target.mjs --deployed-url-file "$RUNNER_TEMP/ask-atlas-vercel-url.txt"
 
+      - name: Stage public Pages backend config
+        env:
+          ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
+        run: |
+          set -euo pipefail
+          python3 scripts/set_ask_backend_url.py "$ASK_ATLAS_BASE_URL"
+          python3 scripts/set_ask_backend_url.py --check --require-url
+
       - name: Smoke test deployed backend
         env:
           ASK_ATLAS_ENV: prod
@@ -171,3 +190,35 @@ jobs:
           ASK_ATLAS_MAX_PRIMER_TEXT_BYTES: ${{ vars.ASK_ATLAS_MAX_PRIMER_TEXT_BYTES }}
           ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS: ${{ vars.ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS }}
         run: npm --prefix apps/ask-atlas run launch:check -- --smoke --allow-warnings --redacted
+
+  publish-pages-config:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: ${{ github.event.inputs.publish_pages_config == 'true' }}
+    environment: production
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Commit public Pages backend config
+        if: ${{ github.event.inputs.publish_pages_config == 'true' }}
+        env:
+          ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
+        run: |
+          set -euo pipefail
+          python3 scripts/set_ask_backend_url.py "$ASK_ATLAS_BASE_URL"
+          python3 scripts/set_ask_backend_url.py --check --require-url
+          if git diff --quiet -- docs/assets/ask-config.js; then
+            echo "docs/assets/ask-config.js already points at the configured backend."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/assets/ask-config.js
+          git commit -m "Activate Ask Atlas backend config"
+          git push
