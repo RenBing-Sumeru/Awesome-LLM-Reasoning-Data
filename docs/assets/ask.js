@@ -158,6 +158,64 @@ function renderAnswer(markdown, sources = []) {
   }).join("");
 }
 
+function hasCjk(value) {
+  return /[\u3400-\u9fff]/.test(String(value || ""));
+}
+
+function launchPreviewSources() {
+  return [
+    {
+      index: 1,
+      title: "Repository README",
+      type: "readme",
+      path: "README.md",
+      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data#readme",
+    },
+    {
+      index: 2,
+      title: "Start Here guide",
+      type: "guide",
+      path: "docs/00_start_here.md",
+      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/docs/00_start_here.md",
+    },
+    {
+      index: 3,
+      title: "Paper atlas",
+      type: "paper_map",
+      path: "papers/README.md",
+      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/papers",
+    },
+    {
+      index: 4,
+      title: "Ask backend launch checklist",
+      type: "setup",
+      path: "apps/ask-atlas/PRODUCTION.md",
+      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/apps/ask-atlas/PRODUCTION.md",
+    },
+  ];
+}
+
+function launchPreviewAnswer(question) {
+  if (hasCjk(question)) {
+    return `## 启动预览
+你的问题属于 Ask the Atlas 设计要覆盖的范围：项目导航、入门学习、大模型后训练推理数据、论文地图、cards、verifier、RLVR/PRM、agent data 和审计问题。
+
+- Companion paper evidence: 后端上线后会优先检索配套论文《A Primer in Post-Training Reasoning Data》的本地安全文本索引；如果没有检索到对应段落，回答会明确标注“论文证据不足”。
+- Repository atlas evidence: 接着会检索 README [1]、Start Here [2]、paper map [3]、cards 和生成的 metadata，用来回答“这个项目里有什么、初学者怎么学、某个方向该读哪些论文”。
+- Model background knowledge: 只有在论文和仓库证据不足时，才会用模型自己的领域背景补充，并且会标成较低可信度，不能伪装成论文或仓库证据。
+
+现在公开 Pages 端还没有连接安全后端，所以这个预览不会调用模型、不会消耗 token，也不会记录你的问题。上线前最后一步是按 launch checklist [4] 配置 GitHub OAuth、Vercel、Postgres、Redis、360 API secret 和 backend URL。`;
+  }
+  return `## Launch preview
+Your question is in the intended Ask the Atlas scope when it asks about this repository, how to learn the field, post-training reasoning data, paper maps, cards, verifiers, RLVR/PRM, agent data, or audit checks.
+
+- Companion paper evidence: after launch, the backend checks the safe local index of the companion paper first. If the paper text is not retrieved, the answer says that explicitly.
+- Repository atlas evidence: next it retrieves the README [1], Start Here guide [2], paper map [3], cards, and generated metadata so project-navigation questions can be answered instead of rejected.
+- Model background knowledge: only in-scope gaps can use model background, and those claims are labeled as lower-confidence fallback rather than paper or repository evidence.
+
+The public Pages frontend is not connected to the secure backend yet, so this preview does not call a model, spend tokens, or log your question. The last launch step is the backend checklist [4]: GitHub OAuth, Vercel, Postgres, Redis, provider secrets, and a safe backend URL.`;
+}
+
 function answerActions(meta = {}) {
   const firstSource = meta.sources?.[0]?.title || "the strongest retrieved source";
   const actions = [
@@ -265,14 +323,16 @@ function consentAccepted() {
 
 function renderConsent() {
   if (!BACKEND_CONFIGURED) {
+    els.privacyOptOut.disabled = true;
     els.acceptNotice.disabled = true;
     els.acceptNotice.textContent = "Launch pending";
     els.consentStatus.innerHTML = `The public frontend is ready. Connect the secure backend URL in <code>docs/assets/ask-config.js</code> after deployment.`;
-    els.askButton.disabled = true;
-    els.askButton.textContent = "Backend setup required";
+    els.askButton.disabled = false;
+    els.askButton.textContent = "Preview answer";
     return;
   }
   if (!state.user) {
+    els.privacyOptOut.disabled = true;
     els.acceptNotice.disabled = false;
     els.acceptNotice.textContent = "Sign in to accept";
     els.consentStatus.textContent = "Sign in with GitHub to accept this notice.";
@@ -280,6 +340,7 @@ function renderConsent() {
     els.askButton.textContent = "Ask Atlas";
     return;
   }
+  els.privacyOptOut.disabled = false;
   els.privacyOptOut.checked = state.user.storeRawQuestionDefault === false;
   if (consentAccepted()) {
     els.acceptNotice.disabled = true;
@@ -497,7 +558,16 @@ async function submitQuestion() {
   const question = text(els.question.value);
   if (!question) return;
   if (!BACKEND_CONFIGURED) {
-    addMessage("assistant", "Ask the Atlas is staged, but the secure backend URL is not connected yet. The backend is where GitHub login, quotas, RAG, model calls, token accounting, and admin analytics run without exposing secrets.");
+    const sources = launchPreviewSources();
+    addMessage("user", question);
+    addMessage("assistant", launchPreviewAnswer(question), {
+      sources,
+      evidenceMode: "limited atlas + model",
+    });
+    state.lastSources = sources;
+    renderSources(sources);
+    els.question.value = "";
+    updateCount();
     return;
   }
   if (!state.user) {

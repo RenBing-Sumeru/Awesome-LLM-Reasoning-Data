@@ -411,6 +411,16 @@ export function retrieveSources({ question, mode = "explain", track = "", entry 
   const trackTerms = contextCandidates(track);
   const entryTerms = contextCandidates(entry);
   const cardTerms = contextCandidates(card);
+  const primerSeeking = [
+    "companion paper",
+    "primer",
+    "post-training reasoning data",
+    "post training reasoning data",
+    "organizing questions",
+    "配套论文",
+    "论文",
+    "后训练推理数据",
+  ].some((term) => queryText.includes(term));
   const index = knowledgeIndex();
   const scored = index.map((source) => {
     let score = 0;
@@ -425,6 +435,7 @@ export function retrieveSources({ question, mode = "explain", track = "", entry 
     if (entryTerms.some((term) => source.id.toLowerCase() === `entry:${term}`)) score += 180;
     if (entryTerms.some((term) => sourceHaystack.includes(term))) score += 95;
     if (cardTerms.some((term) => source.type === "card" && sourceHaystack.includes(term))) score += 120;
+    if (primerSeeking && source.type === "primer") score += 70;
     if (projectQuestion(queryText)) {
       if (source.path === "README.md") score += 100;
       if (source.path === "docs/00_start_here.md") score += 80;

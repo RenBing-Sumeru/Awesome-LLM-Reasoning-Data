@@ -173,14 +173,17 @@ export function safePrimerTextPath() {
 
 export function validateRuntimeConfig() {
   const deploymentLike = Boolean(process.env.VERCEL) || CONFIG.appEnv === "prod" || CONFIG.appEnv === "production";
-  const productionLike = deploymentLike || (!CONFIG.devAuth && !CONFIG.mockProvider);
+  const baseUrl = parseHttpUrl(CONFIG.baseUrl);
+  const pagesBaseUrl = parseHttpUrl(CONFIG.pagesBaseUrl);
+  const localEnv = ["dev", "development", "test", "local"].includes(CONFIG.appEnv);
+  const explicitPublicBaseUrl = Boolean(process.env.ASK_ATLAS_BASE_URL) && Boolean(baseUrl) && !localHostname(baseUrl.hostname);
+  const publicCapable = deploymentLike || explicitPublicBaseUrl || !localEnv;
+  const productionLike = publicCapable || (!CONFIG.devAuth && !CONFIG.mockProvider);
   if (!productionLike) return;
   const errors = [];
   const weak = (value) => !value || value === "dev-only-change-me" || value.length < 32;
-  const baseUrl = parseHttpUrl(CONFIG.baseUrl);
-  const pagesBaseUrl = parseHttpUrl(CONFIG.pagesBaseUrl);
-  if (deploymentLike && CONFIG.devAuth) errors.push("ASK_ATLAS_DEV_AUTH must never be enabled in Vercel or production deployments.");
-  if (deploymentLike && CONFIG.mockProvider) errors.push("ASK_ATLAS_MOCK_PROVIDER must never be enabled in Vercel or production deployments.");
+  if (publicCapable && CONFIG.devAuth) errors.push("ASK_ATLAS_DEV_AUTH must never be enabled in public-capable deployments.");
+  if (publicCapable && CONFIG.mockProvider) errors.push("ASK_ATLAS_MOCK_PROVIDER must never be enabled in public-capable deployments.");
   if (CONFIG.allowlistLogins.size) errors.push("ASK_ATLAS_ALLOWLIST_LOGINS is not allowed in production-like deployments. Use stable numeric ASK_ATLAS_ALLOWLIST_GITHUB_IDS instead.");
   if (weak(CONFIG.sessionSecret)) errors.push("ASK_ATLAS_SESSION_SECRET must be set to a random value with at least 32 characters.");
   if (weak(CONFIG.tokenEncryptionSecret)) errors.push("ASK_ATLAS_TOKEN_ENCRYPTION_SECRET must be set to a random value with at least 32 characters.");

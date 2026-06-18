@@ -92,6 +92,46 @@ test("prod deployment rejects json storage even with the private fallback flag",
   assert.match(result.stderr, /Vercel or ASK_ATLAS_ENV=prod deployments/);
 });
 
+test("production deployments reject the mock provider even when other config is valid", () => {
+  const result = runConfigCheck({
+    VERCEL: "1",
+    ASK_ATLAS_MOCK_PROVIDER: "1",
+    ASK_ATLAS_MODEL_RATES_JSON: '{"deepseek/deepseek-v4-pro":{"input_per_million":1,"output_per_million":2},"z-ai/glm-5.2":{"input_per_million":1,"output_per_million":2}}',
+  });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /ASK_ATLAS_MOCK_PROVIDER must never be enabled/);
+});
+
+test("non-Vercel public-capable deployments also reject the mock provider", () => {
+  const result = runConfigCheck({
+    ASK_ATLAS_ENV: "staging",
+    ASK_ATLAS_MOCK_PROVIDER: "1",
+    ASK_ATLAS_MODEL_RATES_JSON: '{"deepseek/deepseek-v4-pro":{"input_per_million":1,"output_per_million":2},"z-ai/glm-5.2":{"input_per_million":1,"output_per_million":2}}',
+  });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /ASK_ATLAS_MOCK_PROVIDER must never be enabled/);
+});
+
+test("local development may use the mock provider without production secrets", () => {
+  const result = runConfigCheck({
+    ASK_ATLAS_ENV: "dev",
+    ASK_ATLAS_BASE_URL: null,
+    ASK_ATLAS_MOCK_PROVIDER: "1",
+    ASK_ATLAS_SESSION_SECRET: "",
+    ASK_ATLAS_TOKEN_ENCRYPTION_SECRET: "",
+    GITHUB_CLIENT_ID: "",
+    GITHUB_CLIENT_SECRET: "",
+    QIHOO_API_KEY: "",
+    ASK_ATLAS_STORE_BACKEND: "json",
+    DATABASE_URL: "",
+    UPSTASH_REDIS_REST_URL: "",
+    UPSTASH_REDIS_REST_TOKEN: "",
+    ASK_ATLAS_MODEL_RATES_JSON: "{}",
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /ok/);
+});
+
 test("production config requires numeric admin ids", () => {
   const result = runConfigCheck({
     ASK_ATLAS_ADMIN_GITHUB_IDS: "",

@@ -29,7 +29,7 @@ from set_ask_backend_url import validate_public_config_text
 
 REPO_URL = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
 REPO_BLOB = f"{REPO_URL}/blob/main"
-ASK_ASSET_VERSION = "ask-atlas-pages-20260618-6"
+ASK_ASSET_VERSION = "ask-atlas-pages-20260618-7"
 ASK_SITE_PATH = "ask/"
 
 

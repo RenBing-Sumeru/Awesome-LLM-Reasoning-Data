@@ -269,6 +269,19 @@ test("companion paper primer seed is retrieved as the paper evidence layer", () 
   );
 });
 
+test("generic field-definition questions keep companion paper evidence near the top", () => {
+  const retrieval = retrieveSources({
+    question: "What is post-training reasoning data?",
+    mode: "explain",
+  });
+  assert.ok(retrieval.results.length > 0);
+  assert.equal(
+    retrieval.results.slice(0, 3).some((source) => source.type === "primer" && source.path === "docs/companion_paper_primer.md"),
+    true,
+    retrieval.results.map((source) => `${source.type}:${source.path}`).join(", "),
+  );
+});
+
 test("mock answers expose the three trust layers", () => {
   const script = `
     const { callModel } = await import('./src/provider360.mjs');
