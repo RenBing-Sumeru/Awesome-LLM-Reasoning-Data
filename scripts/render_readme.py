@@ -830,6 +830,8 @@ def readme_zh() -> str:
 
 [论文：A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
 
+[🤖 Ask the Atlas]({ASK_URL}) · [🌐 网页版 Atlas]({PAGES_URL}) · [📚 论文分类地图](papers/README.md)
+
 <p align="center">
   <img src="assets/overview.svg" width="92%" alt="Awesome LLM Reasoning Data overview">
 </p>

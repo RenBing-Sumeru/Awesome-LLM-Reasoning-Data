@@ -1,5 +1,7 @@
 # Construction Cookbook
 
+> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=build&question=Use%20the%20Construction%20Cookbook%20to%20design%20a%20post-training%20reasoning-data%20pipeline.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+
 ## What you will learn
 
 - How this topic fits into post-training reasoning data.

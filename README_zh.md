@@ -4,6 +4,8 @@
 
 [论文：A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
 
+[🤖 Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/) · [🌐 网页版 Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · [📚 论文分类地图](papers/README.md)
+
 <p align="center">
   <img src="assets/overview.svg" width="92%" alt="Awesome LLM Reasoning Data overview">
 </p>

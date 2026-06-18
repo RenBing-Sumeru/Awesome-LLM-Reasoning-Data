@@ -12,8 +12,9 @@ It is designed to answer questions about post-training reasoning data using:
 
 Every answer is labeled by evidence mode. The assistant first uses companion
 paper snippets, then repository atlas evidence, and only then lower-confidence
-model background for in-scope questions. Completely source-empty retrieval is
-blocked with a narrowing suggestion.
+model background for in-scope questions. Source-empty in-scope answers are
+allowed only when they clearly say no companion-paper or repository evidence
+was retrieved and keep the uncited reasoning in the model-background layer.
 
 The bundled companion seed is intentionally compact and public. For higher
 recall paper-grounded answers, configure `ASK_ATLAS_PRIMER_TEXT_PATH` on the

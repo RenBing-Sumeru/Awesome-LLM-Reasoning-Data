@@ -1,5 +1,7 @@
 # Scaling and Test-Time Compute
 
+> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=compare&question=Explain%20scaling%20and%20test-time%20compute%20for%20reasoning%20data%20and%20separate%20data%2C%20verifier%2C%20optimizer%2C%20and%20inference%20effects.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+
 ## What you will learn
 
 - Why benchmark gains are not self-explanatory.

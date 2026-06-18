@@ -1,5 +1,7 @@
 # Reasoning Data Objects
 
+> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20reasoning%20data%20objects%20and%20show%20how%20they%20connect%20to%20verifiers%20and%20training%20use.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+
 ## What you will learn
 
 - Common object types in reasoning post-training.

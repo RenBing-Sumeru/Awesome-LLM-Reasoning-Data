@@ -1,5 +1,7 @@
 # Companion Paper Primer
 
+> 🤖 **Ask the Atlas:** [Ask about the primer](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20companion%20paper%20primer%20and%20show%20how%20it%20grounds%20Ask%20the%20Atlas.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+
 Source: [arXiv:2606.02113](https://arxiv.org/abs/2606.02113)
 
 Paper: **A Primer in Post-Training Reasoning Data: What We Know About How It Works**

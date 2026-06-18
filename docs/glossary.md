@@ -1,5 +1,7 @@
 # Glossary
 
+> 🤖 **Ask the Atlas:** [Ask about these terms](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20key%20glossary%20terms%20for%20post-training%20reasoning%20data%20with%20examples.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+
 ## post-training
 
 Training or adaptation performed after pretraining, including SFT, distillation, preference learning, reward modeling, process supervision, RLVR, and agent training.

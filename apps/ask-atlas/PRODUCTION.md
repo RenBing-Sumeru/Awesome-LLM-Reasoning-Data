@@ -114,11 +114,11 @@ Do not publicly launch until all gates are true:
   and bonus credit before a model call; provider errors release the reservation.
 - Stale quota reservations are released automatically, and actual provider cost
   overruns are logged as risk events for admin review.
-- Source grounding is explicit in every answer. Zero-source retrieval produces
-  a narrowing suggestion instead of a model call; weak-but-nonempty retrieval
-  may answer only when the response labels limited repository evidence and
-  separates lower-confidence model background from companion-paper or atlas
-  evidence.
+- Source grounding is explicit in every answer. In-scope questions may still be
+  answered when retrieval is weak or empty, but the response must label missing
+  companion-paper/repository evidence and place uncited synthesis in the
+  lower-confidence model-background layer. Out-of-scope questions are refused
+  before model calls.
 - `docs/companion_paper_primer.md` is present as the public companion-paper
   seed. For higher-recall paper grounding, configure `ASK_ATLAS_PRIMER_TEXT_PATH`
   to a backend-only full-text extraction.
@@ -446,8 +446,9 @@ paper-backed. The backend uses a three-layer evidence contract:
 The UI returns an `evidenceMode` label such as `companion paper + atlas
 grounded`, `atlas grounded`, or `limited atlas evidence + model background`.
 Users should be able to tell whether an answer is quoting project evidence or
-using model background. Completely source-empty retrieval is blocked with a
-narrowing suggestion to protect trust and budget.
+using model background. Source-empty in-scope answers must say that no local
+companion-paper or repository evidence was retrieved, must avoid fake citations,
+and must invite the user to ask a narrower follow-up.
 
 ## Public Integration
 

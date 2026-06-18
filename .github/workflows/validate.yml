@@ -25,23 +25,15 @@ jobs:
       - name: Validate data
         run: python scripts/validate_data.py
       - name: Secret scan
-        run: |
-          if grep -RInE 'QIHOO_API_KEY\s*=\s*["'\'']?fk[0-9A-Za-z_.-]{16,}|Authorization:\s*Bearer\s+fk[0-9A-Za-z_.-]{16,}|Bearer\s+fk[0-9A-Za-z_.-]{16,}|fk[0-9]{6,}\.[A-Za-z0-9_.-]{16,}' \
-            --exclude-dir=.git \
-            --exclude-dir=node_modules \
-            --exclude-dir=.venv \
-            --exclude=validate.yml \
-            --exclude=package-lock.json \
-            .; then
-            echo "Potential secret leaked into the repository."
-            exit 1
-          fi
+        run: python scripts/secret_scan.py
       - name: Check site data
         run: python scripts/render_site.py --check
       - name: Check Ask backend URL config safety
         run: |
           set -euo pipefail
           python scripts/set_ask_backend_url.py --check
+      - name: Check Ask entrypoints
+        run: python scripts/check_ask_entrypoints.py
       - name: Check paper pages
         run: python scripts/render_papers.py --check
       - name: Check README generated sections

@@ -178,6 +178,7 @@ def render_index_html(counts: dict) -> str:
         <p>Jump by field first, then use filters for data object, verifier, training use, and artifact coverage.</p>
       </div>
       <div id="trackTabs" class="track-tabs"></div>
+      <div id="trackAssistant" class="track-assistant"></div>
     </section>
 
     <section class="controls" aria-label="Search and filters">
@@ -209,6 +210,7 @@ def render_index_html(counts: dict) -> str:
       <h2>Results</h2>
       <p id="resultSummary">Loading atlas data...</p>
     </section>
+    <div id="filterAssistant" class="filter-assistant"></div>
     <section id="results" class="result-grid" aria-live="polite"></section>
   </main>
 
@@ -221,6 +223,7 @@ def render_index_html(counts: dict) -> str:
 
   <script src="assets/atlas-data.js"></script>
   <script src="assets/site.js"></script>
+  <a class="floating-ask" href="{ASK_SITE_PATH}">🤖 Ask Atlas</a>
 </body>
 </html>
 """

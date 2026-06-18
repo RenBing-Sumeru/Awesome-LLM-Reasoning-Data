@@ -1,5 +1,7 @@
 # Start Here
 
+> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20Start%20Here%20guide%20and%20turn%20it%20into%20a%20learning%20plan.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+
 ## What you will learn
 
 - How this topic fits into post-training reasoning data.
