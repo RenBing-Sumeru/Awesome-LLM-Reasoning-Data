@@ -183,9 +183,11 @@ not commit or paste them into public logs.
 
 `npm run doctor:prod` prints a safe production readiness report with blockers,
 warnings, and missing environment names. It intentionally omits concrete URLs,
-secret values, provider keys, and numeric cost-cap values. After you have
-GitHub/Vercel inventory files, run it with `--strict` to fail on any remaining
-launch blocker.
+secret values, provider keys, and numeric cost-cap values. Use
+`npm run doctor:prod -- --github-repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data`
+to let the GitHub CLI read production variable and secret names directly, or
+pass inventory files when checking Vercel runtime names. Add `--strict` to fail
+on any remaining launch blocker.
 
 `npm run production:configure -- --apply-github` can write GitHub production
 variables and secrets after every required value has been exported in the

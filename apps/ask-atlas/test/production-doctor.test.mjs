@@ -9,10 +9,15 @@ import { fileURLToPath } from "node:url";
 const appRoot = fileURLToPath(new URL("..", import.meta.url));
 const scriptPath = fileURLToPath(new URL("../scripts/production-doctor.mjs", import.meta.url));
 
-function run(args = []) {
+function run(args = [], options = {}) {
   return spawnSync(process.execPath, [scriptPath, ...args], {
     cwd: appRoot,
     encoding: "utf8",
+    ...options,
+    env: {
+      ...process.env,
+      ...(options.env || {}),
+    },
   });
 }
 
@@ -67,6 +72,45 @@ test("production doctor consumes inventory files by name only", () => {
   assert.ok(report.inventories[0].recommendedMissing.includes("ASK_ATLAS_PRIMER_TEXT_PATH"));
   assert.ok(report.inventories[1].missing.includes("DATABASE_URL"));
   assert.ok(report.inventories[2].missing.includes("GITHUB_CLIENT_ID"));
+});
+
+test("production doctor can read GitHub production inventory through gh without printing values", () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ask-atlas-gh-doctor-"));
+  const fakeGh = path.join(tmp, "gh");
+  fs.writeFileSync(fakeGh, `#!/bin/sh
+if [ "$1" = "variable" ] && [ "$2" = "list" ]; then
+  printf '%s\\n' "ASK_ATLAS_BASE_URL\\thttps://secret-backend.example"
+  printf '%s\\n' "ASK_ATLAS_PAGES_BASE_URL\\thttps://secret-pages.example"
+  printf '%s\\n' "GITHUB_CLIENT_ID\\tclient-id-secret-value"
+  printf '%s\\n' "ASK_ATLAS_ADMIN_GITHUB_IDS\\t123456"
+  printf '%s\\n' "ASK_ATLAS_MODEL_RATES_JSON\\t{\\"private\\":true}"
+  exit 0
+fi
+if [ "$1" = "secret" ] && [ "$2" = "list" ]; then
+  printf '%s\\n' "ASK_ATLAS_SESSION_SECRET\\t2026-06-18T00:00:00Z"
+  printf '%s\\n' "ASK_ATLAS_TOKEN_ENCRYPTION_SECRET\\t2026-06-18T00:00:00Z"
+  printf '%s\\n' "GITHUB_CLIENT_SECRET\\t2026-06-18T00:00:00Z"
+  printf '%s\\n' "QIHOO_API_KEY\\t2026-06-18T00:00:00Z"
+  exit 0
+fi
+exit 1
+`);
+  fs.chmodSync(fakeGh, 0o755);
+
+  const result = run(["--json", "--github-repo", "RenBing-Sumeru/Awesome-LLM-Reasoning-Data"], {
+    env: {
+      PATH: `${tmp}${path.delimiter}${process.env.PATH || ""}`,
+    },
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.doesNotMatch(result.stdout, /secret-backend|secret-pages|client-id-secret-value|private/);
+  const report = JSON.parse(result.stdout);
+  assert.equal(report.inventories[0].provided, true);
+  assert.equal(report.inventories[1].provided, true);
+  assert.equal(report.inventories[0].missing.includes("ASK_ATLAS_BASE_URL"), false);
+  assert.equal(report.inventories[0].missing.includes("GITHUB_CLIENT_ID"), false);
+  assert.equal(report.inventories[1].missing.includes("QIHOO_API_KEY"), false);
+  assert.ok(report.inventories[1].missing.includes("DATABASE_URL"));
 });
 
 test("production doctor json output omits runtime values", () => {

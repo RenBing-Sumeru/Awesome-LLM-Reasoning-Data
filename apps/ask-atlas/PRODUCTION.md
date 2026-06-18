@@ -271,6 +271,15 @@ To produce a safe gap report from platform inventories without printing secret
 values:
 
 ```bash
+npm --prefix apps/ask-atlas run doctor:prod -- \
+  --github-repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data
+```
+
+The command above asks the GitHub CLI for production environment variable and
+secret names, then discards the values. To include Vercel runtime names in the
+same report, pass inventory files:
+
+```bash
 gh variable list --repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data --env production > /tmp/ask-atlas-gh-vars.txt
 gh secret list --repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data --env production > /tmp/ask-atlas-gh-secrets.txt
 vercel env ls production > /tmp/ask-atlas-vercel-env.txt

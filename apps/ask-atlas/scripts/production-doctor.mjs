@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import { collectLaunchReadiness } from "../src/readiness.mjs";
@@ -127,6 +128,7 @@ const SAFE_FINDINGS = {
 function usage() {
   console.log(`Usage:
   node scripts/production-doctor.mjs [--strict] [--json] [--jsonl] [--profile public-production]
+  node scripts/production-doctor.mjs --github-repo owner/repo
   node scripts/production-doctor.mjs --github-vars-file <path> --github-secrets-file <path> --vercel-env-file <path>
 
 The doctor reports production launch readiness without printing environment values.
@@ -149,6 +151,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     json: args.has("--json"),
     jsonl: args.has("--jsonl"),
     profile: value("--profile", "public-production"),
+    githubRepo: value("--github-repo"),
     githubVarsFile: value("--github-vars-file"),
     githubSecretsFile: value("--github-secrets-file"),
     vercelEnvFile: value("--vercel-env-file"),
@@ -158,6 +161,22 @@ function parseArgs(argv = process.argv.slice(2)) {
 function readOptionalFile(pathname) {
   if (!pathname) return "";
   return fs.readFileSync(pathname, "utf8");
+}
+
+function safeGithubRepo(value) {
+  const repo = String(value || "").trim();
+  return /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo) ? repo : "";
+}
+
+function ghInventory(repo, kind) {
+  const safeRepo = safeGithubRepo(repo);
+  if (!safeRepo) return "";
+  const subcommand = kind === "secrets" ? "secret" : "variable";
+  const result = spawnSync("gh", [subcommand, "list", "--env", "production", "--repo", safeRepo], {
+    encoding: "utf8",
+  });
+  if (result.status !== 0) return "";
+  return result.stdout || "";
 }
 
 function namesFromText(text) {
@@ -219,6 +238,7 @@ function summarizeFindings(findings) {
 }
 
 export function buildReport({
+  githubRepo = "",
   githubVarsFile = "",
   githubSecretsFile = "",
   vercelEnvFile = "",
@@ -229,9 +249,11 @@ export function buildReport({
     .map((item) => findingFromCheck(item, profile))
     .filter((item) => item.status !== "pass");
   const summary = summarizeFindings(findings);
+  const githubVarsText = githubVarsFile ? readOptionalFile(githubVarsFile) : ghInventory(githubRepo, "variables");
+  const githubSecretsText = githubSecretsFile ? readOptionalFile(githubSecretsFile) : ghInventory(githubRepo, "secrets");
   const inventories = [
-    inventory("GitHub production variables", GITHUB_PRODUCTION_REQUIRED_VARIABLES, readOptionalFile(githubVarsFile), GITHUB_PRODUCTION_OPTIONAL_VARIABLES),
-    inventory("GitHub production secrets", GITHUB_PRODUCTION_SECRETS, readOptionalFile(githubSecretsFile)),
+    inventory("GitHub production variables", GITHUB_PRODUCTION_REQUIRED_VARIABLES, githubVarsText, GITHUB_PRODUCTION_OPTIONAL_VARIABLES),
+    inventory("GitHub production secrets", GITHUB_PRODUCTION_SECRETS, githubSecretsText),
     inventory("Vercel production runtime", VERCEL_RUNTIME_REQUIRED, readOptionalFile(vercelEnvFile), VERCEL_RUNTIME_RECOMMENDED),
   ];
   return {
