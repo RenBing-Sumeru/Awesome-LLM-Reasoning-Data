@@ -198,6 +198,45 @@ export function applyRewardStatus(user, { starred = false, forked = false } = {}
   });
 }
 
+export async function grantManualReward(user, creditType, admin = null) {
+  if (!["star_bonus", "fork_bonus"].includes(creditType)) {
+    const error = new Error("Manual reward type must be star_bonus or fork_bonus.");
+    error.status = 400;
+    throw error;
+  }
+  const now = new Date().toISOString();
+  return mutateStore((store) => {
+    ensureCollections(store);
+    const current = store.users[user.githubId] || user;
+    const isStar = creditType === "star_bonus";
+    const alreadyAwarded = ledgerAwarded(store, current, creditType) || Boolean(isStar ? current.starBonusAwardedAt : current.forkBonusAwardedAt);
+    if (!alreadyAwarded) {
+      const delta = isStar ? CONFIG.starBonusCredits : CONFIG.forkBonusCredits;
+      addCredit(store, {
+        user: current,
+        creditType,
+        delta,
+        reason: `owner-admin manual ${isStar ? "star" : "fork"} reward`,
+        relatedRepo: `${CONFIG.repoOwner}/${CONFIG.repoName}`,
+        createdByGithubId: admin?.githubId || "",
+      });
+      if (isStar) {
+        current.starBonusCredits = (current.starBonusCredits || 0) + delta;
+        current.starBonusAwardedAt = now;
+      } else {
+        current.forkBonusCredits = (current.forkBonusCredits || 0) + delta;
+        current.forkBonusAwardedAt = now;
+      }
+    }
+    if (isStar) current.starVerified = true;
+    else current.forkVerified = true;
+    current.lastRewardCheckAt = now;
+    current.updatedAt = now;
+    store.users[user.githubId] = current;
+    return snapshotFromStore(store, current);
+  });
+}
+
 export async function checkQuota(user) {
   return mutateStore((store) => {
     cleanupStaleReservations(store);

@@ -3,16 +3,16 @@ import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { CONFIG, isAdminUser, isAllowlistedUser, isOwnerAdminUser, APP_ROOT, validateRuntimeConfig } from "./config.mjs";
-import { acceptUsageConsent, beginGithubLogin, createDevSession, getCurrentUser, handleGithubCallback, logoutHeaders, logoutReturnTo, requireAdminViewer, requireOwnerAdmin, requireUser, USAGE_CONSENT_VERSION } from "./auth.mjs";
+import { acceptUsageConsent, beginGithubLogin, createDevSession, getCurrentUser, handleGithubCallback, logoutHeaders, logoutReturnTo, requireAdminViewer, requireOwnerAdmin, requireUser, updatePrivacyPreference, USAGE_CONSENT_VERSION } from "./auth.mjs";
 import { addFeedback, adminCosts, adminGaps, adminGapsExport, adminOverview, adminRequestDetail, adminRequests, adminUsers, createRequestLog, updateRequestLog, updateUserAdmin, userHistory } from "./logging.mjs";
-import { checkQuota, finalizeQuotaReservation, quotaSnapshot, refreshRewards, releaseQuotaReservation, reserveQuota } from "./quota.mjs";
+import { checkQuota, finalizeQuotaReservation, grantManualReward, quotaSnapshot, refreshRewards, releaseQuotaReservation, reserveQuota } from "./quota.mjs";
 import { callModel, estimateCost, estimateTokens, MODEL_LABELS, resolveModel } from "./provider360.mjs";
-import { checkAttemptRateLimits, checkRateLimits, checkRewardRefreshRateLimit } from "./rate-limit.mjs";
+import { checkAttemptRateLimits, checkFeedbackRateLimit, checkRateLimits, checkRewardRefreshRateLimit } from "./rate-limit.mjs";
 import { classifyQuestionScope, retrieveSources } from "./rag.mjs";
 import { collectLaunchReadiness } from "./readiness.mjs";
 import { clientIp, parseUrl, readJson, redirect, sendJson as rawSendJson } from "./http.mjs";
 import { hashValue } from "./crypto.mjs";
-import { checkStoreHealth } from "./store.mjs";
+import { checkStoreHealth, readStore } from "./store.mjs";
 
 const PUBLIC_ROOT = path.join(APP_ROOT, "public");
 
@@ -143,6 +143,12 @@ function redactQuotaForUser(quota, user) {
 
 async function visibleQuota(user) {
   return redactQuotaForUser(await quotaSnapshot(user), user);
+}
+
+async function getAdminTargetUser(githubId) {
+  const id = String(githubId || "");
+  if (!id) return null;
+  return readStore((store) => store.users[id] || null);
 }
 
 function visibleUsage(user, usage = {}) {
@@ -298,6 +304,15 @@ async function handleApi(req, res, url) {
     sendJson(res, 200, { ok: true, user: publicUser(updated) });
     return;
   }
+  if (url.pathname === "/api/privacy" && req.method === "POST") {
+    const user = await requireUser(req);
+    const body = await readJson(req);
+    const updated = await updatePrivacyPreference(user, {
+      storeRawQuestionDefault: body.storeRawQuestionDefault !== false,
+    });
+    sendJson(res, 200, { ok: true, user: publicUser(updated) });
+    return;
+  }
   if (url.pathname === "/api/rewards/refresh" && req.method === "POST") {
     const user = await requireUser(req);
     const rate = await checkRewardRefreshRateLimit(user, clientIp(req));
@@ -397,24 +412,6 @@ async function handleApi(req, res, url) {
       sources: retrieval.results,
       storeRawQuestion,
     });
-    if (retrieval.confidence < CONFIG.minRetrievalConfidence && retrieval.results.length === 0) {
-      await updateRequestLog(log.requestId, {
-        status: "blocked",
-        errorCode: "low_retrieval_confidence",
-        latencyMs: Date.now() - started,
-        retrievalConfidence: retrieval.confidence,
-      });
-      sendJson(res, 200, {
-        requestId: log.requestId,
-        status: "blocked",
-        evidenceMode: evidenceMode([], retrieval.confidence),
-        retrievalConfidence: retrieval.confidence,
-        answer: "## Short answer\n\nI could not find enough companion-paper or repository evidence for that question yet.\n\n## Trust layers\n\n- Companion paper evidence: No matching companion-paper evidence was retrieved.\n- Repository atlas evidence: No matching repository source was retrieved.\n- Model background knowledge: Not used for this answer because the source grounding was too weak.\n\n## What to ask next\n\nTry naming a paper, card, track, or concept from post-training reasoning data, such as PRM, RLVR, verifier gaming, agent trajectories, benchmark contamination, or how to use this Awesome-LLM-Reasoning-Data project.",
-        sources: [],
-        quota: await visibleQuota(user),
-      });
-      return;
-    }
     const projected = await projectedCostCheck(user, model, question, retrieval.results);
     if (!projected.ok) {
       await updateRequestLog(log.requestId, {
@@ -489,6 +486,11 @@ async function handleApi(req, res, url) {
   }
   if (url.pathname === "/api/feedback" && req.method === "POST") {
     const user = await requireUser(req);
+    const rate = await checkFeedbackRateLimit(user, clientIp(req));
+    if (!rate.ok) {
+      sendJson(res, 429, { error: rate.reason });
+      return;
+    }
     const body = await readJson(req);
     const item = await addFeedback({
       user,
@@ -549,7 +551,16 @@ async function handleApi(req, res, url) {
   if (url.pathname === "/api/admin/user" && req.method === "POST") {
     const admin = await requireOwnerAdmin(req);
     const body = await readJson(req);
-    const user = await updateUserAdmin({ githubId: body.githubId, action: body.action, admin });
+    let user = null;
+    if (body.action === "grant_star_bonus" || body.action === "grant_fork_bonus") {
+      const target = await getAdminTargetUser(body.githubId);
+      if (target) {
+        await grantManualReward(target, body.action === "grant_star_bonus" ? "star_bonus" : "fork_bonus", admin);
+        user = (await adminUsers()).find((row) => row.githubId === String(body.githubId)) || target;
+      }
+    } else {
+      user = await updateUserAdmin({ githubId: body.githubId, action: body.action, admin });
+    }
     sendJson(res, user ? 200 : 404, user ? { ok: true, user } : { error: "User not found." });
     return;
   }

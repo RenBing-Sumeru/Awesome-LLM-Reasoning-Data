@@ -220,6 +220,14 @@ async function ensurePostgresReportingTables(client) {
   await client.query("create index if not exists ask_atlas_chat_requests_user_time_idx on ask_atlas_chat_requests (github_id, created_at desc)");
   await client.query("create index if not exists ask_atlas_chat_requests_status_idx on ask_atlas_chat_requests (status, created_at desc)");
   await client.query("create index if not exists ask_atlas_feedback_request_idx on ask_atlas_feedback (request_id)");
+  await client.query(`
+    delete from ask_atlas_feedback older
+    using ask_atlas_feedback newer
+    where older.github_id = newer.github_id
+      and older.request_id = newer.request_id
+      and older.ctid < newer.ctid
+  `);
+  await client.query("create unique index if not exists ask_atlas_feedback_one_per_user_request on ask_atlas_feedback (github_id, request_id)");
   pgReportingReady = true;
 }
 

@@ -276,6 +276,17 @@ export async function acceptUsageConsent(user, { storeRawQuestionDefault = true 
   });
 }
 
+export async function updatePrivacyPreference(user, { storeRawQuestionDefault = true } = {}) {
+  const now = new Date().toISOString();
+  return mutateStore((store) => {
+    const current = store.users[user.githubId] || user;
+    current.storeRawQuestionDefault = Boolean(storeRawQuestionDefault);
+    current.updatedAt = now;
+    store.users[user.githubId] = current;
+    return current;
+  });
+}
+
 function accessTokenExpired(user) {
   const retentionDays = CONFIG.githubTokenRetentionDays;
   if (!Number.isFinite(retentionDays) || retentionDays <= 0) return true;

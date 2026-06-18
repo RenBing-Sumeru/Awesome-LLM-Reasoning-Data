@@ -279,13 +279,12 @@ function renderConsent() {
     els.askButton.textContent = "Ask Atlas";
     return;
   }
-  if (state.user.storeRawQuestionDefault === false) {
-    els.privacyOptOut.checked = true;
-  }
+  els.privacyOptOut.checked = state.user.storeRawQuestionDefault === false;
   if (consentAccepted()) {
     els.acceptNotice.disabled = true;
     els.acceptNotice.textContent = "Notice accepted";
-    els.consentStatus.textContent = `Accepted ${state.user.usageConsentAcceptedAt || ""}`.trim();
+    const logging = state.user.storeRawQuestionDefault === false ? "raw question logging off" : "raw question logging on";
+    els.consentStatus.textContent = `Accepted ${state.user.usageConsentAcceptedAt || ""} · ${logging}`.trim();
     els.askButton.disabled = false;
     els.askButton.textContent = "Ask Atlas";
     return;
@@ -468,6 +467,29 @@ async function loadHistory() {
   }
 }
 
+async function savePrivacyPreference() {
+  if (!BACKEND_CONFIGURED || !state.user) return;
+  if (!consentAccepted()) {
+    els.consentStatus.textContent = "This privacy preference will be saved when you accept the usage notice.";
+    return;
+  }
+  const previousDefault = state.user.storeRawQuestionDefault !== false;
+  const nextDefault = !els.privacyOptOut.checked;
+  els.consentStatus.textContent = "Saving privacy preference...";
+  try {
+    const payload = await api("/api/privacy", {
+      method: "POST",
+      body: JSON.stringify({ storeRawQuestionDefault: nextDefault }),
+    });
+    state.user = payload.user || state.user;
+    renderQuota();
+    els.consentStatus.textContent = `Privacy preference saved · raw question logging ${nextDefault ? "on" : "off"}.`;
+  } catch (error) {
+    els.privacyOptOut.checked = previousDefault === false;
+    els.consentStatus.textContent = `Could not save privacy preference: ${error.message}`;
+  }
+}
+
 async function submitQuestion() {
   const question = text(els.question.value);
   if (!question) return;
@@ -645,6 +667,7 @@ els.askForm.addEventListener("submit", (event) => {
   submitQuestion();
 });
 els.question.addEventListener("input", updateCount);
+els.privacyOptOut.addEventListener("change", savePrivacyPreference);
 
 setContextFromUrl();
 if (BACKEND_CONFIGURED) {

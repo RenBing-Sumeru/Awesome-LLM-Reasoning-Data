@@ -125,6 +125,40 @@ test("logout requires POST and clears the session cookie", async () => {
   });
 });
 
+test("privacy preference endpoint persists raw-question default after consent", async () => {
+  resetStoreForTests({
+    ...emptyStore(),
+    users: {
+      "user-privacy": {
+        githubId: "user-privacy",
+        login: "privacy-reader",
+        role: "user",
+        usageConsentVersion: USAGE_CONSENT_VERSION,
+        usageConsentAcceptedAt: "2026-06-17T00:00:00.000Z",
+        storeRawQuestionDefault: true,
+      },
+    },
+    sessions: { session_privacy: { sessionId: "session_privacy", githubId: "user-privacy" } },
+  });
+  const cookie = `ask_atlas_session=${signedValue("session_privacy")}`;
+  await withServer(async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/privacy`, {
+      method: "POST",
+      headers: { cookie, origin: "http://localhost:8787", "content-type": "application/json" },
+      body: JSON.stringify({ storeRawQuestionDefault: false }),
+    });
+    assert.equal(response.status, 200);
+    const payload = await response.json();
+    assert.equal(payload.user.storeRawQuestionDefault, false);
+
+    const me = await fetch(`${baseUrl}/api/me`, { headers: { cookie } });
+    assert.equal(me.status, 200);
+    const profile = await me.json();
+    assert.equal(profile.user.storeRawQuestionDefault, false);
+    assert.equal(profile.user.usageConsentAcceptedAt, "2026-06-17T00:00:00.000Z");
+  });
+});
+
 test("chat responses expose evidence mode and retrieval confidence", () => {
   const script = `
     import http from 'node:http';
@@ -294,6 +328,45 @@ test("chat opt-out returns answer but stores only raw text hashes", () => {
   assert.equal(stored.answerText, "");
   assert.equal(stored.rawAnswerStored, false);
   assert.match(stored.answerHash, /^[a-f0-9]{64}$/);
+});
+
+test("owner admin can manually grant one-time rewards and unknown actions fail", async () => {
+  const admin = { githubId: "admin-1", login: "RenBing-Sumeru", role: "admin" };
+  const target = { githubId: "reader-1", login: "reader", role: "user" };
+  resetStoreForTests({
+    ...emptyStore(),
+    users: { "admin-1": { ...admin }, "reader-1": { ...target } },
+    sessions: { session_admin: { sessionId: "session_admin", githubId: "admin-1" } },
+  });
+  const cookie = `ask_atlas_session=${signedValue("session_admin")}`;
+  await withServer(async (baseUrl) => {
+    const grant = await fetch(`${baseUrl}/api/admin/user`, {
+      method: "POST",
+      headers: { cookie, origin: "http://localhost:8787", "content-type": "application/json" },
+      body: JSON.stringify({ githubId: "reader-1", action: "grant_star_bonus" }),
+    });
+    assert.equal(grant.status, 200);
+    const first = await grant.json();
+    assert.equal(first.user.starVerified, true);
+    assert.equal(first.user.bonusCredits, 10);
+
+    const duplicate = await fetch(`${baseUrl}/api/admin/user`, {
+      method: "POST",
+      headers: { cookie, origin: "http://localhost:8787", "content-type": "application/json" },
+      body: JSON.stringify({ githubId: "reader-1", action: "grant_star_bonus" }),
+    });
+    assert.equal(duplicate.status, 200);
+    const second = await duplicate.json();
+    assert.equal(second.user.bonusCredits, 10);
+
+    const unknown = await fetch(`${baseUrl}/api/admin/user`, {
+      method: "POST",
+      headers: { cookie, origin: "http://localhost:8787", "content-type": "application/json" },
+      body: JSON.stringify({ githubId: "reader-1", action: "does_not_exist" }),
+    });
+    assert.equal(unknown.status, 400);
+    assert.match(await unknown.text(), /Unknown admin user action/);
+  });
 });
 
 test("admin HTTP APIs keep request list summarized and detail gated", async () => {

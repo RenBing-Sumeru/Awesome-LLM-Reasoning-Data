@@ -179,6 +179,8 @@ function renderUsers(rows) {
       <button class="mini-action" data-user-action="ban" data-github-id="${esc(row.githubId)}" type="button">ban</button>
       <button class="mini-action" data-user-action="unban" data-github-id="${esc(row.githubId)}" type="button">unban</button>
       <button class="mini-action" data-user-action="allowlist" data-github-id="${esc(row.githubId)}" type="button">allow</button>
+      <button class="mini-action" data-user-action="grant_star_bonus" data-github-id="${esc(row.githubId)}" type="button"${row.starBonusAwardedAt ? " disabled" : ""}>grant star</button>
+      <button class="mini-action" data-user-action="grant_fork_bonus" data-github-id="${esc(row.githubId)}" type="button"${row.forkBonusAwardedAt ? " disabled" : ""}>grant fork</button>
       <button class="mini-action" data-user-action="reset_bonus_used" data-github-id="${esc(row.githubId)}" type="button">reset bonus</button>
     ` : "<span class='muted'>view only</span>" },
   ], rows);

@@ -176,3 +176,15 @@ export function checkRewardRefreshRateLimit(user, ip, options = {}) {
     globalLimit: CONFIG.globalMinuteLimit,
   });
 }
+
+export function checkFeedbackRateLimit(user, ip, options = {}) {
+  return checkRateLimits(user, ip, {
+    ...options,
+    scope: "feedback",
+    userLimit: 10,
+    userTtlSeconds: 60,
+    ipLimit: 100,
+    ipTtlSeconds: 3600,
+    globalLimit: CONFIG.globalMinuteLimit * 2,
+  });
+}

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { applyRewardStatus, checkQuota, consumeQuota, finalizeQuotaReservation, quotaSnapshot, releaseQuotaReservation, reserveQuota } from "../src/quota.mjs";
+import { applyRewardStatus, checkQuota, consumeQuota, finalizeQuotaReservation, grantManualReward, quotaSnapshot, releaseQuotaReservation, reserveQuota } from "../src/quota.mjs";
 import { readStore, resetStoreForTests } from "../src/store.mjs";
 
 const user = {
@@ -153,6 +153,44 @@ test("one-time rewards are not clawed back if star or fork status later disappea
   assert.equal(snapshot.bonusCredits, 30);
   assert.equal(snapshot.starVerified, false);
   assert.equal(snapshot.forkVerified, false);
+});
+
+test("owner manual reward grants use the same one-time credit ledger", async () => {
+  const plainUser = {
+    githubId: "101-manual",
+    login: "manual-reward",
+    role: "user",
+  };
+  const admin = {
+    githubId: "owner-admin",
+    login: "RenBing-Sumeru",
+    role: "admin",
+  };
+  resetStoreForTests({
+    users: { "101-manual": { ...plainUser }, "owner-admin": { ...admin } },
+    sessions: {},
+    usageDaily: {},
+    requests: [],
+    feedback: [],
+    events: [],
+    creditLedger: [],
+    rateWindows: {},
+  });
+  let snapshot = await grantManualReward(plainUser, "star_bonus", admin);
+  assert.equal(snapshot.bonusCredits, 10);
+  assert.equal(snapshot.starVerified, true);
+  snapshot = await grantManualReward(plainUser, "star_bonus", admin);
+  assert.equal(snapshot.bonusCredits, 10);
+  snapshot = await grantManualReward(plainUser, "fork_bonus", admin);
+  assert.equal(snapshot.bonusCredits, 30);
+  const rows = await readStore((store) => store.creditLedger.filter((item) => item.githubId === "101-manual"));
+  assert.equal(rows.filter((item) => item.creditType === "star_bonus").length, 1);
+  assert.equal(rows.filter((item) => item.creditType === "fork_bonus").length, 1);
+  assert.equal(rows.find((item) => item.creditType === "star_bonus").createdByGithubId, "owner-admin");
+  await assert.rejects(
+    () => grantManualReward(plainUser, "admin_grant", admin),
+    /star_bonus or fork_bonus/,
+  );
 });
 
 test("legacy bonus fields are seeded into the ledger before bonus usage", async () => {

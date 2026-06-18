@@ -151,6 +151,13 @@ create table if not exists ask_atlas_feedback (
 
 create index if not exists ask_atlas_feedback_request_idx
   on ask_atlas_feedback (request_id);
+delete from ask_atlas_feedback older
+using ask_atlas_feedback newer
+where older.github_id = newer.github_id
+  and older.request_id = newer.request_id
+  and older.ctid < newer.ctid;
+create unique index if not exists ask_atlas_feedback_one_per_user_request
+  on ask_atlas_feedback (github_id, request_id);
 
 create table if not exists ask_atlas_admin_allowlist (
   github_id text primary key,

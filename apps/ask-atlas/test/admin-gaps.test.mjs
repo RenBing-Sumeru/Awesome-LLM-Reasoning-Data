@@ -138,7 +138,8 @@ test("admin request list is summarized while details include full traceability",
   const detail = await adminRequestDetail(record.requestId);
   assert.equal(detail.answerText, "Start with Let's Verify Step by Step and PRM800K.");
   assert.equal(detail.feedback.rating, "up");
-  assert.equal(detail.feedbackHistory.length, 2);
+  assert.equal(detail.feedbackHistory.length, 1);
+  assert.equal(detail.feedbackHistory[0].reason, "fixed after rerun");
   assert.equal(detail.sourceDetails[0].path, "papers/03_process_supervision_prm.md");
   assert.match(detail.sourceDetails[0].snippet, /verifier contracts/);
 });

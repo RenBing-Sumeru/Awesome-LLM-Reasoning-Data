@@ -94,16 +94,22 @@ export async function addFeedback({ user, requestId, rating, reason, comment }) 
       error.status = 400;
       throw error;
     }
+    const normalizedReason = String(reason || "").slice(0, 80);
+    const normalizedComment = String(comment || "").slice(0, 1000);
+    const existingIndex = (store.feedback || []).findIndex((row) => row.requestId === requestId && row.githubId === user.githubId);
+    const existing = existingIndex >= 0 ? store.feedback[existingIndex] : null;
     const item = {
-      id: randomId(10),
+      id: existing?.id || randomId(10),
       requestId,
       githubId: user.githubId,
       githubLogin: user.login,
       rating: normalizedRating,
-      reason: reason || "",
-      comment: comment || "",
+      reason: normalizedReason,
+      comment: normalizedComment,
       createdAt: new Date().toISOString(),
+      updated: Boolean(existing),
     };
+    if (existingIndex >= 0) store.feedback.splice(existingIndex, 1);
     store.feedback.unshift(item);
     store.feedback = store.feedback.slice(0, 2000);
     return item;
@@ -555,6 +561,12 @@ export async function adminGapsExport() {
 }
 
 export async function updateUserAdmin({ githubId, action, admin = null }) {
+  const allowedActions = new Set(["ban", "unban", "allowlist", "admin", "reset_bonus_used"]);
+  if (!allowedActions.has(action)) {
+    const error = new Error("Unknown admin user action.");
+    error.status = 400;
+    throw error;
+  }
   return mutateStore((store) => {
     const user = store.users[String(githubId)];
     if (!user) return null;
