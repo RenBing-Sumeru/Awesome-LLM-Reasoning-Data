@@ -185,9 +185,9 @@ and the actual production runtime values before deployment:
 
 ```bash
 node apps/ask-atlas/scripts/check-env-names.mjs --github-actions-deploy
-vercel env ls production --token "$VERCEL_TOKEN" > /tmp/ask-atlas-vercel-env.txt
+vercel env ls production > /tmp/ask-atlas-vercel-env.txt
 node apps/ask-atlas/scripts/check-env-names.mjs --vercel-list /tmp/ask-atlas-vercel-env.txt
-vercel env run -e production --token "$VERCEL_TOKEN" -- npm run config:check
+vercel env run -e production -- npm run config:check
 ```
 
 `vercel env run` is intentionally preferred over `vercel pull` for launch
@@ -195,6 +195,8 @@ checks. It runs the command with Vercel project environment variables without
 writing secrets to `.vercel/.env.*.local`. The deploy workflow creates only a
 minimal `.vercel/project.json` containing the project and org IDs, and
 `.gitignore` excludes `.vercel/` and `.env*.local` for local safety.
+The Vercel CLI reads `VERCEL_TOKEN` from the step environment, so the token
+does not need to appear in command arguments.
 
 After `vercel deploy --prod`, the workflow verifies that the freshly deployed
 URL and the configured public `ASK_ATLAS_BASE_URL` both return an Ask the Atlas
@@ -271,7 +273,7 @@ values:
 ```bash
 gh variable list --repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data --env production > /tmp/ask-atlas-gh-vars.txt
 gh secret list --repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data --env production > /tmp/ask-atlas-gh-secrets.txt
-vercel env ls production --token "$VERCEL_TOKEN" > /tmp/ask-atlas-vercel-env.txt
+vercel env ls production > /tmp/ask-atlas-vercel-env.txt
 npm --prefix apps/ask-atlas run doctor:prod -- \
   --github-vars-file /tmp/ask-atlas-gh-vars.txt \
   --github-secrets-file /tmp/ask-atlas-gh-secrets.txt \
@@ -299,7 +301,7 @@ https://your-secure-backend.example/api/auth/github/callback
 
 ```bash
 npm --prefix apps/ask-atlas run db:setup
-vercel env run -e production --token "$VERCEL_TOKEN" -- npm run db:setup
+vercel env run -e production -- npm run db:setup
 ```
 
 4. Configure Redis/Upstash for rate limits.

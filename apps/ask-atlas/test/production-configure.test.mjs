@@ -103,6 +103,10 @@ process.exit(1);
   }
   assert.match(result.stdout, /set Vercel production runtime variable QIHOO_API_KEY \(sensitive\)/);
   const calls = fs.readFileSync(fakeLog, "utf8").trim().split("\n").map((line) => JSON.parse(line));
+  for (const call of calls) {
+    assert.equal(call.args.includes("--token"), false);
+    assert.equal(call.args.includes("vercel-token-sentinel"), false);
+  }
   const addProvider = calls.find((call) => call.args.includes("add") && call.args.includes("QIHOO_API_KEY"));
   assert.ok(addProvider);
   assert.ok(addProvider.args.includes("--sensitive"));

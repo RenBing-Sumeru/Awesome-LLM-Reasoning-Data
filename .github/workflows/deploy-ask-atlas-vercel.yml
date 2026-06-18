@@ -113,20 +113,20 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           set -euo pipefail
-          vercel env ls production --token "$VERCEL_TOKEN" > "$RUNNER_TEMP/ask-atlas-vercel-env.txt"
+          vercel env ls production > "$RUNNER_TEMP/ask-atlas-vercel-env.txt"
           node scripts/check-env-names.mjs --vercel-list "$RUNNER_TEMP/ask-atlas-vercel-env.txt"
 
       - name: Validate Vercel runtime config values
         working-directory: apps/ask-atlas
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel env run -e production --token "$VERCEL_TOKEN" -- npm run config:check
+        run: vercel env run -e production -- npm run config:check
 
       - name: Apply Postgres schema with Vercel runtime env
         working-directory: apps/ask-atlas
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel env run -e production --token "$VERCEL_TOKEN" -- npm run db:setup
+        run: vercel env run -e production -- npm run db:setup
 
       - name: Deploy backend
         working-directory: apps/ask-atlas
@@ -134,7 +134,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           set -euo pipefail
-          vercel deploy --prod --token "$VERCEL_TOKEN" --env ASK_ATLAS_DEPLOYMENT_COMMIT="${GITHUB_SHA}" > "$RUNNER_TEMP/ask-atlas-vercel-url.txt"
+          vercel deploy --prod --env ASK_ATLAS_DEPLOYMENT_COMMIT="${GITHUB_SHA}" > "$RUNNER_TEMP/ask-atlas-vercel-url.txt"
           echo "Deployed backend:"
           cat "$RUNNER_TEMP/ask-atlas-vercel-url.txt"
 

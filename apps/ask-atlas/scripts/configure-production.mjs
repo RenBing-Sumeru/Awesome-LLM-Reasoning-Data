@@ -149,9 +149,8 @@ function ensureVercelProjectLink() {
 }
 
 function setVercelRuntimeValue(name) {
-  const token = value("VERCEL_TOKEN");
   const sensitive = VERCEL_RUNTIME_SENSITIVE.has(name);
-  const args = ["env", "add", name, "production", "--force", "--token", token];
+  const args = ["env", "add", name, "production", "--force"];
   if (sensitive) args.push("--sensitive");
   const result = runVercel(args, { input: `${value(name)}\n` });
   if (result.status !== 0) {

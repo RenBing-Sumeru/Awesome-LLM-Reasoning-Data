@@ -55,6 +55,7 @@ test("Vercel deploy workflow separates production secrets from Pages config publ
 
   assert.match(workflow, /\npermissions:\n  contents: read\n/);
   assert.match(deployJob, /\n    permissions:\n      contents: read\n/);
+  assert.doesNotMatch(deployJob, /--token\s+"\$VERCEL_TOKEN"/);
   assert.doesNotMatch(deployJob, /git push|git commit -m "Activate Ask Atlas backend config"/);
   assert.match(publishJob, /\n    permissions:\n      contents: write\n/);
   assert.match(publishJob, /scripts\/set_ask_backend_url\.py "\$ASK_ATLAS_BASE_URL"/);
