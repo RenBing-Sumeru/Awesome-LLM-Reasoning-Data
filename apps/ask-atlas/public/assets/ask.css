@@ -148,6 +148,57 @@ h1 {
   font-weight: 850;
 }
 
+.hero-console {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 900px;
+  margin-top: 16px;
+  min-width: 0;
+}
+
+.hero-console div {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(203, 213, 225, .92);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(248, 250, 252, .9)),
+    #fff;
+  padding: 10px 11px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+}
+
+.hero-console div::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--repo);
+}
+
+.hero-console div:nth-child(1)::before { background: var(--paper); }
+.hero-console div:nth-child(2)::before { background: var(--blue); }
+.hero-console div:nth-child(3)::before { background: var(--model); }
+
+.hero-console span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.hero-console strong {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
 .quota-card,
 .admin-card,
 .side-panel,
@@ -842,6 +893,41 @@ select {
   background: #dbeafe;
   color: #1d4ed8;
   font-size: 14px;
+}
+
+.launch-brief {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 4px;
+  min-width: 0;
+}
+
+.launch-brief div {
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  background: rgba(248, 251, 255, .9);
+  padding: 10px 11px;
+  min-width: 0;
+}
+
+.launch-brief strong {
+  display: block;
+  color: #1e40af;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.launch-brief ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.launch-brief li {
+  margin: 4px 0;
 }
 
 .loading-steps {
@@ -1583,6 +1669,8 @@ td.preview {
   .lede { margin: 12px 0 0; font-size: 16px; line-height: 1.5; }
   .hero-signals { margin-top: 12px; gap: 6px; }
   .hero-signals span { min-height: 28px; padding: 0 9px; font-size: 12px; }
+  .hero-console { grid-template-columns: 1fr; margin-top: 12px; gap: 7px; }
+  .hero-console div { padding: 9px 10px; }
   .quota-card { gap: 10px; padding: 14px; }
   .quota-card strong { font-size: 38px; }
   .quota-perks { gap: 5px; }
@@ -1599,6 +1687,7 @@ td.preview {
   .consent-actions button { width: 100%; justify-content: center; }
   .consent-actions span { font-size: 12px; }
   .evidence-steps { grid-template-columns: 1fr; }
+  .launch-brief { grid-template-columns: 1fr; }
   .metric-grid, .kv-list, .gap-summary, .detail-kv { grid-template-columns: 1fr; }
   .message { max-width: 100%; }
 }

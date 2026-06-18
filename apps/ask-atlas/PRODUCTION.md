@@ -43,8 +43,24 @@ ASK_ATLAS_TRUST_PROXY=1
 ASK_ATLAS_ADMIN_GITHUB_IDS=<stable numeric GitHub id>
 ASK_ATLAS_ADMIN_LOGINS=RenBing-Sumeru
 ASK_ATLAS_REQUIRE_MODEL_RATES=1
+ASK_ATLAS_BASE_DAILY_REQUESTS=2
+ASK_ATLAS_STAR_BONUS_CREDITS=10
+ASK_ATLAS_FORK_BONUS_CREDITS=20
+ASK_ATLAS_ADMIN_DAILY_REQUESTS=1000
+ASK_ATLAS_MAX_INPUT_CHARS=4000
+ASK_ATLAS_MAX_OUTPUT_TOKENS=1200
+ASK_ATLAS_USER_DAILY_TOKEN_CAP=150000
+ASK_ATLAS_USER_DAILY_COST_CAP_USD=0.50
 ASK_ATLAS_MAX_SINGLE_REQUEST_COST_USD=<hard cap per model request>
+ASK_ATLAS_GLOBAL_DAILY_COST_CAP_USD=20
 ASK_ATLAS_QUOTA_RESERVATION_TTL_MS=300000
+ASK_ATLAS_PER_USER_MINUTE_LIMIT=2
+ASK_ATLAS_PER_IP_HOUR_LIMIT=20
+ASK_ATLAS_ATTEMPT_PER_USER_MINUTE_LIMIT=6
+ASK_ATLAS_ATTEMPT_PER_IP_HOUR_LIMIT=60
+ASK_ATLAS_REWARD_REFRESH_HOURLY_LIMIT=6
+ASK_ATLAS_GLOBAL_MINUTE_LIMIT=60
+ASK_ATLAS_GITHUB_FORK_SCAN_PAGES=10
 ASK_ATLAS_SAFE_RAG_ROOT=<backend-only directory for private .txt/.md primer extraction>
 ASK_ATLAS_MAX_PRIMER_TEXT_BYTES=5242880
 VERCEL_TOKEN=<deployment token, only if using the Vercel workflow>
@@ -112,6 +128,12 @@ Do not publicly launch until all gates are true:
 - Star and fork bonuses are awarded once via a credit ledger.
 - `/api/chat` reserves request quota, projected token usage, projected cost,
   and bonus credit before a model call; provider errors release the reservation.
+- Production quota and cost policy is explicit in environment variables:
+  base users get `ASK_ATLAS_BASE_DAILY_REQUESTS=2`, star and fork awards use
+  `ASK_ATLAS_STAR_BONUS_CREDITS=10` and `ASK_ATLAS_FORK_BONUS_CREDITS=20`,
+  and admin usage, attempt limits, reward refreshes, global minute traffic,
+  fork scanning, request reservations, token caps, and cost caps are all
+  configured through `ASK_ATLAS_*` policy values instead of hidden defaults.
 - Stale quota reservations are released automatically, and actual provider cost
   overruns are logged as risk events for admin review.
 - Source grounding is explicit in every answer. In-scope questions may still be

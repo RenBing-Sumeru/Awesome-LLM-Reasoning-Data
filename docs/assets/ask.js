@@ -387,6 +387,24 @@ function renderLaunchPending() {
         <h3>Ask the Atlas is ready to launch</h3>
         <p>The website UI is already wired for GitHub login, source-grounded answers, star/fork rewards, feedback, and a private admin dashboard.</p>
         <p>The final step is connecting the secure backend URL. API keys, cost caps, token logs, and user analytics must stay on the backend, so this public GitHub Pages frontend intentionally waits until that backend is configured.</p>
+        <div class="launch-brief">
+          <div>
+            <strong>Test now</strong>
+            <ul>
+              <li>Preview the paper-first answer style.</li>
+              <li>Try track, card, and project-navigation prompts.</li>
+              <li>Check how sources and next actions will appear.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Unlock after backend</strong>
+            <ul>
+              <li>GitHub OAuth, daily quota, star/fork rewards.</li>
+              <li>360 model routing with token and cost caps.</li>
+              <li>Admin analytics for users, questions, cost, and gaps.</li>
+            </ul>
+          </div>
+        </div>
         <div class="answer-meta">
           <span class="evidence-pill evidence-atlas">Frontend ready</span>
           <span>Backend pending</span>
