@@ -398,11 +398,11 @@ export function collectLaunchReadiness() {
   ));
   checks.push(check(
     "Growth & Quota",
-    "star-bonus",
-    "Star reward",
-    CONFIG.starBonusCredits === 10 ? "pass" : "warn",
-    `Star reward is ${CONFIG.starBonusCredits} bonus credit(s).`,
-    "Keep ASK_ATLAS_STAR_BONUS_CREDITS=10 to match the product policy.",
+    "star-daily-quota",
+    "Star daily quota",
+    CONFIG.starDailyRequests === 10 ? "pass" : "warn",
+    `Verified star users get ${CONFIG.starDailyRequests} request(s) per day.`,
+    "Keep ASK_ATLAS_STAR_DAILY_REQUESTS=10 to match the product policy.",
   ));
   checks.push(check(
     "Growth & Quota",
@@ -473,6 +473,7 @@ export function collectLaunchReadiness() {
       allowedModels: CONFIG.allowedModels,
       quotaPolicy: {
         baseDailyRequests: CONFIG.baseDailyRequests,
+        starDailyRequests: CONFIG.starDailyRequests,
         starBonusCredits: CONFIG.starBonusCredits,
         forkBonusCredits: CONFIG.forkBonusCredits,
         maxInputChars: CONFIG.maxInputChars,

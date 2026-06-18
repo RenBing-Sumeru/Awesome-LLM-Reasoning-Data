@@ -438,13 +438,15 @@ function renderQuota() {
   els.adminLink.hidden = !(state.user.admin || state.user.allowlisted);
   els.adminLink.href = backendPath("/admin");
   const parts = [];
-  if (state.quota?.starBonusAwarded) parts.push("star bonus awarded");
+  if (state.quota?.starDailyUnlocked) parts.push(`star daily quota unlocked (${state.quota.starDailyLimit || 10}/day)`);
+  else if (state.quota?.starVerified) parts.push("star verified");
+  if (state.quota?.starBonusAwarded) parts.push("legacy star bonus available");
   if (state.quota?.forkBonusAwarded) parts.push("fork bonus awarded");
   if (state.quota?.bonusCredits) parts.push(`${state.quota.bonusCredits} bonus left`);
   if ((state.quota?.totalAvailableToday || 0) <= 0) {
-    els.rewardStatus.textContent = "Quota is empty. Star the repo for +10 one-time questions or fork it for +20.";
+    els.rewardStatus.textContent = "Quota is empty. Star the repo to unlock 10 questions/day, or fork it for +20 one-time credits.";
   } else {
-    els.rewardStatus.textContent = parts.join(" · ") || "No bonus credits yet.";
+    els.rewardStatus.textContent = parts.join(" · ") || "No star or fork rewards verified yet.";
   }
   renderConsent();
 }

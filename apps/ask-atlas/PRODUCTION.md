@@ -44,6 +44,7 @@ ASK_ATLAS_ADMIN_GITHUB_IDS=<stable numeric GitHub id>
 ASK_ATLAS_ADMIN_LOGINS=RenBing-Sumeru
 ASK_ATLAS_REQUIRE_MODEL_RATES=1
 ASK_ATLAS_BASE_DAILY_REQUESTS=2
+ASK_ATLAS_STAR_DAILY_REQUESTS=10
 ASK_ATLAS_STAR_BONUS_CREDITS=10
 ASK_ATLAS_FORK_BONUS_CREDITS=20
 ASK_ATLAS_ADMIN_DAILY_REQUESTS=1000
@@ -129,11 +130,12 @@ Do not publicly launch until all gates are true:
 - `/api/chat` reserves request quota, projected token usage, projected cost,
   and bonus credit before a model call; provider errors release the reservation.
 - Production quota and cost policy is explicit in environment variables:
-  base users get `ASK_ATLAS_BASE_DAILY_REQUESTS=2`, star and fork awards use
-  `ASK_ATLAS_STAR_BONUS_CREDITS=10` and `ASK_ATLAS_FORK_BONUS_CREDITS=20`,
-  and admin usage, attempt limits, reward refreshes, global minute traffic,
-  fork scanning, request reservations, token caps, and cost caps are all
-  configured through `ASK_ATLAS_*` policy values instead of hidden defaults.
+  base users get `ASK_ATLAS_BASE_DAILY_REQUESTS=2`, verified star users get
+  `ASK_ATLAS_STAR_DAILY_REQUESTS=10`, fork awards use
+  `ASK_ATLAS_FORK_BONUS_CREDITS=20`, and admin usage, attempt limits, reward
+  refreshes, global minute traffic, fork scanning, request reservations, token
+  caps, and cost caps are all configured through `ASK_ATLAS_*` policy values
+  instead of hidden defaults.
 - Stale quota reservations are released automatically, and actual provider cost
   overruns are logged as risk events for admin review.
 - Source grounding is explicit in every answer. In-scope questions may still be

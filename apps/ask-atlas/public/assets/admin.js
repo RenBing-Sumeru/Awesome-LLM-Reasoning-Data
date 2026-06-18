@@ -3,6 +3,7 @@ const els = {
   refreshAdmin: document.getElementById("refreshAdmin"),
   adminError: document.getElementById("adminError"),
   metrics: document.getElementById("metrics"),
+  opsRunway: document.getElementById("opsRunway"),
   readiness: document.getElementById("readiness"),
   readinessStamp: document.getElementById("readinessStamp"),
   publicAskLink: document.getElementById("publicAskLink"),
@@ -68,6 +69,31 @@ function table(columns, rows) {
   )).join("")}</tbody></table>`;
 }
 
+function asNumber(value) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function compactNumber(value) {
+  const number = asNumber(value);
+  return new Intl.NumberFormat("en", { notation: number >= 10000 ? "compact" : "standard", maximumFractionDigits: 1 }).format(number);
+}
+
+function usd(value) {
+  return `$${asNumber(value).toFixed(4)}`;
+}
+
+function percent(value, total) {
+  const max = asNumber(total);
+  if (max <= 0) return 0;
+  return Math.max(0, Math.min(100, (asNumber(value) / max) * 100));
+}
+
+function progressBar(value, total, className = "") {
+  const width = percent(value, total).toFixed(1);
+  return `<div class="ops-progress ${esc(className)}" aria-label="${esc(width)} percent"><span style="width:${esc(width)}%"></span></div>`;
+}
+
 function renderOverview(data) {
   const today = data.today;
   const items = [
@@ -86,6 +112,70 @@ function renderOverview(data) {
   els.caps.innerHTML = Object.entries(data.caps).map(([key, value]) => (
     `<div><span>${esc(key)}</span><strong>${esc(Array.isArray(value) ? value.join(", ") : value)}</strong></div>`
   )).join("");
+}
+
+function renderOpsRunway({ overview, readiness, gaps }) {
+  const today = overview?.today || {};
+  const caps = overview?.caps || {};
+  const counts = readiness?.counts || {};
+  const summary = gaps?.summary || {};
+  const launchStatus = readiness?.status || "unknown";
+  const firstAction = readiness?.nextActions?.[0] || "No launch action recorded yet.";
+  const totalQuestions = asNumber(today.totalQuestions);
+  const successfulQuestions = asNumber(today.successfulQuestions);
+  const blockedRequests = asNumber(today.blockedRequests);
+  const cost = asNumber(today.estimatedCostUsd);
+  const costCap = asNumber(caps.globalDailyCostCapUsd);
+  const userCap = asNumber(caps.userDailyCostCapUsd);
+  const successPct = totalQuestions ? percent(successfulQuestions, totalQuestions) : 0;
+  const blockedPct = totalQuestions ? percent(blockedRequests, totalQuestions) : 0;
+  const launchTone = launchStatus === "ready" ? "ready" : launchStatus === "warning" ? "warn" : "blocked";
+  const costTone = !costCap ? "blocked" : cost >= costCap * 0.8 ? "warn" : "ready";
+  const questionTone = blockedPct >= 35 ? "warn" : "ready";
+  const gapTotal = asNumber(summary.lowConfidence) + asNumber(summary.outOfScope) + asNumber(summary.downvoted);
+  const gapTone = gapTotal ? "warn" : "ready";
+
+  els.opsRunway.innerHTML = `
+    <div class="section-title">
+      <div>
+        <h2>Operations Runway</h2>
+        <span>public launch, growth loop, cost guardrails, and content gaps at a glance</span>
+      </div>
+      <span class="ops-badge ${esc(launchTone)}">${esc(launchStatus)}</span>
+    </div>
+    <div class="ops-rail">
+      <article class="ops-tile ${esc(launchTone)}">
+        <span>Launch gate</span>
+        <strong>${esc(counts.block || 0)} blockers</strong>
+        <p>${esc(counts.warn || 0)} warnings · promote only when this reaches ready.</p>
+        <small>${esc(firstAction)}</small>
+      </article>
+      <article class="ops-tile ${esc(costTone)}">
+        <span>Cost runway</span>
+        <strong>${esc(usd(cost))}</strong>
+        <p>${costCap ? `${esc(usd(costCap))} global/day · ${esc(usd(userCap))} user/day` : "Set model rates and global caps before public launch."}</p>
+        ${costCap ? progressBar(cost, costCap, costTone) : ""}
+      </article>
+      <article class="ops-tile ${esc(questionTone)}">
+        <span>Answer health</span>
+        <strong>${esc(successPct.toFixed(0))}% success</strong>
+        <p>${esc(compactNumber(totalQuestions))} questions · ${esc(blockedPct.toFixed(0))}% blocked today.</p>
+        ${totalQuestions ? progressBar(successfulQuestions, totalQuestions, questionTone) : ""}
+      </article>
+      <article class="ops-tile ready">
+        <span>Growth loop</span>
+        <strong>${esc(caps.baseDailyRequests || 0)}/day base</strong>
+        <p>Star ${esc(caps.starDailyRequests || 0)}/day · fork +${esc(caps.forkBonusCredits || 0)} once · admins ${esc(caps.adminDailyRequests || "custom")}.</p>
+        <small>Backend-owned quota makes the GitHub star/fork loop meaningful.</small>
+      </article>
+      <article class="ops-tile ${esc(gapTone)}">
+        <span>Knowledge gaps</span>
+        <strong>${esc(gapTotal)} signals</strong>
+        <p>${esc(summary.lowConfidence || 0)} low confidence · ${esc(summary.downvoted || 0)} downvoted · ${esc(summary.outOfScope || 0)} scope reviews.</p>
+        <small>${esc((gaps?.suggestedActions || [])[0] || "No gap action yet.")}</small>
+      </article>
+    </div>
+  `;
 }
 
 function statusLabel(status) {
@@ -150,7 +240,7 @@ function renderReadiness(data) {
         <div><span>Pages backend</span><strong>${esc(safe.pagesBackendUrl || "not configured")}</strong></div>
         <div><span>Store</span><strong>${esc(safe.storeBackend || "")}</strong></div>
         <div><span>Models</span><strong>${esc((safe.allowedModels || []).join(", "))}</strong></div>
-        <div><span>Quota</span><strong>${esc(safe.quotaPolicy ? `${safe.quotaPolicy.baseDailyRequests}/day · star +${safe.quotaPolicy.starBonusCredits} · fork +${safe.quotaPolicy.forkBonusCredits}` : "")}</strong></div>
+        <div><span>Quota</span><strong>${esc(safe.quotaPolicy ? `${safe.quotaPolicy.baseDailyRequests}/day · star ${safe.quotaPolicy.starDailyRequests}/day · fork +${safe.quotaPolicy.forkBonusCredits}` : "")}</strong></div>
       </div>
       <div class="next-actions">
         <h3>Next actions</h3>
@@ -450,6 +540,7 @@ async function refresh() {
     renderRequests(requests.requests || []);
     renderCosts(costs.costs || []);
     renderGaps(gaps);
+    renderOpsRunway({ overview, readiness, gaps });
   } catch (error) {
     els.adminError.hidden = false;
     els.adminError.textContent = error.message;

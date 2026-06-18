@@ -141,6 +141,7 @@ export async function adminOverview() {
       },
       caps: {
         baseDailyRequests: CONFIG.baseDailyRequests,
+        starDailyRequests: CONFIG.starDailyRequests,
         starBonusCredits: CONFIG.starBonusCredits,
         forkBonusCredits: CONFIG.forkBonusCredits,
         maxInputChars: CONFIG.maxInputChars,

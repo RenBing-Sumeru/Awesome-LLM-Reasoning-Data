@@ -98,6 +98,7 @@ export const CONFIG = Object.freeze({
   allowlistLogins: new Set(listEnv("ASK_ATLAS_ALLOWLIST_LOGINS").map((v) => v.toLowerCase())),
   allowlistGithubIds: new Set(listEnv("ASK_ATLAS_ALLOWLIST_GITHUB_IDS")),
   baseDailyRequests: intEnv("ASK_ATLAS_BASE_DAILY_REQUESTS", 2),
+  starDailyRequests: intEnv("ASK_ATLAS_STAR_DAILY_REQUESTS", 10),
   starBonusCredits: intEnv("ASK_ATLAS_STAR_BONUS_CREDITS", 10),
   forkBonusCredits: intEnv("ASK_ATLAS_FORK_BONUS_CREDITS", 20),
   adminDailyRequests: intEnv("ASK_ATLAS_ADMIN_DAILY_REQUESTS", 1000),

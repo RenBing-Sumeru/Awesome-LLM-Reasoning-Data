@@ -13,6 +13,7 @@ function usageKey(githubId, date = dayKey()) {
 
 function baseLimit(user) {
   if (isAdminUser(user) || isAllowlistedUser(user)) return CONFIG.adminDailyRequests;
+  if (user?.starVerified) return Math.max(CONFIG.baseDailyRequests, CONFIG.starDailyRequests);
   return CONFIG.baseDailyRequests;
 }
 
@@ -142,6 +143,8 @@ function snapshotFromStore(store, user) {
     usedToday: usage.requestCount,
     pendingRequests: usage.pendingRequests || 0,
     dailyQuestionLimit: limit + bonus,
+    starDailyLimit: CONFIG.starDailyRequests,
+    starDailyUnlocked: Boolean(storedUser.starVerified) && limit >= CONFIG.starDailyRequests,
     tokenCap: CONFIG.userDailyTokenCap,
     costCapUsd: CONFIG.userDailyCostCap,
     inputTokens: usage.inputTokens,
@@ -168,17 +171,7 @@ export function applyRewardStatus(user, { starred = false, forked = false } = {}
   return mutateStore((store) => {
     ensureCollections(store);
     const current = store.users[user.githubId] || user;
-    if (starred && !ledgerAwarded(store, current, "star_bonus") && !current.starBonusAwardedAt) {
-      addCredit(store, {
-        user: current,
-        creditType: "star_bonus",
-        delta: CONFIG.starBonusCredits,
-        reason: "one-time GitHub star reward",
-        relatedRepo: `${CONFIG.repoOwner}/${CONFIG.repoName}`,
-      });
-      current.starBonusCredits = (current.starBonusCredits || 0) + CONFIG.starBonusCredits;
-      current.starBonusAwardedAt = now;
-    }
+    if (starred && !current.starVerifiedAt) current.starVerifiedAt = now;
     if (forked && !ledgerAwarded(store, current, "fork_bonus") && !current.forkBonusAwardedAt) {
       addCredit(store, {
         user: current,

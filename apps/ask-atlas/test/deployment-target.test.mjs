@@ -103,3 +103,16 @@ test("workflow prerequisite env blocks cover manifest required names", () => {
     "launch prerequisite step",
   );
 });
+
+test("admin dashboard keeps the operations runway above detailed tables", () => {
+  const adminHtml = fs.readFileSync(`${appRoot}/public/admin.html`, "utf8");
+  const adminJs = fs.readFileSync(`${appRoot}/public/assets/admin.js`, "utf8");
+  const adminCss = fs.readFileSync(`${appRoot}/public/assets/ask.css`, "utf8");
+
+  assert.match(adminHtml, /id="opsRunway"/);
+  assert.ok(adminHtml.indexOf('id="opsRunway"') < adminHtml.indexOf("Launch Readiness"));
+  assert.match(adminJs, /function renderOpsRunway/);
+  assert.match(adminJs, /renderOpsRunway\(\{ overview, readiness, gaps \}\)/);
+  assert.match(adminCss, /\.ops-runway/);
+  assert.match(adminCss, /\.ops-rail/);
+});

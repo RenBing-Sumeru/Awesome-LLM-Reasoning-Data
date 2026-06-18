@@ -7,7 +7,6 @@ const user = {
   githubId: "42",
   login: "ordinary-user",
   role: "user",
-  starBonusCredits: 10,
   forkBonusCredits: 20,
   bonusCreditsUsed: 0,
 };
@@ -25,21 +24,21 @@ test("base quota plus one-time bonus credits are consumed after base daily allow
   });
   let snapshot = await quotaSnapshot(user);
   assert.equal(snapshot.baseDailyLimit, 2);
-  assert.equal(snapshot.bonusCredits, 30);
-  assert.equal(snapshot.dailyQuestionLimit, 32);
+  assert.equal(snapshot.bonusCredits, 20);
+  assert.equal(snapshot.dailyQuestionLimit, 22);
 
   for (let i = 0; i < 3; i += 1) {
     assert.equal((await checkQuota(user)).ok, true);
     snapshot = await consumeQuota(user, { inputTokens: 10, outputTokens: 5, estimatedCostUsd: 0 });
   }
   assert.equal(snapshot.usedToday, 3);
-  assert.equal(snapshot.bonusCredits, 29);
-  assert.equal(snapshot.totalAvailableToday, 29);
+  assert.equal(snapshot.bonusCredits, 19);
+  assert.equal(snapshot.totalAvailableToday, 19);
 });
 
 test("quota rejects requests after all base and bonus credits are used", async () => {
   resetStoreForTests({
-    users: { "42": { ...user, starBonusCredits: 0, forkBonusCredits: 0 } },
+    users: { "42": { ...user, forkBonusCredits: 0 } },
     sessions: {},
     usageDaily: {},
     requests: [],
@@ -48,15 +47,15 @@ test("quota rejects requests after all base and bonus credits are used", async (
     creditLedger: [],
     rateWindows: {},
   });
-  await consumeQuota({ ...user, starBonusCredits: 0, forkBonusCredits: 0 }, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
-  await consumeQuota({ ...user, starBonusCredits: 0, forkBonusCredits: 0 }, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
-  const result = await checkQuota({ ...user, starBonusCredits: 0, forkBonusCredits: 0 });
+  await consumeQuota({ ...user, forkBonusCredits: 0 }, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
+  await consumeQuota({ ...user, forkBonusCredits: 0 }, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
+  const result = await checkQuota({ ...user, forkBonusCredits: 0 });
   assert.equal(result.ok, false);
   assert.match(result.reasons.join(" "), /daily question quota/);
 });
 
 test("spent bonus credits do not reset with a fresh daily usage record", async () => {
-  const spentUser = { ...user, bonusCreditsUsed: 30 };
+  const spentUser = { ...user, bonusCreditsUsed: 20 };
   resetStoreForTests({
     users: { "42": { ...spentUser } },
     sessions: {},
@@ -79,7 +78,40 @@ test("spent bonus credits do not reset with a fresh daily usage record", async (
   assert.match(blocked.reasons.join(" "), /daily question quota/);
 });
 
-test("star and fork rewards are awarded once through the credit ledger", async () => {
+test("verified star users get ten daily questions without consuming bonus credits", async () => {
+  const plainUser = {
+    githubId: "98",
+    login: "star-daily",
+    role: "user",
+  };
+  resetStoreForTests({
+    users: { "98": { ...plainUser } },
+    sessions: {},
+    usageDaily: {},
+    requests: [],
+    feedback: [],
+    events: [],
+    creditLedger: [],
+    rateWindows: {},
+  });
+  let snapshot = await applyRewardStatus(plainUser, { starred: true, forked: false });
+  assert.equal(snapshot.baseDailyLimit, 10);
+  assert.equal(snapshot.starDailyUnlocked, true);
+  assert.equal(snapshot.bonusCredits, 0);
+  assert.equal(snapshot.dailyQuestionLimit, 10);
+  for (let i = 0; i < 10; i += 1) {
+    assert.equal((await checkQuota(plainUser)).ok, true);
+    snapshot = await consumeQuota(plainUser, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
+  }
+  assert.equal(snapshot.usedToday, 10);
+  const blocked = await checkQuota(plainUser);
+  assert.equal(blocked.ok, false);
+  assert.match(blocked.reasons.join(" "), /daily question quota/);
+  const rows = await readStore((store) => store.creditLedger);
+  assert.equal(rows.filter((item) => item.creditType === "star_bonus").length, 0);
+});
+
+test("fork rewards are awarded once through the credit ledger", async () => {
   const plainUser = {
     githubId: "99",
     login: "ledger-user",
@@ -96,11 +128,12 @@ test("star and fork rewards are awarded once through the credit ledger", async (
     rateWindows: {},
   });
   let snapshot = await applyRewardStatus(plainUser, { starred: true, forked: true });
-  assert.equal(snapshot.bonusCredits, 30);
+  assert.equal(snapshot.baseDailyLimit, 10);
+  assert.equal(snapshot.bonusCredits, 20);
   snapshot = await applyRewardStatus(plainUser, { starred: true, forked: true });
-  assert.equal(snapshot.bonusCredits, 30);
+  assert.equal(snapshot.bonusCredits, 20);
   const rows = await readStore((store) => store.creditLedger);
-  assert.equal(rows.filter((item) => item.creditType === "star_bonus").length, 1);
+  assert.equal(rows.filter((item) => item.creditType === "star_bonus").length, 0);
   assert.equal(rows.filter((item) => item.creditType === "fork_bonus").length, 1);
 });
 
@@ -120,11 +153,11 @@ test("bonus usage writes a negative credit ledger entry", async () => {
     creditLedger: [],
     rateWindows: {},
   });
-  await applyRewardStatus(plainUser, { starred: true, forked: false });
+  await applyRewardStatus(plainUser, { starred: false, forked: true });
   await consumeQuota(plainUser, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
   await consumeQuota(plainUser, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
   const snapshot = await consumeQuota(plainUser, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0, requestId: "req_1" });
-  assert.equal(snapshot.bonusCredits, 9);
+  assert.equal(snapshot.bonusCredits, 19);
   const rows = await readStore((store) => store.creditLedger);
   const usage = rows.find((item) => item.creditType === "usage");
   assert.equal(usage.delta, -1);
@@ -148,9 +181,11 @@ test("one-time rewards are not clawed back if star or fork status later disappea
     rateWindows: {},
   });
   let snapshot = await applyRewardStatus(plainUser, { starred: true, forked: true });
-  assert.equal(snapshot.bonusCredits, 30);
+  assert.equal(snapshot.baseDailyLimit, 10);
+  assert.equal(snapshot.bonusCredits, 20);
   snapshot = await applyRewardStatus(plainUser, { starred: false, forked: false });
-  assert.equal(snapshot.bonusCredits, 30);
+  assert.equal(snapshot.baseDailyLimit, 2);
+  assert.equal(snapshot.bonusCredits, 20);
   assert.equal(snapshot.starVerified, false);
   assert.equal(snapshot.forkVerified, false);
 });
@@ -269,14 +304,14 @@ test("reserved bonus credits are held during pending calls and finalized once", 
     creditLedger: [],
     rateWindows: {},
   });
-  await applyRewardStatus(bonusUser, { starred: true, forked: false });
+  await applyRewardStatus(bonusUser, { starred: false, forked: true });
   await consumeQuota(bonusUser, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
   await consumeQuota(bonusUser, { inputTokens: 1, outputTokens: 1, estimatedCostUsd: 0 });
   const reserved = await reserveQuota(bonusUser, { requestId: "bonus_req", inputTokens: 10, outputTokens: 10, estimatedCostUsd: 0 });
   assert.equal(reserved.ok, true);
   let snapshot = await quotaSnapshot(bonusUser);
   assert.equal(snapshot.pendingRequests, 1);
-  assert.equal(snapshot.bonusCredits, 9);
+  assert.equal(snapshot.bonusCredits, 19);
   snapshot = await finalizeQuotaReservation(bonusUser, reserved.reservation.reservationId, {
     requestId: "bonus_req",
     inputTokens: 3,
@@ -285,7 +320,7 @@ test("reserved bonus credits are held during pending calls and finalized once", 
   });
   assert.equal(snapshot.pendingRequests, 0);
   assert.equal(snapshot.usedToday, 3);
-  assert.equal(snapshot.bonusCredits, 9);
+  assert.equal(snapshot.bonusCredits, 19);
   const rows = await readStore((store) => store.creditLedger.filter((item) => item.githubId === "201"));
   assert.equal(rows.filter((item) => item.creditType === "usage" && item.requestId === "bonus_req").length, 1);
 });

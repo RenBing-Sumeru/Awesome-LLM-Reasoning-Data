@@ -94,9 +94,9 @@ const SAFE_FINDINGS = {
     name: "ASK_ATLAS_BASE_DAILY_REQUESTS",
     next: "Keep the no-star quota aligned with the product policy.",
   },
-  "star-bonus": {
-    name: "ASK_ATLAS_STAR_BONUS_CREDITS",
-    next: "Keep the star reward aligned with the product policy.",
+  "star-daily-quota": {
+    name: "ASK_ATLAS_STAR_DAILY_REQUESTS",
+    next: "Keep the verified-star daily quota aligned with the product policy.",
   },
   "fork-bonus": {
     name: "ASK_ATLAS_FORK_BONUS_CREDITS",
