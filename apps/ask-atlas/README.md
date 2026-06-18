@@ -187,7 +187,9 @@ secret values, provider keys, and numeric cost-cap values. Use
 `npm run doctor:prod -- --github-repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data`
 to let the GitHub CLI read production variable and secret names directly, or
 pass inventory files when checking Vercel runtime names. Add `--strict` to fail
-on any remaining launch blocker.
+on any remaining launch blocker. If a direct GitHub inventory read is requested
+but the CLI is not authenticated or cannot access the production environment,
+strict mode fails closed without printing CLI stderr or secret-like values.
 
 `npm run production:configure -- --apply-github` can write GitHub production
 variables and secrets after every required value has been exported in the

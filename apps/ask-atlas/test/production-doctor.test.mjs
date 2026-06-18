@@ -113,6 +113,27 @@ exit 1
   assert.ok(report.inventories[1].missing.includes("DATABASE_URL"));
 });
 
+test("production doctor strict mode fails safely when requested GitHub inventory cannot be read", () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ask-atlas-gh-fail-"));
+  const fakeGh = path.join(tmp, "gh");
+  fs.writeFileSync(fakeGh, `#!/bin/sh
+echo "fatal: token fk1234567890SECRET should not be printed" >&2
+exit 1
+`);
+  fs.chmodSync(fakeGh, 0o755);
+
+  const result = run(["--strict", "--github-repo", "RenBing-Sumeru/Awesome-LLM-Reasoning-Data"], {
+    env: {
+      PATH: `${tmp}${path.delimiter}${process.env.PATH || ""}`,
+    },
+  });
+  assert.equal(result.status, 1);
+  assert.match(result.stdout, /GitHub production variables could not be read with gh/);
+  assert.match(result.stdout, /GitHub production secrets could not be read with gh/);
+  assert.doesNotMatch(result.stdout, /fk1234567890SECRET|fatal: token/);
+  assert.doesNotMatch(result.stderr, /fk1234567890SECRET|fatal: token/);
+});
+
 test("production doctor json output omits runtime values", () => {
   const result = run(["--json"]);
   assert.equal(result.status, 0, result.stderr);

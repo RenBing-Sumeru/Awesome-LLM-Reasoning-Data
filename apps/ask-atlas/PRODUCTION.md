@@ -276,8 +276,10 @@ npm --prefix apps/ask-atlas run doctor:prod -- \
 ```
 
 The command above asks the GitHub CLI for production environment variable and
-secret names, then discards the values. To include Vercel runtime names in the
-same report, pass inventory files:
+secret names, then discards the values. If `--strict` is set and the GitHub CLI
+cannot read those names, the doctor fails closed without printing CLI stderr or
+secret-like values. To include Vercel runtime names in the same report, pass
+inventory files:
 
 ```bash
 gh variable list --repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data --env production > /tmp/ask-atlas-gh-vars.txt

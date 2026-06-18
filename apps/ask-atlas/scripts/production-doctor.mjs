@@ -170,13 +170,25 @@ function safeGithubRepo(value) {
 
 function ghInventory(repo, kind) {
   const safeRepo = safeGithubRepo(repo);
-  if (!safeRepo) return "";
+  const title = kind === "secrets" ? "GitHub production secrets" : "GitHub production variables";
+  if (!repo) return { text: "", error: "" };
+  if (!safeRepo) {
+    return {
+      text: "",
+      error: `${title} could not be read: --github-repo must be owner/repo.`,
+    };
+  }
   const subcommand = kind === "secrets" ? "secret" : "variable";
   const result = spawnSync("gh", [subcommand, "list", "--env", "production", "--repo", safeRepo], {
     encoding: "utf8",
   });
-  if (result.status !== 0) return "";
-  return result.stdout || "";
+  if (result.status !== 0) {
+    return {
+      text: "",
+      error: `${title} could not be read with gh. Check GitHub CLI auth and production environment access.`,
+    };
+  }
+  return { text: result.stdout || "", error: "" };
 }
 
 function namesFromText(text) {
@@ -187,12 +199,14 @@ function namesFromText(text) {
   return names;
 }
 
-function inventory(title, required, text, recommended = []) {
+function inventory(title, required, text, recommended = [], error = "") {
   const present = namesFromText(text);
   if (!text) {
     return {
       title,
       provided: false,
+      requested: Boolean(error),
+      error,
       missing: [...required],
       recommendedMissing: [...recommended],
       presentCount: 0,
@@ -202,6 +216,8 @@ function inventory(title, required, text, recommended = []) {
   return {
     title,
     provided: true,
+    requested: true,
+    error,
     missing: required.filter((name) => !present.has(name)),
     recommendedMissing: recommended.filter((name) => !present.has(name)),
     presentCount: [...present].filter((name) => required.includes(name) || recommended.includes(name)).length,
@@ -249,11 +265,15 @@ export function buildReport({
     .map((item) => findingFromCheck(item, profile))
     .filter((item) => item.status !== "pass");
   const summary = summarizeFindings(findings);
-  const githubVarsText = githubVarsFile ? readOptionalFile(githubVarsFile) : ghInventory(githubRepo, "variables");
-  const githubSecretsText = githubSecretsFile ? readOptionalFile(githubSecretsFile) : ghInventory(githubRepo, "secrets");
+  const githubVars = githubVarsFile
+    ? { text: readOptionalFile(githubVarsFile), error: "" }
+    : ghInventory(githubRepo, "variables");
+  const githubSecrets = githubSecretsFile
+    ? { text: readOptionalFile(githubSecretsFile), error: "" }
+    : ghInventory(githubRepo, "secrets");
   const inventories = [
-    inventory("GitHub production variables", GITHUB_PRODUCTION_REQUIRED_VARIABLES, githubVarsText, GITHUB_PRODUCTION_OPTIONAL_VARIABLES),
-    inventory("GitHub production secrets", GITHUB_PRODUCTION_SECRETS, githubSecretsText),
+    inventory("GitHub production variables", GITHUB_PRODUCTION_REQUIRED_VARIABLES, githubVars.text, GITHUB_PRODUCTION_OPTIONAL_VARIABLES, githubVars.error),
+    inventory("GitHub production secrets", GITHUB_PRODUCTION_SECRETS, githubSecrets.text, [], githubSecrets.error),
     inventory("Vercel production runtime", VERCEL_RUNTIME_REQUIRED, readOptionalFile(vercelEnvFile), VERCEL_RUNTIME_RECOMMENDED),
   ];
   return {
@@ -300,6 +320,7 @@ function printText(report) {
   for (const item of report.inventories) {
     const state = item.provided ? `${item.presentCount}/${item.requiredCount} required/recommended names seen` : "not provided";
     console.log(`- ${item.title}: ${state}`);
+    if (item.error) console.log(`  Error: ${item.error}`);
     if (item.missing.length) console.log(`  Missing required names: ${item.missing.join(", ")}`);
     if (item.recommendedMissing.length) console.log(`  Missing recommended names: ${item.recommendedMissing.join(", ")}`);
   }
@@ -333,7 +354,8 @@ function main() {
 
   if (args.strict) {
     const missingInventory = report.inventories.some((item) => item.provided && item.missing.length);
-    return report.findings.some((item) => item.status === "block") || missingInventory ? 1 : 0;
+    const inventoryError = report.inventories.some((item) => item.error);
+    return report.findings.some((item) => item.status === "block") || missingInventory || inventoryError ? 1 : 0;
   }
   return 0;
 }
