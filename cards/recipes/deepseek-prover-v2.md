@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports, scaling_test_time_compute_rlvr
 > Links: [📄 Paper](https://arxiv.org/abs/2504.21801) · [🐙 Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [🗂️ Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [🤗 HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B)

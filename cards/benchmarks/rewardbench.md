@@ -2,6 +2,10 @@
 <!-- card_type: benchmarks -->
 # 🧰 RewardBench Benchmark Lens
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Reward benchmarks should be audited as feedback instruments, not only as leaderboard tables.

@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Tulu 3: Pushing frontiers in open language model post-training
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tulu-3-pushing-frontiers-in-open-language-model-post-training-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tulu-3-pushing-frontiers-in-open-language-model-post-training-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tulu-3-pushing-frontiers-in-open-language-model-post-training-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: frontier_model_reports, construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr, foundations_instruction_preference_alignment
 > Links: [📄 Paper](https://arxiv.org/abs/2411.15124) · [🏛️ OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [🐙 Code](https://github.com/allenai/open-instruct) · [🗂️ Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [🌐 Project](https://allenai.org/blog/tulu-3-technical)

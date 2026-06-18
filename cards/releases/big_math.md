@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # 📦 Big-Math-RL-Verified
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=big-math-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=big-math-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=big-math-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.

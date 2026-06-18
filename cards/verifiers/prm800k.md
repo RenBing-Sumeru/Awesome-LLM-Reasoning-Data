@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # Let's Verify Step by Step
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prm800k-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prm800k-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prm800k-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: process_supervision_prm, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2305.20050)

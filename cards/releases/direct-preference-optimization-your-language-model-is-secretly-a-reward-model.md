@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # Direct preference optimization: Your language model is secretly a reward model
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment
 > Links: [📄 Paper](https://arxiv.org/abs/2305.18290)

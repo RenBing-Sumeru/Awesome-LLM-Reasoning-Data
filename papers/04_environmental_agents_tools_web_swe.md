@@ -2,6 +2,11 @@
 
 > Tool calls, browser tasks, app worlds, OS environments, repository-level software engineering, and replayable state-action episodes.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=environmental_agents_tools_web_swe&mode=find_papers)
+> Try: `What should I read first for 🌐 Agent & Environment Data?`
+> Try: `Compare the data objects and verifier types in 🌐 Agent & Environment Data.`
+> Try: `Generate an audit checklist for 🌐 Agent & Environment Data.`
+
 ## 1. What This Track Studies
 
 Use this page to learn how an environment becomes a data source: observations, actions, tools, traces, tests, rewards, and replay metadata.

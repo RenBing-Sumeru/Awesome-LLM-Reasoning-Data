@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # Training verifiers to solve math word problems
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-verifiers-to-solve-math-word-problems-2021&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-verifiers-to-solve-math-word-problems-2021&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-verifiers-to-solve-math-word-problems-2021&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: process_supervision_prm
 > Links: [📄 Paper](https://arxiv.org/abs/2110.14168) · [🐙 Code](https://github.com/openai/grade-school-math) · [🤗 Hugging Face](https://huggingface.co/datasets/openai/gsm8k)

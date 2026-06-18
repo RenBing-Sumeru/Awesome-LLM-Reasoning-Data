@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import tempfile
 from pathlib import Path
 
@@ -24,9 +25,12 @@ from atlas_utils import (
     why_it_matters,
 )
 from common import ROOT, write_json
+from set_ask_backend_url import validate_public_config_text
 
 REPO_URL = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data"
 REPO_BLOB = f"{REPO_URL}/blob/main"
+ASK_ASSET_VERSION = "ask-atlas-pages-20260618-5"
+ASK_SITE_PATH = "ask/"
 
 
 def site_entries() -> list[dict]:
@@ -141,6 +145,7 @@ def render_index_html(counts: dict) -> str:
         <a href="{REPO_URL}#readme">README</a>
         <a href="{REPO_BLOB}/papers/README.md">Papers</a>
         <a href="{REPO_BLOB}/cards/README.md">Cards</a>
+        <a href="{ASK_SITE_PATH}">Ask the Atlas</a>
         <a href="{REPO_BLOB}/reports/link_coverage.md">Coverage</a>
       </div>
     </nav>
@@ -221,6 +226,39 @@ def render_index_html(counts: dict) -> str:
 """
 
 
+def render_ask_html(asset_prefix: str = "assets") -> str:
+    html = (ROOT / "apps/ask-atlas/public/ask.html").read_text(encoding="utf-8")
+    html = re.sub(
+        r'href="/assets/ask\.css(?:\?v=[^"]*)?"',
+        f'href="{asset_prefix}/ask.css?v={ASK_ASSET_VERSION}"',
+        html,
+    )
+    html = re.sub(
+        r'<script src="/assets/ask\.js(?:\?v=[^"]*)?" type="module"></script>',
+        f'<script src="{asset_prefix}/ask-config.js?v={ASK_ASSET_VERSION}"></script>\n  <script src="{asset_prefix}/ask.js?v={ASK_ASSET_VERSION}" type="module"></script>',
+        html,
+    )
+    return html
+
+
+def copy_ask_frontend_assets(target_root: Path) -> None:
+    source_root = ROOT / "apps/ask-atlas/public/assets"
+    dest_root = target_root / "docs/assets"
+    dest_root.mkdir(parents=True, exist_ok=True)
+    for name in ("ask.css", "ask.js"):
+        (dest_root / name).write_text((source_root / name).read_text(encoding="utf-8"), encoding="utf-8")
+
+
+def ensure_ask_config(path: Path) -> None:
+    default = 'window.ASK_ATLAS_FRONTEND = "pages";\nwindow.ASK_ATLAS_BACKEND_URL = "";\n'
+    if not path.exists():
+        path.write_text(default, encoding="utf-8")
+        return
+    text = path.read_text(encoding="utf-8")
+    if "ASK_ATLAS_FRONTEND" not in text:
+        path.write_text('window.ASK_ATLAS_FRONTEND = "pages";\n' + text, encoding="utf-8")
+
+
 def render(target_root: Path = ROOT) -> None:
     items = site_entries()
     counts = site_counts(items)
@@ -244,6 +282,12 @@ def render(target_root: Path = ROOT) -> None:
     payload = json.dumps(fallback, ensure_ascii=False, indent=2)
     (target_root / "docs/assets/atlas-data.js").write_text(f"window.ATLAS_DATA = {payload};\n", encoding="utf-8")
     (target_root / "docs/index.html").write_text(render_index_html(counts), encoding="utf-8")
+    copy_ask_frontend_assets(target_root)
+    ask_config = target_root / "docs/assets/ask-config.js"
+    ensure_ask_config(ask_config)
+    (target_root / "docs/ask.html").write_text(render_ask_html("assets"), encoding="utf-8")
+    (target_root / "docs/ask").mkdir(parents=True, exist_ok=True)
+    (target_root / "docs/ask/index.html").write_text(render_ask_html("../assets"), encoding="utf-8")
 
 
 def check() -> int:
@@ -259,6 +303,10 @@ def check() -> int:
             ("docs/assets/research_tracks.json", ROOT / "docs/assets/research_tracks.json"),
             ("docs/assets/starter_packs.json", ROOT / "docs/assets/starter_packs.json"),
             ("docs/assets/atlas-data.js", ROOT / "docs/assets/atlas-data.js"),
+            ("docs/assets/ask.css", ROOT / "docs/assets/ask.css"),
+            ("docs/assets/ask.js", ROOT / "docs/assets/ask.js"),
+            ("docs/ask.html", ROOT / "docs/ask.html"),
+            ("docs/ask/index.html", ROOT / "docs/ask/index.html"),
             ("docs/index.html", ROOT / "docs/index.html"),
         ]
         problems = []
@@ -276,6 +324,16 @@ def check() -> int:
                 current = actual.read_text(encoding="utf-8")
                 if current != expected:
                     problems.append(f"out of date: {actual.relative_to(ROOT)}")
+        ask_config = ROOT / "docs/assets/ask-config.js"
+        if not ask_config.exists():
+            problems.append("missing docs/assets/ask-config.js")
+        else:
+            ask_config_text = ask_config.read_text(encoding="utf-8")
+            for required_key in ("ASK_ATLAS_FRONTEND", "ASK_ATLAS_BACKEND_URL"):
+                if required_key not in ask_config_text:
+                    problems.append(f"docs/assets/ask-config.js missing {required_key}")
+            for problem in validate_public_config_text(ask_config_text):
+                problems.append(f"docs/assets/ask-config.js unsafe backend URL: {problem}")
         if problems:
             for problem in problems:
                 print("ERROR:", problem)

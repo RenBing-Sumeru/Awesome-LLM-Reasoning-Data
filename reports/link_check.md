@@ -3,9 +3,9 @@
 Link validation for local files, artifact URL formats, and optional live external probes.
 
 - artifact URLs discovered: 476
-- markdown links checked: 4180
-- external markdown links discovered: 2399
-- unique external URLs discovered: 280
+- markdown links checked: 4465
+- external markdown links discovered: 2685
+- unique external URLs discovered: 555
 - live URLs checked: 0
 - failures: 0
 

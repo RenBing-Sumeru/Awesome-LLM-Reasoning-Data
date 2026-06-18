@@ -1,0 +1,173 @@
+name: Deploy Ask Atlas backend to Vercel
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: apps/ask-atlas/package-lock.json
+
+      - name: Check deployment prerequisites
+        env:
+          ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
+          ASK_ATLAS_ENV: ${{ vars.ASK_ATLAS_ENV }}
+          ASK_ATLAS_PAGES_BASE_URL: ${{ vars.ASK_ATLAS_PAGES_BASE_URL }}
+          ASK_ATLAS_SESSION_SECRET: ${{ secrets.ASK_ATLAS_SESSION_SECRET }}
+          ASK_ATLAS_TOKEN_ENCRYPTION_SECRET: ${{ secrets.ASK_ATLAS_TOKEN_ENCRYPTION_SECRET }}
+          GITHUB_CLIENT_ID: ${{ vars.GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+          QIHOO_API_KEY: ${{ secrets.QIHOO_API_KEY }}
+          ASK_ATLAS_STORE_BACKEND: ${{ vars.ASK_ATLAS_STORE_BACKEND }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          ASK_ATLAS_DATABASE_SSL: ${{ vars.ASK_ATLAS_DATABASE_SSL }}
+          ASK_ATLAS_ALLOW_JSON_STORE: ${{ vars.ASK_ATLAS_ALLOW_JSON_STORE }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          ASK_ATLAS_ALLOW_LOCAL_RATE_LIMIT: ${{ vars.ASK_ATLAS_ALLOW_LOCAL_RATE_LIMIT }}
+          ASK_ATLAS_TRUST_PROXY: ${{ vars.ASK_ATLAS_TRUST_PROXY }}
+          ASK_ATLAS_ADMIN_GITHUB_IDS: ${{ vars.ASK_ATLAS_ADMIN_GITHUB_IDS }}
+          ASK_ATLAS_REQUIRE_MODEL_RATES: ${{ vars.ASK_ATLAS_REQUIRE_MODEL_RATES }}
+          ASK_ATLAS_MODEL_RATES_JSON: ${{ vars.ASK_ATLAS_MODEL_RATES_JSON }}
+          VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: node apps/ask-atlas/scripts/check-env-names.mjs --github-actions-deploy
+
+      - name: Install Ask backend dependencies
+        run: npm ci --prefix apps/ask-atlas
+
+      - name: Validate public Ask frontend config safety
+        run: python3 scripts/set_ask_backend_url.py --check
+
+      - name: Validate production backend config
+        env:
+          ASK_ATLAS_ENV: prod
+          ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
+          ASK_ATLAS_PAGES_BASE_URL: ${{ vars.ASK_ATLAS_PAGES_BASE_URL }}
+          ASK_ATLAS_SESSION_SECRET: ${{ secrets.ASK_ATLAS_SESSION_SECRET }}
+          ASK_ATLAS_TOKEN_ENCRYPTION_SECRET: ${{ secrets.ASK_ATLAS_TOKEN_ENCRYPTION_SECRET }}
+          GITHUB_CLIENT_ID: ${{ vars.GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+          QIHOO_API_KEY: ${{ secrets.QIHOO_API_KEY }}
+          ASK_ATLAS_STORE_BACKEND: postgres
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          ASK_ATLAS_DATABASE_SSL: auto
+          ASK_ATLAS_ALLOW_JSON_STORE: "0"
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          ASK_ATLAS_ALLOW_LOCAL_RATE_LIMIT: "0"
+          ASK_ATLAS_TRUST_PROXY: "1"
+          ASK_ATLAS_ADMIN_GITHUB_IDS: ${{ vars.ASK_ATLAS_ADMIN_GITHUB_IDS }}
+          ASK_ATLAS_ADMIN_LOGINS: RenBing-Sumeru
+          ASK_ATLAS_REQUIRE_MODEL_RATES: "1"
+          ASK_ATLAS_MODEL_RATES_JSON: ${{ vars.ASK_ATLAS_MODEL_RATES_JSON }}
+          ASK_ATLAS_PRIMER_TEXT_PATH: ${{ vars.ASK_ATLAS_PRIMER_TEXT_PATH }}
+          ASK_ATLAS_SAFE_RAG_ROOT: ${{ vars.ASK_ATLAS_SAFE_RAG_ROOT }}
+          ASK_ATLAS_MAX_PRIMER_TEXT_BYTES: ${{ vars.ASK_ATLAS_MAX_PRIMER_TEXT_BYTES }}
+          ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS: ${{ vars.ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS }}
+        run: npm --prefix apps/ask-atlas run config:check
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Link Vercel project without pulling secrets
+        working-directory: apps/ask-atlas
+        env:
+          VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          mkdir -p .vercel
+          node -e 'const fs=require("fs"); fs.writeFileSync(".vercel/project.json", JSON.stringify({ orgId: process.env.VERCEL_ORG_ID, projectId: process.env.VERCEL_PROJECT_ID }, null, 2));'
+
+      - name: Verify Vercel runtime environment
+        working-directory: apps/ask-atlas
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          set -euo pipefail
+          vercel env ls production --token "$VERCEL_TOKEN" > "$RUNNER_TEMP/ask-atlas-vercel-env.txt"
+          node scripts/check-env-names.mjs --vercel-list "$RUNNER_TEMP/ask-atlas-vercel-env.txt"
+
+      - name: Validate Vercel runtime config values
+        working-directory: apps/ask-atlas
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel env run -e production --token "$VERCEL_TOKEN" -- npm run config:check
+
+      - name: Apply Postgres schema with Vercel runtime env
+        working-directory: apps/ask-atlas
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel env run -e production --token "$VERCEL_TOKEN" -- npm run db:setup
+
+      - name: Deploy backend
+        working-directory: apps/ask-atlas
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          set -euo pipefail
+          vercel deploy --prod --token "$VERCEL_TOKEN" --env ASK_ATLAS_DEPLOYMENT_COMMIT="${GITHUB_SHA}" > "$RUNNER_TEMP/ask-atlas-vercel-url.txt"
+          echo "Deployed backend:"
+          cat "$RUNNER_TEMP/ask-atlas-vercel-url.txt"
+
+      - name: Verify deployed backend matches configured backend
+        working-directory: apps/ask-atlas
+        env:
+          ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
+        run: node scripts/verify-deployment-target.mjs --deployed-url-file "$RUNNER_TEMP/ask-atlas-vercel-url.txt"
+
+      - name: Smoke test deployed backend
+        env:
+          ASK_ATLAS_ENV: prod
+          ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
+          ASK_ATLAS_PAGES_BASE_URL: ${{ vars.ASK_ATLAS_PAGES_BASE_URL }}
+          ASK_ATLAS_SESSION_SECRET: ${{ secrets.ASK_ATLAS_SESSION_SECRET }}
+          ASK_ATLAS_TOKEN_ENCRYPTION_SECRET: ${{ secrets.ASK_ATLAS_TOKEN_ENCRYPTION_SECRET }}
+          GITHUB_CLIENT_ID: ${{ vars.GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+          QIHOO_API_KEY: ${{ secrets.QIHOO_API_KEY }}
+          ASK_ATLAS_STORE_BACKEND: postgres
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          ASK_ATLAS_DATABASE_SSL: auto
+          ASK_ATLAS_ALLOW_JSON_STORE: "0"
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          ASK_ATLAS_ALLOW_LOCAL_RATE_LIMIT: "0"
+          ASK_ATLAS_TRUST_PROXY: "1"
+          ASK_ATLAS_ADMIN_GITHUB_IDS: ${{ vars.ASK_ATLAS_ADMIN_GITHUB_IDS }}
+          ASK_ATLAS_ADMIN_LOGINS: RenBing-Sumeru
+          ASK_ATLAS_BASE_DAILY_REQUESTS: ${{ vars.ASK_ATLAS_BASE_DAILY_REQUESTS || '2' }}
+          ASK_ATLAS_STAR_BONUS_CREDITS: ${{ vars.ASK_ATLAS_STAR_BONUS_CREDITS || '10' }}
+          ASK_ATLAS_FORK_BONUS_CREDITS: ${{ vars.ASK_ATLAS_FORK_BONUS_CREDITS || '20' }}
+          ASK_ATLAS_MAX_INPUT_CHARS: ${{ vars.ASK_ATLAS_MAX_INPUT_CHARS || '4000' }}
+          ASK_ATLAS_MAX_OUTPUT_TOKENS: ${{ vars.ASK_ATLAS_MAX_OUTPUT_TOKENS || '1200' }}
+          ASK_ATLAS_USER_DAILY_TOKEN_CAP: ${{ vars.ASK_ATLAS_USER_DAILY_TOKEN_CAP || '150000' }}
+          ASK_ATLAS_USER_DAILY_COST_CAP_USD: ${{ vars.ASK_ATLAS_USER_DAILY_COST_CAP_USD || '0.50' }}
+          ASK_ATLAS_MAX_SINGLE_REQUEST_COST_USD: ${{ vars.ASK_ATLAS_MAX_SINGLE_REQUEST_COST_USD || '0.08' }}
+          ASK_ATLAS_GLOBAL_DAILY_COST_CAP_USD: ${{ vars.ASK_ATLAS_GLOBAL_DAILY_COST_CAP_USD || '20' }}
+          ASK_ATLAS_PER_USER_MINUTE_LIMIT: ${{ vars.ASK_ATLAS_PER_USER_MINUTE_LIMIT || '2' }}
+          ASK_ATLAS_PER_IP_HOUR_LIMIT: ${{ vars.ASK_ATLAS_PER_IP_HOUR_LIMIT || '20' }}
+          ASK_ATLAS_REQUIRE_MODEL_RATES: "1"
+          ASK_ATLAS_MODEL_RATES_JSON: ${{ vars.ASK_ATLAS_MODEL_RATES_JSON }}
+          ASK_ATLAS_PRIMER_TEXT_PATH: ${{ vars.ASK_ATLAS_PRIMER_TEXT_PATH }}
+          ASK_ATLAS_SAFE_RAG_ROOT: ${{ vars.ASK_ATLAS_SAFE_RAG_ROOT }}
+          ASK_ATLAS_MAX_PRIMER_TEXT_BYTES: ${{ vars.ASK_ATLAS_MAX_PRIMER_TEXT_BYTES }}
+          ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS: ${{ vars.ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS }}
+        run: npm --prefix apps/ask-atlas run launch:check -- --smoke --allow-warnings --redacted

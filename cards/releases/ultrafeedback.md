@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # UltraFeedback: Boosting language models with high-quality feedback
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ultrafeedback-boosting-language-models-with-high-quality-feedback-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ultrafeedback-boosting-language-models-with-high-quality-feedback-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ultrafeedback-boosting-language-models-with-high-quality-feedback-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment, judgment_required_rubrics_safety_domain, construction_recipes_open_reasoning_data
 > Links: [📄 Paper](https://arxiv.org/abs/2310.01377) · [🐙 Code](https://github.com/OpenBMB/UltraFeedback) · [🗂️ Data](https://huggingface.co/datasets/openbmb/UltraFeedback)

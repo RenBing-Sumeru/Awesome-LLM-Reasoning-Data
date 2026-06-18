@@ -2,6 +2,10 @@
 <!-- card_type: benchmarks -->
 # LiveCodeBench: Holistic and contamination-free evaluation of large language models for code
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2403.07974) · [🏛️ OpenReview](https://openreview.net/forum?id=chfJJYC3iL) · [🐙 Code](https://github.com/livecodebench/livecodebench) · [🌐 Project](https://livecodebench.github.io/)

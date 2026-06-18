@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # 📦 OpenMathReasoning: A large-scale dataset of math reasoning traces
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openmathreasoning-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openmathreasoning-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openmathreasoning-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Large-scale math reasoning trace release for programmatic verification.

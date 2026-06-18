@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # 🏗️ Qwen3 Technical Report
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen3-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen3-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen3-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Open model-family report useful for coordinated release-tick analysis.

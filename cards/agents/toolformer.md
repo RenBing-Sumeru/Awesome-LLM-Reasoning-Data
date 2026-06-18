@@ -2,6 +2,10 @@
 <!-- card_type: agents -->
 # Toolformer: Language models can teach themselves to use tools
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolformer-language-models-can-teach-themselves-to-use-tools-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolformer-language-models-can-teach-themselves-to-use-tools-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolformer-language-models-can-teach-themselves-to-use-tools-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: environmental_agents_tools_web_swe, construction_recipes_open_reasoning_data
 > Links: [📄 Paper](https://arxiv.org/abs/2302.04761) · [🏛️ OpenReview](https://openreview.net/forum?id=Yacmpz84TH)

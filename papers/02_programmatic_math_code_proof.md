@@ -2,6 +2,11 @@
 
 > Math answers, code execution, unit tests, theorem provers, and verifier robustness studies where correctness can often be checked by a rule or external tool.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=programmatic_math_code_proof&mode=find_papers)
+> Try: `What should I read first for 🧮 Programmatic Verification?`
+> Try: `Compare the data objects and verifier types in 🧮 Programmatic Verification.`
+> Try: `Generate an audit checklist for 🧮 Programmatic Verification.`
+
 ## 1. What This Track Studies
 
 Use this category to study the cleanest verifier-bearing reasoning records: problems, traces, executable checks, proof assistants, pass-rate filters, and decontamination claims.

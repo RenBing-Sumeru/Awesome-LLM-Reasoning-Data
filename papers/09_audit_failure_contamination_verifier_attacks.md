@@ -2,6 +2,11 @@
 
 > CoT faithfulness, leakage, contamination, reward hacking, judge attacks, synthetic-data collapse, live benchmarks, and verifier robustness.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=audit_failure_contamination_verifier_attacks&mode=find_papers)
+> Try: `What should I read first for 🧯 Audit & Failure Modes?`
+> Try: `Compare the data objects and verifier types in 🧯 Audit & Failure Modes.`
+> Try: `Generate an audit checklist for 🧯 Audit & Failure Modes.`
+
 ## 1. What This Track Studies
 
 Use this page as the hazard map for reasoning data: what can leak, what can be gamed, what can be contaminated, and what can silently fail.

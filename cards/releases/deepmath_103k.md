@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # 📦 DeepMath-103K
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepmath-103k-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepmath-103k-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepmath-103k-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Math release highlighted for verifier pinning and decontamination.

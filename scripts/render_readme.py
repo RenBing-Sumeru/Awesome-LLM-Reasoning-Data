@@ -34,6 +34,7 @@ _ENTRIES_CACHE: list[dict] | None = None
 _CARDS_CACHE: dict[str, str] | None = None
 _TRACKS_CACHE: list[dict] | None = None
 PAGES_URL = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
+ASK_URL = f"{PAGES_URL.rstrip('/')}/ask/"
 
 
 def all_entries() -> list[dict]:
@@ -416,6 +417,7 @@ def readme_en() -> str:
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)]({PAGES_URL})
+[![Ask the Atlas](https://img.shields.io/badge/Ask-launch%20pending-7c3aed)]({ASK_URL})
 [![Entries](https://img.shields.io/badge/entries-{s['total']}-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-{s['verified']}-0f766e)](reports/link_coverage.md)
 [![Cards](https://img.shields.io/badge/cards-{s['cards']}-7c3aed)](cards/README.md)
@@ -443,6 +445,8 @@ To answer that, the repo combines four layers:
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
 
 Project website: [Awesome-LLM-Reasoning-Data.github.io]({PAGES_URL}).
+
+Ask the Atlas: [source-grounded AI assistant · launch pending]({ASK_URL}).
 
 ---
 

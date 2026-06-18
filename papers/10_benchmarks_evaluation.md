@@ -2,6 +2,11 @@
 
 > Math/code/live/agent/domain/process/reward benchmarks organized by what they measure and what feedback they can support.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=benchmarks_evaluation&mode=find_papers)
+> Try: `What should I read first for 🧰 Benchmarks & Evaluation?`
+> Try: `Compare the data objects and verifier types in 🧰 Benchmarks & Evaluation.`
+> Try: `Generate an audit checklist for 🧰 Benchmarks & Evaluation.`
+
 ## 1. What This Track Studies
 
 Use this page to tell evaluation surfaces apart from training data, and to understand when a benchmark can become a verifier, reward, or environment.

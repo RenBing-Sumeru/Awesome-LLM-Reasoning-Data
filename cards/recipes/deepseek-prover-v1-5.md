@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, scaling_test_time_compute_rlvr, construction_recipes_open_reasoning_data
 > Links: [📄 Paper](https://arxiv.org/abs/2408.08152) · [🐙 Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [🤗 HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL)

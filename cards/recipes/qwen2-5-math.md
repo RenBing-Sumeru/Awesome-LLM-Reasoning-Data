@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports, scaling_test_time_compute_rlvr
 > Links: [📄 Paper](https://arxiv.org/abs/2409.12122) · [🐙 Code](https://github.com/QwenLM/Qwen2.5-Math) · [🤗 HF](https://huggingface.co/Qwen/Qwen2.5-Math-7B) · [🌐 Project](https://qwenlm.github.io/blog/qwen2.5-math/)

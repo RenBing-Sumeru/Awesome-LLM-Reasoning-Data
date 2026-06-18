@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # STaR: Bootstrapping reasoning with reasoning
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=star-bootstrapping-reasoning-with-reasoning-2022&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=star-bootstrapping-reasoning-with-reasoning-2022&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=star-bootstrapping-reasoning-with-reasoning-2022&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, foundations_instruction_preference_alignment
 > Links: [📄 Paper](https://arxiv.org/abs/2203.14465)

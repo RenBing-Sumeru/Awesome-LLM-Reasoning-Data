@@ -2,6 +2,11 @@
 
 > Rubric rewards, health and safety benchmarks, factuality, legal/finance/science data, and LLM-as-judge systems where correctness cannot be reduced to a cheap programmatic predicate.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=judgment_required_rubrics_safety_domain&mode=find_papers)
+> Try: `What should I read first for ⚖️ Judgment-Required Data?`
+> Try: `Compare the data objects and verifier types in ⚖️ Judgment-Required Data.`
+> Try: `Generate an audit checklist for ⚖️ Judgment-Required Data.`
+
 ## 1. What This Track Studies
 
 Use this page when the answer needs expert judgment, calibrated uncertainty, policy interpretation, or rubric-grounded scoring rather than a single executable check.

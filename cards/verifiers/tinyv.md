@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # 🧪 TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tinyv-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tinyv-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tinyv-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.

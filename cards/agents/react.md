@@ -2,6 +2,10 @@
 <!-- card_type: agents -->
 # ReAct: Synergizing reasoning and acting in language models
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=react-synergizing-reasoning-and-acting-in-language-models-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=react-synergizing-reasoning-and-acting-in-language-models-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=react-synergizing-reasoning-and-acting-in-language-models-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: environmental_agents_tools_web_swe, construction_recipes_open_reasoning_data
 > Links: [📄 Paper](https://arxiv.org/abs/2210.03629) · [🏛️ OpenReview](https://openreview.net/forum?id=WE_vluYUL-X) · [🐙 Code](https://github.com/ysymyth/ReAct) · [🌐 Project](https://react-lm.github.io/)

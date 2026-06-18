@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Self-RAG: Learning to retrieve, generate, and critique through self-reflection
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, environmental_agents_tools_web_swe, judgment_required_rubrics_safety_domain
 > Links: [📄 Paper](https://arxiv.org/abs/2310.11511) · [🏛️ Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [🐙 Code](https://github.com/akariasai/self-rag) · [🗂️ Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [🤗 HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [🌐 Project](https://selfrag.github.io/)

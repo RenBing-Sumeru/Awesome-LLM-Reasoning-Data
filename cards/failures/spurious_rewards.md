@@ -2,6 +2,10 @@
 <!-- card_type: failures -->
 # 🧯 Spurious Rewards Failure Lens
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Reward-backed reasoning data can look stronger while optimizing a shortcut, so failure cards must track the reward pathology explicitly.

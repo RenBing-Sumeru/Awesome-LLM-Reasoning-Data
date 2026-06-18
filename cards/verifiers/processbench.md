@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # 🧪 ProcessBench: Identifying Process Errors in Mathematical Reasoning
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=processbench-identifying-process-errors-in-mathematical-reasoning-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=processbench-identifying-process-errors-in-mathematical-reasoning-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=processbench-identifying-process-errors-in-mathematical-reasoning-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.

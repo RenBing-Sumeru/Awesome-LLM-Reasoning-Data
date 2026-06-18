@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # 🧪 OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=omegaprm-automated-process-supervision-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=omegaprm-automated-process-supervision-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=omegaprm-automated-process-supervision-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.

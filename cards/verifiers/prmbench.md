@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # 🧪 PRMBench: A fine-grained and challenging benchmark for process-level reward models
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.

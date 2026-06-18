@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # DeepSeekMath: Pushing the limits of mathematical reasoning in open language models
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr, frontier_model_reports
 > Links: [📄 Paper](https://arxiv.org/abs/2402.03300) · [🐙 Code](https://github.com/deepseek-ai/deepseek-math) · [🤗 HF](https://huggingface.co/collections/deepseek-ai/deepseek-math)

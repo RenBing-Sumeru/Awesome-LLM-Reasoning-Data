@@ -2,6 +2,11 @@
 
 > Public reasoning-model reports and open-weight model reports that disclose post-training data, reward stacks, scaling choices, or evaluation design.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=frontier_model_reports&mode=find_papers)
+> Try: `What should I read first for 🚀 Frontier Reports?`
+> Try: `Compare the data objects and verifier types in 🚀 Frontier Reports.`
+> Try: `Generate an audit checklist for 🚀 Frontier Reports.`
+
 ## 1. What This Track Studies
 
 Use this page to read frontier reports as data disclosures rather than only model announcements.

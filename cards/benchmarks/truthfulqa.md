@@ -2,6 +2,10 @@
 <!-- card_type: benchmarks -->
 # TruthfulQA
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=truthfulqa-2022&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=truthfulqa-2022&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=truthfulqa-2022&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2109.07958) · [🏛️ ACL](https://aclanthology.org/2022.acl-long.229/) · [🐙 Code](https://github.com/sylinrl/TruthfulQA)

@@ -2,6 +2,10 @@
 <!-- card_type: failures -->
 # Subliminal Learning
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=subliminal-learning-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=subliminal-learning-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=subliminal-learning-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2507.14805) · [🏛️ Venue](https://www.nature.com/articles/s41586-026-10319-8) · [🐙 Code](https://github.com/MinhxLe/subliminal-learning) · [🌐 Project](https://subliminal-learning.com/)

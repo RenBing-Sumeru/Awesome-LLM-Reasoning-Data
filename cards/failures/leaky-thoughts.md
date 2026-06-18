@@ -2,6 +2,10 @@
 <!-- card_type: failures -->
 # Leaky Thoughts
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leaky-thoughts-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leaky-thoughts-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leaky-thoughts-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: judgment_required_rubrics_safety_domain, environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2506.15674) · [🏛️ ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [🐙 Code](https://github.com/parameterlab/leaky_thoughts)

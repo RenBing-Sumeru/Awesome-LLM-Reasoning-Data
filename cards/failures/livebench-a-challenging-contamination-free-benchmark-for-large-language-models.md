@@ -2,6 +2,10 @@
 <!-- card_type: failures -->
 # LiveBench: A challenging, contamination-free benchmark for large language models
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: surveys_and_primers, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2406.19314) · [🏛️ OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [🌐 Project](https://livebench.ai/)

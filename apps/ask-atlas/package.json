@@ -1,0 +1,30 @@
+{
+  "name": "ask-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Source-grounded AI assistant for Awesome LLM Reasoning Data.",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "dev": "ASK_ATLAS_DEV_AUTH=1 ASK_ATLAS_MOCK_PROVIDER=1 node src/server.mjs",
+    "config:check": "node -e \"import('./src/config.mjs').then(({validateRuntimeConfig}) => { validateRuntimeConfig(); console.log('Ask the Atlas production config looks safe.'); })\"",
+    "db:setup": "node scripts/setup-db.mjs",
+    "db:check": "node scripts/setup-db.mjs --check",
+    "env:print": "node scripts/check-env-names.mjs --print vercel-runtime",
+    "env:github": "node scripts/check-env-names.mjs --print github-commands",
+    "env:vercel": "node scripts/check-env-names.mjs --print vercel-commands",
+    "production:configure": "node scripts/configure-production.mjs",
+    "secret:generate": "node scripts/generate-secrets.mjs",
+    "launch:check": "node scripts/launch-check.mjs",
+    "doctor:prod": "node scripts/production-doctor.mjs",
+    "deploy:vercel": "vercel --prod",
+    "deploy:verify": "node scripts/verify-deployment-target.mjs",
+    "test": "node --test --test-concurrency=1"
+  },
+  "engines": {
+    "node": ">=18.18"
+  },
+  "dependencies": {
+    "pg": "^8.21.0"
+  }
+}

@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Magicoder: Empowering code generation with OSS-instruct
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magicoder-empowering-code-generation-with-oss-instruct-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magicoder-empowering-code-generation-with-oss-instruct-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magicoder-empowering-code-generation-with-oss-instruct-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2312.02120) · [🏛️ PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [🐙 Code](https://github.com/ise-uiuc/magicoder) · [🗂️ Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [🤗 HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B)

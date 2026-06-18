@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Scaling Behaviors of LLM Reinforcement Learning Post-Training
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tan-scaling-rl-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tan-scaling-rl-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tan-scaling-rl-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, scaling_test_time_compute_rlvr, frontier_model_reports
 > Links: [📄 Paper](https://arxiv.org/abs/2509.25300)

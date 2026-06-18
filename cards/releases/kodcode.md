@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # 📦 KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.

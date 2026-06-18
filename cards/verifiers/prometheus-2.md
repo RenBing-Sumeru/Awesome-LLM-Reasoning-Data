@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # Prometheus 2: An open source language model specialized in evaluating other language models
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: judgment_required_rubrics_safety_domain, foundations_instruction_preference_alignment, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2405.01535) · [🏛️ ACL](https://aclanthology.org/2024.emnlp-main.248/) · [🔗 DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [🐙 Code](https://github.com/prometheus-eval/prometheus-eval) · [🗂️ Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [🤗 HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0)

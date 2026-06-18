@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # DeepSeek-Prover: Advancing theorem proving in LLMs
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-advancing-theorem-proving-in-llms-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-advancing-theorem-proving-in-llms-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-advancing-theorem-proving-in-llms-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports
 > Links: [📄 Paper](https://arxiv.org/abs/2405.14333) · [🗂️ Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1) · [🤗 HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1)

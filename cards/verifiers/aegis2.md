@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # Aegis2.0
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=aegis2-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=aegis2-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=aegis2-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: judgment_required_rubrics_safety_domain, benchmarks_evaluation, construction_recipes_open_reasoning_data
 > Links: [📄 Paper](https://arxiv.org/abs/2501.09004) · [🏛️ ACL](https://aclanthology.org/2025.naacl-long.306/) · [🗂️ Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0)

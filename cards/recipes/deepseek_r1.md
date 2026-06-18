@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # DeepSeek-R1
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-r1-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-r1-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-r1-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: surveys_and_primers, construction_recipes_open_reasoning_data, frontier_model_reports, scaling_test_time_compute_rlvr
 > Links: [📄 Paper](https://arxiv.org/abs/2501.12948)

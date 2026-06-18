@@ -2,6 +2,11 @@
 
 > The older data objects that reasoning-data work inherits: instruction mixtures, demonstrations, preferences, reward models, self-improvement traces, and chain-of-thought prompting.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=foundations_instruction_preference_alignment&mode=find_papers)
+> Try: `What should I read first for 🧱 Foundations?`
+> Try: `Compare the data objects and verifier types in 🧱 Foundations.`
+> Try: `Generate an audit checklist for 🧱 Foundations.`
+
 ## 1. What This Track Studies
 
 Read this category to understand how prompt-answer examples became richer feedback records with preferences, rationales, rubrics, and reward surfaces.

@@ -2,6 +2,11 @@
 
 > Step labels, rollout values, first-error localization, PRM datasets, process verifiers, and studies of when process rewards help or fail.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=process_supervision_prm&mode=find_papers)
+> Try: `What should I read first for 🪜 Process Supervision & PRMs?`
+> Try: `Compare the data objects and verifier types in 🪜 Process Supervision & PRMs.`
+> Try: `Generate an audit checklist for 🪜 Process Supervision & PRMs.`
+
 ## 1. What This Track Studies
 
 Use this page to understand the move from final-answer feedback to intermediate feedback that can train, rank, or debug reasoning traces.

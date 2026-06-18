@@ -2,6 +2,11 @@
 
 > Orientation material for post-training, reasoning models, verifier-bearing data, contamination, and data-centric LLM practice.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=surveys_and_primers&mode=find_papers)
+> Try: `What should I read first for 🧭 Surveys & Primers?`
+> Try: `Compare the data objects and verifier types in 🧭 Surveys & Primers.`
+> Try: `Generate an audit checklist for 🧭 Surveys & Primers.`
+
 ## 1. What This Track Studies
 
 Use this page when you need the map before the terrain: vocabulary, taxonomies, recurring claims, and the major research lineages that make reasoning-data papers easier to read.

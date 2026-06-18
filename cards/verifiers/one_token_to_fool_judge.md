@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # 🧪 One Token to Fool LLM-as-a-Judge
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=one-token-to-fool-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=one-token-to-fool-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=one-token-to-fool-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Verifier-attack paper showing trivial cue tokens can flip judge verdicts.

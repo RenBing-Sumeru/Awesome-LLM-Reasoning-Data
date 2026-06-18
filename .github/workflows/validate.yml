@@ -12,20 +12,46 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: apps/ask-atlas/package-lock.json
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          npm ci --prefix apps/ask-atlas
       - name: Validate data
         run: python scripts/validate_data.py
+      - name: Secret scan
+        run: |
+          if grep -RInE 'QIHOO_API_KEY\s*=\s*["'\'']?fk[0-9A-Za-z_.-]{16,}|Authorization:\s*Bearer\s+fk[0-9A-Za-z_.-]{16,}|Bearer\s+fk[0-9A-Za-z_.-]{16,}|fk[0-9]{6,}\.[A-Za-z0-9_.-]{16,}' \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=.venv \
+            --exclude=validate.yml \
+            --exclude=package-lock.json \
+            .; then
+            echo "Potential secret leaked into the repository."
+            exit 1
+          fi
       - name: Check site data
         run: python scripts/render_site.py --check
+      - name: Check Ask backend URL config safety
+        run: |
+          set -euo pipefail
+          python scripts/set_ask_backend_url.py --check
       - name: Check paper pages
         run: python scripts/render_papers.py --check
       - name: Check README generated sections
         run: python scripts/render_readme.py --check
+      - name: Check card Ask links
+        run: python scripts/add_card_ask_links.py --check
       - name: Check card index
         run: python scripts/render_cards.py --check
+      - name: Test Ask the Atlas backend
+        run: npm --prefix apps/ask-atlas test
       - name: Coverage report
         run: python scripts/coverage_report.py
       - name: Link check soft

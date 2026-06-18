@@ -2,6 +2,10 @@
 <!-- card_type: agents -->
 # 🌐 BrowserGym: A gym environment for web agents
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=browsergym-a-gym-environment-for-web-agents-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=browsergym-a-gym-environment-for-web-agents-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=browsergym-a-gym-environment-for-web-agents-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.

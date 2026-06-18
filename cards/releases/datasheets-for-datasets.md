@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # Datasheets for datasets
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=datasheets-for-datasets-2018&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=datasheets-for-datasets-2018&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=datasheets-for-datasets-2018&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: surveys_and_primers
 > Links: [📄 Paper](https://arxiv.org/abs/1803.09010)

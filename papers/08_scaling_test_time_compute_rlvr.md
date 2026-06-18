@@ -2,6 +2,11 @@
 
 > RLVR scaling, data reuse, distillation scaling, pass@k/pass@(k,T), inference budget, search topology, and test-time reinforcement.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=scaling_test_time_compute_rlvr&mode=find_papers)
+> Try: `What should I read first for 📈 Scaling & Test-Time Compute?`
+> Try: `Compare the data objects and verifier types in 📈 Scaling & Test-Time Compute.`
+> Try: `Generate an audit checklist for 📈 Scaling & Test-Time Compute.`
+
 ## 1. What This Track Studies
 
 Use this page to separate scaling claims into data size, model size, RL compute, inference budget, search, and verifier reliability.

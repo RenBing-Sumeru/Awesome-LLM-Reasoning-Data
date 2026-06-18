@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # RewardBench: Evaluating Reward Models for Language Modeling
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2403.13787)

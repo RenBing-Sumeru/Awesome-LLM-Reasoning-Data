@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # 🏗️ TTRL: Test-Time Reinforcement Learning
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ttrl-test-time-reinforcement-learning-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ttrl-test-time-reinforcement-learning-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ttrl-test-time-reinforcement-learning-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.

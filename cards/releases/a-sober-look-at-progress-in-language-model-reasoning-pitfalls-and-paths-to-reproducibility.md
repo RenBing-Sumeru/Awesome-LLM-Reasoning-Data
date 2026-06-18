@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: surveys_and_primers, foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
 > Links: [📄 Paper](https://arxiv.org/abs/2504.07086)

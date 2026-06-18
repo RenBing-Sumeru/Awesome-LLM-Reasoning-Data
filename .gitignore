@@ -16,6 +16,14 @@ CODEX_*.md
 *.log
 
 # Build artifacts
+node_modules/
 site/
 dist/
 build/
+
+# Local app secrets and usage stores
+apps/ask-atlas/.env
+apps/ask-atlas/.env*.local
+apps/ask-atlas/.vercel/
+apps/ask-atlas/storage/*.json
+apps/ask-atlas/storage/*.tmp

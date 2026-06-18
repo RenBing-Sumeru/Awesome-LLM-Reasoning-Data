@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # 🏗️ Absolute Zero: Reinforced Self-play Reasoning with Zero Data
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop.

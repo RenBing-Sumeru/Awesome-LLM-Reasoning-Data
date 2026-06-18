@@ -2,6 +2,10 @@
 <!-- card_type: benchmarks -->
 # Measuring mathematical problem solving with the MATH dataset
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=measuring-mathematical-problem-solving-with-the-math-dataset-2021&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=measuring-mathematical-problem-solving-with-the-math-dataset-2021&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=measuring-mathematical-problem-solving-with-the-math-dataset-2021&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2103.03874) · [🐙 Code](https://github.com/hendrycks/math)

@@ -2,6 +2,10 @@
 <!-- card_type: agents -->
 # 🌐 AndroidWorld: A dynamic benchmarking environment for autonomous agents
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Android tasks turn mobile UI state and action histories into evaluable agent trajectories.

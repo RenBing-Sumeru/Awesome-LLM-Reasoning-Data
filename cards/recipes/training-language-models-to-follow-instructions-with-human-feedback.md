@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Training language models to follow instructions with human feedback
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-language-models-to-follow-instructions-with-human-feedback-2022&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-language-models-to-follow-instructions-with-human-feedback-2022&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-language-models-to-follow-instructions-with-human-feedback-2022&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment
 > Links: [📄 Paper](https://arxiv.org/abs/2203.02155)

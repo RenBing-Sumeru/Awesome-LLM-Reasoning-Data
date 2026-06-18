@@ -5,6 +5,7 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Ask the Atlas](https://img.shields.io/badge/Ask-launch%20pending-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 [![Entries](https://img.shields.io/badge/entries-280-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-165-0f766e)](reports/link_coverage.md)
 [![Cards](https://img.shields.io/badge/cards-87-7c3aed)](cards/README.md)
@@ -32,6 +33,8 @@ To answer that, the repo combines four layers:
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
 
 Project website: [Awesome-LLM-Reasoning-Data.github.io](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/).
+
+Ask the Atlas: [source-grounded AI assistant · launch pending](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/).
 
 ---
 

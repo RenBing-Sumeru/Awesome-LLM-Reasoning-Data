@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Constitutional AI: Harmlessness from AI feedback
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=constitutional-ai-harmlessness-from-ai-feedback-2022&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=constitutional-ai-harmlessness-from-ai-feedback-2022&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=constitutional-ai-harmlessness-from-ai-feedback-2022&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
 > Links: [📄 Paper](https://arxiv.org/abs/2212.08073) · [🌐 Project](https://github.com/anthropics/ConstitutionalHarmlessnessPaper)

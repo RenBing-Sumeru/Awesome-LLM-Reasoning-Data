@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Self-consistency improves chain of thought reasoning in language models
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: foundations_instruction_preference_alignment, scaling_test_time_compute_rlvr
 > Links: [📄 Paper](https://arxiv.org/abs/2203.11171) · [🏛️ OpenReview](https://openreview.net/forum?id=1PL1NIMMrw)

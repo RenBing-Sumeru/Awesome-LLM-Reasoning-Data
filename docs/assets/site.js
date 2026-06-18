@@ -5,6 +5,7 @@ let researchTracks = [];
 let activePackId = "";
 let activeTrackId = "";
 const REPO_BLOB_ROOT = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main";
+const ASK_ENTRY = "ask/";
 
 const ids = [
   "q", "category", "subfield", "year", "venue", "sourceRole", "contract", "granularity",
@@ -160,6 +161,7 @@ function links(entry) {
     }
   });
   if (entry.artifacts?.card) out.push(`<a href="${esc(repoBlob(entry.artifacts.card))}" target="_blank" rel="noreferrer">Card</a>`);
+  out.push(`<a href="${ASK_ENTRY}?entry=${encodeURIComponent(entry.id)}&mode=explain">Ask</a>`);
   return out.join("");
 }
 

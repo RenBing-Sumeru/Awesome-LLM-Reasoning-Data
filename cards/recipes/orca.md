@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Orca: Progressive learning from complex explanation traces of GPT-4
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, frontier_model_reports, foundations_instruction_preference_alignment
 > Links: [📄 Paper](https://arxiv.org/abs/2306.02707) · [🌐 Project](https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/)

@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # 📦 OpenR1-Math-220k
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openr1-math-220k-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openr1-math-220k-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openr1-math-220k-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.

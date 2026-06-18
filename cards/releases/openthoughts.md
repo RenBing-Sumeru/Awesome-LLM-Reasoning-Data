@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # OpenThoughts: Data recipes for reasoning models
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openthoughts3-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openthoughts3-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openthoughts3-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, frontier_model_reports
 > Links: [📄 Paper](https://arxiv.org/abs/2506.04178) · [🐙 Code](https://github.com/open-thoughts/open-thoughts) · [🤗 Hugging Face](https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M)

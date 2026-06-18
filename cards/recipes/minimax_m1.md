@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # 🏗️ MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.

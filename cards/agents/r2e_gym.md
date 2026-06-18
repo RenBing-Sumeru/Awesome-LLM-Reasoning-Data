@@ -2,6 +2,10 @@
 <!-- card_type: agents -->
 # 🌐 R2E-Gym
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=r2e-gym-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=r2e-gym-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=r2e-gym-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Verifiable SWE environment for reasoning-to-edit tasks.

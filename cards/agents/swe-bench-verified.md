@@ -2,6 +2,10 @@
 <!-- card_type: agents -->
 # Introducing SWE-bench Verified
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=introducing-swe-bench-verified-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=introducing-swe-bench-verified-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=introducing-swe-bench-verified-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: environmental_agents_tools_web_swe, programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
 > Links: [📄 Paper](https://openai.com/index/introducing-swe-bench-verified/) · [🏛️ Venue](https://www.swebench.com/verified.html) · [🐙 Code](https://github.com/swe-bench/SWE-bench) · [🗂️ Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified)

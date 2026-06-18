@@ -2,6 +2,10 @@
 <!-- card_type: benchmarks -->
 # miniF2F: A cross-system benchmark for formal olympiad-level mathematics
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: programmatic_math_code_proof, benchmarks_evaluation
 > Links: [📄 Paper](https://arxiv.org/abs/2109.00110) · [🏛️ OpenReview](https://openreview.net/forum?id=9ZPegFuFTFv) · [🐙 Code](https://github.com/openai/miniF2F)

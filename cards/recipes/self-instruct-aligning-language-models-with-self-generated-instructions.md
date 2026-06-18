@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # Self-Instruct: Aligning language models with self-generated instructions
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-instruct-aligning-language-models-with-self-generated-instructions-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-instruct-aligning-language-models-with-self-generated-instructions-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-instruct-aligning-language-models-with-self-generated-instructions-2023&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: construction_recipes_open_reasoning_data, foundations_instruction_preference_alignment
 > Links: [📄 Paper](https://arxiv.org/abs/2212.10560)

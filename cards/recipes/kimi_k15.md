@@ -2,6 +2,10 @@
 <!-- card_type: recipes -->
 # 🏗️ Kimi K1.5: Scaling Reinforcement Learning with LLMs
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kimi-k1-5-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kimi-k1-5-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kimi-k1-5-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Frontier report used for long-context RL and scaling discussion.

@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # 📦 NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.

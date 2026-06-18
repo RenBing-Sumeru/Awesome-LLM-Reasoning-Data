@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # 🧪 Math-Shepherd
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=math-shepherd-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=math-shepherd-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=math-shepherd-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Monte-Carlo-style process signal reference for step supervision.

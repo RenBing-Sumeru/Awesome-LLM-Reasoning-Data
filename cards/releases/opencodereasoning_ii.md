@@ -2,6 +2,10 @@
 <!-- card_type: releases -->
 # 📦 OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025&mode=compare)
+<!-- ask_atlas:end -->
+
 ## One-line takeaway
 
 Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.

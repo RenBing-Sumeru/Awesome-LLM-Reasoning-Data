@@ -2,6 +2,10 @@
 <!-- card_type: verifiers -->
 # Rewarding progress: Scaling automated process verifiers for LLM reasoning
 
+<!-- ask_atlas:start -->
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024&mode=compare)
+<!-- ask_atlas:end -->
+
 > Curation level: L5_audit_ready
 > Category: process_supervision_prm, scaling_test_time_compute_rlvr, construction_recipes_open_reasoning_data
 > Links: [📄 Paper](https://arxiv.org/abs/2410.08146) · [🏛️ OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW)

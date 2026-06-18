@@ -2,6 +2,11 @@
 
 > Prompt sourcing, teacher traces, filtering, self-play, generator-verifier loops, distill-then-RL, pure RL, and open reproduction pipelines.
 
+> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=construction_recipes_open_reasoning_data&mode=find_papers)
+> Try: `What should I read first for 🏗️ Construction Recipes?`
+> Try: `Compare the data objects and verifier types in 🏗️ Construction Recipes.`
+> Try: `Generate an audit checklist for 🏗️ Construction Recipes.`
+
 ## 1. What This Track Studies
 
 Use this page to move from paper claims to buildable recipes: source mixture, trace writer, verifier, filter, optimizer, ablation, and release metadata.
