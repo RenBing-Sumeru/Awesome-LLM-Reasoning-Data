@@ -116,7 +116,7 @@ button:hover { border-color: #94a3b8; }
 h1 {
   margin: 0;
   font-size: 56px;
-  line-height: 1;
+  line-height: 1.18;
   overflow-wrap: anywhere;
 }
 
@@ -318,6 +318,82 @@ h1 {
 .ask-recipes article:nth-child(2) { border-top: 3px solid var(--blue); }
 .ask-recipes article:nth-child(3) { border-top: 3px solid var(--orange); }
 .ask-recipes article:nth-child(4) { border-top: 3px solid var(--red); }
+
+.launch-matrix {
+  display: grid;
+  grid-template-columns: minmax(0, .62fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: stretch;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(15, 118, 110, .09), rgba(37, 99, 235, .08), rgba(234, 88, 12, .07)),
+    rgba(255, 255, 255, .88);
+  box-shadow: 0 14px 38px rgba(15, 23, 42, .08);
+  padding: 15px;
+  margin: 0 0 16px;
+  min-width: 0;
+}
+
+.launch-matrix[hidden] { display: none; }
+
+.launch-copy {
+  display: grid;
+  align-content: center;
+  min-width: 0;
+}
+
+.launch-copy h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.24;
+}
+
+.launch-copy p:not(.eyebrow) {
+  margin: 8px 0 0;
+  color: #475569;
+  line-height: 1.52;
+  font-size: 13px;
+}
+
+.launch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+
+.launch-grid article {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  min-width: 0;
+  border: 1px solid rgba(203, 213, 225, .92);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .86);
+  padding: 11px;
+}
+
+.launch-grid article.ready { border-top: 3px solid var(--mint); }
+.launch-grid article.built { border-top: 3px solid var(--blue); }
+.launch-grid article.growth { border-top: 3px solid var(--violet); }
+.launch-grid article.pending { border-top: 3px solid var(--orange); }
+
+.launch-grid span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.launch-grid strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.launch-grid small {
+  color: var(--muted);
+  line-height: 1.38;
+}
 
 .evidence-contract {
   display: grid;
@@ -1406,6 +1482,8 @@ td.preview {
   .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .admin-grid { grid-template-columns: 1fr; }
   .ask-recipes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .launch-matrix { grid-template-columns: 1fr; }
+  .launch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .launch-overview { grid-template-columns: 1fr; }
   .readiness-groups { grid-template-columns: 1fr; }
   .impact-grid { grid-template-columns: 1fr; }
@@ -1443,6 +1521,8 @@ td.preview {
   .quota-perks span { overflow-wrap: anywhere; }
   .notice { padding: 12px 12px; margin-bottom: 14px; }
   .notice p { font-size: 14px; line-height: 1.42; }
+  .launch-matrix { padding: 12px; margin-bottom: 14px; }
+  .launch-copy h2 { font-size: 18px; }
   .ask-recipes { grid-template-columns: 1fr; gap: 8px; }
   .privacy-toggle { margin-top: 9px; font-size: 12px; line-height: 1.35; }
   .consent-actions { margin-top: 9px; gap: 8px; }
@@ -1451,4 +1531,8 @@ td.preview {
   .evidence-steps { grid-template-columns: 1fr; }
   .metric-grid, .kv-list, .gap-summary, .detail-kv { grid-template-columns: 1fr; }
   .message { max-width: 100%; }
+}
+
+@media (max-width: 340px) {
+  .launch-grid { grid-template-columns: 1fr; }
 }

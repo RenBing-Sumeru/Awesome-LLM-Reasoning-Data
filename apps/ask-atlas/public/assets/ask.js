@@ -25,6 +25,7 @@ const els = {
   privacyOptOut: document.getElementById("privacyOptOut"),
   acceptNotice: document.getElementById("acceptNotice"),
   consentStatus: document.getElementById("consentStatus"),
+  launchMatrix: document.getElementById("launchMatrix"),
   suggestions: document.getElementById("suggestions"),
   contextPill: document.getElementById("contextPill"),
   messages: document.getElementById("messages"),
@@ -297,6 +298,7 @@ function renderConsent() {
 }
 
 function renderLaunchPending() {
+  if (els.launchMatrix) els.launchMatrix.hidden = false;
   els.userBadge.textContent = "Launch pending";
   els.quotaNumber.textContent = "soon";
   els.loginButton.hidden = false;
@@ -340,6 +342,7 @@ function renderQuota() {
     renderLaunchPending();
     return;
   }
+  if (els.launchMatrix) els.launchMatrix.hidden = true;
   if (!state.user) {
     els.userBadge.textContent = "Not signed in";
     els.quotaNumber.textContent = "0";
