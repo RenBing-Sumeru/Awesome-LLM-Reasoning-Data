@@ -244,19 +244,26 @@ secrets, Redis tokens, or session secrets. The Vercel template uses
 Do not run the secret commands with shell tracing or debug echo enabled.
 
 If all production values are already exported in the current shell, the
-configuration helper can write GitHub Environment variables and secrets without
-printing values:
+configuration helper can write GitHub Environment variables, GitHub secrets,
+and Vercel runtime variables without printing values:
 
 ```bash
 npm --prefix apps/ask-atlas run production:configure -- --check
 npm --prefix apps/ask-atlas run production:configure -- --apply-github
+npm --prefix apps/ask-atlas run production:configure -- --apply-vercel
 ```
 
 The helper refuses partial writes: every required GitHub production variable
 and secret must be present before it calls `gh variable set` or `gh secret set`.
-For Vercel, use `npm --prefix apps/ask-atlas run production:configure --
---print-vercel` to print the required `vercel env add` commands while keeping
-values out of logs.
+The Vercel writer uses `.vercel/project.json` built from `VERCEL_ORG_ID` and
+`VERCEL_PROJECT_ID`, then calls `vercel env add --force` for every required
+production runtime value. Sensitive values are marked as Vercel sensitive
+environment variables and are supplied through stdin, so provider keys, OAuth
+secrets, database URLs, Redis tokens, and session secrets do not appear in
+command arguments or logs. If you prefer manual setup, use
+`npm --prefix apps/ask-atlas run production:configure -- --print-vercel` to
+print the required `vercel env add` command templates while keeping values out
+of logs.
 
 To produce a safe gap report from platform inventories without printing secret
 values:
