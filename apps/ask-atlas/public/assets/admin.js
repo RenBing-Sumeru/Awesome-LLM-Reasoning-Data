@@ -4,6 +4,7 @@ const els = {
   adminError: document.getElementById("adminError"),
   metrics: document.getElementById("metrics"),
   opsRunway: document.getElementById("opsRunway"),
+  launchWizard: document.getElementById("launchWizard"),
   readiness: document.getElementById("readiness"),
   readinessStamp: document.getElementById("readinessStamp"),
   publicAskLink: document.getElementById("publicAskLink"),
@@ -29,6 +30,39 @@ const state = {
   requestFilter: "all",
   requestSearch: "",
 };
+
+const LAUNCH_PHASES = [
+  {
+    title: "Backend Origin",
+    summary: "Deploy a stable HTTPS backend and keep Pages pointed at the same origin.",
+    checks: ["base-url", "pages-base-url", "cors-pages", "pages-config-backend", "pages-backend-match"],
+    command: "npm --prefix apps/ask-atlas run launch:plan -- --backend-url https://your-backend.example",
+  },
+  {
+    title: "OAuth & Secrets",
+    summary: "Keep GitHub OAuth, provider key, session, token encryption, and admin IDs backend-only.",
+    checks: ["github-oauth", "provider-secret", "session-secret", "token-secret", "admin-ids", "pages-config-no-secrets"],
+    command: "npm --prefix apps/ask-atlas run production:status -- --jsonl",
+  },
+  {
+    title: "Storage & Rate Limits",
+    summary: "Use Postgres plus Redis counters before any public user can spend tokens.",
+    checks: ["postgres-store", "postgres-reporting-schema", "redis-rate-limit", "local-rate-limit-disabled", "json-store-fallback"],
+    command: "npm --prefix apps/ask-atlas run db:check",
+  },
+  {
+    title: "Models, RAG & Cost",
+    summary: "Verify model routes, prices, corpus grounding, and hard token/cost caps.",
+    checks: ["required-models", "model-rates", "model-rate-required", "primer-seed", "primer-full-text", "cost-caps"],
+    command: "npm --prefix apps/ask-atlas run rag:check",
+  },
+  {
+    title: "Public Surface",
+    summary: "Promote only when README, live Pages config, backend smoke, and launch copy agree.",
+    checks: ["pages-ask-route", "pages-fallback", "pages-assets", "pages-config", "pages-config-frontend", "readme-entry"],
+    command: "npm --prefix apps/ask-atlas run production:live -- --ci",
+  },
+];
 
 function esc(value) {
   return String(value ?? "")
@@ -174,6 +208,94 @@ function renderOpsRunway({ overview, readiness, gaps }) {
         <p>${esc(summary.lowConfidence || 0)} low confidence · ${esc(summary.downvoted || 0)} downvoted · ${esc(summary.outOfScope || 0)} scope reviews.</p>
         <small>${esc((gaps?.suggestedActions || [])[0] || "No gap action yet.")}</small>
       </article>
+    </div>
+  `;
+}
+
+function checkMap(readiness = {}) {
+  const map = new Map();
+  for (const item of readiness.checks || []) {
+    map.set(item.id, item);
+  }
+  return map;
+}
+
+function phaseStatus(phase, checks) {
+  const items = phase.checks.map((id) => checks.get(id)).filter(Boolean);
+  if (items.some((item) => item.status === "block")) return "blocked";
+  if (items.some((item) => item.status === "warn")) return "warn";
+  if (!items.length) return "warn";
+  return "ready";
+}
+
+function phaseCounts(phase, checks) {
+  const counts = { pass: 0, warn: 0, block: 0, missing: 0 };
+  for (const id of phase.checks) {
+    const item = checks.get(id);
+    if (!item) {
+      counts.missing += 1;
+    } else {
+      counts[item.status] = (counts[item.status] || 0) + 1;
+    }
+  }
+  return counts;
+}
+
+function phaseAction(phase, checks) {
+  for (const id of phase.checks) {
+    const item = checks.get(id);
+    if (item?.status !== "pass" && item?.action) return item.action;
+  }
+  return "No blockers in this stage.";
+}
+
+function renderLaunchWizard(readiness = {}) {
+  const checks = checkMap(readiness);
+  const phaseModels = LAUNCH_PHASES.map((phase, index) => ({
+    ...phase,
+    index: index + 1,
+    status: phaseStatus(phase, checks),
+    counts: phaseCounts(phase, checks),
+    action: phaseAction(phase, checks),
+  }));
+  const active = phaseModels.find((phase) => phase.status !== "ready") || phaseModels[phaseModels.length - 1];
+  const progress = phaseModels.length
+    ? Math.round((phaseModels.filter((phase) => phase.status === "ready").length / phaseModels.length) * 100)
+    : 0;
+  const statusLabel = active?.status === "blocked" ? "needs setup" : active?.status === "warn" ? "watch warnings" : "ready";
+  els.launchWizard.innerHTML = `
+    <div class="wizard-head">
+      <div>
+        <p class="eyebrow">Launch wizard</p>
+        <h2>Next stage: ${esc(active?.title || "Launch")}</h2>
+        <p>${esc(active?.action || "No launch action recorded yet.")}</p>
+      </div>
+      <div class="wizard-score ${esc(active?.status || "ready")}">
+        <span>${esc(statusLabel)}</span>
+        <strong>${esc(progress)}%</strong>
+        <small>${esc(readiness.counts?.block || 0)} blockers · ${esc(readiness.counts?.warn || 0)} warnings</small>
+      </div>
+    </div>
+    <div class="wizard-steps">
+      ${phaseModels.map((phase) => `
+        <article class="wizard-step ${esc(phase.status)}">
+          <div class="wizard-step-index">${esc(String(phase.index).padStart(2, "0"))}</div>
+          <div class="wizard-step-body">
+            <div class="wizard-step-title">
+              <strong>${esc(phase.title)}</strong>
+              <span>${esc(phase.status)}</span>
+            </div>
+            <p>${esc(phase.summary)}</p>
+            <small>${esc(phase.action)}</small>
+            <code>${esc(phase.command)}</code>
+          </div>
+          <div class="wizard-step-counts" aria-label="Check counts">
+            <b>${esc(phase.counts.pass || 0)}</b><span>pass</span>
+            <b>${esc(phase.counts.warn || 0)}</b><span>warn</span>
+            <b>${esc(phase.counts.block || 0)}</b><span>block</span>
+          </div>
+        </article>
+      `).join("")}
     </div>
   `;
 }
@@ -541,6 +663,7 @@ async function refresh() {
     renderCosts(costs.costs || []);
     renderGaps(gaps);
     renderOpsRunway({ overview, readiness, gaps });
+    renderLaunchWizard(readiness);
   } catch (error) {
     els.adminError.hidden = false;
     els.adminError.textContent = error.message;

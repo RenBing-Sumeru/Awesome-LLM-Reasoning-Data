@@ -26,6 +26,7 @@ const els = {
   acceptNotice: document.getElementById("acceptNotice"),
   consentStatus: document.getElementById("consentStatus"),
   launchMatrix: document.getElementById("launchMatrix"),
+  adminSetupBanner: document.getElementById("adminSetupBanner"),
   suggestions: document.getElementById("suggestions"),
   contextPill: document.getElementById("contextPill"),
   messages: document.getElementById("messages"),
@@ -243,6 +244,9 @@ function answerActions(meta = {}) {
 function evidenceMeta(mode = "") {
   const normalized = text(mode).toLowerCase();
   if (!normalized) return null;
+  if (normalized.includes("launch preview")) {
+    return { label: "Demo preview · no model call", className: "evidence-pill evidence-preview" };
+  }
   if (normalized.includes("companion paper + atlas")) {
     return { label: "Evidence · Companion + Atlas", className: "evidence-pill evidence-paper" };
   }
@@ -259,6 +263,55 @@ function evidenceMeta(mode = "") {
     return { label: "Evidence · No repository support", className: "evidence-pill evidence-none" };
   }
   return { label: `Evidence · ${mode}`, className: "evidence-pill" };
+}
+
+function adminSetupIntent() {
+  const value = new URLSearchParams(location.search).get("admin") || "";
+  return ["login-required", "setup", "launch"].includes(value);
+}
+
+function renderAdminSetupBanner() {
+  if (!els.adminSetupBanner) return;
+  if (!adminSetupIntent()) {
+    els.adminSetupBanner.hidden = true;
+    els.adminSetupBanner.innerHTML = "";
+    return;
+  }
+  const backendState = BACKEND_CONFIGURED
+    ? {
+        title: "Admin dashboard requires GitHub sign-in",
+        body: "The secure backend is configured. Sign in with an allowlisted GitHub account to view quota, cost, user, question, and launch-readiness data.",
+        action: "Sign in with GitHub",
+        command: "npm --prefix apps/ask-atlas run production:live -- --ci",
+      }
+    : {
+        title: "Admin dashboard is waiting for secure backend activation",
+        body: "This public Pages preview cannot show private operational data. Deploy the backend, configure GitHub OAuth, Postgres, Redis, provider secrets, and then publish a clean backend URL.",
+        action: "Open deployment guide",
+        command: "npm --prefix apps/ask-atlas run production:status -- --jsonl",
+      };
+  els.adminSetupBanner.hidden = false;
+  els.adminSetupBanner.innerHTML = `
+    <div>
+      <p class="eyebrow">Maintainer setup</p>
+      <h2>${esc(backendState.title)}</h2>
+      <p>${esc(backendState.body)}</p>
+      <code>${esc(backendState.command)}</code>
+    </div>
+    <div class="admin-setup-actions">
+      <button id="adminSetupPrimary" type="button">${esc(backendState.action)}</button>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/apps/ask-atlas/PRODUCTION.md" target="_blank" rel="noreferrer">Production guide</a>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/actions/workflows/deploy-ask-atlas-vercel.yml" target="_blank" rel="noreferrer">Deploy workflow</a>
+    </div>
+  `;
+  const button = document.getElementById("adminSetupPrimary");
+  button?.addEventListener("click", () => {
+    if (BACKEND_CONFIGURED) {
+      location.href = backendPath(`/api/auth/github/login?return_to=${encodeURIComponent("/admin")}`);
+      return;
+    }
+    location.href = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/apps/ask-atlas/PRODUCTION.md";
+  });
 }
 
 function usageMeta(meta = {}) {
@@ -363,7 +416,7 @@ function renderLaunchPending() {
   els.userBadge.textContent = "Launch pending";
   els.quotaNumber.textContent = "soon";
   els.loginButton.hidden = false;
-  els.loginButton.textContent = "Launch guide";
+  els.loginButton.textContent = "Deployment guide";
   els.logoutButton.hidden = true;
   els.adminLink.hidden = true;
   els.refreshRewards.disabled = true;
@@ -582,7 +635,7 @@ async function submitQuestion() {
     addMessage("user", question);
     addMessage("assistant", launchPreviewAnswer(question), {
       sources,
-      evidenceMode: "limited atlas + model",
+      evidenceMode: "launch preview",
     });
     state.lastSources = sources;
     renderSources(sources);
@@ -763,6 +816,7 @@ els.question.addEventListener("input", updateCount);
 els.privacyOptOut.addEventListener("change", savePrivacyPreference);
 
 setContextFromUrl();
+renderAdminSetupBanner();
 if (BACKEND_CONFIGURED) {
   loadMe().catch(() => renderQuota());
 } else {

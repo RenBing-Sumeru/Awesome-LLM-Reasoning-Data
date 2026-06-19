@@ -141,9 +141,21 @@ test("admin dashboard keeps the operations runway above detailed tables", () => 
   const adminCss = fs.readFileSync(`${appRoot}/public/assets/ask.css`, "utf8");
 
   assert.match(adminHtml, /id="opsRunway"/);
+  assert.match(adminHtml, /id="launchWizard"/);
   assert.ok(adminHtml.indexOf('id="opsRunway"') < adminHtml.indexOf("Launch Readiness"));
+  assert.ok(adminHtml.indexOf('id="launchWizard"') < adminHtml.indexOf("Launch Readiness"));
   assert.match(adminJs, /function renderOpsRunway/);
+  assert.match(adminJs, /function renderLaunchWizard/);
+  assert.match(adminJs, /const LAUNCH_PHASES = \[/);
+  assert.match(adminJs, /Backend Origin/);
+  assert.match(adminJs, /OAuth & Secrets/);
+  assert.match(adminJs, /Storage & Rate Limits/);
+  assert.match(adminJs, /Models, RAG & Cost/);
+  assert.match(adminJs, /Public Surface/);
   assert.match(adminJs, /renderOpsRunway\(\{ overview, readiness, gaps \}\)/);
+  assert.match(adminJs, /renderLaunchWizard\(readiness\)/);
   assert.match(adminCss, /\.ops-runway/);
   assert.match(adminCss, /\.ops-rail/);
+  assert.match(adminCss, /\.launch-wizard/);
+  assert.match(adminCss, /\.wizard-step/);
 });
