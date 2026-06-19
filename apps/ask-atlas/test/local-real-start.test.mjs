@@ -34,8 +34,28 @@ test("local real-provider launcher check mode prints only safe localhost status"
   assert.equal(result.status, 0);
   assert.match(result.stdout, /local real-provider mode is ready/);
   assert.match(result.stdout, /http:\/\/localhost:8787\/ask/);
+  assert.match(result.stdout, /Loopback bind: 127\.0\.0\.1/);
   assert.match(result.stdout, /Public launch: not modified/);
   assert.doesNotMatch(result.stdout + result.stderr, /test-provider-key-only|should-not-be-used/);
+});
+
+test("local real-provider launcher refuses Vercel environments", () => {
+  const result = runLocalReal(["--check"], {
+    QIHOO_API_KEY: "test-provider-key-only",
+    VERCEL: "1",
+  });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Refusing to run local real-provider mode inside a Vercel environment/);
+  assert.doesNotMatch(result.stdout + result.stderr, /test-provider-key-only/);
+});
+
+test("local real-provider launcher forces loopback host before starting the server", () => {
+  const script = fs.readFileSync(`${appRoot}/scripts/start-local-real.mjs`, "utf8");
+  const serverSource = fs.readFileSync(`${appRoot}/src/server.mjs`, "utf8");
+
+  assert.match(script, /ASK_ATLAS_HOST:\s*"127\.0\.0\.1"/);
+  assert.match(serverSource, /server\.listen\(CONFIG\.port,\s*CONFIG\.host,\s*onListen\)/);
+  assert.match(serverSource, /Bound host/);
 });
 
 test("package script exposes private local real-provider smoke without embedding secrets", () => {

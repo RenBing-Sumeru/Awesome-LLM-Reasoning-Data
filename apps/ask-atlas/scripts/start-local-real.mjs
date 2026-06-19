@@ -40,6 +40,7 @@ function buildLocalEnv() {
   return {
     ...process.env,
     ASK_ATLAS_PORT: port,
+    ASK_ATLAS_HOST: "127.0.0.1",
     ASK_ATLAS_ENV: "dev",
     ASK_ATLAS_BASE_URL: `http://localhost:${port}`,
     ASK_ATLAS_DEV_AUTH: "1",
@@ -73,6 +74,7 @@ function main(argv = process.argv.slice(2)) {
 
   console.log("Ask the Atlas local real-provider mode is ready.");
   console.log(`Local URL: ${localUrl}/ask`);
+  console.log("Loopback bind: 127.0.0.1");
   console.log("Provider: real 360 API through backend-only QIHOO_API_KEY.");
   console.log("Storage: local JSON. Rate limit: local single-process fallback.");
   console.log("Public launch: not modified.");

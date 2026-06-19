@@ -71,6 +71,7 @@ export const CONFIG = Object.freeze({
   appEnv: env("ASK_ATLAS_ENV", "dev").replace(/[^a-zA-Z0-9_-]/g, "-"),
   deploymentCommit: env("ASK_ATLAS_DEPLOYMENT_COMMIT", env("VERCEL_GIT_COMMIT_SHA", env("GITHUB_SHA"))).replace(/[^a-fA-F0-9]/g, ""),
   port: intEnv("ASK_ATLAS_PORT", 8787),
+  host: env("ASK_ATLAS_HOST"),
   baseUrl: env("ASK_ATLAS_BASE_URL", "http://localhost:8787").replace(/\/$/, ""),
   pagesBaseUrl: env("ASK_ATLAS_PAGES_BASE_URL", "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data").replace(/\/$/, ""),
   allowedOrigins: listEnv("ASK_ATLAS_ALLOWED_ORIGINS"),

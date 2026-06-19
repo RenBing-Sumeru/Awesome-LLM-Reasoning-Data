@@ -638,11 +638,18 @@ async function route(req, res) {
 
 if (fileURLToPath(import.meta.url) === path.resolve(process.argv[1] || "")) {
   validateRuntimeConfig();
-  http.createServer(route).listen(CONFIG.port, () => {
+  const server = http.createServer(route);
+  const onListen = () => {
     console.log(`Ask the Atlas listening on ${CONFIG.baseUrl}`);
+    if (CONFIG.host) console.log(`Bound host: ${CONFIG.host}`);
     if (CONFIG.mockProvider) console.log("Mock provider enabled.");
     if (CONFIG.devAuth) console.log("Development GitHub auth enabled.");
-  });
+  };
+  if (CONFIG.host) {
+    server.listen(CONFIG.port, CONFIG.host, onListen);
+  } else {
+    server.listen(CONFIG.port, onListen);
+  }
 }
 
 export { route };

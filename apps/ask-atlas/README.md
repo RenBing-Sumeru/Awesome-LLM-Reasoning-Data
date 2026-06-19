@@ -51,24 +51,31 @@ http://localhost:8787/ask
 http://localhost:8787/admin
 ```
 
-For a private localhost-only smoke test with the real 360 provider, export the
-provider key in your shell and run:
+For a private localhost-only smoke test with the real 360 provider, load the
+provider key from a local secret manager or a non-history prompt, then run:
 
 ```bash
-export QIHOO_API_KEY=<backend-only key>
+read -rsp "QIHOO_API_KEY: " QIHOO_API_KEY
+export QIHOO_API_KEY
 npm run dev:real
 ```
 
 This mode forces `ASK_ATLAS_DEV_AUTH=1`, `ASK_ATLAS_MOCK_PROVIDER=0`,
-localhost `ASK_ATLAS_BASE_URL`, local JSON storage, and local single-process
-rate limiting. It is useful for quickly checking the real Ask experience on
-your own machine, but it is not a public launch mode and does not modify the
-GitHub Pages backend URL.
+localhost `ASK_ATLAS_BASE_URL`, loopback `ASK_ATLAS_HOST=127.0.0.1`, local JSON
+storage, and local single-process rate limiting. It is useful for quickly
+checking the real Ask experience on your own machine, but it is not a public
+launch mode and does not modify the GitHub Pages backend URL.
+
+Do not paste the real provider key into ordinary shell history or a committed
+`.env` file. On macOS, a safer pattern is to store it in Keychain and load it
+when needed.
 
 To verify the local real-provider launcher without starting the server:
 
 ```bash
-QIHOO_API_KEY=<backend-only key> npm run dev:real -- --check
+read -rsp "QIHOO_API_KEY: " QIHOO_API_KEY
+export QIHOO_API_KEY
+npm run dev:real -- --check
 ```
 
 For real GitHub OAuth and model calls, set:
