@@ -199,6 +199,7 @@ To print copyable production setup command templates without exposing values:
 ```bash
 npm run secret:generate
 npm run launch:plan -- --backend-url https://your-backend.example
+npm run launch:packet -- --backend-url https://your-backend.example
 npm run production:configure -- --check
 npm run production:status
 npm run pages:live
@@ -210,6 +211,11 @@ npm run env:vercel
 `ASK_ATLAS_SESSION_SECRET` and `ASK_ATLAS_TOKEN_ENCRYPTION_SECRET`. Store those
 values only in backend deployment secrets and GitHub Environment secrets; do
 not commit or paste them into public logs.
+
+`npm run launch:packet -- --backend-url https://your-backend.example` writes a
+safe Markdown launch packet to `reports/ask_atlas_launch_packet.md`. It includes
+the OAuth callback URL, public variables, secret names, Vercel runtime names,
+and validation commands, but it never prints secret values.
 
 `npm run production:status` prints a safe production readiness report with blockers,
 warnings, and missing environment names. It intentionally omits concrete URLs,

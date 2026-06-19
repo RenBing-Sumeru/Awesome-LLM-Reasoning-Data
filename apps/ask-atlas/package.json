@@ -19,6 +19,7 @@
     "production:configure": "node scripts/configure-production.mjs",
     "secret:generate": "node scripts/generate-secrets.mjs",
     "launch:plan": "node scripts/launch-plan.mjs",
+    "launch:packet": "node scripts/launch-plan.mjs --write-markdown ../../reports/ask_atlas_launch_packet.md",
     "launch:check": "node scripts/launch-check.mjs",
     "pages:live": "node scripts/live-pages-check.mjs",
     "production:live": "node scripts/live-pages-check.mjs --require-backend --smoke",
