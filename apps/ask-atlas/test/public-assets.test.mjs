@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -32,4 +33,20 @@ test("generated Ask frontend JavaScript stays synchronized with source asset", (
     encoding: "utf8",
   });
   assert.equal(source.status, 0, "docs/assets/ask.js must match apps/ask-atlas/public/assets/ask.js");
+});
+
+test("launch-pending preview keeps the public Ask page useful before backend activation", () => {
+  const askHtml = fs.readFileSync(`${repoRoot}/apps/ask-atlas/public/ask.html`, "utf8");
+  const askJs = fs.readFileSync(`${repoRoot}/apps/ask-atlas/public/assets/ask.js`, "utf8");
+
+  assert.match(askHtml, /id="launchMatrix"/);
+  assert.match(askHtml, /id="askForm"/);
+  assert.match(askHtml, /id="privacyOptOut"/);
+
+  assert.match(askJs, /els\.askButton\.textContent = "Preview answer"/);
+  assert.match(askJs, /Companion paper evidence/);
+  assert.match(askJs, /Repository atlas evidence/);
+  assert.match(askJs, /Model background knowledge/);
+  assert.match(askJs, /不会调用模型、不会消耗 token，也不会记录你的问题/);
+  assert.match(askJs, /this preview does not call a model, spend tokens, or log your question/i);
 });
