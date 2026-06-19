@@ -253,6 +253,64 @@ function summarizeFindings(findings) {
   };
 }
 
+function inventoryByTitle(inventories, title) {
+  return inventories.find((item) => item.title === title);
+}
+
+function buildSetupActions(inventories) {
+  const actions = [];
+  const githubVariables = inventoryByTitle(inventories, "GitHub production variables");
+  const githubSecrets = inventoryByTitle(inventories, "GitHub production secrets");
+  const vercelRuntime = inventoryByTitle(inventories, "Vercel production runtime");
+
+  if (githubVariables?.error || githubSecrets?.error) {
+    actions.push({
+      id: "github-inventory-access",
+      title: "Fix GitHub production environment inventory access",
+      detail: "Authenticate GitHub CLI as a repo admin and verify the production environment exists before trusting missing-name reports.",
+    });
+  }
+  if (githubVariables?.missing?.length) {
+    actions.push({
+      id: "github-missing-variables",
+      title: "Set missing GitHub production variables",
+      names: githubVariables.missing,
+      detail: "Use gh variable set or the production configure helper. These are non-secret names; values still stay out of the doctor output.",
+    });
+  }
+  if (githubSecrets?.missing?.length) {
+    actions.push({
+      id: "github-missing-secrets",
+      title: "Set missing GitHub production secrets",
+      names: githubSecrets.missing,
+      detail: "Use gh secret set from environment variables or the production configure helper. Do not paste secret values into logs.",
+    });
+  }
+  if (vercelRuntime && !vercelRuntime.provided) {
+    actions.push({
+      id: "vercel-inventory-needed",
+      title: "Inspect or configure the Vercel production runtime",
+      names: vercelRuntime.missing,
+      detail: "Run vercel env ls production and pass the inventory file to the doctor, or apply the runtime values with production:configure.",
+    });
+  } else if (vercelRuntime?.missing?.length) {
+    actions.push({
+      id: "vercel-missing-runtime",
+      title: "Set missing Vercel production runtime names",
+      names: vercelRuntime.missing,
+      detail: "The backend function needs the same OAuth, provider, database, Redis, quota, and cost-cap names that GitHub Actions uses.",
+    });
+  }
+  if (!actions.length) {
+    actions.push({
+      id: "ready-to-deploy",
+      title: "Run the production deploy workflow",
+      detail: "Platform inventories contain the required names. Deploy the backend, run the smoke gate, then publish the Pages backend config.",
+    });
+  }
+  return actions;
+}
+
 export function buildReport({
   githubRepo = "",
   githubVarsFile = "",
@@ -276,6 +334,7 @@ export function buildReport({
     inventory("GitHub production secrets", GITHUB_PRODUCTION_SECRETS, githubSecrets.text, [], githubSecrets.error),
     inventory("Vercel production runtime", VERCEL_RUNTIME_REQUIRED, readOptionalFile(vercelEnvFile), VERCEL_RUNTIME_RECOMMENDED),
   ];
+  const setupActions = buildSetupActions(inventories);
   return {
     generatedAt: new Date().toISOString(),
     profile,
@@ -287,6 +346,7 @@ export function buildReport({
     },
     findings,
     inventories,
+    setupActions,
     nextSteps: [
       "Deploy or confirm a stable HTTPS backend origin.",
       "Create the GitHub OAuth app and configure the backend callback URL.",
@@ -326,6 +386,14 @@ function printText(report) {
   }
   console.log("");
 
+  console.log("Setup actions from inventories:");
+  for (const item of report.setupActions) {
+    console.log(`- ${item.title}`);
+    if (item.names?.length) console.log(`  Names: ${item.names.join(", ")}`);
+    console.log(`  Detail: ${item.detail}`);
+  }
+  console.log("");
+
   console.log("Next steps:");
   report.nextSteps.forEach((step, index) => console.log(`${index + 1}. ${step}`));
 }
@@ -334,6 +402,7 @@ function printJsonl(report) {
   console.log(JSON.stringify({ type: "summary", status: report.status, profile: report.profile, counts: report.counts }));
   for (const item of report.findings) console.log(JSON.stringify({ type: "finding", ...item }));
   for (const item of report.inventories) console.log(JSON.stringify({ type: "inventory", ...item }));
+  for (const item of report.setupActions) console.log(JSON.stringify({ type: "setup-action", ...item }));
 }
 
 function main() {

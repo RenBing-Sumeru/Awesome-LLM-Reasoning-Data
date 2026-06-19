@@ -27,6 +27,7 @@ test("production doctor prints safe launch blockers without secret values", () =
   assert.match(result.stdout, /Ask the Atlas production doctor/);
   assert.match(result.stdout, /Runtime launch findings:/);
   assert.match(result.stdout, /Platform inventories:/);
+  assert.match(result.stdout, /Setup actions from inventories:/);
   assert.match(result.stdout, /QIHOO_API_KEY/);
   assert.doesNotMatch(result.stdout, /Bearer\s+/);
   assert.doesNotMatch(result.stdout, /fk[0-9A-Za-z_.-]{12,}/);
@@ -66,6 +67,9 @@ test("production doctor consumes inventory files by name only", () => {
   assert.doesNotMatch(result.stdout, /ask-secret-host|client-id-sentinel/);
   const report = JSON.parse(result.stdout);
   assert.equal(report.inventories.length, 3);
+  assert.ok(report.setupActions.some((item) => item.id === "github-missing-variables"));
+  assert.ok(report.setupActions.some((item) => item.id === "github-missing-secrets"));
+  assert.ok(report.setupActions.some((item) => item.id === "vercel-missing-runtime"));
   assert.ok(report.findings.every((item) => item.name && item.next && !item.detail));
   assert.ok(report.inventories[0].missing.includes("ASK_ATLAS_MODEL_RATES_JSON"));
   assert.equal(report.inventories[0].missing.includes("ASK_ATLAS_PRIMER_TEXT_PATH"), false);
@@ -107,6 +111,8 @@ exit 1
   const report = JSON.parse(result.stdout);
   assert.equal(report.inventories[0].provided, true);
   assert.equal(report.inventories[1].provided, true);
+  assert.ok(report.setupActions.some((item) => item.id === "github-missing-variables"));
+  assert.ok(report.setupActions.some((item) => item.id === "github-missing-secrets"));
   assert.equal(report.inventories[0].missing.includes("ASK_ATLAS_BASE_URL"), false);
   assert.equal(report.inventories[0].missing.includes("GITHUB_CLIENT_ID"), false);
   assert.equal(report.inventories[1].missing.includes("QIHOO_API_KEY"), false);
@@ -142,7 +148,33 @@ test("production doctor json output omits runtime values", () => {
   assert.equal(report.publicAskUrl, undefined);
   assert.equal(report.blockers, undefined);
   assert.equal(report.warnings, undefined);
+  assert.ok(Array.isArray(report.setupActions));
+  assert.ok(report.setupActions.every((item) => item.title && item.detail));
   assert.ok(report.findings.some((item) => item.name === "QIHOO_API_KEY"));
+});
+
+test("production doctor emits setup actions in jsonl without runtime values", () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ask-atlas-jsonl-doctor-"));
+  const varsFile = path.join(tmp, "vars.txt");
+  const secretsFile = path.join(tmp, "secrets.txt");
+  const vercelFile = path.join(tmp, "vercel.txt");
+  fs.writeFileSync(varsFile, [
+    "ASK_ATLAS_BASE_URL\thttps://private-backend.example",
+    "GITHUB_CLIENT_ID\tprivate-client-id",
+  ].join("\n"));
+  fs.writeFileSync(secretsFile, "QIHOO_API_KEY\t2026-06-18T00:00:00Z\n");
+  fs.writeFileSync(vercelFile, "ASK_ATLAS_BASE_URL production\n");
+
+  const result = run([
+    "--jsonl",
+    "--github-vars-file", varsFile,
+    "--github-secrets-file", secretsFile,
+    "--vercel-env-file", vercelFile,
+  ]);
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /"type":"setup-action"/);
+  assert.doesNotMatch(result.stdout, /private-backend|private-client-id/);
+  assert.doesNotMatch(result.stdout, /fk[0-9A-Za-z_.-]{12,}/);
 });
 
 test("production doctor strict mode fails when launch blockers remain", () => {
