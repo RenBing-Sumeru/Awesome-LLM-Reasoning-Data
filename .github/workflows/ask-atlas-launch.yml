@@ -156,3 +156,10 @@ jobs:
           ASK_ATLAS_MAX_PRIMER_TEXT_BYTES: ${{ vars.ASK_ATLAS_MAX_PRIMER_TEXT_BYTES }}
           ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS: ${{ vars.ASK_ATLAS_GITHUB_TOKEN_RETENTION_DAYS }}
         run: npm --prefix apps/ask-atlas run launch:check -- --smoke --allow-warnings --redacted
+      - name: Verify public launch surface is synchronized
+        env:
+          ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
+          ASK_ATLAS_PAGES_BASE_URL: ${{ vars.ASK_ATLAS_PAGES_BASE_URL }}
+        run: |
+          python3 scripts/render_readme.py --check
+          npm --prefix apps/ask-atlas run production:live -- --ci

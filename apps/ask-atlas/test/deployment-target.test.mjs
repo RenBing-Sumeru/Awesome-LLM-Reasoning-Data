@@ -88,6 +88,9 @@ test("launch gate workflow is read-only and serialized with production deploymen
   const workflow = fs.readFileSync(`${repoRoot}/.github/workflows/ask-atlas-launch.yml`, "utf8");
   assert.match(workflow, /\npermissions:\n  contents: read\n/);
   assert.match(workflow, /\nconcurrency:\n  group: ask-atlas-production\n  cancel-in-progress: false\n/);
+  assert.match(workflow, /Verify public launch surface is synchronized/);
+  assert.match(workflow, /scripts\/render_readme\.py --check/);
+  assert.match(workflow, /run production:live -- --ci/);
   assert.doesNotMatch(workflow, /contents: write/);
 });
 
