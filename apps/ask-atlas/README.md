@@ -173,7 +173,8 @@ To print copyable production setup command templates without exposing values:
 npm run secret:generate
 npm run launch:plan -- --backend-url https://your-backend.example
 npm run production:configure -- --check
-npm run doctor:prod
+npm run production:status
+npm run pages:live
 npm run env:github
 npm run env:vercel
 ```
@@ -183,15 +184,22 @@ npm run env:vercel
 values only in backend deployment secrets and GitHub Environment secrets; do
 not commit or paste them into public logs.
 
-`npm run doctor:prod` prints a safe production readiness report with blockers,
+`npm run production:status` prints a safe production readiness report with blockers,
 warnings, and missing environment names. It intentionally omits concrete URLs,
-secret values, provider keys, and numeric cost-cap values. Use
-`npm run doctor:prod -- --github-repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data`
-to let the GitHub CLI read production variable and secret names directly, or
-pass inventory files when checking Vercel runtime names. Add `--strict` to fail
-on any remaining launch blocker. If a direct GitHub inventory read is requested
-but the CLI is not authenticated or cannot access the production environment,
+secret values, provider keys, and numeric cost-cap values. It asks the GitHub
+CLI for production variable and secret names directly, then discards values.
+Use `npm run production:doctor` for the raw doctor command, or pass inventory
+files when checking Vercel runtime names. Add `-- --strict` to fail on any
+remaining launch blocker. If a direct GitHub inventory read is requested but
+the CLI is not authenticated or cannot access the production environment,
 strict mode fails closed without printing CLI stderr or secret-like values.
+
+`npm run pages:live` checks the currently published GitHub Pages `/ask/` page
+and browser-visible `assets/ask-config.js` without requiring a production
+backend. It is useful while the public UI is still launch-pending. After the
+backend URL is configured, use `npm run production:live` to require a non-empty
+backend URL, verify that the live Pages config matches the expected backend,
+and smoke-test `/api/health?db=1` for Postgres schema readiness.
 
 `npm run production:configure -- --apply-github` can write GitHub production
 variables and secrets after every required value has been exported in the
@@ -217,7 +225,8 @@ Before launch, run:
 
 ```bash
 npm run db:check
-npm run doctor:prod -- --strict
+npm run production:status -- --strict
+npm run production:live
 npm run launch:check
 npm run config:check
 npm test

@@ -259,7 +259,8 @@ To print copyable setup command templates without exposing values:
 npm --prefix apps/ask-atlas run secret:generate
 npm --prefix apps/ask-atlas run launch:plan -- --backend-url https://your-backend.example
 npm --prefix apps/ask-atlas run production:configure -- --check
-npm --prefix apps/ask-atlas run doctor:prod
+npm --prefix apps/ask-atlas run production:status
+npm --prefix apps/ask-atlas run pages:live
 npm --prefix apps/ask-atlas run env:github
 npm --prefix apps/ask-atlas run env:vercel
 ```
@@ -297,12 +298,13 @@ To produce a safe gap report from platform inventories without printing secret
 values:
 
 ```bash
-npm --prefix apps/ask-atlas run doctor:prod -- \
-  --github-repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data
+npm --prefix apps/ask-atlas run production:status
 ```
 
 The command above asks the GitHub CLI for production environment variable and
-secret names, then discards the values. If `--strict` is set and the GitHub CLI
+secret names, then discards the values. It is a thin shortcut around
+`doctor:prod -- --github-repo RenBing-Sumeru/Awesome-LLM-Reasoning-Data`.
+If `--strict` is set and the GitHub CLI
 cannot read those names, the doctor fails closed without printing CLI stderr or
 secret-like values. To include Vercel runtime names in the same report, pass
 inventory files:
@@ -322,6 +324,26 @@ The doctor extracts environment names only. It reports blockers, warnings, and
 missing variable names, but it never echoes secret values, provider keys,
 concrete URLs, or numeric cost-cap values. Use `launch:check` when a maintainer
 needs a more verbose local diagnostic.
+
+To verify the browser-visible site that GitHub Pages is actually serving:
+
+```bash
+npm --prefix apps/ask-atlas run pages:live
+```
+
+`pages:live` accepts a launch-pending empty backend URL but still verifies that
+the live `/ask/` page returns 200, the live `assets/ask-config.js` is
+structurally safe, and no secret-like material appears in the browser-visible
+config. Once the production backend is deployed and `docs/assets/ask-config.js`
+has been published with that backend origin, promote the check to the final
+public launch gate:
+
+```bash
+npm --prefix apps/ask-atlas run production:live -- --backend-url "$ASK_ATLAS_BASE_URL"
+```
+
+That command requires the live Pages backend URL to be non-empty, match the
+expected backend, and pass `/api/health?db=1` with Postgres schema metadata.
 
 ### Launch flow
 
@@ -379,7 +401,8 @@ window.ASK_ATLAS_BACKEND_URL = "https://your-secure-backend.example";
 
 ```bash
 npm --prefix apps/ask-atlas run launch:check
-npm --prefix apps/ask-atlas run doctor:prod -- --strict
+npm --prefix apps/ask-atlas run production:status -- --strict
+npm --prefix apps/ask-atlas run production:live
 npm --prefix apps/ask-atlas run config:check
 npm --prefix apps/ask-atlas run db:check
 npm --prefix apps/ask-atlas test
