@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node src/server.mjs",
     "dev": "ASK_ATLAS_DEV_AUTH=1 ASK_ATLAS_MOCK_PROVIDER=1 node src/server.mjs",
+    "dev:real": "node scripts/start-local-real.mjs",
     "config:check": "node -e \"import('./src/config.mjs').then(({validateRuntimeConfig}) => { validateRuntimeConfig(); console.log('Ask the Atlas production config looks safe.'); })\"",
     "rag:build": "node scripts/build-rag-corpus.mjs",
     "rag:check": "node scripts/build-rag-corpus.mjs --check",
