@@ -119,6 +119,7 @@ export const CONFIG = Object.freeze({
   githubForkScanPages: intEnv("ASK_ATLAS_GITHUB_FORK_SCAN_PAGES", 10),
   modelRates: parseRates(),
   requireModelRates: env("ASK_ATLAS_REQUIRE_MODEL_RATES", "1") === "1",
+  ragCorpusPath: pathEnv("ASK_ATLAS_RAG_CORPUS_PATH", path.join(APP_ROOT, "private", "rag-corpus.json")),
   primerTextPath: pathEnv("ASK_ATLAS_PRIMER_TEXT_PATH"),
   safeRagRoot: pathEnv("ASK_ATLAS_SAFE_RAG_ROOT", path.join(APP_ROOT, "private", "primer")),
   maxPrimerTextBytes: intEnv("ASK_ATLAS_MAX_PRIMER_TEXT_BYTES", MAX_PRIMER_TEXT_BYTES_DEFAULT),

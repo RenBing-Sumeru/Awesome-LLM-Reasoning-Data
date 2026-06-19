@@ -3,6 +3,7 @@
   "version": 2,
   "functions": {
     "api/index.mjs": {
+      "includeFiles": "private/rag-corpus.json",
       "maxDuration": 30
     }
   },

@@ -34,6 +34,8 @@ jobs:
           python scripts/set_ask_backend_url.py --check
       - name: Check Ask entrypoints
         run: python scripts/check_ask_entrypoints.py
+      - name: Check Ask production RAG corpus
+        run: npm --prefix apps/ask-atlas run rag:check
       - name: Check paper pages
         run: python scripts/render_papers.py --check
       - name: Check README generated sections

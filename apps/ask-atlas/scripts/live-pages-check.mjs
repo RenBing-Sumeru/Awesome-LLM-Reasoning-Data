@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { pathToFileURL } from "node:url";
-import { storageSmokeReady } from "./launch-check.mjs";
+import { ragSmokeReady, storageSmokeReady } from "./launch-check.mjs";
 
 const DEFAULT_PAGES_URL = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data";
 const SECRET_PATTERN = /QIHOO_API_KEY|GITHUB_CLIENT_SECRET|ASK_ATLAS_SESSION_SECRET|ASK_ATLAS_TOKEN_ENCRYPTION_SECRET|UPSTASH_REDIS_REST_TOKEN|DATABASE_URL|Authorization\s*:\s*Bearer|Bearer\s+[A-Za-z0-9_.-]{12,}|fk[0-9A-Za-z_.-]{12,}|[?&][^=\s]*(?:api[_-]?key|access[_-]?token|auth[_-]?token|client[_-]?secret|secret|password|bearer)[^=\s]*=/i;
@@ -14,7 +14,7 @@ function usage() {
 
 Checks the live GitHub Pages /ask/ page and browser-visible Ask config without
 printing secret values. Add --require-backend for the public launch gate and
---smoke to call the configured backend /api/health?db=1 endpoint.
+--smoke to call the configured backend /api/health?db=1&rag=1 endpoint.
 `);
 }
 
@@ -145,11 +145,11 @@ export async function checkLivePages(options = {}) {
     if (!backendUrl) {
       fail("backend-smoke", "cannot smoke-test an empty backend URL");
     } else {
-      const health = await fetchJson(`${backendUrl}/api/health?db=1`, { fetchImpl });
-      if (!health.ok || !storageSmokeReady(health.json)) {
-        fail("backend-smoke", `backend health returned ${health.status} without verified Postgres schema metadata`);
+      const health = await fetchJson(`${backendUrl}/api/health?db=1&rag=1`, { fetchImpl });
+      if (!health.ok || !storageSmokeReady(health.json) || !ragSmokeReady(health.json)) {
+        fail("backend-smoke", `backend health returned ${health.status} without verified Postgres schema metadata and ready RAG corpus`);
       } else {
-        pass("backend-smoke", "backend health uses Postgres with verified schema metadata");
+        pass("backend-smoke", "backend health uses Postgres with verified schema metadata and ready RAG corpus");
       }
     }
   }

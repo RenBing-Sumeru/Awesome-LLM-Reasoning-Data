@@ -25,5 +25,7 @@ build/
 apps/ask-atlas/.env
 apps/ask-atlas/.env*.local
 apps/ask-atlas/.vercel/
+apps/ask-atlas/private/rag-corpus.json
+apps/ask-atlas/private/primer/
 apps/ask-atlas/storage/*.json
 apps/ask-atlas/storage/*.tmp

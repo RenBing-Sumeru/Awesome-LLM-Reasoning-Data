@@ -8,7 +8,7 @@ import { addFeedback, adminCosts, adminGaps, adminGapsExport, adminOverview, adm
 import { checkQuota, finalizeQuotaReservation, grantManualReward, quotaSnapshot, refreshRewards, releaseQuotaReservation, reserveQuota } from "./quota.mjs";
 import { callModel, estimateCost, estimateTokens, MODEL_LABELS, resolveModel } from "./provider360.mjs";
 import { checkAttemptRateLimits, checkFeedbackRateLimit, checkRateLimits, checkRewardRefreshRateLimit } from "./rate-limit.mjs";
-import { classifyQuestionScope, retrieveSources } from "./rag.mjs";
+import { classifyQuestionScope, ragHealthSummary, retrieveSources } from "./rag.mjs";
 import { collectLaunchReadiness } from "./readiness.mjs";
 import { clientIp, parseUrl, readJson, redirect, sendJson as rawSendJson } from "./http.mjs";
 import { hashValue } from "./crypto.mjs";
@@ -228,27 +228,50 @@ function healthPayload(extra = {}) {
 
 async function handleApi(req, res, url) {
   if (url.pathname === "/api/health") {
-    if (url.searchParams.get("db") === "1") {
-      try {
-        const storage = await checkStoreHealth();
-        sendJson(res, 200, healthPayload({
-          storage: {
+    const includeStorage = url.searchParams.get("db") === "1";
+    const includeRag = url.searchParams.get("rag") === "1";
+    if (includeStorage || includeRag) {
+      const extra = {};
+      let status = 200;
+      let ok = true;
+      if (includeStorage) {
+        try {
+          const storage = await checkStoreHealth();
+          extra.storage = {
             ok: true,
             backend: storage.backend,
             tables: storage.tables || 0,
             checkedColumns: storage.checkedColumns || 0,
             rlsTables: storage.rlsTables || 0,
-          },
-        }));
-      } catch (_error) {
-        sendJson(res, 503, {
+          };
+        } catch (_error) {
+          ok = false;
+          status = 503;
+          extra.storage = { ok: false };
+        }
+      }
+      if (includeRag) {
+        try {
+          extra.rag = ragHealthSummary();
+          if (!extra.rag.ok) {
+            ok = false;
+            status = 503;
+          }
+        } catch (_error) {
+          ok = false;
+          status = 503;
+          extra.rag = { ok: false };
+        }
+      }
+      if (ok) {
+        sendJson(res, status, healthPayload(extra));
+      } else {
+        sendJson(res, status, {
           ok: false,
           service: "ask-atlas",
           environment: CONFIG.appEnv,
           commit: CONFIG.deploymentCommit || "",
-          storage: {
-            ok: false,
-          },
+          ...extra,
         });
       }
       return;

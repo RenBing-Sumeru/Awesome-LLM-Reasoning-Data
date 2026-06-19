@@ -67,6 +67,8 @@ jobs:
         run: node apps/ask-atlas/scripts/check-env-names.mjs --github-actions-launch
       - name: Install Ask backend dependencies
         run: npm ci --prefix apps/ask-atlas
+      - name: Check production RAG corpus can be built
+        run: npm --prefix apps/ask-atlas run rag:check
       - name: Verify public Ask frontend points to production backend
         run: python scripts/set_ask_backend_url.py --check --require-url
       - name: Validate production backend config

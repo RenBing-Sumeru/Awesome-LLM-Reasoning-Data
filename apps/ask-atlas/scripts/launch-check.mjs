@@ -11,6 +11,19 @@ export function storageSmokeReady(payload) {
   );
 }
 
+export function ragSmokeReady(payload) {
+  return (
+    payload?.rag?.ok === true &&
+    Number(payload?.rag?.sourceCount || 0) >= 1 &&
+    Number(payload?.rag?.primerCount || 0) >= 1 &&
+    Number(payload?.rag?.entryCount || 0) >= 1 &&
+    Number(payload?.rag?.sampleRetrievalCount || 0) >= 1 &&
+    payload?.rag?.requiredPathsPresent?.readme === true &&
+    payload?.rag?.requiredPathsPresent?.primer === true &&
+    payload?.rag?.requiredPathsPresent?.entries === true
+  );
+}
+
 async function main() {
   const flags = new Set(process.argv.slice(2));
   const allowWarnings = flags.has("--allow-warnings");
@@ -54,16 +67,17 @@ async function main() {
       try {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 5000);
-        const response = await fetch(`${backend}/api/health?db=1`, { signal: controller.signal });
+        const healthUrl = `${backend}/api/health?db=1&rag=1`;
+        const response = await fetch(healthUrl, { signal: controller.signal });
         clearTimeout(timeout);
         const payload = await response.json().catch(() => ({}));
-        console.log(`Smoke check /api/health?db=1: ${response.status}`);
-        if (!response.ok || !storageSmokeReady(payload)) {
-          console.error("Smoke check failed: deployed runtime must use Postgres with verified schema metadata.");
+        console.log(`Smoke check /api/health?db=1&rag=1: ${response.status}`);
+        if (!response.ok || !storageSmokeReady(payload) || !ragSmokeReady(payload)) {
+          console.error("Smoke check failed: deployed runtime must use Postgres with verified schema metadata and a ready RAG corpus.");
           process.exit(1);
         }
       } catch (error) {
-        console.error(`Smoke check /api/health?db=1 failed: ${error.message}`);
+        console.error(`Smoke check /api/health?db=1&rag=1 failed: ${error.message}`);
         process.exit(1);
       }
     }

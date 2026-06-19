@@ -8,7 +8,7 @@ import {
   LAUNCH_ACTIONS_REQUIRED,
 } from "../scripts/env-manifest.mjs";
 import { extractUrlFromText, normalizeUrl } from "../scripts/verify-deployment-target.mjs";
-import { storageSmokeReady } from "../scripts/launch-check.mjs";
+import { ragSmokeReady, storageSmokeReady } from "../scripts/launch-check.mjs";
 
 const appRoot = fileURLToPath(new URL("..", import.meta.url));
 const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
@@ -52,6 +52,27 @@ test("deployment smoke accepts only Postgres storage with schema metadata", () =
   assert.equal(storageSmokeReady({ storage: { ok: false, backend: "postgres", tables: 12, checkedColumns: 100 } }), false);
 });
 
+test("deployment smoke requires a ready RAG corpus", () => {
+  const ready = {
+    rag: {
+      ok: true,
+      sourceCount: 24,
+      primerCount: 3,
+      entryCount: 12,
+      sampleRetrievalCount: 2,
+      requiredPathsPresent: {
+        readme: true,
+        primer: true,
+        entries: true,
+      },
+    },
+  };
+  assert.equal(ragSmokeReady(ready), true);
+  assert.equal(ragSmokeReady({ ...ready, rag: { ...ready.rag, ok: false } }), false);
+  assert.equal(ragSmokeReady({ ...ready, rag: { ...ready.rag, primerCount: 0 } }), false);
+  assert.equal(ragSmokeReady({ ...ready, rag: { ...ready.rag, requiredPathsPresent: { ...ready.rag.requiredPathsPresent, entries: false } } }), false);
+});
+
 test("launch check redacted mode omits URLs and cap values", () => {
   const result = spawnSync(process.execPath, [launchCheckScript, "--redacted"], {
     cwd: appRoot,
@@ -74,6 +95,8 @@ test("Vercel deploy workflow separates production secrets from Pages config publ
   assert.match(deployJob, /\n    permissions:\n      contents: read\n/);
   assert.doesNotMatch(deployJob, /--token\s+"\$VERCEL_TOKEN"/);
   assert.doesNotMatch(deployJob, /git push|git commit -m "Activate Ask Atlas backend config"/);
+  assert.match(deployJob, /run: npm --prefix apps\/ask-atlas run rag:build/);
+  assert.match(deployJob, /Smoke test deployed backend/);
   assert.match(publishJob, /\n    permissions:\n      contents: write\n/);
   assert.match(publishJob, /scripts\/set_ask_backend_url\.py "\$ASK_ATLAS_BASE_URL"/);
   assert.match(publishJob, /scripts\/render_readme\.py/);
@@ -82,6 +105,8 @@ test("Vercel deploy workflow separates production secrets from Pages config publ
   assert.match(publishJob, /git add docs\/assets\/ask-config\.js README\.md README_zh\.md/);
   assert.match(publishJob, /git commit -m "Activate Ask Atlas backend config"/);
   assert.doesNotMatch(publishJob, /\$\{\{\s*secrets\./);
+  assert.match(workflow, /\n  verify-live-pages:/);
+  assert.match(workflow, /production:live -- --ci/);
 });
 
 test("launch gate workflow is read-only and serialized with production deployments", () => {

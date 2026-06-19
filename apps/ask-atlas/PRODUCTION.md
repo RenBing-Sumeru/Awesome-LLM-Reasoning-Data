@@ -168,7 +168,7 @@ environment and expects deployment secrets/variables such as
 `ASK_ATLAS_BASE_URL`, `ASK_ATLAS_ADMIN_GITHUB_IDS`, and
 `ASK_ATLAS_MODEL_RATES_JSON`. That workflow verifies the browser-visible
 `docs/assets/ask-config.js` with `--require-url`, runs production config
-validation, and calls the deployed `/api/health?db=1` endpoint through
+validation, and calls the deployed `/api/health?db=1&rag=1` endpoint through
 `launch:check -- --smoke --allow-warnings --redacted`. Warnings such as a
 missing optional backend-only full-text primer do not block the workflow, but
 any blocker still fails the launch gate.
@@ -343,7 +343,8 @@ npm --prefix apps/ask-atlas run production:live -- --backend-url "$ASK_ATLAS_BAS
 ```
 
 That command requires the live Pages backend URL to be non-empty, match the
-expected backend, and pass `/api/health?db=1` with Postgres schema metadata.
+expected backend, and pass `/api/health?db=1&rag=1` with Postgres schema
+metadata plus a ready RAG corpus.
 
 ### Launch flow
 
@@ -401,6 +402,7 @@ window.ASK_ATLAS_BACKEND_URL = "https://your-secure-backend.example";
 
 ```bash
 npm --prefix apps/ask-atlas run launch:check
+npm --prefix apps/ask-atlas run rag:check
 npm --prefix apps/ask-atlas run production:status -- --strict
 npm --prefix apps/ask-atlas run production:live
 npm --prefix apps/ask-atlas run config:check
@@ -426,10 +428,10 @@ For an extra deployed-backend smoke test, run:
 npm --prefix apps/ask-atlas run launch:check -- --smoke
 ```
 
-The smoke mode calls the configured public backend `/api/health?db=1` endpoint
-only after the backend URL is a non-local HTTPS URL, so it verifies the deployed
-runtime is using Postgres and can see the expected database schema rather than
-merely pinging the process.
+The smoke mode calls the configured public backend `/api/health?db=1&rag=1`
+endpoint only after the backend URL is a non-local HTTPS URL, so it verifies
+the deployed runtime is using Postgres, can see the expected database schema,
+and has a bundled RAG corpus rather than merely pinging the process.
 
 ## Rate Limiting
 

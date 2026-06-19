@@ -75,13 +75,25 @@ test("live Pages check can smoke-test a configured production backend", async ()
       "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/assets/ask-config.js": {
         body: 'window.ASK_ATLAS_FRONTEND = "pages";\nwindow.ASK_ATLAS_BACKEND_URL = "https://ask-atlas.example.com";\n',
       },
-      "https://ask-atlas.example.com/api/health?db=1": {
+      "https://ask-atlas.example.com/api/health?db=1&rag=1": {
         body: {
           storage: {
             ok: true,
             backend: "postgres",
             tables: 6,
             checkedColumns: 4,
+          },
+          rag: {
+            ok: true,
+            sourceCount: 40,
+            primerCount: 4,
+            entryCount: 10,
+            sampleRetrievalCount: 3,
+            requiredPathsPresent: {
+              readme: true,
+              primer: true,
+              entries: true,
+            },
           },
         },
       },

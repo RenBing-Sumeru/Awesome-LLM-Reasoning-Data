@@ -11,6 +11,7 @@ const STOPWORDS = new Set([
 ]);
 
 let cachedIndex = null;
+let cachedIndexOrigin = "unbuilt";
 
 function readText(filePath) {
   try {
@@ -302,7 +303,36 @@ function titleFromPath(relPath) {
     .replaceAll("-", " ");
 }
 
-function buildFileSources() {
+function sourceFromSerialized(source) {
+  if (!source || typeof source !== "object") return null;
+  const id = String(source.id || "");
+  const relPath = String(source.path || "");
+  const text = cleanText(source.text || "");
+  if (!id || !relPath || !text) return null;
+  return {
+    id,
+    title: String(source.title || titleFromPath(relPath)),
+    path: relPath,
+    url: String(source.url || repoUrl(relPath.split("#")[0] || relPath)),
+    type: String(source.type || sourceType(relPath)),
+    text,
+    tokens: tokenize(`${id} ${relPath} ${source.title || ""} ${text}`),
+  };
+}
+
+function loadBundledCorpusSources() {
+  if (!CONFIG.ragCorpusPath || !fs.existsSync(CONFIG.ragCorpusPath)) return [];
+  try {
+    const parsed = JSON.parse(fs.readFileSync(CONFIG.ragCorpusPath, "utf8"));
+    const rawSources = Array.isArray(parsed) ? parsed : parsed.sources;
+    if (!Array.isArray(rawSources)) return [];
+    return rawSources.map(sourceFromSerialized).filter(Boolean);
+  } catch (_error) {
+    return [];
+  }
+}
+
+function buildRepositoryFileSources() {
   const roots = ["README.md", "docs", "papers", "cards"];
   const files = [];
   for (const root of roots) {
@@ -313,16 +343,11 @@ function buildFileSources() {
       files.push(full);
     }
   }
-  const primerTextPath = safePrimerTextPath();
-  if (primerTextPath && fs.existsSync(primerTextPath)) {
-    files.push(primerTextPath);
-  }
   const sources = [];
   for (const file of files) {
     const rel = path.relative(REPO_ROOT, file);
     if (rel.startsWith("docs/assets/")) continue;
-    const isPrimer = primerTextPath && path.resolve(file) === primerTextPath;
-    const type = isPrimer ? "primer" : sourceType(rel);
+    const type = sourceType(rel);
     const text = readText(file);
     if (!text.trim()) continue;
     const chunks = chunkText(text);
@@ -340,8 +365,38 @@ function buildFileSources() {
       });
     });
   }
-  sources.push(...buildEntrySources());
   return sources;
+}
+
+function buildPrivatePrimerSources() {
+  const primerTextPath = safePrimerTextPath();
+  if (!primerTextPath || !fs.existsSync(primerTextPath)) return [];
+  const text = readText(primerTextPath);
+  if (!text.trim()) return [];
+  const rel = path.relative(REPO_ROOT, primerTextPath);
+  return chunkText(text).map((chunk, index) => ({
+    id: `${rel}#chunk-${index + 1}`,
+    title: "A Primer in Post-Training Reasoning Data",
+    path: rel,
+    url: repoUrl(rel),
+    type: "primer",
+    text: chunk,
+    tokens: tokenize(`${rel} ${chunk}`),
+  }));
+}
+
+export function buildPublicCorpusSources() {
+  return [...buildRepositoryFileSources(), ...buildEntrySources()];
+}
+
+function buildFileSources() {
+  const bundled = loadBundledCorpusSources();
+  if (bundled.length) {
+    cachedIndexOrigin = "bundled-corpus";
+    return [...bundled, ...buildPrivatePrimerSources()];
+  }
+  cachedIndexOrigin = "filesystem";
+  return [...buildPublicCorpusSources(), ...buildPrivatePrimerSources()];
 }
 
 function buildEntrySources() {
@@ -490,4 +545,54 @@ export function retrieveSources({ question, mode = "explain", track = "", entry 
     }));
   const confidence = results.length ? Math.min(1, results[0].score / 25) : 0;
   return { results, confidence };
+}
+
+function countByType(sources, type) {
+  return sources.filter((source) => source.type === type).length;
+}
+
+function requiredPathPresence(sources) {
+  return {
+    readme: sources.some((source) => source.path === "README.md"),
+    primer: sources.some((source) => source.path === "docs/companion_paper_primer.md" || source.type === "primer"),
+    entries: sources.some((source) => source.path.startsWith("data/_generated/entries.json") || source.id.startsWith("entry:")),
+  };
+}
+
+export function ragHealthSummary() {
+  const sources = knowledgeIndex();
+  const requiredPathsPresent = requiredPathPresence(sources);
+  const sample = retrieveSources({
+    question: "What is in this Awesome-LLM-Reasoning-Data repository for a beginner learning post-training reasoning data?",
+    mode: "learning-path",
+  });
+  const sourceCount = sources.length;
+  const primerCount = countByType(sources, "primer");
+  const entryCount = countByType(sources, "entry");
+  const cardCount = countByType(sources, "card");
+  const guideCount = countByType(sources, "guide");
+  const paperMapCount = countByType(sources, "paper_map");
+  const ok = Boolean(
+    sourceCount > 0 &&
+    primerCount > 0 &&
+    entryCount > 0 &&
+    requiredPathsPresent.readme &&
+    requiredPathsPresent.primer &&
+    requiredPathsPresent.entries &&
+    sample.results.length > 0,
+  );
+  return {
+    ok,
+    origin: cachedIndexOrigin,
+    sourceCount,
+    primerCount,
+    entryCount,
+    cardCount,
+    guideCount,
+    paperMapCount,
+    requiredPathsPresent,
+    sampleRetrievalCount: sample.results.length,
+    sampleRetrievalConfidence: sample.confidence,
+    allowedModels: CONFIG.allowedModels,
+  };
 }

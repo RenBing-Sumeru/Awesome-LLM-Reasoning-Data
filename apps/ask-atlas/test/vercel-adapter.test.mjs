@@ -63,6 +63,20 @@ test("health endpoint can include storage readiness without exposing secrets", a
   assert.equal(JSON.stringify(payload).includes("DATABASE_URL"), false);
 });
 
+test("health endpoint can include RAG readiness without exposing snippets", async () => {
+  const res = await invokeHandler("/api/health?rag=1");
+  assert.equal(res.statusCode, 200);
+  const payload = JSON.parse(res.body);
+  assert.equal(payload.ok, true);
+  assert.equal(payload.rag.ok, true);
+  assert.ok(payload.rag.sourceCount > 0);
+  assert.equal(payload.rag.requiredPathsPresent.readme, true);
+  assert.equal(payload.rag.requiredPathsPresent.primer, true);
+  assert.equal(payload.rag.requiredPathsPresent.entries, true);
+  assert.equal(JSON.stringify(payload).includes("snippet"), false);
+  assert.equal(JSON.stringify(payload).includes("QIHOO_API_KEY"), false);
+});
+
 test("Vercel adapter keeps admin shell behind backend authorization", async () => {
   for (const pathname of ["/admin", "/admin.html", "/%61dmin.html", "/admin%2ehtml", "/foo/%2e%2e/admin.html"]) {
     const res = await invokeHandler(pathname);
@@ -78,6 +92,10 @@ test("Vercel config routes every path through the backend before static files", 
   assert.equal(config.rewrites, undefined);
   assert.deepEqual(config.routes, [{ src: "/(.*)", dest: "/api/index.mjs" }]);
   assert.equal(config.functions["api/index.mjs"].maxDuration, 30);
+  assert.equal(config.functions["api/index.mjs"].includeFiles, "private/rag-corpus.json");
+  const vercelIgnore = fs.readFileSync(`${appRoot}/.vercelignore`, "utf8");
+  assert.doesNotMatch(vercelIgnore, /rag-corpus\.json/);
+  assert.match(vercelIgnore, /private\/primer\//);
 });
 
 test("Vercel cold start fails closed when production config is unsafe", () => {

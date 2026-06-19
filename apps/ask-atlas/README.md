@@ -199,7 +199,8 @@ and browser-visible `assets/ask-config.js` without requiring a production
 backend. It is useful while the public UI is still launch-pending. After the
 backend URL is configured, use `npm run production:live` to require a non-empty
 backend URL, verify that the live Pages config matches the expected backend,
-and smoke-test `/api/health?db=1` for Postgres schema readiness.
+and smoke-test `/api/health?db=1&rag=1` for Postgres schema readiness plus
+the bundled README/docs/papers/cards/metadata RAG corpus.
 
 `npm run production:configure -- --apply-github` can write GitHub production
 variables and secrets after every required value has been exported in the
@@ -225,6 +226,7 @@ Before launch, run:
 
 ```bash
 npm run db:check
+npm run rag:check
 npm run production:status -- --strict
 npm run production:live
 npm run launch:check
@@ -236,8 +238,9 @@ npm test
 fail by default, so public launch cannot silently proceed with localhost URLs,
 missing pricing, missing Redis/Postgres, or a Pages frontend pointed at the
 wrong backend. Use `npm run launch:check -- --smoke` after deployment to call
-the configured backend `/api/health?db=1` endpoint and verify that the deployed
-runtime is backed by Postgres and can see the expected database schema.
+the configured backend `/api/health?db=1&rag=1` endpoint and verify that the
+deployed runtime is backed by Postgres, can see the expected database schema,
+and has a ready RAG corpus for source-grounded answers.
 
 Production planning files:
 
