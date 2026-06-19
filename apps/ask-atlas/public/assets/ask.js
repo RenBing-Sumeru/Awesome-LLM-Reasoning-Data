@@ -280,7 +280,7 @@ function renderAdminSetupBanner() {
   const backendState = BACKEND_CONFIGURED
     ? {
         title: "Admin dashboard requires GitHub sign-in",
-        body: "The secure backend is configured. Sign in with an allowlisted GitHub account to view quota, cost, user, question, and launch-readiness data.",
+        body: "A backend URL is configured for this Pages frontend. Sign in with an allowlisted GitHub account; the admin dashboard will still verify OAuth, storage, RAG, quota, and secret readiness server-side.",
         action: "Sign in with GitHub",
         command: "npm --prefix apps/ask-atlas run production:live -- --ci",
       }

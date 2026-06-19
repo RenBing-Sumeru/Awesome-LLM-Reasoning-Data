@@ -9,6 +9,7 @@ import {
 } from "../scripts/env-manifest.mjs";
 import { extractUrlFromText, normalizeUrl } from "../scripts/verify-deployment-target.mjs";
 import { ragSmokeReady, storageSmokeReady } from "../scripts/launch-check.mjs";
+import { collectLaunchReadiness } from "../src/readiness.mjs";
 
 const appRoot = fileURLToPath(new URL("..", import.meta.url));
 const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
@@ -150,12 +151,30 @@ test("admin dashboard keeps the operations runway above detailed tables", () => 
   assert.match(adminJs, /Backend Origin/);
   assert.match(adminJs, /OAuth & Secrets/);
   assert.match(adminJs, /Storage & Rate Limits/);
+  assert.match(adminJs, /Growth & Quota/);
   assert.match(adminJs, /Models, RAG & Cost/);
   assert.match(adminJs, /Public Surface/);
+  assert.match(adminJs, /base-quota/);
+  assert.match(adminJs, /star-daily-quota/);
+  assert.match(adminJs, /fork-bonus/);
+  assert.match(adminJs, /dev-auth-disabled/);
+  assert.match(adminJs, /mock-provider-disabled/);
   assert.match(adminJs, /renderOpsRunway\(\{ overview, readiness, gaps \}\)/);
   assert.match(adminJs, /renderLaunchWizard\(readiness\)/);
   assert.match(adminCss, /\.ops-runway/);
   assert.match(adminCss, /\.ops-rail/);
   assert.match(adminCss, /\.launch-wizard/);
   assert.match(adminCss, /\.wizard-step/);
+});
+
+test("launch wizard check ids exist in launch readiness output", () => {
+  const adminJs = fs.readFileSync(`${appRoot}/public/assets/admin.js`, "utf8");
+  const wizardCheckIds = [
+    ...adminJs.matchAll(/checks:\s*\[([^\]]+)\]/g),
+  ].flatMap((match) => [...match[1].matchAll(/"([^"]+)"/g)].map((item) => item[1]));
+  const readinessIds = new Set(collectLaunchReadiness().checks.map((item) => item.id));
+  const missing = wizardCheckIds.filter((id) => !readinessIds.has(id));
+
+  assert.ok(wizardCheckIds.length >= 20, "Launch wizard should cover the major launch-readiness checks");
+  assert.deepEqual(missing, [], "Every launch wizard check id must exist in collectLaunchReadiness()");
 });

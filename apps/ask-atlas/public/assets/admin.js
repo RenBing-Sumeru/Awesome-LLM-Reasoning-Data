@@ -35,7 +35,7 @@ const LAUNCH_PHASES = [
   {
     title: "Backend Origin",
     summary: "Deploy a stable HTTPS backend and keep Pages pointed at the same origin.",
-    checks: ["base-url", "pages-base-url", "cors-pages", "pages-config-backend", "pages-backend-match"],
+    checks: ["base-url", "pages-base-url", "cors-pages", "pages-config-backend", "pages-backend-match", "dev-auth-disabled", "mock-provider-disabled"],
     command: "npm --prefix apps/ask-atlas run launch:plan -- --backend-url https://your-backend.example",
   },
   {
@@ -51,9 +51,15 @@ const LAUNCH_PHASES = [
     command: "npm --prefix apps/ask-atlas run db:check",
   },
   {
+    title: "Growth & Quota",
+    summary: "Keep the public growth loop honest: two free questions, star access, fork credits, and hard spend caps.",
+    checks: ["base-quota", "star-daily-quota", "fork-bonus", "cost-caps"],
+    command: "npm --prefix apps/ask-atlas run production:status -- --jsonl",
+  },
+  {
     title: "Models, RAG & Cost",
-    summary: "Verify model routes, prices, corpus grounding, and hard token/cost caps.",
-    checks: ["required-models", "model-rates", "model-rate-required", "primer-seed", "primer-full-text", "cost-caps"],
+    summary: "Verify model routes, prices, companion-paper grounding, and repository evidence.",
+    checks: ["required-models", "model-rates", "model-rate-required", "primer-seed", "primer-full-text"],
     command: "npm --prefix apps/ask-atlas run rag:check",
   },
   {

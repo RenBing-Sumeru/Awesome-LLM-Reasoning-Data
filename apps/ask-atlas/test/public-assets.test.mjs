@@ -49,6 +49,9 @@ test("launch-pending preview keeps the public Ask page useful before backend act
   assert.match(askJs, /function renderAdminSetupBanner/);
   assert.match(askJs, /login-required/);
   assert.match(askJs, /Deployment guide/);
+  assert.match(askJs, /A backend URL is configured for this Pages frontend/);
+  assert.doesNotMatch(askJs, /The secure backend is configured/);
+  assert.match(askJs, /return_to=\$\{encodeURIComponent\("\/admin"\)\}/);
   assert.match(askJs, /Companion paper evidence/);
   assert.match(askJs, /Repository atlas evidence/);
   assert.match(askJs, /Model background knowledge/);
