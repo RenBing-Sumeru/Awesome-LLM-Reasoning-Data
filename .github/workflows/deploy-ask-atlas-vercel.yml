@@ -249,15 +249,16 @@ jobs:
           ASK_ATLAS_BASE_URL: ${{ vars.ASK_ATLAS_BASE_URL }}
         run: |
           set -euo pipefail
-          python3 scripts/set_ask_backend_url.py "$ASK_ATLAS_BASE_URL"
-          python3 scripts/set_ask_backend_url.py --check --require-url
-          if git diff --quiet -- docs/assets/ask-config.js; then
-            echo "docs/assets/ask-config.js already points at the configured backend."
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull --ff-only origin "$GITHUB_REF_NAME"
-          git add docs/assets/ask-config.js
+          python3 scripts/set_ask_backend_url.py "$ASK_ATLAS_BASE_URL"
+          python3 scripts/set_ask_backend_url.py --check --require-url
+          python3 scripts/render_readme.py
+          if git diff --quiet -- docs/assets/ask-config.js README.md README_zh.md; then
+            echo "Public Ask config and README launch status already match the configured backend."
+            exit 0
+          fi
+          git add docs/assets/ask-config.js README.md README_zh.md
           git commit -m "Activate Ask Atlas backend config"
           git push
