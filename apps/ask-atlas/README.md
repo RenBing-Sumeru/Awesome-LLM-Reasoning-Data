@@ -78,11 +78,12 @@ public GitHub API calls and may be more rate-limited.
 
 ## Quota Rules
 
-Default public users receive 2 questions per day.
+Default public users receive 2 questions per day. Verified star users receive
+10 questions per day after the backend confirms that they starred
+`RenBing-Sumeru/Awesome-LLM-Reasoning-Data`.
 
-One-time rewards:
+One-time reward:
 
-- starring `RenBing-Sumeru/Awesome-LLM-Reasoning-Data`: +10 bonus questions;
 - forking the repository: +20 bonus questions.
 
 Admin and allowlisted users are controlled by:
@@ -170,6 +171,7 @@ To print copyable production setup command templates without exposing values:
 
 ```bash
 npm run secret:generate
+npm run launch:plan -- --backend-url https://your-backend.example
 npm run production:configure -- --check
 npm run doctor:prod
 npm run env:github

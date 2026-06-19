@@ -15,6 +15,7 @@
     "env:vercel": "node scripts/check-env-names.mjs --print vercel-commands",
     "production:configure": "node scripts/configure-production.mjs",
     "secret:generate": "node scripts/generate-secrets.mjs",
+    "launch:plan": "node scripts/launch-plan.mjs",
     "launch:check": "node scripts/launch-check.mjs",
     "doctor:prod": "node scripts/production-doctor.mjs",
     "deploy:vercel": "vercel --prod",

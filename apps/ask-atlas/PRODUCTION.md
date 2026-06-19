@@ -250,12 +250,14 @@ To print the required Vercel variable names without exposing values:
 
 ```bash
 npm --prefix apps/ask-atlas run env:print
+npm --prefix apps/ask-atlas run launch:plan -- --backend-url https://your-backend.example
 ```
 
 To print copyable setup command templates without exposing values:
 
 ```bash
 npm --prefix apps/ask-atlas run secret:generate
+npm --prefix apps/ask-atlas run launch:plan -- --backend-url https://your-backend.example
 npm --prefix apps/ask-atlas run production:configure -- --check
 npm --prefix apps/ask-atlas run doctor:prod
 npm --prefix apps/ask-atlas run env:github
