@@ -472,7 +472,7 @@ To answer that, the repo combines four layers:
 
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
 
-Project website: [Awesome-LLM-Reasoning-Data.github.io]({PAGES_URL}).
+Project website: [Searchable Atlas]({PAGES_URL}).
 
 Ask the Atlas: [{ask["en_text"]}]({ASK_URL}).
 

@@ -32,7 +32,7 @@ To answer that, the repo combines four layers:
 
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
 
-Project website: [Awesome-LLM-Reasoning-Data.github.io](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/).
+Project website: [Searchable Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/).
 
 Ask the Atlas: [source-grounded AI assistant · launch pending](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/).
 
