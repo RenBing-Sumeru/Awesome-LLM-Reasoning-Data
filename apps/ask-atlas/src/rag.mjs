@@ -506,7 +506,7 @@ export function retrieveSources({ question, mode = "explain", track = "", entry 
       if (source.text.toLowerCase().includes("cards")) score += 15;
     }
     if ((queryText.includes("prm") || queryText.includes("process reward") || queryText.includes("process supervision"))) {
-      if (source.path.includes("03_process_supervision_prm")) score += 80;
+      if (source.path.includes("01_core_reasoning_data_types/04_process_trace_supervision_data")) score += 80;
       if (source.path.includes("cards/verifiers/prm")) score += 55;
       if (source.path.includes("cards/verifiers/math_shepherd")) score += 45;
       if (source.path.includes("cards/verifiers/omegaprm")) score += 45;

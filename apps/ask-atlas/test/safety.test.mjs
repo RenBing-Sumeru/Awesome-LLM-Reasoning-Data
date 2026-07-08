@@ -187,8 +187,8 @@ test("valid card and track context allows short referential questions", () => {
     ["Summarize this paper", { entry: "math-shepherd-2024" }],
     ["这篇论文讲什么？", { entry: "math-shepherd-2024" }],
     ["解释一下这张卡片", { card: "math_shepherd" }],
-    ["What should I read first?", { track: "process_supervision_prm" }],
-    ["这个 track 应该先读什么？", { track: "process_supervision_prm" }],
+    ["What should I read first?", { track: "process_trace_supervision_data" }],
+    ["这个 track 应该先读什么？", { track: "process_trace_supervision_data" }],
   ];
   for (const [question, context] of cases) {
     const scope = classifyQuestionScope(question, context);

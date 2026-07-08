@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+> Category: judgment_rubric_domain_expert_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2109.07958) · [🏛️ ACL](https://aclanthology.org/2022.acl-long.229/) · [🐙 Code](https://github.com/sylinrl/TruthfulQA)
 
 ## TL;DR

@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: environmental_agents_tools_web_swe, programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+> Category: environment_agent_trajectory_data, programmatically_verifiable_outcome_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://openai.com/index/introducing-swe-bench-verified/) · [🏛️ Venue](https://www.swebench.com/verified.html) · [🐙 Code](https://github.com/swe-bench/SWE-bench) · [🗂️ Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified)
 
 ## TL;DR

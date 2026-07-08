@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: surveys_and_primers, foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+> Category: foundations_and_primers, instruction_demonstration_rationale_data, audit_failure_contamination_verifier_attacks
 > Links: [📄 Paper](https://arxiv.org/abs/2504.07086)
 
 ## TL;DR

@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: foundations_instruction_preference_alignment, judgment_required_rubrics_safety_domain, construction_recipes_open_reasoning_data
+> Category: instruction_demonstration_rationale_data, judgment_rubric_domain_expert_data, data_construction_open_release_recipes
 > Links: [📄 Paper](https://arxiv.org/abs/2310.01377) · [🐙 Code](https://github.com/OpenBMB/UltraFeedback) · [🗂️ Data](https://huggingface.co/datasets/openbmb/UltraFeedback)
 
 ## TL;DR

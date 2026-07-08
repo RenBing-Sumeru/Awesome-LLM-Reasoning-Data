@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: surveys_and_primers
+> Category: foundations_and_primers
 > Links: [📄 Paper](https://aclanthology.org/Q18-1041/)
 
 ## TL;DR

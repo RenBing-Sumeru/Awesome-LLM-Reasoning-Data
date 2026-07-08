@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: programmatic_math_code_proof, benchmarks_evaluation
+> Category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2105.09938) · [🏛️ OpenReview](https://openreview.net/forum?id=sD93GOzH3i5) · [🐙 Code](https://github.com/hendrycks/apps)
 
 ## TL;DR

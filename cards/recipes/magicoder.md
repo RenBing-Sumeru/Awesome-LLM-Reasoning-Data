@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, benchmarks_evaluation
+> Category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2312.02120) · [🏛️ PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [🐙 Code](https://github.com/ise-uiuc/magicoder) · [🗂️ Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [🤗 HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B)
 
 ## TL;DR

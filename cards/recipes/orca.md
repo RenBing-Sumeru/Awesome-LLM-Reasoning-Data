@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: construction_recipes_open_reasoning_data, frontier_model_reports, foundations_instruction_preference_alignment
+> Category: data_construction_open_release_recipes, frontier_reports_data_disclosure_ledger, instruction_demonstration_rationale_data
 > Links: [📄 Paper](https://arxiv.org/abs/2306.02707) · [🌐 Project](https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/)
 
 ## TL;DR

@@ -69,13 +69,13 @@ test("admin gaps builds actionable FAQ candidates and markdown export", async ()
   assert.equal(gaps.summary.downvoted, 1);
   assert.equal(gaps.summary.outOfScope, 1);
   assert.ok(gaps.recurringQuestions.length >= 1);
-  assert.ok(gaps.faqCandidates.some((item) => item.target.includes("03_process_supervision_prm")));
-  assert.ok(gaps.downvoted.some((item) => item.target.includes("09_audit_failure")));
+  assert.ok(gaps.faqCandidates.some((item) => item.target.includes("01_core_reasoning_data_types/04_process_trace_supervision_data")));
+  assert.ok(gaps.downvoted.some((item) => item.target.includes("02_data_lifecycle/13_audit_failure")));
 
   const markdown = renderGapsMarkdown(gaps, { generatedAt: "2026-06-17T00:00:00.000Z" });
   assert.match(markdown, /Ask the Atlas Knowledge Gaps Digest/);
   assert.match(markdown, /FAQ Candidates/);
-  assert.match(markdown, /papers\/03_process_supervision_prm\.md/);
+  assert.match(markdown, /papers\/01_core_reasoning_data_types\/04_process_trace_supervision_data\.md/);
 
   const exported = await adminGapsExport();
   assert.match(exported.issueTitle, /Ask the Atlas knowledge gaps/);
@@ -95,11 +95,11 @@ test("admin request list is summarized while details include full traceability",
     ip: "127.0.0.1",
     userAgent: "node-test",
     sources: [{
-      id: "papers/03_process_supervision_prm.md#chunk-1",
+      id: "papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#chunk-1",
       index: 1,
       title: "process supervision prm",
-      path: "papers/03_process_supervision_prm.md",
-      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/03_process_supervision_prm.md",
+      path: "papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md",
+      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md",
       type: "paper_map",
       snippet: "Process supervision papers and verifier contracts.",
       score: 42,
@@ -140,6 +140,6 @@ test("admin request list is summarized while details include full traceability",
   assert.equal(detail.feedback.rating, "up");
   assert.equal(detail.feedbackHistory.length, 1);
   assert.equal(detail.feedbackHistory[0].reason, "fixed after rerun");
-  assert.equal(detail.sourceDetails[0].path, "papers/03_process_supervision_prm.md");
+  assert.equal(detail.sourceDetails[0].path, "papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md");
   assert.match(detail.sourceDetails[0].snippet, /verifier contracts/);
 });

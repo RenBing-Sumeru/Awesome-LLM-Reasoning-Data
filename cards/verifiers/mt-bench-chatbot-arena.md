@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: judgment_required_rubrics_safety_domain, benchmarks_evaluation, audit_failure_contamination_verifier_attacks, foundations_instruction_preference_alignment
+> Category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks, instruction_demonstration_rationale_data
 > Links: [📄 Paper](https://arxiv.org/abs/2306.05685) · [🏛️ Venue](https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html) · [🏛️ OpenReview](https://openreview.net/forum?id=uccHPGDlao) · [🐙 Code](https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge)
 
 ## TL;DR

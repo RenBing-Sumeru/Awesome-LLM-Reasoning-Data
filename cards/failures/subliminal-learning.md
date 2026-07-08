@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: construction_recipes_open_reasoning_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+> Category: data_construction_open_release_recipes, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2507.14805) · [🏛️ Venue](https://www.nature.com/articles/s41586-026-10319-8) · [🐙 Code](https://github.com/MinhxLe/subliminal-learning) · [🌐 Project](https://subliminal-learning.com/)
 
 ## TL;DR

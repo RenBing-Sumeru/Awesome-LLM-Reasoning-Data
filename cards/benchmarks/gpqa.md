@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: judgment_required_rubrics_safety_domain, benchmarks_evaluation, audit_failure_contamination_verifier_attacks
+> Category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 > Links: [📄 Paper](https://arxiv.org/abs/2311.12022) · [🏛️ OpenReview](https://openreview.net/forum?id=Ti67584b98) · [🐙 Code](https://github.com/idavidrein/gpqa)
 
 ## TL;DR

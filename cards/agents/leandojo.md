@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: programmatic_math_code_proof, environmental_agents_tools_web_swe, benchmarks_evaluation
+> Category: programmatically_verifiable_outcome_data, environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2306.15626) · [🏛️ Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [🐙 Code](https://github.com/lean-dojo/LeanDojo) · [🗂️ Data](https://zenodo.org/records/10114157) · [🌐 Project](https://leandojo.org/)
 
 ## TL;DR

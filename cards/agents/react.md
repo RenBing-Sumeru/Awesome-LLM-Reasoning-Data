@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: environmental_agents_tools_web_swe, construction_recipes_open_reasoning_data
+> Category: environment_agent_trajectory_data, data_construction_open_release_recipes
 > Links: [📄 Paper](https://arxiv.org/abs/2210.03629) · [🏛️ OpenReview](https://openreview.net/forum?id=WE_vluYUL-X) · [🐙 Code](https://github.com/ysymyth/ReAct) · [🌐 Project](https://react-lm.github.io/)
 
 ## TL;DR

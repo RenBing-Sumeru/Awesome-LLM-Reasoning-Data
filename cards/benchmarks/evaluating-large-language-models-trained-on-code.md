@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: programmatic_math_code_proof, benchmarks_evaluation
+> Category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2107.03374) · [🐙 Code](https://github.com/openai/human-eval)
 
 ## TL;DR

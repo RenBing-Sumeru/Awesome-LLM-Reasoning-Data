@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: judgment_required_rubrics_safety_domain, environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+> Category: judgment_rubric_domain_expert_data, environment_agent_trajectory_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2506.15674) · [🏛️ ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [🐙 Code](https://github.com/parameterlab/leaky_thoughts)
 
 ## TL;DR

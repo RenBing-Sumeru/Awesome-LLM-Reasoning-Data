@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: judgment_required_rubrics_safety_domain, benchmarks_evaluation, construction_recipes_open_reasoning_data
+> Category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces, data_construction_open_release_recipes
 > Links: [📄 Paper](https://arxiv.org/abs/2501.09004) · [🏛️ ACL](https://aclanthology.org/2025.naacl-long.306/) · [🗂️ Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0)
 
 ## TL;DR

@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: judgment_required_rubrics_safety_domain, foundations_instruction_preference_alignment, benchmarks_evaluation
+> Category: judgment_rubric_domain_expert_data, instruction_demonstration_rationale_data, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2405.01535) · [🏛️ ACL](https://aclanthology.org/2024.emnlp-main.248/) · [🔗 DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [🐙 Code](https://github.com/prometheus-eval/prometheus-eval) · [🗂️ Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [🤗 HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0)
 
 ## TL;DR

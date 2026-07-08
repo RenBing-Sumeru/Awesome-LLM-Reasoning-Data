@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: foundations_instruction_preference_alignment, scaling_test_time_compute_rlvr
+> Category: instruction_demonstration_rationale_data, scaling_rlvr_test_time_compute
 > Links: [📄 Paper](https://arxiv.org/abs/2203.11171) · [🏛️ OpenReview](https://openreview.net/forum?id=1PL1NIMMrw)
 
 ## TL;DR

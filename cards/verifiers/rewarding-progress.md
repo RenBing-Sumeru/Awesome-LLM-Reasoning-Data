@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: process_supervision_prm, scaling_test_time_compute_rlvr, construction_recipes_open_reasoning_data
+> Category: process_trace_supervision_data, scaling_rlvr_test_time_compute, data_construction_open_release_recipes
 > Links: [📄 Paper](https://arxiv.org/abs/2410.08146) · [🏛️ OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW)
 
 ## TL;DR

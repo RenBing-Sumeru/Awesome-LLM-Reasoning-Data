@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: construction_recipes_open_reasoning_data, environmental_agents_tools_web_swe, judgment_required_rubrics_safety_domain
+> Category: data_construction_open_release_recipes, environment_agent_trajectory_data, judgment_rubric_domain_expert_data
 > Links: [📄 Paper](https://arxiv.org/abs/2310.11511) · [🏛️ Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [🐙 Code](https://github.com/akariasai/self-rag) · [🗂️ Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [🤗 HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [🌐 Project](https://selfrag.github.io/)
 
 ## TL;DR

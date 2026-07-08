@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+> Category: instruction_demonstration_rationale_data, data_construction_open_release_recipes
 > Links: [📄 Paper](https://arxiv.org/abs/2212.08073) · [🌐 Project](https://github.com/anthropics/ConstitutionalHarmlessnessPaper)
 
 ## TL;DR

@@ -332,28 +332,28 @@ function phraseKey(text) {
 function contentTarget(text) {
   const value = String(text || "").toLowerCase();
   if (/prm|process reward|process supervision|step[- ]level|first[- ]error|math[- ]shepherd|prm800k/.test(value)) {
-    return "papers/03_process_supervision_prm.md";
+    return "papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md";
   }
   if (/contamination|leak|reward hacking|gaming|attack|failure|reproducib|audit/.test(value)) {
-    return "papers/09_audit_failure_contamination_verifier_attacks.md";
+    return "papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md";
   }
   if (/rlvr|test[- ]time|scaling|pass@k|sampling budget|verifier scaling|reuse|unique/.test(value)) {
-    return "papers/08_scaling_test_time_compute_rlvr.md";
+    return "papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md";
   }
   if (/agent|tool|browser|web|swe|environment|trajectory|terminal|desktop|mobile/.test(value)) {
-    return "papers/04_environmental_agents_tools_web_swe.md";
+    return "papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md";
   }
   if (/judge|rubric|medical|health|legal|financial|safety|factuality|grounding/.test(value)) {
-    return "papers/05_judgment_required_rubrics_safety_domain.md";
+    return "papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md";
   }
   if (/benchmark|evaluation|eval|live|rewardbench|math|code|proof/.test(value)) {
-    return "papers/10_benchmarks_evaluation.md";
+    return "papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md";
   }
   if (/recipe|construct|teacher|trace|filter|rejection|self[- ]play|lineage|release metadata/.test(value)) {
-    return "papers/06_construction_recipes_open_reasoning_data.md";
+    return "papers/02_data_lifecycle/08_data_construction_open_release_recipes.md";
   }
   if (/preference|rlhf|dpo|sft|instruction|rlaif|chain[- ]of[- ]thought|rationale/.test(value)) {
-    return "papers/01_foundations_instruction_preference_alignment.md";
+    return "papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md";
   }
   return "docs/glossary.md";
 }

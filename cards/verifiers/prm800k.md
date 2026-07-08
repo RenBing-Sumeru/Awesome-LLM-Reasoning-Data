@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: process_supervision_prm, benchmarks_evaluation
+> Category: process_trace_supervision_data, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2305.20050)
 
 ## TL;DR

@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: programmatic_math_code_proof, scaling_test_time_compute_rlvr, frontier_model_reports
+> Category: programmatically_verifiable_outcome_data, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
 > Links: [📄 Paper](https://arxiv.org/abs/2509.25300)
 
 ## TL;DR

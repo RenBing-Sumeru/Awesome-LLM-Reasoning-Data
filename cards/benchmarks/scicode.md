@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: programmatic_math_code_proof, judgment_required_rubrics_safety_domain, benchmarks_evaluation
+> Category: programmatically_verifiable_outcome_data, judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2407.13168) · [🏛️ Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [🐙 Code](https://github.com/scicode-bench/SciCode) · [🌐 Project](https://scicode-bench.github.io/)
 
 ## TL;DR

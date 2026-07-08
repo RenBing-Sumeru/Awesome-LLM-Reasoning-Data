@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: foundations_instruction_preference_alignment
+> Category: instruction_demonstration_rationale_data
 > Links: [📄 Paper](https://arxiv.org/abs/2201.11903)
 
 ## TL;DR

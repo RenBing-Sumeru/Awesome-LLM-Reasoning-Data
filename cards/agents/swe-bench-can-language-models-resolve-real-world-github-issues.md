@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: environmental_agents_tools_web_swe, benchmarks_evaluation
+> Category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2310.06770) · [🏛️ OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [🐙 Code](https://github.com/swe-bench/SWE-bench) · [🌐 Project](https://www.swebench.com/original.html)
 
 ## TL;DR

@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr, frontier_model_reports
+> Category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
 > Links: [📄 Paper](https://arxiv.org/abs/2402.03300) · [🐙 Code](https://github.com/deepseek-ai/deepseek-math) · [🤗 HF](https://huggingface.co/collections/deepseek-ai/deepseek-math)
 
 ## TL;DR

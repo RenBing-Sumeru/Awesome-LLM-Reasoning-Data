@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: surveys_and_primers, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+> Category: foundations_and_primers, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
 > Links: [📄 Paper](https://arxiv.org/abs/2406.19314) · [🏛️ OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [🌐 Project](https://livebench.ai/)
 
 ## TL;DR

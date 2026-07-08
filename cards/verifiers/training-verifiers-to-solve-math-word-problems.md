@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: process_supervision_prm
+> Category: process_trace_supervision_data
 > Links: [📄 Paper](https://arxiv.org/abs/2110.14168) · [🐙 Code](https://github.com/openai/grade-school-math) · [🤗 Hugging Face](https://huggingface.co/datasets/openai/gsm8k)
 
 ## TL;DR

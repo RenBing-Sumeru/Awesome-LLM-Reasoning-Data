@@ -92,8 +92,8 @@ test("API CORS allows the GitHub Pages frontend and blocks hostile POST origins"
 });
 
 test("return_to allows project Pages URLs but rejects open redirects", () => {
-  const canonicalPagesReturn = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=process_supervision_prm";
-  const fallbackPagesReturn = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask.html?track=process_supervision_prm";
+  const canonicalPagesReturn = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=process_trace_supervision_data";
+  const fallbackPagesReturn = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask.html?track=process_trace_supervision_data";
   assert.equal(safeReturnTo(canonicalPagesReturn, "/ask"), canonicalPagesReturn);
   assert.equal(safeReturnTo(fallbackPagesReturn, "/ask"), fallbackPagesReturn);
   assert.equal(safeReturnTo("/ask?entry=math-shepherd-2024", "/ask"), "/ask?entry=math-shepherd-2024");
@@ -384,11 +384,11 @@ test("admin HTTP APIs keep request list summarized and detail gated", async () =
     ip: "127.0.0.1",
     userAgent: "node-test",
     sources: [{
-      id: "papers/09_audit_failure_contamination_verifier_attacks.md#chunk-1",
+      id: "papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#chunk-1",
       index: 1,
       title: "Audit / Failure / Contamination",
-      path: "papers/09_audit_failure_contamination_verifier_attacks.md",
-      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/09_audit_failure_contamination_verifier_attacks.md",
+      path: "papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md",
+      url: "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md",
       type: "paper_map",
       snippet: "Verifier gaming and reward hacking audit signals.",
       score: 99,
@@ -428,7 +428,7 @@ test("admin HTTP APIs keep request list summarized and detail gated", async () =
     assert.equal(detailResponse.status, 200);
     const detail = await detailResponse.json();
     assert.equal(detail.request.answerText, "Audit verifier gaming with source-grounded checks.");
-    assert.equal(detail.request.sourceDetails[0].path, "papers/09_audit_failure_contamination_verifier_attacks.md");
+    assert.equal(detail.request.sourceDetails[0].path, "papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md");
   });
 });
 

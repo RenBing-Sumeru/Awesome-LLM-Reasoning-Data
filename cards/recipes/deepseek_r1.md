@@ -7,7 +7,7 @@
 <!-- ask_atlas:end -->
 
 > Curation level: L5_audit_ready
-> Category: surveys_and_primers, construction_recipes_open_reasoning_data, frontier_model_reports, scaling_test_time_compute_rlvr
+> Category: foundations_and_primers, data_construction_open_release_recipes, frontier_reports_data_disclosure_ledger, scaling_rlvr_test_time_compute
 > Links: [📄 Paper](https://arxiv.org/abs/2501.12948)
 
 ## TL;DR

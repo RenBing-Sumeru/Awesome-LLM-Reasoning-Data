@@ -59,20 +59,6 @@ CATEGORY_GROUPS = [
     },
 ]
 
-LEGACY_PAPER_PATHS = {
-    "00_surveys_and_primers.md": "00_background_foundations/00_foundations_and_primers.md",
-    "01_foundations_instruction_preference_alignment.md": "00_background_foundations/00_foundations_and_primers.md",
-    "02_programmatic_math_code_proof.md": "01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md",
-    "03_process_supervision_prm.md": "01_core_reasoning_data_types/04_process_trace_supervision_data.md",
-    "04_environmental_agents_tools_web_swe.md": "01_core_reasoning_data_types/06_environment_agent_trajectory_data.md",
-    "05_judgment_required_rubrics_safety_domain.md": "01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md",
-    "06_construction_recipes_open_reasoning_data.md": "02_data_lifecycle/08_data_construction_open_release_recipes.md",
-    "07_frontier_model_reports.md": "02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md",
-    "08_scaling_test_time_compute_rlvr.md": "02_data_lifecycle/10_scaling_rlvr_test_time_compute.md",
-    "09_audit_failure_contamination_verifier_attacks.md": "02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md",
-    "10_benchmarks_evaluation.md": "02_data_lifecycle/11_benchmarks_evaluation_surfaces.md",
-}
-
 ROLE_EMOJI = {
     "survey_background": "🧭",
     "model_report": "🚀",
@@ -173,7 +159,7 @@ AUDIT_CHECKLISTS = {
 
 def display_roles(entry: dict) -> list[str]:
     categories_ = set(as_list(entry.get("category")))
-    background_categories = {"surveys_and_primers", "foundations_and_primers"}
+    background_categories = {"foundations_and_primers"}
     return [
         role for role in as_list(entry.get("source_role"))
         if role != "survey_background" or categories_ & background_categories
@@ -812,17 +798,6 @@ def render_group_readme(group: dict) -> str:
     ]) + "\n"
 
 
-def render_legacy_stub(old_file: str, new_file: str) -> str:
-    return "\n".join([
-        f"# Moved: {old_file}",
-        "",
-        "This paper track has moved into the three-part Paper Atlas structure.",
-        "",
-        f"- New location: [{new_file}]({new_file})",
-        "- [Paper atlas README](README.md)",
-    ]) + "\n"
-
-
 def render(target_root: Path = ROOT) -> None:
     cards = card_inventory()
     out_dir = target_root / "papers"
@@ -836,8 +811,6 @@ def render(target_root: Path = ROOT) -> None:
         target = out_dir / cat["file"]
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(render_category(cat, cards), encoding="utf-8")
-    for old_file, new_file in LEGACY_PAPER_PATHS.items():
-        (out_dir / old_file).write_text(render_legacy_stub(old_file, new_file), encoding="utf-8")
 
 
 def check() -> int:
