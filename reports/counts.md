@@ -11,17 +11,20 @@ needs search / partial metadata: 115
 - partial: 3
 
 ## category
-- benchmarks_evaluation: 88
-- construction_recipes_open_reasoning_data: 84
-- scaling_test_time_compute_rlvr: 62
-- foundations_instruction_preference_alignment: 59
-- audit_failure_contamination_verifier_attacks: 54
-- judgment_required_rubrics_safety_domain: 54
-- programmatic_math_code_proof: 52
-- environmental_agents_tools_web_swe: 49
-- surveys_and_primers: 41
-- frontier_model_reports: 34
-- process_supervision_prm: 23
+- benchmarks_evaluation_surfaces: 109
+- data_construction_open_release_recipes: 108
+- training_usage_optimization_objectives: 97
+- environment_agent_trajectory_data: 95
+- programmatically_verifiable_outcome_data: 94
+- scaling_rlvr_test_time_compute: 90
+- foundations_and_primers: 84
+- judgment_rubric_domain_expert_data: 83
+- preference_reward_feedback_data: 73
+- audit_failure_contamination_verifier_attacks: 68
+- instruction_demonstration_rationale_data: 58
+- frontier_reports_data_disclosure_ledger: 40
+- rollout_search_test_time_trace_data: 39
+- process_trace_supervision_data: 25
 
 ## source_role
 - survey_background: 192

@@ -5,7 +5,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: environment_agent_trajectory_data, judgment_rubric_domain_expert_data, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -22,7 +22,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## HOList: An environment for machine learning of higher-order logic theorem proving
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, environmental_agents_tools_web_swe
+- Possible category: programmatically_verifiable_outcome_data, environment_agent_trajectory_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -39,7 +39,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## PubMedQA: A dataset for biomedical research question answering
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -56,7 +56,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## A primer in BERTology: What we know about how BERT works
 
 - Current status: `needs_metadata`
-- Possible category: surveys_and_primers
+- Possible category: foundations_and_primers, process_trace_supervision_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -73,7 +73,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Fact or fiction: Verifying scientific claims
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -90,7 +90,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Retrieval-augmented generation for knowledge-intensive NLP tasks
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, construction_recipes_open_reasoning_data
+- Possible category: judgment_rubric_domain_expert_data, data_construction_open_release_recipes, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -107,7 +107,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## CaseHOLD: A dataset for legal holding statement prediction
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -124,7 +124,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ContractNLI: A dataset for document-level natural language inference for contracts
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, scaling_rlvr_test_time_compute, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -141,7 +141,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## CUAD: An expert-annotated NLP dataset for legal contract review
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -158,7 +158,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Finetuned language models are zero-shot learners
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
+- Possible category: foundations_and_primers
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -175,7 +175,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Multitask prompted training enables zero-shot task generalization
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
+- Possible category: foundations_and_primers
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -192,7 +192,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Qasper: A dataset of information-seeking questions and answers over scientific research papers
 
 - Current status: `needs_metadata`
-- Possible category: benchmarks_evaluation
+- Possible category: preference_reward_feedback_data, environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -209,7 +209,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## CodeRL: Mastering code generation through pretrained models and deep reinforcement learning
 
 - Current status: `needs_metadata`
-- Possible category: scaling_test_time_compute_rlvr
+- Possible category: programmatically_verifiable_outcome_data, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -226,7 +226,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## CodeT: Code generation with generated tests
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, benchmarks_evaluation
+- Possible category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -243,7 +243,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## COLIEE: Competition on legal information extraction/entailment
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: preference_reward_feedback_data, judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -260,7 +260,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: environment_agent_trajectory_data, judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -277,7 +277,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Draft, sketch, and prove: Guiding formal theorem provers with informal proofs
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof
+- Possible category: preference_reward_feedback_data, programmatically_verifiable_outcome_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -294,7 +294,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Scaling laws for reward model overoptimization
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Possible category: foundations_and_primers, preference_reward_feedback_data, judgment_rubric_domain_expert_data, scaling_rlvr_test_time_compute, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -311,7 +311,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ScienceWorld: Is your agent smarter than a 5th grader?
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe
+- Possible category: environment_agent_trajectory_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -328,7 +328,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Solving math word problems with process- and outcome-based feedback
 
 - Current status: `needs_metadata`
-- Possible category: process_supervision_prm
+- Possible category: programmatically_verifiable_outcome_data, process_trace_supervision_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -345,7 +345,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ALCE: Enabling large language models to generate text with citations
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -362,7 +362,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## API-Bank: A benchmark for tool-augmented LLMs
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -379,7 +379,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Data provenance for language models
 
 - Current status: `needs_metadata`
-- Possible category: surveys_and_primers
+- Possible category: foundations_and_primers
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -396,7 +396,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, preference_reward_feedback_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -413,7 +413,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## FActScore
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -430,7 +430,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Gorilla
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe
+- Possible category: environment_agent_trajectory_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -447,7 +447,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## JudgeLM: Fine-tuned large language models are scalable judges
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -464,7 +464,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -481,7 +481,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Large language models encode clinical knowledge
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: programmatically_verifiable_outcome_data, judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -498,7 +498,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## MAmmoTH: Building math generalist models through hybrid instruction tuning
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof
+- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -515,7 +515,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## MAUD: A merger agreement understanding dataset
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -532,7 +532,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Measuring faithfulness in chain-of-thought reasoning
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -549,7 +549,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## MetaMath: Bootstrap your own mathematical questions for large language models
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Possible category: instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -566,7 +566,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Mind2Web: Towards a generalist agent for the web
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -583,7 +583,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ProofNet: Autoformalizing and formally proving undergraduate-level mathematics
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof
+- Possible category: preference_reward_feedback_data, programmatically_verifiable_outcome_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -600,7 +600,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Reflexion: Language agents with verbal reinforcement learning
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, environmental_agents_tools_web_swe, scaling_test_time_compute_rlvr
+- Possible category: foundations_and_primers, environment_agent_trajectory_data, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -617,7 +617,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ReST\textsuperscriptEM
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
+- Possible category: foundations_and_primers
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -634,7 +634,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SelfCodeAlign: Self-alignment for code generation
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -651,7 +651,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -668,7 +668,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## AI models collapse when trained on recursively generated data
 
 - Current status: `needs_metadata`
-- Possible category: surveys_and_primers, audit_failure_contamination_verifier_attacks
+- Possible category: foundations_and_primers, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -685,7 +685,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe
+- Possible category: environment_agent_trajectory_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -702,7 +702,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## BFCL v3
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -719,7 +719,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, programmatic_math_code_proof, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -736,7 +736,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval
 
 - Current status: `needs_metadata`
-- Possible category: audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -753,7 +753,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ChemBench: A benchmark for evaluating large language models in chemistry
 
 - Current status: `needs_metadata`
-- Possible category: audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -787,7 +787,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, frontier_model_reports, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces, frontier_reports_data_disclosure_ledger, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -804,7 +804,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Goedel-Prover: A frontier model for open-source automated theorem proving
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, frontier_model_reports
+- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -821,7 +821,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## GSM-Symbolic
 
 - Current status: `needs_metadata`
-- Possible category: audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -838,7 +838,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## HarmBench
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -855,7 +855,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## HelpSteer2: Open-source preference data for helpfulness and safety
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Possible category: foundations_and_primers, preference_reward_feedback_data, judgment_rubric_domain_expert_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -872,7 +872,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Is model collapse inevitable?
 
 - Current status: `needs_metadata`
-- Possible category: surveys_and_primers, audit_failure_contamination_verifier_attacks
+- Possible category: foundations_and_primers, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -889,7 +889,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## LAB-Bench: Measuring capabilities of language models for biology research
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -906,7 +906,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Learning to reason with LLMs
 
 - Current status: `needs_metadata`
-- Possible category: surveys_and_primers, frontier_model_reports
+- Possible category: foundations_and_primers, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -923,7 +923,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## OpenCodeInterpreter: Integrating code generation with execution and refinement
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof
+- Possible category: programmatically_verifiable_outcome_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -940,7 +940,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Overoptimization in direct alignment algorithms
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, audit_failure_contamination_verifier_attacks
+- Possible category: foundations_and_primers, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -957,7 +957,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe
+- Possible category: environment_agent_trajectory_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -974,7 +974,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## R-Tuning
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
+- Possible category: foundations_and_primers
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -991,7 +991,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## RAFT: Adapting language model to domain-specific RAG
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data, judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1008,7 +1008,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Self-Rewarding LMs
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment
+- Possible category: foundations_and_primers, preference_reward_feedback_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1025,7 +1025,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SPIN: Self-play fine-tuning converts weak language models to strong language models
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Possible category: foundations_and_primers, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1042,7 +1042,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SWE-Gym: Advancing software engineering agents with training and evaluation environments
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1059,7 +1059,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SWE-Search
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1076,7 +1076,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## tau-bench: A benchmark for tool-agent-user interaction in real-world domains
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1093,7 +1093,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## The Llama 3 Herd of models
 
 - Current status: `needs_metadata`
-- Possible category: frontier_model_reports
+- Possible category: frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1110,7 +1110,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ToolACE: Winning the points of LLM function calling
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe
+- Possible category: environment_agent_trajectory_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1127,7 +1127,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1144,7 +1144,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## VisualWebArena: Evaluating multimodal agents on realistic visual web tasks
 
 - Current status: `partial`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: rollout_search_test_time_trace_data, environment_agent_trajectory_data, judgment_rubric_domain_expert_data, training_usage_optimization_objectives, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1161,7 +1161,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## WebLINX: Real-world website navigation with multi-turn dialogue
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1178,7 +1178,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## WildGuard
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1195,7 +1195,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## WorkArena: How capable are web agents at solving common knowledge work tasks?
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1212,7 +1212,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## XSTest
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1229,7 +1229,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## 1-shot RLVR: Learning reasoning with minimal verifiable data
 
 - Current status: `needs_metadata`
-- Possible category: scaling_test_time_compute_rlvr
+- Possible category: scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1246,7 +1246,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ACORD: Attorney-curated open research dataset
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data
+- Possible category: data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1263,7 +1263,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr, benchmarks_evaluation
+- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, scaling_rlvr_test_time_compute, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1280,7 +1280,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## ChemLLMBench and chemistry reasoning evaluations for language models
 
 - Current status: `needs_metadata`
-- Possible category: benchmarks_evaluation
+- Possible category: benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1297,7 +1297,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## DAPO: An open-source LLM reinforcement learning system at scale
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr
+- Possible category: data_construction_open_release_recipes, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1314,7 +1314,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## DeepScaleR: Scaling reinforcement learning for reasoning in open models
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data, scaling_test_time_compute_rlvr
+- Possible category: data_construction_open_release_recipes, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1331,7 +1331,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning
 
 - Current status: `needs_metadata`
-- Possible category: frontier_model_reports, scaling_test_time_compute_rlvr
+- Possible category: scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1348,7 +1348,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Does RL really incentivize reasoning beyond base?
 
 - Current status: `needs_metadata`
-- Possible category: scaling_test_time_compute_rlvr
+- Possible category: scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1365,7 +1365,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Does supervised fine-tuning memorize while reinforcement learning generalizes?
 
 - Current status: `needs_metadata`
-- Possible category: scaling_test_time_compute_rlvr
+- Possible category: scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1382,7 +1382,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## FinDER: Financial data extraction and reasoning
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1399,7 +1399,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## From system 1 to system 2: A survey of reasoning large language models
 
 - Current status: `needs_metadata`
-- Possible category: surveys_and_primers
+- Possible category: foundations_and_primers
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1416,7 +1416,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## General reasoning models: Survey and perspectives
 
 - Current status: `needs_metadata`
-- Possible category: surveys_and_primers
+- Possible category: foundations_and_primers
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1433,7 +1433,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## HealthBench: Evaluating large language models towards improved human health
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1450,7 +1450,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Humanity's Last Exam
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, audit_failure_contamination_verifier_attacks
+- Possible category: judgment_rubric_domain_expert_data, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1467,7 +1467,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Introducing OpenAI o3 and o4-mini
 
 - Current status: `needs_metadata`
-- Possible category: frontier_model_reports
+- Possible category: frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1484,7 +1484,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## MATH-Perturb
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof
+- Possible category: programmatically_verifiable_outcome_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1501,7 +1501,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## MCP-Universe: Tool and environment infrastructure for agent evaluation and training
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1518,7 +1518,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1535,7 +1535,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## MegaScience: A benchmark and data resource for scientific reasoning
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: data_construction_open_release_recipes, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1569,7 +1569,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Multi-Agent Evolve: LLM self-improve through co-evolution
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data
+- Possible category: environment_agent_trajectory_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1586,7 +1586,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## OnlineRubrics
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1603,7 +1603,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Open-Reasoner-Zero: An open-source approach to RLVR for reasoning
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data, frontier_model_reports, scaling_test_time_compute_rlvr
+- Possible category: data_construction_open_release_recipes, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1620,7 +1620,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## OpenCodeReasoning-2: Scalable code reasoning data
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1637,7 +1637,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## OpenCodeReasoning: Code reasoning traces at scale
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1654,7 +1654,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Process reward models for code reasoning
 
 - Current status: `needs_metadata`
-- Possible category: process_supervision_prm
+- Possible category: preference_reward_feedback_data, programmatically_verifiable_outcome_data, process_trace_supervision_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1671,7 +1671,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Qwen2.5-Math-PRM
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof, process_supervision_prm
+- Possible category: programmatically_verifiable_outcome_data, process_trace_supervision_data, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1688,7 +1688,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## R2E-Gym: Procedural training environments for repository-level code agents
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe
+- Possible category: programmatically_verifiable_outcome_data, environment_agent_trajectory_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1705,7 +1705,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## rStar-Math
 
 - Current status: `needs_metadata`
-- Possible category: foundations_instruction_preference_alignment, construction_recipes_open_reasoning_data
+- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1722,7 +1722,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Rubrics as rewards
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain
+- Possible category: judgment_rubric_domain_expert_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1739,7 +1739,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Sky-T1: Fully open reasoning model and data recipe
 
 - Current status: `needs_metadata`
-- Possible category: construction_recipes_open_reasoning_data
+- Possible category: data_construction_open_release_recipes
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1756,7 +1756,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SWE-RL: Advancing language agents for software engineering via reinforcement learning
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, scaling_test_time_compute_rlvr
+- Possible category: environment_agent_trajectory_data, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1773,7 +1773,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## SWE-smith: Scaling data construction for software engineering agents
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, construction_recipes_open_reasoning_data
+- Possible category: environment_agent_trajectory_data, data_construction_open_release_recipes, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1790,7 +1790,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1807,7 +1807,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Toward conversational diagnostic AI: The AMIE system
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1824,7 +1824,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## VAR-MATH
 
 - Current status: `needs_metadata`
-- Possible category: programmatic_math_code_proof
+- Possible category: programmatically_verifiable_outcome_data
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1841,7 +1841,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Why we no longer evaluate on SWE-bench Verified
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1858,7 +1858,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## xLAM: A family of large action models to empower AI agent systems
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, frontier_model_reports
+- Possible category: environment_agent_trajectory_data, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1875,7 +1875,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL
 
 - Current status: `needs_metadata`
-- Possible category: scaling_test_time_compute_rlvr
+- Possible category: rollout_search_test_time_trace_data, environment_agent_trajectory_data, scaling_rlvr_test_time_compute
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1892,7 +1892,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## RewardBench 2
 
 - Current status: `needs_metadata`
-- Possible category: judgment_required_rubrics_safety_domain, benchmarks_evaluation
+- Possible category: preference_reward_feedback_data, judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1909,7 +1909,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Terminal-Bench: A benchmark and task environment for terminal agents
 
 - Current status: `needs_metadata`
-- Possible category: environmental_agents_tools_web_swe, audit_failure_contamination_verifier_attacks, benchmarks_evaluation
+- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
 - Missing:
   - official paper / arXiv / venue / DOI
   - code
@@ -1926,7 +1926,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## OpenR1-Math-220k
 
 - Current status: `partial`
-- Possible category: programmatic_math_code_proof, construction_recipes_open_reasoning_data
+- Possible category: instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - data
@@ -1941,7 +1941,7 @@ Entries below are intentionally not promoted as verified until an official prima
 ## Qwen3-Coder
 
 - Current status: `partial`
-- Possible category: environmental_agents_tools_web_swe, construction_recipes_open_reasoning_data, frontier_model_reports
+- Possible category: instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, environment_agent_trajectory_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
   - data

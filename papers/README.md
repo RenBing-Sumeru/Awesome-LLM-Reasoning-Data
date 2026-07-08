@@ -6,92 +6,117 @@ Use this folder when you want the repo to behave like a living survey. Each cate
 
 ## Awesome-Style Contents
 
-- 📚 Main Research Tracks
-  - [🧭 Surveys & Primers](00_surveys_and_primers.md)
-    - [🧭 Post-training surveys](00_surveys_and_primers.md#post-training-surveys)
-    - [🧠 Reasoning LLM surveys](00_surveys_and_primers.md#reasoning-llm-surveys)
-    - [📦 Data documentation / datasheets](00_surveys_and_primers.md#data-documentation-datasheets)
-    - [🧪 RLHF / reward-model surveys](00_surveys_and_primers.md#rlhf-reward-model-surveys)
-    - [🌐 Agent data / tool-use surveys](00_surveys_and_primers.md#agent-data-tool-use-surveys)
-    - [🧯 Contamination / evaluation surveys](00_surveys_and_primers.md#contamination-evaluation-surveys)
-  - [🧱 Foundations](01_foundations_instruction_preference_alignment.md)
-    - [🧱 Instruction tuning / SFT data](01_foundations_instruction_preference_alignment.md#instruction-tuning-sft-data)
-    - [🤝 Human preference data / RLHF](01_foundations_instruction_preference_alignment.md#human-preference-data-rlhf)
-    - [⚖️ DPO / preference optimization](01_foundations_instruction_preference_alignment.md#dpo-preference-optimization)
-    - [🧠 Chain-of-thought / rationale data](01_foundations_instruction_preference_alignment.md#chain-of-thought-rationale-data)
-    - [🔁 Self-training / STaR / Self-Instruct](01_foundations_instruction_preference_alignment.md#self-training-star-self-instruct)
-    - [🤖 RLAIF / synthetic feedback](01_foundations_instruction_preference_alignment.md#rlaif-synthetic-feedback)
-  - [🧮 Programmatic Verification](02_programmatic_math_code_proof.md)
-    - [📐 Math answer-verifiable data](02_programmatic_math_code_proof.md#math-answer-verifiable-data)
-    - [🧮 Math RLVR datasets](02_programmatic_math_code_proof.md#math-rlvr-datasets)
-    - [💻 Code execution / unit-test data](02_programmatic_math_code_proof.md#code-execution-unit-test-data)
-    - [🧾 Formal proof / Lean / theorem proving](02_programmatic_math_code_proof.md#formal-proof-lean-theorem-proving)
-    - [🧪 Verifier robustness and answer extraction](02_programmatic_math_code_proof.md#verifier-robustness-and-answer-extraction)
-    - [🧰 Programmatic benchmarks](02_programmatic_math_code_proof.md#programmatic-benchmarks)
-  - [🪜 Process Supervision & PRMs](03_process_supervision_prm.md)
-    - [🪜 Human step-level labels](03_process_supervision_prm.md#human-step-level-labels)
-    - [🧪 Process reward models](03_process_supervision_prm.md#process-reward-models)
-    - [🔁 Rollout-value supervision](03_process_supervision_prm.md#rollout-value-supervision)
-    - [🛠️ Automatic process supervision](03_process_supervision_prm.md#automatic-process-supervision)
-    - [❌ First-error localization](03_process_supervision_prm.md#first-error-localization)
-    - [📊 PRM benchmarks and evaluation](03_process_supervision_prm.md#prm-benchmarks-and-evaluation)
-  - [🌐 Agent & Environment Data](04_environmental_agents_tools_web_swe.md)
-    - [🛠️ Tool-use data](04_environmental_agents_tools_web_swe.md#tool-use-data)
-    - [🌍 Web/browser agents](04_environmental_agents_tools_web_swe.md#web-browser-agents)
-    - [📱 App/mobile agents](04_environmental_agents_tools_web_swe.md#app-mobile-agents)
-    - [🖥️ OS/desktop agents](04_environmental_agents_tools_web_swe.md#os-desktop-agents)
-    - [🧑‍💻 SWE/repository agents](04_environmental_agents_tools_web_swe.md#swe-repository-agents)
-    - [🔁 Replayable trajectory data](04_environmental_agents_tools_web_swe.md#replayable-trajectory-data)
-    - [🧰 Agent benchmarks and terminal predicates](04_environmental_agents_tools_web_swe.md#agent-benchmarks-and-terminal-predicates)
-  - [⚖️ Judgment-Required Data](05_judgment_required_rubrics_safety_domain.md)
-    - [⚖️ LLM-as-judge data](05_judgment_required_rubrics_safety_domain.md#llm-as-judge-data)
-    - [🧑‍⚖️ Human/expert judgment](05_judgment_required_rubrics_safety_domain.md#human-expert-judgment)
-    - [🩺 Medical reasoning / health rubrics](05_judgment_required_rubrics_safety_domain.md#medical-reasoning-health-rubrics)
-    - [🛡️ Safety reasoning data](05_judgment_required_rubrics_safety_domain.md#safety-reasoning-data)
-    - [🧾 Factuality / grounding](05_judgment_required_rubrics_safety_domain.md#factuality-grounding)
-    - [⚖️ Legal reasoning](05_judgment_required_rubrics_safety_domain.md#legal-reasoning)
-    - [🏦 Financial reasoning](05_judgment_required_rubrics_safety_domain.md#financial-reasoning)
-    - [🧪 Rubric reward models](05_judgment_required_rubrics_safety_domain.md#rubric-reward-models)
-  - [🏗️ Construction Recipes](06_construction_recipes_open_reasoning_data.md)
-    - [🧱 Prompt sourcing](06_construction_recipes_open_reasoning_data.md#prompt-sourcing)
-    - [✍️ Teacher trace generation](06_construction_recipes_open_reasoning_data.md#teacher-trace-generation)
-    - [🔎 Rejection sampling / search-generated data](06_construction_recipes_open_reasoning_data.md#rejection-sampling-search-generated-data)
-    - [🔁 Self-play / self-improvement](06_construction_recipes_open_reasoning_data.md#self-play-self-improvement)
-    - [🧪 Filtering and verifier refresh](06_construction_recipes_open_reasoning_data.md#filtering-and-verifier-refresh)
-    - [🏗️ Open reasoning data releases](06_construction_recipes_open_reasoning_data.md#open-reasoning-data-releases)
-    - [🧬 Data lineage and release metadata](06_construction_recipes_open_reasoning_data.md#data-lineage-and-release-metadata)
-  - [🚀 Frontier Reports](07_frontier_model_reports.md)
-    - [🚀 DeepSeek-R1 family](07_frontier_model_reports.md#deepseek-r1-family)
-    - [🌙 Kimi reasoning reports](07_frontier_model_reports.md#kimi-reasoning-reports)
-    - [🐉 Qwen reasoning/math/code reports](07_frontier_model_reports.md#qwen-reasoning-math-code-reports)
-    - [🧠 Magistral / Phi / Nemotron style reports](07_frontier_model_reports.md#magistral-phi-nemotron-style-reports)
-    - [🧪 RLVR recipe reports](07_frontier_model_reports.md#rlvr-recipe-reports)
-    - [🧬 What is disclosed vs hidden](07_frontier_model_reports.md#what-is-disclosed-vs-hidden)
-  - [📈 Scaling & Test-Time Compute](08_scaling_test_time_compute_rlvr.md)
-    - [📈 Data scaling](08_scaling_test_time_compute_rlvr.md#data-scaling)
-    - [🔁 Data reuse and uniqueness](08_scaling_test_time_compute_rlvr.md#data-reuse-and-uniqueness)
-    - [⏱️ Test-time compute](08_scaling_test_time_compute_rlvr.md#test-time-compute)
-    - [🎲 pass@k / sampling budget](08_scaling_test_time_compute_rlvr.md#pass-k-sampling-budget)
-    - [🧪 Verifier scaling](08_scaling_test_time_compute_rlvr.md#verifier-scaling)
-    - [🏋️ RLVR optimization scaling](08_scaling_test_time_compute_rlvr.md#rlvr-optimization-scaling)
-    - [🔍 Scaling attribution](08_scaling_test_time_compute_rlvr.md#scaling-attribution)
-  - [🧯 Audit & Failure Modes](09_audit_failure_contamination_verifier_attacks.md)
-    - [🧯 Benchmark contamination](09_audit_failure_contamination_verifier_attacks.md#benchmark-contamination)
-    - [🔍 Search-time contamination](09_audit_failure_contamination_verifier_attacks.md#search-time-contamination)
-    - [🧬 Hidden lineage / teacher leakage](09_audit_failure_contamination_verifier_attacks.md#hidden-lineage-teacher-leakage)
-    - [🎮 Reward hacking](09_audit_failure_contamination_verifier_attacks.md#reward-hacking)
-    - [🧪 Verifier gaming](09_audit_failure_contamination_verifier_attacks.md#verifier-gaming)
-    - [⚖️ LLM-as-judge attacks](09_audit_failure_contamination_verifier_attacks.md#llm-as-judge-attacks)
-    - [🧨 Spurious rewards](09_audit_failure_contamination_verifier_attacks.md#spurious-rewards)
-    - [📉 Reproducibility failures](09_audit_failure_contamination_verifier_attacks.md#reproducibility-failures)
-  - [🧰 Benchmarks & Evaluation](10_benchmarks_evaluation.md)
-    - [📐 Math benchmarks](10_benchmarks_evaluation.md#math-benchmarks)
-    - [💻 Code benchmarks](10_benchmarks_evaluation.md#code-benchmarks)
-    - [🧾 Proof benchmarks](10_benchmarks_evaluation.md#proof-benchmarks)
-    - [🌐 Agent benchmarks](10_benchmarks_evaluation.md#agent-benchmarks)
-    - [⚖️ Rubric/domain benchmarks](10_benchmarks_evaluation.md#rubric-domain-benchmarks)
-    - [🧪 Reward-model benchmarks](10_benchmarks_evaluation.md#reward-model-benchmarks)
-    - [🧯 Live / contamination-resistant benchmarks](10_benchmarks_evaluation.md#live-contamination-resistant-benchmarks)
+- 🧭 Background & Foundations
+  - [🧭 Foundations & Primers](00_background_foundations/00_foundations_and_primers.md)
+    - [🧭 Post-training surveys](00_background_foundations/00_foundations_and_primers.md#post-training-surveys)
+    - [🧠 Reasoning LLM surveys](00_background_foundations/00_foundations_and_primers.md#reasoning-llm-surveys)
+    - [📦 Data documentation / datasheets](00_background_foundations/00_foundations_and_primers.md#data-documentation-datasheets)
+    - [🧪 RLHF / reward-model surveys](00_background_foundations/00_foundations_and_primers.md#rlhf-reward-model-surveys)
+    - [🌐 Agent data / tool-use surveys](00_background_foundations/00_foundations_and_primers.md#agent-data-tool-use-surveys)
+    - [🧯 Contamination / evaluation surveys](00_background_foundations/00_foundations_and_primers.md#contamination-evaluation-surveys)
+- 🧬 Core Reasoning Data Types
+  - [🧱 Instruction / Demo / Rationale](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md)
+    - [🧱 Instruction tuning / SFT data](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#instruction-tuning-sft-data)
+    - [🧑‍🏫 Human demonstrations](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#human-demonstrations)
+    - [🤖 Synthetic instruction data](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#synthetic-instruction-data)
+    - [🧠 Chain-of-thought / rationale data](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#chain-of-thought-rationale-data)
+    - [🔁 Self-training / STaR](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#self-training-star)
+    - [✂️ Long/short CoT distillation](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#long-short-cot-distillation)
+  - [🤝 Preference & Reward Feedback](01_core_reasoning_data_types/02_preference_reward_feedback_data.md)
+    - [🤝 Human preference data / RLHF](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#human-preference-data-rlhf)
+    - [⚖️ DPO / preference optimization](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#dpo-preference-optimization)
+    - [🎚️ Scalar reward / ORM data](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#scalar-reward-orm-data)
+    - [🤖 RLAIF / synthetic feedback](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rlaif-synthetic-feedback)
+    - [🧪 Reward-model benchmarks](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#reward-model-benchmarks)
+    - [🧾 Rubric-conditioned rewards](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rubric-conditioned-rewards)
+  - [🧮 Programmatic Verification](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md)
+    - [📐 Math answer-verifiable data](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-answer-verifiable-data)
+    - [🧮 Math RLVR datasets](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-rlvr-datasets)
+    - [💻 Code execution / unit-test data](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#code-execution-unit-test-data)
+    - [🧾 Formal proof / Lean / theorem proving](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#formal-proof-lean-theorem-proving)
+    - [🧪 Verifier robustness and answer extraction](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#verifier-robustness-and-answer-extraction)
+    - [🧰 Programmatic benchmarks](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#programmatic-benchmarks)
+  - [🪜 Process / Trace Supervision](01_core_reasoning_data_types/04_process_trace_supervision_data.md)
+    - [🪜 Human step-level labels](01_core_reasoning_data_types/04_process_trace_supervision_data.md#human-step-level-labels)
+    - [🧪 Process reward models](01_core_reasoning_data_types/04_process_trace_supervision_data.md#process-reward-models)
+    - [🔁 Rollout-value supervision](01_core_reasoning_data_types/04_process_trace_supervision_data.md#rollout-value-supervision)
+    - [🛠️ Automatic process supervision](01_core_reasoning_data_types/04_process_trace_supervision_data.md#automatic-process-supervision)
+    - [❌ First-error localization](01_core_reasoning_data_types/04_process_trace_supervision_data.md#first-error-localization)
+    - [📊 PRM benchmarks and evaluation](01_core_reasoning_data_types/04_process_trace_supervision_data.md#prm-benchmarks-and-evaluation)
+  - [🔁 Rollout / Search / TTC Trace](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md)
+    - [🎲 Multiple rollouts / best-of-N](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#multiple-rollouts-best-of-n)
+    - [🌳 Search trees / MCTS](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#search-trees-mcts)
+    - [🔎 Rejection sampling traces](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#rejection-sampling-traces)
+    - [🧠 Self-consistency / repeated sampling](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#self-consistency-repeated-sampling)
+    - [⏱️ Test-time compute logs](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#test-time-compute-logs)
+    - [✂️ Long2short / distill-from-search](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#long2short-distill-from-search)
+  - [🌐 Environment & Agent Trajectories](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md)
+    - [🛠️ Tool-use data](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#tool-use-data)
+    - [🌍 Web/browser agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#web-browser-agents)
+    - [📱 App/mobile agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#app-mobile-agents)
+    - [🖥️ OS/desktop agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#os-desktop-agents)
+    - [🧑‍💻 SWE/repository agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#swe-repository-agents)
+    - [🔁 Replayable trajectory data](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#replayable-trajectory-data)
+    - [🧰 Agent benchmarks and terminal predicates](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#agent-benchmarks-and-terminal-predicates)
+  - [⚖️ Judgment / Rubric / Domain Expert](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md)
+    - [⚖️ LLM-as-judge data](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#llm-as-judge-data)
+    - [🧑‍⚖️ Human/expert judgment](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#human-expert-judgment)
+    - [🩺 Medical reasoning / health rubrics](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#medical-reasoning-health-rubrics)
+    - [🛡️ Safety reasoning data](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#safety-reasoning-data)
+    - [🧾 Factuality / grounding](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#factuality-grounding)
+    - [⚖️ Legal reasoning](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#legal-reasoning)
+    - [🏦 Financial reasoning](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#financial-reasoning)
+    - [🧪 Rubric reward models](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#rubric-reward-models)
+- 🛠️ Data Lifecycle
+  - [🏗️ Construction & Open Releases](02_data_lifecycle/08_data_construction_open_release_recipes.md)
+    - [🧱 Prompt sourcing](02_data_lifecycle/08_data_construction_open_release_recipes.md#prompt-sourcing)
+    - [✍️ Teacher trace generation](02_data_lifecycle/08_data_construction_open_release_recipes.md#teacher-trace-generation)
+    - [🔎 Rejection sampling / search-generated data](02_data_lifecycle/08_data_construction_open_release_recipes.md#rejection-sampling-search-generated-data)
+    - [🔁 Self-play / self-improvement](02_data_lifecycle/08_data_construction_open_release_recipes.md#self-play-self-improvement)
+    - [🧪 Filtering and verifier refresh](02_data_lifecycle/08_data_construction_open_release_recipes.md#filtering-and-verifier-refresh)
+    - [🏗️ Open reasoning data releases](02_data_lifecycle/08_data_construction_open_release_recipes.md#open-reasoning-data-releases)
+    - [🧬 Data lineage and release metadata](02_data_lifecycle/08_data_construction_open_release_recipes.md#data-lineage-and-release-metadata)
+  - [🎯 Training Usage & Objectives](02_data_lifecycle/09_training_usage_optimization_objectives.md)
+    - [🧱 SFT / instruction tuning](02_data_lifecycle/09_training_usage_optimization_objectives.md#sft-instruction-tuning)
+    - [📚 Distillation](02_data_lifecycle/09_training_usage_optimization_objectives.md#distillation)
+    - [⚖️ Preference optimization](02_data_lifecycle/09_training_usage_optimization_objectives.md#preference-optimization)
+    - [🎚️ Reward modeling / ORM](02_data_lifecycle/09_training_usage_optimization_objectives.md#reward-modeling-orm)
+    - [🪜 PRM / process supervision](02_data_lifecycle/09_training_usage_optimization_objectives.md#prm-process-supervision)
+    - [🏋️ RLVR / verifier RL](02_data_lifecycle/09_training_usage_optimization_objectives.md#rlvr-verifier-rl)
+    - [🌐 Agent training](02_data_lifecycle/09_training_usage_optimization_objectives.md#agent-training)
+    - [🧪 Evaluation / reranking / audit](02_data_lifecycle/09_training_usage_optimization_objectives.md#evaluation-reranking-audit)
+  - [📈 Scaling / RLVR / TTC](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md)
+    - [📈 Data scaling](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-scaling)
+    - [🔁 Data reuse and uniqueness](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-reuse-and-uniqueness)
+    - [⏱️ Test-time compute](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#test-time-compute)
+    - [🎲 pass@k / sampling budget](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#pass-k-sampling-budget)
+    - [🧪 Verifier scaling](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#verifier-scaling)
+    - [🏋️ RLVR optimization scaling](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#rlvr-optimization-scaling)
+    - [🔍 Scaling attribution](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#scaling-attribution)
+  - [🧰 Benchmarks & Evaluation](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md)
+    - [📐 Math benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#math-benchmarks)
+    - [💻 Code benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#code-benchmarks)
+    - [🧾 Proof benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#proof-benchmarks)
+    - [🌐 Agent benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#agent-benchmarks)
+    - [⚖️ Rubric/domain benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#rubric-domain-benchmarks)
+    - [🧪 Reward-model benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#reward-model-benchmarks)
+    - [🧯 Live / contamination-resistant benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#live-contamination-resistant-benchmarks)
+  - [🚀 Frontier Disclosure Ledger](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md)
+    - [🚀 DeepSeek-R1 family](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#deepseek-r1-family)
+    - [🌙 Kimi reasoning reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#kimi-reasoning-reports)
+    - [🐉 Qwen reasoning/math/code reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#qwen-reasoning-math-code-reports)
+    - [🧠 Magistral / Phi / Nemotron style reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#magistral-phi-nemotron-style-reports)
+    - [🧪 RLVR recipe reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#rlvr-recipe-reports)
+    - [🧬 What is disclosed vs hidden](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#what-is-disclosed-vs-hidden)
+  - [🧯 Audit & Failure Modes](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md)
+    - [🧯 Benchmark contamination](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#benchmark-contamination)
+    - [🔍 Search-time contamination](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#search-time-contamination)
+    - [🧬 Hidden lineage / teacher leakage](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#hidden-lineage-teacher-leakage)
+    - [🎮 Reward hacking](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reward-hacking)
+    - [🧪 Verifier gaming](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#verifier-gaming)
+    - [⚖️ LLM-as-judge attacks](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#llm-as-judge-attacks)
+    - [🧨 Spurious rewards](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#spurious-rewards)
+    - [📉 Reproducibility failures](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reproducibility-failures)
 - 🧩 Browse by Data Object
   - prompt-answer, trace-answer, step label, rollout value, preference pair, reward record, agent trajectory, rubric record
 - 🛠️ Browse by Training Use
@@ -101,19 +126,40 @@ Use this folder when you want the repo to behave like a living survey. Each cate
 
 ## Research Track Navigator
 
+### 🧭 Background & Foundations
+
+Start here for post-training vocabulary, classic alignment-data lineages, reasoning-model surveys, and data-documentation habits.
+
 | Track | Subfields | Best for | Entries | Jump |
 |---|---|---|---:|---|
-| 🧭 Surveys & Primers | [🧭 Post-training surveys](00_surveys_and_primers.md#post-training-surveys)<br>[🧠 Reasoning LLM surveys](00_surveys_and_primers.md#reasoning-llm-surveys)<br>[📦 Data documentation / datasheets](00_surveys_and_primers.md#data-documentation-datasheets)<br>[🧪 RLHF / reward-model surveys](00_surveys_and_primers.md#rlhf-reward-model-surveys)<br>[🌐 Agent data / tool-use surveys](00_surveys_and_primers.md#agent-data-tool-use-surveys)<br>[🧯 Contamination / evaluation surveys](00_surveys_and_primers.md#contamination-evaluation-surveys) | building the field map before reading primary papers | 41 | [00_surveys_and_primers.md](00_surveys_and_primers.md) |
-| 🧱 Foundations | [🧱 Instruction tuning / SFT data](01_foundations_instruction_preference_alignment.md#instruction-tuning-sft-data)<br>[🤝 Human preference data / RLHF](01_foundations_instruction_preference_alignment.md#human-preference-data-rlhf)<br>[⚖️ DPO / preference optimization](01_foundations_instruction_preference_alignment.md#dpo-preference-optimization)<br>[🧠 Chain-of-thought / rationale data](01_foundations_instruction_preference_alignment.md#chain-of-thought-rationale-data)<br>[🔁 Self-training / STaR / Self-Instruct](01_foundations_instruction_preference_alignment.md#self-training-star-self-instruct)<br>[🤖 RLAIF / synthetic feedback](01_foundations_instruction_preference_alignment.md#rlaif-synthetic-feedback) | understanding where reasoning-data objects came from | 59 | [01_foundations_instruction_preference_alignment.md](01_foundations_instruction_preference_alignment.md) |
-| 🧮 Programmatic Verification | [📐 Math answer-verifiable data](02_programmatic_math_code_proof.md#math-answer-verifiable-data)<br>[🧮 Math RLVR datasets](02_programmatic_math_code_proof.md#math-rlvr-datasets)<br>[💻 Code execution / unit-test data](02_programmatic_math_code_proof.md#code-execution-unit-test-data)<br>[🧾 Formal proof / Lean / theorem proving](02_programmatic_math_code_proof.md#formal-proof-lean-theorem-proving)<br>[🧪 Verifier robustness and answer extraction](02_programmatic_math_code_proof.md#verifier-robustness-and-answer-extraction)<br>[🧰 Programmatic benchmarks](02_programmatic_math_code_proof.md#programmatic-benchmarks) | RLVR, answer-verifiable data, and executable reasoning tasks | 52 | [02_programmatic_math_code_proof.md](02_programmatic_math_code_proof.md) |
-| 🪜 Process Supervision & PRMs | [🪜 Human step-level labels](03_process_supervision_prm.md#human-step-level-labels)<br>[🧪 Process reward models](03_process_supervision_prm.md#process-reward-models)<br>[🔁 Rollout-value supervision](03_process_supervision_prm.md#rollout-value-supervision)<br>[🛠️ Automatic process supervision](03_process_supervision_prm.md#automatic-process-supervision)<br>[❌ First-error localization](03_process_supervision_prm.md#first-error-localization)<br>[📊 PRM benchmarks and evaluation](03_process_supervision_prm.md#prm-benchmarks-and-evaluation) | step-level rewards, PRM research, and verifier-model design | 23 | [03_process_supervision_prm.md](03_process_supervision_prm.md) |
-| 🌐 Agent & Environment Data | [🛠️ Tool-use data](04_environmental_agents_tools_web_swe.md#tool-use-data)<br>[🌍 Web/browser agents](04_environmental_agents_tools_web_swe.md#web-browser-agents)<br>[📱 App/mobile agents](04_environmental_agents_tools_web_swe.md#app-mobile-agents)<br>[🖥️ OS/desktop agents](04_environmental_agents_tools_web_swe.md#os-desktop-agents)<br>[🧑‍💻 SWE/repository agents](04_environmental_agents_tools_web_swe.md#swe-repository-agents)<br>[🔁 Replayable trajectory data](04_environmental_agents_tools_web_swe.md#replayable-trajectory-data)<br>[🧰 Agent benchmarks and terminal predicates](04_environmental_agents_tools_web_swe.md#agent-benchmarks-and-terminal-predicates) | tool, web, OS, app, and repository-level trajectory data | 49 | [04_environmental_agents_tools_web_swe.md](04_environmental_agents_tools_web_swe.md) |
-| ⚖️ Judgment-Required Data | [⚖️ LLM-as-judge data](05_judgment_required_rubrics_safety_domain.md#llm-as-judge-data)<br>[🧑‍⚖️ Human/expert judgment](05_judgment_required_rubrics_safety_domain.md#human-expert-judgment)<br>[🩺 Medical reasoning / health rubrics](05_judgment_required_rubrics_safety_domain.md#medical-reasoning-health-rubrics)<br>[🛡️ Safety reasoning data](05_judgment_required_rubrics_safety_domain.md#safety-reasoning-data)<br>[🧾 Factuality / grounding](05_judgment_required_rubrics_safety_domain.md#factuality-grounding)<br>[⚖️ Legal reasoning](05_judgment_required_rubrics_safety_domain.md#legal-reasoning)<br>[🏦 Financial reasoning](05_judgment_required_rubrics_safety_domain.md#financial-reasoning)<br>[🧪 Rubric reward models](05_judgment_required_rubrics_safety_domain.md#rubric-reward-models) | rubrics, LLM judges, high-stakes domains, and expert evaluation | 54 | [05_judgment_required_rubrics_safety_domain.md](05_judgment_required_rubrics_safety_domain.md) |
-| 🏗️ Construction Recipes | [🧱 Prompt sourcing](06_construction_recipes_open_reasoning_data.md#prompt-sourcing)<br>[✍️ Teacher trace generation](06_construction_recipes_open_reasoning_data.md#teacher-trace-generation)<br>[🔎 Rejection sampling / search-generated data](06_construction_recipes_open_reasoning_data.md#rejection-sampling-search-generated-data)<br>[🔁 Self-play / self-improvement](06_construction_recipes_open_reasoning_data.md#self-play-self-improvement)<br>[🧪 Filtering and verifier refresh](06_construction_recipes_open_reasoning_data.md#filtering-and-verifier-refresh)<br>[🏗️ Open reasoning data releases](06_construction_recipes_open_reasoning_data.md#open-reasoning-data-releases)<br>[🧬 Data lineage and release metadata](06_construction_recipes_open_reasoning_data.md#data-lineage-and-release-metadata) | building, filtering, releasing, and reproducing reasoning datasets | 84 | [06_construction_recipes_open_reasoning_data.md](06_construction_recipes_open_reasoning_data.md) |
-| 🚀 Frontier Reports | [🚀 DeepSeek-R1 family](07_frontier_model_reports.md#deepseek-r1-family)<br>[🌙 Kimi reasoning reports](07_frontier_model_reports.md#kimi-reasoning-reports)<br>[🐉 Qwen reasoning/math/code reports](07_frontier_model_reports.md#qwen-reasoning-math-code-reports)<br>[🧠 Magistral / Phi / Nemotron style reports](07_frontier_model_reports.md#magistral-phi-nemotron-style-reports)<br>[🧪 RLVR recipe reports](07_frontier_model_reports.md#rlvr-recipe-reports)<br>[🧬 What is disclosed vs hidden](07_frontier_model_reports.md#what-is-disclosed-vs-hidden) | reading model reports as partial data disclosures | 34 | [07_frontier_model_reports.md](07_frontier_model_reports.md) |
-| 📈 Scaling & Test-Time Compute | [📈 Data scaling](08_scaling_test_time_compute_rlvr.md#data-scaling)<br>[🔁 Data reuse and uniqueness](08_scaling_test_time_compute_rlvr.md#data-reuse-and-uniqueness)<br>[⏱️ Test-time compute](08_scaling_test_time_compute_rlvr.md#test-time-compute)<br>[🎲 pass@k / sampling budget](08_scaling_test_time_compute_rlvr.md#pass-k-sampling-budget)<br>[🧪 Verifier scaling](08_scaling_test_time_compute_rlvr.md#verifier-scaling)<br>[🏋️ RLVR optimization scaling](08_scaling_test_time_compute_rlvr.md#rlvr-optimization-scaling)<br>[🔍 Scaling attribution](08_scaling_test_time_compute_rlvr.md#scaling-attribution) | interpreting RLVR, data scaling, and inference-budget claims | 62 | [08_scaling_test_time_compute_rlvr.md](08_scaling_test_time_compute_rlvr.md) |
-| 🧯 Audit & Failure Modes | [🧯 Benchmark contamination](09_audit_failure_contamination_verifier_attacks.md#benchmark-contamination)<br>[🔍 Search-time contamination](09_audit_failure_contamination_verifier_attacks.md#search-time-contamination)<br>[🧬 Hidden lineage / teacher leakage](09_audit_failure_contamination_verifier_attacks.md#hidden-lineage-teacher-leakage)<br>[🎮 Reward hacking](09_audit_failure_contamination_verifier_attacks.md#reward-hacking)<br>[🧪 Verifier gaming](09_audit_failure_contamination_verifier_attacks.md#verifier-gaming)<br>[⚖️ LLM-as-judge attacks](09_audit_failure_contamination_verifier_attacks.md#llm-as-judge-attacks)<br>[🧨 Spurious rewards](09_audit_failure_contamination_verifier_attacks.md#spurious-rewards)<br>[📉 Reproducibility failures](09_audit_failure_contamination_verifier_attacks.md#reproducibility-failures) | auditing leakage, contamination, verifier gaming, and judge attacks | 54 | [09_audit_failure_contamination_verifier_attacks.md](09_audit_failure_contamination_verifier_attacks.md) |
-| 🧰 Benchmarks & Evaluation | [📐 Math benchmarks](10_benchmarks_evaluation.md#math-benchmarks)<br>[💻 Code benchmarks](10_benchmarks_evaluation.md#code-benchmarks)<br>[🧾 Proof benchmarks](10_benchmarks_evaluation.md#proof-benchmarks)<br>[🌐 Agent benchmarks](10_benchmarks_evaluation.md#agent-benchmarks)<br>[⚖️ Rubric/domain benchmarks](10_benchmarks_evaluation.md#rubric-domain-benchmarks)<br>[🧪 Reward-model benchmarks](10_benchmarks_evaluation.md#reward-model-benchmarks)<br>[🧯 Live / contamination-resistant benchmarks](10_benchmarks_evaluation.md#live-contamination-resistant-benchmarks) | choosing evaluation surfaces and reusable feedback contracts | 88 | [10_benchmarks_evaluation.md](10_benchmarks_evaluation.md) |
+| 🧭 Foundations & Primers | [🧭 Post-training surveys](00_background_foundations/00_foundations_and_primers.md#post-training-surveys)<br>[🧠 Reasoning LLM surveys](00_background_foundations/00_foundations_and_primers.md#reasoning-llm-surveys)<br>[📦 Data documentation / datasheets](00_background_foundations/00_foundations_and_primers.md#data-documentation-datasheets)<br>[🧪 RLHF / reward-model surveys](00_background_foundations/00_foundations_and_primers.md#rlhf-reward-model-surveys)<br>[🌐 Agent data / tool-use surveys](00_background_foundations/00_foundations_and_primers.md#agent-data-tool-use-surveys)<br>[🧯 Contamination / evaluation surveys](00_background_foundations/00_foundations_and_primers.md#contamination-evaluation-surveys) | beginners building the field map before primary papers | 84 | [00_background_foundations/00_foundations_and_primers.md](00_background_foundations/00_foundations_and_primers.md) |
+
+### 🧬 Core Reasoning Data Types
+
+Use this section to compare instruction traces, preferences, verifiable outcomes, process labels, rollout/search traces, agent episodes, and rubric records.
+
+| Track | Subfields | Best for | Entries | Jump |
+|---|---|---|---:|---|
+| 🧱 Instruction / Demo / Rationale | [🧱 Instruction tuning / SFT data](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#instruction-tuning-sft-data)<br>[🧑‍🏫 Human demonstrations](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#human-demonstrations)<br>[🤖 Synthetic instruction data](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#synthetic-instruction-data)<br>[🧠 Chain-of-thought / rationale data](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#chain-of-thought-rationale-data)<br>[🔁 Self-training / STaR](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#self-training-star)<br>[✂️ Long/short CoT distillation](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#long-short-cot-distillation) | demonstration, SFT, CoT, rationale, and teacher-trace data | 58 | [01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md](01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md) |
+| 🤝 Preference & Reward Feedback | [🤝 Human preference data / RLHF](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#human-preference-data-rlhf)<br>[⚖️ DPO / preference optimization](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#dpo-preference-optimization)<br>[🎚️ Scalar reward / ORM data](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#scalar-reward-orm-data)<br>[🤖 RLAIF / synthetic feedback](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rlaif-synthetic-feedback)<br>[🧪 Reward-model benchmarks](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#reward-model-benchmarks)<br>[🧾 Rubric-conditioned rewards](01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rubric-conditioned-rewards) | RLHF, DPO, reward modeling, rubric rewards, and AI feedback | 73 | [01_core_reasoning_data_types/02_preference_reward_feedback_data.md](01_core_reasoning_data_types/02_preference_reward_feedback_data.md) |
+| 🧮 Programmatic Verification | [📐 Math answer-verifiable data](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-answer-verifiable-data)<br>[🧮 Math RLVR datasets](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-rlvr-datasets)<br>[💻 Code execution / unit-test data](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#code-execution-unit-test-data)<br>[🧾 Formal proof / Lean / theorem proving](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#formal-proof-lean-theorem-proving)<br>[🧪 Verifier robustness and answer extraction](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#verifier-robustness-and-answer-extraction)<br>[🧰 Programmatic benchmarks](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#programmatic-benchmarks) | math, code, proof, and answer-verifiable reasoning data | 94 | [01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md](01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) |
+| 🪜 Process / Trace Supervision | [🪜 Human step-level labels](01_core_reasoning_data_types/04_process_trace_supervision_data.md#human-step-level-labels)<br>[🧪 Process reward models](01_core_reasoning_data_types/04_process_trace_supervision_data.md#process-reward-models)<br>[🔁 Rollout-value supervision](01_core_reasoning_data_types/04_process_trace_supervision_data.md#rollout-value-supervision)<br>[🛠️ Automatic process supervision](01_core_reasoning_data_types/04_process_trace_supervision_data.md#automatic-process-supervision)<br>[❌ First-error localization](01_core_reasoning_data_types/04_process_trace_supervision_data.md#first-error-localization)<br>[📊 PRM benchmarks and evaluation](01_core_reasoning_data_types/04_process_trace_supervision_data.md#prm-benchmarks-and-evaluation) | step-level labels, PRMs, rollout values, and first-error signals | 25 | [01_core_reasoning_data_types/04_process_trace_supervision_data.md](01_core_reasoning_data_types/04_process_trace_supervision_data.md) |
+| 🔁 Rollout / Search / TTC Trace | [🎲 Multiple rollouts / best-of-N](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#multiple-rollouts-best-of-n)<br>[🌳 Search trees / MCTS](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#search-trees-mcts)<br>[🔎 Rejection sampling traces](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#rejection-sampling-traces)<br>[🧠 Self-consistency / repeated sampling](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#self-consistency-repeated-sampling)<br>[⏱️ Test-time compute logs](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#test-time-compute-logs)<br>[✂️ Long2short / distill-from-search](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#long2short-distill-from-search) | search-generated candidates, best-of-N, pass@k, and test-time compute traces | 39 | [01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md](01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md) |
+| 🌐 Environment & Agent Trajectories | [🛠️ Tool-use data](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#tool-use-data)<br>[🌍 Web/browser agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#web-browser-agents)<br>[📱 App/mobile agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#app-mobile-agents)<br>[🖥️ OS/desktop agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#os-desktop-agents)<br>[🧑‍💻 SWE/repository agents](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#swe-repository-agents)<br>[🔁 Replayable trajectory data](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#replayable-trajectory-data)<br>[🧰 Agent benchmarks and terminal predicates](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#agent-benchmarks-and-terminal-predicates) | tool, web, OS, app, SWE, and replayable environment data | 95 | [01_core_reasoning_data_types/06_environment_agent_trajectory_data.md](01_core_reasoning_data_types/06_environment_agent_trajectory_data.md) |
+| ⚖️ Judgment / Rubric / Domain Expert | [⚖️ LLM-as-judge data](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#llm-as-judge-data)<br>[🧑‍⚖️ Human/expert judgment](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#human-expert-judgment)<br>[🩺 Medical reasoning / health rubrics](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#medical-reasoning-health-rubrics)<br>[🛡️ Safety reasoning data](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#safety-reasoning-data)<br>[🧾 Factuality / grounding](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#factuality-grounding)<br>[⚖️ Legal reasoning](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#legal-reasoning)<br>[🏦 Financial reasoning](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#financial-reasoning)<br>[🧪 Rubric reward models](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#rubric-reward-models) | LLM judges, expert rubrics, factuality, safety, medical, legal, and finance reasoning | 83 | [01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md](01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md) |
+
+### 🛠️ Data Lifecycle
+
+Follow the lifecycle from construction recipes through training objectives, scaling claims, benchmarks, frontier disclosures, and failure audits.
+
+| Track | Subfields | Best for | Entries | Jump |
+|---|---|---|---:|---|
+| 🏗️ Construction & Open Releases | [🧱 Prompt sourcing](02_data_lifecycle/08_data_construction_open_release_recipes.md#prompt-sourcing)<br>[✍️ Teacher trace generation](02_data_lifecycle/08_data_construction_open_release_recipes.md#teacher-trace-generation)<br>[🔎 Rejection sampling / search-generated data](02_data_lifecycle/08_data_construction_open_release_recipes.md#rejection-sampling-search-generated-data)<br>[🔁 Self-play / self-improvement](02_data_lifecycle/08_data_construction_open_release_recipes.md#self-play-self-improvement)<br>[🧪 Filtering and verifier refresh](02_data_lifecycle/08_data_construction_open_release_recipes.md#filtering-and-verifier-refresh)<br>[🏗️ Open reasoning data releases](02_data_lifecycle/08_data_construction_open_release_recipes.md#open-reasoning-data-releases)<br>[🧬 Data lineage and release metadata](02_data_lifecycle/08_data_construction_open_release_recipes.md#data-lineage-and-release-metadata) | building, filtering, releasing, and reproducing reasoning datasets | 108 | [02_data_lifecycle/08_data_construction_open_release_recipes.md](02_data_lifecycle/08_data_construction_open_release_recipes.md) |
+| 🎯 Training Usage & Objectives | [🧱 SFT / instruction tuning](02_data_lifecycle/09_training_usage_optimization_objectives.md#sft-instruction-tuning)<br>[📚 Distillation](02_data_lifecycle/09_training_usage_optimization_objectives.md#distillation)<br>[⚖️ Preference optimization](02_data_lifecycle/09_training_usage_optimization_objectives.md#preference-optimization)<br>[🎚️ Reward modeling / ORM](02_data_lifecycle/09_training_usage_optimization_objectives.md#reward-modeling-orm)<br>[🪜 PRM / process supervision](02_data_lifecycle/09_training_usage_optimization_objectives.md#prm-process-supervision)<br>[🏋️ RLVR / verifier RL](02_data_lifecycle/09_training_usage_optimization_objectives.md#rlvr-verifier-rl)<br>[🌐 Agent training](02_data_lifecycle/09_training_usage_optimization_objectives.md#agent-training)<br>[🧪 Evaluation / reranking / audit](02_data_lifecycle/09_training_usage_optimization_objectives.md#evaluation-reranking-audit) | how data enters SFT, DPO, RM, PRM, RLVR, agents, evaluation, and audit | 97 | [02_data_lifecycle/09_training_usage_optimization_objectives.md](02_data_lifecycle/09_training_usage_optimization_objectives.md) |
+| 📈 Scaling / RLVR / TTC | [📈 Data scaling](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-scaling)<br>[🔁 Data reuse and uniqueness](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-reuse-and-uniqueness)<br>[⏱️ Test-time compute](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#test-time-compute)<br>[🎲 pass@k / sampling budget](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#pass-k-sampling-budget)<br>[🧪 Verifier scaling](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#verifier-scaling)<br>[🏋️ RLVR optimization scaling](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#rlvr-optimization-scaling)<br>[🔍 Scaling attribution](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#scaling-attribution) | data scale, RLVR, verifier scaling, pass@k, and inference budget claims | 90 | [02_data_lifecycle/10_scaling_rlvr_test_time_compute.md](02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) |
+| 🧰 Benchmarks & Evaluation | [📐 Math benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#math-benchmarks)<br>[💻 Code benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#code-benchmarks)<br>[🧾 Proof benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#proof-benchmarks)<br>[🌐 Agent benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#agent-benchmarks)<br>[⚖️ Rubric/domain benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#rubric-domain-benchmarks)<br>[🧪 Reward-model benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#reward-model-benchmarks)<br>[🧯 Live / contamination-resistant benchmarks](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#live-contamination-resistant-benchmarks) | evaluation surfaces and reusable feedback contracts | 109 | [02_data_lifecycle/11_benchmarks_evaluation_surfaces.md](02_data_lifecycle/11_benchmarks_evaluation_surfaces.md) |
+| 🚀 Frontier Disclosure Ledger | [🚀 DeepSeek-R1 family](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#deepseek-r1-family)<br>[🌙 Kimi reasoning reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#kimi-reasoning-reports)<br>[🐉 Qwen reasoning/math/code reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#qwen-reasoning-math-code-reports)<br>[🧠 Magistral / Phi / Nemotron style reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#magistral-phi-nemotron-style-reports)<br>[🧪 RLVR recipe reports](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#rlvr-recipe-reports)<br>[🧬 What is disclosed vs hidden](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#what-is-disclosed-vs-hidden) | reading frontier reports as partial data-recipe disclosures | 40 | [02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md](02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md) |
+| 🧯 Audit & Failure Modes | [🧯 Benchmark contamination](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#benchmark-contamination)<br>[🔍 Search-time contamination](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#search-time-contamination)<br>[🧬 Hidden lineage / teacher leakage](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#hidden-lineage-teacher-leakage)<br>[🎮 Reward hacking](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reward-hacking)<br>[🧪 Verifier gaming](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#verifier-gaming)<br>[⚖️ LLM-as-judge attacks](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#llm-as-judge-attacks)<br>[🧨 Spurious rewards](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#spurious-rewards)<br>[📉 Reproducibility failures](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reproducibility-failures) | leakage, contamination, verifier gaming, judge attacks, and reproducibility failures | 68 | [02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md](02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md) |
 
 ## Crosswalk Matrix
 

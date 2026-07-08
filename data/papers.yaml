@@ -62,7 +62,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -150,8 +152,11 @@
   - reward-modeling
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -237,8 +242,11 @@
   - nlp
   status: verified
   category:
-  - surveys_and_primers
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - audit_failure_contamination_verifier_attacks
   one_line: Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context,
     and intended deployment boundaries.
   card: cards/releases/data-statements-for-natural-language-processing.md
@@ -325,8 +333,10 @@
   - audit
   status: verified
   category:
-  - surveys_and_primers
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - data_construction_open_release_recipes
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: 'Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process,
     recommended uses, and limitations.'
   card: cards/releases/datasheets-for-datasets.md
@@ -408,8 +418,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - environmental_agents_tools_web_swe
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -491,8 +501,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -574,7 +585,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - surveys_and_primers
+  - foundations_and_primers
+  - process_trace_supervision_data
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -656,8 +668,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -737,8 +749,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -818,8 +831,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -901,8 +914,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -984,7 +998,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -1082,8 +1097,14 @@
   - benchmark
   status: verified
   category:
-  - programmatic_math_code_proof
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: The Codex evaluation paper introduces HumanEval and studies code generation through functional correctness, repeated
     sampling, and pass@k.
   card: cards/benchmarks/evaluating-large-language-models-trained-on-code.md
@@ -1165,7 +1186,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -1251,15 +1272,20 @@
   - tabular-textual-qa
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: FinQA introduces financial-document QA with expert-written questions and gold reasoning programs for numerical
     reasoning over financial reports.
   card: null
   needs:
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: FinQA introduces financial-document QA with expert-written questions and gold reasoning programs for
-    numerical reasoning over financial reports.
+  one_line_summary: FinQA introduces financial-document QA with expert-written questions and gold reasoning programs for numerical
+    reasoning over financial reports.
   why_it_matters: It is a finance-domain reasoning benchmark where the data object includes questions, evidence from financial
     reports, answers, and reasoning programs rather than only free-form responses.
   curation_level: L2_artifact_verified
@@ -1360,8 +1386,13 @@
   - unit-tests
   status: verified
   category:
-  - programmatic_math_code_proof
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: APPS evaluates code-generation competence with 10,000 programming problems checked by executable test cases.
   card: cards/benchmarks/apps.md
   needs:
@@ -1448,8 +1479,12 @@
   - dataset
   status: verified
   category:
-  - programmatic_math_code_proof
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Introduces MATH, a competition-style math benchmark with challenging problems, subject categories, and step-by-step
     solutions.
   card: cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md
@@ -1551,8 +1586,14 @@
   - theorem-proving
   status: verified
   category:
-  - programmatic_math_code_proof
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: miniF2F is a cross-system formal mathematics benchmark for comparing theorem provers across Lean, Metamath, Isabelle,
     and HOL Light targets.
   card: cards/benchmarks/minif2f.md
@@ -1634,7 +1675,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -1714,7 +1755,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🧰 Benchmarks and Evaluation Surfaces map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -1802,17 +1845,22 @@
   - numerical-reasoning
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: TAT-QA evaluates numerical reasoning over hybrid financial tables and text, with annotated derivations and answers.
   card: null
   needs:
   - 'needs_metadata: curator should verify atlas fields'
   one_line_summary: TAT-QA evaluates numerical reasoning over hybrid financial tables and text, with annotated derivations
     and answers.
-  why_it_matters: It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection,
-    table-text grounding, arithmetic, and answer normalization all matter.
+  why_it_matters: It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text
+    grounding, arithmetic, and answer normalization all matter.
   curation_level: L2_artifact_verified
   verification:
     link_verified: true
@@ -1897,7 +1945,15 @@
   - benchmark
   status: verified
   category:
-  - process_supervision_prm
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.
   card: cards/verifiers/training-verifiers-to-solve-math-word-problems.md
   needs:
@@ -1982,7 +2038,10 @@
   - primary-link-checked
   status: verified
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
   one_line: Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large
     language models.
   card: cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md
@@ -2064,7 +2123,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - scaling_test_time_compute_rlvr
+  - programmatically_verifiable_outcome_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -2146,8 +2206,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -2227,7 +2287,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -2325,8 +2386,12 @@
   - primary-link-checked
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   one_line: Constitutional AI trains harmless behavior from AI-generated critiques, revisions, and AI preference feedback
     guided by a written constitution.
   card: cards/recipes/constitutional-ai.md
@@ -2408,7 +2473,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -2490,7 +2556,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -2572,7 +2639,10 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
@@ -2655,7 +2725,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -2737,7 +2807,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - process_supervision_prm
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
   one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -2825,8 +2896,11 @@
   - primary-link-checked
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   one_line: STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted
     reasoning traces.
   card: cards/recipes/star-bootstrapping-reasoning-with-reasoning.md
@@ -2916,8 +2990,13 @@
   - safety
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -3008,7 +3087,13 @@
   - primary-link-checked
   status: verified
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - frontier_reports_data_disclosure_ledger
   one_line: InstructGPT establishes the demonstration, preference-comparison, reward-model, and PPO pipeline that many later
     post-training recipes inherit.
   card: cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md
@@ -3111,9 +3196,12 @@
   - truthfulness
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: TruthfulQA is a benchmark for measuring whether models imitate common human falsehoods instead of giving truthful
     answers.
   card: cards/benchmarks/truthfulqa.md
@@ -3195,8 +3283,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -3276,9 +3364,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -3360,7 +3448,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - surveys_and_primers
+  - foundations_and_primers
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -3447,7 +3535,11 @@
   - primary-link-checked
   status: verified
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
   one_line: DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive
     optimization problem.
   card: cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md
@@ -3529,8 +3621,10 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - data_construction_open_release_recipes
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -3612,8 +3706,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -3698,17 +3792,18 @@
   - factuality
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: FinanceBench benchmarks financial question answering over public company filings and expert-authored answers.
   card: null
   needs:
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: FinanceBench benchmarks financial question answering over public company filings and expert-authored
-    answers.
-  why_it_matters: It is a domain-specific reasoning benchmark where grounding, evidence retrieval, expert answers, and
-    current filing data matter more than generic exact-match reasoning.
+  one_line_summary: FinanceBench benchmarks financial question answering over public company filings and expert-authored answers.
+  why_it_matters: It is a domain-specific reasoning benchmark where grounding, evidence retrieval, expert answers, and current
+    filing data matter more than generic exact-match reasoning.
   curation_level: L2_artifact_verified
   verification:
     link_verified: true
@@ -3781,7 +3876,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -3883,8 +3978,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
   one_line: GPQA is a graduate-level science Q&A benchmark designed so skilled non-experts with web access still struggle.
   card: cards/benchmarks/gpqa.md
@@ -3965,7 +4062,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -4080,10 +4177,12 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - foundations_instruction_preference_alignment
   one_line: MT-Bench and Chatbot Arena establish LLM-as-a-judge and pairwise human-preference evaluation surfaces for open-ended
     chat models.
   card: cards/verifiers/mt-bench-chatbot-arena.md
@@ -4165,7 +4264,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
   - audit_failure_contamination_verifier_attacks
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
@@ -4248,7 +4348,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - programmatically_verifiable_outcome_data
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -4360,9 +4461,14 @@
   - seeded-from-bib
   status: verified
   category:
-  - programmatic_math_code_proof
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: LeanDojo releases an open Lean theorem-proving environment, benchmark, and retrieval-augmented prover pipeline.
   card: cards/agents/leandojo.md
   needs:
@@ -4448,8 +4554,10 @@
   - legal-reasoning
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - benchmarks_evaluation_surfaces
   one_line: LegalBench provides a collaboratively built benchmark suite for legal reasoning tasks across many legal domains.
   card: null
   needs:
@@ -4530,8 +4638,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - programmatic_math_code_proof
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -4613,8 +4722,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -4694,7 +4803,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
   - audit_failure_contamination_verifier_attacks
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
@@ -4777,8 +4887,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -4860,8 +4971,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -4966,8 +5077,14 @@
   - synthetic-data
   status: verified
   category:
-  - frontier_model_reports
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
   one_line: Orca studies progressive learning from complex teacher explanation traces rather than shallow imitation of final
     answers.
   card: cards/recipes/orca.md
@@ -5063,8 +5180,14 @@
   - primary-link-checked
   status: verified
   category:
-  - process_supervision_prm
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify
     correct intermediate reasoning.
   card: cards/verifiers/prm800k.md
@@ -5146,7 +5269,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -5252,8 +5376,11 @@
   - tools
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - construction_recipes_open_reasoning_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.
   card: cards/agents/react.md
   needs:
@@ -5334,9 +5461,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - environmental_agents_tools_web_swe
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -5418,7 +5545,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -5514,8 +5641,14 @@
   - primary-link-checked
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Self-consistency samples multiple chain-of-thought reasoning paths and chooses the answer that is most consistent
     across samples.
   card: cards/recipes/self-consistency-chain-of-thought.md
@@ -5603,8 +5736,10 @@
   - primary-link-checked
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   one_line: Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs,
     then filtering low-quality or duplicate examples.
   card: cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md
@@ -5712,9 +5847,14 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - environmental_agents_tools_web_swe
-  - judgment_required_rubrics_safety_domain
+  - instruction_demonstration_rationale_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: Self-RAG trains models to decide when to retrieve, generate with evidence, and critique outputs using reflection
     tokens.
   card: cards/recipes/self-rag.md
@@ -5796,8 +5936,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -5888,8 +6028,10 @@
   - environment
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running
     tests.
   card: cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md
@@ -5997,8 +6139,11 @@
   - tools
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - construction_recipes_open_reasoning_data
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   one_line: Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model
     likelihood.
   card: cards/agents/toolformer.md
@@ -6112,9 +6257,13 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response
     pairs.
   card: cards/releases/ultrafeedback.md
@@ -6209,8 +6358,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like
     browser environment.
   card: cards/agents/webarena.md
@@ -6292,9 +6444,10 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -6376,7 +6529,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - surveys_and_primers
+  - foundations_and_primers
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
@@ -6459,7 +6612,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -6557,8 +6710,12 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
   card: cards/agents/appworld.md
   needs:
@@ -6639,8 +6796,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -6722,10 +6879,12 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - programmatic_math_code_proof
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -6807,8 +6966,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's
     data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -6904,7 +7063,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: 'A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection
     and evaluation.'
   card: cards/agents/browsergym.md
@@ -6986,8 +7148,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's
     data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -7097,9 +7259,14 @@
   - synthetic-data
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal
     proof model.
   card: cards/recipes/deepseek-prover.md
@@ -7219,9 +7386,14 @@
   - seeded-from-bib
   status: verified
   category:
-  - programmatic_math_code_proof
-  - scaling_test_time_compute_rlvr
-  - construction_recipes_open_reasoning_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: DeepSeek-Prover-V1.5 adds proof-assistant feedback, RL, and RMaxTS search on top of DeepSeek-Prover-style formal
     proof data.
   card: cards/recipes/deepseek-prover-v1-5.md
@@ -7334,10 +7506,16 @@
   - web-data
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  - frontier_model_reports
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
   one_line: DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation
     for open mathematical reasoning.
   card: cards/recipes/deepseekmath.md
@@ -7499,10 +7677,10 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - frontier_model_reports
+  - programmatically_verifiable_outcome_data
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -7584,9 +7762,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -7668,8 +7846,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
+  - programmatically_verifiable_outcome_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's
     data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -7751,7 +7930,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -7833,8 +8013,10 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -7936,10 +8118,12 @@
   - unit-tests
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - programmatic_math_code_proof
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable,
     or incorrectly tested software-engineering tasks.
   card: cards/agents/swe-bench-verified.md
@@ -8021,7 +8205,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - surveys_and_primers
+  - foundations_and_primers
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
@@ -8104,8 +8288,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -8187,9 +8371,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - rollout_search_test_time_trace_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -8270,8 +8454,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - surveys_and_primers
-  - frontier_model_reports
+  - foundations_and_primers
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -8364,9 +8548,12 @@
   - evaluation
   status: verified
   category:
-  - surveys_and_primers
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring
     across math, code, reasoning, language, instruction following, and data analysis.
   card: cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md
@@ -8474,9 +8661,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - programmatic_math_code_proof
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: LiveCodeBench continuously collects recent programming problems to evaluate code generation, execution, repair,
     and test-output prediction under lower contamination risk.
   card: cards/benchmarks/livecodebench.md
@@ -8582,9 +8771,12 @@
   - synthetic-data
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
   one_line: Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate more realistic
     instruction data.
   card: cards/recipes/magicoder.md
@@ -8666,8 +8858,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -8754,25 +8949,27 @@
     notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal
       metadata remains incomplete.
     metadata_status: partial
-  inclusion_reason: >-
-    Math-Shepherd is a key rollout-value supervision reference: it turns intermediate math steps into process rewards by
-    sampling continuations and checking final outcomes.
+  inclusion_reason: 'Math-Shepherd is a key rollout-value supervision reference: it turns intermediate math steps into process
+    rewards by sampling continuations and checking final outcomes.'
   related: []
   tags: []
   status: verified
   category:
-  - programmatic_math_code_proof
-  - process_supervision_prm
-  - scaling_test_time_compute_rlvr
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.
   card: cards/verifiers/math_shepherd.md
   needs:
   - 'needs_metadata: release-internal fields require curator review'
   one_line_summary: Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.
-  why_it_matters: >-
-    It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment
-    but a rollout-derived estimate of whether a partial step can still reach the right answer.
+  why_it_matters: 'It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human
+    judgment but a rollout-derived estimate of whether a partial step can still reach the right answer.'
   verification:
     link_verified: true
     artifact_verified: false
@@ -8845,7 +9042,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
+  - programmatically_verifiable_outcome_data
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -8952,9 +9149,12 @@
   - synthetic-data
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open synthesis
     pipeline.
   card: cards/releases/openmathinstruct-2.md
@@ -9050,8 +9250,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
   one_line: Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data
     evaluation.
@@ -9134,7 +9337,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
   - audit_failure_contamination_verifier_attacks
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
@@ -9217,7 +9420,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -9328,9 +9531,14 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - foundations_instruction_preference_alignment
-  - benchmarks_evaluation
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
+  - audit_failure_contamination_verifier_attacks
   one_line: Prometheus 2 is an open evaluator model for both direct assessment and pairwise ranking under user-defined criteria.
   card: cards/verifiers/prometheus-2.md
   needs:
@@ -9433,10 +9641,17 @@
   - tool-integrated-reasoning
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
   one_line: Qwen2.5-Math reports a math-specialized model family supporting chain-style and tool-integrated reasoning with
     base, instruct, and reward-model variants.
   card: cards/recipes/qwen2-5-math.md
@@ -9518,7 +9733,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -9600,8 +9815,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -9690,24 +9905,31 @@
     - inference budget may be conflated with data quality
     citation_status: verified
     confidence: high
-    notes: Primary arXiv link verified during the research-navigation pass; release-internal recipe details still need curator review.
-  inclusion_reason: ReST-MCTS connects self-training, process rewards, and tree search, making it a useful bridge between PRM data and test-time compute.
+    notes: Primary arXiv link verified during the research-navigation pass; release-internal recipe details still need curator
+      review.
+  inclusion_reason: ReST-MCTS connects self-training, process rewards, and tree search, making it a useful bridge between
+    PRM data and test-time compute.
   related: []
   tags:
   - seeded-from-bib
   - primary-link-checked
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - process_supervision_prm
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Process-reward-guided tree search recipe for self-training reasoning traces.
   card: null
   needs:
   - 'needs_metadata: curator should verify atlas fields'
   one_line_summary: Process-reward-guided tree search recipe for self-training reasoning traces.
-  why_it_matters: It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
+  why_it_matters: It shows how a process reward can guide search-generated trajectories, so readers can separate data generation,
+    verifier choice, and inference-budget effects.
   curation_level: L1_link_verified
   verification:
     link_verified: true
@@ -9796,8 +10018,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: RewardBench evaluates reward models on prompt/chosen/rejected trios spanning chat, reasoning, and safety, including
     structured preference failures.
   card: cards/benchmarks/rewardbench.md
@@ -9909,9 +10134,13 @@
   - seeded-from-bib
   status: verified
   category:
-  - process_supervision_prm
-  - scaling_test_time_compute_rlvr
-  - construction_recipes_open_reasoning_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases future correctness
     probability.
   card: cards/verifiers/rewarding-progress.md
@@ -10041,9 +10270,13 @@
   - seeded-from-bib
   status: verified
   category:
-  - programmatic_math_code_proof
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: SciCode evaluates code generation for realistic scientific research problems decomposed into subproblems with
     tests and gold solutions.
   card: cards/benchmarks/scicode.md
@@ -10125,7 +10358,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - preference_reward_feedback_data
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -10207,8 +10441,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - data_construction_open_release_recipes
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -10290,8 +10524,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -10373,8 +10607,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -10454,9 +10688,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -10538,7 +10772,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - frontier_model_reports
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🚀 Frontier Reasoning Model Reports map; use it to inspect the paper's data object, verifier
     contract, and release metadata before promoting it.
   card: null
@@ -10620,7 +10854,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -10720,9 +10954,12 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - construction_recipes_open_reasoning_data
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses
     anchor feedback.
   card: cards/agents/toolllm_toolbench.md
@@ -10804,9 +11041,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -10934,10 +11171,17 @@
   - seeded-from-bib
   status: verified
   category:
-  - frontier_model_reports
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
+  - audit_failure_contamination_verifier_attacks
   one_line: Tulu 3 releases an open post-training stack with SFT data, preference data, RLVR recipes, code, models, and evaluation
     guidance.
   card: cards/recipes/tulu-3.md
@@ -11029,8 +11273,11 @@
   - seeded-from-bib
   status: partial
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots
     and UI state.
   card: null
@@ -11112,8 +11359,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -11195,7 +11442,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -11277,8 +11524,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -11360,8 +11608,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -11441,10 +11689,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - foundations_and_primers
+  - data_construction_open_release_recipes
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -11525,7 +11772,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -11608,8 +11855,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
   one_line: Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding,
     seeds, prompt format, and environment details.
@@ -11691,8 +11941,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -11787,9 +12036,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  - programmatic_math_code_proof
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable
     feedback to ground the loop.
   card: cards/recipes/absolute_zero.md
@@ -11883,9 +12133,12 @@
   tags: []
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise,
     subjective, and stale-information questions.
   card: cards/benchmarks/abstentionbench.md
@@ -11968,7 +12221,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -12047,7 +12303,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -12129,8 +12385,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - judgment_rubric_domain_expert_data
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -12225,9 +12481,13 @@
   tags: []
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.
   card: cards/verifiers/aegis2.md
   needs:
@@ -12308,9 +12568,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -12391,9 +12652,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - frontier_model_reports
+  - foundations_and_primers
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -12487,8 +12748,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Android tasks turn mobile UI state and action histories into evaluable agent trajectories.
   card: cards/agents/androidworld.md
   needs:
@@ -12567,9 +12830,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - process_supervision_prm
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - process_trace_supervision_data
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -12661,10 +12924,13 @@
   - primary-link-checked
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
   card: cards/releases/big_math.md
   needs:
@@ -12743,10 +13009,10 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -12828,7 +13094,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - benchmarks_evaluation
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🧰 Benchmarks and Evaluation Surfaces map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -12910,9 +13176,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -12993,10 +13258,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - data_construction_open_release_recipes
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -13081,9 +13346,10 @@
   tags: []
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
   card: cards/releases/dapo.md
   needs:
@@ -13162,8 +13428,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -13251,13 +13517,15 @@
   tags: []
   status: verified
   category:
-  - surveys_and_primers
-  - programmatic_math_code_proof
-  - process_supervision_prm
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Math release highlighted for verifier pinning and decontamination.
   card: cards/releases/deepmath_103k.md
   needs:
@@ -13336,7 +13604,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -13415,8 +13686,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -13538,10 +13809,14 @@
   - subgoal-decomposition
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: DeepSeek-Prover-V2 uses recursive subgoal decomposition and RL to connect informal reasoning with formal Lean
     theorem proving.
   card: cards/recipes/deepseek-prover-v2.md
@@ -13630,10 +13905,13 @@
   tags: []
   status: verified
   category:
-  - surveys_and_primers
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable
     rewards, cold-start data, and distillation.
   card: cards/recipes/deepseek_r1.md
@@ -13715,8 +13993,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🚀 Frontier Reasoning Model Reports map; use it to inspect the paper's data object, verifier
     contract, and release metadata before promoting it.
   card: null
@@ -13798,9 +14076,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - frontier_model_reports
+  - foundations_and_primers
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -13882,10 +14159,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -13966,7 +14243,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -14048,7 +14325,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -14130,10 +14407,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - judgment_required_rubrics_safety_domain
+  - foundations_and_primers
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -14214,8 +14491,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -14296,9 +14573,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - programmatic_math_code_proof
-  - process_supervision_prm
+  - foundations_and_primers
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
@@ -14380,7 +14657,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - surveys_and_primers
+  - foundations_and_primers
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -14462,7 +14739,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -14543,7 +14820,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - surveys_and_primers
+  - foundations_and_primers
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -14625,8 +14902,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - programmatic_math_code_proof
-  - scaling_test_time_compute_rlvr
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - scaling_rlvr_test_time_compute
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -14707,8 +14985,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - process_supervision_prm
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - process_trace_supervision_data
+  - scaling_rlvr_test_time_compute
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -14804,8 +15084,10 @@
   - primary-link-checked
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
   one_line: HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety,
     accuracy, communication, and domain contexts.
@@ -14888,8 +15170,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -14971,7 +15253,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
@@ -15054,7 +15336,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - frontier_model_reports
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🚀 Frontier Reasoning Model Reports map; use it to inspect the paper's data object, verifier
     contract, and release metadata before promoting it.
   card: null
@@ -15148,8 +15430,11 @@
   tags: []
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
-  - construction_recipes_open_reasoning_data
+  - preference_reward_feedback_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance
     from compute efficiency.
   card: cards/recipes/the-art-of-scaling-rl-compute.md
@@ -15239,8 +15524,11 @@
   tags: []
   status: verified
   category:
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Frontier report used for long-context RL and scaling discussion.
   card: cards/recipes/kimi_k15.md
   needs:
@@ -15319,7 +15607,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - frontier_model_reports
+  - environment_agent_trajectory_data
+  - frontier_reports_data_disclosure_ledger
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -15414,9 +15703,13 @@
   - seeded-from-bib
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.
   card: cards/releases/kodcode.md
   needs:
@@ -15497,8 +15790,8 @@
   - seeded-from-bib
   status: verified
   category:
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -15592,10 +15885,15 @@
   tags: []
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - environmental_agents_tools_web_swe
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through
     prompt injection or accidental leakage.
   card: cards/failures/leaky-thoughts.md
@@ -15677,8 +15975,8 @@
   - seeded-from-bib
   status: verified
   category:
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -15762,7 +16060,10 @@
   tags: []
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   one_line: Small-set curation reference distinguishing elicitation from broad coverage.
   card: cards/releases/limo.md
   needs:
@@ -15849,11 +16150,13 @@
   tags: []
   status: verified
   category:
-  - surveys_and_primers
-  - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Mixed post-training corpus reference for reasoning, chat, and safety partitions.
   card: cards/recipes/llama_nemotron.md
   needs:
@@ -15932,8 +16235,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -16019,9 +16322,11 @@
   tags: []
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.
   card: cards/recipes/magistral.md
   needs:
@@ -16100,7 +16405,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
+  - programmatically_verifiable_outcome_data
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -16182,8 +16487,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -16265,7 +16570,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -16347,9 +16652,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -16431,7 +16736,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
+  - foundations_and_primers
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -16614,9 +16919,14 @@
   - seeded-from-bib
   status: verified
   category:
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
-  - environmental_agents_tools_web_swe
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
   one_line: Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent
     evaluation surfaces.
   card: cards/recipes/minimax_m1.md
@@ -16698,7 +17008,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -16796,8 +17107,12 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability
     lens.
   card: cards/releases/naturalreasoning.md
@@ -16879,9 +17194,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - frontier_model_reports
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - frontier_reports_data_disclosure_ledger
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -16965,9 +17281,11 @@
   tags: []
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Verifier-attack paper showing trivial cue tokens can flip judge verdicts.
   card: cards/verifiers/one_token_to_fool_judge.md
   needs:
@@ -17046,8 +17364,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - construction_recipes_open_reasoning_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -17126,7 +17444,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -17208,9 +17526,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -17292,9 +17610,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -17375,8 +17693,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -17458,8 +17776,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -17558,9 +17877,12 @@
   - seeded-from-bib
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time
     self-critique.
   card: cards/releases/opencodereasoning_ii.md
@@ -17660,8 +17982,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - frontier_model_reports
+  - preference_reward_feedback_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - frontier_reports_data_disclosure_ledger
   one_line: Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state,
     and community-maintained agent scaffolds.
   card: cards/agents/openhands.md
@@ -17749,10 +18074,12 @@
   tags: []
   status: verified
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Large-scale math reasoning trace release for programmatic verification.
   card: cards/releases/openmathreasoning.md
   needs:
@@ -17846,8 +18173,13 @@
   - primary-link-checked
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - frontier_reports_data_disclosure_ledger
   one_line: OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled
     pipeline experiments.
   card: cards/releases/openthoughts.md
@@ -17935,8 +18267,11 @@
   tags: []
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - frontier_reports_data_disclosure_ledger
   one_line: Reasoning model report highlighting teacher distillation as trace writing.
   card: cards/recipes/phi4_reasoning.md
   needs:
@@ -18026,23 +18361,30 @@
     - benchmark improvements may conflate optimizer and reward-contract changes
     citation_status: verified
     confidence: high
-    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; data/model details should still be checked before L4/L5 promotion.
-  inclusion_reason: PRIME is a core PRM/RLVR recipe because it trains with implicit process rewards from policy rollouts and outcome labels rather than dense human step labels.
+    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; data/model details should
+      still be checked before L4/L5 promotion.
+  inclusion_reason: PRIME is a core PRM/RLVR recipe because it trains with implicit process rewards from policy rollouts and
+    outcome labels rather than dense human step labels.
   related: []
   tags:
   - seeded-from-bib
   - primary-link-checked
   status: verified
   category:
-  - process_supervision_prm
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.
   card: null
   needs:
   - 'needs_metadata: curator should verify atlas fields'
   one_line_summary: Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.
-  why_it_matters: It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
+  why_it_matters: It is a clean example of process supervision without manual dense labels, useful for comparing PRM data,
+    outcome rewards, and RLVR optimization scaffolds.
   curation_level: L2_artifact_verified
   verification:
     link_verified: true
@@ -18124,15 +18466,21 @@
     - commonsense and math tasks may require different error taxonomies
     citation_status: verified
     confidence: high
-    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; annotation protocol should be audited before L4/L5 promotion.
-  inclusion_reason: AutoPSV is a representative automatic process-supervision paper because it turns an answer-level verifier into step annotations without dense manual labels.
+    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; annotation protocol should
+      be audited before L4/L5 promotion.
+  inclusion_reason: AutoPSV is a representative automatic process-supervision paper because it turns an answer-level verifier
+    into step annotations without dense manual labels.
   related: []
   tags:
   - primary-link-checked
   status: verified
   category:
-  - process_supervision_prm
-  - construction_recipes_open_reasoning_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   one_line: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
   card: null
   needs:
@@ -18216,21 +18564,27 @@
     citation_status: verified
     confidence: high
     notes: Primary arXiv link verified during the research-navigation pass; code/data artifacts not pinned.
-  inclusion_reason: Step-DPO is a useful bridge between DPO-style preference learning and process supervision because the preference object is attached to intermediate reasoning steps.
+  inclusion_reason: Step-DPO is a useful bridge between DPO-style preference learning and process supervision because the
+    preference object is attached to intermediate reasoning steps.
   related: []
   tags:
   - primary-link-checked
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - process_supervision_prm
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   one_line: Step-wise preference optimization method for long-chain reasoning traces.
   card: null
   needs:
   - 'needs_metadata: curator should verify atlas fields'
   one_line_summary: Step-wise preference optimization method for long-chain reasoning traces.
-  why_it_matters: It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected object is an intermediate continuation rather than a whole answer.
+  why_it_matters: It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected
+    object is an intermediate continuation rather than a whole answer.
   curation_level: L1_link_verified
   verification:
     link_verified: true
@@ -18311,22 +18665,32 @@
     - early-step PRM bias can distort search
     citation_status: verified
     confidence: high
-    notes: Primary arXiv and project GitHub link verified during the research-navigation pass; artifact details should be checked before L4/L5 promotion.
-  inclusion_reason: ReARTeR shows how PRMs interact with retrieval and preference optimization, making it valuable for readers who study process rewards beyond pure math final-answer checking.
+    notes: Primary arXiv and project GitHub link verified during the research-navigation pass; artifact details should be
+      checked before L4/L5 promotion.
+  inclusion_reason: ReARTeR shows how PRMs interact with retrieval and preference optimization, making it valuable for readers
+    who study process rewards beyond pure math final-answer checking.
   related: []
   tags:
   - primary-link-checked
   status: verified
   category:
-  - process_supervision_prm
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  one_line: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level preference data.
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  one_line: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level
+    preference data.
   card: null
   needs:
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level preference data.
-  why_it_matters: It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
+  one_line_summary: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect
+    step-level preference data.
+  why_it_matters: It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores,
+    explanations, and search all affect the reusable data object.
   curation_level: L2_artifact_verified
   verification:
     link_verified: true
@@ -18416,8 +18780,13 @@
   - seeded-from-bib
   status: verified
   category:
-  - process_supervision_prm
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
   one_line: Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than
     only final-answer failure.
@@ -18500,7 +18869,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - process_supervision_prm
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
   one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -18596,8 +18967,13 @@
   - seeded-from-bib
   status: verified
   category:
-  - process_supervision_prm
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier
     training.
   card: cards/verifiers/processbench.md
@@ -18679,8 +19055,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
-  - process_supervision_prm
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -18767,8 +19144,11 @@
   tags: []
   status: verified
   category:
-  - frontier_model_reports
-  - scaling_test_time_compute_rlvr
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Open model-family report useful for coordinated release-tick analysis.
   card: cards/recipes/qwen3.md
   needs:
@@ -18847,7 +19227,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -18934,9 +19314,11 @@
   tags: []
   status: verified
   category:
-  - programmatic_math_code_proof
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   one_line: Verifiable SWE environment for reasoning-to-edit tasks.
   card: cards/agents/r2e_gym.md
   needs:
@@ -19015,7 +19397,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -19097,7 +19480,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -19178,7 +19562,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -19259,7 +19643,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -19340,8 +19725,10 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -19423,9 +19810,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - frontier_reports_data_disclosure_ledger
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -19506,7 +19895,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -19595,8 +19984,13 @@
   tags: []
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning
     compute.
   card: cards/releases/s1.md
@@ -19678,7 +20072,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - judgment_rubric_domain_expert_data
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -19760,7 +20156,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
+  - judgment_rubric_domain_expert_data
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -19841,8 +20237,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
-  - programmatic_math_code_proof
+  - programmatically_verifiable_outcome_data
+  - scaling_rlvr_test_time_compute
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -19922,7 +20318,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
+  - foundations_and_primers
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
@@ -20004,7 +20400,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -20086,8 +20482,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - data_construction_open_release_recipes
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -20173,11 +20569,12 @@
   tags: []
   status: verified
   category:
-  - surveys_and_primers
-  - programmatic_math_code_proof
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - programmatically_verifiable_outcome_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Reward-signal audit for spurious behavior in RLVR.
   card: cards/verifiers/spurious_rewards.md
   needs:
@@ -20256,8 +20653,8 @@
   - seeded-from-bib
   status: verified
   category:
+  - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
-  - scaling_test_time_compute_rlvr
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs: []
@@ -20350,7 +20747,8 @@
   tags: []
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   - audit_failure_contamination_verifier_attacks
   one_line: Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated
     data, even after visible trait references are filtered.
@@ -20520,11 +20918,13 @@
   tags: []
   status: verified
   category:
-  - programmatic_math_code_proof
-  - environmental_agents_tools_web_swe
-  - construction_recipes_open_reasoning_data
-  - scaling_test_time_compute_rlvr
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   one_line: Repository-scale training environment showing substrate as data.
   card: cards/agents/swe_gym.md
   needs:
@@ -20603,9 +21003,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -20686,8 +21086,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - scaling_test_time_compute_rlvr
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -20769,8 +21169,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
-  - scaling_test_time_compute_rlvr
+  - preference_reward_feedback_data
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -20851,8 +21252,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - construction_recipes_open_reasoning_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -20945,9 +21347,12 @@
   tags: []
   status: verified
   category:
-  - programmatic_math_code_proof
-  - scaling_test_time_compute_rlvr
-  - frontier_model_reports
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical
     reasoning.
   card: cards/recipes/scaling-behaviors-rl-post-training.md
@@ -21029,9 +21434,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -21113,7 +21518,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -21194,7 +21599,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -21276,7 +21681,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -21357,8 +21762,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
   card: null
   needs:
@@ -21438,7 +21843,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -21537,8 +21942,11 @@
   - seeded-from-bib
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
-  - construction_recipes_open_reasoning_data
+  - preference_reward_feedback_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during
     inference-time training.
   card: cards/recipes/ttrl.md
@@ -21620,7 +22028,7 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - programmatic_math_code_proof
+  - programmatically_verifiable_outcome_data
   one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -21702,9 +22110,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -21786,8 +22194,8 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
-  - frontier_model_reports
+  - environment_agent_trajectory_data
+  - frontier_reports_data_disclosure_ledger
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -21869,7 +22277,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -21950,9 +22359,10 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - judgment_required_rubrics_safety_domain
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -22034,7 +22444,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - process_supervision_prm
+  - process_trace_supervision_data
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
@@ -22116,8 +22526,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -22198,8 +22608,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - construction_recipes_open_reasoning_data
+  - foundations_and_primers
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -22280,8 +22691,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - process_supervision_prm
-  - construction_recipes_open_reasoning_data
+  - process_trace_supervision_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -22362,7 +22773,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
+  - instruction_demonstration_rationale_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -22443,6 +22855,8 @@
   - seeded-from-bib
   status: verified
   category:
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's
     data object, verifier contract, and release metadata before promoting it.
@@ -22524,7 +22938,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -22605,7 +23019,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -22686,7 +23100,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - process_supervision_prm
+  - process_trace_supervision_data
+  - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
@@ -22768,8 +23183,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - foundations_instruction_preference_alignment
-  - judgment_required_rubrics_safety_domain
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
   one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
     paper''s data object, verifier contract, and release metadata before promoting it.'
   card: null
@@ -22850,7 +23266,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - scaling_test_time_compute_rlvr
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - scaling_rlvr_test_time_compute
   one_line: Local BibTeX seed for the 📈 Scaling, Test-Time Compute, and RLVR map; use it to inspect the paper's data object,
     verifier contract, and release metadata before promoting it.
   card: null
@@ -22932,8 +23350,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - judgment_required_rubrics_safety_domain
-  - benchmarks_evaluation
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - benchmarks_evaluation_surfaces
   one_line: Local BibTeX seed for the ⚖️ Judgment-Required Rubrics, Safety, Medical, and Domain Data map; use it to inspect
     the paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -23015,9 +23434,9 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
+  - foundations_and_primers
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -23100,6 +23519,7 @@
   - seeded-from-bib
   status: verified
   category:
+  - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
   one_line: Local BibTeX seed for the 🧯 Audit, Failure, Contamination, and Verifier Attacks map; use it to inspect the paper's
     data object, verifier contract, and release metadata before promoting it.
@@ -23181,8 +23601,8 @@
   - seeded-from-bib
   status: verified
   category:
-  - surveys_and_primers
-  - environmental_agents_tools_web_swe
+  - foundations_and_primers
+  - environment_agent_trajectory_data
   one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
     and release metadata before promoting it.
   card: null
@@ -23263,9 +23683,9 @@
   - seeded-from-bib
   status: needs_metadata
   category:
-  - environmental_agents_tools_web_swe
+  - environment_agent_trajectory_data
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - benchmarks_evaluation
   one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
     paper's data object, verifier contract, and release metadata before promoting it.
   card: null
@@ -23348,7 +23768,7 @@
   - seeded-from-bib
   status: verified
   category:
-  - construction_recipes_open_reasoning_data
+  - data_construction_open_release_recipes
   one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
     object, verifier contract, and release metadata before promoting it.
   card: null
@@ -23442,8 +23862,12 @@
   - primary-link-checked
   status: partial
   category:
-  - programmatic_math_code_proof
-  - construction_recipes_open_reasoning_data
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through
     lineage, verifier, and filtering fields.
   needs:
@@ -23539,8 +23963,13 @@
   - primary-link-checked
   status: verified
   category:
-  - process_supervision_prm
-  - scaling_test_time_compute_rlvr
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   one_line: Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals
     without human labels.
   needs:
@@ -23637,9 +24066,14 @@
   - primary-link-checked
   status: verified
   category:
-  - process_supervision_prm
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
-  - scaling_test_time_compute_rlvr
   one_line: Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
   needs:
   - 'needs_metadata: release-internal fields require curator review'
@@ -23737,9 +24171,13 @@
   - primary-link-checked
   status: partial
   category:
-  - environmental_agents_tools_web_swe
-  - construction_recipes_open_reasoning_data
-  - frontier_model_reports
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - frontier_reports_data_disclosure_ledger
   one_line: Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter
     a frontier open model release.
   needs:
@@ -23841,8 +24279,14 @@
   - verifier
   status: verified
   category:
-  - programmatic_math_code_proof
-  - benchmarks_evaluation
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   needs: []
   verification:
     link_verified: true
@@ -23934,8 +24378,11 @@
   - benchmark
   status: verified
   category:
-  - programmatic_math_code_proof
-  - benchmarks_evaluation
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   needs: []
   verification:
     link_verified: true
@@ -23947,7 +24394,7 @@
   curation_level: L5_audit_ready
   card: cards/benchmarks/humaneval-hand-written-evaluation-set.md
 - id: reasoning-with-large-language-models-a-survey-2024
-  title: 'Reasoning with Large Language Models, a Survey'
+  title: Reasoning with Large Language Models, a Survey
   year: 2024
   venue: arXiv
   authors: []
@@ -24013,7 +24460,9 @@
   - reasoning-llms
   status: verified
   category:
-  - surveys_and_primers
+  - foundations_and_primers
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and evaluation
     patterns.
   card: null
@@ -24109,7 +24558,8 @@
     confidence: high
     notes: Official arXiv and TMLR/OpenReview links verified for the RLHF survey subfield.
     metadata_status: summary_ready
-  inclusion_reason: Core RLHF survey for routing readers from preference data to reward models and policy optimization before they study reasoning-specific RLVR.
+  inclusion_reason: Core RLHF survey for routing readers from preference data to reward models and policy optimization before
+    they study reasoning-specific RLVR.
   related:
   - training-language-models-to-follow-instructions-with-human-feedback-2022
   - deep-reinforcement-learning-from-human-preferences-2017
@@ -24120,14 +24570,20 @@
   - preference-learning
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  one_line: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference data and learned reward models.
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - audit_failure_contamination_verifier_attacks
+  one_line: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference
+    data and learned reward models.
   card: null
   needs:
   - 'needs_card: add a local survey card if this becomes a teaching anchor'
-  one_line_summary: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference data and learned reward models.
-  why_it_matters: It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization before readers compare them with verifiable-reward reasoning data.
+  one_line_summary: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human
+    preference data and learned reward models.
+  why_it_matters: It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization
+    before readers compare them with verifiable-reward reasoning data.
   curation_level: L3_summary_ready
   verification:
     link_verified: true
@@ -24197,7 +24653,8 @@
     - challenge
     environment_or_substrate: LLM reward-model training and evaluation pipelines.
     verifier_or_reward: reward model as proxy objective for downstream post-training.
-    terminal_predicate: survey helps identify whether a paper's reward signal is learned, rubric-based, preference-derived, or benchmarked.
+    terminal_predicate: survey helps identify whether a paper's reward signal is learned, rubric-based, preference-derived,
+      or benchmarked.
   recipe_metadata:
     base_model: unknown
     teacher: human and AI preference sources summarized across reward-model literature.
@@ -24222,7 +24679,8 @@
     confidence: high
     notes: Official arXiv link and companion awesome-reward-models project link pinned.
     metadata_status: summary_ready
-  inclusion_reason: Reward-model survey that directly supports the atlas distinction between human feedback, rubric signals, reward models, and verifier rewards.
+  inclusion_reason: Reward-model survey that directly supports the atlas distinction between human feedback, rubric signals,
+    reward models, and verifier rewards.
   related:
   - rewardbench-evaluating-reward-models-for-language-modeling-2024
   - ultrafeedback-boosting-language-models-with-high-quality-feedback-2023
@@ -24233,15 +24691,24 @@
   - preference-data
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - judgment_required_rubrics_safety_domain
-  one_line: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure modes.
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
+  one_line: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure
+    modes.
   card: null
   needs:
   - 'needs_card: add a local card if reward-model surveys become a teaching module'
-  one_line_summary: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure modes.
-  why_it_matters: It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
+  one_line_summary: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and
+    failure modes.
+  why_it_matters: It gives readers a reward-model-specific map, which is essential before comparing learned human-preference
+    rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
   curation_level: L3_summary_ready
   verification:
     link_verified: true
@@ -24300,7 +24767,8 @@
   data_object:
     prompt_source: human preference learning literature for LLM alignment.
     trace_author: survey authors organize preference sources, formats, models, usage, and evaluation.
-    answer_format: preference-centered taxonomy over feedback data, preference modeling, preference usage, and aligned-model evaluation.
+    answer_format: preference-centered taxonomy over feedback data, preference modeling, preference usage, and aligned-model
+      evaluation.
     process_fields:
     - preference source
     - preference format
@@ -24334,7 +24802,8 @@
     confidence: high
     notes: Official arXiv link pinned for the human preference learning survey.
     metadata_status: summary_ready
-  inclusion_reason: Preference-learning survey for readers who need to understand the data formats behind RLHF, DPO, RLAIF, and reward-model training.
+  inclusion_reason: Preference-learning survey for readers who need to understand the data formats behind RLHF, DPO, RLAIF,
+    and reward-model training.
   related:
   - direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
   - training-language-models-to-follow-instructions-with-human-feedback-2022
@@ -24345,14 +24814,21 @@
   - reward-modeling
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  one_line: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for LLM alignment.
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  one_line: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for
+    LLM alignment.
   card: null
   needs:
   - 'needs_card: add a local card if preference-learning surveys become a teaching module'
-  one_line_summary: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for LLM alignment.
-  why_it_matters: It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
+  one_line_summary: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation
+    for LLM alignment.
+  why_it_matters: It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons,
+    scalar rewards, DPO-style objectives, and evaluation judgments.
   curation_level: L3_summary_ready
   verification:
     link_verified: true
@@ -24451,7 +24927,8 @@
     confidence: high
     notes: Official arXiv link and DOI pinned; latest arXiv revision observed in 2026.
     metadata_status: summary_ready
-  inclusion_reason: Technical post-training survey that bridges RLHF, DPO, PPO/GRPO, and RLVR for readers comparing human feedback with verifiable-reward reasoning training.
+  inclusion_reason: Technical post-training survey that bridges RLHF, DPO, PPO/GRPO, and RLVR for readers comparing human
+    feedback with verifiable-reward reasoning training.
   related:
   - direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
   - deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learning-2025
@@ -24463,15 +24940,22 @@
   - policy-optimization
   status: verified
   category:
-  - surveys_and_primers
-  - foundations_instruction_preference_alignment
-  - scaling_test_time_compute_rlvr
-  one_line: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards, and optimization details.
+  - foundations_and_primers
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - rollout_search_test_time_trace_data
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - audit_failure_contamination_verifier_attacks
+  one_line: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards,
+    and optimization details.
   card: null
   needs:
   - 'needs_card: add a local card if RL post-training methods become a teaching module'
-  one_line_summary: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards, and optimization details.
-  why_it_matters: It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.
+  one_line_summary: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses,
+    rewards, and optimization details.
+  why_it_matters: It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating
+    human preference rewards with programmatic or verifiable rewards.
   curation_level: L3_summary_ready
   verification:
     link_verified: true
@@ -24481,7 +24965,7 @@
     confidence: high
     notes: Official arXiv and arXiv DOI links pinned.
 - id: survey-of-reasoning-large-language-models-2025
-  title: 'A Survey of Reasoning with Foundation Models'
+  title: A Survey of Reasoning with Foundation Models
   year: 2025
   venue: arXiv
   authors: []
@@ -24548,7 +25032,13 @@
   - foundation-models
   status: verified
   category:
-  - surveys_and_primers
+  - foundations_and_primers
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: Surveys reasoning with foundation models, including tasks, methods, and evaluation patterns that reasoning-data
     readers need as context.
   card: null
@@ -24567,7 +25057,7 @@
     confidence: high
     notes: Official arXiv link pinned after source review.
 - id: survey-on-evaluation-of-llm-based-agents-2025
-  title: 'A Survey on Evaluation of LLM-based Agents'
+  title: A Survey on Evaluation of LLM-based Agents
   year: 2025
   venue: arXiv
   authors: []
@@ -24638,16 +25128,18 @@
   - tool-use
   status: verified
   category:
-  - surveys_and_primers
-  - environmental_agents_tools_web_swe
-  - benchmarks_evaluation
+  - foundations_and_primers
+  - environment_agent_trajectory_data
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
   one_line: Surveys how LLM-based agents are evaluated across tasks, environments, metrics, and interaction settings.
   card: null
   needs:
   - 'needs_metadata: curator should add paper-specific coverage notes for agent-data reuse'
   one_line_summary: Surveys how LLM-based agents are evaluated across tasks, environments, metrics, and interaction settings.
-  why_it_matters: It gives the atlas an agent-survey waypoint for readers who need to understand environment data before
-    comparing SWE, web, app, or OS agent benchmarks.
+  why_it_matters: It gives the atlas an agent-survey waypoint for readers who need to understand environment data before comparing
+    SWE, web, app, or OS agent benchmarks.
   curation_level: L1_link_verified
   verification:
     link_verified: true
@@ -24727,9 +25219,10 @@
   - contamination
   status: verified
   category:
-  - scaling_test_time_compute_rlvr
+  - foundations_and_primers
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  - surveys_and_primers
   one_line: Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted with
     data reuse in mind.
   card: null

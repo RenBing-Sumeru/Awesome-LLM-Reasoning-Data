@@ -19,9 +19,11 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🩺 Medical reasoning / health rubrics",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -75,10 +77,13 @@
       "alignment"
     ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🤝 Human preference data / RLHF",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib",
       "rlhf",
@@ -134,8 +139,11 @@
       "nlp"
     ],
     "category": [
-      "surveys_and_primers",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "📦 Data documentation / datasheets",
     "tags": [
@@ -192,8 +200,10 @@
       "data_documentation"
     ],
     "category": [
-      "surveys_and_primers",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "data_construction_open_release_recipes",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "📦 Data documentation / datasheets",
     "tags": [
@@ -248,8 +258,8 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "environmental_agents_tools_web_swe"
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data"
     ],
     "subfield": "🧾 Formal proof / Lean / theorem proving",
     "tags": [
@@ -301,10 +311,11 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🩺 Medical reasoning / health rubrics",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -354,7 +365,8 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers"
+      "foundations_and_primers",
+      "process_trace_supervision_data"
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
@@ -406,8 +418,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -459,8 +471,9 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "construction_recipes_open_reasoning_data"
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -512,8 +525,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "⚖️ Legal reasoning",
     "tags": [
@@ -565,8 +578,9 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -618,7 +632,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "⚖️ Legal reasoning",
     "tags": [
@@ -676,8 +691,14 @@
       "software_engineering"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -733,7 +754,7 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -741,7 +762,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -788,10 +809,15 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🏦 Financial reasoning",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "seeded-from-bib",
       "finance",
@@ -863,10 +889,15 @@
       "unit-tests"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "💻 Code execution / unit-test data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "code",
       "programming",
@@ -923,10 +954,14 @@
       "math"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "📐 Math answer-verifiable data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "seeded-from-bib",
       "math",
@@ -992,10 +1027,16 @@
       "proof-assistants"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧾 Formal proof / Lean / theorem proving",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "formal-math",
       "proof-assistants",
@@ -1048,7 +1089,7 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -1056,7 +1097,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -1100,7 +1141,9 @@
     ],
     "domains": [],
     "category": [
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -1155,11 +1198,16 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🏦 Financial reasoning",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "seeded-from-bib",
       "finance",
@@ -1219,9 +1267,17 @@
       "math"
     ],
     "category": [
-      "process_supervision_prm"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧪 Process reward models",
+    "subfield": "🎚️ Scalar reward / ORM data",
     "tags": [
       "seeded-from-bib",
       "gsm8k",
@@ -1278,9 +1334,12 @@
       "reasoning"
     ],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🧠 Chain-of-thought / rationale data",
+    "subfield": "Other related work",
     "tags": [
       "foundation-starter",
       "primary-link-checked"
@@ -1331,9 +1390,10 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "programmatically_verifiable_outcome_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🏋️ RLVR optimization scaling",
+    "subfield": "💻 Code execution / unit-test data",
     "tags": [
       "seeded-from-bib"
     ],
@@ -1383,8 +1443,8 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -1436,9 +1496,10 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data"
     ],
-    "subfield": "⚖️ Legal reasoning",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -1497,10 +1558,14 @@
       "alignment"
     ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "🤖 RLAIF / synthetic feedback",
+    "subfield": "Other related work",
     "tags": [
       "foundation-starter",
       "primary-link-checked"
@@ -1551,9 +1616,10 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data"
     ],
-    "subfield": "🏦 Financial reasoning",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -1603,9 +1669,10 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data"
     ],
-    "subfield": "🧾 Formal proof / Lean / theorem proving",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -1655,16 +1722,19 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "scaling_rlvr_test_time_compute",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧪 RLHF / reward-model surveys",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -1708,7 +1778,7 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "environment_agent_trajectory_data"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -1760,9 +1830,10 @@
     ],
     "domains": [],
     "category": [
-      "process_supervision_prm"
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data"
     ],
-    "subfield": "Other related work",
+    "subfield": "📐 Math answer-verifiable data",
     "tags": [
       "seeded-from-bib"
     ],
@@ -1816,10 +1887,13 @@
       "reasoning"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "🧪 Filtering and verifier refresh",
+    "subfield": "Other related work",
     "tags": [
       "foundation-starter",
       "primary-link-checked"
@@ -1876,10 +1950,15 @@
       "safety"
     ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🤝 Human preference data / RLHF",
+    "subfield": "📦 Data documentation / datasheets",
     "tags": [
       "seeded-from-bib",
       "rlhf",
@@ -1939,9 +2018,15 @@
       "chat"
     ],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🤝 Human preference data / RLHF",
+    "subfield": "Other related work",
     "tags": [
       "foundation-starter",
       "primary-link-checked"
@@ -2004,11 +2089,14 @@
       "safety"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧑‍⚖️ Human/expert judgment",
+    "subfield": "Other related work",
     "tags": [
       "factuality",
       "safety",
@@ -2061,8 +2149,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -2114,9 +2202,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🛠️ Tool-use data",
     "tags": [
@@ -2168,7 +2256,7 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers"
+      "foundations_and_primers"
     ],
     "subfield": "📦 Data documentation / datasheets",
     "tags": [
@@ -2223,9 +2311,13 @@
       "preference"
     ],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "⚖️ DPO / preference optimization",
+    "subfield": "Other related work",
     "tags": [
       "foundation-starter",
       "primary-link-checked"
@@ -2276,16 +2368,18 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🧠 Chain-of-thought / rationale data",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -2329,8 +2423,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -2384,11 +2478,13 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🏦 Financial reasoning",
+    "subfield": "🧰 Agent benchmarks and terminal predicates",
     "tags": [
       "seeded-from-bib",
       "finance",
@@ -2441,7 +2537,7 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "environment_agent_trajectory_data"
     ],
     "subfield": "🛠️ Tool-use data",
     "tags": [
@@ -2507,11 +2603,13 @@
       "scalable-oversight"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🩺 Medical reasoning / health rubrics",
+    "subfield": "🌍 Web/browser agents",
     "tags": [
       "expert-evaluation",
       "scalable-oversight",
@@ -2564,7 +2662,7 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -2642,12 +2740,14 @@
       "chat"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation",
-      "audit_failure_contamination_verifier_attacks",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "⚖️ LLM-as-judge data",
+    "subfield": "Other related work",
     "tags": [
       "chat",
       "llm-as-judge",
@@ -2700,16 +2800,17 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧠 Chain-of-thought / rationale data",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -2753,9 +2854,10 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "programmatically_verifiable_outcome_data",
+      "judgment_rubric_domain_expert_data"
     ],
-    "subfield": "🧾 Factuality / grounding",
+    "subfield": "🧪 Verifier robustness and answer extraction",
     "tags": [
       "seeded-from-bib"
     ],
@@ -2826,11 +2928,16 @@
       "retrieval"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧾 Formal proof / Lean / theorem proving",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "formal-math",
       "lean",
@@ -2885,10 +2992,12 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧑‍⚖️ Human/expert judgment",
+    "subfield": "🧰 Agent benchmarks and terminal predicates",
     "tags": [
       "seeded-from-bib",
       "legal",
@@ -2941,16 +3050,17 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "programmatic_math_code_proof"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data"
     ],
-    "subfield": "🧱 Instruction tuning / SFT data",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -2994,8 +3104,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -3047,16 +3157,17 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧠 Chain-of-thought / rationale data",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -3100,10 +3211,11 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🧪 Verifier robustness and answer extraction",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -3153,8 +3265,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🌍 Web/browser agents",
     "tags": [
@@ -3222,10 +3334,16 @@
       "synthetic-data"
     ],
     "category": [
-      "frontier_model_reports",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧬 What is disclosed vs hidden",
+    "subfield": "Other related work",
     "tags": [
       "distillation",
       "explanation-traces",
@@ -3286,10 +3404,16 @@
       "math"
     ],
     "category": [
-      "process_supervision_prm",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🪜 Human step-level labels",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked"
@@ -3340,9 +3464,10 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data"
     ],
-    "subfield": "🧪 Verifier robustness and answer extraction",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -3409,10 +3534,13 @@
       "reasoning-acting"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "construction_recipes_open_reasoning_data"
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🔁 Replayable trajectory data",
+    "subfield": "⏱️ Test-time compute logs",
     "tags": [
       "agents",
       "reasoning-acting",
@@ -3465,17 +3593,17 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "environmental_agents_tools_web_swe",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🔁 Self-training / STaR / Self-Instruct",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -3519,7 +3647,7 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -3527,7 +3655,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -3578,10 +3706,16 @@
       "test_time_compute"
     ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🧠 Chain-of-thought / rationale data",
+    "subfield": "Other related work",
     "tags": [
       "foundation-starter",
       "primary-link-checked"
@@ -3635,10 +3769,12 @@
       "instruction_following"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "🧱 Prompt sourcing",
+    "subfield": "Other related work",
     "tags": [
       "foundation-starter",
       "primary-link-checked"
@@ -3706,11 +3842,16 @@
       "factuality"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "environmental_agents_tools_web_swe",
-      "judgment_required_rubrics_safety_domain"
+      "instruction_demonstration_rationale_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "critique",
       "factuality",
@@ -3763,8 +3904,8 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -3823,10 +3964,12 @@
       "code"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧑‍💻 SWE/repository agents",
+    "subfield": "💻 Code execution / unit-test data",
     "tags": [
       "seeded-from-bib",
       "swe-bench",
@@ -3897,10 +4040,13 @@
       "self-supervision"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "construction_recipes_open_reasoning_data"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "🛠️ Tool-use data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "api-calls",
       "seeded-from-bib",
@@ -3977,11 +4123,15 @@
       "reward-modeling"
     ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "judgment_required_rubrics_safety_domain",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🤖 RLAIF / synthetic feedback",
+    "subfield": "Other related work",
     "tags": [
       "ai-feedback",
       "preference-data",
@@ -4039,10 +4189,13 @@
       "agents"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🌍 Web/browser agents",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -4094,17 +4247,18 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🧱 Instruction tuning / SFT data",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -4148,7 +4302,7 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
+      "foundations_and_primers",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧯 Contamination / evaluation surveys",
@@ -4201,7 +4355,7 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "environment_agent_trajectory_data"
     ],
     "subfield": "🛠️ Tool-use data",
     "tags": [
@@ -4261,10 +4415,14 @@
       "code"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "📱 App/mobile agents",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -4316,8 +4474,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -4369,10 +4527,12 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "programmatic_math_code_proof",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -4380,7 +4540,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -4424,10 +4584,10 @@
     ],
     "domains": [],
     "category": [
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧯 Benchmark contamination",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -4484,9 +4644,12 @@
       "agents"
     ],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🌍 Web/browser agents",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -4538,10 +4701,10 @@
     ],
     "domains": [],
     "category": [
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧯 Benchmark contamination",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -4611,11 +4774,16 @@
       "synthetic-data"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧾 Formal proof / Lean / theorem proving",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "formal-math",
       "lean",
@@ -4698,11 +4866,16 @@
       "rl"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "scaling_test_time_compute_rlvr",
-      "construction_recipes_open_reasoning_data"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧾 Formal proof / Lean / theorem proving",
+    "subfield": "Other related work",
     "tags": [
       "formal-math",
       "lean",
@@ -4778,12 +4951,18 @@
       "web-data"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "frontier_model_reports"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧮 Math RLVR datasets",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "math",
       "rlvr",
@@ -4888,10 +5067,10 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "frontier_model_reports",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧰 Programmatic benchmarks",
     "tags": [
@@ -4943,9 +5122,9 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🧾 Formal proof / Lean / theorem proving",
     "tags": [
@@ -4997,10 +5176,11 @@
     ],
     "domains": [],
     "category": [
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧪 Verifier gaming",
+    "subfield": "🧪 Verifier robustness and answer extraction",
     "tags": [
       "seeded-from-bib"
     ],
@@ -5050,7 +5230,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -5102,16 +5283,18 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🤝 Human preference data / RLHF",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -5168,12 +5351,14 @@
       "unit-tests"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "programmatic_math_code_proof",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧑‍💻 SWE/repository agents",
+    "subfield": "🧰 Programmatic benchmarks",
     "tags": [
       "agents",
       "seeded-from-bib",
@@ -5226,7 +5411,7 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
+      "foundations_and_primers",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧯 Contamination / evaluation surveys",
@@ -5279,8 +5464,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -5332,9 +5517,9 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "rollout_search_test_time_trace_data",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -5386,8 +5571,8 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "frontier_model_reports"
+      "foundations_and_primers",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🧠 Reasoning LLM surveys",
     "tags": [
@@ -5447,9 +5632,12 @@
       "reasoning"
     ],
     "category": [
-      "surveys_and_primers",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧯 Contamination / evaluation surveys",
     "tags": [
@@ -5524,9 +5712,11 @@
       "execution"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -5597,11 +5787,14 @@
       "open-source-context"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "💻 Code execution / unit-test data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "code",
       "open-source-context",
@@ -5654,8 +5847,11 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -5712,12 +5908,16 @@
       "math"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "process_supervision_prm",
-      "scaling_test_time_compute_rlvr",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "📐 Math answer-verifiable data",
+    "subfield": "Other related work",
     "tags": [],
     "one_line_summary": "Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.",
     "why_it_matters": "It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer.",
@@ -5765,7 +5965,7 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof"
+      "programmatically_verifiable_outcome_data"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -5834,11 +6034,14 @@
       "instruction-tuning"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "📐 Math answer-verifiable data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "instruction-tuning",
       "math",
@@ -5897,11 +6100,14 @@
       "multimodal"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🖥️ OS/desktop agents",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -5953,16 +6159,16 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
+      "foundations_and_primers",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧪 RLHF / reward-model surveys",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -6006,7 +6212,7 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "environment_agent_trajectory_data"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -6080,11 +6286,16 @@
       "evaluation-models"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "foundations_instruction_preference_alignment",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "⚖️ LLM-as-judge data",
+    "subfield": "Other related work",
     "tags": [
       "evaluation-models",
       "llm-as-judge",
@@ -6151,12 +6362,19 @@
       "reward-modeling"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "📐 Math answer-verifiable data",
+    "subfield": "🔁 Self-training / STaR",
     "tags": [
       "math",
       "reward-modeling",
@@ -6209,7 +6427,7 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -6217,7 +6435,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -6261,10 +6479,10 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🧱 Prompt sourcing",
+    "subfield": "🧾 Factuality / grounding",
     "tags": [
       "seeded-from-bib"
     ],
@@ -6323,12 +6541,16 @@
       "reasoning"
     ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "process_supervision_prm",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🔁 Self-training / STaR / Self-Instruct",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib",
       "primary-link-checked"
@@ -6388,10 +6610,13 @@
       "chat"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧪 Rubric reward models",
+    "subfield": "🧪 Reward-model benchmarks",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -6465,11 +6690,15 @@
       "math"
     ],
     "category": [
-      "process_supervision_prm",
-      "scaling_test_time_compute_rlvr",
-      "construction_recipes_open_reasoning_data"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🔁 Rollout-value supervision",
+    "subfield": "🧾 Rubric-conditioned rewards",
     "tags": [
       "math",
       "process-reward-models",
@@ -6562,9 +6791,13 @@
       "execution"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧰 Programmatic benchmarks",
     "tags": [
@@ -6619,15 +6852,16 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "preference_reward_feedback_data"
     ],
-    "subfield": "🤖 RLAIF / synthetic feedback",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -6671,16 +6905,16 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "⚖️ DPO / preference optimization",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -6724,8 +6958,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
@@ -6777,8 +7011,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
@@ -6830,9 +7064,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🛠️ Tool-use data",
     "tags": [
@@ -6884,7 +7118,7 @@
     ],
     "domains": [],
     "category": [
-      "frontier_model_reports"
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🧠 Magistral / Phi / Nemotron style reports",
     "tags": [
@@ -6936,7 +7170,7 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "environment_agent_trajectory_data"
     ],
     "subfield": "🛠️ Tool-use data",
     "tags": [
@@ -6997,11 +7231,14 @@
       "agents"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "construction_recipes_open_reasoning_data",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🛠️ Tool-use data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -7053,9 +7290,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🛠️ Tool-use data",
     "tags": [
@@ -7144,12 +7381,19 @@
       "rlvr"
     ],
     "category": [
-      "frontier_model_reports",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧪 RLVR recipe reports",
+    "subfield": "Other related work",
     "tags": [
       "instruction-tuning",
       "open-post-training",
@@ -7208,10 +7452,13 @@
       "agents"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🌍 Web/browser agents",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -7263,8 +7510,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🌍 Web/browser agents",
     "tags": [
@@ -7316,9 +7563,9 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data"
     ],
-    "subfield": "🛡️ Safety reasoning data",
+    "subfield": "🧾 Factuality / grounding",
     "tags": [
       "seeded-from-bib"
     ],
@@ -7368,8 +7615,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🌍 Web/browser agents",
     "tags": [
@@ -7421,8 +7669,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -7474,10 +7722,9 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "foundations_and_primers",
+      "data_construction_open_release_recipes",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -7529,7 +7776,7 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "🏋️ RLVR optimization scaling",
     "tags": [
@@ -7581,8 +7828,11 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧯 Contamination / evaluation surveys",
@@ -7635,8 +7885,7 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers"
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
@@ -7693,11 +7942,12 @@
       "code"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "programmatic_math_code_proof"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🔁 Self-play / self-improvement",
+    "subfield": "📐 Math answer-verifiable data",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -7756,11 +8006,14 @@
       "uncertainty"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🛡️ Safety reasoning data",
+    "subfield": "Other related work",
     "tags": [],
     "one_line_summary": "AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise, subjective, and stale-information questions.",
     "why_it_matters": "It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining.",
@@ -7808,15 +8061,18 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧠 Reasoning LLM surveys",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -7860,7 +8116,7 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "data_construction_open_release_recipes"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -7912,8 +8168,8 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "judgment_rubric_domain_expert_data"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -7975,11 +8231,15 @@
       "alignment"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧑‍⚖️ Human/expert judgment",
+    "subfield": "Other related work",
     "tags": [],
     "one_line_summary": "Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.",
     "why_it_matters": "It is useful for reasoning-data readers because safety alignment often depends on rubric-like hazard labels, response-pair judgments, and guard-model training data rather than exact-answer verification.",
@@ -8027,9 +8287,10 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -8081,9 +8342,9 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "frontier_model_reports"
+      "foundations_and_primers",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -8141,10 +8402,12 @@
       "agents"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "📱 App/mobile agents",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -8196,9 +8459,9 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "process_supervision_prm"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "process_trace_supervision_data"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -8255,12 +8518,15 @@
       "math"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧮 Math RLVR datasets",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
       "primary-link-checked"
@@ -8311,10 +8577,10 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "📐 Math answer-verifiable data",
     "tags": [
@@ -8366,7 +8632,7 @@
     ],
     "domains": [],
     "category": [
-      "benchmarks_evaluation"
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -8418,9 +8684,8 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -8472,10 +8737,10 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "data_construction_open_release_recipes",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -8530,9 +8795,10 @@
       "math"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "📐 Math answer-verifiable data",
     "tags": [],
@@ -8582,8 +8848,8 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -8639,13 +8905,15 @@
       "math"
     ],
     "category": [
-      "surveys_and_primers",
-      "programmatic_math_code_proof",
-      "process_supervision_prm",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
     "tags": [],
@@ -8695,7 +8963,10 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -8703,7 +8974,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -8747,8 +9018,8 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -8832,12 +9103,16 @@
       "subgoal-decomposition"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧾 Formal proof / Lean / theorem proving",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "formal-math",
       "lean",
@@ -8896,10 +9171,13 @@
       "reasoning"
     ],
     "category": [
-      "surveys_and_primers",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "Other related work",
     "tags": [],
@@ -8949,10 +9227,10 @@
     ],
     "domains": [],
     "category": [
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🚀 DeepSeek-R1 family",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -9002,9 +9280,8 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "frontier_model_reports"
+      "foundations_and_primers",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -9056,10 +9333,10 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -9111,9 +9388,9 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🧪 Verifier scaling",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -9163,9 +9440,9 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🔁 Data reuse and uniqueness",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -9215,10 +9492,10 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "judgment_required_rubrics_safety_domain",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -9226,7 +9503,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -9270,8 +9547,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🏦 Financial reasoning",
     "tags": [
@@ -9323,9 +9600,9 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "programmatic_math_code_proof",
-      "process_supervision_prm",
+      "foundations_and_primers",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
@@ -9334,7 +9611,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -9378,9 +9655,9 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers"
+      "foundations_and_primers"
     ],
-    "subfield": "🧭 Post-training surveys",
+    "subfield": "🧠 Reasoning LLM surveys",
     "tags": [
       "seeded-from-bib"
     ],
@@ -9430,7 +9707,7 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -9438,7 +9715,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -9482,7 +9759,7 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers"
+      "foundations_and_primers"
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
@@ -9534,10 +9811,11 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "scaling_test_time_compute_rlvr"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🧾 Formal proof / Lean / theorem proving",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -9587,8 +9865,10 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "process_supervision_prm"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "process_trace_supervision_data",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -9596,7 +9876,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -9648,11 +9928,13 @@
       "medical"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧪 Rubric reward models",
+    "subfield": "🧾 Rubric-conditioned rewards",
     "tags": [
       "curated-card",
       "primary-link-checked"
@@ -9703,10 +9985,10 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧑‍⚖️ Human/expert judgment",
+    "subfield": "🩺 Medical reasoning / health rubrics",
     "tags": [
       "seeded-from-bib"
     ],
@@ -9756,7 +10038,7 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
+      "judgment_rubric_domain_expert_data",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧾 Factuality / grounding",
@@ -9809,7 +10091,7 @@
     ],
     "domains": [],
     "category": [
-      "frontier_model_reports"
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🧪 RLVR recipe reports",
     "tags": [
@@ -9868,10 +10150,13 @@
       "rlvr"
     ],
     "category": [
-      "scaling_test_time_compute_rlvr",
-      "construction_recipes_open_reasoning_data"
+      "preference_reward_feedback_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "⏱️ Test-time compute",
+    "subfield": "Other related work",
     "tags": [],
     "one_line_summary": "The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.",
     "why_it_matters": "It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.",
@@ -9925,10 +10210,13 @@
       "long-context"
     ],
     "category": [
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🌙 Kimi reasoning reports",
+    "subfield": "📐 Math answer-verifiable data",
     "tags": [],
     "one_line_summary": "Frontier report used for long-context RL and scaling discussion.",
     "why_it_matters": "Frontier report used for long-context RL and scaling discussion.",
@@ -9976,9 +10264,10 @@
     ],
     "domains": [],
     "category": [
-      "frontier_model_reports"
+      "environment_agent_trajectory_data",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🌙 Kimi reasoning reports",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -10034,11 +10323,15 @@
       "code"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧮 Math RLVR datasets",
+    "subfield": "🤖 Synthetic instruction data",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -10090,10 +10383,10 @@
     ],
     "domains": [],
     "category": [
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧯 Benchmark contamination",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -10152,12 +10445,17 @@
       "security"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🛡️ Safety reasoning data",
+    "subfield": "🧠 Chain-of-thought / rationale data",
     "tags": [],
     "one_line_summary": "Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through prompt injection or accidental leakage.",
     "why_it_matters": "It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.",
@@ -10205,10 +10503,10 @@
     ],
     "domains": [],
     "category": [
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧬 Hidden lineage / teacher leakage",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -10262,9 +10560,12 @@
       "math"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [],
     "one_line_summary": "Small-set curation reference distinguishing elicitation from broad coverage.",
     "why_it_matters": "Small-set curation reference distinguishing elicitation from broad coverage.",
@@ -10319,11 +10620,13 @@
       "safety"
     ],
     "category": [
-      "surveys_and_primers",
-      "judgment_required_rubrics_safety_domain",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "Other related work",
     "tags": [],
@@ -10373,8 +10676,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "construction_recipes_open_reasoning_data"
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -10430,11 +10733,13 @@
       "code"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧱 Prompt sourcing",
+    "subfield": "📐 Math answer-verifiable data",
     "tags": [],
     "one_line_summary": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.",
     "why_it_matters": "Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.",
@@ -10482,7 +10787,7 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof"
+      "programmatically_verifiable_outcome_data"
     ],
     "subfield": "📐 Math answer-verifiable data",
     "tags": [
@@ -10534,8 +10839,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🛠️ Tool-use data",
     "tags": [
@@ -10587,7 +10892,7 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data"
     ],
     "subfield": "🩺 Medical reasoning / health rubrics",
     "tags": [
@@ -10639,9 +10944,9 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "data_construction_open_release_recipes",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -10693,7 +10998,7 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers"
+      "foundations_and_primers"
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
@@ -10810,11 +11115,16 @@
       "agents"
     ],
     "category": [
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr",
-      "environmental_agents_tools_web_swe"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧠 Magistral / Phi / Nemotron style reports",
+    "subfield": "📐 Math answer-verifiable data",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -10866,9 +11176,10 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🔁 Self-play / self-improvement",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -10926,10 +11237,14 @@
       "general_reasoning"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -10981,11 +11296,12 @@
     ],
     "domains": [],
     "category": [
-      "frontier_model_reports",
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧠 Magistral / Phi / Nemotron style reports",
+    "subfield": "📐 Math answer-verifiable data",
     "tags": [
       "seeded-from-bib"
     ],
@@ -11039,11 +11355,13 @@
       "judge"
     ],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "⚖️ LLM-as-judge data",
+    "subfield": "Other related work",
     "tags": [],
     "one_line_summary": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
     "why_it_matters": "Verifier-attack paper showing trivial cue tokens can flip judge verdicts.",
@@ -11091,8 +11409,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "construction_recipes_open_reasoning_data"
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -11144,7 +11462,7 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -11196,9 +11514,9 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -11250,9 +11568,9 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -11304,8 +11622,8 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -11357,8 +11675,9 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -11419,11 +11738,14 @@
       "code"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "💻 Code execution / unit-test data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -11482,10 +11804,13 @@
       "agents"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "frontier_model_reports"
+      "preference_reward_feedback_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧑‍💻 SWE/repository agents",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -11541,12 +11866,14 @@
       "math"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "📐 Math answer-verifiable data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [],
     "one_line_summary": "Large-scale math reasoning trace release for programmatic verification.",
     "why_it_matters": "Large-scale math reasoning trace release for programmatic verification.",
@@ -11600,10 +11927,15 @@
       "science"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🏗️ Open reasoning data releases",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
       "primary-link-checked"
@@ -11658,10 +11990,13 @@
       "code"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "✍️ Teacher trace generation",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [],
     "one_line_summary": "Reasoning model report highlighting teacher distillation as trace writing.",
     "why_it_matters": "Reasoning model report highlighting teacher distillation as trace writing.",
@@ -11720,11 +12055,15 @@
       "reasoning"
     ],
     "category": [
-      "process_supervision_prm",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🛠️ Automatic process supervision",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib",
       "primary-link-checked"
@@ -11785,10 +12124,14 @@
       "reasoning"
     ],
     "category": [
-      "process_supervision_prm",
-      "construction_recipes_open_reasoning_data"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "🛠️ Automatic process supervision",
+    "subfield": "Other related work",
     "tags": [
       "primary-link-checked"
     ],
@@ -11843,11 +12186,15 @@
       "reasoning"
     ],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "process_supervision_prm",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "⚖️ DPO / preference optimization",
+    "subfield": "Other related work",
     "tags": [
       "primary-link-checked"
     ],
@@ -11905,11 +12252,16 @@
       "multi-hop reasoning"
     ],
     "category": [
-      "process_supervision_prm",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧪 Process reward models",
+    "subfield": "🤝 Human preference data / RLHF",
     "tags": [
       "primary-link-checked"
     ],
@@ -11968,11 +12320,16 @@
       "reasoning"
     ],
     "category": [
-      "process_supervision_prm",
-      "benchmarks_evaluation",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "📊 PRM benchmarks and evaluation",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -12024,9 +12381,11 @@
     ],
     "domains": [],
     "category": [
-      "process_supervision_prm"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data"
     ],
-    "subfield": "🧪 Process reward models",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -12083,10 +12442,15 @@
       "math"
     ],
     "category": [
-      "process_supervision_prm",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "📊 PRM benchmarks and evaluation",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -12138,8 +12502,9 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof",
-      "process_supervision_prm"
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "📐 Math answer-verifiable data",
     "tags": [
@@ -12196,10 +12561,13 @@
       "general"
     ],
     "category": [
-      "frontier_model_reports",
-      "scaling_test_time_compute_rlvr"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🐉 Qwen reasoning/math/code reports",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [],
     "one_line_summary": "Open model-family report useful for coordinated release-tick analysis.",
     "why_it_matters": "Open model-family report useful for coordinated release-tick analysis.",
@@ -12247,7 +12615,7 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "data_construction_open_release_recipes"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -12305,9 +12673,11 @@
       "software-engineering"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧰 Programmatic benchmarks",
     "tags": [],
@@ -12357,9 +12727,10 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data"
     ],
-    "subfield": "🧑‍💻 SWE/repository agents",
+    "subfield": "💻 Code execution / unit-test data",
     "tags": [
       "seeded-from-bib"
     ],
@@ -12409,9 +12780,10 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data"
     ],
-    "subfield": "🧪 Rubric reward models",
+    "subfield": "🧾 Rubric-conditioned rewards",
     "tags": [
       "seeded-from-bib"
     ],
@@ -12461,9 +12833,9 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🏋️ RLVR optimization scaling",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -12513,9 +12885,10 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🏋️ RLVR optimization scaling",
+    "subfield": "🛠️ Tool-use data",
     "tags": [
       "seeded-from-bib"
     ],
@@ -12565,8 +12938,10 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -12574,7 +12949,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L0_seeded",
@@ -12618,9 +12993,11 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -12628,7 +13005,7 @@
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -12672,7 +13049,7 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data"
     ],
     "subfield": "🧪 Rubric reward models",
     "tags": [
@@ -12728,10 +13105,15 @@
       "math"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🧱 Prompt sourcing",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [],
     "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
     "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
@@ -12779,15 +13161,17 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "judgment_rubric_domain_expert_data"
     ],
-    "subfield": "🧠 Chain-of-thought / rationale data",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -12831,7 +13215,7 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain"
+      "judgment_rubric_domain_expert_data"
     ],
     "subfield": "🛡️ Safety reasoning data",
     "tags": [
@@ -12883,10 +13267,10 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr",
-      "programmatic_math_code_proof"
+      "programmatically_verifiable_outcome_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🏋️ RLVR optimization scaling",
+    "subfield": "🧪 Verifier robustness and answer extraction",
     "tags": [
       "seeded-from-bib"
     ],
@@ -12936,7 +13320,7 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
+      "foundations_and_primers",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧯 Contamination / evaluation surveys",
@@ -12989,7 +13373,7 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "data_construction_open_release_recipes"
     ],
     "subfield": "🏗️ Open reasoning data releases",
     "tags": [
@@ -13041,8 +13425,8 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "data_construction_open_release_recipes",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -13099,11 +13483,12 @@
       "rlvr"
     ],
     "category": [
-      "surveys_and_primers",
-      "programmatic_math_code_proof",
-      "scaling_test_time_compute_rlvr",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "programmatically_verifiable_outcome_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
     "tags": [],
@@ -13153,10 +13538,10 @@
     ],
     "domains": [],
     "category": [
-      "audit_failure_contamination_verifier_attacks",
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧨 Spurious rewards",
+    "subfield": "🏋️ RLVR optimization scaling",
     "tags": [
       "seeded-from-bib"
     ],
@@ -13214,7 +13599,8 @@
       "distillation"
     ],
     "category": [
-      "construction_recipes_open_reasoning_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "✍️ Teacher trace generation",
@@ -13324,11 +13710,13 @@
       "agent"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "environmental_agents_tools_web_swe",
-      "construction_recipes_open_reasoning_data",
-      "scaling_test_time_compute_rlvr",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧰 Programmatic benchmarks",
     "tags": [],
@@ -13378,9 +13766,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
@@ -13432,8 +13820,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "scaling_test_time_compute_rlvr"
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
@@ -13485,10 +13873,11 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "scaling_test_time_compute_rlvr"
+      "preference_reward_feedback_data",
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🧑‍💻 SWE/repository agents",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -13538,8 +13927,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "construction_recipes_open_reasoning_data"
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
@@ -13598,11 +13988,14 @@
       "rlvr"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "scaling_test_time_compute_rlvr",
-      "frontier_model_reports"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "📐 Math answer-verifiable data",
+    "subfield": "Other related work",
     "tags": [],
     "one_line_summary": "This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.",
     "why_it_matters": "It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.",
@@ -13650,9 +14043,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -13704,9 +14097,9 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🏋️ RLVR optimization scaling",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -13756,9 +14149,9 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🔍 Scaling attribution",
+    "subfield": "🏋️ RLVR optimization scaling",
     "tags": [
       "seeded-from-bib"
     ],
@@ -13808,9 +14201,9 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🧪 Verifier scaling",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -13860,8 +14253,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧾 Factuality / grounding",
     "tags": [
@@ -13913,7 +14306,7 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "data_construction_open_release_recipes"
     ],
     "subfield": "🔁 Self-play / self-improvement",
     "tags": [
@@ -13973,10 +14366,13 @@
       "unlabeled_data"
     ],
     "category": [
-      "scaling_test_time_compute_rlvr",
-      "construction_recipes_open_reasoning_data"
+      "preference_reward_feedback_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "⏱️ Test-time compute",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked",
@@ -14028,7 +14424,7 @@
     ],
     "domains": [],
     "category": [
-      "programmatic_math_code_proof"
+      "programmatically_verifiable_outcome_data"
     ],
     "subfield": "📐 Math answer-verifiable data",
     "tags": [
@@ -14080,9 +14476,9 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
@@ -14134,8 +14530,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "frontier_model_reports"
+      "environment_agent_trajectory_data",
+      "frontier_reports_data_disclosure_ledger"
     ],
     "subfield": "🔁 Replayable trajectory data",
     "tags": [
@@ -14187,7 +14583,8 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -14239,9 +14636,10 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "judgment_required_rubrics_safety_domain",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "scaling_rlvr_test_time_compute"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -14293,7 +14691,7 @@
     ],
     "domains": [],
     "category": [
-      "process_supervision_prm",
+      "process_trace_supervision_data",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
@@ -14346,8 +14744,8 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "🧑‍⚖️ Human/expert judgment",
     "tags": [
@@ -14399,8 +14797,9 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "construction_recipes_open_reasoning_data"
+      "foundations_and_primers",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -14452,10 +14851,10 @@
     ],
     "domains": [],
     "category": [
-      "process_supervision_prm",
-      "construction_recipes_open_reasoning_data"
+      "process_trace_supervision_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🪜 Human step-level labels",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -14505,9 +14904,10 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "instruction_demonstration_rationale_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "🧱 Prompt sourcing",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "seeded-from-bib"
     ],
@@ -14557,9 +14957,11 @@
     ],
     "domains": [],
     "category": [
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🎮 Reward hacking",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
@@ -14609,7 +15011,7 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "data_construction_open_release_recipes"
     ],
     "subfield": "✍️ Teacher trace generation",
     "tags": [
@@ -14661,7 +15063,7 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe"
+      "environment_agent_trajectory_data"
     ],
     "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
@@ -14713,7 +15115,8 @@
     ],
     "domains": [],
     "category": [
-      "process_supervision_prm",
+      "process_trace_supervision_data",
+      "scaling_rlvr_test_time_compute",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
@@ -14766,16 +15169,17 @@
     ],
     "domains": [],
     "category": [
-      "foundations_instruction_preference_alignment",
-      "judgment_required_rubrics_safety_domain"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data"
     ],
-    "subfield": "🤝 Human preference data / RLHF",
+    "subfield": "Other related work",
     "tags": [
       "seeded-from-bib"
     ],
     "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
     "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
+    "data_object": "survey background",
     "feedback_verifier": "metadata pending",
     "audit_focus": "check links, lineage, verifier, split, and contamination",
     "curation_level": "L1_link_verified",
@@ -14819,9 +15223,11 @@
     ],
     "domains": [],
     "category": [
-      "scaling_test_time_compute_rlvr"
+      "rollout_search_test_time_trace_data",
+      "environment_agent_trajectory_data",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🎲 pass@k / sampling budget",
+    "subfield": "🎲 Multiple rollouts / best-of-N",
     "tags": [
       "seeded-from-bib"
     ],
@@ -14871,10 +15277,11 @@
     ],
     "domains": [],
     "category": [
-      "judgment_required_rubrics_safety_domain",
-      "benchmarks_evaluation"
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧪 Rubric reward models",
+    "subfield": "🧪 Reward-model benchmarks",
     "tags": [
       "seeded-from-bib"
     ],
@@ -14924,9 +15331,9 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧯 Contamination / evaluation surveys",
     "tags": [
@@ -14978,9 +15385,10 @@
     ],
     "domains": [],
     "category": [
+      "scaling_rlvr_test_time_compute",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧨 Spurious rewards",
+    "subfield": "🏋️ RLVR optimization scaling",
     "tags": [
       "seeded-from-bib"
     ],
@@ -15030,8 +15438,8 @@
     ],
     "domains": [],
     "category": [
-      "surveys_and_primers",
-      "environmental_agents_tools_web_swe"
+      "foundations_and_primers",
+      "environment_agent_trajectory_data"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -15083,11 +15491,11 @@
     ],
     "domains": [],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "audit_failure_contamination_verifier_attacks",
-      "benchmarks_evaluation"
+      "environment_agent_trajectory_data",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧰 Agent benchmarks and terminal predicates",
+    "subfield": "🧑‍💻 SWE/repository agents",
     "tags": [
       "seeded-from-bib"
     ],
@@ -15137,7 +15545,7 @@
     ],
     "domains": [],
     "category": [
-      "construction_recipes_open_reasoning_data"
+      "data_construction_open_release_recipes"
     ],
     "subfield": "🧱 Prompt sourcing",
     "tags": [
@@ -15194,10 +15602,14 @@
       "math"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "construction_recipes_open_reasoning_data"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🧮 Math RLVR datasets",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
       "primary-link-checked"
@@ -15256,10 +15668,15 @@
       "math"
     ],
     "category": [
-      "process_supervision_prm",
-      "scaling_test_time_compute_rlvr"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "🛠️ Automatic process supervision",
+    "subfield": "Other related work",
     "tags": [
       "curated-card",
       "primary-link-checked"
@@ -15319,9 +15736,14 @@
       "math"
     ],
     "category": [
-      "process_supervision_prm",
-      "audit_failure_contamination_verifier_attacks",
-      "scaling_test_time_compute_rlvr"
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "judgment_rubric_domain_expert_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "Other related work",
     "tags": [
@@ -15385,11 +15807,15 @@
       "agents"
     ],
     "category": [
-      "environmental_agents_tools_web_swe",
-      "construction_recipes_open_reasoning_data",
-      "frontier_model_reports"
+      "instruction_demonstration_rationale_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "frontier_reports_data_disclosure_ledger"
     ],
-    "subfield": "🛠️ Tool-use data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
       "primary-link-checked"
@@ -15447,10 +15873,16 @@
       "math"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "benchmarks_evaluation"
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "📐 Math answer-verifiable data",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "gsm8k",
       "math",
@@ -15508,8 +15940,11 @@
       "code"
     ],
     "category": [
-      "programmatic_math_code_proof",
-      "benchmarks_evaluation"
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces"
     ],
     "subfield": "💻 Code execution / unit-test data",
     "tags": [
@@ -15567,7 +16002,9 @@
       "survey"
     ],
     "category": [
-      "surveys_and_primers"
+      "foundations_and_primers",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧠 Reasoning LLM surveys",
     "tags": [
@@ -15633,10 +16070,13 @@
       "alignment"
     ],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧭 Post-training surveys",
+    "subfield": "🧪 RLHF / reward-model surveys",
     "tags": [
       "rlhf",
       "reward-model-survey",
@@ -15709,9 +16149,15 @@
       "alignment"
     ],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "judgment_required_rubrics_safety_domain"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "process_trace_supervision_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
@@ -15784,10 +16230,14 @@
       "alignment"
     ],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment"
+      "foundations_and_primers",
+      "instruction_demonstration_rationale_data",
+      "preference_reward_feedback_data",
+      "judgment_rubric_domain_expert_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces"
     ],
-    "subfield": "🧪 RLHF / reward-model surveys",
+    "subfield": "🧭 Post-training surveys",
     "tags": [
       "preference-learning",
       "human-preference",
@@ -15863,9 +16313,13 @@
       "preference-learning"
     ],
     "category": [
-      "surveys_and_primers",
-      "foundations_instruction_preference_alignment",
-      "scaling_test_time_compute_rlvr"
+      "foundations_and_primers",
+      "preference_reward_feedback_data",
+      "programmatically_verifiable_outcome_data",
+      "rollout_search_test_time_trace_data",
+      "training_usage_optimization_objectives",
+      "scaling_rlvr_test_time_compute",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
@@ -15924,7 +16378,13 @@
       "survey"
     ],
     "category": [
-      "surveys_and_primers"
+      "foundations_and_primers",
+      "programmatically_verifiable_outcome_data",
+      "environment_agent_trajectory_data",
+      "judgment_rubric_domain_expert_data",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧠 Reasoning LLM surveys",
     "tags": [
@@ -15984,9 +16444,11 @@
       "evaluation"
     ],
     "category": [
-      "surveys_and_primers",
-      "environmental_agents_tools_web_swe",
-      "benchmarks_evaluation"
+      "foundations_and_primers",
+      "environment_agent_trajectory_data",
+      "training_usage_optimization_objectives",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🌐 Agent data / tool-use surveys",
     "tags": [
@@ -16044,11 +16506,12 @@
       "data-reuse"
     ],
     "category": [
-      "scaling_test_time_compute_rlvr",
-      "audit_failure_contamination_verifier_attacks",
-      "surveys_and_primers"
+      "foundations_and_primers",
+      "scaling_rlvr_test_time_compute",
+      "benchmarks_evaluation_surfaces",
+      "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🔁 Data reuse and uniqueness",
+    "subfield": "🧯 Contamination / evaluation surveys",
     "tags": [
       "train-test-overlap",
       "data-reuse",

@@ -185,7 +185,8 @@ def compact_data_object(entry: dict[str, Any]) -> str:
     answer = data.get("answer_format")
     substrate = data.get("environment_or_substrate")
     process_fields = data.get("process_fields") or []
-    if answer and answer != "unknown" and (answer != "survey_background" or "surveys_and_primers" in categories_):
+    background_categories = {"surveys_and_primers", "foundations_and_primers"}
+    if answer and answer != "unknown" and (answer != "survey_background" or categories_ & background_categories):
         fields.append(str(answer).replace("_", " "))
     if process_fields:
         fields.append("process: " + ", ".join(str(item).replace("_", " ") for item in process_fields[:3]))
@@ -196,7 +197,7 @@ def compact_data_object(entry: dict[str, Any]) -> str:
         roles = [
             str(item).replace("_", " ")
             for item in as_list(entry.get("source_role"))[:2]
-            if item != "survey_background" or "surveys_and_primers" in categories_
+            if item != "survey_background" or categories_ & background_categories
         ]
         fields = granularities or roles or ["metadata pending"]
     return "; ".join(fields[:3])
@@ -314,7 +315,7 @@ def force_include_subfield(entry: dict[str, Any], category_id: str | None, subfi
     ])
     roles = set(as_list(entry.get("source_role")))
 
-    if category_id == "environmental_agents_tools_web_swe" and "agent benchmarks" in name:
+    if category_id in {"environmental_agents_tools_web_swe", "environment_agent_trajectory_data"} and "agent benchmarks" in name:
         if {"benchmark", "agent_environment"} <= roles:
             return True
         return any(contains_term(hay, term) for term in [
@@ -335,7 +336,7 @@ def force_include_subfield(entry: dict[str, Any], category_id: str | None, subfi
             "environment predicate",
         ])
 
-    if category_id == "surveys_and_primers" and "rlhf reward model surveys" in name:
+    if category_id in {"surveys_and_primers", "foundations_and_primers"} and "rlhf reward model surveys" in name:
         has_survey_signal = contains_term(label_hay, "survey") or contains_term(label_hay, "reward model survey")
         has_reward_signal = any(contains_term(label_hay, term) for term in [
             "rlhf",
@@ -350,7 +351,7 @@ def force_include_subfield(entry: dict[str, Any], category_id: str | None, subfi
         ])
         return has_survey_signal and has_reward_signal
 
-    if category_id == "judgment_required_rubrics_safety_domain" and "legal reasoning" in name:
+    if category_id in {"judgment_required_rubrics_safety_domain", "judgment_rubric_domain_expert_data"} and "legal reasoning" in name:
         return any(contains_term(label_hay, term) for term in [
             "legal",
             "legalbench",
@@ -362,7 +363,7 @@ def force_include_subfield(entry: dict[str, Any], category_id: str | None, subfi
             "jurisdiction",
         ])
 
-    if category_id == "judgment_required_rubrics_safety_domain" and "financial reasoning" in name:
+    if category_id in {"judgment_required_rubrics_safety_domain", "judgment_rubric_domain_expert_data"} and "financial reasoning" in name:
         return any(contains_term(label_hay, term) for term in [
             "finance",
             "financial",

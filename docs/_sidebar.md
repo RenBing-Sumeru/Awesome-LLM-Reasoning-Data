@@ -2,6 +2,8 @@
 # Awesome LLM Reasoning Data
 
 - [Start Here](00_start_here.md)
+- [Contributor SOP](contributor_sop.md)
+- [贡献者 SOP 中文版](contributor_sop_zh.md)
 - [Ask the Atlas](ask/)
 - [Companion Paper Primer](companion_paper_primer.md)
 - [What Is Reasoning Data?](01_what_is_post_training_reasoning_data.md)

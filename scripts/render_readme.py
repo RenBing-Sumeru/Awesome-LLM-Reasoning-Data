@@ -15,10 +15,12 @@ from atlas_utils import (
     card_inventory,
     compact_data_object,
     compact_feedback,
+    contains_term,
     curation_level,
     entries,
     entry_search_text,
     link_parts,
+    norm,
     one_line,
     primary_link,
     primary_link_kind,
@@ -37,6 +39,33 @@ _TRACKS_CACHE: list[dict] | None = None
 PAGES_URL = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
 ASK_URL = f"{PAGES_URL.rstrip('/')}/ask/"
 ASK_CONFIG = ROOT / "docs/assets/ask-config.js"
+
+CATEGORY_GROUPS = [
+    {
+        "id": "background_foundations",
+        "emoji": "🧭",
+        "title": "Background / Foundations",
+        "zh_title": "Background / Foundations（入门与基础）",
+        "promise": "Build the shared vocabulary before opening dense primary papers.",
+        "zh_promise": "先建立共同词汇和领域地图，再进入细分论文。",
+    },
+    {
+        "id": "core_reasoning_data_types",
+        "emoji": "🧬",
+        "title": "Core Reasoning Data Types",
+        "zh_title": "Core Reasoning Data Types（核心数据类型）",
+        "promise": "Compare the actual records: demonstrations, preferences, verifiable outcomes, process labels, rollout traces, agent episodes, and rubrics.",
+        "zh_promise": "按真实数据对象理解论文：demonstration、preference、verifiable outcome、process label、rollout trace、agent episode、rubric。",
+    },
+    {
+        "id": "data_lifecycle",
+        "emoji": "🛠️",
+        "title": "Data Lifecycle",
+        "zh_title": "Data Lifecycle（构造、训练、评测与审计）",
+        "promise": "Follow the lifecycle from construction recipes to training use, scaling, benchmarks, frontier disclosures, and failure audits.",
+        "zh_promise": "沿着构造、训练、scaling、benchmark、frontier report 和 failure audit 的生命周期阅读。",
+    },
+]
 
 
 def all_entries() -> list[dict]:
@@ -115,17 +144,20 @@ def ask_launch_status() -> dict[str, str]:
 
 
 TRACK_BEST_FOR_ZH = {
-    "surveys_and_primers": "先建立领域地图，再进入一手论文",
-    "foundations_instruction_preference_alignment": "理解推理数据对象从指令、偏好和对齐数据中如何演化",
-    "programmatic_math_code_proof": "学习 RLVR、可验证答案数据和可执行推理任务",
-    "process_supervision_prm": "定位 step-level reward、PRM 和过程验证器设计",
-    "environmental_agents_tools_web_swe": "研究工具、网页、OS、App 和代码仓库级轨迹数据",
-    "judgment_required_rubrics_safety_domain": "理解 rubric、LLM judge、高风险领域和专家评估数据",
-    "construction_recipes_open_reasoning_data": "学习推理数据如何构造、过滤、发布和复现",
-    "frontier_model_reports": "把前沿模型报告当作部分公开的数据配方来阅读",
-    "scaling_test_time_compute_rlvr": "拆解 RLVR、数据规模和 test-time compute 的贡献",
+    "foundations_and_primers": "先建立领域地图，再进入一手论文",
+    "instruction_demonstration_rationale_data": "理解 instruction、demonstration、rationale 和 teacher trace 如何成为训练数据",
+    "preference_reward_feedback_data": "比较 preference、reward、DPO、RLAIF、rubric reward 和 judge feedback",
+    "programmatically_verifiable_outcome_data": "学习 math/code/proof 中可程序验证的 outcome 数据",
+    "process_trace_supervision_data": "定位 step-level label、PRM、rollout value 和 first-error 监督",
+    "rollout_search_test_time_trace_data": "阅读 rollout、search、best-of-N、pass@k 和 test-time trace 数据",
+    "environment_agent_trajectory_data": "研究工具、网页、OS、App 和代码仓库级 agent 轨迹数据",
+    "judgment_rubric_domain_expert_data": "理解 rubric、LLM judge、高风险领域和专家评估数据",
+    "data_construction_open_release_recipes": "学习推理数据如何构造、过滤、发布和复现",
+    "training_usage_optimization_objectives": "判断数据如何进入 SFT、DPO、RM、PRM、RLVR、agent training、evaluation 或 audit",
+    "frontier_reports_data_disclosure_ledger": "把前沿模型报告当作部分公开的数据配方来阅读",
+    "scaling_rlvr_test_time_compute": "拆解 RLVR、数据规模和 test-time compute 的贡献",
     "audit_failure_contamination_verifier_attacks": "审计污染、泄漏、verifier gaming、reward hacking 和 judge attack",
-    "benchmarks_evaluation": "选择评测面、benchmark 和可复用反馈契约",
+    "benchmarks_evaluation_surfaces": "选择评测面、benchmark 和可复用反馈契约",
 }
 
 
@@ -226,6 +258,26 @@ def category_file(category_id: str) -> str:
     return "README.md"
 
 
+def category_meta(category_id: str) -> dict:
+    for category in categories():
+        if category.get("id") == category_id:
+            return category
+    return {}
+
+
+def paper_link(category_id: str) -> str:
+    return f"papers/{category_file(category_id)}"
+
+
+def tracks_for_group(group_id: str) -> list[dict]:
+    tracks_by_id = {track.get("category_id"): track for track in all_tracks()}
+    out = []
+    for category in categories():
+        if category.get("group") == group_id and tracks_by_id.get(category.get("id")):
+            out.append(tracks_by_id[category["id"]])
+    return out
+
+
 def subfield_slug(name: str) -> str:
     text = re.sub(r"<[^>]+>", "", name)
     text = re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff]+", "-", text).strip("-").lower()
@@ -292,14 +344,62 @@ def homepage_prm_core_entry(entry: dict) -> bool:
     return any(signal in hay for signal in core_signals)
 
 
+def subfield_label_text(entry: dict) -> str:
+    title_hay = norm(entry.get("title"))
+    return " ".join([
+        norm(entry.get("id")),
+        title_hay,
+        norm(entry.get("venue")),
+        " ".join(norm(item) for item in as_list(entry.get("verification_contract"))),
+        " ".join(norm(item) for item in as_list(entry.get("training_use"))),
+        " ".join(norm(item) for item in as_list(entry.get("domains"))),
+        " ".join(norm(item) for item in as_list(entry.get("tags"))),
+        " ".join(norm(item) for item in as_list(entry.get("construction_layer"))),
+        norm(one_line(entry)),
+    ])
+
+
+def subfield_label_score(entry: dict, subfield: dict) -> int:
+    """Prefer entries whose visible title/tags/domains match the subfield, not only audit boilerplate."""
+    title_hay = norm(entry.get("title"))
+    label_hay = subfield_label_text(entry)
+    score = 0
+    for keyword in subfield.get("keywords", []):
+        if contains_term(title_hay, keyword):
+            score += 6
+        elif contains_term(label_hay, keyword):
+            score += 3
+    return score
+
+
 def subfield_entries(category_id: str, subfield: dict, limit: int = 4) -> list[dict]:
     matched = []
     cards = all_cards()
     for entry in category_entries(category_id):
         if subfield_matches(entry, category_id, subfield):
-            if category_id == "process_supervision_prm" and not homepage_prm_core_entry(entry):
+            if category_id == "process_trace_supervision_data" and not homepage_prm_core_entry(entry):
                 continue
             matched.append(entry)
+    subfield_name_hay = norm(subfield.get("name"))
+    if category_id == "foundations_and_primers" and (
+        contains_term(subfield_name_hay, "survey") or contains_term(subfield_name_hay, "surveys")
+    ) and not contains_term(subfield_name_hay, "contamination"):
+        matched = [
+            entry for entry in matched
+            if contains_term(subfield_label_text(entry), "survey") or contains_term(subfield_label_text(entry), "primer")
+        ]
+    strong = [entry for entry in matched if subfield_label_score(entry, subfield) > 0]
+    if strong:
+        matched = sorted(
+            strong,
+            key=lambda entry: (
+                -subfield_label_score(entry, subfield),
+                0 if cards.get(entry.get("id")) else 1,
+                0 if curation_level(entry, cards.get(entry.get("id"))) == "L5_audit_ready" else 1,
+                -(entry.get("year") or 0),
+                entry.get("title") or "",
+            ),
+        )
     rich = [
         entry for entry in matched
         if homepage_rich_entry(entry) and (
@@ -314,7 +414,7 @@ def subfield_entries(category_id: str, subfield: dict, limit: int = 4) -> list[d
     if len(rich) >= min(2, limit):
         return rich[:limit]
     metadata_rich = [entry for entry in matched if homepage_rich_entry(entry)]
-    return metadata_rich[:limit]
+    return (metadata_rich or matched)[:limit]
 
 
 def paper_chip(entry: dict, cards: dict[str, str]) -> str:
@@ -341,30 +441,42 @@ def representative_papers(category_id: str, subfield: dict, limit: int = 4) -> s
 
 
 def research_track_table(prefix: str = "papers/", zh: bool = False) -> str:
-    if zh:
-        rows = ["| 研究轨道 | 二级方向 | 适合用来做什么 | 条目数 | 入口 |", "|---|---|---|---:|---|"]
-    else:
-        rows = ["| Track | Subfields | Best for | Entries | Jump |", "|---|---|---|---:|---|"]
-    for track in all_tracks():
-        subfields = "<br>".join(item.get("name") or "" for item in (track.get("subfields") or []))
-        cid = track.get("category_id")
-        best_for = TRACK_BEST_FOR_ZH.get(cid, track.get("best_for")) if zh else track.get("best_for")
-        jump_label = "进入" if zh else "Papers"
-        rows.append(
-            f"| {track.get('navigator_title')} | {cell(subfields)} | {cell(best_for)} | {category_count(cid)} | [{jump_label}]({prefix}{category_file(cid)}) |"
-        )
-    return "\n".join(rows)
+    lines = []
+    for group in CATEGORY_GROUPS:
+        group_tracks = tracks_for_group(group["id"])
+        if not group_tracks:
+            continue
+        heading = group["zh_title"] if zh else group["title"]
+        promise = group["zh_promise"] if zh else group["promise"]
+        lines += [f"### {group['emoji']} {heading}", "", promise, ""]
+        if zh:
+            rows = ["| 研究轨道 | 二级方向 | 适合用来做什么 | 条目数 | 入口 |", "|---|---|---|---:|---|"]
+        else:
+            rows = ["| Track | Subfields | Best for | Entries | Jump |", "|---|---|---|---:|---|"]
+        for track in group_tracks:
+            subfields = "<br>".join(item.get("name") or "" for item in (track.get("subfields") or []))
+            cid = track.get("category_id")
+            best_for = TRACK_BEST_FOR_ZH.get(cid, track.get("best_for")) if zh else track.get("best_for")
+            jump_label = "进入" if zh else "Papers"
+            rows.append(
+                f"| {track.get('navigator_title')} | {cell(subfields)} | {cell(best_for)} | {category_count(cid)} | [{jump_label}]({prefix}{category_file(cid)}) |"
+            )
+        lines += ["\n".join(rows), ""]
+    return "\n".join(lines).rstrip()
 
 
 def research_contents(prefix: str = "papers/") -> str:
-    lines = [
-        "- 📚 Main Research Tracks",
-    ]
-    for track in all_tracks():
-        cid = track.get("category_id")
-        lines.append(f"  - {track.get('navigator_title')}: [{track.get('short_title')}]({prefix}{category_file(cid)})")
-        for subfield in (track.get("subfields") or []):
-            lines.append(f"    - [{subfield.get('name')}]({prefix}{category_file(cid)}#{subfield_slug(subfield.get('name', 'subfield'))})")
+    lines = ["- 📚 Main Research Tracks"]
+    for group in CATEGORY_GROUPS:
+        group_tracks = tracks_for_group(group["id"])
+        if not group_tracks:
+            continue
+        lines.append(f"  - {group['emoji']} {group['title']}")
+        for track in group_tracks:
+            cid = track.get("category_id")
+            lines.append(f"    - {track.get('navigator_title')}: [{track.get('short_title')}]({prefix}{category_file(cid)})")
+            for subfield in (track.get("subfields") or []):
+                lines.append(f"      - [{subfield.get('name')}]({prefix}{category_file(cid)}#{subfield_slug(subfield.get('name', 'subfield'))})")
     lines += [
         "- 🧩 Browse by Data Object",
         "  - Prompt-answer, trace-answer, step label, rollout value, preference pair, reward record, agent trajectory, rubric record",
@@ -388,24 +500,30 @@ def detailed_paper_directory(prefix: str = "papers/", zh: bool = False) -> str:
         "full": "完整页面" if zh else "Full track page",
     }
     lines = [intro, ""]
-    for track in all_tracks():
-        cid = track.get("category_id")
-        file = category_file(cid)
-        lines += [
-            f"### {track.get('navigator_title')}",
-            "",
-            f"> {track.get('best_for')} · [{labels['full']}]({prefix}{file})",
-            "",
-            f"| {labels['subfield']} | {labels['focus']} | {labels['papers']} | {labels['risk']} |",
-            "|---|---|---|---|",
-        ]
-        for subfield in track.get("subfields") or []:
-            name = subfield.get("name", "Subfield")
-            anchor = f"{prefix}{file}#{subfield_slug(name)}"
-            lines.append(
-                f"| [{cell(name)}]({anchor}) | {cell(subfield.get('focus', ''))} | {representative_papers(cid, subfield)} | {cell(subfield.get('key_risk', ''))} |"
-            )
-        lines.append("")
+    for group in CATEGORY_GROUPS:
+        group_tracks = tracks_for_group(group["id"])
+        if not group_tracks:
+            continue
+        heading = group["zh_title"] if zh else group["title"]
+        lines += [f"### {group['emoji']} {heading}", ""]
+        for track in group_tracks:
+            cid = track.get("category_id")
+            file = category_file(cid)
+            lines += [
+                f"#### {track.get('navigator_title')}",
+                "",
+                f"> {track.get('best_for')} · [{labels['full']}]({prefix}{file})",
+                "",
+                f"| {labels['subfield']} | {labels['focus']} | {labels['papers']} | {labels['risk']} |",
+                "|---|---|---|---|",
+            ]
+            for subfield in track.get("subfields") or []:
+                name = subfield.get("name", "Subfield")
+                anchor = f"{prefix}{file}#{subfield_slug(name)}"
+                lines.append(
+                    f"| [{cell(name)}]({anchor}) | {cell(subfield.get('focus', ''))} | {representative_papers(cid, subfield)} | {cell(subfield.get('key_risk', ''))} |"
+                )
+            lines.append("")
     return "\n".join(lines).rstrip()
 
 
@@ -424,14 +542,14 @@ def research_question_table() -> str:
     return "\n".join([
         "| Research question | Best entry |",
         "|---|---|",
-        "| What counts as post-training reasoning data? | [docs/01](docs/01_what_is_post_training_reasoning_data.md) + [Surveys](papers/00_surveys_and_primers.md) |",
-        "| How do we verify reasoning data? | [Programmatic](papers/02_programmatic_math_code_proof.md) + [Process supervision](papers/03_process_supervision_prm.md) + [Verifiers](docs/06_verifiers_and_rewards.md) |",
-        "| How are open reasoning datasets constructed? | [Construction recipes](papers/06_construction_recipes_open_reasoning_data.md) + [Release cards](cards/releases/) |",
-        "| What data does RLVR actually need? | [Programmatic verification](papers/02_programmatic_math_code_proof.md) + [Scaling/RLVR](papers/08_scaling_test_time_compute_rlvr.md) |",
-        "| How should agent trajectories be serialized? | [Agent data](papers/04_environmental_agents_tools_web_swe.md) + [docs/07](docs/07_agent_trajectory_data.md) |",
-        "| How do frontier reports disclose or hide data recipes? | [Frontier reports](papers/07_frontier_model_reports.md) |",
-        "| How do contamination and verifier gaming affect claims? | [Audit/failure modes](papers/09_audit_failure_contamination_verifier_attacks.md) |",
-        "| Which benchmarks are still useful for reasoning data? | [Benchmarks and evaluation](papers/10_benchmarks_evaluation.md) |",
+        f"| What counts as post-training reasoning data? | [docs/01](docs/01_what_is_post_training_reasoning_data.md) + [Foundations](papers/{category_file('foundations_and_primers')}) |",
+        f"| How do we verify reasoning data? | [Programmatic](papers/{category_file('programmatically_verifiable_outcome_data')}) + [Process supervision](papers/{category_file('process_trace_supervision_data')}) + [Verifiers](docs/06_verifiers_and_rewards.md) |",
+        f"| How are open reasoning datasets constructed? | [Construction recipes](papers/{category_file('data_construction_open_release_recipes')}) + [Release cards](cards/releases/) |",
+        f"| What data does RLVR actually need? | [Programmatic verification](papers/{category_file('programmatically_verifiable_outcome_data')}) + [Scaling/RLVR](papers/{category_file('scaling_rlvr_test_time_compute')}) |",
+        f"| How should agent trajectories be serialized? | [Agent data](papers/{category_file('environment_agent_trajectory_data')}) + [docs/07](docs/07_agent_trajectory_data.md) |",
+        f"| How do frontier reports disclose or hide data recipes? | [Frontier reports](papers/{category_file('frontier_reports_data_disclosure_ledger')}) |",
+        f"| How do contamination and verifier gaming affect claims? | [Audit/failure modes](papers/{category_file('audit_failure_contamination_verifier_attacks')}) |",
+        f"| Which benchmarks are still useful for reasoning data? | [Benchmarks and evaluation](papers/{category_file('benchmarks_evaluation_surfaces')}) |",
     ])
 
 
@@ -610,10 +728,10 @@ Read this repository if you want to answer questions like:
 |---|---|
 | 🧭 understand the field | [docs/00_start_here.md](docs/00_start_here.md) |
 | 📚 find papers by subfield | [papers/README.md](papers/README.md) |
-| 🧮 study math/code/proof data | [papers/02_programmatic_math_code_proof.md](papers/02_programmatic_math_code_proof.md) |
-| 🪜 study process supervision | [papers/03_process_supervision_prm.md](papers/03_process_supervision_prm.md) |
-| 🌐 study agent trajectories | [papers/04_environmental_agents_tools_web_swe.md](papers/04_environmental_agents_tools_web_swe.md) |
-| 🚀 study frontier model reports | [papers/07_frontier_model_reports.md](papers/07_frontier_model_reports.md) |
+| 🧮 study math/code/proof data | [{paper_link('programmatically_verifiable_outcome_data')}]({paper_link('programmatically_verifiable_outcome_data')}) |
+| 🪜 study process supervision | [{paper_link('process_trace_supervision_data')}]({paper_link('process_trace_supervision_data')}) |
+| 🌐 study agent trajectories | [{paper_link('environment_agent_trajectory_data')}]({paper_link('environment_agent_trajectory_data')}) |
+| 🚀 study frontier model reports | [{paper_link('frontier_reports_data_disclosure_ledger')}]({paper_link('frontier_reports_data_disclosure_ledger')}) |
 | 🔎 use the searchable atlas | [live atlas]({PAGES_URL}) |
 | 📊 inspect link coverage | [reports/link_coverage.md](reports/link_coverage.md) |
 | 🤝 contribute a paper/card | [CONTRIBUTING.md](CONTRIBUTING.md) |
@@ -628,7 +746,7 @@ This repository should work like a small open course. You do not need to read ev
 | 2 | Feedback contracts | [docs/02](docs/02_verifier_anchored_taxonomy.md), [docs/06](docs/06_verifiers_and_rewards.md), [Verifier cards](cards/verifiers/) | You can identify whether a work uses programmatic, environmental, judgment-required, or mixed verification. |
 | 3 | Core papers | [Starter Pack](#-starter-pack-20-must-read-papers), [papers/README.md](papers/README.md), [cards/README.md](cards/README.md) | You can locate the canonical papers for math, code, process supervision, agents, RLVR, and audit. |
 | 4 | Data construction | [docs/05](docs/05_construction_cookbook.md), [Release cards](cards/releases/), [Recipe cards](cards/recipes/) | You can describe prompt sourcing, teacher generation, filtering, verifier pinning, and release metadata. |
-| 5 | Specialized tracks | [programmatic data](papers/02_programmatic_math_code_proof.md), [agents](papers/04_environmental_agents_tools_web_swe.md), [rubrics](papers/05_judgment_required_rubrics_safety_domain.md), [scaling](papers/08_scaling_test_time_compute_rlvr.md) | You can choose a subfield and follow its top papers and audit questions. |
+| 5 | Specialized tracks | [programmatic data]({paper_link('programmatically_verifiable_outcome_data')}), [agents]({paper_link('environment_agent_trajectory_data')}), [rubrics]({paper_link('judgment_rubric_domain_expert_data')}), [scaling]({paper_link('scaling_rlvr_test_time_compute')}) | You can choose a subfield and follow its top papers and audit questions. |
 | 6 | Audit and contribution | [docs/09](docs/09_audit_and_failure_modes.md), [reports/link_coverage.md](reports/link_coverage.md), [CONTRIBUTING.md](CONTRIBUTING.md) | You can tell what is verified, what is missing, and how to improve an entry without hallucinating links. |
 
 ## 🧭 Starter Pack: 20 Must-Read Papers
@@ -781,7 +899,7 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 | "I want to build a reasoning dataset." | Read [docs/05](docs/05_construction_cookbook.md), then inspect [release cards](cards/releases/) and [recipe cards](cards/recipes/). |
 | "I want to know whether a benchmark is reusable." | Open the relevant benchmark card, then check its verifier, data split, contamination risk, and official links. |
 | "I want to understand RLVR." | Follow programmatic math/code/proof papers, verifier cards, and scaling/RLVR category pages. |
-| "I want to study agents." | Follow [agent papers](papers/04_environmental_agents_tools_web_swe.md), then inspect action schema, terminal predicate, and replay fields. |
+| "I want to study agents." | Follow [agent papers]({paper_link('environment_agent_trajectory_data')}), then inspect action schema, terminal predicate, and replay fields. |
 | "I want to contribute." | Pick an item from [needs_search](reports/needs_search.md), verify official links, then add structured metadata and a card. |
 
 ---
@@ -804,17 +922,20 @@ The repository becomes more useful and citable when it improves depth, trust, an
 
 The long categorized lists live in [papers/](papers/README.md). Each category page includes a category explanation, read-first table, full paper list, audit checklist, related cards, and open gaps.
 
-- [Surveys and Primers](papers/00_surveys_and_primers.md)
-- [Foundations: Instruction, Preference, and Alignment Data](papers/01_foundations_instruction_preference_alignment.md)
-- [Programmatic Math, Code, and Proof Data](papers/02_programmatic_math_code_proof.md)
-- [Process Supervision and Process Reward Models](papers/03_process_supervision_prm.md)
-- [Environmental Agent, Tool, Web, and SWE Trajectory Data](papers/04_environmental_agents_tools_web_swe.md)
-- [Judgment-Required Rubrics, Safety, Medical, and Domain Data](papers/05_judgment_required_rubrics_safety_domain.md)
-- [Construction Recipes and Open Reasoning Data](papers/06_construction_recipes_open_reasoning_data.md)
-- [Frontier Reasoning Model Reports](papers/07_frontier_model_reports.md)
-- [Scaling, Test-Time Compute, and RLVR](papers/08_scaling_test_time_compute_rlvr.md)
-- [Audit, Failure, Contamination, and Verifier Attacks](papers/09_audit_failure_contamination_verifier_attacks.md)
-- [Benchmarks and Evaluation Surfaces](papers/10_benchmarks_evaluation.md)
+- [Foundations and Primers]({paper_link('foundations_and_primers')})
+- [Instruction, Demonstration, and Rationale Data]({paper_link('instruction_demonstration_rationale_data')})
+- [Preference and Reward Feedback Data]({paper_link('preference_reward_feedback_data')})
+- [Programmatically Verifiable Outcome Data]({paper_link('programmatically_verifiable_outcome_data')})
+- [Process and Trace Supervision Data]({paper_link('process_trace_supervision_data')})
+- [Rollout, Search, and Test-Time Trace Data]({paper_link('rollout_search_test_time_trace_data')})
+- [Environment and Agent Trajectory Data]({paper_link('environment_agent_trajectory_data')})
+- [Judgment, Rubric, and Domain-Expert Data]({paper_link('judgment_rubric_domain_expert_data')})
+- [Data Construction and Open Release Recipes]({paper_link('data_construction_open_release_recipes')})
+- [Training Usage and Optimization Objectives]({paper_link('training_usage_optimization_objectives')})
+- [Scaling, RLVR, and Test-Time Compute]({paper_link('scaling_rlvr_test_time_compute')})
+- [Benchmarks and Evaluation Surfaces]({paper_link('benchmarks_evaluation_surfaces')})
+- [Frontier Reports and Data Disclosure Ledger]({paper_link('frontier_reports_data_disclosure_ledger')})
+- [Audit, Failure, Contamination, and Verifier Attacks]({paper_link('audit_failure_contamination_verifier_attacks')})
 
 ## 🗂️ Card Library
 
@@ -969,9 +1090,9 @@ def readme_zh() -> str:
 | 📚 看细分方向代表论文 | [详细论文分类目录](#-详细论文分类目录) |
 | 🧭 快速理解领域 | [docs/00_start_here.md](docs/00_start_here.md) |
 | 📚 找论文地图 | [papers/README.md](papers/README.md) |
-| 🧮 看数学/代码/证明数据 | [papers/02_programmatic_math_code_proof.md](papers/02_programmatic_math_code_proof.md) |
-| 🪜 看过程监督/PRM | [papers/03_process_supervision_prm.md](papers/03_process_supervision_prm.md) |
-| 🌐 看 Agent 环境数据 | [papers/04_environmental_agents_tools_web_swe.md](papers/04_environmental_agents_tools_web_swe.md) |
+| 🧮 看数学/代码/证明数据 | [{paper_link('programmatically_verifiable_outcome_data')}]({paper_link('programmatically_verifiable_outcome_data')}) |
+| 🪜 看过程监督/PRM | [{paper_link('process_trace_supervision_data')}]({paper_link('process_trace_supervision_data')}) |
+| 🌐 看 Agent 环境数据 | [{paper_link('environment_agent_trajectory_data')}]({paper_link('environment_agent_trajectory_data')}) |
 | 🔎 看可搜索网页 | [在线网页]({PAGES_URL}) |
 | 🗂️ 看卡片库 | [cards/README.md](cards/README.md) |
 | 📊 看链接覆盖率 | [reports/link_coverage.md](reports/link_coverage.md) |
@@ -987,7 +1108,7 @@ def readme_zh() -> str:
 | 2 | 反馈契约 | [docs/02](docs/02_verifier_anchored_taxonomy.md)、[docs/06](docs/06_verifiers_and_rewards.md) | 能判断一篇工作使用 programmatic、environmental、judgment-required 还是 mixed verification。 |
 | 3 | 核心论文 | [Starter Pack](#-starter-pack20-篇必读)、[papers/README.md](papers/README.md)、[cards/README.md](cards/README.md) | 能定位 math/code/process/agent/RLVR/audit 的代表性工作。 |
 | 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[cards/releases/](cards/releases/)、[cards/recipes/](cards/recipes/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
-| 5 | 专题深入 | [math/code/proof](papers/02_programmatic_math_code_proof.md)、[agents](papers/04_environmental_agents_tools_web_swe.md)、[rubrics](papers/05_judgment_required_rubrics_safety_domain.md)、[scaling](papers/08_scaling_test_time_compute_rlvr.md) | 能沿一个子领域继续读论文、看卡片、查官方链接。 |
+| 5 | 专题深入 | [math/code/proof]({paper_link('programmatically_verifiable_outcome_data')})、[agents]({paper_link('environment_agent_trajectory_data')})、[rubrics]({paper_link('judgment_rubric_domain_expert_data')})、[scaling]({paper_link('scaling_rlvr_test_time_compute')}) | 能沿一个子领域继续读论文、看卡片、查官方链接。 |
 | 6 | 审计与贡献 | [docs/09](docs/09_audit_and_failure_modes.md)、[reports/link_coverage.md](reports/link_coverage.md)、[CONTRIBUTING.md](CONTRIBUTING.md) | 能判断什么已经验证、什么还缺失，并且可以给仓库补高质量条目。 |
 
 ## 🧭 Starter Pack：20 篇必读
@@ -1004,13 +1125,13 @@ def readme_zh() -> str:
 
 | 方向 | 代表入口 | 重点看什么 |
 |---|---|---|
-| 🧮 数学/代码/证明 | [Programmatic Math, Code, and Proof](papers/02_programmatic_math_code_proof.md) | answer checker、unit tests、proof checker、去污染 |
-| 🪜 过程监督 | [Process Supervision and PRM](papers/03_process_supervision_prm.md) | step labels、PRM、first-error、rollout value |
-| 🏗️ 构造 recipe | [Construction Recipes](papers/06_construction_recipes_open_reasoning_data.md) | prompt source、teacher trace、filtering、ablation |
-| 🌐 Agent 环境 | [Agents, Tools, Web, SWE](papers/04_environmental_agents_tools_web_swe.md) | state/action/observation、terminal predicate、replay |
-| ⚖️ Rubric/Judge | [Judgment-Required Data](papers/05_judgment_required_rubrics_safety_domain.md) | rubric provenance、judge prompt、校准与攻击 |
-| 📈 Scaling/RLVR | [Scaling and Test-Time Compute](papers/08_scaling_test_time_compute_rlvr.md) | 数据复用、pass@k、inference budget、reward contract |
-| 🧯 Failure/Audit | [Audit and Failure Modes](papers/09_audit_failure_contamination_verifier_attacks.md) | leakage、contamination、verifier gaming、judge attack |
+| 🧮 数学/代码/证明 | [Programmatically Verifiable Outcome Data]({paper_link('programmatically_verifiable_outcome_data')}) | answer checker、unit tests、proof checker、去污染 |
+| 🪜 过程监督 | [Process and Trace Supervision Data]({paper_link('process_trace_supervision_data')}) | step labels、PRM、first-error、rollout value |
+| 🏗️ 构造 recipe | [Data Construction and Open Release Recipes]({paper_link('data_construction_open_release_recipes')}) | prompt source、teacher trace、filtering、ablation |
+| 🌐 Agent 环境 | [Environment and Agent Trajectory Data]({paper_link('environment_agent_trajectory_data')}) | state/action/observation、terminal predicate、replay |
+| ⚖️ Rubric/Judge | [Judgment, Rubric, and Domain-Expert Data]({paper_link('judgment_rubric_domain_expert_data')}) | rubric provenance、judge prompt、校准与攻击 |
+| 📈 Scaling/RLVR | [Scaling, RLVR, and Test-Time Compute]({paper_link('scaling_rlvr_test_time_compute')}) | 数据复用、pass@k、inference budget、reward contract |
+| 🧯 Failure/Audit | [Audit and Failure Modes]({paper_link('audit_failure_contamination_verifier_attacks')}) | leakage、contamination、verifier gaming、judge attack |
 
 ## 🧰 构造和审计框架
 
@@ -1048,8 +1169,8 @@ def readme_zh() -> str:
 | “我是新手，先读什么？” | [docs/00](docs/00_start_here.md) -> [Starter Pack](#-starter-pack20-篇必读) -> [cards/README.md](cards/README.md) |
 | “我想构造一个 reasoning dataset。” | [docs/05](docs/05_construction_cookbook.md) -> [release cards](cards/releases/) -> [recipe cards](cards/recipes/) |
 | “我想判断一个 benchmark 能不能复用。” | 打开对应 benchmark card，看 verifier、split、contamination、official links。 |
-| “我想理解 RLVR。” | 看 [programmatic data](papers/02_programmatic_math_code_proof.md)、verifier cards、scaling/RLVR 页面。 |
-| “我想研究 Agent 数据。” | 看 [agent papers](papers/04_environmental_agents_tools_web_swe.md)，重点检查 action schema、terminal predicate、replay metadata。 |
+| “我想理解 RLVR。” | 看 [programmatic data]({paper_link('programmatically_verifiable_outcome_data')})、verifier cards、scaling/RLVR 页面。 |
+| “我想研究 Agent 数据。” | 看 [agent papers]({paper_link('environment_agent_trajectory_data')}), 重点检查 action schema、terminal predicate、replay metadata。 |
 | “我想给仓库贡献。” | 从 [needs_search](reports/needs_search.md) 找条目，验证官方链接，再补 metadata 和 card。 |
 
 ## 🌱 高引用路线
