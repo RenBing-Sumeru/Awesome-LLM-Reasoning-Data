@@ -278,6 +278,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: domain experts write and validate questions.; generator: benchmark authors curate difficult science questions.
   _Audit focus:_ Multiple-choice guessing can inflate scores., Non-expert validators may not catch subtle mistakes., Tool access changes what the benchmark measures.
   _Why it matters:_ It is a scalable-oversight benchmark: the data object tests whether models can answer expert questions that are difficult for ordinary validators to check.
+- 📦 **[General-Reasoner: Advancing LLM Reasoning Across All Domains](https://arxiv.org/abs/2505.14652)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.14652)
+  _Data object:_ short verifiable answers beyond math and code, including physics, chemistry, and finance.
+  _Feedback / verifier:_ generative model-based answer verifier used in place of rule-based matching.
+  _Recipe signal:_ filtering rule: curation of web-crawled questions for answer verifiability.
+  _Audit focus:_ Model-based verifiers can accept wrong answers or be gamed more easily than programmatic checkers.
+  _Why it matters:_ It shows how verifiable-reward training can extend beyond math and code when the verification contract moves from programmatic checkers to a calibrated model verifier.
 
 ### <a id="safety-reasoning-data"></a>🛡️ Safety reasoning data
 
@@ -418,6 +426,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter.
+- 📦 **[General-Reasoner: Advancing LLM Reasoning Across All Domains](https://arxiv.org/abs/2505.14652)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.14652)
+  _Data object:_ short verifiable answers beyond math and code, including physics, chemistry, and finance.
+  _Feedback / verifier:_ generative model-based answer verifier used in place of rule-based matching.
+  _Recipe signal:_ filtering rule: curation of web-crawled questions for answer verifiability.
+  _Audit focus:_ Model-based verifiers can accept wrong answers or be gamed more easily than programmatic checkers.
+  _Why it matters:_ It shows how verifiable-reward training can extend beyond math and code when the verification contract moves from programmatic checkers to a calibrated model verifier.
 
 ### <a id="rubric-reward-models"></a>🧪 Rubric reward models
 

@@ -260,6 +260,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ generator: MCTS-guided retrieval-augmented rollouts; filtering rule: trustworthy process rewarding and iterative preference optimization
   _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
   _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
+- 🪜 **[GenPRM: Scaling Test-Time Compute of Process Reward Models via Generative Reasoning](https://arxiv.org/abs/2504.00891)**
+  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · mixed · reward modeling · process supervision · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2504.00891)
+  _Data object:_ step-level judgments produced after explicit reasoning and code verification.
+  _Feedback / verifier:_ generative PRM that reasons and executes code checks before scoring each step, trained with Relative Progress Estimation.
+  _Recipe signal:_ generator: rationale synthesis framework combining chain-of-thought and code verification.
+  _Audit focus:_ Generative judging spends extra inference compute and can still rationalize incorrect steps if code checks do not cover the claim.
+  _Why it matters:_ It reframes the process verifier as a reasoning-data generator whose judgment quality is a function of test-time compute, letting 7B-scale PRMs outperform much larger scalar judges on ProcessBench.
 - 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
   <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2406.03816)
@@ -430,6 +438,62 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ generator: policy rollouts; filtering rule: outcome labels converted into implicit process rewards
   _Audit focus:_ implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes
   _Why it matters:_ It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
+- 📦 **[General-Reasoner: Advancing LLM Reasoning Across All Domains](https://arxiv.org/abs/2505.14652)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.14652)
+  _Data object:_ short verifiable answers beyond math and code, including physics, chemistry, and finance.
+  _Feedback / verifier:_ generative model-based answer verifier used in place of rule-based matching.
+  _Recipe signal:_ filtering rule: curation of web-crawled questions for answer verifiability.
+  _Audit focus:_ Model-based verifiers can accept wrong answers or be gamed more easily than programmatic checkers.
+  _Why it matters:_ It shows how verifiable-reward training can extend beyond math and code when the verification contract moves from programmatic checkers to a calibrated model verifier.
+- 🚀 **[INTELLECT-2: A Reasoning Model Trained Through Globally Decentralized Reinforcement Learning](https://arxiv.org/abs/2505.07291)**
+  <sub>2025 · arXiv · 🚀 model report · 🛠️ infrastructure · programmatic · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.07291)
+  _Data object:_ verifiable math and code task answers.; decentralized rollout network with trusted verification of contributed computations.
+  _Feedback / verifier:_ verifiable task rewards plus TOPLOC-style verification of untrusted inference workers.
+  _Recipe signal:_ optimizer or scaffold: PRIME-RL asynchronous RL framework with GRPO recipe modifications.
+  _Audit focus:_ Untrusted distributed workers require computation verification to prevent corrupted rollouts entering training data.
+  _Why it matters:_ It treats rollout provenance and computation verification as first-class parts of the reasoning-data pipeline, a dimension most centralized RLVR reports leave implicit.
+- 📦 **[LIMR: Less is More for RL Scaling](https://arxiv.org/abs/2502.11886)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · unknown · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2502.11886) · [Code](https://github.com/GAIR-NLP/LIMR)
+  _Data object:_ answer level
+  _Feedback / verifier:_ metadata pending
+  _Recipe signal:_ filtering rule: LIM, an automated method that evaluates and prioritizes training samples by their alignment with model learning trajectories.
+  _Audit focus:_ LIM selection is anchored to one model's learning trajectory, so the curated subset may not transfer across base models.
+  _Why it matters:_ Evidence that RLVR data scales by pruning rather than accumulating - sample value is a measurable function of learning dynamics, not an intrinsic property of the sample.
+- 🧪 **[Learning to Reason without External Rewards](https://arxiv.org/abs/2505.19590)**
+  <sub>2025 · ICLR · 🧪 verifier reward · programmatic · rlvr · reward modeling · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.19590) · [Code](https://github.com/sunblaze-ucb/Intuitor)
+  _Data object:_ scalar reward
+  _Feedback / verifier:_ self-certainty (the model's own confidence) as the sole reward signal, replacing external rewards in GRPO.
+  _Recipe signal:_ optimizer or scaffold: GRPO with self-certainty scores substituted for external rewards (RLIF framework).
+  _Audit focus:_ Self-certainty verifies nothing external, so confidently wrong reasoning can be reinforced without a ground-truth backstop.
+  _Why it matters:_ If intrinsic signals can replace verifiable rewards, curated verifier datasets become one point on a supervision spectrum - directly challenging the assumption that reasoning gains require labeled or verifiable data.
+- 📈 **[Reinforcement Learning for Reasoning in Large Language Models with One Training Example](https://arxiv.org/abs/2504.20571)**
+  <sub>2025 · NeurIPS · 📈 scaling study · programmatic · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2504.20571) · [Code](https://github.com/ypwang61/One-Shot-RLVR)
+  _Data object:_ final answers scored by verifiable reward on math benchmarks (MATH500 and a six-benchmark average reported).
+  _Feedback / verifier:_ verifiable outcome reward (RLVR) on final answers.
+  _Recipe signal:_ optimizer or scaffold: GRPO and PPO; entropy loss with an appropriate coefficient highlighted as critical for exploration.
+  _Audit focus:_ Gains are attributed mainly to policy-gradient-driven exploration of capability already latent in the base model, so the recipe may elicit rather than teach new skills.
+  _Why it matters:_ It reframes reasoning-data curation as high-impact example selection rather than mass collection, and isolates exploration as the mechanism that RLVR data actually buys.
+- 📦 **[Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective](https://arxiv.org/abs/2506.14965)**
+  <sub>2025 · arXiv · 📦 data release · 📈 scaling study · mixed · rlvr · evaluation · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2506.14965) · [Code](https://github.com/LLM360/Reasoning360)
+  _Data object:_ verifiable answers with per-domain reward checking.
+  _Feedback / verifier:_ domain-specific reward functions built and validated per domain.
+  _Recipe signal:_ filtering rule: per-domain curation and reward validation of verifiable examples.
+  _Audit focus:_ Cross-domain transfer claims can conflate pretraining exposure with RL data effects.
+  _Why it matters:_ It gives the construction track an open multi-domain RLVR corpus where reward design and domain mixture are documented, enabling controlled studies of cross-domain transfer.
+- 🏗️ **[SwS: Self-aware Weakness-driven Problem Synthesis in Reinforcement Learning for LLM Reasoning](https://arxiv.org/abs/2506.08989)**
+  <sub>2025 · arXiv · 🏗️ construction recipe · programmatic · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2506.08989)
+  _Data object:_ verifiable problems used for RLVR training.
+  _Feedback / verifier:_ verifiable rewards (RLVR); problem synthesis targets the verifiable-problem regime.
+  _Recipe signal:_ teacher: none; framework operates without external knowledge distillation.; generator: weakness-driven problem synthesis from extracted core concepts of failure cases.
+  _Audit focus:_ Synthesized problems must remain verifiable and correctly labeled; the abstract does not describe how synthesized answers are validated.
+  _Why it matters:_ It targets data where it is scarcest - at the frontier of the model's current ability - turning failure statistics into a problem-synthesis policy without external teachers.
 - 📄 **[Dual Consensus: Escaping from Spurious Majority in Unsupervised RLVR via Two-Stage Vote Mechanism](https://arxiv.org/abs/2603.16223)**
   <sub>2026 · arXiv preprint arXiv:2603.16223 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2603.16223)

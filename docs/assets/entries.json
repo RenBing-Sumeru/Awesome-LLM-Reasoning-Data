@@ -16542,5 +16542,719 @@
       "card": null
     },
     "primary_link": "https://arxiv.org/abs/2410.08385"
+  },
+  {
+    "id": "general-reasoner-advancing-llm-reasoning-across-all-domains-2025",
+    "title": "General-Reasoner: Advancing LLM Reasoning Across All Domains",
+    "year": 2025,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "data_release",
+      "construction_recipe",
+      "verifier_reward"
+    ],
+    "verification_contract": [
+      "mixed"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "training_use": [
+      "rlvr"
+    ],
+    "domains": [
+      "general",
+      "math",
+      "science",
+      "finance"
+    ],
+    "category": [
+      "data_construction_open_release_recipes",
+      "judgment_rubric_domain_expert_data",
+      "scaling_rlvr_test_time_compute"
+    ],
+    "subfield": "🧱 Prompt sourcing",
+    "tags": [
+      "general-domain",
+      "model-based-verifier",
+      "rlvr"
+    ],
+    "one_line_summary": "Builds a web-crawled, answer-verifiable question set across many domains and trains RLVR with a generative model-based verifier instead of rule-based matching.",
+    "why_it_matters": "It shows how verifiable-reward training can extend beyond math and code when the verification contract moves from programmatic checkers to a calibrated model verifier.",
+    "data_object": "short verifiable answers beyond math and code, including physics, chemistry, and finance.",
+    "feedback_verifier": "generative model-based answer verifier used in place of rule-based matching.",
+    "audit_focus": "Model-based verifiers can accept wrong answers or be gamed more easily than programmatic checkers.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2505.14652",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2505.14652",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": null,
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2505.14652"
+  },
+  {
+    "id": "guru-cross-domain-rl-reasoning-corpus-2025",
+    "title": "Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective",
+    "year": 2025,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "data_release",
+      "scaling_study"
+    ],
+    "verification_contract": [
+      "mixed"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "training_use": [
+      "rlvr",
+      "evaluation"
+    ],
+    "domains": [
+      "math",
+      "code",
+      "science",
+      "logic",
+      "simulation",
+      "tabular"
+    ],
+    "category": [
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
+    ],
+    "subfield": "Other related work",
+    "tags": [
+      "cross-domain",
+      "open-data",
+      "rlvr"
+    ],
+    "one_line_summary": "Releases Guru, a 92K six-domain verifiable RL reasoning corpus, and analyzes when cross-domain RL transfers versus requiring in-domain data.",
+    "why_it_matters": "It gives the construction track an open multi-domain RLVR corpus where reward design and domain mixture are documented, enabling controlled studies of cross-domain transfer.",
+    "data_object": "verifiable answers with per-domain reward checking.",
+    "feedback_verifier": "domain-specific reward functions built and validated per domain.",
+    "audit_focus": "Cross-domain transfer claims can conflate pretraining exposure with RL data effects.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2506.14965",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2506.14965",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": "https://github.com/LLM360/Reasoning360",
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2506.14965"
+  },
+  {
+    "id": "intellect-2-decentralized-rl-reasoning-2025",
+    "title": "INTELLECT-2: A Reasoning Model Trained Through Globally Decentralized Reinforcement Learning",
+    "year": 2025,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "model_report",
+      "infrastructure"
+    ],
+    "verification_contract": [
+      "programmatic"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "training_use": [
+      "rlvr"
+    ],
+    "domains": [
+      "math",
+      "code"
+    ],
+    "category": [
+      "frontier_reports_data_disclosure_ledger",
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
+    ],
+    "subfield": "🧪 RLVR recipe reports",
+    "tags": [
+      "decentralized-training",
+      "open-release",
+      "rlvr"
+    ],
+    "one_line_summary": "Trains a 32B reasoning model with RLVR where rollouts come from a decentralized network of untrusted contributors, open-sourcing the model, code, and data.",
+    "why_it_matters": "It treats rollout provenance and computation verification as first-class parts of the reasoning-data pipeline, a dimension most centralized RLVR reports leave implicit.",
+    "data_object": "verifiable math and code task answers.; decentralized rollout network with trusted verification of contributed computations.",
+    "feedback_verifier": "verifiable task rewards plus TOPLOC-style verification of untrusted inference workers.",
+    "audit_focus": "Untrusted distributed workers require computation verification to prevent corrupted rollouts entering training data.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2505.07291",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2505.07291",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": null,
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2505.07291"
+  },
+  {
+    "id": "free-process-rewards-without-process-labels-2024",
+    "title": "Free Process Rewards without Process Labels",
+    "year": 2024,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "process_supervision",
+      "verifier_reward"
+    ],
+    "verification_contract": [
+      "programmatic"
+    ],
+    "supervision_granularity": [
+      "answer_level",
+      "process_reward"
+    ],
+    "training_use": [
+      "reward_modeling",
+      "process_supervision"
+    ],
+    "domains": [
+      "math"
+    ],
+    "category": [
+      "process_trace_supervision_data",
+      "data_construction_open_release_recipes"
+    ],
+    "subfield": "🧪 Process reward models",
+    "tags": [
+      "implicit-prm",
+      "outcome-labels",
+      "process-reward"
+    ],
+    "one_line_summary": "Derives a step-level process reward model at no extra labeling cost by training an outcome reward model on response-level labels and reading rewards as log-likelihood ratios.",
+    "why_it_matters": "It undercuts the assumption that process supervision requires expensive step-level labels, reporting that added step labels brought no further improvement over the implicit PRM.",
+    "data_object": "response-level outcome labels on math reasoning, reused as implicit step-level rewards.",
+    "feedback_verifier": "implicit PRM parameterized as the log-likelihood ratio between policy and reference model, trained only on outcome labels.",
+    "audit_focus": "Implicit step rewards inherit any noise or bias present in the response-level outcome labels.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2412.01981",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2412.01981",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": "https://github.com/lifan-yuan/ImplicitPRM",
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2412.01981"
+  },
+  {
+    "id": "genprm-scaling-test-time-compute-of-process-reward-models-2025",
+    "title": "GenPRM: Scaling Test-Time Compute of Process Reward Models via Generative Reasoning",
+    "year": 2025,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "process_supervision",
+      "verifier_reward"
+    ],
+    "verification_contract": [
+      "mixed"
+    ],
+    "supervision_granularity": [
+      "step_level",
+      "process_reward"
+    ],
+    "training_use": [
+      "reward_modeling",
+      "process_supervision",
+      "test_time_compute"
+    ],
+    "domains": [
+      "math"
+    ],
+    "category": [
+      "process_trace_supervision_data",
+      "scaling_rlvr_test_time_compute"
+    ],
+    "subfield": "🧪 Process reward models",
+    "tags": [
+      "generative-prm",
+      "test-time-scaling",
+      "code-verification"
+    ],
+    "one_line_summary": "Trains a generative process reward model that reasons and runs code checks before judging each step, scaling verifier quality with test-time compute.",
+    "why_it_matters": "It reframes the process verifier as a reasoning-data generator whose judgment quality is a function of test-time compute, letting 7B-scale PRMs outperform much larger scalar judges on ProcessBench.",
+    "data_object": "step-level judgments produced after explicit reasoning and code verification.",
+    "feedback_verifier": "generative PRM that reasons and executes code checks before scoring each step, trained with Relative Progress Estimation.",
+    "audit_focus": "Generative judging spends extra inference compute and can still rationalize incorrect steps if code checks do not cover the claim.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2504.00891",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2504.00891",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": null,
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2504.00891"
+  },
+  {
+    "id": "one-shot-rlvr-reasoning-with-one-training-example-2025",
+    "title": "Reinforcement Learning for Reasoning in Large Language Models with One Training Example",
+    "year": 2025,
+    "venue": "NeurIPS",
+    "authors": [],
+    "source_role": [
+      "scaling_study"
+    ],
+    "verification_contract": [
+      "programmatic"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "training_use": [
+      "rlvr"
+    ],
+    "domains": [
+      "math"
+    ],
+    "category": [
+      "scaling_rlvr_test_time_compute",
+      "programmatically_verifiable_outcome_data"
+    ],
+    "subfield": "🏋️ RLVR optimization scaling",
+    "tags": [
+      "one-shot-rlvr",
+      "data-efficiency",
+      "example-selection"
+    ],
+    "one_line_summary": "Shows RLVR with a single training example lifts Qwen2.5-Math-1.5B from 36.0% to 73.6% on MATH500, matching training on the 1.2k DeepScaleR subset containing that example.",
+    "why_it_matters": "It reframes reasoning-data curation as high-impact example selection rather than mass collection, and isolates exploration as the mechanism that RLVR data actually buys.",
+    "data_object": "final answers scored by verifiable reward on math benchmarks (MATH500 and a six-benchmark average reported).",
+    "feedback_verifier": "verifiable outcome reward (RLVR) on final answers.",
+    "audit_focus": "Gains are attributed mainly to policy-gradient-driven exploration of capability already latent in the base model, so the recipe may elicit rather than teach new skills.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2504.20571",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2504.20571",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": "https://github.com/ypwang61/One-Shot-RLVR",
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2504.20571"
+  },
+  {
+    "id": "revthink-reverse-thinking-makes-llms-stronger-reasoners-2024",
+    "title": "Reverse Thinking Makes LLMs Stronger Reasoners",
+    "year": 2024,
+    "venue": "NAACL",
+    "authors": [],
+    "source_role": [
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "training_use": [
+      "sft",
+      "distillation"
+    ],
+    "domains": [
+      "math",
+      "commonsense",
+      "logic"
+    ],
+    "category": [
+      "instruction_demonstration_rationale_data",
+      "data_construction_open_release_recipes"
+    ],
+    "subfield": "🧱 Instruction tuning / SFT data",
+    "tags": [
+      "reverse-thinking",
+      "data-augmentation",
+      "distillation"
+    ],
+    "one_line_summary": "Augments training data with teacher-written backward questions and backward reasoning, training students multi-task for a 13.53% average gain across 12 datasets.",
+    "why_it_matters": "It shows sample-efficiency can come from the structure of reasoning data rather than volume - 10% of forward data with backward counterparts beats standard fine-tuning on 10x more data.",
+    "data_object": "question / forward reasoning / backward question / backward reasoning quadruples consumed by three multi-task objectives.",
+    "feedback_verifier": "metadata pending",
+    "audit_focus": "Verification of teacher-generated backward data is not described in the abstract; forward-backward consistency is stated as motivation rather than as an executed check.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2411.19865",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2411.19865",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": null,
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2411.19865"
+  },
+  {
+    "id": "lema-learning-from-mistakes-makes-llm-better-reasoner-2023",
+    "title": "Learning From Mistakes Makes LLM Better Reasoner",
+    "year": 2023,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "step_level",
+      "answer_level"
+    ],
+    "training_use": [
+      "sft"
+    ],
+    "domains": [
+      "math"
+    ],
+    "category": [
+      "instruction_demonstration_rationale_data",
+      "data_construction_open_release_recipes"
+    ],
+    "subfield": "🧱 Instruction tuning / SFT data",
+    "tags": [
+      "mistake-correction",
+      "error-learning",
+      "gpt-4-corrector"
+    ],
+    "one_line_summary": "Fine-tunes LLMs on GPT-4-written mistake-correction pairs that identify the error step, explain it, and fix it, improving over CoT-only fine-tuning.",
+    "why_it_matters": "Its ablations show correction data is non-homogeneous with CoT data - error traces carry training signal that plain demonstrations lack, an early template for failure-driven data recipes.",
+    "data_object": "mistake-correction data pairs that identify the error step, explain the reason, correct it, and produce the final answer.",
+    "feedback_verifier": "metadata pending",
+    "audit_focus": "Correction quality depends on GPT-4 actually identifying the true error step; the abstract does not describe automated verification of the corrections.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2310.20689",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2310.20689",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": "https://github.com/microsoft/LEMA",
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2310.20689"
+  },
+  {
+    "id": "intuitor-learning-to-reason-without-external-rewards-2025",
+    "title": "Learning to Reason without External Rewards",
+    "year": 2025,
+    "venue": "ICLR",
+    "authors": [],
+    "source_role": [
+      "verifier_reward"
+    ],
+    "verification_contract": [
+      "programmatic"
+    ],
+    "supervision_granularity": [
+      "scalar_reward"
+    ],
+    "training_use": [
+      "rlvr",
+      "reward_modeling"
+    ],
+    "domains": [
+      "math",
+      "code"
+    ],
+    "category": [
+      "scaling_rlvr_test_time_compute"
+    ],
+    "subfield": "🏋️ RLVR optimization scaling",
+    "tags": [
+      "rlif",
+      "self-certainty",
+      "unsupervised-rl"
+    ],
+    "one_line_summary": "Replaces GRPO's external rewards with the model's own self-certainty, matching RLVR on math while generalizing better to code generation with no labeled data.",
+    "why_it_matters": "If intrinsic signals can replace verifiable rewards, curated verifier datasets become one point on a supervision spectrum - directly challenging the assumption that reasoning gains require labeled or verifiable data.",
+    "data_object": "scalar reward",
+    "feedback_verifier": "self-certainty (the model's own confidence) as the sole reward signal, replacing external rewards in GRPO.",
+    "audit_focus": "Self-certainty verifies nothing external, so confidently wrong reasoning can be reinforced without a ground-truth backstop.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2505.19590",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2505.19590",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": "https://github.com/sunblaze-ucb/Intuitor",
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2505.19590"
+  },
+  {
+    "id": "physics-of-language-models-part-2-1-grade-school-math-2024",
+    "title": "Physics of Language Models: Part 2.1, Grade-School Math and the Hidden Reasoning Process",
+    "year": 2024,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "scaling_study",
+      "audit_failure"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "unknown"
+    ],
+    "training_use": [
+      "audit"
+    ],
+    "domains": [
+      "math"
+    ],
+    "category": [
+      "programmatically_verifiable_outcome_data",
+      "foundations_and_primers"
+    ],
+    "subfield": "📐 Math answer-verifiable data",
+    "tags": [
+      "controlled-experiments",
+      "hidden-reasoning",
+      "model-audit"
+    ],
+    "one_line_summary": "Runs controlled experiments on grade-school math to test whether models learn true reasoning skills or memorize templates, probing the model's concealed step-by-step process behind solutions and mistakes.",
+    "why_it_matters": "It is the audit-side counterweight to data curation - controlled probes of what math data teaches inform how far benchmark-driven data recipes can be trusted.",
+    "data_object": "scaling study; audit failure",
+    "feedback_verifier": "metadata pending",
+    "audit_focus": "Findings come from controlled small-scale settings; transfer of the conclusions to frontier-scale training pipelines is not established in the abstract.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2407.20311",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2407.20311",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": null,
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2407.20311"
+  },
+  {
+    "id": "limr-less-is-more-for-rl-scaling-2025",
+    "title": "LIMR: Less is More for RL Scaling",
+    "year": 2025,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "data_release",
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "unknown"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "training_use": [
+      "rlvr"
+    ],
+    "domains": [
+      "math"
+    ],
+    "category": [
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
+    ],
+    "subfield": "🧱 Prompt sourcing",
+    "tags": [
+      "data-selection",
+      "rl-scaling",
+      "learning-impact-measurement"
+    ],
+    "one_line_summary": "Ranks RL training samples by alignment with model learning trajectories, showing 1,389 curated samples beat the full 8,523-sample dataset on math benchmarks.",
+    "why_it_matters": "Evidence that RLVR data scales by pruning rather than accumulating - sample value is a measurable function of learning dynamics, not an intrinsic property of the sample.",
+    "data_object": "answer level",
+    "feedback_verifier": "metadata pending",
+    "audit_focus": "LIM selection is anchored to one model's learning trajectory, so the curated subset may not transfer across base models.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2502.11886",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2502.11886",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": "https://github.com/GAIR-NLP/LIMR",
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2502.11886"
+  },
+  {
+    "id": "sws-self-aware-weakness-driven-problem-synthesis-2025",
+    "title": "SwS: Self-aware Weakness-driven Problem Synthesis in Reinforcement Learning for LLM Reasoning",
+    "year": 2025,
+    "venue": "arXiv",
+    "authors": [],
+    "source_role": [
+      "construction_recipe"
+    ],
+    "verification_contract": [
+      "programmatic"
+    ],
+    "supervision_granularity": [
+      "answer_level"
+    ],
+    "training_use": [
+      "rlvr"
+    ],
+    "domains": [
+      "math"
+    ],
+    "category": [
+      "data_construction_open_release_recipes",
+      "scaling_rlvr_test_time_compute"
+    ],
+    "subfield": "🔁 Self-play / self-improvement",
+    "tags": [
+      "weakness-driven",
+      "problem-synthesis",
+      "self-improvement"
+    ],
+    "one_line_summary": "Extracts core concepts from problems the model repeatedly fails during RL and synthesizes targeted new problems, gaining 10.0%/7.7% on 7B/32B models across eight reasoning benchmarks.",
+    "why_it_matters": "It targets data where it is scarcest - at the frontier of the model's current ability - turning failure statistics into a problem-synthesis policy without external teachers.",
+    "data_object": "verifiable problems used for RLVR training.",
+    "feedback_verifier": "verifiable rewards (RLVR); problem synthesis targets the verifiable-problem regime.",
+    "audit_focus": "Synthesized problems must remain verifiable and correctly labeled; the abstract does not describe how synthesized answers are validated.",
+    "curation_level": "L1_link_verified",
+    "status": "verified",
+    "needs_search": false,
+    "artifacts": {
+      "paper": "https://arxiv.org/abs/2506.08989",
+      "venue": null,
+      "arxiv": "https://arxiv.org/abs/2506.08989",
+      "openreview": null,
+      "acl": null,
+      "pmlr": null,
+      "cvf": null,
+      "doi": null,
+      "code": null,
+      "data": null,
+      "huggingface": null,
+      "project": null,
+      "bibtex": null,
+      "card": null
+    },
+    "primary_link": "https://arxiv.org/abs/2506.08989"
   }
 ]

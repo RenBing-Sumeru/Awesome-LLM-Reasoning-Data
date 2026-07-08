@@ -308,6 +308,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter.
+- 🏗️ **[Reverse Thinking Makes LLMs Stronger Reasoners](https://arxiv.org/abs/2411.19865)**
+  <sub>2024 · NAACL · 🏗️ construction recipe · unknown · sft · distillation · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2411.19865)
+  _Data object:_ question / forward reasoning / backward question / backward reasoning quadruples consumed by three multi-task objectives.
+  _Feedback / verifier:_ metadata pending
+  _Recipe signal:_ teacher: teacher model (unspecified in abstract) generating forward-backward data.; generator: data augmentation collecting structured forward-backward reasoning from the teacher.
+  _Audit focus:_ Verification of teacher-generated backward data is not described in the abstract; forward-backward consistency is stated as motivation rather than as an executed check.
+  _Why it matters:_ It shows sample-efficiency can come from the structure of reasoning data rather than volume - 10% of forward data with backward counterparts beats standard fine-tuning on 10x more data.
+- 🏗️ **[Learning From Mistakes Makes LLM Better Reasoner](https://arxiv.org/abs/2310.20689)**
+  <sub>2023 · arXiv · 🏗️ construction recipe · unknown · sft · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2310.20689) · [Code](https://github.com/microsoft/LEMA)
+  _Data object:_ mistake-correction data pairs that identify the error step, explain the reason, correct it, and produce the final answer.
+  _Feedback / verifier:_ metadata pending
+  _Recipe signal:_ teacher: GPT-4 in a corrector role.; generator: correction-centric evolution strategy expanding the question set for correction data.
+  _Audit focus:_ Correction quality depends on GPT-4 actually identifying the true error step; the abstract does not describe automated verification of the corrections.
+  _Why it matters:_ Its ablations show correction data is non-homogeneous with CoT data - error traces carry training signal that plain demonstrations lack, an early template for failure-driven data recipes.
 - 📄 **[Decoupling KL and Trajectories: A Unified Perspective for SFT, DAgger, Offline RL, and OPD in LLM Distillation](https://arxiv.org/abs/2605.16826)**
   <sub>2026 · arXiv preprint arXiv:2605.16826 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2605.16826)

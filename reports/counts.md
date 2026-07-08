@@ -1,80 +1,80 @@
 # Counts Report
 
-total entries: 280
+total entries: 292
 filled cards: 89
 missing primary paper/arXiv/DOI links: 115
 needs search / partial metadata: 115
 
 ## status
-- verified: 165
+- verified: 177
 - needs_metadata: 112
 - partial: 3
 
 ## category
+- data_construction_open_release_recipes: 116
 - benchmarks_evaluation_surfaces: 109
-- data_construction_open_release_recipes: 108
+- scaling_rlvr_test_time_compute: 98
 - training_usage_optimization_objectives: 97
+- programmatically_verifiable_outcome_data: 96
 - environment_agent_trajectory_data: 95
-- programmatically_verifiable_outcome_data: 94
-- scaling_rlvr_test_time_compute: 90
-- foundations_and_primers: 84
-- judgment_rubric_domain_expert_data: 83
+- foundations_and_primers: 85
+- judgment_rubric_domain_expert_data: 84
 - preference_reward_feedback_data: 73
 - audit_failure_contamination_verifier_attacks: 68
-- instruction_demonstration_rationale_data: 58
-- frontier_reports_data_disclosure_ledger: 40
+- instruction_demonstration_rationale_data: 60
+- frontier_reports_data_disclosure_ledger: 41
 - rollout_search_test_time_trace_data: 39
-- process_trace_supervision_data: 25
+- process_trace_supervision_data: 27
 
 ## source_role
 - survey_background: 192
-- construction_recipe: 40
+- construction_recipe: 45
+- data_release: 39
 - benchmark: 37
-- data_release: 36
-- verifier_reward: 20
-- model_report: 18
-- scaling_study: 18
+- verifier_reward: 24
+- scaling_study: 21
+- model_report: 19
 - agent_environment: 16
-- audit_failure: 12
-- process_supervision: 11
-- infrastructure: 2
+- audit_failure: 13
+- process_supervision: 13
+- infrastructure: 3
 
 ## verification_contract
-- unknown: 180
-- mixed: 55
-- programmatic: 48
+- unknown: 184
+- mixed: 58
+- programmatic: 53
 - judgment_required: 30
 - environmental: 22
 
 ## training_use
 - unknown: 174
-- evaluation: 72
-- sft: 36
-- reward_modeling: 28
-- rlvr: 27
+- evaluation: 73
+- sft: 38
+- rlvr: 34
+- reward_modeling: 31
 - agent_training: 22
-- audit: 20
-- test_time_compute: 20
+- audit: 21
+- test_time_compute: 21
 - preference_learning: 16
-- distillation: 14
-- process_supervision: 11
+- distillation: 15
+- process_supervision: 13
 - safety_alignment: 8
 
 ## construction_layer
-- release_audit: 234
-- reward_verifier_layer: 43
-- trace_writing: 24
-- optimizer_scaffold: 22
+- release_audit: 235
+- reward_verifier_layer: 48
+- trace_writing: 27
+- prompt_sourcing: 24
+- optimizer_scaffold: 23
 - search_substrate: 21
-- prompt_sourcing: 17
-- frontier_pipeline: 11
-- scaling_report: 10
+- frontier_pipeline: 12
+- scaling_report: 12
 - self_play_anchor: 2
 
 ## year
-- 2025: 122
-- 2024: 64
-- 2023: 37
+- 2025: 130
+- 2024: 67
+- 2023: 38
 - 2026: 19
 - 2021: 15
 - 2022: 14

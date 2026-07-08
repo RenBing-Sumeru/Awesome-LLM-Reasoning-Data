@@ -292,6 +292,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ generator: MCTS-guided retrieval-augmented rollouts; filtering rule: trustworthy process rewarding and iterative preference optimization
   _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
   _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
+- 📈 **[Reinforcement Learning for Reasoning in Large Language Models with One Training Example](https://arxiv.org/abs/2504.20571)**
+  <sub>2025 · NeurIPS · 📈 scaling study · programmatic · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2504.20571) · [Code](https://github.com/ypwang61/One-Shot-RLVR)
+  _Data object:_ final answers scored by verifiable reward on math benchmarks (MATH500 and a six-benchmark average reported).
+  _Feedback / verifier:_ verifiable outcome reward (RLVR) on final answers.
+  _Recipe signal:_ optimizer or scaffold: GRPO and PPO; entropy loss with an appropriate coefficient highlighted as critical for exploration.
+  _Audit focus:_ Gains are attributed mainly to policy-gradient-driven exploration of capability already latent in the base model, so the recipe may elicit rather than teach new skills.
+  _Why it matters:_ It reframes reasoning-data curation as high-impact example selection rather than mass collection, and isolates exploration as the mechanism that RLVR data actually buys.
+- 📈 **[Physics of Language Models: Part 2.1, Grade-School Math and the Hidden Reasoning Process](https://arxiv.org/abs/2407.20311)**
+  <sub>2024 · arXiv · 📈 scaling study · 🧯 audit failure · unknown · audit · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2407.20311)
+  _Data object:_ scaling study; audit failure
+  _Feedback / verifier:_ metadata pending
+  _Recipe signal:_ scaling report; audit
+  _Audit focus:_ Findings come from controlled small-scale settings; transfer of the conclusions to frontier-scale training pipelines is not established in the abstract.
+  _Why it matters:_ It is the audit-side counterweight to data curation - controlled probes of what math data teaches inform how far benchmark-driven data recipes can be trusted.
 - 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
   <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2406.03816)

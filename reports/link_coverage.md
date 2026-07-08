@@ -4,9 +4,9 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 
 ## Summary
 
-- Total entries: 280
-- Verified entries: 165
-- Verified entries with official paper/arXiv/venue/DOI links: 165 (100.0%)
+- Total entries: 292
+- Verified entries: 177
+- Verified entries with official paper/arXiv/venue/DOI links: 177 (100.0%)
 - Needs search: 115
 - Ambiguous: 0
 - Duplicate: 0
@@ -15,7 +15,7 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 ## Curation Levels
 
 - L0_seeded: 115
-- L1_link_verified: 69
+- L1_link_verified: 81
 - L2_artifact_verified: 7
 - L3_summary_ready: 4
 - L4_carded: 32
@@ -23,14 +23,14 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 165
-- arXiv coverage: 162
+- Official primary paper/arXiv/venue/DOI coverage: 177
+- arXiv coverage: 174
 - OpenReview coverage: 15
 - ACL coverage: 7
 - PMLR coverage: 1
 - CVF coverage: 0
 - DOI coverage: 5
-- Code coverage: 41
+- Code coverage: 47
 - Data coverage: 27
 - Hugging Face coverage: 20
 - Project page coverage: 25

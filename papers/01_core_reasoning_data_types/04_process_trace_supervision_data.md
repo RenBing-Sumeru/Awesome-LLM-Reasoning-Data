@@ -81,6 +81,22 @@ These entries are promoted into the core list because they already expose a pape
   _Recipe signal:_ generator: MCTS-guided retrieval-augmented rollouts; filtering rule: trustworthy process rewarding and iterative preference optimization
   _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
   _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
+- 🪜 **[GenPRM: Scaling Test-Time Compute of Process Reward Models via Generative Reasoning](https://arxiv.org/abs/2504.00891)**
+  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · mixed · reward modeling · process supervision · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2504.00891)
+  _Data object:_ step-level judgments produced after explicit reasoning and code verification.
+  _Feedback / verifier:_ generative PRM that reasons and executes code checks before scoring each step, trained with Relative Progress Estimation.
+  _Recipe signal:_ generator: rationale synthesis framework combining chain-of-thought and code verification.
+  _Audit focus:_ Generative judging spends extra inference compute and can still rationalize incorrect steps if code checks do not cover the claim.
+  _Why it matters:_ It reframes the process verifier as a reasoning-data generator whose judgment quality is a function of test-time compute, letting 7B-scale PRMs outperform much larger scalar judges on ProcessBench.
+- 🪜 **[Free Process Rewards without Process Labels](https://arxiv.org/abs/2412.01981)**
+  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · reward modeling · process supervision · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2412.01981) · [Code](https://github.com/lifan-yuan/ImplicitPRM)
+  _Data object:_ response-level outcome labels on math reasoning, reused as implicit step-level rewards.
+  _Feedback / verifier:_ implicit PRM parameterized as the log-likelihood ratio between policy and reference model, trained only on outcome labels.
+  _Recipe signal:_ reward verifier layer; reward modeling; process supervision
+  _Audit focus:_ Implicit step rewards inherit any noise or bias present in the response-level outcome labels.
+  _Why it matters:_ It undercuts the assumption that process supervision requires expensive step-level labels, reporting that added step labels brought no further improvement over the implicit PRM.
 - 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
   <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2406.03816)

@@ -216,6 +216,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; reward verifier layer; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models.
+- 🚀 **[INTELLECT-2: A Reasoning Model Trained Through Globally Decentralized Reinforcement Learning](https://arxiv.org/abs/2505.07291)**
+  <sub>2025 · arXiv · 🚀 model report · 🛠️ infrastructure · programmatic · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.07291)
+  _Data object:_ verifiable math and code task answers.; decentralized rollout network with trusted verification of contributed computations.
+  _Feedback / verifier:_ verifiable task rewards plus TOPLOC-style verification of untrusted inference workers.
+  _Recipe signal:_ optimizer or scaffold: PRIME-RL asynchronous RL framework with GRPO recipe modifications.
+  _Audit focus:_ Untrusted distributed workers require computation verification to prevent corrupted rollouts entering training data.
+  _Why it matters:_ It treats rollout provenance and computation verification as first-class parts of the reasoning-data pipeline, a dimension most centralized RLVR reports leave implicit.
 - 🧭 **[AM-Thinking-v1: Advancing the Frontier of Reasoning at 32B Scale](https://arxiv.org/abs/2505.08311)**
   <sub>2025 · arXiv preprint arXiv:2505.08311 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2505.08311)

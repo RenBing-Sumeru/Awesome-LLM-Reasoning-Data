@@ -1,28 +1,28 @@
 {
   "generated_at": "2026-07-08",
-  "total_entries": 280,
-  "verified_entries": 165,
-  "verified_with_primary_link": 165,
+  "total_entries": 292,
+  "verified_entries": 177,
+  "verified_with_primary_link": 177,
   "verified_primary_link_coverage": "100.0%",
   "curation_levels": {
     "L0_seeded": 115,
-    "L1_link_verified": 69,
+    "L1_link_verified": 81,
     "L2_artifact_verified": 7,
     "L3_summary_ready": 4,
     "L4_carded": 32,
     "L5_audit_ready": 53
   },
   "official_link_coverage": {
-    "paper_or_primary": 165,
-    "paper": 165,
-    "arxiv": 162,
+    "paper_or_primary": 177,
+    "paper": 177,
+    "arxiv": 174,
     "venue": 8,
     "openreview": 15,
     "acl": 7,
     "pmlr": 1,
     "cvf": 0,
     "doi": 5,
-    "code": 41,
+    "code": 47,
     "data": 27,
     "huggingface": 20,
     "project": 25,
@@ -40,5 +40,5 @@
   "duplicate": 0,
   "missing_primary_link": 115,
   "cards": 87,
-  "artifact_verified_entries": 167
+  "artifact_verified_entries": 179
 }

@@ -206,6 +206,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter.
+- 📦 **[General-Reasoner: Advancing LLM Reasoning Across All Domains](https://arxiv.org/abs/2505.14652)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.14652)
+  _Data object:_ short verifiable answers beyond math and code, including physics, chemistry, and finance.
+  _Feedback / verifier:_ generative model-based answer verifier used in place of rule-based matching.
+  _Recipe signal:_ filtering rule: curation of web-crawled questions for answer verifiability.
+  _Audit focus:_ Model-based verifiers can accept wrong answers or be gamed more easily than programmatic checkers.
+  _Why it matters:_ It shows how verifiable-reward training can extend beyond math and code when the verification contract moves from programmatic checkers to a calibrated model verifier.
+- 📦 **[LIMR: Less is More for RL Scaling](https://arxiv.org/abs/2502.11886)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · unknown · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2502.11886) · [Code](https://github.com/GAIR-NLP/LIMR)
+  _Data object:_ answer level
+  _Feedback / verifier:_ metadata pending
+  _Recipe signal:_ filtering rule: LIM, an automated method that evaluates and prioritizes training samples by their alignment with model learning trajectories.
+  _Audit focus:_ LIM selection is anchored to one model's learning trajectory, so the curated subset may not transfer across base models.
+  _Why it matters:_ Evidence that RLVR data scales by pruning rather than accumulating - sample value is a measurable function of learning dynamics, not an intrinsic property of the sample.
 - 📄 **[Decoupling KL and Trajectories: A Unified Perspective for SFT, DAgger, Offline RL, and OPD in LLM Distillation](https://arxiv.org/abs/2605.16826)**
   <sub>2026 · arXiv preprint arXiv:2605.16826 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2605.16826)
@@ -361,6 +377,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; trace writing; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.
+- 🏗️ **[Reverse Thinking Makes LLMs Stronger Reasoners](https://arxiv.org/abs/2411.19865)**
+  <sub>2024 · NAACL · 🏗️ construction recipe · unknown · sft · distillation · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2411.19865)
+  _Data object:_ question / forward reasoning / backward question / backward reasoning quadruples consumed by three multi-task objectives.
+  _Feedback / verifier:_ metadata pending
+  _Recipe signal:_ teacher: teacher model (unspecified in abstract) generating forward-backward data.; generator: data augmentation collecting structured forward-backward reasoning from the teacher.
+  _Audit focus:_ Verification of teacher-generated backward data is not described in the abstract; forward-backward consistency is stated as motivation rather than as an executed check.
+  _Why it matters:_ It shows sample-efficiency can come from the structure of reasoning data rather than volume - 10% of forward data with backward counterparts beats standard fine-tuning on 10x more data.
 - 📄 **[Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation (G-OPD)](https://arxiv.org/abs/2602.12125)**
   <sub>2026 · arXiv preprint arXiv:2602.12125 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.12125)
@@ -479,6 +503,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It anchors the legal side of judgment-required reasoning data, where task definitions, legal-domain splits, expert validity, and answer rubrics are often more important than a simple verifier.
+- 🏗️ **[SwS: Self-aware Weakness-driven Problem Synthesis in Reinforcement Learning for LLM Reasoning](https://arxiv.org/abs/2506.08989)**
+  <sub>2025 · arXiv · 🏗️ construction recipe · programmatic · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2506.08989)
+  _Data object:_ verifiable problems used for RLVR training.
+  _Feedback / verifier:_ verifiable rewards (RLVR); problem synthesis targets the verifiable-problem regime.
+  _Recipe signal:_ teacher: none; framework operates without external knowledge distillation.; generator: weakness-driven problem synthesis from extracted core concepts of failure cases.
+  _Audit focus:_ Synthesized problems must remain verifiable and correctly labeled; the abstract does not describe how synthesized answers are validated.
+  _Why it matters:_ It targets data where it is scarcest - at the frontier of the model's current ability - turning failure statistics into a problem-synthesis policy without external teachers.
 - 🧭 **[Bootstrapping Post-training Signals for Open-ended Tasks via Rubric-based Self-play on Pre-training Text (POP)](https://arxiv.org/abs/2604.20051)**
   <sub>2026 · arXiv preprint arXiv:2604.20051 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2604.20051)
@@ -573,6 +605,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; trace writing; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.
+- 🚀 **[INTELLECT-2: A Reasoning Model Trained Through Globally Decentralized Reinforcement Learning](https://arxiv.org/abs/2505.07291)**
+  <sub>2025 · arXiv · 🚀 model report · 🛠️ infrastructure · programmatic · rlvr · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2505.07291)
+  _Data object:_ verifiable math and code task answers.; decentralized rollout network with trusted verification of contributed computations.
+  _Feedback / verifier:_ verifiable task rewards plus TOPLOC-style verification of untrusted inference workers.
+  _Recipe signal:_ optimizer or scaffold: PRIME-RL asynchronous RL framework with GRPO recipe modifications.
+  _Audit focus:_ Untrusted distributed workers require computation verification to prevent corrupted rollouts entering training data.
+  _Why it matters:_ It treats rollout provenance and computation verification as first-class parts of the reasoning-data pipeline, a dimension most centralized RLVR reports leave implicit.
 
 ### <a id="data-lineage-and-release-metadata"></a>🧬 Data lineage and release metadata
 
@@ -755,6 +795,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ generator: policy rollouts; filtering rule: outcome labels converted into implicit process rewards
   _Audit focus:_ implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes
   _Why it matters:_ It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
+- 📦 **[Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective](https://arxiv.org/abs/2506.14965)**
+  <sub>2025 · arXiv · 📦 data release · 📈 scaling study · mixed · rlvr · evaluation · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2506.14965) · [Code](https://github.com/LLM360/Reasoning360)
+  _Data object:_ verifiable answers with per-domain reward checking.
+  _Feedback / verifier:_ domain-specific reward functions built and validated per domain.
+  _Recipe signal:_ filtering rule: per-domain curation and reward validation of verifiable examples.
+  _Audit focus:_ Cross-domain transfer claims can conflate pretraining exposure with RL data effects.
+  _Why it matters:_ It gives the construction track an open multi-domain RLVR corpus where reward design and domain mixture are documented, enabling controlled studies of cross-domain transfer.
+- 🪜 **[Free Process Rewards without Process Labels](https://arxiv.org/abs/2412.01981)**
+  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · reward modeling · process supervision · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2412.01981) · [Code](https://github.com/lifan-yuan/ImplicitPRM)
+  _Data object:_ response-level outcome labels on math reasoning, reused as implicit step-level rewards.
+  _Feedback / verifier:_ implicit PRM parameterized as the log-likelihood ratio between policy and reference model, trained only on outcome labels.
+  _Recipe signal:_ reward verifier layer; reward modeling; process supervision
+  _Audit focus:_ Implicit step rewards inherit any noise or bias present in the response-level outcome labels.
+  _Why it matters:_ It undercuts the assumption that process supervision requires expensive step-level labels, reporting that added step labels brought no further improvement over the implicit PRM.
 - 🪜 **[Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629)**
   <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · mixed · process supervision · preference learning · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2406.18629)
@@ -763,6 +819,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ generator: multi-step reasoning policy; filtering rule: step-wise preferences over reasoning continuations
   _Audit focus:_ local step preference may not align with final correctness, preference construction can hide teacher or scorer bias, long-chain traces can overfit style instead of reasoning validity
   _Why it matters:_ It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected object is an intermediate continuation rather than a whole answer.
+- 🏗️ **[Learning From Mistakes Makes LLM Better Reasoner](https://arxiv.org/abs/2310.20689)**
+  <sub>2023 · arXiv · 🏗️ construction recipe · unknown · sft · L1_link_verified</sub>
+  [Paper](https://arxiv.org/abs/2310.20689) · [Code](https://github.com/microsoft/LEMA)
+  _Data object:_ mistake-correction data pairs that identify the error step, explain the reason, correct it, and produce the final answer.
+  _Feedback / verifier:_ metadata pending
+  _Recipe signal:_ teacher: GPT-4 in a corrector role.; generator: correction-centric evolution strategy expanding the question set for correction data.
+  _Audit focus:_ Correction quality depends on GPT-4 actually identifying the true error step; the abstract does not describe automated verification of the corrections.
+  _Why it matters:_ Its ablations show correction data is non-homogeneous with CoT data - error traces carry training signal that plain demonstrations lack, an early template for failure-driven data recipes.
 
 ### ⚠️ Needs search or metadata
 
