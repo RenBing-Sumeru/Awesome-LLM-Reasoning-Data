@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>L Review</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>L Review / 等级复核</h1>
+        <p id="contextLine">正在加载 review 数据...</p>
+      </div>
+      <div class="toolbar">
+        <label class="toggle">
+          <input id="changedOnly" type="checkbox" checked>
+          <span>只看变更</span>
+        </label>
+        <button id="refreshButton" type="button">刷新</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <aside class="sidebar">
+        <div class="filters">
+          <input id="searchInput" type="search" placeholder="搜索 title 或 id">
+          <div class="segments" aria-label="Review filters">
+            <button class="segment active" type="button" data-filter="all">全部</button>
+            <button class="segment" type="button" data-filter="blocked">硬阻塞</button>
+            <button class="segment" type="button" data-filter="warn">提示</button>
+            <button class="segment" type="button" data-filter="ok">通过</button>
+            <button class="segment" type="button" data-filter="06">方向 06</button>
+            <button class="segment" type="button" data-filter="11">方向 11</button>
+            <button class="segment" type="button" data-filter="l4">L4</button>
+            <button class="segment" type="button" data-filter="l5">L5</button>
+          </div>
+        </div>
+        <div id="listMeta" class="list-meta"></div>
+        <div id="entryList" class="entry-list"></div>
+      </aside>
+
+      <section id="detail" class="detail empty">
+        请选择左侧条目进行复核。
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
