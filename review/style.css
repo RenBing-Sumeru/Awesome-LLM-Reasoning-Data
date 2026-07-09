@@ -60,7 +60,7 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 300px;
   gap: 28px;
-  padding: 34px 0 24px;
+  padding: 24px 0 16px;
   align-items: end;
 }
 
@@ -75,7 +75,7 @@ main {
 h1 {
   margin: 0;
   max-width: 900px;
-  font-size: 46px;
+  font-size: 40px;
   line-height: 1.08;
 }
 
@@ -120,7 +120,41 @@ h1 {
   justify-content: space-between;
   align-items: end;
   gap: 16px;
-  margin: 20px 0 12px;
+  margin: 16px 0 10px;
+}
+
+.level-section {
+  display: block;
+  margin: 8px 0 14px;
+}
+
+.level-section summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.level-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary-action {
+  flex: 0 0 auto;
+  min-height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.summary-action::before {
+  content: "展开";
+}
+
+.level-section[open] .summary-action::before {
+  content: "收起";
 }
 
 h2 {
@@ -209,8 +243,8 @@ dd { margin: 0; }
   grid-template-columns: 1.3fr .7fr .8fr .8fr 1.5fr auto auto;
   gap: 10px;
   align-items: end;
-  margin: 22px 0 14px;
-  padding: 12px;
+  margin: 14px 0 12px;
+  padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255,255,255,.96);
@@ -273,6 +307,11 @@ button {
   background: var(--green);
   border-color: var(--green);
   font-weight: 850;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: .72;
 }
 
 .save-status {
@@ -362,6 +401,10 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.review-priority {
+  margin-top: 10px;
+}
+
 .review-fields div {
   grid-template-columns: 86px minmax(0, 1fr);
   min-height: 58px;
@@ -369,6 +412,21 @@ button {
   border: 1px solid #e7edf5;
   border-radius: 8px;
   background: #fcfcfd;
+}
+
+.secondary-fields {
+  margin: 10px 0 12px;
+}
+
+.secondary-fields summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.review-secondary {
+  margin-top: 8px;
 }
 
 .paper-links {
@@ -481,7 +539,7 @@ button {
 
 .annotation-form {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: minmax(140px, .7fr) minmax(160px, .8fr) auto;
   gap: 10px;
   align-items: end;
 }

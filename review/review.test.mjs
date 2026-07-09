@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import test from "node:test";
 
 import {
@@ -8,10 +9,12 @@ import {
   filterEntries,
   lowLevelReviewHint,
   mergeAnnotations,
+  nextUnannotatedEntryId,
   projectSourceLinks,
   renderEntryCard,
   reviewPacks,
   reviewLabels,
+  saveButtonText,
   sortByProjectGeneratedOrder,
 } from "./review.js";
 
@@ -165,4 +168,47 @@ test("builds source links for reading the original paper and card", () => {
   };
   assert.deepEqual(projectSourceLinks(entry).map((link) => link.label), ["读论文原文", "读项目卡片", "代码"]);
   assert.equal(projectSourceLinks(entry)[1].href, "../cards/math/example.md");
+});
+
+test("keeps the level guide available but collapsed by default", () => {
+  const html = fs.readFileSync(new URL("./index.html", import.meta.url), "utf8");
+  assert.match(html, /<details class="level-section"/);
+  assert.match(html, /<summary class="section-head"/);
+  assert.doesNotMatch(html, /<details class="level-section" open/);
+});
+
+test("prioritizes useful and audit text before secondary card fields", () => {
+  const html = renderEntryCard({
+    id: "paper-3",
+    title: "Focused Paper",
+    curation_level: "L4_carded",
+    why_it_matters: "这是优先判断是否有用的文字。",
+    audit_focus: "这是优先判断风险的文字。",
+    data_object: "二级字段",
+    feedback_verifier: "二级字段",
+    artifacts: {},
+  }, { annotations: {} }, false, true);
+  assert.match(html, /\breview-priority\b/);
+  assert.ok(html.indexOf("为什么有用") < html.indexOf("数据对象"));
+  assert.ok(html.indexOf("审计风险") < html.indexOf("验证 / 奖励"));
+});
+
+test("exposes explicit save button labels for idle and saving states", () => {
+  assert.equal(saveButtonText(false), "保存批注并写回等级");
+  assert.equal(saveButtonText(true), "保存中...");
+});
+
+test("selects the next unannotated entry after saving the current one", () => {
+  const entries = [
+    { id: "first", curation_level: "L3_summary_ready" },
+    { id: "second", curation_level: "L3_summary_ready" },
+    { id: "third", curation_level: "L3_summary_ready" },
+  ];
+  const annotations = {
+    annotations: {
+      second: [{ note: "done" }],
+    },
+  };
+  assert.equal(nextUnannotatedEntryId(entries, [], annotations, {}, [], "second"), "first");
+  assert.equal(nextUnannotatedEntryId(entries, [], annotations, {}, [], "first"), "third");
 });

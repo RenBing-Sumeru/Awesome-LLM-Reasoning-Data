@@ -203,6 +203,22 @@ export function lowLevelReviewHint(level) {
   }[level] || "";
 }
 
+export function saveButtonText(isSaving) {
+  return isSaving ? "保存中..." : "保存批注并写回等级";
+}
+
+export function nextUnannotatedEntryId(entries, starterPacks, annotations, state = {}, cards = [], currentId = null) {
+  const ordered = sortByProjectGeneratedOrder(filterEntries(entries, starterPacks, annotations, state), cards);
+  if (!ordered.length) return null;
+  const foundIndex = ordered.findIndex((entry) => entry.id === currentId);
+  const currentIndex = foundIndex >= 0 ? foundIndex : -1;
+  for (let offset = 1; offset <= ordered.length; offset += 1) {
+    const candidate = ordered[(currentIndex + offset) % ordered.length];
+    if (!annotationList(annotations, candidate.id).length) return candidate.id;
+  }
+  return null;
+}
+
 async function loadJson(path, fallback) {
   try {
     const response = await fetch(path, { cache: "no-store" });
@@ -306,6 +322,14 @@ function renderStatus(message, mode = "info") {
   target.dataset.mode = mode;
 }
 
+function setFormSaving(form, isSaving) {
+  const button = form.querySelector("button[type=\"submit\"]");
+  if (!button) return;
+  form.dataset.saving = isSaving ? "true" : "false";
+  button.disabled = isSaving;
+  button.textContent = saveButtonText(isSaving);
+}
+
 function renderAnnotationsForEntry(payload, entryId) {
   const notes = annotationList(payload, entryId);
   if (!notes.length) return "<p class=\"empty-note\">还没有人工注解。</p>";
@@ -384,7 +408,7 @@ export function renderEntryCard(entry, annotations, showRaw, showAnnotations) {
         <label class="note-field">中文批注
           <textarea name="note" required placeholder="写一行中文人工 review：为什么有用、哪里存疑、是否能升到目标等级。"></textarea>
         </label>
-        <button type="submit">保存批注并写回等级</button>
+        <button type="submit">${esc(saveButtonText(false))}</button>
       </form>
     </section>
   ` : "";
@@ -397,19 +421,24 @@ export function renderEntryCard(entry, annotations, showRaw, showAnnotations) {
       <span class="level-badge">${esc(entry.curation_level || "L0_seeded")}</span>
     </div>
     <h3>${entry.primary_link ? `<a href="${esc(entry.primary_link)}" target="_blank" rel="noreferrer">${esc(entry.title)}</a>` : esc(entry.title)}</h3>
+    <div class="paper-links">${links(entry) || "<span>缺少官方链接</span>"}</div>
     <p class="zh-summary">${esc(entry.one_line_summary || "还没有摘要。")}</p>
     <div class="review-focus">
       <strong>${esc(level.title)}</strong>
       <span>${esc(level.reviewFocus)}</span>
     </div>
     ${lowHint ? `<p class="low-level-hint">低等级参考：${esc(lowHint)} 仅供参考。</p>` : ""}
-    <dl class="review-fields">
-      <div><dt>数据对象</dt><dd>${esc(shortText(entry.data_object || "metadata pending"))}</dd></div>
-      <div><dt>验证 / 奖励</dt><dd>${esc(shortText(entry.feedback_verifier || "metadata pending"))}</dd></div>
+    <dl class="review-fields review-priority">
       <div><dt>为什么有用</dt><dd>${esc(shortText(entry.why_it_matters || "needs rationale"))}</dd></div>
       <div><dt>审计风险</dt><dd>${esc(shortText(entry.audit_focus || "check links, lineage, verifier, split, and contamination"))}</dd></div>
     </dl>
-    <div class="paper-links">${links(entry) || "<span>缺少官方链接</span>"}</div>
+    <details class="secondary-fields">
+      <summary>数据对象 / 验证信息</summary>
+      <dl class="review-fields review-secondary">
+        <div><dt>数据对象</dt><dd>${esc(shortText(entry.data_object || "metadata pending"))}</dd></div>
+        <div><dt>验证 / 奖励</dt><dd>${esc(shortText(entry.feedback_verifier || "metadata pending"))}</dd></div>
+      </dl>
+    </details>
     ${cardSourceBlock(entry)}
     ${rawBlock}
     ${annotationsBlock}
@@ -462,16 +491,19 @@ async function initReviewPage() {
     event.preventDefault();
     const entry = data.entries.find((item) => item.id === form.dataset.entryId);
     const values = Object.fromEntries(new FormData(form).entries());
+    setFormSaving(form, true);
     try {
       const record = createAnnotationRecord(entry, values);
       await persistReview(record);
       data.annotations = mergeAnnotations(data.annotations, record);
       entry.curation_level = record.target_level;
       const mode = await saveAnnotations(data.annotations);
+      const targetId = nextUnannotatedEntryId(data.entries, data.packs, data.annotations, selectedState(), data.cards, entry.id);
       renderStatus(mode === "file" ? "已写入 review/annotations.json，并已写回 data/papers.yaml 的等级" : "已保存到浏览器本地；等级写回需要本地 review server", mode);
       renderReviewList(selectedState(), data);
-      document.getElementById(entry.id)?.scrollIntoView({ block: "center" });
+      document.getElementById(targetId || entry.id)?.scrollIntoView({ block: "center" });
     } catch (error) {
+      setFormSaving(form, false);
       renderStatus(error.message, "error");
     }
   });
