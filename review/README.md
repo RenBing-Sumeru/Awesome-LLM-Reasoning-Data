@@ -4,8 +4,8 @@ This folder is intentionally separate from the main atlas site.
 
 - `index.html` is the review UI.
 - `review.js` contains the review logic and annotation export helpers.
-- `annotations.json` records human review comments only.
-- `server.py` serves the page, writes comments to `annotations.json`, and writes curation-level changes back to `data/papers.yaml`.
+- `annotations.json` records one human review comment per paper.
+- `server.py` serves the page, writes the latest comment to `annotations.json`, and writes curation-level changes back to `data/papers.yaml`.
 
 Rules:
 

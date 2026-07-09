@@ -58,7 +58,7 @@ test("allows writing L5 only when a human review note is present", () => {
   assert.equal(canPersistLevelChange("L3_summary_ready", "L4_carded", ""), true);
 });
 
-test("merges annotations by entry id without dropping previous records", () => {
+test("keeps only one annotation per entry by replacing the previous record", () => {
   const previous = {
     schema_version: 1,
     annotations: {
@@ -70,8 +70,8 @@ test("merges annotations by entry id without dropping previous records", () => {
     note: "new",
     created_at: "2026-01-02T00:00:00.000Z",
   });
-  assert.equal(merged.annotations["paper-1"].length, 2);
-  assert.equal(merged.annotations["paper-1"][1].note, "new");
+  assert.equal(merged.annotations["paper-1"].length, 1);
+  assert.equal(merged.annotations["paper-1"][0].note, "new");
 });
 
 test("filters entries by project-generated path, level, query, and annotation state", () => {
@@ -144,6 +144,26 @@ test("renders manual review form without reviewer or quote fields", () => {
   assert.doesNotMatch(html, /原文匹配 \/ 引用/);
   assert.doesNotMatch(html, /quote-selection/);
 });
+
+test("renders only the latest annotation when legacy data has multiple records", () => {
+  const html = renderEntryCard({
+    id: "paper-legacy",
+    title: "Legacy Paper",
+    curation_level: "L3_summary_ready",
+    artifacts: {},
+  }, {
+    annotations: {
+      "paper-legacy": [
+        { note: "旧批注", current_level: "L3_summary_ready", target_level: "L3_summary_ready", created_at: "2026-01-01T00:00:00.000Z" },
+        { note: "最新批注", current_level: "L3_summary_ready", target_level: "L4_carded", created_at: "2026-01-02T00:00:00.000Z" },
+      ],
+    },
+  }, false, true);
+  assert.match(html, /最新批注/);
+  assert.doesNotMatch(html, /旧批注/);
+  assert.doesNotMatch(html, /annotation-history/);
+});
+
 
 test("shows low-level review hints only as small reference text", () => {
   assert.match(lowLevelReviewHint("L0_seeded"), /先补官方链接/);

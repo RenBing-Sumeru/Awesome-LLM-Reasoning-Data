@@ -370,7 +370,7 @@ button:disabled {
 .review-fields dd,
 .raw-fields dd,
 .card-source,
-.annotation-history p {
+.annotation-current p {
   color: #344054;
   line-height: 1.58;
 }
@@ -516,19 +516,26 @@ button:disabled {
   font-size: 13px;
 }
 
-.annotation-history {
+.annotation-current {
   margin: 0 0 12px;
-  padding-left: 20px;
+  padding: 10px 12px;
+  border: 1px solid #e7edf5;
+  border-radius: 8px;
+  background: #fcfcfd;
 }
 
-.annotation-history li {
-  margin-bottom: 8px;
+.annotation-current strong {
+  display: inline-block;
+  margin-right: 6px;
 }
 
-.annotation-history span {
+.annotation-current span {
   color: var(--muted);
   font-size: 12px;
-  margin-left: 6px;
+}
+
+.annotation-current p {
+  margin: 8px 0 0;
 }
 
 .empty-note,

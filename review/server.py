@@ -30,23 +30,35 @@ def load_annotations() -> dict:
     if not isinstance(payload, dict) or not isinstance(payload.get("annotations"), dict):
         return {"schema_version": 1, "updated_at": None, "annotations": {}}
     payload.setdefault("schema_version", 1)
-    return payload
+    return normalize_annotations(payload)
+
+
+def normalize_annotations(payload: dict) -> dict:
+    annotations = {}
+    for entry_id, value in payload.get("annotations", {}).items():
+        records = value if isinstance(value, list) else [value]
+        records = [record for record in records if isinstance(record, dict)]
+        if records:
+            annotations[entry_id] = [records[-1]]
+    return {
+        "schema_version": payload.get("schema_version", 1),
+        "updated_at": payload.get("updated_at"),
+        "annotations": annotations,
+    }
 
 
 def save_annotations(payload: dict) -> None:
-    ANNOTATIONS_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    normalized = normalize_annotations(payload)
+    ANNOTATIONS_PATH.write_text(json.dumps(normalized, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def append_annotation(record: dict) -> dict:
     payload = load_annotations()
     entry_id = record["entry_id"]
-    existing = payload["annotations"].get(entry_id, [])
-    if not isinstance(existing, list):
-        existing = []
-    payload["annotations"][entry_id] = [*existing, record]
+    payload["annotations"][entry_id] = [record]
     payload["updated_at"] = record.get("created_at")
     save_annotations(payload)
-    return payload
+    return load_annotations()
 
 
 def has_card(entry_id: str) -> bool:

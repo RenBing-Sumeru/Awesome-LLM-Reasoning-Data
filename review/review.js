@@ -68,15 +68,23 @@ function shortText(value, limit = 230) {
 }
 
 function annotationList(payload, entryId) {
-  return arr(payload?.annotations?.[entryId]);
+  const notes = arr(payload?.annotations?.[entryId]);
+  return notes.length ? [notes.at(-1)] : [];
 }
 
 function normalizeAnnotations(payload) {
   if (!payload || typeof payload !== "object") return structuredClone(DEFAULT_ANNOTATIONS);
+  const annotations = {};
+  if (payload.annotations && typeof payload.annotations === "object") {
+    Object.entries(payload.annotations).forEach(([entryId, value]) => {
+      const notes = arr(value);
+      if (notes.length) annotations[entryId] = [notes.at(-1)];
+    });
+  }
   return {
     schema_version: payload.schema_version || 1,
     updated_at: payload.updated_at || null,
-    annotations: payload.annotations && typeof payload.annotations === "object" ? payload.annotations : {},
+    annotations,
   };
 }
 
@@ -124,13 +132,12 @@ export function createAnnotationRecord(entry, values = {}, now = new Date()) {
 
 export function mergeAnnotations(previous, record) {
   const payload = normalizeAnnotations(previous);
-  const current = annotationList(payload, record.entry_id);
   return {
     ...payload,
     updated_at: record.created_at,
     annotations: {
       ...payload.annotations,
-      [record.entry_id]: [...current, record],
+      [record.entry_id]: [record],
     },
   };
 }
@@ -331,15 +338,13 @@ function setFormSaving(form, isSaving) {
 }
 
 function renderAnnotationsForEntry(payload, entryId) {
-  const notes = annotationList(payload, entryId);
-  if (!notes.length) return "<p class=\"empty-note\">还没有人工注解。</p>";
-  return `<ol class="annotation-history">${notes.slice().reverse().map((note) => `
-    <li>
-      <strong>${esc(note.decision || "review")}</strong>
-      <span>${esc(note.current_level || "")} -> ${esc(note.target_level || "")} · ${esc(note.created_at || "")}</span>
-      <p>${esc(note.note || "")}</p>
-    </li>
-  `).join("")}</ol>`;
+  const note = annotationList(payload, entryId).at(-1);
+  if (!note) return "<p class=\"empty-note\">还没有人工注解。</p>";
+  return `<div class="annotation-current">
+    <strong>${esc(note.decision || "review")}</strong>
+    <span>${esc(note.current_level || "")} -> ${esc(note.target_level || "")} · ${esc(note.created_at || "")}</span>
+    <p>${esc(note.note || "")}</p>
+  </div>`;
 }
 
 function links(entry) {
@@ -388,7 +393,7 @@ export function renderEntryCard(entry, annotations, showRaw, showAnnotations) {
     <section class="annotation-panel" data-entry-id="${esc(entry.id)}">
       <div class="annotation-head">
         <strong>人工注解</strong>
-        <span>${noteCount} 条</span>
+        <span>${noteCount ? "已填写" : "未填写"}</span>
       </div>
       ${renderAnnotationsForEntry(annotations, entry.id)}
       <form class="annotation-form" data-entry-id="${esc(entry.id)}">
@@ -461,7 +466,9 @@ function renderReviewList(state, data) {
     data.cards,
   );
   document.getElementById("resultSummary").textContent = `${filtered.length} / ${data.entries.length} 篇符合当前筛选`;
-  document.getElementById("annotatedCount").textContent = Object.keys(data.annotations.annotations || {}).length;
+  document.getElementById("annotatedCount").textContent = data.entries
+    .filter((entry) => annotationList(data.annotations, entry.id).length)
+    .length;
   document.getElementById("paperList").innerHTML = filtered.length
     ? filtered.slice(0, 120).map((entry) => renderEntryCard(entry, data.annotations, showRaw, showAnnotations)).join("")
     : "<div class=\"empty-state\">没有匹配论文。</div>";
