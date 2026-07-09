@@ -5265,59 +5265,81 @@ window.ATLAS_DATA = {
       "primary_link": null
     },
     {
-      "id": "helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024",
-      "title": "HelpSteer2: Open-source preference data for helpfulness and safety",
+      "id": "helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024",
+      "title": "HelpSteer 2: Open-source dataset for training top-performing reward models",
       "year": 2024,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "NeurIPS 2024 Datasets and Benchmarks Track",
+      "authors": [
+        "Zhilin Wang",
+        "Yi Dong",
+        "Olivier Delalleau",
+        "Jiaqi Zeng",
+        "Gerald Shen",
+        "Daniel Egert",
+        "Jimmy J. Zhang",
+        "Makesh Narsimhan Sreedhar",
+        "Oleksii Kuchaiev"
+      ],
       "source_role": [
-        "survey_background"
+        "data_release",
+        "verifier_reward",
+        "construction_recipe"
       ],
       "verification_contract": [
-        "unknown"
+        "judgment_required"
       ],
       "supervision_granularity": [
-        "unknown"
+        "scalar_reward"
       ],
       "training_use": [
-        "unknown"
+        "reward_modeling"
       ],
-      "domains": [],
+      "domains": [
+        "preference-data",
+        "reward-modeling",
+        "human-feedback",
+        "alignment",
+        "open-data"
+      ],
       "category": [
-        "foundations_and_primers",
         "preference_reward_feedback_data",
-        "judgment_rubric_domain_expert_data",
         "data_construction_open_release_recipes"
       ],
-      "subfield": "Other related work",
+      "subfield": "🤝 Human preference data / RLHF",
       "tags": [
-        "seeded-from-bib"
+        "HelpSteer2",
+        "preference-data",
+        "reward-modeling",
+        "human-feedback",
+        "scalar-reward",
+        "alignment",
+        "open-data"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "survey background",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "HelpSteer 2 releases a CC-BY-4.0 preference dataset with prompt-response records and five human-annotated quality scores for training reward models.",
+      "why_it_matters": "It gives the Preference & Reward Feedback track a compact, permissively licensed reward-model training dataset with richer scalar feedback than a single chosen/rejected label.",
+      "data_object": "prompt, response, and five Likert-style attribute scores; process: prompt, response, helpfulness; offline reward-model training dataset",
+      "feedback_verifier": "human annotation of response quality attributes",
+      "audit_focus": "Scalar attribute scores can hide why one response is preferred over another., Reward models may learn annotator style, verbosity preferences, or attribute-specific shortcuts., Mostly English, US-annotator data may not generalize to other languages or preference populations.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
+        "paper": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/02fd91a387a6a5a5751e81b58a75af90-Abstract-Datasets_and_Benchmarks_Track.html",
+        "venue": "https://neurips.cc/virtual/2024/poster/97706",
+        "arxiv": "https://arxiv.org/abs/2406.08673",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
+        "doi": "https://doi.org/10.52202/079017-0047",
+        "code": "https://github.com/NVIDIA/NeMo-Aligner",
+        "data": "https://huggingface.co/datasets/nvidia/HelpSteer2",
+        "huggingface": "https://huggingface.co/datasets/nvidia/HelpSteer2",
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/releases/helpsteer-2.md"
       },
-      "primary_link": null
+      "primary_link": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/02fd91a387a6a5a5751e81b58a75af90-Abstract-Datasets_and_Benchmarks_Track.html"
     },
     {
       "id": "introducing-swe-bench-verified-2024",
@@ -16543,17 +16565,108 @@ window.ATLAS_DATA = {
         "card": null
       },
       "primary_link": "https://arxiv.org/abs/2410.08385"
+    },
+    {
+      "id": "openassistant-conversations-democratizing-large-language-model-alignment-2023",
+      "title": "OpenAssistant Conversations - Democratizing Large Language Model Alignment",
+      "year": 2023,
+      "venue": "NeurIPS 2023 Datasets and Benchmarks Track",
+      "authors": [
+        "Andreas Köpf",
+        "Yannic Kilcher",
+        "Dimitri von Rütte",
+        "Sotiris Anagnostidis",
+        "Zhi Rui Tam",
+        "Keith Stevens",
+        "Abdullah Barhoum",
+        "Duc Nguyen",
+        "Oliver Stanley",
+        "Richárd Nagyfi",
+        "Shahul ES",
+        "Sameer Suri",
+        "David Glushkov",
+        "Arnav Dantuluri",
+        "Andrew Maguire",
+        "Christoph Schuhmann",
+        "Huu Nguyen",
+        "Alexander Mattick"
+      ],
+      "source_role": [
+        "data_release",
+        "construction_recipe",
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "scalar_reward",
+        "pairwise_preference"
+      ],
+      "training_use": [
+        "sft",
+        "reward_modeling",
+        "preference_learning"
+      ],
+      "domains": [
+        "preference-data",
+        "human-feedback",
+        "alignment",
+        "conversation",
+        "multilingual",
+        "open-data"
+      ],
+      "category": [
+        "preference_reward_feedback_data",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "🤝 Human preference data / RLHF",
+      "tags": [
+        "OpenAssistant",
+        "OASST1",
+        "preference-data",
+        "human-feedback",
+        "conversation-tree",
+        "alignment",
+        "multilingual"
+      ],
+      "one_line_summary": "OpenAssistant Conversations releases a permissively licensed, crowd-sourced assistant-style conversation corpus with human-generated messages, quality ratings, rankings, and multilingual conversation trees.",
+      "why_it_matters": "It gives the Preference & Reward Feedback track a large open alignment corpus where SFT examples, human ratings, and preference-style annotations are visible rather than hidden inside a proprietary RLHF pipeline.",
+      "data_object": "conversation-tree messages with roles, language, review metadata, rankings, quality ratings, and labels; process: message id, parent id, user id; offline human-generated, human-annotated assistant-style conversation corpus",
+      "feedback_verifier": "human quality ratings, rankings, and annotation labels over conversation messages",
+      "audit_focus": "Crowd-sourced ratings can encode annotator disagreement, language imbalance, and community-specific preference norms., Conversation-tree data can mix SFT targets, ratings, rankings, and safety labels; training use should match the actual field consumed., Multilingual coverage does not guarantee balanced quality or comparable annotation density across languages.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/949f0f8f32267d297c2d4e3ee10a2e7e-Abstract-Datasets_and_Benchmarks.html",
+        "venue": "https://neurips.cc/virtual/2023/poster/73573",
+        "arxiv": "https://arxiv.org/abs/2304.07327",
+        "openreview": "https://openreview.net/forum?id=VSJotgbPHF",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/LAION-AI/Open-Assistant",
+        "data": "https://huggingface.co/datasets/OpenAssistant/oasst1",
+        "huggingface": "https://huggingface.co/datasets/OpenAssistant/oasst1",
+        "project": "https://open-assistant.io/",
+        "bibtex": null,
+        "card": "cards/releases/openassistant-conversations.md"
+      },
+      "primary_link": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/949f0f8f32267d297c2d4e3ee10a2e7e-Abstract-Datasets_and_Benchmarks.html"
     }
   ],
   "counts": {
-    "total_entries": 280,
-    "verified_entries": 165,
-    "carded_entries": 87,
-    "data_releases": 36,
-    "verifiers_rewards": 20,
+    "total_entries": 281,
+    "verified_entries": 167,
+    "carded_entries": 89,
+    "data_releases": 38,
+    "verifiers_rewards": 22,
     "agent_environments": 16,
     "scaling_studies": 18,
-    "needs_search": 115
+    "needs_search": 114
   },
   "categories": [
     {

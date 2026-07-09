@@ -4,37 +4,37 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 
 ## Summary
 
-- Total entries: 280
-- Verified entries: 165
-- Verified entries with official paper/arXiv/venue/DOI links: 165 (100.0%)
-- Needs search: 115
+- Total entries: 281
+- Verified entries: 167
+- Verified entries with official paper/arXiv/venue/DOI links: 167 (100.0%)
+- Needs search: 114
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 87
+- Cards: 89
 
 ## Curation Levels
 
-- L0_seeded: 115
+- L0_seeded: 114
 - L1_link_verified: 69
 - L2_artifact_verified: 7
 - L3_summary_ready: 4
 - L4_carded: 32
-- L5_audit_ready: 53
+- L5_audit_ready: 55
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 165
-- arXiv coverage: 162
-- OpenReview coverage: 15
+- Official primary paper/arXiv/venue/DOI coverage: 167
+- arXiv coverage: 164
+- OpenReview coverage: 16
 - ACL coverage: 7
 - PMLR coverage: 1
 - CVF coverage: 0
-- DOI coverage: 5
-- Code coverage: 41
-- Data coverage: 27
-- Hugging Face coverage: 20
-- Project page coverage: 25
-- Card coverage: 87
+- DOI coverage: 6
+- Code coverage: 43
+- Data coverage: 29
+- Hugging Face coverage: 22
+- Project page coverage: 26
+- Card coverage: 89
 
 ## Starter Pack Coverage
 
@@ -95,7 +95,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024` · Goedel-Prover: A frontier model for open-source automated theorem proving · status `needs_metadata`
 - `gsm-symbolic-2024` · GSM-Symbolic · status `needs_metadata`
 - `harmbench-2024` · HarmBench · status `needs_metadata`
-- `helpsteer2-open-source-preference-data-for-helpfulness-and-safety-2024` · HelpSteer2: Open-source preference data for helpfulness and safety · status `needs_metadata`
 - `is-model-collapse-inevitable-2024` · Is model collapse inevitable? · status `needs_metadata`
 - `lab-bench-measuring-capabilities-of-language-models-for-biology-research-2024` · LAB-Bench: Measuring capabilities of language models for biology research · status `needs_metadata`
 - `learning-to-reason-with-llms-2024` · Learning to reason with LLMs · status `needs_metadata`

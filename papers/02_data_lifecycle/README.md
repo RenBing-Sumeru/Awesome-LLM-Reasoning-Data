@@ -8,7 +8,7 @@ Follow the lifecycle from construction recipes through training objectives, scal
 
 | Track | Main question | Entries | Jump |
 |---|---|---:|---|
-| 🏗️ Construction & Open Releases | building, filtering, releasing, and reproducing reasoning datasets | 108 | [08_data_construction_open_release_recipes.md](08_data_construction_open_release_recipes.md) |
+| 🏗️ Construction & Open Releases | building, filtering, releasing, and reproducing reasoning datasets | 109 | [08_data_construction_open_release_recipes.md](08_data_construction_open_release_recipes.md) |
 | 🎯 Training Usage & Objectives | how data enters SFT, DPO, RM, PRM, RLVR, agents, evaluation, and audit | 97 | [09_training_usage_optimization_objectives.md](09_training_usage_optimization_objectives.md) |
 | 📈 Scaling / RLVR / TTC | data scale, RLVR, verifier scaling, pass@k, and inference budget claims | 90 | [10_scaling_rlvr_test_time_compute.md](10_scaling_rlvr_test_time_compute.md) |
 | 🧰 Benchmarks & Evaluation | evaluation surfaces and reusable feedback contracts | 109 | [11_benchmarks_evaluation_surfaces.md](11_benchmarks_evaluation_surfaces.md) |

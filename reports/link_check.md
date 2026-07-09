@@ -2,10 +2,10 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 476
-- markdown links checked: 6768
-- external markdown links discovered: 4323
-- unique external URLs discovered: 571
+- artifact URLs discovered: 491
+- markdown links checked: 6823
+- external markdown links discovered: 4370
+- unique external URLs discovered: 584
 - live URLs checked: 0
 - failures: 0
 
@@ -152,6 +152,13 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` code: https://github.com/deepseek-ai/deepseek-math
 - `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` project: https://github.com/deepseek-ai/deepseek-math
 - `deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024` huggingface: https://huggingface.co/collections/deepseek-ai/deepseek-math
+- `helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024` paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/02fd91a387a6a5a5751e81b58a75af90-Abstract-Datasets_and_Benchmarks_Track.html
+- `helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024` arxiv: https://arxiv.org/abs/2406.08673
+- `helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024` code: https://github.com/NVIDIA/NeMo-Aligner
+- `helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024` data: https://huggingface.co/datasets/nvidia/HelpSteer2
+- `helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024` huggingface: https://huggingface.co/datasets/nvidia/HelpSteer2
+- `helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024` doi: https://doi.org/10.52202/079017-0047
+- `helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024` venue: https://neurips.cc/virtual/2024/poster/97706
 - `introducing-swe-bench-verified-2024` paper: https://openai.com/index/introducing-swe-bench-verified/
 - `introducing-swe-bench-verified-2024` code: https://github.com/swe-bench/SWE-bench
 - `introducing-swe-bench-verified-2024` data: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified
@@ -253,13 +260,6 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025` arxiv: https://arxiv.org/abs/2405.14573
 - `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` paper: https://arxiv.org/abs/2509.03403
 - `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` arxiv: https://arxiv.org/abs/2509.03403
-- `big-math-2025` paper: https://arxiv.org/abs/2502.17387
-- `big-math-2025` arxiv: https://arxiv.org/abs/2502.17387
-- `clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025` paper: https://arxiv.org/abs/2509.26114
-- `clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025` arxiv: https://arxiv.org/abs/2509.26114
-- `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` paper: https://arxiv.org/abs/2503.01307
-- `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` arxiv: https://arxiv.org/abs/2503.01307
-- `dapo-2025` paper: https://arxiv.org/abs/2503.14476
-- ... 226 more
+- ... 241 more
 
 Network probing skipped because `--soft` was used.

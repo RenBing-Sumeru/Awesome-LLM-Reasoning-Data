@@ -852,23 +852,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"HarmBench" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## HelpSteer2: Open-source preference data for helpfulness and safety
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, preference_reward_feedback_data, judgment_rubric_domain_expert_data, data_construction_open_release_recipes
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"HelpSteer2: Open-source preference data for helpfulness and safety" arXiv`
-  - `"HelpSteer2: Open-source preference data for helpfulness and safety" OpenReview`
-  - `"HelpSteer2: Open-source preference data for helpfulness and safety" GitHub`
-  - `"HelpSteer2: Open-source preference data for helpfulness and safety" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Is model collapse inevitable?
 
 - Current status: `needs_metadata`

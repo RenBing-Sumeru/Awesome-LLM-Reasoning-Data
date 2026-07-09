@@ -4,7 +4,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 
 | Type | Count | Use it for |
 |---|---:|---|
-| [Release cards](#release-cards) | 18 | datasets, trace releases, documentation foundations, and reusable data artifacts |
+| [Release cards](#release-cards) | 20 | datasets, trace releases, documentation foundations, and reusable data artifacts |
 | [Verifier cards](#verifier-cards) | 15 | verifiers, rewards, process supervision, judges, and rubrics |
 | [Agent/environment cards](#agentenvironment-cards) | 14 | tool, web, app, OS, and SWE trajectories |
 | [Recipe cards](#recipe-cards) | 26 | construction recipes, model reports, and training pipelines |
@@ -23,9 +23,11 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [Datasheets for datasets](releases/datasheets-for-datasets.md) - Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.
 - [DeepMath-103K](releases/deepmath_103k.md) - Math release highlighted for verifier pinning and decontamination.
 - [Direct preference optimization: Your language model is secretly a reward model](releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) - DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.
+- [HelpSteer 2: Open-source dataset for training top-performing reward models](releases/helpsteer-2.md) - HelpSteer 2 releases a CC-BY-4.0 preference dataset with prompt-response records and five human-annotated quality scores for training reward models.
 - [KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](releases/kodcode.md) - Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.
 - [LIMO: Less Is More for Reasoning](releases/limo.md) - Small-set curation reference distinguishing elicitation from broad coverage.
 - [NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions](releases/naturalreasoning.md) - Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.
+- [OpenAssistant Conversations - Democratizing Large Language Model Alignment](releases/openassistant-conversations.md) - OpenAssistant Conversations releases a permissively licensed, crowd-sourced assistant-style conversation corpus with human-generated messages, quality ratings, rankings, and multilingual conversation trees.
 - [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](releases/opencodereasoning_ii.md) - Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.
 - [OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](releases/openmathinstruct-2.md) - OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open synthesis pipeline.
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](releases/openmathreasoning.md) - Large-scale math reasoning trace release for programmatic verification.
