@@ -125,14 +125,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: few-shot chain-of-thought exemplars.; generator: model samples many reasoning paths.
   _Audit focus:_ More samples can amplify benchmark-specific shortcuts., Aggregation does not guarantee step faithfulness., Unmatched inference budgets can make methods look better than they are.
   _Why it matters:_ It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.
-- 🧭 **[Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](https://arxiv.org/abs/2407.21787)**
-  <sub>2024 · arXiv preprint arXiv:2407.21787 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2407.21787)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
+- 📈 **[Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](https://arxiv.org/abs/2407.21787)**
+  <sub>2024 · arXiv preprint arXiv:2407.21787 · 📈 scaling study · 🏗️ construction recipe · programmatic · mixed · evaluation · test time compute · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2407.21787) · [Card](../../cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md)
+  _Data object:_ candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.; process: task, model, sample count; math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.
+  _Feedback / verifier:_ automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.
+  _Recipe signal:_ teacher: benchmark labels, unit tests, proof checkers, and reward/selection methods rather than a teacher model.; generator: models repeatedly sample independent candidate solutions for each task.
+  _Audit focus:_ Coverage can grow with sample budget even when practical selection precision remains poor., Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks., Comparing repeated sampling against single attempts can conflate model quality with inference budget.
+  _Why it matters:_ It gives atlas readers a concrete way to audit whether a reasoning gain comes from more samples, a usable verifier, a better selector, or a genuinely stronger model or training recipe.
 
 ### <a id="test-time-compute-logs"></a>⏱️ Test-time compute logs
 
@@ -425,9 +425,9 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 - [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](../../cards/recipes/deepseek-prover-v1-5.md)
 - [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](../../cards/recipes/deepseekmath.md)
 - [Introducing SWE-bench Verified](../../cards/agents/swe-bench-verified.md)
+- [Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](../../cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md)
 - [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](../../cards/benchmarks/livecodebench.md)
 - [Math-Shepherd](../../cards/verifiers/math_shepherd.md)
-- [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](../../cards/agents/osworld.md)
 
 ## Back to Map
 

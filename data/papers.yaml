@@ -8311,18 +8311,36 @@
   title: 'Large Language Monkeys: Scaling Inference Compute with Repeated Sampling'
   year: 2024
   venue: arXiv preprint arXiv:2407.21787
-  authors: []
+  authors:
+  - Bradley Brown
+  - Jordan Juravsky
+  - Ryan Ehrlich
+  - Ronald Clark
+  - Quoc V. Le
+  - Christopher Ré
+  - Azalia Mirhoseini
   source_role:
-  - survey_background
+  - scaling_study
+  - construction_recipe
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - full_episode
+  domains:
+  - math
+  - code
+  - formal_proofs
+  - software_engineering
+  - test_time_compute
   training_use:
-  - unknown
+  - evaluation
+  - test_time_compute
   construction_layer:
-  - release_audit
+  - search_substrate
+  - scaling_report
+  - optimizer_scaffold
   artifacts:
     paper: https://arxiv.org/abs/2407.21787
     arxiv: https://arxiv.org/abs/2407.21787
@@ -8338,50 +8356,66 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: GSM8K, MATH, MiniF2F-MATH, CodeContests, and SWE-bench Lite evaluation tasks.
+    trace_author: language models sampled repeatedly at positive temperature; SWE-bench samples are full agent attempts.
+    answer_format: candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.
+    process_fields:
+    - task
+    - model
+    - sample_count
+    - pass_at_k
+    - coverage
+    - verifier_type
+    - selected_answer_method
+    - inference_cost_or_flops
+    environment_or_substrate: math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.
+    verifier_or_reward: automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.
+    terminal_predicate: at least one sampled candidate passes the task verifier, or a selected candidate matches the benchmark answer.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
+    base_model: Llama 3, Gemma, Pythia, and DeepSeek-Coder-V2-Instruct models in the reported experiments.
+    teacher: benchmark labels, unit tests, proof checkers, and reward/selection methods rather than a teacher model.
+    generator: models repeatedly sample independent candidate solutions for each task.
+    filtering_rule: select candidates using automatic verifiers when available; compare majority voting and reward-model scoring when no automatic verifier is available.
+    sampling_protocol: repeated independent sampling across sample budgets, including up to 10,000 samples for several benchmark tasks and 250 attempts for SWE-bench Lite.
+    rollout_count: 10000
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
+    inference_budget: sample budget, pass@k/coverage curves, FLOP estimates, and SWE-bench Lite per-attempt costs.
+    optimizer_or_scaffold: inference-time repeated sampling; Moatless Tools scaffold for SWE-bench Lite agent attempts.
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: evaluation tasks span math word problems, formalized proofs, competitive programming, and repository repair.
+    split: benchmark test or evaluation subsets as reported by each task.
     decontamination: unknown
     license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    lineage: no new training dataset is released; reusable data is the evaluation and scaling record linking prompt, candidate set, verifier, and sampling budget.
+    known_failure_modes:
+    - Coverage can grow with sample budget even when practical selection precision remains poor.
+    - Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks.
+    - Comparing repeated sampling against single attempts can conflate model quality with inference budget.
+    - Reward models and majority voting plateau in some no-verifier settings, leaving a gap between oracle coverage and usable performance.
     citation_status: verified
     confidence: high
-    notes: 'Seeded from BibTeX key brown2024monkeys. Deduplicated title collision; dropped lower-confidence id: large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
-  related: []
+    notes: Official arXiv paper pinned; project/code artifact mentioned in paper should be verified separately before adding as an artifact link.
+  inclusion_reason: Core repeated-sampling scaling study for separating coverage, selection precision, automatic verification, and inference-budget effects.
+  related:
+  - self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023
+  - evaluating-large-language-models-trained-on-code-2021
+  - swe-bench-can-language-models-resolve-real-world-github-issues-2024
   tags:
-  - seeded-from-bib
+  - repeated-sampling
+  - pass-at-k
+  - test-time-compute
+  - coverage
+  - verifier-selection
   status: verified
   category:
-  - foundations_and_primers
   - rollout_search_test_time_trace_data
-  - scaling_rlvr_test_time_compute
-  one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
-    and release metadata before promoting it.
-  card: null
+  one_line: Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style
+    tasks, separating oracle coverage from practical sample selection.
+  card: cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md
   needs: []
-  one_line_summary: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier
-    contract, and release metadata before promoting it.
-  why_it_matters: Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit
-    note.
+  one_line_summary: Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style tasks.
+  why_it_matters: It gives atlas readers a concrete way to audit whether a reasoning gain comes from more samples, a usable verifier,
+    a better selector, or a genuinely stronger model or training recipe.
   verification:
     link_verified: true
     artifact_verified: false
@@ -8389,7 +8423,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L1_link_verified
+  curation_level: L4_carded
 - id: learning-to-reason-with-llms-2024
   title: Learning to reason with LLMs
   year: 2024

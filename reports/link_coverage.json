@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-08",
+  "generated_at": "2026-07-10",
   "total_entries": 280,
   "verified_entries": 165,
   "verified_with_primary_link": 165,
   "verified_primary_link_coverage": "100.0%",
   "curation_levels": {
     "L0_seeded": 115,
-    "L1_link_verified": 69,
+    "L1_link_verified": 68,
     "L2_artifact_verified": 7,
     "L3_summary_ready": 4,
-    "L4_carded": 32,
+    "L4_carded": 33,
     "L5_audit_ready": 53
   },
   "official_link_coverage": {
@@ -39,6 +39,6 @@
   "ambiguous": 0,
   "duplicate": 0,
   "missing_primary_link": 115,
-  "cards": 87,
+  "cards": 88,
   "artifact_verified_entries": 167
 }

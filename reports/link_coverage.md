@@ -10,15 +10,15 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - Needs search: 115
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 87
+- Cards: 88
 
 ## Curation Levels
 
 - L0_seeded: 115
-- L1_link_verified: 69
+- L1_link_verified: 68
 - L2_artifact_verified: 7
 - L3_summary_ready: 4
-- L4_carded: 32
+- L4_carded: 33
 - L5_audit_ready: 53
 
 ## Official Link Coverage
@@ -34,7 +34,7 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - Data coverage: 27
 - Hugging Face coverage: 20
 - Project page coverage: 25
-- Card coverage: 87
+- Card coverage: 88
 
 ## Starter Pack Coverage
 

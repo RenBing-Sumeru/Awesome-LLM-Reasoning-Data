@@ -5503,35 +5503,55 @@ window.ATLAS_DATA = {
       "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
       "year": 2024,
       "venue": "arXiv preprint arXiv:2407.21787",
-      "authors": [],
+      "authors": [
+        "Bradley Brown",
+        "Jordan Juravsky",
+        "Ryan Ehrlich",
+        "Ronald Clark",
+        "Quoc V. Le",
+        "Christopher Ré",
+        "Azalia Mirhoseini"
+      ],
       "source_role": [
-        "survey_background"
+        "scaling_study",
+        "construction_recipe"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "full_episode"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "test_time_compute"
       ],
-      "domains": [],
+      "domains": [
+        "math",
+        "code",
+        "formal_proofs",
+        "software_engineering",
+        "test_time_compute"
+      ],
       "category": [
-        "foundations_and_primers",
-        "rollout_search_test_time_trace_data",
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "Other related work",
+      "subfield": "🧠 Self-consistency / repeated sampling",
       "tags": [
-        "seeded-from-bib"
+        "repeated-sampling",
+        "pass-at-k",
+        "test-time-compute",
+        "coverage",
+        "verifier-selection"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "survey background",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L1_link_verified",
+      "one_line_summary": "Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style tasks.",
+      "why_it_matters": "It gives atlas readers a concrete way to audit whether a reasoning gain comes from more samples, a usable verifier, a better selector, or a genuinely stronger model or training recipe.",
+      "data_object": "candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.; process: task, model, sample count; math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.",
+      "feedback_verifier": "automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.",
+      "audit_focus": "Coverage can grow with sample budget even when practical selection precision remains poor., Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks., Comparing repeated sampling against single attempts can conflate model quality with inference budget.",
+      "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -5548,7 +5568,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md"
       },
       "primary_link": "https://arxiv.org/abs/2407.21787"
     },
@@ -16548,11 +16568,11 @@ window.ATLAS_DATA = {
   "counts": {
     "total_entries": 280,
     "verified_entries": 165,
-    "carded_entries": 87,
+    "carded_entries": 88,
     "data_releases": 36,
     "verifiers_rewards": 20,
     "agent_environments": 16,
-    "scaling_studies": 18,
+    "scaling_studies": 19,
     "needs_search": 115
   },
   "categories": [
@@ -24970,35 +24990,55 @@ window.ATLAS_DATA = {
             "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
             "year": 2024,
             "venue": "arXiv preprint arXiv:2407.21787",
-            "authors": [],
+            "authors": [
+              "Bradley Brown",
+              "Jordan Juravsky",
+              "Ryan Ehrlich",
+              "Ronald Clark",
+              "Quoc V. Le",
+              "Christopher Ré",
+              "Azalia Mirhoseini"
+            ],
             "source_role": [
-              "survey_background"
+              "scaling_study",
+              "construction_recipe"
             ],
             "verification_contract": [
-              "unknown"
+              "programmatic",
+              "mixed"
             ],
             "supervision_granularity": [
-              "unknown"
+              "answer_level",
+              "full_episode"
             ],
             "training_use": [
-              "unknown"
+              "evaluation",
+              "test_time_compute"
             ],
-            "domains": [],
+            "domains": [
+              "math",
+              "code",
+              "formal_proofs",
+              "software_engineering",
+              "test_time_compute"
+            ],
             "category": [
-              "foundations_and_primers",
-              "rollout_search_test_time_trace_data",
-              "scaling_rlvr_test_time_compute"
+              "rollout_search_test_time_trace_data"
             ],
-            "subfield": "Other related work",
+            "subfield": "🧠 Self-consistency / repeated sampling",
             "tags": [
-              "seeded-from-bib"
+              "repeated-sampling",
+              "pass-at-k",
+              "test-time-compute",
+              "coverage",
+              "verifier-selection"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "survey background",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L1_link_verified",
+            "one_line_summary": "Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style tasks.",
+            "why_it_matters": "It gives atlas readers a concrete way to audit whether a reasoning gain comes from more samples, a usable verifier, a better selector, or a genuinely stronger model or training recipe.",
+            "data_object": "candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.; process: task, model, sample count; math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.",
+            "feedback_verifier": "automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.",
+            "audit_focus": "Coverage can grow with sample budget even when practical selection precision remains poor., Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks., Comparing repeated sampling against single attempts can conflate model quality with inference budget.",
+            "curation_level": "L4_carded",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -25015,7 +25055,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "card": "cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md"
             },
             "primary_link": "https://arxiv.org/abs/2407.21787"
           }

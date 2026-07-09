@@ -7,7 +7,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 | [Release cards](#release-cards) | 18 | datasets, trace releases, documentation foundations, and reusable data artifacts |
 | [Verifier cards](#verifier-cards) | 15 | verifiers, rewards, process supervision, judges, and rubrics |
 | [Agent/environment cards](#agentenvironment-cards) | 14 | tool, web, app, OS, and SWE trajectories |
-| [Recipe cards](#recipe-cards) | 26 | construction recipes, model reports, and training pipelines |
+| [Recipe cards](#recipe-cards) | 27 | construction recipes, model reports, and training pipelines |
 | [Benchmark cards](#benchmark-cards) | 11 | evaluation surfaces and benchmark ledgers |
 | [Failure cards](#failure-cards) | 3 | contamination, leakage, reward hacking, and verifier attacks |
 
@@ -79,6 +79,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [DeepSeek-R1](recipes/deepseek_r1.md) - DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.
 - [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](recipes/deepseekmath.md) - DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.
 - [Kimi K1.5: Scaling Reinforcement Learning with LLMs](recipes/kimi_k15.md) - Frontier report used for long-context RL and scaling discussion.
+- [Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md) - Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style tasks.
 - [Llama-Nemotron: Efficient Reasoning Models](recipes/llama_nemotron.md) - Mixed post-training corpus reference for reasoning, chat, and safety partitions.
 - [Magicoder: Empowering code generation with OSS-instruct](recipes/magicoder.md) - Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate more realistic instruction data.
 - [Magistral](recipes/magistral.md) - Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.
