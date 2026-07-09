@@ -21144,89 +21144,151 @@
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
 - id: swe-smith-scaling-data-construction-for-software-engineering-agents-2025
-  title: 'SWE-smith: Scaling data construction for software engineering agents'
+  title: 'SWE-smith: Scaling Data for Software Engineering Agents'
   year: 2025
-  venue: unknown
-  authors: []
+  venue: arXiv
+  authors:
+  - John Yang
+  - Kilian Lieret
+  - Carlos E. Jimenez
+  - Alexander Wettig
+  - Kabir Khandpur
+  - Yanzhe Zhang
+  - Binyuan Hui
+  - Ofir Press
+  - Ludwig Schmidt
+  - Diyi Yang
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - agent_environment
+  - scaling_study
   verification_contract:
-  - unknown
+  - programmatic
+  - environmental
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - full_episode
+  - state_action_level
+  domains:
+  - software_engineering
+  - code
+  - python
+  - agents
   training_use:
-  - unknown
+  - agent_training
+  - sft
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - search_substrate
+  - optimizer_scaffold
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    paper: https://arxiv.org/abs/2504.21798
+    arxiv: https://arxiv.org/abs/2504.21798
+    code: https://github.com/SWE-bench/SWE-smith
+    data: https://huggingface.co/datasets/SWE-bench/SWE-smith
+    project: https://swesmith.com/
+    huggingface: https://huggingface.co/datasets/SWE-bench/SWE-smith
+    doi: https://doi.org/10.48550/arXiv.2504.21798
     venue: null
-    openreview: null
+    openreview: https://openreview.net/forum?id=63iVrXc8cC
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Python repositories plus generated functions/classes from the SWE-smith.prog and SWE-smith.gen construction
+      routes; exact final repository, license, and release-version filters should be audited before reuse.
+    trace_author: Task instances are produced by the SWE-smith pipeline; released trajectories are produced by SWE-agent
+      runs with listed frontier models, but per-trajectory model/scaffold metadata should be checked before training.
+    answer_format: Repository-level SWE task instance with problem statement, repo, base commit, patch/test patch metadata,
+      FAIL_TO_PASS/PASS_TO_PASS tests, and optional message/action trajectories.
+    process_fields:
+    - repo and base_commit
+    - problem_statement
+    - patch and test_patch
+    - FAIL_TO_PASS and PASS_TO_PASS tests
+    - instance_id and release/config metadata
+    environment_or_substrate: Python repository checkout at a pinned base commit with executable tests.
+    verifier_or_reward: Executable regression tests and environment checks; no learned reward model is part of the data release.
+    terminal_predicate: A candidate patch should make the target failing tests pass while preserving the passing tests in the
+      repository environment.
   recipe_metadata:
     base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    teacher: unknown as a single teacher; released expert trajectories use listed frontier-model SWE-agent runs.
+    generator: SWE-smith.prog transforms existing Python functions, while SWE-smith.gen uses language models to generate new
+      functions/classes after environment setup; exact generator model names require paper/code audit.
+    filtering_rule: Generated tasks are kept through executable test and environment validation, but exact filter thresholds
+      should be verified from the code and paper.
+    sampling_protocol: The paper reports large-scale task construction from Python repositories; exact sampling, deduplication,
+      language-specific release, and rejected-task accounting should be audited.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: SWE-agent training/evaluation scaffold; the paper validates use by training SWE-agent-LM models.
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: Real Python repositories are mixed with generated functions/classes; per-repository provenance and license
+      compatibility need review.
+    split: Official Hugging Face release exposes task, trajectory, and language-specific dataset pointers; pin the exact revision
+      and config before training reuse.
     decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key swesmith2025. Deduplicated title collision; dropped lower-confidence id: swe-smith-scaling-data-construction-for-software-engineering-agents-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    license: Hugging Face dataset card lists MIT, but source repository licenses and generated-code lineage should be checked
+      before redistribution.
+    lineage: Python repositories and generated functions/classes are converted into bug-fix task instances with generated tests,
+      patches, and executable verification metadata.
+    known_failure_modes:
+    - Generated tests can encode shallow or brittle specifications.
+    - Repository environment failures can be mistaken for task difficulty.
+    - Training on synthetic SWE tasks may overfit to generator artifacts rather than real issue distributions.
+    - Task, trajectory, and language-specific data-release pointers may contain different instance counts or schemas.
+    - Downstream SWE-Bench gains should not be treated as proof that every generated task is valid.
+    citation_status: primary_sources_linked
+    confidence: high
+    notes: Official arXiv, project, GitHub, Hugging Face task/trajectory/model, and OpenReview links were pinned on 2026-07-09.
+    metadata_status: carded
+  inclusion_reason: High-impact open data-construction recipe for SWE agent training data, with executable verification, code,
+    project page, and Hugging Face data release.
   related: []
   tags:
-  - seeded-from-bib
-  status: needs_metadata
+  - curated-card
+  - primary-link-checked
+  - artifact-verified
+  - swe
+  - agents
+  - executable-tests
+  - synthetic-data
+  - open-release
+  status: verified
   category:
+  - programmatically_verifiable_outcome_data
   - environment_agent_trajectory_data
   - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
   - scaling_rlvr_test_time_compute
-  one_line: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect the
-    paper's data object, verifier contract, and release metadata before promoting it.
-  card: null
+  one_line: SWE-smith is an open pipeline and dataset release for constructing executable SWE-agent tasks from Python repositories
+    and generated code.
+  card: cards/agents/swe-smith.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🌐 Environmental Agent, Tool, Web, and SWE Trajectory Data map; use it to inspect
-    the paper's data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_audit: pin the exact Hugging Face task, trajectory, or language-specific dataset revision before reuse'
+  - 'needs_audit: verify per-repository license compatibility and generated-test reliability'
+  - 'needs_audit: confirm generator model settings, rejected-task counts, and decontamination policy from primary artifacts'
+  one_line_summary: SWE-smith is an open pipeline and dataset release for constructing executable SWE-agent tasks from Python
+    repositories and generated code.
+  why_it_matters: It is a concrete recipe for scaling software-engineering agent data with executable tests, released code,
+    and dataset artifacts, making it useful for studying construction pipelines rather than only benchmark scores.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-09'
+    verified_by: curation
+    confidence: high
+    notes: Primary sources checked include arXiv, project page, GitHub repository, Hugging Face task/trajectory/model artifacts,
+      and OpenReview.
 - id: tan-scaling-rl-2025
   title: Scaling Behaviors of LLM Reinforcement Learning Post-Training
   year: 2025

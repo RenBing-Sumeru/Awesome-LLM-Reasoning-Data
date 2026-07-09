@@ -343,6 +343,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; search substrate; agent training
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Repository-scale training environment showing substrate as data.
+- 📦 **[SWE-smith: Scaling Data for Software Engineering Agents](https://arxiv.org/abs/2504.21798)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · environmental · agent training · sft · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2504.21798) · [OpenReview](https://openreview.net/forum?id=63iVrXc8cC) · [DOI](https://doi.org/10.48550/arXiv.2504.21798) · [Code](https://github.com/SWE-bench/SWE-smith) · [Data](https://huggingface.co/datasets/SWE-bench/SWE-smith) · [Project](https://swesmith.com/) · [Card](../../cards/agents/swe-smith.md)
+  _Data object:_ Repository-level SWE task instance with problem statement, repo, base commit, patch/test patch metadata, FAIL TO PASS/PASS TO PASS tests, and optional message/action trajectories.; process: repo and base commit, problem statement, patch and test patch; Python repository checkout at a pinned base commit with executable tests.
+  _Feedback / verifier:_ Executable regression tests and environment checks; no learned reward model is part of the data release.
+  _Recipe signal:_ teacher: unknown as a single teacher; released expert trajectories use listed frontier-model SWE-agent runs.; generator: SWE-smith.prog transforms existing Python functions, while SWE-smith.gen uses language models to generate new functions/classes after environment setup; exact generator model names require paper/code audit.
+  _Audit focus:_ Generated tests can encode shallow or brittle specifications., Repository environment failures can be mistaken for task difficulty., Training on synthetic SWE tasks may overfit to generator artifacts rather than real issue distributions.
+  _Why it matters:_ It is a concrete recipe for scaling software-engineering agent data with executable tests, released code, and dataset artifacts, making it useful for studying construction pipelines rather than only benchmark scores.
 - 🧰 **[AndroidWorld: A dynamic benchmarking environment for autonomous agents](https://arxiv.org/abs/2405.14573)**
   <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2405.14573) · [Card](../../cards/agents/androidworld.md)
@@ -989,9 +997,9 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [PRMBench: A fine-grained and challenging benchmark for process-level reward models](../../cards/verifiers/prmbench.md)
 - [R2E-Gym](../../cards/agents/r2e_gym.md)
 - [SWE-Gym](../../cards/agents/swe_gym.md)
+- [SWE-smith: Scaling Data for Software Engineering Agents](../../cards/agents/swe-smith.md)
 - [Spurious Rewards](../../cards/verifiers/spurious_rewards.md)
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../../cards/agents/androidworld.md)
-- [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](../../cards/agents/appworld.md)
 
 ## Back to Map
 

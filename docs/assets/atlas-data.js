@@ -11604,111 +11604,80 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2503.24290"
     },
     {
-      "id": "opencodereasoning-2-scalable-code-reasoning-data-2025",
-      "title": "OpenCodeReasoning-2: Scalable code reasoning data",
+      "id": "opencodereasoning-advancing-data-distillation-for-competitive-coding-2025",
+      "title": "OpenCodeReasoning: Advancing Data Distillation for Competitive Coding",
       "year": 2025,
-      "venue": "unknown",
-      "authors": [],
+      "venue": "COLM 2025",
+      "authors": [
+        "Wasi Uddin Ahmad",
+        "Sean Narenthiran",
+        "Somshubra Majumdar",
+        "Aleksander Ficek",
+        "Siddhartha Jain",
+        "Jocelyn Huang",
+        "Vahid Noroozi",
+        "Boris Ginsburg"
+      ],
       "source_role": [
-        "survey_background"
+        "data_release",
+        "construction_recipe",
+        "scaling_study"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "judgment_required",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "sft",
+        "distillation"
       ],
-      "domains": [],
-      "category": [
-        "programmatically_verifiable_outcome_data",
-        "data_construction_open_release_recipes"
+      "domains": [
+        "code",
+        "competitive_programming",
+        "python"
       ],
-      "subfield": "💻 Code execution / unit-test data",
-      "tags": [
-        "seeded-from-bib"
-      ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
-      "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "card": null
-      },
-      "primary_link": null
-    },
-    {
-      "id": "opencodereasoning-code-reasoning-traces-at-scale-2025",
-      "title": "OpenCodeReasoning: Code reasoning traces at scale",
-      "year": 2025,
-      "venue": "unknown",
-      "authors": [],
-      "source_role": [
-        "survey_background"
-      ],
-      "verification_contract": [
-        "unknown"
-      ],
-      "supervision_granularity": [
-        "unknown"
-      ],
-      "training_use": [
-        "unknown"
-      ],
-      "domains": [],
       "category": [
         "programmatically_verifiable_outcome_data",
         "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
         "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "💻 Code execution / unit-test data",
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [
+        "curated-card",
+        "primary-link-checked",
+        "artifact-verified",
         "seeded-from-bib"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "OpenCodeReasoning releases a large DeepSeek-R1-distilled competitive-programming reasoning corpus for SFT, with documented sourcing, filtering, scaling analysis, and code-reasoning benchmark evaluation.",
+      "why_it_matters": "It is a strong construction-recipe entry for code reasoning data because it exposes the source mixture, teacher-trace generation setup, post-processing filters, released HF fields, and an important negative result that execution filtering alone can reduce downstream benchmark performance by removing hard or diverse samples.",
+      "data_object": "Python competitive-programming response with reasoning trace, final code block, and extracted solution code.; process: id, input, output; Offline SFT corpus for competitive-programming code reasoning; unit-test/code-execution substrate is used in ablations and benchmark evaluation.",
+      "feedback_verifier": "Format filters for reasoning traces and code blocks, Tree-sitter syntax parsing, benchmark-contamination checks with embedding similarity plus LLM/manual review, and unit-test execution for CodeContests ablation; final release is not strictly execution-filtered.",
+      "audit_focus": "Syntax-valid code is not necessarily semantically correct., Final release is not guaranteed to contain only unit-test-passing solutions., Incorrect teacher solutions may still transfer useful patterns but can also teach wrong reasoning.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
+        "paper": "https://arxiv.org/abs/2504.01943",
+        "venue": "https://colmweb.org/2025/AcceptedPapers.html",
+        "arxiv": "https://arxiv.org/abs/2504.01943",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
+        "code": "https://github.com/NVIDIA/NeMo-Skills",
+        "data": "https://huggingface.co/datasets/nvidia/OpenCodeReasoning",
+        "huggingface": "https://huggingface.co/datasets/nvidia/OpenCodeReasoning",
         "project": null,
         "bibtex": null,
-        "card": null
+        "card": "cards/releases/opencodereasoning.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2504.01943"
     },
     {
       "id": "opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025",
@@ -13910,57 +13879,91 @@ window.ATLAS_DATA = {
     },
     {
       "id": "swe-smith-scaling-data-construction-for-software-engineering-agents-2025",
-      "title": "SWE-smith: Scaling data construction for software engineering agents",
+      "title": "SWE-smith: Scaling Data for Software Engineering Agents",
       "year": 2025,
-      "venue": "unknown",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "John Yang",
+        "Kilian Lieret",
+        "Carlos E. Jimenez",
+        "Alexander Wettig",
+        "Kabir Khandpur",
+        "Yanzhe Zhang",
+        "Binyuan Hui",
+        "Ofir Press",
+        "Ludwig Schmidt",
+        "Diyi Yang"
+      ],
       "source_role": [
-        "survey_background"
+        "data_release",
+        "construction_recipe",
+        "agent_environment",
+        "scaling_study"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "environmental",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "full_episode",
+        "state_action_level"
       ],
       "training_use": [
-        "unknown"
+        "agent_training",
+        "sft",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "software_engineering",
+        "code",
+        "python",
+        "agents"
+      ],
       "category": [
+        "programmatically_verifiable_outcome_data",
         "environment_agent_trajectory_data",
         "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "benchmarks_evaluation_surfaces",
         "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "🧑‍💻 SWE/repository agents",
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [
-        "seeded-from-bib"
+        "curated-card",
+        "primary-link-checked",
+        "artifact-verified",
+        "swe",
+        "agents",
+        "executable-tests",
+        "synthetic-data",
+        "open-release"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "SWE-smith is an open pipeline and dataset release for constructing executable SWE-agent tasks from Python repositories and generated code.",
+      "why_it_matters": "It is a concrete recipe for scaling software-engineering agent data with executable tests, released code, and dataset artifacts, making it useful for studying construction pipelines rather than only benchmark scores.",
+      "data_object": "Repository-level SWE task instance with problem statement, repo, base commit, patch/test patch metadata, FAIL TO PASS/PASS TO PASS tests, and optional message/action trajectories.; process: repo and base commit, problem statement, patch and test patch; Python repository checkout at a pinned base commit with executable tests.",
+      "feedback_verifier": "Executable regression tests and environment checks; no learned reward model is part of the data release.",
+      "audit_focus": "Generated tests can encode shallow or brittle specifications., Repository environment failures can be mistaken for task difficulty., Training on synthetic SWE tasks may overfit to generator artifacts rather than real issue distributions.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2504.21798",
         "venue": null,
-        "arxiv": null,
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2504.21798",
+        "openreview": "https://openreview.net/forum?id=63iVrXc8cC",
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
+        "doi": "https://doi.org/10.48550/arXiv.2504.21798",
+        "code": "https://github.com/SWE-bench/SWE-smith",
+        "data": "https://huggingface.co/datasets/SWE-bench/SWE-smith",
+        "huggingface": "https://huggingface.co/datasets/SWE-bench/SWE-smith",
+        "project": "https://swesmith.com/",
         "bibtex": null,
-        "card": null
+        "card": "cards/agents/swe-smith.md"
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2504.21798"
     },
     {
       "id": "tan-scaling-rl-2025",
@@ -16546,14 +16549,14 @@ window.ATLAS_DATA = {
     }
   ],
   "counts": {
-    "total_entries": 280,
-    "verified_entries": 165,
-    "carded_entries": 87,
-    "data_releases": 36,
+    "total_entries": 279,
+    "verified_entries": 167,
+    "carded_entries": 89,
+    "data_releases": 38,
     "verifiers_rewards": 20,
-    "agent_environments": 16,
-    "scaling_studies": 18,
-    "needs_search": 115
+    "agent_environments": 17,
+    "scaling_studies": 20,
+    "needs_search": 112
   },
   "categories": [
     {
@@ -20893,60 +20896,83 @@ window.ATLAS_DATA = {
         },
         {
           "title": "OpenCodeReasoning",
-          "entry_id": "opencodereasoning-2-scalable-code-reasoning-data-2025",
+          "entry_id": "opencodereasoning-advancing-data-distillation-for-competitive-coding-2025",
           "matched": true,
           "entry": {
-            "id": "opencodereasoning-2-scalable-code-reasoning-data-2025",
-            "title": "OpenCodeReasoning-2: Scalable code reasoning data",
+            "id": "opencodereasoning-advancing-data-distillation-for-competitive-coding-2025",
+            "title": "OpenCodeReasoning: Advancing Data Distillation for Competitive Coding",
             "year": 2025,
-            "venue": "unknown",
-            "authors": [],
+            "venue": "COLM 2025",
+            "authors": [
+              "Wasi Uddin Ahmad",
+              "Sean Narenthiran",
+              "Somshubra Majumdar",
+              "Aleksander Ficek",
+              "Siddhartha Jain",
+              "Jocelyn Huang",
+              "Vahid Noroozi",
+              "Boris Ginsburg"
+            ],
             "source_role": [
-              "survey_background"
+              "data_release",
+              "construction_recipe",
+              "scaling_study"
             ],
             "verification_contract": [
-              "unknown"
+              "programmatic",
+              "judgment_required",
+              "mixed"
             ],
             "supervision_granularity": [
-              "unknown"
+              "answer_level"
             ],
             "training_use": [
-              "unknown"
+              "sft",
+              "distillation"
             ],
-            "domains": [],
+            "domains": [
+              "code",
+              "competitive_programming",
+              "python"
+            ],
             "category": [
               "programmatically_verifiable_outcome_data",
-              "data_construction_open_release_recipes"
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute"
             ],
-            "subfield": "💻 Code execution / unit-test data",
+            "subfield": "🧰 Programmatic benchmarks",
             "tags": [
+              "curated-card",
+              "primary-link-checked",
+              "artifact-verified",
               "seeded-from-bib"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "metadata pending",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
-            "needs_search": true,
+            "one_line_summary": "OpenCodeReasoning releases a large DeepSeek-R1-distilled competitive-programming reasoning corpus for SFT, with documented sourcing, filtering, scaling analysis, and code-reasoning benchmark evaluation.",
+            "why_it_matters": "It is a strong construction-recipe entry for code reasoning data because it exposes the source mixture, teacher-trace generation setup, post-processing filters, released HF fields, and an important negative result that execution filtering alone can reduce downstream benchmark performance by removing hard or diverse samples.",
+            "data_object": "Python competitive-programming response with reasoning trace, final code block, and extracted solution code.; process: id, input, output; Offline SFT corpus for competitive-programming code reasoning; unit-test/code-execution substrate is used in ablations and benchmark evaluation.",
+            "feedback_verifier": "Format filters for reasoning traces and code blocks, Tree-sitter syntax parsing, benchmark-contamination checks with embedding similarity plus LLM/manual review, and unit-test execution for CodeContests ablation; final release is not strictly execution-filtered.",
+            "audit_focus": "Syntax-valid code is not necessarily semantically correct., Final release is not guaranteed to contain only unit-test-passing solutions., Incorrect teacher solutions may still transfer useful patterns but can also teach wrong reasoning.",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
-              "venue": null,
-              "arxiv": null,
+              "paper": "https://arxiv.org/abs/2504.01943",
+              "venue": "https://colmweb.org/2025/AcceptedPapers.html",
+              "arxiv": "https://arxiv.org/abs/2504.01943",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
               "doi": null,
-              "code": null,
-              "data": null,
-              "huggingface": null,
+              "code": "https://github.com/NVIDIA/NeMo-Skills",
+              "data": "https://huggingface.co/datasets/nvidia/OpenCodeReasoning",
+              "huggingface": "https://huggingface.co/datasets/nvidia/OpenCodeReasoning",
               "project": null,
               "bibtex": null,
-              "card": null
+              "card": "cards/releases/opencodereasoning.md"
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2504.01943"
           }
         },
         {

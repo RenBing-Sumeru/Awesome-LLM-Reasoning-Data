@@ -6,7 +6,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 |---|---:|---|
 | [Release cards](#release-cards) | 19 | datasets, trace releases, documentation foundations, and reusable data artifacts |
 | [Verifier cards](#verifier-cards) | 15 | verifiers, rewards, process supervision, judges, and rubrics |
-| [Agent/environment cards](#agentenvironment-cards) | 14 | tool, web, app, OS, and SWE trajectories |
+| [Agent/environment cards](#agentenvironment-cards) | 15 | tool, web, app, OS, and SWE trajectories |
 | [Recipe cards](#recipe-cards) | 26 | construction recipes, model reports, and training pipelines |
 | [Benchmark cards](#benchmark-cards) | 11 | evaluation surfaces and benchmark ledgers |
 | [Failure cards](#failure-cards) | 3 | contamination, leakage, reward hacking, and verifier attacks |
@@ -65,6 +65,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [ReAct: Synergizing reasoning and acting in language models](agents/react.md) - ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.
 - [SWE-bench: Can language models resolve real-world GitHub issues?](agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) - SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.
 - [Introducing SWE-bench Verified](agents/swe-bench-verified.md) - SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.
+- [SWE-smith: Scaling Data for Software Engineering Agents](agents/swe-smith.md) - SWE-smith is an open pipeline and dataset release for constructing executable SWE-agent tasks from Python repositories and generated code.
 - [SWE-Gym](agents/swe_gym.md) - Repository-scale training environment showing substrate as data.
 - [Toolformer: Language models can teach themselves to use tools](agents/toolformer.md) - Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model likelihood.
 - [ToolLLM: Facilitating large language models to master 16000+ real-world APIs](agents/toolllm_toolbench.md) - Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.
