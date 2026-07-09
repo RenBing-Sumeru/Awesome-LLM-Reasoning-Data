@@ -4,7 +4,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 
 | Type | Count | Use it for |
 |---|---:|---|
-| [Release cards](#release-cards) | 18 | datasets, trace releases, documentation foundations, and reusable data artifacts |
+| [Release cards](#release-cards) | 19 | datasets, trace releases, documentation foundations, and reusable data artifacts |
 | [Verifier cards](#verifier-cards) | 15 | verifiers, rewards, process supervision, judges, and rubrics |
 | [Agent/environment cards](#agentenvironment-cards) | 14 | tool, web, app, OS, and SWE trajectories |
 | [Recipe cards](#recipe-cards) | 26 | construction recipes, model reports, and training pipelines |
@@ -26,6 +26,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](releases/kodcode.md) - Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.
 - [LIMO: Less Is More for Reasoning](releases/limo.md) - Small-set curation reference distinguishing elicitation from broad coverage.
 - [NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions](releases/naturalreasoning.md) - Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.
+- [OpenCodeReasoning: Advancing Data Distillation for Competitive Coding](releases/opencodereasoning.md) - OpenCodeReasoning releases a large DeepSeek-R1-distilled competitive-programming reasoning corpus for SFT, with documented sourcing, filtering, scaling analysis, and code-reasoning benchmark evaluation.
 - [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](releases/opencodereasoning_ii.md) - Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.
 - [OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](releases/openmathinstruct-2.md) - OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open synthesis pipeline.
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](releases/openmathreasoning.md) - Large-scale math reasoning trace release for programmatic verification.

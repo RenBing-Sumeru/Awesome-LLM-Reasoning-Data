@@ -17629,173 +17629,128 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
-- id: opencodereasoning-2-scalable-code-reasoning-data-2025
-  title: 'OpenCodeReasoning-2: Scalable code reasoning data'
+- id: opencodereasoning-advancing-data-distillation-for-competitive-coding-2025
+  title: 'OpenCodeReasoning: Advancing Data Distillation for Competitive Coding'
   year: 2025
-  venue: unknown
-  authors: []
+  venue: COLM 2025
+  authors:
+  - Wasi Uddin Ahmad
+  - Sean Narenthiran
+  - Somshubra Majumdar
+  - Aleksander Ficek
+  - Siddhartha Jain
+  - Jocelyn Huang
+  - Vahid Noroozi
+  - Boris Ginsburg
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - scaling_study
   verification_contract:
-  - unknown
+  - programmatic
+  - judgment_required
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - code
+  - competitive_programming
+  - python
   training_use:
-  - unknown
+  - sft
+  - distillation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - release_audit
+  - scaling_report
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
+    paper: https://arxiv.org/abs/2504.01943
+    arxiv: https://arxiv.org/abs/2504.01943
+    code: https://github.com/NVIDIA/NeMo-Skills
+    data: https://huggingface.co/datasets/nvidia/OpenCodeReasoning
     project: null
-    huggingface: null
+    huggingface: https://huggingface.co/datasets/nvidia/OpenCodeReasoning
     doi: null
-    venue: null
+    venue: https://colmweb.org/2025/AcceptedPapers.html
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Competitive-programming questions collected from TACO, APPS, CodeContests, and OpenR1 CodeForces / CodeForces-derived sources, with exact-match deduplication.
+    trace_author: DeepSeek-R1 generates reasoning traces and code solutions.
+    answer_format: Python competitive-programming response with reasoning trace, final code block, and extracted solution code.
+    process_fields:
+    - id
+    - input
+    - output
+    - solution
+    - dataset
+    - split
+    - source
+    - license
+    - difficulty
+    - index
+    environment_or_substrate: Offline SFT corpus for competitive-programming code reasoning; unit-test/code-execution substrate is used in ablations and benchmark evaluation.
+    verifier_or_reward: Format filters for reasoning traces and code blocks, Tree-sitter syntax parsing, benchmark-contamination checks with embedding similarity plus LLM/manual review, and unit-test execution for CodeContests ablation; final release is not strictly execution-filtered.
+    terminal_predicate: A retained sample passes post-processing format/syntax checks; benchmark performance is measured by code-generation pass@1 on external coding benchmarks.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Qwen2.5-Instruct student models reported in the paper.
+    teacher: DeepSeek-R1.
+    generator: DeepSeek-R1 generations served through SGLang.
+    filtering_rule: Exact-match deduplication; benchmark-contamination screening; require reasoning trace tags and code block; remove samples with code blocks inside reasoning traces; parse generated code with Tree-sitter. Unit-test filtering was studied but not used as the main final-selection rule.
+    sampling_protocol: Multiple DeepSeek-R1 solutions per question; primarily Python; nucleus sampling with temperature 0.6 and top-p 0.95; explicit reasoning-tag prompting.
     rollout_count: null
-    temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
+    temperature: 0.6
+    inference_budget: Maximum output sequence length of 16k tokens.
+    optimizer_or_scaffold: Supervised fine-tuning pipeline using the released OpenCodeReasoning data and NVIDIA NeMo-Skills.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key opencodereasoning2_2025. Deduplicated title collision; dropped lower-confidence id: opencodereasoning-2-scalable-code-reasoning-data-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Mixture of public competitive-programming datasets/sources; Hugging Face release records dataset/source/license/difficulty fields.
+    split: HF release has split_0 and split_1; dataset card states CodeContests and OpenR1 CodeForces test splits are excluded.
+    decontamination: Paper reports exact-match deduplication and benchmark-contamination screening using cosine similarity threshold 0.7, Llama-3.3-70B-Instruct and Qwen2.5-32B-Instruct judges, plus manual inspection.
+    license: HF dataset card lists CC-BY-4.0 for the release, while warning users to check each underlying source dataset license.
+    lineage: Questions come from public competitive-programming sources; responses are generated by DeepSeek-R1; pipeline link points to NVIDIA NeMo-Skills.
+    known_failure_modes:
+    - Syntax-valid code is not necessarily semantically correct.
+    - Final release is not guaranteed to contain only unit-test-passing solutions.
+    - Incorrect teacher solutions may still transfer useful patterns but can also teach wrong reasoning.
+    - Benchmark contamination checks may miss semantic overlap.
+    - Underlying source licenses and split provenance need per-source review.
+    - Paper reports 736,712 Python samples after refinement, while the HF dataset card lists 735,255 samples; pin release version during curation.
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv, COLM accepted-paper page, Hugging Face dataset, and NVIDIA NeMo-Skills links verified.
+    metadata_status: carded
+  inclusion_reason: High-quality open code-reasoning data release for the Data Construction & Open Release Recipes track; useful for studying prompt sourcing, teacher trace distillation, syntax/execution filtering, data scaling, and release metadata.
   related: []
   tags:
+  - curated-card
+  - primary-link-checked
+  - artifact-verified
   - seeded-from-bib
-  status: needs_metadata
+  status: verified
   category:
   - programmatically_verifiable_outcome_data
   - data_construction_open_release_recipes
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
-  verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
-- id: opencodereasoning-code-reasoning-traces-at-scale-2025
-  title: 'OpenCodeReasoning: Code reasoning traces at scale'
-  year: 2025
-  venue: unknown
-  authors: []
-  source_role:
-  - survey_background
-  verification_contract:
-  - unknown
-  supervision_granularity:
-  - unknown
-  domains: []
-  training_use:
-  - unknown
-  construction_layer:
-  - release_audit
-  artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
-    openreview: null
-    acl: null
-    pmlr: null
-    cvf: null
-    bibtex: null
-  data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
-  recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
-    temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
-  audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key opencodereasoning2025. Deduplicated title collision; dropped lower-confidence id: opencodereasoning-code-reasoning-traces-at-scale-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
-  related: []
-  tags:
-  - seeded-from-bib
-  status: needs_metadata
-  category:
-  - programmatically_verifiable_outcome_data
-  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
+  one_line: OpenCodeReasoning releases a large DeepSeek-R1-distilled competitive-programming reasoning corpus for SFT, with documented sourcing, filtering, scaling analysis, and code-reasoning benchmark evaluation.
+  card: cards/releases/opencodereasoning.md
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_audit: verify per-source license compatibility before reuse'
+  - 'needs_audit: pin exact HF dataset version and sample count'
+  one_line_summary: OpenCodeReasoning releases a large DeepSeek-R1-distilled competitive-programming reasoning corpus for SFT, with documented sourcing, filtering, scaling analysis, and code-reasoning benchmark evaluation.
+  why_it_matters: It is a strong construction-recipe entry for code reasoning data because it exposes the source mixture, teacher-trace generation setup, post-processing filters, released HF fields, and an important negative result that execution filtering alone can reduce downstream benchmark performance by removing hard or diverse samples.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-09'
+    verified_by: curation
+    confidence: high
+    notes: Official arXiv, COLM accepted-paper page, Hugging Face dataset, and NVIDIA NeMo-Skills links verified.
 - id: opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025
   title: 'OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique'
   year: 2025
