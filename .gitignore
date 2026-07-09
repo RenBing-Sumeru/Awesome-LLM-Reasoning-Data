@@ -29,3 +29,5 @@ apps/ask-atlas/private/rag-corpus.json
 apps/ask-atlas/private/primer/
 apps/ask-atlas/storage/*.json
 apps/ask-atlas/storage/*.tmp
+
+Awesome-LLM-Reasoning-Data_团队并行扩展SOP.md
