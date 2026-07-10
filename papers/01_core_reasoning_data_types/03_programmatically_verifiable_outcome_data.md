@@ -625,6 +625,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: No human or LLM teacher supplies error labels; Z3 and Isabelle provide programmatic labels while Llama and Qwen generate candidate traces.; generator: Few-shot prompts elicit verifier-compatible formal solutions; the pipeline retries until syntactically valid and then applies step-level Z3/Isabelle wrappers.
   _Audit focus:_ A generated Isabelle statement can misformalize the natural-language problem while still receiving formally correct labels., Parser, type, tactic, timeout, dependency or prover-environment failures may be mapped to Boolean labels without an error-type field or prover log., Isabelle independent-step verification replaces other steps with sorry and can miss dependency-chain or scoping errors.
   _Why it matters:_ It demonstrates a low-LLM-call route to process supervision while making formalization fidelity, prover wrappers, step-dependency assumptions, dataset versioning and informal-domain transfer explicit audit boundaries.
+- 🚀 **[Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation](https://arxiv.org/abs/2603.19220)**
+  <sub>2026 · NVIDIA Technical Report · 🚀 model report · 📦 data release · programmatic · mixed · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2603.19220) · [Venue](https://research.nvidia.com/labs/nemotron/nemotron-cascade-2/) · [DOI](https://doi.org/10.48550/arXiv.2603.19220) · [Data](https://huggingface.co/datasets/nvidia/Nemotron-Cascade-2-SFT-Data) · [HF](https://huggingface.co/nvidia/Nemotron-Cascade-2-30B-A3B)
+  _Data object:_ SFT messages and subset-specific RL prompts/constraints/metadata; process: domain, source, messages; Cascade RL, Docker terminal/SWE and agent scaffolds
+  _Feedback / verifier:_ Rules/tests plus generative reward and LLM judges by stage
+  _Recipe signal:_ teacher: Domain-specific teachers and intermediate Cascade checkpoints; generator: Teachers for SFT; current policy for GRPO; execution feedback for agents
+  _Audit focus:_ No full rollout groups, reward logs or stage checkpoints, Dynamic filtering changes effective distribution, Mixed verifier contracts and unpinned agent environments remain risky
+  _Why it matters:_ Shows that a released RL dataset can be only prompt/metadata rather than the online training evidence.
+- 🏗️ **[Prompt Curriculum Learning for Efficient LLM Post-Training](https://arxiv.org/abs/2510.01135)**
+  <sub>2026 · ICLR 2026 · 🏗️ construction recipe · 📈 scaling study · programmatic · rlvr · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2510.01135) · [Venue](https://openreview.net/forum?id=zqOCacBD3P) · [DOI](https://doi.org/10.48550/arXiv.2510.01135)
+  _Data object:_ Prompt, selected-prompt indicator, rollouts, and terminal binary correctness reward; row records are unreleased.; process: candidate prompt, value prediction, selection indicator; Synchronous verl RL with a concurrently refreshed prompt-only value model.
+  _Feedback / verifier:_ math-verify final-answer correctness.
+  _Recipe signal:_ teacher: No external teacher; value model learns from current rollout rewards.; generator: Current policy after selection.
+  _Audit focus:_ Selector is trained only on selected prompts, fixed-threshold selection changes curriculum, no official code/data/log/checkpoint release exists.
+  _Why it matters:_ It separates rollout-free selection from rollout-dependent optimization and records missing selection evidence.
 - 📦 **[Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models](https://arxiv.org/abs/2502.17387)**
   <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · rlvr · sft · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2502.17387) · [DOI](https://doi.org/10.48550/arXiv.2502.17387) · [Code](https://github.com/SynthLabsAI/big-math) · [Data](https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified) · [Card](../../cards/releases/big_math.md)
@@ -665,6 +681,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: GPT-4o for problem synthesis; GPT-4o and DeepSeek-V3 for test-input utility functions; QWQ-32B for long-reasoning candidate solutions.; generator: Seed problems and oracle solutions drive transformed problem synthesis, constraint-aware test generation, and QWQ-32B executable long-CoT generation.
   _Audit focus:_ Mutually generated solutions can share systematic errors and converge on an incorrect output set; reported accuracy drops from 96.8 to 92.8 percent in the larger comparison., The 40 percent threshold for difficult Codeforces-derived problems is below a strict majority., Seed problems for which no QWQ-32B candidate passes retain all generated solutions, so seed sft is not uniformly verified.
   _Why it matters:_ It provides a rare operational recipe for scaling difficult code reasoning data and programmatic rewards, while exposing reuse risks around false consensus, retained unverified seed traces, source licensing, config linkage, and mismatch between the published mixture and current repository.
+- 📦 **[DART-Math: Difficulty-Aware Rejection Tuning for Mathematical Problem-Solving](https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html)**
+  <sub>2024 · NeurIPS 2024 · 📦 data release · 🏗️ construction recipe · programmatic · sft · L3_summary_ready</sub>
+  [Paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2407.13690) · [DOI](https://doi.org/10.52202/079017-0251) · [Code](https://github.com/hkust-nlp/dart-math) · [Data](https://huggingface.co/datasets/hkust-nlp/dart-math-hard) · [HF](https://huggingface.co/collections/hkust-nlp/dart-math)
+  _Data object:_ Uniform and Hard release query/response pairs; supplementary pools expose correctness and sampling metadata.; process: query, response, answer correctness; Offline difficulty-aware rejection sampling followed by instruction tuning.
+  _Feedback / verifier:_ Regex extraction and SymPy symbolic calculation.
+  _Recipe signal:_ teacher: DeepSeekMath-7B-RL.; generator: DeepSeekMath-7B-RL via vLLM.
+  _Audit focus:_ Final-answer correctness does not prove CoT validity, difficulty is generator-dependent, some GSM8K labels are erroneous
+  _Why it matters:_ It exposes how verifier-filtered acceptance, estimated difficulty, and SFT distribution interact.
 - 📄 **MATH-Perturb**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search

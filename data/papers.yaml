@@ -22643,41 +22643,48 @@
 - id: coverrl-breaking-the-consensus-trap-in-label-free-reasoning-via-generator-verifi-2026
   title: 'CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution'
   year: 2026
-  venue: arXiv preprint arXiv:2603.17775
-  authors: []
+  venue: ACL 2026 (Long Papers)
+  authors: [Teng Pan, Yuchen Yan, Zixuan Wang, Ruiqing Zhang, Guiyang Hou, Wenqi Zhang, Weiming Lu, Jun Xiao, Yongliang Shen]
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - verifier_reward
+  - process_supervision
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - full_episode
+  - scalar_reward
+  domains: [math, mathematical_reasoning]
   training_use:
-  - unknown
+  - process_supervision
+  - evaluation
+  - test_time_compute
   construction_layer:
   - release_audit
   artifacts:
-    paper: https://arxiv.org/abs/2603.17775
+    paper: https://aclanthology.org/2026.acl-long.1376/
     arxiv: https://arxiv.org/abs/2603.17775
-    code: null
-    data: null
-    project: null
+    code: https://github.com/ZJU-REAL/CoVerRL/tree/7cd9822503c684a7539328918bee22f7b59efafb
+    data: https://github.com/ZJU-REAL/CoVerRL/blob/7cd9822503c684a7539328918bee22f7b59efafb/recipe/cover_rl/data/MATH-7500/math7500_train.parquet
+    project: https://zju-real.github.io/CoVerRL/
     huggingface: null
-    doi: null
-    venue: null
+    doi: https://doi.org/10.18653/v1/2026.acl-long.1376
+    venue: https://aclanthology.org/2026.acl-long.1376/
     openreview: null
-    acl: null
+    acl: https://aclanthology.org/2026.acl-long.1376/
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: 7500 MATH-derived public records retaining original ground truth.
+    trace_author: Current policy alternates generator and verifier roles.
+    answer_format: Generator solution, binary verifier critique, and optional self-correction.
+    process_fields: [question, ground_truth, generator_response, majority_pseudo_label, verifier_judgment, self_correction_response]
+    environment_or_substrate: veRL online mathematical-reasoning RL.
+    verifier_or_reward: Majority pseudo-label agreement and role-specific format rewards.
+    terminal_predicate: Agreement with pseudo-label and Correct/Incorrect target, not ground-truth correctness.
   recipe_metadata:
     base_model: unknown
     teacher: unknown
@@ -24493,6 +24500,414 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv link pinned after source review.
+
+- id: depo-2026
+  title: Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward
+  year: 2026
+  venue: ICLR 2026
+  authors: [Xinyu Tang, Zhenduo Zhang, Yurou Liu, Wayne Xin Zhao, Zujie Wen, Zhiqiang Zhang, Jun Zhou]
+  source_role: [construction_recipe, scaling_study]
+  verification_contract: [unknown]
+  supervision_granularity: [answer_level, scalar_reward]
+  domains: [mathematical_reasoning]
+  training_use: [rlvr]
+  construction_layer: [prompt_sourcing, reward_verifier_layer, optimizer_scaffold, scaling_report, release_audit]
+  artifacts: {paper: 'https://openreview.net/forum?id=sruA4AZmZI', arxiv: https://arxiv.org/abs/2509.01321, code: https://github.com/RUCAIBox/DEPO, data: null, project: null, huggingface: null, doi: null, venue: 'https://openreview.net/forum?id=sruA4AZmZI', openreview: 'https://openreview.net/forum?id=sruA4AZmZI', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: Existing RLVR training samples; exact upstream corpus and split manifest are undisclosed.
+    trace_author: Current RL policy during online RLVR.
+    answer_format: Answer-level rollout with verifiable reward; serialized schema is unknown.
+    process_fields: [offline_diversity_signal, offline_influence_signal, offline_difficulty_signal, online_explorability_signal, replay_status]
+    environment_or_substrate: Offline subset selection plus online filtering and replay around RLVR.
+    verifier_or_reward: The paper assumes verifiable reward but does not expose its concrete verifier or error analysis.
+    terminal_predicate: unknown
+  recipe_metadata:
+    base_model: unknown
+    teacher: unknown
+    generator: Current RLVR policy.
+    filtering_rule: Offline diversity, influence, and difficulty selection; online low-explorability filtering with replay of under-explored samples.
+    sampling_protocol: unknown
+    rollout_count: null
+    temperature: null
+    inference_budget: unknown
+    optimizer_or_scaffold: Data-Efficient Policy Optimization combines offline selection, explorability filtering, and replay.
+  audit:
+    source_mixture: Unspecified upstream RLVR pool plus online rollouts and replay.
+    split: unknown
+    decontamination: unknown
+    license: Paper is CC-BY-4.0 on OpenReview; repository/data/trajectory licenses are unknown.
+    lineage: Upstream pool -> offline subset -> online explorability filtering -> replay -> RLVR updates; selected IDs and trajectories are unreleased.
+    known_failure_modes: [Selection may bias coverage, low-explorability filtering can remove rare skills, replay can amplify stale or verifier-gamed samples, DEPO-specific artifacts were not found in the linked repository.]
+    citation_status: verified
+    confidence: medium
+    notes: Official ICLR paper and author-linked repository checked on 2026-07-10; no DEPO-specific implementation, subset, replay log, or trajectory release identified.
+  inclusion_reason: Treats offline curation, online rollout allocation, and replay as a single RLVR data-construction recipe.
+  related: []
+  tags: [rlvr, data-selection, online-filtering, explorability, replay]
+  status: partial
+  category: [rollout_search_test_time_trace_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: A two-stage RLVR recipe that curates an offline subset and dynamically filters or replays online samples using explorability.
+  one_line_summary: A two-stage RLVR recipe that curates an offline subset and dynamically filters or replays online samples using explorability.
+  why_it_matters: It makes selection and rollout allocation auditable parts of RLVR, while preserving missing dynamic-data and verifier evidence.
+  card: cards/recipes/depo.md
+  needs: ['needs_code: release DEPO-specific implementation and configuration', 'needs_data: release selected IDs and selection scores', 'needs_trajectories: release explorability, replay, retained and rejected rollout logs']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-10', verified_by: paper_curator, confidence: medium, notes: Paper and linked repository verified; DEPO-specific artifacts remain unconfirmed.}
+
+- id: prompt-curriculum-learning-2026
+  title: Prompt Curriculum Learning for Efficient LLM Post-Training
+  year: 2026
+  venue: ICLR 2026
+  authors: [Zhaolin Gao, Joongwon Kim, Wen Sun, Thorsten Joachims, Sid Wang, Richard Yuanzhe Pang, Liang Tan]
+  source_role: [construction_recipe, scaling_study]
+  verification_contract: [programmatic]
+  supervision_granularity: [answer_level, scalar_reward]
+  domains: [math, reasoning, rlvr]
+  training_use: [rlvr]
+  construction_layer: [prompt_sourcing, reward_verifier_layer, optimizer_scaffold, scaling_report]
+  artifacts: {paper: https://arxiv.org/abs/2510.01135, arxiv: https://arxiv.org/abs/2510.01135, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2510.01135, venue: 'https://openreview.net/forum?id=zqOCacBD3P', openreview: 'https://openreview.net/forum?id=zqOCacBD3P', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: Online MATH and DeepScaleR candidate prompts; no PCL-specific static subset is released.
+    trace_author: Current policy.
+    answer_format: Prompt, selected-prompt indicator, rollouts, and terminal binary correctness reward; row records are unreleased.
+    process_fields: [candidate_prompt, value_prediction, selection_indicator, response, terminal_reward]
+    environment_or_substrate: Synchronous verl RL with a concurrently refreshed prompt-only value model.
+    verifier_or_reward: math-verify final-answer correctness.
+    terminal_predicate: Extracted final answer passes math-verify.
+  recipe_metadata:
+    base_model: Qwen3-1.7B/4B/8B-Base and Llama-3.2-3B-Instruct in reported experiments.
+    teacher: No external teacher; value model learns from current rollout rewards.
+    generator: Current policy after selection.
+    filtering_rule: Select m prompts nearest threshold tau from k*m value-scored candidates.
+    sampling_protocol: m=512, n=16, k=4, tau=0.5.
+    rollout_count: 16
+    temperature: 0.6
+    inference_budget: 4096 context and generation tokens; reported experimental setting.
+    optimizer_or_scaffold: On-policy GRPO-style updates plus one-step-lagged value-model regression.
+  audit:
+    source_mixture: MATH and DeepScaleR; immutable revisions unknown.
+    split: Selected-prompt logs and overlap audit are unreleased.
+    decontamination: unknown
+    license: unknown
+    lineage: Candidate prompts -> value estimates -> threshold-nearest selection -> rollouts -> binary rewards -> policy and value updates.
+    known_failure_modes: [Selector is trained only on selected prompts, fixed-threshold selection changes curriculum, no official code/data/log/checkpoint release exists.]
+    citation_status: verified
+    confidence: high
+    notes: Official ICLR OpenReview and arXiv checked on 2026-07-10.
+  inclusion_reason: Makes online prompt selection and the retained-versus-filtered distribution explicit in RLVR.
+  related: []
+  tags: [rlvr, curriculum-learning, prompt-selection, value-model]
+  status: partial
+  category: [programmatically_verifiable_outcome_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: PCL uses a value model to select prompts near 50% predicted correctness before generating RL rollouts.
+  one_line_summary: PCL uses a value model to select prompts near 50% predicted correctness before generating RL rollouts.
+  why_it_matters: It separates rollout-free selection from rollout-dependent optimization and records missing selection evidence.
+  card: null
+  needs: ['needs_code: no PCL implementation was located', 'needs_audit: release selected-prompt, prediction, rollout and checkpoint logs']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Accepted paper verified; no PCL artifact release located.}
+
+- id: spar-2025
+  title: 'SPaR: Self-Play with Tree-Search Refinement to Improve Instruction-Following in Large Language Models'
+  year: 2025
+  venue: ICLR 2025
+  authors: [Jiale Cheng, Xiao Liu, Cunxiang Wang, Xiaotao Gu, Yida Lu, Dan Zhang, Yuxiao Dong, Jie Tang, Hongning Wang, Minlie Huang]
+  source_role: [data_release, construction_recipe, process_supervision]
+  verification_contract: [judgment_required]
+  supervision_granularity: [answer_level, pairwise_preference]
+  domains: [instruction_following, alignment]
+  training_use: [sft, preference_learning]
+  construction_layer: [prompt_sourcing, trace_writing, search_substrate, reward_verifier_layer, optimizer_scaffold]
+  artifacts: {paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2412.11605, code: https://github.com/thu-coai/SPaR, data: https://huggingface.co/datasets/CCCCCC/SPaR, project: null, huggingface: https://huggingface.co/datasets/CCCCCC/SPaR, doi: https://doi.org/10.48550/arXiv.2412.11605, venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html, openreview: 'https://openreview.net/forum?id=9chRqsPOGL', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object: {prompt_source: Infinity-Instruct seeds filtered and LLM-complexified, trace_author: 'GPT-4o-mini bootstrap then evolving actor/refiner', answer_format: 'messages with chosen and rejected responses', process_fields: [actor_response, refiner_judgment, refinement, chosen, rejected, iteration], environment_or_substrate: 'Iterative actor-refiner BFS/DFS tree-search self-play', verifier_or_reward: 'LLM refiner judgment with majority voting', terminal_predicate: 'Refiner-judged refinement becomes chosen over negative output'}
+  recipe_metadata: {base_model: 'LLaMA3, GLM-4 and Mistral reported', teacher: GPT-4o-mini, generator: 'current actor/refiner', filtering_rule: 'retain refiner-negative actor outputs and refiner-judged refinements', sampling_protocol: '3 iterations of 10k prompts; tree budget 15', rollout_count: null, temperature: null, inference_budget: 'tree budget 15', optimizer_or_scaffold: 'Actor DPO plus refiner RFT'}
+  audit: {source_mixture: 'Infinity-Instruct, GPT-4o-mini and self-play outputs', split: 'HF revision e85c4166c0142573204218eae3f215478b3ebacb has 109840 train rows', decontamination: unknown, license: 'Code and HF data Apache-2.0; upstream rights unresolved', lineage: 'Seeds -> complexification -> bootstrap -> refiner judged tree refinements -> preference pairs', known_failure_modes: ['LLM judge can be biased or reward-hacked', 'Complete discarded branches and search trees are not released', 'Source revisions and contamination audit are not pinned'], citation_status: verified, confidence: high, notes: 'Official ICLR, code and HF data checked on 2026-07-10.'}
+  inclusion_reason: Open release of tree-refined chosen/rejected pairs whose label is explicitly a mutable LLM judgment.
+  related: []
+  tags: [self-play, tree-search, refinement, dpo, preference-data, llm-judge]
+  status: partial
+  category: [preference_reward_feedback_data, process_trace_supervision_data, rollout_search_test_time_trace_data, data_construction_open_release_recipes]
+  one_line: SPaR turns refiner-judged instruction-following failures into tree-search-refined preference pairs.
+  one_line_summary: SPaR turns refiner-judged instruction-following failures into tree-search-refined preference pairs.
+  why_it_matters: It makes the mutable judge and hidden discarded branches first-class data-audit concerns.
+  card: null
+  needs: ['needs_audit: publish tree and discarded-branch manifests', 'needs_audit: assess refiner bias, calibration and reward hacking']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official paper, Apache code and HF data verified.}
+
+- id: learning-to-reason-for-factuality-2026
+  title: Learning to Reason for Factuality
+  year: 2026
+  venue: ICML 2026
+  authors: [Xilun Chen, Ilia Kulikov, Vincent-Pierre Berges, Barlas Oğuz, Rulin Shao, Gargi Ghosh, Jason Weston, Wen-tau Yih]
+  source_role: [data_release, construction_recipe, verifier_reward]
+  verification_contract: [mixed, judgment_required]
+  supervision_granularity: [answer_level, pairwise_preference, scalar_reward]
+  domains: [factuality, long-form-generation, knowledge, reasoning]
+  training_use: [sft, preference_learning]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, optimizer_scaffold]
+  artifacts: {paper: https://arxiv.org/abs/2508.05618, arxiv: https://arxiv.org/abs/2508.05618, code: https://github.com/facebookresearch/factual_reasoning, data: https://huggingface.co/datasets/facebook/factual_reasoning, project: https://github.com/facebookresearch/factual_reasoning, huggingface: https://huggingface.co/datasets/facebook/factual_reasoning, doi: https://doi.org/10.48550/arXiv.2508.05618, venue: 'https://openreview.net/forum?id=byZ7DoyDNd', openreview: 'https://openreview.net/forum?id=byZ7DoyDNd', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object: {prompt_source: '7k Llama-4 synthetic factual prompts grounded by WildChat and LongFact non-test demonstrations', trace_author: 'Llama 3.3 responses', answer_format: 'SFT Long-CoT or DPO chosen/rejected pair with margin metadata', process_fields: [prompt, response, factual_precision, supported_claims, relevance, chosen, rejected, margin], environment_or_substrate: 'Offline SFT/DPO and online GRPO with separate reward server', verifier_or_reward: 'ScalableVeriScore claim extraction/retrieval plus LLM relevance judge', terminal_predicate: 'Combined factual precision, detail and relevance score'}
+  recipe_metadata: {base_model: Llama-3.1-8B-Instruct config, teacher: 'Llama-4-Maverick prompts; Llama 3.3 responses', generator: '10 candidate responses per prompt or current GRPO policy', filtering_rule: 'Highest precision SFT; DPO margin >.1 and length difference <=.1', sampling_protocol: '3k SFT prompts, 4k RL prompts, 3.7k DPO pairs', rollout_count: 4, temperature: 1.0, inference_budget: '4 rollouts; max_tokens 2048', optimizer_or_scaffold: 'SFT, DPO, GRPO'}
+  audit: {source_mixture: 'WildChat, LongFact, Llama outputs and retrieved evidence', split: 'SFT/DPO released; GRPO trajectories not released', decontamination: 'LongFact is non-test; full benchmark/retrieval overlap audit unknown', license: 'CC-BY-NC-4.0 plus Llama and third-party obligations', lineage: 'Grounding prompts -> synthetic prompts -> candidates -> VeriScore selection -> SFT/DPO; fresh GRPO rollouts unreleased', known_failure_modes: ['LLM claim verification can err or be hacked', 'Candidate pools, retrieval evidence and online rollouts are missing', 'Commercial reuse is constrained'], citation_status: verified, confidence: high, notes: 'Official ICML, Meta code, data and verifier checked on 2026-07-10.'}
+  inclusion_reason: Open factuality recipe exposing offline selected data while retaining the boundary to unreleased online reward evidence.
+  related: []
+  tags: [factuality, long-cot, veriscore, dpo, grpo]
+  status: partial
+  category: [instruction_demonstration_rationale_data, preference_reward_feedback_data, judgment_rubric_domain_expert_data, data_construction_open_release_recipes]
+  one_line: Releases factual-reasoning SFT/DPO data while online GRPO is scored by a mixed retrieval and LLM-judge reward.
+  one_line_summary: Releases factual-reasoning SFT/DPO data while online GRPO is scored by a mixed retrieval and LLM-judge reward.
+  why_it_matters: Shows how detail, relevance and verifier error change factuality data beyond a correct/incorrect label.
+  card: null
+  needs: ['needs_rollout_release: publish GRPO trajectories and reward logs', 'needs_verifier_audit: pin retrieval, prompts and error analysis', 'needs_license_review: resolve CC-BY-NC and model/source obligations']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official paper, code, data and companion verifier verified.}
+
+- id: nemotron-post-training-dataset-v2-2025
+  title: Nemotron-Post-Training-Dataset-v2
+  year: 2025
+  venue: arXiv
+  authors: [Dhruv Nathawani, Shuoyang Ding, Vitaly Lavrukhin, Igor Gitman, Somshubra Majumdar, Evelina Bakhturina, Boris Ginsburg, Jane Polak Scowcroft]
+  source_role: [data_release, construction_recipe, verifier_reward]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level]
+  domains: [math, code, science, chat, multilingual, instruction_following]
+  training_use: [sft]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, optimizer_scaffold]
+  artifacts: {paper: https://arxiv.org/abs/2508.14444, arxiv: https://arxiv.org/abs/2508.14444, code: null, data: https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2, project: null, huggingface: https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2, doi: https://doi.org/10.48550/arXiv.2508.14444, venue: null, openreview: null, acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object: {prompt_source: 'Public/open or synthetic prompts; exact per-row source is gated', trace_author: 'DeepSeek-R1-0528 and Qwen model family outputs', answer_format: 'uuid, license, generator, version, category, reasoning and messages', process_fields: [uuid, license, generator, version, category, reasoning, messages], environment_or_substrate: 'Mixed multilingual post-training release', verifier_or_reward: 'Subset-specific tool rules, IFEval rules, guards and reward models; outcomes absent from public schema', terminal_predicate: unknown}
+  recipe_metadata: {base_model: NVIDIA-Nemotron-Nano-9B-v2-Base, teacher: 'Named DeepSeek and Qwen models', generator: synthetic generation by named models, filtering_rule: 'Quality/complexity, syntax and target-language filters', sampling_protocol: 'v2.0, released 2025-08-20; revision 5c89e01dd720ae0f4058445ed49c5fb68a03c76e', rollout_count: null, temperature: null, inference_budget: null, optimizer_or_scaffold: 'Report covers SFT/GRPO/DPO/RLHF but rows do not map to stages'}
+  audit: {source_mixture: 'About 6.34M math/code/STEM/chat/multilingual rows', split: 'Nine category/language splits without train/eval or stage mapping', decontamination: unknown, license: 'CC-BY-4.0 repository claim with ODC-BY, CC-BY-SA and model-license exceptions', lineage: 'Prompts -> filtering/generation -> subset-specific quality control -> v2 parquet', known_failure_modes: ['Gated files prevent full inspection', 'Schema lacks reward, rejected rollout and training-stage fields', 'Per-row license exceptions need audit'], citation_status: verified, confidence: high, notes: 'Official card, schema, revision metadata and report checked on 2026-07-10.'}
+  inclusion_reason: Versioned multilingual release illustrating the difference between release-level metadata and auditable RL lineage.
+  related: []
+  tags: [nemotron, post-training, multilingual, synthetic-data, gated, license]
+  status: partial
+  category: [instruction_sft_and_distillation_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: A gated 6.34M-row multilingual SFT-style release with generator and license fields but no row-level RL/verifier provenance.
+  one_line_summary: A gated 6.34M-row multilingual SFT-style release with generator and license fields but no row-level RL/verifier provenance.
+  why_it_matters: Demonstrates why a large post-training release must not be inferred to be a complete RL or preference corpus.
+  card: null
+  needs: ['needs_access: pin accessible file revisions and checksums', 'needs_audit: release row-to-source, reward, stage and license provenance']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official metadata verified; full parquet is gated.}
+
+- id: nemotron-cascade-2-2026
+  title: 'Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation'
+  year: 2026
+  venue: NVIDIA Technical Report
+  authors: [Zhuolin Yang, Zihan Liu, Yang Chen, Wenliang Dai, Boxin Wang, Sheng-Chieh Lin, Yangyi Chen, Wei Ping]
+  source_role: [model_report, data_release, construction_recipe, verifier_reward, agent_environment, scaling_study]
+  verification_contract: [programmatic, mixed]
+  supervision_granularity: [answer_level, state_action_level, full_episode, scalar_reward]
+  domains: [math, code, science, instruction_following, safety, agentic, software_engineering, terminal]
+  training_use: [sft, distillation, rlvr, preference_learning, agent_training]
+  construction_layer: [prompt_sourcing, trace_writing, search_substrate, self_play_anchor, reward_verifier_layer, optimizer_scaffold, frontier_pipeline, scaling_report, release_audit]
+  artifacts: {paper: https://arxiv.org/abs/2603.19220, arxiv: https://arxiv.org/abs/2603.19220, code: null, data: https://huggingface.co/datasets/nvidia/Nemotron-Cascade-2-SFT-Data, project: https://research.nvidia.com/labs/nemotron/nemotron-cascade-2/, huggingface: https://huggingface.co/nvidia/Nemotron-Cascade-2-30B-A3B, doi: https://doi.org/10.48550/arXiv.2603.19220, venue: https://research.nvidia.com/labs/nemotron/nemotron-cascade-2/, openreview: null, acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object: {prompt_source: 'Eight-domain SFT and RL prompt releases', trace_author: 'Named teachers for SFT; current policy for on-policy RL', answer_format: 'SFT messages and subset-specific RL prompts/constraints/metadata', process_fields: [domain, source, messages, tool_context, ground_truth, constraints, pass_rate], environment_or_substrate: 'Cascade RL, Docker terminal/SWE and agent scaffolds', verifier_or_reward: 'Rules/tests plus generative reward and LLM judges by stage', terminal_predicate: 'Stage dependent programmatic, judge, reward or teacher-likelihood signal'}
+  recipe_metadata: {base_model: Nemotron-3-Nano-30B-A3B-Base, teacher: 'Domain-specific teachers and intermediate Cascade checkpoints', generator: 'Teachers for SFT; current policy for GRPO; execution feedback for agents', filtering_rule: 'Dynamic all-pass/all-fail filtering; domain-specific hard/easy filtering', sampling_protocol: 'Most RL stages use 16 rollouts per prompt; agentic SWE uses 64', rollout_count: null, temperature: 1.0, inference_budget: 'Stage-specific through 256K context and 200 turns', optimizer_or_scaffold: 'Sequential SFT -> Cascade RL -> MOPD -> specialization'}
+  audit: {source_mixture: 'SFT card counts ~25.8M while viewer headline ~9.32M; RL card claims 73809 rows', split: 'Train subsets; no immutable end-to-end manifest', decontamination: unknown, license: 'NVIDIA Open Model License for SFT/model; ODC-By for RL data', lineage: 'Base -> multi-source SFT -> sequential RL -> intermediate teachers -> MOPD -> final weights', known_failure_modes: ['No full rollout groups, reward logs or stage checkpoints', 'Dynamic filtering changes effective distribution', 'Mixed verifier contracts and unpinned agent environments remain risky'], citation_status: verified, confidence: high, notes: 'Official project, paper, weights and SFT/RL cards checked on 2026-07-10.'}
+  inclusion_reason: Complete open stack that makes data stages, filtering and mixed verification visible while preserving reproducibility gaps.
+  related: []
+  tags: [nemotron, cascade-rl, on-policy-distillation, rlvr, agentic, multi-domain]
+  status: partial
+  category: [instruction_demonstration_rationale_data, preference_reward_feedback_data, programmatically_verifiable_outcome_data, environment_agent_trajectory_data, data_construction_open_release_recipes]
+  one_line: Releases weights plus SFT and RL prompt data for a sequential multi-domain Cascade-RL pipeline with mixed feedback contracts.
+  one_line_summary: Releases weights plus SFT and RL prompt data for a sequential multi-domain Cascade-RL pipeline with mixed feedback contracts.
+  why_it_matters: Shows that a released RL dataset can be only prompt/metadata rather than the online training evidence.
+  card: null
+  needs: ['needs_snapshot: pin model and dataset revisions and reconcile counts', 'needs_rollout_release: publish rollout, reward, rejected and checkpoint artifacts', 'needs_decontamination: document cross-domain overlap controls']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official paper, project, model and data releases verified.}
+
+- id: womd-reasoning-2025
+  title: 'WOMD-Reasoning: A Large-Scale Dataset for Interaction Reasoning in Driving'
+  year: 2025
+  venue: ICML 2025
+  authors: [Yiheng Li, Cunxin Fan, Chongjian Ge, Seth Z. Zhao, Chenran Li, Chenfeng Xu, Huaxiu Yao, Masayoshi Tomizuka, Bolei Zhou, Chen Tang, Mingyu Ding, Wei Zhan]
+  source_role: [data_release, benchmark, construction_recipe]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level]
+  domains: [autonomous_driving, motion, traffic_interaction, intention_reasoning, multimodal]
+  training_use: [sft, evaluation]
+  construction_layer: [prompt_sourcing, trace_writing, release_audit]
+  artifacts: {paper: https://proceedings.mlr.press/v267/li25l.html, arxiv: https://arxiv.org/abs/2407.04281, code: https://github.com/yhli123/WOMD-Reasoning, data: https://waymo.com/open/download/, project: https://github.com/yhli123/WOMD-Reasoning, huggingface: null, doi: null, venue: https://proceedings.mlr.press/v267/li25l.html, openreview: 'https://openreview.net/forum?id=lTBq5LOUKC', acl: null, pmlr: https://proceedings.mlr.press/v267/li25l.html, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: WOMD scenes with map, traffic signals, agent motion and future trajectories.
+    trace_author: Rule translator produces factual context; Azure Azure GPT-4-Turbo produces interaction and intention Q&As.
+    answer_format: Scene JSON with scenario/agent IDs, substituted Q&A IDs, times, and environment/ego/surrounding/interaction Q&As.
+    process_fields: [scene_id, ego_agent_id, surrounding_agent_ids, substituted_qa_ids, current_time, future_time, question, answer]
+    environment_or_substrate: WOMD multi-agent driving scenes with optional MetaDrive visual rendering.
+    verifier_or_reward: Rule-grounded motion/map facts; no released per-item verifier for LLM-authored interaction narratives.
+    terminal_predicate: No universal programmatic predicate; paper reports preliminary human evaluation around 90% accuracy.
+  recipe_metadata:
+    base_model: Azure GPT-4-Turbo for construction; LLaVA-v1.5-7B/Motion-LLaVA experiments.
+    teacher: Azure Azure GPT-4-Turbo.
+    generator: Rule conversion followed by prompted LLM generation.
+    filtering_rule: Objects-of-Interest and interaction-relevant scene selection plus translator heuristics; exact rejection policy unknown.
+    sampling_protocol: About 63k scenes and 2.94M Q&As, including 409k interaction/intention Q&As.
+    rollout_count: null
+    temperature: null
+    inference_budget: Undisclosed LLM API settings.
+    optimizer_or_scaffold: Offline annotation and Motion-LLaVA SFT.
+  audit:
+    source_mixture: WOMD fields -> rule context -> LLM Q&As; visual extension uses MetaDrive.
+    split: Repository names training and validation-interactive annotations; Waymo archive revision is gated.
+    decontamination: unknown
+    license: UC Berkeley research/non-profit repository license plus Waymo terms; commercial reuse requires separate review.
+    lineage: WOMD scene/map/trajectory/future state -> rule language -> LLM Q&A -> optional rendering and SFT.
+    known_failure_modes: [LLM narratives can hallucinate, future trajectory creates hindsight leakage, ID substitution does not remove source rights/privacy obligations, generation/archive revisions are unpinned.]
+    citation_status: verified
+    confidence: medium
+    notes: Official ICML/PMLR, repository, translator and gated Waymo endpoint checked on 2026-07-10.
+  inclusion_reason: Preserves scene-level lineage from driving state to deterministic grounding and generated interaction language.
+  related: []
+  tags: [womd, waymo, driving, interaction-reasoning, intention-reasoning, synthetic-qa]
+  status: partial
+  category: [instruction_demonstration_rationale_data, environment_agent_trajectory_data, data_construction_open_release_recipes, benchmarks_evaluation_surfaces]
+  one_line: WOMD-Reasoning converts Waymo motion scenes into rule-grounded, LLM-authored driving Q&As that include future-trajectory context.
+  one_line_summary: WOMD-Reasoning converts Waymo motion scenes into rule-grounded, LLM-authored driving Q&As that include future-trajectory context.
+  why_it_matters: Separates deterministic scene grounding from generated explanatory and hindsight-sensitive supervision.
+  card: null
+  needs: ['needs_snapshot: pin Waymo archive and split manifest', 'needs_generation_audit: pin API prompts/settings and failures', 'needs_causality_audit: label future-dependent Q&As']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: medium, notes: Official publication, repository and official gated data endpoint verified.}
+
+- id: guided-rest-2025
+  title: 'Guided ReST: Reinforced Self-Training for Large Language Models'
+  year: 2025
+  venue: NeurIPS 2025
+  authors: [unknown]
+  source_role: [construction_recipe, scaling_study]
+  verification_contract: [judgment_required]
+  supervision_granularity: [answer_level, scalar_reward]
+  domains: [general_reasoning, post-training]
+  training_use: [sft, distillation, preference_learning]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: https://arxiv.org/abs/2502.04327, arxiv: https://arxiv.org/abs/2502.04327, code: https://github.com/Meta-Llama/guided-rest, data: null, project: null, huggingface: null, doi: null, venue: https://neurips.cc/, openreview: null, acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object: {prompt_source: 'Public HF datasets loaded by scripts; revisions need pinning', trace_author: 'Current policy with training-time guided signals', answer_format: 'Prompt, response, score and guided information; no frozen trace corpus', process_fields: [prompt, response, reward, subgoal_guidance, reference_code_guidance], environment_or_substrate: 'Iterative reinforced self-training', verifier_or_reward: 'Task-specific score; retain score > 0', terminal_predicate: 'Score greater than zero'}
+  recipe_metadata: {base_model: unknown, teacher: 'Subgoals and reference-code signals are training-only privileged information', generator: current policy, filtering_rule: 'Keep successful positive-score responses', sampling_protocol: 'Exact task mix, revisions, rollouts and guidance mode need pinning', rollout_count: null, temperature: null, inference_budget: unknown, optimizer_or_scaffold: 'Guided reinforced self-training'}
+  audit: {source_mixture: 'External prompt datasets plus online policy output', split: 'No frozen generated-data split', decontamination: unknown, license: 'Apache-2.0 repo; upstream prompt data requires review', lineage: 'Prompt datasets -> guided policy samples -> positive-score buffer -> self-training', known_failure_modes: ['Guidance can leak oracle structure', 'Positive-score filtering can reward shortcuts', 'No frozen buffers, traces or checkpoints'], citation_status: verified, confidence: medium, notes: 'Official recipe code verified; generated corpus was not located.'}
+  inclusion_reason: Explicitly records privileged guidance and acceptance filtering in reinforced self-training.
+  related: []
+  tags: [reinforced-self-training, subgoals, reference-code, reward-filtering]
+  status: partial
+  category: [instruction_demonstration_rationale_data, preference_reward_feedback_data, data_construction_open_release_recipes]
+  one_line: A guided self-training recipe using positive-score samples and training-time subgoal or reference-code signals.
+  one_line_summary: A guided self-training recipe using positive-score samples and training-time subgoal or reference-code signals.
+  why_it_matters: Separates deployable signals from privileged training guidance and unreleased selection buffers.
+  card: null
+  needs: ['needs_snapshot: release buffers, rollouts and source revisions', 'needs_leakage_audit: document privileged guidance boundary']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: medium, notes: Recipe code verified; frozen generated data absent.}
+
+- id: nemotron-math-proofs-v2-2026
+  title: Nemotron-Math-Proofs-v2
+  year: 2026
+  venue: NVIDIA Hugging Face dataset release
+  authors: [NVIDIA Corporation]
+  source_role: [data_release, process_supervision, construction_recipe]
+  verification_contract: [judgment_required]
+  supervision_granularity: [answer_level, scalar_reward]
+  domains: [math, mathematical_proofs]
+  training_use: [sft, evaluation]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, release_audit]
+  artifacts: {paper: null, arxiv: null, code: null, data: https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2/resolve/7665d7f1d006fd89aa852a9dab8060c60b63f814/data/train.jsonl, project: null, huggingface: https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2, doi: null, venue: null, openreview: null, acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object: {prompt_source: 'AoPS-derived subset of Nemotron-Math-Proofs-v1', trace_author: 'DeepSeek-V4-Pro Max inference mode', answer_format: 'Two-turn proof, verification or meta-verification conversations', process_fields: [messages, problem, subset, uuid], environment_or_substrate: 'Offline proof trace release', verifier_or_reward: 'Natural-language verification with embedded boxed 0/0.5/1 judgments', terminal_predicate: unknown}
+  recipe_metadata: {base_model: unknown, teacher: DeepSeek-V4-Pro, generator: DeepSeek-V4-Pro, filtering_rule: unknown, sampling_protocol: 'DeepSeekMath-V2-style prompting', rollout_count: null, temperature: null, inference_budget: unknown, optimizer_or_scaffold: unknown}
+  audit: {source_mixture: 'AoPS seed problems plus synthetic proof and evaluation traces', split: 'Train only; card declares 82737 records but Dataset Server partial conversion exposes 23799', decontamination: unknown, license: 'CC-BY-4.0 release claim; AoPS source rights unknown', lineage: 'v1 AoPS subset -> DeepSeek proof/verification/meta-verification; replaces only Cascade-2 natural-language proof subset', known_failure_modes: ['No formal verifier', 'Scores embedded in text', 'Full count not independently enumerable', 'Filtering and failure prevalence unknown'], citation_status: verified, confidence: medium, notes: 'Official release and samples inspected at revision 7665d7f1d006fd89aa852a9dab8060c60b63f814.'}
+  inclusion_reason: Open proof, verification and meta-verification traces with explicit lineage and release completeness limits.
+  related: []
+  tags: [math, proofs, aops, verification-traces, meta-verification]
+  status: partial
+  category: [instruction_demonstration_rationale_data, process_trace_supervision_data, data_construction_open_release_recipes]
+  one_line: NVIDIA release of AoPS-derived DeepSeek proof, verification and meta-verification traces.
+  one_line_summary: NVIDIA release of AoPS-derived DeepSeek proof, verification and meta-verification traces.
+  why_it_matters: Makes natural-language self-verification and partial release visibility auditable.
+  card: null
+  needs: ['needs_audit: reconcile full count with partial Dataset Server conversion', 'needs_metadata: quantify scores and failed traces', 'needs_license: verify AoPS provenance']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: medium, notes: Public data artifact and sample schema verified.}
+
+- id: tinythinker-2025
+  title: 'TinyThinker: Distilling Reasoning through Coarse-to-Fine Knowledge Internalization with Self-Reflection'
+  year: 2025
+  venue: NAACL 2025
+  authors: [Shengmin Piao, Sanghyun Park]
+  source_role: [construction_recipe, process_supervision, verifier_reward]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, step_level, pairwise_preference]
+  domains: [commonsense_reasoning, multiple_choice_qa, knowledge_intensive_reasoning]
+  training_use: [sft, distillation, preference_learning, process_supervision]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, optimizer_scaffold]
+  artifacts: {paper: https://aclanthology.org/2025.naacl-long.309/, arxiv: https://arxiv.org/abs/2412.08024, code: https://github.com/shengminp/TinyThinker, data: null, project: https://github.com/shengminp/TinyThinker, huggingface: null, doi: https://doi.org/10.18653/v1/2025.naacl-long.309, venue: https://aclanthology.org/2025.naacl-long.309/, openreview: null, acl: https://aclanthology.org/2025.naacl-long.309/, pmlr: null, cvf: null, bibtex: null}
+  data_object: {prompt_source: 'CommonsenseQA, OpenBookQA and StrategyQA', trace_author: 'GPT-4o then current T5 student', answer_format: 'Recall, Analyze and Summary stages; selected DPO pairs', process_fields: [question, options, teacher_knowledge, student_candidate, terminal_correctness, chosen, rejected], environment_or_substrate: 'Offline T5 SFT and iterative DPO', verifier_or_reward: 'Final answer matches benchmark ground truth', terminal_predicate: 'Parsed option/yes-no equals benchmark label'}
+  recipe_metadata: {base_model: 'T5-Small/Base/Large', teacher: gpt-4o-2024-05-13, generator: 'GPT-4o then student', filtering_rule: 'Deduplicate targets; require preferred-correct and rejected-incorrect candidates', sampling_protocol: '4-8 teacher processes, 10 DPO generations, 5 DPO iterations', rollout_count: null, temperature: null, inference_budget: 'Teacher max 256 tokens', optimizer_or_scaffold: 'Recall -> Analyze -> Summarize SFT then DPO plus NLL'}
+  audit: {source_mixture: 'Benchmark prompts, GPT-4o outputs and self-generated candidates', split: 'Exact split files and final corpus absent', decontamination: unknown, license: 'MIT applies to code only; benchmark/model/output terms require review', lineage: 'Questions -> GPT-4o staged targets -> student candidates -> terminal matching -> DPO pairs', known_failure_modes: ['Terminal correctness does not establish process truth', 'Teacher errors cascade', 'Candidate pools, pairs and checkpoints unreleased'], citation_status: verified, confidence: high, notes: 'Official NAACL paper and MIT code verified; final generated data absent.'}
+  inclusion_reason: Separates teacher process targets from self-reflection preference construction and its weak terminal filter.
+  related: []
+  tags: [reasoning-distillation, self-reflection, dpo, gpt-4o, t5]
+  status: partial
+  category: [instruction_demonstration_rationale_data, process_trace_supervision_data, preference_reward_feedback_data, data_construction_open_release_recipes]
+  one_line: TinyThinker stages teacher recall/analyze/summary targets and terminal-answer-selected student DPO pairs without releasing its final corpora.
+  one_line_summary: TinyThinker stages teacher recall/analyze/summary targets and terminal-answer-selected student DPO pairs without releasing its final corpora.
+  why_it_matters: Shows that terminal-answer preference is not independently verified process supervision.
+  card: null
+  needs: ['needs_data_release: publish SFT/DPO data and candidate pools', 'needs_split_audit: publish source revisions and split files']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official paper and code verified; generated corpora are not released.}
+
+- id: dart-math-2024
+  title: 'DART-Math: Difficulty-Aware Rejection Tuning for Mathematical Problem-Solving'
+  year: 2024
+  venue: NeurIPS 2024
+  authors: [Yuxuan Tong, Xiwen Zhang, Rui Wang, Ruidong Wu, Junxian He]
+  source_role: [data_release, construction_recipe, verifier_reward]
+  verification_contract: [programmatic]
+  supervision_granularity: [answer_level]
+  domains: [math, reasoning]
+  training_use: [sft]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, optimizer_scaffold]
+  artifacts: {paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2407.13690, code: https://github.com/hkust-nlp/dart-math, data: https://huggingface.co/datasets/hkust-nlp/dart-math-hard, project: null, huggingface: https://huggingface.co/collections/hkust-nlp/dart-math, doi: https://doi.org/10.52202/079017-0251, venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html, openreview: null, acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: MATH and GSM8K training queries plus original examples.
+    trace_author: DeepSeekMath-7B-RL generates natural-language CoTs.
+    answer_format: Uniform and Hard release query/response pairs; supplementary pools expose correctness and sampling metadata.
+    process_fields: [query, response, answer_correctness, source_metadata, sampling_counts, pass_rate]
+    environment_or_substrate: Offline difficulty-aware rejection sampling followed by instruction tuning.
+    verifier_or_reward: Regex extraction and SymPy symbolic calculation.
+    terminal_predicate: Final answer is marked correct by the extraction and symbolic/equality judgment.
+  recipe_metadata:
+    base_model: Mistral-7B, DeepSeekMath-7B, Llama3-8B and Llama3-70B variants.
+    teacher: DeepSeekMath-7B-RL.
+    generator: DeepSeekMath-7B-RL via vLLM.
+    filtering_rule: Retain answer-correct responses; Prop2Diff allocates targets by observed fail rate.
+    sampling_protocol: k_u=40 and k_p=192 in final data; max 2048 tokens, top-p .95, temperature 1.6.
+    rollout_count: null
+    temperature: 1.6
+    inference_budget: 2048
+    optimizer_or_scaffold: Standard instruction tuning.
+  audit:
+    source_mixture: MATH/GSM8K training examples plus verified synthetic CoTs.
+    split: Uniform 590705 and Hard 585392 current viewer rows; immutable revisions need pinning.
+    decontamination: No independent semantic/pretraining audit reported.
+    license: Repo and cards display MIT; upstream compatibility requires review.
+    lineage: Training prompts -> sampled CoTs -> regex/SymPy acceptance -> difficulty allocation -> Uniform/Hard SFT releases.
+    known_failure_modes: [Final-answer correctness does not prove CoT validity, difficulty is generator-dependent, some GSM8K labels are erroneous, complete rejected pool is unconfirmed.]
+    citation_status: verified
+    confidence: high
+    notes: Official proceedings, repository, collection and dataset cards checked on 2026-07-10.
+  inclusion_reason: Open adaptive rejection-tuning release with verifier, allocation, accepted-trace and source metadata evidence.
+  related: []
+  tags: [math, synthetic-cot, rejection-sampling, difficulty-aware, sympy-verifier]
+  status: partial
+  category: [programmatically_verifiable_outcome_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: DART-Math allocates verified synthetic CoTs toward difficult MATH and GSM8K prompts using regex/SymPy answer checks.
+  one_line_summary: DART-Math allocates verified synthetic CoTs toward difficult MATH and GSM8K prompts using regex/SymPy answer checks.
+  why_it_matters: It exposes how verifier-filtered acceptance, estimated difficulty, and SFT distribution interact.
+  card: null
+  needs: ['needs_snapshot: pin HF revisions and final-row provenance', 'needs_audit: clarify complete rejected-trace availability', 'needs_decontamination: publish overlap controls']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official paper, code, data and accepted-response pool verified.}
 - id: a-survey-of-reinforcement-learning-from-human-feedback-2023
   title: A Survey of Reinforcement Learning from Human Feedback
   year: 2023
@@ -25197,7 +25612,11 @@
   - self_play_anchor
   - optimizer_scaffold
   - scaling_report
-  - release_audit
+  - prompt_sourcing
+  - trace_writing
+  - self_play_anchor
+  - reward_verifier_layer
+  - optimizer_scaffold
   artifacts:
     paper: https://openreview.net/forum?id=D6PwC6Xogv
     arxiv: https://arxiv.org/abs/2505.16322
@@ -25208,7 +25627,7 @@
     doi: null
     venue: https://openreview.net/forum?id=D6PwC6Xogv
     openreview: https://openreview.net/forum?id=D6PwC6Xogv
-    acl: null
+    acl: https://aclanthology.org/2026.acl-long.1376/
     pmlr: null
     cvf: null
     bibtex: null

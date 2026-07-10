@@ -694,6 +694,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
+- 🚀 **[Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation](https://arxiv.org/abs/2603.19220)**
+  <sub>2026 · NVIDIA Technical Report · 🚀 model report · 📦 data release · programmatic · mixed · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2603.19220) · [Venue](https://research.nvidia.com/labs/nemotron/nemotron-cascade-2/) · [DOI](https://doi.org/10.48550/arXiv.2603.19220) · [Data](https://huggingface.co/datasets/nvidia/Nemotron-Cascade-2-SFT-Data) · [HF](https://huggingface.co/nvidia/Nemotron-Cascade-2-30B-A3B)
+  _Data object:_ SFT messages and subset-specific RL prompts/constraints/metadata; process: domain, source, messages; Cascade RL, Docker terminal/SWE and agent scaffolds
+  _Feedback / verifier:_ Rules/tests plus generative reward and LLM judges by stage
+  _Recipe signal:_ teacher: Domain-specific teachers and intermediate Cascade checkpoints; generator: Teachers for SFT; current policy for GRPO; execution feedback for agents
+  _Audit focus:_ No full rollout groups, reward logs or stage checkpoints, Dynamic filtering changes effective distribution, Mixed verifier contracts and unpinned agent environments remain risky
+  _Why it matters:_ Shows that a released RL dataset can be only prompt/metadata rather than the online training evidence.
+- 📦 **[WOMD-Reasoning: A Large-Scale Dataset for Interaction Reasoning in Driving](https://proceedings.mlr.press/v267/li25l.html)**
+  <sub>2025 · ICML 2025 · 📦 data release · 🧰 benchmark · mixed · sft · evaluation · L3_summary_ready</sub>
+  [Paper](https://proceedings.mlr.press/v267/li25l.html) · [arXiv](https://arxiv.org/abs/2407.04281) · [OpenReview](https://openreview.net/forum?id=lTBq5LOUKC) · [Code](https://github.com/yhli123/WOMD-Reasoning) · [Data](https://waymo.com/open/download/)
+  _Data object:_ Scene JSON with scenario/agent IDs, substituted Q&A IDs, times, and environment/ego/surrounding/interaction Q&As.; process: scene id, ego agent id, surrounding agent ids; WOMD multi-agent driving scenes with optional MetaDrive visual rendering.
+  _Feedback / verifier:_ Rule-grounded motion/map facts; no released per-item verifier for LLM-authored interaction narratives.
+  _Recipe signal:_ teacher: Azure Azure GPT-4-Turbo.; generator: Rule conversion followed by prompted LLM generation.
+  _Audit focus:_ LLM narratives can hallucinate, future trajectory creates hindsight leakage, ID substitution does not remove source rights/privacy obligations
+  _Why it matters:_ Separates deterministic scene grounding from generated explanatory and hindsight-sensitive supervision.
 - 📄 **Terminal-Bench: A benchmark and task environment for terminal agents**
   <sub>2026 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search

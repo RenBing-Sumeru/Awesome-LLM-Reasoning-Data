@@ -4,10 +4,10 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 
 | Type | Count | Use it for |
 |---|---:|---|
-| [Release cards](#release-cards) | 22 | datasets, trace releases, documentation foundations, and reusable data artifacts |
+| [Release cards](#release-cards) | 27 | datasets, trace releases, documentation foundations, and reusable data artifacts |
 | [Verifier cards](#verifier-cards) | 16 | verifiers, rewards, process supervision, judges, and rubrics |
 | [Agent/environment cards](#agentenvironment-cards) | 16 | tool, web, app, OS, and SWE trajectories |
-| [Recipe cards](#recipe-cards) | 29 | construction recipes, model reports, and training pipelines |
+| [Recipe cards](#recipe-cards) | 31 | construction recipes, model reports, and training pipelines |
 | [Benchmark cards](#benchmark-cards) | 11 | evaluation surfaces and benchmark ledgers |
 | [Failure cards](#failure-cards) | 3 | contamination, leakage, reward hacking, and verifier attacks |
 
@@ -19,13 +19,17 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models](releases/big_math.md) - Big-Math filters heterogeneous public math sources into more than 250K open-ended questions with verifiable answers and adds about 47K systematically reformulated problems.
 - [Chain-of-thought prompting elicits reasoning in large language models](releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md) - Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large language models.
 - [DAPO: An Open-Source LLM Reinforcement Learning System at Scale](releases/dapo.md) - DAPO is an open RLVR system and DAPO-Math-17K release where rule-based rewards, dynamic sampling, and overlong shaping define the effective training data.
+- [DART-Math: Difficulty-Aware Rejection Tuning for Mathematical Problem-Solving](releases/dart_math.md) - DART-Math allocates verified synthetic CoTs toward difficult MATH and GSM8K prompts using regex/SymPy answer checks.
 - [Data statements for natural language processing](releases/data-statements-for-natural-language-processing.md) - Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context, and intended deployment boundaries.
 - [Datasheets for datasets](releases/datasheets-for-datasets.md) - Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.
 - [DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning](releases/deepmath_103k.md) - DeepMath-103K releases difficult, decontaminated math questions with verifiable answers and three DeepSeek-R1 solutions per problem.
 - [Direct preference optimization: Your language model is secretly a reward model](releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) - DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.
+- [Learning to Reason for Factuality](releases/factual_reasoning.md) - Releases factual-reasoning SFT/DPO data while online GRPO is scored by a mixed retrieval and LLM-judge reward.
 - [KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](releases/kodcode.md) - Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.
 - [LIMO: Less Is More for Reasoning](releases/limo.md) - Small-set curation reference distinguishing elicitation from broad coverage.
 - [NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions](releases/naturalreasoning.md) - Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.
+- [Nemotron-Math-Proofs-v2](releases/nemotron_math_proofs_v2.md) - NVIDIA release of AoPS-derived DeepSeek proof, verification and meta-verification traces.
+- [Nemotron-Post-Training-Dataset-v2](releases/nemotron_post_training_v2.md) - A gated 6.34M-row multilingual SFT-style release with generator and license fields but no row-level RL/verifier provenance.
 - [Reasoning with OmniThought: A Large CoT Dataset with Verbosity and Cognitive Difficulty Annotations](releases/omnithought.md) - OmniThought constructs multi-teacher reasoning traces, validates their answers with executable or hybrid checks, and annotates each trace for metadata-conditioned post-training.
 - [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs](releases/open-proof-corpus.md) - Open Proof Corpus releases thousands of frontier-model competition proofs with expert correctness labels, written feedback, optional error spans, provenance metadata, and best-of-N analysis splits.
 - [OpenCodeReasoning: Advancing Data Distillation for Competitive Coding](releases/opencodereasoning.md) - OpenCodeReasoning releases a large DeepSeek-R1-distilled competitive-programming reasoning corpus for SFT, with documented sourcing, filtering, scaling analysis, and code-reasoning benchmark evaluation.
@@ -37,6 +41,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [rStar-Coder: Scaling Competitive Code Reasoning with a Large-Scale Verified Dataset](releases/rstar-coder.md) - rStar-Coder releases seed and synthetic SFT traces plus RL problem and testcase configs constructed from competition problems, QWQ-32B solutions, and agreement-over-execution verification.
 - [s1: Simple Test-Time Scaling](releases/s1.md) - s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.
 - [UltraFeedback: Boosting language models with high-quality feedback](releases/ultrafeedback.md) - UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response pairs.
+- [WOMD-Reasoning: A Large-Scale Dataset for Interaction Reasoning in Driving](releases/womd_reasoning.md) - WOMD-Reasoning converts Waymo motion scenes into rule-grounded, LLM-authored driving Q&As that include future-trajectory context.
 
 ### Verifier cards
 
@@ -85,7 +90,9 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [DeepSeek-Prover: Advancing theorem proving in LLMs](recipes/deepseek-prover.md) - DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal proof model.
 - [DeepSeek-R1](recipes/deepseek_r1.md) - DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.
 - [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](recipes/deepseekmath.md) - DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.
+- [Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward](recipes/depo.md) - A two-stage RLVR recipe that curates an offline subset and dynamically filters or replays online samples using explorability.
 - [FastMCTS: A Simple Sampling Strategy for Data Synthesis](recipes/fastmcts.md) - An MCTS-inspired offline synthesis recipe that reuses reasoning prefixes and terminal verification signals to generate math SFT and preference data more efficiently than independent rejection sampling.
+- [Guided ReST: Reinforced Self-Training for Large Language Models](recipes/guided_rest.md) - A guided self-training recipe using positive-score samples and training-time subgoal or reference-code signals.
 - [Kimi K1.5: Scaling Reinforcement Learning with LLMs](recipes/kimi_k15.md) - Frontier report used for long-context RL and scaling discussion.
 - [Llama-Nemotron: Efficient Reasoning Models](recipes/llama_nemotron.md) - Llama-Nemotron releases a versioned post-training mixture with record-level category, generator, license, reasoning and training-use metadata across SFT and RL-oriented data.
 - [Magicoder: Empowering code generation with OSS-instruct](recipes/magicoder.md) - Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate more realistic instruction data.

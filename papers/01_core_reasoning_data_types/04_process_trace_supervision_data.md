@@ -262,6 +262,22 @@ These entries are intentionally separated from verified work. Add official links
   _Recipe signal:_ teacher: Llama-3.1-70B-Instruct generates initial SFT responses. During RL there is no frozen process-label teacher; generator and verifier create evolving trajectories while gold final answers anchor outcomes.; generator: The generator emits tagged multi-step solutions; the generative verifier emits natural-language analysis, one binary judgment per step, and a final judgment. Both are updated by policy-gradient RL in a 3-to-1 cycle.
   _Audit focus:_ Generator and verifier can co-adapt to shared stylistic or structural shortcuts that fail under independent evaluation., Verifier step judgments receive no direct correctness labels; plausible but inaccurate step rationales can earn reward., Final-answer extraction can produce false positives or negatives for equivalent expressions, malformed boxes or invalid reasoning.
   _Why it matters:_ It exposes an online data contract for co-training reasoning policies and verifiers while highlighting risks from co-adaptation, latent process-label accuracy, answer-checker brittleness and missing trajectories/checkpoints.
+- 📦 **[SPaR: Self-Play with Tree-Search Refinement to Improve Instruction-Following in Large Language Models](https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html)**
+  <sub>2025 · ICLR 2025 · 📦 data release · 🏗️ construction recipe · judgment required · sft · preference learning · L3_summary_ready</sub>
+  [Paper](https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2412.11605) · [OpenReview](https://openreview.net/forum?id=9chRqsPOGL) · [DOI](https://doi.org/10.48550/arXiv.2412.11605) · [Code](https://github.com/thu-coai/SPaR) · [Data](https://huggingface.co/datasets/CCCCCC/SPaR)
+  _Data object:_ messages with chosen and rejected responses; process: actor response, refiner judgment, refinement; Iterative actor-refiner BFS/DFS tree-search self-play
+  _Feedback / verifier:_ LLM refiner judgment with majority voting
+  _Recipe signal:_ teacher: GPT-4o-mini; generator: current actor/refiner
+  _Audit focus:_ LLM judge can be biased or reward-hacked, Complete discarded branches and search trees are not released, Source revisions and contamination audit are not pinned
+  _Why it matters:_ It makes the mutable judge and hidden discarded branches first-class data-audit concerns.
+- 🏗️ **[TinyThinker: Distilling Reasoning through Coarse-to-Fine Knowledge Internalization with Self-Reflection](https://aclanthology.org/2025.naacl-long.309/)**
+  <sub>2025 · NAACL 2025 · 🏗️ construction recipe · 🪜 process supervision · mixed · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://aclanthology.org/2025.naacl-long.309/) · [arXiv](https://arxiv.org/abs/2412.08024) · [DOI](https://doi.org/10.18653/v1/2025.naacl-long.309) · [Code](https://github.com/shengminp/TinyThinker)
+  _Data object:_ Recall, Analyze and Summary stages; selected DPO pairs; process: question, options, teacher knowledge; Offline T5 SFT and iterative DPO
+  _Feedback / verifier:_ Final answer matches benchmark ground truth
+  _Recipe signal:_ teacher: gpt-4o-2024-05-13; generator: GPT-4o then student
+  _Audit focus:_ Terminal correctness does not establish process truth, Teacher errors cascade, Candidate pools, pairs and checkpoints unreleased
+  _Why it matters:_ Shows that terminal-answer preference is not independently verified process supervision.
 - 📦 **[VersaPRM: Multi-Domain Process Reward Model via Synthetic Reasoning Data](https://proceedings.mlr.press/v267/zeng25h.html)**
   <sub>2025 · ICML 2025 · 📦 data release · 🧪 verifier reward · judgment required · reward modeling · process supervision · L3_summary_ready</sub>
   [Paper](https://proceedings.mlr.press/v267/zeng25h.html) · [arXiv](https://arxiv.org/abs/2502.06737) · [OpenReview](https://openreview.net/forum?id=l19DmXbwPK) · [Code](https://github.com/UW-Madison-Lee-Lab/VersaPRM) · [Data](https://huggingface.co/datasets/UW-Madison-Lee-Lab/MMLU-Pro-CoT-Train-Labeled) · [HF](https://huggingface.co/collections/UW-Madison-Lee-Lab/versaprm)
@@ -278,6 +294,14 @@ These entries are intentionally separated from verified work. Add official links
   _Recipe signal:_ teacher: GPT-4o for problem synthesis; GPT-4o and DeepSeek-V3 for test-input utility functions; QWQ-32B for long-reasoning candidate solutions.; generator: Seed problems and oracle solutions drive transformed problem synthesis, constraint-aware test generation, and QWQ-32B executable long-CoT generation.
   _Audit focus:_ Mutually generated solutions can share systematic errors and converge on an incorrect output set; reported accuracy drops from 96.8 to 92.8 percent in the larger comparison., The 40 percent threshold for difficult Codeforces-derived problems is below a strict majority., Seed problems for which no QWQ-32B candidate passes retain all generated solutions, so seed sft is not uniformly verified.
   _Why it matters:_ It provides a rare operational recipe for scaling difficult code reasoning data and programmatic rewards, while exposing reuse risks around false consensus, retained unverified seed traces, source licensing, config linkage, and mismatch between the published mixture and current repository.
+- 📦 **Nemotron-Math-Proofs-v2**
+  <sub>2026 · NVIDIA Hugging Face dataset release · 📦 data release · 🪜 process supervision · judgment required · sft · evaluation · L3_summary_ready</sub>
+  [Data](https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2/resolve/7665d7f1d006fd89aa852a9dab8060c60b63f814/data/train.jsonl) · [HF](https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2)
+  _Data object:_ Two-turn proof, verification or meta-verification conversations; process: messages, problem, subset; Offline proof trace release
+  _Feedback / verifier:_ Natural-language verification with embedded boxed 0/0.5/1 judgments
+  _Recipe signal:_ teacher: DeepSeek-V4-Pro; generator: DeepSeek-V4-Pro
+  _Audit focus:_ No formal verifier, Scores embedded in text, Full count not independently enumerable
+  _Why it matters:_ Makes natural-language self-verification and partial release visibility auditable.
 - 📄 **Process reward models for code reasoning**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search

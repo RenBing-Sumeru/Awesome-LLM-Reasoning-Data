@@ -640,6 +640,22 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### ⚠️ Needs search or metadata
 
+- 🏗️ **[Prompt Curriculum Learning for Efficient LLM Post-Training](https://arxiv.org/abs/2510.01135)**
+  <sub>2026 · ICLR 2026 · 🏗️ construction recipe · 📈 scaling study · programmatic · rlvr · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2510.01135) · [Venue](https://openreview.net/forum?id=zqOCacBD3P) · [DOI](https://doi.org/10.48550/arXiv.2510.01135)
+  _Data object:_ Prompt, selected-prompt indicator, rollouts, and terminal binary correctness reward; row records are unreleased.; process: candidate prompt, value prediction, selection indicator; Synchronous verl RL with a concurrently refreshed prompt-only value model.
+  _Feedback / verifier:_ math-verify final-answer correctness.
+  _Recipe signal:_ teacher: No external teacher; value model learns from current rollout rewards.; generator: Current policy after selection.
+  _Audit focus:_ Selector is trained only on selected prompts, fixed-threshold selection changes curriculum, no official code/data/log/checkpoint release exists.
+  _Why it matters:_ It separates rollout-free selection from rollout-dependent optimization and records missing selection evidence.
+- 🏗️ **[Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward](https://openreview.net/forum?id=sruA4AZmZI)**
+  <sub>2026 · ICLR 2026 · 🏗️ construction recipe · 📈 scaling study · unknown · rlvr · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=sruA4AZmZI) · [arXiv](https://arxiv.org/abs/2509.01321) · [Code](https://github.com/RUCAIBox/DEPO) · [Card](../../cards/recipes/depo.md)
+  _Data object:_ Answer-level rollout with verifiable reward; serialized schema is unknown.; process: offline diversity signal, offline influence signal, offline difficulty signal; Offline subset selection plus online filtering and replay around RLVR.
+  _Feedback / verifier:_ The paper assumes verifiable reward but does not expose its concrete verifier or error analysis.
+  _Recipe signal:_ generator: Current RLVR policy.; filtering rule: Offline diversity, influence, and difficulty selection; online low-explorability filtering with replay of under-explored samples.
+  _Audit focus:_ Selection may bias coverage, low-explorability filtering can remove rare skills, replay can amplify stale or verifier-gamed samples
+  _Why it matters:_ It makes selection and rollout allocation auditable parts of RLVR, while preserving missing dynamic-data and verifier evidence.
 - 🏗️ **[AdaSTaR: Adaptive Data Sampling for Training Self-Taught Reasoners](https://openreview.net/forum?id=D6PwC6Xogv)**
   <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 📈 scaling study · programmatic · sft · L3_summary_ready</sub>
   [Paper](https://openreview.net/forum?id=D6PwC6Xogv) · [arXiv](https://arxiv.org/abs/2505.16322) · [Code](https://github.com/reiss-koh/AdaSTaR)

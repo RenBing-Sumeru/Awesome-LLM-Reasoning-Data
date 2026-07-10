@@ -852,6 +852,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: No human or LLM teacher supplies error labels; Z3 and Isabelle provide programmatic labels while Llama and Qwen generate candidate traces.; generator: Few-shot prompts elicit verifier-compatible formal solutions; the pipeline retries until syntactically valid and then applies step-level Z3/Isabelle wrappers.
   _Audit focus:_ A generated Isabelle statement can misformalize the natural-language problem while still receiving formally correct labels., Parser, type, tactic, timeout, dependency or prover-environment failures may be mapped to Boolean labels without an error-type field or prover log., Isabelle independent-step verification replaces other steps with sorry and can miss dependency-chain or scoping errors.
   _Why it matters:_ It demonstrates a low-LLM-call route to process supervision while making formalization fidelity, prover wrappers, step-dependency assumptions, dataset versioning and informal-domain transfer explicit audit boundaries.
+- 🏗️ **[Prompt Curriculum Learning for Efficient LLM Post-Training](https://arxiv.org/abs/2510.01135)**
+  <sub>2026 · ICLR 2026 · 🏗️ construction recipe · 📈 scaling study · programmatic · rlvr · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2510.01135) · [Venue](https://openreview.net/forum?id=zqOCacBD3P) · [DOI](https://doi.org/10.48550/arXiv.2510.01135)
+  _Data object:_ Prompt, selected-prompt indicator, rollouts, and terminal binary correctness reward; row records are unreleased.; process: candidate prompt, value prediction, selection indicator; Synchronous verl RL with a concurrently refreshed prompt-only value model.
+  _Feedback / verifier:_ math-verify final-answer correctness.
+  _Recipe signal:_ teacher: No external teacher; value model learns from current rollout rewards.; generator: Current policy after selection.
+  _Audit focus:_ Selector is trained only on selected prompts, fixed-threshold selection changes curriculum, no official code/data/log/checkpoint release exists.
+  _Why it matters:_ It separates rollout-free selection from rollout-dependent optimization and records missing selection evidence.
 - 📦 **[The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs](https://openreview.net/forum?id=a2XmC7rHIU)**
   <sub>2026 · ICLR 2026 · 📦 data release · 🧰 benchmark · judgment required · reward modeling · process supervision · L4_carded</sub>
   [Paper](https://openreview.net/forum?id=a2XmC7rHIU) · [arXiv](https://arxiv.org/abs/2506.21621) · [DOI](https://doi.org/10.48550/arXiv.2506.21621) · [Code](https://github.com/insait-institute/open-proof-corpus) · [Data](https://huggingface.co/datasets/INSAIT-Institute/OPC) · [Project](https://proofcorpus.ai/) · [Card](../../cards/releases/open-proof-corpus.md)
@@ -860,6 +868,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: Thirteen expert human judges provide correctness supervision; official competition solutions are supplied as references when available, and O4-MINI supplies non-verdict issue summaries.; generator: O4-MINI, O3, Gemini-2.5-Pro, Grok-3-Mini, Qwen3-235B-A22B, and DeepSeek-R1 generate the released proofs.
   _Audit focus:_ Approximately 10% double grading leaves most proofs with a single human judgment., The reported 90.4% agreement still implies nonzero label noise; the paper's 5% judge-error estimate depends on independence assumptions., Fewer than 3% of proofs are marked uncertain, but subtle near-correct errors can remain difficult to classify.
   _Why it matters:_ It provides unusually rich positive and negative proof supervision for training and auditing proof judges while exposing the limits of final-answer verification, selective best-of-N labeling, and single-judge proof assessment.
+- 🏗️ **[Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward](https://openreview.net/forum?id=sruA4AZmZI)**
+  <sub>2026 · ICLR 2026 · 🏗️ construction recipe · 📈 scaling study · unknown · rlvr · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=sruA4AZmZI) · [arXiv](https://arxiv.org/abs/2509.01321) · [Code](https://github.com/RUCAIBox/DEPO) · [Card](../../cards/recipes/depo.md)
+  _Data object:_ Answer-level rollout with verifiable reward; serialized schema is unknown.; process: offline diversity signal, offline influence signal, offline difficulty signal; Offline subset selection plus online filtering and replay around RLVR.
+  _Feedback / verifier:_ The paper assumes verifiable reward but does not expose its concrete verifier or error analysis.
+  _Recipe signal:_ generator: Current RLVR policy.; filtering rule: Offline diversity, influence, and difficulty selection; online low-explorability filtering with replay of under-explored samples.
+  _Audit focus:_ Selection may bias coverage, low-explorability filtering can remove rare skills, replay can amplify stale or verifier-gamed samples
+  _Why it matters:_ It makes selection and rollout allocation auditable parts of RLVR, while preserving missing dynamic-data and verifier evidence.
 - 🏗️ **[AdaSTaR: Adaptive Data Sampling for Training Self-Taught Reasoners](https://openreview.net/forum?id=D6PwC6Xogv)**
   <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 📈 scaling study · programmatic · sft · L3_summary_ready</sub>
   [Paper](https://openreview.net/forum?id=D6PwC6Xogv) · [arXiv](https://arxiv.org/abs/2505.16322) · [Code](https://github.com/reiss-koh/AdaSTaR)
@@ -916,6 +932,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: DeepSeek-V3 for generated step-by-step solutions in selected components.; generator: Source-dataset mixture, textbook-derived question construction, teacher solution generation, and selection ablations.
   _Audit focus:_ Textbook provenance and redistribution rights may not be recoverable at item level., Teacher-generated explanations can be plausible but scientifically incorrect despite reference-answer agreement., Mixture selection gains can be confounded with model family, training budget or evaluation extraction changes.
   _Why it matters:_ It extends open post-training data recipes beyond math and code while making source mixture, textbook provenance, teacher correctness, selection attribution and release versioning central audit questions.
+- 📦 **[Nemotron-Post-Training-Dataset-v2](https://arxiv.org/abs/2508.14444)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · sft · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2508.14444) · [DOI](https://doi.org/10.48550/arXiv.2508.14444) · [Data](https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2)
+  _Data object:_ uuid, license, generator, version, category, reasoning and messages; process: uuid, license, generator; Mixed multilingual post-training release
+  _Feedback / verifier:_ Subset-specific tool rules, IFEval rules, guards and reward models; outcomes absent from public schema
+  _Recipe signal:_ teacher: Named DeepSeek and Qwen models; generator: synthetic generation by named models
+  _Audit focus:_ Gated files prevent full inspection, Schema lacks reward, rejected rollout and training-stage fields, Per-row license exceptions need audit
+  _Why it matters:_ Demonstrates why a large post-training release must not be inferred to be a complete RL or preference corpus.
 - 🏗️ **[RL Tango: Reinforcing Generator and Verifier Together for Language Reasoning](https://openreview.net/forum?id=JRkFZl0TJ2)**
   <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 🧪 verifier reward · mixed · sft · distillation · L3_summary_ready</sub>
   [Paper](https://openreview.net/forum?id=JRkFZl0TJ2) · [arXiv](https://arxiv.org/abs/2505.15034) · [Code](https://github.com/kaiwenzha/rl-tango)
@@ -956,6 +980,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: GPT-4o for problem synthesis; GPT-4o and DeepSeek-V3 for test-input utility functions; QWQ-32B for long-reasoning candidate solutions.; generator: Seed problems and oracle solutions drive transformed problem synthesis, constraint-aware test generation, and QWQ-32B executable long-CoT generation.
   _Audit focus:_ Mutually generated solutions can share systematic errors and converge on an incorrect output set; reported accuracy drops from 96.8 to 92.8 percent in the larger comparison., The 40 percent threshold for difficult Codeforces-derived problems is below a strict majority., Seed problems for which no QWQ-32B candidate passes retain all generated solutions, so seed sft is not uniformly verified.
   _Why it matters:_ It provides a rare operational recipe for scaling difficult code reasoning data and programmatic rewards, while exposing reuse risks around false consensus, retained unverified seed traces, source licensing, config linkage, and mismatch between the published mixture and current repository.
+- 📦 **[DART-Math: Difficulty-Aware Rejection Tuning for Mathematical Problem-Solving](https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html)**
+  <sub>2024 · NeurIPS 2024 · 📦 data release · 🏗️ construction recipe · programmatic · sft · L3_summary_ready</sub>
+  [Paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2407.13690) · [DOI](https://doi.org/10.52202/079017-0251) · [Code](https://github.com/hkust-nlp/dart-math) · [Data](https://huggingface.co/datasets/hkust-nlp/dart-math-hard) · [HF](https://huggingface.co/collections/hkust-nlp/dart-math)
+  _Data object:_ Uniform and Hard release query/response pairs; supplementary pools expose correctness and sampling metadata.; process: query, response, answer correctness; Offline difficulty-aware rejection sampling followed by instruction tuning.
+  _Feedback / verifier:_ Regex extraction and SymPy symbolic calculation.
+  _Recipe signal:_ teacher: DeepSeekMath-7B-RL.; generator: DeepSeekMath-7B-RL via vLLM.
+  _Audit focus:_ Final-answer correctness does not prove CoT validity, difficulty is generator-dependent, some GSM8K labels are erroneous
+  _Why it matters:_ It exposes how verifier-filtered acceptance, estimated difficulty, and SFT distribution interact.
 - 📦 **OpenR1-Math-220k**
   <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L0_seeded</sub>
   [Code](https://github.com/huggingface/open-r1) · [HF](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Card](../../cards/releases/openr1.md)

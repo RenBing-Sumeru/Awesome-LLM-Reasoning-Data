@@ -507,6 +507,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
+- 📦 **[Learning to Reason for Factuality](https://arxiv.org/abs/2508.05618)**
+  <sub>2026 · ICML 2026 · 📦 data release · 🏗️ construction recipe · mixed · judgment required · sft · preference learning · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2508.05618) · [Venue](https://openreview.net/forum?id=byZ7DoyDNd) · [DOI](https://doi.org/10.48550/arXiv.2508.05618) · [Code](https://github.com/facebookresearch/factual_reasoning) · [Data](https://huggingface.co/datasets/facebook/factual_reasoning)
+  _Data object:_ SFT Long-CoT or DPO chosen/rejected pair with margin metadata; process: prompt, response, factual precision; Offline SFT/DPO and online GRPO with separate reward server
+  _Feedback / verifier:_ ScalableVeriScore claim extraction/retrieval plus LLM relevance judge
+  _Recipe signal:_ teacher: Llama-4-Maverick prompts; Llama 3.3 responses; generator: 10 candidate responses per prompt or current GRPO policy
+  _Audit focus:_ LLM claim verification can err or be hacked, Candidate pools, retrieval evidence and online rollouts are missing, Commercial reuse is constrained
+  _Why it matters:_ Shows how detail, relevance and verifier error change factuality data beyond a correct/incorrect label.
 - 📦 **[Reasoning with OmniThought: A Large CoT Dataset with Verbosity and Cognitive Difficulty Annotations](https://aclanthology.org/2026.acl-long.382/)**
   <sub>2026 · ACL 2026 · 📦 data release · 🏗️ construction recipe · mixed · sft · distillation · L4_carded</sub>
   [Paper](https://aclanthology.org/2026.acl-long.382/) · [arXiv](https://arxiv.org/abs/2505.10937) · [DOI](https://doi.org/10.18653/v1/2026.acl-long.382) · [Data](https://huggingface.co/datasets/alibaba-pai/OmniThought) · [Card](../../cards/releases/omnithought.md)

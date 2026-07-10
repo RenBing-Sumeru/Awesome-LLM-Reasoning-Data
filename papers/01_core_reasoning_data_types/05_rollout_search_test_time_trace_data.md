@@ -378,6 +378,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### ⚠️ Needs search or metadata
 
+- 🏗️ **[Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward](https://openreview.net/forum?id=sruA4AZmZI)**
+  <sub>2026 · ICLR 2026 · 🏗️ construction recipe · 📈 scaling study · unknown · rlvr · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=sruA4AZmZI) · [arXiv](https://arxiv.org/abs/2509.01321) · [Code](https://github.com/RUCAIBox/DEPO) · [Card](../../cards/recipes/depo.md)
+  _Data object:_ Answer-level rollout with verifiable reward; serialized schema is unknown.; process: offline diversity signal, offline influence signal, offline difficulty signal; Offline subset selection plus online filtering and replay around RLVR.
+  _Feedback / verifier:_ The paper assumes verifiable reward but does not expose its concrete verifier or error analysis.
+  _Recipe signal:_ generator: Current RLVR policy.; filtering rule: Offline diversity, influence, and difficulty selection; online low-explorability filtering with replay of under-explored samples.
+  _Audit focus:_ Selection may bias coverage, low-explorability filtering can remove rare skills, replay can amplify stale or verifier-gamed samples
+  _Why it matters:_ It makes selection and rollout allocation auditable parts of RLVR, while preserving missing dynamic-data and verifier evidence.
 - 🏗️ **[AdaSTaR: Adaptive Data Sampling for Training Self-Taught Reasoners](https://openreview.net/forum?id=D6PwC6Xogv)**
   <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 📈 scaling study · programmatic · sft · L3_summary_ready</sub>
   [Paper](https://openreview.net/forum?id=D6PwC6Xogv) · [arXiv](https://arxiv.org/abs/2505.16322) · [Code](https://github.com/reiss-koh/AdaSTaR)
@@ -402,6 +410,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: Llama-3.1-70B-Instruct generates initial SFT responses. During RL there is no frozen process-label teacher; generator and verifier create evolving trajectories while gold final answers anchor outcomes.; generator: The generator emits tagged multi-step solutions; the generative verifier emits natural-language analysis, one binary judgment per step, and a final judgment. Both are updated by policy-gradient RL in a 3-to-1 cycle.
   _Audit focus:_ Generator and verifier can co-adapt to shared stylistic or structural shortcuts that fail under independent evaluation., Verifier step judgments receive no direct correctness labels; plausible but inaccurate step rationales can earn reward., Final-answer extraction can produce false positives or negatives for equivalent expressions, malformed boxes or invalid reasoning.
   _Why it matters:_ It exposes an online data contract for co-training reasoning policies and verifiers while highlighting risks from co-adaptation, latent process-label accuracy, answer-checker brittleness and missing trajectories/checkpoints.
+- 📦 **[SPaR: Self-Play with Tree-Search Refinement to Improve Instruction-Following in Large Language Models](https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html)**
+  <sub>2025 · ICLR 2025 · 📦 data release · 🏗️ construction recipe · judgment required · sft · preference learning · L3_summary_ready</sub>
+  [Paper](https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2412.11605) · [OpenReview](https://openreview.net/forum?id=9chRqsPOGL) · [DOI](https://doi.org/10.48550/arXiv.2412.11605) · [Code](https://github.com/thu-coai/SPaR) · [Data](https://huggingface.co/datasets/CCCCCC/SPaR)
+  _Data object:_ messages with chosen and rejected responses; process: actor response, refiner judgment, refinement; Iterative actor-refiner BFS/DFS tree-search self-play
+  _Feedback / verifier:_ LLM refiner judgment with majority voting
+  _Recipe signal:_ teacher: GPT-4o-mini; generator: current actor/refiner
+  _Audit focus:_ LLM judge can be biased or reward-hacked, Complete discarded branches and search trees are not released, Source revisions and contamination audit are not pinned
+  _Why it matters:_ It makes the mutable judge and hidden discarded branches first-class data-audit concerns.
 - 📄 **pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL**
   <sub>2026 · arXiv preprint · unknown · unknown · L0_seeded</sub>
   needs_search

@@ -593,6 +593,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: No human or LLM teacher supplies error labels; Z3 and Isabelle provide programmatic labels while Llama and Qwen generate candidate traces.; generator: Few-shot prompts elicit verifier-compatible formal solutions; the pipeline retries until syntactically valid and then applies step-level Z3/Isabelle wrappers.
   _Audit focus:_ A generated Isabelle statement can misformalize the natural-language problem while still receiving formally correct labels., Parser, type, tactic, timeout, dependency or prover-environment failures may be mapped to Boolean labels without an error-type field or prover log., Isabelle independent-step verification replaces other steps with sorry and can miss dependency-chain or scoping errors.
   _Why it matters:_ It demonstrates a low-LLM-call route to process supervision while making formalization fidelity, prover wrappers, step-dependency assumptions, dataset versioning and informal-domain transfer explicit audit boundaries.
+- 📦 **[Learning to Reason for Factuality](https://arxiv.org/abs/2508.05618)**
+  <sub>2026 · ICML 2026 · 📦 data release · 🏗️ construction recipe · mixed · judgment required · sft · preference learning · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2508.05618) · [Venue](https://openreview.net/forum?id=byZ7DoyDNd) · [DOI](https://doi.org/10.48550/arXiv.2508.05618) · [Code](https://github.com/facebookresearch/factual_reasoning) · [Data](https://huggingface.co/datasets/facebook/factual_reasoning)
+  _Data object:_ SFT Long-CoT or DPO chosen/rejected pair with margin metadata; process: prompt, response, factual precision; Offline SFT/DPO and online GRPO with separate reward server
+  _Feedback / verifier:_ ScalableVeriScore claim extraction/retrieval plus LLM relevance judge
+  _Recipe signal:_ teacher: Llama-4-Maverick prompts; Llama 3.3 responses; generator: 10 candidate responses per prompt or current GRPO policy
+  _Audit focus:_ LLM claim verification can err or be hacked, Candidate pools, retrieval evidence and online rollouts are missing, Commercial reuse is constrained
+  _Why it matters:_ Shows how detail, relevance and verifier error change factuality data beyond a correct/incorrect label.
+- 🚀 **[Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation](https://arxiv.org/abs/2603.19220)**
+  <sub>2026 · NVIDIA Technical Report · 🚀 model report · 📦 data release · programmatic · mixed · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2603.19220) · [Venue](https://research.nvidia.com/labs/nemotron/nemotron-cascade-2/) · [DOI](https://doi.org/10.48550/arXiv.2603.19220) · [Data](https://huggingface.co/datasets/nvidia/Nemotron-Cascade-2-SFT-Data) · [HF](https://huggingface.co/nvidia/Nemotron-Cascade-2-30B-A3B)
+  _Data object:_ SFT messages and subset-specific RL prompts/constraints/metadata; process: domain, source, messages; Cascade RL, Docker terminal/SWE and agent scaffolds
+  _Feedback / verifier:_ Rules/tests plus generative reward and LLM judges by stage
+  _Recipe signal:_ teacher: Domain-specific teachers and intermediate Cascade checkpoints; generator: Teachers for SFT; current policy for GRPO; execution feedback for agents
+  _Audit focus:_ No full rollout groups, reward logs or stage checkpoints, Dynamic filtering changes effective distribution, Mixed verifier contracts and unpinned agent environments remain risky
+  _Why it matters:_ Shows that a released RL dataset can be only prompt/metadata rather than the online training evidence.
 - 📦 **[The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs](https://openreview.net/forum?id=a2XmC7rHIU)**
   <sub>2026 · ICLR 2026 · 📦 data release · 🧰 benchmark · judgment required · reward modeling · process supervision · L4_carded</sub>
   [Paper](https://openreview.net/forum?id=a2XmC7rHIU) · [arXiv](https://arxiv.org/abs/2506.21621) · [DOI](https://doi.org/10.48550/arXiv.2506.21621) · [Code](https://github.com/insait-institute/open-proof-corpus) · [Data](https://huggingface.co/datasets/INSAIT-Institute/OPC) · [Project](https://proofcorpus.ai/) · [Card](../../cards/releases/open-proof-corpus.md)
@@ -617,6 +633,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: Gemini-1.5-Pro for verifiable-question extraction and Gemini-2.0-Flash for metadata annotation, eight-solution filtering, and verifier-training annotations.; generator: Web recrawling and extraction produce question-answer pairs; policy models generate online reasoning responses during GRPO.
   _Audit focus:_ Released rows omit original source URLs and item-level attribution, preventing direct verification of recrawl provenance and human-answer lineage., Package-level Apache-2.0 metadata does not establish that every upstream web item has compatible licensing or redistribution terms., Gemini extraction, metadata annotation, and filtering can introduce systematic selection errors; exact prompts and decoding settings are undisclosed.
   _Why it matters:_ It expands RLVR beyond math and code by operationalizing web recrawling, human-answer retention, LLM-based verifiability filtering, diverse answer-type metadata, and learned answer-equivalence rewards, while exposing important provenance and verifier-audit risks.
+- 🏗️ **[Guided ReST: Reinforced Self-Training for Large Language Models](https://arxiv.org/abs/2502.04327)**
+  <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 📈 scaling study · judgment required · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2502.04327) · [Venue](https://neurips.cc/) · [Code](https://github.com/Meta-Llama/guided-rest)
+  _Data object:_ Prompt, response, score and guided information; no frozen trace corpus; process: prompt, response, reward; Iterative reinforced self-training
+  _Feedback / verifier:_ Task-specific score; retain score > 0
+  _Recipe signal:_ teacher: Subgoals and reference-code signals are training-only privileged information; generator: current policy
+  _Audit focus:_ Guidance can leak oracle structure, Positive-score filtering can reward shortcuts, No frozen buffers, traces or checkpoints
+  _Why it matters:_ Separates deployable signals from privileged training guidance and unreleased selection buffers.
 - 🏗️ **[RL Tango: Reinforcing Generator and Verifier Together for Language Reasoning](https://openreview.net/forum?id=JRkFZl0TJ2)**
   <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 🧪 verifier reward · mixed · sft · distillation · L3_summary_ready</sub>
   [Paper](https://openreview.net/forum?id=JRkFZl0TJ2) · [arXiv](https://arxiv.org/abs/2505.15034) · [Code](https://github.com/kaiwenzha/rl-tango)
@@ -625,6 +649,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: Llama-3.1-70B-Instruct generates initial SFT responses. During RL there is no frozen process-label teacher; generator and verifier create evolving trajectories while gold final answers anchor outcomes.; generator: The generator emits tagged multi-step solutions; the generative verifier emits natural-language analysis, one binary judgment per step, and a final judgment. Both are updated by policy-gradient RL in a 3-to-1 cycle.
   _Audit focus:_ Generator and verifier can co-adapt to shared stylistic or structural shortcuts that fail under independent evaluation., Verifier step judgments receive no direct correctness labels; plausible but inaccurate step rationales can earn reward., Final-answer extraction can produce false positives or negatives for equivalent expressions, malformed boxes or invalid reasoning.
   _Why it matters:_ It exposes an online data contract for co-training reasoning policies and verifiers while highlighting risks from co-adaptation, latent process-label accuracy, answer-checker brittleness and missing trajectories/checkpoints.
+- 📦 **[SPaR: Self-Play with Tree-Search Refinement to Improve Instruction-Following in Large Language Models](https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html)**
+  <sub>2025 · ICLR 2025 · 📦 data release · 🏗️ construction recipe · judgment required · sft · preference learning · L3_summary_ready</sub>
+  [Paper](https://proceedings.iclr.cc/paper_files/paper/2025/hash/abe1eb21ceb046209c96a0f5e7544ccc-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2412.11605) · [OpenReview](https://openreview.net/forum?id=9chRqsPOGL) · [DOI](https://doi.org/10.48550/arXiv.2412.11605) · [Code](https://github.com/thu-coai/SPaR) · [Data](https://huggingface.co/datasets/CCCCCC/SPaR)
+  _Data object:_ messages with chosen and rejected responses; process: actor response, refiner judgment, refinement; Iterative actor-refiner BFS/DFS tree-search self-play
+  _Feedback / verifier:_ LLM refiner judgment with majority voting
+  _Recipe signal:_ teacher: GPT-4o-mini; generator: current actor/refiner
+  _Audit focus:_ LLM judge can be biased or reward-hacked, Complete discarded branches and search trees are not released, Source revisions and contamination audit are not pinned
+  _Why it matters:_ It makes the mutable judge and hidden discarded branches first-class data-audit concerns.
+- 🏗️ **[TinyThinker: Distilling Reasoning through Coarse-to-Fine Knowledge Internalization with Self-Reflection](https://aclanthology.org/2025.naacl-long.309/)**
+  <sub>2025 · NAACL 2025 · 🏗️ construction recipe · 🪜 process supervision · mixed · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://aclanthology.org/2025.naacl-long.309/) · [arXiv](https://arxiv.org/abs/2412.08024) · [DOI](https://doi.org/10.18653/v1/2025.naacl-long.309) · [Code](https://github.com/shengminp/TinyThinker)
+  _Data object:_ Recall, Analyze and Summary stages; selected DPO pairs; process: question, options, teacher knowledge; Offline T5 SFT and iterative DPO
+  _Feedback / verifier:_ Final answer matches benchmark ground truth
+  _Recipe signal:_ teacher: gpt-4o-2024-05-13; generator: GPT-4o then student
+  _Audit focus:_ Terminal correctness does not establish process truth, Teacher errors cascade, Candidate pools, pairs and checkpoints unreleased
+  _Why it matters:_ Shows that terminal-answer preference is not independently verified process supervision.
 - 📦 **[Unleashing LLM Reasoning Capability via Scalable Question Synthesis from Scratch](https://aclanthology.org/2025.acl-long.658/)**
   <sub>2025 · ACL 2025 · 📦 data release · 🏗️ construction recipe · judgment required · sft · distillation · L3_summary_ready</sub>
   [Paper](https://aclanthology.org/2025.acl-long.658/) · [arXiv](https://arxiv.org/abs/2410.18693) · [DOI](https://doi.org/10.18653/v1/2025.acl-long.658) · [Code](https://github.com/yyDing1/ScaleQuest) · [Data](https://huggingface.co/datasets/dyyyyyyyy/ScaleQuest-Math) · [Project](https://scalequest.github.io/)
