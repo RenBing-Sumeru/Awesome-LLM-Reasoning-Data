@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { CONFIG } from "../src/config.mjs";
@@ -60,9 +61,8 @@ export function buildRagCorpusPayload() {
 }
 
 function writeAtomically(outputPath, serialized) {
-  const outputDir = path.dirname(outputPath);
-  fs.mkdirSync(outputDir, { recursive: true });
-  const tmp = path.join(outputDir, `.ask-atlas-rag-corpus-${process.pid}.tmp`);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  const tmp = path.join(os.tmpdir(), `ask-atlas-rag-corpus-${process.pid}.json`);
   fs.writeFileSync(tmp, serialized);
   fs.renameSync(tmp, outputPath);
 }

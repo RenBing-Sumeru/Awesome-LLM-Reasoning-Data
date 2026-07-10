@@ -1,4 +1,0 @@
-interface:
-  display_name: "Curate Reasoning Track"
-  short_description: "Expand and audit one reasoning-data research track"
-  default_prompt: "Use $curate-reasoning-track to analyze, plan, curate, card, and review one assigned research track."
