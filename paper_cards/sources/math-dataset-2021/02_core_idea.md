@@ -1,0 +1,1 @@
+The contribution is a dataset that preserves both the answer-level target and a human-written derivation. This lets downstream work separate solution-trace supervision from final-answer outcome supervision, provided it records the checker used for the latter.

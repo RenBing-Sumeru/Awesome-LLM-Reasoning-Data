@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 from collections import Counter
+from pathlib import Path
+from atlas_utils import paper_card_inventory
 from common import ROOT, load_yaml_json
 
 FIELDS = ["status", "category", "source_role", "verification_contract", "training_use", "construction_layer", "year"]
@@ -14,15 +16,11 @@ def vals(entry, field):
     return [value if value not in (None, "") else "unknown"]
 
 
-def count_cards():
+def count_paper_card_sources():
     counts = Counter()
-    files = []
-    for path in sorted((ROOT / "cards").glob("**/*.md")):
-        rel = path.relative_to(ROOT).as_posix()
-        if "template" in path.name or rel.startswith("cards/examples/") or rel == "cards/README.md":
-            continue
-        counts[path.parent.name] += 1
-        files.append(rel)
+    files = sorted(paper_card_inventory().values())
+    for rel in files:
+        counts[Path(rel).parent.name] += 1
     return counts, files
 
 
@@ -37,7 +35,7 @@ def missing_link_entries(entries):
 
 def main():
     entries = load_yaml_json(ROOT / "data/papers.yaml")
-    card_counts, card_files = count_cards()
+    card_counts, card_files = count_paper_card_sources()
     missing_links = missing_link_entries(entries)
     needs_search = [e for e in entries if e.get("status") in {"needs_search", "needs_url", "needs_metadata", "partial"}]
 
@@ -45,13 +43,13 @@ def main():
         "# Counts Report",
         "",
         f"total entries: {len(entries)}",
-        f"filled cards: {len(card_files)}",
+        f"complete bilingual paper-card sources: {len(card_files)}",
         f"missing primary paper/arXiv/DOI links: {len(missing_links)}",
         f"needs search / partial metadata: {len(needs_search)}",
         "",
     ]
     print(f"total: {len(entries)}")
-    print(f"cards: {len(card_files)}")
+    print(f"paper-card sources: {len(card_files)}")
 
     for field in FIELDS:
         counts = Counter(v for entry in entries for v in vals(entry, field))
@@ -62,7 +60,7 @@ def main():
             print(f"  {key}: {value}")
         lines.append("")
 
-    lines.append("## cards")
+    lines.append("## paper-card sources")
     for key, value in sorted(card_counts.items()):
         lines.append(f"- {key}: {value}")
     lines.append("")

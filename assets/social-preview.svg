@@ -38,9 +38,9 @@
   <text class="title" x="72" y="112">Awesome LLM</text>
   <text class="title" x="72" y="178">Reasoning Data</text>
   <text class="subtitle" x="76" y="232">Post-training data · Verifiers · Rewards · Recipes · Audit fields</text>
-  <rect x="76" y="282" width="150" height="30" rx="15" fill="#111827" stroke="#10a37f" stroke-width="1.4"/><text class="chip-dark" x="151.0" y="302" text-anchor="middle">269 entries</text>
-  <rect x="244" y="282" width="148" height="30" rx="15" fill="#111827" stroke="#2b8fff" stroke-width="1.4"/><text class="chip-dark" x="318.0" y="302" text-anchor="middle">114 partial</text>
-  <rect x="410" y="282" width="170" height="30" rx="15" fill="#111827" stroke="#f59e0b" stroke-width="1.4"/><text class="chip-dark" x="495.0" y="302" text-anchor="middle">155 to verify</text>
+  <rect x="76" y="282" width="150" height="30" rx="15" fill="#111827" stroke="#10a37f" stroke-width="1.4"/><text class="chip-dark" x="151.0" y="302" text-anchor="middle">6 entries</text>
+  <rect x="244" y="282" width="148" height="30" rx="15" fill="#111827" stroke="#2b8fff" stroke-width="1.4"/><text class="chip-dark" x="318.0" y="302" text-anchor="middle">5 partial</text>
+  <rect x="410" y="282" width="170" height="30" rx="15" fill="#111827" stroke="#f59e0b" stroke-width="1.4"/><text class="chip-dark" x="495.0" y="302" text-anchor="middle">0 to verify</text>
   <rect x="700" y="86" width="430" height="418" rx="30" fill="#f8fafc" stroke="#334155"/>
   <text class="h" x="738" y="148">Verifier-bearing sample</text>
   <rect x="738" y="184" width="354" height="44" rx="14" fill="#eaf3ff" stroke="#2b8fff" stroke-width="1.8"/>

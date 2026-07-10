@@ -37,8 +37,8 @@ paper_categories:
   - ../docs/02_verifier_anchored_taxonomy.md
   - ../docs/09_audit_and_failure_modes.md
   related_cards:
-  - ../cards/release_card_template.md
-  - ../cards/recipe_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: instruction_demonstration_rationale_data
   order: 1
   group: core_reasoning_data_types
@@ -73,8 +73,8 @@ paper_categories:
   - ../docs/03_reasoning_data_objects.md
   - ../docs/05_construction_cookbook.md
   related_cards:
-  - ../cards/recipe_card_template.md
-  - ../cards/release_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: preference_reward_feedback_data
   order: 2
   group: core_reasoning_data_types
@@ -109,8 +109,8 @@ paper_categories:
   - ../docs/06_verifiers_and_rewards.md
   - ../docs/04_data_quality.md
   related_cards:
-  - ../cards/verifier_card_template.md
-  - ../cards/examples/rubric_reward_release_card.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: programmatically_verifiable_outcome_data
   order: 3
   group: core_reasoning_data_types
@@ -146,8 +146,8 @@ paper_categories:
   - ../docs/03_reasoning_data_objects.md
   - ../docs/04_data_quality.md
   related_cards:
-  - ../cards/examples/math_reasoning_release_card.md
-  - ../cards/verifier_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: process_trace_supervision_data
   order: 4
   group: core_reasoning_data_types
@@ -183,8 +183,8 @@ paper_categories:
   - ../docs/03_reasoning_data_objects.md
   - ../docs/08_scaling_and_test_time_compute.md
   related_cards:
-  - ../cards/verifier_card_template.md
-  - ../cards/examples/rubric_reward_release_card.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: rollout_search_test_time_trace_data
   order: 5
   group: core_reasoning_data_types
@@ -218,8 +218,8 @@ paper_categories:
   - ../docs/05_construction_cookbook.md
   - ../docs/08_scaling_and_test_time_compute.md
   related_cards:
-  - ../cards/recipe_card_template.md
-  - ../cards/verifier_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: environment_agent_trajectory_data
   order: 6
   group: core_reasoning_data_types
@@ -254,8 +254,8 @@ paper_categories:
   - ../docs/07_agent_trajectory_data.md
   - ../docs/06_verifiers_and_rewards.md
   related_cards:
-  - ../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md
-  - ../cards/agents/r2e_gym.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: judgment_rubric_domain_expert_data
   order: 7
   group: core_reasoning_data_types
@@ -289,8 +289,8 @@ paper_categories:
   - ../docs/06_verifiers_and_rewards.md
   - ../docs/09_audit_and_failure_modes.md
   related_cards:
-  - ../cards/examples/rubric_reward_release_card.md
-  - ../cards/verifiers/rewardbench.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: data_construction_open_release_recipes
   order: 8
   group: data_lifecycle
@@ -323,8 +323,8 @@ paper_categories:
   - ../docs/05_construction_cookbook.md
   - ../docs/04_data_quality.md
   related_cards:
-  - ../cards/recipe_card_template.md
-  - ../cards/release_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: training_usage_optimization_objectives
   order: 9
   group: data_lifecycle
@@ -358,8 +358,8 @@ paper_categories:
   - ../docs/05_construction_cookbook.md
   - ../docs/08_scaling_and_test_time_compute.md
   related_cards:
-  - ../cards/recipe_card_template.md
-  - ../cards/verifier_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: scaling_rlvr_test_time_compute
   order: 10
   group: data_lifecycle
@@ -393,8 +393,8 @@ paper_categories:
   - ../docs/08_scaling_and_test_time_compute.md
   - ../docs/06_verifiers_and_rewards.md
   related_cards:
-  - ../cards/verifier_card_template.md
-  - ../cards/recipe_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: benchmarks_evaluation_surfaces
   order: 11
   group: data_lifecycle
@@ -427,8 +427,8 @@ paper_categories:
   - ../docs/04_data_quality.md
   - ../docs/09_audit_and_failure_modes.md
   related_cards:
-  - ../cards/verifier_card_template.md
-  - ../cards/benchmark_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: frontier_reports_data_disclosure_ledger
   order: 12
   group: data_lifecycle
@@ -461,8 +461,8 @@ paper_categories:
   - ../docs/05_construction_cookbook.md
   - ../docs/08_scaling_and_test_time_compute.md
   related_cards:
-  - ../cards/recipe_card_template.md
-  - ../cards/release_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 - id: audit_failure_contamination_verifier_attacks
   order: 13
   group: data_lifecycle
@@ -494,8 +494,8 @@ paper_categories:
   - ../docs/09_audit_and_failure_modes.md
   - ../docs/04_data_quality.md
   related_cards:
-  - ../cards/failure_card_template.md
-  - ../cards/verifier_card_template.md
+  - ../docs/paper_card_sop.md
+  - ../docs/paper_card_sop.md
 taxonomy:
   core_fields:
   - source_role

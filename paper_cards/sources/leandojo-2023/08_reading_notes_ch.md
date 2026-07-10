@@ -1,0 +1,3 @@
+- terminal outcome 来自 proof checker，而不是 LLM judge。
+- wrapper 的可靠性是 verifier 质量的一部分。
+- 状态转移和可访问 premise 是必要数据，不是实现残留。

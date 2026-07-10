@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-10T07:50:07Z",
+  "entries": {
+    "tinyv-2025": {
+      "one_line_summary_ch": "TinyV 用轻量级学习型验证器找回规则数学验证器漏判的正确答案，从而改善 RLVR 训练奖励。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "验证器错误修正 / RLVR 奖励论文",
+      "best_for_ch": "适合关注 RLVR、数学验证器、奖励建模和 verifier 审计的读者。",
+      "confidence_ch": "高（官方链接已核验，训练细节仍需复核）",
+      "authors_ch": "Zhangchen Xu, Yuetai Li, Fengqing Jiang, Bhaskar Ramasubramanian, Luyao Niu, Bill Yuchen Lin, Radha Poovendran",
+      "category_ids": [
+        "preference_reward_feedback_data",
+        "programmatically_verifiable_outcome_data",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "updated_at": "2026-07-10T04:46:17Z"
+    },
+    "agnostics-universal-learning-environment-2026": {
+      "one_line_summary_ch": "Agnostics 把代码任务改写成通用 I/O 验证环境，让不同编程语言都能用同一类程序化奖励做 RLVR。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "代码 RLVR / 通用程序验证环境论文",
+      "best_for_ch": "适合关注代码强化学习、低资源编程语言、执行型 verifier 和可复用训练环境的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Aleksander Boruch-Gruszecki, Yangtian Zi, Zixuan Wu, Tejas Oberoi, Carolyn Jane Anderson, Joydeep Biswas, Arjun Guha",
+      "category_ids": [
+        "programmatically_verifiable_outcome_data",
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "featurebench-2026": {
+      "one_line_summary_ch": "FeatureBench 用仓库单元测试自动构造可执行的 feature-level 编程任务，用来评测 agentic coding 能力。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "可执行代码 Agent benchmark / 软件工程评测论文",
+      "best_for_ch": "适合关注 SWE agent、代码评测、unit-test 生成任务和 benchmark 防泄漏的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Qixing Zhou, Jiacheng Zhang, Haiyang Wang, Rui Hao, Jiahe Wang, Minghao Han, Yuxue Yang, Shuzhe Wu, Feiyang Pan, Lue Fan, Dandan Tu, Zhaoxiang Zhang",
+      "category_ids": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "data_construction_open_release_recipes",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "beyondbench-2026": {
+      "one_line_summary_ch": "BeyondBench 用算法生成新题并进行确定性验证，降低静态 benchmark 被训练数据污染的风险。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "抗污染推理评测 / 程序化验证 benchmark",
+      "best_for_ch": "适合关注 benchmark contamination、算法题生成、数学验证和评测可靠性的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Gaurav Srivastava, Aafiya Hussain, Zhenyu Bi, Swastik Roy, Priya Pitre, Meng Lu, Morteza Ziyadi, Xuan Wang",
+      "category_ids": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "audit_failure_contamination_verifier_attacks",
+        "data_construction_open_release_recipes"
+      ],
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "credit-budgeted-icpc-style-coding-2026": {
+      "one_line_summary_ch": "这篇把 ICPC 风格代码 agent 评测放进信用预算机制里，让 token、测试和时间都成为可审计成本。",
+      "reading_priority_ch": "可读",
+      "paper_type_ch": "预算约束代码 Agent benchmark / test-time compute 评测论文",
+      "best_for_ch": "适合关注代码 agent、资源约束评测、test-time compute 和程序化 judge 的读者。",
+      "confidence_ch": "中高",
+      "authors_ch": "Lingfeng Zhou, Junhao Shi, Jin Gao, Dequan Wang",
+      "category_ids": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "geogrambench-2026": {
+      "one_line_summary_ch": "GeoGramBench 评测模型能否理解程序化绘图代码中的几何空间信息，并回答抽象几何问题。",
+      "reading_priority_ch": "可读",
+      "paper_type_ch": "几何程序推理 benchmark / symbolic-to-spatial 评测论文",
+      "best_for_ch": "适合关注几何推理、程序表示、空间理解和 benchmark 设计的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Shixian Luo, Zezhou Zhu, Yu Yuan, Yuncheng Yang, Lianlei Shan, Yong Wu",
+      "category_ids": [
+        "programmatically_verifiable_outcome_data",
+        "judgment_rubric_domain_expert_data",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "updated_at": "2026-07-10T05:17:01Z"
+    },
+    "scaling-llm-test-time-compute-optimally-2024": {
+      "one_line_summary_ch": "这篇把 test-time compute 当作可分配预算来研究，直接比较 best-of-N、verifier search 和模型规模扩展。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "test-time compute scaling / verifier search 论文",
+      "best_for_ch": "适合关注推理预算、best-of-N、verifier-guided search 和 scaling attribution 的读者。",
+      "confidence_ch": "高（原文链接已核验，会议归属需复核）",
+      "authors_ch": "Charlie Snell, Jaehoon Lee, Kelvin Xu, Aviral Kumar",
+      "category_ids": [
+        "process_trace_supervision_data",
+        "rollout_search_test_time_trace_data",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "self-consistency-chain-of-thought-2023": {
+      "one_line_summary_ch": "Self-Consistency 把多次 CoT 采样和答案投票变成最基础的 test-time compute baseline。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "CoT repeated sampling / test-time compute 论文",
+      "best_for_ch": "适合关注 pass@k、采样预算、best-of-N 和 CoT 评测基线的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou",
+      "category_ids": [
+        "instruction_demonstration_rationale_data",
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "tree-of-thoughts-2023": {
+      "one_line_summary_ch": "Tree of Thoughts 把 CoT 扩展成显式树搜索，让分支数、评估器和回溯都成为 test-time compute 记录。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "树搜索 / test-time compute scaffold 论文",
+      "best_for_ch": "适合关注 search trace、branch budget、self-evaluation 和 agent scaffold 的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, Karthik Narasimhan",
+      "category_ids": [
+        "rollout_search_test_time_trace_data",
+        "environment_agent_trajectory_data",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "coderl-code-generation-rl-2022": {
+      "one_line_summary_ch": "CodeRL 用单元测试和 critic 作为代码生成奖励，并在推理时用反馈驱动 critical sampling。",
+      "reading_priority_ch": "可读",
+      "paper_type_ch": "代码 RL / 程序化 verifier 论文",
+      "best_for_ch": "适合关注 code RLVR、unit-test reward、critic verifier 和 pass@k 预算的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Hung Le, Yue Wang, Akhilesh Deepak Gotmare, Silvio Savarese, Steven C. H. Hoi",
+      "category_ids": [
+        "programmatically_verifiable_outcome_data",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "lets-verify-step-by-step-2023": {
+      "one_line_summary_ch": "这篇用 PRM800K 说明 step-level process supervision 可以训练更强的数学过程验证器。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "过程监督 / PRM verifier 数据论文",
+      "best_for_ch": "适合关注 verifier scaling、PRM、step-level reward 和数学 RLVR 审计的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, Karl Cobbe",
+      "category_ids": [
+        "process_trace_supervision_data",
+        "preference_reward_feedback_data",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "deepseekmath-2024": {
+      "one_line_summary_ch": "DeepSeekMath 同时展示 math data scaling、GRPO/RLVR 和 64-sample self-consistency 对数学推理的贡献。",
+      "reading_priority_ch": "必读",
+      "paper_type_ch": "数学 RLVR / 数据规模 / GRPO 技术报告",
+      "best_for_ch": "适合关注 math corpus 构造、GRPO、RLVR 优化和采样预算的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, Y. K. Li, Y. Wu, Daya Guo",
+      "category_ids": [
+        "programmatically_verifiable_outcome_data",
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "frontier_reports_data_disclosure_ledger"
+      ],
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "rest-em-self-training-2024": {
+      "one_line_summary_ch": "ReST-EM 研究如何用可验证任务的二值反馈反复生成、过滤并复用模型自己的解题数据。",
+      "reading_priority_ch": "可读",
+      "paper_type_ch": "自训练 / 数据复用 / verifier filtering 论文",
+      "best_for_ch": "适合关注 synthetic data reuse、rejection sampling 和可验证反馈自训练的读者。",
+      "confidence_ch": "高",
+      "authors_ch": "Avi Singh, John D. Co-Reyes, Rishabh Agarwal, Ankesh Anand, Piyush Patil, Xavier Garcia, Peter J. Liu, James Harrison, Jaehoon Lee, Kelvin Xu, Aaron Parisi, Abhishek Kumar, Alex Alemi, Alex Rizkowsky, Azade Nova, Ben Adlam, Bernd Bohnet, Gamaleldin Elsayed, Hanie Sedghi, Igor Mordatch, Isabelle Simpson, Izzeddin Gur, Jasper Snoek, Jeffrey Pennington, Jiri Hron, Kathleen Kenealy, Kevin Swersky, Kshiteej Mahajan, Laura Culp, Lechao Xiao, Maxwell L. Bileschi, Noah Constant, Roman Novak, Rosanne Liu, Tris Warkentin, Yundi Qian, Yamini Bansal, Ethan Dyer, Behnam Neyshabur, Jascha Sohl-Dickstein, Noah Fiedel",
+      "category_ids": [
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "updated_at": "2026-07-10T07:50:07Z"
+    }
+  }
+}

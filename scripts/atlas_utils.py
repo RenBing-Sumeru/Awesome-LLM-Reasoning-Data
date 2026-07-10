@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from collections import Counter
 import csv
+from pathlib import Path
 import re
 from typing import Any
 
@@ -20,6 +21,18 @@ CURATION_LEVELS = [
     "L3_summary_ready",
     "L4_carded",
     "L5_audit_ready",
+]
+
+PAPER_CARD_SECTIONS = [
+    ("01_problem", "Problem"),
+    ("02_core_idea", "Core Idea"),
+    ("03_method", "Method"),
+    ("04_evidence", "Evidence"),
+    ("05_novelty", "Novelty"),
+    ("06_limitations", "Limitations"),
+    ("07_usefulness", "Usefulness"),
+    ("08_reading_notes", "Reading Notes"),
+    ("09_citation", "Citation"),
 ]
 
 PLACEHOLDER_MARKERS = [
@@ -128,29 +141,38 @@ def has_artifact(entry: dict[str, Any]) -> bool:
     return artifact_link_count(entry) > 0
 
 
-def card_inventory() -> dict[str, str]:
+def paper_card_source_complete(path: str | Path, root: Path = ROOT) -> bool:
+    base = Path(path)
+    if not base.is_absolute():
+        base = root / base
+    if not base.is_dir():
+        return False
+    for key, _title in PAPER_CARD_SECTIONS:
+        for suffix in ("", "_ch"):
+            source = base / f"{key}{suffix}.md"
+            if not source.exists() or not source.read_text(encoding="utf-8").strip():
+                return False
+    return True
+
+
+def paper_card_inventory(root: Path = ROOT) -> dict[str, str]:
+    sources = root / "paper_cards" / "sources"
+    if not sources.exists():
+        return {}
     cards: dict[str, str] = {}
-    pattern = re.compile(r"<!--\s*entry_id:\s*([^\s]+)\s*-->")
-    for path in sorted((ROOT / "cards").glob("**/*.md")):
-        rel = path.relative_to(ROOT).as_posix()
-        if "template" in path.name or rel.startswith("cards/examples/") or rel == "cards/README.md":
-            continue
-        match = pattern.search(path.read_text(encoding="utf-8"))
-        if match:
-            cards[match.group(1)] = rel
+    for path in sorted(sources.iterdir()):
+        if path.is_dir() and paper_card_source_complete(path, root):
+            cards[path.name] = path.relative_to(root).as_posix()
     return cards
 
 
-def curation_level(entry: dict[str, Any], card_path: str | None = None) -> str:
+def curation_level(entry: dict[str, Any], paper_card_path: str | None = None) -> str:
     explicit = entry.get("curation_level")
     if explicit in CURATION_LEVELS:
-        summary_bits = " ".join(str(entry.get(key) or "") for key in ["one_line", "one_line_summary", "why_it_matters", "inclusion_reason"])
-        if explicit in {"L3_summary_ready", "L4_carded", "L5_audit_ready"} and is_placeholder_text(summary_bits):
-            return "L1_link_verified" if primary_link(entry) else "L0_seeded"
         return explicit
     if not primary_link(entry):
         return "L0_seeded"
-    if card_path:
+    if paper_card_path:
         return "L4_carded"
     if entry.get("one_line_summary") and entry.get("why_it_matters"):
         return "L3_summary_ready"
@@ -403,7 +425,7 @@ def subfield_name(entry: dict[str, Any], category_id: str | None = None) -> str:
     return subfield.get("name", "Other related work") if subfield else "Other related work"
 
 
-def link_parts(entry: dict[str, Any], card_path: str | None = None) -> list[str]:
+def link_parts(entry: dict[str, Any], paper_card_path: str | None = None) -> list[str]:
     data = artifacts(entry)
     labels = {
         "paper": "Paper",
@@ -426,8 +448,8 @@ def link_parts(entry: dict[str, Any], card_path: str | None = None) -> list[str]
         if url and url not in seen:
             out.append(f"[{label}]({url})")
             seen.add(url)
-    if card_path:
-        out.append(f"[Card](../{card_path})")
+    if paper_card_path:
+        out.append(f"[Paper Card Source](../{paper_card_path})")
     if not out:
         out.append("needs_search")
     return out

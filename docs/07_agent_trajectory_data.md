@@ -51,7 +51,7 @@ For a repository task, the final patch is only the end. Useful data includes the
 
 ## What to read next
 
-- cards/agent_trajectory_card_template.md
+- paper_cards/README.md
 - docs/08_scaling_and_test_time_compute.md
 
 ## Practical field guide
@@ -80,16 +80,16 @@ Read agent data as infrastructure plus behavior. Ask what the agent could see, w
 
 ### Representative local cards
 
-- [Toolllm Toolbench](../cards/agents/toolllm_toolbench.md)
-- [Webarena](../cards/agents/webarena.md)
-- [Browsergym](../cards/agents/browsergym.md)
-- [Osworld](../cards/agents/osworld.md)
-- [Androidworld](../cards/agents/androidworld.md)
-- [Appworld](../cards/agents/appworld.md)
-- [Swe Gym](../cards/agents/swe_gym.md)
-- [R2E Gym](../cards/agents/r2e_gym.md)
-- [Openhands](../cards/agents/openhands.md)
-- [Opencodereasoning Ii](../cards/releases/opencodereasoning_ii.md)
+- [Toolllm Toolbench](../paper_cards/README.md)
+- [Webarena](../paper_cards/README.md)
+- [Browsergym](../paper_cards/README.md)
+- [Osworld](../paper_cards/README.md)
+- [Androidworld](../paper_cards/README.md)
+- [Appworld](../paper_cards/README.md)
+- [Swe Gym](../paper_cards/README.md)
+- [R2E Gym](../paper_cards/README.md)
+- [Openhands](../paper_cards/README.md)
+- [Opencodereasoning Ii](../paper_cards/README.md)
 
 ### Common traps
 
@@ -118,7 +118,7 @@ A strong review also separates confidence levels. `verified` should mean that th
 
 ## Operating checklist for maintainers
 
-- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `cards/` for audit records.
+- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `paper_cards/` for audit records.
 - Prefer official links: arXiv, OpenReview, ACL Anthology, project pages, official GitHub, and Hugging Face releases.
 - Do not infer a code or dataset URL from a paper title. Missing links should remain `needs_search`.
 - Make every new paper answer five questions: source, behavior, feedback, selection, audit.

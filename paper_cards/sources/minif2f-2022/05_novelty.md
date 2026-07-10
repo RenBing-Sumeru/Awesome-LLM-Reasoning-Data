@@ -1,0 +1,1 @@
+miniF2F is notable for using the same mathematical target across multiple proof assistants. It distinguishes formal proof verification from symbolic answer matching and exposes how system choice affects the data record.

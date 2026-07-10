@@ -1,0 +1,1 @@
+The work moves formal theorem proving from static text pairs to state-action data grounded in a proof assistant. Its premise-aware extraction and novel-premises split make both data lineage and verifier robustness first-class concerns.

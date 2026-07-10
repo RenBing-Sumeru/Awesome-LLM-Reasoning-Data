@@ -1,0 +1,4 @@
+- Track 03 fit: coding judge plus explicit resource trace.
+- Budget design is part of the benchmark, not a side detail.
+- Compare rankings under different credit prices.
+- Check whether local-test behavior is logged and reproducible.

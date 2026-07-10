@@ -1,0 +1,4 @@
+- Data scale, optimizer, and TTC are all active factors.
+- GRPO gains should not be attributed only to data.
+- 64-sample self-consistency is a large inference budget.
+- Web-mined math data needs overlap checks.

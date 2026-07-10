@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-10T09:19:52Z",
+  "entries": {
+    "tinyv-2025": {
+      "entry_id": "tinyv-2025",
+      "ok": true,
+      "review_ready": true,
+      "level": "L6_reviewed",
+      "level_label": "L6 已审阅",
+      "pool": "l6",
+      "pool_label": "L6 已审阅",
+      "errors": [],
+      "blocking_errors": [],
+      "checked_at": "2026-07-10T05:36:13Z"
+    },
+    "geogrambench-2026": {
+      "entry_id": "geogrambench-2026",
+      "ok": false,
+      "review_ready": false,
+      "level": "L6_reviewed",
+      "level_label": "L6 已审阅",
+      "pool": "l6",
+      "pool_label": "L6 已审阅",
+      "errors": [
+        "当前卡片已是 L6，不能重复执行 L5 到 L6 晋升"
+      ],
+      "blocking_errors": [],
+      "checked_at": "2026-07-10T05:25:06Z"
+    },
+    "credit-budgeted-icpc-style-coding-2026": {
+      "entry_id": "credit-budgeted-icpc-style-coding-2026",
+      "ok": true,
+      "review_ready": true,
+      "level": "L6_reviewed",
+      "level_label": "L6 已审阅",
+      "pool": "l6",
+      "pool_label": "L6 已审阅",
+      "errors": [],
+      "blocking_errors": [],
+      "checked_at": "2026-07-10T05:57:17Z"
+    },
+    "beyondbench-2026": {
+      "entry_id": "beyondbench-2026",
+      "ok": true,
+      "review_ready": true,
+      "level": "L6_reviewed",
+      "level_label": "L6 已审阅",
+      "pool": "l6",
+      "pool_label": "L6 已审阅",
+      "errors": [],
+      "blocking_errors": [],
+      "checked_at": "2026-07-10T08:15:50Z"
+    },
+    "rest-em-self-training-2024": {
+      "entry_id": "rest-em-self-training-2024",
+      "ok": true,
+      "review_ready": true,
+      "level": "L6_reviewed",
+      "level_label": "L6 已审阅",
+      "pool": "l6",
+      "pool_label": "L6 已审阅",
+      "errors": [],
+      "blocking_errors": [],
+      "checked_at": "2026-07-10T09:18:58Z"
+    },
+    "deepseekmath-2024": {
+      "entry_id": "deepseekmath-2024",
+      "ok": false,
+      "review_ready": false,
+      "level": "L4_chinese_review_ready",
+      "level_label": "L4 中文 review 材料存在",
+      "pool": "needs_annotation",
+      "pool_label": "L4 中文 Review",
+      "errors": [
+        "缺少人工标注：判决状态",
+        "缺少人工标注：一句话描述理由"
+      ],
+      "blocking_errors": [],
+      "checked_at": "2026-07-10T09:19:52Z"
+    }
+  }
+}

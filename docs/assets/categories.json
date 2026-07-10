@@ -32,8 +32,8 @@
       "../docs/09_audit_and_failure_modes.md"
     ],
     "related_cards": [
-      "../cards/release_card_template.md",
-      "../cards/recipe_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -67,8 +67,8 @@
       "../docs/05_construction_cookbook.md"
     ],
     "related_cards": [
-      "../cards/recipe_card_template.md",
-      "../cards/release_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -102,8 +102,8 @@
       "../docs/04_data_quality.md"
     ],
     "related_cards": [
-      "../cards/verifier_card_template.md",
-      "../cards/examples/rubric_reward_release_card.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -138,8 +138,8 @@
       "../docs/04_data_quality.md"
     ],
     "related_cards": [
-      "../cards/examples/math_reasoning_release_card.md",
-      "../cards/verifier_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -174,8 +174,8 @@
       "../docs/08_scaling_and_test_time_compute.md"
     ],
     "related_cards": [
-      "../cards/verifier_card_template.md",
-      "../cards/examples/rubric_reward_release_card.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -209,8 +209,8 @@
       "../docs/08_scaling_and_test_time_compute.md"
     ],
     "related_cards": [
-      "../cards/recipe_card_template.md",
-      "../cards/verifier_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -244,8 +244,8 @@
       "../docs/06_verifiers_and_rewards.md"
     ],
     "related_cards": [
-      "../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md",
-      "../cards/agents/r2e_gym.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -279,8 +279,8 @@
       "../docs/09_audit_and_failure_modes.md"
     ],
     "related_cards": [
-      "../cards/examples/rubric_reward_release_card.md",
-      "../cards/verifiers/rewardbench.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -314,8 +314,8 @@
       "../docs/04_data_quality.md"
     ],
     "related_cards": [
-      "../cards/recipe_card_template.md",
-      "../cards/release_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -349,8 +349,8 @@
       "../docs/08_scaling_and_test_time_compute.md"
     ],
     "related_cards": [
-      "../cards/recipe_card_template.md",
-      "../cards/verifier_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -384,8 +384,8 @@
       "../docs/06_verifiers_and_rewards.md"
     ],
     "related_cards": [
-      "../cards/verifier_card_template.md",
-      "../cards/recipe_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -419,8 +419,8 @@
       "../docs/09_audit_and_failure_modes.md"
     ],
     "related_cards": [
-      "../cards/verifier_card_template.md",
-      "../cards/benchmark_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -454,8 +454,8 @@
       "../docs/08_scaling_and_test_time_compute.md"
     ],
     "related_cards": [
-      "../cards/recipe_card_template.md",
-      "../cards/release_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   },
   {
@@ -489,8 +489,8 @@
       "../docs/04_data_quality.md"
     ],
     "related_cards": [
-      "../cards/failure_card_template.md",
-      "../cards/verifier_card_template.md"
+      "../docs/paper_card_sop.md",
+      "../docs/paper_card_sop.md"
     ]
   }
 ]

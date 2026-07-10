@@ -1,0 +1,1 @@
+Learning-based theorem proving needs more than theorem-proof pairs: a model must act in the proof environment and receive reliable state transitions. LeanDojo addresses the reproducibility gap by extracting proof data from Lean and exposing programmatic interaction with a pinned library revision.

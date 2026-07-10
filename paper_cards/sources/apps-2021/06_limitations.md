@@ -1,0 +1,4 @@
+- Tests can miss edge cases and reward shortcut programs.
+- Public tasks, reference solutions, and tests may leak into training data.
+- Sandbox, dependencies, and resource limits alter outcomes.
+- Pass rates do not explain why a program failed.

@@ -15,7 +15,7 @@
 1. `README.md`：项目首页和整体导航。
 2. `docs/`：学习文档、概念解释和阅读路线。
 3. `papers/`：按研究方向和细分领域组织论文。
-4. `cards/`：把重要论文、数据集、verifier、agent environment、recipe、benchmark、failure case 写成可审计的 paper card。
+4. `paper_cards/`：把重要论文、数据集、verifier、agent environment、recipe、benchmark、failure case 写成可审计的 paper card。
 5. `data/`：结构化元数据源，驱动 README、网站、paper pages、exports、reports 和 Ask the Atlas 的 RAG corpus。
 
 任何修改都应该让项目更准确、更有用、更可审计，而不是更长、更花哨。
@@ -25,12 +25,12 @@
 - 不允许只添加论文标题或裸链接。
 - 不允许猜 arXiv ID、venue page、DOI、GitHub repo、dataset page、Hugging Face page、project page。
 - 没有官方 primary source 时，不允许把条目标记为 `verified`。
-- 没有真实 card 且 card 不能通过校验时，不允许标记为 `L4_carded` 或 `L5_audit_ready`。
+- 没有完整双语 paper-card source 且不能通过校验时，不允许标记为已复核状态。
 - 不允许隐藏不确定性。缺失信息必须写成 `unknown`、`needs_search`、`needs_url`、`needs_metadata` 或 `ambiguous`。
 - 不允许把 `training_use` 写得比论文证据支持的范围更大。
 - 不允许把“论文链接已验证”理解成“数据、代码、license、split、verifier、lineage 都已清楚”。
 - 不允许把 API key、OAuth secret、数据库 URL、Redis token、私有 prompt、内部日志、含 secret 的截图放进仓库。
-- 每篇论文或 card 必须回答五件事：source、data object、feedback、construction/selection、audit risk。
+- 每篇论文或 paper-card source 必须回答五件事：source、data object、feedback、construction/selection、audit risk。
 
 ## 2. 项目文件地图
 
@@ -40,7 +40,7 @@
 | 数据 schema | `data/schema.json` | 必填字段和枚举值。 |
 | 研究方向 | `data/categories.yaml`, `data/research_tracks.yaml` | 3 个 paper-atlas 大区、14 个 track，以及每个 track 的细分方向。 |
 | Starter paths | `data/starter_packs.yaml` | 给初学者和不同读者的阅读路线。 |
-| Cards | `cards/` | 面向人的 audit card。 |
+| Paper-card sources | `paper_cards/` | 双语 review card 源文件。 |
 | Paper pages | `papers/` | 由脚本生成的研究方向页面。 |
 | Website | `docs/index.html`, `docs/assets/*` | GitHub Pages 可搜索网站。 |
 | Ask assistant | `docs/ask/`, `apps/ask-atlas/` | Ask the Atlas 前端和后端。 |
@@ -54,7 +54,7 @@
 3. `docs/01_what_is_post_training_reasoning_data.md`
 4. `docs/contributor_sop_zh.md`
 5. `CONTRIBUTING.md`
-6. 任选 3 张 L5 card，例如 `cards/releases/openthoughts.md`、`cards/verifiers/prm800k.md`、`cards/recipes/deepseek_r1.md`
+6. 任选 3 个已复核 paper-card source，例如 `paper_cards/sources/<entry_id>/`
 
 ## 3. 标准工作流总览
 
@@ -82,12 +82,26 @@
 | needs-search 清理 | 给缺失条目找官方论文、代码、数据、项目链接。 | `reports/needs_search.md` |
 | 链接验证 | 确认 paper/code/data/project/HF 是否官方。 | `reports/link_coverage.md`, `reports/link_check.md` |
 | L1 到 L3 晋级 | 补 summary、data object、audit note。 | `data/papers.yaml` |
-| Card creation | 给高影响力条目写 card。 | `cards/*_template.md`, `cards/README.md` |
-| L4 到 L5 晋级 | 去掉模板化内容，补足 audit-ready 信息。 | 已有 card + `data/papers.yaml` |
+| Paper-card creation | 给高影响力条目写双语 paper-card source。 | `paper_cards/README.md`, `docs/paper_card_sop.md` |
+| Review 晋级 | 去掉模板化内容，补足 audit-ready 信息。 | `paper_cards/sources/` + `data/papers.yaml` |
 | Track enrichment | 强化某一个 paper track 或 subfield。 | `papers/`, `data/research_tracks.yaml` |
 | Website/Ask sync | 元数据变更后同步网站和 Ask RAG。 | `docs/assets/`, `apps/ask-atlas/` |
 
 ## 5. 候选论文筛选 SOP
+
+### 5.0 用户选题请求处理规则
+
+当用户要求“找论文、扫方向、找最新顶会、补某个方向、推荐若干篇”时，默认直接产出候选论文集合，不要先问用户“选题是否可以”。如果用户已经给出主题、年份窗口、会议层级或数量，就按这些边界执行；如果用户要求本地加入或晋级，直接把入选条目补到 `data/papers.yaml`，并创建完整双语 `paper_cards/sources/<entry_id>/`，让条目达到 `L4_carded`。
+
+只有在缺少会改变检索边界的关键条件时才提问，例如：
+
+- 主题范围无法判断；
+- 年份窗口会改变“最新”的含义；
+- 顶会范围不明确，且候选会明显不同；
+- 目标数量不明确，且无法用项目默认值处理；
+- 用户没有说明是否需要本地落库，而落库会带来大量文件改动。
+
+返回候选论文时，每篇至少给出：方向标签、标题、venue/year、官方链接、为什么符合需求、对应的数据对象 / verifier / reward / environment / audit surface。不要只给标题列表。
 
 ### 5.1 可以收录的内容
 
@@ -471,44 +485,31 @@ audit:
 
 | 类型 | 目录 | 用途 |
 |---|---|---|
-| Release card | `cards/releases/` | 数据集、trace release、数据文档、可复用 artifact |
-| Verifier card | `cards/verifiers/` | verifier、reward、PRM、judge、rubric |
-| Agent card | `cards/agents/` | tool、web、OS、app、SWE、terminal/replay environment |
-| Recipe card | `cards/recipes/` | construction recipe、model report、pipeline |
-| Benchmark card | `cards/benchmarks/` | evaluation surface、benchmark ledger |
-| Failure card | `cards/failures/` | contamination、leakage、reward hacking、judge attack、verifier gaming |
+| Release source | `paper_cards/sources/<entry_id>/` | 数据集、trace release、数据文档、可复用 artifact |
+| Verifier source | `paper_cards/sources/<entry_id>/` | verifier、reward、PRM、judge、rubric |
+| Agent source | `paper_cards/sources/<entry_id>/` | tool、web、OS、app、SWE、terminal/replay environment |
+| Recipe source | `paper_cards/sources/<entry_id>/` | construction recipe、model report、pipeline |
+| Benchmark source | `paper_cards/sources/<entry_id>/` | evaluation surface、benchmark ledger |
+| Failure source | `paper_cards/sources/<entry_id>/` | contamination、leakage、reward hacking、judge attack、verifier gaming |
 
-### 10.3 card header
+### 10.3 双语源文件要求
 
-每个非模板 card 必须以这几行开头：
+每个已复核 paper-card source 目录必须包含 `docs/paper_card_sop.md`
+列出的 9 个英文文件和 9 个中文 `_ch.md` 文件。
 
-```markdown
-<!-- entry_id: <data/papers.yaml id> -->
-<!-- card_type: releases|verifiers|agents|recipes|benchmarks|failures -->
-# <Readable title>
-```
-
-然后加入 Ask block：
-
-```markdown
-<!-- ask_atlas:start -->
-> 🤖 **Ask about this paper:** Explain this card · Generate audit checklist · Compare with related work
-<!-- ask_atlas:end -->
-```
-
-实际链接不要手写，使用脚本生成：
+Ask 链接由 preview/package 组合时生成，不要手写进 section 文件。使用下面命令校验：
 
 ```bash
-python scripts/add_card_ask_links.py
+python tools/paper_cards/card_tool.py check
 ```
 
 PR 检查：
 
 ```bash
-python scripts/add_card_ask_links.py --check
+python tools/paper_cards/card_tool.py check
 ```
 
-### 10.4 L5 card 推荐结构
+### 10.4 L5 review 推荐结构
 
 现代 `L5_audit_ready` card 优先使用下面结构：
 
@@ -635,7 +636,7 @@ rg -n "paper title|short title|arxiv id|existing id" data cards papers README.md
 
 ## 13. 派生文件生成 SOP
 
-许多公开页面由结构化数据生成。修改 `data/`、`cards/`、`docs/` 或 Ask 相关文件后，要运行对应 renderer。
+许多公开页面由结构化数据生成。修改 `data/`、`paper_cards/`、`docs/` 或 Ask 相关文件后，要运行对应 renderer。
 
 常用生成命令：
 
@@ -643,7 +644,7 @@ rg -n "paper title|short title|arxiv id|existing id" data cards papers README.md
 python scripts/render_site.py
 python scripts/render_papers.py
 python scripts/render_readme.py
-python scripts/render_cards.py
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/export_csv_json.py
 python scripts/build_bib_index.py
@@ -656,7 +657,7 @@ python scripts/summarize_counts.py
 python scripts/render_site.py --check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
-python scripts/render_cards.py --check
+python tools/paper_cards/card_tool.py check
 ```
 
 不要手动改 generated table 来绕过 renderer。
@@ -678,7 +679,7 @@ python scripts/render_cards.py --check
 - `docs/assets/categories.json`
 - `docs/assets/research_tracks.json`
 - `docs/assets/starter_packs.json`
-- `docs/assets/cards.json`
+- `paper_cards/README.md`
 - `docs/assets/counts.json`
 - `docs/assets/atlas-data.js`
 
@@ -702,10 +703,10 @@ Ask the Atlas 使用仓库内容做 source-grounded context。README、docs、pa
 
 ```bash
 python scripts/check_ask_entrypoints.py
-python scripts/add_card_ask_links.py --check
+python tools/paper_cards/card_tool.py check
 ```
 
-- 修改 docs/papers/cards/data 后运行 RAG 检查：
+- 修改 docs/papers/paper_cards/README.md 后运行 RAG 检查：
 
 ```bash
 npm --prefix apps/ask-atlas run rag:check
@@ -742,8 +743,8 @@ python scripts/check_ask_entrypoints.py
 npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
-python scripts/add_card_ask_links.py --check
-python scripts/render_cards.py --check
+python tools/paper_cards/card_tool.py check
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
 python scripts/summarize_counts.py
@@ -869,8 +870,8 @@ python scripts/check_ask_entrypoints.py
 npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
-python scripts/add_card_ask_links.py --check
-python scripts/render_cards.py --check
+python tools/paper_cards/card_tool.py check
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
 python scripts/summarize_counts.py
@@ -888,7 +889,7 @@ npm --prefix apps/ask-atlas test
 python scripts/render_site.py
 python scripts/render_papers.py
 python scripts/render_readme.py
-python scripts/render_cards.py
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/export_csv_json.py
 python scripts/build_bib_index.py

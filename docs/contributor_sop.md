@@ -19,7 +19,7 @@ Every contribution must preserve the four-layer design:
 1. `README.md` gives the high-level map.
 2. `docs/` teaches concepts and reading paths.
 3. `papers/` organizes papers by research track and subfield.
-4. `cards/` turns important papers/releases into auditable engineering records.
+4. `paper_cards/` turns important papers/releases into auditable engineering records.
 5. `data/` is the structured source of truth that powers the README, website,
    paper pages, exports, reports, and Ask the Atlas RAG corpus.
 
@@ -29,8 +29,8 @@ Every contribution must preserve the four-layer design:
 - Do not guess arXiv IDs, venue pages, DOI links, code repositories, dataset
   pages, Hugging Face pages, or project pages.
 - Do not mark an entry `verified` unless an official primary source is pinned.
-- Do not promote an entry to `L4_carded` or `L5_audit_ready` unless an actual
-  card exists and passes validation.
+- Do not promote an entry to a reviewed state unless bilingual paper-card
+  source files exist and pass validation.
 - Do not hide uncertainty. Use `unknown`, `needs_search`, `needs_url`,
   `needs_metadata`, or `ambiguous`.
 - Do not broaden `training_use` beyond what the source supports.
@@ -38,7 +38,7 @@ Every contribution must preserve the four-layer design:
   split, verifier, or lineage is known.
 - Do not put API keys, OAuth secrets, database URLs, tokens, private prompts,
   internal logs, or screenshots with secrets anywhere in the repository.
-- Every paper/card must answer the practical questions: source, behavior/data
+- Every paper or paper-card source must answer the practical questions: source, behavior/data
   object, feedback, construction/selection, and audit risk.
 
 ## 2. Source-of-Truth Map
@@ -51,7 +51,7 @@ Use these files as the canonical workflow map:
 | Schema | `data/schema.json` | Required fields and allowed enum values. |
 | Track taxonomy | `data/categories.yaml`, `data/research_tracks.yaml` | The 14 research tracks, grouped into 3 paper-atlas sections, and their subfields. |
 | Starter paths | `data/starter_packs.yaml` | Curated reading routes. |
-| Cards | `cards/` | Human-readable audit cards. |
+| Paper-card sources | `paper_cards/` | Bilingual source files for generated review cards. |
 | Paper pages | `papers/` | Generated track pages. Do not hand-edit generated lists unless you know the renderer. |
 | Website | `docs/index.html`, `docs/assets/*` | Searchable GitHub Pages atlas. |
 | Ask assistant | `docs/ask/`, `apps/ask-atlas/` | AI assistant frontend/backend. |
@@ -85,8 +85,8 @@ Pick one queue per PR. Do not mix unrelated work.
 | Needs-search cleanup | Find official links and missing artifacts. | `reports/needs_search.md` |
 | Link verification | Confirm official paper/code/data/project links. | `reports/link_coverage.md`, `reports/link_check.md` |
 | L1 to L3 promotion | Add summaries, data-object fields, audit notes. | `data/papers.yaml` |
-| Card creation | Create cards for high-impact verified entries. | `cards/*_template.md`, `cards/README.md` |
-| L4 to L5 promotion | Remove placeholders and add audit-ready detail. | Existing card + `data/papers.yaml` |
+| Paper-card creation | Create bilingual paper-card sources for high-impact verified entries. | `paper_cards/README.md`, `docs/paper_card_sop.md` |
+| Review promotion | Remove placeholders and add audit-ready detail. | `paper_cards/sources/` + `data/papers.yaml` |
 | Track enrichment | Improve one research track/subfield. | `papers/`, `data/research_tracks.yaml` |
 | Website/Ask sync | Update generated assets and RAG corpus after metadata changes. | `docs/assets/`, `apps/ask-atlas/` |
 
@@ -487,6 +487,24 @@ Promotion rules:
 
 ## 10. Paper Card SOP
 
+### 10.0 Topic-Scan Requests
+
+When a user asks for papers, latest directions, top-conference work, or a topic
+scan, produce a concrete candidate set instead of stopping at search
+instructions. Do not ask the user to approve the topic when the request already
+states a usable topic, year window, venue tier, or target count.
+
+Ask a short clarification only when a missing detail would change the search
+boundary, such as the research area, year window, venue tier, target count, or
+whether local insertion is required. If the user asks to add or promote entries
+locally, update `data/papers.yaml` and create complete bilingual
+`paper_cards/sources/<entry_id>/` files so the selected entries can reach
+`L4_carded`.
+
+Each returned candidate should include the direction label, title, venue/year,
+official link, reason for fit, and the data object / verifier / reward /
+environment / audit surface it contributes.
+
 ### 10.1 When To Create a Card
 
 Create or improve a card when the entry is:
@@ -503,46 +521,34 @@ Create or improve a card when the entry is:
 
 Choose exactly one primary directory:
 
-| Card type | Directory | Use for |
+| Source type | Directory | Use for |
 |---|---|---|
-| Release card | `cards/releases/` | datasets, trace releases, documentation foundations, reusable data artifacts |
-| Verifier card | `cards/verifiers/` | verifiers, rewards, PRMs, judges, rubrics |
-| Agent card | `cards/agents/` | tools, web, OS, app, SWE, terminal/replay environments |
-| Recipe card | `cards/recipes/` | construction recipes, model reports, pipelines |
-| Benchmark card | `cards/benchmarks/` | evaluation surfaces and benchmark ledgers |
-| Failure card | `cards/failures/` | contamination, leakage, reward hacking, judge attacks, verifier gaming |
+| Release source | `paper_cards/sources/<entry_id>/` | datasets, trace releases, documentation foundations, reusable data artifacts |
+| Verifier source | `paper_cards/sources/<entry_id>/` | verifiers, rewards, PRMs, judges, rubrics |
+| Agent source | `paper_cards/sources/<entry_id>/` | tools, web, OS, app, SWE, terminal/replay environments |
+| Recipe source | `paper_cards/sources/<entry_id>/` | construction recipes, model reports, pipelines |
+| Benchmark source | `paper_cards/sources/<entry_id>/` | evaluation surfaces and benchmark ledgers |
+| Failure source | `paper_cards/sources/<entry_id>/` | contamination, leakage, reward hacking, judge attacks, verifier gaming |
 
-### 10.3 Required Card Header
+### 10.3 Required Bilingual Source Files
 
-Every non-template card must start with:
+Each reviewed paper-card source directory must contain the 9 English files and
+9 Chinese `_ch.md` files listed in `docs/paper_card_sop.md`.
 
-```markdown
-<!-- entry_id: <data/papers.yaml id> -->
-<!-- card_type: releases|verifiers|agents|recipes|benchmarks|failures -->
-# <Readable title>
-```
-
-Then include the Ask block:
-
-```markdown
-<!-- ask_atlas:start -->
-> 🤖 **Ask about this paper:** Explain this card · Generate audit checklist · Compare with related work
-<!-- ask_atlas:end -->
-```
-
-You can add or refresh these links with:
+Ask links are generated during preview/package assembly. Do not hand-maintain
+Ask blocks inside section files. Validate sources with:
 
 ```bash
-python scripts/add_card_ask_links.py
+python tools/paper_cards/card_tool.py check
 ```
 
 Use check mode in PRs:
 
 ```bash
-python scripts/add_card_ask_links.py --check
+python tools/paper_cards/card_tool.py check
 ```
 
-### 10.4 L5 Card Structure
+### 10.4 L5 Review Structure
 
 For a modern `L5_audit_ready` card, prefer this numbered structure:
 
@@ -671,7 +677,7 @@ If two entries are true duplicates:
 ## 13. Generated Outputs
 
 Most public pages are generated from structured metadata. After editing
-`data/`, `cards/`, `docs/`, or Ask-related files, use the correct renderer.
+`data/`, `paper_cards/`, `docs/`, or Ask-related files, use the correct renderer.
 
 Common render commands:
 
@@ -679,7 +685,7 @@ Common render commands:
 python scripts/render_site.py
 python scripts/render_papers.py
 python scripts/render_readme.py
-python scripts/render_cards.py
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/export_csv_json.py
 python scripts/build_bib_index.py
@@ -692,7 +698,7 @@ Check mode:
 python scripts/render_site.py --check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
-python scripts/render_cards.py --check
+python tools/paper_cards/card_tool.py check
 ```
 
 Use renderer output instead of manually editing generated tables.
@@ -714,7 +720,7 @@ Important website assets:
 - `docs/assets/categories.json`
 - `docs/assets/research_tracks.json`
 - `docs/assets/starter_packs.json`
-- `docs/assets/cards.json`
+- `paper_cards/README.md`
 - `docs/assets/counts.json`
 - `docs/assets/atlas-data.js`
 
@@ -739,10 +745,10 @@ Contributor rules:
 
 ```bash
 python scripts/check_ask_entrypoints.py
-python scripts/add_card_ask_links.py --check
+python tools/paper_cards/card_tool.py check
 ```
 
-- Run RAG corpus check after changing docs/papers/cards/data:
+- Run RAG corpus check after changing docs/papers/paper_cards/README.md:
 
 ```bash
 npm --prefix apps/ask-atlas run rag:check
@@ -780,8 +786,8 @@ python scripts/check_ask_entrypoints.py
 npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
-python scripts/add_card_ask_links.py --check
-python scripts/render_cards.py --check
+python tools/paper_cards/card_tool.py check
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
 python scripts/summarize_counts.py
@@ -912,8 +918,8 @@ python scripts/check_ask_entrypoints.py
 npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
-python scripts/add_card_ask_links.py --check
-python scripts/render_cards.py --check
+python tools/paper_cards/card_tool.py check
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
 python scripts/summarize_counts.py
@@ -931,7 +937,7 @@ Regenerate common outputs:
 python scripts/render_site.py
 python scripts/render_papers.py
 python scripts/render_readme.py
-python scripts/render_cards.py
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/export_csv_json.py
 python scripts/build_bib_index.py

@@ -1,0 +1,1 @@
+APPS expanded code evaluation beyond small hand-written functions toward arbitrary specifications and challenge-style tasks. Its lasting contribution is not a new optimizer but a reusable execution-verifier surface.

@@ -9,7 +9,6 @@ from pathlib import Path
 
 from atlas_utils import (
     artifacts,
-    card_inventory,
     categories,
     compact_audit,
     compact_data_object,
@@ -18,6 +17,7 @@ from atlas_utils import (
     entries,
     infer_subfield,
     one_line,
+    paper_card_inventory,
     primary_link,
     research_tracks,
     starter_matches,
@@ -34,7 +34,7 @@ ASK_SITE_PATH = "ask/"
 
 
 def site_entries() -> list[dict]:
-    cards = card_inventory()
+    cards = paper_card_inventory()
     out = []
     for entry in entries():
         card_path = cards.get(entry.get("id"))
@@ -80,7 +80,7 @@ def site_entries() -> list[dict]:
                 "huggingface": art.get("huggingface"),
                 "project": art.get("project"),
                 "bibtex": art.get("bibtex"),
-                "card": card_path,
+                "paper_card_source": card_path,
             },
             "primary_link": link,
         })
@@ -94,7 +94,7 @@ def site_counts(items: list[dict]) -> dict:
     return {
         "total_entries": len(items),
         "verified_entries": count_if(lambda item: item.get("status") == "verified"),
-        "carded_entries": count_if(lambda item: item.get("artifacts", {}).get("card")),
+        "paper_card_sources": count_if(lambda item: item.get("artifacts", {}).get("paper_card_source")),
         "data_releases": count_if(lambda item: "data_release" in item.get("source_role", [])),
         "verifiers_rewards": count_if(lambda item: "verifier_reward" in item.get("source_role", [])),
         "agent_environments": count_if(lambda item: "agent_environment" in item.get("source_role", [])),
@@ -144,7 +144,7 @@ def render_index_html(counts: dict) -> str:
         <a href="{REPO_URL}">GitHub</a>
         <a href="{REPO_URL}#readme">README</a>
         <a href="{REPO_BLOB}/papers/README.md">Papers</a>
-        <a href="{REPO_BLOB}/cards/README.md">Cards</a>
+        <a href="{REPO_BLOB}/paper_cards/README.md">Paper Cards</a>
         <a href="{ASK_SITE_PATH}">Ask the Atlas</a>
         <a href="{REPO_BLOB}/reports/link_coverage.md">Coverage</a>
       </div>
@@ -158,7 +158,7 @@ def render_index_html(counts: dict) -> str:
       <div class="stat-panel" aria-label="Atlas statistics">
         <div><strong id="totalEntries">{counts.get('total_entries', 0)}</strong><span>entries</span></div>
         <div><strong id="verifiedEntries">{counts.get('verified_entries', 0)}</strong><span>verified</span></div>
-        <div><strong id="cardedEntries">{counts.get('carded_entries', 0)}</strong><span>carded</span></div>
+        <div><strong id="paperCardSources">{counts.get('paper_card_sources', 0)}</strong><span>paper-card sources</span></div>
         <div><strong id="needsSearch">{counts.get('needs_search', 0)}</strong><span>needs search</span></div>
       </div>
     </section>

@@ -11,9 +11,9 @@ from atlas_utils import (
     PRIMARY_LINK_KEYS,
     artifact_link_count,
     artifacts,
-    card_inventory,
     curation_level,
     entries,
+    paper_card_inventory,
     primary_link,
     starter_matches,
     starter_packs,
@@ -27,7 +27,7 @@ def pct(num: int, den: int) -> str:
 
 def main() -> int:
     data = entries()
-    cards = card_inventory()
+    cards = paper_card_inventory()
     levels = Counter(curation_level(entry, cards.get(entry.get("id"))) for entry in data)
     verified = [entry for entry in data if entry.get("status") == "verified"]
     primary_verified = [entry for entry in verified if primary_link(entry)]
@@ -64,22 +64,22 @@ def main() -> int:
         "starter_pack_20": {
             "total_matched": len(starter_entries),
             "with_primary_link": len(starter_primary),
-            "carded": len(starter_carded),
+            "paper_card_sources": len(starter_carded),
             "primary_link_coverage": pct(len(starter_primary), len(starter_entries)),
-            "card_coverage": pct(len(starter_carded), len(starter_entries)),
+            "paper_card_source_coverage": pct(len(starter_carded), len(starter_entries)),
         },
         "needs_search": len(needs_search),
         "ambiguous": len(ambiguous),
         "duplicate": len(duplicates),
         "missing_primary_link": len(missing_primary),
-        "cards": len(cards),
+        "paper_card_sources": len(cards),
         "artifact_verified_entries": sum(1 for entry in data if artifact_link_count(entry) > 1),
     }
 
     lines = [
         "# Link Coverage",
         "",
-        "Public coverage report generated from `data/papers.yaml` and the card inventory.",
+        "Public coverage report generated from `data/papers.yaml` and the paper-card source inventory.",
         "",
         "## Summary",
         "",
@@ -89,7 +89,7 @@ def main() -> int:
         f"- Needs search: {report['needs_search']}",
         f"- Ambiguous: {report['ambiguous']}",
         f"- Duplicate: {report['duplicate']}",
-        f"- Cards: {report['cards']}",
+        f"- Paper-card sources: {report['paper_card_sources']}",
         "",
         "## Curation Levels",
         "",
@@ -112,13 +112,13 @@ def main() -> int:
         f"- Data coverage: {artifact_counts['data']}",
         f"- Hugging Face coverage: {artifact_counts['huggingface']}",
         f"- Project page coverage: {artifact_counts['project']}",
-        f"- Card coverage: {len(cards)}",
+        f"- Paper-card source coverage: {len(cards)}",
         "",
         "## Starter Pack Coverage",
         "",
         f"- Matched Starter Pack entries: {len(starter_entries)}",
         f"- Official primary links: {len(starter_primary)}/{len(starter_entries)} ({report['starter_pack_20']['primary_link_coverage']})",
-        f"- Card coverage: {len(starter_carded)}/{len(starter_entries)} ({report['starter_pack_20']['card_coverage']})",
+        f"- Paper-card source coverage: {len(starter_carded)}/{len(starter_entries)} ({report['starter_pack_20']['paper_card_source_coverage']})",
         f"- Code/data/Hugging Face coverage: {sum(1 for entry in starter_entries if any(artifacts(entry).get(k) for k in ['code', 'data', 'huggingface']))}/{len(starter_entries)}",
         "",
         "## Missing Primary Links",
@@ -174,7 +174,7 @@ def main() -> int:
         f"- Entries with verified primary links: {report['verified_with_primary_link']}",
         f"- Entries still needing primary-source search: {report['missing_primary_link']}",
         f"- Starter Pack primary-link coverage: {report['starter_pack_20']['primary_link_coverage']}",
-        f"- Starter Pack card coverage: {report['starter_pack_20']['card_coverage']}",
+        f"- Starter Pack paper-card source coverage: {report['starter_pack_20']['paper_card_source_coverage']}",
         "",
         "## Verification Policy",
         "",

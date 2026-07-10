@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-10T07:54:30Z",
+  "entries": {
+    "tinyv-2025": {
+      "institutions": [
+        "ab",
+        "cc",
+        "dd",
+        "ee"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T04:15:36Z"
+    },
+    "agnostics-universal-learning-environment-2026": {
+      "institutions": [
+        "机构待人工复核"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "featurebench-2026": {
+      "institutions": [
+        "机构待人工复核"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "beyondbench-2026": {
+      "institutions": [
+        "aaa机构待人工复核",
+        "bbbb"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T06:11:17Z"
+    },
+    "credit-budgeted-icpc-style-coding-2026": {
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Shanghai Innovation Institute"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T05:31:22Z"
+    },
+    "geogrambench-2026": {
+      "institutions": [],
+      "has_more": false,
+      "no_institution": true,
+      "updated_at": "2026-07-10T05:17:54Z"
+    },
+    "scaling-llm-test-time-compute-optimally-2024": {
+      "institutions": [
+        "UC Berkeley"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "self-consistency-chain-of-thought-2023": {
+      "institutions": [
+        "Google Research"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "tree-of-thoughts-2023": {
+      "institutions": [
+        "Princeton University",
+        "Google DeepMind"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "coderl-code-generation-rl-2022": {
+      "institutions": [
+        "Salesforce Research"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "lets-verify-step-by-step-2023": {
+      "institutions": [
+        "OpenAI"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "deepseekmath-2024": {
+      "institutions": [
+        "DeepSeek-AI"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "rest-em-self-training-2024": {
+      "institutions": [
+        "Google DeepMind",
+        "Mila"
+      ],
+      "has_more": false,
+      "no_institution": false,
+      "updated_at": "2026-07-10T07:54:30Z"
+    }
+  }
+}

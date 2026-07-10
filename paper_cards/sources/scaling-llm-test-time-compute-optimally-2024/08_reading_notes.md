@@ -1,0 +1,4 @@
+- Separate unique prompts from repeated rollouts.
+- Ask whether the verifier or the policy produces the gain.
+- Compare methods at matched FLOPs or matched sample budgets.
+- Do not reuse the curve without checking benchmark overlap.

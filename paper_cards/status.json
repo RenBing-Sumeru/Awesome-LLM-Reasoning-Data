@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-10T09:19:52Z",
+  "entries": {
+    "tinyv-2025": {
+      "state": "downloaded",
+      "updated_at": "2026-07-10T05:37:01Z",
+      "last_package": "paper-card-package-20260710-133653.zip",
+      "reviewed_at": "2026-07-10T05:36:13Z",
+      "downloaded_at": "2026-07-10T05:37:01Z"
+    },
+    "agnostics-universal-learning-environment-2026": {
+      "state": "new",
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "featurebench-2026": {
+      "state": "new",
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "beyondbench-2026": {
+      "state": "reviewed",
+      "updated_at": "2026-07-10T08:15:50Z",
+      "reviewed_at": "2026-07-10T08:15:50Z"
+    },
+    "credit-budgeted-icpc-style-coding-2026": {
+      "state": "reviewed",
+      "updated_at": "2026-07-10T05:57:17Z",
+      "reviewed_at": "2026-07-10T05:57:17Z"
+    },
+    "geogrambench-2026": {
+      "state": "downloaded",
+      "updated_at": "2026-07-10T05:35:17Z",
+      "reviewed_at": "2026-07-10T05:19:28Z",
+      "downloaded_at": "2026-07-10T05:35:17Z",
+      "last_package": "paper-card-package-20260710-133354.zip"
+    },
+    "scaling-llm-test-time-compute-optimally-2024": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "self-consistency-chain-of-thought-2023": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "tree-of-thoughts-2023": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "coderl-code-generation-rl-2022": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "lets-verify-step-by-step-2023": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "deepseekmath-2024": {
+      "state": "edited",
+      "updated_at": "2026-07-10T09:19:52Z"
+    },
+    "rest-em-self-training-2024": {
+      "state": "reviewed",
+      "updated_at": "2026-07-10T09:18:58Z",
+      "reviewed_at": "2026-07-10T09:18:58Z"
+    }
+  }
+}

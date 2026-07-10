@@ -1,0 +1,3 @@
+- 将它作为形式证明轨迹的参考 record schema。
+- 保存环境版本和无效 tactic 响应以供 replay。
+- 评估泛化而非库记忆时使用 premise-aware split。

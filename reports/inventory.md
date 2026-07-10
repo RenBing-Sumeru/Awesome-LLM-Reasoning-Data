@@ -8,7 +8,7 @@ This folder contains the files intended for the GitHub repository release branch
 - `README_zh.md`
 - `data/`
 - `docs/`
-- `cards/`
+- `paper_cards/`
 - `papers/`
 - `assets/`
 - `scripts/`
