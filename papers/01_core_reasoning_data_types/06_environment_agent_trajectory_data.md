@@ -400,6 +400,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ search substrate; agent training; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verifiable SWE environment for reasoning-to-edit tasks.
+- 🌐 **[REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards](https://openreview.net/forum?id=GqYSunGmp7)**
+  <sub>2025 · NeurIPS 2025 Spotlight · 🌐 agent environment · 🏗️ construction recipe · programmatic · rlvr · evaluation · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=GqYSunGmp7) · [arXiv](https://arxiv.org/abs/2505.24760) · [DOI](https://doi.org/10.48550/arXiv.2505.24760) · [Code](https://github.com/open-thought/reasoning-gym) · [Card](../../cards/agents/reasoning-gym.md)
+  _Data object:_ Each generated entry contains question, answer, and metadata fields; model-answer syntax and the set of valid solutions are task-specific.; process: task or source-dataset name, generator configuration, seed and generated-item index; ProceduralDataset generators, a named task registry, weighted composite datasets, optional reseeding for unbounded streams, and optional task curricula.
+  _Feedback / verifier:_ Each task supplies a score answer function yielding an algorithmic scalar reward; current releases optionally add native, normalized-string, numeric, and symbolic-math cascade scoring.
+  _Recipe signal:_ teacher: none; generator: Registered task-specific Python procedural generators with difficulty, structural, and stylistic parameters.
+  _Audit focus:_ The library is a dynamic generator collection rather than a canonical fixed dataset, so task counts, defaults, outputs, and verifier behavior can change across revisions., The base score answer implementation gives partial credit when an oracle string appears inside a longer response, creating a false-positive surface., The optional cascade only upgrades scores and adds normalization, numeric tolerance, and symbolic matching; this reduces formatting false negatives but broadens acceptance.
+  _Why it matters:_ It turns reasoning-data construction into a versioned executable environment layer where tasks can be generated on demand, difficulty can drive curricula, and rewards can be computed without a fixed human-curated corpus.
 - 📦 **[SWE-smith: Scaling Data for Software Engineering Agents](https://arxiv.org/abs/2504.21798)**
   <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · environmental · agent training · sft · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2504.21798) · [OpenReview](https://openreview.net/forum?id=63iVrXc8cC) · [DOI](https://doi.org/10.48550/arXiv.2504.21798) · [Code](https://github.com/SWE-bench/SWE-smith) · [Data](https://huggingface.co/datasets/SWE-bench/SWE-smith) · [Project](https://swesmith.com/) · [Card](../../cards/agents/swe-smith.md)
@@ -603,14 +611,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ trace writing; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.
-- 📦 **[Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387)**
-  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · programmatic · rlvr · sft · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2502.17387) · [Card](../../cards/releases/big_math.md)
-  _Data object:_ math problem, answer, and verification signal; process: problem, answer, verification label; offline math verifier substrate
-  _Feedback / verifier:_ answer-level math verifier
-  _Recipe signal:_ prompt sourcing; reward verifier layer; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
+- 🌐 **[REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards](https://openreview.net/forum?id=GqYSunGmp7)**
+  <sub>2025 · NeurIPS 2025 Spotlight · 🌐 agent environment · 🏗️ construction recipe · programmatic · rlvr · evaluation · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=GqYSunGmp7) · [arXiv](https://arxiv.org/abs/2505.24760) · [DOI](https://doi.org/10.48550/arXiv.2505.24760) · [Code](https://github.com/open-thought/reasoning-gym) · [Card](../../cards/agents/reasoning-gym.md)
+  _Data object:_ Each generated entry contains question, answer, and metadata fields; model-answer syntax and the set of valid solutions are task-specific.; process: task or source-dataset name, generator configuration, seed and generated-item index; ProceduralDataset generators, a named task registry, weighted composite datasets, optional reseeding for unbounded streams, and optional task curricula.
+  _Feedback / verifier:_ Each task supplies a score answer function yielding an algorithmic scalar reward; current releases optionally add native, normalized-string, numeric, and symbolic-math cascade scoring.
+  _Recipe signal:_ teacher: none; generator: Registered task-specific Python procedural generators with difficulty, structural, and stylistic parameters.
+  _Audit focus:_ The library is a dynamic generator collection rather than a canonical fixed dataset, so task counts, defaults, outputs, and verifier behavior can change across revisions., The base score answer implementation gives partial credit when an oracle string appears inside a longer response, creating a false-positive surface., The optional cascade only upgrades scores and adds normalization, numeric tolerance, and symbolic matching; this reduces formatting false negatives but broadens acceptance.
+  _Why it matters:_ It turns reasoning-data construction into a versioned executable environment layer where tasks can be generated on demand, difficulty can drive curricula, and rewards can be computed without a fixed human-curated corpus.
 - 🪜 **[Math-Shepherd](https://arxiv.org/abs/2312.08935)**
   <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · process supervision · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2312.08935) · [Card](../../cards/verifiers/math_shepherd.md)
@@ -961,13 +969,13 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
 - [AbstentionBench](../../cards/benchmarks/abstentionbench.md)
 - [Aegis2.0](../../cards/verifiers/aegis2.md)
-- [Big-Math-RL-Verified](../../cards/releases/big_math.md)
 - [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](../../cards/recipes/deepseek-prover-v2.md)
 - [Leaky Thoughts](../../cards/failures/leaky-thoughts.md)
 - [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](../../cards/recipes/minimax_m1.md)
 - [OpenThoughts: Data recipes for reasoning models](../../cards/releases/openthoughts.md)
 - [PRMBench: A fine-grained and challenging benchmark for process-level reward models](../../cards/verifiers/prmbench.md)
 - [R2E-Gym](../../cards/agents/r2e_gym.md)
+- [REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards](../../cards/agents/reasoning-gym.md)
 - [SWE-Gym](../../cards/agents/swe_gym.md)
 - [SWE-smith: Scaling Data for Software Engineering Agents](../../cards/agents/swe-smith.md)
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../../cards/agents/androidworld.md)

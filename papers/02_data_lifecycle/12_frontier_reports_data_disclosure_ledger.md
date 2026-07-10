@@ -51,10 +51,10 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 | [Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120) | 2024 | [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../../cards/recipes/magicoder.md) | instruction-response coding example, often linked to a code reference or task scaffold.; process: source snippet, generated instruction, solution response, model family, benchmark result.; offline code-data generation and code benchmark evaluation. | coding benchmark pass rates and optional executable checks. | It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention. |
 | [Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535) | 2024 | [Paper](https://arxiv.org/abs/2405.01535) · [ACL](https://aclanthology.org/2024.emnlp-main.248/) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [Code](https://github.com/prometheus-eval/prometheus-eval) · [Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0) · [Card](../../cards/verifiers/prometheus-2.md) | rubric-conditioned scalar score, critique, or pairwise preference output.; process: instruction, candidate response, evaluation criterion, assessment format, score/ranking, reference judgment.; open evaluator model, GitHub code, ACL software/data artifacts, and HF weights. | Prometheus 2 judge output aligned against human/proprietary-judge benchmarks. | It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes. |
 | [Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) | 2024 | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md) | instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases. | mixture of preference labels, reward models, and verifiable rewards depending on stage. | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
-| [Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949) | 2025 | [Paper](https://arxiv.org/abs/2505.00949) · [Card](../../cards/recipes/llama_nemotron.md) | answer level | mixed | Mixed post-training corpus reference for reasoning, chat, and safety partitions. |
 | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) | 2025 | [Paper](https://arxiv.org/abs/2501.12948) · [Card](../../cards/recipes/deepseek_r1.md) | answer level | mixed | It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior. |
 | [Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300) | 2025 | [Paper](https://arxiv.org/abs/2509.25300) · [Card](../../cards/recipes/scaling-behaviors-rl-post-training.md) | problem, generated solution/answer, reward outcome, and training curve metrics.; process: model size, data volume, compute budget, optimization steps, reward signal, validation performance.; RL post-training experiments over math tasks. | answer-level reward for mathematical reasoning and scaling curves. | It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance. |
 | [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152) | 2024 | [Paper](https://arxiv.org/abs/2408.08152) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL) · [Card](../../cards/recipes/deepseek-prover-v1-5.md) | Lean proof script, proof-search path, feedback signal, and verification result.; process: theorem, proof attempt, Lean feedback, reward, search node, final proof, pass/fail result.; Lean 4 proof assistant plus RMaxTS search procedure. | proof assistant feedback used for RL and search selection. | It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning. |
+| [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300) | 2024 | [Paper](https://arxiv.org/abs/2402.03300) · [Code](https://github.com/deepseek-ai/deepseek-math) · [HF](https://huggingface.co/collections/deepseek-ai/deepseek-math) · [Card](../../cards/recipes/deepseekmath.md) | natural-language mathematical solution plus final answer, sometimes sampled multiple times.; process: data-selection score, training stage, problem, solution, final answer, verifier/evaluation result, sampling count.; offline math training and benchmark evaluation pipeline. | answer correctness and GRPO-style reward over math tasks. | It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe. |
 
 ## 5. Full Paper List
 
@@ -117,14 +117,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### <a id="magistral-phi-nemotron-style-reports"></a>🧠 Magistral / Phi / Nemotron style reports
 
-- 🚀 **[Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949)**
-  <sub>2025 · arXiv · 🚀 model report · 📦 data release · mixed · sft · distillation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2505.00949) · [Card](../../cards/recipes/llama_nemotron.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; sft; distillation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Mixed post-training corpus reference for reasoning, chat, and safety partitions.
 - 🚀 **[Magistral](https://arxiv.org/abs/2506.10910)**
   <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · rlvr · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2506.10910) · [Card](../../cards/recipes/magistral.md)
@@ -313,6 +305,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
+- 🚀 **[General-Reasoner: Advancing LLM Reasoning Across All Domains](https://openreview.net/forum?id=pBFVoll8Xa)**
+  <sub>2025 · NeurIPS 2025 · 🚀 model report · 📦 data release · judgment required · reward modeling · rlvr · L3_summary_ready</sub>
+  [Paper](https://openreview.net/forum?id=pBFVoll8Xa) · [arXiv](https://arxiv.org/abs/2505.14652) · [DOI](https://doi.org/10.48550/arXiv.2505.14652) · [Code](https://github.com/TIGER-AI-Lab/General-Reasoner) · [Data](https://huggingface.co/datasets/TIGER-Lab/WebInstruct-verified) · [Project](https://tiger-ai-lab.github.io/General-Reasoner/)
+  _Data object:_ Short answers spanning float, expression, multiple choice, integer, string, list, Boolean, percentage, fraction, matrix, and other formats.; process: WebInstruct-derived id, question, retained short answer; Fixed WebInstruct-Verified QA splits consumed by a verl-based GRPO pipeline with a separately served 1.5B General-Verifier.
+  _Feedback / verifier:_ A Qwen2.5-Math-1.5B-initialized generative verifier compares question, ground-truth answer, and extracted student answer, generates an equivalence rationale, and emits a final Yes or No decision used as answer-level reward.
+  _Recipe signal:_ teacher: Gemini-1.5-Pro for verifiable-question extraction and Gemini-2.0-Flash for metadata annotation, eight-solution filtering, and verifier-training annotations.; generator: Web recrawling and extraction produce question-answer pairs; policy models generate online reasoning responses during GRPO.
+  _Audit focus:_ Released rows omit original source URLs and item-level attribution, preventing direct verification of recrawl provenance and human-answer lineage., Package-level Apache-2.0 metadata does not establish that every upstream web item has compatible licensing or redistribution terms., Gemini extraction, metadata annotation, and filtering can introduce systematic selection errors; exact prompts and decoding settings are undisclosed.
+  _Why it matters:_ It expands RLVR beyond math and code by operationalizing web recrawling, human-answer retention, LLM-based verifiability filtering, diverse answer-type metadata, and learned answer-equivalence rewards, while exposing important provenance and verifier-audit risks.
+- 🚀 **[Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949)**
+  <sub>2025 · arXiv · 🚀 model report · 📦 data release · mixed · sft · distillation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2505.00949) · [DOI](https://doi.org/10.48550/arXiv.2505.00949) · [Data](https://huggingface.co/datasets/nvidia/Llama-Nemotron-Post-Training-Dataset) · [Card](../../cards/recipes/llama_nemotron.md)
+  _Data object:_ Instruction or task prompt with response/reasoning fields and component-specific labels or rewards.; process: category, license, reasoning; Versioned NVIDIA post-training dataset plus the model report's SFT, distillation and large-scale reinforcement-learning stack.
+  _Feedback / verifier:_ Component-dependent rule-based, benchmark, judge or safety feedback; no single verifier covers every dataset partition.
+  _Recipe signal:_ teacher: Multiple generator/teacher models identified per record where disclosed; exact upstream lineage varies by partition.; generator: Mixed public/open and synthetic post-training construction pipelines, with record-level generator and version fields.
+  _Audit focus:_ Record-level generator metadata does not guarantee complete upstream prompt provenance., Mixed license fields may be incompatible across a combined training run., Reasoning filters and verifier thresholds can become hidden objectives when exact settings are absent.
+  _Why it matters:_ It offers unusually rich release metadata for a frontier reasoning stack while still requiring upstream provenance, filter-threshold, revision and license-chain audits.
 - 📄 **DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning**
   <sub>2025 · arXiv preprint · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -420,7 +428,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](../../cards/recipes/deepseek-prover-v2.md)
 - [DeepSeek-R1](../../cards/recipes/deepseek_r1.md)
 - [Kimi K1.5: Scaling Reinforcement Learning with LLMs](../../cards/recipes/kimi_k15.md)
-- [Llama-Nemotron: Efficient Reasoning Models](../../cards/recipes/llama_nemotron.md)
 - [Magistral](../../cards/recipes/magistral.md)
 - [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](../../cards/recipes/minimax_m1.md)
 - [OpenThoughts: Data recipes for reasoning models](../../cards/releases/openthoughts.md)
@@ -435,6 +442,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
 - [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](../../cards/recipes/qwen2-5-math.md)
 - [Tulu 3: Pushing frontiers in open language model post-training](../../cards/recipes/tulu-3.md)
+- [Orca: Progressive learning from complex explanation traces of GPT-4](../../cards/recipes/orca.md)
 
 ## Back to Map
 

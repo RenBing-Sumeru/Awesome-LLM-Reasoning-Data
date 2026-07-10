@@ -156,30 +156,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ self play anchor; reward verifier layer; optimizer scaffold
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Self-play RLVR recipe where the model proposes and solves tasks without external training data, using verifiable feedback to ground the loop.
-- 📦 **[Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387)**
-  <sub>2025 · arXiv · 📦 data release · 🧰 benchmark · programmatic · rlvr · sft · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2502.17387) · [Card](../../cards/releases/big_math.md)
-  _Data object:_ math problem, answer, and verification signal; process: problem, answer, verification label; offline math verifier substrate
-  _Feedback / verifier:_ answer-level math verifier
-  _Recipe signal:_ prompt sourcing; reward verifier layer; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
-- 🏗️ **[DAPO](https://arxiv.org/abs/2503.14476)**
-  <sub>2025 · arXiv · 🏗️ construction recipe · 📈 scaling study · programmatic · rlvr · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2503.14476) · [Card](../../cards/releases/dapo.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ programmatic
-  _Recipe signal:_ optimizer scaffold; reward verifier layer; rlvr
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
-- 📦 **[DeepMath-103K](https://arxiv.org/abs/2504.11456)**
-  <sub>2025 · arXiv · 📦 data release · programmatic · sft · rlvr · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2504.11456) · [Card](../../cards/releases/deepmath_103k.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ programmatic
-  _Recipe signal:_ prompt sourcing; reward verifier layer; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Math release highlighted for verifier pinning and decontamination.
+- 📦 **[DAPO: An Open-Source LLM Reinforcement Learning System at Scale](https://arxiv.org/abs/2503.14476)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · rlvr · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2503.14476) · [OpenReview](https://openreview.net/forum?id=2a36EMSSTp) · [DOI](https://doi.org/10.48550/arXiv.2503.14476) · [Code](https://github.com/BytedTsinghua-SIA/DAPO) · [Data](https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k) · [HF](https://huggingface.co/collections/BytedTsinghua-SIA/dapo) · [Project](https://dapo-sia.github.io/) · [Card](../../cards/releases/dapo.md)
+  _Data object:_ Math prompt paired with an integer ground-truth answer; generated responses are scored by extracting the final answer.; process: prompt/question, integer answer, sampled response during RL; verl-based distributed RL training system with a math answer parser/verifier.
+  _Feedback / verifier:_ Rule-based outcome reward from final-answer correctness, plus length-aware overlong reward shaping.
+  _Recipe signal:_ teacher: none reported for target traces; web/competition answers plus manual annotation provide ground-truth answers.; generator: Online policy rollouts sampled during DAPO/GRPO-style RL.
+  _Audit focus:_ Integer-answer transformation can change problem semantics or difficulty., Rule-based answer extraction can create false positives or false negatives., Dynamic sampling hides all-correct and all-wrong prompts from gradient updates, changing the effective training distribution.
+  _Why it matters:_ It is valuable for the Data Construction track because the paper exposes how prompt sourcing, answer normalization, reward rules, rollout filtering, and optimizer scaffolding jointly shape RLVR data rather than merely reporting a final benchmark score.
 - 🚀 **[Kimi K1.5: Scaling Reinforcement Learning with LLMs](https://arxiv.org/abs/2501.12599)**
   <sub>2025 · arXiv · 🚀 model report · 📈 scaling study · mixed · rlvr · test time compute · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2501.12599) · [Card](../../cards/recipes/kimi_k15.md)
@@ -276,6 +260,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; optimizer scaffold; process supervision
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.
+- 📦 **[ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search](https://arxiv.org/abs/2406.03816)**
+  <sub>2024 · NeurIPS · 📦 data release · 🪜 process supervision · programmatic · mixed · sft · process supervision · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2406.03816) · [Venue](https://papers.nips.cc/paper_files/paper/2024/hash/76ec4dc30e9faaf0e4b6093eaa377218-Abstract-Conference.html) · [DOI](https://doi.org/10.48550/arXiv.2406.03816) · [Code](https://github.com/THUDM/ReST-MCTS) · [Data](https://huggingface.co/datasets/zd21/ReST-MCTS_Llama3-8b-Instruct_ReST-MCTS_Policy_1st) · [HF](https://huggingface.co/datasets/zd21/ReST-MCTS-Llama3-8b-Instruct-PRM-1st) · [Project](https://rest-mcts.github.io/) · [Card](../../cards/recipes/rest-mcts.md)
+  _Data object:_ Question with final answer, searched step-by-step reasoning trace, selected policy-training solution, and inferred per-step value/process-reward labels; PRM releases include positive and negative samples.; process: question/content, optional final answer, partial reasoning state / tree node; Offline MCTS* reasoning tree and iterative self-training pipeline.
+  _Feedback / verifier:_ Oracle final-answer correctness plus an inferred/learned process reward model used to guide search and provide value targets.
+  _Recipe signal:_ teacher: No single teacher model; oracle final answers and tree-search-estimated step values provide supervision.; generator: Policy rollouts expanded by MCTS* and guided by a process reward/value model.
+  _Audit focus:_ Final-answer correctness can still allow flawed or spurious intermediate reasoning., Process reward estimates are search-policy-specific and can encode tree-search artifacts., Accepted traces can hide rejected branches, failed candidates, and ambiguous paths.
+  _Why it matters:_ It is valuable for the Data Construction track because it separates input answer-keyed questions, tree-search trace generation, inferred process rewards, policy data selection, and reward-model training instead of treating benchmark gains as data quality proof.
 - 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
   <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME)
@@ -292,14 +284,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ generator: MCTS-guided retrieval-augmented rollouts; filtering rule: trustworthy process rewarding and iterative preference optimization
   _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
   _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
-- 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2406.03816)
-  _Data object:_ reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree
-  _Feedback / verifier:_ process reward guided tree search
-  _Recipe signal:_ generator: policy rollouts expanded by MCTS; filtering rule: process-reward-guided trajectory selection
-  _Audit focus:_ search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality
-  _Why it matters:_ It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
 - 🪜 **[Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629)**
   <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · mixed · process supervision · preference learning · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2406.18629)
@@ -316,14 +300,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives the atlas a second reasoning-survey waypoint so readers can orient before choosing math, code, agent, rubric, or scaling tracks.
-- 🧭 **[DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning](https://arxiv.org/abs/2504.11456)**
-  <sub>2025 · arXiv preprint arXiv:2504.11456 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2504.11456)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **[Nemotron-Math: Reasoning Data with Tool-Integrated Reasoning Variants](https://arxiv.org/abs/2512.15489)**
   <sub>2025 · arXiv preprint arXiv:2512.15489 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2512.15489)
@@ -418,6 +394,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ trace writing; optimizer scaffold; scaling report
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.
+- 🌐 **[REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards](https://openreview.net/forum?id=GqYSunGmp7)**
+  <sub>2025 · NeurIPS 2025 Spotlight · 🌐 agent environment · 🏗️ construction recipe · programmatic · rlvr · evaluation · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=GqYSunGmp7) · [arXiv](https://arxiv.org/abs/2505.24760) · [DOI](https://doi.org/10.48550/arXiv.2505.24760) · [Code](https://github.com/open-thought/reasoning-gym) · [Card](../../cards/agents/reasoning-gym.md)
+  _Data object:_ Each generated entry contains question, answer, and metadata fields; model-answer syntax and the set of valid solutions are task-specific.; process: task or source-dataset name, generator configuration, seed and generated-item index; ProceduralDataset generators, a named task registry, weighted composite datasets, optional reseeding for unbounded streams, and optional task curricula.
+  _Feedback / verifier:_ Each task supplies a score answer function yielding an algorithmic scalar reward; current releases optionally add native, normalized-string, numeric, and symbolic-math cascade scoring.
+  _Recipe signal:_ teacher: none; generator: Registered task-specific Python procedural generators with difficulty, structural, and stylistic parameters.
+  _Audit focus:_ The library is a dynamic generator collection rather than a canonical fixed dataset, so task counts, defaults, outputs, and verifier behavior can change across revisions., The base score answer implementation gives partial credit when an oracle string appears inside a longer response, creating a false-positive surface., The optional cascade only upgrades scores and adds normalization, numeric tolerance, and symbolic matching; this reduces formatting false negatives but broadens acceptance.
+  _Why it matters:_ It turns reasoning-data construction into a versioned executable environment layer where tasks can be generated on demand, difficulty can drive curricula, and rewards can be computed without a fixed human-curated corpus.
 - 🧰 **[AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](https://arxiv.org/abs/2407.18901)**
   <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2407.18901) · [Card](../../cards/agents/appworld.md)
@@ -633,14 +617,54 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
-- 📄 **Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
+- 📦 **[Efficient PRM Training Data Synthesis via Formal Verification](https://aclanthology.org/2026.findings-acl.403/)**
+  <sub>2026 · Findings of ACL 2026 · 📦 data release · 🧪 verifier reward · programmatic · reward modeling · process supervision · L4_carded</sub>
+  [Paper](https://aclanthology.org/2026.findings-acl.403/) · [arXiv](https://arxiv.org/abs/2505.15960) · [DOI](https://doi.org/10.18653/v1/2026.findings-acl.403) · [Code](https://github.com/psunlpgroup/FoVer) · [Data](https://huggingface.co/datasets/ryokamoi/FoVer-FormalLogic-FormalProof-Qwen-2.5-7B-LastStepBalanced-40k) · [HF](https://huggingface.co/collections/ryokamoi/fover) · [Project](https://fover-prm.github.io/) · [Card](../../cards/verifiers/fover.md)
+  _Data object:_ Each record contains a formal problem, ordered solution steps, aligned Boolean error labels, conversation-form training/prediction representations, base dataset, and task-specific formula metadata.; process: id, problem, solution steps; Z3 first-order-logic checking and Isabelle/HOL theorem proving. Isabelle syntax is checked with sorry placeholders and each target step is verified while other proof steps are replaced by sorry.
+  _Feedback / verifier:_ Z3 or Isabelle emits binary correctness per formal step. The trained PRM predicts correct/incorrect tokens and their normalized logits become step-level reward scores.
+  _Recipe signal:_ teacher: No human or LLM teacher supplies error labels; Z3 and Isabelle provide programmatic labels while Llama and Qwen generate candidate traces.; generator: Few-shot prompts elicit verifier-compatible formal solutions; the pipeline retries until syntactically valid and then applies step-level Z3/Isabelle wrappers.
+  _Audit focus:_ A generated Isabelle statement can misformalize the natural-language problem while still receiving formally correct labels., Parser, type, tactic, timeout, dependency or prover-environment failures may be mapped to Boolean labels without an error-type field or prover log., Isabelle independent-step verification replaces other steps with sorry and can miss dependency-chain or scoping errors.
+  _Why it matters:_ It demonstrates a low-LLM-call route to process supervision while making formalization fidelity, prover wrappers, step-dependency assumptions, dataset versioning and informal-domain transfer explicit audit boundaries.
+- 📦 **[Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models](https://arxiv.org/abs/2502.17387)**
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · rlvr · sft · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2502.17387) · [DOI](https://doi.org/10.48550/arXiv.2502.17387) · [Code](https://github.com/SynthLabsAI/big-math) · [Data](https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified) · [Card](../../cards/releases/big_math.md)
+  _Data object:_ Open-ended mathematical question with a closed-form uniquely verifiable answer and source/domain metadata where available.; process: source dataset, question, answer; Offline math prompt corpus intended for rule-verifiable reinforcement learning; official repository releases filtering and reformulation code.
+  _Feedback / verifier:_ Rule-based/model-assisted filters identify uniquely verifiable closed-form answers; downstream RL uses answer correctness.
+  _Recipe signal:_ generator: Human/open-source problems plus systematic multiple-choice-to-open-ended reformulation for Big-Math-Reformulated.; filtering rule: Retain open-ended problems with unique, closed-form verifiable solutions; manually audit filtering stages and reformulate suitable multiple-choice items.
+  _Audit focus:_ Rule-based answer checkers can reject equivalent forms or accept malformed shortcuts., Reformulation can change problem semantics or difficulty., Combining public sources can preserve benchmark contamination and incompatible licenses.
+  _Why it matters:_ It makes prompt filtering, answer verifiability, source mixture and multiple-choice reformulation explicit construction steps for RL-ready math data.
+- 📦 **[DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning](https://arxiv.org/abs/2504.11456)**
+  <sub>2025 · ICLR 2026 · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2504.11456) · [Venue](https://iclr.cc/virtual/2026/poster/10007807) · [DOI](https://doi.org/10.48550/arXiv.2504.11456) · [Code](https://github.com/zwhe99/DeepMath) · [Data](https://huggingface.co/datasets/zwhe99/DeepMath-103K) · [Card](../../cards/releases/deepmath_103k.md)
+  _Data object:_ Mathematical question with verifiable final answer, topic and difficulty metadata, plus three generated reasoning solutions.; process: question, final answer, difficulty; Offline math problem corpus with answer-level rule verification and benchmark-overlap filtering.
+  _Feedback / verifier:_ Rule-based final-answer verification for RLVR-ready prompts; exact parser and equivalence behavior require code-level audit.
+  _Recipe signal:_ teacher: DeepSeek-R1 for three released solutions per problem.; generator: Mixed-source math curation followed by DeepSeek-R1 solution generation.
+  _Audit focus:_ Final-answer verification can accept flawed or shortcut reasoning., Semantic decontamination thresholds can remove legitimate near-neighbors or miss paraphrased benchmark items., Three solutions from one teacher family can share systematic errors and style artifacts.
+  _Why it matters:_ It makes difficulty selection, answer verification, benchmark decontamination and mutable release corrections explicit parts of a reusable RLVR/SFT data pipeline.
+- 🏗️ **[RL Tango: Reinforcing Generator and Verifier Together for Language Reasoning](https://openreview.net/forum?id=JRkFZl0TJ2)**
+  <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 🧪 verifier reward · mixed · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://openreview.net/forum?id=JRkFZl0TJ2) · [arXiv](https://arxiv.org/abs/2505.15034) · [Code](https://github.com/kaiwenzha/rl-tango)
+  _Data object:_ A runtime item comprises a question, gold answer, generator response with think/step/answer tags, verifier response with one natural-language judgment per step, and an overall final-verification judgment. This is a training-time object, not a released dataset schema.; process: question, gold answer, generator solution; Offline math QA RL using veRL. The outcome checker extracts a boxed final answer and compares it with gold; the generative verifier evaluates the current generator trace and emits structured step/final judgments.
+  _Feedback / verifier:_ The generator receives binary gold-answer reward plus stochastic step rewards from the current verifier. The verifier receives outcome-level reward for whether its final judgment matches rule-derived correctness, plus structural-format reward. No gold step labels are used in the main training run.
+  _Recipe signal:_ teacher: Llama-3.1-70B-Instruct generates initial SFT responses. During RL there is no frozen process-label teacher; generator and verifier create evolving trajectories while gold final answers anchor outcomes.; generator: The generator emits tagged multi-step solutions; the generative verifier emits natural-language analysis, one binary judgment per step, and a final judgment. Both are updated by policy-gradient RL in a 3-to-1 cycle.
+  _Audit focus:_ Generator and verifier can co-adapt to shared stylistic or structural shortcuts that fail under independent evaluation., Verifier step judgments receive no direct correctness labels; plausible but inaccurate step rationales can earn reward., Final-answer extraction can produce false positives or negatives for equivalent expressions, malformed boxes or invalid reasoning.
+  _Why it matters:_ It exposes an online data contract for co-training reasoning policies and verifiers while highlighting risks from co-adaptation, latent process-label accuracy, answer-checker brittleness and missing trajectories/checkpoints.
+- 📦 **[SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond](https://openreview.net/forum?id=XtNiw8OQsy)**
+  <sub>2025 · NeurIPS 2025 · 📦 data release · 🏗️ construction recipe · programmatic · rlvr · evaluation · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=XtNiw8OQsy) · [arXiv](https://arxiv.org/abs/2505.19641) · [DOI](https://doi.org/10.48550/arXiv.2505.19641) · [Code](https://github.com/MiniMax-AI/SynLogic) · [Data](https://huggingface.co/datasets/MiniMaxAI/SynLogic) · [Card](../../cards/recipes/synlogic.md)
+  _Data object:_ Chat-style prompt plus task-specific reference answer and solution fields; RL responses must use think and answer tags around the reasoning and final answer.; process: data source task identifier, chat-style prompt, ability label; Task-specific rule-based generators and verifiers, with DAPO-adapted GRPO training and separate Easy and Hard dataset configurations.
+  _Feedback / verifier:_ Binary reward requires both the prescribed think/answer format and acceptance of the final answer by the task-specific rule verifier.
+  _Recipe signal:_ teacher: DeepSeek R1 and OpenAI-o3-mini calibrate upper difficulty bounds; unspecified chat models calibrate lower bounds. They are not disclosed as reasoning-trace teachers.; generator: Manually implemented rule-based generators for 33 tasks; Zebra Puzzle and ARC-AGI data are adopted from existing open resources.
+  _Audit focus:_ The viewer's default Easy configuration exposes 27 data source values, while the full Hard release and paper framework cover 35; failing to record the configuration can produce a false coverage discrepancy., Official revision history records duplicate ARC-AGI prompts, duplicate Easy prompts, and Boolean Expressions data or generator repairs., Official issues report missing or empty answers and a currently missing Cipher generation script; issue reports require task-level confirmation before reuse.
+  _Why it matters:_ It makes logical-reasoning data construction operational by connecting task sourcing, difficulty calibration, executable verification, release variants, and DAPO-style RL, while its revision history shows why dataset version pinning and verifier audits are necessary.
+- 📦 **[rStar-Coder: Scaling Competitive Code Reasoning with a Large-Scale Verified Dataset](https://papers.nips.cc/paper_files/paper/2025/hash/54e847e1dffc87a8063844b149148557-Abstract-Conference.html)**
+  <sub>2025 · NeurIPS 2025 · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L4_carded</sub>
+  [Paper](https://papers.nips.cc/paper_files/paper/2025/hash/54e847e1dffc87a8063844b149148557-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2505.21297) · [Code](https://papers.nips.cc/paper_files/paper/2025/file/54e847e1dffc87a8063844b149148557-Supplemental-Conference.zip) · [Data](https://huggingface.co/datasets/microsoft/rStar-Coder) · [Project](https://github.com/microsoft/rStar) · [Card](../../cards/releases/rstar-coder.md)
+  _Data object:_ SFT records contain a programming question, long-CoT response, and implementation code. RL records separate problems from input-output test cases. Seed records may include starter code and solution-level verified/is passed booleans.; process: question id, question, seed question; Competitive-programming execution for standard-input/output and function-based tasks, with generated inputs spanning multiple scales; reuse requires isolated untrusted-code execution.
+  _Feedback / verifier:_ For seed problems, oracle solutions label generated outputs and candidate code is checked against tests. For synthetic problems, 16 QWQ-32B solutions are executed on at least 50 shared inputs and consistent complete output sets are selected by agreement.
+  _Recipe signal:_ teacher: GPT-4o for problem synthesis; GPT-4o and DeepSeek-V3 for test-input utility functions; QWQ-32B for long-reasoning candidate solutions.; generator: Seed problems and oracle solutions drive transformed problem synthesis, constraint-aware test generation, and QWQ-32B executable long-CoT generation.
+  _Audit focus:_ Mutually generated solutions can share systematic errors and converge on an incorrect output set; reported accuracy drops from 96.8 to 92.8 percent in the larger comparison., The 40 percent threshold for difficult Codeforces-derived problems is below a strict majority., Seed problems for which no QWQ-32B candidate passes retain all generated solutions, so seed sft is not uniformly verified.
+  _Why it matters:_ It provides a rare operational recipe for scaling difficult code reasoning data and programmatic rewards, while exposing reuse risks around false consensus, retained unverified seed traces, source licensing, config linkage, and mismatch between the published mixture and current repository.
 - 📄 **MATH-Perturb**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -851,9 +875,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
 - [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](../../cards/recipes/absolute_zero.md)
-- [Big-Math-RL-Verified](../../cards/releases/big_math.md)
-- [DAPO](../../cards/releases/dapo.md)
-- [DeepMath-103K](../../cards/releases/deepmath_103k.md)
+- [DAPO: An Open-Source LLM Reinforcement Learning System at Scale](../../cards/releases/dapo.md)
 - [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](../../cards/recipes/deepseek-prover-v2.md)
 - [DeepSeek-R1](../../cards/recipes/deepseek_r1.md)
 - [Kimi K1.5: Scaling Reinforcement Learning with LLMs](../../cards/recipes/kimi_k15.md)
@@ -867,6 +889,8 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](../../cards/releases/openmathreasoning.md)
 - [OpenThoughts: Data recipes for reasoning models](../../cards/releases/openthoughts.md)
 - [PRMBench: A fine-grained and challenging benchmark for process-level reward models](../../cards/verifiers/prmbench.md)
+- [Phi-4-reasoning Technical Report](../../cards/recipes/phi4_reasoning.md)
+- [Qwen3 Technical Report](../../cards/recipes/qwen3.md)
 
 ## Back to Map
 

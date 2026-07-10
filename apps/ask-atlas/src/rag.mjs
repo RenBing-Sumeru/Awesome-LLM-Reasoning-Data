@@ -345,7 +345,7 @@ function buildRepositoryFileSources() {
   }
   const sources = [];
   for (const file of files) {
-    const rel = path.relative(REPO_ROOT, file);
+    const rel = path.relative(REPO_ROOT, file).split(path.sep).join("/");
     if (rel.startsWith("docs/assets/")) continue;
     const type = sourceType(rel);
     const text = readText(file);
@@ -373,7 +373,7 @@ function buildPrivatePrimerSources() {
   if (!primerTextPath || !fs.existsSync(primerTextPath)) return [];
   const text = readText(primerTextPath);
   if (!text.trim()) return [];
-  const rel = path.relative(REPO_ROOT, primerTextPath);
+  const rel = path.relative(REPO_ROOT, primerTextPath).split(path.sep).join("/");
   return chunkText(text).map((chunk, index) => ({
     id: `${rel}#chunk-${index + 1}`,
     title: "A Primer in Post-Training Reasoning Data",

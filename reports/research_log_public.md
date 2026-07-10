@@ -2,9 +2,9 @@
 
 This public log summarizes source verification progress without including private execution notes.
 
-- Generated at: 2026-07-08
-- Entries with verified primary links: 165
-- Entries still needing primary-source search: 115
+- Generated at: 2026-07-10
+- Entries with verified primary links: 164
+- Entries still needing primary-source search: 109
 - Starter Pack primary-link coverage: 100.0%
 - Starter Pack card coverage: 100.0%
 

@@ -297,14 +297,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: not applicable; this is an audit benchmark.; generator: models produce reasoning traces under normal or injected prompts.
   _Audit focus:_ Hiding thoughts from users does not make them safe., Trace logging can create a new privacy dataset., Utility improvements from more reasoning may worsen leakage risk.
   _Why it matters:_ It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.
-- 🚀 **[Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949)**
-  <sub>2025 · arXiv · 🚀 model report · 📦 data release · mixed · sft · distillation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2505.00949) · [Card](../../cards/recipes/llama_nemotron.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; sft; distillation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Mixed post-training corpus reference for reasoning, chat, and safety partitions.
 - 🧭 **[Aegis2.0: A Diverse AI Safety Dataset and Risks Taxonomy for Alignment of LLM Guardrails](https://arxiv.org/abs/2501.09004)**
   <sub>2025 · arXiv preprint arXiv:2501.09004 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2501.09004)
@@ -515,6 +507,54 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
+- 📦 **[Reasoning with OmniThought: A Large CoT Dataset with Verbosity and Cognitive Difficulty Annotations](https://aclanthology.org/2026.acl-long.382/)**
+  <sub>2026 · ACL 2026 · 📦 data release · 🏗️ construction recipe · mixed · sft · distillation · L4_carded</sub>
+  [Paper](https://aclanthology.org/2026.acl-long.382/) · [arXiv](https://arxiv.org/abs/2505.10937) · [DOI](https://doi.org/10.18653/v1/2026.acl-long.382) · [Data](https://huggingface.co/datasets/alibaba-pai/OmniThought) · [Card](../../cards/releases/omnithought.md)
+  _Data object:_ Each row contains a question and a list of reasoning records. A reasoning record contains thought, solution, full response, teacher, thought correctness verify, Reasoning Verbosity, and Cognitive Difficulty.; process: thought, solution, full response; Offline math, code, and science problem corpus. Code generations are checked by executing test cases; math and science generations use rule-based checks combined with LLM judgment.
+  _Feedback / verifier:_ Final-answer correctness validation plus two 0-9 whole-trace metadata scores, Reasoning Verbosity and Cognitive Difficulty; QwQ-32B is recorded as the RV/CD judge.
+  _Recipe signal:_ teacher: DeepSeek-R1, DeepSeek-R1-0528, and QwQ-32B; generator: Multiple large reasoning models generate multiple CoTs per sourced problem.
+  _Audit focus:_ The paper's more-than-2M CoT and 708K-problem claims cannot be reconciled from the current partial public viewer, which estimates about 552K problem rows., Teacher-model mixture proportions and row-level prompt-source provenance are undisclosed., Randomly filtering some traces shorter than 3000 tokens may underrepresent simple or naturally concise problems.
+  _Why it matters:_ It provides a concrete open recipe for selecting reasoning traces by both answer validity and process characteristics, while exposing important audit questions around snapshot scale, judge reliability, source provenance, and upstream licensing.
+- 📦 **[The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs](https://openreview.net/forum?id=a2XmC7rHIU)**
+  <sub>2026 · ICLR 2026 · 📦 data release · 🧰 benchmark · judgment required · reward modeling · process supervision · L4_carded</sub>
+  [Paper](https://openreview.net/forum?id=a2XmC7rHIU) · [arXiv](https://arxiv.org/abs/2506.21621) · [DOI](https://doi.org/10.48550/arXiv.2506.21621) · [Code](https://github.com/insait-institute/open-proof-corpus) · [Data](https://huggingface.co/datasets/INSAIT-Institute/OPC) · [Project](https://proofcorpus.ai/) · [Card](../../cards/releases/open-proof-corpus.md)
+  _Data object:_ Full natural-language mathematical proof paired with one or two binary correctness labels, written feedback, uncertainty flags, optional span-level annotations, and problem/source metadata.; process: problem identifier and statement, generated proof, solver model identifier; Competition-proof generation followed by a custom expert-grading interface, duplicate grading for quality control, split-specific evaluation protocols, and optional best-of-N selection.
+  _Feedback / verifier:_ One or two qualified human judges assign binary proof-validity labels and written feedback; optional sentence annotations identify local errors.
+  _Recipe signal:_ teacher: Thirteen expert human judges provide correctness supervision; official competition solutions are supplied as references when available, and O4-MINI supplies non-verdict issue summaries.; generator: O4-MINI, O3, Gemini-2.5-Pro, Grok-3-Mini, Qwen3-235B-A22B, and DeepSeek-R1 generate the released proofs.
+  _Audit focus:_ Approximately 10% double grading leaves most proofs with a single human judgment., The reported 90.4% agreement still implies nonzero label noise; the paper's 5% judge-error estimate depends on independence assumptions., Fewer than 3% of proofs are marked uncertain, but subtle near-correct errors can remain difficult to classify.
+  _Why it matters:_ It provides unusually rich positive and negative proof supervision for training and auditing proof judges while exposing the limits of final-answer verification, selective best-of-N labeling, and single-judge proof assessment.
+- 🚀 **[General-Reasoner: Advancing LLM Reasoning Across All Domains](https://openreview.net/forum?id=pBFVoll8Xa)**
+  <sub>2025 · NeurIPS 2025 · 🚀 model report · 📦 data release · judgment required · reward modeling · rlvr · L3_summary_ready</sub>
+  [Paper](https://openreview.net/forum?id=pBFVoll8Xa) · [arXiv](https://arxiv.org/abs/2505.14652) · [DOI](https://doi.org/10.48550/arXiv.2505.14652) · [Code](https://github.com/TIGER-AI-Lab/General-Reasoner) · [Data](https://huggingface.co/datasets/TIGER-Lab/WebInstruct-verified) · [Project](https://tiger-ai-lab.github.io/General-Reasoner/)
+  _Data object:_ Short answers spanning float, expression, multiple choice, integer, string, list, Boolean, percentage, fraction, matrix, and other formats.; process: WebInstruct-derived id, question, retained short answer; Fixed WebInstruct-Verified QA splits consumed by a verl-based GRPO pipeline with a separately served 1.5B General-Verifier.
+  _Feedback / verifier:_ A Qwen2.5-Math-1.5B-initialized generative verifier compares question, ground-truth answer, and extracted student answer, generates an equivalence rationale, and emits a final Yes or No decision used as answer-level reward.
+  _Recipe signal:_ teacher: Gemini-1.5-Pro for verifiable-question extraction and Gemini-2.0-Flash for metadata annotation, eight-solution filtering, and verifier-training annotations.; generator: Web recrawling and extraction produce question-answer pairs; policy models generate online reasoning responses during GRPO.
+  _Audit focus:_ Released rows omit original source URLs and item-level attribution, preventing direct verification of recrawl provenance and human-answer lineage., Package-level Apache-2.0 metadata does not establish that every upstream web item has compatible licensing or redistribution terms., Gemini extraction, metadata annotation, and filtering can introduce systematic selection errors; exact prompts and decoding settings are undisclosed.
+  _Why it matters:_ It expands RLVR beyond math and code by operationalizing web recrawling, human-answer retention, LLM-based verifiability filtering, diverse answer-type metadata, and learned answer-equivalence rewards, while exposing important provenance and verifier-audit risks.
+- 🚀 **[Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949)**
+  <sub>2025 · arXiv · 🚀 model report · 📦 data release · mixed · sft · distillation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2505.00949) · [DOI](https://doi.org/10.48550/arXiv.2505.00949) · [Data](https://huggingface.co/datasets/nvidia/Llama-Nemotron-Post-Training-Dataset) · [Card](../../cards/recipes/llama_nemotron.md)
+  _Data object:_ Instruction or task prompt with response/reasoning fields and component-specific labels or rewards.; process: category, license, reasoning; Versioned NVIDIA post-training dataset plus the model report's SFT, distillation and large-scale reinforcement-learning stack.
+  _Feedback / verifier:_ Component-dependent rule-based, benchmark, judge or safety feedback; no single verifier covers every dataset partition.
+  _Recipe signal:_ teacher: Multiple generator/teacher models identified per record where disclosed; exact upstream lineage varies by partition.; generator: Mixed public/open and synthetic post-training construction pipelines, with record-level generator and version fields.
+  _Audit focus:_ Record-level generator metadata does not guarantee complete upstream prompt provenance., Mixed license fields may be incompatible across a combined training run., Reasoning filters and verifier thresholds can become hidden objectives when exact settings are absent.
+  _Why it matters:_ It offers unusually rich release metadata for a frontier reasoning stack while still requiring upstream provenance, filter-threshold, revision and license-chain audits.
+- 📦 **[Unleashing LLM Reasoning Capability via Scalable Question Synthesis from Scratch](https://aclanthology.org/2025.acl-long.658/)**
+  <sub>2025 · ACL 2025 · 📦 data release · 🏗️ construction recipe · judgment required · sft · distillation · L3_summary_ready</sub>
+  [Paper](https://aclanthology.org/2025.acl-long.658/) · [arXiv](https://arxiv.org/abs/2410.18693) · [DOI](https://doi.org/10.18653/v1/2025.acl-long.658) · [Code](https://github.com/yyDing1/ScaleQuest) · [Data](https://huggingface.co/datasets/dyyyyyyyy/ScaleQuest-Math) · [Project](https://scalequest.github.io/)
+  _Data object:_ A mathematical problem in query and a selected natural-language step-by-step solution in response, typically ending with a final answer.; process: generated question, generated chain-of-thought response, internal generator branch, not released; Offline synthetic-data pipeline with QFT, DPO-style QPO, question filtering, response generation, reward-model reranking, and DART-Math instruction tuning.
+  _Feedback / verifier:_ Qwen2-Math-7B-Instruct supplies solvability judgments, a learned DeepSeekMath-7B-Base scorer predicts question difficulty, and InternLM2-7B-Reward ranks five candidate responses.
+  _Recipe signal:_ teacher: External optimization models evaluated for QPO include GPT-4o-mini, Llama3.1-70B-Instruct, and Qwen2-Math-7B-Instruct; exact row-level optimizer lineage is not released.; generator: DeepSeekMath-QGen and Qwen2-Math-QGen generate 1M candidate questions each; Qwen2-Math-7B-Instruct generates response candidates.
+  _Audit focus:_ The released file omits generator identity, preference lineage, filter decisions, difficulty scores, candidate responses, reward scores, and rejection reasons., Rejected questions from the 2M candidate pool and four non-selected solutions per accepted question are not released., Model-based solvability filtering can retain nonsensical, underspecified, or internally inconsistent questions.
+  _Why it matters:_ It provides an executable alternative to proprietary teacher-driven synthesis by separating question-generator activation, preference optimization, question filtering, solution generation, and reward reranking, while exposing clear audit needs around rejected data and reward-selected traces.
+- 📦 **[VersaPRM: Multi-Domain Process Reward Model via Synthetic Reasoning Data](https://proceedings.mlr.press/v267/zeng25h.html)**
+  <sub>2025 · ICML 2025 · 📦 data release · 🧪 verifier reward · judgment required · reward modeling · process supervision · L3_summary_ready</sub>
+  [Paper](https://proceedings.mlr.press/v267/zeng25h.html) · [arXiv](https://arxiv.org/abs/2502.06737) · [OpenReview](https://openreview.net/forum?id=l19DmXbwPK) · [Code](https://github.com/UW-Madison-Lee-Lab/VersaPRM) · [Data](https://huggingface.co/datasets/UW-Madison-Lee-Lab/MMLU-Pro-CoT-Train-Labeled) · [HF](https://huggingface.co/collections/UW-Madison-Lee-Lab/versaprm)
+  _Data object:_ Ten-choice multiple-choice question plus a step-delimited chain of thought ending with a parsed final option.; process: question, answer, category; MMLU-Pro multiple-choice questions spanning 14 domains.
+  _Feedback / verifier:_ Llama-3.1-70B-Instruct receives the question, ground-truth answer, reference explanation and indexed steps, then identifies the earliest BAD step. Released labels use 1 before and -1 from the earliest error through the suffix.
+  _Recipe signal:_ teacher: Llama-3.1-70B-Instruct auto-labeler with ground-truth answer, reference explanation and GOOD/OK/BAD rubric.; generator: Llama-3.1-8B-Instruct via AWS Bedrock.
+  _Audit focus:_ The paper says post-error steps are discarded, but official parser and released data retain the suffix and label it -1., Human validation covers only 30 questions and 90 selected CoTs, with 83% positive and 70% negative agreement and no per-domain confidence intervals., Earliest-error propagation marks the whole suffix negative and cannot represent later recovery.
+  _Why it matters:_ It releases an end-to-end non-math-specific process-supervision pipeline while exposing judge accuracy, suffix propagation, style bias, calibration, source licensing and decontamination as audit risks.
 - 📄 **RewardBench 2**
   <sub>2026 · ICLR · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -783,7 +823,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [Aegis2.0](../../cards/verifiers/aegis2.md)
 - [HealthBench](../../cards/verifiers/healthbench.md)
 - [Leaky Thoughts](../../cards/failures/leaky-thoughts.md)
-- [Llama-Nemotron: Efficient Reasoning Models](../../cards/recipes/llama_nemotron.md)
 - [One Token to Fool LLM-as-a-Judge](../../cards/verifiers/one_token_to_fool_judge.md)
 - [PRMBench: A fine-grained and challenging benchmark for process-level reward models](../../cards/verifiers/prmbench.md)
 - [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../../cards/verifiers/tinyv.md)
@@ -797,6 +836,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [GPQA](../../cards/benchmarks/gpqa.md)
 - [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](../../cards/verifiers/mt-bench-chatbot-arena.md)
 - [Let's Verify Step by Step](../../cards/verifiers/prm800k.md)
+- [Orca: Progressive learning from complex explanation traces of GPT-4](../../cards/recipes/orca.md)
 
 ## Back to Map
 

@@ -1,81 +1,81 @@
 # Counts Report
 
-total entries: 280
-filled cards: 89
-missing primary paper/arXiv/DOI links: 115
-needs search / partial metadata: 115
+total entries: 288
+filled cards: 99
+missing primary paper/arXiv/DOI links: 109
+needs search / partial metadata: 124
 
 ## status
-- verified: 165
-- needs_metadata: 112
-- partial: 3
+- verified: 164
+- needs_metadata: 106
+- partial: 18
 
 ## category
-- benchmarks_evaluation_surfaces: 109
-- data_construction_open_release_recipes: 108
-- training_usage_optimization_objectives: 97
+- data_construction_open_release_recipes: 116
+- training_usage_optimization_objectives: 111
+- benchmarks_evaluation_surfaces: 110
+- programmatically_verifiable_outcome_data: 97
 - environment_agent_trajectory_data: 95
-- programmatically_verifiable_outcome_data: 94
-- scaling_rlvr_test_time_compute: 90
-- foundations_and_primers: 84
-- judgment_rubric_domain_expert_data: 83
-- preference_reward_feedback_data: 73
-- audit_failure_contamination_verifier_attacks: 68
-- instruction_demonstration_rationale_data: 58
-- frontier_reports_data_disclosure_ledger: 40
-- rollout_search_test_time_trace_data: 39
-- process_trace_supervision_data: 25
+- scaling_rlvr_test_time_compute: 91
+- judgment_rubric_domain_expert_data: 88
+- foundations_and_primers: 80
+- preference_reward_feedback_data: 80
+- audit_failure_contamination_verifier_attacks: 69
+- instruction_demonstration_rationale_data: 63
+- rollout_search_test_time_trace_data: 42
+- frontier_reports_data_disclosure_ledger: 41
+- process_trace_supervision_data: 30
 
 ## source_role
-- survey_background: 192
-- construction_recipe: 40
-- benchmark: 37
-- data_release: 36
-- verifier_reward: 20
-- model_report: 18
-- scaling_study: 18
-- agent_environment: 16
+- survey_background: 185
+- construction_recipe: 58
+- data_release: 49
+- benchmark: 38
+- verifier_reward: 31
+- model_report: 24
+- scaling_study: 24
+- agent_environment: 18
+- process_supervision: 16
 - audit_failure: 12
-- process_supervision: 11
-- infrastructure: 2
+- infrastructure: 4
 
 ## verification_contract
-- unknown: 180
-- mixed: 55
-- programmatic: 48
-- judgment_required: 30
-- environmental: 22
+- unknown: 173
+- mixed: 61
+- programmatic: 55
+- judgment_required: 35
+- environmental: 23
 
 ## training_use
-- unknown: 174
-- evaluation: 72
-- sft: 36
-- reward_modeling: 28
-- rlvr: 27
-- agent_training: 22
-- audit: 20
-- test_time_compute: 20
-- preference_learning: 16
-- distillation: 14
-- process_supervision: 11
+- unknown: 167
+- evaluation: 81
+- sft: 46
+- rlvr: 34
+- reward_modeling: 33
+- agent_training: 23
+- test_time_compute: 22
+- audit: 21
+- distillation: 21
+- preference_learning: 19
+- process_supervision: 15
 - safety_alignment: 8
 
 ## construction_layer
-- release_audit: 234
-- reward_verifier_layer: 43
-- trace_writing: 24
-- optimizer_scaffold: 22
-- search_substrate: 21
-- prompt_sourcing: 17
-- frontier_pipeline: 11
-- scaling_report: 10
-- self_play_anchor: 2
+- release_audit: 243
+- reward_verifier_layer: 55
+- trace_writing: 39
+- optimizer_scaffold: 36
+- prompt_sourcing: 35
+- search_substrate: 24
+- scaling_report: 17
+- frontier_pipeline: 12
+- self_play_anchor: 4
 
 ## year
-- 2025: 122
+- 2025: 127
 - 2024: 64
 - 2023: 37
-- 2026: 19
+- 2026: 22
 - 2021: 15
 - 2022: 14
 - 2020: 3
@@ -85,12 +85,12 @@ needs search / partial metadata: 115
 - 2017: 1
 
 ## cards
-- agents: 14
+- agents: 16
 - benchmarks: 12
 - failures: 4
-- recipes: 26
-- releases: 18
-- verifiers: 15
+- recipes: 29
+- releases: 22
+- verifiers: 16
 
 ## missing primary links (first 80)
 - `an-overview-of-the-bioasq-large-scale-biomedical-semantic-indexing-and-question--2015` · An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition · status `needs_metadata`
@@ -167,13 +167,13 @@ needs search / partial metadata: 115
 - `xstest-2024` · XSTest · status `needs_metadata`
 - `1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025` · 1-shot RLVR: Learning reasoning with minimal verifiable data · status `needs_metadata`
 - `acord-attorney-curated-open-research-dataset-2025` · ACORD: Attorney-curated open research dataset · status `needs_metadata`
-- `big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025` · Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning · status `needs_metadata`
 - `chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025` · ChemLLMBench and chemistry reasoning evaluations for language models · status `needs_metadata`
-- `dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025` · DAPO: An open-source LLM reinforcement learning system at scale · status `needs_metadata`
 - `deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025` · DeepScaleR: Scaling reinforcement learning for reasoning in open models · status `needs_metadata`
 - `deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025` · DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning · status `needs_metadata`
 - `does-rl-really-incentivize-reasoning-beyond-base-2025` · Does RL really incentivize reasoning beyond base? · status `needs_metadata`
-- ... 35 more
+- `does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025` · Does supervised fine-tuning memorize while reinforcement learning generalizes? · status `needs_metadata`
+- `finder-financial-data-extraction-and-reasoning-2025` · FinDER: Financial data extraction and reasoning · status `needs_metadata`
+- ... 29 more
 
 ## needs search / partial metadata (first 80)
 - `an-overview-of-the-bioasq-large-scale-biomedical-semantic-indexing-and-question--2015` · An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition · status `needs_metadata`
@@ -250,10 +250,10 @@ needs search / partial metadata: 115
 - `xstest-2024` · XSTest · status `needs_metadata`
 - `1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025` · 1-shot RLVR: Learning reasoning with minimal verifiable data · status `needs_metadata`
 - `acord-attorney-curated-open-research-dataset-2025` · ACORD: Attorney-curated open research dataset · status `needs_metadata`
-- `big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025` · Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning · status `needs_metadata`
+- `big-math-2025` · Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models · status `partial`
 - `chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025` · ChemLLMBench and chemistry reasoning evaluations for language models · status `needs_metadata`
-- `dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025` · DAPO: An open-source LLM reinforcement learning system at scale · status `needs_metadata`
+- `deepmath-103k-2025` · DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning · status `partial`
 - `deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025` · DeepScaleR: Scaling reinforcement learning for reasoning in open models · status `needs_metadata`
 - `deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025` · DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning · status `needs_metadata`
 - `does-rl-really-incentivize-reasoning-beyond-base-2025` · Does RL really incentivize reasoning beyond base? · status `needs_metadata`
-- ... 35 more
+- ... 44 more

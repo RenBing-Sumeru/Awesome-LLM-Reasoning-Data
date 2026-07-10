@@ -3,7 +3,7 @@
 # SWE-smith: Scaling Data for Software Engineering Agents
 
 <!-- ask_atlas:start -->
-> Ask about this paper: [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-smith-scaling-data-construction-for-software-engineering-agents-2025&mode=explain) | [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-smith-scaling-data-construction-for-software-engineering-agents-2025&mode=audit) | [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-smith-scaling-data-construction-for-software-engineering-agents-2025&mode=compare)
+> 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-smith-scaling-data-construction-for-software-engineering-agents-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-smith-scaling-data-construction-for-software-engineering-agents-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-smith-scaling-data-construction-for-software-engineering-agents-2025&mode=compare)
 <!-- ask_atlas:end -->
 
 > Curation level: L4_carded

@@ -4,10 +4,10 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 
 | Type | Count | Use it for |
 |---|---:|---|
-| [Release cards](#release-cards) | 19 | datasets, trace releases, documentation foundations, and reusable data artifacts |
-| [Verifier cards](#verifier-cards) | 15 | verifiers, rewards, process supervision, judges, and rubrics |
-| [Agent/environment cards](#agentenvironment-cards) | 15 | tool, web, app, OS, and SWE trajectories |
-| [Recipe cards](#recipe-cards) | 26 | construction recipes, model reports, and training pipelines |
+| [Release cards](#release-cards) | 22 | datasets, trace releases, documentation foundations, and reusable data artifacts |
+| [Verifier cards](#verifier-cards) | 16 | verifiers, rewards, process supervision, judges, and rubrics |
+| [Agent/environment cards](#agentenvironment-cards) | 16 | tool, web, app, OS, and SWE trajectories |
+| [Recipe cards](#recipe-cards) | 29 | construction recipes, model reports, and training pipelines |
 | [Benchmark cards](#benchmark-cards) | 11 | evaluation surfaces and benchmark ledgers |
 | [Failure cards](#failure-cards) | 3 | contamination, leakage, reward hacking, and verifier attacks |
 
@@ -16,28 +16,32 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 ### Release cards
 
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) - Audits reasoning-model progress claims by showing that benchmark results can be highly sensitive to decoding, seeds, prompt format, and environment details.
-- [Big-Math-RL-Verified](releases/big_math.md) - Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
+- [Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models](releases/big_math.md) - Big-Math filters heterogeneous public math sources into more than 250K open-ended questions with verifiable answers and adds about 47K systematically reformulated problems.
 - [Chain-of-thought prompting elicits reasoning in large language models](releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md) - Shows that few-shot natural-language rationales can elicit multi-step reasoning behavior from sufficiently large language models.
-- [DAPO](releases/dapo.md) - GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
+- [DAPO: An Open-Source LLM Reinforcement Learning System at Scale](releases/dapo.md) - DAPO is an open RLVR system and DAPO-Math-17K release where rule-based rewards, dynamic sampling, and overlong shaping define the effective training data.
 - [Data statements for natural language processing](releases/data-statements-for-natural-language-processing.md) - Proposes data statements for NLP datasets, foregrounding language, speaker/community provenance, annotation context, and intended deployment boundaries.
 - [Datasheets for datasets](releases/datasheets-for-datasets.md) - Introduces dataset datasheets: a structured documentation template for provenance, composition, collection process, recommended uses, and limitations.
-- [DeepMath-103K](releases/deepmath_103k.md) - Math release highlighted for verifier pinning and decontamination.
+- [DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning](releases/deepmath_103k.md) - DeepMath-103K releases difficult, decontaminated math questions with verifiable answers and three DeepSeek-R1 solutions per problem.
 - [Direct preference optimization: Your language model is secretly a reward model](releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) - DPO trains a policy directly from preference pairs by turning the reward-model objective into a supervised contrastive optimization problem.
 - [KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](releases/kodcode.md) - Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.
 - [LIMO: Less Is More for Reasoning](releases/limo.md) - Small-set curation reference distinguishing elicitation from broad coverage.
 - [NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions](releases/naturalreasoning.md) - Large-scale natural-language reasoning questions broaden post-training data beyond math/code while keeping a verifiability lens.
+- [Reasoning with OmniThought: A Large CoT Dataset with Verbosity and Cognitive Difficulty Annotations](releases/omnithought.md) - OmniThought constructs multi-teacher reasoning traces, validates their answers with executable or hybrid checks, and annotates each trace for metadata-conditioned post-training.
+- [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs](releases/open-proof-corpus.md) - Open Proof Corpus releases thousands of frontier-model competition proofs with expert correctness labels, written feedback, optional error spans, provenance metadata, and best-of-N analysis splits.
 - [OpenCodeReasoning: Advancing Data Distillation for Competitive Coding](releases/opencodereasoning.md) - OpenCodeReasoning releases a large DeepSeek-R1-distilled competitive-programming reasoning corpus for SFT, with documented sourcing, filtering, scaling analysis, and code-reasoning benchmark evaluation.
 - [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](releases/opencodereasoning_ii.md) - Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.
 - [OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](releases/openmathinstruct-2.md) - OpenMathInstruct-2 releases 14M math instruction-tuning problem-solution pairs generated with an open synthesis pipeline.
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](releases/openmathreasoning.md) - Large-scale math reasoning trace release for programmatic verification.
 - [OpenR1-Math-220k](releases/openr1.md) - Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
 - [OpenThoughts: Data recipes for reasoning models](releases/openthoughts.md) - OpenThoughts studies open data recipes for reasoning models through large public reasoning datasets and many controlled pipeline experiments.
+- [rStar-Coder: Scaling Competitive Code Reasoning with a Large-Scale Verified Dataset](releases/rstar-coder.md) - rStar-Coder releases seed and synthetic SFT traces plus RL problem and testcase configs constructed from competition problems, QWQ-32B solutions, and agreement-over-execution verification.
 - [s1: Simple Test-Time Scaling](releases/s1.md) - s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.
 - [UltraFeedback: Boosting language models with high-quality feedback](releases/ultrafeedback.md) - UltraFeedback releases large-scale AI feedback with fine-grained ratings and critiques over diverse instruction-response pairs.
 
 ### Verifier cards
 
 - [Aegis2.0](verifiers/aegis2.md) - Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.
+- [Efficient PRM Training Data Synthesis via Formal Verification](verifiers/fover.md) - FOVER-40K pairs formal reasoning traces with Boolean step labels produced by Z3 and Isabelle, then trains Llama- and Qwen-based PRMs for process-level verification and Best-of-K selection.
 - [HealthBench](verifiers/healthbench.md) - HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.
 - [Math-Shepherd](verifiers/math_shepherd.md) - Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.
 - [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](verifiers/mt-bench-chatbot-arena.md) - MT-Bench and Chatbot Arena establish LLM-as-a-judge and pairwise human-preference evaluation surfaces for open-ended chat models.
@@ -63,6 +67,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](agents/osworld.md) - Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
 - [R2E-Gym](agents/r2e_gym.md) - Verifiable SWE environment for reasoning-to-edit tasks.
 - [ReAct: Synergizing reasoning and acting in language models](agents/react.md) - ReAct interleaves reasoning traces with task-specific actions so models can update plans from external observations.
+- [REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards](agents/reasoning-gym.md) - Reasoning Gym is an open library of more than 100 configurable procedural reasoning generators with task-specific algorithmic rewards for dynamic RLVR training and evaluation.
 - [SWE-bench: Can language models resolve real-world GitHub issues?](agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) - SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.
 - [Introducing SWE-bench Verified](agents/swe-bench-verified.md) - SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.
 - [SWE-smith: Scaling Data for Software Engineering Agents](agents/swe-smith.md) - SWE-smith is an open pipeline and dataset release for constructing executable SWE-agent tasks from Python repositories and generated code.
@@ -80,8 +85,9 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [DeepSeek-Prover: Advancing theorem proving in LLMs](recipes/deepseek-prover.md) - DeepSeek-Prover generates large-scale Lean 4 theorem-proving data from informal math problems and trains a formal proof model.
 - [DeepSeek-R1](recipes/deepseek_r1.md) - DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.
 - [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](recipes/deepseekmath.md) - DeepSeekMath combines math-focused web-data selection with SFT, GRPO-style RL, and self-consistency evaluation for open mathematical reasoning.
+- [FastMCTS: A Simple Sampling Strategy for Data Synthesis](recipes/fastmcts.md) - An MCTS-inspired offline synthesis recipe that reuses reasoning prefixes and terminal verification signals to generate math SFT and preference data more efficiently than independent rejection sampling.
 - [Kimi K1.5: Scaling Reinforcement Learning with LLMs](recipes/kimi_k15.md) - Frontier report used for long-context RL and scaling discussion.
-- [Llama-Nemotron: Efficient Reasoning Models](recipes/llama_nemotron.md) - Mixed post-training corpus reference for reasoning, chat, and safety partitions.
+- [Llama-Nemotron: Efficient Reasoning Models](recipes/llama_nemotron.md) - Llama-Nemotron releases a versioned post-training mixture with record-level category, generator, license, reasoning and training-use metadata across SFT and RL-oriented data.
 - [Magicoder: Empowering code generation with OSS-instruct](recipes/magicoder.md) - Magicoder introduces OSS-Instruct, a code-data recipe that uses open-source code snippets to generate more realistic instruction data.
 - [Magistral](recipes/magistral.md) - Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.
 - [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](recipes/minimax_m1.md) - Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.
@@ -90,11 +96,13 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](recipes/qwen2-5-math.md) - Qwen2.5-Math reports a math-specialized model family supporting chain-style and tool-integrated reasoning with base, instruct, and reward-model variants.
 - [Qwen3 Technical Report](recipes/qwen3.md) - Open model-family report useful for coordinated release-tick analysis.
 - [Qwen3-Coder](recipes/qwen3_coder.md) - Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
+- [ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search](recipes/rest-mcts.md) - ReST-MCTS* uses process-reward-guided tree search to generate policy-training reasoning traces and per-step value targets for iterative self-training.
 - [Scaling Behaviors of LLM Reinforcement Learning Post-Training](recipes/scaling-behaviors-rl-post-training.md) - This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.
 - [Self-consistency improves chain of thought reasoning in language models](recipes/self-consistency-chain-of-thought.md) - Self-consistency samples multiple chain-of-thought reasoning paths and chooses the answer that is most consistent across samples.
 - [Self-Instruct: Aligning language models with self-generated instructions](recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) - Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.
 - [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](recipes/self-rag.md) - Self-RAG trains models to decide when to retrieve, generate with evidence, and critique outputs using reflection tokens.
 - [STaR: Bootstrapping reasoning with reasoning](recipes/star-bootstrapping-reasoning-with-reasoning.md) - STaR iteratively generates rationales, keeps examples whose final answers are correct, and fine-tunes on the accepted reasoning traces.
+- [SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond](recipes/synlogic.md) - SynLogic releases controllable generators, rule-based verifiers, and Easy and Hard RLVR datasets spanning 27 and 35 logical-reasoning tasks respectively.
 - [The Art of Scaling Reinforcement Learning Compute for LLMs](recipes/the-art-of-scaling-rl-compute.md) - The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.
 - [Training language models to follow instructions with human feedback](recipes/training-language-models-to-follow-instructions-with-human-feedback.md) - InstructGPT establishes the demonstration, preference-comparison, reward-model, and PPO pipeline that many later post-training recipes inherit.
 - [TTRL: Test-Time Reinforcement Learning](recipes/ttrl.md) - Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.

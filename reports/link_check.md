@@ -2,10 +2,10 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 476
-- markdown links checked: 6768
-- external markdown links discovered: 4323
-- unique external URLs discovered: 571
+- artifact URLs discovered: 615
+- markdown links checked: 7577
+- external markdown links discovered: 5065
+- unique external URLs discovered: 716
 - live URLs checked: 0
 - failures: 0
 
@@ -203,6 +203,12 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024` huggingface: https://huggingface.co/Qwen/Qwen2.5-Math-7B
 - `rest-mcts-2024` paper: https://arxiv.org/abs/2406.03816
 - `rest-mcts-2024` arxiv: https://arxiv.org/abs/2406.03816
+- `rest-mcts-2024` code: https://github.com/THUDM/ReST-MCTS
+- `rest-mcts-2024` data: https://huggingface.co/datasets/zd21/ReST-MCTS_Llama3-8b-Instruct_ReST-MCTS_Policy_1st
+- `rest-mcts-2024` project: https://rest-mcts.github.io/
+- `rest-mcts-2024` huggingface: https://huggingface.co/datasets/zd21/ReST-MCTS-Llama3-8b-Instruct-PRM-1st
+- `rest-mcts-2024` doi: https://doi.org/10.48550/arXiv.2406.03816
+- `rest-mcts-2024` venue: https://papers.nips.cc/paper_files/paper/2024/hash/76ec4dc30e9faaf0e4b6093eaa377218-Abstract-Conference.html
 - `rewardbench-evaluating-reward-models-for-language-modeling-2024` paper: https://arxiv.org/abs/2403.13787
 - `rewardbench-evaluating-reward-models-for-language-modeling-2024` arxiv: https://arxiv.org/abs/2403.13787
 - `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` paper: https://arxiv.org/abs/2410.08146
@@ -254,12 +260,6 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` paper: https://arxiv.org/abs/2509.03403
 - `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` arxiv: https://arxiv.org/abs/2509.03403
 - `big-math-2025` paper: https://arxiv.org/abs/2502.17387
-- `big-math-2025` arxiv: https://arxiv.org/abs/2502.17387
-- `clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025` paper: https://arxiv.org/abs/2509.26114
-- `clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025` arxiv: https://arxiv.org/abs/2509.26114
-- `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` paper: https://arxiv.org/abs/2503.01307
-- `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` arxiv: https://arxiv.org/abs/2503.01307
-- `dapo-2025` paper: https://arxiv.org/abs/2503.14476
-- ... 226 more
+- ... 365 more
 
 Network probing skipped because `--soft` was used.

@@ -4,37 +4,37 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 
 ## Summary
 
-- Total entries: 280
-- Verified entries: 165
-- Verified entries with official paper/arXiv/venue/DOI links: 165 (100.0%)
-- Needs search: 115
+- Total entries: 288
+- Verified entries: 164
+- Verified entries with official paper/arXiv/venue/DOI links: 164 (100.0%)
+- Needs search: 109
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 87
+- Cards: 97
 
 ## Curation Levels
 
-- L0_seeded: 115
-- L1_link_verified: 69
+- L0_seeded: 109
+- L1_link_verified: 67
 - L2_artifact_verified: 7
-- L3_summary_ready: 4
-- L4_carded: 32
+- L3_summary_ready: 10
+- L4_carded: 42
 - L5_audit_ready: 53
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 165
-- arXiv coverage: 162
-- OpenReview coverage: 15
-- ACL coverage: 7
-- PMLR coverage: 1
+- Official primary paper/arXiv/venue/DOI coverage: 179
+- arXiv coverage: 176
+- OpenReview coverage: 24
+- ACL coverage: 11
+- PMLR coverage: 2
 - CVF coverage: 0
-- DOI coverage: 5
-- Code coverage: 41
-- Data coverage: 27
-- Hugging Face coverage: 20
-- Project page coverage: 25
-- Card coverage: 87
+- DOI coverage: 20
+- Code coverage: 59
+- Data coverage: 43
+- Hugging Face coverage: 36
+- Project page coverage: 39
+- Card coverage: 97
 
 ## Starter Pack Coverage
 
@@ -119,9 +119,7 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `xstest-2024` · XSTest · status `needs_metadata`
 - `1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025` · 1-shot RLVR: Learning reasoning with minimal verifiable data · status `needs_metadata`
 - `acord-attorney-curated-open-research-dataset-2025` · ACORD: Attorney-curated open research dataset · status `needs_metadata`
-- `big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025` · Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning · status `needs_metadata`
 - `chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025` · ChemLLMBench and chemistry reasoning evaluations for language models · status `needs_metadata`
-- `dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025` · DAPO: An open-source LLM reinforcement learning system at scale · status `needs_metadata`
 - `deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025` · DeepScaleR: Scaling reinforcement learning for reasoning in open models · status `needs_metadata`
 - `deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025` · DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning · status `needs_metadata`
 - `does-rl-really-incentivize-reasoning-beyond-base-2025` · Does RL really incentivize reasoning beyond base? · status `needs_metadata`
@@ -135,13 +133,10 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `math-perturb-2025` · MATH-Perturb · status `needs_metadata`
 - `mcp-universe-tool-and-environment-infrastructure-for-agent-evaluation-and-traini-2025` · MCP-Universe: Tool and environment infrastructure for agent evaluation and training · status `needs_metadata`
 - `medreason-eliciting-factual-medical-reasoning-steps-in-llms-via-knowledge-graphs-2025` · MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs · status `needs_metadata`
-- `megascience-a-benchmark-and-data-resource-for-scientific-reasoning-2025` · MegaScience: A benchmark and data resource for scientific reasoning · status `needs_metadata`
 - `min-k-2025` · Min-K\%++ · status `needs_metadata`
 - `multi-agent-evolve-llm-self-improve-through-co-evolution-2025` · Multi-Agent Evolve: LLM self-improve through co-evolution · status `needs_metadata`
 - `onlinerubrics-2025` · OnlineRubrics · status `needs_metadata`
 - `open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025` · Open-Reasoner-Zero: An open-source approach to RLVR for reasoning · status `needs_metadata`
-- `opencodereasoning-2-scalable-code-reasoning-data-2025` · OpenCodeReasoning-2: Scalable code reasoning data · status `needs_metadata`
-- `opencodereasoning-code-reasoning-traces-at-scale-2025` · OpenCodeReasoning: Code reasoning traces at scale · status `needs_metadata`
 - `process-reward-models-for-code-reasoning-2025` · Process reward models for code reasoning · status `needs_metadata`
 - `qwen2-5-math-prm-2025` · Qwen2.5-Math-PRM · status `needs_metadata`
 - `r2e-gym-procedural-training-environments-for-repository-level-code-agents-2025` · R2E-Gym: Procedural training environments for repository-level code agents · status `needs_metadata`
@@ -149,7 +144,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `rubrics-as-rewards-2025` · Rubrics as rewards · status `needs_metadata`
 - `sky-t1-fully-open-reasoning-model-and-data-recipe-2025` · Sky-T1: Fully open reasoning model and data recipe · status `needs_metadata`
 - `swe-rl-advancing-language-agents-for-software-engineering-via-reinforcement-lear-2025` · SWE-RL: Advancing language agents for software engineering via reinforcement learning · status `needs_metadata`
-- `swe-smith-scaling-data-construction-for-software-engineering-agents-2025` · SWE-smith: Scaling data construction for software engineering agents · status `needs_metadata`
 - `the-agent-company-benchmarking-and-analyzing-agent-work-in-enterprise-like-envir-2025` · The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments · status `needs_metadata`
 - `toward-conversational-diagnostic-ai-the-amie-system-2025` · Toward conversational diagnostic AI: The AMIE system · status `needs_metadata`
 - `var-math-2025` · VAR-MATH · status `needs_metadata`

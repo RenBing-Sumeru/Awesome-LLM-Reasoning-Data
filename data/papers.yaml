@@ -9833,89 +9833,130 @@
     confidence: low
     notes: Official primary link not pinned yet.
 - id: rest-mcts-2024
-  title: ReST-MCTS*
+  title: 'ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search'
   year: 2024
-  venue: arXiv
-  authors: []
+  venue: NeurIPS
+  authors:
+  - Dan Zhang
+  - Sining Zhoubian
+  - Ziniu Hu
+  - Yisong Yue
+  - Yuxiao Dong
+  - Jie Tang
   source_role:
+  - data_release
   - process_supervision
+  - verifier_reward
   - construction_recipe
   - scaling_study
   verification_contract:
   - programmatic
   - mixed
   supervision_granularity:
+  - answer_level
   - step_level
   - process_reward
+  - trajectory_value
   domains:
   - math
+  - science
   - reasoning
   training_use:
+  - sft
   - process_supervision
   - reward_modeling
   - test_time_compute
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - reward_verifier_layer
   - optimizer_scaffold
   - search_substrate
+  - scaling_report
   artifacts:
     paper: https://arxiv.org/abs/2406.03816
     arxiv: https://arxiv.org/abs/2406.03816
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
+    code: https://github.com/THUDM/ReST-MCTS
+    data: https://huggingface.co/datasets/zd21/ReST-MCTS_Llama3-8b-Instruct_ReST-MCTS_Policy_1st
+    project: https://rest-mcts.github.io/
+    huggingface: https://huggingface.co/datasets/zd21/ReST-MCTS-Llama3-8b-Instruct-PRM-1st
+    doi: https://doi.org/10.48550/arXiv.2406.03816
+    venue: https://papers.nips.cc/paper_files/paper/2024/hash/76ec4dc30e9faaf0e4b6093eaa377218-Abstract-Conference.html
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: math reasoning problems
-    trace_author: model rollouts under tree search
-    answer_format: reasoning trajectory with intermediate search states
+    prompt_source: Science and math reasoning question sets; the official README states that the initial value-training
+      set uses a lean science dataset within SciInstruct, but exact source mixture and split policy for each released Hugging
+      Face artifact should be pinned before reuse.
+    trace_author: Policy-model rollouts guided by MCTS* and a process reward/value model; reported policy backbones include
+      Llama3-8B-Instruct, MetaMath-Mistral-7B, and SciGLM-6B.
+    answer_format: Question with final answer, searched step-by-step reasoning trace, selected policy-training solution,
+      and inferred per-step value/process-reward labels; PRM releases include positive and negative samples.
     process_fields:
-    - node state
-    - rollout candidate
-    - process reward score
-    environment_or_substrate: MCTS-style reasoning tree
-    verifier_or_reward: process reward guided tree search
-    terminal_predicate: final-answer correctness under search
+    - question/content
+    - optional final answer
+    - partial reasoning state / tree node
+    - candidate next step
+    - process reward or value score
+    - final-answer correctness signal
+    - selected trajectory for policy self-training
+    - positive/negative PRM sample
+    environment_or_substrate: Offline MCTS* reasoning tree and iterative self-training pipeline.
+    verifier_or_reward: Oracle final-answer correctness plus an inferred/learned process reward model used to guide search
+      and provide value targets.
+    terminal_predicate: Candidate reasoning reaches the correct final answer under the task answer key or benchmark checker.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: policy rollouts expanded by MCTS
-    filtering_rule: process-reward-guided trajectory selection
-    sampling_protocol: tree search over intermediate reasoning states
+    base_model: Policy backbones reported in the official README include Llama3-8B-Instruct, MetaMath-Mistral-7B, and SciGLM-6B;
+      value-model backbones include Mistral-7B for Llama/Mistral policies and ChatGLM3-6B for SciGLM policy.
+    teacher: No single teacher model; oracle final answers and tree-search-estimated step values provide supervision.
+    generator: Policy rollouts expanded by MCTS* and guided by a process reward/value model.
+    filtering_rule: Select policy-training traces using process-reward-guided tree search and final-answer correctness; construct
+      PRM data from positive and negative process samples.
+    sampling_protocol: MCTS* search over intermediate reasoning states; exact per-dataset search budgets and branch/iteration
+      settings should be pinned from scripts/configs before reuse.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: ReST-style self-training with MCTS
+    optimizer_or_scaffold: Iterative ReST-MCTS* self-training; train policy models on selected search traces and train/refine
+      process reward models from inferred value targets.
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: Science and math reasoning datasets, including a SciInstruct-derived value-training source according to
+      the official README; exact source proportions for released HF artifacts are unknown locally.
+    split: Multiple Hugging Face datasets are released by backbone, method, and iteration; exact revisions, row counts, and
+      split semantics should be pinned before training.
     decontamination: unknown
     license: unknown
-    lineage: unknown
+    lineage: Input questions and final answers -> MCTS* rollouts -> inferred process rewards/value targets -> selected policy
+      traces and PRM positive/negative samples -> iterative policy/reward-model self-training.
     known_failure_modes:
-    - search policy may overfit process reward artifacts
-    - accepted traces can hide rejected rollout distribution
-    - inference budget may be conflated with data quality
+    - Final-answer correctness can still allow flawed or spurious intermediate reasoning.
+    - Process reward estimates are search-policy-specific and can encode tree-search artifacts.
+    - Accepted traces can hide rejected branches, failed candidates, and ambiguous paths.
+    - Search budget and branching choices can be mistaken for data-quality improvements.
+    - Reward-model/self-training loops can amplify early value-model errors.
+    - Multiple HF artifacts may differ in fields, iterations, licenses, and intended use.
     citation_status: verified
     confidence: high
-    notes: Primary arXiv link verified during the research-navigation pass; release-internal recipe details still need curator
-      review.
-  inclusion_reason: ReST-MCTS connects self-training, process rewards, and tree search, making it a useful bridge between
-    PRM data and test-time compute.
+    notes: Official arXiv, NeurIPS proceedings, GitHub repository, project page, and GitHub-listed Hugging Face policy/PRM
+      data links checked on 2026-07-09; direct HF revision metadata still needs pinning.
+    metadata_status: carded
+  inclusion_reason: ReST-MCTS* is a concrete open recipe for turning answer-keyed reasoning questions into search-generated
+    policy traces and process-reward/value targets, making it central to data construction, PRM training, and search-based
+    self-training.
   related: []
   tags:
-  - seeded-from-bib
   - primary-link-checked
+  - artifact-verified
+  - process-reward
+  - tree-search
+  - self-training
+  - math
+  - science
   status: verified
   category:
-  - foundations_and_primers
   - preference_reward_feedback_data
   - programmatically_verifiable_outcome_data
   - process_trace_supervision_data
@@ -9923,21 +9964,26 @@
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  one_line: Process-reward-guided tree search recipe for self-training reasoning traces.
-  card: null
+  one_line: ReST-MCTS* uses process-reward-guided tree search to generate policy-training reasoning traces and per-step value
+    targets for iterative self-training.
+  card: cards/recipes/rest-mcts.md
   needs:
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Process-reward-guided tree search recipe for self-training reasoning traces.
-  why_it_matters: It shows how a process reward can guide search-generated trajectories, so readers can separate data generation,
-    verifier choice, and inference-budget effects.
-  curation_level: L1_link_verified
+  - 'needs_audit: pin exact Hugging Face dataset revisions, row counts, schemas, licenses, and split semantics'
+  - 'needs_audit: verify decontamination and source overlap for the math/science evaluation suites used downstream'
+  one_line_summary: ReST-MCTS* uses process-reward-guided tree search to generate policy-training reasoning traces and per-step
+    value targets for iterative self-training.
+  why_it_matters: It is valuable for the Data Construction track because it separates input answer-keyed questions, tree-search
+    trace generation, inferred process rewards, policy data selection, and reward-model training instead of treating benchmark
+    gains as data quality proof.
+  curation_level: L4_carded
   verification:
     link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-16'
+    artifact_verified: true
+    verified_at: '2026-07-09'
     verified_by: curation
     confidence: high
-    notes: Official arXiv primary link pinned in artifacts.
+    notes: Official arXiv, NeurIPS proceedings, GitHub repository, project page, and GitHub-listed Hugging Face data links
+      pinned; exact HF revisions still need audit.
 - id: rewardbench-evaluating-reward-models-for-language-modeling-2024
   title: 'RewardBench: Evaluating Reward Models for Language Modeling'
   year: 2024
@@ -12850,13 +12896,24 @@
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
 - id: big-math-2025
-  title: Big-Math-RL-Verified
+  title: 'Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models'
   year: 2025
   venue: arXiv
-  authors: []
+  authors:
+  - Alon Albalak
+  - Duy Phung
+  - Nathan Lile
+  - Rafael Rafailov
+  - Kanishk Gandhi
+  - Louis Castricato
+  - Anikait Singh
+  - Chase Blagden
+  - Violet Xiang
+  - Dakota Mahan
+  - Nick Haber
   source_role:
   - data_release
-  - benchmark
+  - construction_recipe
   verification_contract:
   - programmatic
   supervision_granularity:
@@ -12874,11 +12931,11 @@
   artifacts:
     paper: https://arxiv.org/abs/2502.17387
     arxiv: https://arxiv.org/abs/2502.17387
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    code: https://github.com/SynthLabsAI/big-math
+    data: https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified
+    project: https://github.com/SynthLabsAI/big-math
+    huggingface: https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified
+    doi: https://doi.org/10.48550/arXiv.2502.17387
     venue: null
     openreview: null
     acl: null
@@ -12886,150 +12943,77 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: large-scale math problem pool
-    trace_author: model-generated solutions / verification pipeline
-    answer_format: math problem, answer, and verification signal
+    prompt_source: Open math sources filtered from an initial pool of 643,374 questions, including Orca-Math, cn_k12, olympiads, MATH, AoPS forum, GSM8K, HARP, Omni-MATH, and AMC/AIME components.
+    trace_author: The core release contains questions and verifiable answers rather than model rollout traces; Big-Math-Reformulated systematically converts selected multiple-choice questions to open-ended form.
+    answer_format: Open-ended mathematical question with a closed-form uniquely verifiable answer and source/domain metadata where available.
     process_fields:
-    - problem
+    - source dataset
+    - question
     - answer
-    - verification label
-    environment_or_substrate: offline math verifier substrate
-    verifier_or_reward: answer-level math verifier
-    terminal_predicate: final answer accepted by verifier
+    - reformulation status
+    - filtering signals
+    - verification-ready final answer
+    environment_or_substrate: Offline math prompt corpus intended for rule-verifiable reinforcement learning; official repository releases filtering and reformulation code.
+    verifier_or_reward: Rule-based/model-assisted filters identify uniquely verifiable closed-form answers; downstream RL uses answer correctness.
+    terminal_predicate: A model response's extracted final answer matches the released verifiable answer under the selected checker.
   recipe_metadata:
     base_model: unknown
     teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    generator: Human/open-source problems plus systematic multiple-choice-to-open-ended reformulation for Big-Math-Reformulated.
+    filtering_rule: Retain open-ended problems with unique, closed-form verifiable solutions; manually audit filtering stages and reformulate suitable multiple-choice items.
+    sampling_protocol: Filter 643,374 source problems to 251,122 Big-Math questions and add about 47,010 reformulated open-ended questions according to the paper.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Official code implements filtering signals and reformulation; the dataset is intended for PPO/GRPO-style RL and SFT preparation.
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: Multiple public math datasets with substantially different provenance and licenses; paper reports per-source counts but item-level rights should be checked.
+    split: Official HF dataset exists; exact current revision, configs and split semantics should be pinned before reuse.
     decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    license: Official code repository is MIT; dataset and upstream source-license compatibility require separate review.
+    lineage: Public math sources to filtering for uniqueness/open-endedness/closed-form answers to manual stage audit to optional reformulation to Big-Math-RL-Verified release.
+    known_failure_modes:
+    - Rule-based answer checkers can reject equivalent forms or accept malformed shortcuts.
+    - Reformulation can change problem semantics or difficulty.
+    - Combining public sources can preserve benchmark contamination and incompatible licenses.
+    - The release name may be mistaken for verified rollout data, but the official repository states the dataset contains prompts/answers rather than rollouts.
+    - Mutable repository development can change filters and reformulations across revisions.
     citation_status: verified
-    confidence: high
-    notes: Primary arXiv link verified; verifier false negatives and split/decontamination require explicit downstream audit.
-    metadata_status: partial
-  inclusion_reason: Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
+    confidence: medium
+    notes: Official arXiv, SynthLabsAI code and Big-Math-RL-Verified dataset were checked on 2026-07-10. The long-title L0 seed is the same work and should be removed rather than retained as a second entry.
+  inclusion_reason: Big-Math is a central RL-ready prompt-construction release showing how source filtering, answer verifiability and systematic reformulation turn heterogeneous public math collections into a large open-ended corpus.
   related: []
   tags:
-  - curated-card
+  - math
+  - rlvr
+  - verifiable-answers
+  - prompt-filtering
+  - reformulation
+  - open-release
   - primary-link-checked
-  status: verified
+  status: partial
   category:
-  - instruction_demonstration_rationale_data
   - programmatically_verifiable_outcome_data
-  - environment_agent_trajectory_data
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
-  one_line: Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
+  one_line: Big-Math filters heterogeneous public math sources into more than 250K open-ended questions with verifiable answers and adds about 47K systematically reformulated problems.
+  one_line_summary: Big-Math filters heterogeneous public math sources into more than 250K open-ended questions with verifiable answers and adds about 47K systematically reformulated problems.
+  why_it_matters: It makes prompt filtering, answer verifiability, source mixture and multiple-choice reformulation explicit construction steps for RL-ready math data.
   card: cards/releases/big_math.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
-  why_it_matters: Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.
+  - 'needs_snapshot: pin exact HF revision, configs and row counts'
+  - 'needs_license: audit per-source and reformulated-item license compatibility'
+  - 'needs_verifier_audit: document answer parser equivalence and false-negative behavior'
+  - 'needs_decontamination: report benchmark-overlap checks and residual contamination'
+  curation_level: L4_carded
   verification:
     link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-15'
+    artifact_verified: true
+    verified_at: '2026-07-10'
     verified_by: curation
-    confidence: high
-    notes: Official primary link pinned in artifacts.
-  curation_level: L4_carded
-- id: big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025
-  title: 'Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning'
-  year: 2025
-  venue: unknown
-  authors: []
-  source_role:
-  - survey_background
-  verification_contract:
-  - unknown
-  supervision_granularity:
-  - unknown
-  domains: []
-  training_use:
-  - unknown
-  construction_layer:
-  - release_audit
-  artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
-    openreview: null
-    acl: null
-    pmlr: null
-    cvf: null
-    bibtex: null
-  data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
-  recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
-    temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
-  audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key bigmath2025. Deduplicated title collision; dropped lower-confidence id: big-math-a-large-scale-high-quality-math-dataset-for-reinforcement-learning-and--2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
-  related: []
-  tags:
-  - seeded-from-bib
-  status: needs_metadata
-  category:
-  - programmatically_verifiable_outcome_data
-  - data_construction_open_release_recipes
-  - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
-  verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    confidence: medium
+    notes: Canonical paper, code and dataset pinned; duplicate long-title seed should be removed.
 - id: chemllmbench-and-chemistry-reasoning-evaluations-for-language-models-2025
   title: ChemLLMBench and chemistry reasoning evaluations for language models
   year: 2025
@@ -13279,181 +13263,193 @@
     notes: Official primary link pinned in artifacts.
   curation_level: L1_link_verified
 - id: dapo-2025
-  title: DAPO
+  title: 'DAPO: An Open-Source LLM Reinforcement Learning System at Scale'
   year: 2025
   venue: arXiv
-  authors: []
+  authors:
+  - Qiying Yu
+  - Zheng Zhang
+  - Ruofei Zhu
+  - Yufeng Yuan
+  - Xiaochen Zuo
+  - Yu Yue
+  - Weinan Dai
+  - Tiantian Fan
+  - Gaohong Liu
+  - Lingjun Liu
+  - Xin Liu
+  - Haibin Lin
+  - Zhiqi Lin
+  - Bole Ma
+  - Guangming Sheng
+  - Yuxuan Tong
+  - Chi Zhang
+  - Mofan Zhang
+  - Wang Zhang
+  - Hang Zhu
+  - Jinhua Zhu
+  - Jiaze Chen
+  - Jiangjie Chen
+  - Chengyi Wang
+  - Hongli Yu
+  - Yuxuan Song
+  - Xiangpeng Wei
+  - Hao Zhou
+  - Jingjing Liu
+  - Wei-Ying Ma
+  - Ya-Qin Zhang
+  - Lin Yan
+  - Mu Qiao
+  - Yonghui Wu
+  - Mingxuan Wang
   source_role:
+  - data_release
   - construction_recipe
+  - verifier_reward
   - scaling_study
+  - infrastructure
   verification_contract:
   - programmatic
   supervision_granularity:
   - answer_level
+  - scalar_reward
   domains:
   - math
+  - rlvr
+  - reasoning
   training_use:
   - rlvr
   construction_layer:
+  - prompt_sourcing
   - optimizer_scaffold
   - reward_verifier_layer
+  - scaling_report
+  - release_audit
   artifacts:
     paper: https://arxiv.org/abs/2503.14476
     arxiv: https://arxiv.org/abs/2503.14476
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    code: https://github.com/BytedTsinghua-SIA/DAPO
+    data: https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k
+    project: https://dapo-sia.github.io/
+    huggingface: https://huggingface.co/collections/BytedTsinghua-SIA/dapo
+    doi: https://doi.org/10.48550/arXiv.2503.14476
     venue: null
-    openreview: null
+    openreview: https://openreview.net/forum?id=2a36EMSSTp
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: DAPO-Math-17K prompts are sourced from the web and official competition homepages through web scraping
+      and manual annotation, then transformed toward integer-answer format for rule-based verification.
+    trace_author: Online policy rollouts during RL; the released DAPO-Math-17K data is prompt/answer supervision rather
+      than a released teacher-rationale corpus.
+    answer_format: Math prompt paired with an integer ground-truth answer; generated responses are scored by extracting
+      the final answer.
+    process_fields:
+    - prompt/question
+    - integer answer
+    - sampled response during RL
+    - rule-based correctness reward
+    - response length and overlong/truncation status
+    - token-level policy-gradient loss terms
+    environment_or_substrate: verl-based distributed RL training system with a math answer parser/verifier.
+    verifier_or_reward: Rule-based outcome reward from final-answer correctness, plus length-aware overlong reward shaping.
+    terminal_predicate: Extracted final answer matches the integer ground truth under the released verifier rules.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
+    base_model: Qwen2.5-32B base model in the reported experiments.
+    teacher: none reported for target traces; web/competition answers plus manual annotation provide ground-truth answers.
+    generator: Online policy rollouts sampled during DAPO/GRPO-style RL.
+    filtering_rule: Dynamic sampling filters sampled prompt groups with all-correct or all-wrong rewards; overlong reward
+      shaping penalizes responses beyond the expected length region.
+    sampling_protocol: Prompt batch size 512 with 16 sampled responses per prompt in reported training; dynamic sampling
+      continues until the batch contains prompts with non-degenerate rewards.
+    rollout_count: 16
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
+    inference_budget: Maximum generation length 20,480 tokens; overlong shaping uses a 16,384-token expected maximum with
+      a 4,096-token soft-punishment cache.
+    optimizer_or_scaffold: DAPO algorithm on top of verl, including Clip-Higher, Dynamic Sampling, token-level policy-gradient
+      loss, and Overlong Reward Shaping.
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: Web-scraped math tasks, official competition-homepage tasks, manual annotation, and answer transformations
+      to integer format.
+    split: Hugging Face dataset revision and row semantics should be pinned before reuse; local metadata does not verify
+      train/eval split policy.
     decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    license: Hugging Face dataset metadata lists Apache-2.0, but upstream web/competition source terms should be reviewed
+      before redistribution or commercial reuse.
+    lineage: Original math questions and answers are transformed into integer-answer prompts, then used for rule-based RLVR
+      rollouts and DAPO optimizer ablations.
+    known_failure_modes:
+    - Integer-answer transformation can change problem semantics or difficulty.
+    - Rule-based answer extraction can create false positives or false negatives.
+    - Dynamic sampling hides all-correct and all-wrong prompts from gradient updates, changing the effective training distribution.
+    - Overlong reward shaping can conflate correctness with response length or truncation behavior.
+    - AIME-style benchmark gains should not be treated as proof that every training prompt or verifier decision is correct.
     citation_status: verified
     confidence: high
-    notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal
-      metadata remains incomplete.
-    metadata_status: partial
-  inclusion_reason: GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
+    notes: Official arXiv, project, GitHub, Hugging Face dataset/collection, DOI, and OpenReview links were checked on
+      2026-07-09.
+    metadata_status: carded
+  inclusion_reason: Open-source RLVR system and data recipe showing how prompt construction, rule-based rewards, dynamic
+    sampling, and optimizer choices determine what reaches the policy gradient.
   related: []
-  tags: []
+  tags:
+  - curated-card
+  - primary-link-checked
+  - artifact-verified
+  - rlvr
+  - math
+  - open-release
   status: verified
   category:
   - programmatically_verifiable_outcome_data
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  one_line: GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
+  one_line: DAPO is an open RLVR system and DAPO-Math-17K release where rule-based rewards, dynamic sampling, and overlong
+    shaping define the effective training data.
   card: cards/releases/dapo.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
-  why_it_matters: GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.
+  - 'needs_audit: pin exact Hugging Face dataset revision, row semantics, and split policy before reuse'
+  - 'needs_audit: verify upstream web/competition source terms and decontamination against target evaluations'
+  one_line_summary: DAPO is an open RLVR system and DAPO-Math-17K release where rule-based rewards, dynamic sampling,
+    and overlong shaping define the effective training data.
+  why_it_matters: It is valuable for the Data Construction track because the paper exposes how prompt sourcing, answer
+    normalization, reward rules, rollout filtering, and optimizer scaffolding jointly shape RLVR data rather than merely
+    reporting a final benchmark score.
   verification:
     link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-15'
+    artifact_verified: true
+    verified_at: '2026-07-09'
     verified_by: curation
     confidence: high
-    notes: Official primary link pinned in artifacts.
+    notes: Primary links checked include arXiv, project page, GitHub repository, Hugging Face dataset/collection, DOI,
+      and OpenReview.
   curation_level: L4_carded
-- id: dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025
-  title: 'DAPO: An open-source LLM reinforcement learning system at scale'
-  year: 2025
-  venue: arXiv preprint
-  authors: []
-  source_role:
-  - survey_background
-  verification_contract:
-  - unknown
-  supervision_granularity:
-  - unknown
-  domains: []
-  training_use:
-  - unknown
-  construction_layer:
-  - release_audit
-  artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
-    openreview: null
-    acl: null
-    pmlr: null
-    cvf: null
-    bibtex: null
-  data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
-  recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
-    temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
-  audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key dapo2025. Deduplicated title collision; dropped lower-confidence id: dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
-  related: []
-  tags:
-  - seeded-from-bib
-  status: needs_metadata
-  category:
-  - data_construction_open_release_recipes
-  - scaling_rlvr_test_time_compute
-  one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
-    object, verifier contract, and release metadata before promoting it.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
-  verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
 - id: deepmath-103k-2025
-  title: DeepMath-103K
+  title: 'DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning'
   year: 2025
-  venue: arXiv
-  authors: []
+  venue: ICLR 2026
+  authors:
+  - Zhiwei He
+  - Tian Liang
+  - Jiahao Xu
+  - Qiuzhi Liu
+  - Xingyu Chen
+  - Yue Wang
+  - Linfeng Song
+  - Dian Yu
+  - Zhenwen Liang
+  - Wenxuan Wang
+  - Zhuosheng Zhang
+  - Rui Wang
+  - Zhaopeng Tu
+  - Haitao Mi
+  - Dong Yu
   source_role:
   - data_release
+  - construction_recipe
   verification_contract:
   - programmatic
   supervision_granularity:
@@ -13462,166 +13458,101 @@
   - math
   training_use:
   - sft
+  - distillation
   - rlvr
   - evaluation
   construction_layer:
   - prompt_sourcing
+  - trace_writing
   - reward_verifier_layer
   - release_audit
   artifacts:
     paper: https://arxiv.org/abs/2504.11456
     arxiv: https://arxiv.org/abs/2504.11456
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
+    code: https://github.com/zwhe99/DeepMath
+    data: https://huggingface.co/datasets/zwhe99/DeepMath-103K
+    project: https://github.com/zwhe99/DeepMath
+    huggingface: https://huggingface.co/datasets/zwhe99/DeepMath-103K
+    doi: https://doi.org/10.48550/arXiv.2504.11456
+    venue: https://iclr.cc/virtual/2026/poster/10007807
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Approximately 103K mathematical problems selected from a mixed source pool through source analysis, benchmark decontamination, answer verification, and difficulty filtering focused primarily on levels 5-9.
+    trace_author: DeepSeek-R1 generates three distinct solutions per problem according to the paper and official release description.
+    answer_format: Mathematical question with verifiable final answer, topic and difficulty metadata, plus three generated reasoning solutions.
+    process_fields:
+    - question
+    - final_answer
+    - difficulty
+    - topic
+    - three DeepSeek-R1 solutions
+    environment_or_substrate: Offline math problem corpus with answer-level rule verification and benchmark-overlap filtering.
+    verifier_or_reward: Rule-based final-answer verification for RLVR-ready prompts; exact parser and equivalence behavior require code-level audit.
+    terminal_predicate: A generated response's extracted final answer matches the released verifiable answer under the chosen checker.
   recipe_metadata:
     base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
+    teacher: DeepSeek-R1 for three released solutions per problem.
+    generator: Mixed-source math curation followed by DeepSeek-R1 solution generation.
+    filtering_rule: Source analysis, semantic benchmark decontamination, verifiable-answer filtering, and high-difficulty selection.
+    sampling_protocol: Three teacher solutions per retained problem; exact temperature, retries and model revision are unknown.
+    rollout_count: 3
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Offline data construction for SFT, distillation and answer-verifiable RL.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Mixed mathematical problem sources are described by the paper, but exact per-row source proportions and source-level license mapping require artifact review.
+    split: Official HF release exposes the dataset and revision history; exact immutable revision and train/evaluation split policy should be pinned before reuse.
+    decontamination: Paper reports stringent semantic decontamination against multiple benchmarks; thresholds, removed-row identifiers and residual overlap require paper/code audit.
+    license: Official HF dataset declares MIT; upstream source-specific rights are not established by the package-level license alone.
+    lineage: Source math problems to source analysis and decontamination to difficulty/verifiability filtering to three DeepSeek-R1 solutions to versioned HF release.
+    known_failure_modes:
+    - Final-answer verification can accept flawed or shortcut reasoning.
+    - Semantic decontamination thresholds can remove legitimate near-neighbors or miss paraphrased benchmark items.
+    - Three solutions from one teacher family can share systematic errors and style artifacts.
+    - Official release history records a correction of 48 answer-leakage examples, so unpinned snapshots can differ materially.
+    - Package-level MIT metadata does not resolve all upstream source licenses.
     citation_status: verified
-    confidence: high
-    notes: Seed entry; fields intentionally remain unknown until checked. Atlas status downgraded from verified because release-internal
-      metadata remains incomplete.
-    metadata_status: partial
-  inclusion_reason: Math release highlighted for verifier pinning and decontamination.
-  related: []
-  tags: []
-  status: verified
-  category:
-  - foundations_and_primers
-  - instruction_demonstration_rationale_data
-  - programmatically_verifiable_outcome_data
-  - process_trace_supervision_data
-  - data_construction_open_release_recipes
-  - training_usage_optimization_objectives
-  - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
-  - audit_failure_contamination_verifier_attacks
-  one_line: Math release highlighted for verifier pinning and decontamination.
-  card: cards/releases/deepmath_103k.md
-  needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Math release highlighted for verifier pinning and decontamination.
-  why_it_matters: Math release highlighted for verifier pinning and decontamination.
-  verification:
-    link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-15'
-    verified_by: curation
-    confidence: high
-    notes: Official primary link pinned in artifacts.
-  curation_level: L4_carded
-- id: deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025
-  title: 'DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning'
-  year: 2025
-  venue: arXiv preprint arXiv:2504.11456
-  authors: []
-  source_role:
-  - survey_background
-  verification_contract:
-  - unknown
-  supervision_granularity:
-  - unknown
-  domains: []
-  training_use:
-  - unknown
-  construction_layer:
-  - release_audit
-  artifacts:
-    paper: https://arxiv.org/abs/2504.11456
-    arxiv: https://arxiv.org/abs/2504.11456
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
-    openreview: null
-    acl: null
-    pmlr: null
-    cvf: null
-    bibtex: null
-  data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
-  recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
-    temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
-  audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: verified
-    confidence: high
-    notes: 'Seeded from BibTeX key he2025deepmath103k. Deduplicated title collision; dropped lower-confidence id: deepmath-103k-a-large-scale-challenging-decontaminated-and-verifiable-mathematic-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    confidence: medium
+    notes: Canonical arXiv, ICLR 2026 venue, official GitHub and author HF release were verified on 2026-07-10. This block replaces two active entries sharing arXiv 2504.11456; exact source mixture and release revision remain audit items.
+  inclusion_reason: DeepMath-103K is a central open math-data recipe combining difficult verifiable questions, benchmark decontamination, versioned release corrections, and multiple teacher solutions for SFT, distillation and RLVR.
   related: []
   tags:
-  - seeded-from-bib
-  status: verified
+  - math
+  - verifiable-answers
+  - decontamination
+  - difficulty-filtering
+  - deepseek-r1
+  - release-versioning
+  - primary-link-checked
+  status: partial
   category:
-  - foundations_and_primers
+  - instruction_demonstration_rationale_data
   - programmatically_verifiable_outcome_data
   - data_construction_open_release_recipes
-  - scaling_rlvr_test_time_compute
-  one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
-  card: null
-  needs: []
-  one_line_summary: Seeded from local BibTeX for later atlas classification; needs curator review.
-  why_it_matters: Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit
-    note.
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
+  one_line: DeepMath-103K releases difficult, decontaminated math questions with verifiable answers and three DeepSeek-R1 solutions per problem.
+  one_line_summary: DeepMath-103K releases difficult, decontaminated math questions with verifiable answers and three DeepSeek-R1 solutions per problem.
+  why_it_matters: It makes difficulty selection, answer verification, benchmark decontamination and mutable release corrections explicit parts of a reusable RLVR/SFT data pipeline.
+  card: cards/releases/deepmath_103k.md
+  needs:
+  - 'needs_snapshot: pin an immutable HF revision and reconcile the documented 48-row correction'
+  - 'needs_provenance: audit per-row source lineage and upstream licenses'
+  - 'needs_verifier_audit: document answer parser equivalence rules and false positives/negatives'
+  - 'needs_decontamination: record thresholds, removed rows and residual overlap'
+  curation_level: L4_carded
   verification:
     link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-15'
+    artifact_verified: true
+    verified_at: '2026-07-10'
     verified_by: curation
-    confidence: high
-    notes: Official primary link pinned in artifacts.
-  curation_level: L1_link_verified
+    confidence: medium
+    notes: Canonical paper, ICLR venue, code and author dataset were verified; duplicate long-ID seed should be removed.
 - id: deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025
   title: 'DeepScaleR: Scaling reinforcement learning for reasoning in open models'
   year: 2025
@@ -16086,12 +16017,16 @@
   source_role:
   - model_report
   - data_release
+  - construction_recipe
   verification_contract:
   - mixed
   supervision_granularity:
   - answer_level
   domains:
   - reasoning
+  - math
+  - code
+  - science
   - chat
   - safety
   training_use:
@@ -16099,15 +16034,19 @@
   - distillation
   - rlvr
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - frontier_pipeline
+  - optimizer_scaffold
+  - release_audit
   artifacts:
     paper: https://arxiv.org/abs/2505.00949
     arxiv: https://arxiv.org/abs/2505.00949
     code: null
-    data: null
+    data: https://huggingface.co/datasets/nvidia/Llama-Nemotron-Post-Training-Dataset
     project: null
-    huggingface: null
-    doi: null
+    huggingface: https://huggingface.co/datasets/nvidia/Llama-Nemotron-Post-Training-Dataset
+    doi: https://doi.org/10.48550/arXiv.2505.00949
     venue: null
     openreview: null
     acl: null
@@ -16115,62 +16054,82 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Mixed math, code, science, chat, safety and reasoning sources packaged into SFT and RL-oriented partitions; records expose category and version fields but upstream URLs are not uniformly present.
+    trace_author: Record-level generator metadata identifies the model or pipeline where disclosed; Llama-Nemotron training also uses reasoning-model distillation and online RL rollouts described by the paper.
+    answer_format: Instruction or task prompt with response/reasoning fields and component-specific labels or rewards.
+    process_fields:
+    - category
+    - license
+    - reasoning
+    - generator
+    - used_in_training
+    - version
+    - system_prompt
+    - SFT or RL partition
+    environment_or_substrate: Versioned NVIDIA post-training dataset plus the model report's SFT, distillation and large-scale reinforcement-learning stack.
+    verifier_or_reward: Component-dependent rule-based, benchmark, judge or safety feedback; no single verifier covers every dataset partition.
+    terminal_predicate: Depends on the partition's task and feedback contract; a universal released terminal predicate is not disclosed.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Llama 3-derived architectures for Nano, Super and Ultra model families.
+    teacher: Multiple generator/teacher models identified per record where disclosed; exact upstream lineage varies by partition.
+    generator: Mixed public/open and synthetic post-training construction pipelines, with record-level generator and version fields.
+    filtering_rule: Reasoning-data filters and partition-specific selection rules are described at a high level; exact thresholds are incomplete.
+    sampling_protocol: Dataset v1.1 adds approximately 2.2M math and 500K code examples according to the official card; exact current split counts and training mixtures should be pinned.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Supervised fine-tuning followed by large-scale reinforcement learning in the Llama-Nemotron post-training stack.
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: Math, code, science, chat, safety and reasoning partitions with per-record category/generator/license/version metadata where available; exact upstream source proportions remain incomplete.
+    split: Official release contains SFT and RL-related partitions and versioned fields; exact row counts, revision and paper-run mapping should be pinned before reuse.
     decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    license: Per-record license fields improve auditability, but third-party source terms and Llama/NVIDIA model-license obligations must still be evaluated together.
+    lineage: Source or synthetic prompt to generator/teacher response to partition-specific filtering to versioned SFT/RL release to Llama-Nemotron post-training.
+    known_failure_modes:
+    - Record-level generator metadata does not guarantee complete upstream prompt provenance.
+    - Mixed license fields may be incompatible across a combined training run.
+    - Reasoning filters and verifier thresholds can become hidden objectives when exact settings are absent.
+    - Dataset v1.1 changes scale and composition, so unpinned revisions can reproduce a different mixture.
+    - Distilled reasoning traces can inherit teacher errors, style and hidden behavioral signals.
     citation_status: verified
-    confidence: high
-    notes: 'Seed entry; fields intentionally remain unknown until checked. Deduplicated title collision; dropped lower-confidence
-      id: llama-nemotron-efficient-reasoning-models-2025. Atlas status downgraded from verified because release-internal metadata
-      remains incomplete.'
-    metadata_status: partial
-  inclusion_reason: Mixed post-training corpus reference for reasoning, chat, and safety partitions.
+    confidence: medium
+    notes: Official arXiv and NVIDIA Llama-Nemotron-Post-Training-Dataset were checked on 2026-07-10. The paper states that complete post-training data and training codebases are released, but this entry only pins the verified dataset artifact; exact code URLs and release-internal thresholds remain unresolved.
+  inclusion_reason: Llama-Nemotron is a major open full-stack post-training release whose versioned data exposes generator, license, reasoning, category and training-use fields across SFT and RL-oriented components.
   related: []
-  tags: []
-  status: verified
+  tags:
+  - llama-nemotron
+  - post-training
+  - data-mixture
+  - distillation
+  - rlvr
+  - release-versioning
+  - record-level-license
+  status: partial
   category:
-  - foundations_and_primers
   - instruction_demonstration_rationale_data
   - judgment_rubric_domain_expert_data
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
   - frontier_reports_data_disclosure_ledger
-  one_line: Mixed post-training corpus reference for reasoning, chat, and safety partitions.
+  one_line: Llama-Nemotron releases a versioned post-training mixture with record-level category, generator, license, reasoning and training-use metadata across SFT and RL-oriented data.
+  one_line_summary: Llama-Nemotron releases a versioned post-training mixture with record-level category, generator, license, reasoning and training-use metadata across SFT and RL-oriented data.
+  why_it_matters: It offers unusually rich release metadata for a frontier reasoning stack while still requiring upstream provenance, filter-threshold, revision and license-chain audits.
   card: cards/recipes/llama_nemotron.md
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
-  one_line_summary: Mixed post-training corpus reference for reasoning, chat, and safety partitions.
-  why_it_matters: Mixed post-training corpus reference for reasoning, chat, and safety partitions.
+  - 'needs_snapshot: pin exact dataset revision, row counts and paper-training mixture'
+  - 'needs_provenance: add upstream URLs and source-level lineage where available'
+  - 'needs_filtering: document exact reasoning-data filters and thresholds'
+  - 'needs_decontamination: record benchmark-overlap checks by partition'
+  - 'needs_code: pin the exact official training-code repositories and revisions used'
+  curation_level: L4_carded
   verification:
     link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-15'
+    artifact_verified: true
+    verified_at: '2026-07-10'
     verified_by: curation
-    confidence: high
-    notes: Official primary link pinned in artifacts.
-  curation_level: L4_carded
+    confidence: medium
+    notes: Official paper and NVIDIA post-training dataset pinned; release-internal audit remains partial.
 - id: long-grounded-thoughts-2025
   title: Long Grounded Thoughts
   year: 2025
@@ -16589,29 +16548,46 @@
     confidence: low
     notes: Official primary link not pinned yet.
 - id: megascience-a-benchmark-and-data-resource-for-scientific-reasoning-2025
-  title: 'MegaScience: A benchmark and data resource for scientific reasoning'
+  title: 'MegaScience: Pushing the Frontiers of Post-Training Datasets for Science Reasoning'
   year: 2025
-  venue: unknown
-  authors: []
+  venue: arXiv
+  authors:
+  - Run-Ze Fan
+  - Zengzhi Wang
+  - Pengfei Liu
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - model_report
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - science
+  - physics
+  - chemistry
+  - biology
+  - medicine
+  - engineering
   training_use:
-  - unknown
+  - sft
+  - distillation
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
+  - scaling_report
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    paper: https://arxiv.org/abs/2507.16812
+    arxiv: https://arxiv.org/abs/2507.16812
+    code: https://github.com/GAIR-NLP/MegaScience
+    data: https://huggingface.co/datasets/MegaScience/MegaScience
+    project: https://github.com/GAIR-NLP/MegaScience
+    huggingface: https://huggingface.co/datasets/MegaScience/MegaScience
+    doi: https://doi.org/10.48550/arXiv.2507.16812
     venue: null
     openreview: null
     acl: null
@@ -16619,59 +16595,79 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: MegaScience mixes NaturalReasoning, Nemotron-Science, and TextbookReasoning; TextbookReasoning is built from reference answers extracted from university-level scientific textbooks across seven disciplines.
+    trace_author: DeepSeek-V3 generates step-by-step solutions for selected components; other records retain source answers or references according to component lineage.
+    answer_format: Scientific reasoning question with answer or reference, subject/source metadata, and a generated step-by-step solution for selected subsets.
+    process_fields:
+    - question
+    - answer
+    - reference
+    - subject
+    - source component
+    - teacher-generated reasoning solution
+    environment_or_substrate: Offline multi-source science-reasoning corpus with a released curation pipeline and evaluation system spanning 15 benchmarks.
+    verifier_or_reward: Reference-answer evaluation, answer extraction and data-selection ablations; exact verifier differs across source/evaluation formats.
+    terminal_predicate: A generated response is scored against the component's reference answer or benchmark-specific extraction/evaluation rule.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: Llama3.1, Qwen2.5, and Qwen3 base-model families are trained in the paper's scaling experiments.
+    teacher: DeepSeek-V3 for generated step-by-step solutions in selected components.
+    generator: Source-dataset mixture, textbook-derived question construction, teacher solution generation, and selection ablations.
+    filtering_rule: Deduplication, decontamination, answer/reference checks, and ablation-guided source/subset selection according to the paper and official pipeline.
+    sampling_protocol: Final release reports approximately 1.25M instances; exact per-source sampling and teacher settings require artifact audit.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Offline SFT corpus construction plus a released multi-benchmark evaluation system.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
+    source_mixture: NaturalReasoning, Nemotron-Science and TextbookReasoning, totaling about 1.25M instances; exact current-release counts and source proportions should be pinned.
+    split: Official HF release is available, but exact immutable revisions, split semantics and mapping to every paper ablation require review.
+    decontamination: Paper reports deduplication and decontamination; exact prompts, thresholds, removal counts and residual overlap are not fully pinned here.
     license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key megascience2025. Deduplicated title collision; dropped lower-confidence id: megascience-a-benchmark-and-data-resource-for-scientific-reasoning-2025.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    lineage: Open science sources and textbook references to question/answer construction to teacher solutions to deduplication/decontamination and selection ablations to final mixture and trained-model evaluations.
+    known_failure_modes:
+    - Textbook provenance and redistribution rights may not be recoverable at item level.
+    - Teacher-generated explanations can be plausible but scientifically incorrect despite reference-answer agreement.
+    - Mixture selection gains can be confounded with model family, training budget or evaluation extraction changes.
+    - Exact release counts, versions and component mappings can drift across paper, code and HF snapshots.
+    - Reference-answer scoring may miss alternate valid scientific explanations or accept shortcut answers.
+    citation_status: verified
+    confidence: medium
+    notes: Official arXiv, GAIR-NLP repository and MegaScience HF dataset were verified on 2026-07-10. Venue acceptance remains unknown and is not inferred from an OpenReview submission.
+  inclusion_reason: MegaScience is a major open science-reasoning construction recipe combining textbook-derived questions, public source mixtures, teacher solutions, selection ablations, evaluation infrastructure and multiple trained model families.
   related: []
   tags:
-  - seeded-from-bib
-  status: needs_metadata
+  - science-reasoning
+  - open-release
+  - textbook-reasoning
+  - synthetic-solutions
+  - data-mixture
+  - decontamination
+  - scaling
+  status: partial
   category:
+  - instruction_demonstration_rationale_data
   - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
   - benchmarks_evaluation_surfaces
-  - audit_failure_contamination_verifier_attacks
-  one_line: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's data
-    object, verifier contract, and release metadata before promoting it.
+  one_line: MegaScience releases a roughly 1.25M-instance science-reasoning mixture with textbook-derived questions, teacher solutions, curation ablations, and evaluation tooling.
+  one_line_summary: MegaScience releases a roughly 1.25M-instance science-reasoning mixture with textbook-derived questions, teacher solutions, curation ablations, and evaluation tooling.
+  why_it_matters: It extends open post-training data recipes beyond math and code while making source mixture, textbook provenance, teacher correctness, selection attribution and release versioning central audit questions.
   card: null
   needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🏗️ Construction Recipes and Open Reasoning Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - 'needs_snapshot: pin exact HF revision, split counts and component mapping'
+  - 'needs_provenance: audit textbook and source-dataset item lineage and licenses'
+  - 'needs_decontamination: record thresholds, prompts, removed counts and residual overlap'
+  - 'needs_teacher_audit: evaluate DeepSeek-V3 solution correctness beyond final-answer agreement'
+  - 'needs_venue: keep venue unknown until an official acceptance page exists'
+  curation_level: L3_summary_ready
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: curation
+    confidence: medium
+    notes: Canonical arXiv, code and dataset links verified; release internals and venue remain partial.
 - id: mid-training-of-large-language-models-a-survey-2025
   title: 'Mid-Training of Large Language Models: A Survey'
   year: 2025
@@ -25165,6 +25161,1725 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv link pinned after source review.
+- id: adastar-2025
+  title: 'AdaSTaR: Adaptive Data Sampling for Training Self-Taught Reasoners'
+  year: 2025
+  venue: NeurIPS 2025
+  authors:
+  - Woosung Koh
+  - Wonbeen Oh
+  - Jaein Jang
+  - MinHyung Lee
+  - Hyeongjin Kim
+  - Ah Yeon Kim
+  - Joonkee Kim
+  - Junghyun Lee
+  - Taehyeon Kim
+  - Se-Young Yun
+  source_role:
+  - construction_recipe
+  - scaling_study
+  verification_contract:
+  - programmatic
+  supervision_granularity:
+  - answer_level
+  domains:
+  - scientific_reasoning
+  - commonsense_reasoning
+  - causal_reasoning
+  - natural_language_inference
+  - mathematics
+  training_use:
+  - sft
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - self_play_anchor
+  - optimizer_scaffold
+  - scaling_report
+  - release_audit
+  artifacts:
+    paper: https://openreview.net/forum?id=D6PwC6Xogv
+    arxiv: https://arxiv.org/abs/2505.16322
+    code: https://github.com/reiss-koh/AdaSTaR
+    data: null
+    project: https://github.com/reiss-koh/AdaSTaR
+    huggingface: null
+    doi: null
+    venue: https://openreview.net/forum?id=D6PwC6Xogv
+    openreview: https://openreview.net/forum?id=D6PwC6Xogv
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Training observations from ARC-Challenge, CommonsenseQA, CLadder 1.5, ANLI R1, GSM8K, and SVAMP. ARC-C train/validation are combined; ANLI uses a 10,000-example R1 sample; GSM8K training rationales are withheld.
+    trace_author: The current iteration's model, initialized from Llama-3.2-3B for most main experiments, Qwen2.5-3B for GSM8K, and additionally evaluated with Qwen2.5-3B and Gemma-7B.
+    answer_format: A self-generated chain of thought and predicted final answer conditioned on fixed few-shot CoT exemplars; answers are checked against ground truth.
+    process_fields:
+    - observation_id
+    - query
+    - ground_truth_answer
+    - generated_chain_of_thought
+    - predicted_answer
+    - terminal_correctness
+    - last_sampled_iteration
+    - win_rate
+    - accepted_iteration
+    - training_accuracy
+    environment_or_substrate: Iterative accumulating STaR/RFT with a hierarchical min-heap over observations and a fresh accepted-CoT set each iteration.
+    verifier_or_reward: Rule-based outcome verifier equals one when predicted answer matches ground truth; the most recent K-sample acceptance rate becomes the observation's cached win statistic.
+    terminal_predicate: A generated CoT-answer pair enters the iteration's training set only when its final answer matches dataset ground truth.
+  recipe_metadata:
+    base_model: Pretrained-only Llama-3.2-3B for most main experiments, Qwen2.5-3B for GSM8K; generality experiments also use Qwen2.5-3B and Gemma-7B.
+    teacher: The current model self-generates traces. GPT-4o is used only for a diagnostic false-positive audit, not training verification.
+    generator: The current iteration's accumulating STaR policy model.
+    filtering_rule: Keep only final-answer-correct CoT-answer pairs and continue adaptive observation sampling until the accepted set reaches beta_t.
+    sampling_protocol: For each selected observation generate K=2 CoTs at temperature 1.0; prioritize oldest last-sampled iteration then lowest cached win rate; stop at beta_t accepted traces; after training update statistics for floor(m times alpha squared) observations.
+    rollout_count: 2
+    temperature: 1.0
+    inference_budget: null
+    optimizer_or_scaffold: Accumulating iterative NLL fine-tuning. Initial beta_1 is 320 and grows about 1.2 times per iteration. Experiments use batch 8, Adam, weight decay 0.01, 100 warmup steps and bf16; Gemma-7B uses LoRA rank 32.
+  audit:
+    source_mixture: Six upstream QA/reasoning benchmarks with different formats and provenance. Official repo bundles local/transformed copies but no consolidated source-lineage/license manifest.
+    split: ARC-C train/validation combine for training; ANLI uses a seed-10 random 10K R1 sample; train/test sizes are reported, but observation order and per-iteration sampling manifests are not released.
+    decontamination: unknown
+    license: Implementation is Apache-2.0. Repo does not document whether it covers bundled upstream copies or provide inherited-license audit. No generated rollout/model licenses apply because those artifacts are not released.
+    lineage: Supervised observations/answers to few-shot current-model rollouts to K=2 CoT-answer samples to terminal verification to cached win/recency statistics to adaptive selection until beta_t accepted traces to NLL update to next STaR iteration.
+    known_failure_modes:
+    - Outcome verification admits flawed CoTs with correct final answers.
+    - Cached win rate is measured only at last visit and can become stale as model parameters and prompt difficulty drift.
+    - Acceptance rate conflates reasoning difficulty with answer parsing, prompt format, few-shot compatibility and label noise.
+    - Curriculum strength uses training accuracy on adaptively selected data rather than independent validation and may be selection-biased.
+    - Only floor(m alpha squared) observations refresh statistics, creating possible repeated-selection artifacts.
+    - Prioritizing low-win prompts without AdaC increases flawed-but-correct CoTs by about 9% in a small GPT-4o diagnostic.
+    - The diagnostic uses 100 accepted observations per method/dataset and is not a training-time safeguard.
+    - Math rationalization is disabled because it hurts performance, showing task-dependent behavior.
+    - Llama-3.2-3B fails to self-improve on GSM8K, requiring a different base model.
+    - The 58.6% figure averages dataset-specific early-stopped reductions against different baselines, not a fixed-baseline/fixed-quality comparison.
+    - Additional model-family experiments are best in four of five combinations and one FLOPs reduction is zero.
+    - Rejected rollouts, accepted CoTs, per-iteration datasets, statistic histories, logs, checkpoints and manifests are not released.
+    - No pretraining decontamination or consolidated inherited-license audit is reported.
+    citation_status: verified
+    confidence: high
+    notes: OpenReview, arXiv and paper-linked GitHub implementation/configs were checked on 2026-07-10. Code is released; generated rollouts, statistics, logs, checkpoints and HF artifacts are not.
+  inclusion_reason: AdaSTaR is a reusable recipe for allocating iterative self-training compute across prompts using cached acceptance rates, sampling recency and a training-strength curriculum, while stopping generation once the accepted SFT batch is full.
+  related: []
+  tags:
+  - adaptive-sampling
+  - self-taught-reasoner
+  - rejection-sampling-finetuning
+  - iterative-self-training
+  - curriculum-learning
+  - difficulty-aware-sampling
+  - outcome-verification
+  - synthetic-reasoning-data
+  - compute-efficiency
+  - code-release
+  status: partial
+  category:
+  - instruction_demonstration_rationale_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  one_line: AdaSTaR allocates repeated CoT sampling toward under-sampled, low-acceptance prompts, regularizes that curriculum by current training strength, and stops each iteration once its accepted SFT batch is full.
+  one_line_summary: An accumulating STaR/RFT recipe that uses sampling recency and cached terminal-answer win rates to adapt prompt exposure while avoiding exhaustive rollout generation.
+  why_it_matters: It turns prompt-level acceptance history into a data-allocation policy and reports early-stopped compute savings while exposing stale difficulty, outcome-only false positives and unreleased rollout risks.
+  card: null
+  needs:
+  - 'needs_metadata: release accepted/rejected CoTs, per-iteration D_t+ sets, win-rate histories and sampling manifests'
+  - 'needs_metadata: release trained checkpoints or document that none are planned'
+  - 'needs_metadata: document inherited licenses for bundled upstream benchmarks'
+  - 'needs_metadata: provide pretraining and cross-benchmark decontamination evidence'
+  - 'needs_metadata: evaluate stale win-rate error and prompt-difficulty drift'
+  - 'needs_metadata: report false-positive rates for full AdaSTaR'
+  - 'needs_metadata: report compute savings against a common fixed baseline and target accuracy'
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: high
+    notes: OpenReview, arXiv and Apache-2.0 GitHub implementation were verified. Code/configs/prompts/upstream copies are released, but generated data, logs, checkpoints and HF artifacts are not.
+- id: fastmcts-2025
+  title: 'FastMCTS: A Simple Sampling Strategy for Data Synthesis'
+  year: 2025
+  venue: ACL 2025
+  authors:
+  - Peiji Li
+  - Kai Lv
+  - Yunfan Shao
+  - Yichuan Ma
+  - Linyang Li
+  - Xiaoqing Zheng
+  - Xipeng Qiu
+  - Qipeng Guo
+  source_role:
+  - construction_recipe
+  - process_supervision
+  - scaling_study
+  verification_contract:
+  - mixed
+  supervision_granularity:
+  - full_episode
+  - state_action_level
+  - pairwise_preference
+  - trajectory_value
+  domains:
+  - mathematics
+  - english_math
+  - chinese_math
+  training_use:
+  - sft
+  - preference_learning
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - search_substrate
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://aclanthology.org/2025.acl-long.1190/
+    arxiv: https://arxiv.org/abs/2502.11476
+    code: https://github.com/FlyingDutchman26/FastMCTS
+    data: null
+    project: https://github.com/FlyingDutchman26/FastMCTS
+    huggingface: null
+    doi: https://doi.org/10.18653/v1/2025.acl-long.1190
+    venue: https://aclanthology.org/2025.acl-long.1190/
+    openreview: null
+    acl: https://aclanthology.org/2025.acl-long.1190/
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: For synthesis, 46,000 English math problems from NuminaMath, MetaMath, and InternLM-Math train plus 50,000 Chinese high-school math problems collected from the internet. Efficiency tests use 300 AIME problems through 2023 and 1,000 Chinese high-school math problems.
+    trace_author: Qwen2.5-72B-Instruct sampled with randomly combined domain-diverse few-shot demonstrations.
+    answer_format: A complete mathematical solution segmented as Step 1, Step 2, and so on; each step becomes a search-tree node.
+    process_fields:
+    - query
+    - ground_truth
+    - reasoning_step
+    - parent_child_edges
+    - visit_count
+    - win_count
+    - node_score
+    - verifier_outcome
+    - complete_trajectory
+    - chosen_branch
+    - rejected_branch
+    - preference_granularity
+    environment_or_substrate: An asynchronous MCTS-style reasoning tree where partial solutions are states, reasoning steps are actions, and complete simulations are retained as branches.
+    verifier_or_reward: Qwen2.5-72B-Instruct judges each complete trajectory against the standard answer three times, repeating inconsistent cases until consensus. Binary terminal results are backed up so node score equals win_count divided by visit_count.
+    terminal_predicate: A trajectory is accepted when the LLM verifier consistently judges its answer correct, clear, and not guessed or vague.
+  recipe_metadata:
+    base_model: Qwen2.5-7B for main SFT/Branch-DPO; additional checks use Llama-3.2-3B-base and Qwen2.5-3B-base.
+    teacher: Qwen2.5-72B-Instruct as trajectory verifier; Qwen2.5-32B-Instruct for five-sample difficulty prescreening.
+    generator: Qwen2.5-72B-Instruct served through SGLang.
+    filtering_rule: Exclude questions with five-sample pass rate 100%, proof/find-all/image/URL/malformed/incomplete/ambiguous/low-quality cases, hash duplicates and stated evaluation overlaps; retain verifier-accepted correct trajectories and diverse branches for SFT.
+    sampling_protocol: Random few-shot combinations, temperature 1, adaptive-stay UCT, dynamic exploration, retained simulations and asynchronous expansion. Main synthesis uses root degree 3, expansion degree 2 and 16 iterations; RS controls use 30/24 samples.
+    rollout_count: 16
+    temperature: 1
+    inference_budget: 16 tree iterations; token-budget comparisons report average generated tokens rather than equal trajectory counts.
+    optimizer_or_scaffold: SFT uses Qwen2.5-7B for three epochs, max length 4096, batch 32 and Adam 1e-5. Branch-DPO adds three epochs, batch 16, AdamW 1e-6, beta 0.4 and cosine schedule.
+  audit:
+    source_mixture: English prompts mix NuminaMath, MetaMath and InternLM-Math; Chinese prompts are internet-collected high-school math. Exact proportions, URLs, provenance and rights are undisclosed.
+    split: Paper states hash dedup and no evaluation overlap but releases no train/validation/test manifests, hashes, random seeds, or EN/CN Hard datasets.
+    decontamination: Hash duplicate removal and stated test exclusion only; no semantic near-duplicate or pretraining-corpus audit is reported.
+    license: unknown
+    lineage: Math prompts to Qwen-32B difficulty screening to heuristic/hash filters to Qwen-72B FastMCTS trees to repeated terminal verification to Monte Carlo node backup to correct-path SFT and step/branch preference pairs to Qwen-7B SFT/DPO.
+    known_failure_modes:
+    - Appendix verifier prompt checks final-answer agreement and guessed/vague answers despite main-text language about intermediate-step verification.
+    - Terminal outcome backup can mark flawed intermediate steps as valuable when the final answer is correct.
+    - A zero-score node under sparse exploration can reflect insufficient sampling rather than low quality.
+    - Generator and verifier share Qwen2.5-72B and can share model-family/style errors.
+    - Repeated judging continues until consensus without a disclosed hard cap.
+    - Shared tree prefixes reduce training diversity; the paper identifies prefix repetition as unresolved.
+    - The 30%+ result is limited to two math sets and specific token budgets.
+    - The 3.9-point comparison includes Branch-DPO; plain FastMCTS SFT gains 2.9 points over RS SFT.
+    - Experimental trees, rejected branches, failed trajectories, SFT/preference data, checkpoints and split manifests are not released.
+    - Official repository declares no software or data license.
+    - Chinese web-source provenance and inherited licensing are undisclosed.
+    citation_status: verified
+    confidence: high
+    notes: ACL paper/appendix, arXiv and paper-linked repository were checked on 2026-07-10. Code is available, but no official experimental synthesized data, trees, preference data or checkpoints are released and no repository license is declared.
+  inclusion_reason: FastMCTS provides a concrete recipe for converting terminally verified math rollouts into search trees, correct-path SFT data and step/branch preference pairs while comparing token-budget efficiency against rejection sampling.
+  related: []
+  tags:
+  - synthetic-reasoning-data
+  - monte-carlo-tree-search
+  - tree-structured-data
+  - rejection-sampling
+  - step-level-preference
+  - branch-dpo
+  - mathematical-reasoning
+  - llm-verifier
+  - token-budget
+  - code-release
+  status: partial
+  category:
+  - preference_reward_feedback_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  one_line: FastMCTS retains simulations as step nodes, backs terminal verifier outcomes through the tree, and derives correct-path SFT plus step/branch DPO pairs under controlled token budgets.
+  one_line_summary: An MCTS-inspired offline synthesis recipe that reuses reasoning prefixes and terminal verification signals to generate math SFT and preference data more efficiently than independent rejection sampling.
+  why_it_matters: It connects token-budgeted search, terminal verification, node-value propagation and downstream SFT/DPO while exposing reproducibility, licensing and rejected-branch release gaps.
+  card: cards/recipes/fastmcts.md
+  needs:
+  - 'needs_metadata: release EN Math Hard and CN High School Math Hard manifests and splits'
+  - 'needs_metadata: release full trees, failed/rejected branches, SFT data and preference pairs'
+  - 'needs_metadata: declare code and data licenses'
+  - 'needs_metadata: disclose verifier retry cap, judge error analysis and direct step-verification behavior'
+  - 'needs_metadata: provide semantic decontamination and Chinese web-source provenance'
+  - 'needs_metadata: report gains separately for FastMCTS SFT and Branch-DPO'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: high
+    notes: ACL, arXiv and official GitHub code were verified. Data is null because paper artifacts do not release experimental synthesized trees, preference data or checkpoints.
+- id: fover-2026
+  title: Efficient PRM Training Data Synthesis via Formal Verification
+  year: 2026
+  venue: Findings of ACL 2026
+  authors:
+  - Ryo Kamoi
+  - Yusen Zhang
+  - Nan Zhang
+  - Sarkar Snigdha Sarathi Das
+  - Ranran Haoran Zhang
+  - Wenpeng Yin
+  - Rui Zhang
+  source_role:
+  - data_release
+  - verifier_reward
+  - process_supervision
+  - construction_recipe
+  - model_report
+  verification_contract:
+  - programmatic
+  supervision_granularity:
+  - step_level
+  - process_reward
+  domains:
+  - formal_logic
+  - theorem_proving
+  - mathematical_reasoning
+  - natural_language_reasoning
+  training_use:
+  - reward_modeling
+  - process_supervision
+  - evaluation
+  - test_time_compute
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://aclanthology.org/2026.findings-acl.403/
+    arxiv: https://arxiv.org/abs/2505.15960
+    code: https://github.com/psunlpgroup/FoVer
+    data: https://huggingface.co/datasets/ryokamoi/FoVer-FormalLogic-FormalProof-Qwen-2.5-7B-LastStepBalanced-40k
+    project: https://fover-prm.github.io/
+    huggingface: https://huggingface.co/collections/ryokamoi/fover
+    doi: https://doi.org/10.18653/v1/2026.findings-acl.403
+    venue: https://aclanthology.org/2026.findings-acl.403/
+    openreview: null
+    acl: https://aclanthology.org/2026.findings-acl.403/
+    pmlr: null
+    cvf: null
+    bibtex: https://aclanthology.org/2026.findings-acl.403.bib
+  data_object:
+    prompt_source: Formal-logic entailment problems from FLDx2 and formalized GSM8K-level math problems from GSM8K, MetaMathQA, and Big-Math. FLDx2 cases involving assump-style proof by contradiction are excluded.
+    trace_author: Llama 3.1 8B and Qwen 2.5 7B generate formal-logic traces; Qwen 2.5 7B generates Isabelle-compatible statements and proofs.
+    answer_format: Each record contains a formal problem, ordered solution_steps, aligned Boolean error_labels, conversation-form training/prediction representations, base_dataset, and task-specific formula metadata.
+    process_fields:
+    - id
+    - problem
+    - solution_steps
+    - error_labels
+    - problem_witout_definition
+    - messages
+    - base_dataset
+    - messages_for_prediction
+    - hypothesis_formula
+    - facts_formula
+    environment_or_substrate: Z3 first-order-logic checking and Isabelle/HOL theorem proving. Isabelle syntax is checked with sorry placeholders and each target step is verified while other proof steps are replaced by sorry.
+    verifier_or_reward: Z3 or Isabelle emits binary correctness per formal step. The trained PRM predicts correct/incorrect tokens and their normalized logits become step-level reward scores.
+    terminal_predicate: A formal-logic conclusion is entailed by permitted premises and preceding results under Z3, or Isabelle accepts the target proof step in the generated theorem environment. This establishes formal validity relative to the constructed formal problem, not semantic fidelity to the source text.
+  recipe_metadata:
+    base_model: meta-llama/Llama-3.1-8B-Instruct and Qwen/Qwen2.5-7B-Instruct as trace generators and PRM backbones.
+    teacher: No human or LLM teacher supplies error labels; Z3 and Isabelle provide programmatic labels while Llama and Qwen generate candidate traces.
+    generator: Few-shot prompts elicit verifier-compatible formal solutions; the pipeline retries until syntactically valid and then applies step-level Z3/Isabelle wrappers.
+    filtering_rule: Remove syntactically invalid solutions, exclude assump-style FLDx2 cases, retain logically incorrect but syntactically valid steps with false labels, and truncate traces so the final supervised step is balanced.
+    sampling_protocol: The paper reports 10K Llama formal-logic, 10K Qwen formal-logic, and 20K Qwen theorem-proving steps. Retry counts, acceptance rates and production decoding settings are undisclosed.
+    rollout_count: null
+    temperature: null
+    inference_budget: Z3 checks each logical step and Isabelle runs once per theorem step; total prover runtime, timeout policy, failed jobs and retry budget are not reported.
+    optimizer_or_scaffold: Full-parameter LLaMA-Factory training with mask_history=true, one epoch, sequence cutoff 2048, AdamW and DeepSpeed ZeRO-3; only the final balanced label contributes to loss.
+  audit:
+    source_mixture: ACL Table 1 defines 10K Llama FLDx2/Z3, 10K Qwen FLDx2/Z3 and 20K Qwen GSM8K/MetaMathQA/Big-Math Isabelle steps. Official HF also exposes raw Llama formal-proof data and model-specific 40K sets whose cards describe a previous paper version, so exact alignment is partial.
+    split: Each LastStepBalanced release has one 40K train split; four raw releases each have train 10K, validation 360 and test 360. Hyperparameter-selection tasks are external Orca-Math/BBH data, not a documented FOVER-40K split.
+    decontamination: unknown
+    license: Official project license releases datasets under CC BY 4.0 and code under Apache-2.0; PRM models follow Qwen or Llama base licenses. Upstream compatibility is not discussed in detail.
+    lineage: Source problem to verifier-compatible formal statement to Llama/Qwen trace to syntax filtering to per-step Z3/Isabelle verification to retained correct/incorrect labels to last-step balancing to PRM fine-tuning to Best-of-K scoring.
+    known_failure_modes:
+    - A generated Isabelle statement can misformalize the natural-language problem while still receiving formally correct labels.
+    - Parser, type, tactic, timeout, dependency or prover-environment failures may be mapped to Boolean labels without an error-type field or prover log.
+    - Isabelle independent-step verification replaces other steps with sorry and can miss dependency-chain or scoping errors.
+    - The Z3 wrapper excludes proof-by-contradiction cases, narrowing the formal-reasoning distribution.
+    - Only the final target label is balanced and used for loss; intermediate error labels are not demonstrated to be balanced or calibrated.
+    - Invalid-format generations are filtered without released attempts, rejection reasons, retry counts or diagnostics.
+    - No decontamination analysis is reported despite related math/logic evaluation domains.
+    - Formal-to-informal transfer is based on limited Best-of-7 experiments and is not uniformly positive across every benchmark.
+    - Official dataset cards reference a previous paper version and variants differ from ACL Table 1, leaving version alignment partial.
+    citation_status: verified
+    confidence: medium
+    notes: ACL paper, metadata, official GitHub/project, author HF datasets/models, schemas, licenses and configs were checked on 2026-07-10. Release-version alignment, rejected traces, construction budget, decontamination and prover failure taxonomy remain unresolved.
+  inclusion_reason: FoVer is a core reasoning-data recipe because it converts formal prover outcomes into reusable step-level PRM supervision, releases labeled process data and trained PRMs, and provides an alternative to human annotation and Monte Carlo rollout labels.
+  related: []
+  tags:
+  - process-reward-model
+  - formal-verification
+  - step-level-labels
+  - z3
+  - isabelle
+  - formal-logic
+  - theorem-proving
+  - verifier-training
+  - formal-to-informal-transfer
+  - best-of-k
+  status: partial
+  category:
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  one_line: A formal-verification recipe that labels individual logic and theorem-proving steps with Z3 or Isabelle and uses them to train transferable PRMs.
+  one_line_summary: FOVER-40K pairs formal reasoning traces with Boolean step labels produced by Z3 and Isabelle, then trains Llama- and Qwen-based PRMs for process-level verification and Best-of-K selection.
+  why_it_matters: It demonstrates a low-LLM-call route to process supervision while making formalization fidelity, prover wrappers, step-dependency assumptions, dataset versioning and informal-domain transfer explicit audit boundaries.
+  card: cards/verifiers/fover.md
+  needs:
+  - 'needs_metadata: reconcile ACL Table 1 with the two model-specific 40K balanced datasets and four raw HF variants'
+  - 'needs_metadata: identify exact final-paper dataset revisions'
+  - 'needs_metadata: report invalid-format retries, acceptance rates, construction temperature and generation budget'
+  - 'needs_metadata: release or document rejected invalid traces, reasons, prover logs and environment-error categories'
+  - 'needs_metadata: document Z3/Isabelle timeout and failure-handling policies'
+  - 'needs_metadata: report decontamination and source/evaluation overlap checks'
+  - 'needs_metadata: audit semantic fidelity of generated Isabelle statements'
+  - 'needs_metadata: clarify upstream-source license compatibility'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: ACL publication, DOI, official arXiv, GitHub, project, two 40K datasets, four raw datasets, two PRMs, schemas, licenses and training configs were verified. Release version alignment remains partial.
+- id: general-reasoner-2025
+  title: 'General-Reasoner: Advancing LLM Reasoning Across All Domains'
+  year: 2025
+  venue: NeurIPS 2025
+  authors:
+  - Xueguang Ma
+  - Qian Liu
+  - Dongfu Jiang
+  - Ge Zhang
+  - Zejun Ma
+  - Wenhu Chen
+  source_role:
+  - model_report
+  - data_release
+  - construction_recipe
+  - verifier_reward
+  verification_contract:
+  - judgment_required
+  supervision_granularity:
+  - answer_level
+  - scalar_reward
+  domains:
+  - mathematics
+  - physics
+  - chemistry
+  - business
+  - finance
+  - economics
+  - history
+  - biology
+  - engineering
+  - law
+  - health
+  - philosophy
+  - psychology
+  training_use:
+  - reward_modeling
+  - rlvr
+  - evaluation
+  construction_layer:
+  - prompt_sourcing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://openreview.net/forum?id=pBFVoll8Xa
+    arxiv: https://arxiv.org/abs/2505.14652
+    code: https://github.com/TIGER-AI-Lab/General-Reasoner
+    data: https://huggingface.co/datasets/TIGER-Lab/WebInstruct-verified
+    project: https://tiger-ai-lab.github.io/General-Reasoner/
+    huggingface: https://huggingface.co/datasets/TIGER-Lab/WebInstruct-verified
+    doi: https://doi.org/10.48550/arXiv.2505.14652
+    venue: https://openreview.net/forum?id=pBFVoll8Xa
+    openreview: https://openreview.net/forum?id=pBFVoll8Xa
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Questions originate from WebInstruct web documents that are traced back to original webpages and re-crawled; entries without clearly identifiable human-written answers are removed.
+    trace_author: Policy-model reasoning responses are sampled online during GRPO. The released WebInstruct-Verified data contains questions and short human-source answers rather than reasoning traces.
+    answer_format: Short answers spanning float, expression, multiple choice, integer, string, list, Boolean, percentage, fraction, matrix, and other formats.
+    process_fields:
+    - WebInstruct-derived id
+    - question
+    - retained short answer
+    - Gemini-annotated answer_type
+    - Gemini-annotated category
+    - Gemini-annotated difficulty
+    - online policy response
+    - extracted student answer
+    - generative verifier decision
+    environment_or_substrate: Fixed WebInstruct-Verified QA splits consumed by a verl-based GRPO pipeline with a separately served 1.5B General-Verifier.
+    verifier_or_reward: A Qwen2.5-Math-1.5B-initialized generative verifier compares question, ground-truth answer, and extracted student answer, generates an equivalence rationale, and emits a final Yes or No decision used as answer-level reward.
+    terminal_predicate: The General-Verifier concludes that the extracted student answer is equivalent to the retained ground-truth answer in the context of the question.
+  recipe_metadata:
+    base_model: Qwen2.5-7B, Qwen2.5-14B, Qwen3-4B-Base, and Qwen3-14B-Base in the reported General-Reasoner variants.
+    teacher: Gemini-1.5-Pro for verifiable-question extraction and Gemini-2.0-Flash for metadata annotation, eight-solution filtering, and verifier-training annotations.
+    generator: Web recrawling and extraction produce question-answer pairs; policy models generate online reasoning responses during GRPO.
+    filtering_rule: Remove rows lacking human-written source answers, questions without clearly verifiable short answers, mathematics below university difficulty, and questions where all eight Gemini-2.0-Flash candidate solutions are wrong or all eight are correct.
+    sampling_protocol: Each retained candidate question receives eight Gemini-2.0-Flash solutions during filtering; GRPO samples eight policy rollouts per question in reported experiments.
+    rollout_count: 8
+    temperature: Qwen2.5 policy variants use 1.0 and Qwen3 policy variants use 0.7; verifier decoding temperature is unknown.
+    inference_budget: Reported policy training uses a 1,024-token prompt limit and a 4,096-token response limit; Gemini and General-Verifier inference budgets are unknown.
+    optimizer_or_scaffold: Zero-RL GRPO implemented on verl with General-Verifier supplying answer-equivalence rewards.
+  audit:
+    source_mixture: WebInstruct-derived pages from StackExchange and educational or other web resources across many disciplines; item-level source URLs and source-site labels are not included in the released row schema.
+    split: Current release contains train with 228,736 rows, test with 1,000 rows, and train_legacy with 231,833 rows. The exact immutable split or commit used for the paper training run is not explicitly identified.
+    decontamination: unknown
+    license: Current Hugging Face metadata declares Apache-2.0, but item-level source licenses, webpage terms, and redistribution permissions are not released.
+    lineage: WebInstruct document to original-page recrawl to human-answer retention to Gemini-1.5-Pro extraction to Gemini-2.0-Flash metadata and eight-solution filtering to WebInstruct-Verified; later multiple-choice repairs created the current train and preserved the original release as train_legacy.
+    known_failure_modes:
+    - Released rows omit original source URLs and item-level attribution, preventing direct verification of recrawl provenance and human-answer lineage.
+    - Package-level Apache-2.0 metadata does not establish that every upstream web item has compatible licensing or redistribution terms.
+    - Gemini extraction, metadata annotation, and filtering can introduce systematic selection errors; exact prompts and decoding settings are undisclosed.
+    - The original release contained multiple-choice questions with missing options, including LLM extraction errors; it remains available as train_legacy.
+    - The generative verifier can accept semantically plausible but incorrect answers, and its reported agreement analysis does not measure false positives on Gemini-negative examples.
+    - Agreement with Gemini-2.0-Flash is teacher-relative rather than independent human validation.
+    - Generative verifier outputs may depend on decoding and serving settings that are not fully disclosed.
+    - Difficulty and answer-type labels are model-generated and should not be treated as human-audited ground truth.
+    - No reported decontamination analysis establishes separation from the twelve evaluation benchmarks.
+    citation_status: verified
+    confidence: medium
+    notes: Official arXiv, OpenReview, project, GitHub, HF dataset card/schema/statistics/history, and HF discussion 3 were checked on 2026-07-10. Citation and artifacts are verified, but release metadata is partial because source URLs, item-level licenses, exact Gemini prompts/settings, verifier decoding settings, decontamination, and the exact paper-training snapshot are unresolved.
+    metadata_status: partial
+  inclusion_reason: General-Reasoner is a central cross-domain RLVR construction recipe because it combines web-recrawled human-answer QA pairs, LLM-based answer-type and difficulty filtering, a released generative verifier, and zero-RL training across non-mathematical domains.
+  related: []
+  tags:
+  - web-crawled-data
+  - human-answer
+  - cross-domain-reasoning
+  - generative-verifier
+  - rlvr
+  - zero-rl
+  - answer-equivalence
+  - release-versioning
+  status: partial
+  category:
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - frontier_reports_data_disclosure_ledger
+  one_line: General-Reasoner releases WebInstruct-Verified and a 1.5B generative answer-equivalence verifier for cross-domain zero-RL training on short-answer reasoning questions.
+  one_line_summary: General-Reasoner releases WebInstruct-Verified and a 1.5B generative answer-equivalence verifier for cross-domain zero-RL training on short-answer reasoning questions.
+  why_it_matters: It expands RLVR beyond math and code by operationalizing web recrawling, human-answer retention, LLM-based verifiability filtering, diverse answer-type metadata, and learned answer-equivalence rewards, while exposing important provenance and verifier-audit risks.
+  card: null
+  needs:
+  - 'needs_snapshot: identify and pin the exact WebInstruct-Verified commit and split used for every reported paper run'
+  - 'needs_provenance: release original source URLs or equivalent item-level attribution and human-answer lineage evidence'
+  - 'needs_license: audit item-level source licenses, website terms, and redistribution permissions'
+  - 'needs_curation_reproducibility: release exact Gemini extraction, annotation, filtering prompts, decoding settings, and retry policy'
+  - 'needs_verifier_reproducibility: pin General-Verifier prompt, extraction logic, decoding settings, model revision, and serving stack'
+  - 'needs_verifier_audit: measure false positives, false negatives, calibration, adversarial equivalence errors, and run-to-run variance against independent human labels'
+  - 'needs_decontamination: check overlap with MMLU-Pro, GPQA, SuperGPQA, TheoremQA, BBEH, and other reported evaluations'
+  - 'needs_release_audit: keep current repaired train separate from train_legacy and document row-level removals or repairs'
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: Exact-title, proposed-ID, arXiv-ID, OpenReview-ID, GitHub URL, and HF dataset URL duplicate checks passed. Current HF main is 3e8a350b3a935d68fe70bdf379692500abc9ff51; artifact completeness remains partial.
+- id: omnithought-2026
+  title: 'Reasoning with OmniThought: A Large CoT Dataset with Verbosity and Cognitive Difficulty Annotations'
+  year: 2026
+  venue: ACL 2026
+  authors:
+  - Wenrui Cai
+  - Chengyu Wang
+  - Junbing Yan
+  - Jun Huang
+  - Xiangzhong Fang
+  source_role:
+  - data_release
+  - construction_recipe
+  - verifier_reward
+  verification_contract:
+  - mixed
+  supervision_granularity:
+  - answer_level
+  - scalar_reward
+  domains:
+  - math
+  - code
+  - science
+  - reasoning
+  training_use:
+  - sft
+  - distillation
+  - preference_learning
+  - rlvr
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://aclanthology.org/2026.acl-long.382/
+    arxiv: https://arxiv.org/abs/2505.10937
+    code: null
+    data: https://huggingface.co/datasets/alibaba-pai/OmniThought
+    project: null
+    huggingface: https://huggingface.co/datasets/alibaba-pai/OmniThought
+    doi: https://doi.org/10.18653/v1/2026.acl-long.382
+    venue: https://aclanthology.org/2026.acl-long.382/
+    openreview: null
+    acl: https://aclanthology.org/2026.acl-long.382/
+    pmlr: null
+    cvf: null
+    bibtex: https://aclanthology.org/2026.acl-long.382.bib
+  data_object:
+    prompt_source: Mathematics problems from OpenMathReasoning, MathInstruct, DeepMath-103K, NuminaMath, and OpenThoughts2-1M; code problems from TACO, APPS, OpenThoughts2-1M, and OpenCodeReasoning; science problems from StackExchange Physics, StackExchange Biology, Camel-AI Chemistry, and OpenThoughts2-1M. Per-row source provenance is not present in the documented released schema.
+    trace_author: DeepSeek-R1, DeepSeek-R1-0528, and QwQ-32B; aggregate teacher proportions are undisclosed, while individual reasoning records contain a teacher field.
+    answer_format: Each row contains a question and a list of reasoning records. A reasoning record contains thought, solution, full_response, teacher, thought_correctness_verify, Reasoning_Verbosity, and Cognitive_Difficulty.
+    process_fields:
+    - thought
+    - solution
+    - full_response
+    - teacher
+    - thought_correctness_verify
+    - Reasoning_Verbosity.level
+    - Reasoning_Verbosity.judge
+    - Cognitive_Difficulty.level
+    - Cognitive_Difficulty.judge
+    environment_or_substrate: Offline math, code, and science problem corpus. Code generations are checked by executing test cases; math and science generations use rule-based checks combined with LLM judgment.
+    verifier_or_reward: Final-answer correctness validation plus two 0-9 whole-trace metadata scores, Reasoning Verbosity and Cognitive Difficulty; QwQ-32B is recorded as the RV/CD judge.
+    terminal_predicate: The generated answer passes the applicable code-test or hybrid math/science correctness validator; each retained problem has at least two validated-correct CoTs according to the paper.
+  recipe_metadata:
+    base_model: unknown
+    teacher: DeepSeek-R1, DeepSeek-R1-0528, and QwQ-32B
+    generator: Multiple large reasoning models generate multiple CoTs per sourced problem.
+    filtering_rule: Problems are deduplicated and decontaminated against evaluation benchmarks. Some problems whose CoT token count is below 3000 are randomly filtered. A generated CoT is retained unless it produces an incorrect answer; lower-quality but answer-correct traces may remain.
+    sampling_protocol: Multiple teachers generate multiple candidate CoTs per problem. The paper reports at least two validated-correct CoTs per retained problem and defines RV/CD-conditioned sampling with beta=0.5. Initial generation counts and teacher proportions are unknown.
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: Metadata-conditioned CoT selection based on target cognitive difficulty and reasoning verbosity. The paper evaluates selected subsets with SFT, DPO, and GRPO; construction-generation hyperparameters are not fully disclosed.
+  audit:
+    source_mixture: Mixed public math, code, and science collections. Some sources, including OpenThoughts2-1M, contribute to more than one domain. Aggregate and row-level source proportions are unknown.
+    split: The official Hugging Face repository exposes one train split. At revision 274ec6417efb435421fb222319d1bb47291ea69b, the datasets-server size response is partial, with 47,277 counted rows and 552,229 estimated rows. The exact number of nested CoTs in this public snapshot is unknown.
+    decontamination: Normalized Indel similarity and 10-gram similarity against AIME24, MATH500, LiveCodeBench V2, and GPQA-Diamond. Thresholds, removed counts, and residual-contamination results are not reported.
+    license: The official Hugging Face dataset card declares Apache-2.0. Per-source and per-record upstream-license reconciliation is unknown.
+    lineage: Public problem sources to domain aggregation to deduplication and benchmark decontamination to multi-teacher CoT generation to code-test or hybrid correctness validation to QwQ-32B RV/CD annotation to metadata-conditioned release and training subsets. OmniThought-0528 is a separate supplement/extension snapshot.
+    known_failure_modes:
+    - The paper's more-than-2M CoT and 708K-problem claims cannot be reconciled from the current partial public viewer, which estimates about 552K problem rows.
+    - Teacher-model mixture proportions and row-level prompt-source provenance are undisclosed.
+    - Randomly filtering some traces shorter than 3000 tokens may underrepresent simple or naturally concise problems.
+    - LLM judgment and rule-based validation may accept locally flawed reasoning that reaches a correct final answer.
+    - Code test suites may be incomplete and therefore admit incorrect or brittle solutions.
+    - RV/CD labels are judge-dependent whole-CoT scalar annotations, not human-grounded step-level correctness labels.
+    - The QwQ-32B judge audit reports mean absolute score differences, not exact agreement or full calibration evidence.
+    - The dataset-level Apache-2.0 declaration does not by itself prove compatibility with every upstream source license.
+    citation_status: verified
+    confidence: medium
+    metadata_status: partial
+    notes: Official paper, ACL metadata, Hugging Face card, schema, and datasets-server snapshot were checked on 2026-07-10. The paper's 2M figure counts CoT processes nested under problems, whereas the Hugging Face viewer counts problem rows. The exact current nested CoT total, construction temperature, generation budget, teacher proportions, decontamination thresholds, and upstream-license mapping remain unknown.
+  inclusion_reason: OmniThought is a directly relevant Track 8 release because it documents a multi-source, multi-teacher construction pipeline, mixed correctness verification, metadata-based trace selection, and an official open dataset.
+  related: []
+  tags:
+  - chain-of-thought
+  - synthetic-reasoning-data
+  - multi-teacher-distillation
+  - reasoning-verbosity
+  - cognitive-difficulty
+  - llm-as-a-judge
+  - metadata-filtering
+  - math
+  - code
+  - science
+  status: partial
+  category:
+  - instruction_demonstration_rationale_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  one_line: A multi-teacher math, code, and science CoT release with mixed correctness verification and per-trace verbosity and cognitive-difficulty metadata.
+  one_line_summary: OmniThought constructs multi-teacher reasoning traces, validates their answers with executable or hybrid checks, and annotates each trace for metadata-conditioned post-training.
+  why_it_matters: It provides a concrete open recipe for selecting reasoning traces by both answer validity and process characteristics, while exposing important audit questions around snapshot scale, judge reliability, source provenance, and upstream licensing.
+  card: cards/releases/omnithought.md
+  needs:
+  - 'needs_metadata: reconcile the paper''s 708K problems and 2M CoTs with a pinned full public snapshot'
+  - 'needs_metadata: publish or compute teacher-model proportions'
+  - 'needs_metadata: recover per-row prompt-source provenance and source proportions'
+  - 'needs_metadata: document decontamination thresholds and removal statistics'
+  - 'needs_metadata: audit upstream-source license compatibility'
+  - 'needs_metadata: clarify exact lineage and overlap with OmniThought-0528'
+  - 'needs_metadata: independently audit RV/CD judge calibration and correctness false positives'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: ACL publication, DOI, arXiv identifier, official Hugging Face repository, card, schema, and current repository revision were verified. Artifact existence is verified; release completeness and scale reconciliation remain partial.
+- id: open-proof-corpus-2026
+  title: 'The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs'
+  year: 2026
+  venue: ICLR 2026
+  authors:
+  - Jasper Dekoninck
+  - Ivo Petrov
+  - Kristian Minchev
+  - Mislav Balunović
+  - Martin Vechev
+  - Miroslav Marinov
+  - Maria Drencheva
+  - Lyuba Konova
+  - Milen Shumanov
+  - Kaloyan Tsvetkov
+  - Nikolay Drenchev
+  - Lazar Todorov
+  - Kalina Nikolova
+  - Nikolay Georgiev
+  - Vanesa Kalinkova
+  - Margulan Ismoldayev
+  source_role:
+  - data_release
+  - benchmark
+  - verifier_reward
+  - process_supervision
+  - construction_recipe
+  verification_contract:
+  - judgment_required
+  supervision_granularity:
+  - answer_level
+  - step_level
+  - scalar_reward
+  domains:
+  - mathematical-proofs
+  - olympiad-mathematics
+  - high-school-mathematics
+  - undergraduate-mathematics
+  training_use:
+  - reward_modeling
+  - process_supervision
+  - rlvr
+  - evaluation
+  - audit
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://openreview.net/forum?id=a2XmC7rHIU
+    arxiv: https://arxiv.org/abs/2506.21621
+    code: https://github.com/insait-institute/open-proof-corpus
+    data: https://huggingface.co/datasets/INSAIT-Institute/OPC
+    project: https://proofcorpus.ai/
+    huggingface: https://huggingface.co/datasets/INSAIT-Institute/OPC
+    doi: https://doi.org/10.48550/arXiv.2506.21621
+    venue: https://openreview.net/forum?id=a2XmC7rHIU
+    openreview: https://openreview.net/forum?id=a2XmC7rHIU
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Problems are drawn from official materials for more than 20 national and international mathematics competitions; selected benchmark subsets come from MathArena and PutnamBench.
+    trace_author: Six frontier LLMs generate natural-language proofs; human expert judges evaluate the resulting proofs and optionally annotate specific erroneous passages.
+    answer_format: Full natural-language mathematical proof paired with one or two binary correctness labels, written feedback, uncertainty flags, optional span-level annotations, and problem/source metadata.
+    process_fields:
+    - problem identifier and statement
+    - generated proof
+    - solver model identifier
+    - human correctness score
+    - written grading feedback
+    - uncertainty flag
+    - optional sentence-level annotations
+    - one or two judge identifiers
+    - competition, level, source, URL, and year
+    - optional official ground-truth solution and issue notes
+    - optional model thinking
+    - token counts, generation cost, and timestamp
+    - O4-MINI proof summary and issue suggestions
+    - best-of-N selector metadata
+    environment_or_substrate: Competition-proof generation followed by a custom expert-grading interface, duplicate grading for quality control, split-specific evaluation protocols, and optional best-of-N selection.
+    verifier_or_reward: One or two qualified human judges assign binary proof-validity labels and written feedback; optional sentence annotations identify local errors.
+    terminal_predicate: A judge determines whether the complete generated proof is mathematically correct under the corpus grading guidelines.
+  recipe_metadata:
+    base_model: OPC-R1-8B is initialized from the 8B DeepSeek-R1-Qwen3 family model described in the paper; proof generators are six frontier models rather than one shared base.
+    teacher: Thirteen expert human judges provide correctness supervision; official competition solutions are supplied as references when available, and O4-MINI supplies non-verdict issue summaries.
+    generator: O4-MINI, O3, Gemini-2.5-Pro, Grok-3-Mini, Qwen3-235B-A22B, and DeepSeek-R1 generate the released proofs.
+    filtering_rule: Remove malformed problems or solutions flagged by judges; retain MathArena proofs only when the final answer is correct; separate training-capable, benchmark, test, and best-of-N subsets.
+    sampling_protocol: Most problems receive proofs from about five models. Best-of-N uses repeated O4-MINI generations; all eight generations are human-graded for 60 problems, while other problems grade only selected outputs.
+    rollout_count: null
+    temperature: null
+    inference_budget: Proof generators use model-default parameters with a 64,000-token maximum generation length.
+    optimizer_or_scaffold: Custom proof-generation and human-grading pipeline; OPC-R1-8B verification training adapts verl and GRPO with train/validation model selection.
+  audit:
+    source_mixture: Problems come from more than 20 competitions plus MathArena and PutnamBench; most have competition/source/year metadata, but some source URLs are unavailable or private.
+    split: Current public release has generic 3039, test 292, putnambench 564, matharena 310, best_of_n 252, and pass_at_n 477 rows. MathArena, PutnamBench, and test must remain outside training.
+    decontamination: Split boundaries are documented, but broader overlap with model pretraining or other mathematical corpora is unknown.
+    license: Dataset release is CC BY-NC-SA 4.0 and code is Apache-2.0. Item-level competition-problem and official-solution licenses are not recorded.
+    lineage: Official competition problem to optional GPT-4.1 translation and manual verification to frontier-model proof generation to expert human grading, optional duplicate grading and sentence annotations, split assignment, and public HF export.
+    known_failure_modes:
+    - Approximately 10% double grading leaves most proofs with a single human judgment.
+    - The reported 90.4% agreement still implies nonzero label noise; the paper's 5% judge-error estimate depends on independence assumptions.
+    - Fewer than 3% of proofs are marked uncertain, but subtle near-correct errors can remain difficult to classify.
+    - O4-MINI-generated issue summaries may anchor judges even though the authors found no significant agreement shift.
+    - Best-of-N coverage is selective: only 60 problems have all eight generations human graded, while many other candidates are judged only after selection.
+    - Some best-of-N records use a V1 ranking judge whose methodology is described by the dataset card as suboptimal.
+    - The public HF snapshot has 4934 rows versus 5062 proofs reported in the paper; SMT withholding is documented, but the complete row-count difference is not reconciled.
+    - Problem source URLs may be private or missing, and no item-level license field establishes reuse rights.
+    - MathArena and PutnamBench are analytical benchmark subsets and should not be treated as proof-training data.
+    - Positive and negative proofs support verifier training and audit, but do not provide formal proof checking or executable correctness guarantees.
+    citation_status: verified
+    confidence: medium
+    notes: ICLR/OpenReview, arXiv, project page, GitHub, HF schema/card/splits/history, grading methodology, and best-of-N protocol were checked on 2026-07-10. Citation and artifacts are verified, but release completeness is partial because the public row count differs from the paper, some SMT problems remain withheld, and item-level licensing is unresolved.
+    metadata_status: partial
+  inclusion_reason: The Open Proof Corpus is a core expert-feedback release for reasoning-data research because it pairs frontier-model proofs with positive and negative human correctness labels, written feedback, optional span annotations, source metadata, and split-specific best-of-N and verifier-training protocols.
+  related: []
+  tags:
+  - mathematical-proofs
+  - human-feedback
+  - positive-negative-proofs
+  - expert-judgment
+  - verifier-training
+  - best-of-n
+  - competition-math
+  - open-release
+  status: partial
+  category:
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - process_trace_supervision_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  - audit_failure_contamination_verifier_attacks
+  one_line: Open Proof Corpus releases thousands of frontier-model competition proofs with expert correctness labels, written feedback, optional error spans, provenance metadata, and best-of-N analysis splits.
+  one_line_summary: Open Proof Corpus releases thousands of frontier-model competition proofs with expert correctness labels, written feedback, optional error spans, provenance metadata, and best-of-N analysis splits.
+  why_it_matters: It provides unusually rich positive and negative proof supervision for training and auditing proof judges while exposing the limits of final-answer verification, selective best-of-N labeling, and single-judge proof assessment.
+  card: cards/releases/open-proof-corpus.md
+  needs:
+  - 'needs_release_reconciliation: explain the 5062-paper versus 4934-public-row difference and document future SMT additions'
+  - 'needs_snapshot: pin HF commit dcc3b4804e2d126ea34b13e3e0cd998c3302644b and the corresponding code revision'
+  - 'needs_license: audit item-level competition-problem and official-solution licenses or redistribution terms'
+  - 'needs_split_safety: enforce exclusion of MathArena, PutnamBench, and test from training'
+  - 'needs_label_audit: publish disagreement adjudication outcomes and judge-level calibration where privacy permits'
+  - 'needs_best_of_n_audit: distinguish fully graded eight-sample groups from selector-only graded candidates'
+  - 'needs_provenance: replace Private or missing source URLs where official public sources become available'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: Exact-title, proposed-ID, arXiv-ID, OpenReview-ID, code, data, and project URL duplicate checks passed. Current public HF snapshot contains 4934 rows and six documented splits.
+- id: reasoning-gym-2025
+  title: 'REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards'
+  year: 2025
+  venue: NeurIPS 2025 Spotlight
+  authors:
+  - Zafir Stojanovski
+  - Oliver Stanley
+  - Joe Sharratt
+  - Richard Jones
+  - Abdulhakeem Adefioye
+  - Jean Kaddour
+  - Andreas Köpf
+  source_role:
+  - agent_environment
+  - construction_recipe
+  - verifier_reward
+  - benchmark
+  - infrastructure
+  verification_contract:
+  - programmatic
+  supervision_granularity:
+  - answer_level
+  - scalar_reward
+  domains:
+  - algebra
+  - algorithmic-reasoning
+  - arithmetic
+  - code
+  - cognition
+  - games
+  - geometry
+  - graph-reasoning
+  - induction
+  - logic
+  training_use:
+  - rlvr
+  - evaluation
+  construction_layer:
+  - prompt_sourcing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://openreview.net/forum?id=GqYSunGmp7
+    arxiv: https://arxiv.org/abs/2505.24760
+    code: https://github.com/open-thought/reasoning-gym
+    data: null
+    project: null
+    huggingface: null
+    doi: https://doi.org/10.48550/arXiv.2505.24760
+    venue: https://openreview.net/forum?id=GqYSunGmp7
+    openreview: https://openreview.net/forum?id=GqYSunGmp7
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: More than 100 Python procedural generators create reasoning tasks across mathematical, algorithmic, logical, graph, cognition, code, geometry, and game domains from task-specific configurations.
+    trace_author: Model policies generate single-turn answer responses during RLVR; Reasoning Gym generates questions, oracle answers, metadata, and verifier rewards rather than releasing a fixed reasoning-trace corpus.
+    answer_format: Each generated entry contains question, answer, and metadata fields; model-answer syntax and the set of valid solutions are task-specific.
+    process_fields:
+    - task or source-dataset name
+    - generator configuration
+    - seed and generated-item index
+    - question
+    - oracle answer
+    - task-specific metadata
+    - model response
+    - score_answer reward
+    - optional curriculum level
+    environment_or_substrate: ProceduralDataset generators, a named task registry, weighted composite datasets, optional reseeding for unbounded streams, and optional task curricula.
+    verifier_or_reward: Each task supplies a score_answer function yielding an algorithmic scalar reward; current releases optionally add native, normalized-string, numeric, and symbolic-math cascade scoring.
+    terminal_predicate: A single-turn model response receives the score returned by the selected task verifier or scoring cascade for the generated entry.
+  recipe_metadata:
+    base_model: Qwen2.5-3B-Instruct in the reported transfer and curriculum experiments.
+    teacher: none
+    generator: Registered task-specific Python procedural generators with difficulty, structural, and stylistic parameters.
+    filtering_rule: No universal corpus filter is used because examples are generated at runtime; generators enforce task validity and task-specific scorers evaluate responses.
+    sampling_protocol: Tasks may be sampled independently or from weighted composite mixtures; exact configs, seeds, sizes, weights, and reseeding behavior determine the realized data stream.
+    rollout_count: 8
+    temperature: 1.0
+    inference_budget: The Appendix A.6 example uses a 4,096-token prompt limit, 2,048-token response limit, and 20,000-item virtual dataset size; these values are experiment-specific.
+    optimizer_or_scaffold: GRPO with a Reasoning-Gym-modified verl stack for most reported experiments; separate qwen-math training code is also released.
+  audit:
+    source_mixture: A version-dependent registry of more than 100 procedural task generators, optionally combined with explicit per-task weights and configurations.
+    split: No universal fixed train/test split exists. Reported experiments freeze holdout examples, while reproducible reuse requires pinned seeds, configs, task registry, scorer, revision, and materialized evaluation snapshots.
+    decontamination: Procedural generation reduces fixed-example reuse, but semantic or template overlap with external benchmarks is not comprehensively audited.
+    license: Apache-2.0 for the official code release; bundled resources and generated-content provenance should be audited where task implementations use external assets.
+    lineage: Generated records depend on repository or package version, registered task implementation, full config, seed, item index, composite weights, curriculum state, and scorer dependencies.
+    known_failure_modes:
+    - The library is a dynamic generator collection rather than a canonical fixed dataset, so task counts, defaults, outputs, and verifier behavior can change across revisions.
+    - The base score_answer implementation gives partial credit when an oracle string appears inside a longer response, creating a false-positive surface.
+    - The optional cascade only upgrades scores and adds normalization, numeric tolerance, and symbolic matching; this reduces formatting false negatives but broadens acceptance.
+    - Symbolic verification is skipped when the optional math-verify dependency is absent, making rewards environment-dependent.
+    - Unit tests cover many task and scorer cases but do not establish soundness over every task's full generated solution space.
+    - Procedural generation does not prevent semantic overlap, shared templates, or train/evaluation leakage when seeds and snapshots are uncontrolled.
+    - Curricula exist only for a subset of tasks, and difficulty levels are not necessarily comparable across environments.
+    - The paper focuses on single-turn text tasks and does not cover multi-turn or multimodal environments.
+    citation_status: verified
+    confidence: medium
+    notes: Official arXiv, OpenReview, repository, generator interface, training configurations, scorer implementation, tests, and current version history were checked on 2026-07-10. Reusable data identity requires a pinned commit, complete configs, seeds, scorer mode, and frozen evaluation snapshot.
+    metadata_status: summary_ready
+  inclusion_reason: Reasoning Gym is a core open construction and verifier substrate for RLVR because it replaces fixed reasoning datasets with configurable procedural environments, task-specific algorithmic rewards, weighted mixtures, and optional adaptive curricula.
+  related: []
+  tags:
+  - procedural-generation
+  - reasoning-environment
+  - rlvr
+  - rule-based-verifier
+  - dynamic-curriculum
+  - synthetic-data
+  - open-source
+  - version-sensitive
+  status: verified
+  category:
+  - programmatically_verifiable_outcome_data
+  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - benchmarks_evaluation_surfaces
+  one_line: Reasoning Gym is an open library of more than 100 configurable procedural reasoning generators with task-specific algorithmic rewards for dynamic RLVR training and evaluation.
+  one_line_summary: Reasoning Gym is an open library of more than 100 configurable procedural reasoning generators with task-specific algorithmic rewards for dynamic RLVR training and evaluation.
+  why_it_matters: It turns reasoning-data construction into a versioned executable environment layer where tasks can be generated on demand, difficulty can drive curricula, and rewards can be computed without a fixed human-curated corpus.
+  card: cards/agents/reasoning-gym.md
+  needs:
+  - 'needs_reproducibility: identify and pin the exact repository commit used for every paper experiment'
+  - 'needs_snapshot: record full task lists, weights, configs, seeds, virtual sizes, and frozen evaluation instances'
+  - 'needs_verifier_audit: test native and cascade scorers for adversarial false positives, substring leakage, numeric-tolerance errors, and multiple-valid-solution coverage'
+  - 'needs_dependency_pin: record whether optional math-verify cascade scoring is enabled and pin its version'
+  - 'needs_versioning: distinguish paper-era generator and verifier behavior from current main and future package releases'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: Exact-title, proposed-ID, arXiv-ID, OpenReview-ID, and official-URL duplicate checks passed. No canonical official fixed dataset or Hugging Face release was found; the verified primary artifact is the procedural generator, verifier, and training-code repository.
+- id: rl-tango-2025
+  title: 'RL Tango: Reinforcing Generator and Verifier Together for Language Reasoning'
+  year: 2025
+  venue: NeurIPS 2025
+  authors:
+  - Kaiwen Zha
+  - Zhengqi Gao
+  - Maohao Shen
+  - Zhang-Wei Hong
+  - Duane S. Boning
+  - Dina Katabi
+  source_role:
+  - construction_recipe
+  - verifier_reward
+  - process_supervision
+  - model_report
+  verification_contract:
+  - mixed
+  supervision_granularity:
+  - answer_level
+  - step_level
+  - process_reward
+  domains:
+  - math
+  - competition_math
+  - mathematical_reasoning
+  training_use:
+  - sft
+  - distillation
+  - reward_modeling
+  - process_supervision
+  - rlvr
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - self_play_anchor
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - frontier_pipeline
+  artifacts:
+    paper: https://openreview.net/forum?id=JRkFZl0TJ2
+    arxiv: https://arxiv.org/abs/2505.15034
+    code: https://github.com/kaiwenzha/rl-tango
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: https://openreview.net/forum?id=JRkFZl0TJ2
+    openreview: https://openreview.net/forum?id=JRkFZl0TJ2
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Generator SFT uses 113K math prompts filtered from Eurus-2-SFT-Data. Interleaved RL uses 455K math question-answer pairs from Eurus-2-RL-Data, retaining gold answers for rule-based correctness checking. No Tango-specific processed-data artifact is released.
+    trace_author: Llama-3.1-70B-Instruct generates initial SFT responses. During RL, the current generator produces on-policy multi-step solutions and the current generative verifier produces on-policy natural-language verification trajectories.
+    answer_format: A runtime item comprises a question, gold answer, generator response with think/step/answer tags, verifier response with one natural-language judgment per step, and an overall final-verification judgment. This is a training-time object, not a released dataset schema.
+    process_fields:
+    - question
+    - gold_answer
+    - generator_solution
+    - generator_steps
+    - generator_final_answer
+    - generator_outcome_correctness
+    - verifier_step_rationales
+    - verifier_step_judgments
+    - verifier_final_judgment
+    - verifier_format_score
+    - process_rewards
+    - outcome_reward
+    environment_or_substrate: Offline math QA RL using veRL. The outcome checker extracts a boxed final answer and compares it with gold; the generative verifier evaluates the current generator trace and emits structured step/final judgments.
+    verifier_or_reward: The generator receives binary gold-answer reward plus stochastic step rewards from the current verifier. The verifier receives outcome-level reward for whether its final judgment matches rule-derived correctness, plus structural-format reward. No gold step labels are used in the main training run.
+    terminal_predicate: Generator success is an extracted final answer matching gold under the answer checker. Verifier success is a final judgment matching that outcome, with format credit for required step-wise verifications.
+  recipe_metadata:
+    base_model: Qwen2.5-Math-7B generator and Qwen2.5-7B verifier in the main experiment; a Llama-3.1-8B-Instruct experiment is also reported.
+    teacher: Llama-3.1-70B-Instruct generates initial SFT responses. During RL there is no frozen process-label teacher; generator and verifier create evolving trajectories while gold final answers anchor outcomes.
+    generator: The generator emits tagged multi-step solutions; the generative verifier emits natural-language analysis, one binary judgment per step, and a final judgment. Both are updated by policy-gradient RL in a 3-to-1 cycle.
+    filtering_rule: Training prompts are filtered to math and overlong prompts are rejected by config. Final answers use analytical comparison; verifier output loses format credit for missing rationales, wrong step counts or malformed final verification. Additional rollout-retention rules are undisclosed.
+    sampling_protocol: Five rollouts per prompt. Generator updates pair each current solution with a current-verifier trajectory; verifier updates pair a current generator solution with five verifier trajectories. Verifier warmup lasts 40 steps, then three generator updates alternate with one verifier update.
+    rollout_count: 5
+    temperature: 1.0
+    inference_budget: top-p 1.0; public script sets generator prompt/response 2048 and verifier prompt/response 4096 tokens. Main experiments use four nodes of eight A100 GPUs. Total trajectory volume is not reported.
+    optimizer_or_scaffold: veRL with GRPO, RLOO or REINFORCE++; AdamW 1e-6, batch 256, microbatch 4, KL 0.001, EMA class reweighting and decaying process-reward weight. Paper reports 200/300 steps while public script configures 440.
+  audit:
+    source_mixture: Main training is math-only with 113K Eurus-2 SFT prompts and 455K Eurus-2 RL QA pairs. Logic, code, commonsense and table tasks are evaluation surfaces, not disclosed training components.
+    split: Repository preprocesses upstream Eurus train/validation and locally splits generated SFT parquet, but no Tango-specific manifest, processed dataset, trajectory archive or checkpoint-to-data snapshot is released.
+    decontamination: unknown
+    license: Code is Apache-2.0. Licenses for generated SFT responses, processed Eurus subsets, on-policy trajectories and Tango models are not specified because those artifacts are not released; upstream compatibility is not audited.
+    lineage: Eurus SFT prompts to Llama tagged responses to generator SFT to Eurus RL QA to current-generator rollouts to current-verifier step judgments to answer/format rewards to alternating generator/verifier RL to reported models. Processed data, trajectories and checkpoints are not linked.
+    known_failure_modes:
+    - Generator and verifier can co-adapt to shared stylistic or structural shortcuts that fail under independent evaluation.
+    - Verifier step judgments receive no direct correctness labels; plausible but inaccurate step rationales can earn reward.
+    - Final-answer extraction can produce false positives or negatives for equivalent expressions, malformed boxes or invalid reasoning.
+    - Format reward can encourage cosmetic step/tag compliance independently of semantic quality.
+    - Early class imbalance causes an observed all-incorrect verifier collapse; EMA mitigation changes calibration and remains generator-dependent.
+    - Stochastic verification and alpha decay mitigate but do not guarantee against verifier gaming or coordinated exploitation.
+    - Process rewards normalized by step count can create incentives around segmentation and step boundaries.
+    - No overlap analysis is reported between Eurus math prompts and evaluation sets.
+    - Public script step counts differ from paper recipes, leaving reported-checkpoint configuration ambiguous.
+    - Missing trajectories and checkpoints prevent independent co-adaptation and reward-hacking audits.
+    citation_status: verified
+    confidence: medium
+    notes: OpenReview, arXiv and official repository at revision 411ed834e1c99a41b8165e588f446c423a35bfc3 were checked on 2026-07-10. Code is available; processed data, trajectories, checkpoints, licenses and exact paper-checkpoint configuration remain unresolved.
+  inclusion_reason: RL Tango is a high-value Track 8 recipe because current generator solutions, current verifier rationales, rule-derived outcomes and stochastic process rewards are regenerated as both policies co-evolve.
+  related: []
+  tags:
+  - co-evolution
+  - generator-verifier
+  - generative-prm
+  - on-policy-rollouts
+  - process-reward
+  - outcome-reward
+  - reward-hacking
+  - grpo
+  - math-reasoning
+  - verl
+  status: partial
+  category:
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  one_line: An interleaved RL recipe in which a math generator and a generative process verifier continually create and learn from each other's on-policy reasoning and verification trajectories.
+  one_line_summary: RL Tango alternates generator and verifier policy updates, combining gold final-answer correctness with sampled natural-language step rewards while training the verifier only from outcome-verification and format rewards.
+  why_it_matters: It exposes an online data contract for co-training reasoning policies and verifiers while highlighting risks from co-adaptation, latent process-label accuracy, answer-checker brittleness and missing trajectories/checkpoints.
+  card: null
+  needs:
+  - 'needs_metadata: release or explicitly document final Tango generator and verifier checkpoints'
+  - 'needs_metadata: release processed SFT data and representative on-policy generator-verifier trajectories'
+  - 'needs_metadata: pin the exact 200-step, 300-step, or 440-step configuration for each result'
+  - 'needs_metadata: document answer-extraction false-positive and false-negative behavior'
+  - 'needs_metadata: independently audit verifier step judgments for reward hacking and generator-verifier collusion'
+  - 'needs_metadata: report decontamination and overlap checks'
+  - 'needs_metadata: document upstream-data, generated-response, trajectory and model license compatibility'
+  - 'needs_metadata: report rollout retention, failed-format handling, checkpoint selection and storage policy'
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: OpenReview, arXiv, official code, license, training and preprocessing scripts, and core hyperparameters were checked. Code is available; data, trajectories, models and manifest are not.
+- id: rstar-coder-2025
+  title: 'rStar-Coder: Scaling Competitive Code Reasoning with a Large-Scale Verified Dataset'
+  year: 2025
+  venue: NeurIPS 2025
+  authors:
+  - Yifei Liu
+  - Li Lyna Zhang
+  - Yi Zhu
+  - Bingcheng Dong
+  - Xudong Zhou
+  - Ning Shang
+  - Fan Yang
+  - Cheng Li
+  - Mao Yang
+  source_role:
+  - data_release
+  - construction_recipe
+  - verifier_reward
+  - scaling_study
+  verification_contract:
+  - programmatic
+  supervision_granularity:
+  - answer_level
+  domains:
+  - code
+  - competitive-programming
+  - algorithmic-reasoning
+  training_use:
+  - sft
+  - distillation
+  - rlvr
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - search_substrate
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - scaling_report
+  - release_audit
+  artifacts:
+    paper: https://papers.nips.cc/paper_files/paper/2025/hash/54e847e1dffc87a8063844b149148557-Abstract-Conference.html
+    arxiv: https://arxiv.org/abs/2505.21297
+    code: https://papers.nips.cc/paper_files/paper/2025/file/54e847e1dffc87a8063844b149148557-Supplemental-Conference.zip
+    data: https://huggingface.co/datasets/microsoft/rStar-Coder
+    project: https://github.com/microsoft/rStar
+    huggingface: https://huggingface.co/datasets/microsoft/rStar-Coder
+    doi: null
+    venue: https://papers.nips.cc/paper_files/paper/2025/hash/54e847e1dffc87a8063844b149148557-Abstract-Conference.html
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: https://papers.nips.cc/paper_files/paper/32518-/bibtex
+  data_object:
+    prompt_source: Expert-written competitive-programming problems aggregated from TACO, APPS, CodeContests, CodeContests-Python-Submission, OpenR1 Codeforces, USACO 2011-2023, and IOI 2002-2023. Synthetic records preserve seed_question and a platform-level seed_source, but not the original source URL.
+    trace_author: QWQ-32B generates long-reasoning candidate solutions. GPT-4o is the primary synthetic-problem generator; GPT-4o and DeepSeek-V3 generate test-input and validation utility functions.
+    answer_format: SFT records contain a programming question, long-CoT response, and implementation code. RL records separate problems from input-output test cases. Seed records may include starter_code and solution-level verified/is_passed booleans.
+    process_fields:
+    - question_id
+    - question
+    - seed_question
+    - seed_source
+    - starter_code
+    - response
+    - code
+    - verified
+    - is_passed
+    - inputs
+    - outputs
+    - is_synthesized
+    - test_case_type
+    - func_name
+    - class_name
+    environment_or_substrate: Competitive-programming execution for standard-input/output and function-based tasks, with generated inputs spanning multiple scales; reuse requires isolated untrusted-code execution.
+    verifier_or_reward: For seed problems, oracle solutions label generated outputs and candidate code is checked against tests. For synthetic problems, 16 QWQ-32B solutions are executed on at least 50 shared inputs and consistent complete output sets are selected by agreement.
+    terminal_predicate: A candidate executes successfully and matches accepted outputs on all retained tests. Synthetic problems normally require at least 60 percent solution agreement, lowered to 40 percent for Codeforces-derived problems rated above 1600. This predicate does not hold for every seed_sft row.
+  recipe_metadata:
+    base_model: Qwen2.5-Coder-Instruct at 1.5B, 7B, and 14B in downstream SFT experiments.
+    teacher: GPT-4o for problem synthesis; GPT-4o and DeepSeek-V3 for test-input utility functions; QWQ-32B for long-reasoning candidate solutions.
+    generator: Seed problems and oracle solutions drive transformed problem synthesis, constraint-aware test generation, and QWQ-32B executable long-CoT generation.
+    filtering_rule: Remove cross-source duplicates and seeds without reference solutions; apply mutual verification with 60 or 40 percent agreement thresholds; retain the fastest passing synthetic solution; remove 16-gram benchmark overlaps.
+    sampling_protocol: Start from 37,754 verified seeds, generate 1,565,632 synthetic candidates, retain 380,560, and sample 16 QWQ-32B solutions with at least 50 test inputs per synthetic problem. Exact platform allocation and decoding settings are undisclosed.
+    rollout_count: 16
+    temperature: null
+    inference_budget: Sixteen candidate solutions and at least fifty shared test inputs per synthetic problem; total teacher token and monetary budgets are unknown.
+    optimizer_or_scaffold: The paper reports Qwen2.5-Coder-Instruct SFT with six epochs, AdamW, batch size 96, 16K maximum sequence length, cosine-decayed 4e-5 learning rate, FlashAttention-2, and DeepSpeed. Public RL configs are released but not evaluated with RL in the paper.
+  audit:
+    source_mixture: The paper reports 57,215 collected seeds, reduced to 37,754 unique problems with references, plus 1,565,632 generated candidates and 380,560 retained synthetic problems. Platform-level counts are available, but per-row original URLs are absent.
+    split: Five train-only configs are released. At revision 3a7a0a0636ec96e3c1ec42ebe79ade467caa040d, complete counts are 398,183 synthetic_sft, 398,107 synthetic_rl, and 591,660 seed_sft; partial indexing estimates 463,540 synthetic_rl_testcase and 7,801 seed_testcase. No config reconstructs the paper's 580K mixture directly.
+    decontamination: Problems with 16-gram overlap against HumanEval, HumanEval+, MBPP, MBPP+, LiveCodeBench, and USACO 2025 are removed; per-benchmark removals and residual overlap are not reported.
+    license: The Microsoft dataset declares CC BY 4.0. The paper lacks a per-source terms matrix and per-record source URL. The NeurIPS supplementary ZIP has no standalone license; the linked MIT rStar repository should not automatically be assumed to license the separate ZIP.
+    lineage: Competition sources to seed filtering to GPT-4o problem synthesis to multi-scale input generation to QWQ-32B execution and mutual verification to retained synthetic problems to fastest-solution selection to benchmark decontamination to five public configs. The mapping to the paper's 418K-problem and 580K-pair mixture is unknown.
+    known_failure_modes:
+    - Mutually generated solutions can share systematic errors and converge on an incorrect output set; reported accuracy drops from 96.8 to 92.8 percent in the larger comparison.
+    - The 40 percent threshold for difficult Codeforces-derived problems is below a strict majority.
+    - Seed problems for which no QWQ-32B candidate passes retain all generated solutions, so seed_sft is not uniformly verified.
+    - Selecting the fastest passing synthetic solution introduces an execution-efficiency objective and can favor brittle implementations.
+    - Generated tests and input validators may miss semantic edge cases or encode incomplete constraints.
+    - synthetic_sft lacks question_id, testcase links, and verification flags, preventing robust joins to synthetic RL testcases.
+    - Current public counts do not reconcile with the paper's 580K pairs, and Appendix Table 6 reports 480K rather than 418K unique problems.
+    - Platform-level provenance without original URLs and source-license mapping limits attribution and license auditing.
+    - All public configs are train-only and no verifier-calibration split is released.
+    - Official model checkpoints are not linked, limiting direct score reproduction.
+    - The release exceeds 480GB and stores some testcase arrays as JSON strings, creating processing barriers.
+    citation_status: verified
+    confidence: medium
+    notes: NeurIPS paper, supplement, Microsoft HF card/schema/API and linked project repository were checked on 2026-07-10. Artifact existence is verified; exact paper-mixture reconstruction, upstream licensing, production decoding settings and official model release remain partial.
+  inclusion_reason: rStar-Coder is a core Track 8 release because it exposes a large competitive-programming construction pipeline linking seed attribution, problem synthesis, multi-scale testcase generation, execution-based mutual verification, long-CoT filtering, SFT packaging, and RL-ready verifier data.
+  related: []
+  tags:
+  - code-reasoning
+  - competitive-programming
+  - synthetic-data
+  - long-cot
+  - testcase-generation
+  - mutual-verification
+  - execution-verifier
+  - rejection-sampling
+  - rlvr
+  - data-scaling
+  status: partial
+  category:
+  - instruction_demonstration_rationale_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  one_line: A large competitive-code release that synthesizes problems, generates multi-scale tests, and filters long-CoT solutions through executable mutual verification.
+  one_line_summary: rStar-Coder releases seed and synthetic SFT traces plus RL problem and testcase configs constructed from competition problems, QWQ-32B solutions, and agreement-over-execution verification.
+  why_it_matters: It provides a rare operational recipe for scaling difficult code reasoning data and programmatic rewards, while exposing reuse risks around false consensus, retained unverified seed traces, source licensing, config linkage, and mismatch between the published mixture and current repository.
+  card: cards/releases/rstar-coder.md
+  needs:
+  - 'needs_metadata: publish the exact manifest or filter that reconstructs the paper''s 580K question-solution training mixture'
+  - 'needs_metadata: reconcile 418,314 paper problems, Appendix Table 6''s 480K value, and current approximately 398K synthetic config rows'
+  - 'needs_metadata: add stable question_id fields to synthetic_sft and document joins across SFT, RL, and testcase configs'
+  - 'needs_metadata: publish per-row original source URLs and an upstream license/terms matrix'
+  - 'needs_metadata: document production model revisions, decoding temperature, top-p, retry policy, and teacher cost'
+  - 'needs_metadata: report decontamination removal counts and residual-overlap measurements'
+  - 'needs_metadata: distinguish verified, is_passed, and intentionally retained unverified seed_sft records in a release datasheet'
+  - 'needs_metadata: clarify whether NeurIPS supplementary code has an explicit license'
+  - 'needs_metadata: provide official rStar-Coder model checkpoints or explicitly state that they are not released'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: NeurIPS publication, supplement, arXiv, Microsoft HF data, five config schemas, current revision and storage metadata were checked. Artifact existence is verified; exact paper-mixture reconstruction and upstream licensing remain partial.
+- id: scalequest-2025
+  title: 'Unleashing LLM Reasoning Capability via Scalable Question Synthesis from Scratch'
+  year: 2025
+  venue: ACL 2025
+  authors:
+  - Yuyang Ding
+  - Xinyu Shi
+  - Xiaobo Liang
+  - Juntao Li
+  - Zhaopeng Tu
+  - Qiaoming Zhu
+  - Min Zhang
+  source_role:
+  - data_release
+  - construction_recipe
+  - model_report
+  verification_contract:
+  - judgment_required
+  supervision_granularity:
+  - answer_level
+  - scalar_reward
+  - pairwise_preference
+  domains:
+  - mathematics
+  training_use:
+  - sft
+  - distillation
+  - preference_learning
+  - evaluation
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://aclanthology.org/2025.acl-long.658/
+    arxiv: https://arxiv.org/abs/2410.18693
+    code: https://github.com/yyDing1/ScaleQuest
+    data: https://huggingface.co/datasets/dyyyyyyyy/ScaleQuest-Math
+    project: https://scalequest.github.io/
+    huggingface: https://huggingface.co/datasets/dyyyyyyyy/ScaleQuest-Math
+    doi: https://doi.org/10.18653/v1/2025.acl-long.658
+    venue: https://aclanthology.org/2025.acl-long.658/
+    openreview: null
+    acl: https://aclanthology.org/2025.acl-long.658/
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Questions are sampled from two QFT-and-QPO-trained 7B question generators without providing a seed question at generation time; QFT itself uses approximately 15K GSM8K and MATH training problems without solutions.
+    trace_author: Qwen2-Math-7B-Instruct generates five natural-language chain-of-thought solutions per retained math question, after which one response is selected.
+    answer_format: A mathematical problem in query and a selected natural-language step-by-step solution in response, typically ending with a final answer.
+    process_fields:
+    - generated question
+    - generated chain-of-thought response
+    - internal generator branch, not released
+    - internal language and solvability decisions, not released
+    - internal difficulty score, not released
+    - five candidate responses, only the selected response released
+    - InternLM2-7B-Reward scores, not released
+    environment_or_substrate: Offline synthetic-data pipeline with QFT, DPO-style QPO, question filtering, response generation, reward-model reranking, and DART-Math instruction tuning.
+    verifier_or_reward: Qwen2-Math-7B-Instruct supplies solvability judgments, a learned DeepSeekMath-7B-Base scorer predicts question difficulty, and InternLM2-7B-Reward ranks five candidate responses.
+    terminal_predicate: A question passes language, solvability, and difficulty filtering, and its highest-reward candidate solution is selected into the final corpus.
+  recipe_metadata:
+    base_model: DeepSeekMath-7B-RL and Qwen2-Math-7B-Instruct for the two math question-generator branches.
+    teacher: External optimization models evaluated for QPO include GPT-4o-mini, Llama3.1-70B-Instruct, and Qwen2-Math-7B-Instruct; exact row-level optimizer lineage is not released.
+    generator: DeepSeekMath-QGen and Qwen2-Math-QGen generate 1M candidate questions each; Qwen2-Math-7B-Instruct generates response candidates.
+    filtering_rule: Remove non-English generations, questions judged meaningless or underspecified, and a portion of overly easy questions; generate five solutions and retain the response with the highest InternLM2-7B-Reward score.
+    sampling_protocol: Generate 2M candidate questions across two generators, filter to a final 1M questions, sample five responses per retained question, and keep one response.
+    rollout_count: 5
+    temperature: null
+    inference_budget: The repository demo uses a 4,096-token generator context and 1,024 generated tokens with four samples, temperature 1.0, and top-p 0.99, but the exact production settings for the released 1M snapshot are not fully disclosed.
+    optimizer_or_scaffold: Question Fine-Tuning followed by DPO-style Question Preference Optimization; final problem-solution pairs are consumed through the DART-Math instruction-tuning framework.
+  audit:
+    source_mixture: Final questions are mixed from DeepSeekMath-QGen and Qwen2-Math-QGen branches, but per-row generator identity and mixture proportions are not released.
+    split: One approximately 1M-row train split in a single train.json file; no validation/test split or tagged immutable release snapshot is published.
+    decontamination: unknown
+    license: The code and HF dataset declare Apache-2.0; compatibility with upstream QFT data and all model-derived content should be reviewed separately.
+    lineage: GSM8K and MATH QFT problems to QFT generators to external-LLM solvability-or-difficulty optimization pairs to QPO generators to 2M questions to language, solvability, and difficulty filtering to five Qwen2-Math solutions to InternLM2 reward reranking to the released query-response pairs.
+    known_failure_modes:
+    - The released file omits generator identity, preference lineage, filter decisions, difficulty scores, candidate responses, reward scores, and rejection reasons.
+    - Rejected questions from the 2M candidate pool and four non-selected solutions per accepted question are not released.
+    - Model-based solvability filtering can retain nonsensical, underspecified, or internally inconsistent questions.
+    - The current HF viewer exposes at least one query containing unrelated trailing text beginning with another-question material, showing malformed or double-question leakage.
+    - Selecting the maximum-scoring response among five candidates can amplify reward-model biases and reward hacking.
+    - The learned difficulty scorer is calibrated from DeepSeekMath-7B-RL fail rates and may encode that solver's competence rather than intrinsic difficulty.
+    - The final release has no row-level correctness verifier output or independently checked reference answer.
+    - The dataset repository has no tagged snapshots; reproducing the paper requires pinning the HF commit and code revision.
+    - The separate code-domain results validate a modified recipe and separate ScaleQuest-Code data, not code content in ScaleQuest-Math.
+    citation_status: verified
+    confidence: medium
+    notes: ACL paper, arXiv, official project page, GitHub, linked HF dataset, release schema, history, and key construction tables were checked on 2026-07-10. Citation and ownership are verified, but release metadata remains partial because production sampling settings, row lineage, rejected candidates, reward scores, decontamination, and immutable snapshot metadata are missing.
+    metadata_status: partial
+  inclusion_reason: ScaleQuest is a major open synthetic-data recipe showing how lightweight problem-solving models can be converted into scalable question generators through QFT and QPO, then filtered and paired with reward-selected solutions for mathematical instruction tuning.
+  related: []
+  tags:
+  - synthetic-math
+  - question-generation
+  - qft
+  - qpo
+  - preference-optimization
+  - reward-filtering
+  - chain-of-thought
+  - open-release
+  status: partial
+  category:
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  one_line: ScaleQuest releases one million synthetic math problem-solution pairs built by QFT/QPO-trained question generators, model-based question filters, and reward-ranked solution sampling.
+  one_line_summary: ScaleQuest releases one million synthetic math problem-solution pairs built by QFT/QPO-trained question generators, model-based question filters, and reward-ranked solution sampling.
+  why_it_matters: It provides an executable alternative to proprietary teacher-driven synthesis by separating question-generator activation, preference optimization, question filtering, solution generation, and reward reranking, while exposing clear audit needs around rejected data and reward-selected traces.
+  card: null
+  needs:
+  - 'needs_snapshot: pin HF commit 7616e2214c15a6b67b8c40598c7d0c7c1a02dd69 and the corresponding code revision'
+  - 'needs_lineage: release per-row generator branch, QPO optimizer lineage, filter decisions, difficulty score, and reward score'
+  - 'needs_rejected_data: release or summarize rejected questions and non-selected response candidates with rejection reasons'
+  - 'needs_quality_audit: scan for malformed, concatenated, double-question, nonsensical, and underspecified rows'
+  - 'needs_reward_audit: evaluate InternLM2-7B-Reward false selections and reward-hacking sensitivity'
+  - 'needs_reproducibility: document exact production prompts, sampling parameters, seeds, model revisions, and mixture ratios'
+  - 'needs_decontamination: test overlap with GSM8K, MATH, College Math, OlympiadBench, and other evaluations'
+  - 'needs_license: review upstream QFT-source and model-derived-data licensing compatibility'
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: Exact-title, proposed-ID, arXiv-ID, ACL-ID, code URL, project URL, and project-linked HF dataset duplicate checks passed. The 1M math release is verified; LongCoT and Code are separate releases and are not represented as fields in this data object.
+- id: synlogic-2025
+  title: 'SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond'
+  year: 2025
+  venue: NeurIPS 2025
+  authors:
+  - Junteng Liu
+  - Yuanxiang Fan
+  - Zhuo Jiang
+  - Han Ding
+  - Yongyi Hu
+  - Chi Zhang
+  - Yiqi Shi
+  - Shitong Weng
+  - Aili Chen
+  - Shiqi Chen
+  - Yunan Huang
+  - Mozhi Zhang
+  - Pengyu Zhao
+  - Junjie Yan
+  - Junxian He
+  source_role:
+  - data_release
+  - construction_recipe
+  - verifier_reward
+  - scaling_study
+  verification_contract:
+  - programmatic
+  supervision_granularity:
+  - answer_level
+  - scalar_reward
+  domains:
+  - logical-reasoning
+  - synthetic-puzzles
+  - rlvr
+  training_use:
+  - rlvr
+  - evaluation
+  construction_layer:
+  - prompt_sourcing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - scaling_report
+  - release_audit
+  artifacts:
+    paper: https://openreview.net/forum?id=XtNiw8OQsy
+    arxiv: https://arxiv.org/abs/2505.19641
+    code: https://github.com/MiniMax-AI/SynLogic
+    data: https://huggingface.co/datasets/MiniMaxAI/SynLogic
+    project: null
+    huggingface: https://huggingface.co/datasets/MiniMaxAI/SynLogic
+    doi: https://doi.org/10.48550/arXiv.2505.19641
+    venue: https://openreview.net/forum?id=XtNiw8OQsy
+    openreview: https://openreview.net/forum?id=XtNiw8OQsy
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: 33 task families are independently synthesized from manually implemented puzzle and benchmark-inspired rules; Zebra Puzzle and ARC-AGI use existing open resources.
+    trace_author: Online Qwen2.5 policy rollouts are generated during RL; the released Hugging Face dataset exposes prompts and reference reward fields rather than accepted or rejected reasoning traces.
+    answer_format: Chat-style prompt plus task-specific reference answer and solution fields; RL responses must use think and answer tags around the reasoning and final answer.
+    process_fields:
+    - data_source task identifier
+    - chat-style prompt
+    - ability label
+    - reward_model answer, solution, and style
+    - extra_info game data and index
+    - Easy or Hard configuration
+    - train or validation split
+    environment_or_substrate: Task-specific rule-based generators and verifiers, with DAPO-adapted GRPO training and separate Easy and Hard dataset configurations.
+    verifier_or_reward: Binary reward requires both the prescribed think/answer format and acceptance of the final answer by the task-specific rule verifier.
+    terminal_predicate: The response contains the required think and answer tags and its extracted final answer passes the corresponding task verifier.
+  recipe_metadata:
+    base_model: Qwen2.5-7B-Base for SynLogic-Easy experiments and Qwen2.5-32B-Base for SynLogic-Hard and mixed-domain experiments.
+    teacher: DeepSeek R1 and OpenAI-o3-mini calibrate upper difficulty bounds; unspecified chat models calibrate lower bounds. They are not disclosed as reasoning-trace teachers.
+    generator: Manually implemented rule-based generators for 33 tasks; Zebra Puzzle and ARC-AGI data are adopted from existing open resources.
+    filtering_rule: Generated instances receive automated correctness and solvability checks; difficulty is bounded by model solvability, and eight zero-training-accuracy tasks are excluded from SynLogic-Easy.
+    sampling_protocol: Approximately 16k Easy and 33k Hard training instances with 10 validation instances per included task; reported RL uses prompt batches of 128 and 16 rollouts per prompt.
+    rollout_count: 16
+    temperature: null
+    inference_budget: Difficulty upper bounds use pass@10; reported maximum response lengths are 16,384 tokens for 7B training and 28,672 tokens for the main 32B SynLogic training.
+    optimizer_or_scaffold: DAPO-adapted GRPO; the official repository also provides Verl integration guidance.
+  audit:
+    source_mixture: 33 independently generated logical-task families plus Zebra Puzzle and ARC-AGI data adopted from existing open resources.
+    split: Easy and Hard configurations each expose train and validation splits. Easy covers 27 tasks; Hard covers all 35. Exact reuse should pin the Hugging Face revision because post-release row repairs occurred.
+    decontamination: Authors report no identical samples between generated datasets and benchmark test sets; broader semantic-overlap or contamination testing is unknown.
+    license: Current GitHub code and Hugging Face dataset metadata state MIT; task-level upstream source and redistribution terms are not fully documented.
+    lineage: Paper arXiv v4 and Hugging Face main are separately versioned. The audited HF main revision is bb4297b82b9c28ef39249f48386cefd5e856618a, after duplicate-prompt and Boolean Expressions repairs.
+    known_failure_modes:
+    - The viewer's default Easy configuration exposes 27 data_source values, while the full Hard release and paper framework cover 35; failing to record the configuration can produce a false coverage discrepancy.
+    - Official revision history records duplicate ARC-AGI prompts, duplicate Easy prompts, and Boolean Expressions data or generator repairs.
+    - Official issues report missing or empty answers and a currently missing Cipher generation script; issue reports require task-level confirmation before reuse.
+    - Task-specific answer parsing and verifier logic can yield false positives or false negatives even though rewards are programmatic.
+    - The audited release does not expose rejected online policy generations, so verifier rejection behavior and reward-hacking examples cannot be reconstructed from the dataset alone.
+    - Exact-match overlap checking does not rule out semantic contamination or shared benchmark templates.
+    citation_status: verified
+    confidence: medium
+    notes: Official paper, venue, repository, dataset, schema, configuration statistics, and revision history were checked on 2026-07-10. Citation identity is verified, but release completeness remains partial because rejected rollouts, full task-level provenance, broader decontamination, and at least one generator script are unresolved.
+    metadata_status: partial
+  inclusion_reason: SynLogic is a core open construction recipe for scalable RLVR data because it exposes controllable task generators, task-specific verifiers, Easy and Hard releases, and a concrete DAPO-style training recipe across 35 logical-reasoning tasks.
+  related:
+  - dapo-2025
+  tags:
+  - logical-reasoning
+  - synthetic-data
+  - rule-based-verifier
+  - rlvr
+  - open-release
+  - difficulty-control
+  - release-versioning
+  status: partial
+  category:
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - audit_failure_contamination_verifier_attacks
+  one_line: SynLogic releases controllable generators, rule-based verifiers, and Easy and Hard RLVR datasets spanning 27 and 35 logical-reasoning tasks respectively.
+  one_line_summary: SynLogic releases controllable generators, rule-based verifiers, and Easy and Hard RLVR datasets spanning 27 and 35 logical-reasoning tasks respectively.
+  why_it_matters: It makes logical-reasoning data construction operational by connecting task sourcing, difficulty calibration, executable verification, release variants, and DAPO-style RL, while its revision history shows why dataset version pinning and verifier audits are necessary.
+  card: cards/recipes/synlogic.md
+  needs:
+  - 'needs_audit: pin Hugging Face revision bb4297b82b9c28ef39249f48386cefd5e856618a or a later reviewed revision before reuse'
+  - 'needs_release: determine whether rejected online rollouts or verifier-rejected generations will be released'
+  - 'needs_artifact_review: resolve or document the missing Cipher generation script reported in official issue 6'
+  - 'needs_provenance: audit task-level upstream licenses and redistribution terms for the two adopted datasets and benchmark-inspired tasks'
+  - 'needs_decontamination: extend the reported exact-match check to semantic and template overlap if used near target benchmarks'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: medium
+    notes: Exact-title, ID, arXiv, OpenReview, GitHub, and Hugging Face duplicate checks passed. Official artifacts were inspected, but artifact completeness is partial due to unresolved release and provenance issues.
+- id: versaprm-2025
+  title: 'VersaPRM: Multi-Domain Process Reward Model via Synthetic Reasoning Data'
+  year: 2025
+  venue: ICML 2025
+  authors:
+  - Thomas Zeng
+  - Shuibai Zhang
+  - Shutong Wu
+  - Christian Classen
+  - Daewon Chae
+  - Ethan Ewer
+  - Minjae Lee
+  - Heeju Kim
+  - Wonjun Kang
+  - Jackson Kunde
+  - Ying Fan
+  - Jungtaek Kim
+  - Hyung Il Koo
+  - Kannan Ramchandran
+  - Dimitris Papailiopoulos
+  - Kangwook Lee
+  source_role:
+  - data_release
+  - verifier_reward
+  - process_supervision
+  - construction_recipe
+  - model_report
+  verification_contract:
+  - judgment_required
+  supervision_granularity:
+  - step_level
+  - process_reward
+  domains:
+  - multi-domain
+  - mathematics
+  - physics
+  - chemistry
+  - law
+  - engineering
+  - economics
+  - health
+  - psychology
+  - business
+  - biology
+  - philosophy
+  - computer_science
+  - history
+  training_use:
+  - reward_modeling
+  - process_supervision
+  - evaluation
+  - test_time_compute
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://proceedings.mlr.press/v267/zeng25h.html
+    arxiv: https://arxiv.org/abs/2502.06737
+    code: https://github.com/UW-Madison-Lee-Lab/VersaPRM
+    data: https://huggingface.co/datasets/UW-Madison-Lee-Lab/MMLU-Pro-CoT-Train-Labeled
+    project: https://github.com/UW-Madison-Lee-Lab/VersaPRM
+    huggingface: https://huggingface.co/collections/UW-Madison-Lee-Lab/versaprm
+    doi: null
+    venue: https://proceedings.mlr.press/v267/zeng25h.html
+    openreview: https://openreview.net/forum?id=l19DmXbwPK
+    acl: null
+    pmlr: https://proceedings.mlr.press/v267/zeng25h.html
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: 5,750 questions randomly sampled from MMLU-Pro across 14 domains, with up to 500 per domain; the paper states training questions are disjoint from its evaluation subset.
+    trace_author: Llama-3.1-8B-Instruct via AWS Bedrock, with five processed MMLU-Pro validation examples for few-shot prompting.
+    answer_format: Ten-choice multiple-choice question plus a step-delimited chain of thought ending with a parsed final option.
+    process_fields:
+    - question
+    - answer
+    - category
+    - src
+    - id
+    - chain_of_thoughts
+    - labels
+    - cot_id
+    - parsed_answer
+    - parsed_answer_correctness
+    environment_or_substrate: MMLU-Pro multiple-choice questions spanning 14 domains.
+    verifier_or_reward: Llama-3.1-70B-Instruct receives the question, ground-truth answer, reference explanation and indexed steps, then identifies the earliest BAD step. Released labels use 1 before and -1 from the earliest error through the suffix.
+    terminal_predicate: The generated final answer must be parseable; correctness is determined by matching the MMLU-Pro reference answer.
+  recipe_metadata:
+    base_model: VersaPRM is initialized from the authors' LlamaPRM800K based on Llama-3.1-8B-Instruct.
+    teacher: Llama-3.1-70B-Instruct auto-labeler with ground-truth answer, reference explanation and GOOD/OK/BAD rubric.
+    generator: Llama-3.1-8B-Instruct via AWS Bedrock.
+    filtering_rule: Remove CoTs exceeding 2,048 tokens, unparseable final answers, and records whose labeler output lacks a valid earliest-error index.
+    sampling_protocol: Sample up to 500 MMLU-Pro questions per domain, generate 16 CoTs per training question at temperature 0.8, and label each retained CoT once at temperature 0.
+    rollout_count: 16
+    temperature: 0.8
+    inference_budget: Evaluation release provides up to 128 CoTs per question for selection experiments.
+    optimizer_or_scaffold: LoRA for one epoch with batch size 32; cross-entropy uses +/− logits at a four-newline separator. Main WMV/BoN evaluation uses min-aggregation.
+  audit:
+    source_mixture: All prompts come through MMLU-Pro's 14 domains; the release exposes 91 distinct src values. No per-source weighting or quality audit is reported.
+    split: Official training release has one train split with 84,098 CoTs; evaluation release has one test split with about 249K unlabeled CoTs. The paper states disjoint questions and removes 41 duplicate evaluation questions but does not disclose a random seed or independent validation split.
+    decontamination: unknown
+    license: Code and both official dataset cards declare MIT; main model follows Llama 3.1 license. Per-source license inheritance for 91 MMLU-Pro src values is undocumented.
+    lineage: MMLU-Pro questions to Llama-8B CoTs to length/answer filtering to Llama-70B earliest-error judgment to binary step labels to LoRA fine-tuning from LlamaPRM800K to VersaPRM.
+    known_failure_modes:
+    - The paper says post-error steps are discarded, but official parser and released data retain the suffix and label it -1.
+    - Human validation covers only 30 questions and 90 selected CoTs, with 83% positive and 70% negative agreement and no per-domain confidence intervals.
+    - Earliest-error propagation marks the whole suffix negative and cannot represent later recovery.
+    - The labeler is conditioned on reference answer/explanation, which can conflate answer agreement with local validity.
+    - GOOD/OK/BAD treats hard-to-verify and non-insightful steps as BAD, creating possible style, verbosity and domain-familiarity bias.
+    - Generator and judge share the Llama family and may favor family-specific reasoning style.
+    - No cross-domain score calibration, threshold calibration, false-positive/negative breakdown or style-bias evaluation is reported.
+    - No decontamination analysis is reported for prompts against model pretraining corpora.
+    - Repository reproduction still depends on AWS Bedrock formatting, separately hosted converted JSON and incomplete search-algorithm documentation.
+    citation_status: verified
+    confidence: high
+    notes: PMLR, arXiv, paper-linked code, model collection, model/data cards, schemas and parser scripts were checked on 2026-07-10. Artifact existence is verified, but label semantics and audit coverage remain partial.
+  inclusion_reason: VersaPRM is an open recipe for converting a multi-domain source into synthetic step-labeled reasoning data and a PRM, with enough official artifacts to audit generation, judging, filtering, label propagation and inference-time use.
+  related: []
+  tags:
+  - synthetic-reasoning-data
+  - process-reward-model
+  - llm-as-judge
+  - stepwise-labels
+  - multi-domain
+  - mmlu-pro
+  - weighted-majority-voting
+  - open-data
+  - open-model
+  - open-code
+  status: partial
+  category:
+  - preference_reward_feedback_data
+  - process_trace_supervision_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  one_line: VersaPRM converts 5,750 MMLU-Pro questions into 84,098 Llama-generated CoTs with Llama-70B earliest-error labels, then releases the step-labeled data, PRMs, and code.
+  one_line_summary: An open multi-domain PRM recipe using Llama-3.1-8B-Instruct for 16-way CoT generation and Llama-3.1-70B-Instruct for answer-conditioned earliest-error annotation.
+  why_it_matters: It releases an end-to-end non-math-specific process-supervision pipeline while exposing judge accuracy, suffix propagation, style bias, calibration, source licensing and decontamination as audit risks.
+  card: null
+  needs:
+  - 'needs_metadata: reconcile the paper''s post-error discard claim with the official parser and HF data retaining the suffix'
+  - 'needs_metadata: document upstream per-source license inheritance for 91 MMLU-Pro src values'
+  - 'needs_metadata: obtain decontamination evidence, random seeds and exact split manifests'
+  - 'needs_metadata: obtain per-domain judge false-positive/false-negative rates and PRM score calibration'
+  - 'needs_metadata: audit style and verbosity sensitivity of the GOOD/OK/BAD rubric'
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: paper_curator
+    confidence: high
+    notes: PMLR, arXiv, official GitHub, model collection, model card, training/evaluation dataset cards, and generation/label-parser code were verified. No repository files were modified.
 - id: language-model-developers-should-report-train-test-overlap-2024
   title: Language Model Developers Should Report Train-Test Overlap
   year: 2024

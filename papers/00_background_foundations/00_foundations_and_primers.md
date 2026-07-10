@@ -50,11 +50,11 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 | [Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) | 2024 | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md) | instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases. | mixture of preference labels, reward models, and verifiable rewards depending on stage. | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
 | [Self-Instruct: Aligning language models with self-generated instructions](https://arxiv.org/abs/2212.10560) | 2023 | [Paper](https://arxiv.org/abs/2212.10560) · [Card](../../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) | answer level | mixed | It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion. |
 | [UltraFeedback: Boosting language models with high-quality feedback](https://arxiv.org/abs/2310.01377) | 2023 | [Paper](https://arxiv.org/abs/2310.01377) · [Code](https://github.com/OpenBMB/UltraFeedback) · [Data](https://huggingface.co/datasets/openbmb/UltraFeedback) · [Card](../../cards/releases/ultrafeedback.md) | instruction, candidate responses, fine-grained ratings, textual critiques, and derived preference pairs.; process: source dataset, model identity, response, rating dimension, critique text, corrected overall score.; offline feedback generation and reward-model training pipeline. | AI-generated scalar and textual feedback over response quality dimensions. | It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels. |
-| [DeepMath-103K](https://arxiv.org/abs/2504.11456) | 2025 | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../../cards/releases/deepmath_103k.md) | answer level | programmatic | Math release highlighted for verifier pinning and decontamination. |
-| [Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949) | 2025 | [Paper](https://arxiv.org/abs/2505.00949) · [Card](../../cards/recipes/llama_nemotron.md) | answer level | mixed | Mixed post-training corpus reference for reasoning, chat, and safety partitions. |
 | [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](https://arxiv.org/abs/2504.07086) | 2025 | [Paper](https://arxiv.org/abs/2504.07086) · [Card](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) | survey background | metadata pending | It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains. |
 | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) | 2025 | [Paper](https://arxiv.org/abs/2501.12948) · [Card](../../cards/recipes/deepseek_r1.md) | answer level | mixed | It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior. |
 | [LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) | 2024 | [Paper](https://arxiv.org/abs/2406.19314) · [OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [Project](https://livebench.ai/) · [Card](../../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md) | answer level | programmatic, mixed | It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items. |
+| [Direct preference optimization: Your language model is secretly a reward model](https://arxiv.org/abs/2305.18290) | 2023 | [Paper](https://arxiv.org/abs/2305.18290) · [Card](../../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) | pairwise preference | judgment required | It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization. |
+| [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685) | 2023 | [Paper](https://arxiv.org/abs/2306.05685) · [Venue](https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html) · [OpenReview](https://openreview.net/forum?id=uccHPGDlao) · [Code](https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge) · [Card](../../cards/verifiers/mt-bench-chatbot-arena.md) | model response, judge score, pairwise preference, or arena battle outcome.; process: question, turn, model identity, response, judge prompt template, score, preference label, bias-control setting.; offline judge harness and crowd-sourced arena platform. | strong model judge and human preference comparisons. | It is the standard cautionary reference for judge data: scalable model judges are useful, but position, verbosity, self-enhancement, and limited-reasoning biases must be audited. |
 
 ## 5. Full Paper List
 
@@ -358,22 +358,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ trace writing; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.
-- 📦 **[DeepMath-103K](https://arxiv.org/abs/2504.11456)**
-  <sub>2025 · arXiv · 📦 data release · programmatic · sft · rlvr · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2504.11456) · [Card](../../cards/releases/deepmath_103k.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ programmatic
-  _Recipe signal:_ prompt sourcing; reward verifier layer; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Math release highlighted for verifier pinning and decontamination.
-- 🚀 **[Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949)**
-  <sub>2025 · arXiv · 🚀 model report · 📦 data release · mixed · sft · distillation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2505.00949) · [Card](../../cards/recipes/llama_nemotron.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; sft; distillation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Mixed post-training corpus reference for reasoning, chat, and safety partitions.
 - 🧯 **[Spurious Rewards](https://arxiv.org/abs/2506.10947)**
   <sub>2025 · arXiv · 🧯 audit failure · 📈 scaling study · programmatic · rlvr · evaluation · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2506.10947) · [Card](../../cards/verifiers/spurious_rewards.md)
@@ -382,14 +366,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; rlvr; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
-- 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2406.03816)
-  _Data object:_ reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree
-  _Feedback / verifier:_ process reward guided tree search
-  _Recipe signal:_ generator: policy rollouts expanded by MCTS; filtering rule: process-reward-guided trajectory selection
-  _Audit focus:_ search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality
-  _Why it matters:_ It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
 - 🪜 **[Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629)**
   <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · mixed · process supervision · preference learning · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2406.18629)
@@ -481,14 +457,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - 🧭 **[Cognitive Behaviors that Enable Self-Improving Reasoners, or, Four Habits of Highly Effective STaRs](https://arxiv.org/abs/2503.01307)**
   <sub>2025 · arXiv preprint arXiv:2503.01307 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2503.01307)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning](https://arxiv.org/abs/2504.11456)**
-  <sub>2025 · arXiv preprint arXiv:2504.11456 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2504.11456)
   _Data object:_ survey background
   _Feedback / verifier:_ metadata pending
   _Recipe signal:_ release audit
@@ -795,9 +763,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
 - [Aegis2.0](../../cards/verifiers/aegis2.md)
-- [DeepMath-103K](../../cards/releases/deepmath_103k.md)
 - [DeepSeek-R1](../../cards/recipes/deepseek_r1.md)
-- [Llama-Nemotron: Efficient Reasoning Models](../../cards/recipes/llama_nemotron.md)
 - [Spurious Rewards](../../cards/verifiers/spurious_rewards.md)
 - [LiveBench: A challenging, contamination-free benchmark for large language models](../../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
 - [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
@@ -811,6 +777,8 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [Chain-of-thought prompting elicits reasoning in large language models](../../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md)
 - [Constitutional AI: Harmlessness from AI feedback](../../cards/recipes/constitutional-ai.md)
 - [STaR: Bootstrapping reasoning with reasoning](../../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)
+- [Training language models to follow instructions with human feedback](../../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md)
+- [Data statements for natural language processing](../../cards/releases/data-statements-for-natural-language-processing.md)
 
 ## Back to Map
 

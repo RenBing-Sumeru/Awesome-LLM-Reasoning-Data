@@ -1527,12 +1527,29 @@
         "matched": true,
         "entry": {
           "id": "deepmath-103k-2025",
-          "title": "DeepMath-103K",
+          "title": "DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning",
           "year": 2025,
-          "venue": "arXiv",
-          "authors": [],
+          "venue": "ICLR 2026",
+          "authors": [
+            "Zhiwei He",
+            "Tian Liang",
+            "Jiahao Xu",
+            "Qiuzhi Liu",
+            "Xingyu Chen",
+            "Yue Wang",
+            "Linfeng Song",
+            "Dian Yu",
+            "Zhenwen Liang",
+            "Wenxuan Wang",
+            "Zhuosheng Zhang",
+            "Rui Wang",
+            "Zhaopeng Tu",
+            "Haitao Mi",
+            "Dong Yu"
+          ],
           "source_role": [
-            "data_release"
+            "data_release",
+            "construction_recipe"
           ],
           "verification_contract": [
             "programmatic"
@@ -1542,6 +1559,7 @@
           ],
           "training_use": [
             "sft",
+            "distillation",
             "rlvr",
             "evaluation"
           ],
@@ -1549,39 +1567,44 @@
             "math"
           ],
           "category": [
-            "foundations_and_primers",
             "instruction_demonstration_rationale_data",
             "programmatically_verifiable_outcome_data",
-            "process_trace_supervision_data",
             "data_construction_open_release_recipes",
             "training_usage_optimization_objectives",
-            "scaling_rlvr_test_time_compute",
             "benchmarks_evaluation_surfaces",
             "audit_failure_contamination_verifier_attacks"
           ],
-          "subfield": "Other related work",
-          "tags": [],
-          "one_line_summary": "Math release highlighted for verifier pinning and decontamination.",
-          "why_it_matters": "Math release highlighted for verifier pinning and decontamination.",
-          "data_object": "answer level",
-          "feedback_verifier": "programmatic",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "subfield": "🧱 Instruction tuning / SFT data",
+          "tags": [
+            "math",
+            "verifiable-answers",
+            "decontamination",
+            "difficulty-filtering",
+            "deepseek-r1",
+            "release-versioning",
+            "primary-link-checked"
+          ],
+          "one_line_summary": "DeepMath-103K releases difficult, decontaminated math questions with verifiable answers and three DeepSeek-R1 solutions per problem.",
+          "why_it_matters": "It makes difficulty selection, answer verification, benchmark decontamination and mutable release corrections explicit parts of a reusable RLVR/SFT data pipeline.",
+          "data_object": "Mathematical question with verifiable final answer, topic and difficulty metadata, plus three generated reasoning solutions.; process: question, final answer, difficulty; Offline math problem corpus with answer-level rule verification and benchmark-overlap filtering.",
+          "feedback_verifier": "Rule-based final-answer verification for RLVR-ready prompts; exact parser and equivalence behavior require code-level audit.",
+          "audit_focus": "Final-answer verification can accept flawed or shortcut reasoning., Semantic decontamination thresholds can remove legitimate near-neighbors or miss paraphrased benchmark items., Three solutions from one teacher family can share systematic errors and style artifacts.",
           "curation_level": "L4_carded",
-          "status": "verified",
-          "needs_search": false,
+          "status": "partial",
+          "needs_search": true,
           "artifacts": {
             "paper": "https://arxiv.org/abs/2504.11456",
-            "venue": null,
+            "venue": "https://iclr.cc/virtual/2026/poster/10007807",
             "arxiv": "https://arxiv.org/abs/2504.11456",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "doi": "https://doi.org/10.48550/arXiv.2504.11456",
+            "code": "https://github.com/zwhe99/DeepMath",
+            "data": "https://huggingface.co/datasets/zwhe99/DeepMath-103K",
+            "huggingface": "https://huggingface.co/datasets/zwhe99/DeepMath-103K",
+            "project": "https://github.com/zwhe99/DeepMath",
             "bibtex": null,
             "card": "cards/releases/deepmath_103k.md"
           },
@@ -1594,13 +1617,25 @@
         "matched": true,
         "entry": {
           "id": "big-math-2025",
-          "title": "Big-Math-RL-Verified",
+          "title": "Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models",
           "year": 2025,
           "venue": "arXiv",
-          "authors": [],
+          "authors": [
+            "Alon Albalak",
+            "Duy Phung",
+            "Nathan Lile",
+            "Rafael Rafailov",
+            "Kanishk Gandhi",
+            "Louis Castricato",
+            "Anikait Singh",
+            "Chase Blagden",
+            "Violet Xiang",
+            "Dakota Mahan",
+            "Nick Haber"
+          ],
           "source_role": [
             "data_release",
-            "benchmark"
+            "construction_recipe"
           ],
           "verification_contract": [
             "programmatic"
@@ -1617,27 +1652,29 @@
             "math"
           ],
           "category": [
-            "instruction_demonstration_rationale_data",
             "programmatically_verifiable_outcome_data",
-            "environment_agent_trajectory_data",
             "data_construction_open_release_recipes",
             "training_usage_optimization_objectives",
-            "scaling_rlvr_test_time_compute",
-            "benchmarks_evaluation_surfaces"
+            "scaling_rlvr_test_time_compute"
           ],
-          "subfield": "🧱 Instruction tuning / SFT data",
+          "subfield": "🧮 Math RLVR datasets",
           "tags": [
-            "curated-card",
+            "math",
+            "rlvr",
+            "verifiable-answers",
+            "prompt-filtering",
+            "reformulation",
+            "open-release",
             "primary-link-checked"
           ],
-          "one_line_summary": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
-          "why_it_matters": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
-          "data_object": "math problem, answer, and verification signal; process: problem, answer, verification label; offline math verifier substrate",
-          "feedback_verifier": "answer-level math verifier",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "one_line_summary": "Big-Math filters heterogeneous public math sources into more than 250K open-ended questions with verifiable answers and adds about 47K systematically reformulated problems.",
+          "why_it_matters": "It makes prompt filtering, answer verifiability, source mixture and multiple-choice reformulation explicit construction steps for RL-ready math data.",
+          "data_object": "Open-ended mathematical question with a closed-form uniquely verifiable answer and source/domain metadata where available.; process: source dataset, question, answer; Offline math prompt corpus intended for rule-verifiable reinforcement learning; official repository releases filtering and reformulation code.",
+          "feedback_verifier": "Rule-based/model-assisted filters identify uniquely verifiable closed-form answers; downstream RL uses answer correctness.",
+          "audit_focus": "Rule-based answer checkers can reject equivalent forms or accept malformed shortcuts., Reformulation can change problem semantics or difficulty., Combining public sources can preserve benchmark contamination and incompatible licenses.",
           "curation_level": "L4_carded",
-          "status": "verified",
-          "needs_search": false,
+          "status": "partial",
+          "needs_search": true,
           "artifacts": {
             "paper": "https://arxiv.org/abs/2502.17387",
             "venue": null,
@@ -1646,11 +1683,11 @@
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "doi": "https://doi.org/10.48550/arXiv.2502.17387",
+            "code": "https://github.com/SynthLabsAI/big-math",
+            "data": "https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified",
+            "huggingface": "https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified",
+            "project": "https://github.com/SynthLabsAI/big-math",
             "bibtex": null,
             "card": "cards/releases/big_math.md"
           },
@@ -1862,25 +1899,67 @@
         "matched": true,
         "entry": {
           "id": "dapo-2025",
-          "title": "DAPO",
+          "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
           "year": 2025,
           "venue": "arXiv",
-          "authors": [],
+          "authors": [
+            "Qiying Yu",
+            "Zheng Zhang",
+            "Ruofei Zhu",
+            "Yufeng Yuan",
+            "Xiaochen Zuo",
+            "Yu Yue",
+            "Weinan Dai",
+            "Tiantian Fan",
+            "Gaohong Liu",
+            "Lingjun Liu",
+            "Xin Liu",
+            "Haibin Lin",
+            "Zhiqi Lin",
+            "Bole Ma",
+            "Guangming Sheng",
+            "Yuxuan Tong",
+            "Chi Zhang",
+            "Mofan Zhang",
+            "Wang Zhang",
+            "Hang Zhu",
+            "Jinhua Zhu",
+            "Jiaze Chen",
+            "Jiangjie Chen",
+            "Chengyi Wang",
+            "Hongli Yu",
+            "Yuxuan Song",
+            "Xiangpeng Wei",
+            "Hao Zhou",
+            "Jingjing Liu",
+            "Wei-Ying Ma",
+            "Ya-Qin Zhang",
+            "Lin Yan",
+            "Mu Qiao",
+            "Yonghui Wu",
+            "Mingxuan Wang"
+          ],
           "source_role": [
+            "data_release",
             "construction_recipe",
-            "scaling_study"
+            "verifier_reward",
+            "scaling_study",
+            "infrastructure"
           ],
           "verification_contract": [
             "programmatic"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "scalar_reward"
           ],
           "training_use": [
             "rlvr"
           ],
           "domains": [
-            "math"
+            "math",
+            "rlvr",
+            "reasoning"
           ],
           "category": [
             "programmatically_verifiable_outcome_data",
@@ -1889,12 +1968,19 @@
             "scaling_rlvr_test_time_compute"
           ],
           "subfield": "📐 Math answer-verifiable data",
-          "tags": [],
-          "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
-          "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
-          "data_object": "answer level",
-          "feedback_verifier": "programmatic",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "tags": [
+            "curated-card",
+            "primary-link-checked",
+            "artifact-verified",
+            "rlvr",
+            "math",
+            "open-release"
+          ],
+          "one_line_summary": "DAPO is an open RLVR system and DAPO-Math-17K release where rule-based rewards, dynamic sampling, and overlong shaping define the effective training data.",
+          "why_it_matters": "It is valuable for the Data Construction track because the paper exposes how prompt sourcing, answer normalization, reward rules, rollout filtering, and optimizer scaffolding jointly shape RLVR data rather than merely reporting a final benchmark score.",
+          "data_object": "Math prompt paired with an integer ground-truth answer; generated responses are scored by extracting the final answer.; process: prompt/question, integer answer, sampled response during RL; verl-based distributed RL training system with a math answer parser/verifier.",
+          "feedback_verifier": "Rule-based outcome reward from final-answer correctness, plus length-aware overlong reward shaping.",
+          "audit_focus": "Integer-answer transformation can change problem semantics or difficulty., Rule-based answer extraction can create false positives or false negatives., Dynamic sampling hides all-correct and all-wrong prompts from gradient updates, changing the effective training distribution.",
           "curation_level": "L4_carded",
           "status": "verified",
           "needs_search": false,
@@ -1902,15 +1988,15 @@
             "paper": "https://arxiv.org/abs/2503.14476",
             "venue": null,
             "arxiv": "https://arxiv.org/abs/2503.14476",
-            "openreview": null,
+            "openreview": "https://openreview.net/forum?id=2a36EMSSTp",
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "doi": "https://doi.org/10.48550/arXiv.2503.14476",
+            "code": "https://github.com/BytedTsinghua-SIA/DAPO",
+            "data": "https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k",
+            "huggingface": "https://huggingface.co/collections/BytedTsinghua-SIA/dapo",
+            "project": "https://dapo-sia.github.io/",
             "bibtex": null,
             "card": "cards/releases/dapo.md"
           },
@@ -7411,25 +7497,67 @@
         "matched": true,
         "entry": {
           "id": "dapo-2025",
-          "title": "DAPO",
+          "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
           "year": 2025,
           "venue": "arXiv",
-          "authors": [],
+          "authors": [
+            "Qiying Yu",
+            "Zheng Zhang",
+            "Ruofei Zhu",
+            "Yufeng Yuan",
+            "Xiaochen Zuo",
+            "Yu Yue",
+            "Weinan Dai",
+            "Tiantian Fan",
+            "Gaohong Liu",
+            "Lingjun Liu",
+            "Xin Liu",
+            "Haibin Lin",
+            "Zhiqi Lin",
+            "Bole Ma",
+            "Guangming Sheng",
+            "Yuxuan Tong",
+            "Chi Zhang",
+            "Mofan Zhang",
+            "Wang Zhang",
+            "Hang Zhu",
+            "Jinhua Zhu",
+            "Jiaze Chen",
+            "Jiangjie Chen",
+            "Chengyi Wang",
+            "Hongli Yu",
+            "Yuxuan Song",
+            "Xiangpeng Wei",
+            "Hao Zhou",
+            "Jingjing Liu",
+            "Wei-Ying Ma",
+            "Ya-Qin Zhang",
+            "Lin Yan",
+            "Mu Qiao",
+            "Yonghui Wu",
+            "Mingxuan Wang"
+          ],
           "source_role": [
+            "data_release",
             "construction_recipe",
-            "scaling_study"
+            "verifier_reward",
+            "scaling_study",
+            "infrastructure"
           ],
           "verification_contract": [
             "programmatic"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "scalar_reward"
           ],
           "training_use": [
             "rlvr"
           ],
           "domains": [
-            "math"
+            "math",
+            "rlvr",
+            "reasoning"
           ],
           "category": [
             "programmatically_verifiable_outcome_data",
@@ -7438,12 +7566,19 @@
             "scaling_rlvr_test_time_compute"
           ],
           "subfield": "📐 Math answer-verifiable data",
-          "tags": [],
-          "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
-          "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
-          "data_object": "answer level",
-          "feedback_verifier": "programmatic",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "tags": [
+            "curated-card",
+            "primary-link-checked",
+            "artifact-verified",
+            "rlvr",
+            "math",
+            "open-release"
+          ],
+          "one_line_summary": "DAPO is an open RLVR system and DAPO-Math-17K release where rule-based rewards, dynamic sampling, and overlong shaping define the effective training data.",
+          "why_it_matters": "It is valuable for the Data Construction track because the paper exposes how prompt sourcing, answer normalization, reward rules, rollout filtering, and optimizer scaffolding jointly shape RLVR data rather than merely reporting a final benchmark score.",
+          "data_object": "Math prompt paired with an integer ground-truth answer; generated responses are scored by extracting the final answer.; process: prompt/question, integer answer, sampled response during RL; verl-based distributed RL training system with a math answer parser/verifier.",
+          "feedback_verifier": "Rule-based outcome reward from final-answer correctness, plus length-aware overlong reward shaping.",
+          "audit_focus": "Integer-answer transformation can change problem semantics or difficulty., Rule-based answer extraction can create false positives or false negatives., Dynamic sampling hides all-correct and all-wrong prompts from gradient updates, changing the effective training distribution.",
           "curation_level": "L4_carded",
           "status": "verified",
           "needs_search": false,
@@ -7451,15 +7586,15 @@
             "paper": "https://arxiv.org/abs/2503.14476",
             "venue": null,
             "arxiv": "https://arxiv.org/abs/2503.14476",
-            "openreview": null,
+            "openreview": "https://openreview.net/forum?id=2a36EMSSTp",
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "doi": "https://doi.org/10.48550/arXiv.2503.14476",
+            "code": "https://github.com/BytedTsinghua-SIA/DAPO",
+            "data": "https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k",
+            "huggingface": "https://huggingface.co/collections/BytedTsinghua-SIA/dapo",
+            "project": "https://dapo-sia.github.io/",
             "bibtex": null,
             "card": "cards/releases/dapo.md"
           },
@@ -10195,12 +10330,29 @@
         "matched": true,
         "entry": {
           "id": "deepmath-103k-2025",
-          "title": "DeepMath-103K",
+          "title": "DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning",
           "year": 2025,
-          "venue": "arXiv",
-          "authors": [],
+          "venue": "ICLR 2026",
+          "authors": [
+            "Zhiwei He",
+            "Tian Liang",
+            "Jiahao Xu",
+            "Qiuzhi Liu",
+            "Xingyu Chen",
+            "Yue Wang",
+            "Linfeng Song",
+            "Dian Yu",
+            "Zhenwen Liang",
+            "Wenxuan Wang",
+            "Zhuosheng Zhang",
+            "Rui Wang",
+            "Zhaopeng Tu",
+            "Haitao Mi",
+            "Dong Yu"
+          ],
           "source_role": [
-            "data_release"
+            "data_release",
+            "construction_recipe"
           ],
           "verification_contract": [
             "programmatic"
@@ -10210,6 +10362,7 @@
           ],
           "training_use": [
             "sft",
+            "distillation",
             "rlvr",
             "evaluation"
           ],
@@ -10217,39 +10370,44 @@
             "math"
           ],
           "category": [
-            "foundations_and_primers",
             "instruction_demonstration_rationale_data",
             "programmatically_verifiable_outcome_data",
-            "process_trace_supervision_data",
             "data_construction_open_release_recipes",
             "training_usage_optimization_objectives",
-            "scaling_rlvr_test_time_compute",
             "benchmarks_evaluation_surfaces",
             "audit_failure_contamination_verifier_attacks"
           ],
-          "subfield": "Other related work",
-          "tags": [],
-          "one_line_summary": "Math release highlighted for verifier pinning and decontamination.",
-          "why_it_matters": "Math release highlighted for verifier pinning and decontamination.",
-          "data_object": "answer level",
-          "feedback_verifier": "programmatic",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "subfield": "🧱 Instruction tuning / SFT data",
+          "tags": [
+            "math",
+            "verifiable-answers",
+            "decontamination",
+            "difficulty-filtering",
+            "deepseek-r1",
+            "release-versioning",
+            "primary-link-checked"
+          ],
+          "one_line_summary": "DeepMath-103K releases difficult, decontaminated math questions with verifiable answers and three DeepSeek-R1 solutions per problem.",
+          "why_it_matters": "It makes difficulty selection, answer verification, benchmark decontamination and mutable release corrections explicit parts of a reusable RLVR/SFT data pipeline.",
+          "data_object": "Mathematical question with verifiable final answer, topic and difficulty metadata, plus three generated reasoning solutions.; process: question, final answer, difficulty; Offline math problem corpus with answer-level rule verification and benchmark-overlap filtering.",
+          "feedback_verifier": "Rule-based final-answer verification for RLVR-ready prompts; exact parser and equivalence behavior require code-level audit.",
+          "audit_focus": "Final-answer verification can accept flawed or shortcut reasoning., Semantic decontamination thresholds can remove legitimate near-neighbors or miss paraphrased benchmark items., Three solutions from one teacher family can share systematic errors and style artifacts.",
           "curation_level": "L4_carded",
-          "status": "verified",
-          "needs_search": false,
+          "status": "partial",
+          "needs_search": true,
           "artifacts": {
             "paper": "https://arxiv.org/abs/2504.11456",
-            "venue": null,
+            "venue": "https://iclr.cc/virtual/2026/poster/10007807",
             "arxiv": "https://arxiv.org/abs/2504.11456",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "doi": "https://doi.org/10.48550/arXiv.2504.11456",
+            "code": "https://github.com/zwhe99/DeepMath",
+            "data": "https://huggingface.co/datasets/zwhe99/DeepMath-103K",
+            "huggingface": "https://huggingface.co/datasets/zwhe99/DeepMath-103K",
+            "project": "https://github.com/zwhe99/DeepMath",
             "bibtex": null,
             "card": "cards/releases/deepmath_103k.md"
           },
@@ -10262,13 +10420,25 @@
         "matched": true,
         "entry": {
           "id": "big-math-2025",
-          "title": "Big-Math-RL-Verified",
+          "title": "Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models",
           "year": 2025,
           "venue": "arXiv",
-          "authors": [],
+          "authors": [
+            "Alon Albalak",
+            "Duy Phung",
+            "Nathan Lile",
+            "Rafael Rafailov",
+            "Kanishk Gandhi",
+            "Louis Castricato",
+            "Anikait Singh",
+            "Chase Blagden",
+            "Violet Xiang",
+            "Dakota Mahan",
+            "Nick Haber"
+          ],
           "source_role": [
             "data_release",
-            "benchmark"
+            "construction_recipe"
           ],
           "verification_contract": [
             "programmatic"
@@ -10285,27 +10455,29 @@
             "math"
           ],
           "category": [
-            "instruction_demonstration_rationale_data",
             "programmatically_verifiable_outcome_data",
-            "environment_agent_trajectory_data",
             "data_construction_open_release_recipes",
             "training_usage_optimization_objectives",
-            "scaling_rlvr_test_time_compute",
-            "benchmarks_evaluation_surfaces"
+            "scaling_rlvr_test_time_compute"
           ],
-          "subfield": "🧱 Instruction tuning / SFT data",
+          "subfield": "🧮 Math RLVR datasets",
           "tags": [
-            "curated-card",
+            "math",
+            "rlvr",
+            "verifiable-answers",
+            "prompt-filtering",
+            "reformulation",
+            "open-release",
             "primary-link-checked"
           ],
-          "one_line_summary": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
-          "why_it_matters": "Large-scale math release useful for studying answer verification, false negatives, and RLVR-ready filtering.",
-          "data_object": "math problem, answer, and verification signal; process: problem, answer, verification label; offline math verifier substrate",
-          "feedback_verifier": "answer-level math verifier",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "one_line_summary": "Big-Math filters heterogeneous public math sources into more than 250K open-ended questions with verifiable answers and adds about 47K systematically reformulated problems.",
+          "why_it_matters": "It makes prompt filtering, answer verifiability, source mixture and multiple-choice reformulation explicit construction steps for RL-ready math data.",
+          "data_object": "Open-ended mathematical question with a closed-form uniquely verifiable answer and source/domain metadata where available.; process: source dataset, question, answer; Offline math prompt corpus intended for rule-verifiable reinforcement learning; official repository releases filtering and reformulation code.",
+          "feedback_verifier": "Rule-based/model-assisted filters identify uniquely verifiable closed-form answers; downstream RL uses answer correctness.",
+          "audit_focus": "Rule-based answer checkers can reject equivalent forms or accept malformed shortcuts., Reformulation can change problem semantics or difficulty., Combining public sources can preserve benchmark contamination and incompatible licenses.",
           "curation_level": "L4_carded",
-          "status": "verified",
-          "needs_search": false,
+          "status": "partial",
+          "needs_search": true,
           "artifacts": {
             "paper": "https://arxiv.org/abs/2502.17387",
             "venue": null,
@@ -10314,11 +10486,11 @@
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "doi": "https://doi.org/10.48550/arXiv.2502.17387",
+            "code": "https://github.com/SynthLabsAI/big-math",
+            "data": "https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified",
+            "huggingface": "https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified",
+            "project": "https://github.com/SynthLabsAI/big-math",
             "bibtex": null,
             "card": "cards/releases/big_math.md"
           },
@@ -10458,25 +10630,67 @@
         "matched": true,
         "entry": {
           "id": "dapo-2025",
-          "title": "DAPO",
+          "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
           "year": 2025,
           "venue": "arXiv",
-          "authors": [],
+          "authors": [
+            "Qiying Yu",
+            "Zheng Zhang",
+            "Ruofei Zhu",
+            "Yufeng Yuan",
+            "Xiaochen Zuo",
+            "Yu Yue",
+            "Weinan Dai",
+            "Tiantian Fan",
+            "Gaohong Liu",
+            "Lingjun Liu",
+            "Xin Liu",
+            "Haibin Lin",
+            "Zhiqi Lin",
+            "Bole Ma",
+            "Guangming Sheng",
+            "Yuxuan Tong",
+            "Chi Zhang",
+            "Mofan Zhang",
+            "Wang Zhang",
+            "Hang Zhu",
+            "Jinhua Zhu",
+            "Jiaze Chen",
+            "Jiangjie Chen",
+            "Chengyi Wang",
+            "Hongli Yu",
+            "Yuxuan Song",
+            "Xiangpeng Wei",
+            "Hao Zhou",
+            "Jingjing Liu",
+            "Wei-Ying Ma",
+            "Ya-Qin Zhang",
+            "Lin Yan",
+            "Mu Qiao",
+            "Yonghui Wu",
+            "Mingxuan Wang"
+          ],
           "source_role": [
+            "data_release",
             "construction_recipe",
-            "scaling_study"
+            "verifier_reward",
+            "scaling_study",
+            "infrastructure"
           ],
           "verification_contract": [
             "programmatic"
           ],
           "supervision_granularity": [
-            "answer_level"
+            "answer_level",
+            "scalar_reward"
           ],
           "training_use": [
             "rlvr"
           ],
           "domains": [
-            "math"
+            "math",
+            "rlvr",
+            "reasoning"
           ],
           "category": [
             "programmatically_verifiable_outcome_data",
@@ -10485,12 +10699,19 @@
             "scaling_rlvr_test_time_compute"
           ],
           "subfield": "📐 Math answer-verifiable data",
-          "tags": [],
-          "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
-          "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
-          "data_object": "answer level",
-          "feedback_verifier": "programmatic",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "tags": [
+            "curated-card",
+            "primary-link-checked",
+            "artifact-verified",
+            "rlvr",
+            "math",
+            "open-release"
+          ],
+          "one_line_summary": "DAPO is an open RLVR system and DAPO-Math-17K release where rule-based rewards, dynamic sampling, and overlong shaping define the effective training data.",
+          "why_it_matters": "It is valuable for the Data Construction track because the paper exposes how prompt sourcing, answer normalization, reward rules, rollout filtering, and optimizer scaffolding jointly shape RLVR data rather than merely reporting a final benchmark score.",
+          "data_object": "Math prompt paired with an integer ground-truth answer; generated responses are scored by extracting the final answer.; process: prompt/question, integer answer, sampled response during RL; verl-based distributed RL training system with a math answer parser/verifier.",
+          "feedback_verifier": "Rule-based outcome reward from final-answer correctness, plus length-aware overlong reward shaping.",
+          "audit_focus": "Integer-answer transformation can change problem semantics or difficulty., Rule-based answer extraction can create false positives or false negatives., Dynamic sampling hides all-correct and all-wrong prompts from gradient updates, changing the effective training distribution.",
           "curation_level": "L4_carded",
           "status": "verified",
           "needs_search": false,
@@ -10498,15 +10719,15 @@
             "paper": "https://arxiv.org/abs/2503.14476",
             "venue": null,
             "arxiv": "https://arxiv.org/abs/2503.14476",
-            "openreview": null,
+            "openreview": "https://openreview.net/forum?id=2a36EMSSTp",
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "doi": "https://doi.org/10.48550/arXiv.2503.14476",
+            "code": "https://github.com/BytedTsinghua-SIA/DAPO",
+            "data": "https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k",
+            "huggingface": "https://huggingface.co/collections/BytedTsinghua-SIA/dapo",
+            "project": "https://dapo-sia.github.io/",
             "bibtex": null,
             "card": "cards/releases/dapo.md"
           },

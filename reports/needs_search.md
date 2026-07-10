@@ -1260,23 +1260,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ACORD: Attorney-curated open research dataset" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning
-
-- Current status: `needs_metadata`
-- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, scaling_rlvr_test_time_compute, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" arXiv`
-  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" OpenReview`
-  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" GitHub`
-  - `"Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## ChemLLMBench and chemistry reasoning evaluations for language models
 
 - Current status: `needs_metadata`
@@ -1292,23 +1275,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ChemLLMBench and chemistry reasoning evaluations for language models" OpenReview`
   - `"ChemLLMBench and chemistry reasoning evaluations for language models" GitHub`
   - `"ChemLLMBench and chemistry reasoning evaluations for language models" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## DAPO: An open-source LLM reinforcement learning system at scale
-
-- Current status: `needs_metadata`
-- Possible category: data_construction_open_release_recipes, scaling_rlvr_test_time_compute
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"DAPO: An open-source LLM reinforcement learning system at scale" arXiv`
-  - `"DAPO: An open-source LLM reinforcement learning system at scale" OpenReview`
-  - `"DAPO: An open-source LLM reinforcement learning system at scale" GitHub`
-  - `"DAPO: An open-source LLM reinforcement learning system at scale" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## DeepScaleR: Scaling reinforcement learning for reasoning in open models
@@ -1532,23 +1498,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"MedReason: Eliciting factual medical reasoning steps in LLMs via knowledge graphs" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## MegaScience: A benchmark and data resource for scientific reasoning
-
-- Current status: `needs_metadata`
-- Possible category: data_construction_open_release_recipes, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"MegaScience: A benchmark and data resource for scientific reasoning" arXiv`
-  - `"MegaScience: A benchmark and data resource for scientific reasoning" OpenReview`
-  - `"MegaScience: A benchmark and data resource for scientific reasoning" GitHub`
-  - `"MegaScience: A benchmark and data resource for scientific reasoning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Min-K\%++
 
 - Current status: `needs_metadata`
@@ -1615,40 +1564,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Open-Reasoner-Zero: An open-source approach to RLVR for reasoning" OpenReview`
   - `"Open-Reasoner-Zero: An open-source approach to RLVR for reasoning" GitHub`
   - `"Open-Reasoner-Zero: An open-source approach to RLVR for reasoning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## OpenCodeReasoning-2: Scalable code reasoning data
-
-- Current status: `needs_metadata`
-- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"OpenCodeReasoning-2: Scalable code reasoning data" arXiv`
-  - `"OpenCodeReasoning-2: Scalable code reasoning data" OpenReview`
-  - `"OpenCodeReasoning-2: Scalable code reasoning data" GitHub`
-  - `"OpenCodeReasoning-2: Scalable code reasoning data" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## OpenCodeReasoning: Code reasoning traces at scale
-
-- Current status: `needs_metadata`
-- Possible category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, scaling_rlvr_test_time_compute
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"OpenCodeReasoning: Code reasoning traces at scale" arXiv`
-  - `"OpenCodeReasoning: Code reasoning traces at scale" OpenReview`
-  - `"OpenCodeReasoning: Code reasoning traces at scale" GitHub`
-  - `"OpenCodeReasoning: Code reasoning traces at scale" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Process reward models for code reasoning
@@ -1768,23 +1683,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"SWE-RL: Advancing language agents for software engineering via reinforcement learning" OpenReview`
   - `"SWE-RL: Advancing language agents for software engineering via reinforcement learning" GitHub`
   - `"SWE-RL: Advancing language agents for software engineering via reinforcement learning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## SWE-smith: Scaling data construction for software engineering agents
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, data_construction_open_release_recipes, scaling_rlvr_test_time_compute
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"SWE-smith: Scaling data construction for software engineering agents" arXiv`
-  - `"SWE-smith: Scaling data construction for software engineering agents" OpenReview`
-  - `"SWE-smith: Scaling data construction for software engineering agents" GitHub`
-  - `"SWE-smith: Scaling data construction for software engineering agents" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments

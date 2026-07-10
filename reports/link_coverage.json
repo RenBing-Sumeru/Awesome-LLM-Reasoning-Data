@@ -1,32 +1,32 @@
 {
-  "generated_at": "2026-07-08",
-  "total_entries": 280,
-  "verified_entries": 165,
-  "verified_with_primary_link": 165,
+  "generated_at": "2026-07-10",
+  "total_entries": 288,
+  "verified_entries": 164,
+  "verified_with_primary_link": 164,
   "verified_primary_link_coverage": "100.0%",
   "curation_levels": {
-    "L0_seeded": 115,
-    "L1_link_verified": 69,
+    "L0_seeded": 109,
+    "L1_link_verified": 67,
     "L2_artifact_verified": 7,
-    "L3_summary_ready": 4,
-    "L4_carded": 32,
+    "L3_summary_ready": 10,
+    "L4_carded": 42,
     "L5_audit_ready": 53
   },
   "official_link_coverage": {
-    "paper_or_primary": 165,
-    "paper": 165,
-    "arxiv": 162,
-    "venue": 8,
-    "openreview": 15,
-    "acl": 7,
-    "pmlr": 1,
+    "paper_or_primary": 179,
+    "paper": 179,
+    "arxiv": 176,
+    "venue": 23,
+    "openreview": 24,
+    "acl": 11,
+    "pmlr": 2,
     "cvf": 0,
-    "doi": 5,
-    "code": 41,
-    "data": 27,
-    "huggingface": 20,
-    "project": 25,
-    "bibtex": 0
+    "doi": 20,
+    "code": 59,
+    "data": 43,
+    "huggingface": 36,
+    "project": 39,
+    "bibtex": 3
   },
   "starter_pack_20": {
     "total_matched": 20,
@@ -35,10 +35,10 @@
     "primary_link_coverage": "100.0%",
     "card_coverage": "100.0%"
   },
-  "needs_search": 115,
+  "needs_search": 109,
   "ambiguous": 0,
   "duplicate": 0,
-  "missing_primary_link": 115,
-  "cards": 87,
-  "artifact_verified_entries": 167
+  "missing_primary_link": 109,
+  "cards": 97,
+  "artifact_verified_entries": 181
 }
