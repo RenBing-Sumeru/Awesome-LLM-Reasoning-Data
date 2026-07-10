@@ -114,6 +114,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ frontier pipeline; sft; rlvr
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Open model-family report useful for coordinated release-tick analysis.
+- 🚀 **[Qwen3-Coder](https://qwenlm.github.io/blog/qwen3-coder/)**
+  <sub>2025 · Qwen official blog / GitHub / Hugging Face model release · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L4_carded</sub>
+  [Paper](https://qwenlm.github.io/blog/qwen3-coder/) · [arXiv](https://arxiv.org/abs/2505.09388) · [DOI](https://doi.org/10.48550/arXiv.2505.09388) · [Code](https://github.com/QwenLM/Qwen3-Coder) · [HF](https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct) · [Card](../../cards/recipes/qwen3_coder.md)
+  _Data object:_ code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments
+  _Feedback / verifier:_ unit tests, execution feedback, automatically scaled test cases, and environment task success signals
+  _Recipe signal:_ teacher: Qwen2.5-Coder used to clean and rewrite noisy data during pretraining data scaling.; generator: Qwen training pipeline plus policy rollouts for code RL and long-horizon agent RL.
+  _Audit focus:_ Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.
+  _Why it matters:_ It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.
 
 ### <a id="magistral-phi-nemotron-style-reports"></a>🧠 Magistral / Phi / Nemotron style reports
 
@@ -338,13 +346,13 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📦 **OpenR1-Math-220k**
-  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L0_seeded</sub>
-  [Code](https://github.com/huggingface/open-r1) · [HF](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Card](../../cards/releases/openr1.md)
-  _Data object:_ math problem with reasoning trace and final answer; process: problem, reasoning trace, answer; offline math corpus
-  _Feedback / verifier:_ math answer verifier / filtering pipeline
-  _Recipe signal:_ prompt sourcing; trace writing; reward verifier layer
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
+  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L4_carded</sub>
+  [Code](https://github.com/huggingface/open-r1) · [Data](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Project](https://huggingface.co/blog/open-r1/update-2) · [Card](../../cards/releases/openr1.md)
+  _Data object:_ math problem, reference solution/answer, generated reasoning traces, final answer, and correctness fields; process: problem, solution, answer; Offline Hugging Face parquet dataset generated through the Open R1 reproduction pipeline.
+  _Feedback / verifier:_ Math-Verify answer checking plus Llama-3.3-70B-Instruct judge recovery for cases Math-Verify did not verify.
+  _Recipe signal:_ teacher: DeepSeek-R1.; generator: Open R1 generation pipeline using SGLang/vLLM-style large-scale inference.
+  _Audit focus:_ Math answer parsing can reject correct answers or accept format-compatible wrong answers., Llama judge recovery introduces judgment-required behavior into an otherwise programmatic pipeline., Only accepted/correct traces are emphasized, so failed traces and ambiguity are not equally visible.
+  _Why it matters:_ The release makes the Open R1 reproduction effort concrete as a dataset with prompts, generated traces, correctness fields, split metadata, and filtering signals exposed enough for L4 card-level reuse and audit planning.
 - 📄 **Qwen2.5-Math-PRM**
   <sub>2025 · arXiv preprint · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -353,14 +361,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🚀 **Qwen3-Coder**
-  <sub>2025 · GitHub / project report · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L0_seeded</sub>
-  [Code](https://github.com/QwenLM/Qwen3-Coder) · [Project](https://qwenlm.github.io/blog/qwen3-coder/) · [Card](../../cards/recipes/qwen3_coder.md)
-  _Data object:_ code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments
-  _Feedback / verifier:_ unit tests, execution feedback, and agent task success signals
-  _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
 - 📄 **xLAM: A family of large action models to empower AI agent systems**
   <sub>2025 · NAACL · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -426,6 +426,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [OpenThoughts: Data recipes for reasoning models](../../cards/releases/openthoughts.md)
 - [Phi-4-reasoning Technical Report](../../cards/recipes/phi4_reasoning.md)
 - [Qwen3 Technical Report](../../cards/recipes/qwen3.md)
+- [Qwen3-Coder](../../cards/recipes/qwen3_coder.md)
 - [Scaling Behaviors of LLM Reinforcement Learning Post-Training](../../cards/recipes/scaling-behaviors-rl-post-training.md)
 - [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](../../cards/recipes/deepseek-prover-v1-5.md)
 - [DeepSeek-Prover: Advancing theorem proving in LLMs](../../cards/recipes/deepseek-prover.md)
@@ -434,7 +435,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [OpenHands: An Open Platform for AI Software Developers as Generalist Agents](../../cards/agents/openhands.md)
 - [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
 - [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](../../cards/recipes/qwen2-5-math.md)
-- [Tulu 3: Pushing frontiers in open language model post-training](../../cards/recipes/tulu-3.md)
 
 ## Back to Map
 

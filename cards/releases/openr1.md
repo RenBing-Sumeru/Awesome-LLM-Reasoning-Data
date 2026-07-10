@@ -1,101 +1,85 @@
 <!-- entry_id: openr1-math-220k-2025 -->
 <!-- card_type: releases -->
-# 📦 OpenR1-Math-220k
+# OpenR1-Math-220k
 
 <!-- ask_atlas:start -->
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openr1-math-220k-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openr1-math-220k-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openr1-math-220k-2025&mode=compare)
 <!-- ask_atlas:end -->
 
-## One-line takeaway
+> Curation level: L4_carded
+> Category: instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
+> Links: [Code](https://github.com/huggingface/open-r1) · [Data](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k)
 
-Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
+## TL;DR
 
-## Why this matters
+OpenR1-Math-220k releases a large math reasoning corpus distilled from DeepSeek-R1 over NuminaMath 1.5 problems.
 
-This release card is included because it helps readers connect a citation to an engineering decision. Read it through three linked questions: what is the data object, what verifies it, and what would fail if the verifier or metadata were wrong?
+It matters for Track 01 because each record serializes a math problem, final answer, and multiple teacher reasoning traces before those traces are reused for SFT, distillation, rejection sampling, or preference-style filtering.
 
-Local role metadata: `data_release, construction_recipe`. Local verification contract: `programmatic`. Local training/evaluation use: `sft, distillation, rlvr`. The current atlas status is `partial`, while citation/artifact status is `verified`. That separation is intentional: a working official link does not mean the source mixture, split, license, lineage, and verifier internals are fully curated.
+## 1. What is this work?
 
-## What is the data object?
+- Year / venue: 2025 · Hugging Face dataset and Open-R1 GitHub release.
+- Atlas role: data_release, construction_recipe.
+- Domains: math, reasoning traces, open reproduction.
+- Current status: verified primary artifacts; L4 carded.
+- Why it belongs: it is an open reasoning-trace release for studying teacher trace generation, answer verification, split choice, and SFT/RLVR-style reuse in the Open-R1 reproduction stack.
 
-| Field | Local value |
-|---|---|
-| Atlas type | Release card |
-| Domains | math |
-| Prompt/source | Numina-style/open math problem pool |
-| Trace/action author | reasoning model reproduction pipeline |
-| Answer/artifact format | math problem with reasoning trace and final answer |
-| Process fields | problem, reasoning trace, answer, verification metadata |
-| Environment/substrate | offline math corpus |
-| Verifier/reward | math answer verifier / filtering pipeline |
-| Terminal predicate | accepted final answer or trace after filtering |
+## 2. What data object does it expose?
 
-## Verification contract
+- Prompt/source: math problems from NuminaMath 1.5, exposed through the OpenR1-Math-220k Hugging Face dataset.
+- Trace/action author: DeepSeek-R1 generates the reasoning traces through the Open-R1 data-generation workflow.
+- Answer/artifact format: problem, solution, answer, problem type, question type, source, UUID, completion flags, multiple generated reasoning traces, correctness fields, finish reasons, correctness count, and chat messages.
+- Process fields: source problem, final answer, generated traces, `correctness_math_verify`, `correctness_llama`, `correctness_count`, source label, and default/extended subset membership.
+- Environment or substrate: offline Hugging Face dataset plus the Open-R1 codebase for generation, SFT, GRPO, and evaluation.
+- Terminal predicate: each released problem has at least one reasoning trace judged correct by Math Verify or a Llama-3.3-70B-Instruct judge.
 
-- Check parser behavior, answer extraction, unit-test strength, executable environment, and verifier false negatives.
+## 3. What is the verifier / reward / judge / environment?
 
-A reusable reasoning-data artifact should make the accept/reject or scoring signal reproducible. If the signal depends on a hidden judge prompt, moving service, undocumented code execution environment, missing unit tests, or unclear rubric, keep the entry `partial` until the gap is resolved.
+- Verification contract: programmatic, mixed.
+- Recorded verifier/reward/environment: Math Verify checks most samples; a Llama-3.3-70B-Instruct judge covers the subset where answer verification is not enough.
+- Supervision granularity: answer_level trace records; the release exposes multiple candidate traces per problem rather than only one accepted answer.
+- Reuse risk: Math Verify can fail on answer extraction or normalization, while LLM-judge labels can be inconsistent or style-sensitive.
 
-## Supervision granularity
+## 4. How is the data constructed?
 
-- Recorded granularity: `answer_level`.
-- Recorded training/evaluation use: `sft, distillation, rlvr`.
-- Construction layer: `prompt_sourcing, trace_writing, reward_verifier_layer`.
+- Base model: not a downstream base-model training report; Open-R1 uses the dataset in SFT and reproduction recipes.
+- Teacher: DeepSeek-R1.
+- Generator: Open-R1 generation code with SGLang.
+- Filtering rule: generate two traces per problem, sometimes four, then keep traces/problems according to Math Verify and Llama-judge correctness signals.
+- Sampling protocol: the dataset card says the pipeline follows DeepSeek-R1 model-card recommended generation parameters and prepends the instruction to reason step by step and put the final answer in `\boxed{}`.
+- Inference budget: the release uses a 16k token limit per generation; the dataset card reports 25 solutions per hour per H100 and 300k problem solutions per day on 512 H100s.
+- Optimizer/scaffold: Open-R1 provides scripts for SFT and GRPO over reasoning datasets, so the data object can serve supervised distillation and verifier-oriented RL experiments.
 
-Granularity controls reuse. Answer-level records, step labels, scalar rewards, preference pairs, and full environment episodes are not interchangeable. Match your training or evaluation objective to the feedback level that the source actually exposes.
+## 5. How can it enter post-training?
 
-## Construction recipe
+Recorded training/evaluation use: sft, distillation, rlvr.
 
-| Recipe field | Local value |
-|---|---|
-| Base model | unknown |
-| Teacher | unknown |
-| Generator | unknown |
-| Filtering rule | unknown |
-| Sampling protocol | unknown |
-| Rollout count | unknown |
-| Temperature | unknown |
-| Inference budget | unknown |
-| Optimizer/scaffold | unknown |
+The default subset is the safer SFT starting point because the dataset card reports that it performs best after SFT. The extended subset adds sources such as `cn_k12`, which increases coverage but reportedly lowered SFT performance, so reuse should pin the subset and source mix.
 
-When reproducing this release/data artifact, fill these recipe fields before training. The missing knobs often matter more than the headline number of examples.
+## 6. What should readers audit?
 
-## How it can be used
+- Which subset is used: `default`, `extended`, or `all`.
+- Whether downstream experiments preserve the original source labels and split/subset choice.
+- Math Verify false positives and false negatives, especially around boxed-answer extraction and symbolic equivalence.
+- The Llama-judge portion, since model judgment can reward plausible trace style rather than correctness.
+- Whether benchmark questions overlap with NuminaMath sources, olympiad sources, AOPS-style data, or later evaluation sets.
+- Whether rejected traces are visible enough for preference optimization, DPO, or failure analysis.
 
-- Reading map: compare it with neighboring entries in the same paper-category page.
-- Engineering map: decide whether it supports SFT, distillation, RLVR, process supervision, reward modeling, agent training, evaluation, or audit.
-- Audit map: open an issue for every `unknown` field that affects reproducibility, safety, or benchmark comparison.
-- Teaching map: use it to show how reasoning data differs from plain instruction data.
+## 7. What is missing or risky?
 
-## Audit checklist
+- The release is strong enough for an L4 card, but it is not an L5 audit record because contamination checks and full source-lineage analysis are still downstream work.
+- Teacher traces can import DeepSeek-R1 style artifacts and hidden training lineage.
+- The extended subset can change downstream behavior; treating the headline 220k count as one homogeneous corpus is misleading.
+- Verifier agreement is not proof that each reasoning trace is faithful or pedagogically useful.
 
-- [ ] Official paper, code, data, project, and dataset links are checked.
-- [ ] Source mixture, split policy, license, and lineage are recorded.
-- [ ] Verifier, reward, judge, rubric, environment, or test suite is reproducible.
-- [ ] Rejected/failed/ambiguous candidates are considered, not only successful examples.
-- [ ] Contamination, benchmark leakage, false positives, false negatives, and reward hacking are documented.
-- [ ] Training use is not broader than what the source supports.
+## 8. Why it matters for post-training reasoning data
 
-## Known limitations / failure modes
+OpenR1-Math-220k is a compact example of a modern reasoning-data record: prompt, teacher trace, final answer, verifier result, source metadata, and split choice all matter. It shows why Track 01 cards need more than a dataset link: the reader must know who wrote the trace, what checked it, and which accepted/rejected signals survive release.
 
-- Source mixture: unknown.
-- Split: unknown.
-- Decontamination: unknown.
-- License: unknown.
-- Lineage: unknown.
-- Known failure modes: unknown; add false positives, false negatives, leakage, judge drift, and reward hacking notes when known.
+## 9. Links and citation
 
-Local audit note: Official Hugging Face dataset and GitHub project links verified; no paper link is asserted here.
+[Code](https://github.com/huggingface/open-r1) · [Data](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k)
 
-## Links
-
-- Code: [https://github.com/huggingface/open-r1](https://github.com/huggingface/open-r1)
-- Hugging Face: [https://huggingface.co/datasets/open-r1/OpenR1-Math-220k](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k)
-
-## Citation
-
-- Title: OpenR1-Math-220k
-- Year/source: 2025 · Hugging Face / GitHub
-- Authors in local data: unknown
-- Local status: `partial`
-- Citation status: `verified` · metadata status: `partial`
+- Data ID: `openr1-math-220k-2025`
+- Citation status: verified
+- Confidence: high

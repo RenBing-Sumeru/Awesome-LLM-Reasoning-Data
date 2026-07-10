@@ -163,30 +163,38 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.
-- 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
-  <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
-  _Data object:_ taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.; process: preference source, reward model architecture, usage mode; LLM reward-model training and evaluation pipelines.
-  _Feedback / verifier:_ reward model as proxy objective for downstream post-training.
-  _Recipe signal:_ teacher: human and AI preference sources summarized across reward-model literature.; generator: survey taxonomy and accompanying awesome list
-  _Audit focus:_ Reward models may encode annotator bias, style bias, or length preference., Proxy rewards can be overoptimized or attacked when used as training objectives., Benchmark scores can obscure whether the reward model is useful for reasoning data.
-  _Why it matters:_ It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
+- 📦 **[Training a helpful and harmless assistant with reinforcement learning from human feedback](https://arxiv.org/abs/2204.05862)**
+  <sub>2022 · arXiv · 📦 data release · 🧪 verifier reward · judgment required · preference learning · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2204.05862) · [DOI](https://doi.org/10.48550/arXiv.2204.05862) · [Data](https://github.com/anthropics/hh-rlhf) · [HF](https://huggingface.co/datasets/Anthropic/hh-rlhf) · [Card](../../cards/releases/training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-feedback.md)
+  _Data object:_ Chosen/rejected text pairs for helpfulness and harmlessness preference modeling.; process: conversation prompt, chosen response, rejected response; Offline assistant preference-modeling dataset.
+  _Feedback / verifier:_ Human preference labels used to train preference/reward models.
+  _Recipe signal:_ teacher: Human preference labelers.; generator: Assistant policies including base, rejection-sampled, and online policy samples.
+  _Audit focus:_ Audit labeler instructions, prompt sources, tranche differences, and safety coverage., Do not treat chosen responses as safe SFT targets without extra review., Handle harmful/offensive content carefully.
+  _Why it matters:_ It is a concrete open assistant feedback object: prompt context, chosen response, rejected response, split, and safety-specific reward-modeling risks.
+- 🧪 **[Deep reinforcement learning from human preferences](https://arxiv.org/abs/1706.03741)**
+  <sub>2017 · NeurIPS · 🧪 verifier reward · 🧭 survey background · judgment required · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/1706.03741) · [Venue](https://papers.nips.cc/paper/7017-deep-reinforcement-learning-from-human-preferences) · [DOI](https://doi.org/10.48550/arXiv.1706.03741) · [Card](../../cards/verifiers/deep-reinforcement-learning-from-human-preferences.md)
+  _Data object:_ Pairwise preference labels over short trajectory clips plus learned scalar rewards.; process: trajectory segment a, trajectory segment b, human preference; Atari and simulated control environments.
+  _Feedback / verifier:_ Reward model trained from human preferences between trajectory segments.
+  _Recipe signal:_ teacher: Non-expert human preference labelers.; generator: RL policy rollouts.
+  _Audit focus:_ Audit labeler instructions, segment-selection policy, and reward-model calibration., Clip-level preferences may miss long-horizon failures., Optimizing learned rewards can exploit proxy errors.
+  _Why it matters:_ It gives the atlas a foundational reward-model data object: trajectory clips, human comparisons, learned scalar rewards, and proxy-risk audits.
 - 🧭 **[A Survey on Human Preference Learning for Large Language Models](https://arxiv.org/abs/2406.11191)**
-  <sub>2024 · arXiv · 🧭 survey background · judgment required · mixed · preference learning · reward modeling · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2406.11191) · [DOI](https://doi.org/10.48550/arXiv.2406.11191)
-  _Data object:_ preference-centered taxonomy over feedback data, preference modeling, preference usage, and aligned-model evaluation.; process: preference source, preference format, preference model; LLM alignment pipelines using human preference signals.
-  _Feedback / verifier:_ human preference signal transformed into reward, preference loss, or evaluation judgment.
-  _Recipe signal:_ teacher: human preference providers and preference-labeled datasets summarized by the survey.; generator: survey taxonomy
-  _Audit focus:_ Preference labels can be noisy, culturally variable, or underspecified., Pairwise preferences may not preserve reasoning correctness or factual grounding., Evaluation of aligned models can conflate helpfulness, style, and reasoning quality.
-  _Why it matters:_ It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
+  <sub>2024 · arXiv · 🧭 survey background · judgment required · mixed · preference learning · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2406.11191) · [DOI](https://doi.org/10.48550/arXiv.2406.11191) · [Card](../../cards/verifiers/a-survey-on-human-preference-learning-for-large-language-models.md)
+  _Data object:_ Preference-centered taxonomy over feedback data, modeling, usage, and evaluation.; process: preference source, preference format, preference model; LLM alignment pipelines using human preference signals.
+  _Feedback / verifier:_ Human preference transformed into reward, preference loss, or evaluation judgment.
+  _Recipe signal:_ teacher: Human preference providers and preference-labeled datasets summarized by the survey.; generator: Survey taxonomy.
+  _Audit focus:_ Check annotator assumptions, preference format, and disagreement policy., Preference labels may not preserve reasoning correctness., Evaluation can conflate helpfulness, style, harmlessness, and reasoning quality.
+  _Why it matters:_ It helps readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
 - 🧭 **[A Survey of Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2312.14925)**
-  <sub>2023 · TMLR · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2312.14925) · [Venue](https://openreview.net/forum?id=f7OkIurx4b) · [DOI](https://doi.org/10.48550/arXiv.2312.14925)
-  _Data object:_ survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL settings.
-  _Feedback / verifier:_ learned reward model from human feedback.
-  _Recipe signal:_ teacher: human preference and feedback providers summarized across the literature.; generator: survey taxonomy
-  _Audit focus:_ Human feedback can be noisy, subjective, sparse, or expensive., Reward models can overfit annotator preferences and become exploitable objectives., LLM readers may overgeneralize broad RLHF lessons to verifiable-reasoning settings.
-  _Why it matters:_ It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization before readers compare them with verifiable-reward reasoning data.
+  <sub>2023 · TMLR · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2312.14925) · [Venue](https://openreview.net/forum?id=f7OkIurx4b) · [DOI](https://doi.org/10.48550/arXiv.2312.14925) · [Card](../../cards/recipes/a-survey-of-reinforcement-learning-from-human-feedback.md)
+  _Data object:_ Survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL domains.
+  _Feedback / verifier:_ Human feedback transformed into learned reward or policy-optimization signal.
+  _Recipe signal:_ teacher: Human feedback providers summarized across the literature.; generator: Survey taxonomy.
+  _Audit focus:_ Do not infer reusable datasets from survey descriptions alone., Follow primary sources for provenance, license, split, and annotator details., Avoid overgeneralizing broad RLHF lessons to verifiable reasoning.
+  _Why it matters:_ It helps readers distinguish human feedback, reward modeling, and policy optimization before comparing them with verifiable-reward reasoning data.
 - 🧰 **[LegalBench](https://arxiv.org/abs/2308.11462)**
   <sub>2023 · NeurIPS · 🧰 benchmark · 📦 data release · judgment required · mixed · evaluation · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2308.11462) · [Code](https://github.com/HazyResearch/legalbench) · [HF](https://huggingface.co/datasets/nguha/legalbench) · [Project](https://hazyresearch.stanford.edu/legalbench/)
@@ -243,22 +251,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[Training a helpful and harmless assistant with reinforcement learning from human feedback](https://arxiv.org/abs/2204.05862)**
-  <sub>2022 · arXiv · 🧭 survey background · judgment required · reward modeling · preference learning · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2204.05862)
-  _Data object:_ pairwise preference; scalar reward
-  _Feedback / verifier:_ judgment required
-  _Recipe signal:_ release audit; reward modeling; preference learning
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It provides the alignment-data lineage that later reasoning-data recipes inherit when they combine demonstrations, preferences, and reward models.
-- 🧭 **[Deep reinforcement learning from human preferences](https://arxiv.org/abs/1706.03741)**
-  <sub>2017 · NeurIPS · 🧭 survey background · judgment required · reward modeling · preference learning · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/1706.03741)
-  _Data object:_ pairwise preference; scalar reward
-  _Feedback / verifier:_ judgment required
-  _Recipe signal:_ release audit; reward modeling; preference learning
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It is a foundation for later post-training data records that turn comparisons into trainable reward signals.
 
 ### <a id="medical-reasoning-health-rubrics"></a>🩺 Medical reasoning / health rubrics
 
@@ -305,6 +297,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ frontier pipeline; sft; distillation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Mixed post-training corpus reference for reasoning, chat, and safety partitions.
+- 🏗️ **[R-Tuning: Instructing Large Language Models to Say 'I Don't Know'](https://arxiv.org/abs/2311.09677)**
+  <sub>2024 · NAACL · 🏗️ construction recipe · 📦 data release · judgment required · mixed · sft · safety alignment · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2311.09677) · [Venue](https://aclanthology.org/2024.naacl-long.394/) · [DOI](https://doi.org/10.18653/v1/2024.naacl-long.394) · [Code](https://github.com/shizhediao/R-Tuning) · [Data](https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing) · [Card](../../cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md)
+  _Data object:_ Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation.
+  _Feedback / verifier:_ Known/unknown classification relative to a parametric-knowledge proxy.
+  _Recipe signal:_ teacher: Knowledge-intersection construction procedure.; generator: R-Tuning data-construction scripts.
+  _Audit focus:_ Audit how known vs unknown is determined for each base model., Check over-refusal on answerable questions., Pin data version and license for the Google Drive release.
+  _Why it matters:_ It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.
 - 🧭 **[Aegis2.0: A Diverse AI Safety Dataset and Risks Taxonomy for Alignment of LLM Guardrails](https://arxiv.org/abs/2501.09004)**
   <sub>2025 · arXiv preprint arXiv:2501.09004 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2501.09004)
@@ -512,6 +512,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
+- 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
+  <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models) · [Card](../../cards/verifiers/a-comprehensive-survey-of-reward-models.md)
+  _Data object:_ Taxonomy over reward-model sources, architectures, usage modes, applications, benchmarks, and challenges.; process: preference source, reward model type, usage mode; LLM reward-model training, evaluation, and post-training pipelines.
+  _Feedback / verifier:_ Learned or rubric/judge-derived reward model used as proxy feedback.
+  _Recipe signal:_ teacher: Human and AI preference sources summarized across reward-model literature.; generator: Survey taxonomy and companion resource list.
+  _Audit focus:_ Reward models can encode annotator, style, length, or domain bias., Proxy rewards can be overoptimized or attacked., Benchmark scores do not prove downstream training usefulness.
+  _Why it matters:_ It gives Track 00 vocabulary for comparing learned rewards, PRMs, rubrics, LLM judges, and programmatic verifiers.
 
 ### ⚠️ Needs search or metadata
 
@@ -699,14 +707,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **Scaling laws for reward model overoptimization**
-  <sub>2022 · ICML · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **CUAD: An expert-annotated NLP dataset for legal contract review**
   <sub>2021 · NeurIPS Datasets and Benchmarks · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -779,6 +779,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ## 8. Related Cards
 
+- [A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](../../cards/verifiers/a-comprehensive-survey-of-reward-models.md)
 - [AbstentionBench](../../cards/benchmarks/abstentionbench.md)
 - [Aegis2.0](../../cards/verifiers/aegis2.md)
 - [HealthBench](../../cards/verifiers/healthbench.md)
@@ -787,16 +788,15 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [One Token to Fool LLM-as-a-Judge](../../cards/verifiers/one_token_to_fool_judge.md)
 - [PRMBench: A fine-grained and challenging benchmark for process-level reward models](../../cards/verifiers/prmbench.md)
 - [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../../cards/verifiers/tinyv.md)
+- [A Survey on Human Preference Learning for Large Language Models](../../cards/verifiers/a-survey-on-human-preference-learning-for-large-language-models.md)
 - [ProcessBench: Identifying Process Errors in Mathematical Reasoning](../../cards/verifiers/processbench.md)
 - [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
 - [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](../../cards/recipes/qwen2-5-math.md)
+- [R-Tuning: Instructing Large Language Models to Say 'I Don't Know'](../../cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md)
 - [RewardBench: Evaluating Reward Models for Language Modeling](../../cards/verifiers/rewardbench.md)
 - [SciCode: A benchmark for scientific code generation and reasoning](../../cards/benchmarks/scicode.md)
 - [Tulu 3: Pushing frontiers in open language model post-training](../../cards/recipes/tulu-3.md)
-- [Direct preference optimization: Your language model is secretly a reward model](../../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)
-- [GPQA](../../cards/benchmarks/gpqa.md)
-- [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](../../cards/verifiers/mt-bench-chatbot-arena.md)
-- [Let's Verify Step by Step](../../cards/verifiers/prm800k.md)
+- [A Survey of Reinforcement Learning from Human Feedback](../../cards/recipes/a-survey-of-reinforcement-learning-from-human-feedback.md)
 
 ## Back to Map
 

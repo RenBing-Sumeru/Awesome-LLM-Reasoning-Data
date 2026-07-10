@@ -1,10 +1,10 @@
 {
   "total_entries": 280,
-  "verified_entries": 165,
-  "carded_entries": 87,
-  "data_releases": 36,
-  "verifiers_rewards": 20,
+  "verified_entries": 179,
+  "carded_entries": 109,
+  "data_releases": 42,
+  "verifiers_rewards": 24,
   "agent_environments": 16,
-  "scaling_studies": 18,
-  "needs_search": 115
+  "scaling_studies": 20,
+  "needs_search": 101
 }

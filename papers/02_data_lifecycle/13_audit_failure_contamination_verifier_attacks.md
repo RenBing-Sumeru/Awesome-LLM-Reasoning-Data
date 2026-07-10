@@ -54,11 +54,11 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 | [Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) | 2024 | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md) | instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases. | mixture of preference labels, reward models, and verifiable rewards depending on stage. | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
 | [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511) | 2023 | [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../../cards/recipes/self-rag.md) | generation with retrieval decisions, critique signals, and final answer.; process: query, retrieval decision token, retrieved passage, support critique, utility critique, final answer.; retriever plus generation model with special reflection tokens. | critique signals and task-specific factuality/answer-quality evaluation. | It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations. |
 | [DeepMath-103K](https://arxiv.org/abs/2504.11456) | 2025 | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../../cards/releases/deepmath_103k.md) | answer level | programmatic | Math release highlighted for verifier pinning and decontamination. |
+| [R-Tuning: Instructing Large Language Models to Say 'I Don't Know'](https://arxiv.org/abs/2311.09677) | 2024 | [Paper](https://arxiv.org/abs/2311.09677) · [Venue](https://aclanthology.org/2024.naacl-long.394/) · [DOI](https://doi.org/10.18653/v1/2024.naacl-long.394) · [Code](https://github.com/shizhediao/R-Tuning) · [Data](https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing) · [Card](../../cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md) | Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation. | Known/unknown classification relative to a parametric-knowledge proxy. | It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context. |
 | [FinanceBench: A benchmark for financial question answering](https://arxiv.org/abs/2311.11944) | 2023 | [Paper](https://arxiv.org/abs/2311.11944) · [Code](https://github.com/patronus-ai/financebench) · [HF](https://huggingface.co/datasets/PatronusAI/financebench) | answer level | judgment required, mixed | It is a domain-specific reasoning benchmark where grounding, evidence retrieval, expert answers, and current filing data matter more than generic exact-match reasoning. |
 | [TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance](https://aclanthology.org/2021.acl-long.254/) | 2021 | [Paper](https://aclanthology.org/2021.acl-long.254/) · [arXiv](https://arxiv.org/abs/2105.07624) · [Code](https://github.com/NExTplusplus/TAT-QA) · [Project](https://nextplusplus.github.io/TAT-QA/) | answer level; step level | mixed | It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter. |
 | [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](https://arxiv.org/abs/2504.07086) | 2025 | [Paper](https://arxiv.org/abs/2504.07086) · [Card](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) | survey background | metadata pending | It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains. |
 | [AbstentionBench](https://arxiv.org/abs/2506.09038) | 2025 | [Paper](https://arxiv.org/abs/2506.09038) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/facebookresearch/AbstentionBench) · [Data](https://huggingface.co/datasets/facebook/AbstentionBench) · [Card](../../cards/benchmarks/abstentionbench.md) | model response, abstention decision, and correctness/abstention judgment.; process: scenario type, source dataset, answerability label, judge/validation metadata.; offline benchmark with model-evaluation harness. | human-validated judges and benchmark labels for abstention scenarios. | It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining. |
-| [HealthBench](https://arxiv.org/abs/2505.08775) | 2025 | [Paper](https://arxiv.org/abs/2505.08775) · [Card](../../cards/verifiers/healthbench.md) | response with rubric/judge evaluation; process: prompt, response, rubric dimension; offline health evaluation benchmark | rubric-guided expert/LLM judgment | It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring. |
 
 ## 5. Full Paper List
 
@@ -120,6 +120,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.
+- 🧯 **[Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385)**
+  <sub>2024 · arXiv · 🧯 audit failure · 🧭 survey background · unknown · audit · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2410.08385) · [DOI](https://doi.org/10.48550/arXiv.2410.08385) · [Card](../../cards/failures/language-model-developers-should-report-train-test-overlap.md)
+  _Data object:_ Overlap-reporting analysis over model developers, training data disclosure, overlap methodology, and public-test-set claims.; process: model developer, evaluation set, training data access; Benchmark and training-data documentation.
+  _Feedback / verifier:_ Overlap analysis rather than reward model.
+  _Recipe signal:_ teacher: Model developers and evaluators reporting corpus/evaluation relationships.; generator: Audit survey over reporting practices.
+  _Audit focus:_ Ask whether training data is public and overlap statistics are reported., Check overlap methodology and benchmark reuse., Separate memorization, contamination, and genuine reasoning improvement.
+  _Why it matters:_ It gives the atlas a direct reason to record overlap, data reuse, and disclosure policy before treating benchmark gains as reasoning progress.
 - 🧰 **[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972)**
   <sub>2024 · NeurIPS · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2404.07972) · [Card](../../cards/agents/osworld.md)
@@ -136,6 +144,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.
+- 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
+  <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models) · [Card](../../cards/verifiers/a-comprehensive-survey-of-reward-models.md)
+  _Data object:_ Taxonomy over reward-model sources, architectures, usage modes, applications, benchmarks, and challenges.; process: preference source, reward model type, usage mode; LLM reward-model training, evaluation, and post-training pipelines.
+  _Feedback / verifier:_ Learned or rubric/judge-derived reward model used as proxy feedback.
+  _Recipe signal:_ teacher: Human and AI preference sources summarized across reward-model literature.; generator: Survey taxonomy and companion resource list.
+  _Audit focus:_ Reward models can encode annotator, style, length, or domain bias., Proxy rewards can be overoptimized or attacked., Benchmark scores do not prove downstream training usefulness.
+  _Why it matters:_ It gives Track 00 vocabulary for comparing learned rewards, PRMs, rubrics, LLM judges, and programmatic verifiers.
 - 🧰 **[FinanceBench: A benchmark for financial question answering](https://arxiv.org/abs/2311.11944)**
   <sub>2023 · arXiv · 🧰 benchmark · 📦 data release · judgment required · mixed · evaluation · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2311.11944) · [Code](https://github.com/patronus-ai/financebench) · [HF](https://huggingface.co/datasets/PatronusAI/financebench)
@@ -152,14 +168,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter.
-- 🧯 **[Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385)**
-  <sub>2024 · arXiv · 🧯 audit failure · 🧭 survey background · unknown · audit · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2410.08385)
-  _Data object:_ overlap and reporting analysis.; process: training corpus, evaluation set, overlap estimate, reporting policy.; benchmark and training-data documentation.
-  _Feedback / verifier:_ overlap analysis rather than a reward model.
-  _Recipe signal:_ filtering rule: overlap reporting and audit policy.
-  _Audit focus:_ Reported benchmark gains can be inflated when train-test overlap is not disclosed.
-  _Why it matters:_ It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence.
 - 🧭 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
   <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.12413)
@@ -195,6 +203,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: critic and retrieval-supervision signals derived from task data and evidence checks.; generator: model learns special reflection tokens for retrieval and critique behavior.
   _Audit focus:_ A model can retrieve irrelevant passages confidently., Critique tokens can become style markers without true verification., Retriever choice changes benchmark conclusions.
   _Why it matters:_ It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.
+- 🧭 **[Multi-Step Reasoning with Large Language Models, a Survey](https://arxiv.org/abs/2407.11511)**
+  <sub>2024 · arXiv · 🧭 survey background · mixed · audit · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2407.11511) · [DOI](https://doi.org/10.48550/arXiv.2407.11511) · [Card](../../cards/recipes/multi-step-reasoning-with-large-language-models-a-survey.md)
+  _Data object:_ Taxonomy and literature map for multi-step reasoning methods.; process: reasoning method, generation strategy, evaluation method; LLM multi-step reasoning tasks and methods.
+  _Feedback / verifier:_ Mixed evaluation and control signals summarized by the survey; no single verifier.
+  _Recipe signal:_ teacher: Reasoning-LLM literature.; generator: Survey taxonomy.
+  _Audit focus:_ Do not treat model-centric taxonomy as trainable data quality proof., Check trace authorship, verifier contract, tool environment, budget, and contamination controls in each primary paper., Separate reasoning ability, trace style, external tools, and benchmark performance.
+  _Why it matters:_ It helps readers route model-centric reasoning claims into concrete questions about traces, verifiers, tools, rewards, and evaluation surfaces.
 - 🧭 **[Search-Time Data Contamination](https://arxiv.org/abs/2508.13180)**
   <sub>2025 · arXiv preprint arXiv:2508.13180 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2508.13180)
@@ -249,6 +265,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; rlvr; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
+- 📈 **[Scaling laws for reward model overoptimization](https://arxiv.org/abs/2210.10760)**
+  <sub>2022 · ICML · 📈 scaling study · 🧯 audit failure · mixed · audit · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2210.10760) · [Venue](https://proceedings.mlr.press/v202/gao23h.html) · [OpenReview](https://openreview.net/forum?id=bBLjms8nZE) · [DOI](https://doi.org/10.48550/arXiv.2210.10760) · [Card](../../cards/failures/scaling-laws-for-reward-model-overoptimization.md)
+  _Data object:_ Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.
+  _Feedback / verifier:_ Proxy reward model compared against a stronger gold reward model.
+  _Recipe signal:_ teacher: Fixed gold reward model used as synthetic human labeler.; generator: Policy optimized via RL or best-of-n sampling.
+  _Audit focus:_ Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.
+  _Why it matters:_ It gives reward-model readers a concrete audit lens for separating proxy reward gains from real preference improvement.
 - 📄 **[Dual Consensus: Escaping from Spurious Majority in Unsupervised RLVR via Two-Stage Vote Mechanism](https://arxiv.org/abs/2603.16223)**
   <sub>2026 · arXiv preprint arXiv:2603.16223 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2603.16223)
@@ -316,14 +340,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[Reasoning with Large Language Models, a Survey](https://arxiv.org/abs/2407.11511)**
-  <sub>2024 · arXiv · 🧭 survey background · unknown · audit · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2407.11511)
-  _Data object:_ survey taxonomy and literature map.; literature survey.
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit; audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It fills the reasoning-LLM survey lane of the atlas so readers can separate model-centric reasoning work from data-object and verifier-centric papers.
 
 ### <a id="llm-as-judge-attacks"></a>⚖️ LLM-as-judge attacks
 
@@ -351,6 +367,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; evaluation; reward modeling
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verifier-attack paper showing trivial cue tokens can flip judge verdicts.
+- 🧯 **[Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting](https://arxiv.org/abs/2305.04388)**
+  <sub>2023 · NeurIPS · 🧯 audit failure · mixed · audit · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2305.04388) · [DOI](https://doi.org/10.48550/arXiv.2305.04388) · [Card](../../cards/failures/language-models-dont-always-say-what-they-think.md)
+  _Data object:_ Task answer plus generated explanation.; process: prompt, biasing feature, chain of thought; Offline prompting/evaluation setup.
+  _Feedback / verifier:_ Task correctness plus intervention/bias-attribution analysis.
+  _Recipe signal:_ teacher: Not applicable.; generator: Prompted LLMs under biased and unbiased prompt variants.
+  _Audit focus:_ Check whether CoT traces causally affect answers., Audit prompt artifacts and social-bias rationalization., Pin model/version details before reuse.
+  _Why it matters:_ It prevents treating rationale text as faithful reasoning data unless interventions check whether the trace actually drives the answer.
 
 ### <a id="spurious-rewards"></a>🧨 Spurious rewards
 
@@ -437,14 +461,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.
-- 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
-  <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
-  _Data object:_ taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.; process: preference source, reward model architecture, usage mode; LLM reward-model training and evaluation pipelines.
-  _Feedback / verifier:_ reward model as proxy objective for downstream post-training.
-  _Recipe signal:_ teacher: human and AI preference sources summarized across reward-model literature.; generator: survey taxonomy and accompanying awesome list
-  _Audit focus:_ Reward models may encode annotator bias, style bias, or length preference., Proxy rewards can be overoptimized or attacked when used as training objectives., Benchmark scores can obscure whether the reward model is useful for reasoning data.
-  _Why it matters:_ It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
+- 🏗️ **[R-Tuning: Instructing Large Language Models to Say 'I Don't Know'](https://arxiv.org/abs/2311.09677)**
+  <sub>2024 · NAACL · 🏗️ construction recipe · 📦 data release · judgment required · mixed · sft · safety alignment · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2311.09677) · [Venue](https://aclanthology.org/2024.naacl-long.394/) · [DOI](https://doi.org/10.18653/v1/2024.naacl-long.394) · [Code](https://github.com/shizhediao/R-Tuning) · [Data](https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing) · [Card](../../cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md)
+  _Data object:_ Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation.
+  _Feedback / verifier:_ Known/unknown classification relative to a parametric-knowledge proxy.
+  _Recipe signal:_ teacher: Knowledge-intersection construction procedure.; generator: R-Tuning data-construction scripts.
+  _Audit focus:_ Audit how known vs unknown is determined for each base model., Check over-refusal on answerable questions., Pin data version and license for the Google Drive release.
+  _Why it matters:_ It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.
+- 🧯 **[Measuring faithfulness in chain-of-thought reasoning](https://arxiv.org/abs/2307.13702)**
+  <sub>2023 · arXiv · 🧯 audit failure · mixed · audit · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2307.13702) · [DOI](https://doi.org/10.48550/arXiv.2307.13702) · [Card](../../cards/failures/measuring-faithfulness-in-chain-of-thought-reasoning.md)
+  _Data object:_ CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.
+  _Feedback / verifier:_ Answer sensitivity to CoT interventions plus task correctness.
+  _Recipe signal:_ teacher: Not applicable.; generator: Prompted LLMs plus controlled CoT edits.
+  _Audit focus:_ Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.
+  _Why it matters:_ It gives Track 01 a concrete audit lens for separating rationale text as a style target from rationale text as causal reasoning evidence.
 - 🧭 **[A Survey of Reasoning with Foundation Models](https://arxiv.org/abs/2502.17419)**
   <sub>2025 · arXiv · 🧭 survey background · unknown · audit · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2502.17419)
@@ -481,21 +513,21 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.
 - 🧭 **[Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216)**
-  <sub>2024 · arXiv · 🧭 survey background · 📈 scaling study · mixed · programmatic · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216)
-  _Data object:_ technical survey comparing RLHF and RLVR policy-gradient style post-training methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.
-  _Feedback / verifier:_ learned preference rewards, verifiable rewards, and policy-gradient objectives.
-  _Recipe signal:_ teacher: literature covering human feedback, verifiable rewards, and post-training optimization.; generator: technical survey and unified policy-gradient framework
-  _Audit focus:_ Method comparisons can mix data effects with optimizer and sampling-budget effects., RLHF and RLVR rewards are often discussed together despite different verification contracts., Implementation details can dominate reported gains if not separated from data quality.
-  _Why it matters:_ It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.
+  <sub>2024 · arXiv · 🧭 survey background · mixed · programmatic · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216) · [Card](../../cards/recipes/reinforcement-learning-for-llm-post-training-a-survey.md)
+  _Data object:_ Technical taxonomy comparing RLHF and RLVR policy-gradient-style methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.
+  _Feedback / verifier:_ Learned preference rewards, verifiable rewards, and policy-gradient objectives.
+  _Recipe signal:_ teacher: Literature covering SFT, human feedback, verifiable rewards, and post-training optimization.; generator: Technical survey and unified policy-gradient framework.
+  _Audit focus:_ Separate data source, reward contract, rollout policy, optimizer, model size, and inference budget., Check false positives, reward hacking, sampling budget, and benchmark reuse., Do not attribute gains to generic RL without naming the data and reward object.
+  _Why it matters:_ It helps readers avoid conflating human preference rewards with programmatic or verifiable rewards in reasoning-data pipelines.
 - 🧭 **[A Survey of Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2312.14925)**
-  <sub>2023 · TMLR · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2312.14925) · [Venue](https://openreview.net/forum?id=f7OkIurx4b) · [DOI](https://doi.org/10.48550/arXiv.2312.14925)
-  _Data object:_ survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL settings.
-  _Feedback / verifier:_ learned reward model from human feedback.
-  _Recipe signal:_ teacher: human preference and feedback providers summarized across the literature.; generator: survey taxonomy
-  _Audit focus:_ Human feedback can be noisy, subjective, sparse, or expensive., Reward models can overfit annotator preferences and become exploitable objectives., LLM readers may overgeneralize broad RLHF lessons to verifiable-reasoning settings.
-  _Why it matters:_ It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization before readers compare them with verifiable-reward reasoning data.
+  <sub>2023 · TMLR · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2312.14925) · [Venue](https://openreview.net/forum?id=f7OkIurx4b) · [DOI](https://doi.org/10.48550/arXiv.2312.14925) · [Card](../../cards/recipes/a-survey-of-reinforcement-learning-from-human-feedback.md)
+  _Data object:_ Survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL domains.
+  _Feedback / verifier:_ Human feedback transformed into learned reward or policy-optimization signal.
+  _Recipe signal:_ teacher: Human feedback providers summarized across the literature.; generator: Survey taxonomy.
+  _Audit focus:_ Do not infer reusable datasets from survey descriptions alone., Follow primary sources for provenance, license, split, and annotator details., Avoid overgeneralizing broad RLHF lessons to verifiable reasoning.
+  _Why it matters:_ It helps readers distinguish human feedback, reward modeling, and policy optimization before comparing them with verifiable-reward reasoning data.
 
 ### ⚠️ Needs search or metadata
 
@@ -643,30 +675,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting**
-  <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **Measuring faithfulness in chain-of-thought reasoning**
-  <sub>2023 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **Scaling laws for reward model overoptimization**
-  <sub>2022 · ICML · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 
 ## 6. What to Audit
 
@@ -683,6 +691,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ## 8. Related Cards
 
+- [A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](../../cards/verifiers/a-comprehensive-survey-of-reward-models.md)
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
 - [AbstentionBench](../../cards/benchmarks/abstentionbench.md)
 - [DeepMath-103K](../../cards/releases/deepmath_103k.md)
@@ -694,13 +703,12 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [Subliminal Learning](../../cards/failures/subliminal-learning.md)
 - [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../../cards/verifiers/tinyv.md)
 - [Introducing SWE-bench Verified](../../cards/agents/swe-bench-verified.md)
+- [Language Model Developers Should Report Train-Test Overlap](../../cards/failures/language-model-developers-should-report-train-test-overlap.md)
 - [LiveBench: A challenging, contamination-free benchmark for large language models](../../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
 - [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](../../cards/benchmarks/livecodebench.md)
+- [Multi-Step Reasoning with Large Language Models, a Survey](../../cards/recipes/multi-step-reasoning-with-large-language-models-a-survey.md)
 - [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](../../cards/agents/osworld.md)
 - [ProcessBench: Identifying Process Errors in Mathematical Reasoning](../../cards/verifiers/processbench.md)
-- [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
-- [RewardBench: Evaluating Reward Models for Language Modeling](../../cards/verifiers/rewardbench.md)
-- [SciCode: A benchmark for scientific code generation and reasoning](../../cards/benchmarks/scicode.md)
 
 ## Back to Map
 

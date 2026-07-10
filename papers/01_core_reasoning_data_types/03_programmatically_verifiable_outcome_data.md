@@ -276,6 +276,30 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; optimizer scaffold; process supervision
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.
+- 📦 **[MAmmoTH: Building math generalist models through hybrid instruction tuning](https://arxiv.org/abs/2309.05653)**
+  <sub>2023 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2309.05653) · [DOI](https://doi.org/10.48550/arXiv.2309.05653) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH) · [Data](https://huggingface.co/datasets/TIGER-Lab/MathInstruct) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH-7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH/) · [Card](../../cards/releases/mammoth-mathinstruct.md)
+  _Data object:_ Math instruction with CoT or PoT rationale and final answer.; process: dataset name, rationale type, annotation source; Offline math instruction tuning plus PoT/Python-style evaluation.
+  _Feedback / verifier:_ Math answer scoring and PoT executability where applicable; not a universal step verifier.
+  _Recipe signal:_ teacher: MathInstruct source datasets and mixed rationale authors.; generator: Curated hybrid CoT/PoT data pipeline.
+  _Audit focus:_ Audit which subsets are human, model-generated, validated, or unvalidated., Check per-subset licenses and train/evaluation overlap., Separate CoT, PoT, model-size, decoding, and benchmark-familiarity effects.
+  _Why it matters:_ It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data.
+- 📦 **[MetaMath: Bootstrap your own mathematical questions for large language models](https://arxiv.org/abs/2309.12284)**
+  <sub>2023 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2309.12284) · [DOI](https://doi.org/10.48550/arXiv.2309.12284) · [Code](https://github.com/meta-math/MetaMath) · [Data](https://huggingface.co/datasets/meta-math/MetaMathQA) · [HF](https://huggingface.co/meta-math/MetaMath-7B-V1.0) · [Project](https://meta-math.github.io/) · [Card](../../cards/releases/metamath-bootstrap-your-own-mathematical-questions-for-large-language-models.md)
+  _Data object:_ Mathematical question, original question, worked response, final answer, and augmentation type.; process: query, original question, response; Offline math instruction-tuning corpus.
+  _Feedback / verifier:_ Gold training-set answers and math benchmark checks; no step verifier disclosed.
+  _Recipe signal:_ teacher: Math training sets plus teacher augmentation.; generator: Question rewriting, answer augmentation, and self-verification style pipeline.
+  _Audit focus:_ Check augmented questions are derived from training splits., Audit near-duplicates after rewriting., Do not equate final-answer correctness with trace faithfulness.
+  _Why it matters:_ It is a math SFT scaling reference whose reuse depends on source split, teacher lineage, near-duplicate, and answer-level verifier audits.
+- 🏗️ **[WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct](https://arxiv.org/abs/2308.09583)**
+  <sub>2023 · arXiv · 🏗️ construction recipe · 🚀 model report · programmatic · mixed · sft · distillation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2308.09583) · [DOI](https://doi.org/10.48550/arXiv.2308.09583) · [Code](https://github.com/nlpxucan/WizardLM) · [HF](https://huggingface.co/WizardLMTeam/WizardMath-7B-V1.1) · [Project](https://wizardlm.github.io/) · [Card](../../cards/recipes/wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinforced-evol-instruct.md)
+  _Data object:_ Math instruction, chain-of-thought style response, and final answer.; process: evolved instruction, response, final answer; Offline math instruction evolution and model fine-tuning.
+  _Feedback / verifier:_ Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.
+  _Recipe signal:_ teacher: WizardLM/Evol-Instruct lineage and generator models.; generator: Reinforced Evol-Instruct math pipeline.
+  _Audit focus:_ Audit seed prompts, feedback signal, and retained/rejected instruction policy., Treat benchmark gains as model evidence, not data-quality proof., Check model and data license terms before reuse.
+  _Why it matters:_ It is useful as a recipe card precisely because it separates an influential construction method from a fully auditable data release.
 - 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
   <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME)
@@ -418,6 +442,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ trace writing; optimizer scaffold; scaling report
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.
+- 🚀 **[Qwen3-Coder](https://qwenlm.github.io/blog/qwen3-coder/)**
+  <sub>2025 · Qwen official blog / GitHub / Hugging Face model release · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L4_carded</sub>
+  [Paper](https://qwenlm.github.io/blog/qwen3-coder/) · [arXiv](https://arxiv.org/abs/2505.09388) · [DOI](https://doi.org/10.48550/arXiv.2505.09388) · [Code](https://github.com/QwenLM/Qwen3-Coder) · [HF](https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct) · [Card](../../cards/recipes/qwen3_coder.md)
+  _Data object:_ code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments
+  _Feedback / verifier:_ unit tests, execution feedback, automatically scaled test cases, and environment task success signals
+  _Recipe signal:_ teacher: Qwen2.5-Coder used to clean and rewrite noisy data during pretraining data scaling.; generator: Qwen training pipeline plus policy rollouts for code RL and long-horizon agent RL.
+  _Audit focus:_ Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.
+  _Why it matters:_ It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.
 - 🧰 **[AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](https://arxiv.org/abs/2407.18901)**
   <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2407.18901) · [Card](../../cards/agents/appworld.md)
@@ -579,6 +611,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; search substrate; agent training
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Repository-scale training environment showing substrate as data.
+- 📦 **[MAmmoTH2: Scaling Instructions from the Web](https://arxiv.org/abs/2405.03548)**
+  <sub>2024 · NeurIPS · 📦 data release · 🏗️ construction recipe · mixed · programmatic · sft · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2405.03548) · [DOI](https://doi.org/10.48550/arXiv.2405.03548) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH2) · [Data](https://huggingface.co/datasets/TIGER-Lab/WebInstructFull) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH2-8x7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH2/) · [Card](../../cards/releases/mammoth2-scaling-instructions-from-the-web.md)
+  _Data object:_ Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.
+  _Feedback / verifier:_ Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.
+  _Recipe signal:_ teacher: Web corpora plus Mixtral/Qwen-style refinement.; generator: Common Crawl recall, Q-A extraction, and LLM refinement pipeline.
+  _Audit focus:_ Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.
+  _Why it matters:_ It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks.
 - 🧰 **[ProcessBench: Identifying Process Errors in Mathematical Reasoning](https://arxiv.org/abs/2412.06559)**
   <sub>2024 · arXiv · 🧰 benchmark · 🪜 process supervision · judgment required · programmatic · evaluation · process supervision · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2412.06559) · [Card](../../cards/verifiers/processbench.md)
@@ -595,25 +635,17 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; trace writing; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.
-- 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
-  <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
-  _Data object:_ taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.; process: preference source, reward model architecture, usage mode; LLM reward-model training and evaluation pipelines.
-  _Feedback / verifier:_ reward model as proxy objective for downstream post-training.
-  _Recipe signal:_ teacher: human and AI preference sources summarized across reward-model literature.; generator: survey taxonomy and accompanying awesome list
-  _Audit focus:_ Reward models may encode annotator bias, style bias, or length preference., Proxy rewards can be overoptimized or attacked when used as training objectives., Benchmark scores can obscure whether the reward model is useful for reasoning data.
-  _Why it matters:_ It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
 
 ### <a id="other-related-work"></a>Other related work
 
 - 🧭 **[Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216)**
-  <sub>2024 · arXiv · 🧭 survey background · 📈 scaling study · mixed · programmatic · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216)
-  _Data object:_ technical survey comparing RLHF and RLVR policy-gradient style post-training methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.
-  _Feedback / verifier:_ learned preference rewards, verifiable rewards, and policy-gradient objectives.
-  _Recipe signal:_ teacher: literature covering human feedback, verifiable rewards, and post-training optimization.; generator: technical survey and unified policy-gradient framework
-  _Audit focus:_ Method comparisons can mix data effects with optimizer and sampling-budget effects., RLHF and RLVR rewards are often discussed together despite different verification contracts., Implementation details can dominate reported gains if not separated from data quality.
-  _Why it matters:_ It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.
+  <sub>2024 · arXiv · 🧭 survey background · mixed · programmatic · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216) · [Card](../../cards/recipes/reinforcement-learning-for-llm-post-training-a-survey.md)
+  _Data object:_ Technical taxonomy comparing RLHF and RLVR policy-gradient-style methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.
+  _Feedback / verifier:_ Learned preference rewards, verifiable rewards, and policy-gradient objectives.
+  _Recipe signal:_ teacher: Literature covering SFT, human feedback, verifiable rewards, and post-training optimization.; generator: Technical survey and unified policy-gradient framework.
+  _Audit focus:_ Separate data source, reward contract, rollout policy, optimizer, model size, and inference budget., Check false positives, reward hacking, sampling budget, and benchmark reuse., Do not attribute gains to generic RL without naming the data and reward object.
+  _Why it matters:_ It helps readers avoid conflating human preference rewards with programmatic or verifiable rewards in reasoning-data pipelines.
 
 ### ⚠️ Needs search or metadata
 
@@ -650,13 +682,13 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📦 **OpenR1-Math-220k**
-  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L0_seeded</sub>
-  [Code](https://github.com/huggingface/open-r1) · [HF](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Card](../../cards/releases/openr1.md)
-  _Data object:_ math problem with reasoning trace and final answer; process: problem, reasoning trace, answer; offline math corpus
-  _Feedback / verifier:_ math answer verifier / filtering pipeline
-  _Recipe signal:_ prompt sourcing; trace writing; reward verifier layer
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
+  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L4_carded</sub>
+  [Code](https://github.com/huggingface/open-r1) · [Data](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Project](https://huggingface.co/blog/open-r1/update-2) · [Card](../../cards/releases/openr1.md)
+  _Data object:_ math problem, reference solution/answer, generated reasoning traces, final answer, and correctness fields; process: problem, solution, answer; Offline Hugging Face parquet dataset generated through the Open R1 reproduction pipeline.
+  _Feedback / verifier:_ Math-Verify answer checking plus Llama-3.3-70B-Instruct judge recovery for cases Math-Verify did not verify.
+  _Recipe signal:_ teacher: DeepSeek-R1.; generator: Open R1 generation pipeline using SGLang/vLLM-style large-scale inference.
+  _Audit focus:_ Math answer parsing can reject correct answers or accept format-compatible wrong answers., Llama judge recovery introduces judgment-required behavior into an otherwise programmatic pipeline., Only accepted/correct traces are emphasized, so failed traces and ambiguity are not equally visible.
+  _Why it matters:_ The release makes the Open R1 reproduction effort concrete as a dataset with prompts, generated traces, correctness fields, split metadata, and filtering signals exposed enough for L4 card-level reuse and audit planning.
 - 📄 **Process reward models for code reasoning**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -673,14 +705,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🚀 **Qwen3-Coder**
-  <sub>2025 · GitHub / project report · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L0_seeded</sub>
-  [Code](https://github.com/QwenLM/Qwen3-Coder) · [Project](https://qwenlm.github.io/blog/qwen3-coder/) · [Card](../../cards/recipes/qwen3_coder.md)
-  _Data object:_ code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments
-  _Feedback / verifier:_ unit tests, execution feedback, and agent task success signals
-  _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
 - 📄 **R2E-Gym: Procedural training environments for repository-level code agents**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -753,22 +777,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **MAmmoTH: Building math generalist models through hybrid instruction tuning**
-  <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **MetaMath: Bootstrap your own mathematical questions for large language models**
-  <sub>2023 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **ProofNet: Autoformalizing and formally proving undergraduate-level mathematics**
   <sub>2023 · arXiv preprint · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -781,14 +789,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   <sub>2023 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
   _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct**
-  <sub>2023 · arXiv preprint · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
   _Feedback / verifier:_ metadata pending
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination

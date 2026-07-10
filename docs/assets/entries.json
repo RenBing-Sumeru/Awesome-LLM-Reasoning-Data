@@ -60,6 +60,7 @@
     "venue": "NeurIPS",
     "authors": [],
     "source_role": [
+      "verifier_reward",
       "survey_background"
     ],
     "verification_contract": [
@@ -74,7 +75,10 @@
       "preference_learning"
     ],
     "domains": [
-      "alignment"
+      "rlhf",
+      "reward_modeling",
+      "alignment",
+      "reinforcement_learning"
     ],
     "category": [
       "foundations_and_primers",
@@ -85,34 +89,36 @@
     ],
     "subfield": "Other related work",
     "tags": [
-      "seeded-from-bib",
-      "rlhf",
       "preference-data",
-      "reward-modeling"
+      "reward-modeling",
+      "rlhf",
+      "rlhf-reward-model-surveys",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Shows how human preference comparisons can train reward models for reinforcement learning.",
-    "why_it_matters": "It is a foundation for later post-training data records that turn comparisons into trainable reward signals.",
-    "data_object": "pairwise preference; scalar reward",
-    "feedback_verifier": "judgment required",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L1_link_verified",
+    "one_line_summary": "This paper shows how pairwise human preferences over trajectory segments can train a reward model for RL.",
+    "why_it_matters": "It gives the atlas a foundational reward-model data object: trajectory clips, human comparisons, learned scalar rewards, and proxy-risk audits.",
+    "data_object": "Pairwise preference labels over short trajectory clips plus learned scalar rewards.; process: trajectory segment a, trajectory segment b, human preference; Atari and simulated control environments.",
+    "feedback_verifier": "Reward model trained from human preferences between trajectory segments.",
+    "audit_focus": "Audit labeler instructions, segment-selection policy, and reward-model calibration., Clip-level preferences may miss long-horizon failures., Optimizing learned rewards can exploit proxy errors.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
       "paper": "https://arxiv.org/abs/1706.03741",
-      "venue": null,
+      "venue": "https://papers.nips.cc/paper/7017-deep-reinforcement-learning-from-human-preferences",
       "arxiv": "https://arxiv.org/abs/1706.03741",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.1706.03741",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/verifiers/deep-reinforcement-learning-from-human-preferences.md"
     },
     "primary_link": "https://arxiv.org/abs/1706.03741"
   },
@@ -741,50 +747,60 @@
     "venue": "ICLR",
     "authors": [],
     "source_role": [
+      "construction_recipe",
       "survey_background"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "instruction_following",
+      "nlp_tasks",
+      "zero_shot_generalization"
+    ],
     "category": [
-      "foundations_and_primers"
+      "instruction_demonstration_rationale_data",
+      "foundations_and_primers",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "instruction-tuning-sft-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "FLAN converts supervised NLP tasks into natural-language instruction examples for zero-shot generalization.",
+    "why_it_matters": "It is a foundation for reasoning SFT because later instruction and teacher-trace datasets inherit its mixture, template, and held-out-task audit questions.",
+    "data_object": "Task-specific labels or text targets.; process: dataset, instruction template, input; Offline instruction-tuning and held-out task evaluation.",
+    "feedback_verifier": "Source-dataset labels and task metrics; no reusable reward model or verifier artifact.",
+    "audit_focus": "Audit task mixture, template authorship, and held-out task boundaries., Check source dataset licenses and train/eval overlap., Do not treat answer-only task accuracy as evidence of reasoning-trace quality.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2109.01652",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2109.01652",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
+      "doi": "https://doi.org/10.48550/arXiv.2109.01652",
+      "code": "https://github.com/google-research/FLAN",
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/finetuned-language-models-are-zero-shot-learners.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2109.01652"
   },
   {
     "id": "finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021",
@@ -1076,50 +1092,60 @@
     "venue": "ICLR",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "data_release"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "instruction_following",
+      "prompt_templates",
+      "zero_shot_generalization"
+    ],
     "category": [
-      "foundations_and_primers"
+      "instruction_demonstration_rationale_data",
+      "foundations_and_primers",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "instruction-tuning-sft-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "T0 makes prompt templates and prompted dataset mixtures concrete artifacts for zero-shot instruction tuning.",
+    "why_it_matters": "It is a Track 01 reference for prompt-source infrastructure: the data object includes dataset source, prompt template, target output, and held-out task policy.",
+    "data_object": "Prompted input plus target output.; process: dataset, subset, prompt id; Offline multitask prompted fine-tuning.",
+    "feedback_verifier": "Source-dataset labels and task-specific metrics.",
+    "audit_focus": "Audit prompt authorship, source licenses, and train/held-out task boundaries., Check whether prompts leak task identity or label shortcuts., Treat prompt quality separately from reasoning-data quality.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
-      "venue": null,
-      "arxiv": null,
-      "openreview": null,
+      "paper": "https://arxiv.org/abs/2110.08207",
+      "venue": "https://openreview.net/forum?id=9Vrb9D0WI4",
+      "arxiv": "https://arxiv.org/abs/2110.08207",
+      "openreview": "https://openreview.net/forum?id=9Vrb9D0WI4",
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "doi": "https://doi.org/10.48550/arXiv.2110.08207",
+      "code": "https://github.com/bigscience-workshop/t-zero",
+      "data": "https://huggingface.co/datasets/bigscience/P3",
+      "huggingface": "https://huggingface.co/bigscience/T0pp",
+      "project": "https://github.com/bigscience-workshop/promptsource",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/multitask-prompted-training-enables-zero-shot-task-generalization.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2110.08207"
   },
   {
     "id": "qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021",
@@ -1709,54 +1735,65 @@
     "venue": "ICML",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "scaling_study",
+      "audit_failure",
+      "verifier_reward"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "pairwise_preference",
+      "scalar_reward"
     ],
     "training_use": [
-      "unknown"
+      "audit",
+      "evaluation",
+      "reward_modeling"
     ],
-    "domains": [],
+    "domains": [
+      "rlhf",
+      "reward_modeling",
+      "reward_overoptimization",
+      "alignment"
+    ],
     "category": [
       "foundations_and_primers",
       "preference_reward_feedback_data",
-      "judgment_rubric_domain_expert_data",
       "scaling_rlvr_test_time_compute",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧪 RLHF / reward-model surveys",
     "tags": [
-      "seeded-from-bib"
+      "rlhf-reward-model-surveys",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "This failure study measures when optimizing an imperfect proxy reward starts reducing gold-reward quality.",
+    "why_it_matters": "It gives reward-model readers a concrete audit lens for separating proxy reward gains from real preference improvement.",
+    "data_object": "Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.",
+    "feedback_verifier": "Proxy reward model compared against a stronger gold reward model.",
+    "audit_focus": "Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
-      "venue": null,
-      "arxiv": null,
-      "openreview": null,
+      "paper": "https://arxiv.org/abs/2210.10760",
+      "venue": "https://proceedings.mlr.press/v202/gao23h.html",
+      "arxiv": "https://arxiv.org/abs/2210.10760",
+      "openreview": "https://openreview.net/forum?id=bBLjms8nZE",
       "acl": null,
-      "pmlr": null,
+      "pmlr": "https://proceedings.mlr.press/v202/gao23h.html",
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2210.10760",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/failures/scaling-laws-for-reward-model-overoptimization.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2210.10760"
   },
   {
     "id": "scienceworld-is-your-agent-smarter-than-a-5th-grader-2022",
@@ -1931,6 +1968,9 @@
     "venue": "arXiv",
     "authors": [],
     "source_role": [
+      "data_release",
+      "verifier_reward",
+      "construction_recipe",
       "survey_background"
     ],
     "verification_contract": [
@@ -1941,13 +1981,15 @@
       "scalar_reward"
     ],
     "training_use": [
-      "reward_modeling",
       "preference_learning",
+      "reward_modeling",
       "safety_alignment"
     ],
     "domains": [
       "alignment",
-      "safety"
+      "safety",
+      "rlhf",
+      "chat"
     ],
     "category": [
       "foundations_and_primers",
@@ -1955,22 +1997,23 @@
       "preference_reward_feedback_data",
       "judgment_rubric_domain_expert_data",
       "data_construction_open_release_recipes",
-      "training_usage_optimization_objectives",
-      "scaling_rlvr_test_time_compute"
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "📦 Data documentation / datasheets",
+    "subfield": "Other related work",
     "tags": [
-      "seeded-from-bib",
-      "rlhf",
       "preference-data",
-      "safety"
+      "rlhf",
+      "rlhf-reward-model-surveys",
+      "safety",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Documents preference and RLHF data for helpfulness and harmlessness assistant behavior.",
-    "why_it_matters": "It provides the alignment-data lineage that later reasoning-data recipes inherit when they combine demonstrations, preferences, and reward models.",
-    "data_object": "pairwise preference; scalar reward",
-    "feedback_verifier": "judgment required",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L1_link_verified",
+    "one_line_summary": "HH-RLHF releases helpfulness and harmlessness chosen/rejected preference pairs for reward-model training.",
+    "why_it_matters": "It is a concrete open assistant feedback object: prompt context, chosen response, rejected response, split, and safety-specific reward-modeling risks.",
+    "data_object": "Chosen/rejected text pairs for helpfulness and harmlessness preference modeling.; process: conversation prompt, chosen response, rejected response; Offline assistant preference-modeling dataset.",
+    "feedback_verifier": "Human preference labels used to train preference/reward models.",
+    "audit_focus": "Audit labeler instructions, prompt sources, tranche differences, and safety coverage., Do not treat chosen responses as safe SFT targets without extra review., Handle harmful/offensive content carefully.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -1981,13 +2024,13 @@
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2204.05862",
       "code": null,
-      "data": null,
-      "huggingface": null,
+      "data": "https://github.com/anthropics/hh-rlhf",
+      "huggingface": "https://huggingface.co/datasets/Anthropic/hh-rlhf",
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/releases/training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-feedback.md"
     },
     "primary_link": "https://arxiv.org/abs/2204.05862"
   },
@@ -2355,53 +2398,61 @@
     "venue": "ACL",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "construction_recipe"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "step_level"
     ],
     "training_use": [
-      "unknown"
+      "distillation",
+      "sft",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "rationale_distillation",
+      "chain_of_thought",
+      "small_model_training"
+    ],
     "category": [
-      "foundations_and_primers",
       "instruction_demonstration_rationale_data",
-      "preference_reward_feedback_data",
-      "data_construction_open_release_recipes"
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧠 Chain-of-thought / rationale data",
     "tags": [
-      "seeded-from-bib"
+      "chain-of-thought-rationale-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "Distilling Step-by-Step trains smaller models with answer labels plus teacher-generated rationales.",
+    "why_it_matters": "It is a compact rationale-distillation recipe showing how teacher traces become training targets while preserving faithfulness and lineage risks.",
+    "data_object": "Task label or answer plus generated rationale text.; process: input, label type, llm rationale; Offline T5 fine-tuning and benchmark evaluation.",
+    "feedback_verifier": "Gold or teacher labels check final answers; rationales are not independently step-verified.",
+    "audit_focus": "Audit teacher identity, prompt, rationale-generation settings, and dataset splits., Separate final-answer correctness from rationale faithfulness., Check generated-rationale and source-dataset licensing before reuse.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2305.02301",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2305.02301",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
+      "doi": "https://doi.org/10.48550/arXiv.2305.02301",
+      "code": "https://github.com/google-research/distilling-step-by-step",
+      "data": "https://github.com/google-research/distilling-step-by-step/blob/main/datasets.zip",
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/distilling-step-by-step.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2305.02301"
   },
   {
     "id": "factscore-2023",
@@ -2787,18 +2838,24 @@
     "venue": "NeurIPS",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "audit_failure"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "audit",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "chain_of_thought",
+      "faithfulness",
+      "interpretability",
+      "bias"
+    ],
     "category": [
       "foundations_and_primers",
       "instruction_demonstration_rationale_data",
@@ -2806,33 +2863,35 @@
     ],
     "subfield": "Other related work",
     "tags": [
-      "seeded-from-bib"
+      "chain-of-thought-rationale-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "This audit shows CoT explanations can rationalize biased answers without revealing the prompt feature that influenced the model.",
+    "why_it_matters": "It prevents treating rationale text as faithful reasoning data unless interventions check whether the trace actually drives the answer.",
+    "data_object": "Task answer plus generated explanation.; process: prompt, biasing feature, chain of thought; Offline prompting/evaluation setup.",
+    "feedback_verifier": "Task correctness plus intervention/bias-attribution analysis.",
+    "audit_focus": "Check whether CoT traces causally affect answers., Audit prompt artifacts and social-bias rationalization., Pin model/version details before reuse.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2305.04388",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2305.04388",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2305.04388",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/failures/language-models-dont-always-say-what-they-think.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2305.04388"
   },
   {
     "id": "large-language-models-encode-clinical-knowledge-2023",
@@ -3034,55 +3093,67 @@
     "id": "mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023",
     "title": "MAmmoTH: Building math generalist models through hybrid instruction tuning",
     "year": 2023,
-    "venue": "arXiv preprint",
+    "venue": "arXiv",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "step_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "instruction_tuning",
+      "chain_of_thought",
+      "program_of_thought"
+    ],
     "category": [
-      "foundations_and_primers",
       "instruction_demonstration_rationale_data",
-      "programmatically_verifiable_outcome_data"
+      "programmatically_verifiable_outcome_data",
+      "data_construction_open_release_recipes"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "instruction-tuning-sft-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "MAmmoTH releases MathInstruct, a hybrid CoT/PoT math instruction mixture for supervised math reasoning.",
+    "why_it_matters": "It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data.",
+    "data_object": "Math instruction with CoT or PoT rationale and final answer.; process: dataset name, rationale type, annotation source; Offline math instruction tuning plus PoT/Python-style evaluation.",
+    "feedback_verifier": "Math answer scoring and PoT executability where applicable; not a universal step verifier.",
+    "audit_focus": "Audit which subsets are human, model-generated, validated, or unvalidated., Check per-subset licenses and train/evaluation overlap., Separate CoT, PoT, model-size, decoding, and benchmark-familiarity effects.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2309.05653",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2309.05653",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "doi": "https://doi.org/10.48550/arXiv.2309.05653",
+      "code": "https://github.com/TIGER-AI-Lab/MAmmoTH",
+      "data": "https://huggingface.co/datasets/TIGER-Lab/MathInstruct",
+      "huggingface": "https://huggingface.co/TIGER-Lab/MAmmoTH-7B",
+      "project": "https://tiger-ai-lab.github.io/MAmmoTH/",
       "bibtex": null,
-      "card": null
+      "card": "cards/releases/mammoth-mathinstruct.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2309.05653"
   },
   {
     "id": "maud-a-merger-agreement-understanding-dataset-2023",
@@ -3141,21 +3212,26 @@
     "id": "measuring-faithfulness-in-chain-of-thought-reasoning-2023",
     "title": "Measuring faithfulness in chain-of-thought reasoning",
     "year": 2023,
-    "venue": "unknown",
+    "venue": "arXiv",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "audit_failure"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "audit",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "chain_of_thought",
+      "faithfulness",
+      "interpretability"
+    ],
     "category": [
       "foundations_and_primers",
       "instruction_demonstration_rationale_data",
@@ -3163,87 +3239,101 @@
     ],
     "subfield": "Other related work",
     "tags": [
-      "seeded-from-bib"
+      "chain-of-thought-rationale-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "This paper measures CoT faithfulness by intervening on reasoning text and observing answer changes.",
+    "why_it_matters": "It gives Track 01 a concrete audit lens for separating rationale text as a style target from rationale text as causal reasoning evidence.",
+    "data_object": "CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.",
+    "feedback_verifier": "Answer sensitivity to CoT interventions plus task correctness.",
+    "audit_focus": "Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2307.13702",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2307.13702",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2307.13702",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/failures/measuring-faithfulness-in-chain-of-thought-reasoning.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2307.13702"
   },
   {
     "id": "metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023",
     "title": "MetaMath: Bootstrap your own mathematical questions for large language models",
     "year": 2023,
-    "venue": "arXiv preprint",
+    "venue": "arXiv",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "distillation",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "synthetic_data",
+      "instruction_tuning"
+    ],
     "category": [
       "instruction_demonstration_rationale_data",
       "programmatically_verifiable_outcome_data",
-      "data_construction_open_release_recipes"
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "seeded-from-bib",
+      "synthetic-instruction-data",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "metadata pending",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "MetaMath bootstraps math instruction data by rewriting GSM8K and MATH training questions into MetaMathQA.",
+    "why_it_matters": "It is a math SFT scaling reference whose reuse depends on source split, teacher lineage, near-duplicate, and answer-level verifier audits.",
+    "data_object": "Mathematical question, original question, worked response, final answer, and augmentation type.; process: query, original question, response; Offline math instruction-tuning corpus.",
+    "feedback_verifier": "Gold training-set answers and math benchmark checks; no step verifier disclosed.",
+    "audit_focus": "Check augmented questions are derived from training splits., Audit near-duplicates after rewriting., Do not equate final-answer correctness with trace faithfulness.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2309.12284",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2309.12284",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "doi": "https://doi.org/10.48550/arXiv.2309.12284",
+      "code": "https://github.com/meta-math/MetaMath",
+      "data": "https://huggingface.co/datasets/meta-math/MetaMathQA",
+      "huggingface": "https://huggingface.co/meta-math/MetaMath-7B-V1.0",
+      "project": "https://meta-math.github.io/",
       "bibtex": null,
-      "card": null
+      "card": "cards/releases/metamath-bootstrap-your-own-mathematical-questions-for-large-language-models.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2309.12284"
   },
   {
     "id": "mind2web-towards-a-generalist-agent-for-the-web-2023",
@@ -3629,55 +3719,65 @@
   },
   {
     "id": "rest-textsuperscriptem-2023",
-    "title": "ReST\\textsuperscriptEM",
+    "title": "Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models",
     "year": 2023,
-    "venue": "arXiv preprint",
+    "venue": "arXiv",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "scaling_study"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "code",
+      "problem_solving",
+      "self_training"
+    ],
     "category": [
-      "foundations_and_primers"
+      "instruction_demonstration_rationale_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "Other related work",
+    "subfield": "🔁 Self-training / STaR",
     "tags": [
-      "seeded-from-bib"
+      "seeded-from-bib",
+      "self-training-star",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "ReST^EM samples model solutions, filters them with binary feedback, and fine-tunes on accepted examples.",
+    "why_it_matters": "It shows how verifiable task feedback can become synthetic training data beyond human-written examples, while exposing verifier and accepted-sample bias risks.",
+    "data_object": "Generated solution/answer candidate with binary feedback.; process: problem, sampled solution, binary feedback; Offline self-training loop over math/code problem-solving tasks.",
+    "feedback_verifier": "Binary correctness/verifiability feedback.",
+    "audit_focus": "Audit verifier false positives and rejected-sample visibility., Check benchmark reuse and split policy., Separate gains from more samples, filtering, and model scale.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2312.06585",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2312.06585",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2312.06585",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/restem-beyond-human-data-scaling-self-training.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2312.06585"
   },
   {
     "id": "self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023",
@@ -4231,56 +4331,67 @@
     "id": "wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023",
     "title": "WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct",
     "year": 2023,
-    "venue": "arXiv preprint",
+    "venue": "arXiv",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level",
+      "step_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "distillation",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "synthetic_data",
+      "evol_instruct"
+    ],
     "category": [
-      "foundations_and_primers",
       "instruction_demonstration_rationale_data",
       "programmatically_verifiable_outcome_data",
-      "data_construction_open_release_recipes"
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "seeded-from-bib",
+      "synthetic-instruction-data",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "WizardMath adapts Evol-Instruct to math reasoning, but the full training data is not publicly released.",
+    "why_it_matters": "It is useful as a recipe card precisely because it separates an influential construction method from a fully auditable data release.",
+    "data_object": "Math instruction, chain-of-thought style response, and final answer.; process: evolved instruction, response, final answer; Offline math instruction evolution and model fine-tuning.",
+    "feedback_verifier": "Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.",
+    "audit_focus": "Audit seed prompts, feedback signal, and retained/rejected instruction policy., Treat benchmark gains as model evidence, not data-quality proof., Check model and data license terms before reuse.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2308.09583",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2308.09583",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
+      "doi": "https://doi.org/10.48550/arXiv.2308.09583",
+      "code": "https://github.com/nlpxucan/WizardLM",
       "data": null,
-      "huggingface": null,
-      "project": null,
+      "huggingface": "https://huggingface.co/WizardLMTeam/WizardMath-7B-V1.1",
+      "project": "https://wizardlm.github.io/",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinforced-evol-instruct.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2308.09583"
   },
   {
     "id": "ai-models-collapse-when-trained-on-recursively-generated-data-2024",
@@ -5831,38 +5942,50 @@
     "id": "mammoth2-scaling-instructions-from-the-web-2024",
     "title": "MAmmoTH2: Scaling Instructions from the Web",
     "year": 2024,
-    "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
+    "venue": "NeurIPS",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "data_release",
+      "construction_recipe",
+      "scaling_study",
+      "model_report"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed",
+      "programmatic"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "math",
+      "science",
+      "web_instruction",
+      "instruction_tuning"
+    ],
     "category": [
-      "foundations_and_primers",
       "instruction_demonstration_rationale_data",
-      "preference_reward_feedback_data",
-      "environment_agent_trajectory_data",
+      "data_construction_open_release_recipes",
+      "programmatically_verifiable_outcome_data",
+      "training_usage_optimization_objectives",
       "scaling_rlvr_test_time_compute"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "instruction-tuning-sft-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L1_link_verified",
+    "one_line_summary": "MAmmoTH2 builds WebInstruct by recalling web documents, extracting Q-A pairs, refining them, and training reasoning models.",
+    "why_it_matters": "It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks.",
+    "data_object": "Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.",
+    "feedback_verifier": "Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.",
+    "audit_focus": "Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -5873,13 +5996,13 @@
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "doi": "https://doi.org/10.48550/arXiv.2405.03548",
+      "code": "https://github.com/TIGER-AI-Lab/MAmmoTH2",
+      "data": "https://huggingface.co/datasets/TIGER-Lab/WebInstructFull",
+      "huggingface": "https://huggingface.co/TIGER-Lab/MAmmoTH2-8x7B",
+      "project": "https://tiger-ai-lab.github.io/MAmmoTH2/",
       "bibtex": null,
-      "card": null
+      "card": "cards/releases/mammoth2-scaling-instructions-from-the-web.md"
     },
     "primary_link": "https://arxiv.org/abs/2405.03548"
   },
@@ -6409,55 +6532,69 @@
   },
   {
     "id": "r-tuning-2024",
-    "title": "R-Tuning",
+    "title": "R-Tuning: Instructing Large Language Models to Say 'I Don't Know'",
     "year": 2024,
     "venue": "NAACL",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "data_release"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required",
+      "mixed"
     ],
     "supervision_granularity": [
-      "unknown"
+      "answer_level"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "safety_alignment",
+      "evaluation"
     ],
-    "domains": [],
+    "domains": [
+      "refusal",
+      "hallucination",
+      "instruction_tuning",
+      "calibration"
+    ],
     "category": [
-      "foundations_and_primers"
+      "instruction_demonstration_rationale_data",
+      "judgment_rubric_domain_expert_data",
+      "audit_failure_contamination_verifier_attacks",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "instruction-tuning-sft-data",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "R-Tuning turns abstention into instruction data by teaching models to answer known questions and refuse unknown ones.",
+    "why_it_matters": "It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.",
+    "data_object": "Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation.",
+    "feedback_verifier": "Known/unknown classification relative to a parametric-knowledge proxy.",
+    "audit_focus": "Audit how known vs unknown is determined for each base model., Check over-refusal on answerable questions., Pin data version and license for the Google Drive release.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
-      "venue": null,
-      "arxiv": null,
+      "paper": "https://arxiv.org/abs/2311.09677",
+      "venue": "https://aclanthology.org/2024.naacl-long.394/",
+      "arxiv": "https://arxiv.org/abs/2311.09677",
       "openreview": null,
-      "acl": null,
+      "acl": "https://aclanthology.org/2024.naacl-long.394/",
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
+      "doi": "https://doi.org/10.18653/v1/2024.naacl-long.394",
+      "code": "https://github.com/shizhediao/R-Tuning",
+      "data": "https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing",
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2311.09677"
   },
   {
     "id": "raft-adapting-language-model-to-domain-specific-rag-2024",
@@ -6834,56 +6971,66 @@
   },
   {
     "id": "self-rewarding-lms-2024",
-    "title": "Self-Rewarding LMs",
+    "title": "Self-Rewarding Language Models",
     "year": 2024,
     "venue": "ICML",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "construction_recipe",
+      "verifier_reward"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required"
     ],
     "supervision_granularity": [
-      "unknown"
+      "pairwise_preference"
     ],
     "training_use": [
-      "unknown"
+      "preference_learning"
     ],
-    "domains": [],
+    "domains": [
+      "instruction_following",
+      "llm_as_judge",
+      "self_training",
+      "preference_feedback"
+    ],
     "category": [
       "foundations_and_primers",
-      "preference_reward_feedback_data"
+      "preference_reward_feedback_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
     "subfield": "Other related work",
     "tags": [
-      "seeded-from-bib"
+      "rlhf-reward-model-surveys",
+      "seeded-from-bib",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "Self-Rewarding Language Models use model-generated judgments as preference signals for iterative DPO.",
+    "why_it_matters": "It makes self-generated judge feedback a first-class post-training data object with clear risks around judge bias and reward hacking.",
+    "data_object": "Candidate responses with self-generated reward/judgment signal for iterative DPO.; process: prompt, candidate response, self reward; Offline iterative preference-training loop.",
+    "feedback_verifier": "The language model itself acting as judge.",
+    "audit_focus": "Inspect judge prompt, response sampling, preference conversion, and iteration count., Check calibration against external human or benchmark signals., Watch for style bias, overconfidence, and feedback collapse.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2401.10020",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2401.10020",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2401.10020",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/self-rewarding-language-models.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2401.10020"
   },
   {
     "id": "spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024",
@@ -6892,51 +7039,59 @@
     "venue": "ICML",
     "authors": [],
     "source_role": [
-      "survey_background"
+      "construction_recipe"
     ],
     "verification_contract": [
-      "unknown"
+      "judgment_required"
     ],
     "supervision_granularity": [
-      "unknown"
+      "pairwise_preference"
     ],
     "training_use": [
-      "unknown"
+      "sft",
+      "preference_learning"
     ],
-    "domains": [],
+    "domains": [
+      "instruction_following",
+      "self_training",
+      "self_play"
+    ],
     "category": [
-      "foundations_and_primers",
-      "data_construction_open_release_recipes"
+      "instruction_demonstration_rationale_data",
+      "data_construction_open_release_recipes",
+      "training_usage_optimization_objectives"
     ],
-    "subfield": "Other related work",
+    "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
-      "seeded-from-bib"
+      "seeded-from-bib",
+      "self-training-star",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-    "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-    "data_object": "survey background",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "needs_metadata",
-    "needs_search": true,
+    "one_line_summary": "SPIN pairs real SFT responses with model-generated responses and iteratively fine-tunes through a self-play objective.",
+    "why_it_matters": "It is a compact example of demonstration-anchored self-play where the model's own responses become contrastive training records.",
+    "data_object": "Pair of real SFT response and generated response for the same prompt.; process: real prompt response, generated prompt response, iteration; Offline self-play fine-tuning pipeline.",
+    "feedback_verifier": "SPIN objective distinguishes self-generated responses from target SFT responses.",
+    "audit_focus": "Pin checkpoint revision, prompt sample, generated data version, and iteration., Audit self-generated style bias and benchmark overfitting., Check dataset/model licenses.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://arxiv.org/abs/2401.01335",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2401.01335",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
-      "code": null,
-      "data": null,
-      "huggingface": null,
-      "project": null,
+      "doi": "https://doi.org/10.48550/arXiv.2401.01335",
+      "code": "https://github.com/uclaml/SPIN",
+      "data": "https://huggingface.co/datasets/UCLA-AGI/SPIN_iter0",
+      "huggingface": "https://huggingface.co/UCLA-AGI/zephyr-7b-sft-full-SPIN-iter0",
+      "project": "https://uclaml.github.io/SPIN/",
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/spin-self-play-fine-tuning.md"
     },
-    "primary_link": null
+    "primary_link": "https://arxiv.org/abs/2401.01335"
   },
   {
     "id": "swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024",
@@ -15582,13 +15737,16 @@
     "title": "OpenR1-Math-220k",
     "year": 2025,
     "venue": "Hugging Face / GitHub",
-    "authors": [],
+    "authors": [
+      "Hugging Face Open R1 team"
+    ],
     "source_role": [
       "data_release",
       "construction_recipe"
     ],
     "verification_contract": [
-      "programmatic"
+      "programmatic",
+      "mixed"
     ],
     "supervision_granularity": [
       "answer_level"
@@ -15596,7 +15754,8 @@
     "training_use": [
       "sft",
       "distillation",
-      "rlvr"
+      "preference_learning",
+      "evaluation"
     ],
     "domains": [
       "math"
@@ -15614,12 +15773,12 @@
       "curated-card",
       "primary-link-checked"
     ],
-    "one_line_summary": "Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.",
-    "why_it_matters": "Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.",
-    "data_object": "math problem with reasoning trace and final answer; process: problem, reasoning trace, answer; offline math corpus",
-    "feedback_verifier": "math answer verifier / filtering pipeline",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
+    "one_line_summary": "OpenR1-Math-220k releases about 220k NuminaMath-derived math problems with DeepSeek-R1 reasoning traces and answer-level filtering by Math-Verify plus Llama judge recovery.",
+    "why_it_matters": "The release makes the Open R1 reproduction effort concrete as a dataset with prompts, generated traces, correctness fields, split metadata, and filtering signals exposed enough for L4 card-level reuse and audit planning.",
+    "data_object": "math problem, reference solution/answer, generated reasoning traces, final answer, and correctness fields; process: problem, solution, answer; Offline Hugging Face parquet dataset generated through the Open R1 reproduction pipeline.",
+    "feedback_verifier": "Math-Verify answer checking plus Llama-3.3-70B-Instruct judge recovery for cases Math-Verify did not verify.",
+    "audit_focus": "Math answer parsing can reject correct answers or accept format-compatible wrong answers., Llama judge recovery introduces judgment-required behavior into an otherwise programmatic pipeline., Only accepted/correct traces are emphasized, so failed traces and ambiguity are not equally visible.",
+    "curation_level": "L4_carded",
     "status": "partial",
     "needs_search": true,
     "artifacts": {
@@ -15632,9 +15791,9 @@
       "cvf": null,
       "doi": null,
       "code": "https://github.com/huggingface/open-r1",
-      "data": null,
+      "data": "https://huggingface.co/datasets/open-r1/OpenR1-Math-220k",
       "huggingface": "https://huggingface.co/datasets/open-r1/OpenR1-Math-220k",
-      "project": null,
+      "project": "https://huggingface.co/blog/open-r1/update-2",
       "bibtex": null,
       "card": "cards/releases/openr1.md"
     },
@@ -15780,8 +15939,10 @@
     "id": "qwen3-coder-2025",
     "title": "Qwen3-Coder",
     "year": 2025,
-    "venue": "GitHub / project report",
-    "authors": [],
+    "venue": "Qwen official blog / GitHub / Hugging Face model release",
+    "authors": [
+      "Qwen Team"
+    ],
     "source_role": [
       "model_report",
       "construction_recipe"
@@ -15793,6 +15954,7 @@
     ],
     "supervision_granularity": [
       "answer_level",
+      "state_action_level",
       "full_episode"
     ],
     "training_use": [
@@ -15818,33 +15980,37 @@
     "subfield": "🧱 Instruction tuning / SFT data",
     "tags": [
       "curated-card",
-      "primary-link-checked"
+      "primary-link-checked",
+      "qwen",
+      "code-rl",
+      "agent-rl",
+      "tool-use"
     ],
-    "one_line_summary": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.",
-    "why_it_matters": "Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.",
-    "data_object": "code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments",
-    "feedback_verifier": "unit tests, execution feedback, and agent task success signals",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L0_seeded",
-    "status": "partial",
-    "needs_search": true,
+    "one_line_summary": "Qwen3-Coder discloses a coding-agent post-training recipe built around code-heavy data, tool-call behavior, executable feedback, and large-scale environment interaction.",
+    "why_it_matters": "It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.",
+    "data_object": "code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments",
+    "feedback_verifier": "unit tests, execution feedback, automatically scaled test cases, and environment task success signals",
+    "audit_focus": "Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.",
+    "curation_level": "L4_carded",
+    "status": "verified",
+    "needs_search": false,
     "artifacts": {
-      "paper": null,
+      "paper": "https://qwenlm.github.io/blog/qwen3-coder/",
       "venue": null,
-      "arxiv": null,
+      "arxiv": "https://arxiv.org/abs/2505.09388",
       "openreview": null,
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2505.09388",
       "code": "https://github.com/QwenLM/Qwen3-Coder",
       "data": null,
-      "huggingface": null,
+      "huggingface": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct",
       "project": "https://qwenlm.github.io/blog/qwen3-coder/",
       "bibtex": null,
       "card": "cards/recipes/qwen3_coder.md"
     },
-    "primary_link": null
+    "primary_link": "https://qwenlm.github.io/blog/qwen3-coder/"
   },
   {
     "id": "gsm8k-grade-school-math-2021",
@@ -15981,7 +16147,7 @@
   },
   {
     "id": "reasoning-with-large-language-models-a-survey-2024",
-    "title": "Reasoning with Large Language Models, a Survey",
+    "title": "Multi-Step Reasoning with Large Language Models, a Survey",
     "year": 2024,
     "venue": "arXiv",
     "authors": [],
@@ -15989,17 +16155,21 @@
       "survey_background"
     ],
     "verification_contract": [
-      "unknown"
+      "mixed"
     ],
     "supervision_granularity": [
       "unknown"
     ],
     "training_use": [
-      "audit"
+      "audit",
+      "evaluation"
     ],
     "domains": [
       "reasoning",
-      "survey"
+      "multi_step_reasoning",
+      "survey",
+      "chain_of_thought",
+      "tool_use"
     ],
     "category": [
       "foundations_and_primers",
@@ -16008,15 +16178,17 @@
     ],
     "subfield": "🧠 Reasoning LLM surveys",
     "tags": [
+      "reasoning-llm-surveys",
+      "reasoning-llms",
       "survey",
-      "reasoning-llms"
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and evaluation patterns.",
-    "why_it_matters": "It fills the reasoning-LLM survey lane of the atlas so readers can separate model-centric reasoning work from data-object and verifier-centric papers.",
-    "data_object": "survey taxonomy and literature map.; literature survey.",
-    "feedback_verifier": "metadata pending",
-    "audit_focus": "check links, lineage, verifier, split, and contamination",
-    "curation_level": "L1_link_verified",
+    "one_line_summary": "This survey maps multi-step reasoning with LLMs across generation, evaluation, and control methods.",
+    "why_it_matters": "It helps readers route model-centric reasoning claims into concrete questions about traces, verifiers, tools, rewards, and evaluation surfaces.",
+    "data_object": "Taxonomy and literature map for multi-step reasoning methods.; process: reasoning method, generation strategy, evaluation method; LLM multi-step reasoning tasks and methods.",
+    "feedback_verifier": "Mixed evaluation and control signals summarized by the survey; no single verifier.",
+    "audit_focus": "Do not treat model-centric taxonomy as trainable data quality proof., Check trace authorship, verifier contract, tool environment, budget, and contamination controls in each primary paper., Separate reasoning ability, trace style, external tools, and benchmark performance.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -16027,13 +16199,13 @@
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2407.11511",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/multi-step-reasoning-with-large-language-models-a-survey.md"
     },
     "primary_link": "https://arxiv.org/abs/2407.11511"
   },
@@ -16066,7 +16238,7 @@
     ],
     "domains": [
       "rlhf",
-      "reward-modeling",
+      "reward_modeling",
       "alignment"
     ],
     "category": [
@@ -16076,19 +16248,21 @@
       "training_usage_optimization_objectives",
       "audit_failure_contamination_verifier_attacks"
     ],
-    "subfield": "🧪 RLHF / reward-model surveys",
+    "subfield": "🧭 Post-training surveys",
     "tags": [
-      "rlhf",
-      "reward-model-survey",
       "human-feedback",
-      "preference-learning"
+      "preference-learning",
+      "reward-model-survey",
+      "rlhf",
+      "rlhf-reward-model-surveys",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference data and learned reward models.",
-    "why_it_matters": "It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization before readers compare them with verifiable-reward reasoning data.",
-    "data_object": "survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL settings.",
-    "feedback_verifier": "learned reward model from human feedback.",
-    "audit_focus": "Human feedback can be noisy, subjective, sparse, or expensive., Reward models can overfit annotator preferences and become exploitable objectives., LLM readers may overgeneralize broad RLHF lessons to verifiable-reasoning settings.",
-    "curation_level": "L3_summary_ready",
+    "one_line_summary": "This survey maps RLHF as a feedback-to-reward-to-policy pipeline.",
+    "why_it_matters": "It helps readers distinguish human feedback, reward modeling, and policy optimization before comparing them with verifiable-reward reasoning data.",
+    "data_object": "Survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL domains.",
+    "feedback_verifier": "Human feedback transformed into learned reward or policy-optimization signal.",
+    "audit_focus": "Do not infer reusable datasets from survey descriptions alone., Follow primary sources for provenance, license, split, and annotator details., Avoid overgeneralizing broad RLHF lessons to verifiable reasoning.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -16105,7 +16279,7 @@
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/a-survey-of-reinforcement-learning-from-human-feedback.md"
     },
     "primary_link": "https://arxiv.org/abs/2312.14925"
   },
@@ -16144,34 +16318,34 @@
       "audit"
     ],
     "domains": [
-      "reward-modeling",
+      "reward_modeling",
       "rlhf",
-      "alignment"
+      "alignment",
+      "preference_learning"
     ],
     "category": [
       "foundations_and_primers",
       "preference_reward_feedback_data",
-      "programmatically_verifiable_outcome_data",
-      "process_trace_supervision_data",
       "judgment_rubric_domain_expert_data",
       "training_usage_optimization_objectives",
-      "scaling_rlvr_test_time_compute",
       "benchmarks_evaluation_surfaces",
       "audit_failure_contamination_verifier_attacks"
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
+      "preference-data",
       "reward-model-survey",
       "reward-modeling",
       "rlhf",
-      "preference-data"
+      "rlhf-reward-model-surveys",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure modes.",
-    "why_it_matters": "It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.",
-    "data_object": "taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.; process: preference source, reward model architecture, usage mode; LLM reward-model training and evaluation pipelines.",
-    "feedback_verifier": "reward model as proxy objective for downstream post-training.",
-    "audit_focus": "Reward models may encode annotator bias, style bias, or length preference., Proxy rewards can be overoptimized or attacked when used as training objectives., Benchmark scores can obscure whether the reward model is useful for reasoning data.",
-    "curation_level": "L3_summary_ready",
+    "one_line_summary": "This survey organizes reward models by data source, objective, application, benchmark, and failure mode.",
+    "why_it_matters": "It gives Track 00 vocabulary for comparing learned rewards, PRMs, rubrics, LLM judges, and programmatic verifiers.",
+    "data_object": "Taxonomy over reward-model sources, architectures, usage modes, applications, benchmarks, and challenges.; process: preference source, reward model type, usage mode; LLM reward-model training, evaluation, and post-training pipelines.",
+    "feedback_verifier": "Learned or rubric/judge-derived reward model used as proxy feedback.",
+    "audit_focus": "Reward models can encode annotator, style, length, or domain bias., Proxy rewards can be overoptimized or attacked., Benchmark scores do not prove downstream training usefulness.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -16188,7 +16362,7 @@
       "huggingface": null,
       "project": "https://github.com/JLZhong23/awesome-reward-models",
       "bibtex": null,
-      "card": null
+      "card": "cards/verifiers/a-comprehensive-survey-of-reward-models.md"
     },
     "primary_link": "https://arxiv.org/abs/2504.12328"
   },
@@ -16222,16 +16396,17 @@
     "training_use": [
       "preference_learning",
       "reward_modeling",
-      "evaluation"
+      "evaluation",
+      "audit"
     ],
     "domains": [
-      "human-preference",
-      "preference-learning",
+      "human_preference",
+      "preference_learning",
+      "rlhf",
       "alignment"
     ],
     "category": [
       "foundations_and_primers",
-      "instruction_demonstration_rationale_data",
       "preference_reward_feedback_data",
       "judgment_rubric_domain_expert_data",
       "training_usage_optimization_objectives",
@@ -16239,17 +16414,19 @@
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
-      "preference-learning",
       "human-preference",
+      "preference-learning",
+      "reward-modeling",
       "rlhf",
-      "reward-modeling"
+      "rlhf-reward-model-surveys",
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for LLM alignment.",
-    "why_it_matters": "It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.",
-    "data_object": "preference-centered taxonomy over feedback data, preference modeling, preference usage, and aligned-model evaluation.; process: preference source, preference format, preference model; LLM alignment pipelines using human preference signals.",
-    "feedback_verifier": "human preference signal transformed into reward, preference loss, or evaluation judgment.",
-    "audit_focus": "Preference labels can be noisy, culturally variable, or underspecified., Pairwise preferences may not preserve reasoning correctness or factual grounding., Evaluation of aligned models can conflate helpfulness, style, and reasoning quality.",
-    "curation_level": "L3_summary_ready",
+    "one_line_summary": "This survey reviews human preference feedback sources, formats, modeling methods, usage objectives, and evaluation.",
+    "why_it_matters": "It helps readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.",
+    "data_object": "Preference-centered taxonomy over feedback data, modeling, usage, and evaluation.; process: preference source, preference format, preference model; LLM alignment pipelines using human preference signals.",
+    "feedback_verifier": "Human preference transformed into reward, preference loss, or evaluation judgment.",
+    "audit_focus": "Check annotator assumptions, preference format, and disagreement policy., Preference labels may not preserve reasoning correctness., Evaluation can conflate helpfulness, style, harmlessness, and reasoning quality.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -16266,7 +16443,7 @@
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/verifiers/a-survey-on-human-preference-learning-for-large-language-models.md"
     },
     "primary_link": "https://arxiv.org/abs/2406.11191"
   },
@@ -16288,8 +16465,7 @@
       "Na Cheng"
     ],
     "source_role": [
-      "survey_background",
-      "scaling_study"
+      "survey_background"
     ],
     "verification_contract": [
       "mixed",
@@ -16303,14 +16479,14 @@
       "reward_modeling",
       "preference_learning",
       "rlvr",
-      "test_time_compute",
       "audit"
     ],
     "domains": [
-      "post-training",
+      "post_training",
       "rlhf",
       "rlvr",
-      "preference-learning"
+      "preference_learning",
+      "policy_optimization"
     ],
     "category": [
       "foundations_and_primers",
@@ -16323,18 +16499,20 @@
     ],
     "subfield": "🧭 Post-training surveys",
     "tags": [
+      "policy-optimization",
+      "post-training",
+      "post-training-surveys",
+      "reward-model-survey",
       "rlhf",
       "rlvr",
-      "reward-model-survey",
-      "post-training",
-      "policy-optimization"
+      "track-00-01-expansion"
     ],
-    "one_line_summary": "Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards, and optimization details.",
-    "why_it_matters": "It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.",
-    "data_object": "technical survey comparing RLHF and RLVR policy-gradient style post-training methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.",
-    "feedback_verifier": "learned preference rewards, verifiable rewards, and policy-gradient objectives.",
-    "audit_focus": "Method comparisons can mix data effects with optimizer and sampling-budget effects., RLHF and RLVR rewards are often discussed together despite different verification contracts., Implementation details can dominate reported gains if not separated from data quality.",
-    "curation_level": "L3_summary_ready",
+    "one_line_summary": "This survey connects RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods.",
+    "why_it_matters": "It helps readers avoid conflating human preference rewards with programmatic or verifiable rewards in reasoning-data pipelines.",
+    "data_object": "Technical taxonomy comparing RLHF and RLVR policy-gradient-style methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.",
+    "feedback_verifier": "Learned preference rewards, verifiable rewards, and policy-gradient objectives.",
+    "audit_focus": "Separate data source, reward contract, rollout policy, optimizer, model size, and inference budget., Check false positives, reward hacking, sampling budget, and benchmark reuse., Do not attribute gains to generic RL without naming the data and reward object.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -16351,7 +16529,7 @@
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/recipes/reinforcement-learning-for-llm-post-training-a-survey.md"
     },
     "primary_link": "https://arxiv.org/abs/2407.16216"
   },
@@ -16499,11 +16677,14 @@
       "unknown"
     ],
     "training_use": [
-      "audit"
+      "audit",
+      "evaluation"
     ],
     "domains": [
       "contamination",
-      "data-reuse"
+      "data_reuse",
+      "evaluation",
+      "train_test_overlap"
     ],
     "category": [
       "foundations_and_primers",
@@ -16513,16 +16694,18 @@
     ],
     "subfield": "🧯 Contamination / evaluation surveys",
     "tags": [
-      "train-test-overlap",
+      "contamination",
+      "contamination-evaluation-surveys",
       "data-reuse",
-      "contamination"
+      "track-00-01-expansion",
+      "train-test-overlap"
     ],
-    "one_line_summary": "Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted with data reuse in mind.",
-    "why_it_matters": "It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence.",
-    "data_object": "overlap and reporting analysis.; process: training corpus, evaluation set, overlap estimate, reporting policy.; benchmark and training-data documentation.",
-    "feedback_verifier": "overlap analysis rather than a reward model.",
-    "audit_focus": "Reported benchmark gains can be inflated when train-test overlap is not disclosed.",
-    "curation_level": "L1_link_verified",
+    "one_line_summary": "This audit argues model developers should report train-test overlap so public-test-set results can be interpreted under contamination risk.",
+    "why_it_matters": "It gives the atlas a direct reason to record overlap, data reuse, and disclosure policy before treating benchmark gains as reasoning progress.",
+    "data_object": "Overlap-reporting analysis over model developers, training data disclosure, overlap methodology, and public-test-set claims.; process: model developer, evaluation set, training data access; Benchmark and training-data documentation.",
+    "feedback_verifier": "Overlap analysis rather than reward model.",
+    "audit_focus": "Ask whether training data is public and overlap statistics are reported., Check overlap methodology and benchmark reuse., Separate memorization, contamination, and genuine reasoning improvement.",
+    "curation_level": "L4_carded",
     "status": "verified",
     "needs_search": false,
     "artifacts": {
@@ -16533,13 +16716,13 @@
       "acl": null,
       "pmlr": null,
       "cvf": null,
-      "doi": null,
+      "doi": "https://doi.org/10.48550/arXiv.2410.08385",
       "code": null,
       "data": null,
       "huggingface": null,
       "project": null,
       "bibtex": null,
-      "card": null
+      "card": "cards/failures/language-model-developers-should-report-train-test-overlap.md"
     },
     "primary_link": "https://arxiv.org/abs/2410.08385"
   }

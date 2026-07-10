@@ -88,6 +88,7 @@
   venue: NeurIPS
   authors: []
   source_role:
+  - verifier_reward
   - survey_background
   verification_contract:
   - judgment_required
@@ -95,12 +96,16 @@
   - pairwise_preference
   - scalar_reward
   domains:
+  - rlhf
+  - reward_modeling
   - alignment
+  - reinforcement_learning
   training_use:
   - reward_modeling
   - preference_learning
   construction_layer:
-  - release_audit
+  - reward_verifier_layer
+  - optimizer_scaffold
   artifacts:
     paper: https://arxiv.org/abs/1706.03741
     arxiv: https://arxiv.org/abs/1706.03741
@@ -108,48 +113,58 @@
     data: null
     project: null
     huggingface: null
-    doi: null
-    venue: null
+    doi: https://doi.org/10.48550/arXiv.1706.03741
+    venue: https://papers.nips.cc/paper/7017-deep-reinforcement-learning-from-human-preferences
     openreview: null
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: RL environments such as Atari and simulated locomotion tasks.
+    trace_author: RL policy generates trajectory segments; humans compare segment pairs.
+    answer_format: Pairwise preference labels over short trajectory clips plus learned scalar rewards.
+    process_fields:
+    - trajectory_segment_a
+    - trajectory_segment_b
+    - human_preference
+    - learned_reward
+    - policy_rollout
+    environment_or_substrate: Atari and simulated control environments.
+    verifier_or_reward: Reward model trained from human preferences between trajectory segments.
+    terminal_predicate: Higher learned reward under policy optimization, not programmatic correctness.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Non-expert human preference labelers.
+    generator: RL policy rollouts.
+    filtering_rule: Preference queries selected over trajectory segments.
+    sampling_protocol: Policy-dependent rollout and comparison collection.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Reward model plus RL policy optimization.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: RL environments such as Atari and simulated locomotion tasks.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Non-expert human preference labelers.
+    known_failure_modes:
+    - Audit labeler instructions, segment-selection policy, and reward-model calibration.
+    - Clip-level preferences may miss long-horizon failures.
+    - Optimizing learned rewards can exploit proxy errors.
     citation_status: verified
     confidence: high
-    notes: 'Seeded from BibTeX key christiano2017. Deduplicated title collision; dropped lower-confidence id: deep-reinforcement-learning-from-human-preferences-2017.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: 'It gives the atlas a foundational reward-model data object: trajectory clips, human comparisons, learned scalar rewards, and proxy-risk audits.'
   related: []
   tags:
-  - seeded-from-bib
-  - rlhf
   - preference-data
   - reward-modeling
+  - rlhf
+  - rlhf-reward-model-surveys
+  - seeded-from-bib
+  - track-00-01-expansion
   status: verified
   category:
   - foundations_and_primers
@@ -157,21 +172,19 @@
   - judgment_rubric_domain_expert_data
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Shows how human preference comparisons can train reward models for reinforcement learning.
-  why_it_matters: It is a foundation for later post-training data records that turn comparisons into trainable reward signals.
+  one_line: This paper shows how pairwise human preferences over trajectory segments can train a reward model for RL.
+  card: cards/verifiers/deep-reinforcement-learning-from-human-preferences.md
+  needs: []
+  one_line_summary: This paper shows how pairwise human preferences over trajectory segments can train a reward model for RL.
+  why_it_matters: 'It gives the atlas a foundational reward-model data object: trajectory clips, human comparisons, learned scalar rewards, and proxy-risk audits.'
   verification:
     link_verified: true
     artifact_verified: false
-    verified_at: '2026-06-15'
-    verified_by: curation
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official primary link pinned in artifacts.
-  curation_level: L1_link_verified
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
+  curation_level: L4_carded
 - id: data-statements-for-natural-language-processing-2018
   title: Data statements for natural language processing
   year: 2018
@@ -1128,24 +1141,30 @@
   venue: ICLR
   authors: []
   source_role:
+  - construction_recipe
   - survey_background
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - instruction_following
+  - nlp_tasks
+  - zero_shot_generalization
   training_use:
-  - unknown
+  - sft
+  - evaluation
   construction_layer:
-  - release_audit
+  - prompt_sourcing
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
+    paper: https://arxiv.org/abs/2109.01652
+    arxiv: https://arxiv.org/abs/2109.01652
+    code: https://github.com/google-research/FLAN
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2109.01652
     venue: null
     openreview: null
     acl: null
@@ -1153,55 +1172,65 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Over 60 supervised NLP datasets verbalized with natural-language instruction templates.
+    trace_author: Human/template-authored task instructions; no reasoning trace release.
+    answer_format: Task-specific labels or text targets.
+    process_fields:
+    - dataset
+    - instruction_template
+    - input
+    - target
+    - held_out_task_group
+    environment_or_substrate: Offline instruction-tuning and held-out task evaluation.
+    verifier_or_reward: Source-dataset labels and task metrics; no reusable reward model or verifier artifact.
+    terminal_predicate: Task-specific correctness metric.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Existing supervised NLP datasets plus instruction templates.
+    generator: Template-based instruction verbalization.
+    filtering_rule: Task and template selection; exact reusable mixture metadata remains partial.
+    sampling_protocol: Multitask mixture with held-out task groups.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Supervised fine-tuning.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key flan2021. Deduplicated title collision; dropped lower-confidence id: finetuned-language-models-are-zero-shot-learners-2021.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Over 60 supervised NLP datasets verbalized with natural-language instruction templates.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Existing supervised NLP datasets plus instruction templates.
+    known_failure_modes:
+    - Audit task mixture, template authorship, and held-out task boundaries.
+    - Check source dataset licenses and train/eval overlap.
+    - Do not treat answer-only task accuracy as evidence of reasoning-trace quality.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It is a foundation for reasoning SFT because later instruction and teacher-trace datasets inherit its mixture, template, and held-out-task audit questions.
   related: []
   tags:
+  - instruction-tuning-sft-data
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
+  - instruction_demonstration_rationale_data
   - foundations_and_primers
-  one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Seeded from local BibTeX for later atlas classification; needs curator review.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - data_construction_open_release_recipes
+  one_line: FLAN converts supervised NLP tasks into natural-language instruction examples for zero-shot generalization.
+  card: cards/recipes/finetuned-language-models-are-zero-shot-learners.md
+  needs: []
+  one_line_summary: FLAN converts supervised NLP tasks into natural-language instruction examples for zero-shot generalization.
+  why_it_matters: It is a foundation for reasoning SFT because later instruction and teacher-trace datasets inherit its mixture, template, and held-out-task audit questions.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: finqa-a-dataset-of-numerical-reasoning-over-financial-data-2021
   title: 'FinQA: A dataset of numerical reasoning over financial data'
   year: 2021
@@ -1617,80 +1646,99 @@
   venue: ICLR
   authors: []
   source_role:
-  - survey_background
+  - construction_recipe
+  - data_release
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - instruction_following
+  - prompt_templates
+  - zero_shot_generalization
   training_use:
-  - unknown
+  - sft
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - optimizer_scaffold
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
-    venue: null
-    openreview: null
+    paper: https://arxiv.org/abs/2110.08207
+    arxiv: https://arxiv.org/abs/2110.08207
+    code: https://github.com/bigscience-workshop/t-zero
+    data: https://huggingface.co/datasets/bigscience/P3
+    project: https://github.com/bigscience-workshop/promptsource
+    huggingface: https://huggingface.co/bigscience/T0pp
+    doi: https://doi.org/10.48550/arXiv.2110.08207
+    venue: https://openreview.net/forum?id=9Vrb9D0WI4
+    openreview: https://openreview.net/forum?id=9Vrb9D0WI4
     acl: null
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Supervised datasets converted into prompted forms through PromptSource/P3.
+    trace_author: Community prompt templates and original dataset labels; no rationale trace.
+    answer_format: Prompted input plus target output.
+    process_fields:
+    - dataset
+    - subset
+    - prompt_id
+    - prompt_template
+    - input
+    - target
+    - held_out_task
+    environment_or_substrate: Offline multitask prompted fine-tuning.
+    verifier_or_reward: Source-dataset labels and task-specific metrics.
+    terminal_predicate: Held-out task performance under task metrics.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Existing supervised datasets and human-readable prompt templates.
+    generator: PromptSource prompt functions.
+    filtering_rule: Task/prompt selection and held-out task design.
+    sampling_protocol: Multitask mixture over prompted datasets.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Supervised multitask prompted fine-tuning.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key t0_2021. Deduplicated title collision; dropped lower-confidence id: multitask-prompted-training-enables-zero-shot-task-generalization-2021.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Supervised datasets converted into prompted forms through PromptSource/P3.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Existing supervised datasets and human-readable prompt templates.
+    known_failure_modes:
+    - Audit prompt authorship, source licenses, and train/held-out task boundaries.
+    - Check whether prompts leak task identity or label shortcuts.
+    - Treat prompt quality separately from reasoning-data quality.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: 'It is a Track 01 reference for prompt-source infrastructure: the data object includes dataset source, prompt template, target output, and held-out task policy.'
   related: []
   tags:
+  - instruction-tuning-sft-data
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
+  - instruction_demonstration_rationale_data
   - foundations_and_primers
-  one_line: Seeded from local BibTeX for later atlas classification; needs curator review.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Seeded from local BibTeX for later atlas classification; needs curator review.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - data_construction_open_release_recipes
+  one_line: T0 makes prompt templates and prompted dataset mixtures concrete artifacts for zero-shot instruction tuning.
+  card: cards/recipes/multitask-prompted-training-enables-zero-shot-task-generalization.md
+  needs: []
+  one_line_summary: T0 makes prompt templates and prompted dataset mixtures concrete artifacts for zero-shot instruction tuning.
+  why_it_matters: 'It is a Track 01 reference for prompt-source infrastructure: the data object includes dataset source, prompt template, target output, and held-out task policy.'
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021
   title: 'Qasper: A dataset of information-seeking questions and answers over scientific research papers'
   year: 2021
@@ -2581,86 +2629,103 @@
   venue: ICML
   authors: []
   source_role:
-  - survey_background
+  - scaling_study
+  - audit_failure
+  - verifier_reward
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - pairwise_preference
+  - scalar_reward
+  domains:
+  - rlhf
+  - reward_modeling
+  - reward_overoptimization
+  - alignment
   training_use:
-  - unknown
+  - audit
+  - evaluation
+  - reward_modeling
   construction_layer:
-  - release_audit
+  - reward_verifier_layer
+  - scaling_report
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2210.10760
+    arxiv: https://arxiv.org/abs/2210.10760
     code: null
     data: null
     project: null
     huggingface: null
-    doi: null
-    venue: null
-    openreview: null
+    doi: https://doi.org/10.48550/arXiv.2210.10760
+    venue: https://proceedings.mlr.press/v202/gao23h.html
+    openreview: https://openreview.net/forum?id=bBLjms8nZE
     acl: null
-    pmlr: null
+    pmlr: https://proceedings.mlr.press/v202/gao23h.html
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Synthetic RLHF setup using a fixed gold reward model as stand-in for human preferences.
+    trace_author: Policies generate candidate outputs optimized by RL or best-of-n sampling.
+    answer_format: Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.
+    process_fields:
+    - proxy_reward_score
+    - gold_reward_score
+    - optimization_method
+    - kl_penalty
+    - best_of_n_budget
+    - reward_model_size
+    environment_or_substrate: Synthetic reward-model overoptimization experiments.
+    verifier_or_reward: Proxy reward model compared against a stronger gold reward model.
+    terminal_predicate: Gold reward improves or degrades as proxy reward is optimized.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Fixed gold reward model used as synthetic human labeler.
+    generator: Policy optimized via RL or best-of-n sampling.
+    filtering_rule: Synthetic preference labels from the gold reward model.
+    sampling_protocol: RL optimization and best-of-n sampling across scale variables.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Reward-model optimization with KL penalty and best-of-n selection.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key rewardoveropt2022. Deduplicated title collision; dropped lower-confidence id: scaling-laws-for-reward-model-overoptimization-2022.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Synthetic RLHF setup using a fixed gold reward model as stand-in for human preferences.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Fixed gold reward model used as synthetic human labeler.
+    known_failure_modes:
+    - Check proxy/gold reward separation, KL budget, and best-of-n budget.
+    - Do not treat reward score improvement as data-quality proof.
+    - Verify whether conclusions transfer to each domain's feedback contract.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It gives reward-model readers a concrete audit lens for separating proxy reward gains from real preference improvement.
   related: []
   tags:
+  - rlhf-reward-model-surveys
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
   - foundations_and_primers
   - preference_reward_feedback_data
-  - judgment_rubric_domain_expert_data
   - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line: This failure study measures when optimizing an imperfect proxy reward starts reducing gold-reward quality.
+  card: cards/failures/scaling-laws-for-reward-model-overoptimization.md
+  needs: []
+  one_line_summary: This failure study measures when optimizing an imperfect proxy reward starts reducing gold-reward quality.
+  why_it_matters: It gives reward-model readers a concrete audit lens for separating proxy reward gains from real preference improvement.
+  curation_level: L4_carded
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: scienceworld-is-your-agent-smarter-than-a-5th-grader-2022
   title: 'ScienceWorld: Is your agent smarter than a 5th grader?'
   year: 2022
@@ -2924,6 +2989,9 @@
   venue: arXiv
   authors: []
   source_role:
+  - data_release
+  - verifier_reward
+  - construction_recipe
   - survey_background
   verification_contract:
   - judgment_required
@@ -2933,20 +3001,25 @@
   domains:
   - alignment
   - safety
+  - rlhf
+  - chat
   training_use:
-  - reward_modeling
   - preference_learning
+  - reward_modeling
   - safety_alignment
   construction_layer:
+  - prompt_sourcing
+  - reward_verifier_layer
+  - optimizer_scaffold
   - release_audit
   artifacts:
     paper: https://arxiv.org/abs/2204.05862
     arxiv: https://arxiv.org/abs/2204.05862
     code: null
-    data: null
+    data: https://github.com/anthropics/hh-rlhf
     project: null
-    huggingface: null
-    doi: null
+    huggingface: https://huggingface.co/datasets/Anthropic/hh-rlhf
+    doi: https://doi.org/10.48550/arXiv.2204.05862
     venue: null
     openreview: null
     acl: null
@@ -2954,40 +3027,50 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Helpfulness and harmlessness assistant conversations.
+    trace_author: Assistant model outputs compared by human preference labelers.
+    answer_format: Chosen/rejected text pairs for helpfulness and harmlessness preference modeling.
+    process_fields:
+    - conversation_prompt
+    - chosen_response
+    - rejected_response
+    - tranche
+    - train_test_split
+    environment_or_substrate: Offline assistant preference-modeling dataset.
+    verifier_or_reward: Human preference labels used to train preference/reward models.
+    terminal_predicate: Chosen response preferred over rejected response by the feedback process.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Human preference labelers.
+    generator: Assistant policies including base, rejection-sampled, and online policy samples.
+    filtering_rule: Preference collection, reward-model training, and RLHF stage selection.
+    sampling_protocol: Prompt batches and response candidates across helpful/harmless settings.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Preference model plus RLHF policy optimization.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Helpfulness and harmlessness assistant conversations.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Human preference labelers.
+    known_failure_modes:
+    - Audit labeler instructions, prompt sources, tranche differences, and safety coverage.
+    - Do not treat chosen responses as safe SFT targets without extra review.
+    - Handle harmful/offensive content carefully.
     citation_status: verified
     confidence: high
-    notes: 'Seeded from BibTeX key hhrlhf2022. Deduplicated title collision; dropped lower-confidence id: training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: 'It is a concrete open assistant feedback object: prompt context, chosen response, rejected response, split, and safety-specific reward-modeling risks.'
   related: []
   tags:
-  - seeded-from-bib
-  - rlhf
   - preference-data
+  - rlhf
+  - rlhf-reward-model-surveys
   - safety
+  - seeded-from-bib
+  - track-00-01-expansion
   status: verified
   category:
   - foundations_and_primers
@@ -2996,23 +3079,19 @@
   - judgment_rubric_domain_expert_data
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
-  - scaling_rlvr_test_time_compute
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Documents preference and RLHF data for helpfulness and harmlessness assistant behavior.
-  why_it_matters: It provides the alignment-data lineage that later reasoning-data recipes inherit when they combine demonstrations,
-    preferences, and reward models.
+  one_line: HH-RLHF releases helpfulness and harmlessness chosen/rejected preference pairs for reward-model training.
+  card: cards/releases/training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-feedback.md
+  needs: []
+  one_line_summary: HH-RLHF releases helpfulness and harmlessness chosen/rejected preference pairs for reward-model training.
+  why_it_matters: 'It is a concrete open assistant feedback object: prompt context, chosen response, rejected response, split, and safety-specific reward-modeling risks.'
   verification:
     link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-15'
-    verified_by: curation
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official primary link pinned in artifacts.
-  curation_level: L1_link_verified
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
+  curation_level: L4_carded
 - id: training-language-models-to-follow-instructions-with-human-feedback-2022
   title: Training language models to follow instructions with human feedback
   year: 2022
@@ -3563,24 +3642,31 @@
   venue: ACL
   authors: []
   source_role:
-  - survey_background
+  - construction_recipe
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - step_level
+  domains:
+  - rationale_distillation
+  - chain_of_thought
+  - small_model_training
   training_use:
-  - unknown
+  - distillation
+  - sft
+  - evaluation
   construction_layer:
-  - release_audit
+  - trace_writing
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
+    paper: https://arxiv.org/abs/2305.02301
+    arxiv: https://arxiv.org/abs/2305.02301
+    code: https://github.com/google-research/distilling-step-by-step
+    data: https://github.com/google-research/distilling-step-by-step/blob/main/datasets.zip
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2305.02301
     venue: null
     openreview: null
     acl: null
@@ -3588,60 +3674,66 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Benchmark training examples from NLP and reasoning-style tasks.
+    trace_author: Large teacher model-generated rationales.
+    answer_format: Task label or answer plus generated rationale text.
+    process_fields:
+    - input
+    - label_type
+    - llm_rationale
+    - dataset
+    - model_type
+    - loss_weight
+    environment_or_substrate: Offline T5 fine-tuning and benchmark evaluation.
+    verifier_or_reward: Gold or teacher labels check final answers; rationales are not independently step-verified.
+    terminal_predicate: Benchmark label or answer correctness.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Large teacher model used for rationales and optional labels.
+    generator: LLM rationale generation.
+    filtering_rule: Unknown beyond dataset and rationale-generation settings.
+    sampling_protocol: Fixed datasets and rationale/label settings in the released code.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Multitask loss combining label prediction and rationale generation.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key distillstepbystep2023. Deduplicated title collision; dropped lower-confidence id: distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Benchmark training examples from NLP and reasoning-style tasks.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Large teacher model used for rationales and optional labels.
+    known_failure_modes:
+    - Audit teacher identity, prompt, rationale-generation settings, and dataset splits.
+    - Separate final-answer correctness from rationale faithfulness.
+    - Check generated-rationale and source-dataset licensing before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It is a compact rationale-distillation recipe showing how teacher traces become training targets while preserving faithfulness and lineage risks.
   related: []
   tags:
+  - chain-of-thought-rationale-data
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
-  - foundations_and_primers
   - instruction_demonstration_rationale_data
-  - preference_reward_feedback_data
   - data_construction_open_release_recipes
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - training_usage_optimization_objectives
+  one_line: Distilling Step-by-Step trains smaller models with answer labels plus teacher-generated rationales.
+  card: cards/recipes/distilling-step-by-step.md
+  needs: []
+  one_line_summary: Distilling Step-by-Step trains smaller models with answer labels plus teacher-generated rationales.
+  why_it_matters: It is a compact rationale-distillation recipe showing how teacher traces become training targets while preserving faithfulness and lineage risks.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: factscore-2023
   title: FActScore
   year: 2023
@@ -4206,24 +4298,29 @@
   venue: NeurIPS
   authors: []
   source_role:
-  - survey_background
+  - audit_failure
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - chain_of_thought
+  - faithfulness
+  - interpretability
+  - bias
   training_use:
-  - unknown
+  - audit
+  - evaluation
   construction_layer:
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2305.04388
+    arxiv: https://arxiv.org/abs/2305.04388
     code: null
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2305.04388
     venue: null
     openreview: null
     acl: null
@@ -4231,59 +4328,65 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: BIG-Bench Hard-style and social-bias tasks with inserted biasing features.
+    trace_author: Prompted models generating chain-of-thought explanations.
+    answer_format: Task answer plus generated explanation.
+    process_fields:
+    - prompt
+    - biasing_feature
+    - chain_of_thought
+    - final_answer
+    - gold_answer_or_bias_target
+    environment_or_substrate: Offline prompting/evaluation setup.
+    verifier_or_reward: Task correctness plus intervention/bias-attribution analysis.
+    terminal_predicate: Whether answer/explanation tracks task evidence or hidden biasing feature.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Not applicable.
+    generator: Prompted LLMs under biased and unbiased prompt variants.
+    filtering_rule: Evaluation-only intervention design.
+    sampling_protocol: Prompt perturbations and biased-option interventions.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Evaluation-only faithfulness intervention study.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key turpin2023. Deduplicated title collision; dropped lower-confidence id: language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: BIG-Bench Hard-style and social-bias tasks with inserted biasing features.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Not applicable.
+    known_failure_modes:
+    - Check whether CoT traces causally affect answers.
+    - Audit prompt artifacts and social-bias rationalization.
+    - Pin model/version details before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It prevents treating rationale text as faithful reasoning data unless interventions check whether the trace actually drives the answer.
   related: []
   tags:
+  - chain-of-thought-rationale-data
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
   - foundations_and_primers
   - instruction_demonstration_rationale_data
   - audit_failure_contamination_verifier_attacks
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line: This audit shows CoT explanations can rationalize biased answers without revealing the prompt feature that influenced the model.
+  card: cards/failures/language-models-dont-always-say-what-they-think.md
+  needs: []
+  one_line_summary: This audit shows CoT explanations can rationalize biased answers without revealing the prompt feature that influenced the model.
+  why_it_matters: It prevents treating rationale text as faithful reasoning data unless interventions check whether the trace actually drives the answer.
+  curation_level: L4_carded
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: large-language-models-encode-clinical-knowledge-2023
   title: Large language models encode clinical knowledge
   year: 2023
@@ -4577,27 +4680,39 @@
 - id: mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023
   title: 'MAmmoTH: Building math generalist models through hybrid instruction tuning'
   year: 2023
-  venue: arXiv preprint
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - model_report
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - step_level
+  domains:
+  - math
+  - instruction_tuning
+  - chain_of_thought
+  - program_of_thought
   training_use:
-  - unknown
+  - sft
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - optimizer_scaffold
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    paper: https://arxiv.org/abs/2309.05653
+    arxiv: https://arxiv.org/abs/2309.05653
+    code: https://github.com/TIGER-AI-Lab/MAmmoTH
+    data: https://huggingface.co/datasets/TIGER-Lab/MathInstruct
+    project: https://tiger-ai-lab.github.io/MAmmoTH/
+    huggingface: https://huggingface.co/TIGER-Lab/MAmmoTH-7B
+    doi: https://doi.org/10.48550/arXiv.2309.05653
     venue: null
     openreview: null
     acl: null
@@ -4605,59 +4720,66 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: MathInstruct compiled from 13 math datasets.
+    trace_author: Human, Llama, GPT-4, and newly curated rationales depending on subset.
+    answer_format: Math instruction with CoT or PoT rationale and final answer.
+    process_fields:
+    - dataset_name
+    - rationale_type
+    - annotation_source
+    - problem_field
+    - solution_trace
+    - final_answer
+    environment_or_substrate: Offline math instruction tuning plus PoT/Python-style evaluation.
+    verifier_or_reward: Math answer scoring and PoT executability where applicable; not a universal step verifier.
+    terminal_predicate: Final answer correctness or executable program fallback during evaluation.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: MathInstruct source datasets and mixed rationale authors.
+    generator: Curated hybrid CoT/PoT data pipeline.
+    filtering_rule: Subset-specific validation; some generated subsets require extra audit.
+    sampling_protocol: Curated mixture over 13 datasets.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Supervised instruction tuning.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key mammoth2023. Deduplicated title collision; dropped lower-confidence id: mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: MathInstruct compiled from 13 math datasets.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: MathInstruct source datasets and mixed rationale authors.
+    known_failure_modes:
+    - Audit which subsets are human, model-generated, validated, or unvalidated.
+    - Check per-subset licenses and train/evaluation overlap.
+    - Separate CoT, PoT, model-size, decoding, and benchmark-familiarity effects.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data.
   related: []
   tags:
+  - instruction-tuning-sft-data
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
-  - foundations_and_primers
   - instruction_demonstration_rationale_data
   - programmatically_verifiable_outcome_data
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - data_construction_open_release_recipes
+  one_line: MAmmoTH releases MathInstruct, a hybrid CoT/PoT math instruction mixture for supervised math reasoning.
+  card: cards/releases/mammoth-mathinstruct.md
+  needs: []
+  one_line_summary: MAmmoTH releases MathInstruct, a hybrid CoT/PoT math instruction mixture for supervised math reasoning.
+  why_it_matters: It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: maud-a-merger-agreement-understanding-dataset-2023
   title: 'MAUD: A merger agreement understanding dataset'
   year: 2023
@@ -4742,27 +4864,31 @@
 - id: measuring-faithfulness-in-chain-of-thought-reasoning-2023
   title: Measuring faithfulness in chain-of-thought reasoning
   year: 2023
-  venue: unknown
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - audit_failure
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - chain_of_thought
+  - faithfulness
+  - interpretability
   training_use:
-  - unknown
+  - audit
+  - evaluation
   construction_layer:
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2307.13702
+    arxiv: https://arxiv.org/abs/2307.13702
     code: null
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2307.13702
     venue: null
     openreview: null
     acl: null
@@ -4770,83 +4896,99 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Tasks used to test CoT intervention behavior.
+    trace_author: Model-generated CoT modified by controlled interventions.
+    answer_format: CoT text plus answer before/after intervention.
+    process_fields:
+    - prompt
+    - original_cot
+    - cot_intervention
+    - final_answer
+    - answer_change
+    environment_or_substrate: Offline CoT intervention benchmark.
+    verifier_or_reward: Answer sensitivity to CoT interventions plus task correctness.
+    terminal_predicate: Whether answers change consistently with the intervened CoT.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Not applicable.
+    generator: Prompted LLMs plus controlled CoT edits.
+    filtering_rule: Interventions such as adding mistakes or paraphrasing CoT.
+    sampling_protocol: Task and intervention mixture.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Evaluation-only faithfulness measurement protocol.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key lanham2023. Deduplicated title collision; dropped lower-confidence id: measuring-faithfulness-in-chain-of-thought-reasoning-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Tasks used to test CoT intervention behavior.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Not applicable.
+    known_failure_modes:
+    - Check model/task dependence and intervention type.
+    - Separate final correctness from trace faithfulness.
+    - Pin prompts and model versions.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It gives Track 01 a concrete audit lens for separating rationale text as a style target from rationale text as causal reasoning evidence.
   related: []
   tags:
+  - chain-of-thought-rationale-data
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
   - foundations_and_primers
   - instruction_demonstration_rationale_data
   - audit_failure_contamination_verifier_attacks
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  one_line: This paper measures CoT faithfulness by intervening on reasoning text and observing answer changes.
+  card: cards/failures/measuring-faithfulness-in-chain-of-thought-reasoning.md
+  needs: []
+  one_line_summary: This paper measures CoT faithfulness by intervening on reasoning text and observing answer changes.
+  why_it_matters: It gives Track 01 a concrete audit lens for separating rationale text as a style target from rationale text as causal reasoning evidence.
+  curation_level: L4_carded
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023
   title: 'MetaMath: Bootstrap your own mathematical questions for large language models'
   year: 2023
-  venue: arXiv preprint
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - model_report
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - math
+  - synthetic_data
+  - instruction_tuning
   training_use:
-  - unknown
+  - sft
+  - distillation
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    paper: https://arxiv.org/abs/2309.12284
+    arxiv: https://arxiv.org/abs/2309.12284
+    code: https://github.com/meta-math/MetaMath
+    data: https://huggingface.co/datasets/meta-math/MetaMathQA
+    project: https://meta-math.github.io/
+    huggingface: https://huggingface.co/meta-math/MetaMath-7B-V1.0
+    doi: https://doi.org/10.48550/arXiv.2309.12284
     venue: null
     openreview: null
     acl: null
@@ -4854,59 +4996,65 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: GSM8K and MATH training-set questions augmented through question rewriting.
+    trace_author: Teacher-generation pipeline writes math responses for augmented questions.
+    answer_format: Mathematical question, original question, worked response, final answer, and augmentation type.
+    process_fields:
+    - query
+    - original_question
+    - response
+    - augmentation_type
+    environment_or_substrate: Offline math instruction-tuning corpus.
+    verifier_or_reward: Gold training-set answers and math benchmark checks; no step verifier disclosed.
+    terminal_predicate: Final answer correctness on math benchmarks.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Math training sets plus teacher augmentation.
+    generator: Question rewriting, answer augmentation, and self-verification style pipeline.
+    filtering_rule: Train-set derivation and answer consistency checks; exact rejected logs unknown.
+    sampling_protocol: Multiple rewritten views from seed math problems.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Supervised fine-tuning on MetaMathQA.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key metamath2023. Deduplicated title collision; dropped lower-confidence id: metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: GSM8K and MATH training-set questions augmented through question rewriting.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Math training sets plus teacher augmentation.
+    known_failure_modes:
+    - Check augmented questions are derived from training splits.
+    - Audit near-duplicates after rewriting.
+    - Do not equate final-answer correctness with trace faithfulness.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It is a math SFT scaling reference whose reuse depends on source split, teacher lineage, near-duplicate, and answer-level verifier audits.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - synthetic-instruction-data
+  - track-00-01-expansion
+  status: verified
   category:
   - instruction_demonstration_rationale_data
   - programmatically_verifiable_outcome_data
   - data_construction_open_release_recipes
-  one_line: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's data object,
-    verifier contract, and release metadata before promoting it.
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Local BibTeX seed for the 🧮 Programmatic Math, Code, and Proof Data map; use it to inspect the paper's
-    data object, verifier contract, and release metadata before promoting it.
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - training_usage_optimization_objectives
+  one_line: MetaMath bootstraps math instruction data by rewriting GSM8K and MATH training questions into MetaMathQA.
+  card: cards/releases/metamath-bootstrap-your-own-mathematical-questions-for-large-language-models.md
+  needs: []
+  one_line_summary: MetaMath bootstraps math instruction data by rewriting GSM8K and MATH training questions into MetaMathQA.
+  why_it_matters: It is a math SFT scaling reference whose reuse depends on source split, teacher lineage, near-duplicate, and answer-level verifier audits.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: mind2web-towards-a-generalist-agent-for-the-web-2023
   title: 'Mind2Web: Towards a generalist agent for the web'
   year: 2023
@@ -5482,29 +5630,36 @@
     confidence: low
     notes: Official primary link not pinned yet.
 - id: rest-textsuperscriptem-2023
-  title: ReST\textsuperscriptEM
+  title: 'Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models'
   year: 2023
-  venue: arXiv preprint
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - construction_recipe
+  - scaling_study
   verification_contract:
-  - unknown
+  - programmatic
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - math
+  - code
+  - problem_solving
+  - self_training
   training_use:
-  - unknown
+  - sft
   construction_layer:
-  - release_audit
+  - self_play_anchor
+  - reward_verifier_layer
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2312.06585
+    arxiv: https://arxiv.org/abs/2312.06585
     code: null
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2312.06585
     venue: null
     openreview: null
     acl: null
@@ -5512,57 +5667,65 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: MATH and APPS-style problem-solving tasks.
+    trace_author: Current model samples candidate solutions.
+    answer_format: Generated solution/answer candidate with binary feedback.
+    process_fields:
+    - problem
+    - sampled_solution
+    - binary_feedback
+    - accepted_sample
+    - iteration
+    environment_or_substrate: Offline self-training loop over math/code problem-solving tasks.
+    verifier_or_reward: Binary correctness/verifiability feedback.
+    terminal_predicate: Candidate passes the task feedback filter.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Self-generated samples filtered by feedback.
+    generator: Current model policy.
+    filtering_rule: Generate samples, filter with binary feedback, fine-tune, repeat.
+    sampling_protocol: Iterative EM-style self-training.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: ReST^EM self-training loop.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key restem2023. Deduplicated title collision; dropped lower-confidence id: rest-textsuperscriptem-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: MATH and APPS-style problem-solving tasks.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Self-generated samples filtered by feedback.
+    known_failure_modes:
+    - Audit verifier false positives and rejected-sample visibility.
+    - Check benchmark reuse and split policy.
+    - Separate gains from more samples, filtering, and model scale.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It shows how verifiable task feedback can become synthetic training data beyond human-written examples, while exposing verifier and accepted-sample bias risks.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - self-training-star
+  - track-00-01-expansion
+  status: verified
   category:
-  - foundations_and_primers
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - instruction_demonstration_rationale_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  one_line: ReST^EM samples model solutions, filters them with binary feedback, and fine-tunes on accepted examples.
+  card: cards/recipes/restem-beyond-human-data-scaling-self-training.md
+  needs: []
+  one_line_summary: ReST^EM samples model solutions, filters them with binary feedback, and fine-tunes on accepted examples.
+  why_it_matters: It shows how verifiable task feedback can become synthetic training data beyond human-written examples, while exposing verifier and accepted-sample bias risks.
+  curation_level: L4_carded
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023
   title: Self-consistency improves chain of thought reasoning in language models
   year: 2023
@@ -6383,27 +6546,37 @@
 - id: wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023
   title: 'WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct'
   year: 2023
-  venue: arXiv preprint
+  venue: arXiv
   authors: []
   source_role:
-  - survey_background
+  - construction_recipe
+  - model_report
   verification_contract:
-  - unknown
+  - programmatic
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  - step_level
+  domains:
+  - math
+  - synthetic_data
+  - evol_instruct
   training_use:
-  - unknown
+  - sft
+  - distillation
+  - evaluation
   construction_layer:
-  - release_audit
+  - trace_writing
+  - reward_verifier_layer
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
+    paper: https://arxiv.org/abs/2308.09583
+    arxiv: https://arxiv.org/abs/2308.09583
+    code: https://github.com/nlpxucan/WizardLM
     data: null
-    project: null
-    huggingface: null
-    doi: null
+    project: https://wizardlm.github.io/
+    huggingface: https://huggingface.co/WizardLMTeam/WizardMath-7B-V1.1
+    doi: https://doi.org/10.48550/arXiv.2308.09583
     venue: null
     openreview: null
     acl: null
@@ -6411,60 +6584,65 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Math instruction prompts evolved from math-related seed data; full training dataset unavailable.
+    trace_author: WizardLM/Evol-Instruct style generator and reinforced feedback pipeline.
+    answer_format: Math instruction, chain-of-thought style response, and final answer.
+    process_fields:
+    - evolved_instruction
+    - response
+    - final_answer
+    - process_feedback_or_filter_signal
+    environment_or_substrate: Offline math instruction evolution and model fine-tuning.
+    verifier_or_reward: Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.
+    terminal_predicate: Final answer correctness on GSM8K/MATH-style evaluations.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: WizardLM/Evol-Instruct lineage and generator models.
+    generator: Reinforced Evol-Instruct math pipeline.
+    filtering_rule: Reported contamination checks; unreleased dataset prevents full audit.
+    sampling_protocol: Unknown.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Supervised fine-tuning / reinforced Evol-Instruct feedback pipeline.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key wizardmath2023. Deduplicated title collision; dropped lower-confidence id: wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Math instruction prompts evolved from math-related seed data; full training dataset unavailable.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: WizardLM/Evol-Instruct lineage and generator models.
+    known_failure_modes:
+    - Audit seed prompts, feedback signal, and retained/rejected instruction policy.
+    - Treat benchmark gains as model evidence, not data-quality proof.
+    - Check model and data license terms before reuse.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It is useful as a recipe card precisely because it separates an influential construction method from a fully auditable data release.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - synthetic-instruction-data
+  - track-00-01-expansion
+  status: verified
   category:
-  - foundations_and_primers
   - instruction_demonstration_rationale_data
   - programmatically_verifiable_outcome_data
   - data_construction_open_release_recipes
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - training_usage_optimization_objectives
+  one_line: WizardMath adapts Evol-Instruct to math reasoning, but the full training data is not publicly released.
+  card: cards/recipes/wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinforced-evol-instruct.md
+  needs: []
+  one_line_summary: WizardMath adapts Evol-Instruct to math reasoning, but the full training data is not publicly released.
+  why_it_matters: It is useful as a recipe card precisely because it separates an influential construction method from a fully auditable data release.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: ai-models-collapse-when-trained-on-recursively-generated-data-2024
   title: AI models collapse when trained on recursively generated data
   year: 2024
@@ -8797,27 +8975,39 @@
 - id: mammoth2-scaling-instructions-from-the-web-2024
   title: 'MAmmoTH2: Scaling Instructions from the Web'
   year: 2024
-  venue: Advances in Neural Information Processing Systems (NeurIPS)
+  venue: NeurIPS
   authors: []
   source_role:
-  - survey_background
+  - data_release
+  - construction_recipe
+  - scaling_study
+  - model_report
   verification_contract:
-  - unknown
+  - mixed
+  - programmatic
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - math
+  - science
+  - web_instruction
+  - instruction_tuning
   training_use:
-  - unknown
+  - sft
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - release_audit
+  - scaling_report
   artifacts:
     paper: https://arxiv.org/abs/2405.03548
     arxiv: https://arxiv.org/abs/2405.03548
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    code: https://github.com/TIGER-AI-Lab/MAmmoTH2
+    data: https://huggingface.co/datasets/TIGER-Lab/WebInstructFull
+    project: https://tiger-ai-lab.github.io/MAmmoTH2/
+    huggingface: https://huggingface.co/TIGER-Lab/MAmmoTH2-8x7B
+    doi: https://doi.org/10.48550/arXiv.2405.03548
     venue: null
     openreview: null
     acl: null
@@ -8825,60 +9015,68 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Common Crawl documents recalled from educational and instructional web domains.
+    trace_author: Extracted web answers refined by open-source LLMs.
+    answer_format: Instruction-response or Q-A pair with optional explanation or refined answer.
+    process_fields:
+    - question
+    - answer
+    - source
+    - original_question
+    - original_answer
+    - index
+    environment_or_substrate: Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.
+    verifier_or_reward: Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.
+    terminal_predicate: Accepted instruction-response examples support reported training/evaluation performance.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Web corpora plus Mixtral/Qwen-style refinement.
+    generator: Common Crawl recall, Q-A extraction, and LLM refinement pipeline.
+    filtering_rule: Filter benchmark-containing pages and refine low-explanation answers.
+    sampling_protocol: Top recalled web documents and educational domains; exact knobs need audit.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Supervised fine-tuning on WebInstruct and mixtures.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Common Crawl documents recalled from educational and instructional web domains.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Web corpora plus Mixtral/Qwen-style refinement.
+    known_failure_modes:
+    - Audit dominant websites and Common Crawl snapshots.
+    - Check benchmark-containing page filtering.
+    - Compare WebInstructSub and WebInstructFull licenses.
     citation_status: verified
     confidence: high
-    notes: 'Seeded from BibTeX key yue2024mammoth2. Deduplicated title collision; dropped lower-confidence id: mammoth2-scaling-instructions-from-the-web-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks.
   related: []
   tags:
+  - instruction-tuning-sft-data
   - seeded-from-bib
+  - track-00-01-expansion
   status: verified
   category:
-  - foundations_and_primers
   - instruction_demonstration_rationale_data
-  - preference_reward_feedback_data
-  - environment_agent_trajectory_data
+  - data_construction_open_release_recipes
+  - programmatically_verifiable_outcome_data
+  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  one_line: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier contract,
-    and release metadata before promoting it.
-  card: null
+  one_line: MAmmoTH2 builds WebInstruct by recalling web documents, extracting Q-A pairs, refining them, and training reasoning models.
+  card: cards/releases/mammoth2-scaling-instructions-from-the-web.md
   needs: []
-  one_line_summary: Local BibTeX seed for the 🧭 Surveys and Primers map; use it to inspect the paper's data object, verifier
-    contract, and release metadata before promoting it.
-  why_it_matters: Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit
-    note.
+  one_line_summary: MAmmoTH2 builds WebInstruct by recalling web documents, extracting Q-A pairs, refining them, and training reasoning models.
+  why_it_matters: It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks.
   verification:
     link_verified: true
-    artifact_verified: false
-    verified_at: '2026-06-15'
-    verified_by: curation
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official primary link pinned in artifacts.
-  curation_level: L1_link_verified
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
+  curation_level: L4_carded
 - id: math-shepherd-2024
   title: Math-Shepherd
   year: 2024
@@ -9670,87 +9868,106 @@
     confidence: high
     notes: Official primary link and available artifacts pinned in artifacts.
 - id: r-tuning-2024
-  title: R-Tuning
+  title: 'R-Tuning: Instructing Large Language Models to Say ''I Don''t Know'''
   year: 2024
   venue: NAACL
   authors: []
   source_role:
-  - survey_background
+  - construction_recipe
+  - data_release
   verification_contract:
-  - unknown
+  - judgment_required
+  - mixed
   supervision_granularity:
-  - unknown
-  domains: []
+  - answer_level
+  domains:
+  - refusal
+  - hallucination
+  - instruction_tuning
+  - calibration
   training_use:
-  - unknown
+  - sft
+  - safety_alignment
+  - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
+    paper: https://arxiv.org/abs/2311.09677
+    arxiv: https://arxiv.org/abs/2311.09677
+    code: https://github.com/shizhediao/R-Tuning
+    data: https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing
     project: null
     huggingface: null
-    doi: null
-    venue: null
+    doi: https://doi.org/10.18653/v1/2024.naacl-long.394
+    venue: https://aclanthology.org/2024.naacl-long.394/
     openreview: null
-    acl: null
+    acl: https://aclanthology.org/2024.naacl-long.394/
     pmlr: null
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Knowledge-intensive QA and factual relation data used to separate known from unknown questions.
+    trace_author: Data-construction scripts create answer or refusal targets.
+    answer_format: Question with either an answerable response or explicit refusal.
+    process_fields:
+    - question
+    - known_or_unknown_status
+    - answer_or_refusal_target
+    - dataset_name
+    - evaluation_domain
+    environment_or_substrate: Offline refusal-aware instruction tuning and evaluation.
+    verifier_or_reward: Known/unknown classification relative to a parametric-knowledge proxy.
+    terminal_predicate: Correct answer for known questions and appropriate refusal for unknown questions.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Knowledge-intersection construction procedure.
+    generator: R-Tuning data-construction scripts.
+    filtering_rule: Identify disparity between parametric knowledge and instruction data.
+    sampling_protocol: Unknown.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: LMFlow fine-tuning pipeline.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key rtuning2024. Deduplicated title collision; dropped lower-confidence id: r-tuning-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Knowledge-intensive QA and factual relation data used to separate known from unknown questions.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Knowledge-intersection construction procedure.
+    known_failure_modes:
+    - Audit how known vs unknown is determined for each base model.
+    - Check over-refusal on answerable questions.
+    - Pin data version and license for the Google Drive release.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: 'It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.'
   related: []
   tags:
+  - instruction-tuning-sft-data
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
-  - foundations_and_primers
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - instruction_demonstration_rationale_data
+  - judgment_rubric_domain_expert_data
+  - audit_failure_contamination_verifier_attacks
+  - training_usage_optimization_objectives
+  one_line: R-Tuning turns abstention into instruction data by teaching models to answer known questions and refuse unknown ones.
+  card: cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md
+  needs: []
+  one_line_summary: R-Tuning turns abstention into instruction data by teaching models to answer known questions and refuse unknown ones.
+  why_it_matters: 'It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.'
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: raft-adapting-language-model-to-domain-specific-rag-2024
   title: 'RAFT: Adapting language model to domain-specific RAG'
   year: 2024
@@ -10295,29 +10512,36 @@
     confidence: high
     notes: Official primary link and available artifacts pinned in artifacts.
 - id: self-rewarding-lms-2024
-  title: Self-Rewarding LMs
+  title: Self-Rewarding Language Models
   year: 2024
   venue: ICML
   authors: []
   source_role:
-  - survey_background
+  - construction_recipe
+  - verifier_reward
   verification_contract:
-  - unknown
+  - judgment_required
   supervision_granularity:
-  - unknown
-  domains: []
+  - pairwise_preference
+  domains:
+  - instruction_following
+  - llm_as_judge
+  - self_training
+  - preference_feedback
   training_use:
-  - unknown
+  - preference_learning
   construction_layer:
-  - release_audit
+  - self_play_anchor
+  - reward_verifier_layer
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://arxiv.org/abs/2401.10020
+    arxiv: https://arxiv.org/abs/2401.10020
     code: null
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2401.10020
     venue: null
     openreview: null
     acl: null
@@ -10325,82 +10549,95 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Instruction-following prompts; exact prompt mixture remains partially undisclosed.
+    trace_author: Model generates responses and also judges responses via LLM-as-judge prompting.
+    answer_format: Candidate responses with self-generated reward/judgment signal for iterative DPO.
+    process_fields:
+    - prompt
+    - candidate_response
+    - self_reward
+    - preference_pair_or_ranking
+    - iteration
+    environment_or_substrate: Offline iterative preference-training loop.
+    verifier_or_reward: The language model itself acting as judge.
+    terminal_predicate: Self-generated preferences used for iterative DPO improvement.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: The model-as-judge produces reward signal.
+    generator: The model produces candidate responses and judgments.
+    filtering_rule: Self-generated reward/preference selection; exact rule requires full-paper audit.
+    sampling_protocol: Three iterations reported by the paper.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Iterative DPO with self-rewarding judgments.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key selfrewarding2024. Deduplicated title collision; dropped lower-confidence id: self-rewarding-lms-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: Instruction-following prompts; exact prompt mixture remains partially undisclosed.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: The model-as-judge produces reward signal.
+    known_failure_modes:
+    - Inspect judge prompt, response sampling, preference conversion, and iteration count.
+    - Check calibration against external human or benchmark signals.
+    - Watch for style bias, overconfidence, and feedback collapse.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It makes self-generated judge feedback a first-class post-training data object with clear risks around judge bias and reward hacking.
   related: []
   tags:
+  - rlhf-reward-model-surveys
   - seeded-from-bib
-  status: needs_metadata
+  - track-00-01-expansion
+  status: verified
   category:
   - foundations_and_primers
   - preference_reward_feedback_data
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  one_line: Self-Rewarding Language Models use model-generated judgments as preference signals for iterative DPO.
+  card: cards/recipes/self-rewarding-language-models.md
+  needs: []
+  one_line_summary: Self-Rewarding Language Models use model-generated judgments as preference signals for iterative DPO.
+  why_it_matters: It makes self-generated judge feedback a first-class post-training data object with clear risks around judge bias and reward hacking.
+  curation_level: L4_carded
   verification:
-    link_verified: false
+    link_verified: true
     artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024
   title: 'SPIN: Self-play fine-tuning converts weak language models to strong language models'
   year: 2024
   venue: ICML
   authors: []
   source_role:
-  - survey_background
+  - construction_recipe
   verification_contract:
-  - unknown
+  - judgment_required
   supervision_granularity:
-  - unknown
-  domains: []
+  - pairwise_preference
+  domains:
+  - instruction_following
+  - self_training
+  - self_play
   training_use:
-  - unknown
+  - sft
+  - preference_learning
   construction_layer:
-  - release_audit
+  - self_play_anchor
+  - optimizer_scaffold
   artifacts:
-    paper: null
-    arxiv: null
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    paper: https://arxiv.org/abs/2401.01335
+    arxiv: https://arxiv.org/abs/2401.01335
+    code: https://github.com/uclaml/SPIN
+    data: https://huggingface.co/datasets/UCLA-AGI/SPIN_iter0
+    project: https://uclaml.github.io/SPIN/
+    huggingface: https://huggingface.co/UCLA-AGI/zephyr-7b-sft-full-SPIN-iter0
+    doi: https://doi.org/10.48550/arXiv.2401.01335
     venue: null
     openreview: null
     acl: null
@@ -10408,58 +10645,64 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: unknown
-    process_fields: []
-    environment_or_substrate: unknown
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: UltraChat200k-derived prompts sampled for self-play.
+    trace_author: Current or previous-iteration model generates responses.
+    answer_format: Pair of real SFT response and generated response for the same prompt.
+    process_fields:
+    - real_prompt_response
+    - generated_prompt_response
+    - iteration
+    - dataset_mixer
+    environment_or_substrate: Offline self-play fine-tuning pipeline.
+    verifier_or_reward: SPIN objective distinguishes self-generated responses from target SFT responses.
+    terminal_predicate: Training objective improves alignment toward target data distribution.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Original SFT data acts as target distribution.
+    generator: Model checkpoints from previous SPIN iterations.
+    filtering_rule: Iteration data conversion/mixing; no new human preference labels.
+    sampling_protocol: Generate synthetic responses per iteration, convert to paired data, fine-tune.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: SPIN self-play fine-tuning objective.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
-    citation_status: needs_verification
-    confidence: low
-    notes: 'Seeded from BibTeX key spin2024. Deduplicated title collision; dropped lower-confidence id: spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024.'
-  inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+    source_mixture: UltraChat200k-derived prompts sampled for self-play.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Original SFT data acts as target distribution.
+    known_failure_modes:
+    - Pin checkpoint revision, prompt sample, generated data version, and iteration.
+    - Audit self-generated style bias and benchmark overfitting.
+    - Check dataset/model licenses.
+    citation_status: verified
+    confidence: high
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It is a compact example of demonstration-anchored self-play where the model's own responses become contrastive training records.
   related: []
   tags:
   - seeded-from-bib
-  status: needs_metadata
+  - self-training-star
+  - track-00-01-expansion
+  status: verified
   category:
-  - foundations_and_primers
+  - instruction_demonstration_rationale_data
   - data_construction_open_release_recipes
-  one_line: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect the
-    paper''s data object, verifier contract, and release metadata before promoting it.'
-  card: null
-  needs:
-  - 'needs_search: official links not pinned locally'
-  - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: 'Local BibTeX seed for the 🧱 Foundations: Instruction, Preference, and Alignment Data map; use it to inspect
-    the paper''s data object, verifier contract, and release metadata before promoting it.'
-  why_it_matters: Seeded from local BibTeX for later atlas classification; needs curator review.
-  curation_level: L0_seeded
+  - training_usage_optimization_objectives
+  one_line: SPIN pairs real SFT responses with model-generated responses and iteratively fine-tunes through a self-play objective.
+  card: cards/recipes/spin-self-play-fine-tuning.md
+  needs: []
+  one_line_summary: SPIN pairs real SFT responses with model-generated responses and iteratively fine-tunes through a self-play objective.
+  why_it_matters: It is a compact example of demonstration-anchored self-play where the model's own responses become contrastive training records.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: agent
+    confidence: high
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024
   title: 'SWE-Gym: Advancing software engineering agents with training and evaluation environments'
   year: 2024
@@ -23789,12 +24032,14 @@
   title: OpenR1-Math-220k
   year: 2025
   venue: Hugging Face / GitHub
-  authors: []
+  authors:
+  - Hugging Face Open R1 team
   source_role:
   - data_release
   - construction_recipe
   verification_contract:
   - programmatic
+  - mixed
   supervision_granularity:
   - answer_level
   domains:
@@ -23802,7 +24047,8 @@
   training_use:
   - sft
   - distillation
-  - rlvr
+  - preference_learning
+  - evaluation
   construction_layer:
   - prompt_sourcing
   - trace_writing
@@ -23811,8 +24057,8 @@
     paper: null
     arxiv: null
     code: https://github.com/huggingface/open-r1
-    data: null
-    project: null
+    data: https://huggingface.co/datasets/open-r1/OpenR1-Math-220k
+    project: https://huggingface.co/blog/open-r1/update-2
     huggingface: https://huggingface.co/datasets/open-r1/OpenR1-Math-220k
     doi: null
     venue: null
@@ -23822,40 +24068,55 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: Numina-style/open math problem pool
-    trace_author: reasoning model reproduction pipeline
-    answer_format: math problem with reasoning trace and final answer
+    prompt_source: NuminaMath 1.5 math problems with default, extended, and all OpenR1-Math-220k subsets.
+    trace_author: DeepSeek-R1 generated reasoning traces.
+    answer_format: math problem, reference solution/answer, generated reasoning traces, final answer, and correctness fields
     process_fields:
     - problem
-    - reasoning trace
+    - solution
     - answer
-    - verification metadata
-    environment_or_substrate: offline math corpus
-    verifier_or_reward: math answer verifier / filtering pipeline
-    terminal_predicate: accepted final answer or trace after filtering
+    - problem_type
+    - question_type
+    - source
+    - uuid
+    - generations
+    - correctness_math_verify
+    - correctness_llama
+    - finish_reasons
+    - correctness_count
+    - is_reasoning_complete
+    - messages
+    environment_or_substrate: Offline Hugging Face parquet dataset generated through the Open R1 reproduction pipeline.
+    verifier_or_reward: Math-Verify answer checking plus Llama-3.3-70B-Instruct judge recovery for cases Math-Verify did not verify.
+    terminal_predicate: retained problem has at least one generated reasoning trace accepted as correct by the verification/judge pipeline.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
-    rollout_count: null
+    base_model: Qwen2.5-Math-Instruct for reported supervised fine-tuning experiments.
+    teacher: DeepSeek-R1.
+    generator: Open R1 generation pipeline using SGLang/vLLM-style large-scale inference.
+    filtering_rule: remove incomplete generations and empty ground-truth answers; retain problems with at least one correct trace verified by Math-Verify or recovered by the Llama judge.
+    sampling_protocol: generate two traces per problem for most prompts, sometimes four traces, with a 16k token generation budget.
+    rollout_count: 2-4 generated traces per problem
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
+    inference_budget: 16k generation token limit reported for trace generation
+    optimizer_or_scaffold: SFT experiments over Qwen2.5-Math-Instruct; Qwen2.5-Math-RM-72B ranking was tested but not used as the main quality proof.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: NuminaMath 1.5 sourced math prompts; exact per-source distribution should be audited from dataset fields.
+    split: Hugging Face dataset exposes default, extended, and all subsets.
+    decontamination: not fully disclosed; audit overlap against evaluation benchmarks before reuse.
+    license: Apache-2.0 on the Hugging Face dataset page.
+    lineage: NuminaMath 1.5 prompts -> DeepSeek-R1 generated traces -> Math-Verify/Llama judge filtering -> OpenR1-Math-220k release.
+    known_failure_modes:
+    - Math answer parsing can reject correct answers or accept format-compatible wrong answers.
+    - Llama judge recovery introduces judgment-required behavior into an otherwise programmatic pipeline.
+    - Only accepted/correct traces are emphasized, so failed traces and ambiguity are not equally visible.
+    - Trace text should not be treated as faithful step-level supervision.
+    - NuminaMath-derived prompts require benchmark-overlap and license/provenance audit before training reuse.
     citation_status: verified
-    confidence: medium
-    notes: Official Hugging Face dataset and GitHub project links verified; no paper link is asserted here.
+    confidence: high
+    notes: Official HF dataset, Open R1 GitHub repo, Open R1 update post, and Math-Verify repo were checked; no paper/arXiv is asserted.
     metadata_status: partial
-  inclusion_reason: Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it
-    through lineage, verifier, and filtering fields.
+  inclusion_reason: It is a reusable open math reasoning-trace release for studying teacher distillation, answer-level verification,
+    SFT data construction, and verifier/judge audit risks.
   related: []
   tags:
   - curated-card
@@ -23868,23 +24129,26 @@
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
   - frontier_reports_data_disclosure_ledger
-  one_line: Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through
-    lineage, verifier, and filtering fields.
+  one_line: OpenR1-Math-220k releases about 220k NuminaMath-derived math problems with DeepSeek-R1 reasoning traces and
+    answer-level filtering by Math-Verify plus Llama judge recovery.
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
+  - raw generation temperature and full prompt-source distribution
+  - decontamination evidence against downstream math benchmarks
+  - failed/rejected trace visibility
+  - exact Llama judge prompt and disagreement handling
   card: cards/releases/openr1.md
-  one_line_summary: Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it
-    through lineage, verifier, and filtering fields.
-  why_it_matters: Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through
-    lineage, verifier, and filtering fields.
-  curation_level: L0_seeded
+  one_line_summary: OpenR1-Math-220k releases about 220k NuminaMath-derived math problems with DeepSeek-R1 reasoning traces
+    and answer-level filtering by Math-Verify plus Llama judge recovery.
+  why_it_matters: The release makes the Open R1 reproduction effort concrete as a dataset with prompts, generated traces,
+    correctness fields, split metadata, and filtering signals exposed enough for L4 card-level reuse and audit planning.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: curation
+    confidence: high
+    notes: Official HF dataset, official Open R1 GitHub repo, official HF update post, and Math-Verify verifier repo checked.
 - id: omegaprm-automated-process-supervision-2024
   title: 'OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision'
   year: 2024
@@ -24091,8 +24355,9 @@
 - id: qwen3-coder-2025
   title: Qwen3-Coder
   year: 2025
-  venue: GitHub / project report
-  authors: []
+  venue: Qwen official blog / GitHub / Hugging Face model release
+  authors:
+  - Qwen Team
   source_role:
   - model_report
   - construction_recipe
@@ -24102,6 +24367,7 @@
   - mixed
   supervision_granularity:
   - answer_level
+  - state_action_level
   - full_episode
   domains:
   - code
@@ -24113,17 +24379,21 @@
   - agent_training
   - evaluation
   construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
   - frontier_pipeline
   - optimizer_scaffold
+  - scaling_report
   - release_audit
   artifacts:
-    paper: null
-    arxiv: null
+    paper: https://qwenlm.github.io/blog/qwen3-coder/
+    arxiv: https://arxiv.org/abs/2505.09388
     code: https://github.com/QwenLM/Qwen3-Coder
     data: null
     project: https://qwenlm.github.io/blog/qwen3-coder/
-    huggingface: null
-    doi: null
+    huggingface: https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct
+    doi: https://doi.org/10.48550/arXiv.2505.09388
     venue: null
     openreview: null
     acl: null
@@ -24131,45 +24401,58 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: coding, tool, and agent task mixtures
-    trace_author: frontier coding model training pipeline
-    answer_format: code solution, tool-call, or agent trajectory
+    prompt_source: coding, repository-scale, tool-use, and agent task mixtures described at report level
+    trace_author: Qwen3-Coder training pipeline, tool-calling policy, and agent RL policy rollouts
+    answer_format: code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory
     process_fields:
-    - code answer
-    - tool call
-    - execution result
-    - benchmark outcome
-    environment_or_substrate: code execution and agent task environments
-    verifier_or_reward: unit tests, execution feedback, and agent task success signals
-    terminal_predicate: program/task passes verifier or environment
+    - prompt or repository context
+    - generated code or patch
+    - function call and arguments
+    - tool or execution result
+    - test or benchmark outcome
+    - environment feedback for agent tasks
+    environment_or_substrate: code execution, tool-calling runtimes, SWE-style and browser/tool agent environments
+    verifier_or_reward: unit tests, execution feedback, automatically scaled test cases, and environment task success signals
+    terminal_predicate: program/test passes, tool call succeeds, or agent task reaches environment success condition
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
+    base_model: Qwen3 / Qwen3-Coder model family; exact base-stage details partially disclosed.
+    teacher: Qwen2.5-Coder used to clean and rewrite noisy data during pretraining data scaling.
+    generator: Qwen training pipeline plus policy rollouts for code RL and long-horizon agent RL.
+    filtering_rule: synthetic/noisy data cleaning, test-case generation, execution feedback, and environment success filtering; exact thresholds unknown.
     sampling_protocol: unknown
     rollout_count: null
     temperature: null
-    inference_budget: null
-    optimizer_or_scaffold: unknown
+    inference_budget: 256K native context, up to 1M with extrapolation; RL rollout budget unknown
+    optimizer_or_scaffold: code RL over executable tasks plus long-horizon Agent RL over parallel environments
   audit:
-    source_mixture: unknown
+    source_mixture: 7.5T pretraining tokens with 70% code ratio disclosed; downstream post-training mixtures remain unknown.
     split: unknown
     decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    license: Apache-2.0 for official HF model releases; training data license mixture unknown.
+    lineage: Qwen3/Qwen2.5-Coder lineage partially disclosed; raw task/data lineage unknown.
+    known_failure_modes:
+    - Generated tests can become a brittle hidden reward.
+    - Execution success can miss semantic or security defects.
+    - Environment rewards can overfit scaffold or benchmark state.
+    - Benchmark claims can conflate data, environment scaling, and inference budget.
+    - Failed or rejected trajectories are not publicly characterized.
     citation_status: verified
     confidence: medium
-    notes: Official GitHub/project links verified; no arXiv paper is asserted for the 2025 Qwen3-Coder card.
+    notes: Official Qwen blog, GitHub, Hugging Face, and Qwen3 arXiv family report verified. No Qwen3-Coder-specific arXiv
+      paper is asserted for the 2025 release; Qwen3-Coder-Next 2026 is related but should be tracked separately if added.
     metadata_status: partial
-  inclusion_reason: Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic
-    RL enter a frontier open model release.
-  related: []
+  inclusion_reason: Qwen3-Coder is a public frontier coding-agent release that discloses enough about code RL, tool calling,
+    executable feedback, and agent RL to serve as a recipe card while preserving important unknowns for audit.
+  related:
+  - qwen3-2025
   tags:
   - curated-card
   - primary-link-checked
-  status: partial
+  - qwen
+  - code-rl
+  - agent-rl
+  - tool-use
+  status: verified
   category:
   - instruction_demonstration_rationale_data
   - programmatically_verifiable_outcome_data
@@ -24178,23 +24461,28 @@
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
   - frontier_reports_data_disclosure_ledger
-  one_line: Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter
-    a frontier open model release.
+  one_line: Qwen3-Coder is a Qwen coding-agent release combining code-heavy pretraining, synthetic data cleaning, execution-driven
+    Code RL, tool calling, and long-horizon Agent RL.
   needs:
-  - 'needs_metadata: release-internal fields require curator review'
+  - raw post-training data mixture
+  - generated test construction details
+  - split and decontamination evidence
+  - failed/rejected trajectory visibility
+  - exact Agent RL reward and rollout protocol
   card: cards/recipes/qwen3_coder.md
-  one_line_summary: Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic
-    RL enter a frontier open model release.
-  why_it_matters: Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic
-    RL enter a frontier open model release.
-  curation_level: L0_seeded
+  one_line_summary: Qwen3-Coder discloses a coding-agent post-training recipe built around code-heavy data, tool-call behavior,
+    executable feedback, and large-scale environment interaction.
+  why_it_matters: It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into
+    post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.
+  curation_level: L4_carded
   verification:
-    link_verified: false
-    artifact_verified: false
-    verified_at: null
-    verified_by: null
-    confidence: low
-    notes: Official primary link not pinned yet.
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-10'
+    verified_by: curation
+    confidence: medium
+    notes: Official project/blog, GitHub, Hugging Face model page, and Qwen3 arXiv family report checked; raw data artifacts
+      are not released.
 - id: gsm8k-grade-school-math-2021
   title: 'GSM8K: Grade School Math 8K'
   year: 2021
@@ -24394,21 +24682,25 @@
   curation_level: L5_audit_ready
   card: cards/benchmarks/humaneval-hand-written-evaluation-set.md
 - id: reasoning-with-large-language-models-a-survey-2024
-  title: Reasoning with Large Language Models, a Survey
+  title: Multi-Step Reasoning with Large Language Models, a Survey
   year: 2024
   venue: arXiv
   authors: []
   source_role:
   - survey_background
   verification_contract:
-  - unknown
+  - mixed
   supervision_granularity:
   - unknown
   domains:
   - reasoning
+  - multi_step_reasoning
   - survey
+  - chain_of_thought
+  - tool_use
   training_use:
   - audit
+  - evaluation
   construction_layer:
   - release_audit
   artifacts:
@@ -24418,7 +24710,7 @@
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2407.11511
     venue: null
     openreview: null
     acl: null
@@ -24426,60 +24718,66 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: survey taxonomy and literature map.
-    process_fields: []
-    environment_or_substrate: literature survey.
-    verifier_or_reward: unknown
-    terminal_predicate: unknown
+    prompt_source: Multi-step reasoning literature across math, logic, games, robotics, code execution, RL, optimization loops, and self-reflection.
+    trace_author: Survey authors organize generation, evaluation, and control methods.
+    answer_format: Taxonomy and literature map for multi-step reasoning methods.
+    process_fields:
+    - reasoning_method
+    - generation_strategy
+    - evaluation_method
+    - control_mechanism
+    - task_family
+    environment_or_substrate: LLM multi-step reasoning tasks and methods.
+    verifier_or_reward: Mixed evaluation and control signals summarized by the survey; no single verifier.
+    terminal_predicate: Whether a method generates, evaluates, controls, or optimizes multi-step reasoning.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: unknown
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Reasoning-LLM literature.
+    generator: Survey taxonomy.
+    filtering_rule: Multi-step reasoning survey scope.
+    sampling_protocol: Literature review.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Taxonomy of generation, evaluation, control, RL, optimization loops, and self-reflection.
   audit:
-    source_mixture: unknown
-    split: unknown
-    decontamination: unknown
-    license: unknown
-    lineage: unknown
-    known_failure_modes: []
+    source_mixture: Multi-step reasoning literature across math, logic, games, robotics, code execution, RL, optimization loops, and self-reflection.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Reasoning-LLM literature.
+    known_failure_modes:
+    - Do not treat model-centric taxonomy as trainable data quality proof.
+    - Check trace authorship, verifier contract, tool environment, budget, and contamination controls in each primary paper.
+    - Separate reasoning ability, trace style, external tools, and benchmark performance.
     citation_status: verified
     confidence: high
-    notes: Official arXiv link pinned after source review.
-  inclusion_reason: Reasoning-LLM survey entry for readers who need a field map before opening primary reasoning-data papers.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It helps readers route model-centric reasoning claims into concrete questions about traces, verifiers, tools, rewards, and evaluation surfaces.
   related: []
   tags:
-  - survey
+  - reasoning-llm-surveys
   - reasoning-llms
+  - survey
+  - track-00-01-expansion
   status: verified
   category:
   - foundations_and_primers
   - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  one_line: Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and evaluation
-    patterns.
-  card: null
-  needs:
-  - 'needs_metadata: curator should add paper-specific survey scope and relation to post-training data'
-  one_line_summary: Surveys reasoning with large language models, giving newcomers a map of reasoning paradigms, tasks, and
-    evaluation patterns.
-  why_it_matters: It fills the reasoning-LLM survey lane of the atlas so readers can separate model-centric reasoning work
-    from data-object and verifier-centric papers.
-  curation_level: L1_link_verified
+  one_line: This survey maps multi-step reasoning with LLMs across generation, evaluation, and control methods.
+  card: cards/recipes/multi-step-reasoning-with-large-language-models-a-survey.md
+  needs: []
+  one_line_summary: This survey maps multi-step reasoning with LLMs across generation, evaluation, and control methods.
+  why_it_matters: It helps readers route model-centric reasoning claims into concrete questions about traces, verifiers, tools, rewards, and evaluation surfaces.
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: false
-    verified_at: '2026-06-16'
-    verified_by: curation
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official arXiv link pinned after source review.
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: a-survey-of-reinforcement-learning-from-human-feedback-2023
   title: A Survey of Reinforcement Learning from Human Feedback
   year: 2023
@@ -24499,7 +24797,7 @@
   - scalar_reward
   domains:
   - rlhf
-  - reward-modeling
+  - reward_modeling
   - alignment
   training_use:
   - reward_modeling
@@ -24523,51 +24821,52 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: human-feedback and preference-learning literature across RLHF settings.
-    trace_author: survey authors synthesize prior RLHF systems and feedback pipelines.
-    answer_format: survey taxonomy over feedback collection, reward modeling, and policy optimization.
+    prompt_source: RLHF and preference-based RL literature across control, robotics, and LLM settings.
+    trace_author: Survey authors synthesize RLHF pipelines and feedback taxonomies.
+    answer_format: Survey taxonomy over feedback collection, reward modeling, and policy optimization.
     process_fields:
-    - feedback source
-    - preference format
-    - reward model objective
-    - policy optimization loop
-    environment_or_substrate: RLHF pipelines spanning LLMs and broader RL settings.
-    verifier_or_reward: learned reward model from human feedback.
-    terminal_predicate: survey routing signal for deciding whether a work uses human feedback as the reward source.
+    - feedback_source
+    - preference_format
+    - reward_model_objective
+    - policy_optimization_loop
+    - application_domain
+    environment_or_substrate: RLHF pipelines spanning LLMs and broader RL domains.
+    verifier_or_reward: Human feedback transformed into learned reward or policy-optimization signal.
+    terminal_predicate: Classifies whether a paper uses human feedback as reward source.
   recipe_metadata:
-    base_model: unknown
-    teacher: human preference and feedback providers summarized across the literature.
-    generator: survey taxonomy
-    filtering_rule: scope emphasizes learned reward models trained from human feedback.
-    sampling_protocol: literature review
+    base_model: varies by experiment or surveyed primary work
+    teacher: Human feedback providers summarized across the literature.
+    generator: Survey taxonomy.
+    filtering_rule: RLHF/PbRL literature scope.
+    sampling_protocol: Literature review.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: RLHF reward-model and policy-optimization scaffold
+    optimizer_or_scaffold: RLHF reward-model and policy-optimization scaffold.
   audit:
-    source_mixture: literature survey
-    split: not applicable
-    decontamination: unknown
-    license: Check arXiv/OpenReview license before reuse.
-    lineage: public RLHF literature
+    source_mixture: RLHF and preference-based RL literature across control, robotics, and LLM settings.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Human feedback providers summarized across the literature.
     known_failure_modes:
-    - Human feedback can be noisy, subjective, sparse, or expensive.
-    - Reward models can overfit annotator preferences and become exploitable objectives.
-    - LLM readers may overgeneralize broad RLHF lessons to verifiable-reasoning settings.
+    - Do not infer reusable datasets from survey descriptions alone.
+    - Follow primary sources for provenance, license, split, and annotator details.
+    - Avoid overgeneralizing broad RLHF lessons to verifiable reasoning.
     citation_status: verified
     confidence: high
-    notes: Official arXiv and TMLR/OpenReview links verified for the RLHF survey subfield.
-    metadata_status: summary_ready
-  inclusion_reason: Core RLHF survey for routing readers from preference data to reward models and policy optimization before
-    they study reasoning-specific RLVR.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It helps readers distinguish human feedback, reward modeling, and policy optimization before comparing them with verifiable-reward reasoning data.
   related:
   - training-language-models-to-follow-instructions-with-human-feedback-2022
   - deep-reinforcement-learning-from-human-preferences-2017
   tags:
-  - rlhf
-  - reward-model-survey
   - human-feedback
   - preference-learning
+  - reward-model-survey
+  - rlhf
+  - rlhf-reward-model-surveys
+  - track-00-01-expansion
   status: verified
   category:
   - foundations_and_primers
@@ -24575,23 +24874,19 @@
   - judgment_rubric_domain_expert_data
   - training_usage_optimization_objectives
   - audit_failure_contamination_verifier_attacks
-  one_line: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human preference
-    data and learned reward models.
-  card: null
-  needs:
-  - 'needs_card: add a local survey card if this becomes a teaching anchor'
-  one_line_summary: Surveys RLHF as a feedback-to-reward-to-policy pipeline, giving readers the baseline vocabulary for human
-    preference data and learned reward models.
-  why_it_matters: It fills the RLHF survey doorway by separating human preference feedback, reward modeling, and policy optimization
-    before readers compare them with verifiable-reward reasoning data.
-  curation_level: L3_summary_ready
+  one_line: This survey maps RLHF as a feedback-to-reward-to-policy pipeline.
+  card: cards/recipes/a-survey-of-reinforcement-learning-from-human-feedback.md
+  needs: []
+  one_line_summary: This survey maps RLHF as a feedback-to-reward-to-policy pipeline.
+  why_it_matters: It helps readers distinguish human feedback, reward modeling, and policy optimization before comparing them with verifiable-reward reasoning data.
+  curation_level: L4_carded
   verification:
     link_verified: true
-    artifact_verified: true
-    verified_at: '2026-06-16'
-    verified_by: curation
+    artifact_verified: false
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official arXiv, DOI, and OpenReview links pinned.
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: a-comprehensive-survey-of-reward-models-taxonomy-applications-challenges-and-future-2025
   title: 'A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future'
   year: 2025
@@ -24616,9 +24911,10 @@
   - pairwise_preference
   - scalar_reward
   domains:
-  - reward-modeling
+  - reward_modeling
   - rlhf
   - alignment
+  - preference_learning
   training_use:
   - reward_modeling
   - preference_learning
@@ -24642,81 +24938,73 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: reward-model literature covering preference collection, reward modeling, use, applications, and benchmarks.
-    trace_author: survey authors organize reward model research and associated resources.
-    answer_format: taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.
+    prompt_source: Reward-model literature covering preference collection, reward usage, applications, benchmarks, and challenges.
+    trace_author: Survey authors organize reward-model research and resources.
+    answer_format: Taxonomy over reward-model sources, architectures, usage modes, applications, benchmarks, and challenges.
     process_fields:
-    - preference source
-    - reward model architecture
-    - usage mode
+    - preference_source
+    - reward_model_type
+    - usage_mode
     - benchmark
-    - challenge
-    environment_or_substrate: LLM reward-model training and evaluation pipelines.
-    verifier_or_reward: reward model as proxy objective for downstream post-training.
-    terminal_predicate: survey helps identify whether a paper's reward signal is learned, rubric-based, preference-derived,
-      or benchmarked.
+    - failure_mode
+    environment_or_substrate: LLM reward-model training, evaluation, and post-training pipelines.
+    verifier_or_reward: Learned or rubric/judge-derived reward model used as proxy feedback.
+    terminal_predicate: Whether a downstream work uses a reward model as feedback, evaluator, reranker, or objective.
   recipe_metadata:
-    base_model: unknown
-    teacher: human and AI preference sources summarized across reward-model literature.
-    generator: survey taxonomy and accompanying awesome list
-    filtering_rule: emphasizes parameterized reward models in the LLM era.
-    sampling_protocol: literature review
+    base_model: varies by experiment or surveyed primary work
+    teacher: Human and AI preference sources summarized across reward-model literature.
+    generator: Survey taxonomy and companion resource list.
+    filtering_rule: Literature-scope filtering for reward-model research.
+    sampling_protocol: Literature review.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: reward-model training, evaluation, and use taxonomy
+    optimizer_or_scaffold: Reward-model training, evaluation, and use taxonomy.
   audit:
-    source_mixture: literature survey plus public resource list
-    split: not applicable
-    decontamination: unknown
-    license: Check arXiv and companion repository license before reuse.
-    lineage: reward-modeling literature
+    source_mixture: Reward-model literature covering preference collection, reward usage, applications, benchmarks, and challenges.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Human and AI preference sources summarized across reward-model literature.
     known_failure_modes:
-    - Reward models may encode annotator bias, style bias, or length preference.
-    - Proxy rewards can be overoptimized or attacked when used as training objectives.
-    - Benchmark scores can obscure whether the reward model is useful for reasoning data.
+    - Reward models can encode annotator, style, length, or domain bias.
+    - Proxy rewards can be overoptimized or attacked.
+    - Benchmark scores do not prove downstream training usefulness.
     citation_status: verified
     confidence: high
-    notes: Official arXiv link and companion awesome-reward-models project link pinned.
-    metadata_status: summary_ready
-  inclusion_reason: Reward-model survey that directly supports the atlas distinction between human feedback, rubric signals,
-    reward models, and verifier rewards.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It gives Track 00 vocabulary for comparing learned rewards, PRMs, rubrics, LLM judges, and programmatic verifiers.
   related:
   - rewardbench-evaluating-reward-models-for-language-modeling-2024
   - ultrafeedback-boosting-language-models-with-high-quality-feedback-2023
   tags:
+  - preference-data
   - reward-model-survey
   - reward-modeling
   - rlhf
-  - preference-data
+  - rlhf-reward-model-surveys
+  - track-00-01-expansion
   status: verified
   category:
   - foundations_and_primers
   - preference_reward_feedback_data
-  - programmatically_verifiable_outcome_data
-  - process_trace_supervision_data
   - judgment_rubric_domain_expert_data
   - training_usage_optimization_objectives
-  - scaling_rlvr_test_time_compute
   - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  one_line: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and failure
-    modes.
-  card: null
-  needs:
-  - 'needs_card: add a local card if reward-model surveys become a teaching module'
-  one_line_summary: Surveys reward models from preference collection through model training, use, evaluation benchmarks, and
-    failure modes.
-  why_it_matters: It gives readers a reward-model-specific map, which is essential before comparing learned human-preference
-    rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
-  curation_level: L3_summary_ready
+  one_line: This survey organizes reward models by data source, objective, application, benchmark, and failure mode.
+  card: cards/verifiers/a-comprehensive-survey-of-reward-models.md
+  needs: []
+  one_line_summary: This survey organizes reward models by data source, objective, application, benchmark, and failure mode.
+  why_it_matters: It gives Track 00 vocabulary for comparing learned rewards, PRMs, rubrics, LLM judges, and programmatic verifiers.
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: true
-    verified_at: '2026-06-16'
-    verified_by: curation
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official arXiv, DOI, and companion project links pinned.
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: a-survey-on-human-preference-learning-for-large-language-models-2024
   title: A Survey on Human Preference Learning for Large Language Models
   year: 2024
@@ -24740,13 +25028,15 @@
   - pairwise_preference
   - scalar_reward
   domains:
-  - human-preference
-  - preference-learning
+  - human_preference
+  - preference_learning
+  - rlhf
   - alignment
   training_use:
   - preference_learning
   - reward_modeling
   - evaluation
+  - audit
   construction_layer:
   - release_audit
   - reward_verifier_layer
@@ -24765,78 +25055,72 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: human preference learning literature for LLM alignment.
-    trace_author: survey authors organize preference sources, formats, models, usage, and evaluation.
-    answer_format: preference-centered taxonomy over feedback data, preference modeling, preference usage, and aligned-model
-      evaluation.
+    prompt_source: Human preference learning literature for LLM alignment.
+    trace_author: Survey authors organize preference sources, formats, models, usage objectives, and evaluation methods.
+    answer_format: Preference-centered taxonomy over feedback data, modeling, usage, and evaluation.
     process_fields:
-    - preference source
-    - preference format
-    - preference model
-    - optimization objective
-    - evaluation protocol
+    - preference_source
+    - preference_format
+    - preference_model
+    - optimization_objective
+    - evaluation_protocol
     environment_or_substrate: LLM alignment pipelines using human preference signals.
-    verifier_or_reward: human preference signal transformed into reward, preference loss, or evaluation judgment.
-    terminal_predicate: survey helps readers identify what form of preference data is being collected and how it is used.
+    verifier_or_reward: Human preference transformed into reward, preference loss, or evaluation judgment.
+    terminal_predicate: Whether a work collects, models, optimizes, or evaluates human preference signals.
   recipe_metadata:
-    base_model: unknown
-    teacher: human preference providers and preference-labeled datasets summarized by the survey.
-    generator: survey taxonomy
-    filtering_rule: preference-centered scope for LLM alignment.
-    sampling_protocol: literature review
+    base_model: varies by experiment or surveyed primary work
+    teacher: Human preference providers and preference-labeled datasets summarized by the survey.
+    generator: Survey taxonomy.
+    filtering_rule: Preference-centered survey scope for LLM alignment.
+    sampling_protocol: Literature review.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: preference modeling and preference optimization taxonomy
+    optimizer_or_scaffold: Preference modeling and preference optimization taxonomy.
   audit:
-    source_mixture: literature survey
-    split: not applicable
-    decontamination: unknown
-    license: Check arXiv license before reuse.
-    lineage: human preference learning literature
+    source_mixture: Human preference learning literature for LLM alignment.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Human preference providers and preference-labeled datasets summarized by the survey.
     known_failure_modes:
-    - Preference labels can be noisy, culturally variable, or underspecified.
-    - Pairwise preferences may not preserve reasoning correctness or factual grounding.
-    - Evaluation of aligned models can conflate helpfulness, style, and reasoning quality.
+    - Check annotator assumptions, preference format, and disagreement policy.
+    - Preference labels may not preserve reasoning correctness.
+    - Evaluation can conflate helpfulness, style, harmlessness, and reasoning quality.
     citation_status: verified
     confidence: high
-    notes: Official arXiv link pinned for the human preference learning survey.
-    metadata_status: summary_ready
-  inclusion_reason: Preference-learning survey for readers who need to understand the data formats behind RLHF, DPO, RLAIF,
-    and reward-model training.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It helps readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
   related:
   - direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
   - training-language-models-to-follow-instructions-with-human-feedback-2022
   tags:
-  - preference-learning
   - human-preference
-  - rlhf
+  - preference-learning
   - reward-modeling
+  - rlhf
+  - rlhf-reward-model-surveys
+  - track-00-01-expansion
   status: verified
   category:
   - foundations_and_primers
-  - instruction_demonstration_rationale_data
   - preference_reward_feedback_data
   - judgment_rubric_domain_expert_data
   - training_usage_optimization_objectives
   - benchmarks_evaluation_surfaces
-  one_line: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation for
-    LLM alignment.
-  card: null
-  needs:
-  - 'needs_card: add a local card if preference-learning surveys become a teaching module'
-  one_line_summary: Reviews preference feedback sources, preference formats, modeling methods, usage objectives, and evaluation
-    for LLM alignment.
-  why_it_matters: It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons,
-    scalar rewards, DPO-style objectives, and evaluation judgments.
-  curation_level: L3_summary_ready
+  one_line: This survey reviews human preference feedback sources, formats, modeling methods, usage objectives, and evaluation.
+  card: cards/verifiers/a-survey-on-human-preference-learning-for-large-language-models.md
+  needs: []
+  one_line_summary: This survey reviews human preference feedback sources, formats, modeling methods, usage objectives, and evaluation.
+  why_it_matters: It helps readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: false
-    verified_at: '2026-06-16'
-    verified_by: curation
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official arXiv and DOI links pinned.
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: reinforcement-learning-for-llm-post-training-a-survey-2024
   title: 'Reinforcement Learning for LLM Post-Training: A Survey'
   year: 2024
@@ -24854,7 +25138,6 @@
   - Na Cheng
   source_role:
   - survey_background
-  - scaling_study
   verification_contract:
   - mixed
   - programmatic
@@ -24862,15 +25145,15 @@
   - scalar_reward
   - answer_level
   domains:
-  - post-training
+  - post_training
   - rlhf
   - rlvr
-  - preference-learning
+  - preference_learning
+  - policy_optimization
   training_use:
   - reward_modeling
   - preference_learning
   - rlvr
-  - test_time_compute
   - audit
   construction_layer:
   - release_audit
@@ -24891,53 +25174,54 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: RL-based LLM post-training literature across SFT, RLHF, RLVR, PPO, GRPO, and DPO variants.
-    trace_author: survey authors unify post-training objectives and implementation details.
-    answer_format: technical survey comparing RLHF and RLVR policy-gradient style post-training methods.
+    prompt_source: RL-based LLM post-training literature across SFT, RLHF, DPO, PPO, GRPO, and RLVR.
+    trace_author: Survey authors unify post-training objectives and implementation details.
+    answer_format: Technical taxonomy comparing RLHF and RLVR policy-gradient-style methods.
     process_fields:
-    - prompt sampling
-    - response sampling
-    - reward source
-    - gradient coefficient
-    - optimizer family
+    - prompt_sampling
+    - response_sampling
+    - reward_source
+    - gradient_coefficient
+    - optimizer_family
+    - implementation_detail
     environment_or_substrate: LLM post-training algorithms and reasoning tasks such as math and coding.
-    verifier_or_reward: learned preference rewards, verifiable rewards, and policy-gradient objectives.
-    terminal_predicate: survey routes readers between RLHF, DPO, PPO, GRPO, and RLVR-style post-training recipes.
+    verifier_or_reward: Learned preference rewards, verifiable rewards, and policy-gradient objectives.
+    terminal_predicate: Whether a method uses human reward, verifiable reward, direct preference objective, or policy-gradient optimization.
   recipe_metadata:
-    base_model: unknown
-    teacher: literature covering human feedback, verifiable rewards, and post-training optimization.
-    generator: technical survey and unified policy-gradient framework
-    filtering_rule: focuses on reinforcement-learning-based LLM post-training.
-    sampling_protocol: literature review
+    base_model: varies by experiment or surveyed primary work
+    teacher: Literature covering SFT, human feedback, verifiable rewards, and post-training optimization.
+    generator: Technical survey and unified policy-gradient framework.
+    filtering_rule: RL-based LLM post-training methods.
+    sampling_protocol: Literature review.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unified policy-gradient view of SFT, RLHF, RLVR, PPO, GRPO, and DPO
+    optimizer_or_scaffold: Unified policy-gradient view of SFT, RLHF, RLVR, PPO, GRPO, and DPO.
   audit:
-    source_mixture: literature survey
-    split: not applicable
-    decontamination: unknown
-    license: Check arXiv license before reuse.
-    lineage: RL-based LLM post-training literature
+    source_mixture: RL-based LLM post-training literature across SFT, RLHF, DPO, PPO, GRPO, and RLVR.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Literature covering SFT, human feedback, verifiable rewards, and post-training optimization.
     known_failure_modes:
-    - Method comparisons can mix data effects with optimizer and sampling-budget effects.
-    - RLHF and RLVR rewards are often discussed together despite different verification contracts.
-    - Implementation details can dominate reported gains if not separated from data quality.
+    - Separate data source, reward contract, rollout policy, optimizer, model size, and inference budget.
+    - Check false positives, reward hacking, sampling budget, and benchmark reuse.
+    - Do not attribute gains to generic RL without naming the data and reward object.
     citation_status: verified
     confidence: high
-    notes: Official arXiv link and DOI pinned; latest arXiv revision observed in 2026.
-    metadata_status: summary_ready
-  inclusion_reason: Technical post-training survey that bridges RLHF, DPO, PPO/GRPO, and RLVR for readers comparing human
-    feedback with verifiable-reward reasoning training.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It helps readers avoid conflating human preference rewards with programmatic or verifiable rewards in reasoning-data pipelines.
   related:
   - direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023
   - deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learning-2025
   tags:
+  - policy-optimization
+  - post-training
+  - post-training-surveys
+  - reward-model-survey
   - rlhf
   - rlvr
-  - reward-model-survey
-  - post-training
-  - policy-optimization
+  - track-00-01-expansion
   status: verified
   category:
   - foundations_and_primers
@@ -24947,23 +25231,19 @@
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
   - audit_failure_contamination_verifier_attacks
-  one_line: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses, rewards,
-    and optimization details.
-  card: null
-  needs:
-  - 'needs_card: add a local card if RL post-training methods become a teaching module'
-  one_line_summary: Unifies RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods, with attention to prompts, responses,
-    rewards, and optimization details.
-  why_it_matters: It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating
-    human preference rewards with programmatic or verifiable rewards.
-  curation_level: L3_summary_ready
+  one_line: This survey connects RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods.
+  card: cards/recipes/reinforcement-learning-for-llm-post-training-a-survey.md
+  needs: []
+  one_line_summary: This survey connects RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods.
+  why_it_matters: It helps readers avoid conflating human preference rewards with programmatic or verifiable rewards in reasoning-data pipelines.
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: false
-    verified_at: '2026-06-16'
-    verified_by: curation
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official arXiv and arXiv DOI links pinned.
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
 - id: survey-of-reasoning-large-language-models-2025
   title: A Survey of Reasoning with Foundation Models
   year: 2025
@@ -25162,9 +25442,12 @@
   - unknown
   domains:
   - contamination
-  - data-reuse
+  - data_reuse
+  - evaluation
+  - train_test_overlap
   training_use:
   - audit
+  - evaluation
   construction_layer:
   - release_audit
   artifacts:
@@ -25174,7 +25457,7 @@
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2410.08385
     venue: null
     openreview: null
     acl: null
@@ -25182,61 +25465,66 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: unknown
-    trace_author: unknown
-    answer_format: overlap and reporting analysis.
+    prompt_source: Public evaluation sets and model-developer training corpora considered through overlap reporting.
+    trace_author: Audit of reporting practices and developer disclosures.
+    answer_format: Overlap-reporting analysis over model developers, training data disclosure, overlap methodology, and public-test-set claims.
     process_fields:
-    - training corpus, evaluation set, overlap estimate, reporting policy.
-    environment_or_substrate: benchmark and training-data documentation.
-    verifier_or_reward: overlap analysis rather than a reward model.
-    terminal_predicate: unknown
+    - model_developer
+    - evaluation_set
+    - training_data_access
+    - overlap_statistic
+    - overlap_methodology
+    - reporting_policy
+    environment_or_substrate: Benchmark and training-data documentation.
+    verifier_or_reward: Overlap analysis rather than reward model.
+    terminal_predicate: Whether evaluation results are accompanied by train-test overlap statistics or training-data disclosure.
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
-    generator: unknown
-    filtering_rule: overlap reporting and audit policy.
-    sampling_protocol: unknown
+    base_model: varies by experiment or surveyed primary work
+    teacher: Model developers and evaluators reporting corpus/evaluation relationships.
+    generator: Audit survey over reporting practices.
+    filtering_rule: Public-test-set evaluation and train-test overlap disclosure.
+    sampling_protocol: Documentation study of model developers and reported overlap practices.
     rollout_count: null
     temperature: null
     inference_budget: null
-    optimizer_or_scaffold: unknown
+    optimizer_or_scaffold: Not applicable.
   audit:
-    source_mixture: Are training and evaluation corpora compared for overlap?
-    split: Are train/test overlaps quantified and reported?
-    decontamination: Does benchmark reporting include overlap estimates?
-    license: unknown
-    lineage: unknown
+    source_mixture: Public evaluation sets and model-developer training corpora considered through overlap reporting.
+    split: Check official paper/artifacts for train, validation, reward, and evaluation split details.
+    decontamination: unknown unless stated in the official source; do not infer clean separation from benchmark scores.
+    license: Check official paper and linked artifacts before reuse.
+    lineage: Model developers and evaluators reporting corpus/evaluation relationships.
     known_failure_modes:
-    - Reported benchmark gains can be inflated when train-test overlap is not disclosed.
+    - Ask whether training data is public and overlap statistics are reported.
+    - Check overlap methodology and benchmark reuse.
+    - Separate memorization, contamination, and genuine reasoning improvement.
     citation_status: verified
     confidence: high
-    notes: Official arXiv link pinned after source review.
-  inclusion_reason: Data-reuse and uniqueness audit entry for interpreting benchmark claims and reasoning-data scaling.
+    notes: Official primary source verified for L4 carding on 2026-07-10; non-primary artifacts are pinned only when official.
+  inclusion_reason: It gives the atlas a direct reason to record overlap, data reuse, and disclosure policy before treating benchmark gains as reasoning progress.
   related: []
   tags:
-  - train-test-overlap
-  - data-reuse
   - contamination
+  - contamination-evaluation-surveys
+  - data-reuse
+  - track-00-01-expansion
+  - train-test-overlap
   status: verified
   category:
   - foundations_and_primers
   - scaling_rlvr_test_time_compute
   - benchmarks_evaluation_surfaces
   - audit_failure_contamination_verifier_attacks
-  one_line: Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted with
-    data reuse in mind.
-  card: null
-  needs:
-  - 'needs_metadata: curator should add paper-specific overlap methodology notes'
-  one_line_summary: Argues that language-model releases should report train-test overlap so evaluation gains can be interpreted
-    with data reuse in mind.
-  why_it_matters: It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated
-    or overlapping examples are counted as fresh evidence.
-  curation_level: L1_link_verified
+  one_line: This audit argues model developers should report train-test overlap so public-test-set results can be interpreted under contamination risk.
+  card: cards/failures/language-model-developers-should-report-train-test-overlap.md
+  needs: []
+  one_line_summary: This audit argues model developers should report train-test overlap so public-test-set results can be interpreted under contamination risk.
+  why_it_matters: It gives the atlas a direct reason to record overlap, data reuse, and disclosure policy before treating benchmark gains as reasoning progress.
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: false
-    verified_at: '2026-06-16'
-    verified_by: curation
+    verified_at: '2026-07-10'
+    verified_by: agent
     confidence: high
-    notes: Official arXiv link pinned after source review.
+    notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.

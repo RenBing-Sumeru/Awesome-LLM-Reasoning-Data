@@ -155,40 +155,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"CUAD: An expert-annotated NLP dataset for legal contract review" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Finetuned language models are zero-shot learners
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Finetuned language models are zero-shot learners" arXiv`
-  - `"Finetuned language models are zero-shot learners" OpenReview`
-  - `"Finetuned language models are zero-shot learners" GitHub`
-  - `"Finetuned language models are zero-shot learners" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Multitask prompted training enables zero-shot task generalization
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Multitask prompted training enables zero-shot task generalization" arXiv`
-  - `"Multitask prompted training enables zero-shot task generalization" OpenReview`
-  - `"Multitask prompted training enables zero-shot task generalization" GitHub`
-  - `"Multitask prompted training enables zero-shot task generalization" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Qasper: A dataset of information-seeking questions and answers over scientific research papers
 
 - Current status: `needs_metadata`
@@ -291,23 +257,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Draft, sketch, and prove: Guiding formal theorem provers with informal proofs" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Scaling laws for reward model overoptimization
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, preference_reward_feedback_data, judgment_rubric_domain_expert_data, scaling_rlvr_test_time_compute, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Scaling laws for reward model overoptimization" arXiv`
-  - `"Scaling laws for reward model overoptimization" OpenReview`
-  - `"Scaling laws for reward model overoptimization" GitHub`
-  - `"Scaling laws for reward model overoptimization" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## ScienceWorld: Is your agent smarter than a 5th grader?
 
 - Current status: `needs_metadata`
@@ -393,23 +342,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Data provenance for language models" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, preference_reward_feedback_data, data_construction_open_release_recipes
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" arXiv`
-  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" OpenReview`
-  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" GitHub`
-  - `"Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## FActScore
 
 - Current status: `needs_metadata`
@@ -461,23 +393,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"JudgeLM: Fine-tuned large language models are scalable judges" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" arXiv`
-  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" OpenReview`
-  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" GitHub`
-  - `"Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Large language models encode clinical knowledge
 
 - Current status: `needs_metadata`
@@ -495,23 +410,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Large language models encode clinical knowledge" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## MAmmoTH: Building math generalist models through hybrid instruction tuning
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" arXiv`
-  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" OpenReview`
-  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" GitHub`
-  - `"MAmmoTH: Building math generalist models through hybrid instruction tuning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## MAUD: A merger agreement understanding dataset
 
 - Current status: `needs_metadata`
@@ -527,40 +425,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"MAUD: A merger agreement understanding dataset" OpenReview`
   - `"MAUD: A merger agreement understanding dataset" GitHub`
   - `"MAUD: A merger agreement understanding dataset" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Measuring faithfulness in chain-of-thought reasoning
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Measuring faithfulness in chain-of-thought reasoning" arXiv`
-  - `"Measuring faithfulness in chain-of-thought reasoning" OpenReview`
-  - `"Measuring faithfulness in chain-of-thought reasoning" GitHub`
-  - `"Measuring faithfulness in chain-of-thought reasoning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## MetaMath: Bootstrap your own mathematical questions for large language models
-
-- Current status: `needs_metadata`
-- Possible category: instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"MetaMath: Bootstrap your own mathematical questions for large language models" arXiv`
-  - `"MetaMath: Bootstrap your own mathematical questions for large language models" OpenReview`
-  - `"MetaMath: Bootstrap your own mathematical questions for large language models" GitHub`
-  - `"MetaMath: Bootstrap your own mathematical questions for large language models" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Mind2Web: Towards a generalist agent for the web
@@ -614,23 +478,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Reflexion: Language agents with verbal reinforcement learning" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## ReST\textsuperscriptEM
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"ReST\textsuperscriptEM" arXiv`
-  - `"ReST\textsuperscriptEM" OpenReview`
-  - `"ReST\textsuperscriptEM" GitHub`
-  - `"ReST\textsuperscriptEM" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## SelfCodeAlign: Self-alignment for code generation
 
 - Current status: `needs_metadata`
@@ -646,23 +493,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"SelfCodeAlign: Self-alignment for code generation" OpenReview`
   - `"SelfCodeAlign: Self-alignment for code generation" GitHub`
   - `"SelfCodeAlign: Self-alignment for code generation" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" arXiv`
-  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" OpenReview`
-  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" GitHub`
-  - `"WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## AI models collapse when trained on recursively generated data
@@ -971,23 +801,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## R-Tuning
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"R-Tuning" arXiv`
-  - `"R-Tuning" OpenReview`
-  - `"R-Tuning" GitHub`
-  - `"R-Tuning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## RAFT: Adapting language model to domain-specific RAG
 
 - Current status: `needs_metadata`
@@ -1003,40 +816,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"RAFT: Adapting language model to domain-specific RAG" OpenReview`
   - `"RAFT: Adapting language model to domain-specific RAG" GitHub`
   - `"RAFT: Adapting language model to domain-specific RAG" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Self-Rewarding LMs
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, preference_reward_feedback_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Self-Rewarding LMs" arXiv`
-  - `"Self-Rewarding LMs" OpenReview`
-  - `"Self-Rewarding LMs" GitHub`
-  - `"Self-Rewarding LMs" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## SPIN: Self-play fine-tuning converts weak language models to strong language models
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, data_construction_open_release_recipes
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" arXiv`
-  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" OpenReview`
-  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" GitHub`
-  - `"SPIN: Self-play fine-tuning converts weak language models to strong language models" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## SWE-Gym: Advancing software engineering agents with training and evaluation environments
@@ -1929,26 +1708,9 @@ Entries below are intentionally not promoted as verified until an official prima
 - Possible category: instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
 - Missing:
   - official paper / arXiv / venue / DOI
-  - data
-  - project
 - Search queries:
   - `"OpenR1-Math-220k" arXiv`
   - `"OpenR1-Math-220k" OpenReview`
   - `"OpenR1-Math-220k" GitHub`
   - `"OpenR1-Math-220k" Hugging Face`
-- Notes: Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
-
-## Qwen3-Coder
-
-- Current status: `partial`
-- Possible category: instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, environment_agent_trajectory_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute, frontier_reports_data_disclosure_ledger
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - data
-  - huggingface
-- Search queries:
-  - `"Qwen3-Coder" arXiv`
-  - `"Qwen3-Coder" OpenReview`
-  - `"Qwen3-Coder" GitHub`
-  - `"Qwen3-Coder" Hugging Face`
-- Notes: Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
+- Notes: It is a reusable open math reasoning-trace release for studying teacher distillation, answer-level verification, SFT data construction, and verifier/judge audit risks.

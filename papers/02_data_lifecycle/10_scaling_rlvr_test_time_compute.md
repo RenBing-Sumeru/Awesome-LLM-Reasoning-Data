@@ -102,6 +102,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; trace writing; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Large-scale math reasoning trace release for programmatic verification.
+- 🚀 **[Qwen3-Coder](https://qwenlm.github.io/blog/qwen3-coder/)**
+  <sub>2025 · Qwen official blog / GitHub / Hugging Face model release · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L4_carded</sub>
+  [Paper](https://qwenlm.github.io/blog/qwen3-coder/) · [arXiv](https://arxiv.org/abs/2505.09388) · [DOI](https://doi.org/10.48550/arXiv.2505.09388) · [Code](https://github.com/QwenLM/Qwen3-Coder) · [HF](https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct) · [Card](../../cards/recipes/qwen3_coder.md)
+  _Data object:_ code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments
+  _Feedback / verifier:_ unit tests, execution feedback, automatically scaled test cases, and environment task success signals
+  _Recipe signal:_ teacher: Qwen2.5-Coder used to clean and rewrite noisy data during pretraining data scaling.; generator: Qwen training pipeline plus policy rollouts for code RL and long-horizon agent RL.
+  _Audit focus:_ Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.
+  _Why it matters:_ It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.
 - 🧭 **[DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning](https://arxiv.org/abs/2504.11456)**
   <sub>2025 · arXiv preprint arXiv:2504.11456 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2504.11456)
@@ -122,13 +130,13 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Audit focus:_ Math-only scaling can overstate transfer to open-ended reasoning., Repeated data reuse can improve metrics while increasing overfitting risk., Power-law fits can hide reward or benchmark artifacts.
   _Why it matters:_ It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.
 - 🧯 **[Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385)**
-  <sub>2024 · arXiv · 🧯 audit failure · 🧭 survey background · unknown · audit · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2410.08385)
-  _Data object:_ overlap and reporting analysis.; process: training corpus, evaluation set, overlap estimate, reporting policy.; benchmark and training-data documentation.
-  _Feedback / verifier:_ overlap analysis rather than a reward model.
-  _Recipe signal:_ filtering rule: overlap reporting and audit policy.
-  _Audit focus:_ Reported benchmark gains can be inflated when train-test overlap is not disclosed.
-  _Why it matters:_ It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence.
+  <sub>2024 · arXiv · 🧯 audit failure · 🧭 survey background · unknown · audit · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2410.08385) · [DOI](https://doi.org/10.48550/arXiv.2410.08385) · [Card](../../cards/failures/language-model-developers-should-report-train-test-overlap.md)
+  _Data object:_ Overlap-reporting analysis over model developers, training data disclosure, overlap methodology, and public-test-set claims.; process: model developer, evaluation set, training data access; Benchmark and training-data documentation.
+  _Feedback / verifier:_ Overlap analysis rather than reward model.
+  _Recipe signal:_ teacher: Model developers and evaluators reporting corpus/evaluation relationships.; generator: Audit survey over reporting practices.
+  _Audit focus:_ Ask whether training data is public and overlap statistics are reported., Check overlap methodology and benchmark reuse., Separate memorization, contamination, and genuine reasoning improvement.
+  _Why it matters:_ It gives the atlas a direct reason to record overlap, data reuse, and disclosure policy before treating benchmark gains as reasoning progress.
 
 ### <a id="test-time-compute"></a>⏱️ Test-time compute
 
@@ -244,14 +252,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; optimizer scaffold; process supervision
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.
-- 🧭 **[Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216)**
-  <sub>2024 · arXiv · 🧭 survey background · 📈 scaling study · mixed · programmatic · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216)
-  _Data object:_ technical survey comparing RLHF and RLVR policy-gradient style post-training methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.
-  _Feedback / verifier:_ learned preference rewards, verifiable rewards, and policy-gradient objectives.
-  _Recipe signal:_ teacher: literature covering human feedback, verifiable rewards, and post-training optimization.; generator: technical survey and unified policy-gradient framework
-  _Audit focus:_ Method comparisons can mix data effects with optimizer and sampling-budget effects., RLHF and RLVR rewards are often discussed together despite different verification contracts., Implementation details can dominate reported gains if not separated from data quality.
-  _Why it matters:_ It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.
 - 🪜 **[ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](https://arxiv.org/abs/2501.07861)**
   <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · mixed · process supervision · preference learning · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2501.07861) · [Code](https://github.com/Jeryi-Sun/ReARTeR)
@@ -414,14 +414,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ reward verifier layer; release audit; rlvr
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
-- 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
-  <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
-  _Data object:_ taxonomy of reward-model data sources, objectives, applications, evaluations, and challenges.; process: preference source, reward model architecture, usage mode; LLM reward-model training and evaluation pipelines.
-  _Feedback / verifier:_ reward model as proxy objective for downstream post-training.
-  _Recipe signal:_ teacher: human and AI preference sources summarized across reward-model literature.; generator: survey taxonomy and accompanying awesome list
-  _Audit focus:_ Reward models may encode annotator bias, style bias, or length preference., Proxy rewards can be overoptimized or attacked when used as training objectives., Benchmark scores can obscure whether the reward model is useful for reasoning data.
-  _Why it matters:_ It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
+- 🧭 **[Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216)**
+  <sub>2024 · arXiv · 🧭 survey background · mixed · programmatic · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216) · [Card](../../cards/recipes/reinforcement-learning-for-llm-post-training-a-survey.md)
+  _Data object:_ Technical taxonomy comparing RLHF and RLVR policy-gradient-style methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.
+  _Feedback / verifier:_ Learned preference rewards, verifiable rewards, and policy-gradient objectives.
+  _Recipe signal:_ teacher: Literature covering SFT, human feedback, verifiable rewards, and post-training optimization.; generator: Technical survey and unified policy-gradient framework.
+  _Audit focus:_ Separate data source, reward contract, rollout policy, optimizer, model size, and inference budget., Check false positives, reward hacking, sampling budget, and benchmark reuse., Do not attribute gains to generic RL without naming the data and reward object.
+  _Why it matters:_ It helps readers avoid conflating human preference rewards with programmatic or verifiable rewards in reasoning-data pipelines.
 - 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
   <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME)
@@ -509,6 +509,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ prompt sourcing; search substrate; agent training
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Repository-scale training environment showing substrate as data.
+- 📦 **[MAmmoTH2: Scaling Instructions from the Web](https://arxiv.org/abs/2405.03548)**
+  <sub>2024 · NeurIPS · 📦 data release · 🏗️ construction recipe · mixed · programmatic · sft · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2405.03548) · [DOI](https://doi.org/10.48550/arXiv.2405.03548) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH2) · [Data](https://huggingface.co/datasets/TIGER-Lab/WebInstructFull) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH2-8x7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH2/) · [Card](../../cards/releases/mammoth2-scaling-instructions-from-the-web.md)
+  _Data object:_ Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.
+  _Feedback / verifier:_ Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.
+  _Recipe signal:_ teacher: Web corpora plus Mixtral/Qwen-style refinement.; generator: Common Crawl recall, Q-A extraction, and LLM refinement pipeline.
+  _Audit focus:_ Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.
+  _Why it matters:_ It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks.
 - 🪜 **[Math-Shepherd](https://arxiv.org/abs/2312.08935)**
   <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · process supervision · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2312.08935) · [Card](../../cards/verifiers/math_shepherd.md)
@@ -525,6 +533,22 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
+- 📈 **[Scaling laws for reward model overoptimization](https://arxiv.org/abs/2210.10760)**
+  <sub>2022 · ICML · 📈 scaling study · 🧯 audit failure · mixed · audit · evaluation · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2210.10760) · [Venue](https://proceedings.mlr.press/v202/gao23h.html) · [OpenReview](https://openreview.net/forum?id=bBLjms8nZE) · [DOI](https://doi.org/10.48550/arXiv.2210.10760) · [Card](../../cards/failures/scaling-laws-for-reward-model-overoptimization.md)
+  _Data object:_ Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.
+  _Feedback / verifier:_ Proxy reward model compared against a stronger gold reward model.
+  _Recipe signal:_ teacher: Fixed gold reward model used as synthetic human labeler.; generator: Policy optimized via RL or best-of-n sampling.
+  _Audit focus:_ Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.
+  _Why it matters:_ It gives reward-model readers a concrete audit lens for separating proxy reward gains from real preference improvement.
+- 🧪 **[Deep reinforcement learning from human preferences](https://arxiv.org/abs/1706.03741)**
+  <sub>2017 · NeurIPS · 🧪 verifier reward · 🧭 survey background · judgment required · reward modeling · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/1706.03741) · [Venue](https://papers.nips.cc/paper/7017-deep-reinforcement-learning-from-human-preferences) · [DOI](https://doi.org/10.48550/arXiv.1706.03741) · [Card](../../cards/verifiers/deep-reinforcement-learning-from-human-preferences.md)
+  _Data object:_ Pairwise preference labels over short trajectory clips plus learned scalar rewards.; process: trajectory segment a, trajectory segment b, human preference; Atari and simulated control environments.
+  _Feedback / verifier:_ Reward model trained from human preferences between trajectory segments.
+  _Recipe signal:_ teacher: Non-expert human preference labelers.; generator: RL policy rollouts.
+  _Audit focus:_ Audit labeler instructions, segment-selection policy, and reward-model calibration., Clip-level preferences may miss long-horizon failures., Optimizing learned rewards can exploit proxy errors.
+  _Why it matters:_ It gives the atlas a foundational reward-model data object: trajectory clips, human comparisons, learned scalar rewards, and proxy-risk audits.
 - 📄 **[Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence](https://arxiv.org/abs/2604.18292)**
   <sub>2026 · arXiv preprint arXiv:2604.18292 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2604.18292)
@@ -629,30 +653,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[MAmmoTH2: Scaling Instructions from the Web](https://arxiv.org/abs/2405.03548)**
-  <sub>2024 · Advances in Neural Information Processing Systems (NeurIPS) · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2405.03548)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[Training a helpful and harmless assistant with reinforcement learning from human feedback](https://arxiv.org/abs/2204.05862)**
-  <sub>2022 · arXiv · 🧭 survey background · judgment required · reward modeling · preference learning · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2204.05862)
-  _Data object:_ pairwise preference; scalar reward
-  _Feedback / verifier:_ judgment required
-  _Recipe signal:_ release audit; reward modeling; preference learning
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It provides the alignment-data lineage that later reasoning-data recipes inherit when they combine demonstrations, preferences, and reward models.
-- 🧭 **[Deep reinforcement learning from human preferences](https://arxiv.org/abs/1706.03741)**
-  <sub>2017 · NeurIPS · 🧭 survey background · judgment required · reward modeling · preference learning · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/1706.03741)
-  _Data object:_ pairwise preference; scalar reward
-  _Feedback / verifier:_ judgment required
-  _Recipe signal:_ release audit; reward modeling; preference learning
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It is a foundation for later post-training data records that turn comparisons into trainable reward signals.
 
 ### ⚠️ Needs search or metadata
 
@@ -737,21 +737,13 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📦 **OpenR1-Math-220k**
-  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L0_seeded</sub>
-  [Code](https://github.com/huggingface/open-r1) · [HF](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Card](../../cards/releases/openr1.md)
-  _Data object:_ math problem with reasoning trace and final answer; process: problem, reasoning trace, answer; offline math corpus
-  _Feedback / verifier:_ math answer verifier / filtering pipeline
-  _Recipe signal:_ prompt sourcing; trace writing; reward verifier layer
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
-- 🚀 **Qwen3-Coder**
-  <sub>2025 · GitHub / project report · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L0_seeded</sub>
-  [Code](https://github.com/QwenLM/Qwen3-Coder) · [Project](https://qwenlm.github.io/blog/qwen3-coder/) · [Card](../../cards/recipes/qwen3_coder.md)
-  _Data object:_ code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments
-  _Feedback / verifier:_ unit tests, execution feedback, and agent task success signals
-  _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
+  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L4_carded</sub>
+  [Code](https://github.com/huggingface/open-r1) · [Data](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Project](https://huggingface.co/blog/open-r1/update-2) · [Card](../../cards/releases/openr1.md)
+  _Data object:_ math problem, reference solution/answer, generated reasoning traces, final answer, and correctness fields; process: problem, solution, answer; Offline Hugging Face parquet dataset generated through the Open R1 reproduction pipeline.
+  _Feedback / verifier:_ Math-Verify answer checking plus Llama-3.3-70B-Instruct judge recovery for cases Math-Verify did not verify.
+  _Recipe signal:_ teacher: DeepSeek-R1.; generator: Open R1 generation pipeline using SGLang/vLLM-style large-scale inference.
+  _Audit focus:_ Math answer parsing can reject correct answers or accept format-compatible wrong answers., Llama judge recovery introduces judgment-required behavior into an otherwise programmatic pipeline., Only accepted/correct traces are emphasized, so failed traces and ambiguity are not equally visible.
+  _Why it matters:_ The release makes the Open R1 reproduction effort concrete as a dataset with prompts, generated traces, correctness fields, split metadata, and filtering signals exposed enough for L4 card-level reuse and audit planning.
 - 📄 **SWE-RL: Advancing language agents for software engineering via reinforcement learning**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -780,14 +772,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   <sub>2022 · NeurIPS · unknown · unknown · L0_seeded</sub>
   needs_search
   _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **Scaling laws for reward model overoptimization**
-  <sub>2022 · ICML · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
   _Feedback / verifier:_ metadata pending
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
@@ -840,8 +824,8 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 - [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](../../cards/releases/opencodereasoning_ii.md)
 - [OpenMathReasoning: A large-scale dataset of math reasoning traces](../../cards/releases/openmathreasoning.md)
 - [Qwen3 Technical Report](../../cards/recipes/qwen3.md)
+- [Qwen3-Coder](../../cards/recipes/qwen3_coder.md)
 - [SWE-Gym](../../cards/agents/swe_gym.md)
-- [Scaling Behaviors of LLM Reinforcement Learning Post-Training](../../cards/recipes/scaling-behaviors-rl-post-training.md)
 
 ## Back to Map
 
