@@ -9,12 +9,12 @@ Use this section to compare instruction traces, preferences, verifiable outcomes
 | Track | Main question | Entries | Jump |
 |---|---|---:|---|
 | 🧱 Instruction / Demo / Rationale | demonstration, SFT, CoT, rationale, and teacher-trace data | 58 | [01_instruction_demonstration_rationale_data.md](01_instruction_demonstration_rationale_data.md) |
-| 🤝 Preference & Reward Feedback | RLHF, DPO, reward modeling, rubric rewards, and AI feedback | 74 | [02_preference_reward_feedback_data.md](02_preference_reward_feedback_data.md) |
-| 🧮 Programmatic Verification | math, code, proof, and answer-verifiable reasoning data | 94 | [03_programmatically_verifiable_outcome_data.md](03_programmatically_verifiable_outcome_data.md) |
-| 🪜 Process / Trace Supervision | step-level labels, PRMs, rollout values, and first-error signals | 25 | [04_process_trace_supervision_data.md](04_process_trace_supervision_data.md) |
-| 🔁 Rollout / Search / TTC Trace | search-generated candidates, best-of-N, pass@k, and test-time compute traces | 39 | [05_rollout_search_test_time_trace_data.md](05_rollout_search_test_time_trace_data.md) |
-| 🌐 Environment & Agent Trajectories | tool, web, OS, app, SWE, and replayable environment data | 95 | [06_environment_agent_trajectory_data.md](06_environment_agent_trajectory_data.md) |
-| ⚖️ Judgment / Rubric / Domain Expert | LLM judges, expert rubrics, factuality, safety, medical, legal, and finance reasoning | 82 | [07_judgment_rubric_domain_expert_data.md](07_judgment_rubric_domain_expert_data.md) |
+| 🤝 Preference & Reward Feedback | RLHF, DPO, reward modeling, rubric rewards, and AI feedback | 114 | [02_preference_reward_feedback_data.md](02_preference_reward_feedback_data.md) |
+| 🧮 Programmatic Verification | math, code, proof, and answer-verifiable reasoning data | 99 | [03_programmatically_verifiable_outcome_data.md](03_programmatically_verifiable_outcome_data.md) |
+| 🪜 Process / Trace Supervision | step-level labels, PRMs, rollout values, and first-error signals | 30 | [04_process_trace_supervision_data.md](04_process_trace_supervision_data.md) |
+| 🔁 Rollout / Search / TTC Trace | search-generated candidates, best-of-N, pass@k, and test-time compute traces | 42 | [05_rollout_search_test_time_trace_data.md](05_rollout_search_test_time_trace_data.md) |
+| 🌐 Environment & Agent Trajectories | tool, web, OS, app, SWE, and replayable environment data | 97 | [06_environment_agent_trajectory_data.md](06_environment_agent_trajectory_data.md) |
+| ⚖️ Judgment / Rubric / Domain Expert | LLM judges, expert rubrics, factuality, safety, medical, legal, and finance reasoning | 91 | [07_judgment_rubric_domain_expert_data.md](07_judgment_rubric_domain_expert_data.md) |
 
 ## Data-Type Crosswalk
 

@@ -11,6 +11,8 @@ import {
   VERCEL_RUNTIME_REQUIRED,
 } from "./env-manifest.mjs";
 
+const WINDOWS_SHELL = process.platform === "win32";
+
 const SAFE_FINDINGS = {
   "pages-config-backend": {
     name: "ASK_ATLAS_BACKEND_URL",
@@ -181,6 +183,7 @@ function ghInventory(repo, kind) {
   const subcommand = kind === "secrets" ? "secret" : "variable";
   const result = spawnSync("gh", [subcommand, "list", "--env", "production", "--repo", safeRepo], {
     encoding: "utf8",
+    shell: WINDOWS_SHELL,
   });
   if (result.status !== 0) {
     return {

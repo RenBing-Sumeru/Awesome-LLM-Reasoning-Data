@@ -28,11 +28,9 @@ test("browser-visible JavaScript assets parse cleanly", () => {
 });
 
 test("generated Ask frontend JavaScript stays synchronized with source asset", () => {
-  const source = spawnSync("cmp", ["-s", "apps/ask-atlas/public/assets/ask.js", "docs/assets/ask.js"], {
-    cwd: repoRoot,
-    encoding: "utf8",
-  });
-  assert.equal(source.status, 0, "docs/assets/ask.js must match apps/ask-atlas/public/assets/ask.js");
+  const source = fs.readFileSync(`${repoRoot}/apps/ask-atlas/public/assets/ask.js`, "utf8");
+  const generated = fs.readFileSync(`${repoRoot}/docs/assets/ask.js`, "utf8");
+  assert.equal(generated, source, "docs/assets/ask.js must match apps/ask-atlas/public/assets/ask.js");
 });
 
 test("launch-pending preview keeps the public Ask page useful before backend activation", () => {

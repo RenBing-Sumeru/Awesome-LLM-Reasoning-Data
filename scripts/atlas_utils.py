@@ -141,6 +141,19 @@ def has_artifact(entry: dict[str, Any]) -> bool:
     return artifact_link_count(entry) > 0
 
 
+def card_inventory() -> dict[str, str]:
+    cards: dict[str, str] = {}
+    pattern = re.compile(r"<!--\s*entry_id:\s*([^\s]+)\s*-->")
+    for path in sorted((ROOT / "cards").glob("**/*.md")):
+        rel = path.relative_to(ROOT).as_posix()
+        if "template" in path.name or rel.startswith("cards/examples/") or rel == "cards/README.md":
+            continue
+        match = pattern.search(path.read_text(encoding="utf-8"))
+        if match:
+            cards[match.group(1)] = rel
+    return cards
+
+
 def paper_card_source_complete(path: str | Path, root: Path = ROOT) -> bool:
     base = Path(path)
     if not base.is_absolute():

@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { CONFIG } from "../src/config.mjs";
 import { buildPublicCorpusSources } from "../src/rag.mjs";
 
-const SECRET_PATTERN = /QIHOO_API_KEY|GITHUB_CLIENT_SECRET|ASK_ATLAS_SESSION_SECRET|ASK_ATLAS_TOKEN_ENCRYPTION_SECRET|UPSTASH_REDIS_REST_TOKEN|DATABASE_URL|Authorization\s*:\s*Bearer|Bearer\s+[A-Za-z0-9_.-]{12,}|fk[0-9A-Za-z_.-]{12,}/i;
+const SECRET_PATTERN = /QIHOO_API_KEY|GITHUB_CLIENT_SECRET|ASK_ATLAS_SESSION_SECRET|ASK_ATLAS_TOKEN_ENCRYPTION_SECRET|UPSTASH_REDIS_REST_TOKEN|DATABASE_URL|Authorization\s*:\s*Bearer|Bearer\s+[A-Za-z0-9_.-]{12,}|(?<![A-Za-z0-9])fk[0-9A-Za-z_.-]{12,}/i;
 
 function valueAfter(argv, name, fallback = "") {
   const index = argv.indexOf(name);
@@ -61,8 +60,9 @@ export function buildRagCorpusPayload() {
 }
 
 function writeAtomically(outputPath, serialized) {
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-  const tmp = path.join(os.tmpdir(), `ask-atlas-rag-corpus-${process.pid}.json`);
+  const outputDir = path.dirname(outputPath);
+  fs.mkdirSync(outputDir, { recursive: true });
+  const tmp = path.join(outputDir, `.rag-corpus-${process.pid}.tmp`);
   fs.writeFileSync(tmp, serialized);
   fs.renameSync(tmp, outputPath);
 }

@@ -12,6 +12,16 @@ import { collectLaunchReadiness, publicFrontendConfigIssues } from "../src/readi
 import { readStore, resetStoreForTests } from "../src/store.mjs";
 
 const appRoot = fileURLToPath(new URL("..", import.meta.url));
+const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
+
+function pythonCommand() {
+  if (process.env.PYTHON) return process.env.PYTHON;
+  const candidates = [
+    path.join(repoRoot, ".venv", "Scripts", "python.exe"),
+    path.join(repoRoot, ".venv", "bin", "python"),
+  ];
+  return candidates.find((candidate) => fs.existsSync(candidate)) || "python3";
+}
 
 const baseStore = () => ({
   users: {},
@@ -102,7 +112,7 @@ test("backend URL helper rejects JavaScript injection values", () => {
   const configPath = path.join(os.tmpdir(), `ask-config-injection-${Date.now()}.js`);
   try {
     const injected = 'https://ask.example.test";window.INJECTED="1';
-    const result = spawnSync("python3", ["../../scripts/set_ask_backend_url.py", "--config", configPath, injected], {
+    const result = spawnSync(pythonCommand(), ["../../scripts/set_ask_backend_url.py", "--config", configPath, injected], {
       cwd: appRoot,
       encoding: "utf8",
     });

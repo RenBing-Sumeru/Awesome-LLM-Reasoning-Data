@@ -56,15 +56,7 @@
           "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
           "year": 2025,
           "venue": "arXiv",
-          "authors": [
-            "Zhangchen Xu",
-            "Yuetai Li",
-            "Fengqing Jiang",
-            "Bhaskar Ramasubramanian",
-            "Luyao Niu",
-            "Bill Yuchen Lin",
-            "Radha Poovendran"
-          ],
+          "authors": [],
           "source_role": [
             "verifier_reward",
             "audit_failure",

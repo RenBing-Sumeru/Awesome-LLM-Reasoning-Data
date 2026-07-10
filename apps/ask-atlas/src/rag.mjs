@@ -303,6 +303,10 @@ function titleFromPath(relPath) {
     .replaceAll("-", " ");
 }
 
+function repoRelativePath(filePath) {
+  return path.relative(REPO_ROOT, filePath).split(path.sep).join("/");
+}
+
 function sourceFromSerialized(source) {
   if (!source || typeof source !== "object") return null;
   const id = String(source.id || "");
@@ -345,7 +349,7 @@ function buildRepositoryFileSources() {
   }
   const sources = [];
   for (const file of files) {
-    const rel = path.relative(REPO_ROOT, file);
+    const rel = repoRelativePath(file);
     if (rel.startsWith("docs/assets/")) continue;
     const type = sourceType(rel);
     const text = readText(file);
@@ -373,7 +377,7 @@ function buildPrivatePrimerSources() {
   if (!primerTextPath || !fs.existsSync(primerTextPath)) return [];
   const text = readText(primerTextPath);
   if (!text.trim()) return [];
-  const rel = path.relative(REPO_ROOT, primerTextPath);
+  const rel = repoRelativePath(primerTextPath);
   return chunkText(text).map((chunk, index) => ({
     id: `${rel}#chunk-${index + 1}`,
     title: "A Primer in Post-Training Reasoning Data",

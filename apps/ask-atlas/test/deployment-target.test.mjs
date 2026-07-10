@@ -15,7 +15,12 @@ const appRoot = fileURLToPath(new URL("..", import.meta.url));
 const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
 const launchCheckScript = fileURLToPath(new URL("../scripts/launch-check.mjs", import.meta.url));
 
+function normalizeNewlines(text) {
+  return String(text).replace(/\r\n/g, "\n");
+}
+
 function extractStepEnvNames(workflow, stepName) {
+  workflow = normalizeNewlines(workflow);
   const escapedStepName = stepName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const match = workflow.match(new RegExp(`- name: ${escapedStepName}\\n\\s+env:\\n([\\s\\S]*?)\\n\\s+run:`));
   assert.ok(match, `Could not find env block for ${stepName}`);
@@ -87,7 +92,7 @@ test("launch check redacted mode omits URLs and cap values", () => {
 });
 
 test("Vercel deploy workflow separates production secrets from Pages config publishing", () => {
-  const workflow = fs.readFileSync(`${repoRoot}/.github/workflows/deploy-ask-atlas-vercel.yml`, "utf8");
+  const workflow = normalizeNewlines(fs.readFileSync(`${repoRoot}/.github/workflows/deploy-ask-atlas-vercel.yml`, "utf8"));
   const deployJob = workflow.match(/\n  deploy:\n([\s\S]*?)\n  publish-pages-config:/)?.[1] || "";
   const publishJob = workflow.match(/\n  publish-pages-config:\n([\s\S]*)$/)?.[1] || "";
 
@@ -111,7 +116,7 @@ test("Vercel deploy workflow separates production secrets from Pages config publ
 });
 
 test("launch gate workflow is read-only and serialized with production deployments", () => {
-  const workflow = fs.readFileSync(`${repoRoot}/.github/workflows/ask-atlas-launch.yml`, "utf8");
+  const workflow = normalizeNewlines(fs.readFileSync(`${repoRoot}/.github/workflows/ask-atlas-launch.yml`, "utf8"));
   assert.match(workflow, /\npermissions:\n  contents: read\n/);
   assert.match(workflow, /\nconcurrency:\n  group: ask-atlas-production\n  cancel-in-progress: false\n/);
   assert.match(workflow, /Verify public launch surface is synchronized/);

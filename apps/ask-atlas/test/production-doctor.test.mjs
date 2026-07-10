@@ -81,25 +81,28 @@ test("production doctor consumes inventory files by name only", () => {
 test("production doctor can read GitHub production inventory through gh without printing values", () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ask-atlas-gh-doctor-"));
   const fakeGh = path.join(tmp, "gh");
-  fs.writeFileSync(fakeGh, `#!/bin/sh
-if [ "$1" = "variable" ] && [ "$2" = "list" ]; then
-  printf '%s\\n' "ASK_ATLAS_BASE_URL\\thttps://secret-backend.example"
-  printf '%s\\n' "ASK_ATLAS_PAGES_BASE_URL\\thttps://secret-pages.example"
-  printf '%s\\n' "GITHUB_CLIENT_ID\\tclient-id-secret-value"
-  printf '%s\\n' "ASK_ATLAS_ADMIN_GITHUB_IDS\\t123456"
-  printf '%s\\n' "ASK_ATLAS_MODEL_RATES_JSON\\t{\\"private\\":true}"
-  exit 0
-fi
-if [ "$1" = "secret" ] && [ "$2" = "list" ]; then
-  printf '%s\\n' "ASK_ATLAS_SESSION_SECRET\\t2026-06-18T00:00:00Z"
-  printf '%s\\n' "ASK_ATLAS_TOKEN_ENCRYPTION_SECRET\\t2026-06-18T00:00:00Z"
-  printf '%s\\n' "GITHUB_CLIENT_SECRET\\t2026-06-18T00:00:00Z"
-  printf '%s\\n' "QIHOO_API_KEY\\t2026-06-18T00:00:00Z"
-  exit 0
-fi
-exit 1
+  const fakeGhCmd = path.join(tmp, "gh.cmd");
+  fs.writeFileSync(fakeGh, `#!/usr/bin/env node
+const args = process.argv.slice(2);
+if (args[0] === "variable" && args[1] === "list") {
+  console.log("ASK_ATLAS_BASE_URL\\thttps://secret-backend.example");
+  console.log("ASK_ATLAS_PAGES_BASE_URL\\thttps://secret-pages.example");
+  console.log("GITHUB_CLIENT_ID\\tclient-id-secret-value");
+  console.log("ASK_ATLAS_ADMIN_GITHUB_IDS\\t123456");
+  console.log("ASK_ATLAS_MODEL_RATES_JSON\\t{\\"private\\":true}");
+  process.exit(0);
+}
+if (args[0] === "secret" && args[1] === "list") {
+  console.log("ASK_ATLAS_SESSION_SECRET\\t2026-06-18T00:00:00Z");
+  console.log("ASK_ATLAS_TOKEN_ENCRYPTION_SECRET\\t2026-06-18T00:00:00Z");
+  console.log("GITHUB_CLIENT_SECRET\\t2026-06-18T00:00:00Z");
+  console.log("QIHOO_API_KEY\\t2026-06-18T00:00:00Z");
+  process.exit(0);
+}
+process.exit(1);
 `);
   fs.chmodSync(fakeGh, 0o755);
+  fs.writeFileSync(fakeGhCmd, `@echo off\r\n"${process.execPath}" "${fakeGh}" %*\r\n`);
 
   const result = run(["--json", "--github-repo", "RenBing-Sumeru/Awesome-LLM-Reasoning-Data"], {
     env: {
@@ -122,11 +125,13 @@ exit 1
 test("production doctor strict mode fails safely when requested GitHub inventory cannot be read", () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ask-atlas-gh-fail-"));
   const fakeGh = path.join(tmp, "gh");
-  fs.writeFileSync(fakeGh, `#!/bin/sh
-echo "fatal: token fk1234567890SECRET should not be printed" >&2
-exit 1
+  const fakeGhCmd = path.join(tmp, "gh.cmd");
+  fs.writeFileSync(fakeGh, `#!/usr/bin/env node
+console.error("fatal: token fk1234567890SECRET should not be printed");
+process.exit(1);
 `);
   fs.chmodSync(fakeGh, 0o755);
+  fs.writeFileSync(fakeGhCmd, `@echo off\r\n"${process.execPath}" "${fakeGh}" %*\r\n`);
 
   const result = run(["--strict", "--github-repo", "RenBing-Sumeru/Awesome-LLM-Reasoning-Data"], {
     env: {

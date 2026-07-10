@@ -38,30 +38,30 @@
       "state": "new",
       "updated_at": "2026-07-10T07:50:07Z"
     },
-    "self-consistency-chain-of-thought-2023": {
-      "state": "new",
-      "updated_at": "2026-07-10T07:50:07Z"
-    },
     "tree-of-thoughts-2023": {
       "state": "new",
       "updated_at": "2026-07-10T07:50:07Z"
-    },
-    "coderl-code-generation-rl-2022": {
-      "state": "new",
-      "updated_at": "2026-07-10T07:50:07Z"
-    },
-    "lets-verify-step-by-step-2023": {
-      "state": "new",
-      "updated_at": "2026-07-10T07:50:07Z"
-    },
-    "deepseekmath-2024": {
-      "state": "edited",
-      "updated_at": "2026-07-10T09:19:52Z"
     },
     "rest-em-self-training-2024": {
       "state": "reviewed",
       "updated_at": "2026-07-10T09:18:58Z",
       "reviewed_at": "2026-07-10T09:18:58Z"
+    },
+    "coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024": {
+      "state": "edited",
+      "updated_at": "2026-07-10T09:19:52Z"
+    },
+    "prm800k-2023": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
+    },
+    "self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023": {
+      "state": "new",
+      "updated_at": "2026-07-10T07:50:07Z"
     }
   }
 }

@@ -26,6 +26,7 @@ const VERCEL_RUNTIME_SENSITIVE = new Set([
   "UPSTASH_REDIS_REST_URL",
   "UPSTASH_REDIS_REST_TOKEN",
 ]);
+const WINDOWS_SHELL = process.platform === "win32";
 
 function usage() {
   console.log(`Usage:
@@ -77,6 +78,7 @@ function runGh(args, { input = "" } = {}) {
     input,
     encoding: "utf8",
     stdio: ["pipe", "pipe", "pipe"],
+    shell: WINDOWS_SHELL,
   });
   return result;
 }
@@ -88,6 +90,7 @@ function runVercel(args, { input = "" } = {}) {
     cwd: APP_ROOT,
     stdio: ["pipe", "pipe", "pipe"],
     env: process.env,
+    shell: WINDOWS_SHELL,
   });
   return result;
 }

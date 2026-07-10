@@ -988,23 +988,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"RAFT: Adapting language model to domain-specific RAG" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Self-Rewarding LMs
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, preference_reward_feedback_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Self-Rewarding LMs" arXiv`
-  - `"Self-Rewarding LMs" OpenReview`
-  - `"Self-Rewarding LMs" GitHub`
-  - `"Self-Rewarding LMs" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## SPIN: Self-play fine-tuning converts weak language models to strong language models
 
 - Current status: `needs_metadata`
@@ -1156,23 +1139,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"WebLINX: Real-world website navigation with multi-turn dialogue" OpenReview`
   - `"WebLINX: Real-world website navigation with multi-turn dialogue" GitHub`
   - `"WebLINX: Real-world website navigation with multi-turn dialogue" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## WildGuard
-
-- Current status: `needs_metadata`
-- Possible category: judgment_rubric_domain_expert_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"WildGuard" arXiv`
-  - `"WildGuard" OpenReview`
-  - `"WildGuard" GitHub`
-  - `"WildGuard" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## WorkArena: How capable are web agents at solving common knowledge work tasks?
@@ -1411,23 +1377,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"General reasoning models: Survey and perspectives" OpenReview`
   - `"General reasoning models: Survey and perspectives" GitHub`
   - `"General reasoning models: Survey and perspectives" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## HealthBench: Evaluating large language models towards improved human health
-
-- Current status: `needs_metadata`
-- Possible category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"HealthBench: Evaluating large language models towards improved human health" arXiv`
-  - `"HealthBench: Evaluating large language models towards improved human health" OpenReview`
-  - `"HealthBench: Evaluating large language models towards improved human health" GitHub`
-  - `"HealthBench: Evaluating large language models towards improved human health" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Humanity's Last Exam
@@ -1870,23 +1819,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL" OpenReview`
   - `"pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL" GitHub`
   - `"pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## RewardBench 2
-
-- Current status: `needs_metadata`
-- Possible category: preference_reward_feedback_data, judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"RewardBench 2" arXiv`
-  - `"RewardBench 2" OpenReview`
-  - `"RewardBench 2" GitHub`
-  - `"RewardBench 2" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Terminal-Bench: A benchmark and task environment for terminal agents

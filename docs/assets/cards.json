@@ -1,0 +1,254 @@
+[
+  {
+    "path": "cards/agents/androidworld.md",
+    "entry_id": "androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025",
+    "type": "agents",
+    "title": "🌐 AndroidWorld: A dynamic benchmarking environment for autonomous agents"
+  },
+  {
+    "path": "cards/agents/appworld.md",
+    "entry_id": "appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024",
+    "type": "agents",
+    "title": "🌐 AppWorld: A controllable world of apps and people for benchmarking interactive coding agents"
+  },
+  {
+    "path": "cards/agents/browsergym.md",
+    "entry_id": "browsergym-a-gym-environment-for-web-agents-2024",
+    "type": "agents",
+    "title": "🌐 BrowserGym: A gym environment for web agents"
+  },
+  {
+    "path": "cards/agents/openhands.md",
+    "entry_id": "openhands-2025",
+    "type": "agents",
+    "title": "🌐 OpenHands: An Open Platform for AI Software Developers as Generalist Agents"
+  },
+  {
+    "path": "cards/agents/osworld.md",
+    "entry_id": "osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024",
+    "type": "agents",
+    "title": "🌐 OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments"
+  },
+  {
+    "path": "cards/agents/r2e_gym.md",
+    "entry_id": "r2e-gym-2025",
+    "type": "agents",
+    "title": "🌐 R2E-Gym"
+  },
+  {
+    "path": "cards/agents/swe_gym.md",
+    "entry_id": "swe-gym-2025",
+    "type": "agents",
+    "title": "🌐 SWE-Gym"
+  },
+  {
+    "path": "cards/agents/toolllm_toolbench.md",
+    "entry_id": "toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024",
+    "type": "agents",
+    "title": "🌐 ToolLLM: Facilitating large language models to master 16000+ real-world APIs"
+  },
+  {
+    "path": "cards/agents/webarena.md",
+    "entry_id": "webarena-a-realistic-web-environment-for-building-autonomous-agents-2023",
+    "type": "agents",
+    "title": "🌐 WebArena: A realistic web environment for building autonomous agents"
+  },
+  {
+    "path": "cards/benchmarks/rewardbench.md",
+    "entry_id": "rewardbench-evaluating-reward-models-for-language-modeling-2024",
+    "type": "benchmarks",
+    "title": "🧰 RewardBench Benchmark Lens"
+  },
+  {
+    "path": "cards/failures/spurious_rewards.md",
+    "entry_id": "spurious-rewards-2025",
+    "type": "failures",
+    "title": "🧯 Spurious Rewards Failure Lens"
+  },
+  {
+    "path": "cards/recipes/absolute_zero.md",
+    "entry_id": "absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025",
+    "type": "recipes",
+    "title": "🏗️ Absolute Zero: Reinforced Self-play Reasoning with Zero Data"
+  },
+  {
+    "path": "cards/recipes/deepseek_r1.md",
+    "entry_id": "deepseek-r1-2025",
+    "type": "recipes",
+    "title": "🏗️ DeepSeek-R1"
+  },
+  {
+    "path": "cards/recipes/kimi_k15.md",
+    "entry_id": "kimi-k1-5-2025",
+    "type": "recipes",
+    "title": "🏗️ Kimi K1.5: Scaling Reinforcement Learning with LLMs"
+  },
+  {
+    "path": "cards/recipes/llama_nemotron.md",
+    "entry_id": "llama-nemotron-2025",
+    "type": "recipes",
+    "title": "🏗️ Llama-Nemotron: Efficient Reasoning Models"
+  },
+  {
+    "path": "cards/recipes/magistral.md",
+    "entry_id": "magistral-2025",
+    "type": "recipes",
+    "title": "🏗️ Magistral"
+  },
+  {
+    "path": "cards/recipes/minimax_m1.md",
+    "entry_id": "minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025",
+    "type": "recipes",
+    "title": "🏗️ MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention"
+  },
+  {
+    "path": "cards/recipes/phi4_reasoning.md",
+    "entry_id": "phi-4-reasoning-2025",
+    "type": "recipes",
+    "title": "🏗️ Phi-4-reasoning Technical Report"
+  },
+  {
+    "path": "cards/recipes/qwen3.md",
+    "entry_id": "qwen3-2025",
+    "type": "recipes",
+    "title": "🏗️ Qwen3 Technical Report"
+  },
+  {
+    "path": "cards/recipes/qwen3_coder.md",
+    "entry_id": "qwen3-coder-2025",
+    "type": "recipes",
+    "title": "🏗️ Qwen3-Coder"
+  },
+  {
+    "path": "cards/recipes/ttrl.md",
+    "entry_id": "ttrl-test-time-reinforcement-learning-2025",
+    "type": "recipes",
+    "title": "🏗️ TTRL: Test-Time Reinforcement Learning"
+  },
+  {
+    "path": "cards/releases/big_math.md",
+    "entry_id": "big-math-2025",
+    "type": "releases",
+    "title": "📦 Big-Math-RL-Verified"
+  },
+  {
+    "path": "cards/releases/dapo.md",
+    "entry_id": "dapo-2025",
+    "type": "releases",
+    "title": "📦 DAPO"
+  },
+  {
+    "path": "cards/releases/deepmath_103k.md",
+    "entry_id": "deepmath-103k-2025",
+    "type": "releases",
+    "title": "📦 DeepMath-103K"
+  },
+  {
+    "path": "cards/releases/kodcode.md",
+    "entry_id": "kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025",
+    "type": "releases",
+    "title": "📦 KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding"
+  },
+  {
+    "path": "cards/releases/limo.md",
+    "entry_id": "limo-2025",
+    "type": "releases",
+    "title": "📦 LIMO: Less Is More for Reasoning"
+  },
+  {
+    "path": "cards/releases/naturalreasoning.md",
+    "entry_id": "naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025",
+    "type": "releases",
+    "title": "📦 NaturalReasoning: Reasoning in the Wild with 2.8M Challenging Questions"
+  },
+  {
+    "path": "cards/releases/opencodereasoning_ii.md",
+    "entry_id": "opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025",
+    "type": "releases",
+    "title": "📦 OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique"
+  },
+  {
+    "path": "cards/releases/openmathreasoning.md",
+    "entry_id": "openmathreasoning-2025",
+    "type": "releases",
+    "title": "📦 OpenMathReasoning: A large-scale dataset of math reasoning traces"
+  },
+  {
+    "path": "cards/releases/openr1.md",
+    "entry_id": "openr1-math-220k-2025",
+    "type": "releases",
+    "title": "📦 OpenR1-Math-220k"
+  },
+  {
+    "path": "cards/releases/openthoughts.md",
+    "entry_id": "openthoughts3-2025",
+    "type": "releases",
+    "title": "📦 OpenThoughts: Data recipes for reasoning models"
+  },
+  {
+    "path": "cards/releases/s1.md",
+    "entry_id": "s1-2025",
+    "type": "releases",
+    "title": "📦 s1: Simple Test-Time Scaling"
+  },
+  {
+    "path": "cards/verifiers/healthbench.md",
+    "entry_id": "healthbench-2025",
+    "type": "verifiers",
+    "title": "🧪 HealthBench"
+  },
+  {
+    "path": "cards/verifiers/math_shepherd.md",
+    "entry_id": "math-shepherd-2024",
+    "type": "verifiers",
+    "title": "🧪 Math-Shepherd"
+  },
+  {
+    "path": "cards/verifiers/omegaprm.md",
+    "entry_id": "omegaprm-automated-process-supervision-2024",
+    "type": "verifiers",
+    "title": "🧪 OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision"
+  },
+  {
+    "path": "cards/verifiers/one_token_to_fool_judge.md",
+    "entry_id": "one-token-to-fool-2025",
+    "type": "verifiers",
+    "title": "🧪 One Token to Fool LLM-as-a-Judge"
+  },
+  {
+    "path": "cards/verifiers/prm800k.md",
+    "entry_id": "prm800k-2023",
+    "type": "verifiers",
+    "title": "🧪 Let's Verify Step by Step"
+  },
+  {
+    "path": "cards/verifiers/prmbench.md",
+    "entry_id": "prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025",
+    "type": "verifiers",
+    "title": "🧪 PRMBench: A fine-grained and challenging benchmark for process-level reward models"
+  },
+  {
+    "path": "cards/verifiers/processbench.md",
+    "entry_id": "processbench-identifying-process-errors-in-mathematical-reasoning-2025",
+    "type": "verifiers",
+    "title": "🧪 ProcessBench: Identifying Process Errors in Mathematical Reasoning"
+  },
+  {
+    "path": "cards/verifiers/rewardbench.md",
+    "entry_id": "rewardbench-evaluating-reward-models-for-language-modeling-2024",
+    "type": "verifiers",
+    "title": "🧪 RewardBench: Evaluating Reward Models for Language Modeling"
+  },
+  {
+    "path": "cards/verifiers/spurious_rewards.md",
+    "entry_id": "spurious-rewards-2025",
+    "type": "verifiers",
+    "title": "🧪 Spurious Rewards"
+  },
+  {
+    "path": "cards/verifiers/tinyv.md",
+    "entry_id": "tinyv-2025",
+    "type": "verifiers",
+    "title": "🧪 TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning"
+  }
+]

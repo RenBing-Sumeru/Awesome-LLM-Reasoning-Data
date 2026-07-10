@@ -68,6 +68,7 @@ test("production configure applies Vercel runtime values without printing them",
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), "ask-atlas-vercel-"));
   const fakeLog = path.join(temp, "vercel-calls.jsonl");
   const fakeVercel = path.join(temp, "vercel");
+  const fakeVercelCmd = path.join(temp, "vercel.cmd");
   fs.writeFileSync(fakeVercel, `#!/usr/bin/env node
 const fs = require("fs");
 const args = process.argv.slice(2);
@@ -81,6 +82,7 @@ if (args[0] === "env" && (args[1] === "rm" || args[1] === "add")) process.exit(0
 process.exit(1);
 `);
   fs.chmodSync(fakeVercel, 0o755);
+  fs.writeFileSync(fakeVercelCmd, `@echo off\r\n"${process.execPath}" "${fakeVercel}" %*\r\n`);
   const values = Object.fromEntries(VERCEL_RUNTIME_REQUIRED.map((name) => [name, `value-for-${name}`]));
   Object.assign(values, {
     VERCEL_TOKEN: "vercel-token-sentinel",

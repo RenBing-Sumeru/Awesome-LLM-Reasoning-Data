@@ -1,47 +1,47 @@
 # Link Coverage
 
-Public coverage report generated from `data/papers.yaml` and the card inventory.
+Public coverage report generated from `data/papers.yaml` and the paper-card source inventory.
 
 ## Summary
 
-- Total entries: 281
-- Verified entries: 167
-- Verified entries with official paper/arXiv/venue/DOI links: 167 (100.0%)
-- Needs search: 114
+- Total entries: 324
+- Verified entries: 214
+- Verified entries with official paper/arXiv/venue/DOI links: 214 (100.0%)
+- Needs search: 110
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 89
+- Paper-card sources: 17
 
 ## Curation Levels
 
-- L0_seeded: 114
-- L1_link_verified: 69
+- L0_seeded: 110
+- L1_link_verified: 63
 - L2_artifact_verified: 7
-- L3_summary_ready: 4
-- L4_carded: 32
+- L3_summary_ready: 1
+- L4_carded: 88
 - L5_audit_ready: 55
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 167
-- arXiv coverage: 164
-- OpenReview coverage: 16
-- ACL coverage: 7
+- Official primary paper/arXiv/venue/DOI coverage: 214
+- arXiv coverage: 211
+- OpenReview coverage: 19
+- ACL coverage: 8
 - PMLR coverage: 1
 - CVF coverage: 0
-- DOI coverage: 6
-- Code coverage: 43
-- Data coverage: 29
-- Hugging Face coverage: 22
-- Project page coverage: 26
-- Card coverage: 89
+- DOI coverage: 64
+- Code coverage: 75
+- Data coverage: 51
+- Hugging Face coverage: 44
+- Project page coverage: 44
+- Paper-card source coverage: 17
 
 ## Starter Pack Coverage
 
-- Matched Starter Pack entries: 20
-- Official primary links: 20/20 (100.0%)
-- Card coverage: 20/20 (100.0%)
-- Code/data/Hugging Face coverage: 6/20
+- Matched Starter Pack entries: 0
+- Official primary links: 0/0 (0.0%)
+- Paper-card source coverage: 0/0 (0.0%)
+- Code/data/Hugging Face coverage: 0/0
 
 ## Missing Primary Links
 
@@ -103,7 +103,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `paperqa2-language-agents-achieve-superhuman-synthesis-of-scientific-knowledge-2024` · PaperQA2 / Language agents achieve superhuman synthesis of scientific knowledge · status `needs_metadata`
 - `r-tuning-2024` · R-Tuning · status `needs_metadata`
 - `raft-adapting-language-model-to-domain-specific-rag-2024` · RAFT: Adapting language model to domain-specific RAG · status `needs_metadata`
-- `self-rewarding-lms-2024` · Self-Rewarding LMs · status `needs_metadata`
 - `spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024` · SPIN: Self-play fine-tuning converts weak language models to strong language models · status `needs_metadata`
 - `swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024` · SWE-Gym: Advancing software engineering agents with training and evaluation environments · status `needs_metadata`
 - `swe-search-2024` · SWE-Search · status `needs_metadata`
@@ -113,7 +112,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024` · ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use · status `needs_metadata`
 - `visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024` · VisualWebArena: Evaluating multimodal agents on realistic visual web tasks · status `partial`
 - `weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024` · WebLINX: Real-world website navigation with multi-turn dialogue · status `needs_metadata`
-- `wildguard-2024` · WildGuard · status `needs_metadata`
 - `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` · WorkArena: How capable are web agents at solving common knowledge work tasks? · status `needs_metadata`
 - `xstest-2024` · XSTest · status `needs_metadata`
 - `1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025` · 1-shot RLVR: Learning reasoning with minimal verifiable data · status `needs_metadata`
@@ -128,7 +126,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `finder-financial-data-extraction-and-reasoning-2025` · FinDER: Financial data extraction and reasoning · status `needs_metadata`
 - `from-system-1-to-system-2-a-survey-of-reasoning-large-language-models-2025` · From system 1 to system 2: A survey of reasoning large language models · status `needs_metadata`
 - `general-reasoning-models-survey-and-perspectives-2025` · General reasoning models: Survey and perspectives · status `needs_metadata`
-- `healthbench-evaluating-large-language-models-towards-improved-human-health-2025` · HealthBench: Evaluating large language models towards improved human health · status `needs_metadata`
 - `humanity-s-last-exam-2025` · Humanity's Last Exam · status `needs_metadata`
 - `introducing-openai-o3-and-o4-mini-2025` · Introducing OpenAI o3 and o4-mini · status `needs_metadata`
 - `math-perturb-2025` · MATH-Perturb · status `needs_metadata`
@@ -155,7 +152,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `why-we-no-longer-evaluate-on-swe-bench-verified-2025` · Why we no longer evaluate on SWE-bench Verified · status `needs_metadata`
 - `xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025` · xLAM: A family of large action models to empower AI agent systems · status `needs_metadata`
 - `pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026` · pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL · status `needs_metadata`
-- `rewardbench-2-2026` · RewardBench 2 · status `needs_metadata`
 - `terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026` · Terminal-Bench: A benchmark and task environment for terminal agents · status `needs_metadata`
 - `openr1-math-220k-2025` · OpenR1-Math-220k · status `partial`
 - `qwen3-coder-2025` · Qwen3-Coder · status `partial`

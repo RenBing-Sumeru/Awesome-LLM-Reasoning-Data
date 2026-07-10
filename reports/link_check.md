@@ -2,10 +2,10 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 491
-- markdown links checked: 6823
-- external markdown links discovered: 4370
-- unique external URLs discovered: 584
+- artifact URLs discovered: 745
+- markdown links checked: 6748
+- external markdown links discovered: 5340
+- unique external URLs discovered: 912
 - live URLs checked: 0
 - failures: 0
 
@@ -212,14 +212,31 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `rest-mcts-2024` arxiv: https://arxiv.org/abs/2406.03816
 - `rewardbench-evaluating-reward-models-for-language-modeling-2024` paper: https://arxiv.org/abs/2403.13787
 - `rewardbench-evaluating-reward-models-for-language-modeling-2024` arxiv: https://arxiv.org/abs/2403.13787
+- `rewardbench-evaluating-reward-models-for-language-modeling-2024` code: https://github.com/allenai/reward-bench
+- `rewardbench-evaluating-reward-models-for-language-modeling-2024` data: https://huggingface.co/datasets/allenai/reward-bench
+- `rewardbench-evaluating-reward-models-for-language-modeling-2024` project: https://huggingface.co/spaces/allenai/reward-bench
+- `rewardbench-evaluating-reward-models-for-language-modeling-2024` huggingface: https://huggingface.co/datasets/allenai/reward-bench
+- `rewardbench-evaluating-reward-models-for-language-modeling-2024` doi: https://doi.org/10.48550/arXiv.2403.13787
 - `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` paper: https://arxiv.org/abs/2410.08146
 - `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` arxiv: https://arxiv.org/abs/2410.08146
+- `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` doi: https://doi.org/10.48550/arXiv.2410.08146
 - `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` openreview: https://openreview.net/forum?id=A6Y7AqlzLW
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` paper: https://arxiv.org/abs/2407.13168
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` arxiv: https://arxiv.org/abs/2407.13168
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` code: https://github.com/scicode-bench/SciCode
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` project: https://scicode-bench.github.io/
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html
+- `self-rewarding-lms-2024` paper: https://arxiv.org/abs/2401.10020
+- `self-rewarding-lms-2024` arxiv: https://arxiv.org/abs/2401.10020
+- `self-rewarding-lms-2024` doi: https://doi.org/10.48550/arXiv.2401.10020
+- `meta-rewarding-language-models-self-improving-alignment-with-llm-as-a-meta-judge-2024` paper: https://arxiv.org/abs/2407.19594
+- `meta-rewarding-language-models-self-improving-alignment-with-llm-as-a-meta-judge-2024` arxiv: https://arxiv.org/abs/2407.19594
+- `meta-rewarding-language-models-self-improving-alignment-with-llm-as-a-meta-judge-2024` doi: https://doi.org/10.48550/arXiv.2407.19594
+- `process-based-self-rewarding-language-models-2025` paper: https://arxiv.org/abs/2503.03746
+- `process-based-self-rewarding-language-models-2025` arxiv: https://arxiv.org/abs/2503.03746
+- `process-based-self-rewarding-language-models-2025` code: https://github.com/Shimao-Zhang/Process-Self-Rewarding
+- `process-based-self-rewarding-language-models-2025` data: https://github.com/Shimao-Zhang/Process-Self-Rewarding/tree/master/data
+- `process-based-self-rewarding-language-models-2025` doi: https://doi.org/10.48550/arXiv.2503.03746
 - `toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024` paper: https://arxiv.org/abs/2307.16789
 - `toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024` arxiv: https://arxiv.org/abs/2307.16789
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` paper: https://arxiv.org/abs/2411.15124
@@ -229,6 +246,12 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` project: https://allenai.org/blog/tulu-3-technical
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` huggingface: https://huggingface.co/collections/allenai/tulu-3-datasets
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` openreview: https://openreview.net/forum?id=i1uGbfHHpH
+- `wildguard-2024` paper: https://arxiv.org/abs/2406.18495
+- `wildguard-2024` arxiv: https://arxiv.org/abs/2406.18495
+- `wildguard-2024` code: https://github.com/allenai/wildguard
+- `wildguard-2024` data: https://huggingface.co/datasets/allenai/wildguardmix
+- `wildguard-2024` huggingface: https://huggingface.co/allenai/wildguard
+- `wildguard-2024` doi: https://doi.org/10.48550/arXiv.2406.18495
 - `1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025` paper: https://arxiv.org/abs/2503.19633
 - `1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025` arxiv: https://arxiv.org/abs/2503.19633
 - `a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025` paper: https://arxiv.org/abs/2504.07086
@@ -237,29 +260,6 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `a-survey-on-llm-mid-training-2025` arxiv: https://arxiv.org/abs/2510.23081
 - `absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025` paper: https://arxiv.org/abs/2505.03335
 - `absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025` arxiv: https://arxiv.org/abs/2505.03335
-- `abstentionbench-2025` paper: https://arxiv.org/abs/2506.09038
-- `abstentionbench-2025` arxiv: https://arxiv.org/abs/2506.09038
-- `abstentionbench-2025` code: https://github.com/facebookresearch/AbstentionBench
-- `abstentionbench-2025` data: https://huggingface.co/datasets/facebook/AbstentionBench
-- `abstentionbench-2025` huggingface: https://huggingface.co/datasets/facebook/AbstentionBench
-- `abstentionbench-2025` venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html
-- `abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025` paper: https://arxiv.org/abs/2506.09038
-- `abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025` arxiv: https://arxiv.org/abs/2506.09038
-- `aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025` paper: https://arxiv.org/abs/2501.09004
-- `aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025` arxiv: https://arxiv.org/abs/2501.09004
-- `aegis2-2025` paper: https://arxiv.org/abs/2501.09004
-- `aegis2-2025` arxiv: https://arxiv.org/abs/2501.09004
-- `aegis2-2025` data: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
-- `aegis2-2025` huggingface: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
-- `aegis2-2025` acl: https://aclanthology.org/2025.naacl-long.306/
-- `alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025` paper: https://arxiv.org/abs/2506.13131
-- `alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025` arxiv: https://arxiv.org/abs/2506.13131
-- `am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025` paper: https://arxiv.org/abs/2505.08311
-- `am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025` arxiv: https://arxiv.org/abs/2505.08311
-- `androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025` paper: https://arxiv.org/abs/2405.14573
-- `androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025` arxiv: https://arxiv.org/abs/2405.14573
-- `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` paper: https://arxiv.org/abs/2509.03403
-- `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` arxiv: https://arxiv.org/abs/2509.03403
-- ... 241 more
+- ... 495 more
 
 Network probing skipped because `--soft` was used.
