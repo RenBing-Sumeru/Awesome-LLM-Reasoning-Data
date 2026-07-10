@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+> Subfield: 🧱 Instruction tuning / SFT data
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2109.00110) · [🏛️ OpenReview](https://openreview.net/forum?id=9ZPegFuFTFv) · [🐙 Code](https://github.com/openai/miniF2F)
 
 ## TL;DR

@@ -257,6 +257,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
+- 🧰 **[TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks](https://arxiv.org/abs/2412.14161)**
+  <sub>2025 · arXiv preprint arXiv:2412.14161 · 🧰 benchmark · 🌐 agent environment · environmental · mixed · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2412.14161) · [Project](https://the-agent-company.com)
+  _Data object:_ digital-worker task episode with browsing, code, program, and communication actions; process: task instruction, web action, code/program action; self-contained company-like environment with internal websites and data
+  _Feedback / verifier:_ task-specific completion checks in the simulated workplace
+  _Recipe signal:_ filtering rule: curated workplace tasks and self-contained environment setup
+  _Audit focus:_ Simulated company tasks may not capture real organizational constraints., Long-horizon task success may depend on environment snapshot details.
+  _Why it matters:_ P0 Track 06 workplace entry: it defines a company-like environment for long-horizon digital-worker agents.
+- 🧰 **[MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://arxiv.org/abs/2410.07095)**
+  <sub>2024 · ICLR / arXiv preprint arXiv:2410.07095 · 🧰 benchmark · 🌐 agent environment · programmatic · environmental · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2410.07095) · [Code](https://github.com/openai/mle-bench/)
+  _Data object:_ competition submission, code, trained model, and leaderboard score; process: competition, dataset, agent code/actions; Kaggle-style ML engineering environments
+  _Feedback / verifier:_ competition metric and leaderboard-medal thresholds
+  _Recipe signal:_ filtering rule: competition curation and human leaderboard baseline comparison
+  _Audit focus:_ Public competition data can leak into model pretraining., Leaderboard scores may reward competition-specific tricks over general ML engineering.
+  _Why it matters:_ P0 Track 06 ML-engineering entry: it makes model training and experiment execution a long-horizon agent environment.
 
 ### <a id="proof-benchmarks"></a>🧾 Proof benchmarks
 
@@ -327,6 +343,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: critic and retrieval-supervision signals derived from task data and evidence checks.; generator: model learns special reflection tokens for retrieval and critique behavior.
   _Audit focus:_ A model can retrieve irrelevant passages confidently., Critique tokens can become style markers without true verification., Retriever choice changes benchmark conclusions.
   _Why it matters:_ It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.
+- 🧰 **[Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces](https://arxiv.org/abs/2601.11868)**
+  <sub>2026 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · audit · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2601.11868) · [Code](https://github.com/laude-institute/terminal-bench) · [Project](https://www.tbench.ai/) · [Card](../../cards/agents/terminal_bench.md)
+  _Data object:_ Terminal-agent episode with shell commands, filesystem/process state changes, and final test result.; process: task instruction, terminal observation, shell command; Isolated command-line task environments with evaluation harness and tests.
+  _Feedback / verifier:_ Comprehensive task tests executed in the terminal environment.
+  _Recipe signal:_ teacher: Benchmark authors and human solution writers.; generator: Curated terminal task environments with human-written solutions and tests.
+  _Audit focus:_ Test suites can be gamed or may miss semantically wrong but test-passing solutions., Environment images, package versions, and network assumptions can drift., Public tasks can contaminate training data for terminal agents.
+  _Why it matters:_ It expands Track 06 beyond browser and SWE tasks into terminal environments where replay, environment versions, and tests define the feedback contract.
 - 🌐 **[R2E-Gym](https://arxiv.org/abs/2504.07164)**
   <sub>2025 · arXiv · 🌐 agent environment · 🧰 benchmark · environmental · programmatic · agent training · evaluation · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2504.07164) · [Card](../../cards/agents/r2e_gym.md)
@@ -367,6 +391,54 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
+- 🧰 **[ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities](https://arxiv.org/abs/2408.04682)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2408.04682) · [Code](https://github.com/apple/ToolSandbox) · [Card](../../cards/agents/toolsandbox.md)
+  _Data object:_ On-policy conversational trajectory with user messages, tool calls, tool results, state updates, and final response.; process: user message, tool call, arguments; Stateful conversational sandbox with executable tools and built-in user simulator.
+  _Feedback / verifier:_ Dynamic milestone and final-state checks over arbitrary trajectories.
+  _Recipe signal:_ teacher: Benchmark authors and user simulator.; generator: Scenario and tool-state construction for stateful conversational evaluation.
+  _Audit focus:_ Hidden state and scenario seeds must be preserved for reproducible replay., Final checks may miss unsafe or invalid intermediate actions if milestones are incomplete., Tool versions and simulator behavior can drift across runs.
+  _Why it matters:_ It makes state, replay, intermediate milestones, and terminal predicates first-class parts of tool-use evaluation.
+- 🧰 **[VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks](https://arxiv.org/abs/2401.13649)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2401.13649) · [Code](https://github.com/web-arena-x/visualwebarena) · [Project](https://jykoh.com/vwa) · [Card](../../cards/agents/visualwebarena.md)
+  _Data object:_ Browser interaction trajectory with webpage observation, screenshot context, action, and final task outcome.; process: natural language goal, screenshot, page observation; Visual web tasks with screenshots, browser state, and realistic web environments.
+  _Feedback / verifier:_ Task-specific success checks over the final web state.
+  _Recipe signal:_ teacher: Benchmark authors.; generator: WebArena-style web task construction extended with visual observations.
+  _Audit focus:_ Screenshot and webpage state can drift if environments are updated., Visual cues may be unavailable or rendered differently across browsers., Task success checks can miss partially completed or unsafe intermediate behavior.
+  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
+- 📦 **[WebLINX: Real-World Website Navigation with Multi-Turn Dialogue](https://arxiv.org/abs/2402.05930)**
+  <sub>2024 · arXiv preprint · 📦 data release · 🧰 benchmark · environmental · mixed · sft · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2402.05930) · [Code](https://github.com/McGill-NLP/weblinx) · [Project](https://mcgill-nlp.github.io/weblinx/) · [Card](../../cards/agents/weblinx.md)
+  _Data object:_ Conversational browser trajectory with dialogue context, webpage state, action history, and next action.; process: user instruction, dialogue history, html context; More than 150 real-world websites with recorded navigation demonstrations.
+  _Feedback / verifier:_ Imitation/action matching and task-level evaluation over expert navigation demonstrations.
+  _Recipe signal:_ teacher: Expert demonstrators.; generator: Human web navigation demonstrations plus retrieval-style HTML element pruning setup.
+  _Audit focus:_ Real websites can drift or disappear after demonstrations are collected., Action imitation may reward matching demonstrations rather than robust task completion., Train/test leakage can occur if website templates or navigation paths overlap.
+  _Why it matters:_ It is one of the clearest Track 06 examples where the data object is a real web episode with dialogue, observation, action history, and expert behavior.
+- 🧰 **[WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?](https://arxiv.org/abs/2403.07718)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · audit · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2403.07718) · [Code](https://github.com/ServiceNow/WorkArena) · [Card](../../cards/agents/workarena.md)
+  _Data object:_ Browser-agent episode with multimodal observation, browser action, and final task state.; process: task goal, browser observation, screenshot or dom; Remote-hosted ServiceNow environment exposed through BrowserGym.
+  _Feedback / verifier:_ Task-specific success checks over the enterprise web application state.
+  _Recipe signal:_ teacher: Benchmark authors and enterprise workflow specifications.; generator: ServiceNow task design plus BrowserGym environment construction.
+  _Audit focus:_ Hosted enterprise environment can drift or become unavailable., Success checks may depend on hidden application state and configuration., Benchmark feedback can be overfit if tasks or environment templates become public training data.
+  _Why it matters:_ It moves web-agent evaluation toward realistic workplace workflows with browser state, action traces, and environment-level success checks.
+- 🧰 **[tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · audit · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2406.12045) · [Code](https://github.com/sierra-research/tau-bench) · [Card](../../cards/agents/tau_bench.md)
+  _Data object:_ Interactive user-agent-tool dialogue with tool calls, tool results, and final task outcome.; process: user goal, agent message, tool call; Real-world-inspired domain APIs, database state, and simulated users.
+  _Feedback / verifier:_ End-state database and goal-state comparison under domain policy constraints.
+  _Recipe signal:_ teacher: Benchmark authors and simulated users.; generator: Domain task construction with API tools, policy documents, and user simulator.
+  _Audit focus:_ User simulator behavior may diverge from real users., pass^k can hide unreliable single-run behavior if not reported carefully., Database seeds, tool semantics, or policy updates can change the terminal predicate.
+  _Why it matters:_ It captures long-horizon tool-agent-user interaction where feedback depends on state transitions rather than one-shot answer matching.
+- 🧰 **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)**
+  <sub>2023 · EMNLP · 🧰 benchmark · 📦 data release · environmental · programmatic · sft · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2304.08244) · [Code](https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank) · [Card](../../cards/agents/api-bank.md)
+  _Data object:_ Multi-turn tool-use dialogue with API call, arguments, tool response, and final answer.; process: user instruction, api name, api arguments; Runnable API-bank evaluation system and tool-use task collection.
+  _Feedback / verifier:_ API-call validity, tool-response consistency, and task-completion checks.
+  _Recipe signal:_ teacher: Benchmark authors and annotators.; generator: Curated API-bank task and dialogue construction.
+  _Audit focus:_ API schema or tool behavior may drift after release., A model may learn surface tool-call format without robust API selection., Execution failures can be hidden if only successful trajectories are emphasized.
+  _Why it matters:_ It is one of the core early datasets for tool-augmented LLMs, connecting dialogue traces, API calls, and executable evaluation.
 - 📦 **[ToolLLM: Facilitating large language models to master 16000+ real-world APIs](https://arxiv.org/abs/2307.16789)**
   <sub>2023 · ICLR · 📦 data release · 🧰 benchmark · environmental · programmatic · sft · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2307.16789) · [Card](../../cards/agents/toolllm_toolbench.md)
@@ -383,6 +455,78 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
+- 🧰 **[AMA-Bench: Evaluating Long-Horizon Memory for Agentic Applications](https://arxiv.org/abs/2602.22769)**
+  <sub>2026 · arXiv preprint arXiv:2602.22769 · 🧰 benchmark · 🌐 agent environment · mixed · programmatic · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2602.22769) · [Project](https://ama-bench.github.io/)
+  _Data object:_ memory QA over agent-environment interaction history; process: state, action, observation; agent memory benchmark over continuous interaction trajectories
+  _Feedback / verifier:_ expert-curated QA and rule-based QA for synthetic trajectories
+  _Recipe signal:_ generator: real trajectories plus synthetic trajectory generator; filtering rule: expert curation and rule-based QA construction
+  _Audit focus:_ Synthetic trajectories may overstate memory-system generalization., Similarity-based retrieval failures may depend on chosen tasks and QA construction.
+  _Why it matters:_ P0 Track 06 memory entry: it explicitly frames agent memory as state/action/observation/tool-output trajectories rather than dialogue-only context.
+- 🧰 **[GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks](https://arxiv.org/abs/2510.04374)**
+  <sub>2025 · arXiv preprint arXiv:2510.04374 · 🧰 benchmark · 🌐 agent environment · judgment required · mixed · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2510.04374) · [Project](https://evals.openai.com)
+  _Data object:_ work deliverable judged against expert-quality criteria; process: occupation/task context, deliverable, expert reference or grading service; real-world economically valuable professional tasks
+  _Feedback / verifier:_ expert-quality grading and public automated grading service for a gold subset
+  _Recipe signal:_ filtering rule: industry-professional task construction and gold subset release
+  _Audit focus:_ Gold subset may not represent full private benchmark., Expert grading policies and occupational coverage need audit before training reuse.
+  _Why it matters:_ P0 Track 06 workflow entry: it broadens agent evaluation toward economically valuable professional deliverables and scaffolding effects.
+- 🧰 **[MCP-Universe: Benchmarking Large Language Models with Real-World Model Context Protocol Servers](https://arxiv.org/abs/2508.14704)**
+  <sub>2025 · arXiv preprint arXiv:2508.14704 · 🧰 benchmark · 🛠️ infrastructure · environmental · programmatic · evaluation · agent training · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2508.14704) · [Project](https://mcp-universe.github.io)
+  _Data object:_ MCP tool/server interaction episode with final answer or artifact; process: MCP server, tool call, format compliance; real-world Model Context Protocol servers
+  _Feedback / verifier:_ format, static, and dynamic execution-based evaluators
+  _Recipe signal:_ filtering rule: domain/server selection and evaluator implementation
+  _Audit focus:_ Real-time dynamic evaluators can drift., Unknown-tool challenge may conflate documentation quality with agent skill.
+  _Why it matters:_ P0 Track 06 infrastructure entry: it evaluates agents through real MCP server interfaces and execution-based evaluators.
+- 🧰 **[Multi-SWE-bench: A Multilingual Benchmark for Issue Resolving](https://arxiv.org/abs/2504.02605)**
+  <sub>2025 · arXiv preprint arXiv:2504.02605 · 🧰 benchmark · 📦 data release · programmatic · judgment required · evaluation · rlvr · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.02605)
+  _Data object:_ issue-resolving patch in a repository; process: issue, repository, language; multilingual software repositories and issue-resolving benchmark instances
+  _Feedback / verifier:_ tests and expert annotation of benchmark candidates
+  _Recipe signal:_ filtering rule: expert annotation from candidate issue-resolving instances
+  _Audit focus:_ Language imbalance and test coverage can skew agent comparisons., RL training release may blur train/eval boundaries.
+  _Why it matters:_ P0 Track 06 SWE entry: it extends repository-agent tasks beyond Python and releases RL-oriented issue-resolving instances.
+- 🧰 **[OdysseyBench: Evaluating LLM Agents on Long-Horizon Complex Office Application Workflows](https://arxiv.org/abs/2508.09124)**
+  <sub>2025 · arXiv preprint arXiv:2508.09124 · 🧰 benchmark · 🌐 agent environment · mixed · judgment required · evaluation · agent training · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2508.09124)
+  _Data object:_ multi-step office workflow completion over Word, Excel, PDF, Email, and Calendar; process: interaction history, application state, task instruction; office productivity applications and generated long-horizon workflows
+  _Feedback / verifier:_ task-specific workflow evaluation over long-horizon histories
+  _Recipe signal:_ generator: HomerAgents multi-agent framework; filtering rule: environment exploration, task generation, and dialogue synthesis
+  _Audit focus:_ Synthetic office workflows may simplify real workplace dependencies., Task scoring details need deeper artifact audit.
+  _Why it matters:_ P0 Track 06 workflow entry: it targets long-horizon office workflows rather than atomic agent tasks.
+- 🧰 **[SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?](https://arxiv.org/abs/2502.12115)**
+  <sub>2025 · arXiv preprint arXiv:2502.12115 · 🧰 benchmark · 🌐 agent environment · programmatic · judgment required · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2502.12115) · [Code](https://github.com/openai/SWELancer-Benchmark)
+  _Data object:_ freelance task solution, implementation patch, or managerial proposal decision; process: task description, payout value, repository or proposal context; Dockerized freelance SWE task environment and public SWE-Lancer Diamond split
+  _Feedback / verifier:_ end-to-end tests triple-verified by software engineers or original manager choices
+  _Recipe signal:_ filtering rule: task curation from freelance work and expert verification
+  _Audit focus:_ Private task data and public Diamond split may differ., Managerial-choice labels may encode workplace-specific preferences.
+  _Why it matters:_ P0 Track 06 SWE/workflow entry: it grounds software-agent evaluation in economically valued freelance tasks with executable checks.
+- 🏗️ **[SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents](https://arxiv.org/abs/2505.20411)**
+  <sub>2025 · NeurIPS 2025 / arXiv preprint arXiv:2505.20411 · 🏗️ construction recipe · 🧰 benchmark · programmatic · environmental · agent training · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2505.20411) · [Data](https://huggingface.co/datasets/nebius/SWE-rebench) · [Project](https://swe-rebench.com)
+  _Data object:_ interactive SWE task with code execution, adaptation, and patch outcome; process: repository, task, environment; Python repository environments collected continuously from GitHub
+  _Feedback / verifier:_ task tests and contamination-free benchmark comparison
+  _Recipe signal:_ generator: automated task-collection pipeline; filtering rule: continuous extraction and decontamination methodology
+  _Audit focus:_ Decontamination claims need independent audit., Automated task extraction may include brittle or underspecified issues.
+  _Why it matters:_ P0 Track 06 SWE entry: it builds large-scale interactive repository-agent tasks and a fresh evaluation pipeline.
+- 🧰 **[Windows Agent Arena: Evaluating Multi-Modal OS Agents at Scale](https://arxiv.org/abs/2409.08264)**
+  <sub>2024 · arXiv preprint arXiv:2409.08264 · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2409.08264) · [Code](https://github.com/microsoft/WindowsAgentArena) · [Project](https://microsoft.github.io/WindowsAgentArena)
+  _Data object:_ screen/action/task-completion episode in Windows applications and browsers; process: screen observation, mouse/keyboard action, application state; real Windows OS environment with applications, tools, and web browsers
+  _Feedback / verifier:_ task success in the Windows environment
+  _Recipe signal:_ filtering rule: adaptation of OSWorld framework and Windows task suite construction
+  _Audit focus:_ Cloud/OS image versions can affect reproducibility., Task success may depend on application state and UI drift.
+  _Why it matters:_ P0 Track 06 environment infrastructure entry: it provides a reproducible Windows OS benchmark for multimodal computer-use agents.
+- 🧰 **[WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks](https://arxiv.org/abs/2407.05291)**
+  <sub>2024 · arXiv preprint arXiv:2407.05291 · 🧰 benchmark · 🌐 agent environment · environmental · mixed · evaluation · sft · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2407.05291) · [Code](https://github.com/ServiceNow/WorkArena)
+  _Data object:_ observation/action trace plus workflow task outcome; process: web observation, agent action, workflow state; ServiceNow-style enterprise workflow environment
+  _Feedback / verifier:_ workflow task success and generated ground-truth traces
+  _Recipe signal:_ filtering rule: compositional task design and generated ground-truth observation/action traces
+  _Audit focus:_ Generated traces may simplify workflows., Hosted enterprise environments can drift across versions.
+  _Why it matters:_ P0 Track 06 workflow entry: it extends WorkArena with compositional planning tasks and trace generation for agent training.
 - 🧭 **[A Survey on Evaluation of LLM-based Agents](https://arxiv.org/abs/2503.16416)**
   <sub>2025 · arXiv · 🧭 survey background · environmental · mixed · evaluation · audit · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2503.16416)
@@ -391,14 +535,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives the atlas an agent-survey waypoint for readers who need to understand environment data before comparing SWE, web, app, or OS agent benchmarks.
-- 📄 **[SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents](https://arxiv.org/abs/2505.20411)**
-  <sub>2025 · arXiv preprint arXiv:2505.20411 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2505.20411)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 
 ### <a id="rubric-domain-benchmarks"></a>⚖️ Rubric/domain benchmarks
 
@@ -517,6 +653,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.
+- 🧰 **[Autorubric: Unifying Rubric-based LLM Evaluation](https://arxiv.org/abs/2603.00077)**
+  <sub>2026 · arXiv preprint arXiv:2603.00077 · 🧰 benchmark · 🏷️ judge model · judgment required · rubric · evaluation · reward modeling · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2603.00077)
+  _Data object:_ response plus analytic rubric criteria with binary, ordinal, or nominal labels.; process: prompt, candidate response, rubric criteria; rubric-based LLM evaluation framework.
+  _Feedback / verifier:_ single or ensemble LLM judge with few-shot calibration, bias mitigation, and reliability metrics.
+  _Recipe signal:_ rubric authoring; verifier layer; release audit
+  _Audit focus:_ LLM judges can show position, verbosity, and style bias., rubric criteria may be underspecified or correlated., optimization against judge explanations can overfit the evaluator.
+  _Why it matters:_ It makes judge configuration, rubric design, calibration, and reliability metrics first-class metadata instead of treating LLM-as-judge scores as opaque labels.
+- 🧰 **[RewardBench 2: Advancing Reward Model Evaluation](https://arxiv.org/abs/2506.01937)**
+  <sub>2026 · ICLR 2026 · 🧰 benchmark · 🏷️ reward model eval · preference pair · reward model score · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.01937) · [HF](https://huggingface.co/collections/allenai/reward-bench-2-683d2612a4b3e38a3e53bb51)
+  _Data object:_ prompt with candidate responses and preference/evaluation labels for reward-model accuracy.; process: prompt, candidate responses, preferred response label; static reward-model benchmark and HF leaderboard/data collection.
+  _Feedback / verifier:_ reward-model preference accuracy and correlation with downstream best-of-N or RLHF use.
+  _Recipe signal:_ prompt sourcing; preference labeling; verifier layer
+  _Audit focus:_ benchmark accuracy may not fully predict downstream alignment quality., public preference pairs can be memorized by future reward models., label ambiguity and domain mixture can hide skill-specific failures.
+  _Why it matters:_ It updates reward-model evaluation beyond saturated preference sets and makes the benchmark's relationship to downstream best-of-N and RLHF outcomes an auditable Track 11 question.
 
 ### <a id="live-contamination-resistant-benchmarks"></a>🧯 Live / contamination-resistant benchmarks
 
@@ -528,6 +680,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.
+- 🧯 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
+  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧯 audit failure · 🏷️ benchmark analysis · embedding similarity · perturbation based · audit · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2602.12413)
+  _Data object:_ contamination evidence record linking benchmark item to semantically similar training examples.; process: benchmark item, corpus neighbor, similarity score; static benchmark/corpus audit using embedding similarity and finetuning experiments.
+  _Feedback / verifier:_ semantic duplicate detection plus benchmark performance under duplicate exposure.
+  _Recipe signal:_ release audit; audit; evaluation
+  _Audit focus:_ embedding similarity thresholds can over- or under-count contamination., benchmark-neighbor links may reflect domain overlap rather than memorized test data., finetuning duplicate experiments may not fully represent pretraining-scale effects.
+  _Why it matters:_ It sharpens Track 11's contamination model from exact string overlap to semantic overlap, changing how benchmark validity and reported progress should be audited.
+- 🧰 **[LastingBench: Defend Benchmarks Against Knowledge Leakage](https://arxiv.org/abs/2506.21614)**
+  <sub>2025 · arXiv preprint arXiv:2506.21614 · 🧰 benchmark · 🧯 audit failure · judgment required · perturbation based · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.21614)
+  _Data object:_ QA item with rewritten context and preserved evaluative intent.; static QA benchmark evaluation surface.
+  _Feedback / verifier:_ answer correctness under the benchmark's original QA scoring plus leakage-point perturbation checks.
+  _Recipe signal:_ release audit; filtering; verifier layer
+  _Audit focus:_ counterfactual rewrites may change difficulty or answerability., leakage-point detection can miss semantic memorization routes., rewritten items may become less comparable to the original leaderboard.
+  _Why it matters:_ It gives Track 11 a concrete leakage-defense recipe, making benchmark validity depend on rewrite quality, scoring preservation, and exposure control rather than only post-hoc contamination detection.
 - 🧯 **[Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385)**
   <sub>2024 · arXiv · 🧯 audit failure · 🧭 survey background · unknown · audit · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2410.08385)
@@ -536,14 +704,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ filtering rule: overlap reporting and audit policy.
   _Audit focus:_ Reported benchmark gains can be inflated when train-test overlap is not disclosed.
   _Why it matters:_ It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence.
-- 🧭 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
-  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2602.12413)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 
 ### <a id="other-related-work"></a>Other related work
 
@@ -587,14 +747,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: human preference providers and preference-labeled datasets summarized by the survey.; generator: survey taxonomy
   _Audit focus:_ Preference labels can be noisy, culturally variable, or underspecified., Pairwise preferences may not preserve reasoning correctness or factual grounding., Evaluation of aligned models can conflate helpfulness, style, and reasoning quality.
   _Why it matters:_ It makes the preference-data layer explicit, helping readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
-- 📄 **[Autorubric: Unifying Rubric-based LLM Evaluation](https://arxiv.org/abs/2603.00077)**
-  <sub>2026 · arXiv preprint arXiv:2603.00077 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2603.00077)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 🧭 **[AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions](https://arxiv.org/abs/2506.09038)**
   <sub>2025 · arXiv preprint arXiv:2506.09038 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2506.09038)
@@ -607,14 +759,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   <sub>2025 · arXiv preprint arXiv:2410.13210 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2410.13210)
   _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **[LastingBench: Defend Benchmarks Against Knowledge Leakage](https://arxiv.org/abs/2506.21614)**
-  <sub>2025 · arXiv preprint arXiv:2506.21614 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2506.21614)
-  _Data object:_ metadata pending
   _Feedback / verifier:_ metadata pending
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
@@ -638,22 +782,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
-- 📄 **RewardBench 2**
-  <sub>2026 · ICLR · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **Terminal-Bench: A benchmark and task environment for terminal agents**
-  <sub>2026 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **Big-math: A large-scale, high-quality math dataset for reinforcement learning and supervised fine-tuning**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -695,14 +823,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **MegaScience: A benchmark and data resource for scientific reasoning**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
   _Data object:_ metadata pending
@@ -806,38 +926,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use**
-  <sub>2024 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧰 **VisualWebArena: Evaluating multimodal agents on realistic visual web tasks**
-  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L0_seeded</sub>
-  needs_search
-  _Data object:_ visual web tasks with screenshots and browser state
-  _Feedback / verifier:_ task success checks
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
-- 📄 **WebLINX: Real-world website navigation with multi-turn dialogue**
-  <sub>2024 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **WorkArena: How capable are web agents at solving common knowledge work tasks?**
-  <sub>2024 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **XSTest**
   <sub>2024 · NAACL · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -846,23 +934,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **tau-bench: A benchmark for tool-agent-user interaction in real-world domains**
-  <sub>2024 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **ALCE: Enabling large language models to generate text with citations**
-  <sub>2023 · EMNLP · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **API-Bank: A benchmark for tool-augmented LLMs**
   <sub>2023 · EMNLP · unknown · unknown · L0_seeded</sub>
   needs_search
   _Data object:_ metadata pending
@@ -974,6 +1046,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ## 8. Related Cards
 
+- [Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces](../../cards/agents/terminal_bench.md)
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
 - [AbstentionBench](../../cards/benchmarks/abstentionbench.md)
 - [Aegis2.0](../../cards/verifiers/aegis2.md)
@@ -991,7 +1064,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [SWE-Gym](../../cards/agents/swe_gym.md)
 - [Spurious Rewards](../../cards/verifiers/spurious_rewards.md)
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../../cards/agents/androidworld.md)
-- [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](../../cards/agents/appworld.md)
 
 ## Back to Map
 

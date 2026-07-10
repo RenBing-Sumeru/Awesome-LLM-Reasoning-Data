@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leandojo-theorem-proving-with-retrieval-augmented-language-models-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leandojo-theorem-proving-with-retrieval-augmented-language-models-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leandojo-theorem-proving-with-retrieval-augmented-language-models-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+> Subfield: 🧱 Instruction tuning / SFT data
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, environment_agent_trajectory_data, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2306.15626) · [🏛️ Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [🐙 Code](https://github.com/lean-dojo/LeanDojo) · [🗂️ Data](https://zenodo.org/records/10114157) · [🌐 Project](https://leandojo.org/)
 
 ## TL;DR

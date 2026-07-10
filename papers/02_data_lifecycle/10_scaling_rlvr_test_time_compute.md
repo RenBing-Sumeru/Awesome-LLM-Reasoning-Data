@@ -414,6 +414,22 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ reward verifier layer; release audit; rlvr
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+- 🏗️ **[Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence](https://arxiv.org/abs/2604.18292)**
+  <sub>2026 · arXiv preprint arXiv:2604.18292 · 🏗️ construction recipe · 🌐 agent environment · environmental · programmatic · agent training · rlvr · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2604.18292)
+  _Data object:_ synthesized verifiable task, agent interaction trajectory, and benchmark outcome; process: environment theme, tool ecosystem, synthesized task; self-evolving arena over scalable tool environments and MCP-style interfaces
+  _Feedback / verifier:_ verifiable synthesized tasks and benchmark outcomes across agent benchmarks
+  _Recipe signal:_ generator: agentic environment-task discovery and dynamic task synthesis; filtering rule: controllable difficulty and capability-gap targeting
+  _Audit focus:_ Working-in-progress 2026 preprint with environment fidelity and artifact-release uncertainty., Synthetic verifiable tasks may not reflect real operational failures.
+  _Why it matters:_ P0 Track 06 environment-synthesis entry: it targets scalable environment/task generation and co-evolution of agents and environments.
+- 🏗️ **[SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution](https://arxiv.org/abs/2502.18449)**
+  <sub>2025 · NeurIPS 2025 / arXiv preprint arXiv:2502.18449 · 🏗️ construction recipe · 🚀 model report · programmatic · mixed · rlvr · agent training · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2502.18449)
+  _Data object:_ developer reasoning process and solution or patch-style output; process: code snapshot, change history, issue or pull request; open-source software evolution data and SWE-bench Verified evaluation
+  _Feedback / verifier:_ lightweight rule-based reward and benchmark solve rate
+  _Recipe signal:_ filtering rule: rule-based reward over open software evolution data
+  _Audit focus:_ Similarity rewards can reward superficial patches., Open-source evolution data may overlap with evaluation repositories.
+  _Why it matters:_ P0 Track 06 SWE RL entry: it trains software agents from repository evolution traces and rule-based feedback.
 - 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
   <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
   [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
@@ -525,14 +541,22 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
-- 📄 **[Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence](https://arxiv.org/abs/2604.18292)**
-  <sub>2026 · arXiv preprint arXiv:2604.18292 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2604.18292)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
+- 🏗️ **[SWE-smith: Scaling Data for Software Engineering Agents](https://arxiv.org/abs/2504.21798)**
+  <sub>2025 · arXiv preprint arXiv:2504.21798 · 🏗️ construction recipe · 📦 data release · programmatic · environmental · agent training · sft · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.21798) · [Project](https://swesmith.com)
+  _Data object:_ software engineering task instance, execution environment, patch, trajectory, and model output; process: repository, execution environment, task instance; Python repositories with constructed execution environments
+  _Feedback / verifier:_ test failures and test-based task resolution
+  _Recipe signal:_ generator: SWE-smith scalable task-generation pipeline; filtering rule: construct environments and synthesize task instances that break existing tests
+  _Audit focus:_ Generated tasks may be solvable through test artifacts rather than real issue understanding., Repository selection, license, and trajectory release details need audit.
+  _Why it matters:_ P0 Track 06 SWE data-construction entry: it scales executable repository-agent training instances and trajectories.
+- 🧰 **[MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://arxiv.org/abs/2410.07095)**
+  <sub>2024 · ICLR / arXiv preprint arXiv:2410.07095 · 🧰 benchmark · 🌐 agent environment · programmatic · environmental · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2410.07095) · [Code](https://github.com/openai/mle-bench/)
+  _Data object:_ competition submission, code, trained model, and leaderboard score; process: competition, dataset, agent code/actions; Kaggle-style ML engineering environments
+  _Feedback / verifier:_ competition metric and leaderboard-medal thresholds
+  _Recipe signal:_ filtering rule: competition curation and human leaderboard baseline comparison
+  _Audit focus:_ Public competition data can leak into model pretraining., Leaderboard scores may reward competition-specific tricks over general ML engineering.
+  _Why it matters:_ P0 Track 06 ML-engineering entry: it makes model training and experiment execution a long-horizon agent environment.
 - 🧭 **[Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training (Rubric-ARM)](https://arxiv.org/abs/2602.01511)**
   <sub>2026 · arXiv preprint arXiv:2602.01511 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.01511)
@@ -592,14 +616,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 - 📄 **[Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs](https://arxiv.org/abs/2506.14245)**
   <sub>2025 · arXiv preprint arXiv:2506.14245 · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2506.14245)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **[SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution](https://arxiv.org/abs/2502.18449)**
-  <sub>2025 · Advances in Neural Information Processing Systems (NeurIPS) · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2502.18449)
   _Data object:_ metadata pending
   _Feedback / verifier:_ metadata pending
   _Recipe signal:_ release audit
@@ -752,22 +768,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
-- 📄 **SWE-RL: Advancing language agents for software engineering via reinforcement learning**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **SWE-smith: Scaling data construction for software engineering agents**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 🧭 **Reflexion: Language agents with verbal reinforcement learning**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search

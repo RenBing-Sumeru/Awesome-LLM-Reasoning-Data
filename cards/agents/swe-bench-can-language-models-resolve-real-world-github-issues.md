@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-bench-can-language-models-resolve-real-world-github-issues-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-bench-can-language-models-resolve-real-world-github-issues-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-bench-can-language-models-resolve-real-world-github-issues-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧮 Programmatic Verification (Track 03) · 🌐 Environment & Agent Trajectories (Track 06) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+> Subfield: 💻 Code execution / unit-test data
+
 > Curation level: L5_audit_ready
-> Category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2310.06770) · [🏛️ OpenReview](https://openreview.net/forum?id=VTF8yNQM66) · [🐙 Code](https://github.com/swe-bench/SWE-bench) · [🌐 Project](https://www.swebench.com/original.html)
 
 ## TL;DR

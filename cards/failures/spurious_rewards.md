@@ -6,6 +6,8 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🧮 Programmatic Verification (Track 03) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+
 ## One-line takeaway
 
 Reward-backed reasoning data can look stronger while optimizing a shortcut, so failure cards must track the reward pathology explicitly.

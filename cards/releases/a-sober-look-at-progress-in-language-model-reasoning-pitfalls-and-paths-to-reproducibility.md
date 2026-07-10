@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🌐 Environment & Agent Trajectories (Track 06) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 🧯 Contamination / evaluation surveys
+
 > Curation level: L5_audit_ready
-> Category: foundations_and_primers, instruction_demonstration_rationale_data, audit_failure_contamination_verifier_attacks
+
 > Links: [📄 Paper](https://arxiv.org/abs/2504.07086)
 
 ## TL;DR

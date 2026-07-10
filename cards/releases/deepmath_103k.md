@@ -6,6 +6,8 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepmath-103k-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepmath-103k-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepmath-103k-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🧱 Instruction / Demo / Rationale (Track 01) · 🧮 Programmatic Verification (Track 03) · 🪜 Process / Trace Supervision (Track 04) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+
 ## One-line takeaway
 
 Math release highlighted for verifier pinning and decontamination.

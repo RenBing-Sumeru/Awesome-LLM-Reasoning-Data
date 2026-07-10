@@ -31,3 +31,5 @@ apps/ask-atlas/storage/*.json
 apps/ask-atlas/storage/*.tmp
 
 Awesome-LLM-Reasoning-Data_团队并行扩展SOP.md
+mine/
+.venv/

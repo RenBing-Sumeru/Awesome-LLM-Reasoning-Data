@@ -6,8 +6,10 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prm800k-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prm800k-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prm800k-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🪜 Process / Trace Supervision (Track 04) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+
 > Curation level: L5_audit_ready
-> Category: process_trace_supervision_data, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2305.20050)
 
 ## TL;DR

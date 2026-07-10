@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=introducing-swe-bench-verified-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=introducing-swe-bench-verified-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=introducing-swe-bench-verified-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 🧰 Programmatic benchmarks
+
 > Curation level: L5_audit_ready
-> Category: environment_agent_trajectory_data, programmatically_verifiable_outcome_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://openai.com/index/introducing-swe-bench-verified/) · [🏛️ Venue](https://www.swebench.com/verified.html) · [🐙 Code](https://github.com/swe-bench/SWE-bench) · [🗂️ Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified)
 
 ## TL;DR

@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magicoder-empowering-code-generation-with-oss-instruct-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magicoder-empowering-code-generation-with-oss-instruct-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magicoder-empowering-code-generation-with-oss-instruct-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🧮 Programmatic Verification (Track 03) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🚀 Frontier Disclosure Ledger (Track 12) -->
+> Subfield: 🧱 Instruction tuning / SFT data
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2312.02120) · [🏛️ PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [🐙 Code](https://github.com/ise-uiuc/magicoder) · [🗂️ Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [🤗 HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B)
 
 ## TL;DR

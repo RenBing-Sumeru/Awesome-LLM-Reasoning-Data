@@ -5,11 +5,11 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 | Type | Count | Use it for |
 |---|---:|---|
 | [Release cards](#release-cards) | 18 | datasets, trace releases, documentation foundations, and reusable data artifacts |
-| [Verifier cards](#verifier-cards) | 15 | verifiers, rewards, process supervision, judges, and rubrics |
-| [Agent/environment cards](#agentenvironment-cards) | 14 | tool, web, app, OS, and SWE trajectories |
+| [Verifier cards](#verifier-cards) | 16 | verifiers, rewards, process supervision, judges, and rubrics |
+| [Agent/environment cards](#agentenvironment-cards) | 23 | tool, web, app, OS, and SWE trajectories |
 | [Recipe cards](#recipe-cards) | 26 | construction recipes, model reports, and training pipelines |
-| [Benchmark cards](#benchmark-cards) | 11 | evaluation surfaces and benchmark ledgers |
-| [Failure cards](#failure-cards) | 3 | contamination, leakage, reward hacking, and verifier attacks |
+| [Benchmark cards](#benchmark-cards) | 12 | evaluation surfaces and benchmark ledgers |
+| [Failure cards](#failure-cards) | 5 | contamination, leakage, reward hacking, and verifier attacks |
 
 ## Card Index
 
@@ -37,6 +37,7 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 ### Verifier cards
 
 - [Aegis2.0](verifiers/aegis2.md) - Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.
+- [Autorubric: Unifying Rubric-based LLM Evaluation](verifiers/autorubric.md) - Autorubric turns analytic rubrics into calibrated LLM-judge scoring contracts with criterion-level labels and explanations.
 - [HealthBench](verifiers/healthbench.md) - HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.
 - [Math-Shepherd](verifiers/math_shepherd.md) - Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.
 - [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](verifiers/mt-bench-chatbot-arena.md) - MT-Bench and Chatbot Arena establish LLM-as-a-judge and pairwise human-preference evaluation surfaces for open-ended chat models.
@@ -55,8 +56,11 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 ### Agent/environment cards
 
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](agents/androidworld.md) - Android tasks turn mobile UI state and action histories into evaluable agent trajectories.
+- [API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](agents/api-bank.md) - API-Bank turns API/tool-call dialogues into a benchmark and training resource with runnable tool feedback.
+- [APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets](agents/apigen.md) - APIGen builds verifiable function-calling datasets through schema, execution, and semantic checks.
 - [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](agents/appworld.md) - Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
 - [BrowserGym: A gym environment for web agents](agents/browsergym.md) - A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.
+- [Gorilla: Large Language Model Connected with Massive APIs](agents/gorilla_apibench.md) - Gorilla/APIBench evaluates and trains LLMs to call APIs using documentation-grounded retrieval.
 - [LeanDojo: Theorem proving with retrieval-augmented language models](agents/leandojo.md) - LeanDojo releases an open Lean theorem-proving environment, benchmark, and retrieval-augmented prover pipeline.
 - [OpenHands: An Open Platform for AI Software Developers as Generalist Agents](agents/openhands.md) - Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.
 - [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](agents/osworld.md) - Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
@@ -65,9 +69,15 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [SWE-bench: Can language models resolve real-world GitHub issues?](agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) - SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.
 - [Introducing SWE-bench Verified](agents/swe-bench-verified.md) - SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.
 - [SWE-Gym](agents/swe_gym.md) - Repository-scale training environment showing substrate as data.
+- [tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](agents/tau_bench.md) - tau-bench evaluates tool agents in stateful user conversations using final database/goal-state checks.
+- [Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces](agents/terminal_bench.md) - Terminal-Bench evaluates command-line agents with realistic terminal tasks and executable test suites.
 - [Toolformer: Language models can teach themselves to use tools](agents/toolformer.md) - Toolformer creates self-supervised tool-use data by inserting API calls only when tool results improve language-model likelihood.
 - [ToolLLM: Facilitating large language models to master 16000+ real-world APIs](agents/toolllm_toolbench.md) - Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.
+- [ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities](agents/toolsandbox.md) - ToolSandbox evaluates stateful conversational tool use with executable tools, user simulation, and milestone checks.
+- [VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks](agents/visualwebarena.md) - Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
 - [WebArena: A realistic web environment for building autonomous agents](agents/webarena.md) - Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
+- [WebLINX: Real-World Website Navigation with Multi-Turn Dialogue](agents/weblinx.md) - WebLINX collects expert multi-turn browser demonstrations for training and evaluating conversational web agents.
+- [WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?](agents/workarena.md) - WorkArena evaluates browser agents on ServiceNow-style knowledge-work tasks through BrowserGym.
 
 ### Recipe cards
 
@@ -109,13 +119,16 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](benchmarks/livecodebench.md) - LiveCodeBench continuously collects recent programming problems to evaluate code generation, execution, repair, and test-output prediction under lower contamination risk.
 - [Measuring mathematical problem solving with the MATH dataset](benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md) - Introduces MATH, a competition-style math benchmark with challenging problems, subject categories, and step-by-step solutions.
 - [miniF2F: A cross-system benchmark for formal olympiad-level mathematics](benchmarks/minif2f.md) - miniF2F is a cross-system formal mathematics benchmark for comparing theorem provers across Lean, Metamath, Isabelle, and HOL Light targets.
+- [RewardBench 2: Advancing Reward Model Evaluation](benchmarks/rewardbench_2.md) - RewardBench 2 evaluates reward models on newly sourced multi-skill preference pairs and checks correlation with downstream use.
 - [SciCode: A benchmark for scientific code generation and reasoning](benchmarks/scicode.md) - SciCode evaluates code generation for realistic scientific research problems decomposed into subproblems with tests and gold solutions.
 - [TruthfulQA](benchmarks/truthfulqa.md) - TruthfulQA is a benchmark for measuring whether models imitate common human falsehoods instead of giving truthful answers.
 
 ### Failure cards
 
 - [Leaky Thoughts](failures/leaky-thoughts.md) - Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through prompt injection or accidental leakage.
+- [LastingBench: Defend Benchmarks Against Knowledge Leakage](failures/lastingbench.md) - LastingBench rewrites leakage-bearing QA contexts into counterfactual variants to audit and reduce benchmark memorization.
 - [LiveBench: A challenging, contamination-free benchmark for large language models](failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md) - LiveBench is a frequently updated, contamination-limited benchmark that uses recent sources and objective scoring across math, code, reasoning, language, instruction following, and data analysis.
+- [Soft Contamination Means Benchmarks Test Shallow Generalization](failures/soft_contamination.md) - Soft Contamination audits semantic duplicates between training corpora and benchmark tests, showing shallow-generalization risk.
 - [Subliminal Learning](failures/subliminal-learning.md) - Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated generated data, even after visible trait references are filtered.
 
 ## How To Improve A Card

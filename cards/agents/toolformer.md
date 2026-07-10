@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolformer-language-models-can-teach-themselves-to-use-tools-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolformer-language-models-can-teach-themselves-to-use-tools-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolformer-language-models-can-teach-themselves-to-use-tools-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🤝 Preference & Reward Feedback (Track 02) · 🌐 Environment & Agent Trajectories (Track 06) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) -->
+> Subfield: 🧱 Instruction tuning / SFT data
+
 > Curation level: L5_audit_ready
-> Category: environment_agent_trajectory_data, data_construction_open_release_recipes
+
 > Links: [📄 Paper](https://arxiv.org/abs/2302.04761) · [🏛️ OpenReview](https://openreview.net/forum?id=Yacmpz84TH)
 
 ## TL;DR

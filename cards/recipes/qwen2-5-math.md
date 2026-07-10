@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) · 🚀 Frontier Disclosure Ledger (Track 12) -->
+> Subfield: 🔁 Self-training / STaR
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, data_construction_open_release_recipes, frontier_reports_data_disclosure_ledger, scaling_rlvr_test_time_compute
+
 > Links: [📄 Paper](https://arxiv.org/abs/2409.12122) · [🐙 Code](https://github.com/QwenLM/Qwen2.5-Math) · [🤗 HF](https://huggingface.co/Qwen/Qwen2.5-Math-7B) · [🌐 Project](https://qwenlm.github.io/blog/qwen2.5-math/)
 
 ## TL;DR

@@ -2,10 +2,10 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 476
-- markdown links checked: 6768
-- external markdown links discovered: 4323
-- unique external URLs discovered: 571
+- artifact URLs discovered: 511
+- markdown links checked: 6977
+- external markdown links discovered: 4486
+- unique external URLs discovered: 622
 - live URLs checked: 0
 - failures: 0
 
@@ -64,6 +64,10 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `truthfulqa-2022` code: https://github.com/sylinrl/TruthfulQA
 - `truthfulqa-2022` data: https://github.com/sylinrl/TruthfulQA
 - `truthfulqa-2022` acl: https://aclanthology.org/2022.acl-long.229/
+- `api-bank-a-benchmark-for-tool-augmented-llms-2023` paper: https://arxiv.org/abs/2304.08244
+- `api-bank-a-benchmark-for-tool-augmented-llms-2023` arxiv: https://arxiv.org/abs/2304.08244
+- `api-bank-a-benchmark-for-tool-augmented-llms-2023` code: https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank
+- `api-bank-a-benchmark-for-tool-augmented-llms-2023` data: https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank
 - `direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023` paper: https://arxiv.org/abs/2305.18290
 - `direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023` arxiv: https://arxiv.org/abs/2305.18290
 - `financebench-a-benchmark-for-financial-question-answering-2023` paper: https://arxiv.org/abs/2311.11944
@@ -72,6 +76,10 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `financebench-a-benchmark-for-financial-question-answering-2023` data: https://github.com/patronus-ai/financebench
 - `financebench-a-benchmark-for-financial-question-answering-2023` project: https://github.com/patronus-ai/financebench
 - `financebench-a-benchmark-for-financial-question-answering-2023` huggingface: https://huggingface.co/datasets/PatronusAI/financebench
+- `gorilla-2023` paper: https://arxiv.org/abs/2305.15334
+- `gorilla-2023` arxiv: https://arxiv.org/abs/2305.15334
+- `gorilla-2023` code: https://github.com/ShishirPatil/gorilla
+- `gorilla-2023` project: https://gorilla.cs.berkeley.edu/
 - `gpqa-2023` paper: https://arxiv.org/abs/2311.12022
 - `gpqa-2023` arxiv: https://arxiv.org/abs/2311.12022
 - `gpqa-2023` code: https://github.com/idavidrein/gpqa
@@ -133,6 +141,11 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `ultrafeedback-boosting-language-models-with-high-quality-feedback-2023` huggingface: https://huggingface.co/datasets/openbmb/UltraFeedback
 - `webarena-a-realistic-web-environment-for-building-autonomous-agents-2023` paper: https://arxiv.org/abs/2307.13854
 - `webarena-a-realistic-web-environment-for-building-autonomous-agents-2023` arxiv: https://arxiv.org/abs/2307.13854
+- `apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024` paper: https://arxiv.org/abs/2406.18518
+- `apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024` arxiv: https://arxiv.org/abs/2406.18518
+- `apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024` data: https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k
+- `apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024` project: https://apigen-pipeline.github.io/
+- `apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024` huggingface: https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k
 - `appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024` paper: https://arxiv.org/abs/2407.18901
 - `appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024` arxiv: https://arxiv.org/abs/2407.18901
 - `browsergym-a-gym-environment-for-web-agents-2024` paper: https://arxiv.org/abs/2412.05467
@@ -213,8 +226,15 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` code: https://github.com/scicode-bench/SciCode
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` project: https://scicode-bench.github.io/
 - `scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024` venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html
+- `tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024` paper: https://arxiv.org/abs/2406.12045
+- `tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024` arxiv: https://arxiv.org/abs/2406.12045
+- `tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024` code: https://github.com/sierra-research/tau-bench
+- `tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024` data: https://github.com/sierra-research/tau-bench
 - `toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024` paper: https://arxiv.org/abs/2307.16789
 - `toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024` arxiv: https://arxiv.org/abs/2307.16789
+- `toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024` paper: https://arxiv.org/abs/2408.04682
+- `toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024` arxiv: https://arxiv.org/abs/2408.04682
+- `toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024` code: https://github.com/apple/ToolSandbox
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` paper: https://arxiv.org/abs/2411.15124
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` arxiv: https://arxiv.org/abs/2411.15124
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` code: https://github.com/allenai/open-instruct
@@ -222,6 +242,17 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` project: https://allenai.org/blog/tulu-3-technical
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` huggingface: https://huggingface.co/collections/allenai/tulu-3-datasets
 - `tulu-3-pushing-frontiers-in-open-language-model-post-training-2024` openreview: https://openreview.net/forum?id=i1uGbfHHpH
+- `visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024` paper: https://arxiv.org/abs/2401.13649
+- `visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024` arxiv: https://arxiv.org/abs/2401.13649
+- `visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024` code: https://github.com/web-arena-x/visualwebarena
+- `visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024` project: https://jykoh.com/vwa
+- `weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024` paper: https://arxiv.org/abs/2402.05930
+- `weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024` arxiv: https://arxiv.org/abs/2402.05930
+- `weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024` code: https://github.com/McGill-NLP/weblinx
+- `weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024` project: https://mcgill-nlp.github.io/weblinx/
+- `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` paper: https://arxiv.org/abs/2403.07718
+- `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` arxiv: https://arxiv.org/abs/2403.07718
+- `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` code: https://github.com/ServiceNow/WorkArena
 - `1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025` paper: https://arxiv.org/abs/2503.19633
 - `1-4-million-open-source-distilled-reasoning-dataset-to-empower-large-language-mo-2025` arxiv: https://arxiv.org/abs/2503.19633
 - `a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025` paper: https://arxiv.org/abs/2504.07086
@@ -229,37 +260,6 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `a-survey-on-llm-mid-training-2025` paper: https://arxiv.org/abs/2510.23081
 - `a-survey-on-llm-mid-training-2025` arxiv: https://arxiv.org/abs/2510.23081
 - `absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025` paper: https://arxiv.org/abs/2505.03335
-- `absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025` arxiv: https://arxiv.org/abs/2505.03335
-- `abstentionbench-2025` paper: https://arxiv.org/abs/2506.09038
-- `abstentionbench-2025` arxiv: https://arxiv.org/abs/2506.09038
-- `abstentionbench-2025` code: https://github.com/facebookresearch/AbstentionBench
-- `abstentionbench-2025` data: https://huggingface.co/datasets/facebook/AbstentionBench
-- `abstentionbench-2025` huggingface: https://huggingface.co/datasets/facebook/AbstentionBench
-- `abstentionbench-2025` venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html
-- `abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025` paper: https://arxiv.org/abs/2506.09038
-- `abstentionbench-reasoning-llms-fail-on-unanswerable-questions-2025` arxiv: https://arxiv.org/abs/2506.09038
-- `aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025` paper: https://arxiv.org/abs/2501.09004
-- `aegis2-0-a-diverse-ai-safety-dataset-and-risks-taxonomy-for-alignment-of-llm-gua-2025` arxiv: https://arxiv.org/abs/2501.09004
-- `aegis2-2025` paper: https://arxiv.org/abs/2501.09004
-- `aegis2-2025` arxiv: https://arxiv.org/abs/2501.09004
-- `aegis2-2025` data: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
-- `aegis2-2025` huggingface: https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0
-- `aegis2-2025` acl: https://aclanthology.org/2025.naacl-long.306/
-- `alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025` paper: https://arxiv.org/abs/2506.13131
-- `alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025` arxiv: https://arxiv.org/abs/2506.13131
-- `am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025` paper: https://arxiv.org/abs/2505.08311
-- `am-thinking-v1-advancing-the-frontier-of-reasoning-at-32b-scale-2025` arxiv: https://arxiv.org/abs/2505.08311
-- `androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025` paper: https://arxiv.org/abs/2405.14573
-- `androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025` arxiv: https://arxiv.org/abs/2405.14573
-- `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` paper: https://arxiv.org/abs/2509.03403
-- `beyond-correctness-harmonizing-process-and-outcome-rewards-through-rl-training-p-2025` arxiv: https://arxiv.org/abs/2509.03403
-- `big-math-2025` paper: https://arxiv.org/abs/2502.17387
-- `big-math-2025` arxiv: https://arxiv.org/abs/2502.17387
-- `clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025` paper: https://arxiv.org/abs/2509.26114
-- `clip-low-increases-entropy-and-clip-high-decreases-entropy-in-reinforcement-lear-2025` arxiv: https://arxiv.org/abs/2509.26114
-- `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` paper: https://arxiv.org/abs/2503.01307
-- `cognitive-behaviors-that-enable-self-improving-reasoners-or-four-habits-of-highl-2025` arxiv: https://arxiv.org/abs/2503.01307
-- `dapo-2025` paper: https://arxiv.org/abs/2503.14476
-- ... 226 more
+- ... 261 more
 
 Network probing skipped because `--soft` was used.

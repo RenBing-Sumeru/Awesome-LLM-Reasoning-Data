@@ -54,11 +54,11 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 | [Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) | 2024 | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md) | instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases. | mixture of preference labels, reward models, and verifiable rewards depending on stage. | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
 | [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511) | 2023 | [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../../cards/recipes/self-rag.md) | generation with retrieval decisions, critique signals, and final answer.; process: query, retrieval decision token, retrieved passage, support critique, utility critique, final answer.; retriever plus generation model with special reflection tokens. | critique signals and task-specific factuality/answer-quality evaluation. | It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations. |
 | [DeepMath-103K](https://arxiv.org/abs/2504.11456) | 2025 | [Paper](https://arxiv.org/abs/2504.11456) · [Card](../../cards/releases/deepmath_103k.md) | answer level | programmatic | Math release highlighted for verifier pinning and decontamination. |
+| [API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244) | 2023 | [Paper](https://arxiv.org/abs/2304.08244) · [Code](https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank) · [Card](../../cards/agents/api-bank.md) | Multi-turn tool-use dialogue with API call, arguments, tool response, and final answer.; process: user instruction, api name, api arguments; Runnable API-bank evaluation system and tool-use task collection. | API-call validity, tool-response consistency, and task-completion checks. | It is one of the core early datasets for tool-augmented LLMs, connecting dialogue traces, API calls, and executable evaluation. |
 | [FinanceBench: A benchmark for financial question answering](https://arxiv.org/abs/2311.11944) | 2023 | [Paper](https://arxiv.org/abs/2311.11944) · [Code](https://github.com/patronus-ai/financebench) · [HF](https://huggingface.co/datasets/PatronusAI/financebench) | answer level | judgment required, mixed | It is a domain-specific reasoning benchmark where grounding, evidence retrieval, expert answers, and current filing data matter more than generic exact-match reasoning. |
 | [TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance](https://aclanthology.org/2021.acl-long.254/) | 2021 | [Paper](https://aclanthology.org/2021.acl-long.254/) · [arXiv](https://arxiv.org/abs/2105.07624) · [Code](https://github.com/NExTplusplus/TAT-QA) · [Project](https://nextplusplus.github.io/TAT-QA/) | answer level; step level | mixed | It gives legal/finance-style domain reasoning a concrete benchmark surface where evidence selection, table-text grounding, arithmetic, and answer normalization all matter. |
 | [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](https://arxiv.org/abs/2504.07086) | 2025 | [Paper](https://arxiv.org/abs/2504.07086) · [Card](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) | survey background | metadata pending | It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains. |
 | [AbstentionBench](https://arxiv.org/abs/2506.09038) | 2025 | [Paper](https://arxiv.org/abs/2506.09038) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/facebookresearch/AbstentionBench) · [Data](https://huggingface.co/datasets/facebook/AbstentionBench) · [Card](../../cards/benchmarks/abstentionbench.md) | model response, abstention decision, and correctness/abstention judgment.; process: scenario type, source dataset, answerability label, judge/validation metadata.; offline benchmark with model-evaluation harness. | human-validated judges and benchmark labels for abstention scenarios. | It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently answers unanswerable questions instead of abstaining. |
-| [HealthBench](https://arxiv.org/abs/2505.08775) | 2025 | [Paper](https://arxiv.org/abs/2505.08775) · [Card](../../cards/verifiers/healthbench.md) | response with rubric/judge evaluation; process: prompt, response, rubric dimension; offline health evaluation benchmark | rubric-guided expert/LLM judgment | It is a high-stakes example of judgment-required reasoning data where rubric design matters more than exact-match scoring. |
 
 ## 5. Full Paper List
 
@@ -112,6 +112,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives reasoning-data releases a minimum disclosure standard before anyone reuses prompts, traces, labels, rewards, or benchmark items.
+- 🧰 **[Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces](https://arxiv.org/abs/2601.11868)**
+  <sub>2026 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · audit · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2601.11868) · [Code](https://github.com/laude-institute/terminal-bench) · [Project](https://www.tbench.ai/) · [Card](../../cards/agents/terminal_bench.md)
+  _Data object:_ Terminal-agent episode with shell commands, filesystem/process state changes, and final test result.; process: task instruction, terminal observation, shell command; Isolated command-line task environments with evaluation harness and tests.
+  _Feedback / verifier:_ Comprehensive task tests executed in the terminal environment.
+  _Recipe signal:_ teacher: Benchmark authors and human solution writers.; generator: Curated terminal task environments with human-written solutions and tests.
+  _Audit focus:_ Test suites can be gamed or may miss semantically wrong but test-passing solutions., Environment images, package versions, and network assumptions can drift., Public tasks can contaminate training data for terminal agents.
+  _Why it matters:_ It expands Track 06 beyond browser and SWE tasks into terminal environments where replay, environment versions, and tests define the feedback contract.
 - 🧰 **[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124)**
   <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2501.03124) · [Card](../../cards/verifiers/prmbench.md)
@@ -136,6 +144,54 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.
+- 🧰 **[ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities](https://arxiv.org/abs/2408.04682)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2408.04682) · [Code](https://github.com/apple/ToolSandbox) · [Card](../../cards/agents/toolsandbox.md)
+  _Data object:_ On-policy conversational trajectory with user messages, tool calls, tool results, state updates, and final response.; process: user message, tool call, arguments; Stateful conversational sandbox with executable tools and built-in user simulator.
+  _Feedback / verifier:_ Dynamic milestone and final-state checks over arbitrary trajectories.
+  _Recipe signal:_ teacher: Benchmark authors and user simulator.; generator: Scenario and tool-state construction for stateful conversational evaluation.
+  _Audit focus:_ Hidden state and scenario seeds must be preserved for reproducible replay., Final checks may miss unsafe or invalid intermediate actions if milestones are incomplete., Tool versions and simulator behavior can drift across runs.
+  _Why it matters:_ It makes state, replay, intermediate milestones, and terminal predicates first-class parts of tool-use evaluation.
+- 🧰 **[tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · audit · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2406.12045) · [Code](https://github.com/sierra-research/tau-bench) · [Card](../../cards/agents/tau_bench.md)
+  _Data object:_ Interactive user-agent-tool dialogue with tool calls, tool results, and final task outcome.; process: user goal, agent message, tool call; Real-world-inspired domain APIs, database state, and simulated users.
+  _Feedback / verifier:_ End-state database and goal-state comparison under domain policy constraints.
+  _Recipe signal:_ teacher: Benchmark authors and simulated users.; generator: Domain task construction with API tools, policy documents, and user simulator.
+  _Audit focus:_ User simulator behavior may diverge from real users., pass^k can hide unreliable single-run behavior if not reported carefully., Database seeds, tool semantics, or policy updates can change the terminal predicate.
+  _Why it matters:_ It captures long-horizon tool-agent-user interaction where feedback depends on state transitions rather than one-shot answer matching.
+- 🧰 **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)**
+  <sub>2023 · EMNLP · 🧰 benchmark · 📦 data release · environmental · programmatic · sft · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2304.08244) · [Code](https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank) · [Card](../../cards/agents/api-bank.md)
+  _Data object:_ Multi-turn tool-use dialogue with API call, arguments, tool response, and final answer.; process: user instruction, api name, api arguments; Runnable API-bank evaluation system and tool-use task collection.
+  _Feedback / verifier:_ API-call validity, tool-response consistency, and task-completion checks.
+  _Recipe signal:_ teacher: Benchmark authors and annotators.; generator: Curated API-bank task and dialogue construction.
+  _Audit focus:_ API schema or tool behavior may drift after release., A model may learn surface tool-call format without robust API selection., Execution failures can be hidden if only successful trajectories are emphasized.
+  _Why it matters:_ It is one of the core early datasets for tool-augmented LLMs, connecting dialogue traces, API calls, and executable evaluation.
+- 🧯 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
+  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧯 audit failure · 🏷️ benchmark analysis · embedding similarity · perturbation based · audit · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2602.12413)
+  _Data object:_ contamination evidence record linking benchmark item to semantically similar training examples.; process: benchmark item, corpus neighbor, similarity score; static benchmark/corpus audit using embedding similarity and finetuning experiments.
+  _Feedback / verifier:_ semantic duplicate detection plus benchmark performance under duplicate exposure.
+  _Recipe signal:_ release audit; audit; evaluation
+  _Audit focus:_ embedding similarity thresholds can over- or under-count contamination., benchmark-neighbor links may reflect domain overlap rather than memorized test data., finetuning duplicate experiments may not fully represent pretraining-scale effects.
+  _Why it matters:_ It sharpens Track 11's contamination model from exact string overlap to semantic overlap, changing how benchmark validity and reported progress should be audited.
+- 🧰 **[LastingBench: Defend Benchmarks Against Knowledge Leakage](https://arxiv.org/abs/2506.21614)**
+  <sub>2025 · arXiv preprint arXiv:2506.21614 · 🧰 benchmark · 🧯 audit failure · judgment required · perturbation based · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.21614)
+  _Data object:_ QA item with rewritten context and preserved evaluative intent.; static QA benchmark evaluation surface.
+  _Feedback / verifier:_ answer correctness under the benchmark's original QA scoring plus leakage-point perturbation checks.
+  _Recipe signal:_ release audit; filtering; verifier layer
+  _Audit focus:_ counterfactual rewrites may change difficulty or answerability., leakage-point detection can miss semantic memorization routes., rewritten items may become less comparable to the original leaderboard.
+  _Why it matters:_ It gives Track 11 a concrete leakage-defense recipe, making benchmark validity depend on rewrite quality, scoring preservation, and exposure control rather than only post-hoc contamination detection.
+- 🧰 **[TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks](https://arxiv.org/abs/2412.14161)**
+  <sub>2025 · arXiv preprint arXiv:2412.14161 · 🧰 benchmark · 🌐 agent environment · environmental · mixed · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2412.14161) · [Project](https://the-agent-company.com)
+  _Data object:_ digital-worker task episode with browsing, code, program, and communication actions; process: task instruction, web action, code/program action; self-contained company-like environment with internal websites and data
+  _Feedback / verifier:_ task-specific completion checks in the simulated workplace
+  _Recipe signal:_ filtering rule: curated workplace tasks and self-contained environment setup
+  _Audit focus:_ Simulated company tasks may not capture real organizational constraints., Long-horizon task success may depend on environment snapshot details.
+  _Why it matters:_ P0 Track 06 workplace entry: it defines a company-like environment for long-horizon digital-worker agents.
 - 🧰 **[FinanceBench: A benchmark for financial question answering](https://arxiv.org/abs/2311.11944)**
   <sub>2023 · arXiv · 🧰 benchmark · 📦 data release · judgment required · mixed · evaluation · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2311.11944) · [Code](https://github.com/patronus-ai/financebench) · [HF](https://huggingface.co/datasets/PatronusAI/financebench)
@@ -160,26 +216,10 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ filtering rule: overlap reporting and audit policy.
   _Audit focus:_ Reported benchmark gains can be inflated when train-test overlap is not disclosed.
   _Why it matters:_ It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence.
-- 🧭 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
-  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2602.12413)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 🧭 **[FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs](https://arxiv.org/abs/2410.13210)**
   <sub>2025 · arXiv preprint arXiv:2410.13210 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2410.13210)
   _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **[LastingBench: Defend Benchmarks Against Knowledge Leakage](https://arxiv.org/abs/2506.21614)**
-  <sub>2025 · arXiv preprint arXiv:2506.21614 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2506.21614)
-  _Data object:_ metadata pending
   _Feedback / verifier:_ metadata pending
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
@@ -437,6 +477,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.
+- 🧯 **[How Memory Management Impacts LLM Agents: An Empirical Study of Experience-Following Behavior](https://arxiv.org/abs/2505.16067)**
+  <sub>2025 · arXiv preprint arXiv:2505.16067 · 🧯 audit failure · 🌐 agent environment · mixed · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2505.16067)
+  _Data object:_ agent output influenced by retrieved experience records; process: task input, retrieved memory, agent output; LLM agent memory bank across repeated task executions
+  _Feedback / verifier:_ future task performance and controlled memory-management comparisons
+  _Recipe signal:_ filtering rule: controlled memory addition/deletion and experience-quality analysis
+  _Audit focus:_ Bad memories can propagate errors into future agent actions., Evaluation depends on task similarity and memory retrieval policy.
+  _Why it matters:_ P0 Track 06 memory entry: it studies how stored experience traces affect future agent behavior and error propagation.
+- 🏗️ **[SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents](https://arxiv.org/abs/2505.20411)**
+  <sub>2025 · NeurIPS 2025 / arXiv preprint arXiv:2505.20411 · 🏗️ construction recipe · 🧰 benchmark · programmatic · environmental · agent training · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2505.20411) · [Data](https://huggingface.co/datasets/nebius/SWE-rebench) · [Project](https://swe-rebench.com)
+  _Data object:_ interactive SWE task with code execution, adaptation, and patch outcome; process: repository, task, environment; Python repository environments collected continuously from GitHub
+  _Feedback / verifier:_ task tests and contamination-free benchmark comparison
+  _Recipe signal:_ generator: automated task-collection pipeline; filtering rule: continuous extraction and decontamination methodology
+  _Audit focus:_ Decontamination claims need independent audit., Automated task extraction may include brittle or underspecified issues.
+  _Why it matters:_ P0 Track 06 SWE entry: it builds large-scale interactive repository-agent tasks and a fresh evaluation pipeline.
 - 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
   <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
   [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
@@ -461,14 +517,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives the atlas an agent-survey waypoint for readers who need to understand environment data before comparing SWE, web, app, or OS agent benchmarks.
-- 📄 **[SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents](https://arxiv.org/abs/2505.20411)**
-  <sub>2025 · arXiv preprint arXiv:2505.20411 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2505.20411)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 
 ### <a id="other-related-work"></a>Other related work
 
@@ -499,14 +547,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
-- 📄 **Terminal-Bench: A benchmark and task environment for terminal agents**
-  <sub>2026 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **Humanity's Last Exam**
   <sub>2025 · arXiv preprint · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -525,14 +565,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **Min-K\%++**
   <sub>2025 · ICLR · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
   _Data object:_ metadata pending
   _Feedback / verifier:_ metadata pending
@@ -619,30 +651,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use**
-  <sub>2024 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **tau-bench: A benchmark for tool-agent-user interaction in real-world domains**
-  <sub>2024 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **API-Bank: A benchmark for tool-augmented LLMs**
-  <sub>2023 · EMNLP · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 🧭 **Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting**
   <sub>2023 · NeurIPS · 🧭 survey background · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -683,6 +691,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ## 8. Related Cards
 
+- [Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces](../../cards/agents/terminal_bench.md)
 - [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](../../cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md)
 - [AbstentionBench](../../cards/benchmarks/abstentionbench.md)
 - [DeepMath-103K](../../cards/releases/deepmath_103k.md)
@@ -700,7 +709,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [ProcessBench: Identifying Process Errors in Mathematical Reasoning](../../cards/verifiers/processbench.md)
 - [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
 - [RewardBench: Evaluating Reward Models for Language Modeling](../../cards/verifiers/rewardbench.md)
-- [SciCode: A benchmark for scientific code generation and reasoning](../../cards/benchmarks/scicode.md)
 
 ## Back to Map
 

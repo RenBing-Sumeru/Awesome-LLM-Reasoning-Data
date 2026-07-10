@@ -351,6 +351,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ search substrate; optimizer scaffold; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.
+- 🧰 **[VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks](https://arxiv.org/abs/2401.13649)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2401.13649) · [Code](https://github.com/web-arena-x/visualwebarena) · [Project](https://jykoh.com/vwa) · [Card](../../cards/agents/visualwebarena.md)
+  _Data object:_ Browser interaction trajectory with webpage observation, screenshot context, action, and final task outcome.; process: natural language goal, screenshot, page observation; Visual web tasks with screenshots, browser state, and realistic web environments.
+  _Feedback / verifier:_ Task-specific success checks over the final web state.
+  _Recipe signal:_ teacher: Benchmark authors.; generator: WebArena-style web task construction extended with visual observations.
+  _Audit focus:_ Screenshot and webpage state can drift if environments are updated., Visual cues may be unavailable or rendered differently across browsers., Task success checks can miss partially completed or unsafe intermediate behavior.
+  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
 - 🧰 **[WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854)**
   <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2307.13854) · [Card](../../cards/agents/webarena.md)
@@ -386,14 +394,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧰 **VisualWebArena: Evaluating multimodal agents on realistic visual web tasks**
-  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L0_seeded</sub>
-  needs_search
-  _Data object:_ visual web tasks with screenshots and browser state
-  _Feedback / verifier:_ task success checks
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
 
 ## 6. What to Audit
 

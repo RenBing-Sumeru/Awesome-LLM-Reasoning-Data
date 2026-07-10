@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=react-synergizing-reasoning-and-acting-in-language-models-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=react-synergizing-reasoning-and-acting-in-language-models-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=react-synergizing-reasoning-and-acting-in-language-models-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+> Subfield: ⏱️ Test-time compute logs
+
 > Curation level: L5_audit_ready
-> Category: environment_agent_trajectory_data, data_construction_open_release_recipes
+
 > Links: [📄 Paper](https://arxiv.org/abs/2210.03629) · [🏛️ OpenReview](https://openreview.net/forum?id=WE_vluYUL-X) · [🐙 Code](https://github.com/ysymyth/ReAct) · [🌐 Project](https://react-lm.github.io/)
 
 ## TL;DR

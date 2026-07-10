@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 🧱 Instruction tuning / SFT data
+
 > Curation level: L5_audit_ready
-> Category: data_construction_open_release_recipes, environment_agent_trajectory_data, judgment_rubric_domain_expert_data
+
 > Links: [📄 Paper](https://arxiv.org/abs/2310.11511) · [🏛️ Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [🐙 Code](https://github.com/akariasai/self-rag) · [🗂️ Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [🤗 HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [🌐 Project](https://selfrag.github.io/)
 
 ## TL;DR

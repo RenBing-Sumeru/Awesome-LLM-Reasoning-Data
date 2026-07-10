@@ -5,36 +5,36 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 ## Summary
 
 - Total entries: 280
-- Verified entries: 165
-- Verified entries with official paper/arXiv/venue/DOI links: 165 (100.0%)
-- Needs search: 115
+- Verified entries: 174
+- Verified entries with official paper/arXiv/venue/DOI links: 174 (100.0%)
+- Needs search: 106
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 87
+- Cards: 96
 
 ## Curation Levels
 
-- L0_seeded: 115
+- L0_seeded: 106
 - L1_link_verified: 69
 - L2_artifact_verified: 7
 - L3_summary_ready: 4
-- L4_carded: 32
+- L4_carded: 41
 - L5_audit_ready: 53
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 165
-- arXiv coverage: 162
+- Official primary paper/arXiv/venue/DOI coverage: 174
+- arXiv coverage: 171
 - OpenReview coverage: 15
 - ACL coverage: 7
 - PMLR coverage: 1
 - CVF coverage: 0
 - DOI coverage: 5
-- Code coverage: 41
-- Data coverage: 27
-- Hugging Face coverage: 20
-- Project page coverage: 25
-- Card coverage: 87
+- Code coverage: 49
+- Data coverage: 30
+- Hugging Face coverage: 21
+- Project page coverage: 30
+- Card coverage: 96
 
 ## Starter Pack Coverage
 
@@ -66,11 +66,9 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `scienceworld-is-your-agent-smarter-than-a-5th-grader-2022` · ScienceWorld: Is your agent smarter than a 5th grader? · status `needs_metadata`
 - `solving-math-word-problems-with-process-and-outcome-based-feedback-2022` · Solving math word problems with process- and outcome-based feedback · status `needs_metadata`
 - `alce-enabling-large-language-models-to-generate-text-with-citations-2023` · ALCE: Enabling large language models to generate text with citations · status `needs_metadata`
-- `api-bank-a-benchmark-for-tool-augmented-llms-2023` · API-Bank: A benchmark for tool-augmented LLMs · status `needs_metadata`
 - `data-provenance-for-language-models-2023` · Data provenance for language models · status `needs_metadata`
 - `distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023` · Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes · status `needs_metadata`
 - `factscore-2023` · FActScore · status `needs_metadata`
-- `gorilla-2023` · Gorilla · status `needs_metadata`
 - `judgelm-fine-tuned-large-language-models-are-scalable-judges-2023` · JudgeLM: Fine-tuned large language models are scalable judges · status `needs_metadata`
 - `language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023` · Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting · status `needs_metadata`
 - `large-language-models-encode-clinical-knowledge-2023` · Large language models encode clinical knowledge · status `needs_metadata`
@@ -85,7 +83,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `selfcodealign-self-alignment-for-code-generation-2023` · SelfCodeAlign: Self-alignment for code generation · status `needs_metadata`
 - `wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023` · WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct · status `needs_metadata`
 - `ai-models-collapse-when-trained-on-recursively-generated-data-2024` · AI models collapse when trained on recursively generated data · status `needs_metadata`
-- `apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024` · APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets · status `needs_metadata`
 - `bfcl-v3-2024` · BFCL v3 · status `needs_metadata`
 - `bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024` · BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions · status `needs_metadata`
 - `bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024` · BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval · status `needs_metadata`
@@ -108,14 +105,9 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024` · SPIN: Self-play fine-tuning converts weak language models to strong language models · status `needs_metadata`
 - `swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024` · SWE-Gym: Advancing software engineering agents with training and evaluation environments · status `needs_metadata`
 - `swe-search-2024` · SWE-Search · status `needs_metadata`
-- `tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024` · tau-bench: A benchmark for tool-agent-user interaction in real-world domains · status `needs_metadata`
 - `the-llama-3-herd-of-models-2024` · The Llama 3 Herd of models · status `needs_metadata`
 - `toolace-winning-the-points-of-llm-function-calling-2024` · ToolACE: Winning the points of LLM function calling · status `needs_metadata`
-- `toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024` · ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use · status `needs_metadata`
-- `visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024` · VisualWebArena: Evaluating multimodal agents on realistic visual web tasks · status `partial`
-- `weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024` · WebLINX: Real-world website navigation with multi-turn dialogue · status `needs_metadata`
 - `wildguard-2024` · WildGuard · status `needs_metadata`
-- `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` · WorkArena: How capable are web agents at solving common knowledge work tasks? · status `needs_metadata`
 - `xstest-2024` · XSTest · status `needs_metadata`
 - `1-shot-rlvr-learning-reasoning-with-minimal-verifiable-data-2025` · 1-shot RLVR: Learning reasoning with minimal verifiable data · status `needs_metadata`
 - `acord-attorney-curated-open-research-dataset-2025` · ACORD: Attorney-curated open research dataset · status `needs_metadata`
@@ -157,6 +149,5 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `xlam-a-family-of-large-action-models-to-empower-ai-agent-systems-2025` · xLAM: A family of large action models to empower AI agent systems · status `needs_metadata`
 - `pass-k-t-re-examining-the-reasoning-boundary-for-agentic-rl-2026` · pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL · status `needs_metadata`
 - `rewardbench-2-2026` · RewardBench 2 · status `needs_metadata`
-- `terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026` · Terminal-Bench: A benchmark and task environment for terminal agents · status `needs_metadata`
 - `openr1-math-220k-2025` · OpenR1-Math-220k · status `partial`
 - `qwen3-coder-2025` · Qwen3-Coder · status `partial`

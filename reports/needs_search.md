@@ -359,23 +359,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ALCE: Enabling large language models to generate text with citations" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## API-Bank: A benchmark for tool-augmented LLMs
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"API-Bank: A benchmark for tool-augmented LLMs" arXiv`
-  - `"API-Bank: A benchmark for tool-augmented LLMs" OpenReview`
-  - `"API-Bank: A benchmark for tool-augmented LLMs" GitHub`
-  - `"API-Bank: A benchmark for tool-augmented LLMs" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Data provenance for language models
 
 - Current status: `needs_metadata`
@@ -425,23 +408,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"FActScore" OpenReview`
   - `"FActScore" GitHub`
   - `"FActScore" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Gorilla
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Gorilla" arXiv`
-  - `"Gorilla" OpenReview`
-  - `"Gorilla" GitHub`
-  - `"Gorilla" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## JudgeLM: Fine-tuned large language models are scalable judges
@@ -680,23 +646,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"AI models collapse when trained on recursively generated data" OpenReview`
   - `"AI models collapse when trained on recursively generated data" GitHub`
   - `"AI models collapse when trained on recursively generated data" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" arXiv`
-  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" OpenReview`
-  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" GitHub`
-  - `"APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## BFCL v3
@@ -1073,23 +1022,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"SWE-Search" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## tau-bench: A benchmark for tool-agent-user interaction in real-world domains
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" arXiv`
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" OpenReview`
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" GitHub`
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## The Llama 3 Herd of models
 
 - Current status: `needs_metadata`
@@ -1124,57 +1056,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ToolACE: Winning the points of LLM function calling" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" arXiv`
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" OpenReview`
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" GitHub`
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## VisualWebArena: Evaluating multimodal agents on realistic visual web tasks
-
-- Current status: `partial`
-- Possible category: rollout_search_test_time_trace_data, environment_agent_trajectory_data, judgment_rubric_domain_expert_data, training_usage_optimization_objectives, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" arXiv`
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" OpenReview`
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" GitHub`
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" Hugging Face`
-- Notes: Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
-
-## WebLINX: Real-world website navigation with multi-turn dialogue
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"WebLINX: Real-world website navigation with multi-turn dialogue" arXiv`
-  - `"WebLINX: Real-world website navigation with multi-turn dialogue" OpenReview`
-  - `"WebLINX: Real-world website navigation with multi-turn dialogue" GitHub`
-  - `"WebLINX: Real-world website navigation with multi-turn dialogue" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## WildGuard
 
 - Current status: `needs_metadata`
@@ -1190,23 +1071,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"WildGuard" OpenReview`
   - `"WildGuard" GitHub`
   - `"WildGuard" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## WorkArena: How capable are web agents at solving common knowledge work tasks?
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" arXiv`
-  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" OpenReview`
-  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" GitHub`
-  - `"WorkArena: How capable are web agents at solving common knowledge work tasks?" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## XSTest
@@ -1904,23 +1768,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"RewardBench 2" OpenReview`
   - `"RewardBench 2" GitHub`
   - `"RewardBench 2" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Terminal-Bench: A benchmark and task environment for terminal agents
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Terminal-Bench: A benchmark and task environment for terminal agents" arXiv`
-  - `"Terminal-Bench: A benchmark and task environment for terminal agents" OpenReview`
-  - `"Terminal-Bench: A benchmark and task environment for terminal agents" GitHub`
-  - `"Terminal-Bench: A benchmark and task environment for terminal agents" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## OpenR1-Math-220k

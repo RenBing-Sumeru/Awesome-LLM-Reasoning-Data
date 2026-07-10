@@ -6,8 +6,10 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=abstentionbench-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=abstentionbench-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=abstentionbench-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🤝 Preference & Reward Feedback (Track 02) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+
 > Curation level: L5_audit_ready
-> Category: judgment_rubric_domain_expert_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2506.09038) · [🏛️ Venue](https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html) · [🐙 Code](https://github.com/facebookresearch/AbstentionBench) · [🗂️ Data](https://huggingface.co/datasets/facebook/AbstentionBench)
 
 ## TL;DR

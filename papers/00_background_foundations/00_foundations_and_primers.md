@@ -219,6 +219,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is an audit anchor for this atlas: reasoning-data claims need reproducible evaluation settings, not just headline benchmark gains.
+- 🧯 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
+  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧯 audit failure · 🏷️ benchmark analysis · embedding similarity · perturbation based · audit · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2602.12413)
+  _Data object:_ contamination evidence record linking benchmark item to semantically similar training examples.; process: benchmark item, corpus neighbor, similarity score; static benchmark/corpus audit using embedding similarity and finetuning experiments.
+  _Feedback / verifier:_ semantic duplicate detection plus benchmark performance under duplicate exposure.
+  _Recipe signal:_ release audit; audit; evaluation
+  _Audit focus:_ embedding similarity thresholds can over- or under-count contamination., benchmark-neighbor links may reflect domain overlap rather than memorized test data., finetuning duplicate experiments may not fully represent pretraining-scale effects.
+  _Why it matters:_ It sharpens Track 11's contamination model from exact string overlap to semantic overlap, changing how benchmark validity and reported progress should be audited.
 - 🧯 **[Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385)**
   <sub>2024 · arXiv · 🧯 audit failure · 🧭 survey background · unknown · audit · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2410.08385)
@@ -227,14 +235,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ filtering rule: overlap reporting and audit policy.
   _Audit focus:_ Reported benchmark gains can be inflated when train-test overlap is not disclosed.
   _Why it matters:_ It gives the scaling track a concrete data-reuse and uniqueness reference for checking whether repeated or overlapping examples are counted as fresh evidence.
-- 🧭 **[Soft Contamination Means Benchmarks Test Shallow Generalization](https://arxiv.org/abs/2602.12413)**
-  <sub>2026 · arXiv preprint arXiv:2602.12413 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2602.12413)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 🧭 **[Search-Time Data Contamination](https://arxiv.org/abs/2508.13180)**
   <sub>2025 · arXiv preprint arXiv:2508.13180 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2508.13180)
@@ -382,6 +382,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; rlvr; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
+- 🌐 **[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442)**
+  <sub>2023 · arXiv preprint arXiv:2304.03442 · 🌐 agent environment · 🏗️ construction recipe · judgment required · mixed · evaluation · agent training · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2304.03442)
+  _Data object:_ agent behavior, memory, reflection, and plan within a sandbox town; process: observation, memory, reflection; interactive sandbox simulation inspired by The Sims
+  _Feedback / verifier:_ human/believability evaluation and architecture ablations
+  _Recipe signal:_ filtering rule: memory retrieval, reflection synthesis, and planning architecture
+  _Audit focus:_ Believability judgments are subjective., Sandbox behavior may not transfer to operational environments.
+  _Why it matters:_ P0 Track 06 historical memory/workflow anchor: it made memory, reflection, planning, and sandbox interaction central to LLM-agent behavior.
+- 🛠️ **[MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560)**
+  <sub>2023 · arXiv preprint arXiv:2310.08560 · 🛠️ infrastructure · 🌐 agent environment · mixed · agent training · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2310.08560) · [Code](https://research.memgpt.ai) · [Project](https://memgpt.ai)
+  _Data object:_ agent response with virtual-context memory operations and interrupts; process: working context, archival memory, recall memory; virtual context manager for LLM agents
+  _Feedback / verifier:_ document-analysis and multi-session chat evaluation
+  _Recipe signal:_ filtering rule: virtual context paging between memory tiers
+  _Audit focus:_ Memory operation traces may not be released in reusable form., Evaluation may not isolate memory quality from base-model capability.
+  _Why it matters:_ P0 Track 06 historical memory anchor: it introduced an OS-inspired memory/control-flow design for persistent LLM agents.
 - 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
   <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2406.03816)

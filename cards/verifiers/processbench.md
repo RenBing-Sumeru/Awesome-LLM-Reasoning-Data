@@ -6,6 +6,8 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=processbench-identifying-process-errors-in-mathematical-reasoning-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=processbench-identifying-process-errors-in-mathematical-reasoning-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=processbench-identifying-process-errors-in-mathematical-reasoning-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🪜 Process / Trace Supervision (Track 04) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+
 ## One-line takeaway
 
 Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.

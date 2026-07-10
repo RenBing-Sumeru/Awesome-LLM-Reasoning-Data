@@ -217,6 +217,10 @@ def validate_cards(data: list[dict], errors: list[str]) -> None:
         for alternatives in CARD_REQUIRED_ANY:
             if not any(heading in text for heading in alternatives):
                 errors.append(f"card missing required section {alternatives[0]!r}: {rel}")
+        if not re.search(r"^<!--\s*track:", text, flags=re.M | re.I):
+            errors.append(f"card missing track comment: {rel}")
+        if re.search(r"^> Category:", text, flags=re.M):
+            errors.append(f"card should not include blockquote category metadata: {rel}")
         entry = entries_by_id.get(matched_entry_id)
         if entry and curation_level(entry, rel) == "L5_audit_ready":
             for marker in CARD_PLACEHOLDER_MARKERS:

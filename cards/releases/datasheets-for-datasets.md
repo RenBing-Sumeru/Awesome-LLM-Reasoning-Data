@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=datasheets-for-datasets-2018&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=datasheets-for-datasets-2018&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=datasheets-for-datasets-2018&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🏗️ Construction & Open Releases (Track 08) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 📦 Data documentation / datasheets
+
 > Curation level: L5_audit_ready
-> Category: foundations_and_primers
+
 > Links: [📄 Paper](https://arxiv.org/abs/1803.09010)
 
 ## TL;DR

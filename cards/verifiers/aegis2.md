@@ -6,8 +6,10 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=aegis2-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=aegis2-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=aegis2-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🤝 Preference & Reward Feedback (Track 02) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+
 > Curation level: L5_audit_ready
-> Category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces, data_construction_open_release_recipes
+
 > Links: [📄 Paper](https://arxiv.org/abs/2501.09004) · [🏛️ ACL](https://aclanthology.org/2025.naacl-long.306/) · [🗂️ Data](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0)
 
 ## TL;DR

@@ -6,8 +6,10 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🧱 Instruction / Demo / Rationale (Track 01) · 🌐 Environment & Agent Trajectories (Track 06) · 🏗️ Construction & Open Releases (Track 08) -->
+
 > Curation level: L5_audit_ready
-> Category: instruction_demonstration_rationale_data
+
 > Links: [📄 Paper](https://arxiv.org/abs/2201.11903)
 
 ## TL;DR

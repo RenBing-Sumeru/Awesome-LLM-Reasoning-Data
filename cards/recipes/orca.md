@@ -6,8 +6,10 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🧱 Instruction / Demo / Rationale (Track 01) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🚀 Frontier Disclosure Ledger (Track 12) -->
+
 > Curation level: L5_audit_ready
-> Category: data_construction_open_release_recipes, frontier_reports_data_disclosure_ledger, instruction_demonstration_rationale_data
+
 > Links: [📄 Paper](https://arxiv.org/abs/2306.02707) · [🌐 Project](https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/)
 
 ## TL;DR

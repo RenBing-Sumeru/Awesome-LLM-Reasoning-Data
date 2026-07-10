@@ -6,8 +6,10 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tulu-3-pushing-frontiers-in-open-language-model-post-training-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tulu-3-pushing-frontiers-in-open-language-model-post-training-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tulu-3-pushing-frontiers-in-open-language-model-post-training-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🧱 Instruction / Demo / Rationale (Track 01) · 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) · 🚀 Frontier Disclosure Ledger (Track 12) · 🧯 Audit & Failure Modes (Track 13) -->
+
 > Curation level: L5_audit_ready
-> Category: frontier_reports_data_disclosure_ledger, data_construction_open_release_recipes, scaling_rlvr_test_time_compute, instruction_demonstration_rationale_data
+
 > Links: [📄 Paper](https://arxiv.org/abs/2411.15124) · [🏛️ OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [🐙 Code](https://github.com/allenai/open-instruct) · [🗂️ Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [🌐 Project](https://allenai.org/blog/tulu-3-technical)
 
 ## TL;DR

@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openthoughts3-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openthoughts3-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openthoughts3-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🌐 Environment & Agent Trajectories (Track 06) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🚀 Frontier Disclosure Ledger (Track 12) -->
+> Subfield: 🧱 Instruction tuning / SFT data
+
 > Curation level: L5_audit_ready
-> Category: data_construction_open_release_recipes, frontier_reports_data_disclosure_ledger
+
 > Links: [📄 Paper](https://arxiv.org/abs/2506.04178) · [🐙 Code](https://github.com/open-thoughts/open-thoughts) · [🤗 Hugging Face](https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M)
 
 ## TL;DR

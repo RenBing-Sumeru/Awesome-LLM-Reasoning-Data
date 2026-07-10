@@ -163,6 +163,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Reasoning-data users need this lens when a corpus mixes web text, synthetic questions, human annotations, or domain-specific tasks whose population assumptions affect generalization.
+- 🧰 **[Autorubric: Unifying Rubric-based LLM Evaluation](https://arxiv.org/abs/2603.00077)**
+  <sub>2026 · arXiv preprint arXiv:2603.00077 · 🧰 benchmark · 🏷️ judge model · judgment required · rubric · evaluation · reward modeling · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2603.00077)
+  _Data object:_ response plus analytic rubric criteria with binary, ordinal, or nominal labels.; process: prompt, candidate response, rubric criteria; rubric-based LLM evaluation framework.
+  _Feedback / verifier:_ single or ensemble LLM judge with few-shot calibration, bias mitigation, and reliability metrics.
+  _Recipe signal:_ rubric authoring; verifier layer; release audit
+  _Audit focus:_ LLM judges can show position, verbosity, and style bias., rubric criteria may be underspecified or correlated., optimization against judge explanations can overfit the evaluator.
+  _Why it matters:_ It makes judge configuration, rubric design, calibration, and reliability metrics first-class metadata instead of treating LLM-as-judge scores as opaque labels.
 - 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
   <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
   [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
@@ -199,14 +207,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   <sub>2026 · arXiv preprint arXiv:2602.01511 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2602.01511)
   _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **[Autorubric: Unifying Rubric-based LLM Evaluation](https://arxiv.org/abs/2603.00077)**
-  <sub>2026 · arXiv preprint arXiv:2603.00077 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2603.00077)
-  _Data object:_ metadata pending
   _Feedback / verifier:_ metadata pending
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
@@ -429,6 +429,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It helps readers test whether a reward signal generalizes beyond helpfulness style into subtle factual, reasoning, refusal, and safety preferences.
+- 🧰 **[RewardBench 2: Advancing Reward Model Evaluation](https://arxiv.org/abs/2506.01937)**
+  <sub>2026 · ICLR 2026 · 🧰 benchmark · 🏷️ reward model eval · preference pair · reward model score · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.01937) · [HF](https://huggingface.co/collections/allenai/reward-bench-2-683d2612a4b3e38a3e53bb51)
+  _Data object:_ prompt with candidate responses and preference/evaluation labels for reward-model accuracy.; process: prompt, candidate responses, preferred response label; static reward-model benchmark and HF leaderboard/data collection.
+  _Feedback / verifier:_ reward-model preference accuracy and correlation with downstream best-of-N or RLHF use.
+  _Recipe signal:_ prompt sourcing; preference labeling; verifier layer
+  _Audit focus:_ benchmark accuracy may not fully predict downstream alignment quality., public preference pairs can be memorized by future reward models., label ambiguity and domain mixture can hide skill-specific failures.
+  _Why it matters:_ It updates reward-model evaluation beyond saturated preference sets and makes the benchmark's relationship to downstream best-of-N and RLHF outcomes an auditable Track 11 question.
 
 ### <a id="other-related-work"></a>Other related work
 
@@ -504,6 +512,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.
+- 🧰 **[VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks](https://arxiv.org/abs/2401.13649)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2401.13649) · [Code](https://github.com/web-arena-x/visualwebarena) · [Project](https://jykoh.com/vwa) · [Card](../../cards/agents/visualwebarena.md)
+  _Data object:_ Browser interaction trajectory with webpage observation, screenshot context, action, and final task outcome.; process: natural language goal, screenshot, page observation; Visual web tasks with screenshots, browser state, and realistic web environments.
+  _Feedback / verifier:_ Task-specific success checks over the final web state.
+  _Recipe signal:_ teacher: Benchmark authors.; generator: WebArena-style web task construction extended with visual observations.
+  _Audit focus:_ Screenshot and webpage state can drift if environments are updated., Visual cues may be unavailable or rendered differently across browsers., Task success checks can miss partially completed or unsafe intermediate behavior.
+  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
+- 🧰 **[WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?](https://arxiv.org/abs/2403.07718)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · audit · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2403.07718) · [Code](https://github.com/ServiceNow/WorkArena) · [Card](../../cards/agents/workarena.md)
+  _Data object:_ Browser-agent episode with multimodal observation, browser action, and final task state.; process: task goal, browser observation, screenshot or dom; Remote-hosted ServiceNow environment exposed through BrowserGym.
+  _Feedback / verifier:_ Task-specific success checks over the enterprise web application state.
+  _Recipe signal:_ teacher: Benchmark authors and enterprise workflow specifications.; generator: ServiceNow task design plus BrowserGym environment construction.
+  _Audit focus:_ Hosted enterprise environment can drift or become unavailable., Success checks may depend on hidden application state and configuration., Benchmark feedback can be overfit if tasks or environment templates become public training data.
+  _Why it matters:_ It moves web-agent evaluation toward realistic workplace workflows with browser state, action traces, and environment-level success checks.
 - 🧰 **[WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854)**
   <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2307.13854) · [Card](../../cards/agents/webarena.md)
@@ -515,14 +539,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
-- 📄 **RewardBench 2**
-  <sub>2026 · ICLR · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **FinDER: Financial data extraction and reasoning**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
@@ -611,24 +627,8 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧰 **VisualWebArena: Evaluating multimodal agents on realistic visual web tasks**
-  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L0_seeded</sub>
-  needs_search
-  _Data object:_ visual web tasks with screenshots and browser state
-  _Feedback / verifier:_ task success checks
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
 - 📄 **WildGuard**
   <sub>2024 · NeurIPS · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **WorkArena: How capable are web agents at solving common knowledge work tasks?**
-  <sub>2024 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search
   _Data object:_ metadata pending
   _Feedback / verifier:_ metadata pending
@@ -793,10 +793,10 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [RewardBench: Evaluating Reward Models for Language Modeling](../../cards/verifiers/rewardbench.md)
 - [SciCode: A benchmark for scientific code generation and reasoning](../../cards/benchmarks/scicode.md)
 - [Tulu 3: Pushing frontiers in open language model post-training](../../cards/recipes/tulu-3.md)
+- [VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks](../../cards/agents/visualwebarena.md)
+- [WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?](../../cards/agents/workarena.md)
 - [Direct preference optimization: Your language model is secretly a reward model](../../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)
 - [GPQA](../../cards/benchmarks/gpqa.md)
-- [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](../../cards/verifiers/mt-bench-chatbot-arena.md)
-- [Let's Verify Step by Step](../../cards/verifiers/prm800k.md)
 
 ## Back to Map
 

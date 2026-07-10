@@ -480,6 +480,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ reward verifier layer; release audit; rlvr
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+- 🏗️ **[SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution](https://arxiv.org/abs/2502.18449)**
+  <sub>2025 · NeurIPS 2025 / arXiv preprint arXiv:2502.18449 · 🏗️ construction recipe · 🚀 model report · programmatic · mixed · rlvr · agent training · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2502.18449)
+  _Data object:_ developer reasoning process and solution or patch-style output; process: code snapshot, change history, issue or pull request; open-source software evolution data and SWE-bench Verified evaluation
+  _Feedback / verifier:_ lightweight rule-based reward and benchmark solve rate
+  _Recipe signal:_ filtering rule: rule-based reward over open software evolution data
+  _Audit focus:_ Similarity rewards can reward superficial patches., Open-source evolution data may overlap with evaluation repositories.
+  _Why it matters:_ P0 Track 06 SWE RL entry: it trains software agents from repository evolution traces and rule-based feedback.
 - 🧭 **[Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216)**
   <sub>2024 · arXiv · 🧭 survey background · 📈 scaling study · mixed · programmatic · reward modeling · preference learning · L3_summary_ready</sub>
   [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216)
@@ -603,6 +611,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ search substrate; optimizer scaffold; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.
+- 🧰 **[VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks](https://arxiv.org/abs/2401.13649)**
+  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2401.13649) · [Code](https://github.com/web-arena-x/visualwebarena) · [Project](https://jykoh.com/vwa) · [Card](../../cards/agents/visualwebarena.md)
+  _Data object:_ Browser interaction trajectory with webpage observation, screenshot context, action, and final task outcome.; process: natural language goal, screenshot, page observation; Visual web tasks with screenshots, browser state, and realistic web environments.
+  _Feedback / verifier:_ Task-specific success checks over the final web state.
+  _Recipe signal:_ teacher: Benchmark authors.; generator: WebArena-style web task construction extended with visual observations.
+  _Audit focus:_ Screenshot and webpage state can drift if environments are updated., Visual cues may be unavailable or rendered differently across browsers., Task success checks can miss partially completed or unsafe intermediate behavior.
+  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
 - 📦 **[ToolLLM: Facilitating large language models to master 16000+ real-world APIs](https://arxiv.org/abs/2307.16789)**
   <sub>2023 · ICLR · 📦 data release · 🧰 benchmark · environmental · programmatic · sft · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2307.16789) · [Card](../../cards/agents/toolllm_toolbench.md)
@@ -619,6 +635,22 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
+- 🛠️ **[Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory](https://arxiv.org/abs/2504.19413)**
+  <sub>2025 · arXiv preprint arXiv:2504.19413 · 🛠️ infrastructure · 🌐 agent environment · mixed · judgment required · agent training · evaluation · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.19413)
+  _Data object:_ response generated with extracted, consolidated, and retrieved memories; process: conversation history, memory extraction, memory consolidation; long-term conversational memory architecture
+  _Feedback / verifier:_ LOCOMO-style QA and LLM-as-a-judge metrics reported by the paper
+  _Recipe signal:_ filtering rule: memory extraction, graph memory, and retrieval policy
+  _Audit focus:_ LLM-as-judge scoring can hide memory grounding failures., Production claims need artifact and license audit before reuse.
+  _Why it matters:_ P0 Track 06 memory entry: it gives a production-oriented memory architecture for persistent agent interaction.
+- 🌐 **[R2E-Gym: Procedural Environments and Hybrid Verifiers for Scaling Open-Weights SWE Agents](https://arxiv.org/abs/2504.07164)**
+  <sub>2025 · arXiv preprint arXiv:2504.07164 · 🌐 agent environment · 🏗️ construction recipe · programmatic · mixed · agent training · rlvr · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.07164) · [Project](https://r2e-gym.github.io/)
+  _Data object:_ repository task, generated patch, execution trace, verifier outcome; process: repository, commit, synthetic task; procedural executable gym environments for repository-level code agents
+  _Feedback / verifier:_ hybrid execution-based and execution-free verifiers
+  _Recipe signal:_ generator: SYNGEN synthetic data curation recipe; filtering rule: test-generation and back-translation from commits
+  _Audit focus:_ Generated tests may create false positives., Execution-free verifiers can be biased by style or benchmark artifacts.
+  _Why it matters:_ P0 Track 06 environment infrastructure entry: it creates procedurally curated executable SWE-agent environments and verifiers.
 
 ### <a id="evaluation-reranking-audit"></a>🧪 Evaluation / reranking / audit
 
@@ -860,14 +892,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
-- 🧰 **VisualWebArena: Evaluating multimodal agents on realistic visual web tasks**
-  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L0_seeded</sub>
-  needs_search
-  _Data object:_ visual web tasks with screenshots and browser state
-  _Feedback / verifier:_ task success checks
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
 
 ## 6. What to Audit
 

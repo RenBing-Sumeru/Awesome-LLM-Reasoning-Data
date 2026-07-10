@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-verifiers-to-solve-math-word-problems-2021&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-verifiers-to-solve-math-word-problems-2021&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-verifiers-to-solve-math-word-problems-2021&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🪜 Process / Trace Supervision (Track 04) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) -->
+> Subfield: 🎚️ Scalar reward / ORM data
+
 > Curation level: L5_audit_ready
-> Category: process_trace_supervision_data
+
 > Links: [📄 Paper](https://arxiv.org/abs/2110.14168) · [🐙 Code](https://github.com/openai/grade-school-math) · [🤗 Hugging Face](https://huggingface.co/datasets/openai/gsm8k)
 
 ## TL;DR

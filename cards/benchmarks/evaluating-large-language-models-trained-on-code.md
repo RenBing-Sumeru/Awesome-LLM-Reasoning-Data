@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=evaluating-large-language-models-trained-on-code-2021&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=evaluating-large-language-models-trained-on-code-2021&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=evaluating-large-language-models-trained-on-code-2021&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) -->
+> Subfield: 💻 Code execution / unit-test data
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2107.03374) · [🐙 Code](https://github.com/openai/human-eval)
 
 ## TL;DR

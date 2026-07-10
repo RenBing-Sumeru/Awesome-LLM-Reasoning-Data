@@ -6,8 +6,10 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🚀 Frontier Disclosure Ledger (Track 12) -->
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, scaling_rlvr_test_time_compute, data_construction_open_release_recipes
+
 > Links: [📄 Paper](https://arxiv.org/abs/2408.08152) · [🐙 Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [🤗 HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL)
 
 ## TL;DR

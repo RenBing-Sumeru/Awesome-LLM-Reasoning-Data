@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 🧰 Programmatic benchmarks
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2407.13168) · [🏛️ Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [🐙 Code](https://github.com/scicode-bench/SciCode) · [🌐 Project](https://scicode-bench.github.io/)
 
 ## TL;DR

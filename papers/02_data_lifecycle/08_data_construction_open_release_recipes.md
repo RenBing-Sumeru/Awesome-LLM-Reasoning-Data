@@ -747,6 +747,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ optimizer scaffold; reward verifier layer; scaling report
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.
+- 🏗️ **[SWE-smith: Scaling Data for Software Engineering Agents](https://arxiv.org/abs/2504.21798)**
+  <sub>2025 · arXiv preprint arXiv:2504.21798 · 🏗️ construction recipe · 📦 data release · programmatic · environmental · agent training · sft · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.21798) · [Project](https://swesmith.com)
+  _Data object:_ software engineering task instance, execution environment, patch, trajectory, and model output; process: repository, execution environment, task instance; Python repositories with constructed execution environments
+  _Feedback / verifier:_ test failures and test-based task resolution
+  _Recipe signal:_ generator: SWE-smith scalable task-generation pipeline; filtering rule: construct environments and synthesize task instances that break existing tests
+  _Audit focus:_ Generated tasks may be solvable through test artifacts rather than real issue understanding., Repository selection, license, and trajectory release details need audit.
+  _Why it matters:_ P0 Track 06 SWE data-construction entry: it scales executable repository-agent training instances and trajectories.
 - 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
   <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME)
@@ -854,14 +862,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
-- 📄 **SWE-smith: Scaling data construction for software engineering agents**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **Sky-T1: Fully open reasoning model and data recipe**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search

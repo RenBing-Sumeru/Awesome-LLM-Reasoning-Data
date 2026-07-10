@@ -186,6 +186,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ reward verifier layer; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.
+- 🧰 **[RewardBench 2: Advancing Reward Model Evaluation](https://arxiv.org/abs/2506.01937)**
+  <sub>2026 · ICLR 2026 · 🧰 benchmark · 🏷️ reward model eval · preference pair · reward model score · evaluation · audit · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2506.01937) · [HF](https://huggingface.co/collections/allenai/reward-bench-2-683d2612a4b3e38a3e53bb51)
+  _Data object:_ prompt with candidate responses and preference/evaluation labels for reward-model accuracy.; process: prompt, candidate responses, preferred response label; static reward-model benchmark and HF leaderboard/data collection.
+  _Feedback / verifier:_ reward-model preference accuracy and correlation with downstream best-of-N or RLHF use.
+  _Recipe signal:_ prompt sourcing; preference labeling; verifier layer
+  _Audit focus:_ benchmark accuracy may not fully predict downstream alignment quality., public preference pairs can be memorized by future reward models., label ambiguity and domain mixture can hide skill-specific failures.
+  _Why it matters:_ It updates reward-model evaluation beyond saturated preference sets and makes the benchmark's relationship to downstream best-of-N and RLHF outcomes an auditable Track 11 question.
 - 🧭 **[GRPO is Secretly a Process Reward Model](https://arxiv.org/abs/2509.21154)**
   <sub>2025 · arXiv preprint arXiv:2509.21154 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2509.21154)
@@ -566,14 +574,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **[SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution](https://arxiv.org/abs/2502.18449)**
-  <sub>2025 · Advances in Neural Information Processing Systems (NeurIPS) · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2502.18449)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 🧭 **[MAmmoTH2: Scaling Instructions from the Web](https://arxiv.org/abs/2405.03548)**
   <sub>2024 · Advances in Neural Information Processing Systems (NeurIPS) · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2405.03548)
@@ -585,14 +585,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 ### ⚠️ Needs search or metadata
 
-- 📄 **RewardBench 2**
-  <sub>2026 · ICLR · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **Process reward models for code reasoning**
   <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
   needs_search

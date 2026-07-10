@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 💻 Code execution / unit-test data
+
 > Curation level: L5_audit_ready
-> Category: programmatically_verifiable_outcome_data, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2403.07974) · [🏛️ OpenReview](https://openreview.net/forum?id=chfJJYC3iL) · [🐙 Code](https://github.com/livecodebench/livecodebench) · [🌐 Project](https://livecodebench.github.io/)
 
 ## TL;DR

@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=data-statements-for-natural-language-processing-2018&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=data-statements-for-natural-language-processing-2018&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=data-statements-for-natural-language-processing-2018&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🏗️ Construction & Open Releases (Track 08) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 📦 Data documentation / datasheets
+
 > Curation level: L5_audit_ready
-> Category: foundations_and_primers
+
 > Links: [📄 Paper](https://aclanthology.org/Q18-1041/)
 
 ## TL;DR

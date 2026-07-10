@@ -6,6 +6,8 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=webarena-a-realistic-web-environment-for-building-autonomous-agents-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=webarena-a-realistic-web-environment-for-building-autonomous-agents-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=webarena-a-realistic-web-environment-for-building-autonomous-agents-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+
 ## One-line takeaway
 
 Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.

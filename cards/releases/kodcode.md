@@ -6,6 +6,9 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧱 Instruction / Demo / Rationale (Track 01) · 🤝 Preference & Reward Feedback (Track 02) · 🧮 Programmatic Verification (Track 03) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) -->
+> Subfield: 🤖 Synthetic instruction data
+
 ## One-line takeaway
 
 Synthetic coding dataset where problems, solutions, and tests form a verifiable training object for SFT and RLVR.

@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=gpqa-2023&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=gpqa-2023&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=gpqa-2023&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🌐 Environment & Agent Trajectories (Track 06) · ⚖️ Judgment / Rubric / Domain Expert (Track 07) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 🌍 Web/browser agents
+
 > Curation level: L5_audit_ready
-> Category: judgment_rubric_domain_expert_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
+
 > Links: [📄 Paper](https://arxiv.org/abs/2311.12022) · [🏛️ OpenReview](https://openreview.net/forum?id=Ti67584b98) · [🐙 Code](https://github.com/idavidrein/gpqa)
 
 ## TL;DR

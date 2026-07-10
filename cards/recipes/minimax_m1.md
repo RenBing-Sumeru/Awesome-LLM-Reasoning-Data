@@ -6,6 +6,9 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧮 Programmatic Verification (Track 03) · 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · 🏗️ Construction & Open Releases (Track 08) · 🎯 Training Usage & Objectives (Track 09) · 📈 Scaling / RLVR / TTC (Track 10) · 🧰 Benchmarks & Evaluation (Track 11) · 🚀 Frontier Disclosure Ledger (Track 12) -->
+> Subfield: 📐 Math answer-verifiable data
+
 ## One-line takeaway
 
 Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.

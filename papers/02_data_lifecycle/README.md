@@ -9,11 +9,11 @@ Follow the lifecycle from construction recipes through training objectives, scal
 | Track | Main question | Entries | Jump |
 |---|---|---:|---|
 | 🏗️ Construction & Open Releases | building, filtering, releasing, and reproducing reasoning datasets | 108 | [08_data_construction_open_release_recipes.md](08_data_construction_open_release_recipes.md) |
-| 🎯 Training Usage & Objectives | how data enters SFT, DPO, RM, PRM, RLVR, agents, evaluation, and audit | 97 | [09_training_usage_optimization_objectives.md](09_training_usage_optimization_objectives.md) |
+| 🎯 Training Usage & Objectives | how data enters SFT, DPO, RM, PRM, RLVR, agents, evaluation, and audit | 100 | [09_training_usage_optimization_objectives.md](09_training_usage_optimization_objectives.md) |
 | 📈 Scaling / RLVR / TTC | data scale, RLVR, verifier scaling, pass@k, and inference budget claims | 90 | [10_scaling_rlvr_test_time_compute.md](10_scaling_rlvr_test_time_compute.md) |
-| 🧰 Benchmarks & Evaluation | evaluation surfaces and reusable feedback contracts | 109 | [11_benchmarks_evaluation_surfaces.md](11_benchmarks_evaluation_surfaces.md) |
+| 🧰 Benchmarks & Evaluation | evaluation surfaces and reusable feedback contracts | 118 | [11_benchmarks_evaluation_surfaces.md](11_benchmarks_evaluation_surfaces.md) |
 | 🚀 Frontier Disclosure Ledger | reading frontier reports as partial data-recipe disclosures | 40 | [12_frontier_reports_data_disclosure_ledger.md](12_frontier_reports_data_disclosure_ledger.md) |
-| 🧯 Audit & Failure Modes | leakage, contamination, verifier gaming, judge attacks, and reproducibility failures | 68 | [13_audit_failure_contamination_verifier_attacks.md](13_audit_failure_contamination_verifier_attacks.md) |
+| 🧯 Audit & Failure Modes | leakage, contamination, verifier gaming, judge attacks, and reproducibility failures | 69 | [13_audit_failure_contamination_verifier_attacks.md](13_audit_failure_contamination_verifier_attacks.md) |
 
 ## Lifecycle Checklist
 

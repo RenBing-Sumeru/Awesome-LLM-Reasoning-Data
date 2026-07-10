@@ -6,6 +6,8 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🔁 Rollout / Search / TTC Trace (Track 05) · 🌐 Environment & Agent Trajectories (Track 06) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) -->
+
 ## One-line takeaway
 
 Android tasks turn mobile UI state and action histories into evaluable agent trajectories.

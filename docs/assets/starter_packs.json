@@ -2963,55 +2963,66 @@
         "matched": true,
         "entry": {
           "id": "apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024",
-          "title": "APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets",
+          "title": "APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets",
           "year": 2024,
           "venue": "NeurIPS",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "data_release",
+            "construction_recipe",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "agent_training",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "tool-use",
+            "function-calling",
+            "agents"
+          ],
           "category": [
             "environment_agent_trajectory_data"
           ],
           "subfield": "🛠️ Tool-use data",
           "tags": [
-            "seeded-from-bib"
+            "tool-use",
+            "function-calling",
+            "synthetic-data",
+            "verifier"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "APIGen builds verifiable function-calling datasets through schema, execution, and semantic checks.",
+          "why_it_matters": "It gives Track 06 a clear example of how tool-use trajectories can be generated and filtered by executable verifier stages.",
+          "data_object": "Function-calling example with function name, arguments, expected execution behavior, and verification signal.; process: function schema, instruction, function name; Executable API/function pool across multiple categories.",
+          "feedback_verifier": "Hierarchical format checking, actual function execution, and semantic verification.",
+          "audit_focus": "Synthetic function APIs may be cleaner than messy real-world APIs., Semantic verification can miss ambiguous or underspecified user intent., Models may overfit schema patterns rather than robust tool selection.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2406.18518",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2406.18518",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
             "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "data": "https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k",
+            "huggingface": "https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k",
+            "project": "https://apigen-pipeline.github.io/",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/apigen.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2406.18518"
         }
       },
       {
@@ -4556,20 +4567,35 @@
           "title": "Autorubric: Unifying Rubric-based LLM Evaluation",
           "year": 2026,
           "venue": "arXiv preprint arXiv:2603.00077",
-          "authors": [],
+          "authors": [
+            "Delip Rao",
+            "Chris Callison-Burch"
+          ],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "judge_model",
+            "construction_recipe"
           ],
           "verification_contract": [
-            "unknown"
+            "judgment_required",
+            "rubric",
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "criterion_level",
+            "answer_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "reward_modeling",
+            "audit"
           ],
-          "domains": [],
+          "domains": [
+            "rubric-evaluation",
+            "chemistry",
+            "chatbot-evaluation",
+            "research-evaluation"
+          ],
           "category": [
             "judgment_rubric_domain_expert_data",
             "benchmarks_evaluation_surfaces"
@@ -4578,12 +4604,12 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L1_link_verified",
+          "one_line_summary": "Autorubric turns analytic rubrics into calibrated LLM-judge scoring contracts with criterion-level labels and explanations.",
+          "why_it_matters": "It makes judge configuration, rubric design, calibration, and reliability metrics first-class metadata instead of treating LLM-as-judge scores as opaque labels.",
+          "data_object": "response plus analytic rubric criteria with binary, ordinal, or nominal labels.; process: prompt, candidate response, rubric criteria; rubric-based LLM evaluation framework.",
+          "feedback_verifier": "single or ensemble LLM judge with few-shot calibration, bias mitigation, and reliability metrics.",
+          "audit_focus": "LLM judges can show position, verbosity, and style bias., rubric criteria may be underspecified or correlated., optimization against judge explanations can overfit the evaluator.",
+          "curation_level": "L3_summary_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -5280,23 +5306,33 @@
         "matched": true,
         "entry": {
           "id": "api-bank-a-benchmark-for-tool-augmented-llms-2023",
-          "title": "API-Bank: A benchmark for tool-augmented LLMs",
+          "title": "API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs",
           "year": 2023,
           "venue": "EMNLP",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "data_release",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "agent_training",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "tool-use",
+            "api",
+            "agents"
+          ],
           "category": [
             "environment_agent_trajectory_data",
             "benchmarks_evaluation_surfaces",
@@ -5304,33 +5340,36 @@
           ],
           "subfield": "🛠️ Tool-use data",
           "tags": [
-            "seeded-from-bib"
+            "tool-use",
+            "api-calling",
+            "benchmark",
+            "agent-trajectory"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "API-Bank turns API/tool-call dialogues into a benchmark and training resource with runnable tool feedback.",
+          "why_it_matters": "It is one of the core early datasets for tool-augmented LLMs, connecting dialogue traces, API calls, and executable evaluation.",
+          "data_object": "Multi-turn tool-use dialogue with API call, arguments, tool response, and final answer.; process: user instruction, api name, api arguments; Runnable API-bank evaluation system and tool-use task collection.",
+          "feedback_verifier": "API-call validity, tool-response consistency, and task-completion checks.",
+          "audit_focus": "API schema or tool behavior may drift after release., A model may learn surface tool-call format without robust API selection., Execution failures can be hidden if only successful trajectories are emphasized.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2304.08244",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2304.08244",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
-            "data": null,
+            "code": "https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank",
+            "data": "https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank",
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/api-bank.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2304.08244"
         }
       },
       {
@@ -5339,55 +5378,68 @@
         "matched": true,
         "entry": {
           "id": "gorilla-2023",
-          "title": "Gorilla",
+          "title": "Gorilla: Large Language Model Connected with Massive APIs",
           "year": 2023,
           "venue": "arXiv preprint",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "construction_recipe",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "programmatic",
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "state_action_level",
+            "answer_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "agent_training",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "tool-use",
+            "api",
+            "retrieval"
+          ],
           "category": [
             "environment_agent_trajectory_data"
           ],
           "subfield": "🛠️ Tool-use data",
           "tags": [
-            "seeded-from-bib"
+            "tool-use",
+            "api-calling",
+            "retrieval",
+            "benchmark"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "Gorilla/APIBench evaluates and trains LLMs to call APIs using documentation-grounded retrieval.",
+          "why_it_matters": "It is a key bridge between tool-use data, API documentation, retrieval, and programmatic tool-call verification.",
+          "data_object": "API call prediction with selected API, arguments, and optional retrieval-grounded documentation context.; process: user query, api documentation, retrieved context; APIBench over Hugging Face, TorchHub, TensorHub, and related API documentation.",
+          "feedback_verifier": "API-call correctness and hallucination checks against the documented API signature.",
+          "audit_focus": "API documentation can become stale relative to live APIs., Retrieval quality can dominate apparent tool-use ability., Models may hallucinate plausible APIs or arguments outside the allowed schema.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2305.15334",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2305.15334",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/ShishirPatil/gorilla",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://gorilla.cs.berkeley.edu/",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/gorilla_apibench.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2305.15334"
         }
       },
       {
@@ -5396,55 +5448,66 @@
         "matched": true,
         "entry": {
           "id": "apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024",
-          "title": "APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets",
+          "title": "APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets",
           "year": 2024,
           "venue": "NeurIPS",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "data_release",
+            "construction_recipe",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "agent_training",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "tool-use",
+            "function-calling",
+            "agents"
+          ],
           "category": [
             "environment_agent_trajectory_data"
           ],
           "subfield": "🛠️ Tool-use data",
           "tags": [
-            "seeded-from-bib"
+            "tool-use",
+            "function-calling",
+            "synthetic-data",
+            "verifier"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "APIGen builds verifiable function-calling datasets through schema, execution, and semantic checks.",
+          "why_it_matters": "It gives Track 06 a clear example of how tool-use trajectories can be generated and filtered by executable verifier stages.",
+          "data_object": "Function-calling example with function name, arguments, expected execution behavior, and verification signal.; process: function schema, instruction, function name; Executable API/function pool across multiple categories.",
+          "feedback_verifier": "Hierarchical format checking, actual function execution, and semantic verification.",
+          "audit_focus": "Synthetic function APIs may be cleaner than messy real-world APIs., Semantic verification can miss ambiguous or underspecified user intent., Models may overfit schema patterns rather than robust tool selection.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2406.18518",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2406.18518",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
             "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
+            "data": "https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k",
+            "huggingface": "https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k",
+            "project": "https://apigen-pipeline.github.io/",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/apigen.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2406.18518"
         }
       },
       {
@@ -5511,23 +5574,31 @@
         "matched": true,
         "entry": {
           "id": "toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024",
-          "title": "ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use",
+          "title": "ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities",
           "year": 2024,
           "venue": "arXiv preprint",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "agent_training"
           ],
-          "domains": [],
+          "domains": [
+            "tool-use",
+            "agents",
+            "stateful-environments"
+          ],
           "category": [
             "environment_agent_trajectory_data",
             "benchmarks_evaluation_surfaces",
@@ -5535,33 +5606,36 @@
           ],
           "subfield": "🛠️ Tool-use data",
           "tags": [
-            "seeded-from-bib"
+            "tool-use",
+            "stateful-agent",
+            "user-simulator",
+            "benchmark"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "ToolSandbox evaluates stateful conversational tool use with executable tools, user simulation, and milestone checks.",
+          "why_it_matters": "It makes state, replay, intermediate milestones, and terminal predicates first-class parts of tool-use evaluation.",
+          "data_object": "On-policy conversational trajectory with user messages, tool calls, tool results, state updates, and final response.; process: user message, tool call, arguments; Stateful conversational sandbox with executable tools and built-in user simulator.",
+          "feedback_verifier": "Dynamic milestone and final-state checks over arbitrary trajectories.",
+          "audit_focus": "Hidden state and scenario seeds must be preserved for reproducible replay., Final checks may miss unsafe or invalid intermediate actions if milestones are incomplete., Tool versions and simulator behavior can drift across runs.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2408.04682",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2408.04682",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/apple/ToolSandbox",
             "data": null,
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/toolsandbox.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2408.04682"
         }
       },
       {
@@ -5570,57 +5644,69 @@
         "matched": true,
         "entry": {
           "id": "tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024",
-          "title": "tau-bench: A benchmark for tool-agent-user interaction in real-world domains",
+          "title": "tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
           "year": 2024,
           "venue": "arXiv preprint",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "audit",
+            "agent_training"
           ],
-          "domains": [],
+          "domains": [
+            "tool-use",
+            "agents",
+            "customer-service"
+          ],
           "category": [
             "environment_agent_trajectory_data",
             "benchmarks_evaluation_surfaces",
             "audit_failure_contamination_verifier_attacks"
           ],
-          "subfield": "🛠️ Tool-use data",
+          "subfield": "🧰 Agent benchmarks and terminal predicates",
           "tags": [
-            "seeded-from-bib"
+            "tool-use",
+            "user-simulator",
+            "stateful-agent",
+            "benchmark"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "tau-bench evaluates tool agents in stateful user conversations using final database/goal-state checks.",
+          "why_it_matters": "It captures long-horizon tool-agent-user interaction where feedback depends on state transitions rather than one-shot answer matching.",
+          "data_object": "Interactive user-agent-tool dialogue with tool calls, tool results, and final task outcome.; process: user goal, agent message, tool call; Real-world-inspired domain APIs, database state, and simulated users.",
+          "feedback_verifier": "End-state database and goal-state comparison under domain policy constraints.",
+          "audit_focus": "User simulator behavior may diverge from real users., pass^k can hide unreliable single-run behavior if not reported carefully., Database seeds, tool semantics, or policy updates can change the terminal predicate.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2406.12045",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2406.12045",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
-            "data": null,
+            "code": "https://github.com/sierra-research/tau-bench",
+            "data": "https://github.com/sierra-research/tau-bench",
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/tau_bench.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2406.12045"
         }
       },
       {
@@ -5687,56 +5773,69 @@
         "matched": true,
         "entry": {
           "id": "weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024",
-          "title": "WebLINX: Real-world website navigation with multi-turn dialogue",
+          "title": "WebLINX: Real-World Website Navigation with Multi-Turn Dialogue",
           "year": 2024,
           "venue": "arXiv preprint",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "data_release",
+            "benchmark",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "mixed"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "sft",
+            "agent_training",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "web",
+            "browser",
+            "agents"
+          ],
           "category": [
             "environment_agent_trajectory_data",
             "benchmarks_evaluation_surfaces"
           ],
           "subfield": "🌍 Web/browser agents",
           "tags": [
-            "seeded-from-bib"
+            "web-agent",
+            "browser",
+            "human-demonstration",
+            "agent-trajectory"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "WebLINX collects expert multi-turn browser demonstrations for training and evaluating conversational web agents.",
+          "why_it_matters": "It is one of the clearest Track 06 examples where the data object is a real web episode with dialogue, observation, action history, and expert behavior.",
+          "data_object": "Conversational browser trajectory with dialogue context, webpage state, action history, and next action.; process: user instruction, dialogue history, html context; More than 150 real-world websites with recorded navigation demonstrations.",
+          "feedback_verifier": "Imitation/action matching and task-level evaluation over expert navigation demonstrations.",
+          "audit_focus": "Real websites can drift or disappear after demonstrations are collected., Action imitation may reward matching demonstrations rather than robust task completion., Train/test leakage can occur if website templates or navigation paths overlap.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2402.05930",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2402.05930",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/McGill-NLP/weblinx",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://mcgill-nlp.github.io/weblinx/",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/weblinx.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2402.05930"
         }
       },
       {
@@ -5882,7 +5981,7 @@
         "matched": true,
         "entry": {
           "id": "visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024",
-          "title": "VisualWebArena: Evaluating multimodal agents on realistic visual web tasks",
+          "title": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
           "year": 2024,
           "venue": "arXiv preprint",
           "authors": [],
@@ -5920,29 +6019,29 @@
           ],
           "one_line_summary": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
           "why_it_matters": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
-          "data_object": "visual web tasks with screenshots and browser state",
-          "feedback_verifier": "task success checks",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "partial",
-          "needs_search": true,
+          "data_object": "Browser interaction trajectory with webpage observation, screenshot context, action, and final task outcome.; process: natural language goal, screenshot, page observation; Visual web tasks with screenshots, browser state, and realistic web environments.",
+          "feedback_verifier": "Task-specific success checks over the final web state.",
+          "audit_focus": "Screenshot and webpage state can drift if environments are updated., Visual cues may be unavailable or rendered differently across browsers., Task success checks can miss partially completed or unsafe intermediate behavior.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2401.13649",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2401.13649",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/web-arena-x/visualwebarena",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://jykoh.com/vwa",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/visualwebarena.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2401.13649"
         }
       },
       {
@@ -5951,23 +6050,32 @@
         "matched": true,
         "entry": {
           "id": "workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024",
-          "title": "WorkArena: How capable are web agents at solving common knowledge work tasks?",
+          "title": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
           "year": 2024,
-          "venue": "unknown",
+          "venue": "arXiv preprint",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "audit",
+            "agent_training"
           ],
-          "domains": [],
+          "domains": [
+            "web",
+            "enterprise-software",
+            "agents"
+          ],
           "category": [
             "environment_agent_trajectory_data",
             "judgment_rubric_domain_expert_data",
@@ -5975,33 +6083,36 @@
           ],
           "subfield": "🌍 Web/browser agents",
           "tags": [
-            "seeded-from-bib"
+            "web-agent",
+            "browsergym",
+            "enterprise-software",
+            "benchmark"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "WorkArena evaluates browser agents on ServiceNow-style knowledge-work tasks through BrowserGym.",
+          "why_it_matters": "It moves web-agent evaluation toward realistic workplace workflows with browser state, action traces, and environment-level success checks.",
+          "data_object": "Browser-agent episode with multimodal observation, browser action, and final task state.; process: task goal, browser observation, screenshot or dom; Remote-hosted ServiceNow environment exposed through BrowserGym.",
+          "feedback_verifier": "Task-specific success checks over the enterprise web application state.",
+          "audit_focus": "Hosted enterprise environment can drift or become unavailable., Success checks may depend on hidden application state and configuration., Benchmark feedback can be overfit if tasks or environment templates become public training data.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2403.07718",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2403.07718",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/ServiceNow/WorkArena",
             "data": null,
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/workarena.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2403.07718"
         }
       },
       {
@@ -6568,62 +6679,9 @@
       },
       {
         "title": "The Agent Company",
-        "entry_id": "the-agent-company-benchmarking-and-analyzing-agent-work-in-enterprise-like-envir-2025",
-        "matched": true,
-        "entry": {
-          "id": "the-agent-company-benchmarking-and-analyzing-agent-work-in-enterprise-like-envir-2025",
-          "title": "The Agent Company: Benchmarking and analyzing agent work in enterprise-like environments",
-          "year": 2025,
-          "venue": "unknown",
-          "authors": [],
-          "source_role": [
-            "survey_background"
-          ],
-          "verification_contract": [
-            "unknown"
-          ],
-          "supervision_granularity": [
-            "unknown"
-          ],
-          "training_use": [
-            "unknown"
-          ],
-          "domains": [],
-          "category": [
-            "environment_agent_trajectory_data",
-            "benchmarks_evaluation_surfaces",
-            "audit_failure_contamination_verifier_attacks"
-          ],
-          "subfield": "Other related work",
-          "tags": [
-            "seeded-from-bib"
-          ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
-          "artifacts": {
-            "paper": null,
-            "venue": null,
-            "arxiv": null,
-            "openreview": null,
-            "acl": null,
-            "pmlr": null,
-            "cvf": null,
-            "doi": null,
-            "code": null,
-            "data": null,
-            "huggingface": null,
-            "project": null,
-            "bibtex": null,
-            "card": null
-          },
-          "primary_link": null
-        }
+        "entry_id": null,
+        "matched": false,
+        "entry": null
       },
       {
         "title": "Terminal-Bench",
@@ -6631,23 +6689,32 @@
         "matched": true,
         "entry": {
           "id": "terminal-bench-a-benchmark-and-task-environment-for-terminal-agents-2026",
-          "title": "Terminal-Bench: A benchmark and task environment for terminal agents",
+          "title": "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces",
           "year": 2026,
-          "venue": "unknown",
+          "venue": "arXiv preprint",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "audit",
+            "agent_training"
           ],
-          "domains": [],
+          "domains": [
+            "terminal",
+            "shell",
+            "agents"
+          ],
           "category": [
             "environment_agent_trajectory_data",
             "benchmarks_evaluation_surfaces",
@@ -6655,33 +6722,36 @@
           ],
           "subfield": "🧑‍💻 SWE/repository agents",
           "tags": [
-            "seeded-from-bib"
+            "terminal-agent",
+            "shell",
+            "benchmark",
+            "executable-evaluation"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "Terminal-Bench evaluates command-line agents with realistic terminal tasks and executable test suites.",
+          "why_it_matters": "It expands Track 06 beyond browser and SWE tasks into terminal environments where replay, environment versions, and tests define the feedback contract.",
+          "data_object": "Terminal-agent episode with shell commands, filesystem/process state changes, and final test result.; process: task instruction, terminal observation, shell command; Isolated command-line task environments with evaluation harness and tests.",
+          "feedback_verifier": "Comprehensive task tests executed in the terminal environment.",
+          "audit_focus": "Test suites can be gamed or may miss semantically wrong but test-passing solutions., Environment images, package versions, and network assumptions can drift., Public tasks can contaminate training data for terminal agents.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2601.11868",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2601.11868",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/laude-institute/terminal-bench",
             "data": null,
             "huggingface": null,
-            "project": null,
+            "project": "https://www.tbench.ai/",
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/terminal_bench.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2601.11868"
         }
       }
     ]
@@ -8361,34 +8431,49 @@
           "title": "LastingBench: Defend Benchmarks Against Knowledge Leakage",
           "year": 2025,
           "venue": "arXiv preprint arXiv:2506.21614",
-          "authors": [],
+          "authors": [
+            "Yixiong Fang",
+            "Tianran Sun",
+            "Yuling Shi",
+            "Min Wang",
+            "Xiaodong Gu"
+          ],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "audit_failure",
+            "construction_recipe"
           ],
           "verification_contract": [
-            "unknown"
+            "judgment_required",
+            "perturbation_based"
           ],
           "supervision_granularity": [
-            "unknown"
+            "answer_level",
+            "dataset_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "audit"
           ],
-          "domains": [],
+          "domains": [
+            "question-answering",
+            "benchmark-contamination",
+            "leakage-mitigation"
+          ],
           "category": [
             "benchmarks_evaluation_surfaces",
             "audit_failure_contamination_verifier_attacks"
           ],
-          "subfield": "Other related work",
+          "subfield": "🧯 Live / contamination-resistant benchmarks",
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L1_link_verified",
+          "one_line_summary": "LastingBench rewrites leakage-bearing QA contexts into counterfactual variants to audit and reduce benchmark memorization.",
+          "why_it_matters": "It gives Track 11 a concrete leakage-defense recipe, making benchmark validity depend on rewrite quality, scoring preservation, and exposure control rather than only post-hoc contamination detection.",
+          "data_object": "QA item with rewritten context and preserved evaluative intent.; static QA benchmark evaluation surface.",
+          "feedback_verifier": "answer correctness under the benchmark's original QA scoring plus leakage-point perturbation checks.",
+          "audit_focus": "counterfactual rewrites may change difficulty or answerability., leakage-point detection can miss semantic memorization routes., rewritten items may become less comparable to the original leaderboard.",
+          "curation_level": "L3_summary_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -8848,20 +8933,37 @@
           "title": "Soft Contamination Means Benchmarks Test Shallow Generalization",
           "year": 2026,
           "venue": "arXiv preprint arXiv:2602.12413",
-          "authors": [],
+          "authors": [
+            "Ari Spiesberger",
+            "Juan J. Vazquez",
+            "Nicky Pochinkov",
+            "Tomáš Gavenčiak",
+            "Peli Grietzer",
+            "Gavin Leech",
+            "Nandi Schoots"
+          ],
           "source_role": [
-            "survey_background"
+            "audit_failure",
+            "benchmark_analysis"
           ],
           "verification_contract": [
-            "unknown"
+            "embedding_similarity",
+            "perturbation_based"
           ],
           "supervision_granularity": [
-            "unknown"
+            "dataset_level",
+            "item_level"
           ],
           "training_use": [
-            "unknown"
+            "audit",
+            "evaluation"
           ],
-          "domains": [],
+          "domains": [
+            "contamination",
+            "benchmark-audit",
+            "code",
+            "reasoning"
+          ],
           "category": [
             "foundations_and_primers",
             "benchmarks_evaluation_surfaces",
@@ -8871,12 +8973,12 @@
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "survey background",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L1_link_verified",
+          "one_line_summary": "Soft Contamination audits semantic duplicates between training corpora and benchmark tests, showing shallow-generalization risk.",
+          "why_it_matters": "It sharpens Track 11's contamination model from exact string overlap to semantic overlap, changing how benchmark validity and reported progress should be audited.",
+          "data_object": "contamination evidence record linking benchmark item to semantically similar training examples.; process: benchmark item, corpus neighbor, similarity score; static benchmark/corpus audit using embedding similarity and finetuning experiments.",
+          "feedback_verifier": "semantic duplicate detection plus benchmark performance under duplicate exposure.",
+          "audit_focus": "embedding similarity thresholds can over- or under-count contamination., benchmark-neighbor links may reflect domain overlap rather than memorized test data., finetuning duplicate experiments may not fully represent pretraining-scale effects.",
+          "curation_level": "L3_summary_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -11037,23 +11139,31 @@
         "matched": true,
         "entry": {
           "id": "toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024",
-          "title": "ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use",
+          "title": "ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities",
           "year": 2024,
           "venue": "arXiv preprint",
           "authors": [],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "agent_environment"
           ],
           "verification_contract": [
-            "unknown"
+            "environmental",
+            "programmatic"
           ],
           "supervision_granularity": [
-            "unknown"
+            "full_episode",
+            "state_action_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "agent_training"
           ],
-          "domains": [],
+          "domains": [
+            "tool-use",
+            "agents",
+            "stateful-environments"
+          ],
           "category": [
             "environment_agent_trajectory_data",
             "benchmarks_evaluation_surfaces",
@@ -11061,33 +11171,36 @@
           ],
           "subfield": "🛠️ Tool-use data",
           "tags": [
-            "seeded-from-bib"
+            "tool-use",
+            "stateful-agent",
+            "user-simulator",
+            "benchmark"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L0_seeded",
-          "status": "needs_metadata",
-          "needs_search": true,
+          "one_line_summary": "ToolSandbox evaluates stateful conversational tool use with executable tools, user simulation, and milestone checks.",
+          "why_it_matters": "It makes state, replay, intermediate milestones, and terminal predicates first-class parts of tool-use evaluation.",
+          "data_object": "On-policy conversational trajectory with user messages, tool calls, tool results, state updates, and final response.; process: user message, tool call, arguments; Stateful conversational sandbox with executable tools and built-in user simulator.",
+          "feedback_verifier": "Dynamic milestone and final-state checks over arbitrary trajectories.",
+          "audit_focus": "Hidden state and scenario seeds must be preserved for reproducible replay., Final checks may miss unsafe or invalid intermediate actions if milestones are incomplete., Tool versions and simulator behavior can drift across runs.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
           "artifacts": {
-            "paper": null,
+            "paper": "https://arxiv.org/abs/2408.04682",
             "venue": null,
-            "arxiv": null,
+            "arxiv": "https://arxiv.org/abs/2408.04682",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": null,
+            "code": "https://github.com/apple/ToolSandbox",
             "data": null,
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "card": null
+            "card": "cards/agents/toolsandbox.md"
           },
-          "primary_link": null
+          "primary_link": "https://arxiv.org/abs/2408.04682"
         }
       },
       {
@@ -11320,34 +11433,49 @@
           "title": "LastingBench: Defend Benchmarks Against Knowledge Leakage",
           "year": 2025,
           "venue": "arXiv preprint arXiv:2506.21614",
-          "authors": [],
+          "authors": [
+            "Yixiong Fang",
+            "Tianran Sun",
+            "Yuling Shi",
+            "Min Wang",
+            "Xiaodong Gu"
+          ],
           "source_role": [
-            "survey_background"
+            "benchmark",
+            "audit_failure",
+            "construction_recipe"
           ],
           "verification_contract": [
-            "unknown"
+            "judgment_required",
+            "perturbation_based"
           ],
           "supervision_granularity": [
-            "unknown"
+            "answer_level",
+            "dataset_level"
           ],
           "training_use": [
-            "unknown"
+            "evaluation",
+            "audit"
           ],
-          "domains": [],
+          "domains": [
+            "question-answering",
+            "benchmark-contamination",
+            "leakage-mitigation"
+          ],
           "category": [
             "benchmarks_evaluation_surfaces",
             "audit_failure_contamination_verifier_attacks"
           ],
-          "subfield": "Other related work",
+          "subfield": "🧯 Live / contamination-resistant benchmarks",
           "tags": [
             "seeded-from-bib"
           ],
-          "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-          "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-          "data_object": "metadata pending",
-          "feedback_verifier": "metadata pending",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
-          "curation_level": "L1_link_verified",
+          "one_line_summary": "LastingBench rewrites leakage-bearing QA contexts into counterfactual variants to audit and reduce benchmark memorization.",
+          "why_it_matters": "It gives Track 11 a concrete leakage-defense recipe, making benchmark validity depend on rewrite quality, scoring preservation, and exposure control rather than only post-hoc contamination detection.",
+          "data_object": "QA item with rewritten context and preserved evaluative intent.; static QA benchmark evaluation surface.",
+          "feedback_verifier": "answer correctness under the benchmark's original QA scoring plus leakage-point perturbation checks.",
+          "audit_focus": "counterfactual rewrites may change difficulty or answerability., leakage-point detection can miss semantic memorization routes., rewritten items may become less comparable to the original leaderboard.",
+          "curation_level": "L3_summary_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {

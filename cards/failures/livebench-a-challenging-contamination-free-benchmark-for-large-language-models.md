@@ -6,8 +6,11 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024&mode=compare)
 <!-- ask_atlas:end -->
 
+<!-- track: 🧭 Foundations & Primers (Track 00) · 🧱 Instruction / Demo / Rationale (Track 01) · 🧮 Programmatic Verification (Track 03) · 🎯 Training Usage & Objectives (Track 09) · 🧰 Benchmarks & Evaluation (Track 11) · 🧯 Audit & Failure Modes (Track 13) -->
+> Subfield: 🧯 Contamination / evaluation surveys
+
 > Curation level: L5_audit_ready
-> Category: foundations_and_primers, audit_failure_contamination_verifier_attacks, benchmarks_evaluation_surfaces
+
 > Links: [📄 Paper](https://arxiv.org/abs/2406.19314) · [🏛️ OpenReview](https://openreview.net/forum?id=sKYHBTAxVa) · [🌐 Project](https://livebench.ai/)
 
 ## TL;DR

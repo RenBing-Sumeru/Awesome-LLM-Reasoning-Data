@@ -595,6 +595,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; trace writing; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.
+- 🌐 **[R2E-Gym: Procedural Environments and Hybrid Verifiers for Scaling Open-Weights SWE Agents](https://arxiv.org/abs/2504.07164)**
+  <sub>2025 · arXiv preprint arXiv:2504.07164 · 🌐 agent environment · 🏗️ construction recipe · programmatic · mixed · agent training · rlvr · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2504.07164) · [Project](https://r2e-gym.github.io/)
+  _Data object:_ repository task, generated patch, execution trace, verifier outcome; process: repository, commit, synthetic task; procedural executable gym environments for repository-level code agents
+  _Feedback / verifier:_ hybrid execution-based and execution-free verifiers
+  _Recipe signal:_ generator: SYNGEN synthetic data curation recipe; filtering rule: test-generation and back-translation from commits
+  _Audit focus:_ Generated tests may create false positives., Execution-free verifiers can be biased by style or benchmark artifacts.
+  _Why it matters:_ P0 Track 06 environment infrastructure entry: it creates procedurally curated executable SWE-agent environments and verifiers.
 - 🧭 **[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328)**
   <sub>2025 · arXiv · 🧭 survey background · judgment required · mixed · reward modeling · preference learning · L3_summary_ready</sub>
   [Paper](https://arxiv.org/abs/2504.12328) · [DOI](https://doi.org/10.48550/arXiv.2504.12328) · [Project](https://github.com/JLZhong23/awesome-reward-models)
@@ -681,14 +689,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
-- 📄 **R2E-Gym: Procedural training environments for repository-level code agents**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
 - 📄 **VAR-MATH**
   <sub>2025 · arXiv preprint · unknown · unknown · L0_seeded</sub>
   needs_search
