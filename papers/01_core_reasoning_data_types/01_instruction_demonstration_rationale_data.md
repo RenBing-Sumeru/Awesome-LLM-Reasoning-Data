@@ -48,13 +48,13 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 | [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801) | 2025 | [Paper](https://arxiv.org/abs/2504.21801) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) · [Card](../../cards/recipes/deepseek-prover-v2.md) | subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: problem, subgoal decomposition, synthesized proof, Lean feedback, reward, benchmark result.; Lean 4 environment plus recursive theorem-proving pipeline. | Lean verification and RL reward over formal proof success. | It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification. |
 | [OpenThoughts: Data recipes for reasoning models](https://arxiv.org/abs/2506.04178) | 2025 | [Paper](https://arxiv.org/abs/2506.04178) · [Code](https://github.com/open-thoughts/open-thoughts) · [HF](https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M) · [Card](../../cards/releases/openthoughts.md) | reasoning traces and final answers; process: question, reasoning trace, answer; offline reasoning corpus | filters, benchmark feedback, and recipe ablations | It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance. |
 | [DeepSeek-Prover: Advancing theorem proving in LLMs](https://arxiv.org/abs/2405.14333) | 2024 | [Paper](https://arxiv.org/abs/2405.14333) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1) · [Card](../../cards/recipes/deepseek-prover.md) | Lean 4 theorem statement and proof script checked by Lean.; process: informal problem, formal statement, generated proof, Lean result, benchmark split.; Lean 4 proof assistant and formal theorem-proving benchmark harness. | Lean kernel/checker acceptance. | It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object. |
+| [MAmmoTH2: Scaling Instructions from the Web](https://arxiv.org/abs/2405.03548) | 2024 | [Paper](https://arxiv.org/abs/2405.03548) · [DOI](https://doi.org/10.48550/arXiv.2405.03548) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH2) · [Data](https://huggingface.co/datasets/TIGER-Lab/WebInstructFull) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH2-8x7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH2/) · [Card](../../cards/releases/mammoth2-scaling-instructions-from-the-web.md) | Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline. | Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier. | It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks. |
 | [Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120) | 2024 | [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../../cards/recipes/magicoder.md) | instruction-response coding example, often linked to a code reference or task scaffold.; process: source snippet, generated instruction, solution response, model family, benchmark result.; offline code-data generation and code benchmark evaluation. | coding benchmark pass rates and optional executable checks. | It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention. |
 | [OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](https://arxiv.org/abs/2410.01560) | 2024 | [Paper](https://arxiv.org/abs/2410.01560) · [OpenReview](https://openreview.net/forum?id=mTCbq2QssD) · [Code](https://github.com/NVIDIA-NeMo/Skills) · [Data](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2) · [Project](https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/) · [Card](../../cards/releases/openmathinstruct-2.md) | problem-solution pair with natural-language mathematical reasoning and final answer.; process: source problem, augmented problem, generated solution, teacher model, filtering metadata, dataset split.; NVIDIA NeMo-Skills generation, training, and evaluation pipeline. | answer checks and benchmark evaluation over math tasks. | It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models. |
+| [R-Tuning: Instructing Large Language Models to Say 'I Don't Know'](https://arxiv.org/abs/2311.09677) | 2024 | [Paper](https://arxiv.org/abs/2311.09677) · [Venue](https://aclanthology.org/2024.naacl-long.394/) · [DOI](https://doi.org/10.18653/v1/2024.naacl-long.394) · [Code](https://github.com/shizhediao/R-Tuning) · [Data](https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing) · [Card](../../cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md) | Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation. | Known/unknown classification relative to a parametric-knowledge proxy. | It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context. |
 | [Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) | 2024 | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md) | instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases. | mixture of preference labels, reward models, and verifiable rewards depending on stage. | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
 | [LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626) | 2023 | [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://zenodo.org/records/10114157) · [Project](https://leandojo.org/) · [Card](../../cards/agents/leandojo.md) | Lean tactic sequence or proof script checked by Lean.; process: repository commit, theorem, proof state, premises, retrieved context, tactic, Lean feedback, split.; Lean proof assistant environment and traced math-library repositories. | Lean checker and environment feedback. | It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record. |
-| [Self-Instruct: Aligning language models with self-generated instructions](https://arxiv.org/abs/2212.10560) | 2023 | [Paper](https://arxiv.org/abs/2212.10560) · [Card](../../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) | answer level | mixed | It is the canonical self-generated instruction-data recipe that later reasoning datasets adapt for prompt sourcing and synthetic expansion. |
-| [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511) | 2023 | [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../../cards/recipes/self-rag.md) | generation with retrieval decisions, critique signals, and final answer.; process: query, retrieval decision token, retrieved passage, support critique, utility critique, final answer.; retriever plus generation model with special reflection tokens. | critique signals and task-specific factuality/answer-quality evaluation. | It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations. |
-| [UltraFeedback: Boosting language models with high-quality feedback](https://arxiv.org/abs/2310.01377) | 2023 | [Paper](https://arxiv.org/abs/2310.01377) · [Code](https://github.com/OpenBMB/UltraFeedback) · [Data](https://huggingface.co/datasets/openbmb/UltraFeedback) · [Card](../../cards/releases/ultrafeedback.md) | instruction, candidate responses, fine-grained ratings, textual critiques, and derived preference pairs.; process: source dataset, model identity, response, rating dimension, critique text, corrected overall score.; offline feedback generation and reward-model training pipeline. | AI-generated scalar and textual feedback over response quality dimensions. | It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels. |
+| [MAmmoTH: Building math generalist models through hybrid instruction tuning](https://arxiv.org/abs/2309.05653) | 2023 | [Paper](https://arxiv.org/abs/2309.05653) · [DOI](https://doi.org/10.48550/arXiv.2309.05653) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH) · [Data](https://huggingface.co/datasets/TIGER-Lab/MathInstruct) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH-7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH/) · [Card](../../cards/releases/mammoth-mathinstruct.md) | Math instruction with CoT or PoT rationale and final answer.; process: dataset name, rationale type, annotation source; Offline math instruction tuning plus PoT/Python-style evaluation. | Math answer scoring and PoT executability where applicable; not a universal step verifier. | It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data. |
 
 ## 5. Full Paper List
 
@@ -76,6 +76,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; trace writing; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.
+- 🚀 **[Qwen3-Coder](https://qwenlm.github.io/blog/qwen3-coder/)**
+  <sub>2025 · Qwen official blog / GitHub / Hugging Face model release · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L5_audit_ready</sub>
+  [Paper](https://qwenlm.github.io/blog/qwen3-coder/) · [arXiv](https://arxiv.org/abs/2505.09388) · [DOI](https://doi.org/10.48550/arXiv.2505.09388) · [Code](https://github.com/QwenLM/Qwen3-Coder) · [HF](https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct) · [Card](../../cards/recipes/qwen3_coder.md)
+  _Data object:_ code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments
+  _Feedback / verifier:_ unit tests, execution feedback, automatically scaled test cases, and environment task success signals
+  _Recipe signal:_ teacher: Qwen2.5-Coder used to clean and rewrite noisy data during pretraining data scaling.; generator: Qwen training pipeline plus policy rollouts for code RL and long-horizon agent RL.
+  _Audit focus:_ Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.
+  _Why it matters:_ It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.
 - 🏗️ **[s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393)**
   <sub>2025 · arXiv · 🏗️ construction recipe · 📈 scaling study · mixed · sft · test time compute · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2501.19393) · [Card](../../cards/releases/s1.md)
@@ -108,6 +116,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It gives reasoning-data readers a benchmark-refresh pattern for separating real progress from memorized or stale evaluation items.
+- 📦 **[MAmmoTH2: Scaling Instructions from the Web](https://arxiv.org/abs/2405.03548)**
+  <sub>2024 · NeurIPS · 📦 data release · 🏗️ construction recipe · mixed · programmatic · sft · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2405.03548) · [DOI](https://doi.org/10.48550/arXiv.2405.03548) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH2) · [Data](https://huggingface.co/datasets/TIGER-Lab/WebInstructFull) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH2-8x7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH2/) · [Card](../../cards/releases/mammoth2-scaling-instructions-from-the-web.md)
+  _Data object:_ Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.
+  _Feedback / verifier:_ Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.
+  _Recipe signal:_ teacher: Web corpora plus Mixtral/Qwen-style refinement.; generator: Common Crawl recall, Q-A extraction, and LLM refinement pipeline.
+  _Audit focus:_ Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.
+  _Why it matters:_ It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks.
 - 🏗️ **[Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120)**
   <sub>2024 · ICML · 🏗️ construction recipe · 📦 data release · programmatic · mixed · sft · evaluation · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../../cards/recipes/magicoder.md)
@@ -124,6 +140,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: Llama3.1-405B-Instruct generates large-scale math solutions.; generator: NeMo-Skills pipeline performs problem/solution augmentation and model training.
   _Audit focus:_ Synthetic solutions can encode teacher shortcuts., Large scale can hide duplicated or near-duplicated questions., Verbose traces may hurt rather than help SFT.
   _Why it matters:_ It is a major open math-data release for studying teacher strength, solution format, question diversity, and SFT scaling in reasoning models.
+- 🏗️ **[R-Tuning: Instructing Large Language Models to Say 'I Don't Know'](https://arxiv.org/abs/2311.09677)**
+  <sub>2024 · NAACL · 🏗️ construction recipe · 📦 data release · judgment required · mixed · sft · safety alignment · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2311.09677) · [Venue](https://aclanthology.org/2024.naacl-long.394/) · [DOI](https://doi.org/10.18653/v1/2024.naacl-long.394) · [Code](https://github.com/shizhediao/R-Tuning) · [Data](https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing) · [Card](../../cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md)
+  _Data object:_ Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation.
+  _Feedback / verifier:_ Known/unknown classification relative to a parametric-knowledge proxy.
+  _Recipe signal:_ teacher: Knowledge-intersection construction procedure.; generator: R-Tuning data-construction scripts.
+  _Audit focus:_ Audit how known vs unknown is determined for each base model., Check over-refusal on answerable questions., Pin data version and license for the Google Drive release.
+  _Why it matters:_ It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.
+- 🏗️ **[SPIN: Self-play fine-tuning converts weak language models to strong language models](https://arxiv.org/abs/2401.01335)**
+  <sub>2024 · ICML · 🏗️ construction recipe · judgment required · sft · preference learning · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2401.01335) · [DOI](https://doi.org/10.48550/arXiv.2401.01335) · [Code](https://github.com/uclaml/SPIN) · [Data](https://huggingface.co/datasets/UCLA-AGI/SPIN_iter0) · [HF](https://huggingface.co/UCLA-AGI/zephyr-7b-sft-full-SPIN-iter0) · [Project](https://uclaml.github.io/SPIN/) · [Card](../../cards/recipes/spin-self-play-fine-tuning.md)
+  _Data object:_ Pair of real SFT response and generated response for the same prompt.; process: real prompt response, generated prompt response, iteration; Offline self-play fine-tuning pipeline.
+  _Feedback / verifier:_ SPIN objective distinguishes self-generated responses from target SFT responses.
+  _Recipe signal:_ teacher: Original SFT data acts as target distribution.; generator: Model checkpoints from previous SPIN iterations.
+  _Audit focus:_ Pin checkpoint revision, prompt sample, generated data version, and iteration., Audit self-generated style bias and benchmark overfitting., Check dataset/model licenses.
+  _Why it matters:_ It is a compact example of demonstration-anchored self-play where the model's own responses become contrastive training records.
 - 🚀 **[Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124)**
   <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · programmatic · sft · preference learning · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md)
@@ -140,6 +172,22 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: Lean math-library proofs and proof-assistant feedback.; generator: data-extraction toolkit traces repositories and prover generates tactics.
   _Audit focus:_ A prover can rely on retrieval leakage., Lean version drift can break proofs., Premise accessibility rules can change task difficulty.
   _Why it matters:_ It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record.
+- 📦 **[MAmmoTH: Building math generalist models through hybrid instruction tuning](https://arxiv.org/abs/2309.05653)**
+  <sub>2023 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2309.05653) · [DOI](https://doi.org/10.48550/arXiv.2309.05653) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH) · [Data](https://huggingface.co/datasets/TIGER-Lab/MathInstruct) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH-7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH/) · [Card](../../cards/releases/mammoth-mathinstruct.md)
+  _Data object:_ Math instruction with CoT or PoT rationale and final answer.; process: dataset name, rationale type, annotation source; Offline math instruction tuning plus PoT/Python-style evaluation.
+  _Feedback / verifier:_ Math answer scoring and PoT executability where applicable; not a universal step verifier.
+  _Recipe signal:_ teacher: MathInstruct source datasets and mixed rationale authors.; generator: Curated hybrid CoT/PoT data pipeline.
+  _Audit focus:_ Audit which subsets are human, model-generated, validated, or unvalidated., Check per-subset licenses and train/evaluation overlap., Separate CoT, PoT, model-size, decoding, and benchmark-familiarity effects.
+  _Why it matters:_ It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data.
+- 📦 **[MetaMath: Bootstrap your own mathematical questions for large language models](https://arxiv.org/abs/2309.12284)**
+  <sub>2023 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2309.12284) · [DOI](https://doi.org/10.48550/arXiv.2309.12284) · [Code](https://github.com/meta-math/MetaMath) · [Data](https://huggingface.co/datasets/meta-math/MetaMathQA) · [HF](https://huggingface.co/meta-math/MetaMath-7B-V1.0) · [Project](https://meta-math.github.io/) · [Card](../../cards/releases/metamath-bootstrap-your-own-mathematical-questions-for-large-language-models.md)
+  _Data object:_ Mathematical question, original question, worked response, final answer, and augmentation type.; process: query, original question, response; Offline math instruction-tuning corpus.
+  _Feedback / verifier:_ Gold training-set answers and math benchmark checks; no step verifier disclosed.
+  _Recipe signal:_ teacher: Math training sets plus teacher augmentation.; generator: Question rewriting, answer augmentation, and self-verification style pipeline.
+  _Audit focus:_ Check augmented questions are derived from training splits., Audit near-duplicates after rewriting., Do not equate final-answer correctness with trace faithfulness.
+  _Why it matters:_ It is a math SFT scaling reference whose reuse depends on source split, teacher lineage, near-duplicate, and answer-level verifier audits.
 - 🏗️ **[Self-Instruct: Aligning language models with self-generated instructions](https://arxiv.org/abs/2212.10560)**
   <sub>2023 · ACL · 🏗️ construction recipe · 📦 data release · mixed · sft · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2212.10560) · [Card](../../cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md)
@@ -172,6 +220,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: AI judge annotations and rubric instructions.; generator: candidate responses are sampled from a diverse model pool.
   _Audit focus:_ AI feedback can encode judge-model bias., A corrected dataset version can change reward-model behavior., Fine-grained scores may not translate cleanly into pairwise preferences.
   _Why it matters:_ It is a widely reused preference/reward data source, but its value depends on auditing prompt sources, judge model behavior, rubric dimensions, and corrected labels.
+- 🏗️ **[WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct](https://arxiv.org/abs/2308.09583)**
+  <sub>2023 · arXiv · 🏗️ construction recipe · 🚀 model report · programmatic · mixed · sft · distillation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2308.09583) · [DOI](https://doi.org/10.48550/arXiv.2308.09583) · [Code](https://github.com/nlpxucan/WizardLM) · [HF](https://huggingface.co/WizardLMTeam/WizardMath-7B-V1.1) · [Project](https://wizardlm.github.io/) · [Card](../../cards/recipes/wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinforced-evol-instruct.md)
+  _Data object:_ Math instruction, chain-of-thought style response, and final answer.; process: evolved instruction, response, final answer; Offline math instruction evolution and model fine-tuning.
+  _Feedback / verifier:_ Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.
+  _Recipe signal:_ teacher: WizardLM/Evol-Instruct lineage and generator models.; generator: Reinforced Evol-Instruct math pipeline.
+  _Audit focus:_ Audit seed prompts, feedback signal, and retained/rejected instruction policy., Treat benchmark gains as model evidence, not data-quality proof., Check model and data license terms before reuse.
+  _Why it matters:_ It is useful as a recipe card precisely because it separates an influential construction method from a fully auditable data release.
 - 🧭 **[Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155)**
   <sub>2022 · NeurIPS · 🧭 survey background · 🚀 model report · judgment required · sft · preference learning · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2203.02155) · [Card](../../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md)
@@ -204,6 +260,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ release audit; evaluation; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ MATH became a central answer-verifiable surface for evaluating and training advanced mathematical reasoning beyond grade-school word problems.
+- 🏗️ **[Multitask prompted training enables zero-shot task generalization](https://arxiv.org/abs/2110.08207)**
+  <sub>2021 · ICLR · 🏗️ construction recipe · 📦 data release · mixed · sft · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2110.08207) · [Venue](https://openreview.net/forum?id=9Vrb9D0WI4) · [DOI](https://doi.org/10.48550/arXiv.2110.08207) · [Code](https://github.com/bigscience-workshop/t-zero) · [Data](https://huggingface.co/datasets/bigscience/P3) · [HF](https://huggingface.co/bigscience/T0pp) · [Project](https://github.com/bigscience-workshop/promptsource) · [Card](../../cards/recipes/multitask-prompted-training-enables-zero-shot-task-generalization.md)
+  _Data object:_ Prompted input plus target output.; process: dataset, subset, prompt id; Offline multitask prompted fine-tuning.
+  _Feedback / verifier:_ Source-dataset labels and task-specific metrics.
+  _Recipe signal:_ teacher: Existing supervised datasets and human-readable prompt templates.; generator: PromptSource prompt functions.
+  _Audit focus:_ Audit prompt authorship, source licenses, and train/held-out task boundaries., Check whether prompts leak task identity or label shortcuts., Treat prompt quality separately from reasoning-data quality.
+  _Why it matters:_ It is a Track 01 reference for prompt-source infrastructure: the data object includes dataset source, prompt template, target output, and held-out task policy.
 - 🧰 **[miniF2F: A cross-system benchmark for formal olympiad-level mathematics](https://arxiv.org/abs/2109.00110)**
   <sub>2021 · ICLR · 🧰 benchmark · 📦 data release · programmatic · environmental · evaluation · agent training · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2109.00110) · [OpenReview](https://openreview.net/forum?id=9ZPegFuFTFv) · [Code](https://github.com/openai/miniF2F) · [Card](../../cards/benchmarks/minif2f.md)
@@ -284,54 +348,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ frontier pipeline; sft; rlvr
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Open model-family report useful for coordinated release-tick analysis.
-- 🚀 **[Qwen3-Coder](https://qwenlm.github.io/blog/qwen3-coder/)**
-  <sub>2025 · Qwen official blog / GitHub / Hugging Face model release · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L4_carded</sub>
-  [Paper](https://qwenlm.github.io/blog/qwen3-coder/) · [arXiv](https://arxiv.org/abs/2505.09388) · [DOI](https://doi.org/10.48550/arXiv.2505.09388) · [Code](https://github.com/QwenLM/Qwen3-Coder) · [HF](https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct) · [Card](../../cards/recipes/qwen3_coder.md)
-  _Data object:_ code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments
-  _Feedback / verifier:_ unit tests, execution feedback, automatically scaled test cases, and environment task success signals
-  _Recipe signal:_ teacher: Qwen2.5-Coder used to clean and rewrite noisy data during pretraining data scaling.; generator: Qwen training pipeline plus policy rollouts for code RL and long-horizon agent RL.
-  _Audit focus:_ Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.
-  _Why it matters:_ It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.
-- 📦 **[MAmmoTH2: Scaling Instructions from the Web](https://arxiv.org/abs/2405.03548)**
-  <sub>2024 · NeurIPS · 📦 data release · 🏗️ construction recipe · mixed · programmatic · sft · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2405.03548) · [DOI](https://doi.org/10.48550/arXiv.2405.03548) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH2) · [Data](https://huggingface.co/datasets/TIGER-Lab/WebInstructFull) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH2-8x7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH2/) · [Card](../../cards/releases/mammoth2-scaling-instructions-from-the-web.md)
-  _Data object:_ Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.
-  _Feedback / verifier:_ Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.
-  _Recipe signal:_ teacher: Web corpora plus Mixtral/Qwen-style refinement.; generator: Common Crawl recall, Q-A extraction, and LLM refinement pipeline.
-  _Audit focus:_ Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.
-  _Why it matters:_ It is a major web-scale instruction-data reference with provenance, license, benchmark-filtering, and teacher-refinement risks.
-- 🏗️ **[R-Tuning: Instructing Large Language Models to Say 'I Don't Know'](https://arxiv.org/abs/2311.09677)**
-  <sub>2024 · NAACL · 🏗️ construction recipe · 📦 data release · judgment required · mixed · sft · safety alignment · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2311.09677) · [Venue](https://aclanthology.org/2024.naacl-long.394/) · [DOI](https://doi.org/10.18653/v1/2024.naacl-long.394) · [Code](https://github.com/shizhediao/R-Tuning) · [Data](https://drive.google.com/drive/folders/17v7IbnAPXX1NQpqjlDMhhxFK0cuNYSd6?usp=sharing) · [Card](../../cards/recipes/r-tuning-instructing-large-language-models-to-say-i-dont-know.md)
-  _Data object:_ Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation.
-  _Feedback / verifier:_ Known/unknown classification relative to a parametric-knowledge proxy.
-  _Recipe signal:_ teacher: Knowledge-intersection construction procedure.; generator: R-Tuning data-construction scripts.
-  _Audit focus:_ Audit how known vs unknown is determined for each base model., Check over-refusal on answerable questions., Pin data version and license for the Google Drive release.
-  _Why it matters:_ It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.
-- 🏗️ **[SPIN: Self-play fine-tuning converts weak language models to strong language models](https://arxiv.org/abs/2401.01335)**
-  <sub>2024 · ICML · 🏗️ construction recipe · judgment required · sft · preference learning · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2401.01335) · [DOI](https://doi.org/10.48550/arXiv.2401.01335) · [Code](https://github.com/uclaml/SPIN) · [Data](https://huggingface.co/datasets/UCLA-AGI/SPIN_iter0) · [HF](https://huggingface.co/UCLA-AGI/zephyr-7b-sft-full-SPIN-iter0) · [Project](https://uclaml.github.io/SPIN/) · [Card](../../cards/recipes/spin-self-play-fine-tuning.md)
-  _Data object:_ Pair of real SFT response and generated response for the same prompt.; process: real prompt response, generated prompt response, iteration; Offline self-play fine-tuning pipeline.
-  _Feedback / verifier:_ SPIN objective distinguishes self-generated responses from target SFT responses.
-  _Recipe signal:_ teacher: Original SFT data acts as target distribution.; generator: Model checkpoints from previous SPIN iterations.
-  _Audit focus:_ Pin checkpoint revision, prompt sample, generated data version, and iteration., Audit self-generated style bias and benchmark overfitting., Check dataset/model licenses.
-  _Why it matters:_ It is a compact example of demonstration-anchored self-play where the model's own responses become contrastive training records.
-- 📦 **[MAmmoTH: Building math generalist models through hybrid instruction tuning](https://arxiv.org/abs/2309.05653)**
-  <sub>2023 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2309.05653) · [DOI](https://doi.org/10.48550/arXiv.2309.05653) · [Code](https://github.com/TIGER-AI-Lab/MAmmoTH) · [Data](https://huggingface.co/datasets/TIGER-Lab/MathInstruct) · [HF](https://huggingface.co/TIGER-Lab/MAmmoTH-7B) · [Project](https://tiger-ai-lab.github.io/MAmmoTH/) · [Card](../../cards/releases/mammoth-mathinstruct.md)
-  _Data object:_ Math instruction with CoT or PoT rationale and final answer.; process: dataset name, rationale type, annotation source; Offline math instruction tuning plus PoT/Python-style evaluation.
-  _Feedback / verifier:_ Math answer scoring and PoT executability where applicable; not a universal step verifier.
-  _Recipe signal:_ teacher: MathInstruct source datasets and mixed rationale authors.; generator: Curated hybrid CoT/PoT data pipeline.
-  _Audit focus:_ Audit which subsets are human, model-generated, validated, or unvalidated., Check per-subset licenses and train/evaluation overlap., Separate CoT, PoT, model-size, decoding, and benchmark-familiarity effects.
-  _Why it matters:_ It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data.
-- 📦 **[MetaMath: Bootstrap your own mathematical questions for large language models](https://arxiv.org/abs/2309.12284)**
-  <sub>2023 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2309.12284) · [DOI](https://doi.org/10.48550/arXiv.2309.12284) · [Code](https://github.com/meta-math/MetaMath) · [Data](https://huggingface.co/datasets/meta-math/MetaMathQA) · [HF](https://huggingface.co/meta-math/MetaMath-7B-V1.0) · [Project](https://meta-math.github.io/) · [Card](../../cards/releases/metamath-bootstrap-your-own-mathematical-questions-for-large-language-models.md)
-  _Data object:_ Mathematical question, original question, worked response, final answer, and augmentation type.; process: query, original question, response; Offline math instruction-tuning corpus.
-  _Feedback / verifier:_ Gold training-set answers and math benchmark checks; no step verifier disclosed.
-  _Recipe signal:_ teacher: Math training sets plus teacher augmentation.; generator: Question rewriting, answer augmentation, and self-verification style pipeline.
-  _Audit focus:_ Check augmented questions are derived from training splits., Audit near-duplicates after rewriting., Do not equate final-answer correctness with trace faithfulness.
-  _Why it matters:_ It is a math SFT scaling reference whose reuse depends on source split, teacher lineage, near-duplicate, and answer-level verifier audits.
 - 📦 **[ToolLLM: Facilitating large language models to master 16000+ real-world APIs](https://arxiv.org/abs/2307.16789)**
   <sub>2023 · ICLR · 📦 data release · 🧰 benchmark · environmental · programmatic · sft · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2307.16789) · [Card](../../cards/agents/toolllm_toolbench.md)
@@ -340,14 +356,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ prompt sourcing; trace writing; release audit
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Tool-use data and ToolBench-style evaluation show how API calls become the reasoning trace and how tool responses anchor feedback.
-- 🏗️ **[WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct](https://arxiv.org/abs/2308.09583)**
-  <sub>2023 · arXiv · 🏗️ construction recipe · 🚀 model report · programmatic · mixed · sft · distillation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2308.09583) · [DOI](https://doi.org/10.48550/arXiv.2308.09583) · [Code](https://github.com/nlpxucan/WizardLM) · [HF](https://huggingface.co/WizardLMTeam/WizardMath-7B-V1.1) · [Project](https://wizardlm.github.io/) · [Card](../../cards/recipes/wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinforced-evol-instruct.md)
-  _Data object:_ Math instruction, chain-of-thought style response, and final answer.; process: evolved instruction, response, final answer; Offline math instruction evolution and model fine-tuning.
-  _Feedback / verifier:_ Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.
-  _Recipe signal:_ teacher: WizardLM/Evol-Instruct lineage and generator models.; generator: Reinforced Evol-Instruct math pipeline.
-  _Audit focus:_ Audit seed prompts, feedback signal, and retained/rejected instruction policy., Treat benchmark gains as model evidence, not data-quality proof., Check model and data license terms before reuse.
-  _Why it matters:_ It is useful as a recipe card precisely because it separates an influential construction method from a fully auditable data release.
 - 🏗️ **[Finetuned language models are zero-shot learners](https://arxiv.org/abs/2109.01652)**
   <sub>2021 · ICLR · 🏗️ construction recipe · 🧭 survey background · mixed · sft · evaluation · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2109.01652) · [DOI](https://doi.org/10.48550/arXiv.2109.01652) · [Code](https://github.com/google-research/FLAN) · [Card](../../cards/recipes/finetuned-language-models-are-zero-shot-learners.md)
@@ -356,14 +364,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: Existing supervised NLP datasets plus instruction templates.; generator: Template-based instruction verbalization.
   _Audit focus:_ Audit task mixture, template authorship, and held-out task boundaries., Check source dataset licenses and train/eval overlap., Do not treat answer-only task accuracy as evidence of reasoning-trace quality.
   _Why it matters:_ It is a foundation for reasoning SFT because later instruction and teacher-trace datasets inherit its mixture, template, and held-out-task audit questions.
-- 🏗️ **[Multitask prompted training enables zero-shot task generalization](https://arxiv.org/abs/2110.08207)**
-  <sub>2021 · ICLR · 🏗️ construction recipe · 📦 data release · mixed · sft · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2110.08207) · [Venue](https://openreview.net/forum?id=9Vrb9D0WI4) · [DOI](https://doi.org/10.48550/arXiv.2110.08207) · [Code](https://github.com/bigscience-workshop/t-zero) · [Data](https://huggingface.co/datasets/bigscience/P3) · [HF](https://huggingface.co/bigscience/T0pp) · [Project](https://github.com/bigscience-workshop/promptsource) · [Card](../../cards/recipes/multitask-prompted-training-enables-zero-shot-task-generalization.md)
-  _Data object:_ Prompted input plus target output.; process: dataset, subset, prompt id; Offline multitask prompted fine-tuning.
-  _Feedback / verifier:_ Source-dataset labels and task-specific metrics.
-  _Recipe signal:_ teacher: Existing supervised datasets and human-readable prompt templates.; generator: PromptSource prompt functions.
-  _Audit focus:_ Audit prompt authorship, source licenses, and train/held-out task boundaries., Check whether prompts leak task identity or label shortcuts., Treat prompt quality separately from reasoning-data quality.
-  _Why it matters:_ It is a Track 01 reference for prompt-source infrastructure: the data object includes dataset source, prompt template, target output, and held-out task policy.
 - 🧰 **[FinQA: A dataset of numerical reasoning over financial data](https://aclanthology.org/2021.emnlp-main.300/)**
   <sub>2021 · EMNLP · 🧰 benchmark · 📦 data release · mixed · evaluation · sft · L2_artifact_verified</sub>
   [Paper](https://aclanthology.org/2021.emnlp-main.300/) · [Project](https://finqasite.github.io/)
@@ -422,6 +422,30 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: not applicable; this is an audit benchmark.; generator: models produce reasoning traces under normal or injected prompts.
   _Audit focus:_ Hiding thoughts from users does not make them safe., Trace logging can create a new privacy dataset., Utility improvements from more reasoning may worsen leakage risk.
   _Why it matters:_ It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.
+- 🏗️ **[Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes](https://arxiv.org/abs/2305.02301)**
+  <sub>2023 · ACL · 🏗️ construction recipe · mixed · distillation · sft · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2305.02301) · [DOI](https://doi.org/10.48550/arXiv.2305.02301) · [Code](https://github.com/google-research/distilling-step-by-step) · [Data](https://github.com/google-research/distilling-step-by-step/blob/main/datasets.zip) · [Card](../../cards/recipes/distilling-step-by-step.md)
+  _Data object:_ Task label or answer plus generated rationale text.; process: input, label type, llm rationale; Offline T5 fine-tuning and benchmark evaluation.
+  _Feedback / verifier:_ Gold or teacher labels check final answers; rationales are not independently step-verified.
+  _Recipe signal:_ teacher: Large teacher model used for rationales and optional labels.; generator: LLM rationale generation.
+  _Audit focus:_ Audit teacher identity, prompt, rationale-generation settings, and dataset splits., Separate final-answer correctness from rationale faithfulness., Check generated-rationale and source-dataset licensing before reuse.
+  _Why it matters:_ It is a compact rationale-distillation recipe showing how teacher traces become training targets while preserving faithfulness and lineage risks.
+- 🧯 **[Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting](https://arxiv.org/abs/2305.04388)**
+  <sub>2023 · NeurIPS · 🧯 audit failure · mixed · audit · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2305.04388) · [DOI](https://doi.org/10.48550/arXiv.2305.04388) · [Card](../../cards/failures/language-models-dont-always-say-what-they-think.md)
+  _Data object:_ Task answer plus generated explanation.; process: prompt, biasing feature, chain of thought; Offline prompting/evaluation setup.
+  _Feedback / verifier:_ Task correctness plus intervention/bias-attribution analysis.
+  _Recipe signal:_ teacher: Not applicable.; generator: Prompted LLMs under biased and unbiased prompt variants.
+  _Audit focus:_ Check whether CoT traces causally affect answers., Audit prompt artifacts and social-bias rationalization., Pin model/version details before reuse.
+  _Why it matters:_ It prevents treating rationale text as faithful reasoning data unless interventions check whether the trace actually drives the answer.
+- 🧯 **[Measuring faithfulness in chain-of-thought reasoning](https://arxiv.org/abs/2307.13702)**
+  <sub>2023 · arXiv · 🧯 audit failure · mixed · audit · evaluation · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2307.13702) · [DOI](https://doi.org/10.48550/arXiv.2307.13702) · [Card](../../cards/failures/measuring-faithfulness-in-chain-of-thought-reasoning.md)
+  _Data object:_ CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.
+  _Feedback / verifier:_ Answer sensitivity to CoT interventions plus task correctness.
+  _Recipe signal:_ teacher: Not applicable.; generator: Prompted LLMs plus controlled CoT edits.
+  _Audit focus:_ Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.
+  _Why it matters:_ It gives Track 01 a concrete audit lens for separating rationale text as a style target from rationale text as causal reasoning evidence.
 - 📈 **[Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171)**
   <sub>2023 · ICLR · 📈 scaling study · 🧭 survey background · mixed · programmatic · evaluation · test time compute · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../../cards/recipes/self-consistency-chain-of-thought.md)
@@ -438,30 +462,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ trace writing; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is the conceptual bridge from answer-only prompts to trace-shaped reasoning examples, which later become SFT, distillation, filtering, and verifier targets.
-- 🏗️ **[Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes](https://arxiv.org/abs/2305.02301)**
-  <sub>2023 · ACL · 🏗️ construction recipe · mixed · distillation · sft · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2305.02301) · [DOI](https://doi.org/10.48550/arXiv.2305.02301) · [Code](https://github.com/google-research/distilling-step-by-step) · [Data](https://github.com/google-research/distilling-step-by-step/blob/main/datasets.zip) · [Card](../../cards/recipes/distilling-step-by-step.md)
-  _Data object:_ Task label or answer plus generated rationale text.; process: input, label type, llm rationale; Offline T5 fine-tuning and benchmark evaluation.
-  _Feedback / verifier:_ Gold or teacher labels check final answers; rationales are not independently step-verified.
-  _Recipe signal:_ teacher: Large teacher model used for rationales and optional labels.; generator: LLM rationale generation.
-  _Audit focus:_ Audit teacher identity, prompt, rationale-generation settings, and dataset splits., Separate final-answer correctness from rationale faithfulness., Check generated-rationale and source-dataset licensing before reuse.
-  _Why it matters:_ It is a compact rationale-distillation recipe showing how teacher traces become training targets while preserving faithfulness and lineage risks.
-- 🧯 **[Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting](https://arxiv.org/abs/2305.04388)**
-  <sub>2023 · NeurIPS · 🧯 audit failure · mixed · audit · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2305.04388) · [DOI](https://doi.org/10.48550/arXiv.2305.04388) · [Card](../../cards/failures/language-models-dont-always-say-what-they-think.md)
-  _Data object:_ Task answer plus generated explanation.; process: prompt, biasing feature, chain of thought; Offline prompting/evaluation setup.
-  _Feedback / verifier:_ Task correctness plus intervention/bias-attribution analysis.
-  _Recipe signal:_ teacher: Not applicable.; generator: Prompted LLMs under biased and unbiased prompt variants.
-  _Audit focus:_ Check whether CoT traces causally affect answers., Audit prompt artifacts and social-bias rationalization., Pin model/version details before reuse.
-  _Why it matters:_ It prevents treating rationale text as faithful reasoning data unless interventions check whether the trace actually drives the answer.
-- 🧯 **[Measuring faithfulness in chain-of-thought reasoning](https://arxiv.org/abs/2307.13702)**
-  <sub>2023 · arXiv · 🧯 audit failure · mixed · audit · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2307.13702) · [DOI](https://doi.org/10.48550/arXiv.2307.13702) · [Card](../../cards/failures/measuring-faithfulness-in-chain-of-thought-reasoning.md)
-  _Data object:_ CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.
-  _Feedback / verifier:_ Answer sensitivity to CoT interventions plus task correctness.
-  _Recipe signal:_ teacher: Not applicable.; generator: Prompted LLMs plus controlled CoT edits.
-  _Audit focus:_ Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.
-  _Why it matters:_ It gives Track 01 a concrete audit lens for separating rationale text as a style target from rationale text as causal reasoning evidence.
 - 🧭 **[SafeChain: Safety of Language Models with Long Chain-of-Thought Reasoning Capabilities](https://arxiv.org/abs/2502.12025)**
   <sub>2025 · arXiv preprint arXiv:2502.12025 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2502.12025)
@@ -481,6 +481,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: self-improvement pipeline and math reward/evaluation signals.; generator: math-specialized models generate solutions and tool-integrated traces.
   _Audit focus:_ Tool-integrated results are not comparable to no-tool results., Reward models can favor format over proof validity., Model-family reports can blur data and inference effects.
   _Why it matters:_ It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning, and multilingual math evaluation are tied together.
+- 🏗️ **[Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models](https://arxiv.org/abs/2312.06585)**
+  <sub>2023 · arXiv · 🏗️ construction recipe · 📈 scaling study · programmatic · sft · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2312.06585) · [DOI](https://doi.org/10.48550/arXiv.2312.06585) · [Card](../../cards/recipes/restem-beyond-human-data-scaling-self-training.md)
+  _Data object:_ Generated solution/answer candidate with binary feedback.; process: problem, sampled solution, binary feedback; Offline self-training loop over math/code problem-solving tasks.
+  _Feedback / verifier:_ Binary correctness/verifiability feedback.
+  _Recipe signal:_ teacher: Self-generated samples filtered by feedback.; generator: Current model policy.
+  _Audit focus:_ Audit verifier false positives and rejected-sample visibility., Check benchmark reuse and split policy., Separate gains from more samples, filtering, and model scale.
+  _Why it matters:_ It shows how verifiable task feedback can become synthetic training data beyond human-written examples, while exposing verifier and accepted-sample bias risks.
 - 🏗️ **[STaR: Bootstrapping reasoning with reasoning](https://arxiv.org/abs/2203.14465)**
   <sub>2022 · NeurIPS · 🏗️ construction recipe · 🧭 survey background · mixed · sft · distillation · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2203.14465) · [Card](../../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)
@@ -489,14 +497,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ trace writing; self play anchor; sft
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It is a compact recipe for self-improving reasoning data: model traces become training data only after answer-based filtering.
-- 🏗️ **[Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models](https://arxiv.org/abs/2312.06585)**
-  <sub>2023 · arXiv · 🏗️ construction recipe · 📈 scaling study · programmatic · sft · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2312.06585) · [DOI](https://doi.org/10.48550/arXiv.2312.06585) · [Card](../../cards/recipes/restem-beyond-human-data-scaling-self-training.md)
-  _Data object:_ Generated solution/answer candidate with binary feedback.; process: problem, sampled solution, binary feedback; Offline self-training loop over math/code problem-solving tasks.
-  _Feedback / verifier:_ Binary correctness/verifiability feedback.
-  _Recipe signal:_ teacher: Self-generated samples filtered by feedback.; generator: Current model policy.
-  _Audit focus:_ Audit verifier false positives and rejected-sample visibility., Check benchmark reuse and split policy., Separate gains from more samples, filtering, and model scale.
-  _Why it matters:_ It shows how verifiable task feedback can become synthetic training data beyond human-written examples, while exposing verifier and accepted-sample bias risks.
 
 ### <a id="long-short-cot-distillation"></a>✂️ Long/short CoT distillation
 
@@ -519,6 +519,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: constitution/principles plus critique-and-revision model behavior.; generator: model produces critiques, revisions, and response pairs.
   _Audit focus:_ AI feedback can encode model bias at scale., Principles may be underspecified or culturally narrow., A model can become safe-looking but evasive if helpfulness is not audited.
   _Why it matters:_ It is a core recipe for replacing part of human feedback with principle-guided model feedback, making critiques and preference pairs first-class post-training data.
+- 📦 **[Training a helpful and harmless assistant with reinforcement learning from human feedback](https://arxiv.org/abs/2204.05862)**
+  <sub>2022 · arXiv · 📦 data release · 🧪 verifier reward · judgment required · preference learning · reward modeling · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2204.05862) · [DOI](https://doi.org/10.48550/arXiv.2204.05862) · [Data](https://github.com/anthropics/hh-rlhf) · [HF](https://huggingface.co/datasets/Anthropic/hh-rlhf) · [Card](../../cards/releases/training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-feedback.md)
+  _Data object:_ Chosen/rejected text pairs for helpfulness and harmlessness preference modeling.; process: conversation prompt, chosen response, rejected response; Offline assistant preference-modeling dataset.
+  _Feedback / verifier:_ Human preference labels used to train preference/reward models.
+  _Recipe signal:_ teacher: Human preference labelers.; generator: Assistant policies including base, rejection-sampled, and online policy samples.
+  _Audit focus:_ Audit labeler instructions, prompt sources, tranche differences, and safety coverage., Do not treat chosen responses as safe SFT targets without extra review., Handle harmful/offensive content carefully.
+  _Why it matters:_ It is a concrete open assistant feedback object: prompt context, chosen response, rejected response, split, and safety-specific reward-modeling risks.
 - 🧭 **[Direct preference optimization: Your language model is secretly a reward model](https://arxiv.org/abs/2305.18290)**
   <sub>2023 · NeurIPS · 🧭 survey background · judgment required · preference learning · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2305.18290) · [Card](../../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)
@@ -527,14 +535,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ optimizer scaffold; preference learning
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ It shows that pairwise preference data can shape post-training behavior without deploying a separate learned reward model during optimization.
-- 📦 **[Training a helpful and harmless assistant with reinforcement learning from human feedback](https://arxiv.org/abs/2204.05862)**
-  <sub>2022 · arXiv · 📦 data release · 🧪 verifier reward · judgment required · preference learning · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2204.05862) · [DOI](https://doi.org/10.48550/arXiv.2204.05862) · [Data](https://github.com/anthropics/hh-rlhf) · [HF](https://huggingface.co/datasets/Anthropic/hh-rlhf) · [Card](../../cards/releases/training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-feedback.md)
-  _Data object:_ Chosen/rejected text pairs for helpfulness and harmlessness preference modeling.; process: conversation prompt, chosen response, rejected response; Offline assistant preference-modeling dataset.
-  _Feedback / verifier:_ Human preference labels used to train preference/reward models.
-  _Recipe signal:_ teacher: Human preference labelers.; generator: Assistant policies including base, rejection-sampled, and online policy samples.
-  _Audit focus:_ Audit labeler instructions, prompt sources, tranche differences, and safety coverage., Do not treat chosen responses as safe SFT targets without extra review., Handle harmful/offensive content carefully.
-  _Why it matters:_ It is a concrete open assistant feedback object: prompt context, chosen response, rejected response, split, and safety-specific reward-modeling risks.
 - 🧭 **[Cognitive Behaviors that Enable Self-Improving Reasoners, or, Four Habits of Highly Effective STaRs](https://arxiv.org/abs/2503.01307)**
   <sub>2025 · arXiv preprint arXiv:2503.01307 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2503.01307)
@@ -555,7 +555,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 ### ⚠️ Needs search or metadata
 
 - 📦 **OpenR1-Math-220k**
-  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L4_carded</sub>
+  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L5_audit_ready</sub>
   [Code](https://github.com/huggingface/open-r1) · [Data](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Project](https://huggingface.co/blog/open-r1/update-2) · [Card](../../cards/releases/openr1.md)
   _Data object:_ math problem, reference solution/answer, generated reasoning traces, final answer, and correctness fields; process: problem, solution, answer; Offline Hugging Face parquet dataset generated through the Open R1 reproduction pipeline.
   _Feedback / verifier:_ Math-Verify answer checking plus Llama-3.3-70B-Instruct judge recovery for cases Math-Verify did not verify.

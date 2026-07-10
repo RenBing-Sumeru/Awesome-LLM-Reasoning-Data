@@ -18,8 +18,8 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - L1_link_verified: 64
 - L2_artifact_verified: 7
 - L3_summary_ready: 0
-- L4_carded: 56
-- L5_audit_ready: 53
+- L4_carded: 34
+- L5_audit_ready: 75
 
 ## Official Link Coverage
 

@@ -2493,7 +2493,7 @@
           "data_object": "Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.",
           "feedback_verifier": "Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.",
           "audit_focus": "Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -2564,7 +2564,7 @@
           "data_object": "Mathematical question, original question, worked response, final answer, and augmentation type.; process: query, original question, response; Offline math instruction-tuning corpus.",
           "feedback_verifier": "Gold training-set answers and math benchmark checks; no step verifier disclosed.",
           "audit_focus": "Check augmented questions are derived from training splits., Audit near-duplicates after rewriting., Do not equate final-answer correctness with trace faithfulness.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -2635,7 +2635,7 @@
           "data_object": "Math instruction, chain-of-thought style response, and final answer.; process: evolved instruction, response, final answer; Offline math instruction evolution and model fine-tuning.",
           "feedback_verifier": "Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.",
           "audit_focus": "Audit seed prompts, feedback signal, and retained/rejected instruction policy., Treat benchmark gains as model evidence, not data-quality proof., Check model and data license terms before reuse.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -5055,7 +5055,7 @@
           "data_object": "Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.",
           "feedback_verifier": "Proxy reward model compared against a stronger gold reward model.",
           "audit_focus": "Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -7943,7 +7943,7 @@
           "data_object": "Task answer plus generated explanation.; process: prompt, biasing feature, chain of thought; Offline prompting/evaluation setup.",
           "feedback_verifier": "Task correctness plus intervention/bias-attribution analysis.",
           "audit_focus": "Check whether CoT traces causally affect answers., Audit prompt artifacts and social-bias rationalization., Pin model/version details before reuse.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -8009,7 +8009,7 @@
           "data_object": "CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.",
           "feedback_verifier": "Answer sensitivity to CoT interventions plus task correctness.",
           "audit_focus": "Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -9154,7 +9154,7 @@
           "data_object": "Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.",
           "feedback_verifier": "Proxy reward model compared against a stronger gold reward model.",
           "audit_focus": "Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -9470,7 +9470,7 @@
           "data_object": "CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.",
           "feedback_verifier": "Answer sensitivity to CoT interventions plus task correctness.",
           "audit_focus": "Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
@@ -10761,7 +10761,7 @@
           "data_object": "code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments",
           "feedback_verifier": "unit tests, execution feedback, automatically scaled test cases, and environment task success signals",
           "audit_focus": "Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.",
-          "curation_level": "L4_carded",
+          "curation_level": "L5_audit_ready",
           "status": "verified",
           "needs_search": false,
           "artifacts": {

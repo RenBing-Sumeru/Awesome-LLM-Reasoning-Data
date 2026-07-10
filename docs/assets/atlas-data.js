@@ -1127,7 +1127,7 @@ window.ATLAS_DATA = {
       "data_object": "Prompted input plus target output.; process: dataset, subset, prompt id; Offline multitask prompted fine-tuning.",
       "feedback_verifier": "Source-dataset labels and task-specific metrics.",
       "audit_focus": "Audit prompt authorship, source licenses, and train/held-out task boundaries., Check whether prompts leak task identity or label shortcuts., Treat prompt quality separately from reasoning-data quality.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -1775,7 +1775,7 @@ window.ATLAS_DATA = {
       "data_object": "Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.",
       "feedback_verifier": "Proxy reward model compared against a stronger gold reward model.",
       "audit_focus": "Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -2014,7 +2014,7 @@ window.ATLAS_DATA = {
       "data_object": "Chosen/rejected text pairs for helpfulness and harmlessness preference modeling.; process: conversation prompt, chosen response, rejected response; Offline assistant preference-modeling dataset.",
       "feedback_verifier": "Human preference labels used to train preference/reward models.",
       "audit_focus": "Audit labeler instructions, prompt sources, tranche differences, and safety coverage., Do not treat chosen responses as safe SFT targets without extra review., Handle harmful/offensive content carefully.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -2434,7 +2434,7 @@ window.ATLAS_DATA = {
       "data_object": "Task label or answer plus generated rationale text.; process: input, label type, llm rationale; Offline T5 fine-tuning and benchmark evaluation.",
       "feedback_verifier": "Gold or teacher labels check final answers; rationales are not independently step-verified.",
       "audit_focus": "Audit teacher identity, prompt, rationale-generation settings, and dataset splits., Separate final-answer correctness from rationale faithfulness., Check generated-rationale and source-dataset licensing before reuse.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -2873,7 +2873,7 @@ window.ATLAS_DATA = {
       "data_object": "Task answer plus generated explanation.; process: prompt, biasing feature, chain of thought; Offline prompting/evaluation setup.",
       "feedback_verifier": "Task correctness plus intervention/bias-attribution analysis.",
       "audit_focus": "Check whether CoT traces causally affect answers., Audit prompt artifacts and social-bias rationalization., Pin model/version details before reuse.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -3135,7 +3135,7 @@ window.ATLAS_DATA = {
       "data_object": "Math instruction with CoT or PoT rationale and final answer.; process: dataset name, rationale type, annotation source; Offline math instruction tuning plus PoT/Python-style evaluation.",
       "feedback_verifier": "Math answer scoring and PoT executability where applicable; not a universal step verifier.",
       "audit_focus": "Audit which subsets are human, model-generated, validated, or unvalidated., Check per-subset licenses and train/evaluation overlap., Separate CoT, PoT, model-size, decoding, and benchmark-familiarity effects.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -3249,7 +3249,7 @@ window.ATLAS_DATA = {
       "data_object": "CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.",
       "feedback_verifier": "Answer sensitivity to CoT interventions plus task correctness.",
       "audit_focus": "Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -3315,7 +3315,7 @@ window.ATLAS_DATA = {
       "data_object": "Mathematical question, original question, worked response, final answer, and augmentation type.; process: query, original question, response; Offline math instruction-tuning corpus.",
       "feedback_verifier": "Gold training-set answers and math benchmark checks; no step verifier disclosed.",
       "audit_focus": "Check augmented questions are derived from training splits., Audit near-duplicates after rewriting., Do not equate final-answer correctness with trace faithfulness.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -3759,7 +3759,7 @@ window.ATLAS_DATA = {
       "data_object": "Generated solution/answer candidate with binary feedback.; process: problem, sampled solution, binary feedback; Offline self-training loop over math/code problem-solving tasks.",
       "feedback_verifier": "Binary correctness/verifiability feedback.",
       "audit_focus": "Audit verifier false positives and rejected-sample visibility., Check benchmark reuse and split policy., Separate gains from more samples, filtering, and model scale.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -4373,7 +4373,7 @@ window.ATLAS_DATA = {
       "data_object": "Math instruction, chain-of-thought style response, and final answer.; process: evolved instruction, response, final answer; Offline math instruction evolution and model fine-tuning.",
       "feedback_verifier": "Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.",
       "audit_focus": "Audit seed prompts, feedback signal, and retained/rejected instruction policy., Treat benchmark gains as model evidence, not data-quality proof., Check model and data license terms before reuse.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -5986,7 +5986,7 @@ window.ATLAS_DATA = {
       "data_object": "Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.",
       "feedback_verifier": "Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.",
       "audit_focus": "Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -6576,7 +6576,7 @@ window.ATLAS_DATA = {
       "data_object": "Question with either an answerable response or explicit refusal.; process: question, known or unknown status, answer or refusal target; Offline refusal-aware instruction tuning and evaluation.",
       "feedback_verifier": "Known/unknown classification relative to a parametric-knowledge proxy.",
       "audit_focus": "Audit how known vs unknown is determined for each base model., Check over-refusal on answerable questions., Pin data version and license for the Google Drive release.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -7012,7 +7012,7 @@ window.ATLAS_DATA = {
       "data_object": "Candidate responses with self-generated reward/judgment signal for iterative DPO.; process: prompt, candidate response, self reward; Offline iterative preference-training loop.",
       "feedback_verifier": "The language model itself acting as judge.",
       "audit_focus": "Inspect judge prompt, response sampling, preference conversion, and iteration count., Check calibration against external human or benchmark signals., Watch for style bias, overconfidence, and feedback collapse.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -7073,7 +7073,7 @@ window.ATLAS_DATA = {
       "data_object": "Pair of real SFT response and generated response for the same prompt.; process: real prompt response, generated prompt response, iteration; Offline self-play fine-tuning pipeline.",
       "feedback_verifier": "SPIN objective distinguishes self-generated responses from target SFT responses.",
       "audit_focus": "Pin checkpoint revision, prompt sample, generated data version, and iteration., Audit self-generated style bias and benchmark overfitting., Check dataset/model licenses.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -15779,7 +15779,7 @@ window.ATLAS_DATA = {
       "data_object": "math problem, reference solution/answer, generated reasoning traces, final answer, and correctness fields; process: problem, solution, answer; Offline Hugging Face parquet dataset generated through the Open R1 reproduction pipeline.",
       "feedback_verifier": "Math-Verify answer checking plus Llama-3.3-70B-Instruct judge recovery for cases Math-Verify did not verify.",
       "audit_focus": "Math answer parsing can reject correct answers or accept format-compatible wrong answers., Llama judge recovery introduces judgment-required behavior into an otherwise programmatic pipeline., Only accepted/correct traces are emphasized, so failed traces and ambiguity are not equally visible.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "partial",
       "needs_search": true,
       "artifacts": {
@@ -15992,7 +15992,7 @@ window.ATLAS_DATA = {
       "data_object": "code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments",
       "feedback_verifier": "unit tests, execution feedback, automatically scaled test cases, and environment task success signals",
       "audit_focus": "Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -16189,7 +16189,7 @@ window.ATLAS_DATA = {
       "data_object": "Taxonomy and literature map for multi-step reasoning methods.; process: reasoning method, generation strategy, evaluation method; LLM multi-step reasoning tasks and methods.",
       "feedback_verifier": "Mixed evaluation and control signals summarized by the survey; no single verifier.",
       "audit_focus": "Do not treat model-centric taxonomy as trainable data quality proof., Check trace authorship, verifier contract, tool environment, budget, and contamination controls in each primary paper., Separate reasoning ability, trace style, external tools, and benchmark performance.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -16263,7 +16263,7 @@ window.ATLAS_DATA = {
       "data_object": "Survey taxonomy over feedback collection, reward modeling, and policy optimization.; process: feedback source, preference format, reward model objective; RLHF pipelines spanning LLMs and broader RL domains.",
       "feedback_verifier": "Human feedback transformed into learned reward or policy-optimization signal.",
       "audit_focus": "Do not infer reusable datasets from survey descriptions alone., Follow primary sources for provenance, license, split, and annotator details., Avoid overgeneralizing broad RLHF lessons to verifiable reasoning.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -16346,7 +16346,7 @@ window.ATLAS_DATA = {
       "data_object": "Taxonomy over reward-model sources, architectures, usage modes, applications, benchmarks, and challenges.; process: preference source, reward model type, usage mode; LLM reward-model training, evaluation, and post-training pipelines.",
       "feedback_verifier": "Learned or rubric/judge-derived reward model used as proxy feedback.",
       "audit_focus": "Reward models can encode annotator, style, length, or domain bias., Proxy rewards can be overoptimized or attacked., Benchmark scores do not prove downstream training usefulness.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -16427,7 +16427,7 @@ window.ATLAS_DATA = {
       "data_object": "Preference-centered taxonomy over feedback data, modeling, usage, and evaluation.; process: preference source, preference format, preference model; LLM alignment pipelines using human preference signals.",
       "feedback_verifier": "Human preference transformed into reward, preference loss, or evaluation judgment.",
       "audit_focus": "Check annotator assumptions, preference format, and disagreement policy., Preference labels may not preserve reasoning correctness., Evaluation can conflate helpfulness, style, harmlessness, and reasoning quality.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -16513,7 +16513,7 @@ window.ATLAS_DATA = {
       "data_object": "Technical taxonomy comparing RLHF and RLVR policy-gradient-style methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.",
       "feedback_verifier": "Learned preference rewards, verifiable rewards, and policy-gradient objectives.",
       "audit_focus": "Separate data source, reward contract, rollout policy, optimizer, model size, and inference budget., Check false positives, reward hacking, sampling budget, and benchmark reuse., Do not attribute gains to generic RL without naming the data and reward object.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -16706,7 +16706,7 @@ window.ATLAS_DATA = {
       "data_object": "Overlap-reporting analysis over model developers, training data disclosure, overlap methodology, and public-test-set claims.; process: model developer, evaluation set, training data access; Benchmark and training-data documentation.",
       "feedback_verifier": "Overlap analysis rather than reward model.",
       "audit_focus": "Ask whether training data is public and overlap statistics are reported., Check overlap methodology and benchmark reuse., Separate memorization, contamination, and genuine reasoning improvement.",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -20945,7 +20945,7 @@ window.ATLAS_DATA = {
             "data_object": "Instruction-response or Q-A pair with optional explanation or refined answer.; process: question, answer, source; Offline WebInstruct dataset and MAmmoTH2 SFT pipeline.",
             "feedback_verifier": "Web recall/extraction/refinement filters plus benchmark answer checks; no per-example proof verifier.",
             "audit_focus": "Audit dominant websites and Common Crawl snapshots., Check benchmark-containing page filtering., Compare WebInstructSub and WebInstructFull licenses.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -21016,7 +21016,7 @@ window.ATLAS_DATA = {
             "data_object": "Mathematical question, original question, worked response, final answer, and augmentation type.; process: query, original question, response; Offline math instruction-tuning corpus.",
             "feedback_verifier": "Gold training-set answers and math benchmark checks; no step verifier disclosed.",
             "audit_focus": "Check augmented questions are derived from training splits., Audit near-duplicates after rewriting., Do not equate final-answer correctness with trace faithfulness.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -21087,7 +21087,7 @@ window.ATLAS_DATA = {
             "data_object": "Math instruction, chain-of-thought style response, and final answer.; process: evolved instruction, response, final answer; Offline math instruction evolution and model fine-tuning.",
             "feedback_verifier": "Math benchmark answer checks plus reinforced Evol-Instruct feedback; exact internal verifier is not fully visible.",
             "audit_focus": "Audit seed prompts, feedback signal, and retained/rejected instruction policy., Treat benchmark gains as model evidence, not data-quality proof., Check model and data license terms before reuse.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -23507,7 +23507,7 @@ window.ATLAS_DATA = {
             "data_object": "Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.",
             "feedback_verifier": "Proxy reward model compared against a stronger gold reward model.",
             "audit_focus": "Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -26395,7 +26395,7 @@ window.ATLAS_DATA = {
             "data_object": "Task answer plus generated explanation.; process: prompt, biasing feature, chain of thought; Offline prompting/evaluation setup.",
             "feedback_verifier": "Task correctness plus intervention/bias-attribution analysis.",
             "audit_focus": "Check whether CoT traces causally affect answers., Audit prompt artifacts and social-bias rationalization., Pin model/version details before reuse.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -26461,7 +26461,7 @@ window.ATLAS_DATA = {
             "data_object": "CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.",
             "feedback_verifier": "Answer sensitivity to CoT interventions plus task correctness.",
             "audit_focus": "Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -27606,7 +27606,7 @@ window.ATLAS_DATA = {
             "data_object": "Proxy reward scores, gold reward scores, KL budget, optimization method, and scale variables.; process: proxy reward score, gold reward score, optimization method; Synthetic reward-model overoptimization experiments.",
             "feedback_verifier": "Proxy reward model compared against a stronger gold reward model.",
             "audit_focus": "Check proxy/gold reward separation, KL budget, and best-of-n budget., Do not treat reward score improvement as data-quality proof., Verify whether conclusions transfer to each domain's feedback contract.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -27922,7 +27922,7 @@ window.ATLAS_DATA = {
             "data_object": "CoT text plus answer before/after intervention.; process: prompt, original cot, cot intervention; Offline CoT intervention benchmark.",
             "feedback_verifier": "Answer sensitivity to CoT interventions plus task correctness.",
             "audit_focus": "Check model/task dependence and intervention type., Separate final correctness from trace faithfulness., Pin prompts and model versions.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -29213,7 +29213,7 @@ window.ATLAS_DATA = {
             "data_object": "code solution, fill-in-the-middle completion, function/tool-call message, or multi-turn agent trajectory; process: prompt or repository context, generated code or patch, function call and arguments; code execution, tool-calling runtimes, SWE-style and browser/tool agent environments",
             "feedback_verifier": "unit tests, execution feedback, automatically scaled test cases, and environment task success signals",
             "audit_focus": "Generated tests can become a brittle hidden reward., Execution success can miss semantic or security defects., Environment rewards can overfit scaffold or benchmark state.",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {

@@ -184,7 +184,8 @@
     verified_by: agent
     confidence: high
     notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
-  curation_level: L4_carded- id: data-statements-for-natural-language-processing-2018
+  curation_level: L4_carded
+- id: data-statements-for-natural-language-processing-2018
   title: Data statements for natural language processing
   year: 2018
   venue: TACL
@@ -3090,7 +3091,8 @@
     verified_by: agent
     confidence: high
     notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
-  curation_level: L5_audit_ready- id: training-language-models-to-follow-instructions-with-human-feedback-2022
+  curation_level: L5_audit_ready
+- id: training-language-models-to-follow-instructions-with-human-feedback-2022
   title: Training language models to follow instructions with human feedback
   year: 2022
   venue: NeurIPS
@@ -9074,7 +9076,8 @@
     verified_by: agent
     confidence: high
     notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
-  curation_level: L5_audit_ready- id: math-shepherd-2024
+  curation_level: L5_audit_ready
+- id: math-shepherd-2024
   title: Math-Shepherd
   year: 2024
   venue: arXiv

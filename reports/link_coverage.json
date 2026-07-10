@@ -9,8 +9,8 @@
     "L1_link_verified": 64,
     "L2_artifact_verified": 7,
     "L3_summary_ready": 0,
-    "L4_carded": 56,
-    "L5_audit_ready": 53
+    "L4_carded": 34,
+    "L5_audit_ready": 75
   },
   "official_link_coverage": {
     "paper_or_primary": 179,
