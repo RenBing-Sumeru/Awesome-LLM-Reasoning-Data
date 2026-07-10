@@ -88,16 +88,9 @@
             "math"
           ],
           "category": [
-            "preference_reward_feedback_data",
-            "programmatically_verifiable_outcome_data",
-            "process_trace_supervision_data",
-            "judgment_rubric_domain_expert_data",
-            "data_construction_open_release_recipes",
-            "training_usage_optimization_objectives",
-            "scaling_rlvr_test_time_compute",
-            "audit_failure_contamination_verifier_attacks"
+            "scaling_rlvr_test_time_compute"
           ],
-          "subfield": "Other related work",
+          "subfield": "🏋️ RLVR optimization scaling",
           "tags": [
             "curated-card",
             "primary-link-checked"

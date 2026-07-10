@@ -2,11 +2,6 @@
 
 > Surveys, primers, classic post-training lineages, data documentation, and evaluation background for readers entering the field.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=foundations_and_primers&mode=find_papers)
-> Try: `What should I read first for 🧭 Foundations & Primers?`
-> Try: `Compare the data objects and verifier types in 🧭 Foundations & Primers.`
-> Try: `Generate an audit checklist for 🧭 Foundations & Primers.`
-
 ## 1. What This Track Studies
 
 Use this track when you need the map before the terrain: vocabulary, taxonomies, historical lineages, and recurring audit questions.

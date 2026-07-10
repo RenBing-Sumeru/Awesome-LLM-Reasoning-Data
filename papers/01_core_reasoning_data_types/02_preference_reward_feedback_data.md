@@ -2,11 +2,6 @@
 
 > Human preferences, AI feedback, reward models, DPO-style pairs, scalar rewards, critiques, and rubric-conditioned feedback records.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=preference_reward_feedback_data&mode=find_papers)
-> Try: `What should I read first for 🤝 Preference & Reward Feedback?`
-> Try: `Compare the data objects and verifier types in 🤝 Preference & Reward Feedback.`
-> Try: `Generate an audit checklist for 🤝 Preference & Reward Feedback.`
-
 ## 1. What This Track Studies
 
 Use this track to compare preference and reward signals before they become training objectives or evaluation proxies.
@@ -45,8 +40,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 | Work | Year | Links | Data object | Feedback / verifier | Why it matters |
 |---|---:|---|---|---|---|
-| [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) | 2023 | [Paper](https://arxiv.org/abs/2305.20050) · [DOI](https://doi.org/10.48550/arXiv.2305.20050) · [Paper Card Source](../../paper_cards/sources/lets-verify-step-by-step-2023) | Problem, reasoning steps, step labels, process reward model score, and final answer.; process: math problem, reasoning step, human step label; PRM800K-style process-supervision dataset for math reasoning. | Process reward model trained from human step-level labels. | Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time selection. |
-| [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://arxiv.org/abs/2505.14625) | 2025 | [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Paper Card Source](../../paper_cards/sources/tinyv-2025) | candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack | small LLM verifier augmenting rules | Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training. |
 
 ## 5. Full Paper List
 
@@ -60,14 +53,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### <a id="scalar-reward-orm-data"></a>🎚️ Scalar reward / ORM data
 
-- 🪜 **[Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)**
-  <sub>2023 · arXiv · 🪜 process supervision · 🧪 verifier reward · judgment required · process supervision · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2305.20050) · [DOI](https://doi.org/10.48550/arXiv.2305.20050) · [Paper Card Source](../../paper_cards/sources/lets-verify-step-by-step-2023)
-  _Data object:_ Problem, reasoning steps, step labels, process reward model score, and final answer.; process: math problem, reasoning step, human step label; PRM800K-style process-supervision dataset for math reasoning.
-  _Feedback / verifier:_ Process reward model trained from human step-level labels.
-  _Recipe signal:_ teacher: Human step-level labels over model-generated reasoning.; generator: Policy model produces candidate math traces.
-  _Audit focus:_ Human step labels can encode style preferences., PRM scores can reward locally plausible but globally wrong paths., Verifier calls add TTC cost that must be disclosed.
-  _Why it matters:_ Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time selection.
+_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
 
 ### <a id="rlaif-synthetic-feedback"></a>🤖 RLAIF / synthetic feedback
 
@@ -80,17 +66,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 ### <a id="rubric-conditioned-rewards"></a>🧾 Rubric-conditioned rewards
 
 _No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
-
-### <a id="other-related-work"></a>Other related work
-
-- 🧪 **[TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://arxiv.org/abs/2505.14625)**
-  <sub>2025 · arXiv · 🧪 verifier reward · 🧯 audit failure · programmatic · judgment required · rlvr · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Paper Card Source](../../paper_cards/sources/tinyv-2025)
-  _Data object:_ candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack
-  _Feedback / verifier:_ small LLM verifier augmenting rules
-  _Recipe signal:_ reward verifier layer; release audit; rlvr
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
 
 ## 6. What to Audit
 
@@ -107,8 +82,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ## 8. Related Paper-Card Sources
 
-- [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../../paper_cards/sources/tinyv-2025)
-- [Let's Verify Step by Step](../../paper_cards/sources/lets-verify-step-by-step-2023)
+- No paper-card sources are linked for this category yet.
 
 ## Back to Map
 

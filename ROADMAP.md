@@ -41,7 +41,7 @@ Use this order when deciding what to add next:
 - Prefer fewer verified, useful entries over many guessed links.
 - Keep `needs_search` visible until official primary sources are pinned.
 - Do not promote an entry as curated unless it explains data object, feedback contract, training use, and audit risk.
-- Keep papers in multiple categories when the data object genuinely crosses axes.
+- Keep the 14-track taxonomy for browsing, but assign every library paper exactly one primary review label: 03 programmatically verifiable outcome data or 10 scaling/RLVR/test-time compute.
 - Avoid generic LLM reasoning papers that do not expose a post-training data, verifier, reward, environment, benchmark, or audit lesson.
 
 ## Release Checklist

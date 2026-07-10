@@ -1,6 +1,5 @@
 # Agent Trajectory Data
 
-> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20agent%20trajectory%20data%20and%20what%20fields%20make%20an%20episode%20replayable.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 ## What you will learn
 

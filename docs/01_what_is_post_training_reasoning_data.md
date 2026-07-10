@@ -1,6 +1,5 @@
 # What Is Post-Training Reasoning Data?
 
-> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20what%20post-training%20reasoning%20data%20is%20using%20this%20repository%20guide.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 ## What you will learn
 

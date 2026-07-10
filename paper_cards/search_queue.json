@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-10T09:20:39Z",
+  "updated_at": "2026-07-10T15:11:44Z",
   "entries": {
     "tinyv-2025": {
       "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
@@ -14,20 +14,13 @@
         "doi": null
       },
       "track_guess": [
-        "preference_reward_feedback_data",
-        "programmatically_verifiable_outcome_data",
-        "process_trace_supervision_data",
-        "judgment_rubric_domain_expert_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "audit_failure_contamination_verifier_attacks"
+        "scaling_rlvr_test_time_compute"
       ],
       "reason_to_include": "12345",
       "decision_reason": "12345",
       "search_status": "promoted",
       "review_note": "",
-      "updated_at": "2026-07-10T04:32:27Z"
+      "updated_at": "2026-07-10T15:11:44Z"
     },
     "agnostics-universal-learning-environment-2026": {
       "title": "Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment",
@@ -41,17 +34,13 @@
         "doi": "https://doi.org/10.48550/arXiv.2508.04865"
       },
       "track_guess": [
-        "programmatically_verifiable_outcome_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "benchmarks_evaluation_surfaces"
+        "scaling_rlvr_test_time_compute"
       ],
       "reason_to_include": "",
       "decision_reason": "",
       "search_status": "",
       "review_note": "",
-      "updated_at": "2026-07-10T05:11:02Z"
+      "updated_at": "2026-07-10T15:11:44Z"
     },
     "featurebench-2026": {
       "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
@@ -65,17 +54,13 @@
         "doi": "https://doi.org/10.48550/arXiv.2602.10975"
       },
       "track_guess": [
-        "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data",
-        "benchmarks_evaluation_surfaces",
-        "data_construction_open_release_recipes",
-        "audit_failure_contamination_verifier_attacks"
+        "programmatically_verifiable_outcome_data"
       ],
       "reason_to_include": "",
       "decision_reason": "",
       "search_status": "",
       "review_note": "",
-      "updated_at": "2026-07-10T05:11:02Z"
+      "updated_at": "2026-07-10T15:11:36Z"
     },
     "beyondbench-2026": {
       "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
@@ -89,16 +74,13 @@
         "doi": null
       },
       "track_guess": [
-        "programmatically_verifiable_outcome_data",
-        "benchmarks_evaluation_surfaces",
-        "audit_failure_contamination_verifier_attacks",
-        "data_construction_open_release_recipes"
+        "programmatically_verifiable_outcome_data"
       ],
       "reason_to_include": "cccceeee",
       "decision_reason": "cccceeee",
       "search_status": "candidate",
       "review_note": "",
-      "updated_at": "2026-07-10T06:12:15Z"
+      "updated_at": "2026-07-10T15:11:36Z"
     },
     "credit-budgeted-icpc-style-coding-2026": {
       "title": "Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
@@ -112,16 +94,13 @@
         "doi": null
       },
       "track_guess": [
-        "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data",
-        "benchmarks_evaluation_surfaces",
         "scaling_rlvr_test_time_compute"
       ],
       "reason_to_include": "考虑ICPC成本，可供成本计算的参考",
       "decision_reason": "考虑ICPC成本，可供成本计算的参考",
       "search_status": "candidate",
       "review_note": "",
-      "updated_at": "2026-07-10T05:33:27Z"
+      "updated_at": "2026-07-10T15:11:44Z"
     },
     "geogrambench-2026": {
       "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
@@ -135,15 +114,13 @@
         "doi": null
       },
       "track_guess": [
-        "programmatically_verifiable_outcome_data",
-        "benchmarks_evaluation_surfaces",
-        "judgment_rubric_domain_expert_data"
+        "programmatically_verifiable_outcome_data"
       ],
       "reason_to_include": "他定义了一类几何的新的概念，可作为参考",
       "decision_reason": "他定义了一类几何的新的概念，可作为参考",
       "search_status": "candidate",
       "review_note": "",
-      "updated_at": "2026-07-10T05:19:23Z"
+      "updated_at": "2026-07-10T15:11:36Z"
     },
     "rest-em-self-training-2024": {
       "title": "Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models",
@@ -157,16 +134,13 @@
         "doi": null
       },
       "track_guess": [
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "programmatically_verifiable_outcome_data"
+        "scaling_rlvr_test_time_compute"
       ],
       "reason_to_include": "aa",
       "decision_reason": "aa",
       "search_status": "candidate",
       "review_note": "",
-      "updated_at": "2026-07-10T09:18:49Z"
+      "updated_at": "2026-07-10T15:11:44Z"
     },
     "deepseekmath-2024": {
       "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
@@ -180,17 +154,13 @@
         "doi": null
       },
       "track_guess": [
-        "programmatically_verifiable_outcome_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "frontier_reports_data_disclosure_ledger"
+        "scaling_rlvr_test_time_compute"
       ],
       "reason_to_include": "abc",
       "decision_reason": "abc",
       "search_status": "candidate",
       "review_note": "",
-      "updated_at": "2026-07-10T09:19:57Z"
+      "updated_at": "2026-07-10T15:11:44Z"
     },
     "lets-verify-step-by-step-2023": {
       "title": "Let's Verify Step by Step",
@@ -204,17 +174,13 @@
         "doi": null
       },
       "track_guess": [
-        "process_trace_supervision_data",
-        "preference_reward_feedback_data",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "audit_failure_contamination_verifier_attacks"
+        "scaling_rlvr_test_time_compute"
       ],
       "reason_to_include": "abc",
       "decision_reason": "abc",
       "search_status": "candidate",
       "review_note": "",
-      "updated_at": "2026-07-10T09:20:15Z"
+      "updated_at": "2026-07-10T15:11:44Z"
     },
     "coderl-code-generation-rl-2022": {
       "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
@@ -228,16 +194,75 @@
         "doi": null
       },
       "track_guess": [
-        "programmatically_verifiable_outcome_data",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "benchmarks_evaluation_surfaces"
+        "scaling_rlvr_test_time_compute"
       ],
       "reason_to_include": "abc",
       "decision_reason": "abc",
       "search_status": "candidate",
       "review_note": "",
-      "updated_at": "2026-07-10T09:20:39Z"
+      "updated_at": "2026-07-10T15:11:44Z"
+    },
+    "tree-of-thoughts-2023": {
+      "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2305.10601",
+        "arxiv": null,
+        "code": "https://github.com/princeton-nlp/tree-of-thought-llm",
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "reason_to_include": "djfkladjfkla",
+      "decision_reason": "djfkladjfkla",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T15:11:44Z"
+    },
+    "math-dataset-2021": {
+      "title": "Measuring Mathematical Problem Solving With the MATH Dataset",
+      "track_guess": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "updated_at": "2026-07-10T15:11:36Z"
+    },
+    "apps-2021": {
+      "title": "Measuring Coding Challenge Competence With APPS",
+      "track_guess": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "updated_at": "2026-07-10T15:11:36Z"
+    },
+    "minif2f-2022": {
+      "title": "MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics",
+      "track_guess": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "updated_at": "2026-07-10T15:11:36Z"
+    },
+    "leandojo-2023": {
+      "title": "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models",
+      "track_guess": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "updated_at": "2026-07-10T15:11:36Z"
+    },
+    "scaling-llm-test-time-compute-optimally-2024": {
+      "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+      "track_guess": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "updated_at": "2026-07-10T15:11:44Z"
+    },
+    "self-consistency-chain-of-thought-2023": {
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "track_guess": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "updated_at": "2026-07-10T15:11:44Z"
     }
   }
 }

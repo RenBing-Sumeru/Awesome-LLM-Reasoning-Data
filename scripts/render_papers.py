@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import tempfile
 from pathlib import Path
-from urllib.parse import urlencode
 
 from atlas_utils import (
     as_list,
@@ -30,7 +29,6 @@ from atlas_utils import (
 from common import ROOT
 
 PAPERS_DIR = ROOT / "papers"
-ASK_URL = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/"
 
 CATEGORY_GROUPS = [
     {
@@ -231,21 +229,6 @@ def subfield_navigator(track: dict) -> str:
             f"| {subfield.get('name')} | {subfield.get('focus', '')} | {subfield.get('key_risk', '')} |"
         )
     return "\n".join(rows)
-
-
-def ask_track_block(category_id: str, track: dict) -> str:
-    title = track.get("navigator_title") or category_id.replace("_", " ")
-    href = f"{ASK_URL}?{urlencode({'track': category_id, 'mode': 'find_papers'})}"
-    prompts = [
-        f"What should I read first for {title}?",
-        f"Compare the data objects and verifier types in {title}.",
-        f"Generate an audit checklist for {title}.",
-    ]
-    prompt_lines = "\n".join(f"> Try: `{prompt}`" for prompt in prompts)
-    return (
-        f"> 🤖 **Ask about this track:** [Open Ask the Atlas]({href})\n"
-        f"{prompt_lines}"
-    )
 
 
 def grouped_by_subfield(entries_: list[dict], category_id: str) -> list[tuple[str, list[dict]]]:
@@ -539,8 +522,6 @@ def render_category(cat: dict, cards: dict[str, str]) -> str:
         "",
         f"> {cat.get('summary', '')}",
         "",
-        ask_track_block(cid, track),
-        "",
         "## 1. What This Track Studies",
         "",
         cat.get("reader_promise") or cat.get("summary") or "This category groups related post-training reasoning-data work.",
@@ -727,7 +708,6 @@ def render_readme(cards: dict[str, str]) -> str:
         "## Reports",
         "",
         "- [Needs-search report](../reports/needs_search.md)",
-        "- [Quality audit](../reports/five_task_quality_audit.md)",
     ]) + "\n"
 
 

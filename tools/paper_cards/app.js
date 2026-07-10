@@ -198,9 +198,6 @@ function updateFormLockState(valid = currentValid()) {
   ].forEach((control) => {
     control.disabled = locked;
   });
-  els.categoryOptions.querySelectorAll("input[type='checkbox']").forEach((control) => {
-    control.disabled = locked;
-  });
   els.chineseSection.disabled = locked;
   const institutionDisabled = locked || els.noInstitution.checked;
   institutionInputs().forEach((input) => {
@@ -423,11 +420,6 @@ function renderDetail() {
   }
 }
 
-function entryCategoryIds() {
-  const header = state.activeCard?.header_zh || {};
-  return arr(header.category_ids).length ? arr(header.category_ids) : arr(state.activeCard?.entry?.category);
-}
-
 function renderHeaderZh() {
   const header = state.activeCard?.header_zh || {};
   const entry = state.activeCard?.entry || {};
@@ -438,16 +430,15 @@ function renderHeaderZh() {
   els.bestForCh.value = header.best_for_ch || "";
   els.confidenceCh.value = header.confidence_ch || "";
   els.authorsCh.value = header.authors_ch || authors || "";
-  const selected = new Set(entryCategoryIds());
-  const options = state.activeCard?.category_options || [];
-  els.categoryOptions.innerHTML = options.length ? options.map((item) => {
-    const checked = selected.has(item.id) ? "checked" : "";
-    return `<label class="category-option">
-      <input type="checkbox" value="${esc(item.id)}" ${checked}>
-      <span><b>${esc(item.title)}</b><small>${esc(item.summary || item.id)}</small></span>
-    </label>`;
-  }).join("") : "<div class='empty small'>没有读取到项目分类。</div>";
+  renderCategoryReadOnly();
   updateActionAvailability();
+}
+
+function renderCategoryReadOnly() {
+  const categories = state.activeCard?.category_labels || [];
+  els.categoryOptions.innerHTML = categories.length ? categories.map((item) => (
+    `<span class="category-singleton">${esc(item.title)}</span>`
+  )).join("") : "<span class='category-unbound'>未绑定论文任务</span>";
 }
 
 function renderTabs() {
@@ -701,12 +692,6 @@ async function saveCurrentSection() {
   renderDetail();
 }
 
-function selectedCategoryIds() {
-  return Array.from(els.categoryOptions.querySelectorAll("input[type='checkbox']:checked"))
-    .map((input) => input.value)
-    .filter(Boolean);
-}
-
 async function saveHeaderZh() {
   if (!state.activeEntryId) return;
   markButtonDisabled(els.saveHeaderZh);
@@ -720,7 +705,6 @@ async function saveHeaderZh() {
         best_for_ch: els.bestForCh.value,
         confidence_ch: els.confidenceCh.value,
         authors_ch: els.authorsCh.value,
-        category_ids: selectedCategoryIds(),
       },
     },
   });
@@ -924,7 +908,6 @@ function bind() {
     input.addEventListener("input", () => markUpdateButtonDirty(els.saveHeaderZh));
   });
   els.readingPriorityCh.addEventListener("change", () => markUpdateButtonDirty(els.saveHeaderZh));
-  els.categoryOptions.addEventListener("change", () => markUpdateButtonDirty(els.saveHeaderZh));
   els.chineseSection.addEventListener("input", () => markUpdateButtonDirty(els.saveSection));
   institutionInputs().forEach((input) => {
     input.addEventListener("input", () => markUpdateButtonDirty(els.saveInstitutions));

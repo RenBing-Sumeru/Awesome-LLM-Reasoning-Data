@@ -1,6 +1,5 @@
 # Glossary
 
-> 🤖 **Ask the Atlas:** [Ask about these terms](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20key%20glossary%20terms%20for%20post-training%20reasoning%20data%20with%20examples.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 ## post-training
 

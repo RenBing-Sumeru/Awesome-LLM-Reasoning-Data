@@ -2,11 +2,6 @@
 
 > DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each frontier-style report discloses or hides about data.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=frontier_reports_data_disclosure_ledger&mode=find_papers)
-> Try: `What should I read first for 🚀 Frontier Disclosure Ledger?`
-> Try: `Compare the data objects and verifier types in 🚀 Frontier Disclosure Ledger.`
-> Try: `Generate an audit checklist for 🚀 Frontier Disclosure Ledger.`
-
 ## 1. What This Track Studies
 
 Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
@@ -45,7 +40,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 | Work | Year | Links | Data object | Feedback / verifier | Why it matters |
 |---|---:|---|---|---|---|
-| [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](https://arxiv.org/abs/2402.03300) | 2024 | [Paper](https://arxiv.org/abs/2402.03300) · [DOI](https://doi.org/10.48550/arXiv.2402.03300) · [HF](https://huggingface.co/deepseek-ai/deepseek-math-7b-base) · [Paper Card Source](../../paper_cards/sources/deepseekmath-2024) | Math prompt, generated solution, final answer, reward signal, and optional self-consistency samples.; process: corpus filter signal, SFT example, RL prompt; Open mathematical reasoning model training pipeline. | GRPO reward setup and final-answer/math evaluation, with self-consistency as TTC evaluation. | High-impact math RLVR report that ties data scaling, GRPO optimization, and 64-sample self-consistency into one reproducible reading target. |
 
 ## 5. Full Paper List
 
@@ -67,14 +61,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### <a id="rlvr-recipe-reports"></a>🧪 RLVR recipe reports
 
-- 📦 **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](https://arxiv.org/abs/2402.03300)**
-  <sub>2024 · arXiv · 📦 data release · 📈 scaling study · programmatic · mixed · sft · rlvr · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2402.03300) · [DOI](https://doi.org/10.48550/arXiv.2402.03300) · [HF](https://huggingface.co/deepseek-ai/deepseek-math-7b-base) · [Paper Card Source](../../paper_cards/sources/deepseekmath-2024)
-  _Data object:_ Math prompt, generated solution, final answer, reward signal, and optional self-consistency samples.; process: corpus filter signal, SFT example, RL prompt; Open mathematical reasoning model training pipeline.
-  _Feedback / verifier:_ GRPO reward setup and final-answer/math evaluation, with self-consistency as TTC evaluation.
-  _Recipe signal:_ teacher: Math corpus filters, instruction examples, and benchmark answer supervision.; generator: DeepSeekMath-Instruct/RL models generate solutions.
-  _Audit focus:_ Web data filtering may preserve benchmark leakage., GRPO gains can be confused with data-scale gains., Self-consistency improves scores but costs 64 samples.
-  _Why it matters:_ High-impact math RLVR report that ties data scaling, GRPO optimization, and 64-sample self-consistency into one reproducible reading target.
+_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
 
 ### <a id="what-is-disclosed-vs-hidden"></a>🧬 What is disclosed vs hidden
 
@@ -95,7 +82,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ## 8. Related Paper-Card Sources
 
-- [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](../../paper_cards/sources/deepseekmath-2024)
+- No paper-card sources are linked for this category yet.
 
 ## Back to Map
 

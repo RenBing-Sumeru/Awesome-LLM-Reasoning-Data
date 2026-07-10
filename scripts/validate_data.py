@@ -27,6 +27,11 @@ URL_RE = re.compile(r"^https?://[^\s<>]+$")
 DOI_RE = re.compile(r"^(https?://doi\.org/)?10\.\d{4,9}/\S+$", re.I)
 LESSON_RE = re.compile(r"^\d\d_.*\.md$")
 MIN_LESSON_WORDS = 700
+CATEGORY_IDS = {
+    str(item.get("id"))
+    for item in (load_yaml_json(ROOT / "data/categories.yaml").get("paper_categories") or [])
+    if isinstance(item, dict) and item.get("id")
+}
 PUBLIC_SCAN_ROOTS = ["README.md", "README_zh.md", "docs", "papers", "paper_cards", "data", "reports", "scripts", ".github"]
 FORBIDDEN_PUBLIC_PATH_TERMS = [
     ".ds_store",
@@ -125,6 +130,11 @@ def validate_entries(data: list[dict], errors: list[str], warnings: list[str]) -
                     errors.append(f"{where}: invalid {field}={val}")
         if entry.get("status") not in set(ENUMS.get("status", [])):
             errors.append(f"{where}: invalid status={entry.get('status')}")
+        categories = as_list(entry.get("category"))
+        if len(categories) != 1 or categories[0] not in CATEGORY_IDS:
+            errors.append(f"{where}: category must be exactly one taxonomy label")
+        if "prompt_batch_id" in entry and not isinstance(entry.get("prompt_batch_id"), str):
+            errors.append(f"{where}: prompt_batch_id must be a string when present")
         level = curation_level(entry, cards.get(entry.get("id")))
         if level not in CURATION_LEVELS:
             errors.append(f"{where}: invalid curation_level={entry.get('curation_level')}")

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-10T09:19:52Z",
+  "updated_at": "2026-07-10T09:56:09Z",
   "entries": {
     "tinyv-2025": {
       "state": "downloaded",
@@ -43,8 +43,9 @@
       "updated_at": "2026-07-10T07:50:07Z"
     },
     "tree-of-thoughts-2023": {
-      "state": "new",
-      "updated_at": "2026-07-10T07:50:07Z"
+      "state": "reviewed",
+      "updated_at": "2026-07-10T09:56:09Z",
+      "reviewed_at": "2026-07-10T09:56:09Z"
     },
     "coderl-code-generation-rl-2022": {
       "state": "new",

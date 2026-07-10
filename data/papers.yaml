@@ -84,14 +84,7 @@
   - primary-link-checked
   status: verified
   category:
-  - preference_reward_feedback_data
-  - programmatically_verifiable_outcome_data
-  - process_trace_supervision_data
-  - judgment_rubric_domain_expert_data
-  - data_construction_open_release_recipes
-  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - audit_failure_contamination_verifier_attacks
   one_line: Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
   needs:
   - 'needs_metadata: release-internal fields require curator review'
@@ -105,6 +98,7 @@
     confidence: high
     notes: Official primary link pinned in artifacts.
   curation_level: L4_carded
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: agnostics-universal-learning-environment-2026
   title: 'Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment'
   year: 2026
@@ -205,11 +199,7 @@
   - low-resource-languages
   status: verified
   category:
-  - programmatically_verifiable_outcome_data
-  - data_construction_open_release_recipes
-  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
   one_line: Agnostics builds a language-agnostic code RLVR environment where external I/O behavior becomes the verifier across
     programming languages.
   card: null
@@ -227,6 +217,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv, project page, GitHub, Hugging Face model/data links checked for initial import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: featurebench-2026
   title: 'FeatureBench: Benchmarking Agentic Coding for Complex Feature Development'
   year: 2026
@@ -332,10 +323,6 @@
   status: verified
   category:
   - programmatically_verifiable_outcome_data
-  - environment_agent_trajectory_data
-  - benchmarks_evaluation_surfaces
-  - data_construction_open_release_recipes
-  - audit_failure_contamination_verifier_attacks
   one_line: FeatureBench evaluates end-to-end feature development by deriving executable coding tasks and environments from
     repository unit tests.
   card: null
@@ -353,6 +340,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv link and ICLR 2026 acceptance note checked; artifact links still need human review.
+  prompt_batch_id: library-03-programmatic-verifier
 - id: beyondbench-2026
   title: 'BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models'
   year: 2026
@@ -449,9 +437,6 @@
   status: verified
   category:
   - programmatically_verifiable_outcome_data
-  - benchmarks_evaluation_surfaces
-  - audit_failure_contamination_verifier_attacks
-  - data_construction_open_release_recipes
   one_line: BeyondBench generates fresh algorithmic reasoning problems with deterministic verification to reduce static-benchmark
     contamination.
   card: null
@@ -469,6 +454,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv and project/code links checked for initial import; release details need review.
+  prompt_batch_id: library-03-programmatic-verifier
 - id: credit-budgeted-icpc-style-coding-2026
   title: 'Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision'
   year: 2026
@@ -565,9 +551,6 @@
   - icpc
   status: verified
   category:
-  - programmatically_verifiable_outcome_data
-  - environment_agent_trajectory_data
-  - benchmarks_evaluation_surfaces
   - scaling_rlvr_test_time_compute
   one_line: Credit-Budgeted ICPC-Style Coding evaluates coding agents with a programmatic judge and an explicit credit cost
     for tokens, tests, and time.
@@ -586,6 +569,7 @@
     verified_by: curation
     confidence: medium
     notes: Official arXiv link and ICLR 2026 acceptance note checked; artifact links still need review.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: geogrambench-2026
   title: 'GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs'
   year: 2026
@@ -679,8 +663,6 @@
   status: verified
   category:
   - programmatically_verifiable_outcome_data
-  - benchmarks_evaluation_surfaces
-  - judgment_rubric_domain_expert_data
   one_line: GeoGramBench evaluates whether models can reason over geometric information expressed as procedural drawing code.
   card: null
   needs:
@@ -697,6 +679,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv, GitHub, Hugging Face dataset, and ICLR 2026 acceptance note checked.
+  prompt_batch_id: library-03-programmatic-verifier
 - id: scaling-llm-test-time-compute-optimally-2024
   title: Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters
   year: 2024
@@ -795,11 +778,7 @@
   - primary-link-checked
   status: verified
   category:
-  - process_trace_supervision_data
-  - rollout_search_test_time_trace_data
-  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
   one_line: This paper makes test-time compute a budgeted scaling object instead of an informal decoding trick.
   needs:
   - 'needs_review: confirm official venue status and artifact release before treating it as a top-conference item'
@@ -814,6 +793,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: math-dataset-2021
   title: Measuring Mathematical Problem Solving With the MATH Dataset
   year: 2021
@@ -894,7 +874,8 @@
     citation_status: verified
     confidence: high
     notes: Official NeurIPS, arXiv, and repository sources confirm the data size, worked solutions, and evaluation surface.
-  inclusion_reason: Canonical math record linking worked solutions, final-answer verification, and the answer-normalization risks inherited by modern RLVR pipelines.
+  inclusion_reason: Canonical math record linking worked solutions, final-answer verification, and the answer-normalization
+    risks inherited by modern RLVR pipelines.
   related:
   - deepseekmath-2024
   - tinyv-2025
@@ -908,14 +889,14 @@
   status: verified
   category:
   - programmatically_verifiable_outcome_data
-  - data_construction_open_release_recipes
-  - benchmarks_evaluation_surfaces
-  - audit_failure_contamination_verifier_attacks
-  one_line: MATH is the landmark worked-solution benchmark whose final-answer check became a common but audit-sensitive reasoning signal.
+  one_line: MATH is the landmark worked-solution benchmark whose final-answer check became a common but audit-sensitive reasoning
+    signal.
   needs:
   - 'needs_audit: pin the exact answer normalizer whenever MATH is repurposed as a reward source'
-  one_line_summary: MATH pairs competition problems and human solutions with an answer-level outcome surface that later reasoning pipelines reuse.
-  why_it_matters: 'It establishes the central trade-off for math outcome data: inexpensive final-answer supervision is useful only when extraction, equivalence, and contamination are audited.'
+  one_line_summary: MATH pairs competition problems and human solutions with an answer-level outcome surface that later reasoning
+    pipelines reuse.
+  why_it_matters: 'It establishes the central trade-off for math outcome data: inexpensive final-answer supervision is useful
+    only when extraction, equivalence, and contamination are audited.'
   curation_level: L4_carded
   verification:
     link_verified: true
@@ -924,6 +905,7 @@
     verified_by: curation
     confidence: high
     notes: Official NeurIPS, arXiv, and GitHub links checked.
+  prompt_batch_id: library-03-programmatic-verifier
 - id: apps-2021
   title: Measuring Coding Challenge Competence With APPS
   year: 2021
@@ -979,7 +961,8 @@
   data_object:
     prompt_source: Ten thousand natural-language programming problems from introductory to competition-level difficulty.
     trace_author: Reference solutions and test cases collected by the benchmark authors; model programs are evaluated downstream.
-    answer_format: Natural-language specification, starter code where applicable, input/output examples, candidate Python program, and test outcomes.
+    answer_format: Natural-language specification, starter code where applicable, input/output examples, candidate Python
+      program, and test outcomes.
     process_fields:
     - problem difficulty
     - input-output tests
@@ -1012,7 +995,8 @@
     citation_status: verified
     confidence: high
     notes: Official arXiv and GitHub sources confirm the ten-thousand-problem benchmark and test-execution evaluation.
-  inclusion_reason: Landmark code benchmark that makes program execution and test outcomes explicit training and evaluation records.
+  inclusion_reason: Landmark code benchmark that makes program execution and test outcomes explicit training and evaluation
+    records.
   related:
   - coderl-code-generation-rl-2022
   - agnostics-universal-learning-environment-2026
@@ -1027,15 +1011,13 @@
   status: verified
   category:
   - programmatically_verifiable_outcome_data
-  - data_construction_open_release_recipes
-  - training_usage_optimization_objectives
-  - benchmarks_evaluation_surfaces
-  - audit_failure_contamination_verifier_attacks
-  one_line: APPS turns natural-language programming tasks and test execution into a reusable functional-correctness signal for code post-training.
+  one_line: APPS turns natural-language programming tasks and test execution into a reusable functional-correctness signal
+    for code post-training.
   needs:
   - 'needs_audit: record the exact sandbox, test visibility, and test-suite coverage before using APPS outcomes as reward'
   one_line_summary: APPS is the core code-execution benchmark for studying how unit tests become outcome supervision.
-  why_it_matters: 'It makes the verifier contract concrete: generated code earns credit only through a pinned execution environment and test suite.'
+  why_it_matters: 'It makes the verifier contract concrete: generated code earns credit only through a pinned execution environment
+    and test suite.'
   curation_level: L4_carded
   verification:
     link_verified: true
@@ -1044,6 +1026,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv, NeurIPS, GitHub, and Hugging Face links checked.
+  prompt_batch_id: library-03-programmatic-verifier
 - id: minif2f-2022
   title: 'MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics'
   year: 2022
@@ -1088,7 +1071,8 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: Formalized Olympiad, high-school, and undergraduate mathematics statements from AMC, AIME, IMO, and related sources.
+    prompt_source: Formalized Olympiad, high-school, and undergraduate mathematics statements from AMC, AIME, IMO, and related
+      sources.
     trace_author: Human formalizations and prover-generated proof scripts evaluated in each target system.
     answer_format: Formal theorem statement, target proof-assistant language, candidate proof script, and checker verdict.
     process_fields:
@@ -1123,7 +1107,8 @@
     citation_status: verified
     confidence: high
     notes: Official arXiv and ICLR OpenReview sources confirm the benchmark scope and target proof systems.
-  inclusion_reason: 'Canonical formal-proof benchmark showing the strongest outcome contract in this track: a proof assistant accepts or rejects a proof script.'
+  inclusion_reason: 'Canonical formal-proof benchmark showing the strongest outcome contract in this track: a proof assistant
+    accepts or rejects a proof script.'
   related:
   - leandojo-2023
   - tinyv-2025
@@ -1137,13 +1122,12 @@
   status: verified
   category:
   - programmatically_verifiable_outcome_data
-  - benchmarks_evaluation_surfaces
-  - audit_failure_contamination_verifier_attacks
   one_line: miniF2F is the cross-system formal-math benchmark where proof-assistant acceptance is the outcome verifier.
   needs:
   - 'needs_audit: pin the proof-assistant version, imports, and formalization provenance for every reported proof result'
   one_line_summary: miniF2F makes formal theorem statements and proof-checker outcomes a directly auditable evaluation record.
-  why_it_matters: It separates rigorous proof checking from ordinary answer matching while exposing environment-version and formalization risks.
+  why_it_matters: It separates rigorous proof checking from ordinary answer matching while exposing environment-version and
+    formalization risks.
   curation_level: L4_carded
   verification:
     link_verified: true
@@ -1152,6 +1136,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv, OpenReview, and GitHub links checked.
+  prompt_batch_id: library-03-programmatic-verifier
 - id: leandojo-2023
   title: 'LeanDojo: Theorem Proving with Retrieval-Augmented Language Models'
   year: 2023
@@ -1209,7 +1194,8 @@
   data_object:
     prompt_source: Theorems, definitions, and proofs extracted from a pinned mathlib revision.
     trace_author: Human Lean proof authors; models contribute candidate tactics during interaction.
-    answer_format: Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker verdict.
+    answer_format: Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker
+      verdict.
     process_fields:
     - theorem declaration
     - proof state
@@ -1242,8 +1228,10 @@
     - Retrieval can mask memorization unless premise-aware splits are used.
     citation_status: verified
     confidence: high
-    notes: Official NeurIPS and arXiv sources document data extraction, the pinned mathlib revision, novel-premises split, and environment reliability.
-  inclusion_reason: High-quality formal-proof data and environment paper that records state-action proof traces, premise constraints, and kernel-checked terminal outcomes.
+    notes: Official NeurIPS and arXiv sources document data extraction, the pinned mathlib revision, novel-premises split,
+      and environment reliability.
+  inclusion_reason: High-quality formal-proof data and environment paper that records state-action proof traces, premise constraints,
+    and kernel-checked terminal outcomes.
   related:
   - minif2f-2022
   - agnostics-universal-learning-environment-2026
@@ -1257,16 +1245,13 @@
   status: verified
   category:
   - programmatically_verifiable_outcome_data
-  - environment_agent_trajectory_data
-  - data_construction_open_release_recipes
-  - training_usage_optimization_objectives
-  - benchmarks_evaluation_surfaces
-  - audit_failure_contamination_verifier_attacks
   one_line: LeanDojo turns a pinned Lean environment into replayable theorem, proof-state, tactic, and kernel-verdict data.
   needs:
   - 'needs_audit: preserve the exact Lean, mathlib, import, timeout, and environment-wrapper versions'
-  one_line_summary: LeanDojo is the key proof-data card for programmatic interaction, premise-aware splits, and kernel-checked proof outcomes.
-  why_it_matters: 'It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful only under the exact formal environment that checked it.'
+  one_line_summary: LeanDojo is the key proof-data card for programmatic interaction, premise-aware splits, and kernel-checked
+    proof outcomes.
+  why_it_matters: 'It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful
+    only under the exact formal environment that checked it.'
   curation_level: L4_carded
   verification:
     link_verified: true
@@ -1275,6 +1260,7 @@
     verified_by: curation
     confidence: high
     notes: Official NeurIPS, arXiv, project, and GitHub links checked.
+  prompt_batch_id: library-03-programmatic-verifier
 - id: self-consistency-chain-of-thought-2023
   title: Self-Consistency Improves Chain of Thought Reasoning in Language Models
   year: 2023
@@ -1371,10 +1357,7 @@
   - primary-link-checked
   status: verified
   category:
-  - instruction_demonstration_rationale_data
-  - rollout_search_test_time_trace_data
   - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
   one_line: Self-consistency is the clean baseline for repeated-sampling test-time compute in CoT reasoning.
   needs:
   - 'needs_review: record exact k and temperature values if this card is used for budget comparisons'
@@ -1389,6 +1372,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: tree-of-thoughts-2023
   title: 'Tree of Thoughts: Deliberate Problem Solving with Large Language Models'
   year: 2023
@@ -1487,10 +1471,7 @@
   - primary-link-checked
   status: verified
   category:
-  - rollout_search_test_time_trace_data
-  - environment_agent_trajectory_data
   - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
   one_line: Tree of Thoughts turns language reasoning into a search trace with explicit branch and evaluation budgets.
   needs:
   - 'needs_review: record task-specific branch counts before comparing against sampling-only baselines'
@@ -1505,6 +1486,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: coderl-code-generation-rl-2022
   title: 'CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning'
   year: 2022
@@ -1601,10 +1583,7 @@
   - primary-link-checked
   status: verified
   category:
-  - programmatically_verifiable_outcome_data
-  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - benchmarks_evaluation_surfaces
   one_line: CodeRL is an early top-conference bridge between code verifiers, RL rewards, and inference-time critical sampling.
   needs:
   - 'needs_review: identify official code/data links if maintained artifacts are required'
@@ -1620,6 +1599,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: lets-verify-step-by-step-2023
   title: Let's Verify Step by Step
   year: 2023
@@ -1721,11 +1701,7 @@
   - primary-link-checked
   status: verified
   category:
-  - process_trace_supervision_data
-  - preference_reward_feedback_data
-  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - audit_failure_contamination_verifier_attacks
   one_line: This is the core PRM card for step-level verifier data and process-supervision scaling.
   needs:
   - 'needs_review: confirm dataset license and current PRM800K artifact location'
@@ -1740,6 +1716,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: deepseekmath-2024
   title: 'DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models'
   year: 2024
@@ -1846,11 +1823,7 @@
   - primary-link-checked
   status: verified
   category:
-  - programmatically_verifiable_outcome_data
-  - data_construction_open_release_recipes
-  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - frontier_reports_data_disclosure_ledger
   one_line: DeepSeekMath is the compact open-model card linking math data scale, GRPO, RLVR, and self-consistency budget.
   needs:
   - 'needs_review: verify exact released model/data licenses and decontamination notes'
@@ -1866,6 +1839,7 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc
 - id: rest-em-self-training-2024
   title: 'Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models'
   year: 2024
@@ -1999,10 +1973,7 @@
   - primary-link-checked
   status: verified
   category:
-  - data_construction_open_release_recipes
-  - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  - programmatically_verifiable_outcome_data
   one_line: ReST-EM is the data-reuse card for scaling self-training with verifier-filtered generated solutions.
   needs:
   - 'needs_review: record generation counts per round before comparing data scale'
@@ -2017,3 +1988,4 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  prompt_batch_id: library-10-scaling-rlvr-ttc

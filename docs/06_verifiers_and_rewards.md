@@ -1,6 +1,5 @@
 # Verifiers and Rewards
 
-> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20verifiers%20and%20rewards%20for%20post-training%20reasoning%20data%20and%20give%20me%20failure%20modes.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 ## What you will learn
 

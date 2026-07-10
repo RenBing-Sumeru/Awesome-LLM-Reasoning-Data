@@ -12,38 +12,26 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: npm
-          cache-dependency-path: apps/ask-atlas/package-lock.json
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          npm ci --prefix apps/ask-atlas
       - name: Validate data
         run: python scripts/validate_data.py
       - name: Secret scan
         run: python scripts/secret_scan.py
       - name: Check site data
         run: python scripts/render_site.py --check
-      - name: Check Ask backend URL config safety
-        run: |
-          set -euo pipefail
-          python scripts/set_ask_backend_url.py --check
-      - name: Check Ask entrypoints
-        run: python scripts/check_ask_entrypoints.py
-      - name: Check Ask production RAG corpus
-        run: npm --prefix apps/ask-atlas run rag:check
       - name: Check paper pages
         run: python scripts/render_papers.py --check
       - name: Check README generated sections
         run: python scripts/render_readme.py --check
       - name: Check bilingual paper-card sources
         run: python tools/paper_cards/card_tool.py check
-      - name: Test Ask the Atlas backend
-        run: npm --prefix apps/ask-atlas test
+      - name: Verify prompt-batch provenance
+        run: python tools/paper_cards/migrate.py verify-current
+      - name: Test paper-card migration
+        run: PYTHONPATH=. python tests/paper_cards/test_migrate.py
       - name: Coverage report
         run: python scripts/coverage_report.py
       - name: Link check soft

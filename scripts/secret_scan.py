@@ -42,9 +42,7 @@ ALLOWLIST_SUBSTRINGS = [
     "<postgres connection string>",
 ]
 
-ALLOWLIST_PATH_PARTS = [
-    ("apps", "ask-atlas", "test"),
-]
+ALLOWLIST_PATH_PARTS: list[tuple[str, ...]] = []
 
 
 def skip_path(path: Path) -> bool:

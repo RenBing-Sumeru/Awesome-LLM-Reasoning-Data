@@ -2,11 +2,6 @@
 
 > Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=rollout_search_test_time_trace_data&mode=find_papers)
-> Try: `What should I read first for 🔁 Rollout / Search / TTC Trace?`
-> Try: `Compare the data objects and verifier types in 🔁 Rollout / Search / TTC Trace.`
-> Try: `Generate an audit checklist for 🔁 Rollout / Search / TTC Trace.`
-
 ## 1. What This Track Studies
 
 Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
@@ -45,9 +40,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 | Work | Year | Links | Data object | Feedback / verifier | Why it matters |
 |---|---:|---|---|---|---|
-| [Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters](https://arxiv.org/abs/2408.03314) | 2024 | [Paper](https://arxiv.org/abs/2408.03314) · [DOI](https://doi.org/10.48550/arXiv.2408.03314) · [Paper Card Source](../../paper_cards/sources/scaling-llm-test-time-compute-optimally-2024) | Prompt, generated candidate traces, verifier scores, selected answer, and compute budget.; process: prompt difficulty estimate, sample count, verifier reward; Inference-time sampling and verifier-guided search over math-style reasoning tasks. | Dense process-based verifier reward models plus answer-level evaluation. | Exact-match test-time compute scaling paper that separates best-of-N, verifier-guided search, prompt difficulty, and FLOPs-matched scaling attribution. |
-| [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171) | 2023 | [Paper](https://arxiv.org/abs/2203.11171) · [DOI](https://doi.org/10.48550/arXiv.2203.11171) · [Paper Card Source](../../paper_cards/sources/self-consistency-chain-of-thought-2023) | Prompt, sampled reasoning paths, extracted answers, vote distribution, and selected final answer.; process: sample index, chain-of-thought path, answer extraction; Repeated inference sampling over answer-verifiable and judgment-required reasoning tasks. | Answer agreement and final-answer checking act as an implicit verifier. | Top-conference paper that turns repeated sampled reasoning paths into a simple test-time compute scaling primitive. |
-| [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601) | 2023 | [Paper](https://arxiv.org/abs/2305.10601) · [DOI](https://doi.org/10.48550/arXiv.2305.10601) · [Code](https://github.com/princeton-nlp/tree-of-thought-llm) · [Paper Card Source](../../paper_cards/sources/tree-of-thoughts-2023) | Problem, intermediate thought states, branch scores, search actions, and final solution.; process: thought node, branch candidates, state evaluation; Explicit tree search over language-model thought units. | Self-evaluation, task-specific checks, and final outcome scoring. | Top-conference paper that makes search trees, branch budgets, and self-evaluation explicit test-time compute objects. |
 
 ## 5. Full Paper List
 
@@ -57,14 +49,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### <a id="search-trees-mcts"></a>🌳 Search trees / MCTS
 
-- 📈 **[Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)**
-  <sub>2023 · NeurIPS 2023 · 📈 scaling study · 🏗️ construction recipe · judgment required · mixed · test time compute · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2305.10601) · [DOI](https://doi.org/10.48550/arXiv.2305.10601) · [Code](https://github.com/princeton-nlp/tree-of-thought-llm) · [Paper Card Source](../../paper_cards/sources/tree-of-thoughts-2023)
-  _Data object:_ Problem, intermediate thought states, branch scores, search actions, and final solution.; process: thought node, branch candidates, state evaluation; Explicit tree search over language-model thought units.
-  _Feedback / verifier:_ Self-evaluation, task-specific checks, and final outcome scoring.
-  _Recipe signal:_ teacher: Task instructions and final evaluators.; generator: Policy model expands tree nodes into candidate thoughts.
-  _Audit focus:_ Value estimates may be prompt-sensitive., Search budget can dominate model ranking., Small task suites can overfit scaffolds.
-  _Why it matters:_ Top-conference paper that makes search trees, branch budgets, and self-evaluation explicit test-time compute objects.
+_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
 
 ### <a id="rejection-sampling-traces"></a>🔎 Rejection sampling traces
 
@@ -72,25 +57,11 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### <a id="self-consistency-repeated-sampling"></a>🧠 Self-consistency / repeated sampling
 
-- 📈 **[Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)**
-  <sub>2023 · ICLR 2023 · 📈 scaling study · 🏗️ construction recipe · judgment required · mixed · test time compute · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2203.11171) · [DOI](https://doi.org/10.48550/arXiv.2203.11171) · [Paper Card Source](../../paper_cards/sources/self-consistency-chain-of-thought-2023)
-  _Data object:_ Prompt, sampled reasoning paths, extracted answers, vote distribution, and selected final answer.; process: sample index, chain-of-thought path, answer extraction; Repeated inference sampling over answer-verifiable and judgment-required reasoning tasks.
-  _Feedback / verifier:_ Answer agreement and final-answer checking act as an implicit verifier.
-  _Recipe signal:_ teacher: Few-shot chain-of-thought exemplars and benchmark answer keys.; generator: Policy model generates diverse traces at inference time.
-  _Audit focus:_ More samples can hide answer-extraction bias., Majority vote can amplify a common wrong shortcut., Sampling budget may be incomparable across papers.
-  _Why it matters:_ Top-conference paper that turns repeated sampled reasoning paths into a simple test-time compute scaling primitive.
+_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
 
 ### <a id="test-time-compute-logs"></a>⏱️ Test-time compute logs
 
-- 📈 **[Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters](https://arxiv.org/abs/2408.03314)**
-  <sub>2024 · arXiv · 📈 scaling study · 🧪 verifier reward · mixed · judgment required · test time compute · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2408.03314) · [DOI](https://doi.org/10.48550/arXiv.2408.03314) · [Paper Card Source](../../paper_cards/sources/scaling-llm-test-time-compute-optimally-2024)
-  _Data object:_ Prompt, generated candidate traces, verifier scores, selected answer, and compute budget.; process: prompt difficulty estimate, sample count, verifier reward; Inference-time sampling and verifier-guided search over math-style reasoning tasks.
-  _Feedback / verifier:_ Dense process-based verifier reward models plus answer-level evaluation.
-  _Recipe signal:_ teacher: Benchmark answers and trained verifier reward models provide selection signal.; generator: Policy model generates multiple candidate traces under a budget.
-  _Audit focus:_ Verifier quality can dominate the measured scaling curve., Difficulty estimation can leak benchmark-specific assumptions., More samples can be mistaken for more unique data.
-  _Why it matters:_ Exact-match test-time compute scaling paper that separates best-of-N, verifier-guided search, prompt difficulty, and FLOPs-matched scaling attribution.
+_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
 
 ### <a id="long2short-distill-from-search"></a>✂️ Long2short / distill-from-search
 
@@ -111,9 +82,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ## 8. Related Paper-Card Sources
 
-- [Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters](../../paper_cards/sources/scaling-llm-test-time-compute-optimally-2024)
-- [Self-Consistency Improves Chain of Thought Reasoning in Language Models](../../paper_cards/sources/self-consistency-chain-of-thought-2023)
-- [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](../../paper_cards/sources/tree-of-thoughts-2023)
+- No paper-card sources are linked for this category yet.
 
 ## Back to Map
 

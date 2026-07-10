@@ -16,6 +16,19 @@ class PaperCardServerTest(unittest.TestCase):
         (self.root / "data").mkdir()
         (self.root / "paper_cards" / "sources").mkdir(parents=True)
         (self.root / "paper_cards" / "packages").mkdir(parents=True)
+        (self.root / "data" / "categories.yaml").write_text(
+            """
+paper_categories:
+- id: programmatically_verifiable_outcome_data
+  title: Programmatic Verification
+  summary: Machine-checkable outcomes.
+- id: benchmarks_evaluation_surfaces
+  title: Benchmarks
+  summary: Evaluation surfaces.
+""".strip()
+            + "\n",
+            encoding="utf-8",
+        )
         (self.root / "data" / "papers.yaml").write_text(
             """
 - id: sample-paper
@@ -25,6 +38,8 @@ class PaperCardServerTest(unittest.TestCase):
   authors: []
   status: verified
   curation_level: L3_summary_ready
+  category:
+  - programmatically_verifiable_outcome_data
   artifacts:
     paper: https://arxiv.org/abs/2501.00001
     code: null
@@ -182,6 +197,41 @@ class PaperCardServerTest(unittest.TestCase):
         path = self.root / "paper_cards" / "header_zh.json"
         self.assertTrue(path.exists())
 
+    def test_save_header_zh_payload_rejects_multiple_categories(self) -> None:
+        with self.assertRaisesRegex(ValueError, "只能保留一个"):
+            server.save_header_zh_payload(
+                "sample-paper",
+                {
+                    "one_line_summary_ch": "中文一句话。",
+                    "reading_priority_ch": "必读",
+                    "paper_type_ch": "验证器论文",
+                    "best_for_ch": "适合 RLVR 复盘",
+                    "confidence_ch": "高",
+                    "authors_ch": "张三，李四",
+                    "category_ids": [
+                        "programmatically_verifiable_outcome_data",
+                        "scaling_rlvr_test_time_compute",
+                    ],
+                },
+                root=self.root,
+            )
+
+    def test_save_header_zh_payload_inherits_entry_category_when_the_review_form_omits_it(self) -> None:
+        payload = server.save_header_zh_payload(
+            "sample-paper",
+            {
+                "one_line_summary_ch": "中文一句话。",
+                "reading_priority_ch": "必读",
+                "paper_type_ch": "验证器论文",
+                "best_for_ch": "适合 RLVR 复盘",
+                "confidence_ch": "高",
+                "authors_ch": "张三，李四",
+            },
+            root=self.root,
+        )
+
+        self.assertEqual(payload["header_zh"]["category_ids"], ["programmatically_verifiable_outcome_data"])
+
     def test_mark_downloaded_payload_marks_multiple_entries(self) -> None:
         self.make_review_ready()
         server.review_payload("sample-paper", root=self.root)
@@ -224,22 +274,11 @@ class PaperCardServerTest(unittest.TestCase):
         self.assertIn("# 论文卡片：Sample Paper", payload["ch"])
         self.assertNotIn("Ask the Atlas", payload["ch"])
 
-    def test_card_payload_returns_header_zh_and_category_options(self) -> None:
-        (self.root / "data" / "categories.yaml").write_text(
-            """
-paper_categories:
-- id: programmatically_verifiable_outcome_data
-  title: Programmatically Verifiable Outcome Data
-  summary: Math answers and verifier robustness.
-""".strip()
-            + "\n",
-            encoding="utf-8",
-        )
-
+    def test_card_payload_returns_header_zh_and_read_only_category_label(self) -> None:
         payload = server.card_payload("sample-paper", root=self.root)
 
         self.assertIn("header_zh", payload)
-        self.assertEqual(payload["category_options"][0]["id"], "programmatically_verifiable_outcome_data")
+        self.assertEqual(payload["category_labels"][0]["id"], "programmatically_verifiable_outcome_data")
 
     def test_package_payload_returns_zip_name(self) -> None:
         self.make_review_ready()
@@ -278,6 +317,21 @@ paper_categories:
             server.save_search_queue_item(
                 "candidate-paper",
                 {"title": "Candidate Paper", "search_status": "not-a-status"},
+                root=self.root,
+            )
+
+    def test_save_search_queue_item_rejects_multiple_category_guesses(self) -> None:
+        with self.assertRaisesRegex(ValueError, "只能保留一个"):
+            server.save_search_queue_item(
+                "candidate-paper",
+                {
+                    "title": "Candidate Paper",
+                    "track_guess": [
+                        "programmatically_verifiable_outcome_data",
+                        "scaling_rlvr_test_time_compute",
+                    ],
+                    "search_status": "candidate",
+                },
                 root=self.root,
             )
 

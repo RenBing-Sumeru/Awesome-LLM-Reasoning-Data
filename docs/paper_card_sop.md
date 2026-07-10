@@ -12,7 +12,6 @@ This project uses bilingual 9-section paper cards.
 - Full cards are never manually assembled.
 - Python is the only mechanism that assembles previews and packages.
 - The web editor edits only Chinese `_ch.md` files.
-- Ask the Atlas links are generated navigation links and do not participate in review.
 
 ## Chinese Header Fields
 

@@ -1,5 +1,0 @@
-.env
-.env*.local
-.vercel
-storage/
-private/primer/

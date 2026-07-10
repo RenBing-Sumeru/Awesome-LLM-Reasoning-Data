@@ -16,6 +16,16 @@ class CardToolTest(unittest.TestCase):
         (self.root / "data").mkdir()
         (self.root / "paper_cards" / "sources").mkdir(parents=True)
         (self.root / "paper_cards" / "packages").mkdir(parents=True)
+        (self.root / "data" / "categories.yaml").write_text(
+            """
+paper_categories:
+- id: programmatically_verifiable_outcome_data
+  title: Programmatic Verification
+  summary: Machine-checkable outcomes.
+""".strip()
+            + "\n",
+            encoding="utf-8",
+        )
         (self.root / "data" / "papers.yaml").write_text(
             """
 - id: sample-paper
@@ -124,7 +134,7 @@ class CardToolTest(unittest.TestCase):
         self.assertIn("**Links:** [Paper](https://arxiv.org/abs/2501.00001)", english)
         self.assertIn("## 1. Problem: What question is this paper trying to answer?", english)
         self.assertIn("English 01_problem", english)
-        self.assertIn("Ask the Atlas", english)
+        self.assertNotIn("Ask the Atlas", english)
         self.assertIn("# 论文卡片：Sample Paper", chinese)
         self.assertIn("## 1. 问题：这篇论文想回答什么问题？", chinese)
         self.assertIn("中文 01_problem", chinese)
@@ -240,7 +250,7 @@ class CardToolTest(unittest.TestCase):
         )
         entry = card_tool.load_entries(root=self.root)["sample-paper"]
 
-        chinese = card_tool.assemble_card(entry, "ch", root=self.root, include_ask=False)
+        chinese = card_tool.assemble_card(entry, "ch", root=self.root)
 
         self.assertIn("> **机构：** MIT · Stanford · UW · 等多个机构", chinese)
         self.assertNotIn("Ask the Atlas", chinese)
@@ -256,7 +266,7 @@ class CardToolTest(unittest.TestCase):
         )
         entry = card_tool.load_entries(root=self.root)["sample-paper"]
 
-        chinese = card_tool.assemble_card(entry, "ch", root=self.root, include_ask=False)
+        chinese = card_tool.assemble_card(entry, "ch", root=self.root)
 
         self.assertIn("> **机构：** 没有机构", chinese)
 
@@ -287,7 +297,7 @@ paper_categories:
         )
         entry = card_tool.load_entries(root=self.root)["sample-paper"]
 
-        chinese = card_tool.assemble_card(entry, "ch", root=self.root, include_ask=False)
+        chinese = card_tool.assemble_card(entry, "ch", root=self.root)
 
         self.assertIn("> **一句话评价：** 中文一句话评价。", chinese)
         self.assertIn("> **阅读优先级：** 必读", chinese)
@@ -313,6 +323,34 @@ paper_categories:
 
         self.assertEqual(options[0]["id"], "programmatically_verifiable_outcome_data")
         self.assertEqual(options[0]["title"], "Programmatically Verifiable Outcome Data")
+
+    def test_assembled_cards_do_not_include_removed_assistant_links(self) -> None:
+        self.write_complete_sections()
+        entry = card_tool.load_entries(root=self.root)["sample-paper"]
+
+        card = card_tool.assemble_card(entry, "ch", root=self.root)
+
+        self.assertNotIn("Ask the Atlas", card)
+        self.assertNotIn("/ask/", card)
+
+    def test_clean_category_ids_accepts_any_known_taxonomy_category(self) -> None:
+        (self.root / "data" / "categories.yaml").write_text(
+            """
+paper_categories:
+- id: benchmarks_evaluation_surfaces
+  title: Benchmarks
+  summary: Evaluation surfaces.
+""".strip()
+            + "\n",
+            encoding="utf-8",
+        )
+
+        category_ids = card_tool.clean_category_ids(
+            ["benchmarks_evaluation_surfaces"],
+            root=self.root,
+        )
+
+        self.assertEqual(category_ids, ["benchmarks_evaluation_surfaces"])
 
     def test_header_zh_record_defaults_reading_priority(self) -> None:
         record = card_tool.header_zh_record("sample-paper", root=self.root)

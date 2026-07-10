@@ -2,11 +2,6 @@
 
 > Data scaling, data reuse, RLVR optimization, verifier scaling, pass@k, sampling budgets, test-time compute, and scaling attribution.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=scaling_rlvr_test_time_compute&mode=find_papers)
-> Try: `What should I read first for 📈 Scaling / RLVR / TTC?`
-> Try: `Compare the data objects and verifier types in 📈 Scaling / RLVR / TTC.`
-> Try: `Generate an audit checklist for 📈 Scaling / RLVR / TTC.`
-
 ## 1. What This Track Studies
 
 Use this track to interpret claims about how much data, verifier strength, RL, and inference budget contribute to reasoning gains.

@@ -9,7 +9,7 @@
     },
     {
       "path": "README.md",
-      "bytes": 92206,
+      "bytes": 96125,
       "urls": [
         "https://www.tsinghua.edu.cn/en/",
         "https://english.pku.edu.cn/",
@@ -19,20 +19,27 @@
         "https://arxiv.org/abs/2606.02113",
         "https://img.shields.io/badge/site-searchable%20atlas-0f766e",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/",
-        "https://img.shields.io/badge/Ask-launch%20pending-7c3aed",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/",
-        "https://img.shields.io/badge/entries-6-2563eb",
-        "https://img.shields.io/badge/verified-1-0f766e",
-        "https://img.shields.io/badge/paper--card%20sources-6-7c3aed",
-        "https://img.shields.io/badge/L5%20audit--ready-0-ea580c",
+        "https://img.shields.io/badge/entries-17-2563eb",
+        "https://img.shields.io/badge/verified-17-0f766e",
+        "https://img.shields.io/badge/paper--card%20sources-17-7c3aed",
         "https://img.shields.io/badge/license-MIT-green.svg",
         "https://arxiv.org/abs/2606.02113",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
+        "https://arxiv.org/abs/2103.03874",
+        "https://arxiv.org/abs/2105.09938",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2109.00110",
+        "https://arxiv.org/abs/2509.24210",
+        "https://arxiv.org/abs/2602.10975",
+        "https://arxiv.org/abs/2505.17653",
+        "https://arxiv.org/abs/2312.06585",
+        "https://arxiv.org/abs/2402.03300",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2207.01780",
+        "https://arxiv.org/abs/2604.10182",
+        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2203.11171",
+        "https://arxiv.org/abs/2508.04865",
         "https://arxiv.org/abs/2505.14625",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
@@ -55,7 +62,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "bytes": 3975,
+      "bytes": 4083,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -86,15 +93,25 @@
     },
     {
       "path": "README_zh.md",
-      "bytes": 62558,
+      "bytes": 66823,
       "urls": [
         "https://arxiv.org/abs/2606.02113",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
+        "https://arxiv.org/abs/2103.03874",
+        "https://arxiv.org/abs/2105.09938",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2109.00110",
+        "https://arxiv.org/abs/2509.24210",
+        "https://arxiv.org/abs/2602.10975",
+        "https://arxiv.org/abs/2505.17653",
+        "https://arxiv.org/abs/2312.06585",
+        "https://arxiv.org/abs/2402.03300",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2207.01780",
+        "https://arxiv.org/abs/2604.10182",
+        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2203.11171",
+        "https://arxiv.org/abs/2508.04865",
         "https://arxiv.org/abs/2505.14625",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
@@ -117,8 +134,10 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2040,
-      "urls": [],
+      "bytes": 3731,
+      "urls": [
+        "http://127.0.0.1:8770/`."
+      ],
       "arxiv_ids": [],
       "headings": [
         "# Local Agent Rules",
@@ -128,12 +147,474 @@
     },
     {
       "path": "paper_cards/README.md",
-      "bytes": 908,
+      "bytes": 3357,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
-        "# Paper Cards"
+        "# Paper Cards",
+        "## Local Record Migration",
+        "# 1. Make an immutable archive and remove only its local card/review records.",
+        "# 2. Update the repository version. Run the version-specific adjustment script, if supplied.",
+        "# 3. Restore the archive exactly, then validate the archive and local category batches.",
+        "# 4. Regenerate derived state and open Review."
       ]
+    },
+    {
+      "path": "paper_cards/generated/beyondbench-2026_zh_extra_fields.md",
+      "bytes": 1368,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": [
+        "# 备注中文额外修改字段：BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
+        "## 中文字段",
+        "## 当前英文备注字段"
+      ]
+    },
+    {
+      "path": "paper_cards/generated/credit-budgeted-icpc-style-coding-2026_human_annotation.md",
+      "bytes": 350,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": [
+        "# 人工标注文本：Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision"
+      ]
+    },
+    {
+      "path": "paper_cards/generated/beyondbench-2026_human_annotation.md",
+      "bytes": 295,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": [
+        "# 人工标注文本：BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models"
+      ]
+    },
+    {
+      "path": "paper_cards/generated/tree-of-thoughts-2023_zh_extra_fields.md",
+      "bytes": 1355,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": [
+        "# 备注中文额外修改字段：Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+        "## 中文字段",
+        "## 当前英文备注字段"
+      ]
+    },
+    {
+      "path": "paper_cards/generated/tree-of-thoughts-2023_human_annotation.md",
+      "bytes": 296,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": [
+        "# 人工标注文本：Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
+      ]
+    },
+    {
+      "path": "paper_cards/generated/credit-budgeted-icpc-style-coding-2026_zh_extra_fields.md",
+      "bytes": 1304,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": [
+        "# 备注中文额外修改字段：Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
+        "## 中文字段",
+        "## 当前英文备注字段"
+      ]
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/04_evidence.md",
+      "bytes": 353,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/05_novelty.md",
+      "bytes": 236,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/03_method_ch.md",
+      "bytes": 376,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/08_reading_notes.md",
+      "bytes": 220,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/04_evidence_ch.md",
+      "bytes": 341,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/02_core_idea.md",
+      "bytes": 289,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/06_limitations.md",
+      "bytes": 308,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/06_limitations_ch.md",
+      "bytes": 263,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/09_citation.md",
+      "bytes": 231,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/02_core_idea_ch.md",
+      "bytes": 250,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/07_usefulness.md",
+      "bytes": 233,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/08_reading_notes_ch.md",
+      "bytes": 197,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/07_usefulness_ch.md",
+      "bytes": 181,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/05_novelty_ch.md",
+      "bytes": 217,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/01_problem_ch.md",
+      "bytes": 255,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/01_problem.md",
+      "bytes": 298,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/09_citation_ch.md",
+      "bytes": 231,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/leandojo-2023/03_method.md",
+      "bytes": 432,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/04_evidence.md",
+      "bytes": 487,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/05_novelty.md",
+      "bytes": 772,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/03_method_ch.md",
+      "bytes": 427,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/08_reading_notes.md",
+      "bytes": 201,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/04_evidence_ch.md",
+      "bytes": 311,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/02_core_idea.md",
+      "bytes": 656,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/06_limitations.md",
+      "bytes": 433,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/06_limitations_ch.md",
+      "bytes": 310,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/09_citation.md",
+      "bytes": 301,
+      "urls": [],
+      "arxiv_ids": [
+        "2305.10601"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/02_core_idea_ch.md",
+      "bytes": 383,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/07_usefulness.md",
+      "bytes": 517,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/08_reading_notes_ch.md",
+      "bytes": 208,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/07_usefulness_ch.md",
+      "bytes": 313,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/05_novelty_ch.md",
+      "bytes": 362,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/01_problem_ch.md",
+      "bytes": 413,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/01_problem.md",
+      "bytes": 1140,
+      "urls": [
+        "https://arxiv.org/abs/2305.10601"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/09_citation_ch.md",
+      "bytes": 290,
+      "urls": [],
+      "arxiv_ids": [
+        "2305.10601"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/tree-of-thoughts-2023/03_method.md",
+      "bytes": 838,
+      "urls": [
+        "https://arxiv.org/abs/2305.10601;",
+        "https://doi.org/10.48550/arXiv.2305.10601;",
+        "https://github.com/princeton-nlp/tree-of-thought-llm;"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/04_evidence.md",
+      "bytes": 487,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/05_novelty.md",
+      "bytes": 768,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/03_method_ch.md",
+      "bytes": 389,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/08_reading_notes.md",
+      "bytes": 187,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/04_evidence_ch.md",
+      "bytes": 356,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/02_core_idea.md",
+      "bytes": 625,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/06_limitations.md",
+      "bytes": 445,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/06_limitations_ch.md",
+      "bytes": 342,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/09_citation.md",
+      "bytes": 315,
+      "urls": [],
+      "arxiv_ids": [
+        "2203.11171"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/02_core_idea_ch.md",
+      "bytes": 383,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/07_usefulness.md",
+      "bytes": 501,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/08_reading_notes_ch.md",
+      "bytes": 190,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/07_usefulness_ch.md",
+      "bytes": 294,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/05_novelty_ch.md",
+      "bytes": 372,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/01_problem_ch.md",
+      "bytes": 419,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/01_problem.md",
+      "bytes": 1128,
+      "urls": [
+        "https://arxiv.org/abs/2203.11171"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/09_citation_ch.md",
+      "bytes": 304,
+      "urls": [],
+      "arxiv_ids": [
+        "2203.11171"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/03_method.md",
+      "bytes": 787,
+      "urls": [
+        "https://arxiv.org/abs/2203.11171;",
+        "https://doi.org/10.48550/arXiv.2203.11171;"
+      ],
+      "arxiv_ids": [],
+      "headings": []
     },
     {
       "path": "paper_cards/sources/featurebench-2026/04_evidence.md",
@@ -262,6 +743,411 @@
       "path": "paper_cards/sources/featurebench-2026/03_method.md",
       "bytes": 372,
       "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/04_evidence.md",
+      "bytes": 506,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/05_novelty.md",
+      "bytes": 800,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/03_method_ch.md",
+      "bytes": 380,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/08_reading_notes.md",
+      "bytes": 173,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/04_evidence_ch.md",
+      "bytes": 263,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/02_core_idea.md",
+      "bytes": 645,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/06_limitations.md",
+      "bytes": 487,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/06_limitations_ch.md",
+      "bytes": 302,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/09_citation.md",
+      "bytes": 330,
+      "urls": [],
+      "arxiv_ids": [
+        "2207.01780"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/02_core_idea_ch.md",
+      "bytes": 378,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/07_usefulness.md",
+      "bytes": 510,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/08_reading_notes_ch.md",
+      "bytes": 198,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/07_usefulness_ch.md",
+      "bytes": 356,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/05_novelty_ch.md",
+      "bytes": 321,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/01_problem_ch.md",
+      "bytes": 416,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/01_problem.md",
+      "bytes": 1114,
+      "urls": [
+        "https://arxiv.org/abs/2207.01780"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/09_citation_ch.md",
+      "bytes": 319,
+      "urls": [],
+      "arxiv_ids": [
+        "2207.01780"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/coderl-code-generation-rl-2022/03_method.md",
+      "bytes": 806,
+      "urls": [
+        "https://arxiv.org/abs/2207.01780;",
+        "https://doi.org/10.48550/arXiv.2207.01780;"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/04_evidence.md",
+      "bytes": 523,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/05_novelty.md",
+      "bytes": 839,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/03_method_ch.md",
+      "bytes": 374,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/08_reading_notes.md",
+      "bytes": 192,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/04_evidence_ch.md",
+      "bytes": 282,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/02_core_idea.md",
+      "bytes": 605,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/06_limitations.md",
+      "bytes": 489,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/06_limitations_ch.md",
+      "bytes": 300,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/09_citation.md",
+      "bytes": 256,
+      "urls": [],
+      "arxiv_ids": [
+        "2305.20050"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/02_core_idea_ch.md",
+      "bytes": 338,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/07_usefulness.md",
+      "bytes": 508,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/08_reading_notes_ch.md",
+      "bytes": 221,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/07_usefulness_ch.md",
+      "bytes": 313,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/05_novelty_ch.md",
+      "bytes": 286,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/01_problem_ch.md",
+      "bytes": 377,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/01_problem.md",
+      "bytes": 1098,
+      "urls": [
+        "https://arxiv.org/abs/2305.20050"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/09_citation_ch.md",
+      "bytes": 238,
+      "urls": [],
+      "arxiv_ids": [
+        "2305.20050"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/lets-verify-step-by-step-2023/03_method.md",
+      "bytes": 788,
+      "urls": [
+        "https://arxiv.org/abs/2305.20050;",
+        "https://doi.org/10.48550/arXiv.2305.20050;"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/04_evidence.md",
+      "bytes": 493,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/05_novelty.md",
+      "bytes": 769,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/03_method_ch.md",
+      "bytes": 391,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/08_reading_notes.md",
+      "bytes": 175,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/04_evidence_ch.md",
+      "bytes": 323,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/02_core_idea.md",
+      "bytes": 621,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/06_limitations.md",
+      "bytes": 448,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/06_limitations_ch.md",
+      "bytes": 294,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/09_citation.md",
+      "bytes": 313,
+      "urls": [],
+      "arxiv_ids": [
+        "2312.06585"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/02_core_idea_ch.md",
+      "bytes": 378,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/07_usefulness.md",
+      "bytes": 525,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/08_reading_notes_ch.md",
+      "bytes": 171,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/07_usefulness_ch.md",
+      "bytes": 363,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/05_novelty_ch.md",
+      "bytes": 316,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/01_problem_ch.md",
+      "bytes": 389,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/01_problem.md",
+      "bytes": 1125,
+      "urls": [
+        "https://arxiv.org/abs/2312.06585"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/09_citation_ch.md",
+      "bytes": 302,
+      "urls": [],
+      "arxiv_ids": [
+        "2312.06585"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/rest-em-self-training-2024/03_method.md",
+      "bytes": 780,
+      "urls": [
+        "https://arxiv.org/abs/2312.06585;",
+        "https://doi.org/10.48550/arXiv.2312.06585;"
+      ],
       "arxiv_ids": [],
       "headings": []
     },
@@ -526,6 +1412,403 @@
       "headings": []
     },
     {
+      "path": "paper_cards/sources/math-dataset-2021/04_evidence.md",
+      "bytes": 312,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/05_novelty.md",
+      "bytes": 323,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/03_method_ch.md",
+      "bytes": 317,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/08_reading_notes.md",
+      "bytes": 224,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/04_evidence_ch.md",
+      "bytes": 289,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/02_core_idea.md",
+      "bytes": 260,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/06_limitations.md",
+      "bytes": 278,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/06_limitations_ch.md",
+      "bytes": 231,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/09_citation.md",
+      "bytes": 229,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/02_core_idea_ch.md",
+      "bytes": 192,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/07_usefulness.md",
+      "bytes": 213,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/08_reading_notes_ch.md",
+      "bytes": 179,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/07_usefulness_ch.md",
+      "bytes": 191,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/05_novelty_ch.md",
+      "bytes": 282,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/01_problem_ch.md",
+      "bytes": 334,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/01_problem.md",
+      "bytes": 447,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/09_citation_ch.md",
+      "bytes": 229,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/math-dataset-2021/03_method.md",
+      "bytes": 400,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/04_evidence.md",
+      "bytes": 545,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/05_novelty.md",
+      "bytes": 856,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/03_method_ch.md",
+      "bytes": 517,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/08_reading_notes.md",
+      "bytes": 233,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/04_evidence_ch.md",
+      "bytes": 429,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/02_core_idea.md",
+      "bytes": 686,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/06_limitations.md",
+      "bytes": 475,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/06_limitations_ch.md",
+      "bytes": 399,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/09_citation.md",
+      "bytes": 337,
+      "urls": [],
+      "arxiv_ids": [
+        "2408.03314"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/02_core_idea_ch.md",
+      "bytes": 505,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/07_usefulness.md",
+      "bytes": 507,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/08_reading_notes_ch.md",
+      "bytes": 228,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/07_usefulness_ch.md",
+      "bytes": 355,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/05_novelty_ch.md",
+      "bytes": 391,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/01_problem_ch.md",
+      "bytes": 580,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/01_problem.md",
+      "bytes": 1171,
+      "urls": [
+        "https://arxiv.org/abs/2408.03314"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/09_citation_ch.md",
+      "bytes": 319,
+      "urls": [],
+      "arxiv_ids": [
+        "2408.03314"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/03_method.md",
+      "bytes": 828,
+      "urls": [
+        "https://arxiv.org/abs/2408.03314;",
+        "https://doi.org/10.48550/arXiv.2408.03314;"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/04_evidence.md",
+      "bytes": 523,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/05_novelty.md",
+      "bytes": 851,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/03_method_ch.md",
+      "bytes": 381,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/08_reading_notes.md",
+      "bytes": 211,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/04_evidence_ch.md",
+      "bytes": 308,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/02_core_idea.md",
+      "bytes": 702,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/06_limitations.md",
+      "bytes": 483,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/06_limitations_ch.md",
+      "bytes": 297,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/09_citation.md",
+      "bytes": 301,
+      "urls": [],
+      "arxiv_ids": [
+        "2402.03300"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/02_core_idea_ch.md",
+      "bytes": 397,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/07_usefulness.md",
+      "bytes": 511,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/08_reading_notes_ch.md",
+      "bytes": 230,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/07_usefulness_ch.md",
+      "bytes": 323,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/05_novelty_ch.md",
+      "bytes": 303,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/01_problem_ch.md",
+      "bytes": 419,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/01_problem.md",
+      "bytes": 1181,
+      "urls": [
+        "https://arxiv.org/abs/2402.03300"
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/09_citation_ch.md",
+      "bytes": 283,
+      "urls": [],
+      "arxiv_ids": [
+        "2402.03300"
+      ],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/deepseekmath-2024/03_method.md",
+      "bytes": 927,
+      "urls": [
+        "https://arxiv.org/abs/2402.03300;",
+        "https://doi.org/10.48550/arXiv.2402.03300;",
+        "https://huggingface.co/deepseek-ai/deepseek-math-7b-base."
+      ],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
       "path": "paper_cards/sources/tinyv-2025/04_evidence.md",
       "bytes": 500,
       "urls": [],
@@ -786,6 +2069,132 @@
       "headings": []
     },
     {
+      "path": "paper_cards/sources/apps-2021/04_evidence.md",
+      "bytes": 241,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/05_novelty.md",
+      "bytes": 216,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/03_method_ch.md",
+      "bytes": 317,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/08_reading_notes.md",
+      "bytes": 226,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/04_evidence_ch.md",
+      "bytes": 208,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/02_core_idea.md",
+      "bytes": 221,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/06_limitations.md",
+      "bytes": 245,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/06_limitations_ch.md",
+      "bytes": 223,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/09_citation.md",
+      "bytes": 216,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/02_core_idea_ch.md",
+      "bytes": 172,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/07_usefulness.md",
+      "bytes": 212,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/08_reading_notes_ch.md",
+      "bytes": 211,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/07_usefulness_ch.md",
+      "bytes": 194,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/05_novelty_ch.md",
+      "bytes": 167,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/01_problem_ch.md",
+      "bytes": 241,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/01_problem.md",
+      "bytes": 257,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/09_citation_ch.md",
+      "bytes": 216,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/apps-2021/03_method.md",
+      "bytes": 384,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
       "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/04_evidence.md",
       "bytes": 296,
       "urls": [],
@@ -916,8 +2325,134 @@
       "headings": []
     },
     {
+      "path": "paper_cards/sources/minif2f-2022/04_evidence.md",
+      "bytes": 234,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/05_novelty.md",
+      "bytes": 220,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/03_method_ch.md",
+      "bytes": 332,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/08_reading_notes.md",
+      "bytes": 216,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/04_evidence_ch.md",
+      "bytes": 184,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/02_core_idea.md",
+      "bytes": 229,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/06_limitations.md",
+      "bytes": 266,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/06_limitations_ch.md",
+      "bytes": 228,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/09_citation.md",
+      "bytes": 243,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/02_core_idea_ch.md",
+      "bytes": 180,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/07_usefulness.md",
+      "bytes": 220,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/08_reading_notes_ch.md",
+      "bytes": 178,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/07_usefulness_ch.md",
+      "bytes": 204,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/05_novelty_ch.md",
+      "bytes": 175,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/01_problem_ch.md",
+      "bytes": 174,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/01_problem.md",
+      "bytes": 231,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/09_citation_ch.md",
+      "bytes": 243,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
+      "path": "paper_cards/sources/minif2f-2022/03_method.md",
+      "bytes": 377,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": []
+    },
+    {
       "path": "papers/README.md",
-      "bytes": 32801,
+      "bytes": 32745,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -948,10 +2483,8 @@
     },
     {
       "path": "papers/00_background_foundations/00_foundations_and_primers.md",
-      "bytes": 5885,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=foundations_and_primers&mode=find_papers"
-      ],
+      "bytes": 5498,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🧭 Foundations and Primers",
@@ -970,16 +2503,8 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md",
-      "bytes": 7883,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=process_trace_supervision_data&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV"
-      ],
+      "bytes": 5649,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🪜 Process and Trace Supervision Data",
@@ -998,10 +2523,8 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md",
-      "bytes": 5576,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=rollout_search_test_time_trace_data&mode=find_papers"
-      ],
+      "bytes": 5156,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🔁 Rollout, Search, and Test-Time Trace Data",
@@ -1020,30 +2543,8 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md",
-      "bytes": 14927,
+      "bytes": 21630,
       "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=programmatically_verifiable_outcome_data&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2508.04865",
-        "https://arxiv.org/abs/2508.04865",
-        "https://doi.org/10.48550/arXiv.2508.04865",
-        "https://github.com/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/nuprl/agnostics",
-        "https://agnostics.abgru.me/",
-        "https://arxiv.org/abs/2509.24210",
-        "https://arxiv.org/abs/2509.24210",
-        "https://doi.org/10.48550/arXiv.2509.24210",
-        "https://github.com/ctrl-gaurav/BeyondBench",
-        "https://ctrl-gaurav.github.io/BeyondBench/",
-        "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2604.10182",
-        "https://doi.org/10.48550/arXiv.2604.10182",
         "https://arxiv.org/abs/2602.10975",
         "https://arxiv.org/abs/2602.10975",
         "https://doi.org/10.48550/arXiv.2602.10975",
@@ -1051,7 +2552,49 @@
         "https://arxiv.org/abs/2505.17653",
         "https://doi.org/10.48550/arXiv.2505.17653",
         "https://github.com/LiAuto-DSR/GeoGramBench",
-        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench"
+        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2306.15626",
+        "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
+        "https://doi.org/10.48550/arXiv.2306.15626",
+        "https://github.com/lean-dojo/LeanDojo",
+        "https://leandojo.org/leandojo",
+        "https://arxiv.org/abs/2109.00110",
+        "https://arxiv.org/abs/2109.00110",
+        "https://openreview.net/forum?id=9ZPegFuFTFv",
+        "https://doi.org/10.48550/arXiv.2109.00110",
+        "https://github.com/openai/miniF2F",
+        "https://arxiv.org/abs/2105.09938",
+        "https://arxiv.org/abs/2105.09938",
+        "https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html",
+        "https://doi.org/10.48550/arXiv.2105.09938",
+        "https://github.com/hendrycks/apps",
+        "https://huggingface.co/datasets/codeparrot/apps",
+        "https://arxiv.org/abs/2103.03874",
+        "https://arxiv.org/abs/2103.03874",
+        "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
+        "https://doi.org/10.48550/arXiv.2103.03874",
+        "https://github.com/hendrycks/math",
+        "https://arxiv.org/abs/2509.24210",
+        "https://arxiv.org/abs/2509.24210",
+        "https://doi.org/10.48550/arXiv.2509.24210",
+        "https://github.com/ctrl-gaurav/BeyondBench",
+        "https://ctrl-gaurav.github.io/BeyondBench/",
+        "https://arxiv.org/abs/2103.03874",
+        "https://arxiv.org/abs/2103.03874",
+        "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
+        "https://doi.org/10.48550/arXiv.2103.03874",
+        "https://github.com/hendrycks/math",
+        "https://arxiv.org/abs/2105.09938",
+        "https://arxiv.org/abs/2105.09938",
+        "https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html",
+        "https://doi.org/10.48550/arXiv.2105.09938",
+        "https://github.com/hendrycks/apps",
+        "https://huggingface.co/datasets/codeparrot/apps",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2306.15626",
+        "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
+        "https://doi.org/10.48550/arXiv.2306.15626"
       ],
       "arxiv_ids": [],
       "headings": [
@@ -1083,21 +2626,8 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md",
-      "bytes": 9443,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=judgment_rubric_domain_expert_data&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.17653",
-        "https://arxiv.org/abs/2505.17653",
-        "https://doi.org/10.48550/arXiv.2505.17653",
-        "https://github.com/LiAuto-DSR/GeoGramBench",
-        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench"
-      ],
+      "bytes": 5834,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# ⚖️ Judgment, Rubric, and Domain-Expert Data",
@@ -1116,16 +2646,8 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md",
-      "bytes": 8636,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=environment_agent_trajectory_data&mode=find_papers",
-        "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2604.10182",
-        "https://doi.org/10.48550/arXiv.2604.10182",
-        "https://arxiv.org/abs/2602.10975",
-        "https://arxiv.org/abs/2602.10975",
-        "https://doi.org/10.48550/arXiv.2602.10975"
-      ],
+      "bytes": 5353,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🌐 Environment and Agent Trajectory Data",
@@ -1144,16 +2666,8 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md",
-      "bytes": 7261,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=preference_reward_feedback_data&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV"
-      ],
+      "bytes": 5245,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🤝 Preference and Reward Feedback Data",
@@ -1172,10 +2686,8 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md",
-      "bytes": 5814,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=instruction_demonstration_rationale_data&mode=find_papers"
-      ],
+      "bytes": 5383,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🧱 Instruction, Demonstration, and Rationale Data",
@@ -1194,24 +2706,8 @@
     },
     {
       "path": "papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md",
-      "bytes": 10429,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=audit_failure_contamination_verifier_attacks&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2509.24210",
-        "https://arxiv.org/abs/2509.24210",
-        "https://doi.org/10.48550/arXiv.2509.24210",
-        "https://github.com/ctrl-gaurav/BeyondBench",
-        "https://ctrl-gaurav.github.io/BeyondBench/",
-        "https://arxiv.org/abs/2602.10975",
-        "https://arxiv.org/abs/2602.10975",
-        "https://doi.org/10.48550/arXiv.2602.10975"
-      ],
+      "bytes": 5580,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🧯 Audit, Failure, Contamination, and Verifier Attacks",
@@ -1230,15 +2726,8 @@
     },
     {
       "path": "papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md",
-      "bytes": 10238,
+      "bytes": 26428,
       "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=scaling_rlvr_test_time_compute&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
         "https://arxiv.org/abs/2508.04865",
         "https://arxiv.org/abs/2508.04865",
         "https://doi.org/10.48550/arXiv.2508.04865",
@@ -1246,9 +2735,49 @@
         "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
         "https://huggingface.co/nuprl/agnostics",
         "https://agnostics.abgru.me/",
+        "https://arxiv.org/abs/2402.03300",
+        "https://arxiv.org/abs/2402.03300",
+        "https://doi.org/10.48550/arXiv.2402.03300",
+        "https://huggingface.co/deepseek-ai/deepseek-math-7b-base",
+        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2305.20050",
+        "https://doi.org/10.48550/arXiv.2305.20050",
         "https://arxiv.org/abs/2604.10182",
         "https://arxiv.org/abs/2604.10182",
-        "https://doi.org/10.48550/arXiv.2604.10182"
+        "https://doi.org/10.48550/arXiv.2604.10182",
+        "https://arxiv.org/abs/2505.14625",
+        "https://arxiv.org/abs/2505.14625",
+        "https://github.com/uw-nsl/TinyV",
+        "https://arxiv.org/abs/2312.06585",
+        "https://arxiv.org/abs/2312.06585",
+        "https://doi.org/10.48550/arXiv.2312.06585",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2408.03314",
+        "https://doi.org/10.48550/arXiv.2408.03314",
+        "https://arxiv.org/abs/2203.11171",
+        "https://arxiv.org/abs/2203.11171",
+        "https://doi.org/10.48550/arXiv.2203.11171",
+        "https://arxiv.org/abs/2305.10601",
+        "https://arxiv.org/abs/2305.10601",
+        "https://doi.org/10.48550/arXiv.2305.10601",
+        "https://github.com/princeton-nlp/tree-of-thought-llm",
+        "https://arxiv.org/abs/2207.01780",
+        "https://arxiv.org/abs/2207.01780",
+        "https://doi.org/10.48550/arXiv.2207.01780",
+        "https://arxiv.org/abs/2312.06585",
+        "https://arxiv.org/abs/2312.06585",
+        "https://doi.org/10.48550/arXiv.2312.06585",
+        "https://arxiv.org/abs/2402.03300",
+        "https://arxiv.org/abs/2402.03300",
+        "https://doi.org/10.48550/arXiv.2402.03300",
+        "https://huggingface.co/deepseek-ai/deepseek-math-7b-base",
+        "https://arxiv.org/abs/2604.10182",
+        "https://arxiv.org/abs/2604.10182",
+        "https://doi.org/10.48550/arXiv.2604.10182",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2408.03314",
+        "https://doi.org/10.48550/arXiv.2408.03314",
+        "https://arxiv.org/abs/2305.20050"
       ],
       "arxiv_ids": [],
       "headings": [
@@ -1268,33 +2797,8 @@
     },
     {
       "path": "papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md",
-      "bytes": 13292,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=benchmarks_evaluation_surfaces&mode=find_papers",
-        "https://arxiv.org/abs/2508.04865",
-        "https://arxiv.org/abs/2508.04865",
-        "https://doi.org/10.48550/arXiv.2508.04865",
-        "https://github.com/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/nuprl/agnostics",
-        "https://agnostics.abgru.me/",
-        "https://arxiv.org/abs/2509.24210",
-        "https://arxiv.org/abs/2509.24210",
-        "https://doi.org/10.48550/arXiv.2509.24210",
-        "https://github.com/ctrl-gaurav/BeyondBench",
-        "https://ctrl-gaurav.github.io/BeyondBench/",
-        "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2604.10182",
-        "https://doi.org/10.48550/arXiv.2604.10182",
-        "https://arxiv.org/abs/2602.10975",
-        "https://arxiv.org/abs/2602.10975",
-        "https://doi.org/10.48550/arXiv.2602.10975",
-        "https://arxiv.org/abs/2505.17653",
-        "https://arxiv.org/abs/2505.17653",
-        "https://doi.org/10.48550/arXiv.2505.17653",
-        "https://github.com/LiAuto-DSR/GeoGramBench",
-        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench"
-      ],
+      "bytes": 5204,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🧰 Benchmarks and Evaluation Surfaces",
@@ -1313,23 +2817,8 @@
     },
     {
       "path": "papers/02_data_lifecycle/09_training_usage_optimization_objectives.md",
-      "bytes": 9228,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=training_usage_optimization_objectives&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2508.04865",
-        "https://arxiv.org/abs/2508.04865",
-        "https://doi.org/10.48550/arXiv.2508.04865",
-        "https://github.com/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/nuprl/agnostics",
-        "https://agnostics.abgru.me/"
-      ],
+      "bytes": 5589,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🎯 Training Usage and Optimization Objectives",
@@ -1348,7 +2837,7 @@
     },
     {
       "path": "papers/02_data_lifecycle/README.md",
-      "bytes": 2744,
+      "bytes": 2745,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -1360,10 +2849,8 @@
     },
     {
       "path": "papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md",
-      "bytes": 5358,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=frontier_reports_data_disclosure_ledger&mode=find_papers"
-      ],
+      "bytes": 4940,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🚀 Frontier Reports and Data Disclosure Ledger",
@@ -1382,31 +2869,8 @@
     },
     {
       "path": "papers/02_data_lifecycle/08_data_construction_open_release_recipes.md",
-      "bytes": 12066,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=data_construction_open_release_recipes&mode=find_papers",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
-        "https://arxiv.org/abs/2508.04865",
-        "https://arxiv.org/abs/2508.04865",
-        "https://doi.org/10.48550/arXiv.2508.04865",
-        "https://github.com/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
-        "https://huggingface.co/nuprl/agnostics",
-        "https://agnostics.abgru.me/",
-        "https://arxiv.org/abs/2509.24210",
-        "https://arxiv.org/abs/2509.24210",
-        "https://doi.org/10.48550/arXiv.2509.24210",
-        "https://github.com/ctrl-gaurav/BeyondBench",
-        "https://ctrl-gaurav.github.io/BeyondBench/",
-        "https://arxiv.org/abs/2602.10975",
-        "https://arxiv.org/abs/2602.10975",
-        "https://doi.org/10.48550/arXiv.2602.10975"
-      ],
+      "bytes": 5423,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# 🏗️ Data Construction and Open Release Recipes",
@@ -1425,11 +2889,8 @@
     },
     {
       "path": "docs/06_verifiers_and_rewards.md",
-      "bytes": 8275,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20verifiers%20and%20rewards%20for%20post-training%20reasoning%20data%20and%20give%20me%20failure%20modes.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 7935,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Verifiers and Rewards",
@@ -1457,7 +2918,7 @@
     },
     {
       "path": "docs/paper_card_sop.md",
-      "bytes": 4224,
+      "bytes": 4137,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -1472,11 +2933,8 @@
     },
     {
       "path": "docs/09_audit_and_failure_modes.md",
-      "bytes": 8516,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=audit&question=Turn%20the%20Audit%20and%20Failure%20Modes%20guide%20into%20a%20release%20review%20checklist.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8198,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Audit and Failure Modes",
@@ -1495,11 +2953,8 @@
     },
     {
       "path": "docs/02_verifier_anchored_taxonomy.md",
-      "bytes": 8513,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20verifier-anchored%20taxonomy%20and%20recommend%20which%20papers%20to%20read%20next.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8187,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Verifier-Anchored Taxonomy",
@@ -1518,11 +2973,8 @@
     },
     {
       "path": "docs/08_scaling_and_test_time_compute.md",
-      "bytes": 8613,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=compare&question=Explain%20scaling%20and%20test-time%20compute%20for%20reasoning%20data%20and%20separate%20data%2C%20verifier%2C%20optimizer%2C%20and%20inference%20effects.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8231,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Scaling and Test-Time Compute",
@@ -1541,11 +2993,8 @@
     },
     {
       "path": "docs/glossary.md",
-      "bytes": 1526,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20key%20glossary%20terms%20for%20post-training%20reasoning%20data%20with%20examples.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 1200,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Glossary",
@@ -1571,11 +3020,8 @@
     },
     {
       "path": "docs/10_industry_onboarding_path.md",
-      "bytes": 8850,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Use%20the%20Industry%20Onboarding%20Path%20to%20make%20a%20six-week%20learning%20plan%20for%20post-training%20reasoning%20data.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8496,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Industry Onboarding Path",
@@ -1594,10 +3040,8 @@
     },
     {
       "path": "docs/companion_paper_primer.md",
-      "bytes": 4089,
+      "bytes": 3234,
       "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20companion%20paper%20primer%20and%20show%20how%20it%20grounds%20Ask%20the%20Atlas.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/",
         "https://arxiv.org/abs/2606.02113"
       ],
       "arxiv_ids": [
@@ -1613,11 +3057,8 @@
     },
     {
       "path": "docs/04_data_quality.md",
-      "bytes": 8504,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=audit&question=Turn%20the%20Data%20Quality%20guide%20into%20an%20audit%20checklist%20for%20reasoning-data%20releases.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8177,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Data Quality",
@@ -1636,7 +3077,7 @@
     },
     {
       "path": "docs/contributor_sop.md",
-      "bytes": 29513,
+      "bytes": 27891,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -1656,11 +3097,8 @@
     },
     {
       "path": "docs/01_what_is_post_training_reasoning_data.md",
-      "bytes": 8577,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20what%20post-training%20reasoning%20data%20is%20using%20this%20repository%20guide.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8259,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# What Is Post-Training Reasoning Data?",
@@ -1679,11 +3117,8 @@
     },
     {
       "path": "docs/03_reasoning_data_objects.md",
-      "bytes": 9188,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20reasoning%20data%20objects%20and%20show%20how%20they%20connect%20to%20verifiers%20and%20training%20use.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8848,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Reasoning Data Objects",
@@ -1702,11 +3137,8 @@
     },
     {
       "path": "docs/05_construction_cookbook.md",
-      "bytes": 8529,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=build&question=Use%20the%20Construction%20Cookbook%20to%20design%20a%20post-training%20reasoning-data%20pipeline.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8206,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Construction Cookbook",
@@ -1725,7 +3157,7 @@
     },
     {
       "path": "docs/_sidebar.md",
-      "bytes": 936,
+      "bytes": 912,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -1735,7 +3167,7 @@
     },
     {
       "path": "docs/contributor_sop_zh.md",
-      "bytes": 29567,
+      "bytes": 28191,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -1755,11 +3187,8 @@
     },
     {
       "path": "docs/07_agent_trajectory_data.md",
-      "bytes": 9007,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20agent%20trajectory%20data%20and%20what%20fields%20make%20an%20episode%20replayable.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8687,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Agent Trajectory Data",
@@ -1778,11 +3207,8 @@
     },
     {
       "path": "docs/00_start_here.md",
-      "bytes": 8312,
-      "urls": [
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20Start%20Here%20guide%20and%20turn%20it%20into%20a%20learning%20plan.",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-      ],
+      "bytes": 8001,
+      "urls": [],
       "arxiv_ids": [],
       "headings": [
         "# Start Here",
@@ -1801,14 +3227,25 @@
     },
     {
       "path": "exports/papers.bib",
-      "bytes": 2411,
+      "bytes": 7378,
       "urls": [
         "https://arxiv.org/abs/2505.14625",
         "https://arxiv.org/abs/2508.04865",
         "https://arxiv.org/abs/2602.10975",
         "https://arxiv.org/abs/2509.24210",
         "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2505.17653"
+        "https://arxiv.org/abs/2505.17653",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2103.03874",
+        "https://arxiv.org/abs/2105.09938",
+        "https://arxiv.org/abs/2109.00110",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2203.11171",
+        "https://arxiv.org/abs/2305.10601",
+        "https://arxiv.org/abs/2207.01780",
+        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2402.03300",
+        "https://arxiv.org/abs/2312.06585"
       ],
       "arxiv_ids": [],
       "headings": []
@@ -1828,353 +3265,28 @@
     },
     {
       "path": "data/citations.bib",
-      "bytes": 2411,
+      "bytes": 7378,
       "urls": [
         "https://arxiv.org/abs/2505.14625",
         "https://arxiv.org/abs/2508.04865",
         "https://arxiv.org/abs/2602.10975",
         "https://arxiv.org/abs/2509.24210",
         "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2505.17653"
+        "https://arxiv.org/abs/2505.17653",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2103.03874",
+        "https://arxiv.org/abs/2105.09938",
+        "https://arxiv.org/abs/2109.00110",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2203.11171",
+        "https://arxiv.org/abs/2305.10601",
+        "https://arxiv.org/abs/2207.01780",
+        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2402.03300",
+        "https://arxiv.org/abs/2312.06585"
       ],
       "arxiv_ids": [],
       "headings": []
-    },
-    {
-      "path": "apps/ask-atlas/PRODUCTION.md",
-      "bytes": 24602,
-      "urls": [
-        "https://your-secure-backend.example",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data",
-        "https://your-backend.example",
-        "https://your-backend.example",
-        "https://your-secure-backend.example/api/auth/github/callback",
-        "https://your-secure-backend.example/api/health",
-        "https://your-secure-backend.example/admin",
-        "https://your-secure-backend.example",
-        "https://your-secure-backend.example",
-        "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/`"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# Ask the Atlas Production Guide",
-        "## Recommended Stack",
-        "## Required Secrets",
-        "## Security Gates",
-        "## CI Gates",
-        "## Deployment Flow",
-        "### Vercel backend option",
-        "### Launch flow",
-        "## Rate Limiting",
-        "## Production Data Policy",
-        "## Evidence Policy",
-        "## Public Integration"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/README.md",
-      "bytes": 14035,
-      "urls": [
-        "http://localhost:8787/ask",
-        "http://localhost:8787/admin",
-        "https://your-backend.example",
-        "https://your-backend.example",
-        "https://your-backend.example`",
-        "https://your-secure-backend.example",
-        "https://your-secure-backend.example"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# Ask the Atlas",
-        "## Security Model",
-        "## Local Development",
-        "## Quota Rules",
-        "## Deployment Notes"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pg-int8/README.md",
-      "bytes": 389,
-      "urls": [
-        "https://github.com/brianc/node-postgres",
-        "https://travis-ci.org/charmander/pg-int8",
-        "https://api.travis-ci.org/charmander/pg-int8.svg"
-      ],
-      "arxiv_ids": [],
-      "headings": []
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pg-protocol/README.md",
-      "bytes": 150,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# pg-protocol"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/postgres-interval/readme.md",
-      "bytes": 1115,
-      "urls": [
-        "https://travis-ci.org/bendrucker/postgres-interval.svg?branch=master",
-        "https://travis-ci.org/bendrucker/postgres-interval",
-        "https://badges.greenkeeper.io/bendrucker/postgres-interval.svg",
-        "https://greenkeeper.io/",
-        "https://en.wikipedia.org/wiki/ISO_8601#Durations",
-        "http://bendrucker.me"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# postgres-interval [![Build Status](https://travis-ci.org/bendrucker/postgres-interval.svg?branch=master)](https://travis-ci.org/bendrucker/postgres-interval) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/postgres-interval.svg)](https://greenkeeper.io/)",
-        "## Install",
-        "## Usage",
-        "## API",
-        "#### `parse(pgInterval)` -> `interval`",
-        "##### pgInterval",
-        "#### `interval.toPostgres()` -> `string`",
-        "#### `interval.toISOString()` -> `string`",
-        "## License"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pg-pool/README.md",
-      "bytes": 13094,
-      "urls": [
-        "https://travis-ci.org/brianc/node-pg-pool.svg?branch=master",
-        "https://travis-ci.org/brianc/node-pg-pool",
-        "https://github.com/tj/co",
-        "https://github.com/brianc/node-pg-query-stream",
-        "https://github.com/brianc/node-pg-cursor",
-        "http://12factor.net/",
-        "https://twitter.com/briancarlson"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# pg-pool",
-        "## install",
-        "## use",
-        "### create",
-        "##### Note:",
-        "### acquire clients with a promise",
-        "### plays nice with async/await",
-        "### your new favorite helper method",
-        "### drop-in backwards compatible",
-        "### shut it down",
-        "### a note on instances",
-        "### events"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pg-cloudflare/README.md",
-      "bytes": 4383,
-      "urls": [
-        "https://github.com/wintercg/proposal-sockets-api",
-        "https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/",
-        "https://www.npmjs.com/package/@cloudflare/vite-plugin",
-        "https://github.com/brianc/node-postgres/commit/07553428e9c0eacf761a5d4541a3300ff7859578#diff-34588ad868ebcb232660aba7ee6a99d1e02f4bc93f73497d2688c3f074e60533R5-R13",
-        "https://github.com/Ethan-Arrowood/socket"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# pg-cloudflare",
-        "## Installation",
-        "## How to use conditionally, in non-Node.js environments",
-        "## Node.js implementation of the Socket API proposal",
-        "### license"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/postgres-date/readme.md",
-      "bytes": 1521,
-      "urls": [
-        "https://travis-ci.org/bendrucker/postgres-date.svg?branch=master",
-        "https://travis-ci.org/bendrucker/postgres-date",
-        "https://badges.greenkeeper.io/bendrucker/postgres-date.svg",
-        "https://greenkeeper.io/",
-        "https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-OUTPUT",
-        "https://github.com/bendrucker/postgres-date/compare",
-        "http://bendrucker.me"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# postgres-date [![Build Status](https://travis-ci.org/bendrucker/postgres-date.svg?branch=master)](https://travis-ci.org/bendrucker/postgres-date) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/postgres-date.svg)](https://greenkeeper.io/)",
-        "## Install",
-        "## Usage",
-        "## API",
-        "#### `parse(isoDate)` -> `date`",
-        "##### isoDate",
-        "## Releases",
-        "## License"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/xtend/README.md",
-      "bytes": 726,
-      "urls": [
-        "http://badges.github.io/stability-badges/dist/locked.svg",
-        "http://github.com/badges/stability-badges",
-        "http://ci.testling.com/Raynos/xtend.png",
-        "http://ci.testling.com/Raynos/xtend"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# xtend",
-        "## Examples",
-        "## Stability status: Locked",
-        "## MIT Licensed "
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/split2/README.md",
-      "bytes": 3381,
-      "urls": [
-        "https://github.com/mcollina/split2/workflows/ci/badge.svg",
-        "https://github.com/dominictarr",
-        "https://github.com/dominictarr/split",
-        "https://nodejs.org/api/stream.html#stream_new_stream_transform_options",
-        "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/split",
-        "https://nodejs.org/api/stream.html#stream_new_stream_transform_options",
-        "https://github.com/dominictarr",
-        "https://github.com/dominictarr/split"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# Split2(matcher, mapper, options)",
-        "# NDJ - Newline Delimited Json",
-        "# License"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pg/README.md",
-      "bytes": 4358,
-      "urls": [
-        "https://secure.travis-ci.org/brianc/node-postgres.svg?branch=master",
-        "http://travis-ci.org/brianc/node-postgres",
-        "https://npmjs.org/package/pg",
-        "https://img.shields.io/npm/v/pg.svg",
-        "https://npmjs.org/package/pg",
-        "https://img.shields.io/npm/dm/pg.svg",
-        "https://node-postgres.com",
-        "https://github.com/brianc/node-postgres/wiki/Extras",
-        "https://github.com/brianc/node-postgres",
-        "https://bsky.app/profile/brianc.bsky.social",
-        "https://github.com/brianc/node-postgres/blob/master/SPONSORS.md",
-        "https://github.com/sponsors/brianc",
-        "https://medplum.com",
-        "https://raw.githubusercontent.com/medplum/medplum-logo/refs/heads/main/medplum-logo.png",
-        "https://github.com/brianc/node-postgres/wiki/FAQ"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# node-postgres",
-        "## Install",
-        "## :star: [Documentation](https://node-postgres.com) :star:",
-        "### Features",
-        "### Extras",
-        "## Support",
-        "## Sponsorship :two_hearts:",
-        "### Featured sponsor",
-        "## Contributing",
-        "## Troubleshooting and FAQ",
-        "## License"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pg-types/README.md",
-      "bytes": 3831,
-      "urls": [
-        "https://github.com/brianc/node-postgres.git",
-        "http://momentjs.com/docs/"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# pg-types",
-        "## use",
-        "## license"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pg-connection-string/README.md",
-      "bytes": 4933,
-      "urls": [
-        "https://nodei.co/npm/pg-connection-string.png?compact=true",
-        "https://nodei.co/npm/pg-connection-string/",
-        "https://github.com/brianc/node-postgres.git",
-        "https://node-postgres.com/apis/client",
-        "https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "## Usage",
-        "### ClientConfig Compatibility for TypeScript",
-        "## Connection Strings",
-        "### UNIX Domain Sockets",
-        "### TCP Connections"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/postgres-array/readme.md",
-      "bytes": 692,
-      "urls": [
-        "https://travis-ci.org/bendrucker/postgres-array.svg?branch=master",
-        "https://travis-ci.org/bendrucker/postgres-array",
-        "http://bendrucker.me"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# postgres-array [![Build Status](https://travis-ci.org/bendrucker/postgres-array.svg?branch=master)](https://travis-ci.org/bendrucker/postgres-array)",
-        "## Install",
-        "## Usage",
-        "## API",
-        "#### `parse(input, [transform])` -> `array`",
-        "##### input",
-        "##### transform",
-        "## License"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/postgres-bytea/readme.md",
-      "bytes": 504,
-      "urls": [
-        "https://travis-ci.org/bendrucker/postgres-bytea.svg?branch=master",
-        "https://travis-ci.org/bendrucker/postgres-bytea",
-        "http://bendrucker.me"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# postgres-bytea [![Build Status](https://travis-ci.org/bendrucker/postgres-bytea.svg?branch=master)](https://travis-ci.org/bendrucker/postgres-bytea)",
-        "## Install",
-        "## Usage",
-        "## API",
-        "#### `bytea(input)` -> `buffer`",
-        "##### input",
-        "## License"
-      ]
-    },
-    {
-      "path": "apps/ask-atlas/node_modules/pgpass/README.md",
-      "bytes": 3294,
-      "urls": [
-        "https://github.com/hoegaarden/pgpass/workflows/CI/badge.svg?branch=master",
-        "https://github.com/hoegaarden/pgpass/actions?query=workflow%3ACI+branch%3Amaster",
-        "https://github.com/postgres/postgres/commit/8d15e3ec4fcb735875a8a70a09ec0c62153c3329",
-        "https://github.com/hoegaarden/node-pgpass",
-        "http://www.postgresql.org/docs/current/static/libpq-pgpass.html",
-        "https://wiki.postgresql.org/wiki/Pgpass",
-        "https://github.com/postgres/postgres/blob/master/src/interfaces/libpq/fe-connect.c"
-      ],
-      "arxiv_ids": [],
-      "headings": [
-        "# pgpass",
-        "## Install",
-        "## Usage",
-        "## Description",
-        "## Configuration",
-        "## Tests",
-        "## Development, Patches, Bugs, ...",
-        "## Links",
-        "## License"
-      ]
     },
     {
       "path": "reports/link_sources_v2.md",
@@ -2259,7 +3371,7 @@
     },
     {
       "path": "reports/bib_index.md",
-      "bytes": 23554,
+      "bytes": 28,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -2268,7 +3380,7 @@
     },
     {
       "path": "reports/counts.md",
-      "bytes": 1954,
+      "bytes": 1098,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -2315,7 +3427,7 @@
     },
     {
       "path": "reports/link_coverage.md",
-      "bytes": 979,
+      "bytes": 988,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -2329,58 +3441,58 @@
     },
     {
       "path": "reports/link_check.md",
-      "bytes": 29599,
+      "bytes": 6359,
       "urls": [
-        "https://arxiv.org/abs/1706.03741",
-        "https://arxiv.org/abs/1706.03741",
-        "https://aclanthology.org/Q18-1041/",
-        "https://aclanthology.org/Q18-1041/",
-        "https://arxiv.org/abs/1803.09010",
-        "https://arxiv.org/abs/1803.09010",
-        "https://arxiv.org/abs/1904.03241",
-        "https://arxiv.org/abs/1904.03241",
-        "https://doi.org/10.48550/arXiv.1904.03241",
-        "https://arxiv.org/abs/2107.03374",
-        "https://arxiv.org/abs/2107.03374",
-        "https://github.com/openai/human-eval",
-        "https://github.com/openai/human-eval",
-        "https://aclanthology.org/2021.emnlp-main.300/",
-        "https://finqasite.github.io/",
-        "https://aclanthology.org/2021.emnlp-main.300/",
-        "https://arxiv.org/abs/2105.09938",
-        "https://arxiv.org/abs/2105.09938",
-        "https://github.com/hendrycks/apps",
-        "https://github.com/hendrycks/apps",
-        "https://openreview.net/forum?id=sD93GOzH3i5",
+        "https://arxiv.org/abs/2505.14625",
+        "https://arxiv.org/abs/2505.14625",
+        "https://github.com/uw-nsl/TinyV",
+        "https://arxiv.org/abs/2508.04865",
+        "https://arxiv.org/abs/2508.04865",
+        "https://github.com/nuprl/Ag-LiveCodeBench-X",
+        "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
+        "https://agnostics.abgru.me/",
+        "https://huggingface.co/nuprl/agnostics",
+        "https://doi.org/10.48550/arXiv.2508.04865",
+        "https://arxiv.org/abs/2602.10975",
+        "https://arxiv.org/abs/2602.10975",
+        "https://doi.org/10.48550/arXiv.2602.10975",
+        "https://arxiv.org/abs/2509.24210",
+        "https://arxiv.org/abs/2509.24210",
+        "https://github.com/ctrl-gaurav/BeyondBench",
+        "https://ctrl-gaurav.github.io/BeyondBench/",
+        "https://doi.org/10.48550/arXiv.2509.24210",
+        "https://arxiv.org/abs/2604.10182",
+        "https://arxiv.org/abs/2604.10182",
+        "https://doi.org/10.48550/arXiv.2604.10182",
+        "https://arxiv.org/abs/2505.17653",
+        "https://arxiv.org/abs/2505.17653",
+        "https://github.com/LiAuto-DSR/GeoGramBench",
+        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "https://github.com/LiAuto-DSR/GeoGramBench",
+        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "https://doi.org/10.48550/arXiv.2505.17653",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2408.03314",
+        "https://doi.org/10.48550/arXiv.2408.03314",
         "https://arxiv.org/abs/2103.03874",
         "https://arxiv.org/abs/2103.03874",
         "https://github.com/hendrycks/math",
         "https://github.com/hendrycks/math",
+        "https://github.com/hendrycks/math",
+        "https://doi.org/10.48550/arXiv.2103.03874",
+        "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
+        "https://arxiv.org/abs/2105.09938",
+        "https://arxiv.org/abs/2105.09938",
+        "https://github.com/hendrycks/apps",
+        "https://github.com/hendrycks/apps",
+        "https://github.com/hendrycks/apps",
+        "https://huggingface.co/datasets/codeparrot/apps",
+        "https://doi.org/10.48550/arXiv.2105.09938",
+        "https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html",
         "https://arxiv.org/abs/2109.00110",
         "https://arxiv.org/abs/2109.00110",
         "https://github.com/openai/miniF2F",
-        "https://github.com/openai/miniF2F",
-        "https://openreview.net/forum?id=9ZPegFuFTFv",
-        "https://aclanthology.org/2021.acl-long.254/",
-        "https://arxiv.org/abs/2105.07624",
-        "https://github.com/NExTplusplus/TAT-QA",
-        "https://github.com/NExTplusplus/TAT-QA",
-        "https://nextplusplus.github.io/TAT-QA/",
-        "https://aclanthology.org/2021.acl-long.254/",
-        "https://arxiv.org/abs/2110.14168",
-        "https://arxiv.org/abs/2110.14168",
-        "https://github.com/openai/grade-school-math",
-        "https://github.com/openai/grade-school-math",
-        "https://huggingface.co/datasets/openai/gsm8k",
-        "https://arxiv.org/abs/2201.11903",
-        "https://arxiv.org/abs/2201.11903",
-        "https://arxiv.org/abs/2207.01780",
-        "https://arxiv.org/abs/2207.01780",
-        "https://doi.org/10.48550/arXiv.2207.01780",
-        "https://arxiv.org/abs/2207.10397",
-        "https://arxiv.org/abs/2207.10397",
-        "https://doi.org/10.48550/arXiv.2207.10397",
-        "https://arxiv.org/abs/2212.08073"
+        "https://github.com/openai/miniF2F"
       ],
       "arxiv_ids": [],
       "headings": [
@@ -2416,7 +3528,7 @@
     },
     {
       "path": "reports/research_log_public.md",
-      "bytes": 730,
+      "bytes": 731,
       "urls": [],
       "arxiv_ids": [],
       "headings": [

@@ -5,12 +5,6 @@ let researchTracks = [];
 let activePackId = "";
 let activeTrackId = "";
 const REPO_BLOB_ROOT = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main";
-const ASK_ENTRY = "ask/";
-const ASK_TRACK_PROMPTS = {
-  find_papers: "Recommend the most important papers in this track. Group them by data object, verifier type, and training use.",
-  audit: "Generate an audit checklist for this research track. Focus on data lineage, verifier gaming, contamination, and reproducibility.",
-  build: "Design a practical dataset-building recipe for this research track. Include prompt source, traces, verifier, filtering, and metadata.",
-};
 
 const ids = [
   "q", "category", "subfield", "year", "venue", "sourceRole", "contract", "granularity",
@@ -23,8 +17,6 @@ Object.assign(els, {
   results: document.getElementById("results"),
   resultSummary: document.getElementById("resultSummary"),
   trackTabs: document.getElementById("trackTabs"),
-  trackAssistant: document.getElementById("trackAssistant"),
-  filterAssistant: document.getElementById("filterAssistant"),
   pathTabs: document.getElementById("pathTabs"),
   pathPanel: document.getElementById("pathPanel"),
   totalEntries: document.getElementById("totalEntries"),
@@ -68,33 +60,8 @@ function categoryLabel(value) {
   return track?.navigator_title || display(value);
 }
 
-function askUrl(params = {}) {
-  const url = new URL(ASK_ENTRY, window.location.href);
-  Object.entries(params).forEach(([key, value]) => {
-    const text = String(value ?? "").trim();
-    if (text) url.searchParams.set(key, text);
-  });
-  return url.href;
-}
-
 function currentTrack() {
   return researchTracks.find(item => item.category_id === activeTrackId) || null;
-}
-
-function trackQuestion(track, mode = "find_papers") {
-  const label = track?.navigator_title || track?.short_title || "post-training reasoning data";
-  return `${ASK_TRACK_PROMPTS[mode] || ASK_TRACK_PROMPTS.find_papers} Track: ${label}.`;
-}
-
-function entryQuestion(entry, mode = "explain") {
-  const title = entry?.title || "this atlas entry";
-  if (mode === "audit") {
-    return `Generate an audit checklist for ${title}. Focus on its data object, verifier or reward signal, training use, contamination risk, hidden lineage, and reproducibility.`;
-  }
-  if (mode === "compare") {
-    return `Compare ${title} with related work in this atlas. Focus on data object, verifier type, supervision granularity, training use, and failure modes.`;
-  }
-  return `Explain ${title} as a post-training reasoning-data paper. Identify the data object, verifier or reward signal, training use, and why it matters.`;
 }
 
 function selectedFilterSummary() {
@@ -224,14 +191,6 @@ function links(entry) {
   return out.join("");
 }
 
-function askAction(entry, mode, label) {
-  return `<a class="ask-action ${esc(mode)}" href="${esc(askUrl({
-    entry: entry.id,
-    mode,
-    question: entryQuestion(entry, mode),
-  }))}">${esc(label)}</a>`;
-}
-
 function card(entry) {
   const title = entry.primary_link
     ? `<a href="${esc(entry.primary_link)}" target="_blank" rel="noreferrer">${esc(entry.title)}</a>`
@@ -255,18 +214,12 @@ function card(entry) {
     </dl>
     <p class="why">${esc(entry.why_it_matters || "Needs curator rationale.")}</p>
     <div class="links">${links(entry) || "<span class='tag needs'>needs search</span>"}</div>
-    <div class="ask-actions" aria-label="Ask the Atlas actions">
-      ${askAction(entry, "explain", "🤖 Explain")}
-      ${askAction(entry, "audit", "🧯 Audit")}
-      ${askAction(entry, "compare", "🔁 Compare")}
-    </div>
   </article>`;
 }
 
 function render() {
   const shown = sortEntries(entries.filter(matches));
   els.resultSummary.textContent = `${shown.length} of ${entries.length} entries match the current filters.`;
-  renderFilterAssistant(shown.length);
   els.results.innerHTML = shown.length
     ? shown.slice(0, 220).map(card).join("")
     : "<div class='empty'>No entries match these filters.</div>";
@@ -279,51 +232,6 @@ function renderTracks() {
     `<button type="button" class="${track.category_id === activeTrackId ? "active" : ""}" data-track="${esc(track.category_id)}">${esc(track.navigator_title || track.short_title || track.category_id)}</button>`
   )).join("");
   els.trackTabs.innerHTML = allButton + buttons;
-  renderTrackAssistant();
-}
-
-function renderTrackAssistant() {
-  if (!els.trackAssistant) return;
-  const track = currentTrack();
-  const title = track?.navigator_title || "Ask across the atlas";
-  const body = track
-    ? `Use Ask the Atlas to turn the ${title} track into a reading path, construction recipe, or audit checklist.`
-    : "Choose a research track, then ask for a guided map across papers, data objects, verifiers, and failure modes.";
-  const trackParams = track ? { track: track.category_id } : {};
-  els.trackAssistant.innerHTML = `<div>
-    <span>Context assistant</span>
-    <strong>${esc(title)}</strong>
-    <p>${esc(body)}</p>
-  </div>
-  <div class="assistant-actions">
-    <a class="primary" href="${esc(askUrl({
-      ...trackParams,
-      mode: "find_papers",
-      question: track ? trackQuestion(track, "find_papers") : "Give me a field map of post-training reasoning data and recommend what to read first.",
-    }))}">🤖 Ask about this track</a>
-    <a href="${esc(askUrl({
-      ...trackParams,
-      mode: "audit",
-      question: track ? trackQuestion(track, "audit") : "Generate an audit checklist for post-training reasoning-data releases.",
-    }))}">🧯 Audit lens</a>
-    <a href="${esc(askUrl({
-      ...trackParams,
-      mode: "build",
-      question: track ? trackQuestion(track, "build") : "Design a practical post-training reasoning-data construction recipe.",
-    }))}">🏗️ Build recipe</a>
-  </div>`;
-}
-
-function renderFilterAssistant(resultCount) {
-  if (!els.filterAssistant) return;
-  const summary = selectedFilterSummary();
-  const question = `Using the current atlas slice (${summary}), recommend the strongest papers to read first. Explain the data objects, verifier or reward contracts, and audit risks.`;
-  els.filterAssistant.innerHTML = `<div>
-    <span>Filtered slice</span>
-    <strong>${esc(resultCount)} matching entries</strong>
-    <p>${esc(summary)}</p>
-  </div>
-    <a href="${esc(askUrl({ mode: "find_papers", question }))}">🤖 Ask about these results</a>`;
 }
 
 function renderPaths() {

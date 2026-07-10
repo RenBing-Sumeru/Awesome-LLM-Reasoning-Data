@@ -2,11 +2,6 @@
 
 > Instruction-response examples, human demonstrations, synthetic instructions, rationales, chain-of-thought traces, and teacher-written reasoning targets.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=instruction_demonstration_rationale_data&mode=find_papers)
-> Try: `What should I read first for 🧱 Instruction / Demo / Rationale?`
-> Try: `Compare the data objects and verifier types in 🧱 Instruction / Demo / Rationale.`
-> Try: `Generate an audit checklist for 🧱 Instruction / Demo / Rationale.`
-
 ## 1. What This Track Studies
 
 Use this track to understand how reasoning behavior is serialized before preference, verifier, or environment feedback is added.
@@ -45,7 +40,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 | Work | Year | Links | Data object | Feedback / verifier | Why it matters |
 |---|---:|---|---|---|---|
-| [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171) | 2023 | [Paper](https://arxiv.org/abs/2203.11171) · [DOI](https://doi.org/10.48550/arXiv.2203.11171) · [Paper Card Source](../../paper_cards/sources/self-consistency-chain-of-thought-2023) | Prompt, sampled reasoning paths, extracted answers, vote distribution, and selected final answer.; process: sample index, chain-of-thought path, answer extraction; Repeated inference sampling over answer-verifiable and judgment-required reasoning tasks. | Answer agreement and final-answer checking act as an implicit verifier. | Top-conference paper that turns repeated sampled reasoning paths into a simple test-time compute scaling primitive. |
 
 ## 5. Full Paper List
 
@@ -63,14 +57,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### <a id="chain-of-thought-rationale-data"></a>🧠 Chain-of-thought / rationale data
 
-- 📈 **[Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)**
-  <sub>2023 · ICLR 2023 · 📈 scaling study · 🏗️ construction recipe · judgment required · mixed · test time compute · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2203.11171) · [DOI](https://doi.org/10.48550/arXiv.2203.11171) · [Paper Card Source](../../paper_cards/sources/self-consistency-chain-of-thought-2023)
-  _Data object:_ Prompt, sampled reasoning paths, extracted answers, vote distribution, and selected final answer.; process: sample index, chain-of-thought path, answer extraction; Repeated inference sampling over answer-verifiable and judgment-required reasoning tasks.
-  _Feedback / verifier:_ Answer agreement and final-answer checking act as an implicit verifier.
-  _Recipe signal:_ teacher: Few-shot chain-of-thought exemplars and benchmark answer keys.; generator: Policy model generates diverse traces at inference time.
-  _Audit focus:_ More samples can hide answer-extraction bias., Majority vote can amplify a common wrong shortcut., Sampling budget may be incomparable across papers.
-  _Why it matters:_ Top-conference paper that turns repeated sampled reasoning paths into a simple test-time compute scaling primitive.
+_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
 
 ### <a id="self-training-star"></a>🔁 Self-training / STaR
 
@@ -95,7 +82,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ## 8. Related Paper-Card Sources
 
-- [Self-Consistency Improves Chain of Thought Reasoning in Language Models](../../paper_cards/sources/self-consistency-chain-of-thought-2023)
+- No paper-card sources are linked for this category yet.
 
 ## Back to Map
 

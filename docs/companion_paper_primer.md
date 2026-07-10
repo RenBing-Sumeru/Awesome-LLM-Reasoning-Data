@@ -1,6 +1,5 @@
 # Companion Paper Primer
 
-> 🤖 **Ask the Atlas:** [Ask about the primer](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Explain%20the%20companion%20paper%20primer%20and%20show%20how%20it%20grounds%20Ask%20the%20Atlas.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 Source: [arXiv:2606.02113](https://arxiv.org/abs/2606.02113)
 
@@ -8,12 +7,9 @@ Paper: **A Primer in Post-Training Reasoning Data: What We Know About How It Wor
 
 Authors: Yaoming Li, Guangxiang Zhao, Qilong Shi, Lin Sun, Xiangzheng Zhang, Tong Yang
 
-This compact companion-paper seed gives Ask the Atlas a public grounding layer
-before a private full-text extraction is configured. It should not replace the
-paper. For production-grade paper grounding, set `ASK_ATLAS_PRIMER_TEXT_PATH`
-to a locally extracted `.txt` or `.md` copy of the paper under
-`ASK_ATLAS_SAFE_RAG_ROOT` on the backend. Never point that path at
-configuration, secret, log, database, or structured data files.
+This compact companion-paper primer gives readers a public starting point for
+the field. It should not replace the paper; use the primary source for claims
+that require full methodological detail.
 
 ## Core Claim
 
@@ -52,14 +48,8 @@ post-training recipes:
 task/context -> trace/actions -> answer/artifact -> verifier/reward/judge/environment -> attribution metadata
 ```
 
-Ask the Atlas should therefore answer with explicit evidence layers:
-
-- **Companion paper evidence**: this primer seed or a configured full-text
-  extraction of the paper.
-- **Repository atlas evidence**: README, guides, paper maps, cards, generated
-  metadata, and source links.
-- **Model background knowledge**: lower-confidence synthesis used only for
-  in-scope post-training reasoning or repository navigation questions.
+Readers should distinguish the companion paper, repository metadata, and
+external background knowledge when evaluating a claim.
 
 ## Reader Tasks
 

@@ -31,14 +31,11 @@ from atlas_utils import (
     why_it_matters,
 )
 from common import ROOT
-from set_ask_backend_url import extract_backend_url, validate_public_config_text
 
 _ENTRIES_CACHE: list[dict] | None = None
 _CARDS_CACHE: dict[str, str] | None = None
 _TRACKS_CACHE: list[dict] | None = None
 PAGES_URL = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-ASK_URL = f"{PAGES_URL.rstrip('/')}/ask/"
-ASK_CONFIG = ROOT / "docs/assets/ask-config.js"
 
 CATEGORY_GROUPS = [
     {
@@ -112,31 +109,6 @@ def stats() -> dict:
         "data": artifact_counts["data"],
         "hf": artifact_counts["huggingface"],
         "project": artifact_counts["project"],
-    }
-
-
-def ask_launch_status() -> dict[str, str]:
-    if not ASK_CONFIG.exists():
-        return {
-            "badge": "https://img.shields.io/badge/Ask-launch%20pending-7c3aed",
-            "en_text": "source-grounded AI assistant · launch pending",
-            "zh_text": "Ask the Atlas（即将上线）",
-        }
-    text = ASK_CONFIG.read_text(encoding="utf-8")
-    problems = validate_public_config_text(text)
-    if problems:
-        raise RuntimeError("Unsafe Ask the Atlas public config: " + "; ".join(problems))
-    backend_url = extract_backend_url(text)
-    if backend_url:
-        return {
-            "badge": "https://img.shields.io/badge/Ask-live-16a34a",
-            "en_text": "source-grounded AI assistant · live",
-            "zh_text": "Ask the Atlas（可用）",
-        }
-    return {
-        "badge": "https://img.shields.io/badge/Ask-launch%20pending-7c3aed",
-        "en_text": "source-grounded AI assistant · launch pending",
-        "zh_text": "Ask the Atlas（即将上线）",
     }
 
 
@@ -552,7 +524,6 @@ def research_question_table() -> str:
 
 def readme_en() -> str:
     s = stats()
-    ask = ask_launch_status()
     return f"""<h1><a href="https://www.tsinghua.edu.cn/en/"><img align="right" src="assets/institutions/tsinghua-university.png" height="48" alt="Tsinghua University"></a><a href="https://english.pku.edu.cn/"><img align="right" src="assets/institutions/peking-university.png" height="48" alt="Peking University"></a>🌟 Awesome LLM Reasoning Data</h1>
 
 > A learning repository for understanding post-training reasoning data: what it is, how it is built, how it is verified, how it enters training, and how to audit it.
@@ -560,11 +531,9 @@ def readme_en() -> str:
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)]({PAGES_URL})
-[![Ask the Atlas]({ask["badge"]})]({ASK_URL})
 [![Entries](https://img.shields.io/badge/entries-{s['total']}-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-{s['verified']}-0f766e)](reports/link_coverage.md)
 [![Paper Cards](https://img.shields.io/badge/paper--card%20sources-{s['cards']}-7c3aed)](paper_cards/README.md)
-[![L5](https://img.shields.io/badge/L5%20audit--ready-{s['l5']}-ea580c)](reports/five_task_quality_audit.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 <p align="center">
@@ -588,8 +557,6 @@ To answer that, the repo combines four layers:
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
 
 Project website: [Awesome-LLM-Reasoning-Data.github.io]({PAGES_URL}).
-
-Ask the Atlas: [{ask["en_text"]}]({ASK_URL}).
 
 ---
 
@@ -965,14 +932,13 @@ MIT. See [LICENSE](LICENSE).
 
 def readme_zh() -> str:
     s = stats()
-    ask = ask_launch_status()
     return f"""# 🌟 Awesome LLM Reasoning Data
 
 > 一个系统学习“大模型后训练推理数据”的开源仓库：从概念、论文、数据构造、验证器、奖励信号、Agent 轨迹、RLVR、benchmark 到审计风险。
 
 [论文：A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
 
-[🤖 {ask["zh_text"]}]({ASK_URL}) · [🌐 网页版 Atlas]({PAGES_URL}) · [📚 论文分类地图](papers/README.md)
+[🌐 网页版 Atlas]({PAGES_URL}) · [📚 论文分类地图](papers/README.md)
 
 <p align="center">
   <img src="assets/overview.svg" width="92%" alt="Awesome LLM Reasoning Data overview">
@@ -1023,7 +989,7 @@ def readme_zh() -> str:
 
 ## 🧩 四种浏览视角
 
-后训练推理数据不是单一树状分类。同一篇 math paper 可能同时是 benchmark、SFT trace release、PRM 数据源、RLVR verifier 和 contamination 风险。因此首页需要提供四个视角：
+后训练推理数据具有多轴属性，但论文库当前将每篇论文固定为一个主 review 标签：03 programmatically verifiable outcome data 或 10 scaling/RLVR/test-time compute。其他 benchmark、SFT trace、PRM、verifier 和 contamination 信息通过四个浏览视角呈现：
 
 {four_views_table()}
 

@@ -1,6 +1,5 @@
 # Audit and Failure Modes
 
-> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=audit&question=Turn%20the%20Audit%20and%20Failure%20Modes%20guide%20into%20a%20release%20review%20checklist.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 ## What you will learn
 

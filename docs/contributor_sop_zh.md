@@ -16,7 +16,7 @@
 2. `docs/`：学习文档、概念解释和阅读路线。
 3. `papers/`：按研究方向和细分领域组织论文。
 4. `paper_cards/`：把重要论文、数据集、verifier、agent environment、recipe、benchmark、failure case 写成可审计的 paper card。
-5. `data/`：结构化元数据源，驱动 README、网站、paper pages、exports、reports 和 Ask the Atlas 的 RAG corpus。
+5. `data/`：结构化元数据源，驱动 README、网站、paper pages、exports 和 reports。
 
 任何修改都应该让项目更准确、更有用、更可审计，而不是更长、更花哨。
 
@@ -43,7 +43,6 @@
 | Paper-card sources | `paper_cards/` | 双语 review card 源文件。 |
 | Paper pages | `papers/` | 由脚本生成的研究方向页面。 |
 | Website | `docs/index.html`, `docs/assets/*` | GitHub Pages 可搜索网站。 |
-| Ask assistant | `docs/ask/`, `apps/ask-atlas/` | Ask the Atlas 前端和后端。 |
 | Reports | `reports/` | coverage、needs_search、link_check、release notes、quality audit。 |
 | 贡献规则 | `CONTRIBUTING.md`, `.github/PULL_REQUEST_TEMPLATE.md` | 对外贡献要求和 PR checklist。 |
 
@@ -85,7 +84,6 @@
 | Paper-card creation | 给高影响力条目写双语 paper-card source。 | `paper_cards/README.md`, `docs/paper_card_sop.md` |
 | Review 晋级 | 去掉模板化内容，补足 audit-ready 信息。 | `paper_cards/sources/` + `data/papers.yaml` |
 | Track enrichment | 强化某一个 paper track 或 subfield。 | `papers/`, `data/research_tracks.yaml` |
-| Website/Ask sync | 元数据变更后同步网站和 Ask RAG。 | `docs/assets/`, `apps/ask-atlas/` |
 
 ## 5. 候选论文筛选 SOP
 
@@ -168,8 +166,7 @@
 
 ## 7. 研究 Track 分类 SOP
 
-每个 entry 应该拥有一个或多个 `category`。当前项目有 14 个 track，
-并且被组织成三个 paper-atlas 大区：Background / Foundations、Core Reasoning Data Types、Data Lifecycle。
+当前项目保留 14 个 track 作为浏览 taxonomy。每个论文 entry 的 `category` 必须只保留一个主标签，且该标签必须存在于 `data/categories.yaml`。一次论文搜索任务建立一个 prompt batch；同一 batch 的全部论文必须使用 batch 确认的同一个标签，并记录同一个 `prompt_batch_id`。如果 prompt 对应多个方向，先请负责人确认，不能在收录后逐篇混改。其他跨轴信息写入 `source_role`、`training_use`、`domains` 和 card 正文，而不是增加 category。
 
 | category id | 研究方向 |
 |---|---|
@@ -692,44 +689,6 @@ python scripts/render_site.py --check
 
 不要把 secret 放进 `docs/`，因为 GitHub Pages 会公开发布。
 
-## 15. Ask the Atlas SOP
-
-Ask the Atlas 使用仓库内容做 source-grounded context。README、docs、papers、cards、data 的变更都会影响 RAG 质量。
-
-贡献者规则：
-
-- README、docs、papers、cards 中要保留 Ask 入口。
-- 修改公开文档后运行：
-
-```bash
-python scripts/check_ask_entrypoints.py
-python tools/paper_cards/card_tool.py check
-```
-
-- 修改 docs/papers/paper_cards/README.md 后运行 RAG 检查：
-
-```bash
-npm --prefix apps/ask-atlas run rag:check
-```
-
-- 修改 `apps/ask-atlas/` 后运行后端测试：
-
-```bash
-npm --prefix apps/ask-atlas test
-```
-
-安全规则：
-
-- 模型 API key 只能存在后端 secret。
-- 不允许提交 `.env`、provider key、OAuth secret、database URL、Redis token、含 secret 的截图、含 secret 的 terminal log。
-- `docs/assets/ask-config.js` 只能包含公开 backend URL。
-- 改 backend config 后运行：
-
-```bash
-python scripts/set_ask_backend_url.py --check
-npm --prefix apps/ask-atlas run production:status
-```
-
 ## 16. 本地 QA SOP
 
 正常 PR 前运行：
@@ -738,9 +697,6 @@ npm --prefix apps/ask-atlas run production:status
 python scripts/validate_data.py
 python scripts/secret_scan.py
 python scripts/render_site.py --check
-python scripts/set_ask_backend_url.py --check
-python scripts/check_ask_entrypoints.py
-npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
 python tools/paper_cards/card_tool.py check
@@ -750,10 +706,8 @@ python scripts/check_links.py --soft
 python scripts/summarize_counts.py
 ```
 
-如果修改了 Ask backend：
 
 ```bash
-npm --prefix apps/ask-atlas test
 ```
 
 如果准备 release audit，可以额外跑 live link check：
@@ -774,7 +728,6 @@ python scripts/check_links.py --live
 - 仍然缺哪些字段；
 - 哪些 generated files 被更新；
 - 本地跑了哪些 QA 命令；
-- 是否影响 Ask Atlas 的 RAG、frontend 或 backend。
 
 推荐 PR 标题：
 
@@ -845,7 +798,6 @@ Reviewer 按下面顺序检查：
 - 重要 entry 有 card；
 - card 包含 audit risks，而不只是 summary；
 - 受影响的 paper pages、website assets、card index、README sections、reports 已更新；
-- 受影响的 Ask entrypoints 和 RAG checks 通过；
 - secret scan 通过；
 - PR checklist 完成；
 - CI 通过。
@@ -856,7 +808,6 @@ Reviewer 按下面顺序检查：
 
 ```bash
 pip install -r requirements.txt
-npm ci --prefix apps/ask-atlas
 ```
 
 完整普通 PR 检查：
@@ -865,9 +816,6 @@ npm ci --prefix apps/ask-atlas
 python scripts/validate_data.py
 python scripts/secret_scan.py
 python scripts/render_site.py --check
-python scripts/set_ask_backend_url.py --check
-python scripts/check_ask_entrypoints.py
-npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
 python tools/paper_cards/card_tool.py check
@@ -877,10 +825,8 @@ python scripts/check_links.py --soft
 python scripts/summarize_counts.py
 ```
 
-Ask backend 检查：
 
 ```bash
-npm --prefix apps/ask-atlas test
 ```
 
 重新生成常见输出：

@@ -16,8 +16,6 @@ except ImportError:  # pragma: no cover - project requirements include PyYAML
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PAGES_BASE_URL = "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/"
-
 SECTIONS = [
     ("01_problem", "Problem: What question is this paper trying to answer?"),
     ("02_core_idea", "Core Idea: What is the paper's main contribution?"),
@@ -156,8 +154,6 @@ HEADER_ZH_REQUIRED_FIELDS = [
 ]
 READING_PRIORITY_OPTIONS = ["必读", "可读", "暂缓", "不推荐"]
 DEFAULT_READING_PRIORITY_CH = "可读"
-
-
 def project_root(root: Path | str | None = None) -> Path:
     return Path(root) if root is not None else ROOT
 
@@ -288,20 +284,10 @@ def link_parts(entry: dict) -> list[str]:
     return out
 
 
-def ask_links(entry_id: str, lang: str) -> str:
-    explain = f"{PAGES_BASE_URL}ask/?entry={entry_id}&mode=explain"
-    audit = f"{PAGES_BASE_URL}ask/?entry={entry_id}&mode=audit"
-    compare = f"{PAGES_BASE_URL}ask/?entry={entry_id}&mode=compare"
-    if lang == "ch":
-        return f"> **Ask the Atlas：** [解释]({explain}) · [审计]({audit}) · [对比]({compare})"
-    return f"> **Ask the Atlas:** [Explain]({explain}) · [Audit]({audit}) · [Compare]({compare})"
-
-
 def frontmatter(
     entry: dict,
     lang: str,
     root: Path | str | None = None,
-    include_ask: bool = True,
 ) -> list[str]:
     title = entry.get("title") or entry.get("id") or "unknown"
     entry_id = str(entry.get("id"))
@@ -325,8 +311,6 @@ def frontmatter(
             f"> **机构：** {institution_text(entry_id, lang, root)}",
             f"> **链接：** {links}",
         ]
-        if include_ask:
-            lines.append(ask_links(entry_id, "ch"))
         return lines + ["", "---", ""]
     lines = [
         f"# Paper Card: {title}",
@@ -341,8 +325,6 @@ def frontmatter(
         f"> **Institutions:** {institution_text(entry_id, lang, root)}",
         f"> **Links:** {links}",
     ]
-    if include_ask:
-        lines.append(ask_links(entry_id, "en"))
     return lines + ["", "---", ""]
 
 
@@ -350,12 +332,11 @@ def assemble_card(
     entry: dict,
     lang: str,
     root: Path | str | None = None,
-    include_ask: bool = True,
 ) -> str:
     if lang not in {"en", "ch"}:
         raise ValueError("lang must be 'en' or 'ch'")
     entry_id = str(entry.get("id"))
-    lines = frontmatter(entry, lang, root, include_ask)
+    lines = frontmatter(entry, lang, root)
     for index, (key, title) in enumerate(SECTIONS, 1):
         heading = SECTION_TITLES_CH[key] if lang == "ch" else title
         lines.append(f"## {index}. {heading}")
@@ -402,6 +383,29 @@ def category_title_map(root: Path | str | None = None) -> dict[str, str]:
     return {item["id"]: item["title"] for item in category_options(root)}
 
 
+def clean_category_ids(
+    value: Any,
+    label: str = "知识点分类",
+    allow_empty: bool = False,
+    root: Path | str | None = None,
+) -> list[str]:
+    category_ids = value if isinstance(value, list) else []
+    cleaned = [str(item).strip() for item in category_ids if str(item).strip()]
+    if not cleaned and allow_empty:
+        return []
+    if len(cleaned) != 1:
+        raise ValueError(f"{label}只能保留一个标签")
+    known = {item["id"] for item in category_options(root)}
+    if cleaned[0] not in known:
+        raise ValueError(f"{label}必须是 data/categories.yaml 中的合法知识点")
+    return cleaned
+
+
+def category_details(category_ids: list[str], root: Path | str | None = None) -> list[dict]:
+    by_id = {item["id"]: item for item in category_options(root)}
+    return [by_id[category_id] for category_id in category_ids if category_id in by_id]
+
+
 def category_labels_for_entry(entry: dict, header: dict | None = None, root: Path | str | None = None) -> str:
     title_map = category_title_map(root)
     category_ids = (header or {}).get("category_ids") or entry.get("category") or []
@@ -419,7 +423,7 @@ def save_header_zh_payload(payload: dict, root: Path | str | None = None) -> Non
     save_json_file(header_zh_path(root), payload)
 
 
-def clean_header_zh_record(record: dict) -> dict:
+def clean_header_zh_record(record: dict, root: Path | str | None = None) -> dict:
     if not isinstance(record, dict):
         record = {}
     allowed_text = [
@@ -433,8 +437,7 @@ def clean_header_zh_record(record: dict) -> dict:
     cleaned = {key: str(record.get(key) or "").strip() for key in allowed_text}
     if not cleaned["reading_priority_ch"]:
         cleaned["reading_priority_ch"] = DEFAULT_READING_PRIORITY_CH
-    category_ids = record.get("category_ids") if isinstance(record.get("category_ids"), list) else []
-    cleaned["category_ids"] = [str(item).strip() for item in category_ids if str(item).strip()]
+    cleaned["category_ids"] = clean_category_ids(record.get("category_ids"), allow_empty=True, root=root)
     cleaned["updated_at"] = now_iso()
     return cleaned
 
@@ -444,7 +447,7 @@ def save_header_zh(entry_id: str, record: dict, root: Path | str | None = None) 
     if entry_id not in entries:
         raise ValueError(f"unknown entry_id: {entry_id}")
     payload = load_header_zh(root)
-    cleaned = clean_header_zh_record(record)
+    cleaned = clean_header_zh_record(record, root)
     payload["entries"][entry_id] = cleaned
     payload["updated_at"] = cleaned["updated_at"]
     save_header_zh_payload(payload, root)

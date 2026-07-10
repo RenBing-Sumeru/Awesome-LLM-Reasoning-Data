@@ -1,6 +1,5 @@
 # Data Quality
 
-> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=audit&question=Turn%20the%20Data%20Quality%20guide%20into%20an%20audit%20checklist%20for%20reasoning-data%20releases.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 ## What you will learn
 

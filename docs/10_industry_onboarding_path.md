@@ -1,6 +1,5 @@
 # Industry Onboarding Path
 
-> 🤖 **Ask the Atlas:** [Ask about this guide](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?mode=explain&question=Use%20the%20Industry%20Onboarding%20Path%20to%20make%20a%20six-week%20learning%20plan%20for%20post-training%20reasoning%20data.) · [Open searchable atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 
 ## What you will learn
 

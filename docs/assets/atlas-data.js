@@ -37,16 +37,9 @@ window.ATLAS_DATA = {
         "math"
       ],
       "category": [
-        "preference_reward_feedback_data",
-        "programmatically_verifiable_outcome_data",
-        "process_trace_supervision_data",
-        "judgment_rubric_domain_expert_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "audit_failure_contamination_verifier_attacks"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "Other related work",
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "curated-card",
         "primary-link-checked"
@@ -117,13 +110,9 @@ window.ATLAS_DATA = {
         "execution"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "benchmarks_evaluation_surfaces"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "💻 Code execution / unit-test data",
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
         "iclr-2026",
         "track-03",
@@ -202,11 +191,7 @@ window.ATLAS_DATA = {
         "unit-tests"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data",
-        "benchmarks_evaluation_surfaces",
-        "data_construction_open_release_recipes",
-        "audit_failure_contamination_verifier_attacks"
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "🧰 Programmatic benchmarks",
       "tags": [
@@ -279,10 +264,7 @@ window.ATLAS_DATA = {
         "evaluation"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "benchmarks_evaluation_surfaces",
-        "audit_failure_contamination_verifier_attacks",
-        "data_construction_open_release_recipes"
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "🧰 Programmatic benchmarks",
       "tags": [
@@ -355,12 +337,9 @@ window.ATLAS_DATA = {
         "resource-bounded-evaluation"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data",
-        "benchmarks_evaluation_surfaces",
         "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "💻 Code execution / unit-test data",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
         "iclr-2026",
         "track-03",
@@ -429,9 +408,7 @@ window.ATLAS_DATA = {
         "evaluation"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "benchmarks_evaluation_surfaces",
-        "judgment_rubric_domain_expert_data"
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "🧰 Programmatic benchmarks",
       "tags": [
@@ -503,13 +480,9 @@ window.ATLAS_DATA = {
         "scaling"
       ],
       "category": [
-        "process_trace_supervision_data",
-        "rollout_search_test_time_trace_data",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "benchmarks_evaluation_surfaces"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "Other related work",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
         "test-time-compute",
         "best-of-n",
@@ -579,10 +552,7 @@ window.ATLAS_DATA = {
         "answer-extraction"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "data_construction_open_release_recipes",
-        "benchmarks_evaluation_surfaces",
-        "audit_failure_contamination_verifier_attacks"
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "📐 Math answer-verifiable data",
       "tags": [
@@ -660,11 +630,7 @@ window.ATLAS_DATA = {
         "unit-tests"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "benchmarks_evaluation_surfaces",
-        "audit_failure_contamination_verifier_attacks"
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "💻 Code execution / unit-test data",
       "tags": [
@@ -735,9 +701,7 @@ window.ATLAS_DATA = {
         "proof-checking"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "benchmarks_evaluation_surfaces",
-        "audit_failure_contamination_verifier_attacks"
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
@@ -818,12 +782,7 @@ window.ATLAS_DATA = {
         "premise-retrieval"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "benchmarks_evaluation_surfaces",
-        "audit_failure_contamination_verifier_attacks"
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
@@ -898,12 +857,9 @@ window.ATLAS_DATA = {
         "chain-of-thought"
       ],
       "category": [
-        "instruction_demonstration_rationale_data",
-        "rollout_search_test_time_trace_data",
-        "scaling_rlvr_test_time_compute",
-        "benchmarks_evaluation_surfaces"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "🧠 Chain-of-thought / rationale data",
+      "subfield": "🎲 pass@k / sampling budget",
       "tags": [
         "iclr-2023",
         "self-consistency",
@@ -976,12 +932,9 @@ window.ATLAS_DATA = {
         "games"
       ],
       "category": [
-        "rollout_search_test_time_trace_data",
-        "environment_agent_trajectory_data",
-        "scaling_rlvr_test_time_compute",
-        "benchmarks_evaluation_surfaces"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "🌳 Search trees / MCTS",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
         "neurips-2023",
         "tree-search",
@@ -1052,12 +1005,9 @@ window.ATLAS_DATA = {
         "rl"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "benchmarks_evaluation_surfaces"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "💻 Code execution / unit-test data",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
         "neurips-2022",
         "code-rl",
@@ -1132,13 +1082,9 @@ window.ATLAS_DATA = {
         "reward-modeling"
       ],
       "category": [
-        "process_trace_supervision_data",
-        "preference_reward_feedback_data",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "audit_failure_contamination_verifier_attacks"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "🪜 Human step-level labels",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
         "process-reward-model",
         "prm800k",
@@ -1217,13 +1163,9 @@ window.ATLAS_DATA = {
         "open-models"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "frontier_reports_data_disclosure_ledger"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "🧮 Math RLVR datasets",
+      "subfield": "📈 Data scaling",
       "tags": [
         "deepseekmath",
         "grpo",
@@ -1331,12 +1273,9 @@ window.ATLAS_DATA = {
         "data-reuse"
       ],
       "category": [
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute",
-        "programmatically_verifiable_outcome_data"
+        "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "🧪 Filtering and verifier refresh",
+      "subfield": "📈 Data scaling",
       "tags": [
         "tmlr-2024",
         "rest-em",
@@ -3185,16 +3124,9 @@ window.ATLAS_DATA = {
               "math"
             ],
             "category": [
-              "preference_reward_feedback_data",
-              "programmatically_verifiable_outcome_data",
-              "process_trace_supervision_data",
-              "judgment_rubric_domain_expert_data",
-              "data_construction_open_release_recipes",
-              "training_usage_optimization_objectives",
-              "scaling_rlvr_test_time_compute",
-              "audit_failure_contamination_verifier_attacks"
+              "scaling_rlvr_test_time_compute"
             ],
-            "subfield": "Other related work",
+            "subfield": "🏋️ RLVR optimization scaling",
             "tags": [
               "curated-card",
               "primary-link-checked"

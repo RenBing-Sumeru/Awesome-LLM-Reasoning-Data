@@ -21,7 +21,7 @@ Every contribution must preserve the four-layer design:
 3. `papers/` organizes papers by research track and subfield.
 4. `paper_cards/` turns important papers/releases into auditable engineering records.
 5. `data/` is the structured source of truth that powers the README, website,
-   paper pages, exports, reports, and Ask the Atlas RAG corpus.
+   paper pages, exports, and reports.
 
 ## 1. Non-Negotiable Rules
 
@@ -54,7 +54,6 @@ Use these files as the canonical workflow map:
 | Paper-card sources | `paper_cards/` | Bilingual source files for generated review cards. |
 | Paper pages | `papers/` | Generated track pages. Do not hand-edit generated lists unless you know the renderer. |
 | Website | `docs/index.html`, `docs/assets/*` | Searchable GitHub Pages atlas. |
-| Ask assistant | `docs/ask/`, `apps/ask-atlas/` | AI assistant frontend/backend. |
 | Reports | `reports/` | Coverage, needs-search, link checks, release notes, audits. |
 | Contribution rules | `CONTRIBUTING.md`, `.github/PULL_REQUEST_TEMPLATE.md` | Public contribution expectations. |
 
@@ -88,7 +87,6 @@ Pick one queue per PR. Do not mix unrelated work.
 | Paper-card creation | Create bilingual paper-card sources for high-impact verified entries. | `paper_cards/README.md`, `docs/paper_card_sop.md` |
 | Review promotion | Remove placeholders and add audit-ready detail. | `paper_cards/sources/` + `data/papers.yaml` |
 | Track enrichment | Improve one research track/subfield. | `papers/`, `data/research_tracks.yaml` |
-| Website/Ask sync | Update generated assets and RAG corpus after metadata changes. | `docs/assets/`, `apps/ask-atlas/` |
 
 ## 5. Candidate Paper Screening
 
@@ -171,7 +169,7 @@ data exists, leave it `null`.
 
 ## 7. Research Track Classification
 
-Every entry should have one or more `category` values from the 14 atlas tracks.
+Every entry must have exactly one primary `category` value from the 14 atlas tracks. Entries collected for the same prompt batch must share that value and record the same `prompt_batch_id`; resolve ambiguous prompts with the responsible maintainer before collection.
 These tracks are grouped into three paper-atlas sections: background/foundations,
 core reasoning-data types, and data lifecycle.
 
@@ -733,46 +731,6 @@ python scripts/render_site.py --check
 
 Do not put secrets in `docs/` because GitHub Pages publishes it.
 
-## 15. Ask the Atlas SOP
-
-Ask the Atlas uses repository content as source-grounded context. Any change to
-README, docs, paper pages, cards, or metadata can affect retrieval quality.
-
-Contributor rules:
-
-- Keep Ask entry links present in README, docs, papers, and cards.
-- Run Ask entrypoint checks after changing public docs:
-
-```bash
-python scripts/check_ask_entrypoints.py
-python tools/paper_cards/card_tool.py check
-```
-
-- Run RAG corpus check after changing docs/papers/paper_cards/README.md:
-
-```bash
-npm --prefix apps/ask-atlas run rag:check
-```
-
-- Run backend tests if you touch `apps/ask-atlas/`:
-
-```bash
-npm --prefix apps/ask-atlas test
-```
-
-Security rules:
-
-- Model API keys must only live in backend secrets.
-- Never commit `.env` files, provider keys, OAuth secrets, database URLs, Redis
-  tokens, screenshots with secrets, or terminal logs containing secrets.
-- `docs/assets/ask-config.js` may contain only the public backend URL.
-- If changing backend config, run:
-
-```bash
-python scripts/set_ask_backend_url.py --check
-npm --prefix apps/ask-atlas run production:status
-```
-
 ## 16. Local QA SOP
 
 Before opening a PR, run the fast full check:
@@ -781,9 +739,6 @@ Before opening a PR, run the fast full check:
 python scripts/validate_data.py
 python scripts/secret_scan.py
 python scripts/render_site.py --check
-python scripts/set_ask_backend_url.py --check
-python scripts/check_ask_entrypoints.py
-npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
 python tools/paper_cards/card_tool.py check
@@ -793,10 +748,8 @@ python scripts/check_links.py --soft
 python scripts/summarize_counts.py
 ```
 
-If you changed Ask backend code:
 
 ```bash
-npm --prefix apps/ask-atlas test
 ```
 
 If you changed external links and are preparing a release audit, run live link
@@ -819,7 +772,6 @@ Every PR must include:
 - fields still unknown;
 - generated files updated;
 - local QA commands run;
-- whether Ask Atlas RAG/frontend/backend was affected.
 
 Use the PR checklist in `.github/PULL_REQUEST_TEMPLATE.md`.
 
@@ -893,7 +845,6 @@ A contribution is done only when:
 - cards include audit risks, not only summaries;
 - generated paper pages, website assets, card index, README sections, and
   reports are up to date when affected;
-- Ask entrypoints and RAG checks pass when affected;
 - secret scan passes;
 - PR checklist is complete;
 - CI passes.
@@ -904,7 +855,6 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
-npm ci --prefix apps/ask-atlas
 ```
 
 Full normal PR check:
@@ -913,9 +863,6 @@ Full normal PR check:
 python scripts/validate_data.py
 python scripts/secret_scan.py
 python scripts/render_site.py --check
-python scripts/set_ask_backend_url.py --check
-python scripts/check_ask_entrypoints.py
-npm --prefix apps/ask-atlas run rag:check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
 python tools/paper_cards/card_tool.py check
@@ -925,10 +872,8 @@ python scripts/check_links.py --soft
 python scripts/summarize_counts.py
 ```
 
-Ask backend check:
 
 ```bash
-npm --prefix apps/ask-atlas test
 ```
 
 Regenerate common outputs:
