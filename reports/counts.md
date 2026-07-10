@@ -1,7 +1,7 @@
 # Counts Report
 
 total entries: 280
-filled cards: 89
+filled cards: 94
 missing primary paper/arXiv/DOI links: 115
 needs search / partial metadata: 115
 
@@ -16,8 +16,8 @@ needs search / partial metadata: 115
 - training_usage_optimization_objectives: 97
 - environment_agent_trajectory_data: 95
 - programmatically_verifiable_outcome_data: 94
-- scaling_rlvr_test_time_compute: 90
-- foundations_and_primers: 84
+- scaling_rlvr_test_time_compute: 89
+- foundations_and_primers: 83
 - judgment_rubric_domain_expert_data: 83
 - preference_reward_feedback_data: 73
 - audit_failure_contamination_verifier_attacks: 68
@@ -27,48 +27,48 @@ needs search / partial metadata: 115
 - process_trace_supervision_data: 25
 
 ## source_role
-- survey_background: 192
-- construction_recipe: 40
+- survey_background: 191
+- construction_recipe: 41
 - benchmark: 37
 - data_release: 36
 - verifier_reward: 20
+- scaling_study: 19
 - model_report: 18
-- scaling_study: 18
 - agent_environment: 16
 - audit_failure: 12
 - process_supervision: 11
 - infrastructure: 2
 
 ## verification_contract
-- unknown: 180
-- mixed: 55
-- programmatic: 48
+- unknown: 179
+- mixed: 56
+- programmatic: 49
 - judgment_required: 30
 - environmental: 22
 
 ## training_use
-- unknown: 174
-- evaluation: 72
+- unknown: 173
+- evaluation: 73
 - sft: 36
 - reward_modeling: 28
 - rlvr: 27
 - agent_training: 22
+- test_time_compute: 21
 - audit: 20
-- test_time_compute: 20
 - preference_learning: 16
 - distillation: 14
 - process_supervision: 11
 - safety_alignment: 8
 
 ## construction_layer
-- release_audit: 234
+- release_audit: 233
 - reward_verifier_layer: 43
 - trace_writing: 24
-- optimizer_scaffold: 22
-- search_substrate: 21
+- optimizer_scaffold: 23
+- search_substrate: 22
 - prompt_sourcing: 17
 - frontier_pipeline: 11
-- scaling_report: 10
+- scaling_report: 11
 - self_play_anchor: 2
 
 ## year
@@ -88,9 +88,9 @@ needs search / partial metadata: 115
 - agents: 14
 - benchmarks: 12
 - failures: 4
-- recipes: 26
+- recipes: 29
 - releases: 18
-- verifiers: 15
+- verifiers: 17
 
 ## missing primary links (first 80)
 - `an-overview-of-the-bioasq-large-scale-biomedical-semantic-indexing-and-question--2015` · An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition · status `needs_metadata`

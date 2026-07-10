@@ -383,11 +383,11 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Reward-signal audit for spurious behavior in RLVR.
 - 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2406.03816)
-  _Data object:_ reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree
-  _Feedback / verifier:_ process reward guided tree search
-  _Recipe signal:_ generator: policy rollouts expanded by MCTS; filtering rule: process-reward-guided trajectory selection
+  <sub>2024 · NeurIPS · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2406.03816) · [DOI](https://doi.org/10.48550/arXiv.2406.03816) · [Code](https://github.com/THUDM/ReST-MCTS) · [Data](https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th) · [Project](https://rest-mcts.github.io/) · [Card](../../cards/recipes/rest-mcts.md)
+  _Data object:_ searched reasoning trajectory with intermediate node states, final answer, verifier outcome, and inferred process reward.; process: problem, partial solution state, candidate next step; MCTS-style reasoning tree
+  _Feedback / verifier:_ process reward model guided by final-answer oracle feedback and MCTS-derived value targets.
+  _Recipe signal:_ teacher: oracle final answers and search-derived value estimates, not manual dense step labels.; generator: policy rollouts expanded by MCTS
   _Audit focus:_ search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality
   _Why it matters:_ It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
 - 🪜 **[Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629)**
@@ -793,6 +793,7 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [Spurious Rewards](../../cards/verifiers/spurious_rewards.md)
 - [LiveBench: A challenging, contamination-free benchmark for large language models](../../cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)
 - [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
+- [ReST-MCTS*](../../cards/recipes/rest-mcts.md)
 - [Tulu 3: Pushing frontiers in open language model post-training](../../cards/recipes/tulu-3.md)
 - [Direct preference optimization: Your language model is secretly a reward model](../../cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)
 - [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](../../cards/verifiers/mt-bench-chatbot-arena.md)
@@ -802,7 +803,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 - [UltraFeedback: Boosting language models with high-quality feedback](../../cards/releases/ultrafeedback.md)
 - [Chain-of-thought prompting elicits reasoning in large language models](../../cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md)
 - [Constitutional AI: Harmlessness from AI feedback](../../cards/recipes/constitutional-ai.md)
-- [STaR: Bootstrapping reasoning with reasoning](../../cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)
 
 ## Back to Map
 

@@ -10,16 +10,16 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - Needs search: 115
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 88
+- Cards: 92
 
 ## Curation Levels
 
 - L0_seeded: 115
-- L1_link_verified: 68
-- L2_artifact_verified: 7
+- L1_link_verified: 67
+- L2_artifact_verified: 4
 - L3_summary_ready: 4
-- L4_carded: 33
-- L5_audit_ready: 53
+- L4_carded: 36
+- L5_audit_ready: 54
 
 ## Official Link Coverage
 
@@ -29,12 +29,12 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - ACL coverage: 7
 - PMLR coverage: 1
 - CVF coverage: 0
-- DOI coverage: 5
-- Code coverage: 41
-- Data coverage: 27
-- Hugging Face coverage: 20
-- Project page coverage: 25
-- Card coverage: 88
+- DOI coverage: 9
+- Code coverage: 42
+- Data coverage: 29
+- Hugging Face coverage: 22
+- Project page coverage: 26
+- Card coverage: 92
 
 ## Starter Pack Coverage
 
