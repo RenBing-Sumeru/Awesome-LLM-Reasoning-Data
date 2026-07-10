@@ -98,12 +98,14 @@ def run_git(root: Path, args: list[str]) -> str:
             cwd=root,
             check=False,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
     except FileNotFoundError:
         return ""
-    return result.stdout if result.returncode == 0 else ""
+    return (result.stdout or "") if result.returncode == 0 else ""
 
 
 def git_file(root: Path, ref: str, path: str) -> str:

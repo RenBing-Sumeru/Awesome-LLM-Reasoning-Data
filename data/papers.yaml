@@ -184,8 +184,7 @@
     verified_by: agent
     confidence: high
     notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
-  curation_level: L4_carded
-- id: data-statements-for-natural-language-processing-2018
+  curation_level: L4_carded- id: data-statements-for-natural-language-processing-2018
   title: Data statements for natural language processing
   year: 2018
   venue: TACL
@@ -1731,7 +1730,7 @@
   needs: []
   one_line_summary: T0 makes prompt templates and prompted dataset mixtures concrete artifacts for zero-shot instruction tuning.
   why_it_matters: 'It is a Track 01 reference for prompt-source infrastructure: the data object includes dataset source, prompt template, target output, and held-out task policy.'
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -2718,7 +2717,7 @@
   needs: []
   one_line_summary: This failure study measures when optimizing an imperfect proxy reward starts reducing gold-reward quality.
   why_it_matters: It gives reward-model readers a concrete audit lens for separating proxy reward gains from real preference improvement.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -3091,8 +3090,7 @@
     verified_by: agent
     confidence: high
     notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
-  curation_level: L4_carded
-- id: training-language-models-to-follow-instructions-with-human-feedback-2022
+  curation_level: L5_audit_ready- id: training-language-models-to-follow-instructions-with-human-feedback-2022
   title: Training language models to follow instructions with human feedback
   year: 2022
   venue: NeurIPS
@@ -3726,7 +3724,7 @@
   needs: []
   one_line_summary: Distilling Step-by-Step trains smaller models with answer labels plus teacher-generated rationales.
   why_it_matters: It is a compact rationale-distillation recipe showing how teacher traces become training targets while preserving faithfulness and lineage risks.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -4379,7 +4377,7 @@
   needs: []
   one_line_summary: This audit shows CoT explanations can rationalize biased answers without revealing the prompt feature that influenced the model.
   why_it_matters: It prevents treating rationale text as faithful reasoning data unless interventions check whether the trace actually drives the answer.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -4772,7 +4770,7 @@
   needs: []
   one_line_summary: MAmmoTH releases MathInstruct, a hybrid CoT/PoT math instruction mixture for supervised math reasoning.
   why_it_matters: It exposes how rationale type, annotation source, tool/program substrate, and subset license all affect reuse of math reasoning data.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -4947,7 +4945,7 @@
   needs: []
   one_line_summary: This paper measures CoT faithfulness by intervening on reasoning text and observing answer changes.
   why_it_matters: It gives Track 01 a concrete audit lens for separating rationale text as a style target from rationale text as causal reasoning evidence.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -5047,7 +5045,7 @@
   needs: []
   one_line_summary: MetaMath bootstraps math instruction data by rewriting GSM8K and MATH training questions into MetaMathQA.
   why_it_matters: It is a math SFT scaling reference whose reuse depends on source split, teacher lineage, near-duplicate, and answer-level verifier audits.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -5718,7 +5716,7 @@
   needs: []
   one_line_summary: ReST^EM samples model solutions, filters them with binary feedback, and fine-tunes on accepted examples.
   why_it_matters: It shows how verifiable task feedback can become synthetic training data beyond human-written examples, while exposing verifier and accepted-sample bias risks.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -6635,7 +6633,7 @@
   needs: []
   one_line_summary: WizardMath adapts Evol-Instruct to math reasoning, but the full training data is not publicly released.
   why_it_matters: It is useful as a recipe card precisely because it separates an influential construction method from a fully auditable data release.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -9076,8 +9074,7 @@
     verified_by: agent
     confidence: high
     notes: Official primary link verified; artifact_verified means at least one official non-primary artifact is pinned.
-  curation_level: L4_carded
-- id: math-shepherd-2024
+  curation_level: L5_audit_ready- id: math-shepherd-2024
   title: Math-Shepherd
   year: 2024
   venue: arXiv
@@ -9960,7 +9957,7 @@
   needs: []
   one_line_summary: R-Tuning turns abstention into instruction data by teaching models to answer known questions and refuse unknown ones.
   why_it_matters: 'It broadens Track 01 beyond producing answers: the target behavior can be calibrated refusal with its own labels and audit context.'
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -10601,7 +10598,7 @@
   needs: []
   one_line_summary: Self-Rewarding Language Models use model-generated judgments as preference signals for iterative DPO.
   why_it_matters: It makes self-generated judge feedback a first-class post-training data object with clear risks around judge bias and reward hacking.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -10695,7 +10692,7 @@
   needs: []
   one_line_summary: SPIN pairs real SFT responses with model-generated responses and iteratively fine-tunes through a self-play objective.
   why_it_matters: It is a compact example of demonstration-anchored self-play where the model's own responses become contrastive training records.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -24141,7 +24138,7 @@
     and answer-level filtering by Math-Verify plus Llama judge recovery.
   why_it_matters: The release makes the Open R1 reproduction effort concrete as a dataset with prompts, generated traces,
     correctness fields, split metadata, and filtering signals exposed enough for L4 card-level reuse and audit planning.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -24474,7 +24471,7 @@
     executable feedback, and large-scale environment interaction.
   why_it_matters: It shows how frontier coding models turn code generation, tool calls, tests, and agent environments into
     post-training data and reward surfaces, while leaving key mixture, split, and verifier details for audit.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -24770,7 +24767,7 @@
   needs: []
   one_line_summary: This survey maps multi-step reasoning with LLMs across generation, evaluation, and control methods.
   why_it_matters: It helps readers route model-centric reasoning claims into concrete questions about traces, verifiers, tools, rewards, and evaluation surfaces.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -24879,7 +24876,7 @@
   needs: []
   one_line_summary: This survey maps RLHF as a feedback-to-reward-to-policy pipeline.
   why_it_matters: It helps readers distinguish human feedback, reward modeling, and policy optimization before comparing them with verifiable-reward reasoning data.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -24997,7 +24994,7 @@
   needs: []
   one_line_summary: This survey organizes reward models by data source, objective, application, benchmark, and failure mode.
   why_it_matters: It gives Track 00 vocabulary for comparing learned rewards, PRMs, rubrics, LLM judges, and programmatic verifiers.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: true
@@ -25113,7 +25110,7 @@
   needs: []
   one_line_summary: This survey reviews human preference feedback sources, formats, modeling methods, usage objectives, and evaluation.
   why_it_matters: It helps readers distinguish demonstrations, pairwise comparisons, scalar rewards, DPO-style objectives, and evaluation judgments.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -25236,7 +25233,7 @@
   needs: []
   one_line_summary: This survey connects RLHF, DPO, PPO/GRPO, and RLVR as LLM post-training methods.
   why_it_matters: It helps readers avoid conflating human preference rewards with programmatic or verifiable rewards in reasoning-data pipelines.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false
@@ -25520,7 +25517,7 @@
   needs: []
   one_line_summary: This audit argues model developers should report train-test overlap so public-test-set results can be interpreted under contamination risk.
   why_it_matters: It gives the atlas a direct reason to record overlap, data reuse, and disclosure policy before treating benchmark gains as reasoning progress.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
   verification:
     link_verified: true
     artifact_verified: false

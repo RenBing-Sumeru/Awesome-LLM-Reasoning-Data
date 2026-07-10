@@ -1,5 +1,270 @@
 {
   "schema_version": 1,
-  "updated_at": null,
-  "annotations": {}
+  "updated_at": "2026-07-10T08:30:12.540Z",
+  "annotations": {
+    "a-comprehensive-survey-of-reward-models-taxonomy-applications-challenges-and-future-2025": [
+      {
+        "entry_id": "a-comprehensive-survey-of-reward-models-taxonomy-applications-challenges-and-future-2025",
+        "title": "A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future",
+        "current_level": "L5_audit_ready",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "survey",
+        "created_at": "2026-07-10T07:46:50.219Z"
+      }
+    ],
+    "a-survey-of-reinforcement-learning-from-human-feedback-2023": [
+      {
+        "entry_id": "a-survey-of-reinforcement-learning-from-human-feedback-2023",
+        "title": "A Survey of Reinforcement Learning from Human Feedback",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "survey",
+        "created_at": "2026-07-10T07:46:09.062Z"
+      }
+    ],
+    "a-survey-on-human-preference-learning-for-large-language-models-2024": [
+      {
+        "entry_id": "a-survey-on-human-preference-learning-for-large-language-models-2024",
+        "title": "A Survey on Human Preference Learning for Large Language Models",
+        "current_level": "L5_audit_ready",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "survey",
+        "created_at": "2026-07-10T07:46:32.494Z"
+      }
+    ],
+    "rest-textsuperscriptem-2023": [
+      {
+        "entry_id": "rest-textsuperscriptem-2023",
+        "title": "Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "self training",
+        "created_at": "2026-07-10T07:48:37.987Z"
+      }
+    ],
+    "deep-reinforcement-learning-from-human-preferences-2017": [
+      {
+        "entry_id": "deep-reinforcement-learning-from-human-preferences-2017",
+        "title": "Deep reinforcement learning from human preferences",
+        "current_level": "L4_carded",
+        "target_level": "L4_carded",
+        "decision": "not_useful",
+        "note": "2017年的论文，太老",
+        "created_at": "2026-07-10T07:50:48.833Z"
+      }
+    ],
+    "distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023": [
+      {
+        "entry_id": "distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023",
+        "title": "Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "蒸馏",
+        "created_at": "2026-07-10T07:52:11.272Z"
+      }
+    ],
+    "finetuned-language-models-are-zero-shot-learners-2021": [
+      {
+        "entry_id": "finetuned-language-models-are-zero-shot-learners-2021",
+        "title": "Finetuned language models are zero-shot learners",
+        "current_level": "L4_carded",
+        "target_level": "L4_carded",
+        "decision": "not_useful",
+        "note": "感觉没啥用",
+        "created_at": "2026-07-10T08:05:51.665Z"
+      }
+    ],
+    "language-model-developers-should-report-train-test-overlap-2024": [
+      {
+        "entry_id": "language-model-developers-should-report-train-test-overlap-2024",
+        "title": "Language Model Developers Should Report Train-Test Overlap",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "contamination survey",
+        "created_at": "2026-07-10T08:09:30.660Z"
+      }
+    ],
+    "language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023": [
+      {
+        "entry_id": "language-models-do-not-always-say-what-they-think-unfaithful-explanations-in-cha-2023",
+        "title": "Language models do not always say what they think: Unfaithful explanations in chain-of-thought prompting",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "cot data筛选",
+        "created_at": "2026-07-10T08:11:30.789Z"
+      }
+    ],
+    "mammoth2-scaling-instructions-from-the-web-2024": [
+      {
+        "entry_id": "mammoth2-scaling-instructions-from-the-web-2024",
+        "title": "MAmmoTH2: Scaling Instructions from the Web",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "representative",
+        "note": "开源数据集",
+        "created_at": "2026-07-10T08:12:55.993Z"
+      }
+    ],
+    "mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023": [
+      {
+        "entry_id": "mammoth-building-math-generalist-models-through-hybrid-instruction-tuning-2023",
+        "title": "MAmmoTH: Building math generalist models through hybrid instruction tuning",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "representative",
+        "note": "开源数据集",
+        "created_at": "2026-07-10T08:13:12.638Z"
+      }
+    ],
+    "measuring-faithfulness-in-chain-of-thought-reasoning-2023": [
+      {
+        "entry_id": "measuring-faithfulness-in-chain-of-thought-reasoning-2023",
+        "title": "Measuring faithfulness in chain-of-thought reasoning",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "cot过滤",
+        "created_at": "2026-07-10T08:13:51.348Z"
+      }
+    ],
+    "metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023": [
+      {
+        "entry_id": "metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023",
+        "title": "MetaMath: Bootstrap your own mathematical questions for large language models",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "math qa合成，",
+        "created_at": "2026-07-10T08:17:59.731Z"
+      }
+    ],
+    "reasoning-with-large-language-models-a-survey-2024": [
+      {
+        "entry_id": "reasoning-with-large-language-models-a-survey-2024",
+        "title": "Multi-Step Reasoning with Large Language Models, a Survey",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "survey",
+        "created_at": "2026-07-10T08:20:15.545Z"
+      }
+    ],
+    "multitask-prompted-training-enables-zero-shot-task-generalization-2021": [
+      {
+        "entry_id": "multitask-prompted-training-enables-zero-shot-task-generalization-2021",
+        "title": "Multitask prompted training enables zero-shot task generalization",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "sft data",
+        "created_at": "2026-07-10T08:22:09.851Z"
+      }
+    ],
+    "openr1-math-220k-2025": [
+      {
+        "entry_id": "openr1-math-220k-2025",
+        "title": "OpenR1-Math-220k",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "representative",
+        "note": "开源数据集",
+        "created_at": "2026-07-10T08:22:51.982Z"
+      }
+    ],
+    "qwen3-coder-2025": [
+      {
+        "entry_id": "qwen3-coder-2025",
+        "title": "Qwen3-Coder",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "representative",
+        "note": "tech report",
+        "created_at": "2026-07-10T08:23:22.058Z"
+      }
+    ],
+    "r-tuning-2024": [
+      {
+        "entry_id": "r-tuning-2024",
+        "title": "R-Tuning: Instructing Large Language Models to Say 'I Don't Know'",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "sft data合成",
+        "created_at": "2026-07-10T08:24:02.457Z"
+      }
+    ],
+    "reinforcement-learning-for-llm-post-training-a-survey-2024": [
+      {
+        "entry_id": "reinforcement-learning-for-llm-post-training-a-survey-2024",
+        "title": "Reinforcement Learning for LLM Post-Training: A Survey",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "survey",
+        "created_at": "2026-07-10T08:24:17.721Z"
+      }
+    ],
+    "spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024": [
+      {
+        "entry_id": "spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024",
+        "title": "SPIN: Self-play fine-tuning converts weak language models to strong language models",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "自蒸馏",
+        "created_at": "2026-07-10T08:24:55.402Z"
+      }
+    ],
+    "scaling-laws-for-reward-model-overoptimization-2022": [
+      {
+        "entry_id": "scaling-laws-for-reward-model-overoptimization-2022",
+        "title": "Scaling laws for reward model overoptimization",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "reward model",
+        "created_at": "2026-07-10T08:25:25.407Z"
+      }
+    ],
+    "self-rewarding-lms-2024": [
+      {
+        "entry_id": "self-rewarding-lms-2024",
+        "title": "Self-Rewarding Language Models",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "reward model",
+        "created_at": "2026-07-10T08:25:50.320Z"
+      }
+    ],
+    "training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022": [
+      {
+        "entry_id": "training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-2022",
+        "title": "Training a helpful and harmless assistant with reinforcement learning from human feedback",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "survey",
+        "created_at": "2026-07-10T08:29:15.310Z"
+      }
+    ],
+    "wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023": [
+      {
+        "entry_id": "wizardmath-empowering-mathematical-reasoning-for-large-language-models-via-reinf-2023",
+        "title": "WizardMath: Empowering mathematical reasoning for large language models via reinforced evol-instruct",
+        "current_level": "L4_carded",
+        "target_level": "L5_audit_ready",
+        "decision": "useful",
+        "note": "数据合成",
+        "created_at": "2026-07-10T08:30:12.540Z"
+      }
+    ]
+  }
 }

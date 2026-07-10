@@ -217,6 +217,31 @@ class LevelReviewServerTests(unittest.TestCase):
         self.assertEqual("cards/agents/example.md", item["card_path"])
         self.assertIn("entry_id: example-agent-2026", item["card_diff"])
 
+    def test_base_yaml_with_utf8_text_does_not_break_changed_review(self) -> None:
+        server = load_server()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            unicode_entry = entry_yaml().replace(
+                "Example Agent Benchmark",
+                "Example Agent Benchmark \u4e2d\u6587",
+            )
+            write_project(root, unicode_entry, complete_card())
+            git(root, "init")
+            git(root, "config", "user.email", "review@example.com")
+            git(root, "config", "user.name", "Review Test")
+            git(root, "add", "data/papers.yaml", "cards/agents/example.md")
+            git(root, "commit", "-m", "base")
+            git(root, "branch", "-M", "main")
+            (root / "data/papers.yaml").write_text(
+                unicode_entry.replace("curation_level: L4_carded", "curation_level: L5_audit_ready"),
+                encoding="utf-8",
+            )
+
+            payload = server.build_review_payload(root=root, base_ref="main", changed_only=True)
+
+        self.assertEqual(1, payload["total_items"])
+        self.assertIn("\u4e2d\u6587", payload["items"][0]["title"])
+
     def test_l5_environment_version_gap_is_advisory_not_hard_blocker(self) -> None:
         server = load_server()
         with tempfile.TemporaryDirectory() as tmp:
