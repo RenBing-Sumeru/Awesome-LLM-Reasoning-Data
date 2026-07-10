@@ -87,12 +87,20 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: Lean checker feedback and prior formal-proof dataset.; generator: model samples proof candidates and tree-search paths.
   _Audit focus:_ Search budget can dominate model quality., Checker feedback is sparse and version-dependent., RL can optimize toward easy theorem families.
   _Why it matters:_ It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.
+- 🪜 **[ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](https://arxiv.org/abs/2501.07861)**
+  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · mixed · process supervision · preference learning · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2501.07861) · [DOI](https://doi.org/10.48550/arXiv.2501.07861) · [Code](https://github.com/Jeryi-Sun/ReARTeR) · [Card](../../cards/recipes/rearter.md)
+  _Data object:_ step-level preference data with retrieval context, process reward score, process explanation, and final answer.; process: query, retrieval context, partial reasoning state; RAG reasoning pipeline
+  _Feedback / verifier:_ Process Reward Model plus Process Explanation Model, with MCTS-guided search.
+  _Recipe signal:_ teacher: PRM/PEM feedback and benchmark supervision.; generator: MCTS-guided retrieval-augmented rollouts
+  _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
+  _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
 - 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2406.03816)
-  _Data object:_ reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree
-  _Feedback / verifier:_ process reward guided tree search
-  _Recipe signal:_ generator: policy rollouts expanded by MCTS; filtering rule: process-reward-guided trajectory selection
+  <sub>2024 · NeurIPS · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2406.03816) · [DOI](https://doi.org/10.48550/arXiv.2406.03816) · [Code](https://github.com/THUDM/ReST-MCTS) · [Data](https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th) · [Project](https://rest-mcts.github.io/) · [Card](../../cards/recipes/rest-mcts.md)
+  _Data object:_ searched reasoning trajectory with intermediate node states, final answer, verifier outcome, and inferred process reward.; process: problem, partial solution state, candidate next step; MCTS-style reasoning tree
+  _Feedback / verifier:_ process reward model guided by final-answer oracle feedback and MCTS-derived value targets.
+  _Recipe signal:_ teacher: oracle final answers and search-derived value estimates, not manual dense step labels.; generator: policy rollouts expanded by MCTS
   _Audit focus:_ search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality
   _Why it matters:_ It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
 
@@ -117,6 +125,14 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: math corpora, supervised examples, and verifiable benchmark answers.; generator: model produces solutions during SFT, RL, and self-consistency sampling.
   _Audit focus:_ Self-consistency can hide weak single-sample accuracy., Web-data mining may import benchmark leakage., Final-answer rewards can miss flawed derivations.
   _Why it matters:_ It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.
+- 📈 **[Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](https://arxiv.org/abs/2407.21787)**
+  <sub>2024 · arXiv preprint arXiv:2407.21787 · 📈 scaling study · 🏗️ construction recipe · programmatic · mixed · evaluation · test time compute · L5_audit_ready</sub>
+  [Paper](https://arxiv.org/abs/2407.21787) · [Card](../../cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md)
+  _Data object:_ candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.; process: task, model, sample count; math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.
+  _Feedback / verifier:_ automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.
+  _Recipe signal:_ teacher: benchmark labels, unit tests, proof checkers, and reward/selection methods rather than a teacher model.; generator: models repeatedly sample independent candidate solutions for each task.
+  _Audit focus:_ Coverage can grow with sample budget even when practical selection precision remains poor., Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks., Comparing repeated sampling against single attempts can conflate model quality with inference budget.
+  _Why it matters:_ It gives atlas readers a concrete way to audit whether a reasoning gain comes from more samples, a usable verifier, a better selector, or a genuinely stronger model or training recipe.
 - 📈 **[Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171)**
   <sub>2023 · ICLR · 📈 scaling study · 🧭 survey background · mixed · programmatic · evaluation · test time compute · L5_audit_ready</sub>
   [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../../cards/recipes/self-consistency-chain-of-thought.md)
@@ -125,14 +141,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: few-shot chain-of-thought exemplars.; generator: model samples many reasoning paths.
   _Audit focus:_ More samples can amplify benchmark-specific shortcuts., Aggregation does not guarantee step faithfulness., Unmatched inference budgets can make methods look better than they are.
   _Why it matters:_ It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.
-- 📈 **[Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](https://arxiv.org/abs/2407.21787)**
-  <sub>2024 · arXiv preprint arXiv:2407.21787 · 📈 scaling study · 🏗️ construction recipe · programmatic · mixed · evaluation · test time compute · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2407.21787) · [Card](../../cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md)
-  _Data object:_ candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.; process: task, model, sample count; math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.
-  _Feedback / verifier:_ automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.
-  _Recipe signal:_ teacher: benchmark labels, unit tests, proof checkers, and reward/selection methods rather than a teacher model.; generator: models repeatedly sample independent candidate solutions for each task.
-  _Audit focus:_ Coverage can grow with sample budget even when practical selection precision remains poor., Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks., Comparing repeated sampling against single attempts can conflate model quality with inference budget.
-  _Why it matters:_ It gives atlas readers a concrete way to audit whether a reasoning gain comes from more samples, a usable verifier, a better selector, or a genuinely stronger model or training recipe.
 
 ### <a id="test-time-compute-logs"></a>⏱️ Test-time compute logs
 
@@ -256,14 +264,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
   _Recipe signal:_ teacher: literature covering human feedback, verifiable rewards, and post-training optimization.; generator: technical survey and unified policy-gradient framework
   _Audit focus:_ Method comparisons can mix data effects with optimizer and sampling-budget effects., RLHF and RLVR rewards are often discussed together despite different verification contracts., Implementation details can dominate reported gains if not separated from data quality.
   _Why it matters:_ It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.
-- 🪜 **[ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](https://arxiv.org/abs/2501.07861)**
-  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · mixed · process supervision · preference learning · L2_artifact_verified</sub>
-  [Paper](https://arxiv.org/abs/2501.07861) · [Code](https://github.com/Jeryi-Sun/ReARTeR)
-  _Data object:_ step-level preference data with process scores and explanations; process: retrieval context, reasoning step, process reward score; RAG reasoning pipeline
-  _Feedback / verifier:_ process reward model plus process explanation model
-  _Recipe signal:_ generator: MCTS-guided retrieval-augmented rollouts; filtering rule: trustworthy process rewarding and iterative preference optimization
-  _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
-  _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
 
 ### <a id="long2short-distill-from-search"></a>✂️ Long2short / distill-from-search
 
@@ -287,6 +287,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ teacher: critic and retrieval-supervision signals derived from task data and evidence checks.; generator: model learns special reflection tokens for retrieval and critique behavior.
   _Audit focus:_ A model can retrieve irrelevant passages confidently., Critique tokens can become style markers without true verification., Retriever choice changes benchmark conclusions.
   _Why it matters:_ It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.
+- 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
+  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2502.01456) · [DOI](https://doi.org/10.48550/arXiv.2502.01456) · [Code](https://github.com/PRIME-RL/PRIME) · [Data](https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout) · [HF](https://huggingface.co/PRIME-RL) · [Card](../../cards/verifiers/prime.md)
+  _Data object:_ policy rollout with final outcome label, implicit process reward estimates, and policy update signal.; process: prompt, policy rollout, outcome label; online RL training loop
+  _Feedback / verifier:_ implicit process rewards derived from outcome labels and updated on policy rollouts.
+  _Recipe signal:_ teacher: outcome verifiers rather than dense human process labels.; generator: policy rollouts
+  _Audit focus:_ implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes
+  _Why it matters:_ It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
 - 🌐 **[R2E-Gym](https://arxiv.org/abs/2504.07164)**
   <sub>2025 · arXiv · 🌐 agent environment · 🧰 benchmark · environmental · programmatic · agent training · evaluation · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2504.07164) · [Card](../../cards/agents/r2e_gym.md)
@@ -319,6 +327,14 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
+- 🪜 **[AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802)**
+  <sub>2024 · NeurIPS · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2405.16802) · [DOI](https://doi.org/10.48550/arXiv.2405.16802) · [Code](https://github.com/rookie-joe/AutoPSV) · [Card](../../cards/verifiers/autopsv.md)
+  _Data object:_ reasoning trace with step-level confidence-change annotations.; process: problem, candidate solution, reasoning step; offline reasoning traces
+  _Feedback / verifier:_ answer-trained verifier converted into automated process annotations.
+  _Recipe signal:_ teacher: answer-level verifier trained from final-answer correctness.; generator: model-generated candidate reasoning
+  _Audit focus:_ answer-level verifier confidence can mislabel intermediate steps, relative confidence changes may not identify causal first errors, commonsense and math tasks may require different error taxonomies
+  _Why it matters:_ It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.
 - 🛠️ **[BrowserGym: A gym environment for web agents](https://arxiv.org/abs/2412.05467)**
   <sub>2024 · arXiv · 🛠️ infrastructure · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2412.05467) · [Card](../../cards/agents/browsergym.md)
@@ -359,22 +375,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Recipe signal:_ search substrate; release audit; evaluation
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
-- 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
-  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L2_artifact_verified</sub>
-  [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME)
-  _Data object:_ rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop
-  _Feedback / verifier:_ implicit process rewards derived from outcome labels
-  _Recipe signal:_ generator: policy rollouts; filtering rule: outcome labels converted into implicit process rewards
-  _Audit focus:_ implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes
-  _Why it matters:_ It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
-- 🪜 **[AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L2_artifact_verified</sub>
-  [Paper](https://arxiv.org/abs/2405.16802) · [Code](https://github.com/rookie-joe/AutoPSV)
-  _Data object:_ step-level confidence-change annotations; process: reasoning step, verifier confidence, relative confidence change; offline reasoning traces
-  _Feedback / verifier:_ answer-trained verifier converted into process annotations
-  _Recipe signal:_ generator: model-generated candidate reasoning; filtering rule: changes in verifier confidence across steps
-  _Audit focus:_ answer-level verifier confidence can mislabel intermediate steps, relative confidence changes may not identify causal first errors, commonsense and math tasks may require different error taxonomies
-  _Why it matters:_ It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.
 
 ### ⚠️ Needs search or metadata
 
@@ -414,20 +414,20 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 - [Leaky Thoughts](../../cards/failures/leaky-thoughts.md)
 - [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](../../cards/recipes/minimax_m1.md)
 - [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](../../cards/releases/opencodereasoning_ii.md)
+- [PRIME: Process reinforcement through implicit rewards](../../cards/verifiers/prime.md)
 - [R2E-Gym](../../cards/agents/r2e_gym.md)
+- [ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](../../cards/recipes/rearter.md)
 - [SWE-Gym](../../cards/agents/swe_gym.md)
 - [TTRL: Test-Time Reinforcement Learning](../../cards/recipes/ttrl.md)
 - [The Art of Scaling Reinforcement Learning Compute for LLMs](../../cards/recipes/the-art-of-scaling-rl-compute.md)
 - [s1: Simple Test-Time Scaling](../../cards/releases/s1.md)
 - [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../../cards/agents/androidworld.md)
 - [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](../../cards/agents/appworld.md)
+- [AutoPSV: Automated Process-Supervised Verifier](../../cards/verifiers/autopsv.md)
 - [BrowserGym: A gym environment for web agents](../../cards/agents/browsergym.md)
 - [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](../../cards/recipes/deepseek-prover-v1-5.md)
 - [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](../../cards/recipes/deepseekmath.md)
 - [Introducing SWE-bench Verified](../../cards/agents/swe-bench-verified.md)
-- [Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](../../cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md)
-- [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](../../cards/benchmarks/livecodebench.md)
-- [Math-Shepherd](../../cards/verifiers/math_shepherd.md)
 
 ## Back to Map
 

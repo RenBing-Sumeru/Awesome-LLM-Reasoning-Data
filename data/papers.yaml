@@ -8423,7 +8423,7 @@
     verified_by: curation
     confidence: high
     notes: Official primary link pinned in artifacts.
-  curation_level: L4_carded
+  curation_level: L5_audit_ready
 - id: learning-to-reason-with-llms-2024
   title: Learning to reason with LLMs
   year: 2024
@@ -9869,8 +9869,14 @@
 - id: rest-mcts-2024
   title: ReST-MCTS*
   year: 2024
-  venue: arXiv
-  authors: []
+  venue: NeurIPS
+  authors:
+  - Dan Zhang
+  - Sining Zhoubian
+  - Ziniu Hu
+  - Yisong Yue
+  - Yuxiao Dong
+  - Jie Tang
   source_role:
   - process_supervision
   - construction_recipe
@@ -9895,11 +9901,11 @@
   artifacts:
     paper: https://arxiv.org/abs/2406.03816
     arxiv: https://arxiv.org/abs/2406.03816
-    code: null
-    data: null
-    project: null
-    huggingface: null
-    doi: null
+    code: https://github.com/THUDM/ReST-MCTS
+    data: https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th
+    project: https://rest-mcts.github.io/
+    huggingface: https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th
+    doi: https://doi.org/10.48550/arXiv.2406.03816
     venue: null
     openreview: null
     acl: null
@@ -9907,40 +9913,44 @@
     cvf: null
     bibtex: null
   data_object:
-    prompt_source: math reasoning problems
-    trace_author: model rollouts under tree search
-    answer_format: reasoning trajectory with intermediate search states
+    prompt_source: math and science reasoning problems used for MCTS search, value-model training, and evaluation.
+    trace_author: policy models generate intermediate reasoning steps while MCTS expands candidate paths.
+    answer_format: searched reasoning trajectory with intermediate node states, final answer, verifier outcome, and inferred process reward.
     process_fields:
-    - node state
-    - rollout candidate
-    - process reward score
+    - problem
+    - partial solution state
+    - candidate next step
+    - search node
+    - process reward or value score
+    - final answer
+    - correctness label
     environment_or_substrate: MCTS-style reasoning tree
-    verifier_or_reward: process reward guided tree search
+    verifier_or_reward: process reward model guided by final-answer oracle feedback and MCTS-derived value targets.
     terminal_predicate: final-answer correctness under search
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
+    base_model: Llama, Mistral, and GLM/SciGLM-family policy or value models appear in the released implementation paths.
+    teacher: oracle final answers and search-derived value estimates, not manual dense step labels.
     generator: policy rollouts expanded by MCTS
-    filtering_rule: process-reward-guided trajectory selection
-    sampling_protocol: tree search over intermediate reasoning states
+    filtering_rule: select higher-quality traces from process-reward-guided search and infer per-step value targets from paths that can lead to correct answers.
+    sampling_protocol: tree search over intermediate reasoning states; exact rollout budget should be pinned per experiment.
     rollout_count: null
     temperature: null
-    inference_budget: null
+    inference_budget: search budget varies by experiment; project reports comparisons against Best-of-N, Tree-of-Thought, and self-consistency under stated budgets.
     optimizer_or_scaffold: ReST-style self-training with MCTS
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: math and science reasoning tasks; exact mixture should be checked against the released data and paper experiments.
+    split: released PRM data exposes train/validation/test splits on Hugging Face, but per-experiment task splits need checking.
     decontamination: unknown
-    license: unknown
-    lineage: unknown
+    license: Hugging Face PRM data card reports apache-2.0; project website is CC BY-SA 4.0; code license should be checked before reuse.
+    lineage: policy traces, MCTS paths, final-answer labels, and inferred value targets should be kept together when reused.
     known_failure_modes:
     - search policy may overfit process reward artifacts
     - accepted traces can hide rejected rollout distribution
     - inference budget may be conflated with data quality
     citation_status: verified
     confidence: high
-    notes: Primary arXiv link verified during the research-navigation pass; release-internal recipe details still need curator
-      review.
+    notes: Primary arXiv, official project page, GitHub code, and an official HF PRM data artifact are pinned; exact per-experiment
+      rollout budget and split mapping still need curator review.
   inclusion_reason: ReST-MCTS connects self-training, process rewards, and tree search, making it a useful bridge between
     PRM data and test-time compute.
   related: []
@@ -9957,21 +9967,21 @@
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  one_line: Process-reward-guided tree search recipe for self-training reasoning traces.
-  card: null
+  one_line: Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
+  card: cards/recipes/rest-mcts.md
   needs:
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Process-reward-guided tree search recipe for self-training reasoning traces.
+  one_line_summary: Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
   why_it_matters: It shows how a process reward can guide search-generated trajectories, so readers can separate data generation,
     verifier choice, and inference-budget effects.
-  curation_level: L1_link_verified
+  curation_level: L4_carded
   verification:
     link_verified: true
-    artifact_verified: false
+    artifact_verified: true
     verified_at: '2026-06-16'
     verified_by: curation
     confidence: high
-    notes: Official arXiv primary link pinned in artifacts.
+    notes: Official arXiv, project, code, and HF data links pinned in artifacts.
 - id: rewardbench-evaluating-reward-models-for-language-modeling-2024
   title: 'RewardBench: Evaluating Reward Models for Language Modeling'
   year: 2024
@@ -18324,7 +18334,32 @@
   title: 'PRIME: Process reinforcement through implicit rewards'
   year: 2025
   venue: arXiv
-  authors: []
+  authors:
+  - Ganqu Cui
+  - Lifan Yuan
+  - Zefan Wang
+  - Hanbin Wang
+  - Yuchen Zhang
+  - Jiacheng Chen
+  - Wendi Li
+  - Bingxiang He
+  - Yuchen Fan
+  - Tianyu Yu
+  - Qixin Xu
+  - Weize Chen
+  - Jiarui Yuan
+  - Huayu Chen
+  - Kaiyan Zhang
+  - Xingtai Lv
+  - Shuo Wang
+  - Yuan Yao
+  - Xu Han
+  - Hao Peng
+  - Yu Cheng
+  - Zhiyuan Liu
+  - Maosong Sun
+  - Bowen Zhou
+  - Ning Ding
   source_role:
   - process_supervision
   - verifier_reward
@@ -18352,10 +18387,10 @@
     paper: https://arxiv.org/abs/2502.01456
     arxiv: https://arxiv.org/abs/2502.01456
     code: https://github.com/PRIME-RL/PRIME
-    data: null
+    data: https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout
     project: null
-    huggingface: null
-    doi: null
+    huggingface: https://huggingface.co/PRIME-RL
+    doi: https://doi.org/10.48550/arXiv.2502.01456
     venue: null
     openreview: null
     acl: null
@@ -18364,39 +18399,42 @@
     bibtex: null
   data_object:
     prompt_source: competition math and coding tasks
-    trace_author: policy rollouts
-    answer_format: rollout with implicit process reward signal
+    trace_author: current policy samples responses during online RL.
+    answer_format: policy rollout with final outcome label, implicit process reward estimates, and policy update signal.
     process_fields:
+    - prompt
     - policy rollout
     - outcome label
     - implicit process reward
+    - advantage estimate
+    - policy version
     environment_or_substrate: online RL training loop
-    verifier_or_reward: implicit process rewards derived from outcome labels
+    verifier_or_reward: implicit process rewards derived from outcome labels and updated on policy rollouts.
     terminal_predicate: final-answer or code-task correctness
   recipe_metadata:
-    base_model: unknown
-    teacher: unknown
+    base_model: Qwen2.5-Math-7B-Base for the main reported Eurus-2-7B-PRIME lineage.
+    teacher: outcome verifiers rather than dense human process labels.
     generator: policy rollouts
-    filtering_rule: outcome labels converted into implicit process rewards
-    sampling_protocol: online RL rollouts
+    filtering_rule: prompts can be filtered by policy accuracy band, then outcome rewards and implicit process rewards are combined for advantage estimation.
+    sampling_protocol: on-policy RL rollouts over math and coding prompts.
     rollout_count: null
     temperature: null
     inference_budget: null
     optimizer_or_scaffold: PRIME online process-reinforcement pipeline
   audit:
-    source_mixture: unknown
-    split: unknown
+    source_mixture: competition math and coding prompts; released HF data includes SFT, PRM, RL, and rollout artifacts.
+    split: HF organization exposes multiple datasets, but exact train/eval split mapping should be checked before reuse.
     decontamination: unknown
-    license: unknown
-    lineage: unknown
+    license: code repository reports Apache-2.0; dataset/model licenses should be checked per HF artifact.
+    lineage: rollout, outcome label, implicit PRM estimate, and policy version must be tracked together.
     known_failure_modes:
     - implicit rewards can inherit outcome-verifier shortcuts
     - online reward updates may introduce reward hacking
     - benchmark improvements may conflate optimizer and reward-contract changes
     citation_status: verified
     confidence: high
-    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; data/model details should
-      still be checked before L4/L5 promotion.
+    notes: Primary arXiv, official GitHub, and PRIME-RL HF organization pinned; per-artifact data/model license and split details
+      still need curator review.
   inclusion_reason: PRIME is a core PRM/RLVR recipe because it trains with implicit process rewards from policy rollouts and
     outcome labels rather than dense human step labels.
   related: []
@@ -18412,26 +18450,33 @@
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
-  one_line: Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.
-  card: null
+  one_line: Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.
+  card: cards/verifiers/prime.md
   needs:
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.
+  one_line_summary: Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.
   why_it_matters: It is a clean example of process supervision without manual dense labels, useful for comparing PRM data,
     outcome rewards, and RLVR optimization scaffolds.
-  curation_level: L2_artifact_verified
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: true
     verified_at: '2026-06-16'
     verified_by: curation
     confidence: high
-    notes: Official arXiv primary link and GitHub artifact pinned.
+    notes: Official arXiv, GitHub, and HF organization/data links pinned; artifact-internal split and license details remain open.
 - id: autopsv-automated-process-supervised-verifier-2024
   title: 'AutoPSV: Automated Process-Supervised Verifier'
   year: 2024
-  venue: arXiv
-  authors: []
+  venue: NeurIPS
+  authors:
+  - Jianqiao Lu
+  - Zhiyang Dou
+  - Hongru Wang
+  - Zeyu Cao
+  - Jianbo Dai
+  - Yingjia Wan
+  - Zhijiang Guo
   source_role:
   - process_supervision
   - verifier_reward
@@ -18460,7 +18505,7 @@
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2405.16802
     venue: null
     openreview: null
     acl: null
@@ -18470,38 +18515,42 @@
   data_object:
     prompt_source: math and commonsense reasoning tasks
     trace_author: model-generated reasoning steps
-    answer_format: step-level confidence-change annotations
+    answer_format: reasoning trace with step-level confidence-change annotations.
     process_fields:
+    - problem
+    - candidate solution
     - reasoning step
-    - verifier confidence
+    - verifier confidence before and after step
     - relative confidence change
+    - selected answer outcome
     environment_or_substrate: offline reasoning traces
-    verifier_or_reward: answer-trained verifier converted into process annotations
+    verifier_or_reward: answer-trained verifier converted into automated process annotations.
     terminal_predicate: correct final answer or selected correct candidate
   recipe_metadata:
     base_model: unknown
-    teacher: unknown
+    teacher: answer-level verifier trained from final-answer correctness.
     generator: model-generated candidate reasoning
-    filtering_rule: changes in verifier confidence across steps
-    sampling_protocol: automatic process annotation from final-answer verifier scores
+    filtering_rule: relative changes in verifier confidence across reasoning steps become process-supervision signals.
+    sampling_protocol: multiple generated outputs are scored or selected by outcome-supervised and process-supervised verifiers.
     rollout_count: null
     temperature: null
     inference_budget: null
     optimizer_or_scaffold: automated process-supervised verifier training
   audit:
-    source_mixture: unknown
+    source_mixture: math and commonsense reasoning datasets; exact mixture should be checked against the paper tables.
     split: unknown
     decontamination: unknown
-    license: unknown
-    lineage: unknown
+    license: GitHub README reports CC BY 4.0 for the work; code/data reuse terms should be checked before reuse.
+    lineage: candidate response, verifier confidence trajectory, and final-answer label must be preserved together.
     known_failure_modes:
     - answer-level verifier confidence can mislabel intermediate steps
     - relative confidence changes may not identify causal first errors
     - commonsense and math tasks may require different error taxonomies
+    - official repository notes some code is withheld or not fully released
     citation_status: verified
     confidence: high
-    notes: Primary arXiv and official GitHub link verified during the research-navigation pass; annotation protocol should
-      be audited before L4/L5 promotion.
+    notes: Primary arXiv and official GitHub link verified; repository notes that portions of the codebase are withheld, so
+      artifact completeness should not be overstated.
   inclusion_reason: AutoPSV is a representative automatic process-supervision paper because it turns an answer-level verifier
     into step annotations without dense manual labels.
   related: []
@@ -18516,19 +18565,19 @@
   - data_construction_open_release_recipes
   - training_usage_optimization_objectives
   one_line: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
-  card: null
+  card: cards/verifiers/autopsv.md
   needs:
   - 'needs_metadata: curator should verify atlas fields'
   one_line_summary: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
   why_it_matters: It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.
-  curation_level: L2_artifact_verified
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: true
     verified_at: '2026-06-16'
     verified_by: curation
     confidence: high
-    notes: Official arXiv primary link and GitHub artifact pinned.
+    notes: Official arXiv primary link and GitHub artifact pinned; repository states some components are withheld.
 - id: step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024
   title: 'Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs'
   year: 2024
@@ -18631,7 +18680,16 @@
   title: 'ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding'
   year: 2025
   venue: arXiv
-  authors: []
+  authors:
+  - Zhongxiang Sun
+  - Qipeng Wang
+  - Weijie Yu
+  - Xiaoxue Zang
+  - Kai Zheng
+  - Jun Xu
+  - Xiao Zhang
+  - Song Yang
+  - Han Li
   source_role:
   - process_supervision
   - verifier_reward
@@ -18659,7 +18717,7 @@
     data: null
     project: null
     huggingface: null
-    doi: null
+    doi: https://doi.org/10.48550/arXiv.2501.07861
     venue: null
     openreview: null
     acl: null
@@ -18668,39 +18726,44 @@
     bibtex: null
   data_object:
     prompt_source: retrieval-augmented multi-step reasoning tasks
-    trace_author: retrieval-augmented reasoning rollouts
-    answer_format: step-level preference data with process scores and explanations
+    trace_author: retrieval-augmented reasoning policy under PRM/PEM-guided search.
+    answer_format: step-level preference data with retrieval context, process reward score, process explanation, and final answer.
     process_fields:
+    - query
     - retrieval context
+    - partial reasoning state
     - reasoning step
     - process reward score
+    - process explanation
+    - MCTS branch
+    - preference pair
     environment_or_substrate: RAG reasoning pipeline
-    verifier_or_reward: process reward model plus process explanation model
+    verifier_or_reward: Process Reward Model plus Process Explanation Model, with MCTS-guided search.
     terminal_predicate: final answer quality under retrieval-augmented reasoning
   recipe_metadata:
     base_model: unknown
-    teacher: unknown
+    teacher: PRM/PEM feedback and benchmark supervision.
     generator: MCTS-guided retrieval-augmented rollouts
-    filtering_rule: trustworthy process rewarding and iterative preference optimization
-    sampling_protocol: tree search over retrieval-augmented reasoning steps
+    filtering_rule: trustworthy process rewarding and iterative preference optimization over step-level preference data.
+    sampling_protocol: tree search over retrieval-augmented reasoning steps with look-ahead search for early-step bias.
     rollout_count: null
     temperature: null
     inference_budget: null
     optimizer_or_scaffold: iterative preference optimization with PRM/PEM feedback
   audit:
-    source_mixture: unknown
+    source_mixture: retrieval-augmented multi-step reasoning benchmarks; exact source mixture should be checked before reuse.
     split: unknown
     decontamination: unknown
     license: unknown
-    lineage: unknown
+    lineage: retrieved evidence, reasoning step, PRM score, PEM explanation, search branch, and preference label should be kept together.
     known_failure_modes:
     - PRM and explanation model may disagree
     - retrieval context can leak answer evidence unevenly
     - early-step PRM bias can distort search
     citation_status: verified
     confidence: high
-    notes: Primary arXiv and project GitHub link verified during the research-navigation pass; artifact details should be
-      checked before L4/L5 promotion.
+    notes: Primary arXiv and project GitHub link verified; release completeness, license, and split details should be checked
+      before L5 promotion.
   inclusion_reason: ReARTeR shows how PRMs interact with retrieval and preference optimization, making it valuable for readers
     who study process rewards beyond pure math final-answer checking.
   related: []
@@ -18716,16 +18779,16 @@
   - training_usage_optimization_objectives
   - scaling_rlvr_test_time_compute
   - benchmarks_evaluation_surfaces
-  one_line: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect step-level
-    preference data.
-  card: null
+  one_line: Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect
+    step-level preference data.
+  card: cards/recipes/rearter.md
   needs:
   - 'needs_metadata: curator should verify atlas fields'
-  one_line_summary: Retrieval-augmented reasoning recipe that uses trustworthy process rewards and explanations to collect
+  one_line_summary: Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect
     step-level preference data.
   why_it_matters: It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores,
     explanations, and search all affect the reusable data object.
-  curation_level: L2_artifact_verified
+  curation_level: L4_carded
   verification:
     link_verified: true
     artifact_verified: true

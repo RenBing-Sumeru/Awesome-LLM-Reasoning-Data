@@ -5,9 +5,9 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 | Type | Count | Use it for |
 |---|---:|---|
 | [Release cards](#release-cards) | 18 | datasets, trace releases, documentation foundations, and reusable data artifacts |
-| [Verifier cards](#verifier-cards) | 15 | verifiers, rewards, process supervision, judges, and rubrics |
+| [Verifier cards](#verifier-cards) | 17 | verifiers, rewards, process supervision, judges, and rubrics |
 | [Agent/environment cards](#agentenvironment-cards) | 14 | tool, web, app, OS, and SWE trajectories |
-| [Recipe cards](#recipe-cards) | 27 | construction recipes, model reports, and training pipelines |
+| [Recipe cards](#recipe-cards) | 29 | construction recipes, model reports, and training pipelines |
 | [Benchmark cards](#benchmark-cards) | 11 | evaluation surfaces and benchmark ledgers |
 | [Failure cards](#failure-cards) | 3 | contamination, leakage, reward hacking, and verifier attacks |
 
@@ -37,11 +37,13 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 ### Verifier cards
 
 - [Aegis2.0](verifiers/aegis2.md) - Aegis2.0 releases a human-annotated AI-safety dataset and risk taxonomy for training and evaluating LLM guardrails.
+- [AutoPSV: Automated Process-Supervised Verifier](verifiers/autopsv.md) - Automated process-supervision recipe that derives step annotations from verifier confidence changes.
 - [HealthBench](verifiers/healthbench.md) - HealthBench evaluates healthcare conversations with physician-written, conversation-specific rubrics across safety, accuracy, communication, and domain contexts.
 - [Math-Shepherd](verifiers/math_shepherd.md) - Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.
 - [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](verifiers/mt-bench-chatbot-arena.md) - MT-Bench and Chatbot Arena establish LLM-as-a-judge and pairwise human-preference evaluation surfaces for open-ended chat models.
 - [OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](verifiers/omegaprm.md) - Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.
 - [One Token to Fool LLM-as-a-Judge](verifiers/one_token_to_fool_judge.md) - Verifier-attack paper showing trivial cue tokens can flip judge verdicts.
+- [PRIME: Process reinforcement through implicit rewards](verifiers/prime.md) - Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.
 - [Let's Verify Step by Step](verifiers/prm800k.md) - Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.
 - [PRMBench: A fine-grained and challenging benchmark for process-level reward models](verifiers/prmbench.md) - Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.
 - [ProcessBench: Identifying Process Errors in Mathematical Reasoning](verifiers/processbench.md) - Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training.
@@ -89,6 +91,8 @@ Cards are the practical layer of the atlas. Each one answers the reader-facing q
 - [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](recipes/qwen2-5-math.md) - Qwen2.5-Math reports a math-specialized model family supporting chain-style and tool-integrated reasoning with base, instruct, and reward-model variants.
 - [Qwen3 Technical Report](recipes/qwen3.md) - Open model-family report useful for coordinated release-tick analysis.
 - [Qwen3-Coder](recipes/qwen3_coder.md) - Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
+- [ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](recipes/rearter.md) - Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect step-level preference data.
+- [ReST-MCTS*](recipes/rest-mcts.md) - Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
 - [Scaling Behaviors of LLM Reinforcement Learning Post-Training](recipes/scaling-behaviors-rl-post-training.md) - This study measures how model size, data volume, and compute budget interact during RL post-training for mathematical reasoning.
 - [Self-consistency improves chain of thought reasoning in language models](recipes/self-consistency-chain-of-thought.md) - Self-consistency samples multiple chain-of-thought reasoning paths and chooses the answer that is most consistent across samples.
 - [Self-Instruct: Aligning language models with self-generated instructions](recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) - Self-Instruct bootstraps instruction-following data by having a model generate instructions, inputs, and outputs, then filtering low-quality or duplicate examples.

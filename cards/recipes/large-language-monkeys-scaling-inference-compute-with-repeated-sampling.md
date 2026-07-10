@@ -6,7 +6,7 @@
 > 🤖 **Ask about this paper:** [Explain this card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024&mode=explain) · [Generate audit checklist](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024&mode=audit) · [Compare with related work](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024&mode=compare)
 <!-- ask_atlas:end -->
 
-> Curation level: L4_carded
+> Curation level: L5_audit_ready
 > Category: rollout_search_test_time_trace_data
 > Links: [📄 Paper](https://arxiv.org/abs/2407.21787)
 
