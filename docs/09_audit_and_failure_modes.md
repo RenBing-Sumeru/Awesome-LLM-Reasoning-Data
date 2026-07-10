@@ -45,7 +45,7 @@ Audit a release for leakage, benchmark contamination, search-time contamination,
 ## What to read next
 
 - reports/needs_search.md
-- cards/release_card_template.md
+- paper_cards/README.md
 
 ## Practical field guide
 
@@ -73,16 +73,16 @@ A good audit starts by asking how the model could win without solving the intend
 
 ### Representative local cards
 
-- [Prm800K](../cards/verifiers/prm800k.md)
-- [Math Shepherd](../cards/verifiers/math_shepherd.md)
-- [Processbench](../cards/verifiers/processbench.md)
-- [Prmbench](../cards/verifiers/prmbench.md)
-- [Rewardbench](../cards/verifiers/rewardbench.md)
-- [Healthbench](../cards/verifiers/healthbench.md)
-- [One Token To Fool Judge](../cards/verifiers/one_token_to_fool_judge.md)
-- [Spurious Rewards](../cards/verifiers/spurious_rewards.md)
-- [Openmathreasoning](../cards/releases/openmathreasoning.md)
-- [Opencodereasoning Ii](../cards/releases/opencodereasoning_ii.md)
+- [Prm800K](../paper_cards/README.md)
+- [Math Shepherd](../paper_cards/README.md)
+- [Processbench](../paper_cards/README.md)
+- [Prmbench](../paper_cards/README.md)
+- [Rewardbench](../paper_cards/README.md)
+- [Healthbench](../paper_cards/README.md)
+- [One Token To Fool Judge](../paper_cards/README.md)
+- [Spurious Rewards](../paper_cards/README.md)
+- [Openmathreasoning](../paper_cards/README.md)
+- [Opencodereasoning Ii](../paper_cards/README.md)
 
 ### Common traps
 
@@ -111,7 +111,7 @@ A strong review also separates confidence levels. `verified` should mean that th
 
 ## Operating checklist for maintainers
 
-- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `cards/` for audit records.
+- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `paper_cards/` for audit records.
 - Prefer official links: arXiv, OpenReview, ACL Anthology, project pages, official GitHub, and Hugging Face releases.
 - Do not infer a code or dataset URL from a paper title. Missing links should remain `needs_search`.
 - Make every new paper answer five questions: source, behavior, feedback, selection, audit.

@@ -19,23 +19,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## HOList: An environment for machine learning of higher-order logic theorem proving
-
-- Current status: `needs_metadata`
-- Possible category: programmatically_verifiable_outcome_data, environment_agent_trajectory_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"HOList: An environment for machine learning of higher-order logic theorem proving" arXiv`
-  - `"HOList: An environment for machine learning of higher-order logic theorem proving" OpenReview`
-  - `"HOList: An environment for machine learning of higher-order logic theorem proving" GitHub`
-  - `"HOList: An environment for machine learning of higher-order logic theorem proving" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## PubMedQA: A dataset for biomedical research question answering
 
 - Current status: `needs_metadata`
@@ -206,40 +189,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Qasper: A dataset of information-seeking questions and answers over scientific research papers" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## CodeRL: Mastering code generation through pretrained models and deep reinforcement learning
-
-- Current status: `needs_metadata`
-- Possible category: programmatically_verifiable_outcome_data, scaling_rlvr_test_time_compute
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" arXiv`
-  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" OpenReview`
-  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" GitHub`
-  - `"CodeRL: Mastering code generation through pretrained models and deep reinforcement learning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## CodeT: Code generation with generated tests
-
-- Current status: `needs_metadata`
-- Possible category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"CodeT: Code generation with generated tests" arXiv`
-  - `"CodeT: Code generation with generated tests" OpenReview`
-  - `"CodeT: Code generation with generated tests" GitHub`
-  - `"CodeT: Code generation with generated tests" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## COLIEE: Competition on legal information extraction/entailment
 
 - Current status: `needs_metadata`
@@ -357,23 +306,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ALCE: Enabling large language models to generate text with citations" OpenReview`
   - `"ALCE: Enabling large language models to generate text with citations" GitHub`
   - `"ALCE: Enabling large language models to generate text with citations" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## API-Bank: A benchmark for tool-augmented LLMs
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"API-Bank: A benchmark for tool-augmented LLMs" arXiv`
-  - `"API-Bank: A benchmark for tool-augmented LLMs" OpenReview`
-  - `"API-Bank: A benchmark for tool-augmented LLMs" GitHub`
-  - `"API-Bank: A benchmark for tool-augmented LLMs" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Data provenance for language models
@@ -563,40 +495,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"MetaMath: Bootstrap your own mathematical questions for large language models" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## Mind2Web: Towards a generalist agent for the web
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Mind2Web: Towards a generalist agent for the web" arXiv`
-  - `"Mind2Web: Towards a generalist agent for the web" OpenReview`
-  - `"Mind2Web: Towards a generalist agent for the web" GitHub`
-  - `"Mind2Web: Towards a generalist agent for the web" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## ProofNet: Autoformalizing and formally proving undergraduate-level mathematics
-
-- Current status: `needs_metadata`
-- Possible category: preference_reward_feedback_data, programmatically_verifiable_outcome_data
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" arXiv`
-  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" OpenReview`
-  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" GitHub`
-  - `"ProofNet: Autoformalizing and formally proving undergraduate-level mathematics" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## Reflexion: Language agents with verbal reinforcement learning
 
 - Current status: `needs_metadata`
@@ -716,23 +614,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"BFCL v3" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions
-
-- Current status: `needs_metadata`
-- Possible category: foundations_and_primers, instruction_demonstration_rationale_data, programmatically_verifiable_outcome_data, environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" arXiv`
-  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" OpenReview`
-  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" GitHub`
-  - `"BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval
 
 - Current status: `needs_metadata`
@@ -782,23 +663,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"Does writing with LMs reduce content diversity?" OpenReview`
   - `"Does writing with LMs reduce content diversity?" GitHub`
   - `"Does writing with LMs reduce content diversity?" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI
-
-- Current status: `needs_metadata`
-- Possible category: programmatically_verifiable_outcome_data, benchmarks_evaluation_surfaces, frontier_reports_data_disclosure_ledger, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" arXiv`
-  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" OpenReview`
-  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" GitHub`
-  - `"FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Goedel-Prover: A frontier model for open-source automated theorem proving
@@ -1073,23 +937,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"SWE-Search" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
-## tau-bench: A benchmark for tool-agent-user interaction in real-world domains
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" arXiv`
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" OpenReview`
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" GitHub`
-  - `"tau-bench: A benchmark for tool-agent-user interaction in real-world domains" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
 ## The Llama 3 Herd of models
 
 - Current status: `needs_metadata`
@@ -1123,40 +970,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"ToolACE: Winning the points of LLM function calling" GitHub`
   - `"ToolACE: Winning the points of LLM function calling" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use
-
-- Current status: `needs_metadata`
-- Possible category: environment_agent_trajectory_data, benchmarks_evaluation_surfaces, audit_failure_contamination_verifier_attacks
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" arXiv`
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" OpenReview`
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" GitHub`
-  - `"ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## VisualWebArena: Evaluating multimodal agents on realistic visual web tasks
-
-- Current status: `partial`
-- Possible category: rollout_search_test_time_trace_data, environment_agent_trajectory_data, judgment_rubric_domain_expert_data, training_usage_optimization_objectives, benchmarks_evaluation_surfaces
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" arXiv`
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" OpenReview`
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" GitHub`
-  - `"VisualWebArena: Evaluating multimodal agents on realistic visual web tasks" Hugging Face`
-- Notes: Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
 
 ## WebLINX: Real-world website navigation with multi-turn dialogue
 
@@ -1343,23 +1156,6 @@ Entries below are intentionally not promoted as verified until an official prima
   - `"DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning" OpenReview`
   - `"DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning" GitHub`
   - `"DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning" Hugging Face`
-- Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
-
-## Does RL really incentivize reasoning beyond base?
-
-- Current status: `needs_metadata`
-- Possible category: scaling_rlvr_test_time_compute
-- Missing:
-  - official paper / arXiv / venue / DOI
-  - code
-  - data
-  - huggingface
-  - project
-- Search queries:
-  - `"Does RL really incentivize reasoning beyond base?" arXiv`
-  - `"Does RL really incentivize reasoning beyond base?" OpenReview`
-  - `"Does RL really incentivize reasoning beyond base?" GitHub`
-  - `"Does RL really incentivize reasoning beyond base?" Hugging Face`
 - Notes: Seeded from local BibTeX for later atlas classification; needs curator review.
 
 ## Does supervised fine-tuning memorize while reinforcement learning generalizes?

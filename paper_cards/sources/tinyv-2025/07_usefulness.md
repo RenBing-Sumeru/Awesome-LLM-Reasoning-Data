@@ -1,0 +1,4 @@
+- For literature review: use TinyV as a verifier-error paper, not only as a math RL paper.
+- For research ideas: compare false-negative recovery with verifier refresh, answer normalization, and learned reward modeling.
+- For engineering / experiments: inspect where a rule verifier rejects outputs that humans or stronger checkers would accept.
+- For datasets or benchmarks: record rejected candidates, disagreement cases, and calibration notes instead of publishing only accepted outputs.

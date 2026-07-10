@@ -43,7 +43,7 @@ Frontier recipes can share a GRPO/PPO-style scaffold while diverging upstream. D
 ## What to read next
 
 - docs/06_verifiers_and_rewards.md
-- cards/recipe_card_template.md
+- paper_cards/README.md
 
 ## Practical field guide
 
@@ -71,16 +71,16 @@ Use this lesson as a build ledger. Before generating more examples, write down w
 
 ### Representative local cards
 
-- [Openthoughts](../cards/releases/openthoughts.md)
-- [Limo](../cards/releases/limo.md)
-- [S1](../cards/releases/s1.md)
-- [Dapo](../cards/releases/dapo.md)
-- [Deepseek R1](../cards/recipes/deepseek_r1.md)
-- [Kimi K15](../cards/recipes/kimi_k15.md)
-- [Qwen3](../cards/recipes/qwen3.md)
-- [Magistral](../cards/recipes/magistral.md)
-- [Absolute Zero](../cards/recipes/absolute_zero.md)
-- [Ttrl](../cards/recipes/ttrl.md)
+- [Openthoughts](../paper_cards/README.md)
+- [Limo](../paper_cards/README.md)
+- [S1](../paper_cards/README.md)
+- [Dapo](../paper_cards/README.md)
+- [Deepseek R1](../paper_cards/README.md)
+- [Kimi K15](../paper_cards/README.md)
+- [Qwen3](../paper_cards/README.md)
+- [Magistral](../paper_cards/README.md)
+- [Absolute Zero](../paper_cards/README.md)
+- [Ttrl](../paper_cards/README.md)
 
 ### Common traps
 
@@ -109,7 +109,7 @@ A strong review also separates confidence levels. `verified` should mean that th
 
 ## Operating checklist for maintainers
 
-- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `cards/` for audit records.
+- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `paper_cards/` for audit records.
 - Prefer official links: arXiv, OpenReview, ACL Anthology, project pages, official GitHub, and Hugging Face releases.
 - Do not infer a code or dataset URL from a paper title. Missing links should remain `needs_search`.
 - Make every new paper answer five questions: source, behavior, feedback, selection, audit.

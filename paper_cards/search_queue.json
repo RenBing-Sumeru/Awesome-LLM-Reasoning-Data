@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-10T06:12:15Z",
+  "entries": {
+    "tinyv-2025": {
+      "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2505.14625",
+        "arxiv": null,
+        "code": "https://github.com/uw-nsl/TinyV",
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "preference_reward_feedback_data",
+        "programmatically_verifiable_outcome_data",
+        "process_trace_supervision_data",
+        "judgment_rubric_domain_expert_data",
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "reason_to_include": "12345",
+      "decision_reason": "12345",
+      "search_status": "promoted",
+      "review_note": "",
+      "updated_at": "2026-07-10T04:32:27Z"
+    },
+    "agnostics-universal-learning-environment-2026": {
+      "title": "Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2508.04865",
+        "arxiv": "https://arxiv.org/abs/2508.04865",
+        "code": "https://github.com/nuprl/Ag-LiveCodeBench-X",
+        "data": "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
+        "project": "https://agnostics.abgru.me/",
+        "huggingface": "https://huggingface.co/nuprl/agnostics",
+        "doi": "https://doi.org/10.48550/arXiv.2508.04865"
+      },
+      "track_guess": [
+        "programmatically_verifiable_outcome_data",
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "reason_to_include": "",
+      "decision_reason": "",
+      "search_status": "",
+      "review_note": "",
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "featurebench-2026": {
+      "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2602.10975",
+        "arxiv": "https://arxiv.org/abs/2602.10975",
+        "code": null,
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": "https://doi.org/10.48550/arXiv.2602.10975"
+      },
+      "track_guess": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "data_construction_open_release_recipes",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "reason_to_include": "",
+      "decision_reason": "",
+      "search_status": "",
+      "review_note": "",
+      "updated_at": "2026-07-10T05:11:02Z"
+    },
+    "beyondbench-2026": {
+      "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2509.24210",
+        "arxiv": null,
+        "code": "https://github.com/ctrl-gaurav/BeyondBench",
+        "data": "https://ctrl-gaurav.github.io/BeyondBench/",
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "audit_failure_contamination_verifier_attacks",
+        "data_construction_open_release_recipes"
+      ],
+      "reason_to_include": "cccceeee",
+      "decision_reason": "cccceeee",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T06:12:15Z"
+    },
+    "credit-budgeted-icpc-style-coding-2026": {
+      "title": "Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2604.10182",
+        "arxiv": null,
+        "code": null,
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "reason_to_include": "考虑ICPC成本，可供成本计算的参考",
+      "decision_reason": "考虑ICPC成本，可供成本计算的参考",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T05:33:27Z"
+    },
+    "geogrambench-2026": {
+      "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2505.17653",
+        "arxiv": null,
+        "code": "https://github.com/LiAuto-DSR/GeoGramBench",
+        "data": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "judgment_rubric_domain_expert_data"
+      ],
+      "reason_to_include": "他定义了一类几何的新的概念，可作为参考",
+      "decision_reason": "他定义了一类几何的新的概念，可作为参考",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T05:19:23Z"
+    }
+  }
+}

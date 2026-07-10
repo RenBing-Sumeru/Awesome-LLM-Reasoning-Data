@@ -29,7 +29,7 @@ Object.assign(els, {
   pathPanel: document.getElementById("pathPanel"),
   totalEntries: document.getElementById("totalEntries"),
   verifiedEntries: document.getElementById("verifiedEntries"),
-  cardedEntries: document.getElementById("cardedEntries"),
+  paperCardSources: document.getElementById("paperCardSources"),
   needsSearch: document.getElementById("needsSearch"),
   dataReleases: document.getElementById("dataReleases"),
   verifiersRewards: document.getElementById("verifiersRewards"),
@@ -188,8 +188,8 @@ function matches(entry) {
 
 function sortEntries(items) {
   return [...items].sort((a, b) => {
-    const aScore = (a.status === "verified" ? 4 : 0) + (a.artifacts?.card ? 2 : 0) + (a.primary_link ? 1 : 0);
-    const bScore = (b.status === "verified" ? 4 : 0) + (b.artifacts?.card ? 2 : 0) + (b.primary_link ? 1 : 0);
+    const aScore = (a.status === "verified" ? 4 : 0) + (a.artifacts?.paper_card_source ? 2 : 0) + (a.primary_link ? 1 : 0);
+    const bScore = (b.status === "verified" ? 4 : 0) + (b.artifacts?.paper_card_source ? 2 : 0) + (b.primary_link ? 1 : 0);
     return bScore - aScore || (b.year || 0) - (a.year || 0) || String(a.title).localeCompare(String(b.title));
   });
 }
@@ -220,7 +220,7 @@ function links(entry) {
       seen.add(url);
     }
   });
-  if (entry.artifacts?.card) out.push(`<a href="${esc(repoBlob(entry.artifacts.card))}" target="_blank" rel="noreferrer">Card</a>`);
+  if (entry.artifacts?.paper_card_source) out.push(`<a href="${esc(repoBlob(entry.artifacts.paper_card_source))}" target="_blank" rel="noreferrer">Paper Card Source</a>`);
   return out.join("");
 }
 
@@ -339,11 +339,11 @@ function renderPaths() {
   const items = pack.entries.slice(0, 20).map((item, index) => {
     const entry = item.entry;
     const href = entry?.primary_link || repoBlob("reports/needs_search.md");
-    const cardPath = entry?.artifacts?.card;
+    const cardPath = entry?.artifacts?.paper_card_source;
     return `<li>
       <strong>${index + 1}. <a href="${esc(href)}">${esc(entry?.title || item.title)}</a></strong>
       <small>${esc(entry?.year || "pending")} · ${esc(entry?.status || "needs_search")} · ${esc(entry?.curation_level || "L0_seeded")}</small>
-      ${cardPath ? `<a href="${esc(repoBlob(cardPath))}" target="_blank" rel="noreferrer">Card</a>` : ""}
+      ${cardPath ? `<a href="${esc(repoBlob(cardPath))}" target="_blank" rel="noreferrer">Paper Card Source</a>` : ""}
     </li>`;
   }).join("");
   els.pathPanel.innerHTML = `<h3>${esc(pack.title)}</h3><p>${esc(pack.goal || "")}</p><ol>${items}</ol>`;
@@ -423,7 +423,7 @@ async function init() {
   starterPacks = await loadJson("assets/starter_packs.json", bundled.starter_packs || []);
   setText("totalEntries", counts.total_entries || entries.length);
   setText("verifiedEntries", counts.verified_entries || 0);
-  setText("cardedEntries", counts.carded_entries || 0);
+  setText("paperCardSources", counts.paper_card_sources || 0);
   setText("needsSearch", counts.needs_search || 0);
   setText("dataReleases", counts.data_releases || 0);
   setText("verifiersRewards", counts.verifiers_rewards || 0);

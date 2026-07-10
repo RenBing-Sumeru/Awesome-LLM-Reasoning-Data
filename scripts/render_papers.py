@@ -8,7 +8,6 @@ from urllib.parse import urlencode
 
 from atlas_utils import (
     as_list,
-    card_inventory,
     categories,
     compact_audit,
     compact_data_object,
@@ -20,6 +19,7 @@ from atlas_utils import (
     infer_subfield,
     link_parts,
     one_line,
+    paper_card_inventory,
     primary_link,
     research_tracks,
     starter_matches,
@@ -198,7 +198,7 @@ def links(entry: dict, cards: dict[str, str], file_path: str | None = None) -> s
     parts = link_parts(entry, None)
     card_path = cards.get(entry.get("id"))
     if card_path:
-        parts.append(f"[Card]({rel_card_path(card_path, file_path)})")
+        parts.append(f"[Paper Card Source]({rel_card_path(card_path, file_path)})")
     return " · ".join(parts)
 
 
@@ -656,11 +656,11 @@ def render_category(cat: dict, cards: dict[str, str]) -> str:
     lines += [f"## {next_section}. What to Audit", ""]
     lines += [f"- {item}" for item in AUDIT_CHECKLISTS.get(cid, ["Check official links, data object, verifier contract, training use, and missing metadata."])]
     lines += ["", f"## {next_section + 1}. Open Problems", ""]
-    gaps = cat.get("open_questions") or ["More official links, cards, and audit notes are needed for this category."]
+    gaps = cat.get("open_questions") or ["More official links, paper-card sources, and audit notes are needed for this category."]
     lines += [f"- {gap}" for gap in gaps[:6]]
-    lines += ["", f"## {next_section + 2}. Related Cards", ""]
+    lines += ["", f"## {next_section + 2}. Related Paper-Card Sources", ""]
     card_lines = related_cards(entries_, cards, file_path)
-    lines += card_lines if card_lines else ["- No cards are linked for this category yet."]
+    lines += card_lines if card_lines else ["- No paper-card sources are linked for this category yet."]
     papers_root = rel_to_papers_root(file_path)
     repo_root = rel_to_repo_root(file_path)
     lines += ["", "## Back to Map", "", f"- [Paper atlas README]({papers_root}README.md)", f"- [Repository README]({repo_root}README.md)"]
@@ -675,17 +675,17 @@ def render_readme(cards: dict[str, str]) -> str:
         cat_rows.append(f"| {cat.get('emoji', '')} [{cat.get('title')}]({cat.get('file')}) | {cat.get('summary', '')} | {count} |")
 
     matches = starter_matches(data)
-    starter_rows = ["| # | Work | Link | Card |", "|---:|---|---|---|"]
+    starter_rows = ["| # | Work | Link | Paper Card Source |", "|---:|---|---|---|"]
     first_pack = next((pack for pack in starter_packs() if pack.get("id") == "beginner_20"), starter_packs()[0])
     for index, title in enumerate(first_pack.get("entries", []), 1):
         entry = matches.get(title)
         if entry:
             card_path = cards.get(entry.get("id"))
             starter_rows.append(
-                f"| {index} | {entry.get('title')} | {starter_link('Paper', primary_link(entry))} | {starter_link('Card', '../' + card_path if card_path else None)} |"
+                f"| {index} | {entry.get('title')} | {starter_link('Paper', primary_link(entry))} | {starter_link('Paper Card Source', '../' + card_path if card_path else None)} |"
             )
         else:
-            starter_rows.append(f"| {index} | {title} | needs_search | needs_card |")
+            starter_rows.append(f"| {index} | {title} | needs_search | needs_paper_card_source |")
 
     return "\n".join([
         "# 📚 Paper Atlas",
@@ -799,7 +799,7 @@ def render_group_readme(group: dict) -> str:
 
 
 def render(target_root: Path = ROOT) -> None:
-    cards = card_inventory()
+    cards = paper_card_inventory()
     out_dir = target_root / "papers"
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "README.md").write_text(render_readme(cards), encoding="utf-8")

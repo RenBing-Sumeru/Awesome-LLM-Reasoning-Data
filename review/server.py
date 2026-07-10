@@ -10,6 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ANNOTATIONS_PATH = ROOT / "review" / "annotations.json"
+LOCALIZATIONS_PATH = ROOT / "review" / "localizations.json"
+INSTITUTIONS_PATH = ROOT / "review" / "institutions" / "institutions.json"
 PAPERS_PATH = ROOT / "data" / "papers.yaml"
 PORT = int(os.environ.get("PORT", "9817"))
 CURATION_LEVELS = {
@@ -59,6 +61,43 @@ def append_annotation(record: dict) -> dict:
     payload["updated_at"] = record.get("created_at")
     save_annotations(payload)
     return load_annotations()
+
+
+def normalize_record_file(payload: dict) -> dict:
+    entries = {}
+    for entry_id, value in payload.get("entries", {}).items():
+        if isinstance(value, dict):
+            entries[entry_id] = value
+    return {
+        "schema_version": payload.get("schema_version", 1),
+        "updated_at": payload.get("updated_at"),
+        "entries": entries,
+    }
+
+
+def load_record_file(path: Path) -> dict:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        payload = {"schema_version": 1, "updated_at": None, "entries": {}}
+    if not isinstance(payload, dict) or not isinstance(payload.get("entries"), dict):
+        return {"schema_version": 1, "updated_at": None, "entries": {}}
+    return normalize_record_file(payload)
+
+
+def save_record_file(path: Path, payload: dict) -> None:
+    normalized = normalize_record_file(payload)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(normalized, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def replace_entry_record(path: Path, record: dict) -> dict:
+    entry_id = record["entry_id"]
+    payload = load_record_file(path)
+    payload["entries"][entry_id] = record
+    payload["updated_at"] = record.get("updated_at")
+    save_record_file(path, payload)
+    return load_record_file(path)
 
 
 def has_card(entry_id: str) -> bool:
@@ -131,10 +170,16 @@ class ReviewHandler(SimpleHTTPRequestHandler):
         if self.path == "/api/annotations":
             self.end_json(load_annotations())
             return
+        if self.path == "/api/localizations":
+            self.end_json(load_record_file(LOCALIZATIONS_PATH))
+            return
+        if self.path == "/api/institutions":
+            self.end_json(load_record_file(INSTITUTIONS_PATH))
+            return
         super().do_GET()
 
     def do_POST(self) -> None:
-        if self.path not in {"/api/annotations", "/api/review"}:
+        if self.path not in {"/api/annotations", "/api/review", "/api/localizations", "/api/institutions"}:
             self.send_error(404)
             return
         length = int(self.headers.get("content-length", "0"))
@@ -151,6 +196,16 @@ class ReviewHandler(SimpleHTTPRequestHandler):
             payload.setdefault("schema_version", 1)
             save_annotations(payload)
             self.end_json({"ok": True, "path": "review/annotations.json"})
+            return
+
+        if self.path in {"/api/localizations", "/api/institutions"}:
+            record = payload.get("record") if isinstance(payload, dict) else None
+            if not isinstance(record, dict) or not record.get("entry_id"):
+                self.end_json({"error": "record.entry_id is required"}, status=400)
+                return
+            path = LOCALIZATIONS_PATH if self.path == "/api/localizations" else INSTITUTIONS_PATH
+            records = replace_entry_record(path, record)
+            self.end_json({"ok": True, "records": records})
             return
 
         record = payload.get("record") if isinstance(payload, dict) else None

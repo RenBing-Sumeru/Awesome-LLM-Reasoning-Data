@@ -44,6 +44,22 @@ export const CURATION_LEVELS = {
 
 const STORAGE_KEY = "awesome-llm-reasoning-review-annotations";
 const DEFAULT_ANNOTATIONS = { schema_version: 1, annotations: {} };
+const LOCALIZATION_STORAGE_KEY = "awesome-llm-reasoning-review-localizations";
+const INSTITUTION_STORAGE_KEY = "awesome-llm-reasoning-review-institutions";
+const DEFAULT_RECORDS = { schema_version: 1, updated_at: null, entries: {} };
+
+export const LOCALIZATION_FIELDS = [
+  { key: "one_line_summary", label: "一句话总结", source: (entry) => entry.one_line_summary || "" },
+  { key: "why_it_matters", label: "为什么有用", source: (entry) => entry.why_it_matters || "" },
+  { key: "data_object", label: "数据对象", source: (entry) => entry.data_object || "" },
+  { key: "feedback_verifier", label: "验证 / 奖励", source: (entry) => entry.feedback_verifier || "" },
+  { key: "audit_focus", label: "审计风险", source: (entry) => entry.audit_focus || "" },
+  { key: "source_role", label: "来源角色", source: (entry) => arr(entry.source_role).join(", ") },
+  { key: "verification_contract", label: "验证契约", source: (entry) => arr(entry.verification_contract).join(", ") },
+  { key: "training_use", label: "训练用途", source: (entry) => arr(entry.training_use).join(", ") },
+  { key: "category", label: "分类", source: (entry) => arr(entry.category).join(", ") },
+  { key: "tags", label: "标签", source: (entry) => arr(entry.tags).join(", ") },
+];
 
 function arr(value) {
   return Array.isArray(value) ? value.filter(Boolean) : value ? [value] : [];
@@ -86,6 +102,25 @@ function normalizeAnnotations(payload) {
     updated_at: payload.updated_at || null,
     annotations,
   };
+}
+
+function normalizeEntryRecords(payload) {
+  if (!payload || typeof payload !== "object") return structuredClone(DEFAULT_RECORDS);
+  const entries = {};
+  if (payload.entries && typeof payload.entries === "object") {
+    Object.entries(payload.entries).forEach(([entryId, value]) => {
+      if (value && typeof value === "object") entries[entryId] = value;
+    });
+  }
+  return {
+    schema_version: payload.schema_version || 1,
+    updated_at: payload.updated_at || null,
+    entries,
+  };
+}
+
+function entryRecord(payload, entryId) {
+  return normalizeEntryRecords(payload).entries?.[entryId] || null;
 }
 
 function packEntryId(item) {
@@ -139,6 +174,59 @@ export function mergeAnnotations(previous, record) {
       ...payload.annotations,
       [record.entry_id]: [record],
     },
+  };
+}
+
+export function createLocalizationRecord(entry, values = {}, now = new Date()) {
+  const record = {
+    entry_id: entry.id,
+    title: entry.title,
+    updated_at: now.toISOString(),
+  };
+  LOCALIZATION_FIELDS.forEach((field) => {
+    record[field.key] = String(values[field.key] ?? "").trim();
+  });
+  return record;
+}
+
+export function mergeLocalizations(previous, record) {
+  const payload = normalizeEntryRecords(previous);
+  return {
+    ...payload,
+    updated_at: record.updated_at,
+    entries: {
+      ...payload.entries,
+      [record.entry_id]: record,
+    },
+  };
+}
+
+export function createInstitutionRecord(entry, values = {}, now = new Date()) {
+  return {
+    entry_id: entry.id,
+    title: entry.title,
+    institutions: Array.from({ length: 5 }, (_item, index) => String(values[`institution_${index}`] ?? "").trim()),
+    has_more: values.has_more_institutions === "on" || values.has_more_institutions === true || values.has_more === true,
+    updated_at: now.toISOString(),
+  };
+}
+
+export function mergeInstitutions(previous, record) {
+  const payload = normalizeEntryRecords(previous);
+  return {
+    ...payload,
+    updated_at: record.updated_at,
+    entries: {
+      ...payload.entries,
+      [record.entry_id]: record,
+    },
+  };
+}
+
+export function institutionSummary(record) {
+  return {
+    names: arr(record?.institutions).map((name) => String(name).trim()).filter(Boolean),
+    hasMore: Boolean(record?.has_more),
   };
 }
 
@@ -268,6 +356,33 @@ async function saveAnnotations(payload) {
   }
 }
 
+async function loadEntryRecords(apiPath, filePath, storageKey) {
+  const fromApi = await loadJson(apiPath, null);
+  if (fromApi) return normalizeEntryRecords(fromApi);
+  const fromFile = await loadJson(filePath, null);
+  const fromStorage = localStorage.getItem(storageKey);
+  if (fromStorage) {
+    try {
+      return normalizeEntryRecords(JSON.parse(fromStorage));
+    } catch (_error) {
+      return normalizeEntryRecords(fromFile);
+    }
+  }
+  return normalizeEntryRecords(fromFile);
+}
+
+async function persistEntryRecord(apiPath, record, storageKey, currentPayload, mergeFn) {
+  const response = await fetch(apiPath, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ record }, null, 2),
+  });
+  if (!response.ok) throw new Error(await response.text());
+  const payload = normalizeEntryRecords((await response.json()).records);
+  localStorage.setItem(storageKey, JSON.stringify(payload));
+  return payload.entries?.[record.entry_id] ? payload : mergeFn(currentPayload, record);
+}
+
 async function persistReview(record) {
   try {
     const response = await fetch("/api/review", {
@@ -329,12 +444,13 @@ function renderStatus(message, mode = "info") {
   target.dataset.mode = mode;
 }
 
-function setFormSaving(form, isSaving) {
+function setFormSaving(form, isSaving, idleText = saveButtonText(false)) {
   const button = form.querySelector("button[type=\"submit\"]");
   if (!button) return;
+  if (!button.dataset.idleText) button.dataset.idleText = idleText;
   form.dataset.saving = isSaving ? "true" : "false";
   button.disabled = isSaving;
-  button.textContent = saveButtonText(isSaving);
+  button.textContent = isSaving ? "保存中..." : button.dataset.idleText;
 }
 
 function renderAnnotationsForEntry(payload, entryId) {
@@ -373,7 +489,76 @@ function cardSourceBlock(entry) {
   </details>`;
 }
 
-export function renderEntryCard(entry, annotations, showRaw, showAnnotations) {
+function renderInstitutions(entry, institutionsPayload) {
+  const record = entryRecord(institutionsPayload, entry.id) || {};
+  const summary = institutionSummary(record);
+  const institutionValues = Array.from({ length: 5 }, (_item, index) => record.institutions?.[index] || "");
+  const chips = summary.names.length
+    ? summary.names.map((name) => `<span>${esc(name)}</span>`).join("")
+    : "<em>暂未填写机构</em>";
+  return `<section class="institution-panel" data-entry-id="${esc(entry.id)}">
+    <div class="institution-head">
+      <strong>机构一览</strong>
+      <div class="institution-chips">${chips}${summary.hasMore ? "<span>多个机构</span>" : ""}</div>
+    </div>
+    <form class="institution-form" data-entry-id="${esc(entry.id)}">
+      <div class="institution-inputs">
+        ${institutionValues.map((value, index) => `<label>机构 ${index + 1}
+          <input name="institution_${index}" value="${esc(value)}" placeholder="机构名，可留空">
+        </label>`).join("")}
+      </div>
+      <label class="toggle more-institutions">
+        <input name="has_more_institutions" type="checkbox"${record.has_more ? " checked" : ""}>
+        <span>多个机构</span>
+      </label>
+      <button type="submit">保存机构</button>
+    </form>
+  </section>`;
+}
+
+function renderLocalizationPanel(entry, localizationsPayload) {
+  const record = entryRecord(localizationsPayload, entry.id) || {};
+  return `<section class="localization-panel" data-entry-id="${esc(entry.id)}" data-active-view="source">
+    <div class="localization-head">
+      <strong>字段补充</strong>
+      <div class="field-view-switch" role="group" aria-label="字段显示切换">
+        <button type="button" class="field-view-button active" data-view-target="source">原始字段</button>
+        <button type="button" class="field-view-button" data-view-target="zh">中文字段</button>
+      </div>
+    </div>
+    <dl class="field-view source-fields">
+      ${LOCALIZATION_FIELDS.map((field) => `<div>
+        <dt>${esc(field.label)}</dt>
+        <dd>${esc(shortText(field.source(entry) || "unknown", 320))}</dd>
+      </div>`).join("")}
+    </dl>
+    <form class="localization-form field-view zh-fields" data-entry-id="${esc(entry.id)}">
+      ${LOCALIZATION_FIELDS.map((field) => `<label>${esc(field.label)}
+        <textarea name="${esc(field.key)}" placeholder="填写中文，可留空">${esc(record[field.key] || "")}</textarea>
+      </label>`).join("")}
+      <button type="submit">保存中文字段</button>
+    </form>
+  </section>`;
+}
+
+function splitReviewPayload(payload) {
+  if (payload?.localizations || payload?.institutions) {
+    return {
+      annotations: payload.annotations || DEFAULT_ANNOTATIONS,
+      localizations: normalizeEntryRecords(payload.localizations),
+      institutions: normalizeEntryRecords(payload.institutions),
+    };
+  }
+  return {
+    annotations: payload || DEFAULT_ANNOTATIONS,
+    localizations: structuredClone(DEFAULT_RECORDS),
+    institutions: structuredClone(DEFAULT_RECORDS),
+  };
+}
+
+export function renderEntryCard(entry, reviewPayload, showRaw, showAnnotations) {
+  const splitPayload = splitReviewPayload(reviewPayload);
+  const annotations = splitPayload.annotations;
   const level = CURATION_LEVELS[entry.curation_level] || CURATION_LEVELS.L0_seeded;
   const lowHint = lowLevelReviewHint(entry.curation_level);
   const noteCount = annotationList(annotations, entry.id).length;
@@ -427,6 +612,7 @@ export function renderEntryCard(entry, annotations, showRaw, showAnnotations) {
     </div>
     <h3>${entry.primary_link ? `<a href="${esc(entry.primary_link)}" target="_blank" rel="noreferrer">${esc(entry.title)}</a>` : esc(entry.title)}</h3>
     <div class="paper-links">${links(entry) || "<span>缺少官方链接</span>"}</div>
+    ${renderInstitutions(entry, splitPayload.institutions)}
     <p class="zh-summary">${esc(entry.one_line_summary || "还没有摘要。")}</p>
     <div class="review-focus">
       <strong>${esc(level.title)}</strong>
@@ -444,6 +630,7 @@ export function renderEntryCard(entry, annotations, showRaw, showAnnotations) {
         <div><dt>验证 / 奖励</dt><dd>${esc(shortText(entry.feedback_verifier || "metadata pending"))}</dd></div>
       </dl>
     </details>
+    ${renderLocalizationPanel(entry, splitPayload.localizations)}
     ${cardSourceBlock(entry)}
     ${rawBlock}
     ${annotationsBlock}
@@ -470,7 +657,11 @@ function renderReviewList(state, data) {
     .filter((entry) => annotationList(data.annotations, entry.id).length)
     .length;
   document.getElementById("paperList").innerHTML = filtered.length
-    ? filtered.slice(0, 120).map((entry) => renderEntryCard(entry, data.annotations, showRaw, showAnnotations)).join("")
+    ? filtered.slice(0, 120).map((entry) => renderEntryCard(entry, {
+      annotations: data.annotations,
+      localizations: data.localizations,
+      institutions: data.institutions,
+    }, showRaw, showAnnotations)).join("")
     : "<div class=\"empty-state\">没有匹配论文。</div>";
   updateExportLink(data.annotations);
 }
@@ -483,6 +674,8 @@ async function initReviewPage() {
     packs: await loadJson("../docs/assets/starter_packs.json", []),
     cards: await loadJson("../docs/assets/cards.json", []),
     annotations: await loadAnnotations(),
+    localizations: await loadEntryRecords("/api/localizations", "localizations.json", LOCALIZATION_STORAGE_KEY),
+    institutions: await loadEntryRecords("/api/institutions", "institutions/institutions.json", INSTITUTION_STORAGE_KEY),
   };
 
   renderLevelGuide(document.getElementById("levelGuide"));
@@ -493,12 +686,60 @@ async function initReviewPage() {
 
   document.getElementById("controls").addEventListener("input", () => renderReviewList(selectedState(), data));
   document.getElementById("paperList").addEventListener("submit", async (event) => {
+    const localizationForm = event.target.closest(".localization-form");
+    const institutionForm = event.target.closest(".institution-form");
     const form = event.target.closest(".annotation-form");
-    if (!form) return;
+    if (!form && !localizationForm && !institutionForm) return;
     event.preventDefault();
+    if (localizationForm) {
+      const entry = data.entries.find((item) => item.id === localizationForm.dataset.entryId);
+      const values = Object.fromEntries(new FormData(localizationForm).entries());
+      setFormSaving(localizationForm, true, "保存中文字段");
+      try {
+        const record = createLocalizationRecord(entry, values);
+        data.localizations = await persistEntryRecord(
+          "/api/localizations",
+          record,
+          LOCALIZATION_STORAGE_KEY,
+          data.localizations,
+          mergeLocalizations,
+        );
+        renderStatus("已写入 review/localizations.json", "file");
+        renderReviewList(selectedState(), data);
+        document.getElementById(entry.id)?.scrollIntoView({ block: "center" });
+      } catch (error) {
+        setFormSaving(localizationForm, false, "保存中文字段");
+        renderStatus(`中文字段保存失败：${error.message}`, "error");
+      }
+      return;
+    }
+
+    if (institutionForm) {
+      const entry = data.entries.find((item) => item.id === institutionForm.dataset.entryId);
+      const values = Object.fromEntries(new FormData(institutionForm).entries());
+      setFormSaving(institutionForm, true, "保存机构");
+      try {
+        const record = createInstitutionRecord(entry, values);
+        data.institutions = await persistEntryRecord(
+          "/api/institutions",
+          record,
+          INSTITUTION_STORAGE_KEY,
+          data.institutions,
+          mergeInstitutions,
+        );
+        renderStatus("已写入 review/institutions/institutions.json", "file");
+        renderReviewList(selectedState(), data);
+        document.getElementById(entry.id)?.scrollIntoView({ block: "center" });
+      } catch (error) {
+        setFormSaving(institutionForm, false, "保存机构");
+        renderStatus(`机构保存失败：${error.message}`, "error");
+      }
+      return;
+    }
+
     const entry = data.entries.find((item) => item.id === form.dataset.entryId);
     const values = Object.fromEntries(new FormData(form).entries());
-    setFormSaving(form, true);
+    setFormSaving(form, true, saveButtonText(false));
     try {
       const record = createAnnotationRecord(entry, values);
       await persistReview(record);
@@ -515,6 +756,16 @@ async function initReviewPage() {
     }
   });
   document.getElementById("paperList").addEventListener("click", async (event) => {
+    const fieldViewButton = event.target.closest(".field-view-button");
+    if (fieldViewButton) {
+      const panel = fieldViewButton.closest(".localization-panel");
+      panel.dataset.activeView = fieldViewButton.dataset.viewTarget;
+      panel.querySelectorAll(".field-view-button").forEach((button) => {
+        button.classList.toggle("active", button === fieldViewButton);
+      });
+      return;
+    }
+
     const loadButton = event.target.closest(".load-card");
     if (loadButton) {
       const details = loadButton.closest(".card-source");

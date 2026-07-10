@@ -1,13 +1,13 @@
 name: Metadata fix
-about: Correct an entry, link, card field, status, category, or verification contract.
-title: "[Metadata Fix] <entry id or card path>"
+about: Correct an entry, link, paper-card source, status, category, or verification contract.
+title: "[Metadata Fix] <entry id or paper-card source path>"
 labels: ["metadata", "fix"]
 body:
   - type: input
     id: target
     attributes:
       label: Entry ID or file path
-      description: Example deepseek-r1-2025 or cards/recipes/deepseek_r1.md
+      description: Example deepseek-r1-2025 or paper_cards/sources/deepseek-r1-2025/01_problem_ch.md
     validations:
       required: true
   - type: dropdown
@@ -21,7 +21,7 @@ body:
         - verification_contract
         - supervision_granularity
         - training_use
-        - card heading/content
+        - paper-card source content
         - status
         - other
     validations:

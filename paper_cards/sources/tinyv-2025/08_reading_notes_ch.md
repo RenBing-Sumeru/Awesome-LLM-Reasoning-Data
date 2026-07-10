@@ -1,0 +1,4 @@
+- 当奖励来自 verifier 决策时，verifier 错误就是训练数据错误。
+- 减少 false negative 会改变哪些 rollout 能成为有效 RL 信号。
+- 学习型 verifier 可以修正规则脆弱性，但也会制造新的审计面。
+- 读 RL 提升时，要问清楚提升来自更好的推理，还是更贴合 verifier。

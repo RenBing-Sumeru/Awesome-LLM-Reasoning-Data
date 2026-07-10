@@ -18,10 +18,7 @@
 - [Industry Onboarding Path](10_industry_onboarding_path.md)
 - [Glossary](glossary.md)
 
-## Practical Cards
+## Paper-Card Sources
 
-- [Card Index](../cards/README.md)
-- [Release Cards](../cards/releases/)
-- [Verifier Cards](../cards/verifiers/)
-- [Agent Cards](../cards/agents/)
-- [Recipe Cards](../cards/recipes/)
+- [Workflow](../paper_cards/README.md)
+- [SOP](paper_card_sop.md)

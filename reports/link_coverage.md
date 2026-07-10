@@ -1,52 +1,51 @@
 # Link Coverage
 
-Public coverage report generated from `data/papers.yaml` and the card inventory.
+Public coverage report generated from `data/papers.yaml` and the paper-card source inventory.
 
 ## Summary
 
-- Total entries: 280
-- Verified entries: 165
-- Verified entries with official paper/arXiv/venue/DOI links: 165 (100.0%)
-- Needs search: 115
+- Total entries: 310
+- Verified entries: 207
+- Verified entries with official paper/arXiv/venue/DOI links: 207 (100.0%)
+- Needs search: 103
 - Ambiguous: 0
 - Duplicate: 0
-- Cards: 87
+- Paper-card sources: 1
 
 ## Curation Levels
 
-- L0_seeded: 115
-- L1_link_verified: 69
-- L2_artifact_verified: 7
-- L3_summary_ready: 4
-- L4_carded: 32
-- L5_audit_ready: 53
+- L0_seeded: 102
+- L1_link_verified: 64
+- L2_artifact_verified: 5
+- L3_summary_ready: 47
+- L4_carded: 37
+- L5_audit_ready: 55
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 165
-- arXiv coverage: 162
+- Official primary paper/arXiv/venue/DOI coverage: 207
+- arXiv coverage: 202
 - OpenReview coverage: 15
 - ACL coverage: 7
 - PMLR coverage: 1
 - CVF coverage: 0
-- DOI coverage: 5
-- Code coverage: 41
-- Data coverage: 27
-- Hugging Face coverage: 20
-- Project page coverage: 25
-- Card coverage: 87
+- DOI coverage: 36
+- Code coverage: 56
+- Data coverage: 35
+- Hugging Face coverage: 21
+- Project page coverage: 35
+- Paper-card source coverage: 1
 
 ## Starter Pack Coverage
 
 - Matched Starter Pack entries: 20
 - Official primary links: 20/20 (100.0%)
-- Card coverage: 20/20 (100.0%)
+- Paper-card source coverage: 0/20 (0.0%)
 - Code/data/Hugging Face coverage: 6/20
 
 ## Missing Primary Links
 
 - `an-overview-of-the-bioasq-large-scale-biomedical-semantic-indexing-and-question--2015` · An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition · status `needs_metadata`
-- `holist-an-environment-for-machine-learning-of-higher-order-logic-theorem-proving-2019` · HOList: An environment for machine learning of higher-order logic theorem proving · status `needs_metadata`
 - `pubmedqa-a-dataset-for-biomedical-research-question-answering-2019` · PubMedQA: A dataset for biomedical research question answering · status `needs_metadata`
 - `a-primer-in-bertology-what-we-know-about-how-bert-works-2020` · A primer in BERTology: What we know about how BERT works · status `needs_metadata`
 - `fact-or-fiction-verifying-scientific-claims-2020` · Fact or fiction: Verifying scientific claims · status `needs_metadata`
@@ -57,8 +56,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `finetuned-language-models-are-zero-shot-learners-2021` · Finetuned language models are zero-shot learners · status `needs_metadata`
 - `multitask-prompted-training-enables-zero-shot-task-generalization-2021` · Multitask prompted training enables zero-shot task generalization · status `needs_metadata`
 - `qasper-a-dataset-of-information-seeking-questions-and-answers-over-scientific-re-2021` · Qasper: A dataset of information-seeking questions and answers over scientific research papers · status `needs_metadata`
-- `coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022` · CodeRL: Mastering code generation through pretrained models and deep reinforcement learning · status `needs_metadata`
-- `codet-code-generation-with-generated-tests-2022` · CodeT: Code generation with generated tests · status `needs_metadata`
 - `coliee-competition-on-legal-information-extraction-entailment-2022` · COLIEE: Competition on legal information extraction/entailment · status `needs_metadata`
 - `convfinqa-exploring-the-chain-of-numerical-reasoning-in-conversational-finance-q-2022` · ConvFinQA: Exploring the chain of numerical reasoning in conversational finance question answering · status `needs_metadata`
 - `draft-sketch-and-prove-guiding-formal-theorem-provers-with-informal-proofs-2022` · Draft, sketch, and prove: Guiding formal theorem provers with informal proofs · status `needs_metadata`
@@ -66,7 +63,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `scienceworld-is-your-agent-smarter-than-a-5th-grader-2022` · ScienceWorld: Is your agent smarter than a 5th grader? · status `needs_metadata`
 - `solving-math-word-problems-with-process-and-outcome-based-feedback-2022` · Solving math word problems with process- and outcome-based feedback · status `needs_metadata`
 - `alce-enabling-large-language-models-to-generate-text-with-citations-2023` · ALCE: Enabling large language models to generate text with citations · status `needs_metadata`
-- `api-bank-a-benchmark-for-tool-augmented-llms-2023` · API-Bank: A benchmark for tool-augmented LLMs · status `needs_metadata`
 - `data-provenance-for-language-models-2023` · Data provenance for language models · status `needs_metadata`
 - `distilling-step-by-step-outperforming-larger-language-models-with-less-training--2023` · Distilling step-by-step: Outperforming larger language models with less training data and smaller model sizes · status `needs_metadata`
 - `factscore-2023` · FActScore · status `needs_metadata`
@@ -78,8 +74,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `maud-a-merger-agreement-understanding-dataset-2023` · MAUD: A merger agreement understanding dataset · status `needs_metadata`
 - `measuring-faithfulness-in-chain-of-thought-reasoning-2023` · Measuring faithfulness in chain-of-thought reasoning · status `needs_metadata`
 - `metamath-bootstrap-your-own-mathematical-questions-for-large-language-models-2023` · MetaMath: Bootstrap your own mathematical questions for large language models · status `needs_metadata`
-- `mind2web-towards-a-generalist-agent-for-the-web-2023` · Mind2Web: Towards a generalist agent for the web · status `needs_metadata`
-- `proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023` · ProofNet: Autoformalizing and formally proving undergraduate-level mathematics · status `needs_metadata`
 - `reflexion-language-agents-with-verbal-reinforcement-learning-2023` · Reflexion: Language agents with verbal reinforcement learning · status `needs_metadata`
 - `rest-textsuperscriptem-2023` · ReST\textsuperscriptEM · status `needs_metadata`
 - `selfcodealign-self-alignment-for-code-generation-2023` · SelfCodeAlign: Self-alignment for code generation · status `needs_metadata`
@@ -87,11 +81,9 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `ai-models-collapse-when-trained-on-recursively-generated-data-2024` · AI models collapse when trained on recursively generated data · status `needs_metadata`
 - `apigen-automated-pipeline-for-generating-verifiable-and-diverse-function-calling-2024` · APIGen: Automated pipeline for generating verifiable and diverse function-calling datasets · status `needs_metadata`
 - `bfcl-v3-2024` · BFCL v3 · status `needs_metadata`
-- `bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024` · BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions · status `needs_metadata`
 - `bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024` · BRIGHT: A realistic and challenging benchmark for reasoning-intensive retrieval · status `needs_metadata`
 - `chembench-a-benchmark-for-evaluating-large-language-models-in-chemistry-2024` · ChemBench: A benchmark for evaluating large language models in chemistry · status `needs_metadata`
 - `does-writing-with-lms-reduce-content-diversity-2024` · Does writing with LMs reduce content diversity? · status `needs_metadata`
-- `frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024` · FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI · status `needs_metadata`
 - `goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024` · Goedel-Prover: A frontier model for open-source automated theorem proving · status `needs_metadata`
 - `gsm-symbolic-2024` · GSM-Symbolic · status `needs_metadata`
 - `harmbench-2024` · HarmBench · status `needs_metadata`
@@ -108,11 +100,8 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `spin-self-play-fine-tuning-converts-weak-language-models-to-strong-language-mode-2024` · SPIN: Self-play fine-tuning converts weak language models to strong language models · status `needs_metadata`
 - `swe-gym-advancing-software-engineering-agents-with-training-and-evaluation-envir-2024` · SWE-Gym: Advancing software engineering agents with training and evaluation environments · status `needs_metadata`
 - `swe-search-2024` · SWE-Search · status `needs_metadata`
-- `tau-bench-a-benchmark-for-tool-agent-user-interaction-in-real-world-domains-2024` · tau-bench: A benchmark for tool-agent-user interaction in real-world domains · status `needs_metadata`
 - `the-llama-3-herd-of-models-2024` · The Llama 3 Herd of models · status `needs_metadata`
 - `toolace-winning-the-points-of-llm-function-calling-2024` · ToolACE: Winning the points of LLM function calling · status `needs_metadata`
-- `toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024` · ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use · status `needs_metadata`
-- `visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024` · VisualWebArena: Evaluating multimodal agents on realistic visual web tasks · status `partial`
 - `weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024` · WebLINX: Real-world website navigation with multi-turn dialogue · status `needs_metadata`
 - `wildguard-2024` · WildGuard · status `needs_metadata`
 - `workarena-how-capable-are-web-agents-at-solving-common-knowledge-work-tasks-2024` · WorkArena: How capable are web agents at solving common knowledge work tasks? · status `needs_metadata`
@@ -124,7 +113,6 @@ Public coverage report generated from `data/papers.yaml` and the card inventory.
 - `dapo-an-open-source-llm-reinforcement-learning-system-at-scale-2025` · DAPO: An open-source LLM reinforcement learning system at scale · status `needs_metadata`
 - `deepscaler-scaling-reinforcement-learning-for-reasoning-in-open-models-2025` · DeepScaleR: Scaling reinforcement learning for reasoning in open models · status `needs_metadata`
 - `deepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learnin-2025` · DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning · status `needs_metadata`
-- `does-rl-really-incentivize-reasoning-beyond-base-2025` · Does RL really incentivize reasoning beyond base? · status `needs_metadata`
 - `does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025` · Does supervised fine-tuning memorize while reinforcement learning generalizes? · status `needs_metadata`
 - `finder-financial-data-extraction-and-reasoning-2025` · FinDER: Financial data extraction and reasoning · status `needs_metadata`
 - `from-system-1-to-system-2-a-survey-of-reasoning-large-language-models-2025` · From system 1 to system 2: A survey of reasoning large language models · status `needs_metadata`

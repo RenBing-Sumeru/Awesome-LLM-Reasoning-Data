@@ -233,7 +233,7 @@
       ]
     },
     {
-      "path": "cards/verifier_card_template.md",
+      "path": "paper_cards/README.md",
       "bytes": 458,
       "urls": [],
       "arxiv_ids": [],
@@ -252,7 +252,7 @@
       ]
     },
     {
-      "path": "cards/release_card_template.md",
+      "path": "paper_cards/README.md",
       "bytes": 1241,
       "urls": [],
       "arxiv_ids": [],
@@ -269,7 +269,7 @@
       ]
     },
     {
-      "path": "cards/README.md",
+      "path": "paper_cards/README.md",
       "bytes": 20369,
       "urls": [],
       "arxiv_ids": [],
@@ -286,7 +286,7 @@
       ]
     },
     {
-      "path": "cards/agent_trajectory_card_template.md",
+      "path": "paper_cards/README.md",
       "bytes": 317,
       "urls": [],
       "arxiv_ids": [],
@@ -306,7 +306,7 @@
       ]
     },
     {
-      "path": "cards/recipe_card_template.md",
+      "path": "paper_cards/README.md",
       "bytes": 393,
       "urls": [],
       "arxiv_ids": [],
@@ -1438,7 +1438,7 @@
       ]
     },
     {
-      "path": "cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md",
+      "path": "paper_cards/README.md",
       "bytes": 4478,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024&mode=explain",
@@ -1467,7 +1467,7 @@
       ]
     },
     {
-      "path": "cards/failures/subliminal-learning.md",
+      "path": "paper_cards/README.md",
       "bytes": 4703,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=subliminal-learning-2025&mode=explain",
@@ -1498,7 +1498,7 @@
       ]
     },
     {
-      "path": "cards/failures/spurious_rewards.md",
+      "path": "paper_cards/README.md",
       "bytes": 3764,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=explain",
@@ -1524,7 +1524,7 @@
       ]
     },
     {
-      "path": "cards/failures/leaky-thoughts.md",
+      "path": "paper_cards/README.md",
       "bytes": 4556,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leaky-thoughts-2025&mode=explain",
@@ -1553,7 +1553,7 @@
       ]
     },
     {
-      "path": "cards/releases/kodcode.md",
+      "path": "paper_cards/README.md",
       "bytes": 5312,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kodcode-a-diverse-challenging-and-verifiable-synthetic-dataset-for-coding-2025&mode=explain",
@@ -1579,7 +1579,7 @@
       ]
     },
     {
-      "path": "cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md",
+      "path": "paper_cards/README.md",
       "bytes": 4296,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=chain-of-thought-prompting-elicits-reasoning-in-large-language-models-2022&mode=explain",
@@ -1604,7 +1604,7 @@
       ]
     },
     {
-      "path": "cards/releases/openthoughts.md",
+      "path": "paper_cards/README.md",
       "bytes": 4289,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openthoughts3-2025&mode=explain",
@@ -1633,7 +1633,7 @@
       ]
     },
     {
-      "path": "cards/releases/data-statements-for-natural-language-processing.md",
+      "path": "paper_cards/README.md",
       "bytes": 4112,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=data-statements-for-natural-language-processing-2018&mode=explain",
@@ -1658,7 +1658,7 @@
       ]
     },
     {
-      "path": "cards/releases/openmathreasoning.md",
+      "path": "paper_cards/README.md",
       "bytes": 4861,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openmathreasoning-2025&mode=explain",
@@ -1684,7 +1684,7 @@
       ]
     },
     {
-      "path": "cards/releases/dapo.md",
+      "path": "paper_cards/README.md",
       "bytes": 4556,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=dapo-2025&mode=explain",
@@ -1710,7 +1710,7 @@
       ]
     },
     {
-      "path": "cards/releases/openr1.md",
+      "path": "paper_cards/README.md",
       "bytes": 5180,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openr1-math-220k-2025&mode=explain",
@@ -1738,7 +1738,7 @@
       ]
     },
     {
-      "path": "cards/releases/opencodereasoning_ii.md",
+      "path": "paper_cards/README.md",
       "bytes": 5499,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=opencodereasoning-ii-a-simple-test-time-scaling-approach-via-self-critique-2025&mode=explain",
@@ -1764,7 +1764,7 @@
       ]
     },
     {
-      "path": "cards/releases/openmathinstruct-2.md",
+      "path": "paper_cards/README.md",
       "bytes": 5363,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openmathinstruct-2-accelerating-ai-for-math-with-massive-open-source-instruction-2024&mode=explain",
@@ -1797,7 +1797,7 @@
       ]
     },
     {
-      "path": "cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md",
+      "path": "paper_cards/README.md",
       "bytes": 4181,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=direct-preference-optimization-your-language-model-is-secretly-a-reward-model-2023&mode=explain",
@@ -1822,7 +1822,7 @@
       ]
     },
     {
-      "path": "cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md",
+      "path": "paper_cards/README.md",
       "bytes": 4456,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-repro-2025&mode=explain",
@@ -1847,7 +1847,7 @@
       ]
     },
     {
-      "path": "cards/releases/s1.md",
+      "path": "paper_cards/README.md",
       "bytes": 3829,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=s1-2025&mode=explain",
@@ -1872,7 +1872,7 @@
       ]
     },
     {
-      "path": "cards/releases/datasheets-for-datasets.md",
+      "path": "paper_cards/README.md",
       "bytes": 4027,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=datasheets-for-datasets-2018&mode=explain",
@@ -1897,7 +1897,7 @@
       ]
     },
     {
-      "path": "cards/releases/limo.md",
+      "path": "paper_cards/README.md",
       "bytes": 4693,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=limo-2025&mode=explain",
@@ -1923,7 +1923,7 @@
       ]
     },
     {
-      "path": "cards/releases/deepmath_103k.md",
+      "path": "paper_cards/README.md",
       "bytes": 4625,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepmath-103k-2025&mode=explain",
@@ -1949,7 +1949,7 @@
       ]
     },
     {
-      "path": "cards/releases/ultrafeedback.md",
+      "path": "paper_cards/README.md",
       "bytes": 5097,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ultrafeedback-boosting-language-models-with-high-quality-feedback-2023&mode=explain",
@@ -1978,7 +1978,7 @@
       ]
     },
     {
-      "path": "cards/releases/naturalreasoning.md",
+      "path": "paper_cards/README.md",
       "bytes": 5445,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=naturalreasoning-reasoning-in-natural-language-with-large-scale-verifiable-data-2025&mode=explain",
@@ -2004,7 +2004,7 @@
       ]
     },
     {
-      "path": "cards/releases/big_math.md",
+      "path": "paper_cards/README.md",
       "bytes": 4923,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=big-math-2025&mode=explain",
@@ -2030,7 +2030,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/one_token_to_fool_judge.md",
+      "path": "paper_cards/README.md",
       "bytes": 4776,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=one-token-to-fool-2025&mode=explain",
@@ -2056,7 +2056,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/prometheus-2.md",
+      "path": "paper_cards/README.md",
       "bytes": 5378,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prometheus-2-an-open-source-language-model-specialized-in-evaluating-other-langu-2024&mode=explain",
@@ -2091,7 +2091,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/mt-bench-chatbot-arena.md",
+      "path": "paper_cards/README.md",
       "bytes": 5192,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-2023&mode=explain",
@@ -2122,7 +2122,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/rewardbench.md",
+      "path": "paper_cards/README.md",
       "bytes": 4065,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=explain",
@@ -2147,7 +2147,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/math_shepherd.md",
+      "path": "paper_cards/README.md",
       "bytes": 4667,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=math-shepherd-2024&mode=explain",
@@ -2173,7 +2173,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/omegaprm.md",
+      "path": "paper_cards/README.md",
       "bytes": 5476,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=omegaprm-automated-process-supervision-2024&mode=explain",
@@ -2199,7 +2199,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/healthbench.md",
+      "path": "paper_cards/README.md",
       "bytes": 3938,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=healthbench-2025&mode=explain",
@@ -2224,7 +2224,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/processbench.md",
+      "path": "paper_cards/README.md",
       "bytes": 5412,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=processbench-identifying-process-errors-in-mathematical-reasoning-2025&mode=explain",
@@ -2250,7 +2250,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/prmbench.md",
+      "path": "paper_cards/README.md",
       "bytes": 5562,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prmbench-a-fine-grained-and-challenging-benchmark-for-process-level-reward-model-2025&mode=explain",
@@ -2276,7 +2276,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/training-verifiers-to-solve-math-word-problems.md",
+      "path": "paper_cards/README.md",
       "bytes": 4295,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-verifiers-to-solve-math-word-problems-2021&mode=explain",
@@ -2305,7 +2305,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/prm800k.md",
+      "path": "paper_cards/README.md",
       "bytes": 3721,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=prm800k-2023&mode=explain",
@@ -2330,7 +2330,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/tinyv.md",
+      "path": "paper_cards/README.md",
       "bytes": 5429,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tinyv-2025&mode=explain",
@@ -2358,7 +2358,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/aegis2.md",
+      "path": "paper_cards/README.md",
       "bytes": 4956,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=aegis2-2025&mode=explain",
@@ -2387,7 +2387,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/spurious_rewards.md",
+      "path": "paper_cards/README.md",
       "bytes": 4698,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=spurious-rewards-2025&mode=explain",
@@ -2413,7 +2413,7 @@
       ]
     },
     {
-      "path": "cards/verifiers/rewarding-progress.md",
+      "path": "paper_cards/README.md",
       "bytes": 4805,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024&mode=explain",
@@ -2440,7 +2440,7 @@
       ]
     },
     {
-      "path": "cards/agents/appworld.md",
+      "path": "paper_cards/README.md",
       "bytes": 5535,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=appworld-a-controllable-world-of-apps-and-people-for-benchmarking-interactive-co-2024&mode=explain",
@@ -2466,7 +2466,7 @@
       ]
     },
     {
-      "path": "cards/agents/leandojo.md",
+      "path": "paper_cards/README.md",
       "bytes": 5115,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=leandojo-theorem-proving-with-retrieval-augmented-language-models-2023&mode=explain",
@@ -2499,7 +2499,7 @@
       ]
     },
     {
-      "path": "cards/agents/openhands.md",
+      "path": "paper_cards/README.md",
       "bytes": 5501,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=openhands-2025&mode=explain",
@@ -2529,7 +2529,7 @@
       ]
     },
     {
-      "path": "cards/agents/toolformer.md",
+      "path": "paper_cards/README.md",
       "bytes": 4640,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolformer-language-models-can-teach-themselves-to-use-tools-2023&mode=explain",
@@ -2556,7 +2556,7 @@
       ]
     },
     {
-      "path": "cards/agents/browsergym.md",
+      "path": "paper_cards/README.md",
       "bytes": 5132,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=browsergym-a-gym-environment-for-web-agents-2024&mode=explain",
@@ -2582,7 +2582,7 @@
       ]
     },
     {
-      "path": "cards/agents/swe-bench-verified.md",
+      "path": "paper_cards/README.md",
       "bytes": 4957,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=introducing-swe-bench-verified-2024&mode=explain",
@@ -2613,7 +2613,7 @@
       ]
     },
     {
-      "path": "cards/agents/osworld.md",
+      "path": "paper_cards/README.md",
       "bytes": 5418,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=osworld-benchmarking-multimodal-agents-for-open-ended-tasks-in-real-computer-env-2024&mode=explain",
@@ -2639,7 +2639,7 @@
       ]
     },
     {
-      "path": "cards/agents/webarena.md",
+      "path": "paper_cards/README.md",
       "bytes": 5289,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=webarena-a-realistic-web-environment-for-building-autonomous-agents-2023&mode=explain",
@@ -2665,7 +2665,7 @@
       ]
     },
     {
-      "path": "cards/agents/androidworld.md",
+      "path": "paper_cards/README.md",
       "bytes": 5271,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=androidworld-a-dynamic-benchmarking-environment-for-autonomous-agents-2025&mode=explain",
@@ -2691,7 +2691,7 @@
       ]
     },
     {
-      "path": "cards/agents/r2e_gym.md",
+      "path": "paper_cards/README.md",
       "bytes": 4760,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=r2e-gym-2025&mode=explain",
@@ -2717,7 +2717,7 @@
       ]
     },
     {
-      "path": "cards/agents/react.md",
+      "path": "paper_cards/README.md",
       "bytes": 4819,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=react-synergizing-reasoning-and-acting-in-language-models-2023&mode=explain",
@@ -2748,7 +2748,7 @@
       ]
     },
     {
-      "path": "cards/agents/swe_gym.md",
+      "path": "paper_cards/README.md",
       "bytes": 4796,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-gym-2025&mode=explain",
@@ -2774,7 +2774,7 @@
       ]
     },
     {
-      "path": "cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md",
+      "path": "paper_cards/README.md",
       "bytes": 4438,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=swe-bench-can-language-models-resolve-real-world-github-issues-2023&mode=explain",
@@ -2805,7 +2805,7 @@
       ]
     },
     {
-      "path": "cards/agents/toolllm_toolbench.md",
+      "path": "paper_cards/README.md",
       "bytes": 5516,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=toolllm-facilitating-large-language-models-to-master-16000-real-world-apis-2024&mode=explain",
@@ -2831,7 +2831,7 @@
       ]
     },
     {
-      "path": "cards/recipes/minimax_m1.md",
+      "path": "paper_cards/README.md",
       "bytes": 5944,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minimax-m1-scaling-test-time-compute-efficiently-with-lightning-attention-2025&mode=explain",
@@ -2861,7 +2861,7 @@
       ]
     },
     {
-      "path": "cards/recipes/scaling-behaviors-rl-post-training.md",
+      "path": "paper_cards/README.md",
       "bytes": 4261,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tan-scaling-rl-2025&mode=explain",
@@ -2886,7 +2886,7 @@
       ]
     },
     {
-      "path": "cards/recipes/phi4_reasoning.md",
+      "path": "paper_cards/README.md",
       "bytes": 4748,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=phi-4-reasoning-2025&mode=explain",
@@ -2912,7 +2912,7 @@
       ]
     },
     {
-      "path": "cards/recipes/tulu-3.md",
+      "path": "paper_cards/README.md",
       "bytes": 5426,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=tulu-3-pushing-frontiers-in-open-language-model-post-training-2024&mode=explain",
@@ -2945,7 +2945,7 @@
       ]
     },
     {
-      "path": "cards/recipes/qwen2-5-math.md",
+      "path": "paper_cards/README.md",
       "bytes": 5191,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen2-5-math-technical-report-toward-mathematical-expert-model-via-self-improvem-2024&mode=explain",
@@ -2976,7 +2976,7 @@
       ]
     },
     {
-      "path": "cards/recipes/ttrl.md",
+      "path": "paper_cards/README.md",
       "bytes": 5303,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=ttrl-test-time-reinforcement-learning-2025&mode=explain",
@@ -3004,7 +3004,7 @@
       ]
     },
     {
-      "path": "cards/recipes/deepseekmath.md",
+      "path": "paper_cards/README.md",
       "bytes": 5036,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseekmath-pushing-the-limits-of-mathematical-reasoning-in-open-language-model-2024&mode=explain",
@@ -3033,7 +3033,7 @@
       ]
     },
     {
-      "path": "cards/recipes/qwen3.md",
+      "path": "paper_cards/README.md",
       "bytes": 4652,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen3-2025&mode=explain",
@@ -3059,7 +3059,7 @@
       ]
     },
     {
-      "path": "cards/recipes/absolute_zero.md",
+      "path": "paper_cards/README.md",
       "bytes": 5304,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=absolute-zero-reinforced-self-play-reasoning-with-zero-data-2025&mode=explain",
@@ -3087,7 +3087,7 @@
       ]
     },
     {
-      "path": "cards/recipes/constitutional-ai.md",
+      "path": "paper_cards/README.md",
       "bytes": 4632,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=constitutional-ai-harmlessness-from-ai-feedback-2022&mode=explain",
@@ -3114,7 +3114,7 @@
       ]
     },
     {
-      "path": "cards/recipes/self-rag.md",
+      "path": "paper_cards/README.md",
       "bytes": 5458,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-2023&mode=explain",
@@ -3149,7 +3149,7 @@
       ]
     },
     {
-      "path": "cards/recipes/orca.md",
+      "path": "paper_cards/README.md",
       "bytes": 5030,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023&mode=explain",
@@ -3176,7 +3176,7 @@
       ]
     },
     {
-      "path": "cards/recipes/deepseek-prover.md",
+      "path": "paper_cards/README.md",
       "bytes": 4715,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-advancing-theorem-proving-in-llms-2024&mode=explain",
@@ -3205,7 +3205,7 @@
       ]
     },
     {
-      "path": "cards/recipes/deepseek_r1.md",
+      "path": "paper_cards/README.md",
       "bytes": 4133,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-r1-2025&mode=explain",
@@ -3230,7 +3230,7 @@
       ]
     },
     {
-      "path": "cards/recipes/magistral.md",
+      "path": "paper_cards/README.md",
       "bytes": 4661,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magistral-2025&mode=explain",
@@ -3256,7 +3256,7 @@
       ]
     },
     {
-      "path": "cards/recipes/llama_nemotron.md",
+      "path": "paper_cards/README.md",
       "bytes": 4803,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=llama-nemotron-2025&mode=explain",
@@ -3282,7 +3282,7 @@
       ]
     },
     {
-      "path": "cards/recipes/the-art-of-scaling-rl-compute.md",
+      "path": "paper_cards/README.md",
       "bytes": 4326,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=khatri-scaling-rl-2025&mode=explain",
@@ -3309,7 +3309,7 @@
       ]
     },
     {
-      "path": "cards/recipes/self-consistency-chain-of-thought.md",
+      "path": "paper_cards/README.md",
       "bytes": 4470,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023&mode=explain",
@@ -3336,7 +3336,7 @@
       ]
     },
     {
-      "path": "cards/recipes/deepseek-prover-v1-5.md",
+      "path": "paper_cards/README.md",
       "bytes": 4886,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024&mode=explain",
@@ -3365,7 +3365,7 @@
       ]
     },
     {
-      "path": "cards/recipes/kimi_k15.md",
+      "path": "paper_cards/README.md",
       "bytes": 4812,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=kimi-k1-5-2025&mode=explain",
@@ -3391,7 +3391,7 @@
       ]
     },
     {
-      "path": "cards/recipes/deepseek-prover-v2.md",
+      "path": "paper_cards/README.md",
       "bytes": 5248,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025&mode=explain",
@@ -3422,7 +3422,7 @@
       ]
     },
     {
-      "path": "cards/recipes/magicoder.md",
+      "path": "paper_cards/README.md",
       "bytes": 5086,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=magicoder-empowering-code-generation-with-oss-instruct-2024&mode=explain",
@@ -3455,7 +3455,7 @@
       ]
     },
     {
-      "path": "cards/recipes/star-bootstrapping-reasoning-with-reasoning.md",
+      "path": "paper_cards/README.md",
       "bytes": 3887,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=star-bootstrapping-reasoning-with-reasoning-2022&mode=explain",
@@ -3480,7 +3480,7 @@
       ]
     },
     {
-      "path": "cards/recipes/qwen3_coder.md",
+      "path": "paper_cards/README.md",
       "bytes": 5481,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=qwen3-coder-2025&mode=explain",
@@ -3508,7 +3508,7 @@
       ]
     },
     {
-      "path": "cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md",
+      "path": "paper_cards/README.md",
       "bytes": 4224,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=self-instruct-aligning-language-models-with-self-generated-instructions-2023&mode=explain",
@@ -3533,7 +3533,7 @@
       ]
     },
     {
-      "path": "cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md",
+      "path": "paper_cards/README.md",
       "bytes": 4379,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=training-language-models-to-follow-instructions-with-human-feedback-2022&mode=explain",
@@ -3558,7 +3558,7 @@
       ]
     },
     {
-      "path": "cards/examples/agent_environment_release_card.md",
+      "path": "paper_cards/README.md",
       "bytes": 285,
       "urls": [],
       "arxiv_ids": [],
@@ -3569,7 +3569,7 @@
       ]
     },
     {
-      "path": "cards/examples/rubric_reward_release_card.md",
+      "path": "paper_cards/README.md",
       "bytes": 281,
       "urls": [],
       "arxiv_ids": [],
@@ -3580,7 +3580,7 @@
       ]
     },
     {
-      "path": "cards/examples/math_reasoning_release_card.md",
+      "path": "paper_cards/README.md",
       "bytes": 282,
       "urls": [],
       "arxiv_ids": [],
@@ -3591,7 +3591,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/minif2f.md",
+      "path": "paper_cards/README.md",
       "bytes": 4691,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021&mode=explain",
@@ -3620,7 +3620,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/truthfulqa.md",
+      "path": "paper_cards/README.md",
       "bytes": 4741,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=truthfulqa-2022&mode=explain",
@@ -3649,7 +3649,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/livecodebench.md",
+      "path": "paper_cards/README.md",
       "bytes": 4973,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024&mode=explain",
@@ -3680,7 +3680,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/evaluating-large-language-models-trained-on-code.md",
+      "path": "paper_cards/README.md",
       "bytes": 4238,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=evaluating-large-language-models-trained-on-code-2021&mode=explain",
@@ -3707,7 +3707,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/scicode.md",
+      "path": "paper_cards/README.md",
       "bytes": 5137,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=scicode-a-benchmark-for-scientific-code-generation-and-reasoning-2024&mode=explain",
@@ -3738,7 +3738,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/rewardbench.md",
+      "path": "paper_cards/README.md",
       "bytes": 3994,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=rewardbench-evaluating-reward-models-for-language-modeling-2024&mode=explain",
@@ -3764,7 +3764,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/gsm8k-grade-school-math-8k.md",
+      "path": "paper_cards/README.md",
       "bytes": 3893,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=gsm8k-grade-school-math-2021&mode=explain",
@@ -3793,7 +3793,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/abstentionbench.md",
+      "path": "paper_cards/README.md",
       "bytes": 4960,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=abstentionbench-2025&mode=explain",
@@ -3824,7 +3824,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/gpqa.md",
+      "path": "paper_cards/README.md",
       "bytes": 4128,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=gpqa-2023&mode=explain",
@@ -3853,7 +3853,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/humaneval-hand-written-evaluation-set.md",
+      "path": "paper_cards/README.md",
       "bytes": 3699,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=humaneval-code-generation-benchmark-2021&mode=explain",
@@ -3880,7 +3880,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/apps.md",
+      "path": "paper_cards/README.md",
       "bytes": 4507,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=measuring-coding-challenge-competence-with-apps-2021&mode=explain",
@@ -3909,7 +3909,7 @@
       ]
     },
     {
-      "path": "cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md",
+      "path": "paper_cards/README.md",
       "bytes": 4024,
       "urls": [
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?entry=measuring-mathematical-problem-solving-with-the-math-dataset-2021&mode=explain",

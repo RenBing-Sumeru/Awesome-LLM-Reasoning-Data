@@ -26,23 +26,23 @@ Files scanned: 171
 - bytes: 36358
 - arXiv IDs: none
 
-## `cards/verifier_card_template.md`
+## `paper_cards/README.md`
 - bytes: 458
 - arXiv IDs: none
 
-## `cards/release_card_template.md`
+## `paper_cards/README.md`
 - bytes: 1241
 - arXiv IDs: none
 
-## `cards/README.md`
+## `paper_cards/README.md`
 - bytes: 20369
 - arXiv IDs: none
 
-## `cards/agent_trajectory_card_template.md`
+## `paper_cards/README.md`
 - bytes: 317
 - arXiv IDs: none
 
-## `cards/recipe_card_template.md`
+## `paper_cards/README.md`
 - bytes: 393
 - arXiv IDs: none
 
@@ -250,371 +250,371 @@ Files scanned: 171
 - bytes: 3294
 - arXiv IDs: none
 
-## `cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md`
+## `paper_cards/README.md`
 - bytes: 4478
 - arXiv IDs: none
 
-## `cards/failures/subliminal-learning.md`
+## `paper_cards/README.md`
 - bytes: 4703
 - arXiv IDs: none
 
-## `cards/failures/spurious_rewards.md`
+## `paper_cards/README.md`
 - bytes: 3764
 - arXiv IDs: none
 
-## `cards/failures/leaky-thoughts.md`
+## `paper_cards/README.md`
 - bytes: 4556
 - arXiv IDs: none
 
-## `cards/releases/kodcode.md`
+## `paper_cards/README.md`
 - bytes: 5312
 - arXiv IDs: none
 
-## `cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md`
+## `paper_cards/README.md`
 - bytes: 4296
 - arXiv IDs: none
 
-## `cards/releases/openthoughts.md`
+## `paper_cards/README.md`
 - bytes: 4289
 - arXiv IDs: none
 
-## `cards/releases/data-statements-for-natural-language-processing.md`
+## `paper_cards/README.md`
 - bytes: 4112
 - arXiv IDs: none
 
-## `cards/releases/openmathreasoning.md`
+## `paper_cards/README.md`
 - bytes: 4861
 - arXiv IDs: none
 
-## `cards/releases/dapo.md`
+## `paper_cards/README.md`
 - bytes: 4556
 - arXiv IDs: none
 
-## `cards/releases/openr1.md`
+## `paper_cards/README.md`
 - bytes: 5180
 - arXiv IDs: none
 
-## `cards/releases/opencodereasoning_ii.md`
+## `paper_cards/README.md`
 - bytes: 5499
 - arXiv IDs: none
 
-## `cards/releases/openmathinstruct-2.md`
+## `paper_cards/README.md`
 - bytes: 5363
 - arXiv IDs: none
 
-## `cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md`
+## `paper_cards/README.md`
 - bytes: 4181
 - arXiv IDs: none
 
-## `cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md`
+## `paper_cards/README.md`
 - bytes: 4456
 - arXiv IDs: none
 
-## `cards/releases/s1.md`
+## `paper_cards/README.md`
 - bytes: 3829
 - arXiv IDs: none
 
-## `cards/releases/datasheets-for-datasets.md`
+## `paper_cards/README.md`
 - bytes: 4027
 - arXiv IDs: none
 
-## `cards/releases/limo.md`
+## `paper_cards/README.md`
 - bytes: 4693
 - arXiv IDs: none
 
-## `cards/releases/deepmath_103k.md`
+## `paper_cards/README.md`
 - bytes: 4625
 - arXiv IDs: none
 
-## `cards/releases/ultrafeedback.md`
+## `paper_cards/README.md`
 - bytes: 5097
 - arXiv IDs: none
 
-## `cards/releases/naturalreasoning.md`
+## `paper_cards/README.md`
 - bytes: 5445
 - arXiv IDs: none
 
-## `cards/releases/big_math.md`
+## `paper_cards/README.md`
 - bytes: 4923
 - arXiv IDs: none
 
-## `cards/verifiers/one_token_to_fool_judge.md`
+## `paper_cards/README.md`
 - bytes: 4776
 - arXiv IDs: none
 
-## `cards/verifiers/prometheus-2.md`
+## `paper_cards/README.md`
 - bytes: 5378
 - arXiv IDs: none
 
-## `cards/verifiers/mt-bench-chatbot-arena.md`
+## `paper_cards/README.md`
 - bytes: 5192
 - arXiv IDs: none
 
-## `cards/verifiers/rewardbench.md`
+## `paper_cards/README.md`
 - bytes: 4065
 - arXiv IDs: none
 
-## `cards/verifiers/math_shepherd.md`
+## `paper_cards/README.md`
 - bytes: 4667
 - arXiv IDs: none
 
-## `cards/verifiers/omegaprm.md`
+## `paper_cards/README.md`
 - bytes: 5476
 - arXiv IDs: none
 
-## `cards/verifiers/healthbench.md`
+## `paper_cards/README.md`
 - bytes: 3938
 - arXiv IDs: none
 
-## `cards/verifiers/processbench.md`
+## `paper_cards/README.md`
 - bytes: 5412
 - arXiv IDs: none
 
-## `cards/verifiers/prmbench.md`
+## `paper_cards/README.md`
 - bytes: 5562
 - arXiv IDs: none
 
-## `cards/verifiers/training-verifiers-to-solve-math-word-problems.md`
+## `paper_cards/README.md`
 - bytes: 4295
 - arXiv IDs: none
 
-## `cards/verifiers/prm800k.md`
+## `paper_cards/README.md`
 - bytes: 3721
 - arXiv IDs: none
 
-## `cards/verifiers/tinyv.md`
+## `paper_cards/README.md`
 - bytes: 5429
 - arXiv IDs: none
 
-## `cards/verifiers/aegis2.md`
+## `paper_cards/README.md`
 - bytes: 4956
 - arXiv IDs: none
 
-## `cards/verifiers/spurious_rewards.md`
+## `paper_cards/README.md`
 - bytes: 4698
 - arXiv IDs: none
 
-## `cards/verifiers/rewarding-progress.md`
+## `paper_cards/README.md`
 - bytes: 4805
 - arXiv IDs: none
 
-## `cards/agents/appworld.md`
+## `paper_cards/README.md`
 - bytes: 5535
 - arXiv IDs: none
 
-## `cards/agents/leandojo.md`
+## `paper_cards/README.md`
 - bytes: 5115
 - arXiv IDs: none
 
-## `cards/agents/openhands.md`
+## `paper_cards/README.md`
 - bytes: 5501
 - arXiv IDs: none
 
-## `cards/agents/toolformer.md`
+## `paper_cards/README.md`
 - bytes: 4640
 - arXiv IDs: none
 
-## `cards/agents/browsergym.md`
+## `paper_cards/README.md`
 - bytes: 5132
 - arXiv IDs: none
 
-## `cards/agents/swe-bench-verified.md`
+## `paper_cards/README.md`
 - bytes: 4957
 - arXiv IDs: none
 
-## `cards/agents/osworld.md`
+## `paper_cards/README.md`
 - bytes: 5418
 - arXiv IDs: none
 
-## `cards/agents/webarena.md`
+## `paper_cards/README.md`
 - bytes: 5289
 - arXiv IDs: none
 
-## `cards/agents/androidworld.md`
+## `paper_cards/README.md`
 - bytes: 5271
 - arXiv IDs: none
 
-## `cards/agents/r2e_gym.md`
+## `paper_cards/README.md`
 - bytes: 4760
 - arXiv IDs: none
 
-## `cards/agents/react.md`
+## `paper_cards/README.md`
 - bytes: 4819
 - arXiv IDs: none
 
-## `cards/agents/swe_gym.md`
+## `paper_cards/README.md`
 - bytes: 4796
 - arXiv IDs: none
 
-## `cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md`
+## `paper_cards/README.md`
 - bytes: 4438
 - arXiv IDs: none
 
-## `cards/agents/toolllm_toolbench.md`
+## `paper_cards/README.md`
 - bytes: 5516
 - arXiv IDs: none
 
-## `cards/recipes/minimax_m1.md`
+## `paper_cards/README.md`
 - bytes: 5944
 - arXiv IDs: 2506.13585
 
-## `cards/recipes/scaling-behaviors-rl-post-training.md`
+## `paper_cards/README.md`
 - bytes: 4261
 - arXiv IDs: none
 
-## `cards/recipes/phi4_reasoning.md`
+## `paper_cards/README.md`
 - bytes: 4748
 - arXiv IDs: none
 
-## `cards/recipes/tulu-3.md`
+## `paper_cards/README.md`
 - bytes: 5426
 - arXiv IDs: none
 
-## `cards/recipes/qwen2-5-math.md`
+## `paper_cards/README.md`
 - bytes: 5191
 - arXiv IDs: none
 
-## `cards/recipes/ttrl.md`
+## `paper_cards/README.md`
 - bytes: 5303
 - arXiv IDs: 2504.16084
 
-## `cards/recipes/deepseekmath.md`
+## `paper_cards/README.md`
 - bytes: 5036
 - arXiv IDs: none
 
-## `cards/recipes/qwen3.md`
+## `paper_cards/README.md`
 - bytes: 4652
 - arXiv IDs: none
 
-## `cards/recipes/absolute_zero.md`
+## `paper_cards/README.md`
 - bytes: 5304
 - arXiv IDs: 2505.03335
 
-## `cards/recipes/constitutional-ai.md`
+## `paper_cards/README.md`
 - bytes: 4632
 - arXiv IDs: none
 
-## `cards/recipes/self-rag.md`
+## `paper_cards/README.md`
 - bytes: 5458
 - arXiv IDs: none
 
-## `cards/recipes/orca.md`
+## `paper_cards/README.md`
 - bytes: 5030
 - arXiv IDs: none
 
-## `cards/recipes/deepseek-prover.md`
+## `paper_cards/README.md`
 - bytes: 4715
 - arXiv IDs: none
 
-## `cards/recipes/deepseek_r1.md`
+## `paper_cards/README.md`
 - bytes: 4133
 - arXiv IDs: none
 
-## `cards/recipes/magistral.md`
+## `paper_cards/README.md`
 - bytes: 4661
 - arXiv IDs: none
 
-## `cards/recipes/llama_nemotron.md`
+## `paper_cards/README.md`
 - bytes: 4803
 - arXiv IDs: none
 
-## `cards/recipes/the-art-of-scaling-rl-compute.md`
+## `paper_cards/README.md`
 - bytes: 4326
 - arXiv IDs: none
 
-## `cards/recipes/self-consistency-chain-of-thought.md`
+## `paper_cards/README.md`
 - bytes: 4470
 - arXiv IDs: none
 
-## `cards/recipes/deepseek-prover-v1-5.md`
+## `paper_cards/README.md`
 - bytes: 4886
 - arXiv IDs: none
 
-## `cards/recipes/kimi_k15.md`
+## `paper_cards/README.md`
 - bytes: 4812
 - arXiv IDs: none
 
-## `cards/recipes/deepseek-prover-v2.md`
+## `paper_cards/README.md`
 - bytes: 5248
 - arXiv IDs: none
 
-## `cards/recipes/magicoder.md`
+## `paper_cards/README.md`
 - bytes: 5086
 - arXiv IDs: none
 
-## `cards/recipes/star-bootstrapping-reasoning-with-reasoning.md`
+## `paper_cards/README.md`
 - bytes: 3887
 - arXiv IDs: none
 
-## `cards/recipes/qwen3_coder.md`
+## `paper_cards/README.md`
 - bytes: 5481
 - arXiv IDs: none
 
-## `cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md`
+## `paper_cards/README.md`
 - bytes: 4224
 - arXiv IDs: none
 
-## `cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md`
+## `paper_cards/README.md`
 - bytes: 4379
 - arXiv IDs: none
 
-## `cards/examples/agent_environment_release_card.md`
+## `paper_cards/README.md`
 - bytes: 285
 - arXiv IDs: none
 
-## `cards/examples/rubric_reward_release_card.md`
+## `paper_cards/README.md`
 - bytes: 281
 - arXiv IDs: none
 
-## `cards/examples/math_reasoning_release_card.md`
+## `paper_cards/README.md`
 - bytes: 282
 - arXiv IDs: none
 
-## `cards/benchmarks/minif2f.md`
+## `paper_cards/README.md`
 - bytes: 4691
 - arXiv IDs: none
 
-## `cards/benchmarks/truthfulqa.md`
+## `paper_cards/README.md`
 - bytes: 4741
 - arXiv IDs: none
 
-## `cards/benchmarks/livecodebench.md`
+## `paper_cards/README.md`
 - bytes: 4973
 - arXiv IDs: none
 
-## `cards/benchmarks/evaluating-large-language-models-trained-on-code.md`
+## `paper_cards/README.md`
 - bytes: 4238
 - arXiv IDs: none
 
-## `cards/benchmarks/scicode.md`
+## `paper_cards/README.md`
 - bytes: 5137
 - arXiv IDs: none
 
-## `cards/benchmarks/rewardbench.md`
+## `paper_cards/README.md`
 - bytes: 3994
 - arXiv IDs: none
 
-## `cards/benchmarks/gsm8k-grade-school-math-8k.md`
+## `paper_cards/README.md`
 - bytes: 3893
 - arXiv IDs: none
 
-## `cards/benchmarks/abstentionbench.md`
+## `paper_cards/README.md`
 - bytes: 4960
 - arXiv IDs: none
 
-## `cards/benchmarks/gpqa.md`
+## `paper_cards/README.md`
 - bytes: 4128
 - arXiv IDs: none
 
-## `cards/benchmarks/humaneval-hand-written-evaluation-set.md`
+## `paper_cards/README.md`
 - bytes: 3699
 - arXiv IDs: none
 
-## `cards/benchmarks/apps.md`
+## `paper_cards/README.md`
 - bytes: 4507
 - arXiv IDs: none
 
-## `cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md`
+## `paper_cards/README.md`
 - bytes: 4024
 - arXiv IDs: none
 

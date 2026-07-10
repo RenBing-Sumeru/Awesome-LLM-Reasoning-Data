@@ -45,16 +45,16 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 | Work | Year | Links | Data object | Feedback / verifier | Why it matters |
 |---|---:|---|---|---|---|
-| [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) | 2023 | [Paper](https://arxiv.org/abs/2305.20050) · [Card](../../cards/verifiers/prm800k.md) | step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces | process reward model trained from step labels | It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation. |
-| [Math-Shepherd](https://arxiv.org/abs/2312.08935) | 2024 | [Paper](https://arxiv.org/abs/2312.08935) · [Card](../../cards/verifiers/math_shepherd.md) | step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces | rollout-derived process reward signal | It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer. |
-| [ReST-MCTS*](https://arxiv.org/abs/2406.03816) | 2024 | [Paper](https://arxiv.org/abs/2406.03816) | reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree | process reward guided tree search | It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects. |
+| [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) | 2023 | [Paper](https://arxiv.org/abs/2305.20050) | step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces | process reward model trained from step labels | It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation. |
+| [Math-Shepherd](https://arxiv.org/abs/2312.08935) | 2024 | [Paper](https://arxiv.org/abs/2312.08935) | step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces | rollout-derived process reward signal | It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer. |
+| [ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search](https://arxiv.org/abs/2406.03816) | 2024 | [Paper](https://arxiv.org/abs/2406.03816) · [DOI](https://doi.org/10.48550/arXiv.2406.03816) · [Code](https://github.com/THUDM/ReST-MCTS) | problem, search tree, intermediate step, process value, selected trace, and final answer.; process: problem, tree node, reasoning step; process-reward-guided Monte Carlo tree search over reasoning steps. | oracle final-answer checks used to infer process rewards through tree search. | It is a clean Track 10 example where search traces, process rewards, and training data are the same reusable artifact. |
 | [AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802) | 2024 | [Paper](https://arxiv.org/abs/2405.16802) · [Code](https://github.com/rookie-joe/AutoPSV) | step-level confidence-change annotations; process: reasoning step, verifier confidence, relative confidence change; offline reasoning traces | answer-trained verifier converted into process annotations | It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision. |
-| [OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592) | 2024 | [Paper](https://arxiv.org/abs/2406.06592) · [Card](../../cards/verifiers/omegaprm.md) | process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree | automated process reward signal | Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels. |
+| [OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592) | 2024 | [Paper](https://arxiv.org/abs/2406.06592) | process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree | automated process reward signal | Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels. |
 | [Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629) | 2024 | [Paper](https://arxiv.org/abs/2406.18629) | step-wise preference pairs; process: reasoning step, preferred continuation, rejected continuation; offline long-chain reasoning traces | step-wise preference optimization objective | It helps readers see how preference optimization becomes a process-level data problem when the chosen/rejected object is an intermediate continuation rather than a whole answer. |
-| [PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456) | 2025 | [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME) | rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop | implicit process rewards derived from outcome labels | It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds. |
+| [Process Reinforcement through Implicit Rewards](https://arxiv.org/abs/2502.01456) | 2025 | [Paper](https://arxiv.org/abs/2502.01456) · [DOI](https://doi.org/10.48550/arXiv.2502.01456) | prompt, rollout trace, outcome label, implicit process reward, and RL update target.; process: prompt, reasoning step, outcome label; online RL training over reasoning tasks. | implicit process rewards derived from outcome labels and policy rollouts. | It marks a central Track 10 question: whether process-level rewards can scale without manual step labels. |
 | [ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](https://arxiv.org/abs/2501.07861) | 2025 | [Paper](https://arxiv.org/abs/2501.07861) · [Code](https://github.com/Jeryi-Sun/ReARTeR) | step-level preference data with process scores and explanations; process: retrieval context, reasoning step, process reward score; RAG reasoning pipeline | process reward model plus process explanation model | It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object. |
-| [PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) | 2025 | [Paper](https://arxiv.org/abs/2501.03124) · [Card](../../cards/verifiers/prmbench.md) | step-level labels or scores; process: step, label, error type; offline reasoning traces | process-level reward model benchmark | Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure. |
-| [ProcessBench: Identifying Process Errors in Mathematical Reasoning](https://arxiv.org/abs/2412.06559) | 2024 | [Paper](https://arxiv.org/abs/2412.06559) · [Card](../../cards/verifiers/processbench.md) | step labels or first-error markers; process: reasoning step, error marker, diagnostic label; offline math traces | process-error detector | Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training. |
+| [PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) | 2025 | [Paper](https://arxiv.org/abs/2501.03124) | step-level labels or scores; process: step, label, error type; offline reasoning traces | process-level reward model benchmark | Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure. |
+| [ProcessBench: Identifying Process Errors in Mathematical Reasoning](https://arxiv.org/abs/2412.06559) | 2024 | [Paper](https://arxiv.org/abs/2412.06559) | step labels or first-error markers; process: reasoning step, error marker, diagnostic label; offline math traces | process-error detector | Benchmark centered on first-error/local-error detection, a core failure mode for process supervision and verifier training. |
 
 ## 5. Core PRM Paper List
 
@@ -64,7 +64,7 @@ These entries are promoted into the core list because they already expose a pape
 
 - 🪜 **[Let's Verify Step by Step](https://arxiv.org/abs/2305.20050)**
   <sub>2023 · arXiv · 🪜 process supervision · 🧪 verifier reward · judgment required · programmatic · process supervision · reward modeling · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2305.20050) · [Card](../../cards/verifiers/prm800k.md)
+  [Paper](https://arxiv.org/abs/2305.20050)
   _Data object:_ step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces
   _Feedback / verifier:_ process reward model trained from step labels
   _Recipe signal:_ reward verifier layer; release audit; process supervision
@@ -73,6 +73,30 @@ These entries are promoted into the core list because they already expose a pape
 
 ### <a id="process-reward-models"></a>🧪 Process reward models
 
+- 🧪 **[Free Process Rewards without Process Labels](https://arxiv.org/abs/2412.01981)**
+  <sub>2024 · arXiv · 🧪 verifier reward · 🪜 process supervision · mixed · process supervision · reward modeling · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2412.01981)
+  _Data object:_ instruction, response, outcome label, implicit step/process reward.; process: instruction, response, outcome label; math reasoning tasks with outcome supervision.
+  _Feedback / verifier:_ implicit PRM derived from an outcome reward model.
+  _Recipe signal:_ teacher: response-level outcome labels rather than step labels.; generator: ORM-trained model induces implicit process rewards.
+  _Audit focus:_ Implicit process rewards inherit ORM assumptions., Correct final answers can still attach misleading step rewards., Majority voting can hide reward calibration failures.
+  _Why it matters:_ It directly addresses a Track 10 bottleneck: whether PRM-style feedback scales without expensive process annotation.
+- 🏗️ **[ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search](https://arxiv.org/abs/2406.03816)**
+  <sub>2024 · arXiv · 🏗️ construction recipe · 🪜 process supervision · programmatic · mixed · sft · process supervision · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2406.03816) · [DOI](https://doi.org/10.48550/arXiv.2406.03816) · [Code](https://github.com/THUDM/ReST-MCTS)
+  _Data object:_ problem, search tree, intermediate step, process value, selected trace, and final answer.; process: problem, tree node, reasoning step; process-reward-guided Monte Carlo tree search over reasoning steps.
+  _Feedback / verifier:_ oracle final-answer checks used to infer process rewards through tree search.
+  _Recipe signal:_ teacher: final-answer oracle and process-reward estimates inferred from tree search.; generator: policy model expands reasoning traces in MCTS.
+  _Audit focus:_ Tree-search budget can dominate comparison to best-of-N., Incorrect intermediate steps may be selected if final-answer credit is noisy., Process value estimates inherit final-answer oracle limitations.
+  _Why it matters:_ It is a clean Track 10 example where search traces, process rewards, and training data are the same reusable artifact.
+- 🧪 **[Let's reward step by step: Step-Level reward model as the Navigators for Reasoning](https://arxiv.org/abs/2310.10080)**
+  <sub>2023 · arXiv · 🧪 verifier reward · 🪜 process supervision · mixed · programmatic · process supervision · reward modeling · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2310.10080)
+  _Data object:_ partial reasoning path, step score, search decision, and final answer.; process: prompt, reasoning step, PRM score; PRM-guided inference over math and code tasks.
+  _Feedback / verifier:_ step-level process reward model.
+  _Recipe signal:_ teacher: process reward labels or generated step-level reward data.; generator: base model proposes candidate reasoning steps.
+  _Audit focus:_ Greedy PRM navigation can prefer locally plausible but globally wrong steps., Automatically generated code-step rewards can inherit executor artifacts., PRM gains should be separated from extra inference budget.
+  _Why it matters:_ It makes the verifier-scaling question concrete: the reward model is not only trained, it actively steers the search path.
 - 🪜 **[ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](https://arxiv.org/abs/2501.07861)**
   <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · mixed · process supervision · preference learning · L2_artifact_verified</sub>
   [Paper](https://arxiv.org/abs/2501.07861) · [Code](https://github.com/Jeryi-Sun/ReARTeR)
@@ -81,20 +105,12 @@ These entries are promoted into the core list because they already expose a pape
   _Recipe signal:_ generator: MCTS-guided retrieval-augmented rollouts; filtering rule: trustworthy process rewarding and iterative preference optimization
   _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
   _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
-- 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2406.03816)
-  _Data object:_ reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree
-  _Feedback / verifier:_ process reward guided tree search
-  _Recipe signal:_ generator: policy rollouts expanded by MCTS; filtering rule: process-reward-guided trajectory selection
-  _Audit focus:_ search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality
-  _Why it matters:_ It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
 
 ### <a id="rollout-value-supervision"></a>🔁 Rollout-value supervision
 
 - 🧪 **[Rewarding progress: Scaling automated process verifiers for LLM reasoning](https://arxiv.org/abs/2410.08146)**
   <sub>2024 · ICLR · 🧪 verifier reward · 🪜 process supervision · programmatic · mixed · process supervision · reward modeling · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2410.08146) · [OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW) · [Card](../../cards/verifiers/rewarding-progress.md)
+  [Paper](https://arxiv.org/abs/2410.08146) · [OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW)
   _Data object:_ step-level process advantage score plus final answer/correctness signal.; process: problem, partial trace before step, step, future success estimate, verifier score, final outcome.; reasoning search and online RL setup using process rewards.
   _Feedback / verifier:_ Process Advantage Verifier trained to predict progress toward correct answer.
   _Recipe signal:_ teacher: automated success estimates from prover policies and final correctness signals.; generator: policies produce traces used to train process verifiers.
@@ -102,7 +118,7 @@ These entries are promoted into the core list because they already expose a pape
   _Why it matters:_ It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.
 - 🪜 **[Math-Shepherd](https://arxiv.org/abs/2312.08935)**
   <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · process supervision · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2312.08935) · [Card](../../cards/verifiers/math_shepherd.md)
+  [Paper](https://arxiv.org/abs/2312.08935)
   _Data object:_ step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces
   _Feedback / verifier:_ rollout-derived process reward signal
   _Recipe signal:_ generator: model rollouts from intermediate reasoning steps; filtering rule: rollout success rate converted to step reward
@@ -111,30 +127,30 @@ These entries are promoted into the core list because they already expose a pape
 
 ### <a id="automatic-process-supervision"></a>🛠️ Automatic process supervision
 
-- 🪜 **[OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2406.06592) · [Card](../../cards/verifiers/omegaprm.md)
-  _Data object:_ process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree
-  _Feedback / verifier:_ automated process reward signal
-  _Recipe signal:_ reward verifier layer; optimizer scaffold; process supervision
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.
-- 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
-  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L2_artifact_verified</sub>
-  [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME)
-  _Data object:_ rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop
-  _Feedback / verifier:_ implicit process rewards derived from outcome labels
-  _Recipe signal:_ generator: policy rollouts; filtering rule: outcome labels converted into implicit process rewards
-  _Audit focus:_ implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes
-  _Why it matters:_ It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
 - 🪜 **[AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L2_artifact_verified</sub>
+  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L4_carded</sub>
   [Paper](https://arxiv.org/abs/2405.16802) · [Code](https://github.com/rookie-joe/AutoPSV)
   _Data object:_ step-level confidence-change annotations; process: reasoning step, verifier confidence, relative confidence change; offline reasoning traces
   _Feedback / verifier:_ answer-trained verifier converted into process annotations
   _Recipe signal:_ generator: model-generated candidate reasoning; filtering rule: changes in verifier confidence across steps
   _Audit focus:_ answer-level verifier confidence can mislabel intermediate steps, relative confidence changes may not identify causal first errors, commonsense and math tasks may require different error taxonomies
   _Why it matters:_ It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.
+- 🪜 **[OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592)**
+  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2406.06592)
+  _Data object:_ process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree
+  _Feedback / verifier:_ automated process reward signal
+  _Recipe signal:_ reward verifier layer; optimizer scaffold; process supervision
+  _Audit focus:_ check links, lineage, verifier, split, and contamination
+  _Why it matters:_ Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.
+- 🧪 **[Process Reinforcement through Implicit Rewards](https://arxiv.org/abs/2502.01456)**
+  <sub>2025 · arXiv · 🧪 verifier reward · 🪜 process supervision · programmatic · mixed · rlvr · process supervision · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2502.01456) · [DOI](https://doi.org/10.48550/arXiv.2502.01456)
+  _Data object:_ prompt, rollout trace, outcome label, implicit process reward, and RL update target.; process: prompt, reasoning step, outcome label; online RL training over reasoning tasks.
+  _Feedback / verifier:_ implicit process rewards derived from outcome labels and policy rollouts.
+  _Recipe signal:_ teacher: outcome labels rather than manually annotated process labels.; generator: online policy rollouts during RL.
+  _Audit focus:_ Implicit rewards can still be hacked by the online policy., Outcome labels may assign misleading credit to bad intermediate steps., Reported gains depend on rollout budget and advantage estimator details.
+  _Why it matters:_ It marks a central Track 10 question: whether process-level rewards can scale without manual step labels.
 
 ### <a id="first-error-localization"></a>❌ First-error localization
 
@@ -151,7 +167,7 @@ These entries are promoted into the core list because they already expose a pape
 
 - 🧰 **[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124)**
   <sub>2025 · arXiv · 🧰 benchmark · 🧪 verifier reward · judgment required · mixed · evaluation · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2501.03124) · [Card](../../cards/verifiers/prmbench.md)
+  [Paper](https://arxiv.org/abs/2501.03124)
   _Data object:_ step-level labels or scores; process: step, label, error type; offline reasoning traces
   _Feedback / verifier:_ process-level reward model benchmark
   _Recipe signal:_ reward verifier layer; release audit; evaluation
@@ -159,7 +175,7 @@ These entries are promoted into the core list because they already expose a pape
   _Why it matters:_ Fine-grained PRM benchmark for testing whether process reward models catch local reasoning mistakes rather than only final-answer failure.
 - 🧰 **[ProcessBench: Identifying Process Errors in Mathematical Reasoning](https://arxiv.org/abs/2412.06559)**
   <sub>2024 · arXiv · 🧰 benchmark · 🪜 process supervision · judgment required · programmatic · evaluation · process supervision · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2412.06559) · [Card](../../cards/verifiers/processbench.md)
+  [Paper](https://arxiv.org/abs/2412.06559)
   _Data object:_ step labels or first-error markers; process: reasoning step, error marker, diagnostic label; offline math traces
   _Feedback / verifier:_ process-error detector
   _Recipe signal:_ reward verifier layer; release audit; evaluation
@@ -180,7 +196,7 @@ These entries are useful context for PRM readers, but they are not promoted as c
   _Why it matters:_ It gives readers a reward-model-specific map, which is essential before comparing learned human-preference rewards with PRMs, rubric rewards, and programmatic RLVR verifiers.
 - 📦 **[DeepMath-103K](https://arxiv.org/abs/2504.11456)**
   <sub>2025 · arXiv · 📦 data release · programmatic · sft · rlvr · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2504.11456) · [Card](../../cards/releases/deepmath_103k.md)
+  [Paper](https://arxiv.org/abs/2504.11456)
   _Data object:_ answer level
   _Feedback / verifier:_ programmatic
   _Recipe signal:_ prompt sourcing; reward verifier layer; release audit
@@ -188,15 +204,23 @@ These entries are useful context for PRM readers, but they are not promoted as c
   _Why it matters:_ Math release highlighted for verifier pinning and decontamination.
 - 🧪 **[TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://arxiv.org/abs/2505.14625)**
   <sub>2025 · arXiv · 🧪 verifier reward · 🧯 audit failure · programmatic · judgment required · rlvr · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Card](../../cards/verifiers/tinyv.md)
+  [Paper](https://arxiv.org/abs/2505.14625) · [Code](https://github.com/uw-nsl/TinyV) · [Paper Card Source](../../paper_cards/sources/tinyv-2025)
   _Data object:_ candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack
   _Feedback / verifier:_ small LLM verifier augmenting rules
   _Recipe signal:_ reward verifier layer; release audit; rlvr
   _Audit focus:_ check links, lineage, verifier, split, and contamination
   _Why it matters:_ Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+- 🧪 **[Generative Verifiers: Reward Modeling as Next-Token Prediction](https://arxiv.org/abs/2408.15240)**
+  <sub>2024 · arXiv · 🧪 verifier reward · 📈 scaling study · mixed · programmatic · reward modeling · test time compute · L3_summary_ready</sub>
+  [Paper](https://arxiv.org/abs/2408.15240) · [DOI](https://doi.org/10.48550/arXiv.2408.15240)
+  _Data object:_ problem, candidate solution, verification rationale, verifier judgment, and best-of-N selection.; process: problem, candidate solution, verification rationale; best-of-N reasoning evaluation with verifier-based selection.
+  _Feedback / verifier:_ generative reward model trained with next-token prediction over verification data.
+  _Recipe signal:_ teacher: verification labels and synthetic verification rationales.; generator: GenRM produces both solution/verifier text and judgment signals.
+  _Audit focus:_ Verifier rationales can be plausible but wrong., Majority voting over verifier samples can hide calibration failures., Best-of-N improvements depend on both policy and verifier budgets.
+  _Why it matters:_ It adds the verifier itself to the Track 10 compute-scaling object instead of treating it as a fixed scorer.
 - 🧰 **[Training verifiers to solve math word problems](https://arxiv.org/abs/2110.14168)**
   <sub>2021 · arXiv · 🧰 benchmark · 🧪 verifier reward · programmatic · judgment required · evaluation · reward modeling · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k) · [Card](../../cards/verifiers/training-verifiers-to-solve-math-word-problems.md)
+  [Paper](https://arxiv.org/abs/2110.14168) · [Code](https://github.com/openai/grade-school-math) · [HF](https://huggingface.co/datasets/openai/gsm8k)
   _Data object:_ answer level; scalar reward
   _Feedback / verifier:_ programmatic, judgment required
   _Recipe signal:_ reward verifier layer; release audit; evaluation
@@ -239,7 +263,7 @@ These papers have official primary links but still need paper-specific metadata 
 These entries are intentionally separated from verified work. Add official links and enough metadata to identify the data object and verifier before promoting them.
 
 - 📄 **Process reward models for code reasoning**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
+  <sub>2025 · unknown · unknown · unknown · L4_carded</sub>
   needs_search
   _Data object:_ metadata pending
   _Feedback / verifier:_ metadata pending
@@ -284,17 +308,9 @@ These entries are intentionally separated from verified work. Add official links
 - Can process supervision scale to long agent trajectories?
 - What diagnostics reveal reward of trace style rather than causal progress?
 
-## 11. Related Cards
+## 11. Related Paper-Card Sources
 
-- [DeepMath-103K](../../cards/releases/deepmath_103k.md)
-- [PRMBench: A fine-grained and challenging benchmark for process-level reward models](../../cards/verifiers/prmbench.md)
-- [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../../cards/verifiers/tinyv.md)
-- [Math-Shepherd](../../cards/verifiers/math_shepherd.md)
-- [OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](../../cards/verifiers/omegaprm.md)
-- [ProcessBench: Identifying Process Errors in Mathematical Reasoning](../../cards/verifiers/processbench.md)
-- [Rewarding progress: Scaling automated process verifiers for LLM reasoning](../../cards/verifiers/rewarding-progress.md)
-- [Let's Verify Step by Step](../../cards/verifiers/prm800k.md)
-- [Training verifiers to solve math word problems](../../cards/verifiers/training-verifiers-to-solve-math-word-problems.md)
+- [TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](../../paper_cards/sources/tinyv-2025)
 
 ## Back to Map
 

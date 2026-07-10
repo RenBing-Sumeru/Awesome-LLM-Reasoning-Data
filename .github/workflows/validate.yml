@@ -40,10 +40,8 @@ jobs:
         run: python scripts/render_papers.py --check
       - name: Check README generated sections
         run: python scripts/render_readme.py --check
-      - name: Check card Ask links
-        run: python scripts/add_card_ask_links.py --check
-      - name: Check card index
-        run: python scripts/render_cards.py --check
+      - name: Check bilingual paper-card sources
+        run: python tools/paper_cards/card_tool.py check
       - name: Test Ask the Atlas backend
         run: npm --prefix apps/ask-atlas test
       - name: Coverage report

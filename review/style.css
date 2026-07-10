@@ -335,6 +335,7 @@ button:disabled {
 
 .paper-meta,
 .paper-links,
+.institution-chips,
 .annotation-head,
 .paper-card .paper-meta {
   display: flex;
@@ -346,7 +347,8 @@ button:disabled {
 .paper-meta span,
 .level-badge,
 .paper-links a,
-.paper-links span {
+.paper-links span,
+.institution-chips span {
   display: inline-flex;
   align-items: center;
   min-height: 26px;
@@ -437,6 +439,116 @@ button:disabled {
   color: var(--blue);
   background: #eff6ff;
   border-color: #bfdbfe;
+}
+
+.institution-panel,
+.localization-panel {
+  margin: 12px 0;
+  border: 1px solid #e7edf5;
+  border-radius: 8px;
+  background: #fcfcfd;
+  padding: 10px 12px;
+}
+
+.institution-head,
+.localization-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.institution-head strong,
+.localization-head strong {
+  font-size: 14px;
+}
+
+.institution-chips {
+  justify-content: flex-end;
+}
+
+.institution-chips em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 12px;
+}
+
+.institution-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.institution-inputs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(90px, 1fr));
+  gap: 8px;
+}
+
+.more-institutions {
+  justify-content: center;
+}
+
+.field-view-switch {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.field-view-button {
+  width: auto;
+  min-height: 30px;
+  padding: 0 10px;
+  background: #fff;
+  border-color: #cbd5e1;
+  color: #344054;
+}
+
+.field-view-button.active {
+  color: #fff;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.source-fields {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.source-fields div {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid #eef2f7;
+}
+
+.source-fields div:first-child {
+  border-top: 0;
+}
+
+.localization-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.localization-form textarea {
+  min-height: 78px;
+}
+
+.localization-form button {
+  grid-column: 1 / -1;
+  justify-self: end;
+  width: auto;
+  min-width: 160px;
+}
+
+.localization-panel[data-active-view="source"] .zh-fields,
+.localization-panel[data-active-view="zh"] .source-fields {
+  display: none;
 }
 
 .raw-fields {
@@ -570,7 +682,10 @@ button:disabled {
   .level-grid,
   .review-fields,
   .controls,
-  .annotation-form {
+  .annotation-form,
+  .institution-form,
+  .institution-inputs,
+  .localization-form {
     grid-template-columns: 1fr;
   }
 
@@ -591,6 +706,10 @@ button:disabled {
 
   .annotation-form .note-field {
     grid-column: auto;
+  }
+
+  .localization-form button {
+    width: 100%;
   }
 
   .save-status {

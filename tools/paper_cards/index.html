@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Card Workspace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="paperCardApp">
+    <header class="site-header">
+      <nav class="topbar" aria-label="Paper card navigation">
+        <a class="brand" href="./">Paper Card Workspace</a>
+        <div class="navlinks">
+          <a href="../../docs/index.html">Atlas</a>
+          <a href="../../docs/paper_card_sop.md">SOP</a>
+          <a href="../../paper_cards/status.json">状态 JSON</a>
+        </div>
+      </nav>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">双语 Paper Card 工作台</p>
+          <h1>Update 写回中文源文件，Review 查看中文合并版并批量下载。</h1>
+        </div>
+        <div class="stats">
+          <div><strong id="totalCount">0</strong><span>论文条目</span></div>
+          <div><strong id="sourceCount">0</strong><span>需要标注</span></div>
+          <div><strong id="downloadedCount">0</strong><span>可下载</span></div>
+          <div><strong id="invalidCount">0</strong><span>不合法</span></div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="controls" class="controls" aria-label="Paper card filters">
+        <label>论文池
+          <select id="stateFilter">
+            <option value="">全部</option>
+            <option value="needs_annotation">需要人工标注</option>
+            <option value="annotated">已经人工标注</option>
+            <option value="l6">L6 已审阅</option>
+            <option value="invalid">不合法论文池</option>
+          </select>
+        </label>
+        <label class="wide">搜索
+          <input id="query" type="search" placeholder="标题、entry_id、track、verifier、benchmark">
+        </label>
+        <div id="downloadControls" class="bulk-controls" aria-label="Downloadable card actions">
+          <button id="batchDownload" type="button">全部重新下载</button>
+          <button id="downloadUndownloaded" type="button" class="secondary">下载未下载</button>
+          <button id="downloadSelected" type="button" class="secondary">下载选中</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="paper-list-panel">
+          <div class="panel-head">
+            <h2>论文列表</h2>
+            <p id="resultSummary">正在加载...</p>
+          </div>
+          <section id="paperList" class="paper-list" aria-live="polite"></section>
+        </aside>
+
+        <section class="editor-panel">
+          <div id="emptyState" class="empty">选择一篇论文开始维护中文 card。</div>
+          <article id="entryDetail" class="entry-detail" hidden></article>
+
+          <div id="updateShell" class="mode-shell" hidden>
+            <section class="header-zh-panel">
+              <div class="pane-head">
+                <h3>中文卡片头字段</h3>
+                <span>写入 paper_cards/header_zh.json</span>
+              </div>
+              <div class="header-zh-grid">
+                <label class="wide">一句话评价
+                  <textarea id="oneLineSummaryCh" rows="2" placeholder="用中文写一句话评价"></textarea>
+                </label>
+                <label>阅读优先级
+                  <select id="readingPriorityCh">
+                    <option value="">待选择</option>
+                    <option value="必读">必读</option>
+                    <option value="可读">可读</option>
+                    <option value="暂缓">暂缓</option>
+                    <option value="不推荐">不推荐</option>
+                  </select>
+                </label>
+                <label>论文类型
+                  <input id="paperTypeCh" type="text" placeholder="例如：验证器修正论文">
+                </label>
+                <label class="wide">适合读者
+                  <input id="bestForCh" type="text" placeholder="例如：适合做 RLVR verifier 复盘的人">
+                </label>
+                <label>置信度
+                  <input id="confidenceCh" type="text" placeholder="高 / 中 / 低 / 待复核">
+                </label>
+                <label class="wide">作者显示
+                  <input id="authorsCh" type="text" placeholder="作者名；未填则使用 data/papers.yaml">
+                </label>
+              </div>
+              <div class="category-picker">
+                <div class="pane-head compact-head">
+                  <h3>知识点分类</h3>
+                  <span>照抄 data/categories.yaml</span>
+                </div>
+                <div id="categoryOptions" class="category-options"></div>
+              </div>
+            </section>
+
+            <div id="sectionTabs" class="section-tabs" aria-label="Card sections"></div>
+            <div class="section-editor">
+              <div class="section-pane">
+                <div class="pane-head">
+                  <h3>英文参考</h3>
+                  <span>只读</span>
+                </div>
+                <pre id="englishSection" class="section-readonly"></pre>
+              </div>
+              <div class="section-pane">
+                <div class="pane-head">
+                  <h3>中文维护</h3>
+                  <span>写入 _ch.md</span>
+                </div>
+                <textarea id="chineseSection" class="section-textarea" spellcheck="false"></textarea>
+              </div>
+            </div>
+
+            <section class="institution-panel">
+              <div class="pane-head">
+                <h3>机构信息</h3>
+                <span>写入 paper_cards/institutions.json</span>
+              </div>
+              <div class="institution-grid">
+                <input class="institution-input" type="text" placeholder="机构 1">
+                <input class="institution-input" type="text" placeholder="机构 2">
+                <input class="institution-input" type="text" placeholder="机构 3">
+                <input class="institution-input" type="text" placeholder="机构 4">
+                <input class="institution-input" type="text" placeholder="机构 5">
+              </div>
+              <div class="check-row">
+                <label><input id="institutionMore" type="checkbox"> 还有更多机构</label>
+                <label><input id="noInstitution" type="checkbox"> 没有机构</label>
+              </div>
+            </section>
+
+            <div class="actionbar">
+              <button id="saveHeaderZh" type="button">保存中文头字段</button>
+              <button id="saveSection" type="button">保存中文修改</button>
+              <button id="saveInstitutions" type="button" class="secondary">保存机构</button>
+              <button id="goReviewFromUpdate" type="button" class="secondary">进入 Review</button>
+            </div>
+            <p id="saveStatus" class="save-status">Update 只写回中文头字段、中文分段和机构字段。</p>
+          </div>
+
+          <div id="reviewShell" class="mode-shell" hidden>
+            <section class="review-actions">
+              <div>
+                <h3>Review 操作</h3>
+                <p id="selectionSummary">未标记卡片。</p>
+              </div>
+              <div class="actionbar compact">
+                <button id="goUpdateFromReview" type="button" class="secondary">进入 Update</button>
+                <button id="completeCurrent" type="button">完成修改该卡片</button>
+              </div>
+            </section>
+            <div id="reviewCheckResult" class="valid-result" aria-live="polite"></div>
+
+            <section class="preview-panel">
+              <div class="pane-head">
+                <h3>中文合并版</h3>
+                <span>Markdown 渲染，仅作为 review 依据</span>
+              </div>
+              <div id="reviewMarkdown" class="markdown-preview"></div>
+            </section>
+
+            <section class="queue-panel">
+              <div class="pane-head">
+                <h3>搜索池人工标注</h3>
+                <span>写入 paper_cards/search_queue.json</span>
+              </div>
+              <div class="queue-grid">
+                <label>判决状态
+                  <select id="queueStatus">
+                    <option value="promoted">纳入正式池</option>
+                    <option value="candidate">纳入候选池</option>
+                    <option value="rejected">不纳入</option>
+                  </select>
+                </label>
+                <label class="wide">一句话描述理由
+                  <input id="queueReason" type="text" placeholder="为什么保留、拒绝或继续搜索">
+                </label>
+              </div>
+              <div class="actionbar">
+                <button id="saveQueue" type="button">保存人工标注</button>
+              </div>
+              <p id="queueStatusText" class="save-status">搜索池标注只记录人工判决，不提升到 data/papers.yaml。</p>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

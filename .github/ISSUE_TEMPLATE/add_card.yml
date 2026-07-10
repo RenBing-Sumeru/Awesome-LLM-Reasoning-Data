@@ -1,27 +1,27 @@
-name: Add or improve a card
-about: Add a release, verifier, agent, or recipe card with audit fields.
-title: "[Card] <work name>"
-labels: ["card", "metadata"]
+name: Add or improve a paper-card source
+about: Add bilingual paper-card source files for an existing paper entry.
+title: "[Paper card] <work name>"
+labels: ["paper-card", "metadata"]
 body:
   - type: input
-    id: card_path
+    id: source_path
     attributes:
-      label: Proposed card path
-      description: Example cards/releases/openthoughts.md or cards/verifiers/prm800k.md
+      label: Proposed paper-card source path
+      description: Example paper_cards/sources/openthoughts
     validations:
       required: true
   - type: input
     id: entry_id
     attributes:
       label: data/papers.yaml entry_id
-      description: The card should link to an existing entry_id when possible.
+      description: The source directory must match an existing entry_id.
     validations:
       required: true
   - type: textarea
     id: data_object
     attributes:
       label: Data object fields
-      description: Prompt/source, trace/action, answer/artifact, feedback/verifier, and metadata. Use unknown for unverified fields.
+      description: Summarize the data object fields that should appear in the bilingual sections. Use unknown for unverified fields.
     validations:
       required: true
   - type: textarea

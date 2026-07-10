@@ -50,7 +50,7 @@ If one model scores higher, ask what changed: data source, verifier, base, teach
 ## What to read next
 
 - docs/09_audit_and_failure_modes.md
-- cards/release_card_template.md
+- paper_cards/README.md
 
 ## Practical field guide
 
@@ -78,16 +78,16 @@ When reading scaling work, separate training-time compute from test-time compute
 
 ### Representative local cards
 
-- [S1](../cards/releases/s1.md)
-- [Dapo](../cards/releases/dapo.md)
-- [Deepseek R1](../cards/recipes/deepseek_r1.md)
-- [Kimi K15](../cards/recipes/kimi_k15.md)
-- [Minimax M1](../cards/recipes/minimax_m1.md)
-- [Ttrl](../cards/recipes/ttrl.md)
-- [Absolute Zero](../cards/recipes/absolute_zero.md)
-- [Llama Nemotron](../cards/recipes/llama_nemotron.md)
-- [Phi4 Reasoning](../cards/recipes/phi4_reasoning.md)
-- [Qwen3](../cards/recipes/qwen3.md)
+- [S1](../paper_cards/README.md)
+- [Dapo](../paper_cards/README.md)
+- [Deepseek R1](../paper_cards/README.md)
+- [Kimi K15](../paper_cards/README.md)
+- [Minimax M1](../paper_cards/README.md)
+- [Ttrl](../paper_cards/README.md)
+- [Absolute Zero](../paper_cards/README.md)
+- [Llama Nemotron](../paper_cards/README.md)
+- [Phi4 Reasoning](../paper_cards/README.md)
+- [Qwen3](../paper_cards/README.md)
 
 ### Common traps
 
@@ -116,7 +116,7 @@ A strong review also separates confidence levels. `verified` should mean that th
 
 ## Operating checklist for maintainers
 
-- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `cards/` for audit records.
+- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `paper_cards/` for audit records.
 - Prefer official links: arXiv, OpenReview, ACL Anthology, project pages, official GitHub, and Hugging Face releases.
 - Do not infer a code or dataset URL from a paper title. Missing links should remain `needs_search`.
 - Make every new paper answer five questions: source, behavior, feedback, selection, audit.

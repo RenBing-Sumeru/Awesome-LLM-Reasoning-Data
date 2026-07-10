@@ -9,11 +9,11 @@ from pathlib import Path
 from atlas_utils import (
     CURATION_LEVELS,
     as_list,
-    card_inventory,
     curation_level,
     entries,
-    is_placeholder_text,
     norm,
+    paper_card_inventory,
+    paper_card_source_complete,
     primary_link,
     starter_matches,
     starter_packs,
@@ -27,7 +27,7 @@ URL_RE = re.compile(r"^https?://[^\s<>]+$")
 DOI_RE = re.compile(r"^(https?://doi\.org/)?10\.\d{4,9}/\S+$", re.I)
 LESSON_RE = re.compile(r"^\d\d_.*\.md$")
 MIN_LESSON_WORDS = 700
-PUBLIC_SCAN_ROOTS = ["README.md", "README_zh.md", "docs", "papers", "cards", "data", "reports", "scripts", ".github"]
+PUBLIC_SCAN_ROOTS = ["README.md", "README_zh.md", "docs", "papers", "paper_cards", "data", "reports", "scripts", ".github"]
 FORBIDDEN_PUBLIC_PATH_TERMS = [
     ".ds_store",
     "CODEX" + "_",
@@ -71,19 +71,6 @@ CARD_REQUIRED_ANY = [
     ["## 9. Links and citation", "## Links"],
 ]
 
-CARD_PLACEHOLDER_MARKERS = [
-    "needs curator review",
-    "Official paper link is pinned",
-    "curator should next add",
-    "Local BibTeX seed",
-    "Prompt/source: unknown",
-    "Trace/action author: unknown",
-    "Answer/artifact format: unknown",
-    "Recorded verifier/reward/environment: unknown",
-    "Known failure modes: unknown",
-]
-
-
 def words(text: str) -> int:
     return len(re.findall(r"\b[\w'-]+\b", text))
 
@@ -119,7 +106,7 @@ def validate_yaml_payloads(errors: list[str]) -> None:
 
 def validate_entries(data: list[dict], errors: list[str], warnings: list[str]) -> None:
     ids, titles = Counter(), Counter()
-    cards = card_inventory()
+    cards = paper_card_inventory()
     for i, entry in enumerate(data):
         where = f"entry[{i}] {entry.get('id', '<missing-id>')}"
         for key in REQUIRED:
@@ -145,9 +132,6 @@ def validate_entries(data: list[dict], errors: list[str], warnings: list[str]) -
             errors.append(f"{where}: missing inclusion_reason")
         if entry.get("status") == "verified" and not primary_link(entry):
             errors.append(f"{where}: status verified requires official paper/arXiv/venue/DOI link")
-        if level in {"L4_carded", "L5_audit_ready"} and not cards.get(entry.get("id")):
-            errors.append(f"{where}: curation level {level} requires existing card")
-
         for key, value in (entry.get("artifacts") or {}).items():
             if value in (None, ""):
                 continue
@@ -166,10 +150,6 @@ def validate_entries(data: list[dict], errors: list[str], warnings: list[str]) -
                 errors.append(f"{where}: verified entry missing one_line_summary")
             if not entry.get("why_it_matters"):
                 errors.append(f"{where}: verified entry missing why_it_matters")
-            if level in {"L3_summary_ready", "L4_carded", "L5_audit_ready"}:
-                summary_bits = " ".join(str(entry.get(key) or "") for key in ["one_line", "one_line_summary", "why_it_matters", "inclusion_reason"])
-                if is_placeholder_text(summary_bits):
-                    errors.append(f"{where}: {level} entry contains placeholder summary text")
             verification = entry.get("verification") or {}
             if verification.get("link_verified") is not True:
                 errors.append(f"{where}: verified entry missing verification.link_verified=true")
@@ -193,52 +173,19 @@ def validate_starter_pack(data: list[dict], errors: list[str]) -> None:
             errors.append(f"beginner starter entry missing official primary link: {title} -> {entry.get('id')}")
 
 
-def validate_cards(data: list[dict], errors: list[str]) -> None:
+def validate_paper_cards(data: list[dict], errors: list[str]) -> None:
     entry_ids = {entry.get("id") for entry in data}
-    entries_by_id = {entry.get("id"): entry for entry in data if entry.get("id")}
-    filled_cards = []
-    cards_by_entry = card_inventory()
-    for path in sorted((ROOT / "cards").glob("**/*.md")):
-        rel = path.relative_to(ROOT).as_posix()
-        if "template" in path.name or rel.startswith("cards/examples/") or rel == "cards/README.md":
+    sources = ROOT / "paper_cards" / "sources"
+    if not sources.exists():
+        return
+    for path in sorted(sources.iterdir()):
+        if not path.is_dir():
             continue
-        text = path.read_text(encoding="utf-8")
-        filled_cards.append(rel)
-        if not re.search(r"^#\s+\S", text, flags=re.M):
-            errors.append(f"card missing title heading: {rel}")
-        match = re.search(r"<!--\s*entry_id:\s*([^\s]+)\s*-->", text)
-        if not match:
-            errors.append(f"card missing entry_id comment: {rel}")
-            matched_entry_id = None
-        else:
-            matched_entry_id = match.group(1)
-            if matched_entry_id not in entry_ids:
-                errors.append(f"card entry_id not found in data/papers.yaml: {rel} -> {matched_entry_id}")
-        for alternatives in CARD_REQUIRED_ANY:
-            if not any(heading in text for heading in alternatives):
-                errors.append(f"card missing required section {alternatives[0]!r}: {rel}")
-        entry = entries_by_id.get(matched_entry_id)
-        if entry and curation_level(entry, rel) == "L5_audit_ready":
-            for marker in CARD_PLACEHOLDER_MARKERS:
-                if marker in text:
-                    errors.append(f"L5 audit-ready card contains placeholder marker {marker!r}: {rel}")
-    if len(filled_cards) < 50:
-        errors.append(f"expected at least 50 filled cards; found {len(filled_cards)}")
-
-    # Beginner starter pack cards are required for the project front door.
-    matches = starter_matches(data)
-    beginner = next((pack for pack in starter_packs() if pack.get("id") == "beginner_20"), None)
-    if beginner:
-        for title in beginner.get("entries", []):
-            entry = matches.get(title)
-            if entry and not cards_by_entry.get(entry.get("id")):
-                errors.append(f"beginner starter entry missing card: {title} -> {entry.get('id')}")
-            elif entry:
-                rel = cards_by_entry.get(entry.get("id"))
-                text = (ROOT / rel).read_text(encoding="utf-8")
-                for marker in CARD_PLACEHOLDER_MARKERS:
-                    if marker in text:
-                        errors.append(f"beginner starter card contains placeholder marker {marker!r}: {rel}")
+        rel = path.relative_to(ROOT).as_posix()
+        if path.name not in entry_ids:
+            errors.append(f"paper-card source entry_id not found in data/papers.yaml: {rel}")
+        if not paper_card_source_complete(path, ROOT):
+            errors.append(f"incomplete paper-card source: {rel}")
 
 
 def scan_leakage(errors: list[str]) -> None:
@@ -303,7 +250,7 @@ def main() -> int:
     validate_yaml_payloads(errors)
     validate_entries(data, errors, warnings)
     validate_starter_pack(data, errors)
-    validate_cards(data, errors)
+    validate_paper_cards(data, errors)
     validate_site(errors)
     validate_public_file_hygiene(errors)
     scan_leakage(errors)

@@ -50,7 +50,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -113,7 +113,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/1706.03741"
     },
@@ -175,7 +175,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/data-statements-for-natural-language-processing.md"
+        "paper_card_source": null
       },
       "primary_link": "https://aclanthology.org/Q18-1041/"
     },
@@ -235,62 +235,83 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/datasheets-for-datasets.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/1803.09010"
     },
     {
       "id": "holist-an-environment-for-machine-learning-of-higher-order-logic-theorem-proving-2019",
-      "title": "HOList: An environment for machine learning of higher-order logic theorem proving",
+      "title": "HOList: An Environment for Machine Learning of Higher-Order Theorem Proving",
       "year": 2019,
-      "venue": "ICML",
-      "authors": [],
+      "venue": "ICML 2019",
+      "authors": [
+        "Kshitij Bansal",
+        "Sarah M. Loos",
+        "Markus N. Rabe",
+        "Christian Szegedy",
+        "Stewart Wilcox"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "agent_environment"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "environmental"
       ],
       "supervision_granularity": [
-        "unknown"
+        "state_action_level",
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "agent_training",
+        "evaluation",
+        "rlvr"
       ],
-      "domains": [],
+      "domains": [
+        "theorem-proving",
+        "higher-order-logic",
+        "proof-assistant"
+      ],
       "category": [
         "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data"
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
       ],
       "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
-        "seeded-from-bib"
+        "holist",
+        "deephol",
+        "formal-proofs",
+        "proof-assistant",
+        "representative-track-03"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "HOList exposes higher-order theorem proving as a machine-learning environment with formal checker feedback.",
+      "why_it_matters": "It is an early bridge from static proof benchmarks to proof-state/action trajectories with a hard formal verifier.",
+      "data_object": "proof goal, tactic/action, proof state transition, and theorem-proving result.; process: goal statement, available premises, tactic action; HOL Light theorem prover exposed as an RL-style environment.",
+      "feedback_verifier": "HOL Light kernel and theorem-prover state transitions.",
+      "audit_focus": "HOL Light-specific tactics may not transfer to Lean or Coq., Proof-search budget strongly affects success rates., Library theorem overlap can inflate evaluation if not versioned.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/1904.03241",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/1904.03241",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.1904.03241",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/1904.03241"
     },
     {
       "id": "pubmedqa-a-dataset-for-biomedical-research-question-answering-2019",
@@ -342,7 +363,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -395,7 +416,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -448,7 +469,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -502,7 +523,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -555,7 +576,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -609,7 +630,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -662,7 +683,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -731,7 +752,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/evaluating-large-language-models-trained-on-code.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2107.03374"
     },
@@ -783,7 +804,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -847,7 +868,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://finqasite.github.io/",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://aclanthology.org/2021.emnlp-main.300/"
     },
@@ -927,7 +948,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/apps.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2105.09938"
     },
@@ -991,7 +1012,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2103.03874"
     },
@@ -1066,7 +1087,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/minif2f.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2109.00110"
     },
@@ -1118,7 +1139,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1172,7 +1193,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1237,7 +1258,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://nextplusplus.github.io/TAT-QA/",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://aclanthology.org/2021.acl-long.254/"
     },
@@ -1308,7 +1329,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/openai/gsm8k",
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/training-verifiers-to-solve-math-word-problems.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2110.14168"
     },
@@ -1367,115 +1388,162 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2201.11903"
     },
     {
       "id": "coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022",
-      "title": "CodeRL: Mastering code generation through pretrained models and deep reinforcement learning",
+      "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
       "year": 2022,
-      "venue": "NeurIPS",
-      "authors": [],
+      "venue": "NeurIPS 2022",
+      "authors": [
+        "Hung Le",
+        "Yue Wang",
+        "Akhilesh Deepak Gotmare",
+        "Silvio Savarese",
+        "Steven C. H. Hoi"
+      ],
       "source_role": [
-        "survey_background"
+        "verifier_reward",
+        "construction_recipe",
+        "model_report"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "scalar_reward",
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "rlvr",
+        "reward_modeling",
+        "evaluation",
+        "test_time_compute"
       ],
-      "domains": [],
+      "domains": [
+        "code",
+        "program-synthesis",
+        "reinforcement-learning"
+      ],
       "category": [
         "programmatically_verifiable_outcome_data",
-        "scaling_rlvr_test_time_compute"
-      ],
-      "subfield": "💻 Code execution / unit-test data",
-      "tags": [
-        "seeded-from-bib"
-      ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
-      "artifacts": {
-        "paper": null,
-        "venue": null,
-        "arxiv": null,
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "card": null
-      },
-      "primary_link": null
-    },
-    {
-      "id": "codet-code-generation-with-generated-tests-2022",
-      "title": "CodeT: Code generation with generated tests",
-      "year": 2022,
-      "venue": "ICLR",
-      "authors": [],
-      "source_role": [
-        "survey_background"
-      ],
-      "verification_contract": [
-        "unknown"
-      ],
-      "supervision_granularity": [
-        "unknown"
-      ],
-      "training_use": [
-        "unknown"
-      ],
-      "domains": [],
-      "category": [
-        "programmatically_verifiable_outcome_data",
+        "scaling_rlvr_test_time_compute",
+        "training_usage_optimization_objectives",
         "benchmarks_evaluation_surfaces"
       ],
       "subfield": "💻 Code execution / unit-test data",
       "tags": [
-        "seeded-from-bib"
+        "coderl",
+        "code-rl",
+        "execution-feedback",
+        "critic-model",
+        "representative-track-03",
+        "representative-track-10"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "CodeRL uses unit-test feedback and a learned critic to train and sample code-generation models.",
+      "why_it_matters": "It is a pre-RLVR-era code example where programmatic correctness becomes both a training signal and a test-time selection signal.",
+      "data_object": "problem statement, generated program, unit-test feedback, critic score, and regeneration decision.; process: prompt, generated code, unit-test result; Python/programming benchmark execution harness.",
+      "feedback_verifier": "unit-test outcomes plus a critic trained to predict functional correctness.",
+      "audit_focus": "Example tests can overfit and miss hidden failures., Critic scores may reward patterns correlated with benchmark tests., Regeneration budget can be conflated with model quality.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2207.01780",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2207.01780",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2207.01780",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2207.01780"
+    },
+    {
+      "id": "codet-code-generation-with-generated-tests-2022",
+      "title": "CodeT: Code Generation with Generated Tests",
+      "year": 2022,
+      "venue": "ICLR 2023",
+      "authors": [
+        "Bei Chen",
+        "Fengji Zhang",
+        "Anh Nguyen",
+        "Daoguang Zan",
+        "Zeqi Lin",
+        "Jian-Guang Lou",
+        "Weizhu Chen"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "construction_recipe",
+        "benchmark"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute",
+        "reward_modeling"
+      ],
+      "domains": [
+        "code",
+        "generated-tests",
+        "program-synthesis"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "codet",
+        "generated-tests",
+        "execution-agreement",
+        "code-verifier",
+        "representative-track-03"
+      ],
+      "one_line_summary": "CodeT uses model-generated tests and execution agreement to rerank code-generation samples.",
+      "why_it_matters": "It makes test generation itself part of the reasoning-data object, not just an external evaluation script.",
+      "data_object": "programming prompt, candidate program set, generated test cases, execution matrix, and selected solution.; process: prompt, candidate solution, generated test; code execution harness across programming benchmarks.",
+      "feedback_verifier": "generated tests plus dual execution agreement among code samples.",
+      "audit_focus": "Generated tests can share model biases with generated solutions., Agreement among wrong programs can select a wrong answer., Extra generated-test budget can dominate pass@1 comparisons.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2207.10397",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2207.10397",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2207.10397",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2207.10397"
     },
     {
       "id": "coliee-competition-on-legal-information-extraction-entailment-2022",
@@ -1526,7 +1594,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1593,7 +1661,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://github.com/anthropics/ConstitutionalHarmlessnessPaper",
         "bibtex": null,
-        "card": "cards/recipes/constitutional-ai.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2212.08073"
     },
@@ -1646,7 +1714,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1699,7 +1767,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1755,7 +1823,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1807,7 +1875,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1860,7 +1928,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -1921,7 +1989,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/star-bootstrapping-reasoning-with-reasoning.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2203.14465"
     },
@@ -1988,7 +2056,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2204.05862"
     },
@@ -2054,7 +2122,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2203.02155"
     },
@@ -2126,7 +2194,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/truthfulqa.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2109.07958"
     },
@@ -2179,29 +2247,49 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
     {
       "id": "api-bank-a-benchmark-for-tool-augmented-llms-2023",
-      "title": "API-Bank: A benchmark for tool-augmented LLMs",
+      "title": "API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs",
       "year": 2023,
       "venue": "EMNLP",
-      "authors": [],
+      "authors": [
+        "Minghao Li",
+        "Yingxiu Zhao",
+        "Bowen Yu",
+        "Feifan Song",
+        "Hangyu Li",
+        "Haiyang Yu",
+        "Zhoujun Li",
+        "Fei Huang",
+        "Yongbin Li"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release",
+        "agent_environment"
       ],
       "verification_contract": [
-        "unknown"
+        "environmental",
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "state_action_level",
+        "full_episode"
       ],
       "training_use": [
-        "unknown"
+        "sft",
+        "agent_training",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "tools",
+        "apis",
+        "agents"
+      ],
       "category": [
         "environment_agent_trajectory_data",
         "benchmarks_evaluation_surfaces",
@@ -2209,33 +2297,35 @@ window.ATLAS_DATA = {
       ],
       "subfield": "🛠️ Tool-use data",
       "tags": [
-        "seeded-from-bib"
+        "primary-link-checked",
+        "agent-benchmark",
+        "tool-use"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "API-Bank turns API tasks into tool-call dialogue data with executable checks for planning, API retrieval, and calling.",
+      "why_it_matters": "It is an early reusable tool-use benchmark where the feedback-bearing object is an API-call trajectory rather than a plain instruction response.",
+      "data_object": "API-call dialogue trajectory plus final response; process: user request, API/tool name, arguments; runnable API-bank tool environment",
+      "feedback_verifier": "API call validity, tool result consistency, and task success checks",
+      "audit_focus": "API schemas can drift after collection, synthetic tool-use dialogues can reward call format rather than task success, runnable tools may hide environment dependencies",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2304.08244",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2304.08244",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
+        "doi": "https://doi.org/10.48550/arXiv.2304.08244",
+        "code": "https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank",
+        "data": "https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank",
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2304.08244"
     },
     {
       "id": "data-provenance-for-language-models-2023",
@@ -2285,7 +2375,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -2345,7 +2435,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2305.18290"
     },
@@ -2400,7 +2490,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -2453,7 +2543,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -2514,7 +2604,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/PatronusAI/financebench",
         "project": "https://github.com/patronus-ai/financebench",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2311.11944"
     },
@@ -2566,7 +2656,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -2639,7 +2729,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/gpqa.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2311.12022"
     },
@@ -2691,7 +2781,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -2777,7 +2867,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/mt-bench-chatbot-arena.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2306.05685"
     },
@@ -2831,7 +2921,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -2884,7 +2974,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -2967,7 +3057,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://leandojo.org/",
         "bibtex": null,
-        "card": "cards/agents/leandojo.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2306.15626"
     },
@@ -3027,7 +3117,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/nguha/legalbench",
         "project": "https://hazyresearch.stanford.edu/legalbench/",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2308.11462"
     },
@@ -3081,7 +3171,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -3134,7 +3224,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -3188,7 +3278,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -3242,7 +3332,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -3251,53 +3341,72 @@ window.ATLAS_DATA = {
       "title": "Mind2Web: Towards a generalist agent for the web",
       "year": 2023,
       "venue": "NeurIPS",
-      "authors": [],
+      "authors": [
+        "Xiang Deng",
+        "Yu Gu",
+        "Boyuan Zheng",
+        "Shijie Chen",
+        "Samuel Stevens",
+        "Boshi Wang",
+        "Huan Sun",
+        "Yu Su"
+      ],
       "source_role": [
-        "survey_background"
+        "data_release",
+        "benchmark",
+        "agent_environment"
       ],
       "verification_contract": [
-        "unknown"
+        "environmental"
       ],
       "supervision_granularity": [
-        "unknown"
+        "state_action_level",
+        "full_episode"
       ],
       "training_use": [
-        "unknown"
+        "sft",
+        "agent_training",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "web",
+        "agents"
+      ],
       "category": [
         "environment_agent_trajectory_data",
         "benchmarks_evaluation_surfaces"
       ],
       "subfield": "🌍 Web/browser agents",
       "tags": [
-        "seeded-from-bib"
+        "primary-link-checked",
+        "web-agent",
+        "trajectory-data"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "Mind2Web packages real-website instructions, HTML state, and annotated actions into reusable web-agent trajectory data.",
+      "why_it_matters": "It gives the atlas a web-agent benchmark whose data object is a state-action record over real websites, not just a final answer.",
+      "data_object": "web task plus action sequence, DOM/html snapshots, and candidate elements; process: website, domain, task instruction; real-world website snapshots and web-agent evaluation scripts",
+      "feedback_verifier": "step/action matching against annotated elements and task split metrics",
+      "audit_focus": "website state can drift away from recorded snapshots, element matching can reward local action selection without full task success, micro and macro averages can lead to different comparisons",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2306.06070",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2306.06070",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
+        "doi": "https://doi.org/10.48550/arXiv.2306.06070",
+        "code": "https://github.com/OSU-NLP-Group/Mind2Web",
+        "data": "https://huggingface.co/datasets/osunlp/Mind2Web",
+        "huggingface": "https://huggingface.co/datasets/osunlp/Mind2Web",
+        "project": "https://osu-nlp-group.github.io/Mind2Web/",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2306.06070"
     },
     {
       "id": "orca-progressive-learning-from-complex-explanation-traces-of-gpt-4-2023",
@@ -3373,7 +3482,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/",
         "bibtex": null,
-        "card": "cards/recipes/orca.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2306.02707"
     },
@@ -3441,62 +3550,83 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/prm800k.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2305.20050"
     },
     {
       "id": "proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023",
-      "title": "ProofNet: Autoformalizing and formally proving undergraduate-level mathematics",
+      "title": "ProofNet: Autoformalizing and Formally Proving Undergraduate-Level Mathematics",
       "year": 2023,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Zhangir Azerbayev",
+        "Bartosz Piotrowski",
+        "Hailey Schoelkopf",
+        "Edward W. Ayers",
+        "Dragomir Radev",
+        "Jeremy Avigad"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "step_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "sft"
       ],
-      "domains": [],
+      "domains": [
+        "math",
+        "formalization",
+        "lean",
+        "theorem-proving"
+      ],
       "category": [
-        "preference_reward_feedback_data",
-        "programmatically_verifiable_outcome_data"
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "data_construction_open_release_recipes"
       ],
-      "subfield": "Other related work",
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
-        "seeded-from-bib"
+        "proofnet",
+        "lean",
+        "autoformalization",
+        "formal-math",
+        "representative-track-03"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "ProofNet pairs informal undergraduate mathematics with Lean formal statements for autoformalization and proving evaluation.",
+      "why_it_matters": "It gives Track 03 a clean data object for the informal-to-formal bridge before full proof-generation systems are trained.",
+      "data_object": "natural-language theorem, natural-language proof, and formal Lean theorem statement.; process: informal theorem, informal proof, Lean statement; Lean 3 theorem-proving environment.",
+      "feedback_verifier": "Lean type checker / proof assistant acceptance for formal statements and proofs.",
+      "audit_focus": "Statement-only formalization does not guarantee complete proof ability., Lean 3 dependency versions affect acceptance., Textbook source coverage may skew toward standard undergraduate domains.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2302.12433",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2302.12433",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
+        "doi": "https://doi.org/10.48550/arXiv.2302.12433",
+        "code": "https://github.com/zhangir-azerbayev/ProofNet",
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2302.12433"
     },
     {
       "id": "react-synergizing-reasoning-and-acting-in-language-models-2023",
@@ -3570,7 +3700,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://react-lm.github.io/",
         "bibtex": null,
-        "card": "cards/agents/react.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2210.03629"
     },
@@ -3624,7 +3754,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -3676,7 +3806,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -3743,7 +3873,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/self-consistency-chain-of-thought.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2203.11171"
     },
@@ -3802,7 +3932,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2212.10560"
     },
@@ -3881,7 +4011,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/selfrag/selfrag_llama2_7b",
         "project": "https://selfrag.github.io/",
         "bibtex": null,
-        "card": "cards/recipes/self-rag.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2310.11511"
     },
@@ -3934,7 +4064,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -4000,7 +4130,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://www.swebench.com/original.html",
         "bibtex": null,
-        "card": "cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2310.06770"
     },
@@ -4076,7 +4206,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/toolformer.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2302.04761"
     },
@@ -4161,7 +4291,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/openbmb/UltraFeedback",
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/ultrafeedback.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2310.01377"
     },
@@ -4207,7 +4337,7 @@ window.ATLAS_DATA = {
       "data_object": "environment interaction trajectory; process: observation, action, state; browser-accessible web environment",
       "feedback_verifier": "task-specific success evaluator",
       "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L4_carded",
+      "curation_level": "L5_audit_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -4224,7 +4354,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/webarena.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2307.13854"
     },
@@ -4279,7 +4409,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -4332,7 +4462,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -4384,7 +4514,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -4451,7 +4581,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/appworld.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2407.18901"
     },
@@ -4504,66 +4634,85 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
     {
       "id": "bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024",
-      "title": "BigCodeBench: Benchmarking code generation with diverse function calls and complex instructions",
+      "title": "BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions",
       "year": 2024,
-      "venue": "ICLR",
-      "authors": [],
+      "venue": "ICLR 2025",
+      "authors": [
+        "Terry Yue Zhuo",
+        "Minh Chien Vu",
+        "Jenny Chim",
+        "Han Hu",
+        "Wenhao Yu",
+        "Ratnadira Widyasari",
+        "Imam Nur Bani Yusuf",
+        "Haolan Zhan",
+        "Junda He",
+        "Leandro Von Werra"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "sft"
       ],
-      "domains": [],
+      "domains": [
+        "code",
+        "function-calling",
+        "software-engineering"
+      ],
       "category": [
-        "foundations_and_primers",
-        "instruction_demonstration_rationale_data",
         "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data",
         "benchmarks_evaluation_surfaces",
+        "environment_agent_trajectory_data",
         "audit_failure_contamination_verifier_attacks"
       ],
-      "subfield": "Other related work",
+      "subfield": "💻 Code execution / unit-test data",
       "tags": [
-        "seeded-from-bib"
+        "bigcodebench",
+        "code-benchmark",
+        "function-calling",
+        "execution-tests",
+        "representative-track-03"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "survey background",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "BigCodeBench evaluates code generation on API-heavy tasks with executable tests and branch-coverage-aware checks.",
+      "why_it_matters": "It expands the code-verification pool from short standalone functions to realistic library and function-call compositions.",
+      "data_object": "instruction or docstring, required function calls, generated code, and test results.; process: instruction, library/API requirements, generated code; Python execution harness covering diverse libraries and function calls.",
+      "feedback_verifier": "unit tests with high branch coverage for each task.",
+      "audit_focus": "Library version drift can change accepted behavior., High branch coverage still may miss semantic edge cases., API-heavy tasks can conflate retrieval/API knowledge with reasoning.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2406.15877",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2406.15877",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.15877",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2406.15877"
     },
     {
       "id": "bright-a-realistic-and-challenging-benchmark-for-reasoning-intensive-retrieval-2024",
@@ -4614,7 +4763,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -4678,7 +4827,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/browsergym.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2412.05467"
     },
@@ -4731,7 +4880,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -4813,7 +4962,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
         "project": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
         "bibtex": null,
-        "card": "cards/recipes/deepseek-prover.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2405.14333"
     },
@@ -4905,7 +5054,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL",
         "project": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
         "bibtex": null,
-        "card": "cards/recipes/deepseek-prover-v1-5.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2408.08152"
     },
@@ -4992,7 +5141,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/collections/deepseek-ai/deepseek-math",
         "project": "https://github.com/deepseek-ai/deepseek-math",
         "bibtex": null,
-        "card": "cards/recipes/deepseekmath.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2402.03300"
     },
@@ -5044,29 +5193,48 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
     {
       "id": "frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024",
-      "title": "FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI",
+      "title": "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI",
       "year": 2024,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Elliot Glazer",
+        "Ege Erdil",
+        "Tamay Besiroglu",
+        "Diego Chicharro",
+        "Evan Chen",
+        "Alex Gunning",
+        "Caroline Falkman Olsson",
+        "Jean-Stanislas Denain",
+        "Anson Ho",
+        "Emily de Oliveira Santos"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "data_release",
+        "audit_failure"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "audit"
       ],
-      "domains": [],
+      "domains": [
+        "math",
+        "advanced-mathematics",
+        "contamination-resistant-benchmark"
+      ],
       "category": [
         "programmatically_verifiable_outcome_data",
         "benchmarks_evaluation_surfaces",
@@ -5075,33 +5243,37 @@ window.ATLAS_DATA = {
       ],
       "subfield": "🧰 Programmatic benchmarks",
       "tags": [
-        "seeded-from-bib"
+        "frontiermath",
+        "advanced-math",
+        "contamination-resistant",
+        "expert-written",
+        "representative-track-03"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "FrontierMath provides expert-written advanced mathematics problems with verifier-oriented evaluation and contamination controls.",
+      "why_it_matters": "It gives the representative pool a high-difficulty math surface where automatic verification and contamination policy are central fields.",
+      "data_object": "advanced math problem with final answer or verifier-checkable target.; process: problem statement, mathematical domain, difficulty tier; held-out advanced mathematics benchmark with automated answer verification where possible.",
+      "feedback_verifier": "automated answer checks and expert-vetted benchmark criteria.",
+      "audit_focus": "Automated verification may favor final-answer tasks over proof quality., Held-out access policy limits reproducibility., Models can overfit once examples or solution patterns circulate.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2411.04872",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2411.04872",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2411.04872",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2411.04872"
     },
     {
       "id": "goedel-prover-a-frontier-model-for-open-source-automated-theorem-proving-2024",
@@ -5153,7 +5325,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -5207,7 +5379,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -5260,7 +5432,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -5315,7 +5487,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -5388,7 +5560,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
         "project": "https://www.swebench.com/verified.html",
         "bibtex": null,
-        "card": "cards/agents/swe-bench-verified.md"
+        "paper_card_source": null
       },
       "primary_link": "https://openai.com/index/introducing-swe-bench-verified/"
     },
@@ -5441,7 +5613,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -5494,7 +5666,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -5502,36 +5674,55 @@ window.ATLAS_DATA = {
       "id": "large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024",
       "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
       "year": 2024,
-      "venue": "arXiv preprint arXiv:2407.21787",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Bradley Brown",
+        "Jordan Juravsky",
+        "Ryan Ehrlich",
+        "Ronald Clark",
+        "Quoc V. Le",
+        "Christopher Ré",
+        "Azalia Mirhoseini"
+      ],
       "source_role": [
-        "survey_background"
+        "scaling_study"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "test_time_compute",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "test-time-compute",
+        "repeated-sampling",
+        "code",
+        "formal-proofs"
+      ],
       "category": [
-        "foundations_and_primers",
+        "scaling_rlvr_test_time_compute",
         "rollout_search_test_time_trace_data",
-        "scaling_rlvr_test_time_compute"
+        "programmatically_verifiable_outcome_data"
       ],
-      "subfield": "Other related work",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
-        "seeded-from-bib"
+        "large-language-monkeys",
+        "repeated-sampling",
+        "pass-at-k",
+        "test-time-compute",
+        "representative-track-10"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "survey background",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L1_link_verified",
+      "one_line_summary": "Large Language Monkeys studies how repeated sampling scales coverage when problems have usable verifiers.",
+      "why_it_matters": "It is the representative Track 10 baseline for separating model ability, sample budget, and verifier availability.",
+      "data_object": "problem, sample budget, candidate solutions, coverage curve, and selection/verifier outcome.; process: problem id, sample index, candidate answer; benchmark tasks with automatic or proxy answer verification.",
+      "feedback_verifier": "task-specific correctness checks, code tests, formal proof checking, majority vote, or reward model selection.",
+      "audit_focus": "Coverage gains require reliable verifiers to become usable answers., Aggregate curves can hide hard unsolved subsets., Majority vote and learned reward selection may plateau without hard verifiers.",
+      "curation_level": "L3_summary_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -5542,13 +5733,13 @@ window.ATLAS_DATA = {
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2407.21787",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2407.21787"
     },
@@ -5601,7 +5792,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -5670,7 +5861,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://livebench.ai/",
         "bibtex": null,
-        "card": "cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2406.19314"
     },
@@ -5748,7 +5939,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://livecodebench.github.io/",
         "bibtex": null,
-        "card": "cards/benchmarks/livecodebench.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2403.07974"
     },
@@ -5824,7 +6015,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B",
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/magicoder.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2312.02120"
     },
@@ -5880,7 +6071,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2405.03548"
     },
@@ -5942,7 +6133,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/math_shepherd.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2312.08935"
     },
@@ -5994,7 +6185,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -6071,7 +6262,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-2",
         "project": "https://nvidia-nemo.github.io/Skills/releases/openmathinstruct2/",
         "bibtex": null,
-        "card": "cards/releases/openmathinstruct-2.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2410.01560"
     },
@@ -6136,7 +6327,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/osworld.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2404.07972"
     },
@@ -6189,7 +6380,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -6241,7 +6432,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -6325,7 +6516,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/prometheus-eval/prometheus-7b-v2.0",
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/prometheus-2.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2405.01535"
     },
@@ -6404,7 +6595,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/Qwen/Qwen2.5-Math-7B",
         "project": "https://qwenlm.github.io/blog/qwen2.5-math/",
         "bibtex": null,
-        "card": "cards/recipes/qwen2-5-math.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2409.12122"
     },
@@ -6456,7 +6647,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -6509,19 +6700,26 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
     {
       "id": "rest-mcts-2024",
-      "title": "ReST-MCTS*",
+      "title": "ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search",
       "year": 2024,
       "venue": "arXiv",
-      "authors": [],
+      "authors": [
+        "Dan Zhang",
+        "Sining Zhoubian",
+        "Ziniu Hu",
+        "Yisong Yue",
+        "Yuxiao Dong",
+        "Jie Tang"
+      ],
       "source_role": [
-        "process_supervision",
         "construction_recipe",
+        "process_supervision",
         "scaling_study"
       ],
       "verification_contract": [
@@ -6529,39 +6727,42 @@ window.ATLAS_DATA = {
         "mixed"
       ],
       "supervision_granularity": [
-        "step_level",
-        "process_reward"
+        "process_reward",
+        "trajectory_value",
+        "answer_level"
       ],
       "training_use": [
+        "sft",
         "process_supervision",
-        "reward_modeling",
-        "test_time_compute"
+        "test_time_compute",
+        "rlvr"
       ],
       "domains": [
         "math",
-        "reasoning"
+        "tree-search",
+        "self-training",
+        "process-reward"
       ],
       "category": [
-        "foundations_and_primers",
-        "preference_reward_feedback_data",
-        "programmatically_verifiable_outcome_data",
-        "process_trace_supervision_data",
+        "scaling_rlvr_test_time_compute",
         "rollout_search_test_time_trace_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute"
+        "process_trace_supervision_data",
+        "data_construction_open_release_recipes"
       ],
-      "subfield": "Other related work",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
-        "seeded-from-bib",
-        "primary-link-checked"
+        "rest-mcts",
+        "tree-search",
+        "process-reward",
+        "self-training",
+        "representative-track-10"
       ],
-      "one_line_summary": "Process-reward-guided tree search recipe for self-training reasoning traces.",
-      "why_it_matters": "It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.",
-      "data_object": "reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree",
-      "feedback_verifier": "process reward guided tree search",
-      "audit_focus": "search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality",
-      "curation_level": "L1_link_verified",
+      "one_line_summary": "ReST-MCTS* uses process-reward-guided tree search to collect reasoning traces and value targets for self-training.",
+      "why_it_matters": "It is a clean Track 10 example where search traces, process rewards, and training data are the same reusable artifact.",
+      "data_object": "problem, search tree, intermediate step, process value, selected trace, and final answer.; process: problem, tree node, reasoning step; process-reward-guided Monte Carlo tree search over reasoning steps.",
+      "feedback_verifier": "oracle final-answer checks used to infer process rewards through tree search.",
+      "audit_focus": "Tree-search budget can dominate comparison to best-of-N., Incorrect intermediate steps may be selected if final-answer credit is noisy., Process value estimates inherit final-answer oracle limitations.",
+      "curation_level": "L3_summary_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -6572,13 +6773,13 @@ window.ATLAS_DATA = {
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.03816",
+        "code": "https://github.com/THUDM/ReST-MCTS",
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2406.03816"
     },
@@ -6645,7 +6846,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/rewardbench.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2403.13787"
     },
@@ -6728,7 +6929,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/rewarding-progress.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2410.08146"
     },
@@ -6829,7 +7030,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://scicode-bench.github.io/",
         "bibtex": null,
-        "card": "cards/benchmarks/scicode.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2407.13168"
     },
@@ -6882,7 +7083,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -6935,7 +7136,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -6988,7 +7189,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7041,7 +7242,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7050,54 +7251,71 @@ window.ATLAS_DATA = {
       "title": "tau-bench: A benchmark for tool-agent-user interaction in real-world domains",
       "year": 2024,
       "venue": "arXiv preprint",
-      "authors": [],
+      "authors": [
+        "Shunyu Yao",
+        "Noah Shinn",
+        "Pedram Razavi",
+        "Karthik Narasimhan"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "agent_environment"
       ],
       "verification_contract": [
-        "unknown"
+        "environmental",
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "full_episode",
+        "state_action_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "agent_training",
+        "audit"
       ],
-      "domains": [],
+      "domains": [
+        "tools",
+        "agents",
+        "conversational_agents"
+      ],
       "category": [
         "environment_agent_trajectory_data",
         "benchmarks_evaluation_surfaces",
         "audit_failure_contamination_verifier_attacks"
       ],
-      "subfield": "🛠️ Tool-use data",
+      "subfield": "🧰 Agent benchmarks and terminal predicates",
       "tags": [
-        "seeded-from-bib"
+        "primary-link-checked",
+        "agent-benchmark",
+        "tool-use",
+        "pass-k"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "tau-bench evaluates conversational tool agents by checking whether the final database state satisfies the task goal.",
+      "why_it_matters": "It makes agent evaluation depend on interaction reliability and final environment state, not just tool-call syntax.",
+      "data_object": "tool-agent-user dialogue trajectory plus final database state; process: user message, agent response, tool call; domain simulator with API tools and user simulator",
+      "feedback_verifier": "final database state compared with annotated goal state",
+      "audit_focus": "pass^k can hide low single-run reliability, final-state checks can miss bad conversational behavior, repository README indicates newer tau3-bench supersedes parts of the original task set",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2406.12045",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2406.12045",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.12045",
+        "code": "https://github.com/sierra-research/tau-bench",
+        "data": "https://github.com/sierra-research/tau-bench",
         "huggingface": null,
-        "project": null,
+        "project": "https://github.com/sierra-research/tau-bench",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2406.12045"
     },
     {
       "id": "the-llama-3-herd-of-models-2024",
@@ -7147,7 +7365,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7199,7 +7417,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7267,63 +7485,88 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/toolllm_toolbench.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2307.16789"
     },
     {
       "id": "toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024",
-      "title": "ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use",
+      "title": "ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities",
       "year": 2024,
       "venue": "arXiv preprint",
-      "authors": [],
+      "authors": [
+        "Jiarui Lu",
+        "Thomas Holleis",
+        "Yizhe Zhang",
+        "Bernhard Aumayer",
+        "Feng Nan",
+        "Felix Bai",
+        "Shuang Ma",
+        "Shen Ma",
+        "Mengyu Li",
+        "Guoli Yin",
+        "Zirui Wang",
+        "Ruoming Pang"
+      ],
       "source_role": [
-        "survey_background"
+        "benchmark",
+        "agent_environment"
       ],
       "verification_contract": [
-        "unknown"
+        "environmental",
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "full_episode",
+        "state_action_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "agent_training",
+        "audit"
       ],
-      "domains": [],
+      "domains": [
+        "tools",
+        "agents",
+        "conversational_agents"
+      ],
       "category": [
         "environment_agent_trajectory_data",
         "benchmarks_evaluation_surfaces",
         "audit_failure_contamination_verifier_attacks"
       ],
-      "subfield": "🛠️ Tool-use data",
+      "subfield": "🧰 Agent benchmarks and terminal predicates",
       "tags": [
-        "seeded-from-bib"
+        "primary-link-checked",
+        "agent-benchmark",
+        "tool-use",
+        "stateful-evaluation"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "ToolSandbox evaluates tool agents through stateful conversations, user simulation, and milestone-based checks.",
+      "why_it_matters": "It strengthens the agent benchmark track by making implicit tool state and intermediate milestones part of the feedback contract.",
+      "data_object": "multi-turn conversation with tool calls, tool state, and milestone checks; process: user turn, agent turn, tool call; stateful tool execution sandbox with user simulator",
+      "feedback_verifier": "dynamic evaluation of intermediate and final milestones",
+      "audit_focus": "stateful dependencies can make failures hard to attribute, user simulator behavior can become an implicit reward channel, final success can hide intermediate milestone failures if reporting is incomplete",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2408.04682",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2408.04682",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
+        "doi": "https://doi.org/10.48550/arXiv.2408.04682",
+        "code": "https://github.com/apple/ToolSandbox",
+        "data": "https://github.com/apple/ToolSandbox",
         "huggingface": null,
-        "project": null,
+        "project": "https://github.com/apple/ToolSandbox",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2408.04682"
     },
     {
       "id": "tulu-3-pushing-frontiers-in-open-language-model-post-training-2024",
@@ -7423,7 +7666,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/collections/allenai/tulu-3-datasets",
         "project": "https://allenai.org/blog/tulu-3-technical",
         "bibtex": null,
-        "card": "cards/recipes/tulu-3.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2411.15124"
     },
@@ -7431,8 +7674,19 @@ window.ATLAS_DATA = {
       "id": "visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024",
       "title": "VisualWebArena: Evaluating multimodal agents on realistic visual web tasks",
       "year": 2024,
-      "venue": "arXiv preprint",
-      "authors": [],
+      "venue": "ACL",
+      "authors": [
+        "Jing Yu Koh",
+        "Robert Lo",
+        "Lawrence Jang",
+        "Vikram Duvvur",
+        "Ming Chong Lim",
+        "Po-Yu Huang",
+        "Graham Neubig",
+        "Shuyan Zhou",
+        "Ruslan Salakhutdinov",
+        "Daniel Fried"
+      ],
       "source_role": [
         "benchmark",
         "agent_environment"
@@ -7463,33 +7717,33 @@ window.ATLAS_DATA = {
       "tags": [
         "curated-card",
         "primary-link-checked",
-        "seeded-from-bib"
+        "visual-agent"
       ],
       "one_line_summary": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
       "why_it_matters": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
-      "data_object": "visual web tasks with screenshots and browser state",
-      "feedback_verifier": "task success checks",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "partial",
-      "needs_search": true,
+      "data_object": "browser episode with screenshot observation, action trajectory, and final outcome; process: instruction, screenshot observation, browser state; visual web tasks with screenshots, browser state, and WebArena-style environments",
+      "feedback_verifier": "execution-based tests for visually grounded task completion",
+      "audit_focus": "screenshot resolution and browser rendering can change task difficulty, visual cues may be unavailable to text-only agents, live-like web state can drift from the benchmark snapshot",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2401.13649",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2401.13649",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": null,
-        "data": null,
+        "doi": "https://doi.org/10.48550/arXiv.2401.13649",
+        "code": "https://github.com/web-arena-x/visualwebarena",
+        "data": "https://github.com/web-arena-x/visualwebarena",
         "huggingface": null,
-        "project": null,
+        "project": "https://jykoh.com/vwa",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2401.13649"
     },
     {
       "id": "weblinx-real-world-website-navigation-with-multi-turn-dialogue-2024",
@@ -7540,7 +7794,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7592,7 +7846,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7646,7 +7900,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7699,7 +7953,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7753,7 +8007,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2503.19633"
     },
@@ -7805,7 +8059,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -7862,7 +8116,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.07086"
     },
@@ -7914,7 +8168,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2510.23081"
     },
@@ -7976,7 +8230,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/absolute_zero.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.03335"
     },
@@ -8038,7 +8292,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/facebook/AbstentionBench",
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/abstentionbench.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.09038"
     },
@@ -8093,7 +8347,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.09038"
     },
@@ -8145,7 +8399,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -8198,7 +8452,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2501.09004"
     },
@@ -8264,7 +8518,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0",
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/aegis2.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2501.09004"
     },
@@ -8272,37 +8526,62 @@ window.ATLAS_DATA = {
       "id": "alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025",
       "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
       "year": 2025,
-      "venue": "arXiv preprint arXiv:2506.13131",
-      "authors": [],
+      "venue": "arXiv / Google DeepMind white paper",
+      "authors": [
+        "Alexander Novikov",
+        "Ngan Vu",
+        "Marvin Eisenberger",
+        "Emilien Dupont",
+        "Po-Sen Huang",
+        "Adam Zsolt Wagner",
+        "Sergey Shirobokov",
+        "Borislav Kozlovskii",
+        "Francisco J. R. Ruiz",
+        "Matej Balog"
+      ],
       "source_role": [
-        "survey_background"
+        "model_report",
+        "construction_recipe",
+        "scaling_study"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "trajectory_value"
       ],
       "training_use": [
-        "unknown"
+        "test_time_compute",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "program-search",
+        "scientific-discovery",
+        "algorithm-design",
+        "code"
+      ],
       "category": [
-        "foundations_and_primers",
         "programmatically_verifiable_outcome_data",
-        "environment_agent_trajectory_data",
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
         "data_construction_open_release_recipes"
       ],
-      "subfield": "Other related work",
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [
-        "seeded-from-bib"
+        "alphaevolve",
+        "deepmind",
+        "program-search",
+        "evolutionary-search",
+        "representative-track-03",
+        "representative-track-10"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "survey background",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L1_link_verified",
+      "one_line_summary": "AlphaEvolve uses LLM-generated code variants, evaluator feedback, and evolutionary search to discover improved algorithms.",
+      "why_it_matters": "It broadens Track 03/10 from answering benchmark problems to optimizing executable artifacts under explicit evaluator budgets.",
+      "data_object": "candidate program, evaluator score, mutation lineage, and accepted improvement.; process: initial program, candidate edit, evaluator score; sandboxed code execution and domain-specific evaluator functions.",
+      "feedback_verifier": "one or more programmatic evaluators scoring correctness and objective value.",
+      "audit_focus": "Evaluator design can overfit to narrow objective functions., Search budget and parallel evaluator count can dominate results., Accepted programs may be correct for benchmarked cases but brittle outside them.",
+      "curation_level": "L3_summary_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -8313,13 +8592,13 @@ window.ATLAS_DATA = {
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2506.13131",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.13131"
     },
@@ -8373,7 +8652,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.08311"
     },
@@ -8436,7 +8715,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/androidworld.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2405.14573"
     },
@@ -8490,7 +8769,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2509.03403"
     },
@@ -8554,7 +8833,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/big_math.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.17387"
     },
@@ -8609,7 +8888,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -8661,7 +8940,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -8714,7 +8993,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2509.26114"
     },
@@ -8769,7 +9048,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2503.01307"
     },
@@ -8825,7 +9104,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/dapo.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2503.14476"
     },
@@ -8878,7 +9157,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -8940,7 +9219,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/deepmath_103k.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.11456"
     },
@@ -8995,7 +9274,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.11456"
     },
@@ -9048,7 +9327,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -9142,7 +9421,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B",
         "project": "https://github.com/deepseek-ai/DeepSeek-Prover-V2",
         "bibtex": null,
-        "card": "cards/recipes/deepseek-prover-v2.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.21801"
     },
@@ -9204,7 +9483,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/deepseek_r1.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2501.12948"
     },
@@ -9257,7 +9536,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -9310,7 +9589,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2512.02556"
     },
@@ -9365,61 +9644,83 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.08606"
     },
     {
       "id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
-      "title": "Does RL really incentivize reasoning beyond base?",
+      "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
       "year": 2025,
-      "venue": "NeurIPS Oral",
-      "authors": [],
+      "venue": "NeurIPS 2025 Oral",
+      "authors": [
+        "Yang Yue",
+        "Zhiqi Chen",
+        "Rui Lu",
+        "Andrew Zhao",
+        "Zhaokai Wang",
+        "Shiji Song",
+        "Gao Huang"
+      ],
       "source_role": [
-        "survey_background"
+        "audit_failure",
+        "scaling_study"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level"
       ],
       "training_use": [
-        "unknown"
+        "audit",
+        "evaluation",
+        "test_time_compute"
       ],
-      "domains": [],
+      "domains": [
+        "rlvr",
+        "pass-at-k",
+        "math",
+        "code"
+      ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "scaling_rlvr_test_time_compute",
+        "audit_failure_contamination_verifier_attacks",
+        "programmatically_verifiable_outcome_data"
       ],
-      "subfield": "Other related work",
+      "subfield": "⏱️ Test-time compute",
       "tags": [
-        "seeded-from-bib"
+        "rlvr-audit",
+        "pass-at-k",
+        "capability-boundary",
+        "representative-track-10"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
-      "status": "needs_metadata",
-      "needs_search": true,
+      "one_line_summary": "This audit compares base and RL-trained models at large pass@k to test whether RLVR expands or reweights reasoning ability.",
+      "why_it_matters": "It adds a representative counterpoint to RLVR scaling claims by making the base-model sampling distribution an explicit audit object.",
+      "data_object": "problem, sampled reasoning paths, pass@k curve, and base-vs-RL comparison.; process: problem id, model variant, sample budget k; benchmark evaluation with large-k repeated sampling.",
+      "feedback_verifier": "task correctness checks and pass@k evaluation.",
+      "audit_focus": "Pass@k can credit lucky final answers without faithful reasoning., Sampling temperature and budget choices can change conclusions., RL may improve sampling efficiency while narrowing diversity.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
       "artifacts": {
-        "paper": null,
+        "paper": "https://arxiv.org/abs/2504.13837",
         "venue": null,
-        "arxiv": null,
+        "arxiv": "https://arxiv.org/abs/2504.13837",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2504.13837",
         "code": null,
         "data": null,
         "huggingface": null,
-        "project": null,
+        "project": "https://limit-of-RLVR.github.io",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
-      "primary_link": null
+      "primary_link": "https://arxiv.org/abs/2504.13837"
     },
     {
       "id": "does-supervised-fine-tuning-memorize-while-reinforcement-learning-generalizes-2025",
@@ -9469,7 +9770,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -9524,7 +9825,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2410.13210"
     },
@@ -9577,7 +9878,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -9632,7 +9933,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.22203"
     },
@@ -9684,7 +9985,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -9736,7 +10037,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2510.25771"
     },
@@ -9788,7 +10089,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -9842,7 +10143,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2508.03613"
     },
@@ -9897,7 +10198,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2509.21154"
     },
@@ -9962,7 +10263,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/healthbench.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.08775"
     },
@@ -10015,7 +10316,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -10068,7 +10369,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -10120,7 +10421,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -10181,7 +10482,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/the-art-of-scaling-rl-compute.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2510.13786"
     },
@@ -10241,7 +10542,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/kimi_k15.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2501.12599"
     },
@@ -10294,7 +10595,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2507.20534"
     },
@@ -10360,7 +10661,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/kodcode.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2503.02951"
     },
@@ -10413,7 +10714,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.21614"
     },
@@ -10480,7 +10781,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/failures/leaky-thoughts.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.15674"
     },
@@ -10533,7 +10834,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.15674"
     },
@@ -10590,7 +10891,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/limo.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.03387"
     },
@@ -10653,7 +10954,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/llama_nemotron.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.00949"
     },
@@ -10706,7 +11007,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2511.05705"
     },
@@ -10764,7 +11065,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/magistral.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.10910"
     },
@@ -10816,7 +11117,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -10869,7 +11170,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -10921,7 +11222,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -10975,7 +11276,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -11027,7 +11328,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2510.06826"
     },
@@ -11079,7 +11380,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -11153,7 +11454,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/minimax_m1.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.13585"
     },
@@ -11206,7 +11507,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -11273,7 +11574,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/naturalreasoning.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.13124"
     },
@@ -11328,7 +11629,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2512.15489"
     },
@@ -11386,7 +11687,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/one_token_to_fool_judge.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2507.08794"
     },
@@ -11439,7 +11740,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2510.07284"
     },
@@ -11491,7 +11792,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -11545,7 +11846,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -11553,36 +11854,56 @@ window.ATLAS_DATA = {
       "id": "open-reasoner-zero-an-open-source-approach-to-scaling-up-reinforcement-learning--2025",
       "title": "Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model",
       "year": 2025,
-      "venue": "arXiv preprint arXiv:2503.24290",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Jingcheng Hu",
+        "Yinmin Zhang",
+        "Qi Han",
+        "Daxin Jiang",
+        "Xiangyu Zhang",
+        "Heung-Yeung Shum"
+      ],
       "source_role": [
-        "survey_background"
+        "construction_recipe",
+        "scaling_study",
+        "data_release"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "scalar_reward"
       ],
       "training_use": [
-        "unknown"
+        "rlvr",
+        "evaluation"
       ],
-      "domains": [],
+      "domains": [
+        "rlvr",
+        "math",
+        "open-source-reasoning"
+      ],
       "category": [
         "data_construction_open_release_recipes",
         "scaling_rlvr_test_time_compute",
-        "frontier_reports_data_disclosure_ledger"
+        "training_usage_optimization_objectives",
+        "programmatically_verifiable_outcome_data"
       ],
       "subfield": "🧱 Prompt sourcing",
       "tags": [
-        "seeded-from-bib"
+        "open-reasoner-zero",
+        "rlvr",
+        "ppo",
+        "rule-based-reward",
+        "representative-track-10"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L1_link_verified",
+      "one_line_summary": "Open-Reasoner-Zero is an open RLVR recipe for scaling base-model reasoning with rule-based rewards.",
+      "why_it_matters": "It makes the Track 10 RLVR recipe auditable: prompt source, rule reward, optimizer, response length, and benchmark gains are separable fields.",
+      "data_object": "prompt, sampled response, rule-based reward, response length, and benchmark outcome.; process: prompt, sampled response, rule reward; open large-scale RLVR training pipeline.",
+      "feedback_verifier": "rule-based verifiable rewards for math reasoning tasks.",
+      "audit_focus": "Rule-based rewards may reward formatting or answer shortcuts., Response-length growth can be mistaken for reasoning improvement., Reproduction claims depend on exact optimizer and data-processing details.",
+      "curation_level": "L3_summary_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -11593,13 +11914,13 @@ window.ATLAS_DATA = {
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2503.24290",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2503.24290"
     },
@@ -11652,7 +11973,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -11706,7 +12027,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -11774,7 +12095,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/opencodereasoning_ii.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2507.09075"
     },
@@ -11839,7 +12160,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://www.openhands.dev/",
         "bibtex": null,
-        "card": "cards/agents/openhands.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2407.16741"
     },
@@ -11898,7 +12219,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/openmathreasoning.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.16891"
     },
@@ -11963,7 +12284,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M",
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/openthoughts.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.04178"
     },
@@ -12021,19 +12342,30 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/phi4_reasoning.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.21318"
     },
     {
       "id": "prime-process-reinforcement-through-implicit-rewards-2025",
-      "title": "PRIME: Process reinforcement through implicit rewards",
+      "title": "Process Reinforcement through Implicit Rewards",
       "year": 2025,
       "venue": "arXiv",
-      "authors": [],
+      "authors": [
+        "Ganqu Cui",
+        "Lifan Yuan",
+        "Zefan Wang",
+        "Hanbin Wang",
+        "Wendi Li",
+        "Bingxiang He",
+        "Yuchen Fan",
+        "Tianyu Yu",
+        "Qixin Xu",
+        "Ning Ding"
+      ],
       "source_role": [
-        "process_supervision",
         "verifier_reward",
+        "process_supervision",
         "construction_recipe"
       ],
       "verification_contract": [
@@ -12041,7 +12373,6 @@ window.ATLAS_DATA = {
         "mixed"
       ],
       "supervision_granularity": [
-        "step_level",
         "process_reward",
         "answer_level"
       ],
@@ -12051,30 +12382,30 @@ window.ATLAS_DATA = {
         "reward_modeling"
       ],
       "domains": [
+        "rlvr",
+        "process-reward",
         "math",
-        "code",
-        "reasoning"
+        "code"
       ],
       "category": [
-        "preference_reward_feedback_data",
-        "programmatically_verifiable_outcome_data",
+        "scaling_rlvr_test_time_compute",
         "process_trace_supervision_data",
-        "rollout_search_test_time_trace_data",
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives",
-        "scaling_rlvr_test_time_compute"
+        "programmatically_verifiable_outcome_data"
       ],
-      "subfield": "Other related work",
+      "subfield": "🏋️ RLVR optimization scaling",
       "tags": [
-        "seeded-from-bib",
-        "primary-link-checked"
+        "prime",
+        "implicit-process-reward",
+        "rlvr",
+        "process-supervision",
+        "representative-track-10"
       ],
-      "one_line_summary": "Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.",
-      "why_it_matters": "It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.",
-      "data_object": "rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop",
-      "feedback_verifier": "implicit process rewards derived from outcome labels",
-      "audit_focus": "implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes",
-      "curation_level": "L2_artifact_verified",
+      "one_line_summary": "PRIME derives implicit process rewards from outcome labels and online rollouts for reasoning RL.",
+      "why_it_matters": "It marks a central Track 10 question: whether process-level rewards can scale without manual step labels.",
+      "data_object": "prompt, rollout trace, outcome label, implicit process reward, and RL update target.; process: prompt, reasoning step, outcome label; online RL training over reasoning tasks.",
+      "feedback_verifier": "implicit process rewards derived from outcome labels and policy rollouts.",
+      "audit_focus": "Implicit rewards can still be hacked by the online policy., Outcome labels may assign misleading credit to bad intermediate steps., Reported gains depend on rollout budget and advantage estimator details.",
+      "curation_level": "L3_summary_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -12085,13 +12416,13 @@ window.ATLAS_DATA = {
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
-        "code": "https://github.com/PRIME-RL/PRIME",
+        "doi": "https://doi.org/10.48550/arXiv.2502.01456",
+        "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.01456"
     },
@@ -12100,7 +12431,15 @@ window.ATLAS_DATA = {
       "title": "AutoPSV: Automated Process-Supervised Verifier",
       "year": 2024,
       "venue": "arXiv",
-      "authors": [],
+      "authors": [
+        "Jianqiao Lu",
+        "Zhiyang Dou",
+        "Hongru Wang",
+        "Zeyu Cao",
+        "Jianbo Dai",
+        "Yingjia Wan",
+        "Zhijiang Guo"
+      ],
       "source_role": [
         "process_supervision",
         "verifier_reward",
@@ -12141,7 +12480,7 @@ window.ATLAS_DATA = {
       "data_object": "step-level confidence-change annotations; process: reasoning step, verifier confidence, relative confidence change; offline reasoning traces",
       "feedback_verifier": "answer-trained verifier converted into process annotations",
       "audit_focus": "answer-level verifier confidence can mislabel intermediate steps, relative confidence changes may not identify causal first errors, commonsense and math tasks may require different error taxonomies",
-      "curation_level": "L2_artifact_verified",
+      "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -12158,7 +12497,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2405.16802"
     },
@@ -12221,7 +12560,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2406.18629"
     },
@@ -12288,7 +12627,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2501.07861"
     },
@@ -12358,7 +12697,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/prmbench.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2501.03124"
     },
@@ -12395,7 +12734,7 @@ window.ATLAS_DATA = {
       "data_object": "metadata pending",
       "feedback_verifier": "metadata pending",
       "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
+      "curation_level": "L4_carded",
       "status": "needs_metadata",
       "needs_search": true,
       "artifacts": {
@@ -12412,7 +12751,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -12479,7 +12818,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/processbench.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2412.06559"
     },
@@ -12533,7 +12872,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -12592,7 +12931,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/qwen3.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.09388"
     },
@@ -12644,7 +12983,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2508.05004"
     },
@@ -12704,7 +13043,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/r2e_gym.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.07164"
     },
@@ -12757,7 +13096,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -12810,7 +13149,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.13388"
     },
@@ -12818,34 +13157,59 @@ window.ATLAS_DATA = {
       "id": "reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025",
       "title": "Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs",
       "year": 2025,
-      "venue": "arXiv preprint arXiv:2506.14245",
-      "authors": [],
+      "venue": "arXiv",
+      "authors": [
+        "Xumeng Wen",
+        "Zihan Liu",
+        "Shun Zheng",
+        "Zhijian Xu",
+        "Shengyu Ye",
+        "Zhirong Wu",
+        "Xiao Liang",
+        "Yang Wang",
+        "Junjie Li",
+        "Ziming Miao"
+      ],
       "source_role": [
-        "survey_background"
+        "scaling_study",
+        "audit_failure"
       ],
       "verification_contract": [
-        "unknown"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
-        "unknown"
+        "answer_level",
+        "step_level"
       ],
       "training_use": [
-        "unknown"
+        "evaluation",
+        "audit",
+        "rlvr"
       ],
-      "domains": [],
+      "domains": [
+        "rlvr",
+        "cot-pass-k",
+        "math"
+      ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "scaling_rlvr_test_time_compute",
+        "process_trace_supervision_data",
+        "audit_failure_contamination_verifier_attacks"
       ],
-      "subfield": "Other related work",
+      "subfield": "🎲 pass@k / sampling budget",
       "tags": [
-        "seeded-from-bib"
+        "cot-pass-k",
+        "rlvr-evaluation",
+        "reasoning-trace-audit",
+        "representative-track-10"
       ],
-      "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-      "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-      "data_object": "metadata pending",
-      "feedback_verifier": "metadata pending",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L1_link_verified",
+      "one_line_summary": "This paper introduces CoT-Pass@K-style evaluation to distinguish lucky final answers from correct reasoning traces under RLVR.",
+      "why_it_matters": "It sharpens Track 10 by making the unit of scaling a verified reasoning trace, not only a correct final answer.",
+      "data_object": "problem, chain-of-thought, final answer, pass@k, and CoT-Pass@K judgment.; process: problem, reasoning trace, final answer; reasoning benchmark evaluation with answer and chain correctness checks.",
+      "feedback_verifier": "verifiable final-answer reward plus CoT-Pass@K reasoning-path metric.",
+      "audit_focus": "Trace correctness judgments are harder than final-answer checks., CoT-Pass@K can depend on annotator or judge criteria., Comparisons can mix training-stage effects with sampling-budget effects.",
+      "curation_level": "L3_summary_ready",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -12856,13 +13220,13 @@ window.ATLAS_DATA = {
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": null,
+        "doi": "https://doi.org/10.48550/arXiv.2506.14245",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.14245"
     },
@@ -12915,7 +13279,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.11536"
     },
@@ -12970,7 +13334,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -13026,7 +13390,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2508.20722"
     },
@@ -13078,7 +13442,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -13138,7 +13502,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/s1.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2501.19393"
     },
@@ -13192,7 +13556,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.12025"
     },
@@ -13244,7 +13608,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.20087"
     },
@@ -13297,7 +13661,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2509.25300"
     },
@@ -13350,7 +13714,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2508.13180"
     },
@@ -13402,7 +13766,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -13455,7 +13819,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.22312"
     },
@@ -13515,7 +13879,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/spurious_rewards.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.10947"
     },
@@ -13568,7 +13932,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2506.10947"
     },
@@ -13628,7 +13992,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://subliminal-learning.com/",
         "bibtex": null,
-        "card": "cards/failures/subliminal-learning.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2507.14805"
     },
@@ -13680,7 +14044,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2507.14805"
     },
@@ -13743,7 +14107,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/agents/swe_gym.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2412.21139"
     },
@@ -13797,7 +14161,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.20411"
     },
@@ -13850,7 +14214,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -13904,7 +14268,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.18449"
     },
@@ -13958,7 +14322,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -14020,7 +14384,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/scaling-behaviors-rl-post-training.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2509.25300"
     },
@@ -14074,7 +14438,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -14126,7 +14490,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2505.22617"
     },
@@ -14178,7 +14542,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2507.14843"
     },
@@ -14230,7 +14594,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2510.06557"
     },
@@ -14283,7 +14647,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -14335,7 +14699,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2510.27072"
     },
@@ -14401,7 +14765,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/recipes/ttrl.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.16084"
     },
@@ -14453,7 +14817,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -14507,7 +14871,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -14560,7 +14924,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -14613,7 +14977,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2604.18292"
     },
@@ -14668,7 +15032,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2602.01511"
     },
@@ -14721,7 +15085,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2604.07666"
     },
@@ -14774,7 +15138,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2603.00077"
     },
@@ -14828,7 +15192,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2604.20051"
     },
@@ -14881,7 +15245,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2603.17775"
     },
@@ -14934,7 +15298,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2605.16826"
     },
@@ -14988,7 +15352,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2603.16223"
     },
@@ -15040,7 +15404,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2602.12125"
     },
@@ -15092,7 +15456,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2511.13646"
     },
@@ -15146,7 +15510,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2604.15149"
     },
@@ -15200,7 +15564,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2602.00846"
     },
@@ -15254,7 +15618,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -15308,7 +15672,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -15362,7 +15726,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2602.12413"
     },
@@ -15415,7 +15779,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2601.11061"
     },
@@ -15468,7 +15832,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2602.03411"
     },
@@ -15522,7 +15886,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -15574,7 +15938,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2603.24472"
     },
@@ -15637,7 +16001,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/open-r1/OpenR1-Math-220k",
         "project": null,
         "bibtex": null,
-        "card": "cards/releases/openr1.md"
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -15704,7 +16068,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/omegaprm.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2406.06592"
     },
@@ -15713,7 +16077,15 @@ window.ATLAS_DATA = {
       "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
       "year": 2025,
       "venue": "arXiv",
-      "authors": [],
+      "authors": [
+        "Zhangchen Xu",
+        "Yuetai Li",
+        "Fengqing Jiang",
+        "Bhaskar Ramasubramanian",
+        "Luyao Niu",
+        "Bill Yuchen Lin",
+        "Radha Poovendran"
+      ],
       "source_role": [
         "verifier_reward",
         "audit_failure",
@@ -15773,7 +16145,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/verifiers/tinyv.md"
+        "paper_card_source": "paper_cards/sources/tinyv-2025"
       },
       "primary_link": "https://arxiv.org/abs/2505.14625"
     },
@@ -15826,7 +16198,7 @@ window.ATLAS_DATA = {
       "data_object": "code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments",
       "feedback_verifier": "unit tests, execution feedback, and agent task success signals",
       "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L0_seeded",
+      "curation_level": "L4_carded",
       "status": "partial",
       "needs_search": true,
       "artifacts": {
@@ -15843,7 +16215,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://qwenlm.github.io/blog/qwen3-coder/",
         "bibtex": null,
-        "card": "cards/recipes/qwen3_coder.md"
+        "paper_card_source": null
       },
       "primary_link": null
     },
@@ -15912,7 +16284,7 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/openai/gsm8k",
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/gsm8k-grade-school-math-8k.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2110.14168"
     },
@@ -15976,7 +16348,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": "cards/benchmarks/humaneval-hand-written-evaluation-set.md"
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2107.03374"
     },
@@ -16034,9 +16406,1480 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2407.11511"
+    },
+    {
+      "id": "program-synthesis-with-large-language-models-2021",
+      "title": "Program Synthesis with Large Language Models",
+      "year": 2021,
+      "venue": "arXiv",
+      "authors": [
+        "Jacob Austin",
+        "Augustus Odena",
+        "Maxwell Nye",
+        "Maarten Bosma",
+        "Henryk Michalewski",
+        "David Dohan",
+        "Ellen Jiang",
+        "Carrie Cai",
+        "Michael Terry",
+        "Quoc Le",
+        "Charles Sutton"
+      ],
+      "source_role": [
+        "benchmark",
+        "scaling_study",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "sft",
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "code",
+        "program-synthesis",
+        "benchmark"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "google-research",
+        "mbpp",
+        "program-synthesis",
+        "executable-code"
+      ],
+      "one_line_summary": "Google Research benchmark paper that studies Python program synthesis with executable checks and model-size scaling.",
+      "why_it_matters": "It adds an early high-team code-verification waypoint before HumanEval/APPS became standard surfaces for pass@k and verifier-backed code evaluation.",
+      "data_object": "natural-language programming prompt with Python solution and executable tests or outputs.; process: task description, reference program, generated program; Python execution benchmark for short program synthesis.",
+      "feedback_verifier": "unit tests or expected program outputs.",
+      "audit_focus": "Small Python tasks can overstate transfer to competitive programming or repository repair., Execution-output prediction is not equivalent to program synthesis., Training on benchmark prompts can contaminate later code-evaluation claims.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2108.07732",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2108.07732",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2108.07732"
+    },
+    {
+      "id": "ds-1000-natural-and-reliable-benchmark-for-data-science-code-generation-2022",
+      "title": "DS-1000: A Natural and Reliable Benchmark for Data Science Code Generation",
+      "year": 2022,
+      "venue": "arXiv",
+      "authors": [
+        "Yuhang Lai",
+        "Chengxi Li",
+        "Yiming Wang",
+        "Tianyi Zhang",
+        "Ruiqi Zhong",
+        "Luke Zettlemoyer",
+        "Scott Wen-tau Yih",
+        "Daniel Fried",
+        "Sida I. Wang",
+        "Tao Yu"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "sft"
+      ],
+      "domains": [
+        "code",
+        "data-science",
+        "python"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "data-science",
+        "executable-code",
+        "ds-1000"
+      ],
+      "one_line_summary": "DS-1000 evaluates data-science code generation with tests and API constraints over realistic Python library tasks.",
+      "why_it_matters": "It broadens Track 03 beyond toy function synthesis toward dependency-sensitive executable code tasks.",
+      "data_object": "natural-language data-science task with Python code solution.; process: prompt, required library, generated code; Python data-science libraries such as NumPy and Pandas.",
+      "feedback_verifier": "functional tests plus API/keyword constraints.",
+      "audit_focus": "Python library versions can change accepted behavior., API constraints may reward surface compliance rather than robust code., Public benchmark reuse can train models on test cases.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2211.11501",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2211.11501",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": "https://ds1000-code-gen.github.io",
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2211.11501"
+    },
+    {
+      "id": "evalplus-rigorous-evaluation-of-large-language-models-for-code-generation-2023",
+      "title": "Is Your Code Generated by Large Language Models Really Correct? Rigorous Evaluation of Large Language Models for Code Generation",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Jiawei Liu",
+        "Chunqiu Steven Xia",
+        "Yuyao Wang",
+        "Lingming Zhang"
+      ],
+      "source_role": [
+        "benchmark",
+        "audit_failure"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "code",
+        "verifier-robustness"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "evalplus",
+        "verifier-robustness",
+        "code-tests"
+      ],
+      "one_line_summary": "EvalPlus strengthens HumanEval/MBPP-style code evaluation with generated and mutation-based tests.",
+      "why_it_matters": "It directly audits a central Track 03 assumption: passing public unit tests is not the same as functional correctness.",
+      "data_object": "code-generation task, candidate solution, original tests, and augmented tests.; process: prompt, candidate program, generated tests; Python execution harness for HumanEval+ and MBPP+.",
+      "feedback_verifier": "expanded unit-test suites generated by LLM and mutation strategies.",
+      "audit_focus": "Generated tests can still miss semantic edge cases., Public augmented tests may cause future contamination., Stricter tests can alter leaderboard rankings without changing task coverage.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2305.01210",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2305.01210",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/evalplus/evalplus",
+        "data": null,
+        "huggingface": null,
+        "project": "https://evalplus.github.io",
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2305.01210"
+    },
+    {
+      "id": "lever-learning-to-verify-language-to-code-generation-with-execution-2023",
+      "title": "LEVER: Learning to Verify Language-to-Code Generation with Execution",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Ansong Ni",
+        "Srini Iyer",
+        "Dragomir Radev",
+        "Ves Stoyanov",
+        "Wen-tau Yih",
+        "Sida I. Wang",
+        "Xi Victoria Lin"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "scalar_reward",
+        "answer_level"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "code",
+        "learned-verifier"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "preference_reward_feedback_data",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "learned-verifier",
+        "code-reranking",
+        "execution-feedback"
+      ],
+      "one_line_summary": "LEVER trains a verifier over generated code and execution results to rerank language-to-code samples.",
+      "why_it_matters": "It is a bridge from hard unit-test correctness to learned verifier rewards for code reasoning.",
+      "data_object": "natural-language input, generated program, execution result, and verifier score.; process: prompt, program sample, execution result; executable code tasks with sampled programs.",
+      "feedback_verifier": "learned verifier over code and execution results.",
+      "audit_focus": "Learned verifier can overfit execution-result artifacts., Reranking may prefer semantically wrong programs with plausible outputs., Combining model probability and verifier score can hide verifier calibration errors.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2302.08468",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2302.08468",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2302.08468"
+    },
+    {
+      "id": "cruxeval-benchmark-for-code-reasoning-understanding-and-execution-2024",
+      "title": "CRUXEval: A Benchmark for Code Reasoning, Understanding and Execution",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Alex Gu",
+        "Baptiste Roziere",
+        "Hugh Leather",
+        "Armando Solar-Lezama",
+        "Gabriel Synnaeve",
+        "Sida I. Wang"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "sft"
+      ],
+      "domains": [
+        "code",
+        "execution-reasoning"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "cruxeval",
+        "code-reasoning",
+        "execution-semantics"
+      ],
+      "one_line_summary": "CRUXEval turns short Python execution semantics into verifiable input/output reasoning tasks.",
+      "why_it_matters": "It adds a compact programmatic-verification surface for code understanding, not only code synthesis.",
+      "data_object": "Python function with either input prediction or output prediction target.; process: function body, input value, output value; Python execution semantics.",
+      "feedback_verifier": "exact execution result for short Python functions.",
+      "audit_focus": "Short functions may overrepresent local execution reasoning., Exact I/O matching does not test broader software engineering skill., Public items can be memorized after release.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2401.03065",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2401.03065",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2401.03065"
+    },
+    {
+      "id": "theoremqa-theorem-driven-question-answering-dataset-2023",
+      "title": "TheoremQA: A Theorem-driven Question Answering dataset",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Wenhu Chen",
+        "Ming Yin",
+        "Max Ku",
+        "Pan Lu",
+        "Yixin Wan",
+        "Xueguang Ma",
+        "Jianyu Xu",
+        "Xinyi Wang",
+        "Tony Xia"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "mixed",
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "sft"
+      ],
+      "domains": [
+        "math",
+        "science",
+        "theorem-reasoning"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "judgment_rubric_domain_expert_data",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "theoremqa",
+        "theorem-reasoning",
+        "science-qa"
+      ],
+      "one_line_summary": "TheoremQA evaluates whether models can apply named theorems to answer expert-curated math and science questions.",
+      "why_it_matters": "It widens programmatic-verification curation to theorem-grounded science tasks where exact scoring and expert judgment meet.",
+      "data_object": "theorem-grounded question with reference answer and optional program-of-thought solution.; process: theorem, question, reference answer; theorem-based QA benchmark with exact and rubric-like scoring.",
+      "feedback_verifier": "reference answer matching and problem-specific grading.",
+      "audit_focus": "Some answers require judgment or unit handling rather than exact matching., Program-of-thought can solve with code without demonstrating theorem understanding., Public theorem-answer pairs can contaminate future evaluations.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2305.12524",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2305.12524",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/wenhuchen/TheoremQA",
+        "data": "https://github.com/wenhuchen/TheoremQA",
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2305.12524"
+    },
+    {
+      "id": "putnambench-evaluating-neural-theorem-provers-on-the-putnam-mathematical-competition-2024",
+      "title": "PutnamBench: Evaluating Neural Theorem-Provers on the Putnam Mathematical Competition",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "George Tsoukalas",
+        "Jasper Lee",
+        "John Jennings",
+        "Jimmy Xin",
+        "Michelle Ding",
+        "Michael Jennings",
+        "Amitayush Thakur",
+        "Swarat Chaudhuri"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "step_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "sft"
+      ],
+      "domains": [
+        "math",
+        "theorem-proving",
+        "formal-methods"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "putnambench",
+        "formal-proof",
+        "lean",
+        "isabelle",
+        "coq"
+      ],
+      "one_line_summary": "PutnamBench formalizes Putnam competition problems across proof assistants for checker-backed theorem-proving evaluation.",
+      "why_it_matters": "It gives Track 03 a high-difficulty proof benchmark where correctness is a proof-assistant predicate rather than textual grading.",
+      "data_object": "informal theorem, formal statement, proof assistant target, and prover output.; process: Putnam problem, formal statement, proof assistant; Lean 4, Isabelle, and Coq/Rocq theorem-proving environments.",
+      "feedback_verifier": "proof assistant kernel/checker acceptance.",
+      "audit_focus": "Formalization choices can change problem difficulty., Proof assistant versions and libraries can drift., Cross-system comparisons can hide differences in available tactics and libraries.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2407.11214",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2407.11214",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/trishullab/PutnamBench",
+        "data": "https://github.com/trishullab/PutnamBench",
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2407.11214"
+    },
+    {
+      "id": "omni-math-universal-olympiad-level-mathematic-benchmark-for-large-language-models-2024",
+      "title": "Omni-MATH: A Universal Olympiad Level Mathematic Benchmark For Large Language Models",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Bofei Gao",
+        "Feifan Song",
+        "Zhe Yang",
+        "Zefan Cai",
+        "Yibo Miao",
+        "Qingxiu Dong",
+        "Lei Li",
+        "Chenghao Ma",
+        "Liang Chen",
+        "Runxin Xu"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "mixed",
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "sft",
+        "audit"
+      ],
+      "domains": [
+        "math",
+        "olympiad",
+        "benchmark"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "omni-math",
+        "olympiad",
+        "math-benchmark"
+      ],
+      "one_line_summary": "Omni-MATH adds a large olympiad-level math benchmark with human annotation and answer-verification challenges.",
+      "why_it_matters": "It gives Track 03/10 a harder math evaluation surface for reasoning models after easier math benchmarks saturate.",
+      "data_object": "competition math problem, annotated solution/answer, difficulty and sub-domain metadata.; process: problem, sub-domain, difficulty; olympiad-level math benchmark and answer-grading pipeline.",
+      "feedback_verifier": "reference answers, answer normalization, and human annotation.",
+      "audit_focus": "Answer normalization may fail for proof-style or expression-equivalent answers., Public competition problems can be contaminated., Difficulty labels may not correspond to verifier reliability.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2410.07985",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2410.07985",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2410.07985"
+    },
+    {
+      "id": "olympiadbench-challenging-benchmark-for-agi-with-olympiad-level-bilingual-multimodal-scientific-problems-2024",
+      "title": "OlympiadBench: A Challenging Benchmark for Promoting AGI with Olympiad-Level Bilingual Multimodal Scientific Problems",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Chaoqun He",
+        "Renjie Luo",
+        "Yuzhuo Bai",
+        "Shengding Hu",
+        "Zhen Leng Thai",
+        "Junhao Shen",
+        "Jinyi Hu",
+        "Xu Han",
+        "Yujie Huang",
+        "Maosong Sun"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "mixed",
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "step_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "sft"
+      ],
+      "domains": [
+        "math",
+        "physics",
+        "multimodal",
+        "olympiad"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "judgment_rubric_domain_expert_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "olympiadbench",
+        "multimodal",
+        "math",
+        "physics"
+      ],
+      "one_line_summary": "OlympiadBench packages bilingual multimodal olympiad math and physics problems with expert annotations and scoring.",
+      "why_it_matters": "It captures cases where programmatic answer checking, expert rubric scoring, and multimodal reasoning must be audited together.",
+      "data_object": "problem statement, optional image, step-level annotation, reference answer, and score.; process: problem, modality, subject; bilingual multimodal math/physics benchmark.",
+      "feedback_verifier": "answer key, expert annotations, and scoring methodology.",
+      "audit_focus": "Some items need rubric judgment rather than exact answer checking., Multimodal diagrams introduce OCR/vision failure separate from reasoning., Public olympiad problems and solutions can leak into training data.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2402.14008",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2402.14008",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/OpenBMB/OlympiadBench",
+        "data": "https://github.com/OpenBMB/OlympiadBench",
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2402.14008"
+    },
+    {
+      "id": "tree-of-thoughts-deliberate-problem-solving-with-large-language-models-2023",
+      "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Shunyu Yao",
+        "Dian Yu",
+        "Jeffrey Zhao",
+        "Izhak Shafran",
+        "Thomas L. Griffiths",
+        "Yuan Cao",
+        "Karthik Narasimhan"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "test-time-compute",
+        "search",
+        "planning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🌳 Search trees / MCTS",
+      "tags": [
+        "tree-of-thoughts",
+        "test-time-compute",
+        "search"
+      ],
+      "one_line_summary": "Tree of Thoughts turns reasoning into a search tree of intermediate thoughts with self-evaluation and backtracking.",
+      "why_it_matters": "It anchors Track 10's search-budget vocabulary before RLVR-era reasoning models popularized test-time compute scaling.",
+      "data_object": "search tree of intermediate thoughts, state evaluations, and final answer.; process: thought state, branch score, search step; prompt-level search scaffold over LLM-generated thoughts.",
+      "feedback_verifier": "self-evaluation, task success checks, or environment-specific scoring.",
+      "audit_focus": "Search budget can dominate comparisons with chain-of-thought baselines., Self-evaluation can reward plausible but wrong branches., Task-specific scaffolds may not transfer to programmatic RLVR settings.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2305.10601",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2305.10601",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/princeton-nlp/tree-of-thought-llm",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2305.10601"
+    },
+    {
+      "id": "lets-reward-step-by-step-step-level-reward-model-as-navigators-for-reasoning-2023",
+      "title": "Let's reward step by step: Step-Level reward model as the Navigators for Reasoning",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Qianli Ma",
+        "Haotian Zhou",
+        "Tingkai Liu",
+        "Jianbo Yuan",
+        "Pengfei Liu",
+        "Yang You",
+        "Hongxia Yang"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "process_supervision",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed",
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "reward_modeling",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "code",
+        "process-reward"
+      ],
+      "category": [
+        "process_trace_supervision_data",
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧪 Process reward models",
+      "tags": [
+        "prm",
+        "step-reward",
+        "test-time-search"
+      ],
+      "one_line_summary": "Uses step-level reward models as navigators for math and code reasoning during inference.",
+      "why_it_matters": "It makes the verifier-scaling question concrete: the reward model is not only trained, it actively steers the search path.",
+      "data_object": "partial reasoning path, step score, search decision, and final answer.; process: prompt, reasoning step, PRM score; PRM-guided inference over math and code tasks.",
+      "feedback_verifier": "step-level process reward model.",
+      "audit_focus": "Greedy PRM navigation can prefer locally plausible but globally wrong steps., Automatically generated code-step rewards can inherit executor artifacts., PRM gains should be separated from extra inference budget.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2310.10080",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2310.10080",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2310.10080"
+    },
+    {
+      "id": "scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023",
+      "title": "Scaling Relationship on Learning Mathematical Reasoning with Large Language Models",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Zheng Yuan",
+        "Hongyi Yuan",
+        "Chengpeng Li",
+        "Guanting Dong",
+        "Keming Lu",
+        "Chuanqi Tan",
+        "Chang Zhou",
+        "Jingren Zhou"
+      ],
+      "source_role": [
+        "scaling_study",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "sft",
+        "distillation",
+        "evaluation"
+      ],
+      "domains": [
+        "math",
+        "data-scaling",
+        "rejection-sampling"
+      ],
+      "category": [
+        "instruction_demonstration_rationale_data",
+        "programmatically_verifiable_outcome_data",
+        "data_construction_open_release_recipes",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🧱 Instruction tuning / SFT data",
+      "tags": [
+        "math-scaling",
+        "rejection-sampling",
+        "rft"
+      ],
+      "one_line_summary": "Studies how supervised math data and rejection-sampled correct reasoning paths scale mathematical reasoning performance.",
+      "why_it_matters": "It gives Track 10 a pre-RLVR data-scaling anchor for separating unique examples from accepted rollout traces.",
+      "data_object": "math problem, generated reasoning trace, final answer, and correctness label.; process: problem, generated reasoning path, final answer; math answer-verification benchmark.",
+      "feedback_verifier": "final-answer correctness used for rejection sampling.",
+      "audit_focus": "More accepted traces can mean repeated near-duplicates rather than new problems., Final-answer filtering can keep invalid reasoning with correct answers., Data-scaling curves can conflate base-model quality with verifier selectivity.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2308.01825",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2308.01825",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2308.01825"
+    },
+    {
+      "id": "training-language-models-to-self-correct-via-reinforcement-learning-2024",
+      "title": "Training Language Models to Self-Correct via Reinforcement Learning",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Aviral Kumar",
+        "Vincent Zhuang",
+        "Rishabh Agarwal",
+        "Yi Su",
+        "John D Co-Reyes",
+        "Avi Singh",
+        "Kate Baumli",
+        "Shariq Iqbal",
+        "Doina Precup",
+        "Aleksandra Faust"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed",
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "rlvr",
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "self-correction",
+        "math",
+        "code"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "⏱️ Test-time compute logs",
+      "tags": [
+        "self-correction",
+        "reinforcement-learning",
+        "test-time-compute"
+      ],
+      "one_line_summary": "SCoRe trains models under their own correction distribution so self-correction becomes a reward-bearing trajectory.",
+      "why_it_matters": "It records self-correction as data, not just behavior: initial answer, correction trace, reward, and extra budget all matter.",
+      "data_object": "prompt, first answer, correction trace, final answer, and reward.; process: initial response, correction attempt, final response; multi-turn self-correction training/evaluation setup.",
+      "feedback_verifier": "task outcome reward plus correction-oriented bonus/regularization.",
+      "audit_focus": "Correction behavior can collapse to a narrow mode., Offline correction traces may mismatch the trained policy distribution., Extra correction turns change inference-budget comparisons.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2409.12917",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2409.12917",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2409.12917"
+    },
+    {
+      "id": "free-process-rewards-without-process-labels-2024",
+      "title": "Free Process Rewards without Process Labels",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Lifan Yuan",
+        "Wendi Li",
+        "Huayu Chen",
+        "Ganqu Cui",
+        "Ning Ding",
+        "Kaiyan Zhang",
+        "Bowen Zhou",
+        "Zhiyuan Liu",
+        "Hao Peng"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "process_supervision"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "process_reward",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "reward_modeling",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "process-reward"
+      ],
+      "category": [
+        "process_trace_supervision_data",
+        "preference_reward_feedback_data",
+        "scaling_rlvr_test_time_compute",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧪 Process reward models",
+      "tags": [
+        "process-reward",
+        "implicit-prm",
+        "outcome-labels"
+      ],
+      "one_line_summary": "Shows that outcome-labeled responses can induce implicit process rewards without explicit step labels.",
+      "why_it_matters": "It directly addresses a Track 10 bottleneck: whether PRM-style feedback scales without expensive process annotation.",
+      "data_object": "instruction, response, outcome label, implicit step/process reward.; process: instruction, response, outcome label; math reasoning tasks with outcome supervision.",
+      "feedback_verifier": "implicit PRM derived from an outcome reward model.",
+      "audit_focus": "Implicit process rewards inherit ORM assumptions., Correct final answers can still attach misleading step rewards., Majority voting can hide reward calibration failures.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2412.01981",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2412.01981",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2412.01981"
+    },
+    {
+      "id": "competition-level-code-generation-with-alphacode-2022",
+      "title": "Competition-Level Code Generation with AlphaCode",
+      "year": 2022,
+      "venue": "Science",
+      "authors": [
+        "Yujia Li",
+        "David Choi",
+        "Junyoung Chung",
+        "Nate Kushman",
+        "Julian Schrittwieser",
+        "Remi Leblond",
+        "Tom Eccles",
+        "James Keeling",
+        "Felix Gimeno",
+        "Oriol Vinyals"
+      ],
+      "source_role": [
+        "model_report",
+        "benchmark",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "sft",
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "code",
+        "competitive-programming",
+        "test-time-compute"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "deepmind",
+        "alphacode",
+        "codecontests",
+        "pass-at-k",
+        "competitive-programming"
+      ],
+      "one_line_summary": "AlphaCode shows how competitive-programming data, hidden tests, massive sampling, and filtering become a programmatic reasoning stack.",
+      "why_it_matters": "It is a top-team, top-venue anchor for treating code solutions as verifier-checked samples rather than plain text completions.",
+      "data_object": "problem statement, generated program, sampled candidate set, and submission verdict.; process: problem statement, generated code sample, cluster or filter score; Codeforces-like competitive programming judge with hidden tests.",
+      "feedback_verifier": "program behavior under test cases and contest verdicts.",
+      "audit_focus": "Large sampling budgets can dominate model quality., Public contest solutions can contaminate training or evaluation if dates are not controlled., Passing hidden tests does not expose failed attempts or reasoning traces.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2203.07814",
+        "venue": "https://www.science.org/doi/10.1126/science.abq1158",
+        "arxiv": "https://arxiv.org/abs/2203.07814",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.1126/science.abq1158",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": "https://deepmind.google/discover/blog/competitive-programming-with-alphacode/",
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2203.07814"
+    },
+    {
+      "id": "mathematical-discoveries-from-program-search-with-large-language-models-2024",
+      "title": "Mathematical discoveries from program search with large language models",
+      "year": 2024,
+      "venue": "Nature",
+      "authors": [
+        "Bernardino Romera-Paredes",
+        "Mohammadamin Barekatain",
+        "Alexander Novikov",
+        "Matej Balog",
+        "M. Pawan Kumar",
+        "Alhussein Fawzi"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "math",
+        "code",
+        "scientific-discovery",
+        "combinatorial-optimization"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "deepmind",
+        "funsearch",
+        "program-search",
+        "scientific-discovery",
+        "evaluator-backed"
+      ],
+      "one_line_summary": "FunSearch pairs an LLM with executable evaluators and evolutionary search to discover verifier-scored programs.",
+      "why_it_matters": "It expands programmatic verification beyond benchmark answering: the reusable record is a candidate program, evaluator score, search budget, and audit trail.",
+      "data_object": "executable candidate program scored by a domain-specific evaluator.; process: prompt with sampled programs, generated function, execution result; executable program-search environment for math and combinatorial optimization.",
+      "feedback_verifier": "deterministic evaluator that scores candidate programs.",
+      "audit_focus": "The evaluator can become the bottleneck or encode a narrow objective., Generated programs that score well may be hard to generalize beyond the tested inputs., Search cost and evaluator parallelism must be reported before comparing systems.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://www.nature.com/articles/s41586-023-06924-6",
+        "venue": "https://www.nature.com/articles/s41586-023-06924-6",
+        "arxiv": null,
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.1038/s41586-023-06924-6",
+        "code": "https://github.com/google-deepmind/funsearch",
+        "data": null,
+        "huggingface": null,
+        "project": "https://deepmind.google/discover/blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/",
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://www.nature.com/articles/s41586-023-06924-6"
+    },
+    {
+      "id": "solving-olympiad-geometry-without-human-demonstrations-2024",
+      "title": "Solving olympiad geometry without human demonstrations",
+      "year": 2024,
+      "venue": "Nature",
+      "authors": [
+        "Trieu H. Trinh",
+        "Yuhuai Wu",
+        "Quoc V. Le",
+        "He He",
+        "Thang Luong"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "benchmark",
+        "model_report"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "step_level"
+      ],
+      "training_use": [
+        "sft",
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "geometry",
+        "theorem-proving"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "deepmind",
+        "alphageometry",
+        "theorem-proving",
+        "synthetic-proof-data",
+        "symbolic-verifier"
+      ],
+      "one_line_summary": "AlphaGeometry trains on synthetic geometry proofs and uses symbolic proof feedback to solve olympiad geometry problems.",
+      "why_it_matters": "It is one of the clearest top-team examples of programmatically verifiable reasoning data generated without human demonstrations.",
+      "data_object": "theorem premises, auxiliary construction, symbolic deduction trace, and proof result.; process: theorem premises, conclusion, auxiliary construction; geometry-specific symbolic deduction engine and IMO-AG benchmark.",
+      "feedback_verifier": "symbolic geometry prover verifies whether the theorem conclusion is reached.",
+      "audit_focus": "Geometry-specific language may not transfer to Lean or broader mathematics., Symbolic engine coverage can hide unrepresented problem types., Search budget and translation choices affect comparison to human olympiad performance.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://www.nature.com/articles/s41586-023-06747-5",
+        "venue": "https://www.nature.com/articles/s41586-023-06747-5",
+        "arxiv": null,
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.1038/s41586-023-06747-5",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": "https://deepmind.google/discover/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/",
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://www.nature.com/articles/s41586-023-06747-5"
+    },
+    {
+      "id": "scaling-llm-test-time-compute-optimally-can-be-more-effective-than-scaling-model-parameters-2024",
+      "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Charlie Snell",
+        "Jaehoon Lee",
+        "Kelvin Xu",
+        "Aviral Kumar"
+      ],
+      "source_role": [
+        "scaling_study",
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "process_reward",
+        "answer_level"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "test-time-compute",
+        "math",
+        "scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute",
+        "rollout_search_test_time_trace_data",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "test-time-compute",
+        "compute-optimal",
+        "verifier-guided-search",
+        "scaling"
+      ],
+      "one_line_summary": "Studies when adaptive test-time compute and verifier-guided search can beat simply scaling model parameters.",
+      "why_it_matters": "It gives Track 10 a direct framework for auditing inference-budget claims instead of treating every improvement as better reasoning data.",
+      "data_object": "prompt, candidate response or reasoning path, verifier score, and compute allocation.; process: prompt difficulty, candidate response, process reward score; verifier-guided inference-time search over reasoning tasks.",
+      "feedback_verifier": "dense process-based verifier rewards and outcome success checks.",
+      "audit_focus": "Compute-optimal gains can disappear if prompt difficulty is misestimated., Dense verifier rewards may encode task-specific shortcuts., FLOPs-matched comparisons require transparent accounting of verifier and search cost.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2408.03314",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2408.03314",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2408.03314"
+    },
+    {
+      "id": "how-do-large-language-monkeys-get-their-power-laws-2025",
+      "title": "How Do Large Language Monkeys Get Their Power (Laws)?",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Rylan Schaeffer",
+        "Joshua Kazdan",
+        "John Hughes",
+        "Jordan Juravsky",
+        "Sara Price",
+        "Aengus Lynch",
+        "Erik Jones",
+        "Robert Kirk",
+        "Azalia Mirhoseini",
+        "Sanmi Koyejo"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "test-time-compute",
+        "math",
+        "code",
+        "proof"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute",
+        "rollout_search_test_time_trace_data",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🎲 pass@k / sampling budget",
+      "tags": [
+        "test-time-compute",
+        "repeated-sampling",
+        "power-law",
+        "pass-at-k"
+      ],
+      "one_line_summary": "Explains repeated-sampling scaling by separating per-problem success curves from aggregate heavy-tailed difficulty.",
+      "why_it_matters": "It helps readers audit pass@k and coverage claims by asking whether gains come from broad improvement or a few easy-to-sample tasks.",
+      "data_object": "problem, per-attempt success probability, aggregate coverage curve, and scaling-law fit.; process: problem id, single-attempt success probability, number of attempts; tasks with verifiable success under repeated sampling.",
+      "feedback_verifier": "task-specific correctness checks or benchmark success predicates.",
+      "audit_focus": "Aggregate power laws can hide per-problem exponential behavior., Heavy-tailed difficulty can make extrapolations brittle., Verifier availability determines whether extra samples can be converted into solved tasks.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2502.17578",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2502.17578",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2502.17578"
+    },
+    {
+      "id": "gold-medalist-performance-in-solving-olympiad-geometry-with-alphageometry2-2025",
+      "title": "Gold-medalist Performance in Solving Olympiad Geometry with AlphaGeometry2",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Yuri Chervonyi",
+        "Trieu H. Trinh",
+        "Miroslav Olsak",
+        "Xiaomeng Yang",
+        "Hoang Nguyen",
+        "Marcelo Menegali",
+        "Junehyuk Jung",
+        "Vikas Verma",
+        "Quoc V. Le",
+        "Thang Luong"
+      ],
+      "source_role": [
+        "model_report",
+        "construction_recipe",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "step_level"
+      ],
+      "training_use": [
+        "sft",
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "geometry",
+        "theorem-proving"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "deepmind",
+        "alphageometry2",
+        "theorem-proving",
+        "test-time-compute",
+        "synthetic-proof-data"
+      ],
+      "one_line_summary": "AlphaGeometry2 expands synthetic geometry data and search to gold-medalist-level geometry-solving performance.",
+      "why_it_matters": "It gives Track 03 and Track 10 a clean example where synthetic proof data, symbolic verification, and search budget are all first-class metadata.",
+      "data_object": "geometry statement, auxiliary construction, symbolic proof path, and solve result.; process: problem statement, representation-language translation, auxiliary construction; geometry representation language plus symbolic deduction engine.",
+      "feedback_verifier": "symbolic theorem-proving engine and solved/unsolved benchmark outcome.",
+      "audit_focus": "Geometry-specific representation limits claims outside plane geometry., Search budget and translation coverage can dominate reported gold-medalist comparisons., Synthetic proof language may bias the model toward verifier-specific constructions.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2502.03544",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2502.03544",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2502.03544"
     },
     {
       "id": "a-survey-of-reinforcement-learning-from-human-feedback-2023",
@@ -16106,7 +17949,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2312.14925"
     },
@@ -16189,7 +18032,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": "https://github.com/JLZhong23/awesome-reward-models",
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2504.12328"
     },
@@ -16267,7 +18110,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2406.11191"
     },
@@ -16352,7 +18195,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2407.16216"
     },
@@ -16415,7 +18258,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2502.17419"
     },
@@ -16479,7 +18322,7 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2503.16416"
     },
@@ -16540,20 +18383,1183 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "card": null
+        "paper_card_source": null
       },
       "primary_link": "https://arxiv.org/abs/2410.08385"
+    },
+    {
+      "id": "mle-bench-evaluating-machine-learning-agents-on-machine-learning-engineering-2024",
+      "title": "MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering",
+      "year": 2024,
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jun Shern Chan",
+        "Neil Chowdhury",
+        "Oliver Jaffe",
+        "James Aung",
+        "Dane Sherburn",
+        "Evan Mays",
+        "Giulio Starace",
+        "Kevin Liu",
+        "Leon Maksin",
+        "Tejal Patwardhan",
+        "Lilian Weng",
+        "Aleksander Madry"
+      ],
+      "source_role": [
+        "benchmark",
+        "agent_environment",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit",
+        "test_time_compute"
+      ],
+      "domains": [
+        "machine-learning-engineering",
+        "agents",
+        "kaggle",
+        "code"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "mle-bench",
+        "openai",
+        "ml-engineering",
+        "kaggle",
+        "representative-track-03"
+      ],
+      "one_line_summary": "MLE-bench evaluates agents on Kaggle-style ML engineering competitions with executable workflows and leaderboard metrics.",
+      "why_it_matters": "It expands Track 03 from code snippets to full ML engineering episodes where score, compute budget, and contamination are explicit.",
+      "data_object": "competition task, dataset, experiment/code artifacts, submission score, and resource budget.; process: competition id, dataset, agent scaffold; Kaggle-style ML engineering competitions with executable experiments and leaderboard scoring.",
+      "feedback_verifier": "competition metric compared with Kaggle leaderboard baselines.",
+      "audit_focus": "Leaderboards can reward overfitting to public competition practices., Resource scaling can dominate model comparisons., Kaggle data licenses vary by competition.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2410.07095",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2410.07095",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2410.07095",
+        "code": "https://github.com/openai/mle-bench",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2410.07095"
+    },
+    {
+      "id": "paperbench-evaluating-ai-s-ability-to-replicate-ai-research-2025",
+      "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Giulio Starace",
+        "Oliver Jaffe",
+        "Dane Sherburn",
+        "James Aung",
+        "Jun Shern Chan",
+        "Leon Maksin",
+        "Rachel Dias",
+        "Evan Mays",
+        "Benjamin Kinsella",
+        "Wyatt Thompson",
+        "Johannes Heidecke",
+        "Amelia Glaese",
+        "Tejal Patwardhan"
+      ],
+      "source_role": [
+        "benchmark",
+        "agent_environment",
+        "audit_failure"
+      ],
+      "verification_contract": [
+        "judgment_required",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "state_action_level",
+        "full_episode",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit",
+        "reward_modeling"
+      ],
+      "domains": [
+        "ai-research",
+        "agents",
+        "software-engineering",
+        "rubric-evaluation"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "judgment_rubric_domain_expert_data",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "paperbench",
+        "openai",
+        "research-replication",
+        "rubric-judge",
+        "representative-track-03"
+      ],
+      "one_line_summary": "PaperBench evaluates research-agent replication attempts with hierarchical rubrics and judge/human baselines.",
+      "why_it_matters": "It marks the point where Track 03 verification becomes a hybrid of executable artifacts, experiments, rubrics, and judge calibration.",
+      "data_object": "paper replication task, codebase/experiment artifacts, rubric item, judge score, and human baseline.; process: target paper, replication subtask, generated code; AI research replication environment with hierarchical rubrics.",
+      "feedback_verifier": "author co-developed rubrics and an LLM-based judge benchmarked against human grading.",
+      "audit_focus": "LLM judge scores can drift or encode rubric shortcuts., Replicating a paper mixes reading, coding, experimentation, and environment setup., Target papers may have public code that changes task difficulty.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2504.01848",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2504.01848",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2504.01848",
+        "code": "https://github.com/openai/preparedness",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2504.01848"
+    },
+    {
+      "id": "kernelbench-can-llms-write-efficient-gpu-kernels-2025",
+      "title": "KernelBench: Can LLMs Write Efficient GPU Kernels?",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Anne Ouyang",
+        "Simon Guo",
+        "Simran Arora",
+        "Alex L. Zhang",
+        "William Hu",
+        "Christopher Ré",
+        "Azalia Mirhoseini"
+      ],
+      "source_role": [
+        "benchmark",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute",
+        "rlvr"
+      ],
+      "domains": [
+        "code",
+        "gpu-kernels",
+        "performance-optimization"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "kernelbench",
+        "gpu-kernels",
+        "performance-reward",
+        "code-verification",
+        "representative-track-03"
+      ],
+      "one_line_summary": "KernelBench scores generated GPU kernels by both functional correctness and measured speedup.",
+      "why_it_matters": "It adds a high-value code surface where the verifier is not only pass/fail correctness but also measured performance.",
+      "data_object": "workload specification, generated kernel, functional test result, speedup, and fast p score.; process: PyTorch workload, generated kernel, compilation result; GPU execution and profiling environment for kernel correctness and speed.",
+      "feedback_verifier": "functional correctness tests plus runtime speedup threshold.",
+      "audit_focus": "Correct kernels can still be slower than baseline., Hardware-specific performance can vary widely., Compilation success can mask numerical precision bugs.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2502.10517",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2502.10517",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2502.10517",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2502.10517"
+    },
+    {
+      "id": "v-star-training-verifiers-for-self-taught-reasoners-2024",
+      "title": "V-STaR: Training Verifiers for Self-Taught Reasoners",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Arian Hosseini",
+        "Xingdi Yuan",
+        "Nikolay Malkin",
+        "Aaron Courville",
+        "Alessandro Sordoni",
+        "Rishabh Agarwal"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "pairwise_preference",
+        "scalar_reward",
+        "answer_level"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "preference_learning",
+        "test_time_compute",
+        "sft"
+      ],
+      "domains": [
+        "self-training",
+        "verifiers",
+        "math",
+        "code"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute",
+        "preference_reward_feedback_data",
+        "programmatically_verifiable_outcome_data",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "v-star",
+        "self-training",
+        "verifier",
+        "dpo",
+        "representative-track-10"
+      ],
+      "one_line_summary": "V-STaR trains a verifier from both correct and incorrect self-generated solutions, then uses it for candidate selection.",
+      "why_it_matters": "It makes failed rollouts a reusable data asset for verifier learning rather than discarded self-training waste.",
+      "data_object": "problem, candidate solution, correctness label, verifier preference, and selected answer.; process: problem, generated solution, correctness label; self-training loop over math and code reasoning benchmarks.",
+      "feedback_verifier": "DPO-trained verifier using both correct and incorrect self-generated solutions.",
+      "audit_focus": "Verifier may learn style cues instead of correctness., Incorrect samples are useful but can bias preference data., Best-of-N gains depend on candidate diversity and sample budget.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2402.06457",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2402.06457",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2402.06457",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2402.06457"
+    },
+    {
+      "id": "generative-verifiers-reward-modeling-as-next-token-prediction-2024",
+      "title": "Generative Verifiers: Reward Modeling as Next-Token Prediction",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Lunjun Zhang",
+        "Arian Hosseini",
+        "Hritik Bansal",
+        "Mehran Kazemi",
+        "Aviral Kumar",
+        "Rishabh Agarwal"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed",
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "scalar_reward",
+        "process_reward",
+        "answer_level"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "verifiers",
+        "reward-modeling",
+        "math",
+        "algorithmic-reasoning"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute",
+        "preference_reward_feedback_data",
+        "process_trace_supervision_data",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "generative-verifier",
+        "genrm",
+        "reward-modeling",
+        "best-of-n",
+        "representative-track-10"
+      ],
+      "one_line_summary": "Generative Verifiers trains reward models with next-token prediction and scales verification with verifier-side sampling.",
+      "why_it_matters": "It adds the verifier itself to the Track 10 compute-scaling object instead of treating it as a fixed scorer.",
+      "data_object": "problem, candidate solution, verification rationale, verifier judgment, and best-of-N selection.; process: problem, candidate solution, verification rationale; best-of-N reasoning evaluation with verifier-based selection.",
+      "feedback_verifier": "generative reward model trained with next-token prediction over verification data.",
+      "audit_focus": "Verifier rationales can be plausible but wrong., Majority voting over verifier samples can hide calibration failures., Best-of-N improvements depend on both policy and verifier budgets.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2408.15240",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2408.15240",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2408.15240",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2408.15240"
+    },
+    {
+      "id": "inference-scaling-laws-compute-optimal-inference-for-problem-solving-with-language-models-2024",
+      "title": "Inference Scaling Laws: An Empirical Analysis of Compute-Optimal Inference for Problem-Solving with Language Models",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Yangzhen Wu",
+        "Zhiqing Sun",
+        "Shanda Li",
+        "Sean Welleck",
+        "Yiming Yang"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "test-time-compute",
+        "math",
+        "tree-search",
+        "best-of-n"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute",
+        "rollout_search_test_time_trace_data",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "inference-scaling-laws",
+        "compute-optimal-inference",
+        "tree-search",
+        "representative-track-10"
+      ],
+      "one_line_summary": "Inference Scaling Laws compares model size and inference algorithms under explicit compute budgets.",
+      "why_it_matters": "It gives Track 10 a second compute-optimal anchor focused on algorithms and FLOPs accounting, not only verifier rewards.",
+      "data_object": "problem, model size, inference strategy, compute budget, candidate answers, and correctness.; process: problem, model size, inference algorithm; compute-budgeted inference strategies for problem solving.",
+      "feedback_verifier": "benchmark final-answer correctness checks.",
+      "audit_focus": "FLOPs accounting can omit verifier/search overhead., Small-model advantage depends on task distribution and algorithm implementation., Tree-search gains may not transfer without reliable intermediate scoring.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2408.00724",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2408.00724",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2408.00724",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2408.00724"
+    },
+    {
+      "id": "codeelo-benchmarking-competition-level-code-generation-of-llms-with-human-comparable-elo-ratings-2025",
+      "title": "CodeElo: Benchmarking Competition-level Code Generation of LLMs with Human-comparable Elo Ratings",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Shanghaoran Quan",
+        "Jiaxi Yang",
+        "Bowen Yu",
+        "Bo Zheng",
+        "Dayiheng Liu",
+        "An Yang",
+        "Xuancheng Ren",
+        "Bofei Gao",
+        "Yibo Miao",
+        "Binyuan Hui"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "code",
+        "competitive-programming",
+        "codeforces"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "codeelo",
+        "competitive-programming",
+        "codeforces",
+        "elo",
+        "representative-track-03"
+      ],
+      "one_line_summary": "CodeElo evaluates competition-level code generation with Codeforces-aligned judging and human-comparable Elo ratings.",
+      "why_it_matters": "It adds a modern contest-style verifier surface where hidden tests, special judges, and rating aggregation are first-class metadata.",
+      "data_object": "contest problem, generated solution, submission verdict, algorithm tags, and Elo rating.; process: problem statement, difficulty rating, algorithm tag; Codeforces-aligned competitive programming judge and Elo calculation.",
+      "feedback_verifier": "official platform-style test verdicts and Elo rating metric.",
+      "audit_focus": "Platform submission constraints can change results., Elo aggregation may hide algorithm-category weaknesses., Special judges and language environments must be aligned.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.01257",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.01257",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2501.01257",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2501.01257"
+    },
+    {
+      "id": "scienceagentbench-rigorous-assessment-of-language-agents-for-data-driven-scientific-discovery-2024",
+      "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Ziru Chen",
+        "Shijie Chen",
+        "Yuting Ning",
+        "Qianheng Zhang",
+        "Boshi Wang",
+        "Botao Yu",
+        "Yifei Li",
+        "Zeyi Liao",
+        "Chen Wei",
+        "Huan Sun"
+      ],
+      "source_role": [
+        "benchmark",
+        "agent_environment"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit",
+        "test_time_compute"
+      ],
+      "domains": [
+        "scientific-discovery",
+        "data-science",
+        "agents",
+        "code"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "scienceagentbench",
+        "scientific-discovery",
+        "data-science-agents",
+        "executable-programs",
+        "representative-track-03"
+      ],
+      "one_line_summary": "ScienceAgentBench turns peer-reviewed data-driven discovery tasks into executable Python-program agent evaluations.",
+      "why_it_matters": "It adds a high-quality scientific-workflow surface where verification includes code execution, domain metrics, and expert validation.",
+      "data_object": "scientific task, input data, generated program, execution output, metric score, and cost.; process: publication-derived task, input data, program file; scientific data-analysis code execution environment.",
+      "feedback_verifier": "execution results, task metrics, expert validation, and cost measurements.",
+      "audit_focus": "Program execution may pass while scientific interpretation is wrong., Expert validation can be expensive and non-uniform., Self-debug attempts add test-time compute that must be reported.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2410.05080",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2410.05080",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2410.05080",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2410.05080"
+    },
+    {
+      "id": "spreadsheetbench-towards-challenging-real-world-spreadsheet-manipulation-2024",
+      "title": "SpreadsheetBench: Towards Challenging Real World Spreadsheet Manipulation",
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Zeyao Ma",
+        "Bohan Zhang",
+        "Jing Zhang",
+        "Jifan Yu",
+        "Xiaokang Zhang",
+        "Xiaohan Zhang",
+        "Sijia Luo",
+        "Xi Wang",
+        "Jie Tang"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "state_action_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "spreadsheets",
+        "office-agents",
+        "code",
+        "data-manipulation"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "spreadsheetbench",
+        "spreadsheets",
+        "office-agents",
+        "online-judge",
+        "representative-track-03"
+      ],
+      "one_line_summary": "SpreadsheetBench evaluates real-world spreadsheet manipulation with multiple test files per instruction.",
+      "why_it_matters": "It broadens programmatic verification to office/data work where hidden test workbooks play the role of unit tests.",
+      "data_object": "spreadsheet instruction, input workbook, generated manipulation/formula, and test-case score.; process: forum question, spreadsheet file, instruction; spreadsheet manipulation environment with multiple workbook test cases.",
+      "feedback_verifier": "online-judge-like spreadsheet tests across varied values/files.",
+      "audit_focus": "Formula solutions can overfit visible examples., Spreadsheet formatting and hidden state can affect scoring., Forum tasks may contain ambiguous user intent.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2406.14991",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2406.14991",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.14991",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2406.14991"
+    },
+    {
+      "id": "swe-lancer-can-frontier-llms-earn-one-million-from-real-world-freelance-software-engineering-2025",
+      "title": "SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Samuel Miserendino",
+        "Michele Wang",
+        "Tejal Patwardhan",
+        "Johannes Heidecke"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release",
+        "audit_failure"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "software-engineering",
+        "freelance-work",
+        "agents",
+        "code"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "swe-lancer",
+        "openai",
+        "software-engineering",
+        "real-world-tasks",
+        "representative-track-03"
+      ],
+      "one_line_summary": "SWE-Lancer evaluates real freelance software-engineering tasks with verified tests, managerial labels, and payout-weighted scores.",
+      "why_it_matters": "It extends Track 03 from repository issues to economically grounded software tasks with both tests and human decision labels.",
+      "data_object": "task statement, code context, generated patch or decision, test result, and dollar-value mapping.; process: freelance task, repository/context, agent patch; Dockerized software-engineering benchmark with public Diamond split.",
+      "feedback_verifier": "triple-verified end-to-end tests for IC tasks and human-manager labels for management tasks.",
+      "audit_focus": "Tests can underspecify intended behavior., Dollar-value mapping may not equal benchmark difficulty., Management tasks require judgment labels rather than pure programmatic checks.",
+      "curation_level": "L3_summary_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2502.12115",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2502.12115",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2502.12115",
+        "code": "https://github.com/openai/SWELancer-Benchmark",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": null
+      },
+      "primary_link": "https://arxiv.org/abs/2502.12115"
+    },
+    {
+      "id": "agnostics-universal-learning-environment-2026",
+      "title": "Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Aleksander Boruch-Gruszecki",
+        "Yangtian Zi",
+        "Zixuan Wu",
+        "Tejas Oberoi",
+        "Carolyn Jane Anderson",
+        "Joydeep Biswas",
+        "Arjun Guha"
+      ],
+      "source_role": [
+        "data_release",
+        "verifier_reward",
+        "construction_recipe",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "rlvr",
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "code",
+        "low-resource-programming-languages",
+        "rlvr",
+        "execution"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "iclr-2026",
+        "track-03",
+        "code-rlvr",
+        "programmatic-verifier",
+        "low-resource-languages"
+      ],
+      "one_line_summary": "Agnostics builds a language-agnostic code RLVR environment where external I/O behavior becomes the verifier across programming languages.",
+      "why_it_matters": "It is a strong 03-direction candidate because it packages code execution, verifier portability, RLVR training, and released artifacts into one reusable post-training surface.",
+      "data_object": "Programming solution plus externally observable I/O behavior.; process: target language, compiler or interpreter config, I/O tests; Universal code execution environment configured per language with short YAML-like settings.",
+      "feedback_verifier": "Programmatic execution verifier that judges behavior rather than language-specific syntax alone.",
+      "audit_focus": "I/O-only tests may miss semantic edge cases., Verifier containers can encode language-specific quirks., Dataset rewriting can change task intent.",
+      "curation_level": "L4_carded",
+      "status": "partial",
+      "needs_search": true,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2508.04865",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2508.04865",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2508.04865",
+        "code": "https://github.com/nuprl/Ag-LiveCodeBench-X",
+        "data": "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
+        "huggingface": "https://huggingface.co/nuprl/agnostics",
+        "project": "https://agnostics.abgru.me/",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/sources/agnostics-universal-learning-environment-2026"
+      },
+      "primary_link": "https://arxiv.org/abs/2508.04865"
+    },
+    {
+      "id": "featurebench-2026",
+      "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Qixing Zhou",
+        "Jiacheng Zhang",
+        "Haiyang Wang",
+        "Rui Hao",
+        "Jiahe Wang",
+        "Minghao Han",
+        "Yuxue Yang",
+        "Shuzhe Wu",
+        "Feiyang Pan",
+        "Lue Fan",
+        "Dandan Tu",
+        "Zhaoxiang Zhang"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release",
+        "agent_environment",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "code",
+        "software-engineering",
+        "agents",
+        "unit-tests"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "data_construction_open_release_recipes",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "iclr-2026",
+        "track-03",
+        "agentic-coding",
+        "executable-benchmark",
+        "unit-tests"
+      ],
+      "one_line_summary": "FeatureBench evaluates end-to-end feature development by deriving executable coding tasks and environments from repository unit tests.",
+      "why_it_matters": "It moves coding-agent evaluation from isolated bug fixing toward feature-level repository work with programmatic execution checks and refreshable task construction.",
+      "data_object": "Repository task, code context, generated changes, executable environment, and test result.; process: repository snapshot, feature task, dependency trace; Executable coding environments derived from 24 open-source repositories.",
+      "feedback_verifier": "Execution-based evaluation protocol using unit tests and repository behavior checks.",
+      "audit_focus": "Unit tests may underspecify the intended feature., Repository tasks may be contaminated through public code., Feature extraction can break hidden dependencies.",
+      "curation_level": "L4_carded",
+      "status": "partial",
+      "needs_search": true,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2602.10975",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2602.10975",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2602.10975",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/sources/featurebench-2026"
+      },
+      "primary_link": "https://arxiv.org/abs/2602.10975"
+    },
+    {
+      "id": "beyondbench-2026",
+      "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Gaurav Srivastava",
+        "Aafiya Hussain",
+        "Zhenyu Bi",
+        "Swastik Roy",
+        "Priya Pitre",
+        "Meng Lu",
+        "Morteza Ziyadi",
+        "Xuan Wang"
+      ],
+      "source_role": [
+        "benchmark",
+        "audit_failure",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "algorithmic-reasoning",
+        "math",
+        "contamination",
+        "evaluation"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "audit_failure_contamination_verifier_attacks",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "iclr-2026",
+        "track-03",
+        "contamination-resistant",
+        "algorithmic-generation",
+        "deterministic-verifier"
+      ],
+      "one_line_summary": "BeyondBench generates fresh algorithmic reasoning problems with deterministic verification to reduce static-benchmark contamination.",
+      "why_it_matters": "It is a clean 03-direction candidate because the benchmark is built around generated instances, deterministic answer checks, and explicit contamination-resistance claims.",
+      "data_object": "Generated problem instance, model answer, and deterministic solution check.; process: task family, generator parameters, difficulty suite; Algorithmic problem generators and deterministic verifiers.",
+      "feedback_verifier": "Mathematical/programmatic verifier with large combinatorial instance spaces.",
+      "audit_focus": "Generator bugs can invalidate deterministic guarantees., Models may exploit task templates if generators are exposed., Tool-use settings can dominate reasoning comparisons.",
+      "curation_level": "L4_carded",
+      "status": "partial",
+      "needs_search": true,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2509.24210",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2509.24210",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2509.24210",
+        "code": "https://github.com/ctrl-gaurav/BeyondBench",
+        "data": null,
+        "huggingface": null,
+        "project": "https://ctrl-gaurav.github.io/BeyondBench/",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/sources/beyondbench-2026"
+      },
+      "primary_link": "https://arxiv.org/abs/2509.24210"
+    },
+    {
+      "id": "credit-budgeted-icpc-style-coding-2026",
+      "title": "Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Lingfeng Zhou",
+        "Junhao Shi",
+        "Jin Gao",
+        "Dequan Wang"
+      ],
+      "source_role": [
+        "benchmark",
+        "agent_environment",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "test_time_compute",
+        "audit"
+      ],
+      "domains": [
+        "code",
+        "agents",
+        "icpc",
+        "resource-bounded-evaluation"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "environment_agent_trajectory_data",
+        "benchmarks_evaluation_surfaces",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "iclr-2026",
+        "track-03",
+        "coding-agents",
+        "budgeted-evaluation",
+        "icpc"
+      ],
+      "one_line_summary": "Credit-Budgeted ICPC-Style Coding evaluates coding agents with a programmatic judge and an explicit credit cost for tokens, tests, and time.",
+      "why_it_matters": "It expands Track 03 from pure correctness to correctness under resource budgets, which is closer to real agent deployment and test-time compute accounting.",
+      "data_object": "Coding problem, generated solution, local-test decisions, token/time/test spending, and accepted/rejected outcome.; process: token budget, test budget, elapsed time; USACOArena interactive ACM-ICPC-style coding arena.",
+      "feedback_verifier": "Programmatic coding judge plus explicit credit economy over tokens, tests, and time.",
+      "audit_focus": "Budget settings can dominate model ranking., Local tests can be gamed or overused., Public programming problems can be contaminated.",
+      "curation_level": "L4_carded",
+      "status": "partial",
+      "needs_search": true,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2604.10182",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2604.10182",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2604.10182",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026"
+      },
+      "primary_link": "https://arxiv.org/abs/2604.10182"
+    },
+    {
+      "id": "geogrambench-2026",
+      "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Shixian Luo",
+        "Zezhou Zhu",
+        "Yu Yuan",
+        "Yuncheng Yang",
+        "Lianlei Shan",
+        "Yong Wu"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "geometry",
+        "program-reasoning",
+        "symbolic-spatial-reasoning",
+        "evaluation"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data",
+        "benchmarks_evaluation_surfaces",
+        "judgment_rubric_domain_expert_data"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "iclr-2026",
+        "track-03",
+        "geometry",
+        "program-to-geometry",
+        "benchmark"
+      ],
+      "one_line_summary": "GeoGramBench evaluates whether models can reason over geometric information expressed as procedural drawing code.",
+      "why_it_matters": "It broadens Track 03 beyond text math and code execution into symbolic-to-spatial reasoning where programs define the object being verified.",
+      "data_object": "Procedural drawing code, geometry question, model answer, and benchmark score.; process: drawing program, geometry abstraction level, question; Programmatic drawing-code representation of geometric diagrams.",
+      "feedback_verifier": "Benchmark answer checking over curated geometric reasoning problems.",
+      "audit_focus": "Answer checking may hide ambiguity in spatial interpretation., Procedural code can encode visual assumptions not captured by text., Sampling and long-response settings affect reported pass rates.",
+      "curation_level": "L4_carded",
+      "status": "partial",
+      "needs_search": true,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2505.17653",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2505.17653",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2505.17653",
+        "code": "https://github.com/LiAuto-DSR/GeoGramBench",
+        "data": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "huggingface": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "project": "https://github.com/LiAuto-DSR/GeoGramBench",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/sources/geogrambench-2026"
+      },
+      "primary_link": "https://arxiv.org/abs/2505.17653"
     }
   ],
   "counts": {
-    "total_entries": 280,
-    "verified_entries": 165,
-    "carded_entries": 87,
-    "data_releases": 36,
-    "verifiers_rewards": 20,
-    "agent_environments": 16,
-    "scaling_studies": 18,
-    "needs_search": 115
+    "total_entries": 315,
+    "verified_entries": 207,
+    "paper_card_sources": 6,
+    "data_releases": 55,
+    "verifiers_rewards": 29,
+    "agent_environments": 26,
+    "scaling_studies": 39,
+    "needs_search": 108
   },
   "categories": [
     {
@@ -16589,8 +19595,8 @@ window.ATLAS_DATA = {
         "../docs/09_audit_and_failure_modes.md"
       ],
       "related_cards": [
-        "../cards/release_card_template.md",
-        "../cards/recipe_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16624,8 +19630,8 @@ window.ATLAS_DATA = {
         "../docs/05_construction_cookbook.md"
       ],
       "related_cards": [
-        "../cards/recipe_card_template.md",
-        "../cards/release_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16659,8 +19665,8 @@ window.ATLAS_DATA = {
         "../docs/04_data_quality.md"
       ],
       "related_cards": [
-        "../cards/verifier_card_template.md",
-        "../cards/examples/rubric_reward_release_card.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16695,8 +19701,8 @@ window.ATLAS_DATA = {
         "../docs/04_data_quality.md"
       ],
       "related_cards": [
-        "../cards/examples/math_reasoning_release_card.md",
-        "../cards/verifier_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16731,8 +19737,8 @@ window.ATLAS_DATA = {
         "../docs/08_scaling_and_test_time_compute.md"
       ],
       "related_cards": [
-        "../cards/verifier_card_template.md",
-        "../cards/examples/rubric_reward_release_card.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16766,8 +19772,8 @@ window.ATLAS_DATA = {
         "../docs/08_scaling_and_test_time_compute.md"
       ],
       "related_cards": [
-        "../cards/recipe_card_template.md",
-        "../cards/verifier_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16801,8 +19807,8 @@ window.ATLAS_DATA = {
         "../docs/06_verifiers_and_rewards.md"
       ],
       "related_cards": [
-        "../cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md",
-        "../cards/agents/r2e_gym.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16836,8 +19842,8 @@ window.ATLAS_DATA = {
         "../docs/09_audit_and_failure_modes.md"
       ],
       "related_cards": [
-        "../cards/examples/rubric_reward_release_card.md",
-        "../cards/verifiers/rewardbench.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16871,8 +19877,8 @@ window.ATLAS_DATA = {
         "../docs/04_data_quality.md"
       ],
       "related_cards": [
-        "../cards/recipe_card_template.md",
-        "../cards/release_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16906,8 +19912,8 @@ window.ATLAS_DATA = {
         "../docs/08_scaling_and_test_time_compute.md"
       ],
       "related_cards": [
-        "../cards/recipe_card_template.md",
-        "../cards/verifier_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16941,8 +19947,8 @@ window.ATLAS_DATA = {
         "../docs/06_verifiers_and_rewards.md"
       ],
       "related_cards": [
-        "../cards/verifier_card_template.md",
-        "../cards/recipe_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -16976,8 +19982,8 @@ window.ATLAS_DATA = {
         "../docs/09_audit_and_failure_modes.md"
       ],
       "related_cards": [
-        "../cards/verifier_card_template.md",
-        "../cards/benchmark_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -17011,8 +20017,8 @@ window.ATLAS_DATA = {
         "../docs/08_scaling_and_test_time_compute.md"
       ],
       "related_cards": [
-        "../cards/recipe_card_template.md",
-        "../cards/release_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     },
     {
@@ -17046,8 +20052,8 @@ window.ATLAS_DATA = {
         "../docs/04_data_quality.md"
       ],
       "related_cards": [
-        "../cards/failure_card_template.md",
-        "../cards/verifier_card_template.md"
+        "../docs/paper_card_sop.md",
+        "../docs/paper_card_sop.md"
       ]
     }
   ],
@@ -18334,7 +21340,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/datasheets-for-datasets.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/1803.09010"
           }
@@ -18401,7 +21407,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/data-statements-for-natural-language-processing.md"
+              "paper_card_source": null
             },
             "primary_link": "https://aclanthology.org/Q18-1041/"
           }
@@ -18472,7 +21478,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2203.02155"
           }
@@ -18536,7 +21542,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2201.11903"
           }
@@ -18612,7 +21618,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/openai/gsm8k",
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/training-verifiers-to-solve-math-word-problems.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2110.14168"
           }
@@ -18678,7 +21684,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/star-bootstrapping-reasoning-with-reasoning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2203.14465"
           }
@@ -18742,7 +21748,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2212.10560"
           }
@@ -18807,7 +21813,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2305.18290"
           }
@@ -18880,7 +21886,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/prm800k.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2305.20050"
           }
@@ -18954,7 +21960,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/openai/gsm8k",
               "project": null,
               "bibtex": null,
-              "card": "cards/benchmarks/gsm8k-grade-school-math-8k.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2110.14168"
           }
@@ -19023,7 +22029,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2103.03874"
           }
@@ -19092,7 +22098,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/benchmarks/humaneval-hand-written-evaluation-set.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2107.03374"
           }
@@ -19163,7 +22169,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://www.swebench.com/original.html",
               "bibtex": null,
-              "card": "cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2310.06770"
           }
@@ -19235,7 +22241,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/rewardbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2403.13787"
           }
@@ -19305,7 +22311,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/healthbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2505.08775"
           }
@@ -19379,7 +22385,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://livebench.ai/",
               "bibtex": null,
-              "card": "cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2406.19314"
           }
@@ -19449,7 +22455,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M",
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/openthoughts.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.04178"
           }
@@ -19516,7 +22522,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/deepseek_r1.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.12948"
           }
@@ -19581,7 +22587,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/s1.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.19393"
           }
@@ -19643,7 +22649,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.07086"
           }
@@ -19721,7 +22727,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M",
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/openthoughts.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.04178"
           }
@@ -19785,7 +22791,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/openmathreasoning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.16891"
           }
@@ -19852,7 +22858,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/deepmath_103k.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.11456"
           }
@@ -19921,7 +22927,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/big_math.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2502.17387"
           }
@@ -19993,7 +22999,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/naturalreasoning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2502.13124"
           }
@@ -20055,7 +23061,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/limo.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2502.03387"
           }
@@ -20120,7 +23126,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/s1.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.19393"
           }
@@ -20181,7 +23187,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/dapo.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2503.14476"
           }
@@ -20239,7 +23245,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -20298,7 +23304,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -20355,7 +23361,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2508.05004"
           }
@@ -20422,7 +23428,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/absolute_zero.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2505.03335"
           }
@@ -20493,7 +23499,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/ttrl.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.16084"
           }
@@ -20559,7 +23565,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/star-bootstrapping-reasoning-with-reasoning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2203.14465"
           }
@@ -20623,7 +23629,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2212.10560"
           }
@@ -20706,7 +23712,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/",
               "bibtex": null,
-              "card": "cards/recipes/orca.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2306.02707"
           }
@@ -20767,7 +23773,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2405.03548"
           }
@@ -20826,7 +23832,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -20886,7 +23892,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -20944,7 +23950,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -21015,7 +24021,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/kodcode.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2503.02951"
           }
@@ -21083,7 +24089,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/swe_gym.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2412.21139"
           }
@@ -21148,7 +24154,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/r2e_gym.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.07164"
           }
@@ -21221,7 +24227,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/toolllm_toolbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2307.16789"
           }
@@ -21278,7 +24284,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -21370,7 +24376,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/collections/deepseek-ai/deepseek-math",
               "project": "https://github.com/deepseek-ai/deepseek-math",
               "bibtex": null,
-              "card": "cards/recipes/deepseekmath.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2402.03300"
           }
@@ -21457,7 +24463,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
               "project": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1",
               "bibtex": null,
-              "card": "cards/recipes/deepseek-prover.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2405.14333"
           }
@@ -21515,7 +24521,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2603.17775"
           }
@@ -21573,7 +24579,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -21638,7 +24644,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://subliminal-learning.com/",
               "bibtex": null,
-              "card": "cards/failures/subliminal-learning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.14805"
           }
@@ -21722,7 +24728,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/openai/gsm8k",
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/training-verifiers-to-solve-math-word-problems.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2110.14168"
           }
@@ -21795,7 +24801,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/prm800k.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2305.20050"
           }
@@ -21862,7 +24868,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/math_shepherd.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2312.08935"
           }
@@ -21934,7 +24940,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/omegaprm.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2406.06592"
           }
@@ -22006,7 +25012,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/processbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2412.06559"
           }
@@ -22081,7 +25087,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/prmbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.03124"
           }
@@ -22140,84 +25146,67 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
         },
         {
           "title": "PRIME",
-          "entry_id": "prime-process-reinforcement-through-implicit-rewards-2025",
+          "entry_id": "a-primer-in-bertology-what-we-know-about-how-bert-works-2020",
           "matched": true,
           "entry": {
-            "id": "prime-process-reinforcement-through-implicit-rewards-2025",
-            "title": "PRIME: Process reinforcement through implicit rewards",
-            "year": 2025,
-            "venue": "arXiv",
+            "id": "a-primer-in-bertology-what-we-know-about-how-bert-works-2020",
+            "title": "A primer in BERTology: What we know about how BERT works",
+            "year": 2020,
+            "venue": "TACL",
             "authors": [],
             "source_role": [
-              "process_supervision",
-              "verifier_reward",
-              "construction_recipe"
+              "survey_background"
             ],
             "verification_contract": [
-              "programmatic",
-              "mixed"
+              "unknown"
             ],
             "supervision_granularity": [
-              "step_level",
-              "process_reward",
-              "answer_level"
+              "unknown"
             ],
             "training_use": [
-              "rlvr",
-              "process_supervision",
-              "reward_modeling"
+              "unknown"
             ],
-            "domains": [
-              "math",
-              "code",
-              "reasoning"
-            ],
+            "domains": [],
             "category": [
-              "preference_reward_feedback_data",
-              "programmatically_verifiable_outcome_data",
-              "process_trace_supervision_data",
-              "rollout_search_test_time_trace_data",
-              "data_construction_open_release_recipes",
-              "training_usage_optimization_objectives",
-              "scaling_rlvr_test_time_compute"
+              "foundations_and_primers",
+              "process_trace_supervision_data"
             ],
-            "subfield": "Other related work",
+            "subfield": "🧭 Post-training surveys",
             "tags": [
-              "seeded-from-bib",
-              "primary-link-checked"
+              "seeded-from-bib"
             ],
-            "one_line_summary": "Online process-reinforcement recipe that derives implicit process rewards from rollouts and outcome labels.",
-            "why_it_matters": "It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.",
-            "data_object": "rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop",
-            "feedback_verifier": "implicit process rewards derived from outcome labels",
-            "audit_focus": "implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes",
-            "curation_level": "L2_artifact_verified",
-            "status": "verified",
-            "needs_search": false,
+            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L0_seeded",
+            "status": "needs_metadata",
+            "needs_search": true,
             "artifacts": {
-              "paper": "https://arxiv.org/abs/2502.01456",
+              "paper": null,
               "venue": null,
-              "arxiv": "https://arxiv.org/abs/2502.01456",
+              "arxiv": null,
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
               "doi": null,
-              "code": "https://github.com/PRIME-RL/PRIME",
+              "code": null,
               "data": null,
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": "https://arxiv.org/abs/2502.01456"
+            "primary_link": null
           }
         },
         {
@@ -22274,7 +25263,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2509.03403"
           }
@@ -22362,7 +25351,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/rewarding-progress.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2410.08146"
           }
@@ -22434,7 +25423,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/rewardbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2403.13787"
           }
@@ -22491,7 +25480,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -22580,7 +25569,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/prometheus-eval/prometheus-7b-v2.0",
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/prometheus-2.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2405.01535"
           }
@@ -22637,7 +25626,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -22694,7 +25683,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -22752,7 +25741,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2505.13388"
           }
@@ -22811,7 +25800,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2602.00846"
           }
@@ -22869,7 +25858,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2603.00077"
           }
@@ -22929,7 +25918,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2602.01511"
           }
@@ -22992,7 +25981,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/one_token_to_fool_judge.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.08794"
           }
@@ -23057,7 +26046,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/spurious_rewards.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.10947"
           }
@@ -23116,7 +26105,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2604.15149"
           }
@@ -23176,7 +26165,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2505.22203"
           }
@@ -23234,7 +26223,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2604.07666"
           }
@@ -23295,7 +26284,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -23384,7 +26373,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://react-lm.github.io/",
               "bibtex": null,
-              "card": "cards/agents/react.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2210.03629"
           }
@@ -23465,7 +26454,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/toolformer.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2302.04761"
           }
@@ -23538,7 +26527,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/toolllm_toolbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2307.16789"
           }
@@ -23549,23 +26538,43 @@ window.ATLAS_DATA = {
           "matched": true,
           "entry": {
             "id": "api-bank-a-benchmark-for-tool-augmented-llms-2023",
-            "title": "API-Bank: A benchmark for tool-augmented LLMs",
+            "title": "API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs",
             "year": 2023,
             "venue": "EMNLP",
-            "authors": [],
+            "authors": [
+              "Minghao Li",
+              "Yingxiu Zhao",
+              "Bowen Yu",
+              "Feifan Song",
+              "Hangyu Li",
+              "Haiyang Yu",
+              "Zhoujun Li",
+              "Fei Huang",
+              "Yongbin Li"
+            ],
             "source_role": [
-              "survey_background"
+              "benchmark",
+              "data_release",
+              "agent_environment"
             ],
             "verification_contract": [
-              "unknown"
+              "environmental",
+              "programmatic"
             ],
             "supervision_granularity": [
-              "unknown"
+              "state_action_level",
+              "full_episode"
             ],
             "training_use": [
-              "unknown"
+              "sft",
+              "agent_training",
+              "evaluation"
             ],
-            "domains": [],
+            "domains": [
+              "tools",
+              "apis",
+              "agents"
+            ],
             "category": [
               "environment_agent_trajectory_data",
               "benchmarks_evaluation_surfaces",
@@ -23573,33 +26582,35 @@ window.ATLAS_DATA = {
             ],
             "subfield": "🛠️ Tool-use data",
             "tags": [
-              "seeded-from-bib"
+              "primary-link-checked",
+              "agent-benchmark",
+              "tool-use"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "metadata pending",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
-            "needs_search": true,
+            "one_line_summary": "API-Bank turns API tasks into tool-call dialogue data with executable checks for planning, API retrieval, and calling.",
+            "why_it_matters": "It is an early reusable tool-use benchmark where the feedback-bearing object is an API-call trajectory rather than a plain instruction response.",
+            "data_object": "API-call dialogue trajectory plus final response; process: user request, API/tool name, arguments; runnable API-bank tool environment",
+            "feedback_verifier": "API call validity, tool result consistency, and task success checks",
+            "audit_focus": "API schemas can drift after collection, synthetic tool-use dialogues can reward call format rather than task success, runnable tools may hide environment dependencies",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2304.08244",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2304.08244",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
-              "doi": null,
-              "code": null,
-              "data": null,
+              "doi": "https://doi.org/10.48550/arXiv.2304.08244",
+              "code": "https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank",
+              "data": "https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank",
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2304.08244"
           }
         },
         {
@@ -23654,7 +26665,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -23711,7 +26722,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -23769,7 +26780,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -23780,57 +26791,82 @@ window.ATLAS_DATA = {
           "matched": true,
           "entry": {
             "id": "toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024",
-            "title": "ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use",
+            "title": "ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities",
             "year": 2024,
             "venue": "arXiv preprint",
-            "authors": [],
+            "authors": [
+              "Jiarui Lu",
+              "Thomas Holleis",
+              "Yizhe Zhang",
+              "Bernhard Aumayer",
+              "Feng Nan",
+              "Felix Bai",
+              "Shuang Ma",
+              "Shen Ma",
+              "Mengyu Li",
+              "Guoli Yin",
+              "Zirui Wang",
+              "Ruoming Pang"
+            ],
             "source_role": [
-              "survey_background"
+              "benchmark",
+              "agent_environment"
             ],
             "verification_contract": [
-              "unknown"
+              "environmental",
+              "programmatic"
             ],
             "supervision_granularity": [
-              "unknown"
+              "full_episode",
+              "state_action_level"
             ],
             "training_use": [
-              "unknown"
+              "evaluation",
+              "agent_training",
+              "audit"
             ],
-            "domains": [],
+            "domains": [
+              "tools",
+              "agents",
+              "conversational_agents"
+            ],
             "category": [
               "environment_agent_trajectory_data",
               "benchmarks_evaluation_surfaces",
               "audit_failure_contamination_verifier_attacks"
             ],
-            "subfield": "🛠️ Tool-use data",
+            "subfield": "🧰 Agent benchmarks and terminal predicates",
             "tags": [
-              "seeded-from-bib"
+              "primary-link-checked",
+              "agent-benchmark",
+              "tool-use",
+              "stateful-evaluation"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "metadata pending",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
-            "needs_search": true,
+            "one_line_summary": "ToolSandbox evaluates tool agents through stateful conversations, user simulation, and milestone-based checks.",
+            "why_it_matters": "It strengthens the agent benchmark track by making implicit tool state and intermediate milestones part of the feedback contract.",
+            "data_object": "multi-turn conversation with tool calls, tool state, and milestone checks; process: user turn, agent turn, tool call; stateful tool execution sandbox with user simulator",
+            "feedback_verifier": "dynamic evaluation of intermediate and final milestones",
+            "audit_focus": "stateful dependencies can make failures hard to attribute, user simulator behavior can become an implicit reward channel, final success can hide intermediate milestone failures if reporting is incomplete",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2408.04682",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2408.04682",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
-              "doi": null,
-              "code": null,
-              "data": null,
+              "doi": "https://doi.org/10.48550/arXiv.2408.04682",
+              "code": "https://github.com/apple/ToolSandbox",
+              "data": "https://github.com/apple/ToolSandbox",
               "huggingface": null,
-              "project": null,
+              "project": "https://github.com/apple/ToolSandbox",
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2408.04682"
           }
         },
         {
@@ -23842,54 +26878,71 @@ window.ATLAS_DATA = {
             "title": "tau-bench: A benchmark for tool-agent-user interaction in real-world domains",
             "year": 2024,
             "venue": "arXiv preprint",
-            "authors": [],
+            "authors": [
+              "Shunyu Yao",
+              "Noah Shinn",
+              "Pedram Razavi",
+              "Karthik Narasimhan"
+            ],
             "source_role": [
-              "survey_background"
+              "benchmark",
+              "agent_environment"
             ],
             "verification_contract": [
-              "unknown"
+              "environmental",
+              "programmatic"
             ],
             "supervision_granularity": [
-              "unknown"
+              "full_episode",
+              "state_action_level"
             ],
             "training_use": [
-              "unknown"
+              "evaluation",
+              "agent_training",
+              "audit"
             ],
-            "domains": [],
+            "domains": [
+              "tools",
+              "agents",
+              "conversational_agents"
+            ],
             "category": [
               "environment_agent_trajectory_data",
               "benchmarks_evaluation_surfaces",
               "audit_failure_contamination_verifier_attacks"
             ],
-            "subfield": "🛠️ Tool-use data",
+            "subfield": "🧰 Agent benchmarks and terminal predicates",
             "tags": [
-              "seeded-from-bib"
+              "primary-link-checked",
+              "agent-benchmark",
+              "tool-use",
+              "pass-k"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "metadata pending",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
-            "needs_search": true,
+            "one_line_summary": "tau-bench evaluates conversational tool agents by checking whether the final database state satisfies the task goal.",
+            "why_it_matters": "It makes agent evaluation depend on interaction reliability and final environment state, not just tool-call syntax.",
+            "data_object": "tool-agent-user dialogue trajectory plus final database state; process: user message, agent response, tool call; domain simulator with API tools and user simulator",
+            "feedback_verifier": "final database state compared with annotated goal state",
+            "audit_focus": "pass^k can hide low single-run reliability, final-state checks can miss bad conversational behavior, repository README indicates newer tau3-bench supersedes parts of the original task set",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2406.12045",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2406.12045",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
-              "doi": null,
-              "code": null,
-              "data": null,
+              "doi": "https://doi.org/10.48550/arXiv.2406.12045",
+              "code": "https://github.com/sierra-research/tau-bench",
+              "data": "https://github.com/sierra-research/tau-bench",
               "huggingface": null,
-              "project": null,
+              "project": "https://github.com/sierra-research/tau-bench",
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2406.12045"
           }
         },
         {
@@ -23901,53 +26954,72 @@ window.ATLAS_DATA = {
             "title": "Mind2Web: Towards a generalist agent for the web",
             "year": 2023,
             "venue": "NeurIPS",
-            "authors": [],
+            "authors": [
+              "Xiang Deng",
+              "Yu Gu",
+              "Boyuan Zheng",
+              "Shijie Chen",
+              "Samuel Stevens",
+              "Boshi Wang",
+              "Huan Sun",
+              "Yu Su"
+            ],
             "source_role": [
-              "survey_background"
+              "data_release",
+              "benchmark",
+              "agent_environment"
             ],
             "verification_contract": [
-              "unknown"
+              "environmental"
             ],
             "supervision_granularity": [
-              "unknown"
+              "state_action_level",
+              "full_episode"
             ],
             "training_use": [
-              "unknown"
+              "sft",
+              "agent_training",
+              "evaluation"
             ],
-            "domains": [],
+            "domains": [
+              "web",
+              "agents"
+            ],
             "category": [
               "environment_agent_trajectory_data",
               "benchmarks_evaluation_surfaces"
             ],
             "subfield": "🌍 Web/browser agents",
             "tags": [
-              "seeded-from-bib"
+              "primary-link-checked",
+              "web-agent",
+              "trajectory-data"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "metadata pending",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
-            "needs_search": true,
+            "one_line_summary": "Mind2Web packages real-website instructions, HTML state, and annotated actions into reusable web-agent trajectory data.",
+            "why_it_matters": "It gives the atlas a web-agent benchmark whose data object is a state-action record over real websites, not just a final answer.",
+            "data_object": "web task plus action sequence, DOM/html snapshots, and candidate elements; process: website, domain, task instruction; real-world website snapshots and web-agent evaluation scripts",
+            "feedback_verifier": "step/action matching against annotated elements and task split metrics",
+            "audit_focus": "website state can drift away from recorded snapshots, element matching can reward local action selection without full task success, micro and macro averages can lead to different comparisons",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2306.06070",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2306.06070",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
-              "doi": null,
-              "code": null,
-              "data": null,
-              "huggingface": null,
-              "project": null,
+              "doi": "https://doi.org/10.48550/arXiv.2306.06070",
+              "code": "https://github.com/OSU-NLP-Group/Mind2Web",
+              "data": "https://huggingface.co/datasets/osunlp/Mind2Web",
+              "huggingface": "https://huggingface.co/datasets/osunlp/Mind2Web",
+              "project": "https://osu-nlp-group.github.io/Mind2Web/",
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2306.06070"
           }
         },
         {
@@ -24003,7 +27075,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -24072,7 +27144,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/browsergym.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2412.05467"
           }
@@ -24123,7 +27195,7 @@ window.ATLAS_DATA = {
             "data_object": "environment interaction trajectory; process: observation, action, state; browser-accessible web environment",
             "feedback_verifier": "task-specific success evaluator",
             "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -24140,7 +27212,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/webarena.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2307.13854"
           }
@@ -24153,8 +27225,19 @@ window.ATLAS_DATA = {
             "id": "visualwebarena-evaluating-multimodal-agents-on-realistic-visual-web-tasks-2024",
             "title": "VisualWebArena: Evaluating multimodal agents on realistic visual web tasks",
             "year": 2024,
-            "venue": "arXiv preprint",
-            "authors": [],
+            "venue": "ACL",
+            "authors": [
+              "Jing Yu Koh",
+              "Robert Lo",
+              "Lawrence Jang",
+              "Vikram Duvvur",
+              "Ming Chong Lim",
+              "Po-Yu Huang",
+              "Graham Neubig",
+              "Shuyan Zhou",
+              "Ruslan Salakhutdinov",
+              "Daniel Fried"
+            ],
             "source_role": [
               "benchmark",
               "agent_environment"
@@ -24185,33 +27268,33 @@ window.ATLAS_DATA = {
             "tags": [
               "curated-card",
               "primary-link-checked",
-              "seeded-from-bib"
+              "visual-agent"
             ],
             "one_line_summary": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
             "why_it_matters": "Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.",
-            "data_object": "visual web tasks with screenshots and browser state",
-            "feedback_verifier": "task success checks",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "partial",
-            "needs_search": true,
+            "data_object": "browser episode with screenshot observation, action trajectory, and final outcome; process: instruction, screenshot observation, browser state; visual web tasks with screenshots, browser state, and WebArena-style environments",
+            "feedback_verifier": "execution-based tests for visually grounded task completion",
+            "audit_focus": "screenshot resolution and browser rendering can change task difficulty, visual cues may be unavailable to text-only agents, live-like web state can drift from the benchmark snapshot",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2401.13649",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2401.13649",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
-              "doi": null,
-              "code": null,
-              "data": null,
+              "doi": "https://doi.org/10.48550/arXiv.2401.13649",
+              "code": "https://github.com/web-arena-x/visualwebarena",
+              "data": "https://github.com/web-arena-x/visualwebarena",
               "huggingface": null,
-              "project": null,
+              "project": "https://jykoh.com/vwa",
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2401.13649"
           }
         },
         {
@@ -24268,7 +27351,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -24338,7 +27421,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/osworld.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2404.07972"
           }
@@ -24406,7 +27489,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/androidworld.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2405.14573"
           }
@@ -24478,7 +27561,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/appworld.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2407.18901"
           }
@@ -24549,7 +27632,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://www.swebench.com/original.html",
               "bibtex": null,
-              "card": "cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2310.06770"
           }
@@ -24627,7 +27710,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
               "project": "https://www.swebench.com/verified.html",
               "bibtex": null,
-              "card": "cards/agents/swe-bench-verified.md"
+              "paper_card_source": null
             },
             "primary_link": "https://openai.com/index/introducing-swe-bench-verified/"
           }
@@ -24695,7 +27778,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/swe_gym.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2412.21139"
           }
@@ -24760,7 +27843,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/r2e_gym.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.07164"
           }
@@ -24830,7 +27913,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://www.openhands.dev/",
               "bibtex": null,
-              "card": "cards/agents/openhands.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2407.16741"
           }
@@ -24889,7 +27972,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -24948,7 +28031,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -24963,48 +28046,69 @@ window.ATLAS_DATA = {
       "entries": [
         {
           "title": "Large Language Monkeys",
-          "entry_id": "large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024",
+          "entry_id": "how-do-large-language-monkeys-get-their-power-laws-2025",
           "matched": true,
           "entry": {
-            "id": "large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024",
-            "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
-            "year": 2024,
-            "venue": "arXiv preprint arXiv:2407.21787",
-            "authors": [],
+            "id": "how-do-large-language-monkeys-get-their-power-laws-2025",
+            "title": "How Do Large Language Monkeys Get Their Power (Laws)?",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Rylan Schaeffer",
+              "Joshua Kazdan",
+              "John Hughes",
+              "Jordan Juravsky",
+              "Sara Price",
+              "Aengus Lynch",
+              "Erik Jones",
+              "Robert Kirk",
+              "Azalia Mirhoseini",
+              "Sanmi Koyejo"
+            ],
             "source_role": [
-              "survey_background"
+              "scaling_study"
             ],
             "verification_contract": [
-              "unknown"
+              "programmatic",
+              "mixed"
             ],
             "supervision_granularity": [
-              "unknown"
+              "answer_level"
             ],
             "training_use": [
-              "unknown"
+              "test_time_compute",
+              "evaluation"
             ],
-            "domains": [],
+            "domains": [
+              "test-time-compute",
+              "math",
+              "code",
+              "proof"
+            ],
             "category": [
-              "foundations_and_primers",
+              "scaling_rlvr_test_time_compute",
               "rollout_search_test_time_trace_data",
-              "scaling_rlvr_test_time_compute"
+              "programmatically_verifiable_outcome_data"
             ],
-            "subfield": "Other related work",
+            "subfield": "🎲 pass@k / sampling budget",
             "tags": [
-              "seeded-from-bib"
+              "test-time-compute",
+              "repeated-sampling",
+              "power-law",
+              "pass-at-k"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "survey background",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L1_link_verified",
+            "one_line_summary": "Explains repeated-sampling scaling by separating per-problem success curves from aggregate heavy-tailed difficulty.",
+            "why_it_matters": "It helps readers audit pass@k and coverage claims by asking whether gains come from broad improvement or a few easy-to-sample tasks.",
+            "data_object": "problem, per-attempt success probability, aggregate coverage curve, and scaling-law fit.; process: problem id, single-attempt success probability, number of attempts; tasks with verifiable success under repeated sampling.",
+            "feedback_verifier": "task-specific correctness checks or benchmark success predicates.",
+            "audit_focus": "Aggregate power laws can hide per-problem exponential behavior., Heavy-tailed difficulty can make extrapolations brittle., Verifier availability determines whether extra samples can be converted into solved tasks.",
+            "curation_level": "L3_summary_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
-              "paper": "https://arxiv.org/abs/2407.21787",
+              "paper": "https://arxiv.org/abs/2502.17578",
               "venue": null,
-              "arxiv": "https://arxiv.org/abs/2407.21787",
+              "arxiv": "https://arxiv.org/abs/2502.17578",
               "openreview": null,
               "acl": null,
               "pmlr": null,
@@ -25015,9 +28119,9 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": "https://arxiv.org/abs/2407.21787"
+            "primary_link": "https://arxiv.org/abs/2502.17578"
           }
         },
         {
@@ -25080,7 +28184,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/s1.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.19393"
           }
@@ -25145,7 +28249,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/kimi_k15.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.12599"
           }
@@ -25211,7 +28315,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/the-art-of-scaling-rl-compute.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2510.13786"
           }
@@ -25278,7 +28382,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/scaling-behaviors-rl-post-training.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2509.25300"
           }
@@ -25338,7 +28442,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2502.08606"
           }
@@ -25397,7 +28501,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -25460,7 +28564,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2510.06557"
           }
@@ -25531,7 +28635,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/ttrl.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.16084"
           }
@@ -25588,7 +28692,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2505.22617"
           }
@@ -25646,7 +28750,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2509.26114"
           }
@@ -25707,7 +28811,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/dapo.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2503.14476"
           }
@@ -25765,7 +28869,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -25822,67 +28926,16 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
         },
         {
           "title": "Does RL really",
-          "entry_id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
-          "matched": true,
-          "entry": {
-            "id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
-            "title": "Does RL really incentivize reasoning beyond base?",
-            "year": 2025,
-            "venue": "NeurIPS Oral",
-            "authors": [],
-            "source_role": [
-              "survey_background"
-            ],
-            "verification_contract": [
-              "unknown"
-            ],
-            "supervision_granularity": [
-              "unknown"
-            ],
-            "training_use": [
-              "unknown"
-            ],
-            "domains": [],
-            "category": [
-              "scaling_rlvr_test_time_compute"
-            ],
-            "subfield": "Other related work",
-            "tags": [
-              "seeded-from-bib"
-            ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "metadata pending",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
-            "needs_search": true,
-            "artifacts": {
-              "paper": null,
-              "venue": null,
-              "arxiv": null,
-              "openreview": null,
-              "acl": null,
-              "pmlr": null,
-              "cvf": null,
-              "doi": null,
-              "code": null,
-              "data": null,
-              "huggingface": null,
-              "project": null,
-              "bibtex": null,
-              "card": null
-            },
-            "primary_link": null
-          }
+          "entry_id": null,
+          "matched": false,
+          "entry": null
         },
         {
           "title": "Does supervised fine-tuning memorize",
@@ -25936,7 +28989,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -25993,7 +29046,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.14843"
           }
@@ -26050,7 +29103,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2603.24472"
           }
@@ -26108,9 +29161,4691 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.20534"
+          }
+        }
+      ]
+    },
+    {
+      "id": "representative_track_03",
+      "emoji": "🧮",
+      "title": "Representative 30: Programmatic Verification",
+      "goal": "Cover the strongest math, code, proof, scientific-program-search, and real-task verifier surfaces.",
+      "entries": [
+        {
+          "title": "HumanEval",
+          "entry_id": "humaneval-code-generation-benchmark-2021",
+          "matched": true,
+          "entry": {
+            "id": "humaneval-code-generation-benchmark-2021",
+            "title": "HumanEval: Hand-Written Evaluation Set",
+            "year": 2021,
+            "venue": "arXiv / OpenAI dataset",
+            "authors": [
+              "Mark Chen et al."
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation"
+            ],
+            "domains": [
+              "code"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "data_construction_open_release_recipes",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "humaneval",
+              "code",
+              "unit-tests",
+              "benchmark"
+            ],
+            "one_line_summary": "HumanEval provides hand-written Python programming problems with unit tests for executable code-generation evaluation.",
+            "why_it_matters": "It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.",
+            "data_object": "Python function completion; process: prompt, canonical solution, unit tests; Python execution harness",
+            "feedback_verifier": "unit tests",
+            "audit_focus": "public benchmark contamination, unit-test coverage gaps",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2107.03374",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2107.03374",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/openai/human-eval",
+              "data": "https://github.com/openai/human-eval",
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2107.03374"
+          }
+        },
+        {
+          "title": "Measuring coding challenge competence with APPS",
+          "entry_id": "measuring-coding-challenge-competence-with-apps-2021",
+          "matched": true,
+          "entry": {
+            "id": "measuring-coding-challenge-competence-with-apps-2021",
+            "title": "Measuring coding challenge competence with APPS",
+            "year": 2021,
+            "venue": "NeurIPS",
+            "authors": [
+              "Dan Hendrycks",
+              "Steven Basart",
+              "Saurav Kadavath",
+              "Mantas Mazeika",
+              "Akul Arora",
+              "Ethan Guo",
+              "Collin Burns",
+              "Samir Puranik",
+              "Horace He",
+              "Dawn Song",
+              "Jacob Steinhardt"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "sft",
+              "test_time_compute"
+            ],
+            "domains": [
+              "code",
+              "programming",
+              "unit-tests"
+            ],
+            "category": [
+              "instruction_demonstration_rationale_data",
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "🧱 Instruction tuning / SFT data",
+            "tags": [
+              "code",
+              "programming",
+              "seeded-from-bib",
+              "unit-tests"
+            ],
+            "one_line_summary": "APPS evaluates code-generation competence with 10,000 programming problems checked by executable test cases.",
+            "why_it_matters": "It is a pre-HumanEval large-scale code benchmark where the feedback-bearing object is a problem statement, generated program, and unit-test outcome.",
+            "data_object": "Python code submission evaluated against test cases.; process: difficulty, prompt, starter code where available, generated solution, public/hidden test outcomes.; offline programming benchmark with executable Python tests.",
+            "feedback_verifier": "unit-test pass/fail signal.",
+            "audit_focus": "Programs can overfit weak tests., Syntax validity is not the same as functional correctness., Contamination can inflate code benchmark scores.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2105.09938",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2105.09938",
+              "openreview": "https://openreview.net/forum?id=sD93GOzH3i5",
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/hendrycks/apps",
+              "data": "https://github.com/hendrycks/apps",
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2105.09938"
+          }
+        },
+        {
+          "title": "Program Synthesis with Large Language Models",
+          "entry_id": "program-synthesis-with-large-language-models-2021",
+          "matched": true,
+          "entry": {
+            "id": "program-synthesis-with-large-language-models-2021",
+            "title": "Program Synthesis with Large Language Models",
+            "year": 2021,
+            "venue": "arXiv",
+            "authors": [
+              "Jacob Austin",
+              "Augustus Odena",
+              "Maxwell Nye",
+              "Maarten Bosma",
+              "Henryk Michalewski",
+              "David Dohan",
+              "Ellen Jiang",
+              "Carrie Cai",
+              "Michael Terry",
+              "Quoc Le",
+              "Charles Sutton"
+            ],
+            "source_role": [
+              "benchmark",
+              "scaling_study",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "sft",
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "code",
+              "program-synthesis",
+              "benchmark"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "google-research",
+              "mbpp",
+              "program-synthesis",
+              "executable-code"
+            ],
+            "one_line_summary": "Google Research benchmark paper that studies Python program synthesis with executable checks and model-size scaling.",
+            "why_it_matters": "It adds an early high-team code-verification waypoint before HumanEval/APPS became standard surfaces for pass@k and verifier-backed code evaluation.",
+            "data_object": "natural-language programming prompt with Python solution and executable tests or outputs.; process: task description, reference program, generated program; Python execution benchmark for short program synthesis.",
+            "feedback_verifier": "unit tests or expected program outputs.",
+            "audit_focus": "Small Python tasks can overstate transfer to competitive programming or repository repair., Execution-output prediction is not equivalent to program synthesis., Training on benchmark prompts can contaminate later code-evaluation claims.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2108.07732",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2108.07732",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2108.07732"
+          }
+        },
+        {
+          "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
+          "entry_id": "coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022",
+          "matched": true,
+          "entry": {
+            "id": "coderl-mastering-code-generation-through-pretrained-models-and-deep-reinforcemen-2022",
+            "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
+            "year": 2022,
+            "venue": "NeurIPS 2022",
+            "authors": [
+              "Hung Le",
+              "Yue Wang",
+              "Akhilesh Deepak Gotmare",
+              "Silvio Savarese",
+              "Steven C. H. Hoi"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "construction_recipe",
+              "model_report"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "scalar_reward",
+              "answer_level"
+            ],
+            "training_use": [
+              "rlvr",
+              "reward_modeling",
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "code",
+              "program-synthesis",
+              "reinforcement-learning"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "scaling_rlvr_test_time_compute",
+              "training_usage_optimization_objectives",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "coderl",
+              "code-rl",
+              "execution-feedback",
+              "critic-model",
+              "representative-track-03",
+              "representative-track-10"
+            ],
+            "one_line_summary": "CodeRL uses unit-test feedback and a learned critic to train and sample code-generation models.",
+            "why_it_matters": "It is a pre-RLVR-era code example where programmatic correctness becomes both a training signal and a test-time selection signal.",
+            "data_object": "problem statement, generated program, unit-test feedback, critic score, and regeneration decision.; process: prompt, generated code, unit-test result; Python/programming benchmark execution harness.",
+            "feedback_verifier": "unit-test outcomes plus a critic trained to predict functional correctness.",
+            "audit_focus": "Example tests can overfit and miss hidden failures., Critic scores may reward patterns correlated with benchmark tests., Regeneration budget can be conflated with model quality.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2207.01780",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2207.01780",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2207.01780",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2207.01780"
+          }
+        },
+        {
+          "title": "CodeT: Code Generation with Generated Tests",
+          "entry_id": "codet-code-generation-with-generated-tests-2022",
+          "matched": true,
+          "entry": {
+            "id": "codet-code-generation-with-generated-tests-2022",
+            "title": "CodeT: Code Generation with Generated Tests",
+            "year": 2022,
+            "venue": "ICLR 2023",
+            "authors": [
+              "Bei Chen",
+              "Fengji Zhang",
+              "Anh Nguyen",
+              "Daoguang Zan",
+              "Zeqi Lin",
+              "Jian-Guang Lou",
+              "Weizhu Chen"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "construction_recipe",
+              "benchmark"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "evaluation",
+              "test_time_compute",
+              "reward_modeling"
+            ],
+            "domains": [
+              "code",
+              "generated-tests",
+              "program-synthesis"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "codet",
+              "generated-tests",
+              "execution-agreement",
+              "code-verifier",
+              "representative-track-03"
+            ],
+            "one_line_summary": "CodeT uses model-generated tests and execution agreement to rerank code-generation samples.",
+            "why_it_matters": "It makes test generation itself part of the reasoning-data object, not just an external evaluation script.",
+            "data_object": "programming prompt, candidate program set, generated test cases, execution matrix, and selected solution.; process: prompt, candidate solution, generated test; code execution harness across programming benchmarks.",
+            "feedback_verifier": "generated tests plus dual execution agreement among code samples.",
+            "audit_focus": "Generated tests can share model biases with generated solutions., Agreement among wrong programs can select a wrong answer., Extra generated-test budget can dominate pass@1 comparisons.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2207.10397",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2207.10397",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2207.10397",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2207.10397"
+          }
+        },
+        {
+          "title": "Competition-Level Code Generation with AlphaCode",
+          "entry_id": "competition-level-code-generation-with-alphacode-2022",
+          "matched": true,
+          "entry": {
+            "id": "competition-level-code-generation-with-alphacode-2022",
+            "title": "Competition-Level Code Generation with AlphaCode",
+            "year": 2022,
+            "venue": "Science",
+            "authors": [
+              "Yujia Li",
+              "David Choi",
+              "Junyoung Chung",
+              "Nate Kushman",
+              "Julian Schrittwieser",
+              "Remi Leblond",
+              "Tom Eccles",
+              "James Keeling",
+              "Felix Gimeno",
+              "Oriol Vinyals"
+            ],
+            "source_role": [
+              "model_report",
+              "benchmark",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "sft",
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "code",
+              "competitive-programming",
+              "test-time-compute"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "deepmind",
+              "alphacode",
+              "codecontests",
+              "pass-at-k",
+              "competitive-programming"
+            ],
+            "one_line_summary": "AlphaCode shows how competitive-programming data, hidden tests, massive sampling, and filtering become a programmatic reasoning stack.",
+            "why_it_matters": "It is a top-team, top-venue anchor for treating code solutions as verifier-checked samples rather than plain text completions.",
+            "data_object": "problem statement, generated program, sampled candidate set, and submission verdict.; process: problem statement, generated code sample, cluster or filter score; Codeforces-like competitive programming judge with hidden tests.",
+            "feedback_verifier": "program behavior under test cases and contest verdicts.",
+            "audit_focus": "Large sampling budgets can dominate model quality., Public contest solutions can contaminate training or evaluation if dates are not controlled., Passing hidden tests does not expose failed attempts or reasoning traces.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2203.07814",
+              "venue": "https://www.science.org/doi/10.1126/science.abq1158",
+              "arxiv": "https://arxiv.org/abs/2203.07814",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.1126/science.abq1158",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": "https://deepmind.google/discover/blog/competitive-programming-with-alphacode/",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2203.07814"
+          }
+        },
+        {
+          "title": "BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions",
+          "entry_id": "bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024",
+          "matched": true,
+          "entry": {
+            "id": "bigcodebench-benchmarking-code-generation-with-diverse-function-calls-and-comple-2024",
+            "title": "BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions",
+            "year": 2024,
+            "venue": "ICLR 2025",
+            "authors": [
+              "Terry Yue Zhuo",
+              "Minh Chien Vu",
+              "Jenny Chim",
+              "Han Hu",
+              "Wenhao Yu",
+              "Ratnadira Widyasari",
+              "Imam Nur Bani Yusuf",
+              "Haolan Zhan",
+              "Junda He",
+              "Leandro Von Werra"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "sft"
+            ],
+            "domains": [
+              "code",
+              "function-calling",
+              "software-engineering"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces",
+              "environment_agent_trajectory_data",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "bigcodebench",
+              "code-benchmark",
+              "function-calling",
+              "execution-tests",
+              "representative-track-03"
+            ],
+            "one_line_summary": "BigCodeBench evaluates code generation on API-heavy tasks with executable tests and branch-coverage-aware checks.",
+            "why_it_matters": "It expands the code-verification pool from short standalone functions to realistic library and function-call compositions.",
+            "data_object": "instruction or docstring, required function calls, generated code, and test results.; process: instruction, library/API requirements, generated code; Python execution harness covering diverse libraries and function calls.",
+            "feedback_verifier": "unit tests with high branch coverage for each task.",
+            "audit_focus": "Library version drift can change accepted behavior., High branch coverage still may miss semantic edge cases., API-heavy tasks can conflate retrieval/API knowledge with reasoning.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2406.15877",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2406.15877",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2406.15877",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2406.15877"
+          }
+        },
+        {
+          "title": "LiveCodeBench",
+          "entry_id": "livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024",
+          "matched": true,
+          "entry": {
+            "id": "livecodebench-holistic-and-contamination-free-evaluation-of-large-language-model-2024",
+            "title": "LiveCodeBench: Holistic and contamination-free evaluation of large language models for code",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Naman Jain",
+              "King Han",
+              "Alex Gu",
+              "Wen-Ding Li",
+              "Fanjia Yan",
+              "Tianjun Zhang",
+              "Sida Wang",
+              "Armando Solar-Lezama",
+              "Koushik Sen",
+              "Ion Stoica"
+            ],
+            "source_role": [
+              "benchmark",
+              "audit_failure"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "full_episode"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit",
+              "test_time_compute"
+            ],
+            "domains": [
+              "code",
+              "contamination",
+              "execution"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "training_usage_optimization_objectives",
+              "benchmarks_evaluation_surfaces",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "code",
+              "contamination",
+              "execution",
+              "seeded-from-bib"
+            ],
+            "one_line_summary": "LiveCodeBench continuously collects recent programming problems to evaluate code generation, execution, repair, and test-output prediction under lower contamination risk.",
+            "why_it_matters": "It gives code-reasoning evaluation a moving-time-window design, making it harder to confuse memorized public problems with genuine coding capability.",
+            "data_object": "program submission or code-related output evaluated by tests or task-specific checks.; process: problem release date, platform, prompt, generated code, tests, pass/fail result, evaluation window.; code execution and benchmark leaderboard infrastructure.",
+            "feedback_verifier": "programmatic tests and task-specific correctness checks.",
+            "audit_focus": "Live benchmarks still become stale after release., Execution settings can affect pass/fail outcomes., Public leaderboard feedback can shape future training.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2403.07974",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2403.07974",
+              "openreview": "https://openreview.net/forum?id=chfJJYC3iL",
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/livecodebench/livecodebench",
+              "data": "https://github.com/livecodebench/livecodebench",
+              "huggingface": null,
+              "project": "https://livecodebench.github.io/",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2403.07974"
+          }
+        },
+        {
+          "title": "SWE-bench",
+          "entry_id": "swe-bench-can-language-models-resolve-real-world-github-issues-2023",
+          "matched": true,
+          "entry": {
+            "id": "swe-bench-can-language-models-resolve-real-world-github-issues-2023",
+            "title": "SWE-bench: Can language models resolve real-world GitHub issues?",
+            "year": 2023,
+            "venue": "ICLR",
+            "authors": [],
+            "source_role": [
+              "benchmark",
+              "agent_environment"
+            ],
+            "verification_contract": [
+              "environmental",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "full_episode",
+              "state_action_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "agent_training"
+            ],
+            "domains": [
+              "software_engineering",
+              "code"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "training_usage_optimization_objectives",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "seeded-from-bib",
+              "swe-bench",
+              "software-engineering",
+              "agent",
+              "environment"
+            ],
+            "one_line_summary": "SWE-bench turns real GitHub issues into repository-level repair tasks evaluated by applying patches and running tests.",
+            "why_it_matters": "It is the agent/environment anchor where the reasoning-data object includes repository state, issue text, actions, patches, and test-backed outcomes.",
+            "data_object": "full episode; state action level",
+            "feedback_verifier": "environmental, programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2310.06770",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2310.06770",
+              "openreview": "https://openreview.net/forum?id=VTF8yNQM66",
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/swe-bench/SWE-bench",
+              "data": "https://github.com/swe-bench/SWE-bench",
+              "huggingface": null,
+              "project": "https://www.swebench.com/original.html",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2310.06770"
+          }
+        },
+        {
+          "title": "SWE-bench Verified",
+          "entry_id": "introducing-swe-bench-verified-2024",
+          "matched": true,
+          "entry": {
+            "id": "introducing-swe-bench-verified-2024",
+            "title": "Introducing SWE-bench Verified",
+            "year": 2024,
+            "venue": "OpenAI / SWE-bench report",
+            "authors": [
+              "SWE-bench Team",
+              "OpenAI Preparedness"
+            ],
+            "source_role": [
+              "benchmark",
+              "agent_environment",
+              "audit_failure"
+            ],
+            "verification_contract": [
+              "environmental",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "full_episode",
+              "state_action_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "agent_training",
+              "audit"
+            ],
+            "domains": [
+              "software-engineering",
+              "agents",
+              "unit-tests"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "environment_agent_trajectory_data",
+              "training_usage_optimization_objectives",
+              "benchmarks_evaluation_surfaces",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "agents",
+              "seeded-from-bib",
+              "software-engineering",
+              "unit-tests"
+            ],
+            "one_line_summary": "SWE-bench Verified is a human-filtered 500-instance subset of SWE-bench designed to reduce ambiguous, unsolvable, or incorrectly tested software-engineering tasks.",
+            "why_it_matters": "It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.",
+            "data_object": "patch diff applied to a repository plus test execution results.; process: repository, issue, base commit, patch, FAIL TO PASS tests, PASS TO PASS tests, human validation notes.; Dockerized repository checkout and unit-test harness.",
+            "feedback_verifier": "post-patch unit tests plus human filtering of task validity.",
+            "audit_focus": "Leaderboard scores can depend strongly on scaffold design., Tests may not cover all acceptable patches., Public benchmark tasks can become training targets over time.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://openai.com/index/introducing-swe-bench-verified/",
+              "venue": "https://www.swebench.com/verified.html",
+              "arxiv": null,
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/swe-bench/SWE-bench",
+              "data": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+              "huggingface": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+              "project": "https://www.swebench.com/verified.html",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://openai.com/index/introducing-swe-bench-verified/"
+          }
+        },
+        {
+          "title": "SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?",
+          "entry_id": "swe-lancer-can-frontier-llms-earn-one-million-from-real-world-freelance-software-engineering-2025",
+          "matched": true,
+          "entry": {
+            "id": "swe-lancer-can-frontier-llms-earn-one-million-from-real-world-freelance-software-engineering-2025",
+            "title": "SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Samuel Miserendino",
+              "Michele Wang",
+              "Tejal Patwardhan",
+              "Johannes Heidecke"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release",
+              "audit_failure"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "judgment_required"
+            ],
+            "supervision_granularity": [
+              "full_episode",
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit"
+            ],
+            "domains": [
+              "software-engineering",
+              "freelance-work",
+              "agents",
+              "code"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "benchmarks_evaluation_surfaces",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "swe-lancer",
+              "openai",
+              "software-engineering",
+              "real-world-tasks",
+              "representative-track-03"
+            ],
+            "one_line_summary": "SWE-Lancer evaluates real freelance software-engineering tasks with verified tests, managerial labels, and payout-weighted scores.",
+            "why_it_matters": "It extends Track 03 from repository issues to economically grounded software tasks with both tests and human decision labels.",
+            "data_object": "task statement, code context, generated patch or decision, test result, and dollar-value mapping.; process: freelance task, repository/context, agent patch; Dockerized software-engineering benchmark with public Diamond split.",
+            "feedback_verifier": "triple-verified end-to-end tests for IC tasks and human-manager labels for management tasks.",
+            "audit_focus": "Tests can underspecify intended behavior., Dollar-value mapping may not equal benchmark difficulty., Management tasks require judgment labels rather than pure programmatic checks.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2502.12115",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2502.12115",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2502.12115",
+              "code": "https://github.com/openai/SWELancer-Benchmark",
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2502.12115"
+          }
+        },
+        {
+          "title": "MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering",
+          "entry_id": "mle-bench-evaluating-machine-learning-agents-on-machine-learning-engineering-2024",
+          "matched": true,
+          "entry": {
+            "id": "mle-bench-evaluating-machine-learning-agents-on-machine-learning-engineering-2024",
+            "title": "MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering",
+            "year": 2024,
+            "venue": "ICLR 2025",
+            "authors": [
+              "Jun Shern Chan",
+              "Neil Chowdhury",
+              "Oliver Jaffe",
+              "James Aung",
+              "Dane Sherburn",
+              "Evan Mays",
+              "Giulio Starace",
+              "Kevin Liu",
+              "Leon Maksin",
+              "Tejal Patwardhan",
+              "Lilian Weng",
+              "Aleksander Madry"
+            ],
+            "source_role": [
+              "benchmark",
+              "agent_environment",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "environmental"
+            ],
+            "supervision_granularity": [
+              "full_episode",
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit",
+              "test_time_compute"
+            ],
+            "domains": [
+              "machine-learning-engineering",
+              "agents",
+              "kaggle",
+              "code"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "benchmarks_evaluation_surfaces",
+              "scaling_rlvr_test_time_compute",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "mle-bench",
+              "openai",
+              "ml-engineering",
+              "kaggle",
+              "representative-track-03"
+            ],
+            "one_line_summary": "MLE-bench evaluates agents on Kaggle-style ML engineering competitions with executable workflows and leaderboard metrics.",
+            "why_it_matters": "It expands Track 03 from code snippets to full ML engineering episodes where score, compute budget, and contamination are explicit.",
+            "data_object": "competition task, dataset, experiment/code artifacts, submission score, and resource budget.; process: competition id, dataset, agent scaffold; Kaggle-style ML engineering competitions with executable experiments and leaderboard scoring.",
+            "feedback_verifier": "competition metric compared with Kaggle leaderboard baselines.",
+            "audit_focus": "Leaderboards can reward overfitting to public competition practices., Resource scaling can dominate model comparisons., Kaggle data licenses vary by competition.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2410.07095",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2410.07095",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2410.07095",
+              "code": "https://github.com/openai/mle-bench",
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2410.07095"
+          }
+        },
+        {
+          "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+          "entry_id": "paperbench-evaluating-ai-s-ability-to-replicate-ai-research-2025",
+          "matched": true,
+          "entry": {
+            "id": "paperbench-evaluating-ai-s-ability-to-replicate-ai-research-2025",
+            "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Giulio Starace",
+              "Oliver Jaffe",
+              "Dane Sherburn",
+              "James Aung",
+              "Jun Shern Chan",
+              "Leon Maksin",
+              "Rachel Dias",
+              "Evan Mays",
+              "Benjamin Kinsella",
+              "Wyatt Thompson",
+              "Johannes Heidecke",
+              "Amelia Glaese",
+              "Tejal Patwardhan"
+            ],
+            "source_role": [
+              "benchmark",
+              "agent_environment",
+              "audit_failure"
+            ],
+            "verification_contract": [
+              "judgment_required",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "state_action_level",
+              "full_episode",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit",
+              "reward_modeling"
+            ],
+            "domains": [
+              "ai-research",
+              "agents",
+              "software-engineering",
+              "rubric-evaluation"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "judgment_rubric_domain_expert_data",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "paperbench",
+              "openai",
+              "research-replication",
+              "rubric-judge",
+              "representative-track-03"
+            ],
+            "one_line_summary": "PaperBench evaluates research-agent replication attempts with hierarchical rubrics and judge/human baselines.",
+            "why_it_matters": "It marks the point where Track 03 verification becomes a hybrid of executable artifacts, experiments, rubrics, and judge calibration.",
+            "data_object": "paper replication task, codebase/experiment artifacts, rubric item, judge score, and human baseline.; process: target paper, replication subtask, generated code; AI research replication environment with hierarchical rubrics.",
+            "feedback_verifier": "author co-developed rubrics and an LLM-based judge benchmarked against human grading.",
+            "audit_focus": "LLM judge scores can drift or encode rubric shortcuts., Replicating a paper mixes reading, coding, experimentation, and environment setup., Target papers may have public code that changes task difficulty.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2504.01848",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2504.01848",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2504.01848",
+              "code": "https://github.com/openai/preparedness",
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2504.01848"
+          }
+        },
+        {
+          "title": "DS-1000: A Natural and Reliable Benchmark for Data Science Code Generation",
+          "entry_id": "ds-1000-natural-and-reliable-benchmark-for-data-science-code-generation-2022",
+          "matched": true,
+          "entry": {
+            "id": "ds-1000-natural-and-reliable-benchmark-for-data-science-code-generation-2022",
+            "title": "DS-1000: A Natural and Reliable Benchmark for Data Science Code Generation",
+            "year": 2022,
+            "venue": "arXiv",
+            "authors": [
+              "Yuhang Lai",
+              "Chengxi Li",
+              "Yiming Wang",
+              "Tianyi Zhang",
+              "Ruiqi Zhong",
+              "Luke Zettlemoyer",
+              "Scott Wen-tau Yih",
+              "Daniel Fried",
+              "Sida I. Wang",
+              "Tao Yu"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "sft"
+            ],
+            "domains": [
+              "code",
+              "data-science",
+              "python"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "data-science",
+              "executable-code",
+              "ds-1000"
+            ],
+            "one_line_summary": "DS-1000 evaluates data-science code generation with tests and API constraints over realistic Python library tasks.",
+            "why_it_matters": "It broadens Track 03 beyond toy function synthesis toward dependency-sensitive executable code tasks.",
+            "data_object": "natural-language data-science task with Python code solution.; process: prompt, required library, generated code; Python data-science libraries such as NumPy and Pandas.",
+            "feedback_verifier": "functional tests plus API/keyword constraints.",
+            "audit_focus": "Python library versions can change accepted behavior., API constraints may reward surface compliance rather than robust code., Public benchmark reuse can train models on test cases.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2211.11501",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2211.11501",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": "https://ds1000-code-gen.github.io",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2211.11501"
+          }
+        },
+        {
+          "title": "ScienceAgentBench",
+          "entry_id": "scienceagentbench-rigorous-assessment-of-language-agents-for-data-driven-scientific-discovery-2024",
+          "matched": true,
+          "entry": {
+            "id": "scienceagentbench-rigorous-assessment-of-language-agents-for-data-driven-scientific-discovery-2024",
+            "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Ziru Chen",
+              "Shijie Chen",
+              "Yuting Ning",
+              "Qianheng Zhang",
+              "Boshi Wang",
+              "Botao Yu",
+              "Yifei Li",
+              "Zeyi Liao",
+              "Chen Wei",
+              "Huan Sun"
+            ],
+            "source_role": [
+              "benchmark",
+              "agent_environment"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "judgment_required"
+            ],
+            "supervision_granularity": [
+              "full_episode",
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit",
+              "test_time_compute"
+            ],
+            "domains": [
+              "scientific-discovery",
+              "data-science",
+              "agents",
+              "code"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "scienceagentbench",
+              "scientific-discovery",
+              "data-science-agents",
+              "executable-programs",
+              "representative-track-03"
+            ],
+            "one_line_summary": "ScienceAgentBench turns peer-reviewed data-driven discovery tasks into executable Python-program agent evaluations.",
+            "why_it_matters": "It adds a high-quality scientific-workflow surface where verification includes code execution, domain metrics, and expert validation.",
+            "data_object": "scientific task, input data, generated program, execution output, metric score, and cost.; process: publication-derived task, input data, program file; scientific data-analysis code execution environment.",
+            "feedback_verifier": "execution results, task metrics, expert validation, and cost measurements.",
+            "audit_focus": "Program execution may pass while scientific interpretation is wrong., Expert validation can be expensive and non-uniform., Self-debug attempts add test-time compute that must be reported.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2410.05080",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2410.05080",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2410.05080",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2410.05080"
+          }
+        },
+        {
+          "title": "SpreadsheetBench",
+          "entry_id": "spreadsheetbench-towards-challenging-real-world-spreadsheet-manipulation-2024",
+          "matched": true,
+          "entry": {
+            "id": "spreadsheetbench-towards-challenging-real-world-spreadsheet-manipulation-2024",
+            "title": "SpreadsheetBench: Towards Challenging Real World Spreadsheet Manipulation",
+            "year": 2024,
+            "venue": "NeurIPS 2024",
+            "authors": [
+              "Zeyao Ma",
+              "Bohan Zhang",
+              "Jing Zhang",
+              "Jifan Yu",
+              "Xiaokang Zhang",
+              "Xiaohan Zhang",
+              "Sijia Luo",
+              "Xi Wang",
+              "Jie Tang"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "state_action_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit"
+            ],
+            "domains": [
+              "spreadsheets",
+              "office-agents",
+              "code",
+              "data-manipulation"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "spreadsheetbench",
+              "spreadsheets",
+              "office-agents",
+              "online-judge",
+              "representative-track-03"
+            ],
+            "one_line_summary": "SpreadsheetBench evaluates real-world spreadsheet manipulation with multiple test files per instruction.",
+            "why_it_matters": "It broadens programmatic verification to office/data work where hidden test workbooks play the role of unit tests.",
+            "data_object": "spreadsheet instruction, input workbook, generated manipulation/formula, and test-case score.; process: forum question, spreadsheet file, instruction; spreadsheet manipulation environment with multiple workbook test cases.",
+            "feedback_verifier": "online-judge-like spreadsheet tests across varied values/files.",
+            "audit_focus": "Formula solutions can overfit visible examples., Spreadsheet formatting and hidden state can affect scoring., Forum tasks may contain ambiguous user intent.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2406.14991",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2406.14991",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2406.14991",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2406.14991"
+          }
+        },
+        {
+          "title": "KernelBench",
+          "entry_id": "kernelbench-can-llms-write-efficient-gpu-kernels-2025",
+          "matched": true,
+          "entry": {
+            "id": "kernelbench-can-llms-write-efficient-gpu-kernels-2025",
+            "title": "KernelBench: Can LLMs Write Efficient GPU Kernels?",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Anne Ouyang",
+              "Simon Guo",
+              "Simran Arora",
+              "Alex L. Zhang",
+              "William Hu",
+              "Christopher Ré",
+              "Azalia Mirhoseini"
+            ],
+            "source_role": [
+              "benchmark",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "evaluation",
+              "test_time_compute",
+              "rlvr"
+            ],
+            "domains": [
+              "code",
+              "gpu-kernels",
+              "performance-optimization"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "kernelbench",
+              "gpu-kernels",
+              "performance-reward",
+              "code-verification",
+              "representative-track-03"
+            ],
+            "one_line_summary": "KernelBench scores generated GPU kernels by both functional correctness and measured speedup.",
+            "why_it_matters": "It adds a high-value code surface where the verifier is not only pass/fail correctness but also measured performance.",
+            "data_object": "workload specification, generated kernel, functional test result, speedup, and fast p score.; process: PyTorch workload, generated kernel, compilation result; GPU execution and profiling environment for kernel correctness and speed.",
+            "feedback_verifier": "functional correctness tests plus runtime speedup threshold.",
+            "audit_focus": "Correct kernels can still be slower than baseline., Hardware-specific performance can vary widely., Compilation success can mask numerical precision bugs.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2502.10517",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2502.10517",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2502.10517",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2502.10517"
+          }
+        },
+        {
+          "title": "Mathematical discoveries from program search with large language models",
+          "entry_id": "mathematical-discoveries-from-program-search-with-large-language-models-2024",
+          "matched": true,
+          "entry": {
+            "id": "mathematical-discoveries-from-program-search-with-large-language-models-2024",
+            "title": "Mathematical discoveries from program search with large language models",
+            "year": 2024,
+            "venue": "Nature",
+            "authors": [
+              "Bernardino Romera-Paredes",
+              "Mohammadamin Barekatain",
+              "Alexander Novikov",
+              "Matej Balog",
+              "M. Pawan Kumar",
+              "Alhussein Fawzi"
+            ],
+            "source_role": [
+              "construction_recipe",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "math",
+              "code",
+              "scientific-discovery",
+              "combinatorial-optimization"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "scaling_rlvr_test_time_compute",
+              "data_construction_open_release_recipes"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "deepmind",
+              "funsearch",
+              "program-search",
+              "scientific-discovery",
+              "evaluator-backed"
+            ],
+            "one_line_summary": "FunSearch pairs an LLM with executable evaluators and evolutionary search to discover verifier-scored programs.",
+            "why_it_matters": "It expands programmatic verification beyond benchmark answering: the reusable record is a candidate program, evaluator score, search budget, and audit trail.",
+            "data_object": "executable candidate program scored by a domain-specific evaluator.; process: prompt with sampled programs, generated function, execution result; executable program-search environment for math and combinatorial optimization.",
+            "feedback_verifier": "deterministic evaluator that scores candidate programs.",
+            "audit_focus": "The evaluator can become the bottleneck or encode a narrow objective., Generated programs that score well may be hard to generalize beyond the tested inputs., Search cost and evaluator parallelism must be reported before comparing systems.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://www.nature.com/articles/s41586-023-06924-6",
+              "venue": "https://www.nature.com/articles/s41586-023-06924-6",
+              "arxiv": null,
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.1038/s41586-023-06924-6",
+              "code": "https://github.com/google-deepmind/funsearch",
+              "data": null,
+              "huggingface": null,
+              "project": "https://deepmind.google/discover/blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://www.nature.com/articles/s41586-023-06924-6"
+          }
+        },
+        {
+          "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+          "entry_id": "alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025",
+          "matched": true,
+          "entry": {
+            "id": "alphaevolve-a-coding-agent-for-scientific-and-algorithmic-discovery-2025",
+            "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+            "year": 2025,
+            "venue": "arXiv / Google DeepMind white paper",
+            "authors": [
+              "Alexander Novikov",
+              "Ngan Vu",
+              "Marvin Eisenberger",
+              "Emilien Dupont",
+              "Po-Sen Huang",
+              "Adam Zsolt Wagner",
+              "Sergey Shirobokov",
+              "Borislav Kozlovskii",
+              "Francisco J. R. Ruiz",
+              "Matej Balog"
+            ],
+            "source_role": [
+              "model_report",
+              "construction_recipe",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "trajectory_value"
+            ],
+            "training_use": [
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "program-search",
+              "scientific-discovery",
+              "algorithm-design",
+              "code"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "scaling_rlvr_test_time_compute",
+              "data_construction_open_release_recipes"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "alphaevolve",
+              "deepmind",
+              "program-search",
+              "evolutionary-search",
+              "representative-track-03",
+              "representative-track-10"
+            ],
+            "one_line_summary": "AlphaEvolve uses LLM-generated code variants, evaluator feedback, and evolutionary search to discover improved algorithms.",
+            "why_it_matters": "It broadens Track 03/10 from answering benchmark problems to optimizing executable artifacts under explicit evaluator budgets.",
+            "data_object": "candidate program, evaluator score, mutation lineage, and accepted improvement.; process: initial program, candidate edit, evaluator score; sandboxed code execution and domain-specific evaluator functions.",
+            "feedback_verifier": "one or more programmatic evaluators scoring correctness and objective value.",
+            "audit_focus": "Evaluator design can overfit to narrow objective functions., Search budget and parallel evaluator count can dominate results., Accepted programs may be correct for benchmarked cases but brittle outside them.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2506.13131",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2506.13131",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2506.13131",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2506.13131"
+          }
+        },
+        {
+          "title": "Solving olympiad geometry without human demonstrations",
+          "entry_id": "solving-olympiad-geometry-without-human-demonstrations-2024",
+          "matched": true,
+          "entry": {
+            "id": "solving-olympiad-geometry-without-human-demonstrations-2024",
+            "title": "Solving olympiad geometry without human demonstrations",
+            "year": 2024,
+            "venue": "Nature",
+            "authors": [
+              "Trieu H. Trinh",
+              "Yuhuai Wu",
+              "Quoc V. Le",
+              "He He",
+              "Thang Luong"
+            ],
+            "source_role": [
+              "construction_recipe",
+              "benchmark",
+              "model_report"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "step_level"
+            ],
+            "training_use": [
+              "sft",
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "math",
+              "geometry",
+              "theorem-proving"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces",
+              "data_construction_open_release_recipes"
+            ],
+            "subfield": "🧾 Formal proof / Lean / theorem proving",
+            "tags": [
+              "deepmind",
+              "alphageometry",
+              "theorem-proving",
+              "synthetic-proof-data",
+              "symbolic-verifier"
+            ],
+            "one_line_summary": "AlphaGeometry trains on synthetic geometry proofs and uses symbolic proof feedback to solve olympiad geometry problems.",
+            "why_it_matters": "It is one of the clearest top-team examples of programmatically verifiable reasoning data generated without human demonstrations.",
+            "data_object": "theorem premises, auxiliary construction, symbolic deduction trace, and proof result.; process: theorem premises, conclusion, auxiliary construction; geometry-specific symbolic deduction engine and IMO-AG benchmark.",
+            "feedback_verifier": "symbolic geometry prover verifies whether the theorem conclusion is reached.",
+            "audit_focus": "Geometry-specific language may not transfer to Lean or broader mathematics., Symbolic engine coverage can hide unrepresented problem types., Search budget and translation choices affect comparison to human olympiad performance.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://www.nature.com/articles/s41586-023-06747-5",
+              "venue": "https://www.nature.com/articles/s41586-023-06747-5",
+              "arxiv": null,
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.1038/s41586-023-06747-5",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": "https://deepmind.google/discover/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://www.nature.com/articles/s41586-023-06747-5"
+          }
+        },
+        {
+          "title": "Gold-medalist Performance in Solving Olympiad Geometry with AlphaGeometry2",
+          "entry_id": "gold-medalist-performance-in-solving-olympiad-geometry-with-alphageometry2-2025",
+          "matched": true,
+          "entry": {
+            "id": "gold-medalist-performance-in-solving-olympiad-geometry-with-alphageometry2-2025",
+            "title": "Gold-medalist Performance in Solving Olympiad Geometry with AlphaGeometry2",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Yuri Chervonyi",
+              "Trieu H. Trinh",
+              "Miroslav Olsak",
+              "Xiaomeng Yang",
+              "Hoang Nguyen",
+              "Marcelo Menegali",
+              "Junehyuk Jung",
+              "Vikas Verma",
+              "Quoc V. Le",
+              "Thang Luong"
+            ],
+            "source_role": [
+              "model_report",
+              "construction_recipe",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "step_level"
+            ],
+            "training_use": [
+              "sft",
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "math",
+              "geometry",
+              "theorem-proving"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "🧾 Formal proof / Lean / theorem proving",
+            "tags": [
+              "deepmind",
+              "alphageometry2",
+              "theorem-proving",
+              "test-time-compute",
+              "synthetic-proof-data"
+            ],
+            "one_line_summary": "AlphaGeometry2 expands synthetic geometry data and search to gold-medalist-level geometry-solving performance.",
+            "why_it_matters": "It gives Track 03 and Track 10 a clean example where synthetic proof data, symbolic verification, and search budget are all first-class metadata.",
+            "data_object": "geometry statement, auxiliary construction, symbolic proof path, and solve result.; process: problem statement, representation-language translation, auxiliary construction; geometry representation language plus symbolic deduction engine.",
+            "feedback_verifier": "symbolic theorem-proving engine and solved/unsolved benchmark outcome.",
+            "audit_focus": "Geometry-specific representation limits claims outside plane geometry., Search budget and translation coverage can dominate reported gold-medalist comparisons., Synthetic proof language may bias the model toward verifier-specific constructions.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2502.03544",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2502.03544",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2502.03544"
+          }
+        },
+        {
+          "title": "HOList",
+          "entry_id": "holist-an-environment-for-machine-learning-of-higher-order-logic-theorem-proving-2019",
+          "matched": true,
+          "entry": {
+            "id": "holist-an-environment-for-machine-learning-of-higher-order-logic-theorem-proving-2019",
+            "title": "HOList: An Environment for Machine Learning of Higher-Order Theorem Proving",
+            "year": 2019,
+            "venue": "ICML 2019",
+            "authors": [
+              "Kshitij Bansal",
+              "Sarah M. Loos",
+              "Markus N. Rabe",
+              "Christian Szegedy",
+              "Stewart Wilcox"
+            ],
+            "source_role": [
+              "benchmark",
+              "agent_environment"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "environmental"
+            ],
+            "supervision_granularity": [
+              "state_action_level",
+              "answer_level"
+            ],
+            "training_use": [
+              "agent_training",
+              "evaluation",
+              "rlvr"
+            ],
+            "domains": [
+              "theorem-proving",
+              "higher-order-logic",
+              "proof-assistant"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "benchmarks_evaluation_surfaces",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "🧾 Formal proof / Lean / theorem proving",
+            "tags": [
+              "holist",
+              "deephol",
+              "formal-proofs",
+              "proof-assistant",
+              "representative-track-03"
+            ],
+            "one_line_summary": "HOList exposes higher-order theorem proving as a machine-learning environment with formal checker feedback.",
+            "why_it_matters": "It is an early bridge from static proof benchmarks to proof-state/action trajectories with a hard formal verifier.",
+            "data_object": "proof goal, tactic/action, proof state transition, and theorem-proving result.; process: goal statement, available premises, tactic action; HOL Light theorem prover exposed as an RL-style environment.",
+            "feedback_verifier": "HOL Light kernel and theorem-prover state transitions.",
+            "audit_focus": "HOL Light-specific tactics may not transfer to Lean or Coq., Proof-search budget strongly affects success rates., Library theorem overlap can inflate evaluation if not versioned.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/1904.03241",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/1904.03241",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.1904.03241",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/1904.03241"
+          }
+        },
+        {
+          "title": "miniF2F",
+          "entry_id": "minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021",
+          "matched": true,
+          "entry": {
+            "id": "minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021",
+            "title": "miniF2F: A cross-system benchmark for formal olympiad-level mathematics",
+            "year": 2021,
+            "venue": "ICLR",
+            "authors": [
+              "Kunhao Zheng",
+              "Jesse Michael Han",
+              "Stanislas Polu"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "environmental"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "step_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "agent_training",
+              "sft"
+            ],
+            "domains": [
+              "formal-math",
+              "theorem-proving",
+              "proof-assistants"
+            ],
+            "category": [
+              "instruction_demonstration_rationale_data",
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "judgment_rubric_domain_expert_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "🧱 Instruction tuning / SFT data",
+            "tags": [
+              "formal-math",
+              "proof-assistants",
+              "seeded-from-bib",
+              "theorem-proving"
+            ],
+            "one_line_summary": "miniF2F is a cross-system formal mathematics benchmark for comparing theorem provers across Lean, Metamath, Isabelle, and HOL Light targets.",
+            "why_it_matters": "It is a compact formal-proof evaluation surface where the verifier is not a text judge but a proof assistant accepting or rejecting a proof.",
+            "data_object": "formal proof accepted by a target proof assistant.; process: formal system, theorem statement, split, generated proof/tactics, verifier result.; Lean, Metamath, Isabelle, and HOL Light style theorem proving environments.",
+            "feedback_verifier": "proof assistant kernel/checker acceptance.",
+            "audit_focus": "A theorem can be easier in one formal system than another., Search budget can dominate model differences., Forks can drift from the original benchmark.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2109.00110",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2109.00110",
+              "openreview": "https://openreview.net/forum?id=9ZPegFuFTFv",
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/openai/miniF2F",
+              "data": "https://github.com/openai/miniF2F",
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2109.00110"
+          }
+        },
+        {
+          "title": "LeanDojo",
+          "entry_id": "leandojo-theorem-proving-with-retrieval-augmented-language-models-2023",
+          "matched": true,
+          "entry": {
+            "id": "leandojo-theorem-proving-with-retrieval-augmented-language-models-2023",
+            "title": "LeanDojo: Theorem proving with retrieval-augmented language models",
+            "year": 2023,
+            "venue": "NeurIPS Datasets and Benchmarks",
+            "authors": [
+              "Kaiyu Yang",
+              "Aidan M. Swope",
+              "Alex Gu",
+              "Rahul Chalamala",
+              "Peiyang Song",
+              "Shixing Yu",
+              "Saad Godil",
+              "Ryan Prenger",
+              "Anima Anandkumar"
+            ],
+            "source_role": [
+              "data_release",
+              "benchmark",
+              "agent_environment"
+            ],
+            "verification_contract": [
+              "environmental",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "state_action_level",
+              "step_level",
+              "full_episode"
+            ],
+            "training_use": [
+              "agent_training",
+              "sft",
+              "evaluation"
+            ],
+            "domains": [
+              "formal-math",
+              "lean",
+              "retrieval"
+            ],
+            "category": [
+              "instruction_demonstration_rationale_data",
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "environment_agent_trajectory_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "🧱 Instruction tuning / SFT data",
+            "tags": [
+              "formal-math",
+              "lean",
+              "retrieval",
+              "seeded-from-bib"
+            ],
+            "one_line_summary": "LeanDojo releases an open Lean theorem-proving environment, benchmark, and retrieval-augmented prover pipeline.",
+            "why_it_matters": "It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record.",
+            "data_object": "Lean tactic sequence or proof script checked by Lean.; process: repository commit, theorem, proof state, premises, retrieved context, tactic, Lean feedback, split.; Lean proof assistant environment and traced math-library repositories.",
+            "feedback_verifier": "Lean checker and environment feedback.",
+            "audit_focus": "A prover can rely on retrieval leakage., Lean version drift can break proofs., Premise accessibility rules can change task difficulty.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2306.15626",
+              "venue": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
+              "arxiv": "https://arxiv.org/abs/2306.15626",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/lean-dojo/LeanDojo",
+              "data": "https://zenodo.org/records/10114157",
+              "huggingface": null,
+              "project": "https://leandojo.org/",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2306.15626"
+          }
+        },
+        {
+          "title": "ProofNet",
+          "entry_id": "proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023",
+          "matched": true,
+          "entry": {
+            "id": "proofnet-autoformalizing-and-formally-proving-undergraduate-level-mathematics-2023",
+            "title": "ProofNet: Autoformalizing and Formally Proving Undergraduate-Level Mathematics",
+            "year": 2023,
+            "venue": "arXiv",
+            "authors": [
+              "Zhangir Azerbayev",
+              "Bartosz Piotrowski",
+              "Hailey Schoelkopf",
+              "Edward W. Ayers",
+              "Dragomir Radev",
+              "Jeremy Avigad"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "step_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "sft"
+            ],
+            "domains": [
+              "math",
+              "formalization",
+              "lean",
+              "theorem-proving"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces",
+              "data_construction_open_release_recipes"
+            ],
+            "subfield": "🧾 Formal proof / Lean / theorem proving",
+            "tags": [
+              "proofnet",
+              "lean",
+              "autoformalization",
+              "formal-math",
+              "representative-track-03"
+            ],
+            "one_line_summary": "ProofNet pairs informal undergraduate mathematics with Lean formal statements for autoformalization and proving evaluation.",
+            "why_it_matters": "It gives Track 03 a clean data object for the informal-to-formal bridge before full proof-generation systems are trained.",
+            "data_object": "natural-language theorem, natural-language proof, and formal Lean theorem statement.; process: informal theorem, informal proof, Lean statement; Lean 3 theorem-proving environment.",
+            "feedback_verifier": "Lean type checker / proof assistant acceptance for formal statements and proofs.",
+            "audit_focus": "Statement-only formalization does not guarantee complete proof ability., Lean 3 dependency versions affect acceptance., Textbook source coverage may skew toward standard undergraduate domains.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2302.12433",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2302.12433",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2302.12433",
+              "code": "https://github.com/zhangir-azerbayev/ProofNet",
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2302.12433"
+          }
+        },
+        {
+          "title": "PutnamBench",
+          "entry_id": "putnambench-evaluating-neural-theorem-provers-on-the-putnam-mathematical-competition-2024",
+          "matched": true,
+          "entry": {
+            "id": "putnambench-evaluating-neural-theorem-provers-on-the-putnam-mathematical-competition-2024",
+            "title": "PutnamBench: Evaluating Neural Theorem-Provers on the Putnam Mathematical Competition",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "George Tsoukalas",
+              "Jasper Lee",
+              "John Jennings",
+              "Jimmy Xin",
+              "Michelle Ding",
+              "Michael Jennings",
+              "Amitayush Thakur",
+              "Swarat Chaudhuri"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "step_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "sft"
+            ],
+            "domains": [
+              "math",
+              "theorem-proving",
+              "formal-methods"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "🧾 Formal proof / Lean / theorem proving",
+            "tags": [
+              "putnambench",
+              "formal-proof",
+              "lean",
+              "isabelle",
+              "coq"
+            ],
+            "one_line_summary": "PutnamBench formalizes Putnam competition problems across proof assistants for checker-backed theorem-proving evaluation.",
+            "why_it_matters": "It gives Track 03 a high-difficulty proof benchmark where correctness is a proof-assistant predicate rather than textual grading.",
+            "data_object": "informal theorem, formal statement, proof assistant target, and prover output.; process: Putnam problem, formal statement, proof assistant; Lean 4, Isabelle, and Coq/Rocq theorem-proving environments.",
+            "feedback_verifier": "proof assistant kernel/checker acceptance.",
+            "audit_focus": "Formalization choices can change problem difficulty., Proof assistant versions and libraries can drift., Cross-system comparisons can hide differences in available tactics and libraries.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2407.11214",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2407.11214",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/trishullab/PutnamBench",
+              "data": "https://github.com/trishullab/PutnamBench",
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2407.11214"
+          }
+        },
+        {
+          "title": "FrontierMath",
+          "entry_id": "frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024",
+          "matched": true,
+          "entry": {
+            "id": "frontiermath-a-benchmark-for-evaluating-advanced-mathematical-reasoning-in-ai-2024",
+            "title": "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Elliot Glazer",
+              "Ege Erdil",
+              "Tamay Besiroglu",
+              "Diego Chicharro",
+              "Evan Chen",
+              "Alex Gunning",
+              "Caroline Falkman Olsson",
+              "Jean-Stanislas Denain",
+              "Anson Ho",
+              "Emily de Oliveira Santos"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release",
+              "audit_failure"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit"
+            ],
+            "domains": [
+              "math",
+              "advanced-mathematics",
+              "contamination-resistant-benchmark"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces",
+              "frontier_reports_data_disclosure_ledger",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "frontiermath",
+              "advanced-math",
+              "contamination-resistant",
+              "expert-written",
+              "representative-track-03"
+            ],
+            "one_line_summary": "FrontierMath provides expert-written advanced mathematics problems with verifier-oriented evaluation and contamination controls.",
+            "why_it_matters": "It gives the representative pool a high-difficulty math surface where automatic verification and contamination policy are central fields.",
+            "data_object": "advanced math problem with final answer or verifier-checkable target.; process: problem statement, mathematical domain, difficulty tier; held-out advanced mathematics benchmark with automated answer verification where possible.",
+            "feedback_verifier": "automated answer checks and expert-vetted benchmark criteria.",
+            "audit_focus": "Automated verification may favor final-answer tasks over proof quality., Held-out access policy limits reproducibility., Models can overfit once examples or solution patterns circulate.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2411.04872",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2411.04872",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2411.04872",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2411.04872"
+          }
+        },
+        {
+          "title": "Omni-MATH",
+          "entry_id": "omni-math-universal-olympiad-level-mathematic-benchmark-for-large-language-models-2024",
+          "matched": true,
+          "entry": {
+            "id": "omni-math-universal-olympiad-level-mathematic-benchmark-for-large-language-models-2024",
+            "title": "Omni-MATH: A Universal Olympiad Level Mathematic Benchmark For Large Language Models",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Bofei Gao",
+              "Feifan Song",
+              "Zhe Yang",
+              "Zefan Cai",
+              "Yibo Miao",
+              "Qingxiu Dong",
+              "Lei Li",
+              "Chenghao Ma",
+              "Liang Chen",
+              "Runxin Xu"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "mixed",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "sft",
+              "audit"
+            ],
+            "domains": [
+              "math",
+              "olympiad",
+              "benchmark"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "omni-math",
+              "olympiad",
+              "math-benchmark"
+            ],
+            "one_line_summary": "Omni-MATH adds a large olympiad-level math benchmark with human annotation and answer-verification challenges.",
+            "why_it_matters": "It gives Track 03/10 a harder math evaluation surface for reasoning models after easier math benchmarks saturate.",
+            "data_object": "competition math problem, annotated solution/answer, difficulty and sub-domain metadata.; process: problem, sub-domain, difficulty; olympiad-level math benchmark and answer-grading pipeline.",
+            "feedback_verifier": "reference answers, answer normalization, and human annotation.",
+            "audit_focus": "Answer normalization may fail for proof-style or expression-equivalent answers., Public competition problems can be contaminated., Difficulty labels may not correspond to verifier reliability.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2410.07985",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2410.07985",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2410.07985"
+          }
+        },
+        {
+          "title": "OlympiadBench",
+          "entry_id": "olympiadbench-challenging-benchmark-for-agi-with-olympiad-level-bilingual-multimodal-scientific-problems-2024",
+          "matched": true,
+          "entry": {
+            "id": "olympiadbench-challenging-benchmark-for-agi-with-olympiad-level-bilingual-multimodal-scientific-problems-2024",
+            "title": "OlympiadBench: A Challenging Benchmark for Promoting AGI with Olympiad-Level Bilingual Multimodal Scientific Problems",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Chaoqun He",
+              "Renjie Luo",
+              "Yuzhuo Bai",
+              "Shengding Hu",
+              "Zhen Leng Thai",
+              "Junhao Shen",
+              "Jinyi Hu",
+              "Xu Han",
+              "Yujie Huang",
+              "Maosong Sun"
+            ],
+            "source_role": [
+              "benchmark",
+              "data_release"
+            ],
+            "verification_contract": [
+              "mixed",
+              "judgment_required"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "step_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "sft"
+            ],
+            "domains": [
+              "math",
+              "physics",
+              "multimodal",
+              "olympiad"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "judgment_rubric_domain_expert_data",
+              "benchmarks_evaluation_surfaces",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "🧰 Programmatic benchmarks",
+            "tags": [
+              "olympiadbench",
+              "multimodal",
+              "math",
+              "physics"
+            ],
+            "one_line_summary": "OlympiadBench packages bilingual multimodal olympiad math and physics problems with expert annotations and scoring.",
+            "why_it_matters": "It captures cases where programmatic answer checking, expert rubric scoring, and multimodal reasoning must be audited together.",
+            "data_object": "problem statement, optional image, step-level annotation, reference answer, and score.; process: problem, modality, subject; bilingual multimodal math/physics benchmark.",
+            "feedback_verifier": "answer key, expert annotations, and scoring methodology.",
+            "audit_focus": "Some items need rubric judgment rather than exact answer checking., Multimodal diagrams introduce OCR/vision failure separate from reasoning., Public olympiad problems and solutions can leak into training data.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2402.14008",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2402.14008",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/OpenBMB/OlympiadBench",
+              "data": "https://github.com/OpenBMB/OlympiadBench",
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2402.14008"
+          }
+        },
+        {
+          "title": "Is Your Code Generated by Large Language Models Really Correct",
+          "entry_id": "evalplus-rigorous-evaluation-of-large-language-models-for-code-generation-2023",
+          "matched": true,
+          "entry": {
+            "id": "evalplus-rigorous-evaluation-of-large-language-models-for-code-generation-2023",
+            "title": "Is Your Code Generated by Large Language Models Really Correct? Rigorous Evaluation of Large Language Models for Code Generation",
+            "year": 2023,
+            "venue": "arXiv",
+            "authors": [
+              "Jiawei Liu",
+              "Chunqiu Steven Xia",
+              "Yuyao Wang",
+              "Lingming Zhang"
+            ],
+            "source_role": [
+              "benchmark",
+              "audit_failure"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit"
+            ],
+            "domains": [
+              "code",
+              "verifier-robustness"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "benchmarks_evaluation_surfaces",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "💻 Code execution / unit-test data",
+            "tags": [
+              "evalplus",
+              "verifier-robustness",
+              "code-tests"
+            ],
+            "one_line_summary": "EvalPlus strengthens HumanEval/MBPP-style code evaluation with generated and mutation-based tests.",
+            "why_it_matters": "It directly audits a central Track 03 assumption: passing public unit tests is not the same as functional correctness.",
+            "data_object": "code-generation task, candidate solution, original tests, and augmented tests.; process: prompt, candidate program, generated tests; Python execution harness for HumanEval+ and MBPP+.",
+            "feedback_verifier": "expanded unit-test suites generated by LLM and mutation strategies.",
+            "audit_focus": "Generated tests can still miss semantic edge cases., Public augmented tests may cause future contamination., Stricter tests can alter leaderboard rankings without changing task coverage.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2305.01210",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2305.01210",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/evalplus/evalplus",
+              "data": null,
+              "huggingface": null,
+              "project": "https://evalplus.github.io",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2305.01210"
+          }
+        }
+      ]
+    },
+    {
+      "id": "representative_track_10",
+      "emoji": "🔁",
+      "title": "Representative 30: RLVR and Test-Time Compute",
+      "goal": "Compare verifier rewards, repeated sampling, tree search, process rewards, RL scaling, and failure audits.",
+      "entries": [
+        {
+          "title": "Training verifiers to solve math word problems",
+          "entry_id": "training-verifiers-to-solve-math-word-problems-2021",
+          "matched": true,
+          "entry": {
+            "id": "training-verifiers-to-solve-math-word-problems-2021",
+            "title": "Training verifiers to solve math word problems",
+            "year": 2021,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "benchmark",
+              "verifier_reward",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "judgment_required"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "evaluation",
+              "reward_modeling"
+            ],
+            "domains": [
+              "math"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "process_trace_supervision_data",
+              "environment_agent_trajectory_data",
+              "judgment_rubric_domain_expert_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "🎚️ Scalar reward / ORM data",
+            "tags": [
+              "seeded-from-bib",
+              "gsm8k",
+              "math",
+              "verifier",
+              "benchmark"
+            ],
+            "one_line_summary": "Introduces GSM8K and trains verifier models to rank model-generated math solutions by likely correctness.",
+            "why_it_matters": "It anchors answer-level math reasoning data as a pair of problem, solution, and verifier-selection signal, anticipating RLVR and reward-model workflows.",
+            "data_object": "answer level; scalar reward",
+            "feedback_verifier": "programmatic, judgment required",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2110.14168",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2110.14168",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/openai/grade-school-math",
+              "data": "https://github.com/openai/grade-school-math",
+              "huggingface": "https://huggingface.co/datasets/openai/gsm8k",
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2110.14168"
+          }
+        },
+        {
+          "title": "Self-consistency improves chain of thought reasoning in language models",
+          "entry_id": "self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023",
+          "matched": true,
+          "entry": {
+            "id": "self-consistency-improves-chain-of-thought-reasoning-in-language-models-2023",
+            "title": "Self-consistency improves chain of thought reasoning in language models",
+            "year": 2023,
+            "venue": "ICLR",
+            "authors": [],
+            "source_role": [
+              "scaling_study",
+              "survey_background"
+            ],
+            "verification_contract": [
+              "mixed",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "step_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "reasoning",
+              "test_time_compute"
+            ],
+            "category": [
+              "foundations_and_primers",
+              "instruction_demonstration_rationale_data",
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "environment_agent_trajectory_data",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "Other related work",
+            "tags": [
+              "foundation-starter",
+              "primary-link-checked"
+            ],
+            "one_line_summary": "Self-consistency samples multiple chain-of-thought reasoning paths and chooses the answer that is most consistent across samples.",
+            "why_it_matters": "It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.",
+            "data_object": "multiple rationales and final answers for the same prompt.; process: sampling temperature, number of paths, answer extraction, aggregation rule.; benchmark prompting setup.",
+            "feedback_verifier": "majority or marginalization over sampled answers.",
+            "audit_focus": "More samples can amplify benchmark-specific shortcuts., Aggregation does not guarantee step faithfulness., Unmatched inference budgets can make methods look better than they are.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2203.11171",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2203.11171",
+              "openreview": "https://openreview.net/forum?id=1PL1NIMMrw",
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2203.11171"
+          }
+        },
+        {
+          "title": "Tree of Thoughts",
+          "entry_id": "tree-of-thoughts-deliberate-problem-solving-with-large-language-models-2023",
+          "matched": true,
+          "entry": {
+            "id": "tree-of-thoughts-deliberate-problem-solving-with-large-language-models-2023",
+            "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+            "year": 2023,
+            "venue": "arXiv",
+            "authors": [
+              "Shunyu Yao",
+              "Dian Yu",
+              "Jeffrey Zhao",
+              "Izhak Shafran",
+              "Thomas L. Griffiths",
+              "Yuan Cao",
+              "Karthik Narasimhan"
+            ],
+            "source_role": [
+              "construction_recipe",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "full_episode"
+            ],
+            "training_use": [
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "test-time-compute",
+              "search",
+              "planning"
+            ],
+            "category": [
+              "rollout_search_test_time_trace_data",
+              "scaling_rlvr_test_time_compute",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "🌳 Search trees / MCTS",
+            "tags": [
+              "tree-of-thoughts",
+              "test-time-compute",
+              "search"
+            ],
+            "one_line_summary": "Tree of Thoughts turns reasoning into a search tree of intermediate thoughts with self-evaluation and backtracking.",
+            "why_it_matters": "It anchors Track 10's search-budget vocabulary before RLVR-era reasoning models popularized test-time compute scaling.",
+            "data_object": "search tree of intermediate thoughts, state evaluations, and final answer.; process: thought state, branch score, search step; prompt-level search scaffold over LLM-generated thoughts.",
+            "feedback_verifier": "self-evaluation, task success checks, or environment-specific scoring.",
+            "audit_focus": "Search budget can dominate comparisons with chain-of-thought baselines., Self-evaluation can reward plausible but wrong branches., Task-specific scaffolds may not transfer to programmatic RLVR settings.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2305.10601",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2305.10601",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/princeton-nlp/tree-of-thought-llm",
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2305.10601"
+          }
+        },
+        {
+          "title": "Let's Verify Step by Step",
+          "entry_id": "prm800k-2023",
+          "matched": true,
+          "entry": {
+            "id": "prm800k-2023",
+            "title": "Let's Verify Step by Step",
+            "year": 2023,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "process_supervision",
+              "verifier_reward",
+              "data_release"
+            ],
+            "verification_contract": [
+              "judgment_required",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "process_reward"
+            ],
+            "training_use": [
+              "process_supervision",
+              "reward_modeling",
+              "evaluation"
+            ],
+            "domains": [
+              "math"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "process_trace_supervision_data",
+              "environment_agent_trajectory_data",
+              "judgment_rubric_domain_expert_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "Other related work",
+            "tags": [
+              "curated-card",
+              "primary-link-checked"
+            ],
+            "one_line_summary": "Provides step-level human labels for mathematical reasoning traces and trains process reward models to identify correct intermediate reasoning.",
+            "why_it_matters": "It is the process-supervision anchor for moving from answer-level math rewards to step-level feedback in reasoning-model training and evaluation.",
+            "data_object": "step-level labels and final answers; process: step, label, solution trace; offline math reasoning traces",
+            "feedback_verifier": "process reward model trained from step labels",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2305.20050",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2305.20050",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2305.20050"
+          }
+        },
+        {
+          "title": "Math-Shepherd",
+          "entry_id": "math-shepherd-2024",
+          "matched": true,
+          "entry": {
+            "id": "math-shepherd-2024",
+            "title": "Math-Shepherd",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "process_supervision",
+              "verifier_reward"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "process_reward"
+            ],
+            "training_use": [
+              "process_supervision",
+              "reward_modeling"
+            ],
+            "domains": [
+              "math"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "process_trace_supervision_data",
+              "rollout_search_test_time_trace_data",
+              "environment_agent_trajectory_data",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces"
+            ],
+            "subfield": "Other related work",
+            "tags": [],
+            "one_line_summary": "Rollout-value supervision method that assigns process rewards to intermediate math reasoning steps.",
+            "why_it_matters": "It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer.",
+            "data_object": "step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces",
+            "feedback_verifier": "rollout-derived process reward signal",
+            "audit_focus": "rollout policy strength can leak into labels, step rewards may favor locally plausible continuations, generated solutions can inherit base-model shortcuts",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2312.08935",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2312.08935",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2312.08935"
+          }
+        },
+        {
+          "title": "OmegaPRM",
+          "entry_id": "omegaprm-automated-process-supervision-2024",
+          "matched": true,
+          "entry": {
+            "id": "omegaprm-automated-process-supervision-2024",
+            "title": "OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "process_supervision",
+              "verifier_reward",
+              "construction_recipe"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "process_reward"
+            ],
+            "training_use": [
+              "process_supervision",
+              "reward_modeling",
+              "test_time_compute"
+            ],
+            "domains": [
+              "math"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "process_trace_supervision_data",
+              "rollout_search_test_time_trace_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "Other related work",
+            "tags": [
+              "curated-card",
+              "primary-link-checked"
+            ],
+            "one_line_summary": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.",
+            "why_it_matters": "Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.",
+            "data_object": "process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree",
+            "feedback_verifier": "automated process reward signal",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2406.06592",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2406.06592",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2406.06592"
+          }
+        },
+        {
+          "title": "Let's reward step by step: Step-Level reward model as the Navigators for Reasoning",
+          "entry_id": "lets-reward-step-by-step-step-level-reward-model-as-navigators-for-reasoning-2023",
+          "matched": true,
+          "entry": {
+            "id": "lets-reward-step-by-step-step-level-reward-model-as-navigators-for-reasoning-2023",
+            "title": "Let's reward step by step: Step-Level reward model as the Navigators for Reasoning",
+            "year": 2023,
+            "venue": "arXiv",
+            "authors": [
+              "Qianli Ma",
+              "Haotian Zhou",
+              "Tingkai Liu",
+              "Jianbo Yuan",
+              "Pengfei Liu",
+              "Yang You",
+              "Hongxia Yang"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "process_supervision",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "mixed",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "process_reward"
+            ],
+            "training_use": [
+              "process_supervision",
+              "reward_modeling",
+              "test_time_compute"
+            ],
+            "domains": [
+              "math",
+              "code",
+              "process-reward"
+            ],
+            "category": [
+              "process_trace_supervision_data",
+              "rollout_search_test_time_trace_data",
+              "scaling_rlvr_test_time_compute",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "🧪 Process reward models",
+            "tags": [
+              "prm",
+              "step-reward",
+              "test-time-search"
+            ],
+            "one_line_summary": "Uses step-level reward models as navigators for math and code reasoning during inference.",
+            "why_it_matters": "It makes the verifier-scaling question concrete: the reward model is not only trained, it actively steers the search path.",
+            "data_object": "partial reasoning path, step score, search decision, and final answer.; process: prompt, reasoning step, PRM score; PRM-guided inference over math and code tasks.",
+            "feedback_verifier": "step-level process reward model.",
+            "audit_focus": "Greedy PRM navigation can prefer locally plausible but globally wrong steps., Automatically generated code-step rewards can inherit executor artifacts., PRM gains should be separated from extra inference budget.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2310.10080",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2310.10080",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2310.10080"
+          }
+        },
+        {
+          "title": "V-STaR: Training Verifiers for Self-Taught Reasoners",
+          "entry_id": "v-star-training-verifiers-for-self-taught-reasoners-2024",
+          "matched": true,
+          "entry": {
+            "id": "v-star-training-verifiers-for-self-taught-reasoners-2024",
+            "title": "V-STaR: Training Verifiers for Self-Taught Reasoners",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Arian Hosseini",
+              "Xingdi Yuan",
+              "Nikolay Malkin",
+              "Aaron Courville",
+              "Alessandro Sordoni",
+              "Rishabh Agarwal"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "construction_recipe"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "pairwise_preference",
+              "scalar_reward",
+              "answer_level"
+            ],
+            "training_use": [
+              "reward_modeling",
+              "preference_learning",
+              "test_time_compute",
+              "sft"
+            ],
+            "domains": [
+              "self-training",
+              "verifiers",
+              "math",
+              "code"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "data_construction_open_release_recipes"
+            ],
+            "subfield": "⏱️ Test-time compute",
+            "tags": [
+              "v-star",
+              "self-training",
+              "verifier",
+              "dpo",
+              "representative-track-10"
+            ],
+            "one_line_summary": "V-STaR trains a verifier from both correct and incorrect self-generated solutions, then uses it for candidate selection.",
+            "why_it_matters": "It makes failed rollouts a reusable data asset for verifier learning rather than discarded self-training waste.",
+            "data_object": "problem, candidate solution, correctness label, verifier preference, and selected answer.; process: problem, generated solution, correctness label; self-training loop over math and code reasoning benchmarks.",
+            "feedback_verifier": "DPO-trained verifier using both correct and incorrect self-generated solutions.",
+            "audit_focus": "Verifier may learn style cues instead of correctness., Incorrect samples are useful but can bias preference data., Best-of-N gains depend on candidate diversity and sample budget.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2402.06457",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2402.06457",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2402.06457",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2402.06457"
+          }
+        },
+        {
+          "title": "Generative Verifiers: Reward Modeling as Next-Token Prediction",
+          "entry_id": "generative-verifiers-reward-modeling-as-next-token-prediction-2024",
+          "matched": true,
+          "entry": {
+            "id": "generative-verifiers-reward-modeling-as-next-token-prediction-2024",
+            "title": "Generative Verifiers: Reward Modeling as Next-Token Prediction",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Lunjun Zhang",
+              "Arian Hosseini",
+              "Hritik Bansal",
+              "Mehran Kazemi",
+              "Aviral Kumar",
+              "Rishabh Agarwal"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "mixed",
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "scalar_reward",
+              "process_reward",
+              "answer_level"
+            ],
+            "training_use": [
+              "reward_modeling",
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "verifiers",
+              "reward-modeling",
+              "math",
+              "algorithmic-reasoning"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "preference_reward_feedback_data",
+              "process_trace_supervision_data",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "⏱️ Test-time compute",
+            "tags": [
+              "generative-verifier",
+              "genrm",
+              "reward-modeling",
+              "best-of-n",
+              "representative-track-10"
+            ],
+            "one_line_summary": "Generative Verifiers trains reward models with next-token prediction and scales verification with verifier-side sampling.",
+            "why_it_matters": "It adds the verifier itself to the Track 10 compute-scaling object instead of treating it as a fixed scorer.",
+            "data_object": "problem, candidate solution, verification rationale, verifier judgment, and best-of-N selection.; process: problem, candidate solution, verification rationale; best-of-N reasoning evaluation with verifier-based selection.",
+            "feedback_verifier": "generative reward model trained with next-token prediction over verification data.",
+            "audit_focus": "Verifier rationales can be plausible but wrong., Majority voting over verifier samples can hide calibration failures., Best-of-N improvements depend on both policy and verifier budgets.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2408.15240",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2408.15240",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2408.15240",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2408.15240"
+          }
+        },
+        {
+          "title": "ReST-MCTS*",
+          "entry_id": "rest-mcts-2024",
+          "matched": true,
+          "entry": {
+            "id": "rest-mcts-2024",
+            "title": "ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Dan Zhang",
+              "Sining Zhoubian",
+              "Ziniu Hu",
+              "Yisong Yue",
+              "Yuxiao Dong",
+              "Jie Tang"
+            ],
+            "source_role": [
+              "construction_recipe",
+              "process_supervision",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "process_reward",
+              "trajectory_value",
+              "answer_level"
+            ],
+            "training_use": [
+              "sft",
+              "process_supervision",
+              "test_time_compute",
+              "rlvr"
+            ],
+            "domains": [
+              "math",
+              "tree-search",
+              "self-training",
+              "process-reward"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "rollout_search_test_time_trace_data",
+              "process_trace_supervision_data",
+              "data_construction_open_release_recipes"
+            ],
+            "subfield": "⏱️ Test-time compute",
+            "tags": [
+              "rest-mcts",
+              "tree-search",
+              "process-reward",
+              "self-training",
+              "representative-track-10"
+            ],
+            "one_line_summary": "ReST-MCTS* uses process-reward-guided tree search to collect reasoning traces and value targets for self-training.",
+            "why_it_matters": "It is a clean Track 10 example where search traces, process rewards, and training data are the same reusable artifact.",
+            "data_object": "problem, search tree, intermediate step, process value, selected trace, and final answer.; process: problem, tree node, reasoning step; process-reward-guided Monte Carlo tree search over reasoning steps.",
+            "feedback_verifier": "oracle final-answer checks used to infer process rewards through tree search.",
+            "audit_focus": "Tree-search budget can dominate comparison to best-of-N., Incorrect intermediate steps may be selected if final-answer credit is noisy., Process value estimates inherit final-answer oracle limitations.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2406.03816",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2406.03816",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2406.03816",
+              "code": "https://github.com/THUDM/ReST-MCTS",
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2406.03816"
+          }
+        },
+        {
+          "title": "Scaling LLM Test-Time Compute Optimally",
+          "entry_id": "scaling-llm-test-time-compute-optimally-can-be-more-effective-than-scaling-model-parameters-2024",
+          "matched": true,
+          "entry": {
+            "id": "scaling-llm-test-time-compute-optimally-can-be-more-effective-than-scaling-model-parameters-2024",
+            "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Charlie Snell",
+              "Jaehoon Lee",
+              "Kelvin Xu",
+              "Aviral Kumar"
+            ],
+            "source_role": [
+              "scaling_study",
+              "verifier_reward"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "process_reward",
+              "answer_level"
+            ],
+            "training_use": [
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "test-time-compute",
+              "math",
+              "scaling"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "rollout_search_test_time_trace_data",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "⏱️ Test-time compute",
+            "tags": [
+              "test-time-compute",
+              "compute-optimal",
+              "verifier-guided-search",
+              "scaling"
+            ],
+            "one_line_summary": "Studies when adaptive test-time compute and verifier-guided search can beat simply scaling model parameters.",
+            "why_it_matters": "It gives Track 10 a direct framework for auditing inference-budget claims instead of treating every improvement as better reasoning data.",
+            "data_object": "prompt, candidate response or reasoning path, verifier score, and compute allocation.; process: prompt difficulty, candidate response, process reward score; verifier-guided inference-time search over reasoning tasks.",
+            "feedback_verifier": "dense process-based verifier rewards and outcome success checks.",
+            "audit_focus": "Compute-optimal gains can disappear if prompt difficulty is misestimated., Dense verifier rewards may encode task-specific shortcuts., FLOPs-matched comparisons require transparent accounting of verifier and search cost.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2408.03314",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2408.03314",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2408.03314"
+          }
+        },
+        {
+          "title": "Inference Scaling Laws: An Empirical Analysis of Compute-Optimal Inference for Problem-Solving with Language Models",
+          "entry_id": "inference-scaling-laws-compute-optimal-inference-for-problem-solving-with-language-models-2024",
+          "matched": true,
+          "entry": {
+            "id": "inference-scaling-laws-compute-optimal-inference-for-problem-solving-with-language-models-2024",
+            "title": "Inference Scaling Laws: An Empirical Analysis of Compute-Optimal Inference for Problem-Solving with Language Models",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Yangzhen Wu",
+              "Zhiqing Sun",
+              "Shanda Li",
+              "Sean Welleck",
+              "Yiming Yang"
+            ],
+            "source_role": [
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "test-time-compute",
+              "math",
+              "tree-search",
+              "best-of-n"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "rollout_search_test_time_trace_data",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "⏱️ Test-time compute",
+            "tags": [
+              "inference-scaling-laws",
+              "compute-optimal-inference",
+              "tree-search",
+              "representative-track-10"
+            ],
+            "one_line_summary": "Inference Scaling Laws compares model size and inference algorithms under explicit compute budgets.",
+            "why_it_matters": "It gives Track 10 a second compute-optimal anchor focused on algorithms and FLOPs accounting, not only verifier rewards.",
+            "data_object": "problem, model size, inference strategy, compute budget, candidate answers, and correctness.; process: problem, model size, inference algorithm; compute-budgeted inference strategies for problem solving.",
+            "feedback_verifier": "benchmark final-answer correctness checks.",
+            "audit_focus": "FLOPs accounting can omit verifier/search overhead., Small-model advantage depends on task distribution and algorithm implementation., Tree-search gains may not transfer without reliable intermediate scoring.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2408.00724",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2408.00724",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2408.00724",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2408.00724"
+          }
+        },
+        {
+          "title": "Large Language Monkeys",
+          "entry_id": "how-do-large-language-monkeys-get-their-power-laws-2025",
+          "matched": true,
+          "entry": {
+            "id": "how-do-large-language-monkeys-get-their-power-laws-2025",
+            "title": "How Do Large Language Monkeys Get Their Power (Laws)?",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Rylan Schaeffer",
+              "Joshua Kazdan",
+              "John Hughes",
+              "Jordan Juravsky",
+              "Sara Price",
+              "Aengus Lynch",
+              "Erik Jones",
+              "Robert Kirk",
+              "Azalia Mirhoseini",
+              "Sanmi Koyejo"
+            ],
+            "source_role": [
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "test-time-compute",
+              "math",
+              "code",
+              "proof"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "rollout_search_test_time_trace_data",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "🎲 pass@k / sampling budget",
+            "tags": [
+              "test-time-compute",
+              "repeated-sampling",
+              "power-law",
+              "pass-at-k"
+            ],
+            "one_line_summary": "Explains repeated-sampling scaling by separating per-problem success curves from aggregate heavy-tailed difficulty.",
+            "why_it_matters": "It helps readers audit pass@k and coverage claims by asking whether gains come from broad improvement or a few easy-to-sample tasks.",
+            "data_object": "problem, per-attempt success probability, aggregate coverage curve, and scaling-law fit.; process: problem id, single-attempt success probability, number of attempts; tasks with verifiable success under repeated sampling.",
+            "feedback_verifier": "task-specific correctness checks or benchmark success predicates.",
+            "audit_focus": "Aggregate power laws can hide per-problem exponential behavior., Heavy-tailed difficulty can make extrapolations brittle., Verifier availability determines whether extra samples can be converted into solved tasks.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2502.17578",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2502.17578",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2502.17578"
+          }
+        },
+        {
+          "title": "How Do Large Language Monkeys Get Their Power",
+          "entry_id": "how-do-large-language-monkeys-get-their-power-laws-2025",
+          "matched": true,
+          "entry": {
+            "id": "how-do-large-language-monkeys-get-their-power-laws-2025",
+            "title": "How Do Large Language Monkeys Get Their Power (Laws)?",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Rylan Schaeffer",
+              "Joshua Kazdan",
+              "John Hughes",
+              "Jordan Juravsky",
+              "Sara Price",
+              "Aengus Lynch",
+              "Erik Jones",
+              "Robert Kirk",
+              "Azalia Mirhoseini",
+              "Sanmi Koyejo"
+            ],
+            "source_role": [
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "test-time-compute",
+              "math",
+              "code",
+              "proof"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "rollout_search_test_time_trace_data",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "🎲 pass@k / sampling budget",
+            "tags": [
+              "test-time-compute",
+              "repeated-sampling",
+              "power-law",
+              "pass-at-k"
+            ],
+            "one_line_summary": "Explains repeated-sampling scaling by separating per-problem success curves from aggregate heavy-tailed difficulty.",
+            "why_it_matters": "It helps readers audit pass@k and coverage claims by asking whether gains come from broad improvement or a few easy-to-sample tasks.",
+            "data_object": "problem, per-attempt success probability, aggregate coverage curve, and scaling-law fit.; process: problem id, single-attempt success probability, number of attempts; tasks with verifiable success under repeated sampling.",
+            "feedback_verifier": "task-specific correctness checks or benchmark success predicates.",
+            "audit_focus": "Aggregate power laws can hide per-problem exponential behavior., Heavy-tailed difficulty can make extrapolations brittle., Verifier availability determines whether extra samples can be converted into solved tasks.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2502.17578",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2502.17578",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2502.17578"
+          }
+        },
+        {
+          "title": "s1",
+          "entry_id": "s1-2025",
+          "matched": true,
+          "entry": {
+            "id": "s1-2025",
+            "title": "s1: Simple Test-Time Scaling",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "construction_recipe",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "sft",
+              "test_time_compute"
+            ],
+            "domains": [
+              "math"
+            ],
+            "category": [
+              "instruction_demonstration_rationale_data",
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "🧱 Instruction tuning / SFT data",
+            "tags": [],
+            "one_line_summary": "s1 curates a small s1K reasoning dataset and studies budget forcing as a simple way to scale test-time reasoning compute.",
+            "why_it_matters": "It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2501.19393",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2501.19393",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2501.19393"
+          }
+        },
+        {
+          "title": "DeepSeek-R1",
+          "entry_id": "deepseek-r1-2025",
+          "matched": true,
+          "entry": {
+            "id": "deepseek-r1-2025",
+            "title": "DeepSeek-R1",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "model_report",
+              "construction_recipe"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "distillation",
+              "rlvr"
+            ],
+            "domains": [
+              "math",
+              "code",
+              "reasoning"
+            ],
+            "category": [
+              "foundations_and_primers",
+              "instruction_demonstration_rationale_data",
+              "programmatically_verifiable_outcome_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "frontier_reports_data_disclosure_ledger"
+            ],
+            "subfield": "Other related work",
+            "tags": [],
+            "one_line_summary": "DeepSeek-R1 reports a reasoning-model post-training recipe centered on reinforcement learning with verifiable rewards, cold-start data, and distillation.",
+            "why_it_matters": "It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2501.12948",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2501.12948",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2501.12948"
+          }
+        },
+        {
+          "title": "Kimi K1.5",
+          "entry_id": "kimi-k1-5-2025",
+          "matched": true,
+          "entry": {
+            "id": "kimi-k1-5-2025",
+            "title": "Kimi K1.5: Scaling Reinforcement Learning with LLMs",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "model_report",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "rlvr",
+              "test_time_compute"
+            ],
+            "domains": [
+              "math",
+              "code",
+              "long-context"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "frontier_reports_data_disclosure_ledger"
+            ],
+            "subfield": "📐 Math answer-verifiable data",
+            "tags": [],
+            "one_line_summary": "Frontier report used for long-context RL and scaling discussion.",
+            "why_it_matters": "Frontier report used for long-context RL and scaling discussion.",
+            "data_object": "answer level",
+            "feedback_verifier": "mixed",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2501.12599",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2501.12599",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2501.12599"
+          }
+        },
+        {
+          "title": "The Art of Scaling Reinforcement Learning Compute for LLMs",
+          "entry_id": "khatri-scaling-rl-2025",
+          "matched": true,
+          "entry": {
+            "id": "khatri-scaling-rl-2025",
+            "title": "The Art of Scaling Reinforcement Learning Compute for LLMs",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "scaling_study",
+              "construction_recipe"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "rlvr",
+              "test_time_compute",
+              "evaluation"
+            ],
+            "domains": [
+              "scaling",
+              "rlvr"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "rollout_search_test_time_trace_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "Other related work",
+            "tags": [],
+            "one_line_summary": "The Art of Scaling RL Compute studies RL compute scaling with large ablations and separates asymptotic performance from compute efficiency.",
+            "why_it_matters": "It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.",
+            "data_object": "training runs, reward outcomes, validation curves, and ablation results.; process: loss aggregation, normalization, curriculum, off-policy choice, compute budget, asymptote, efficiency.; large-scale RL training experiments.",
+            "feedback_verifier": "compute-performance curves and recipe ablations.",
+            "audit_focus": "Compute-heavy studies can be hard to reproduce., Best-practice recipes may depend on task/reward families., Scaling curves can encourage overconfidence if validation tasks are narrow.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2510.13786",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2510.13786",
+              "openreview": "https://openreview.net/forum?id=FMjeC9Msws",
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2510.13786"
+          }
+        },
+        {
+          "title": "DAPO",
+          "entry_id": "dapo-2025",
+          "matched": true,
+          "entry": {
+            "id": "dapo-2025",
+            "title": "DAPO",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "construction_recipe",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "rlvr"
+            ],
+            "domains": [
+              "math"
+            ],
+            "category": [
+              "programmatically_verifiable_outcome_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "📐 Math answer-verifiable data",
+            "tags": [],
+            "one_line_summary": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
+            "why_it_matters": "GRPO-lineage RLVR recipe where filtering changes what reaches the gradient.",
+            "data_object": "answer level",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2503.14476",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2503.14476",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2503.14476"
+          }
+        },
+        {
+          "title": "Open-Reasoner-Zero",
+          "entry_id": "open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025",
+          "matched": true,
+          "entry": {
+            "id": "open-reasoner-zero-an-open-source-approach-to-rlvr-for-reasoning-2025",
+            "title": "Open-Reasoner-Zero: An open-source approach to RLVR for reasoning",
+            "year": 2025,
+            "venue": "arXiv preprint",
+            "authors": [],
+            "source_role": [
+              "survey_background"
+            ],
+            "verification_contract": [
+              "unknown"
+            ],
+            "supervision_granularity": [
+              "unknown"
+            ],
+            "training_use": [
+              "unknown"
+            ],
+            "domains": [],
+            "category": [
+              "data_construction_open_release_recipes",
+              "scaling_rlvr_test_time_compute",
+              "frontier_reports_data_disclosure_ledger"
+            ],
+            "subfield": "🧱 Prompt sourcing",
+            "tags": [
+              "seeded-from-bib"
+            ],
+            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L0_seeded",
+            "status": "needs_metadata",
+            "needs_search": true,
+            "artifacts": {
+              "paper": null,
+              "venue": null,
+              "arxiv": null,
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": null
+          }
+        },
+        {
+          "title": "PRIME",
+          "entry_id": "a-primer-in-bertology-what-we-know-about-how-bert-works-2020",
+          "matched": true,
+          "entry": {
+            "id": "a-primer-in-bertology-what-we-know-about-how-bert-works-2020",
+            "title": "A primer in BERTology: What we know about how BERT works",
+            "year": 2020,
+            "venue": "TACL",
+            "authors": [],
+            "source_role": [
+              "survey_background"
+            ],
+            "verification_contract": [
+              "unknown"
+            ],
+            "supervision_granularity": [
+              "unknown"
+            ],
+            "training_use": [
+              "unknown"
+            ],
+            "domains": [],
+            "category": [
+              "foundations_and_primers",
+              "process_trace_supervision_data"
+            ],
+            "subfield": "🧭 Post-training surveys",
+            "tags": [
+              "seeded-from-bib"
+            ],
+            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "survey background",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L0_seeded",
+            "status": "needs_metadata",
+            "needs_search": true,
+            "artifacts": {
+              "paper": null,
+              "venue": null,
+              "arxiv": null,
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": null
+          }
+        },
+        {
+          "title": "Free Process Rewards without Process Labels",
+          "entry_id": "free-process-rewards-without-process-labels-2024",
+          "matched": true,
+          "entry": {
+            "id": "free-process-rewards-without-process-labels-2024",
+            "title": "Free Process Rewards without Process Labels",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Lifan Yuan",
+              "Wendi Li",
+              "Huayu Chen",
+              "Ganqu Cui",
+              "Ning Ding",
+              "Kaiyan Zhang",
+              "Bowen Zhou",
+              "Zhiyuan Liu",
+              "Hao Peng"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "process_supervision"
+            ],
+            "verification_contract": [
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "process_reward",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "process_supervision",
+              "reward_modeling",
+              "test_time_compute"
+            ],
+            "domains": [
+              "math",
+              "process-reward"
+            ],
+            "category": [
+              "process_trace_supervision_data",
+              "preference_reward_feedback_data",
+              "scaling_rlvr_test_time_compute",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "🧪 Process reward models",
+            "tags": [
+              "process-reward",
+              "implicit-prm",
+              "outcome-labels"
+            ],
+            "one_line_summary": "Shows that outcome-labeled responses can induce implicit process rewards without explicit step labels.",
+            "why_it_matters": "It directly addresses a Track 10 bottleneck: whether PRM-style feedback scales without expensive process annotation.",
+            "data_object": "instruction, response, outcome label, implicit step/process reward.; process: instruction, response, outcome label; math reasoning tasks with outcome supervision.",
+            "feedback_verifier": "implicit PRM derived from an outcome reward model.",
+            "audit_focus": "Implicit process rewards inherit ORM assumptions., Correct final answers can still attach misleading step rewards., Majority voting can hide reward calibration failures.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2412.01981",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2412.01981",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2412.01981"
+          }
+        },
+        {
+          "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+          "entry_id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
+          "matched": true,
+          "entry": {
+            "id": "does-rl-really-incentivize-reasoning-beyond-base-2025",
+            "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+            "year": 2025,
+            "venue": "NeurIPS 2025 Oral",
+            "authors": [
+              "Yang Yue",
+              "Zhiqi Chen",
+              "Rui Lu",
+              "Andrew Zhao",
+              "Zhaokai Wang",
+              "Shiji Song",
+              "Gao Huang"
+            ],
+            "source_role": [
+              "audit_failure",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level"
+            ],
+            "training_use": [
+              "audit",
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "rlvr",
+              "pass-at-k",
+              "math",
+              "code"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "audit_failure_contamination_verifier_attacks",
+              "programmatically_verifiable_outcome_data"
+            ],
+            "subfield": "⏱️ Test-time compute",
+            "tags": [
+              "rlvr-audit",
+              "pass-at-k",
+              "capability-boundary",
+              "representative-track-10"
+            ],
+            "one_line_summary": "This audit compares base and RL-trained models at large pass@k to test whether RLVR expands or reweights reasoning ability.",
+            "why_it_matters": "It adds a representative counterpoint to RLVR scaling claims by making the base-model sampling distribution an explicit audit object.",
+            "data_object": "problem, sampled reasoning paths, pass@k curve, and base-vs-RL comparison.; process: problem id, model variant, sample budget k; benchmark evaluation with large-k repeated sampling.",
+            "feedback_verifier": "task correctness checks and pass@k evaluation.",
+            "audit_focus": "Pass@k can credit lucky final answers without faithful reasoning., Sampling temperature and budget choices can change conclusions., RL may improve sampling efficiency while narrowing diversity.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2504.13837",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2504.13837",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2504.13837",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": "https://limit-of-RLVR.github.io",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2504.13837"
+          }
+        },
+        {
+          "title": "Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs",
+          "entry_id": "reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025",
+          "matched": true,
+          "entry": {
+            "id": "reinforcement-learning-with-verifiable-rewards-implicitly-incentivizes-correct-r-2025",
+            "title": "Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Xumeng Wen",
+              "Zihan Liu",
+              "Shun Zheng",
+              "Zhijian Xu",
+              "Shengyu Ye",
+              "Zhirong Wu",
+              "Xiao Liang",
+              "Yang Wang",
+              "Junjie Li",
+              "Ziming Miao"
+            ],
+            "source_role": [
+              "scaling_study",
+              "audit_failure"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "step_level"
+            ],
+            "training_use": [
+              "evaluation",
+              "audit",
+              "rlvr"
+            ],
+            "domains": [
+              "rlvr",
+              "cot-pass-k",
+              "math"
+            ],
+            "category": [
+              "scaling_rlvr_test_time_compute",
+              "process_trace_supervision_data",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "🎲 pass@k / sampling budget",
+            "tags": [
+              "cot-pass-k",
+              "rlvr-evaluation",
+              "reasoning-trace-audit",
+              "representative-track-10"
+            ],
+            "one_line_summary": "This paper introduces CoT-Pass@K-style evaluation to distinguish lucky final answers from correct reasoning traces under RLVR.",
+            "why_it_matters": "It sharpens Track 10 by making the unit of scaling a verified reasoning trace, not only a correct final answer.",
+            "data_object": "problem, chain-of-thought, final answer, pass@k, and CoT-Pass@K judgment.; process: problem, reasoning trace, final answer; reasoning benchmark evaluation with answer and chain correctness checks.",
+            "feedback_verifier": "verifiable final-answer reward plus CoT-Pass@K reasoning-path metric.",
+            "audit_focus": "Trace correctness judgments are harder than final-answer checks., CoT-Pass@K can depend on annotator or judge criteria., Comparisons can mix training-stage effects with sampling-budget effects.",
+            "curation_level": "L3_summary_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2506.14245",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2506.14245",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": "https://doi.org/10.48550/arXiv.2506.14245",
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2506.14245"
+          }
+        },
+        {
+          "title": "TinyV",
+          "entry_id": "tinyv-2025",
+          "matched": true,
+          "entry": {
+            "id": "tinyv-2025",
+            "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Zhangchen Xu",
+              "Yuetai Li",
+              "Fengqing Jiang",
+              "Bhaskar Ramasubramanian",
+              "Luyao Niu",
+              "Bill Yuchen Lin",
+              "Radha Poovendran"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "audit_failure",
+              "construction_recipe"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "judgment_required",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "answer_level",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "rlvr",
+              "reward_modeling",
+              "evaluation"
+            ],
+            "domains": [
+              "math"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "process_trace_supervision_data",
+              "judgment_rubric_domain_expert_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "Other related work",
+            "tags": [
+              "curated-card",
+              "primary-link-checked"
+            ],
+            "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
+            "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
+            "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
+            "feedback_verifier": "small LLM verifier augmenting rules",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2505.14625",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2505.14625",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/uw-nsl/TinyV",
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": "paper_cards/sources/tinyv-2025"
+            },
+            "primary_link": "https://arxiv.org/abs/2505.14625"
+          }
+        },
+        {
+          "title": "Spurious Rewards",
+          "entry_id": "spurious-rewards-2025",
+          "matched": true,
+          "entry": {
+            "id": "spurious-rewards-2025",
+            "title": "Spurious Rewards",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [],
+            "source_role": [
+              "audit_failure",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic"
+            ],
+            "supervision_granularity": [
+              "scalar_reward"
+            ],
+            "training_use": [
+              "rlvr",
+              "evaluation"
+            ],
+            "domains": [
+              "math",
+              "rlvr"
+            ],
+            "category": [
+              "foundations_and_primers",
+              "programmatically_verifiable_outcome_data",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "benchmarks_evaluation_surfaces",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "Other related work",
+            "tags": [],
+            "one_line_summary": "Reward-signal audit for spurious behavior in RLVR.",
+            "why_it_matters": "Reward-signal audit for spurious behavior in RLVR.",
+            "data_object": "scalar reward",
+            "feedback_verifier": "programmatic",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2506.10947",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2506.10947",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2506.10947"
+          }
+        },
+        {
+          "title": "LLMs Gaming Verifiers",
+          "entry_id": "llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026",
+          "matched": true,
+          "entry": {
+            "id": "llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026",
+            "title": "LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking",
+            "year": 2026,
+            "venue": "arXiv preprint arXiv:2604.15149",
+            "authors": [],
+            "source_role": [
+              "survey_background"
+            ],
+            "verification_contract": [
+              "unknown"
+            ],
+            "supervision_granularity": [
+              "unknown"
+            ],
+            "training_use": [
+              "unknown"
+            ],
+            "domains": [],
+            "category": [
+              "process_trace_supervision_data",
+              "scaling_rlvr_test_time_compute",
+              "audit_failure_contamination_verifier_attacks"
+            ],
+            "subfield": "Other related work",
+            "tags": [
+              "seeded-from-bib"
+            ],
+            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
+            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
+            "data_object": "metadata pending",
+            "feedback_verifier": "metadata pending",
+            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "curation_level": "L1_link_verified",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2604.15149",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2604.15149",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2604.15149"
+          }
+        },
+        {
+          "title": "Rewarding progress",
+          "entry_id": "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
+          "matched": true,
+          "entry": {
+            "id": "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
+            "title": "Rewarding progress: Scaling automated process verifiers for LLM reasoning",
+            "year": 2024,
+            "venue": "ICLR",
+            "authors": [
+              "Amrith Setlur",
+              "Chirag Nagpal",
+              "Adam Fisch",
+              "Xinyang Geng",
+              "Jacob Eisenstein",
+              "Rishabh Agarwal",
+              "Alekh Agarwal",
+              "Jonathan Berant",
+              "Aviral Kumar"
+            ],
+            "source_role": [
+              "verifier_reward",
+              "process_supervision",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "process_reward",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "process_supervision",
+              "reward_modeling",
+              "rlvr",
+              "test_time_compute"
+            ],
+            "domains": [
+              "process-reward-models",
+              "rlvr",
+              "math"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "process_trace_supervision_data",
+              "rollout_search_test_time_trace_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute"
+            ],
+            "subfield": "🧾 Rubric-conditioned rewards",
+            "tags": [
+              "math",
+              "process-reward-models",
+              "rlvr",
+              "seeded-from-bib"
+            ],
+            "one_line_summary": "Rewarding Progress proposes Process Advantage Verifiers that score whether a reasoning step increases future correctness probability.",
+            "why_it_matters": "It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.",
+            "data_object": "step-level process advantage score plus final answer/correctness signal.; process: problem, partial trace before step, step, future success estimate, verifier score, final outcome.; reasoning search and online RL setup using process rewards.",
+            "feedback_verifier": "Process Advantage Verifier trained to predict progress toward correct answer.",
+            "audit_focus": "Progress estimates can be policy-specific., Verifier-guided search can exploit reward artifacts., Step rewards can encourage short-term progress that hurts final correctness.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2410.08146",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2410.08146",
+              "openreview": "https://openreview.net/forum?id=A6Y7AqlzLW",
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": null,
+              "data": null,
+              "huggingface": null,
+              "project": null,
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2410.08146"
+          }
+        },
+        {
+          "title": "DeepSeek-Prover-V1.5",
+          "entry_id": "deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024",
+          "matched": true,
+          "entry": {
+            "id": "deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learn-2024",
+            "title": "DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search",
+            "year": 2024,
+            "venue": "arXiv",
+            "authors": [
+              "Huajian Xin",
+              "Z. Z. Ren",
+              "Junxiao Song",
+              "Zhihong Shao",
+              "Wanjia Zhao",
+              "Haocheng Wang",
+              "Bo Liu",
+              "Liyue Zhang",
+              "Xuan Lu",
+              "Qiushi Du",
+              "Wenjun Gao",
+              "Qihao Zhu",
+              "Dejian Yang",
+              "Zhibin Gou",
+              "Z. F. Wu",
+              "Fuli Luo",
+              "Chong Ruan"
+            ],
+            "source_role": [
+              "construction_recipe",
+              "model_report",
+              "scaling_study"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "environmental"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "scalar_reward",
+              "full_episode"
+            ],
+            "training_use": [
+              "rlvr",
+              "agent_training",
+              "evaluation",
+              "test_time_compute"
+            ],
+            "domains": [
+              "formal-math",
+              "lean",
+              "rl"
+            ],
+            "category": [
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "rollout_search_test_time_trace_data",
+              "environment_agent_trajectory_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "frontier_reports_data_disclosure_ledger"
+            ],
+            "subfield": "Other related work",
+            "tags": [
+              "formal-math",
+              "lean",
+              "rl",
+              "seeded-from-bib"
+            ],
+            "one_line_summary": "DeepSeek-Prover-V1.5 adds proof-assistant feedback, RL, and RMaxTS search on top of DeepSeek-Prover-style formal proof data.",
+            "why_it_matters": "It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.",
+            "data_object": "Lean proof script, proof-search path, feedback signal, and verification result.; process: theorem, proof attempt, Lean feedback, reward, search node, final proof, pass/fail result.; Lean 4 proof assistant plus RMaxTS search procedure.",
+            "feedback_verifier": "proof assistant feedback used for RL and search selection.",
+            "audit_focus": "Search budget can dominate model quality., Checker feedback is sparse and version-dependent., RL can optimize toward easy theorem families.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2408.08152",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2408.08152",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+              "data": null,
+              "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL",
+              "project": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2408.08152"
+          }
+        },
+        {
+          "title": "DeepSeek-Prover-V2",
+          "entry_id": "deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025",
+          "matched": true,
+          "entry": {
+            "id": "deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025",
+            "title": "DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning",
+            "year": 2025,
+            "venue": "arXiv",
+            "authors": [
+              "Z. Z. Ren",
+              "Zhihong Shao",
+              "Junxiao Song",
+              "Huajian Xin",
+              "Haocheng Wang",
+              "Wanjia Zhao",
+              "Liyue Zhang",
+              "Zhe Fu",
+              "Qihao Zhu",
+              "Dejian Yang",
+              "Z. F. Wu",
+              "Zhibin Gou",
+              "Shirong Ma",
+              "Hongxuan Tang",
+              "Yuxuan Liu",
+              "Wenjun Gao",
+              "Daya Guo",
+              "Chong Ruan"
+            ],
+            "source_role": [
+              "model_report",
+              "construction_recipe",
+              "data_release"
+            ],
+            "verification_contract": [
+              "programmatic",
+              "environmental",
+              "mixed"
+            ],
+            "supervision_granularity": [
+              "step_level",
+              "full_episode",
+              "scalar_reward"
+            ],
+            "training_use": [
+              "rlvr",
+              "sft",
+              "agent_training",
+              "evaluation"
+            ],
+            "domains": [
+              "formal-math",
+              "lean",
+              "subgoal-decomposition"
+            ],
+            "category": [
+              "instruction_demonstration_rationale_data",
+              "preference_reward_feedback_data",
+              "programmatically_verifiable_outcome_data",
+              "environment_agent_trajectory_data",
+              "data_construction_open_release_recipes",
+              "training_usage_optimization_objectives",
+              "scaling_rlvr_test_time_compute",
+              "frontier_reports_data_disclosure_ledger"
+            ],
+            "subfield": "🧱 Instruction tuning / SFT data",
+            "tags": [
+              "formal-math",
+              "lean",
+              "seeded-from-bib",
+              "subgoal-decomposition"
+            ],
+            "one_line_summary": "DeepSeek-Prover-V2 uses recursive subgoal decomposition and RL to connect informal reasoning with formal Lean theorem proving.",
+            "why_it_matters": "It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification.",
+            "data_object": "subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: problem, subgoal decomposition, synthesized proof, Lean feedback, reward, benchmark result.; Lean 4 environment plus recursive theorem-proving pipeline.",
+            "feedback_verifier": "Lean verification and RL reward over formal proof success.",
+            "audit_focus": "Subgoal decomposition can introduce false intermediate claims., Formal and informal reasoning scores are not directly comparable., Large-model teacher lineage can hide data provenance.",
+            "curation_level": "L5_audit_ready",
+            "status": "verified",
+            "needs_search": false,
+            "artifacts": {
+              "paper": "https://arxiv.org/abs/2504.21801",
+              "venue": null,
+              "arxiv": "https://arxiv.org/abs/2504.21801",
+              "openreview": null,
+              "acl": null,
+              "pmlr": null,
+              "cvf": null,
+              "doi": null,
+              "code": "https://github.com/deepseek-ai/DeepSeek-Prover-V2",
+              "data": "https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench",
+              "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B",
+              "project": "https://github.com/deepseek-ai/DeepSeek-Prover-V2",
+              "bibtex": null,
+              "paper_card_source": null
+            },
+            "primary_link": "https://arxiv.org/abs/2504.21801"
           }
         }
       ]
@@ -26175,7 +33910,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -26234,7 +33969,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -26293,7 +34028,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -26358,7 +34093,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/spurious_rewards.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.10947"
           }
@@ -26421,7 +34156,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/one_token_to_fool_judge.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.08794"
           }
@@ -26493,7 +34228,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/failures/leaky-thoughts.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.15674"
           }
@@ -26558,7 +34293,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://subliminal-learning.com/",
               "bibtex": null,
-              "card": "cards/failures/subliminal-learning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.14805"
           }
@@ -26616,7 +34351,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2508.13180"
           }
@@ -26674,7 +34409,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.21614"
           }
@@ -26748,7 +34483,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://livebench.ai/",
               "bibtex": null,
-              "card": "cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2406.19314"
           }
@@ -26806,7 +34541,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -26868,7 +34603,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.07086"
           }
@@ -26928,7 +34663,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2505.22203"
           }
@@ -26987,7 +34722,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2604.15149"
           }
@@ -27045,7 +34780,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2604.07666"
           }
@@ -27103,7 +34838,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -27162,7 +34897,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2602.12413"
           }
@@ -27229,7 +34964,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/facebook/AbstentionBench",
               "project": null,
               "bibtex": null,
-              "card": "cards/benchmarks/abstentionbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.09038"
           }
@@ -27307,7 +35042,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
               "project": "https://www.swebench.com/verified.html",
               "bibtex": null,
-              "card": "cards/agents/swe-bench-verified.md"
+              "paper_card_source": null
             },
             "primary_link": "https://openai.com/index/introducing-swe-bench-verified/"
           }
@@ -27368,7 +35103,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -27460,7 +35195,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://github.com/anthropics/ConstitutionalHarmlessnessPaper",
               "bibtex": null,
-              "card": "cards/recipes/constitutional-ai.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2212.08073"
           }
@@ -27528,7 +35263,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2406.18629"
           }
@@ -27618,7 +35353,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/openbmb/UltraFeedback",
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/ultrafeedback.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2310.01377"
           }
@@ -27677,7 +35412,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -27743,7 +35478,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/star-bootstrapping-reasoning-with-reasoning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2203.14465"
           }
@@ -27817,7 +35552,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/openai/gsm8k",
               "project": null,
               "bibtex": null,
-              "card": "cards/benchmarks/gsm8k-grade-school-math-8k.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2110.14168"
           }
@@ -27874,7 +35609,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -27943,7 +35678,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/benchmarks/humaneval-hand-written-evaluation-set.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2107.03374"
           }
@@ -28014,7 +35749,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://www.swebench.com/original.html",
               "bibtex": null,
-              "card": "cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2310.06770"
           }
@@ -28087,7 +35822,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/prm800k.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2305.20050"
           }
@@ -28154,7 +35889,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/math_shepherd.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2312.08935"
           }
@@ -28226,7 +35961,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/rewardbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2403.13787"
           }
@@ -28296,7 +36031,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/healthbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2505.08775"
           }
@@ -28366,7 +36101,7 @@ window.ATLAS_DATA = {
               "huggingface": "https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M",
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/openthoughts.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.04178"
           }
@@ -28430,7 +36165,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/openmathreasoning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.16891"
           }
@@ -28497,7 +36232,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/deepmath_103k.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.11456"
           }
@@ -28566,7 +36301,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/big_math.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2502.17387"
           }
@@ -28628,7 +36363,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/limo.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2502.03387"
           }
@@ -28693,7 +36428,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/s1.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.19393"
           }
@@ -28754,7 +36489,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/dapo.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2503.14476"
           }
@@ -28821,7 +36556,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/deepseek_r1.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.12948"
           }
@@ -28886,7 +36621,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/kimi_k15.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.12599"
           }
@@ -28944,7 +36679,7 @@ window.ATLAS_DATA = {
             "data_object": "code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments",
             "feedback_verifier": "unit tests, execution feedback, and agent task success signals",
             "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
+            "curation_level": "L4_carded",
             "status": "partial",
             "needs_search": true,
             "artifacts": {
@@ -28961,7 +36696,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://qwenlm.github.io/blog/qwen3-coder/",
               "bibtex": null,
-              "card": "cards/recipes/qwen3_coder.md"
+              "paper_card_source": null
             },
             "primary_link": null
           }
@@ -29024,7 +36759,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/recipes/magistral.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.10910"
           }
@@ -29092,7 +36827,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/swe_gym.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2412.21139"
           }
@@ -29157,7 +36892,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/r2e_gym.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2504.07164"
           }
@@ -29208,7 +36943,7 @@ window.ATLAS_DATA = {
             "data_object": "environment interaction trajectory; process: observation, action, state; browser-accessible web environment",
             "feedback_verifier": "task-specific success evaluator",
             "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L4_carded",
+            "curation_level": "L5_audit_ready",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
@@ -29225,7 +36960,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/webarena.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2307.13854"
           }
@@ -29295,7 +37030,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/agents/osworld.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2404.07972"
           }
@@ -29306,57 +37041,82 @@ window.ATLAS_DATA = {
           "matched": true,
           "entry": {
             "id": "toolsandbox-a-stateful-conversational-interactive-evaluation-benchmark-for-tool--2024",
-            "title": "ToolSandbox: A stateful, conversational, interactive evaluation benchmark for tool use",
+            "title": "ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities",
             "year": 2024,
             "venue": "arXiv preprint",
-            "authors": [],
+            "authors": [
+              "Jiarui Lu",
+              "Thomas Holleis",
+              "Yizhe Zhang",
+              "Bernhard Aumayer",
+              "Feng Nan",
+              "Felix Bai",
+              "Shuang Ma",
+              "Shen Ma",
+              "Mengyu Li",
+              "Guoli Yin",
+              "Zirui Wang",
+              "Ruoming Pang"
+            ],
             "source_role": [
-              "survey_background"
+              "benchmark",
+              "agent_environment"
             ],
             "verification_contract": [
-              "unknown"
+              "environmental",
+              "programmatic"
             ],
             "supervision_granularity": [
-              "unknown"
+              "full_episode",
+              "state_action_level"
             ],
             "training_use": [
-              "unknown"
+              "evaluation",
+              "agent_training",
+              "audit"
             ],
-            "domains": [],
+            "domains": [
+              "tools",
+              "agents",
+              "conversational_agents"
+            ],
             "category": [
               "environment_agent_trajectory_data",
               "benchmarks_evaluation_surfaces",
               "audit_failure_contamination_verifier_attacks"
             ],
-            "subfield": "🛠️ Tool-use data",
+            "subfield": "🧰 Agent benchmarks and terminal predicates",
             "tags": [
-              "seeded-from-bib"
+              "primary-link-checked",
+              "agent-benchmark",
+              "tool-use",
+              "stateful-evaluation"
             ],
-            "one_line_summary": "Official source is linked; detailed reasoning-data summary is still pending.",
-            "why_it_matters": "Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.",
-            "data_object": "metadata pending",
-            "feedback_verifier": "metadata pending",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
-            "curation_level": "L0_seeded",
-            "status": "needs_metadata",
-            "needs_search": true,
+            "one_line_summary": "ToolSandbox evaluates tool agents through stateful conversations, user simulation, and milestone-based checks.",
+            "why_it_matters": "It strengthens the agent benchmark track by making implicit tool state and intermediate milestones part of the feedback contract.",
+            "data_object": "multi-turn conversation with tool calls, tool state, and milestone checks; process: user turn, agent turn, tool call; stateful tool execution sandbox with user simulator",
+            "feedback_verifier": "dynamic evaluation of intermediate and final milestones",
+            "audit_focus": "stateful dependencies can make failures hard to attribute, user simulator behavior can become an implicit reward channel, final success can hide intermediate milestone failures if reporting is incomplete",
+            "curation_level": "L4_carded",
+            "status": "verified",
+            "needs_search": false,
             "artifacts": {
-              "paper": null,
+              "paper": "https://arxiv.org/abs/2408.04682",
               "venue": null,
-              "arxiv": null,
+              "arxiv": "https://arxiv.org/abs/2408.04682",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
-              "doi": null,
-              "code": null,
-              "data": null,
+              "doi": "https://doi.org/10.48550/arXiv.2408.04682",
+              "code": "https://github.com/apple/ToolSandbox",
+              "data": "https://github.com/apple/ToolSandbox",
               "huggingface": null,
-              "project": null,
+              "project": "https://github.com/apple/ToolSandbox",
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
-            "primary_link": null
+            "primary_link": "https://arxiv.org/abs/2408.04682"
           }
         },
         {
@@ -29426,7 +37186,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/processbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2412.06559"
           }
@@ -29501,7 +37261,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/prmbench.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2501.03124"
           }
@@ -29575,7 +37335,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://livebench.ai/",
               "bibtex": null,
-              "card": "cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2406.19314"
           }
@@ -29633,7 +37393,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.21614"
           }
@@ -29698,7 +37458,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/spurious_rewards.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2506.10947"
           }
@@ -29761,7 +37521,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/verifiers/one_token_to_fool_judge.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.08794"
           }
@@ -29826,7 +37586,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": "https://subliminal-learning.com/",
               "bibtex": null,
-              "card": "cards/failures/subliminal-learning.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2507.14805"
           }
@@ -29884,7 +37644,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": null
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/2508.13180"
           }
@@ -29949,7 +37709,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "card": "cards/releases/datasheets-for-datasets.md"
+              "paper_card_source": null
             },
             "primary_link": "https://arxiv.org/abs/1803.09010"
           }

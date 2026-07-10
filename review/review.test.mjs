@@ -6,9 +6,14 @@ import {
   CURATION_LEVELS,
   canPersistLevelChange,
   createAnnotationRecord,
+  createInstitutionRecord,
+  createLocalizationRecord,
   filterEntries,
+  institutionSummary,
   lowLevelReviewHint,
   mergeAnnotations,
+  mergeInstitutions,
+  mergeLocalizations,
   nextUnannotatedEntryId,
   projectSourceLinks,
   renderEntryCard,
@@ -72,6 +77,55 @@ test("keeps only one annotation per entry by replacing the previous record", () 
   });
   assert.equal(merged.annotations["paper-1"].length, 1);
   assert.equal(merged.annotations["paper-1"][0].note, "new");
+});
+
+test("creates and replaces one localization record per entry while allowing empty Chinese fields", () => {
+  const entry = { id: "paper-zh", title: "Paper ZH" };
+  const record = createLocalizationRecord(entry, {
+    one_line_summary: "",
+    why_it_matters: "中文价值",
+    data_object: "",
+  }, new Date("2026-01-02T00:00:00.000Z"));
+
+  assert.equal(record.entry_id, "paper-zh");
+  assert.equal(record.title, "Paper ZH");
+  assert.equal(record.one_line_summary, "");
+  assert.equal(record.why_it_matters, "中文价值");
+  assert.equal(record.data_object, "");
+
+  const merged = mergeLocalizations({
+    schema_version: 1,
+    entries: {
+      "paper-zh": { entry_id: "paper-zh", why_it_matters: "旧中文" },
+    },
+  }, record);
+  assert.equal(Object.keys(merged.entries).length, 1);
+  assert.equal(merged.entries["paper-zh"].why_it_matters, "中文价值");
+});
+
+test("creates and replaces one institution record per entry with five boxes and a many flag", () => {
+  const entry = { id: "paper-inst", title: "Institution Paper" };
+  const record = createInstitutionRecord(entry, {
+    institution_0: "UW",
+    institution_1: "",
+    institution_2: "MIT",
+    institution_3: "",
+    institution_4: "",
+    has_more_institutions: "on",
+  }, new Date("2026-01-03T00:00:00.000Z"));
+
+  assert.deepEqual(record.institutions, ["UW", "", "MIT", "", ""]);
+  assert.equal(record.has_more, true);
+  assert.deepEqual(institutionSummary(record), { names: ["UW", "MIT"], hasMore: true });
+
+  const merged = mergeInstitutions({
+    schema_version: 1,
+    entries: {
+      "paper-inst": { entry_id: "paper-inst", institutions: ["Old"], has_more: false },
+    },
+  }, record);
+  assert.deepEqual(merged.entries["paper-inst"].institutions, ["UW", "", "MIT", "", ""]);
+  assert.equal(merged.entries["paper-inst"].has_more, true);
 });
 
 test("filters entries by project-generated path, level, query, and annotation state", () => {
@@ -143,6 +197,49 @@ test("renders manual review form without reviewer or quote fields", () => {
   assert.doesNotMatch(html, /名字或缩写/);
   assert.doesNotMatch(html, /原文匹配 \/ 引用/);
   assert.doesNotMatch(html, /quote-selection/);
+});
+
+test("renders Chinese field editor and institution editor from local review data", () => {
+  const html = renderEntryCard({
+    id: "paper-ui",
+    title: "UI Paper",
+    curation_level: "L3_summary_ready",
+    one_line_summary: "English summary",
+    why_it_matters: "English value",
+    artifacts: {},
+  }, {
+    annotations: {},
+    localizations: {
+      entries: {
+        "paper-ui": {
+          entry_id: "paper-ui",
+          one_line_summary: "中文摘要",
+          why_it_matters: "中文价值",
+        },
+      },
+    },
+    institutions: {
+      entries: {
+        "paper-ui": {
+          entry_id: "paper-ui",
+          institutions: ["UW", "", "MIT", "", ""],
+          has_more: true,
+        },
+      },
+    },
+  }, false, true);
+
+  assert.match(html, /机构一览/);
+  assert.match(html, /UW/);
+  assert.match(html, /MIT/);
+  assert.match(html, /多个机构/);
+  assert.match(html, /name="institution_4"/);
+  assert.match(html, /中文字段/);
+  assert.match(html, /原始字段/);
+  assert.match(html, /name="one_line_summary"/);
+  assert.match(html, /中文摘要/);
+  assert.match(html, /保存中文字段/);
+  assert.match(html, /保存机构/);
 });
 
 test("renders only the latest annotation when legacy data has multiple records", () => {

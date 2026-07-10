@@ -73,18 +73,18 @@ Review quality by following one sample through the whole pipeline: source, gener
 
 ### Representative local cards
 
-- [Openthoughts](../cards/releases/openthoughts.md)
-- [Deepmath 103K](../cards/releases/deepmath_103k.md)
-- [Openmathreasoning](../cards/releases/openmathreasoning.md)
-- [Opencodereasoning Ii](../cards/releases/opencodereasoning_ii.md)
-- [Prm800K](../cards/verifiers/prm800k.md)
-- [Processbench](../cards/verifiers/processbench.md)
-- [Healthbench](../cards/verifiers/healthbench.md)
-- [Webarena](../cards/agents/webarena.md)
-- [Swe Gym](../cards/agents/swe_gym.md)
-- [Deepseek R1](../cards/recipes/deepseek_r1.md)
-- [Kimi K15](../cards/recipes/kimi_k15.md)
-- [S1](../cards/releases/s1.md)
+- [Openthoughts](../paper_cards/README.md)
+- [Deepmath 103K](../paper_cards/README.md)
+- [Openmathreasoning](../paper_cards/README.md)
+- [Opencodereasoning Ii](../paper_cards/README.md)
+- [Prm800K](../paper_cards/README.md)
+- [Processbench](../paper_cards/README.md)
+- [Healthbench](../paper_cards/README.md)
+- [Webarena](../paper_cards/README.md)
+- [Swe Gym](../paper_cards/README.md)
+- [Deepseek R1](../paper_cards/README.md)
+- [Kimi K15](../paper_cards/README.md)
+- [S1](../paper_cards/README.md)
 
 ### Common traps
 
@@ -113,7 +113,7 @@ A strong review also separates confidence levels. `verified` should mean that th
 
 ## Operating checklist for maintainers
 
-- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `cards/` for audit records.
+- Keep the reader path obvious: README for orientation, `papers/` for density, `docs/` for lessons, `paper_cards/` for audit records.
 - Prefer official links: arXiv, OpenReview, ACL Anthology, project pages, official GitHub, and Hugging Face releases.
 - Do not infer a code or dataset URL from a paper title. Missing links should remain `needs_search`.
 - Make every new paper answer five questions: source, behavior, feedback, selection, audit.

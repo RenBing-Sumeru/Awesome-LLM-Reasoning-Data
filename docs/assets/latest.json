@@ -1152,7 +1152,7 @@
         "url": "https://arxiv.org/abs/2501.19393"
       }
     ],
-    "card": "cards/releases/s1.md",
+    "card": "paper_cards/README.md",
     "one_line": "Small-pool and test-time scaling reference."
   },
   {
