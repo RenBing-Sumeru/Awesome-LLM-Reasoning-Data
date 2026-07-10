@@ -8,7 +8,7 @@ Start here for post-training vocabulary, classic alignment-data lineages, reason
 
 | Track | Main question | Entries | Jump |
 |---|---|---:|---|
-| 🧭 Foundations & Primers | beginners building the field map before primary papers | 80 | [00_foundations_and_primers.md](00_foundations_and_primers.md) |
+| 🧭 Foundations & Primers | beginners building the field map before primary papers | 0 | [00_foundations_and_primers.md](00_foundations_and_primers.md) |
 
 ## Suggested Reading Path
 

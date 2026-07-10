@@ -37,6 +37,13 @@ made a stronger judgment. Free-form priority labels are invalid.
 - `L5_review_ready`: L4 passes, and human review annotation exists.
 - `L6_reviewed`: L5 passes, and the reviewer clicks the completion action.
 
+For maintainer-driven topic scans, do not wait for a separate topic-approval
+round when the user request already gives a usable topic, year window, venue
+tier, or target count. Select the strongest papers, verify official sources,
+and create complete bilingual card sources so the chosen entries can be
+promoted to `L4_carded`. Ask a short clarification only when the missing detail
+would change the search boundary.
+
 ## Required Files
 
 ```text
@@ -62,11 +69,19 @@ made a stronger judgment. Free-form priority labels are invalid.
 
 ## Section Intent
 
-1. Problem: explain the concrete question and why it matters.
+1. Problem: explain the concrete question and why it matters. Include primary
+   source, venue/date, decision boundary, atlas relevance, data object or
+   evaluation surface, and the L4 collection note.
 2. Core Idea: summarize the main contribution without copying the abstract.
+   Include the core mechanism, data object or evaluation surface, feedback
+   contract, direction label, and closest comparisons.
 3. Method: explain the pipeline, system, data construction, or experiment setup.
+   Include inputs, outputs, verifier/reward/judge/environment, training or
+   evaluation use, artifacts to verify, and reproducibility notes.
 4. Evidence: state the experiments, comparisons, metrics, and evidence limits.
-5. Novelty: explain what changes compared with prior work.
+5. Novelty: explain what changes compared with prior work. Include prior-work
+   baseline, why it is a 2026 direction signal when relevant, top-conference
+   quality signal, what is not new, and what to inspect before reuse.
 6. Limitations: list concrete weaknesses, assumptions, missing artifacts, or risks.
 7. Usefulness: explain how readers can use the paper for research, engineering, datasets, benchmarks, or review.
 8. Reading Notes: keep 3-5 memorable takeaways.

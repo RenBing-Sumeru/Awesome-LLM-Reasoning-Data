@@ -1,0 +1,4 @@
+- Lean and mathlib versions, imports, and wrappers must be pinned.
+- Public proofs can still be memorized by frontier models.
+- Retrieval quality and proof-search budget confound headline proof rates.
+- Checker acceptance says nothing about whether the original informal statement was translated faithfully.

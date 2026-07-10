@@ -36,8 +36,8 @@
         <label>论文池
           <select id="stateFilter">
             <option value="">全部</option>
-            <option value="needs_annotation">需要人工标注</option>
-            <option value="annotated">已经人工标注</option>
+            <option value="needs_annotation">L4 中文 Review</option>
+            <option value="annotated">L5 已人工标注</option>
             <option value="l6">L6 已审阅</option>
             <option value="invalid">不合法论文池</option>
           </select>
@@ -159,6 +159,7 @@
               </div>
               <div class="actionbar compact">
                 <button id="goUpdateFromReview" type="button" class="secondary">进入 Update</button>
+                <button id="downgradeToL4" type="button" class="secondary">降级到 L4</button>
                 <button id="completeCurrent" type="button">完成修改该卡片</button>
               </div>
             </section>

@@ -1,0 +1,4 @@
+- Final-answer parsing can create false negatives.
+- Different but equivalent symbolic forms may not compare equal.
+- Public problems and solutions are vulnerable to pretraining contamination.
+- A correct final answer does not prove that a released reasoning trace is faithful.

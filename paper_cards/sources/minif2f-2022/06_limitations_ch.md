@@ -1,0 +1,4 @@
+- 形式化可能改变或遗漏原题假设。
+- import 和库版本会影响 checker 行为。
+- 公开 benchmark 证明可能被记忆。
+- kernel acceptance 验证的是形式命题，不会自动验证非形式化翻译。

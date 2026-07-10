@@ -345,6 +345,30 @@ paper_categories:
         self.assertEqual(status["state"], "reviewed")
         self.assertIn("reviewed_at", status)
 
+    def test_downgrade_l5_to_l4_clears_human_annotation(self) -> None:
+        self.make_review_ready()
+
+        payload = server.downgrade_to_l4_payload("sample-paper", root=self.root)
+
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["valid"]["level"], "L4_chinese_review_ready")
+        self.assertEqual(payload["valid"]["pool"], "needs_annotation")
+        status = payload["status"]["entries"]["sample-paper"]
+        self.assertEqual(status["state"], "edited")
+        self.assertNotIn("downloaded_at", status)
+        self.assertNotIn("reviewed_at", status)
+        queue_record = card_tool.load_search_queue(root=self.root)["entries"]["sample-paper"]
+        self.assertNotIn("search_status", queue_record)
+        self.assertNotIn("decision_reason", queue_record)
+        self.assertNotIn("reason_to_include", queue_record)
+
+    def test_downgrade_to_l4_rejects_l6_cards(self) -> None:
+        self.make_review_ready()
+        server.review_payload("sample-paper", root=self.root)
+
+        with self.assertRaisesRegex(ValueError, "只能从 L5 降级到 L4"):
+            server.downgrade_to_l4_payload("sample-paper", root=self.root)
+
     def test_review_payload_only_promotes_from_l5_once(self) -> None:
         self.make_review_ready()
         first = server.review_payload("sample-paper", root=self.root)

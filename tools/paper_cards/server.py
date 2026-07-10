@@ -162,6 +162,29 @@ def review_payload(entry_id: str, root: Path | str | None = None) -> dict:
     return {"ok": True, "valid": report, "card": card_payload(entry_id, root), "status": status}
 
 
+def downgrade_to_l4_payload(entry_id: str, root: Path | str | None = None) -> dict:
+    entries = card_tool.load_entries(root)
+    if entry_id not in entries:
+        raise ValueError(f"unknown entry_id: {entry_id}")
+    report = card_tool.valid_report(entry_id, root, entry=entries[entry_id])
+    if report.get("level") != "L5_review_ready":
+        raise ValueError(f"{entry_id}: 只能从 L5 降级到 L4")
+
+    queue = card_tool.load_search_queue(root)
+    record = dict(queue.get("entries", {}).get(entry_id) or {})
+    for key in ["search_status", "decision_reason", "reason_to_include", "review_note"]:
+        record.pop(key, None)
+    record["updated_at"] = card_tool.now_iso()
+    queue["entries"][entry_id] = record
+    queue["updated_at"] = record["updated_at"]
+    card_tool.save_search_queue(queue, root)
+
+    status = card_tool.update_status(entry_id, "edited", root=root)
+    report = card_tool.valid_report(entry_id, root, entry=entries[entry_id])
+    card_tool.save_valid_report(report, root)
+    return {"ok": True, "valid": report, "card": card_payload(entry_id, root), "status": status}
+
+
 def package_payload(entry_ids: list[str], root: Path | str | None = None) -> dict:
     package = card_tool.write_package(entry_ids, root=root)
     return {"ok": True, "entry_ids": entry_ids, "package": package.name, "download_url": f"/packages/{package.name}"}
@@ -324,6 +347,10 @@ class PaperCardHandler(SimpleHTTPRequestHandler):
             if path.startswith("/api/card/") and path.endswith("/review"):
                 entry_id = unquote(path.removeprefix("/api/card/").removesuffix("/review")).strip("/")
                 self.end_json(review_payload(entry_id, ROOT))
+                return
+            if path.startswith("/api/card/") and path.endswith("/downgrade-l4"):
+                entry_id = unquote(path.removeprefix("/api/card/").removesuffix("/downgrade-l4")).strip("/")
+                self.end_json(downgrade_to_l4_payload(entry_id, ROOT))
                 return
             if path == "/api/package":
                 entry_ids = payload.get("entry_ids") or []

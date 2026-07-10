@@ -42,6 +42,77 @@ SECTION_TITLES_CH = {
     "09_citation": "引用",
 }
 
+RICH_SECTION_TEMPLATES = {
+    "01_problem": {
+        "en": """- Primary source:
+- Venue/date:
+- Decision boundary: why this paper belongs in the requested topic and what nearby topic it does not cover.
+- Concrete problem: what research or engineering gap the paper is trying to close.
+- Why it matters for this atlas: which reasoning-data, verifier, reward, environment, benchmark, or audit question it clarifies.
+- Data object / evaluation surface: what one sample, episode, task, trace, or benchmark instance contains.
+- L4 collection note: what official source and local card evidence make it ready to include without another topic-approval round.
+""",
+        "ch": """- 官方来源：
+- 会议/日期：
+- 决策边界：为什么它属于当前主题，以及它不覆盖的相邻主题是什么。
+- 具体问题：它想解决哪个研究或工程缺口。
+- 对本 atlas 的价值：它澄清了哪类 reasoning data、verifier、reward、environment、benchmark 或 audit 问题。
+- 数据对象 / 评测面：一个样本、episode、任务、轨迹或 benchmark instance 里包含什么。
+- L4 收录说明：哪些官方来源和本地 card 证据足以直接纳入，不再等待选题确认。
+""",
+    },
+    "02_core_idea": {
+        "en": """- One-sentence contribution:
+- Core mechanism:
+- Data object / evaluation surface:
+- Feedback contract: what judges, verifies, scores, or terminates the behavior.
+- Direction label: the short research direction this paper represents.
+- What to compare against: closest datasets, benchmarks, methods, or failure papers already in the atlas.
+""",
+        "ch": """- 一句话贡献：
+- 核心机制：
+- 数据对象 / 评测面：
+- 反馈契约：由什么系统判断、验证、打分或终止该行为。
+- 方向标签：这篇论文代表的短研究方向名称。
+- 应该对比什么：atlas 中最接近的数据集、benchmark、方法或 failure paper。
+""",
+    },
+    "03_method": {
+        "en": """- Inputs:
+- Pipeline:
+- Outputs:
+- Verifier / reward / judge / environment:
+- Training/evaluation use: SFT, distillation, preference learning, reward modeling, PRM, RLVR, agent training, evaluation, audit, or TTC.
+- Artifacts to verify: paper, venue page, code, data, project, Hugging Face, DOI, benchmark harness, or license.
+- Reproducibility notes: split, budget, sampling, scaffold, hidden tests, data lineage, and contamination controls.
+""",
+        "ch": """- 输入：
+- 流程：
+- 输出：
+- Verifier / reward / judge / environment：
+- 训练/评测用途：SFT、distillation、preference learning、reward modeling、PRM、RLVR、agent training、evaluation、audit 或 TTC。
+- 需要核验的 artifact：论文、会议页、代码、数据、项目页、Hugging Face、DOI、benchmark harness 或 license。
+- 可复现性备注：split、预算、采样、scaffold、hidden tests、data lineage 和 contamination controls。
+""",
+    },
+    "05_novelty": {
+        "en": """- Prior work baseline:
+- What changes:
+- Why this is a 2026 direction signal:
+- Top-conference quality signal:
+- What is not new:
+- What to inspect before reuse:
+""",
+        "ch": """- 既有工作基线：
+- 新变化：
+- 为什么它是 2026 方向信号：
+- 顶会质量信号：
+- 哪些部分并不新：
+- 复用前需要检查什么：
+""",
+    },
+}
+
 STATUS_STATES = {"new", "edited", "reviewed", "downloaded"}
 SEARCH_STATUSES = {"candidate", "rejected", "promoted"}
 SEARCH_STATUS_LABELS = {
@@ -69,8 +140,8 @@ VALID_LEVEL_LABELS = {
 }
 DOWNLOADABLE_LEVELS = {"L5_review_ready", "L6_reviewed"}
 VALID_POOL_LABELS = {
-    "needs_annotation": "需要人工标注",
-    "annotated": "已经人工标注",
+    "needs_annotation": "L4 中文 Review",
+    "annotated": "L5 已人工标注",
     "l6": "L6 已审阅",
     "invalid": "不合法论文池",
 }
@@ -103,8 +174,8 @@ def packages_root(root: Path | str | None = None) -> Path:
     return paper_cards_root(root) / "packages"
 
 
-def review_generated_root(root: Path | str | None = None) -> Path:
-    return project_root(root) / "review" / "generated"
+def generated_root(root: Path | str | None = None) -> Path:
+    return paper_cards_root(root) / "generated"
 
 
 def status_path(root: Path | str | None = None) -> Path:
@@ -128,11 +199,11 @@ def valid_status_path(root: Path | str | None = None) -> Path:
 
 
 def zh_extra_fields_path(entry_id: str, root: Path | str | None = None) -> Path:
-    return review_generated_root(root) / f"{entry_id}_zh_extra_fields.md"
+    return generated_root(root) / f"{entry_id}_zh_extra_fields.md"
 
 
 def human_annotation_path(entry_id: str, root: Path | str | None = None) -> Path:
-    return review_generated_root(root) / f"{entry_id}_human_annotation.md"
+    return generated_root(root) / f"{entry_id}_human_annotation.md"
 
 
 def now_iso() -> str:
@@ -851,8 +922,8 @@ def write_package(
             generated = write_review_generated_files(entry_id, entry, root_path)
             archive.writestr(f"cards/{entry_id}_en.md", assemble_card(entry, "en", root))
             archive.writestr(f"cards/{entry_id}_ch.md", assemble_card(entry, "ch", root))
-            archive.writestr(f"review/{entry_id}_zh_extra_fields.md", generated["zh_extra_fields"])
-            archive.writestr(f"review/{entry_id}_human_annotation.md", generated["human_annotation"])
+            archive.writestr(f"annotations/{entry_id}_zh_extra_fields.md", generated["zh_extra_fields"])
+            archive.writestr(f"annotations/{entry_id}_human_annotation.md", generated["human_annotation"])
     return package_path
 
 
@@ -866,11 +937,14 @@ def init_card_source(entry_id: str, root: Path | str | None = None, overwrite: b
     for key, title in SECTIONS:
         en = base / f"{key}.md"
         ch = base / f"{key}_ch.md"
+        template = RICH_SECTION_TEMPLATES.get(key)
         if overwrite or not en.exists():
-            en.write_text(f"needs review: {title}\n", encoding="utf-8")
+            text = template["en"] if template else f"Fill this section: {title}\n"
+            en.write_text(text.rstrip() + "\n", encoding="utf-8")
             created.append(en)
         if overwrite or not ch.exists():
-            ch.write_text("待人工翻译和复核。\n", encoding="utf-8")
+            text = template["ch"] if template else f"填写本节：{SECTION_TITLES_CH.get(key, title)}\n"
+            ch.write_text(text.rstrip() + "\n", encoding="utf-8")
             created.append(ch)
     existing_header = load_header_zh(root).get("entries", {}).get(entry_id) or {}
     if not str(existing_header.get("reading_priority_ch") or "").strip():

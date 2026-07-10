@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-10T06:12:15Z",
+  "updated_at": "2026-07-10T09:20:39Z",
   "entries": {
     "tinyv-2025": {
       "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
@@ -144,6 +144,100 @@
       "search_status": "candidate",
       "review_note": "",
       "updated_at": "2026-07-10T05:19:23Z"
+    },
+    "rest-em-self-training-2024": {
+      "title": "Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2312.06585",
+        "arxiv": null,
+        "code": null,
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "programmatically_verifiable_outcome_data"
+      ],
+      "reason_to_include": "aa",
+      "decision_reason": "aa",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T09:18:49Z"
+    },
+    "deepseekmath-2024": {
+      "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2402.03300",
+        "arxiv": null,
+        "code": null,
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "programmatically_verifiable_outcome_data",
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "frontier_reports_data_disclosure_ledger"
+      ],
+      "reason_to_include": "abc",
+      "decision_reason": "abc",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T09:19:57Z"
+    },
+    "lets-verify-step-by-step-2023": {
+      "title": "Let's Verify Step by Step",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2305.20050",
+        "arxiv": null,
+        "code": null,
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "process_trace_supervision_data",
+        "preference_reward_feedback_data",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "audit_failure_contamination_verifier_attacks"
+      ],
+      "reason_to_include": "abc",
+      "decision_reason": "abc",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T09:20:15Z"
+    },
+    "coderl-code-generation-rl-2022": {
+      "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
+      "candidate_links": {
+        "paper": "https://arxiv.org/abs/2207.01780",
+        "arxiv": null,
+        "code": null,
+        "data": null,
+        "project": null,
+        "huggingface": null,
+        "doi": null
+      },
+      "track_guess": [
+        "programmatically_verifiable_outcome_data",
+        "training_usage_optimization_objectives",
+        "scaling_rlvr_test_time_compute",
+        "benchmarks_evaluation_surfaces"
+      ],
+      "reason_to_include": "abc",
+      "decision_reason": "abc",
+      "search_status": "candidate",
+      "review_note": "",
+      "updated_at": "2026-07-10T09:20:39Z"
     }
   }
 }

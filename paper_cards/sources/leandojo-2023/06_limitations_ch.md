@@ -1,0 +1,4 @@
+- 必须固定 Lean、mathlib 版本、imports 和 wrapper。
+- 公开证明仍可能被前沿模型记忆。
+- retrieval 质量和 proof search 预算会混淆 headline proof rate。
+- checker acceptance 不说明原始非形式化命题是否被忠实翻译。

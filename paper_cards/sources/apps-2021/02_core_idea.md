@@ -1,0 +1,1 @@
+The key idea is to represent functional correctness through executable tests across a broad range of task difficulty. A candidate program, its execution environment, and test outcome become one structured outcome record.

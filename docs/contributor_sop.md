@@ -487,6 +487,24 @@ Promotion rules:
 
 ## 10. Paper Card SOP
 
+### 10.0 Topic-Scan Requests
+
+When a user asks for papers, latest directions, top-conference work, or a topic
+scan, produce a concrete candidate set instead of stopping at search
+instructions. Do not ask the user to approve the topic when the request already
+states a usable topic, year window, venue tier, or target count.
+
+Ask a short clarification only when a missing detail would change the search
+boundary, such as the research area, year window, venue tier, target count, or
+whether local insertion is required. If the user asks to add or promote entries
+locally, update `data/papers.yaml` and create complete bilingual
+`paper_cards/sources/<entry_id>/` files so the selected entries can reach
+`L4_carded`.
+
+Each returned candidate should include the direction label, title, venue/year,
+official link, reason for fit, and the data object / verifier / reward /
+environment / audit surface it contributes.
+
 ### 10.1 When To Create a Card
 
 Create or improve a card when the entry is:

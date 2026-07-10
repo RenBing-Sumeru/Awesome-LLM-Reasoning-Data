@@ -93,6 +93,26 @@ class CardToolTest(unittest.TestCase):
         self.assertTrue(any("01_problem.md" in error for error in errors))
         self.assertTrue(any("09_citation_ch.md" in error for error in errors))
 
+    def test_init_card_source_uses_rich_l4_collection_templates(self) -> None:
+        card_tool.init_card_source("sample-paper", root=self.root)
+
+        problem = (self.source_dir / "01_problem.md").read_text(encoding="utf-8")
+        core_idea = (self.source_dir / "02_core_idea.md").read_text(encoding="utf-8")
+        method = (self.source_dir / "03_method.md").read_text(encoding="utf-8")
+        novelty = (self.source_dir / "05_novelty.md").read_text(encoding="utf-8")
+        problem_ch = (self.source_dir / "01_problem_ch.md").read_text(encoding="utf-8")
+
+        self.assertIn("Decision boundary", problem)
+        self.assertIn("Primary source", problem)
+        self.assertIn("Data object / evaluation surface", core_idea)
+        self.assertIn("Feedback contract", core_idea)
+        self.assertIn("Artifacts to verify", method)
+        self.assertIn("Training/evaluation use", method)
+        self.assertIn("Why this is a 2026 direction signal", novelty)
+        self.assertIn("Prior work baseline", novelty)
+        self.assertIn("决策边界", problem_ch)
+        self.assertNotIn("needs review", problem)
+
     def test_assemble_card_uses_metadata_and_sections(self) -> None:
         self.write_complete_sections()
         entry = card_tool.load_entries(root=self.root)["sample-paper"]
@@ -121,17 +141,18 @@ class CardToolTest(unittest.TestCase):
             self.assertEqual(names, {
                 "cards/sample-paper_en.md",
                 "cards/sample-paper_ch.md",
-                "review/sample-paper_zh_extra_fields.md",
-                "review/sample-paper_human_annotation.md",
+                "annotations/sample-paper_zh_extra_fields.md",
+                "annotations/sample-paper_human_annotation.md",
             })
-            extra = archive.read("review/sample-paper_zh_extra_fields.md").decode("utf-8")
-            annotation = archive.read("review/sample-paper_human_annotation.md").decode("utf-8")
+            extra = archive.read("annotations/sample-paper_zh_extra_fields.md").decode("utf-8")
+            annotation = archive.read("annotations/sample-paper_human_annotation.md").decode("utf-8")
         self.assertIn("中文一句话评价。", extra)
         self.assertIn("阅读优先级：必读", extra)
         self.assertIn("当前英文备注字段", extra)
         self.assertIn("人工确认有用。", annotation)
-        self.assertTrue((self.root / "review" / "generated" / "sample-paper_zh_extra_fields.md").exists())
-        self.assertTrue((self.root / "review" / "generated" / "sample-paper_human_annotation.md").exists())
+        self.assertTrue((self.root / "paper_cards" / "generated" / "sample-paper_zh_extra_fields.md").exists())
+        self.assertTrue((self.root / "paper_cards" / "generated" / "sample-paper_human_annotation.md").exists())
+        self.assertFalse((self.root / "review").exists())
 
     def test_write_package_accepts_l5_review_ready(self) -> None:
         self.make_review_ready()

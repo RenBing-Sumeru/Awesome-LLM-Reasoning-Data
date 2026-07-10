@@ -1,0 +1,4 @@
+- Record k before comparing results.
+- Answer extraction is part of the verifier contract.
+- Agreement is not the same as correctness.
+- This is inference-time scaling, not data scaling.

@@ -10,6 +10,7 @@ Rules:
 - The web editor may modify only Chinese `_ch.md` files.
 - Full cards are assembled only by `tools/paper_cards/card_tool.py`.
 - Assembled cards are preview/package artifacts, not maintained source files.
+- `paper_cards/generated/` stores ignored download-time annotation artifacts only.
 - Ask the Atlas links are generated during assembly and are not stored in section files.
 
 Run:

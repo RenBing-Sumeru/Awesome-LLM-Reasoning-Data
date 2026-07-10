@@ -38,9 +38,9 @@
   <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
   <text class="title" x="76" y="92">Awesome LLM Reasoning Data</text>
   <text class="subtitle" x="78" y="126">A field guide to the data objects, feedback contracts, and audit fields behind reasoning-model post-training.</text>
-  <rect x="78" y="148" width="156" height="30" rx="15" fill="#ecfdf5" stroke="#10a37f" stroke-width="1.4"/><text class="chip" x="156.0" y="168" text-anchor="middle">269 entries</text>
-  <rect x="188" y="148" width="156" height="30" rx="15" fill="#eff6ff" stroke="#2b8fff" stroke-width="1.4"/><text class="chip" x="266.0" y="168" text-anchor="middle">114 partial</text>
-  <rect x="300" y="148" width="172" height="30" rx="15" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.4"/><text class="chip" x="386.0" y="168" text-anchor="middle">155 metadata queue</text>
+  <rect x="78" y="148" width="132" height="30" rx="15" fill="#ecfdf5" stroke="#10a37f" stroke-width="1.4"/><text class="chip" x="144.0" y="168" text-anchor="middle">6 entries</text>
+  <rect x="188" y="148" width="132" height="30" rx="15" fill="#eff6ff" stroke="#2b8fff" stroke-width="1.4"/><text class="chip" x="254.0" y="168" text-anchor="middle">5 partial</text>
+  <rect x="300" y="148" width="172" height="30" rx="15" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.4"/><text class="chip" x="386.0" y="168" text-anchor="middle">0 metadata queue</text>
   <rect x="82" y="205" width="194" height="92" rx="16" fill="#eaf3ff" stroke="#2b8fff" stroke-width="1.8"/>
   <text x="100" y="237" font-family="Segoe UI Emoji, Apple Color Emoji, Arial" font-size="22">🧭</text>
   <text class="h" x="134" y="236">Task / context</text>

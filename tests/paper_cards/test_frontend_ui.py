@@ -42,6 +42,28 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn('"完成修改该卡片"', app)
         self.assertIn('"已审阅"', app)
 
+    def test_review_can_downgrade_l5_to_l4_and_pool_filter_labels_show_levels(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn('id="downgradeToL4"', html)
+        self.assertIn(">L4 中文 Review</option>", html)
+        self.assertIn(">L5 已人工标注</option>", html)
+        self.assertIn(">L6 已审阅</option>", html)
+        self.assertIn("function canDowngradeToL4", app)
+        self.assertIn('valid.level === "L5_review_ready"', app)
+        self.assertIn("/downgrade-l4", app)
+        self.assertIn("降级到 L4", app)
+
+    def test_saving_l4_annotation_keeps_it_at_l5_then_moves_to_next_l4(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn("function nextL4Entry", app)
+        self.assertIn('validInfo(entry).level === "L4_chinese_review_ready"', app)
+        self.assertIn("const next = nextL4Entry(annotatedId);", app)
+        self.assertIn("await selectEntry(next.id);", app)
+        self.assertIn("已保存人工标注", app)
+
     def test_l6_filter_sorts_by_review_time_descending(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
 

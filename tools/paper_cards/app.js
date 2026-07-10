@@ -52,6 +52,7 @@ const els = {
   saveInstitutions: $("saveInstitutions"),
   goReviewFromUpdate: $("goReviewFromUpdate"),
   goUpdateFromReview: $("goUpdateFromReview"),
+  downgradeToL4: $("downgradeToL4"),
   saveStatus: $("saveStatus"),
   institutionMore: $("institutionMore"),
   noInstitution: $("noInstitution"),
@@ -153,8 +154,8 @@ function validInfo(entry) {
 
 function poolLabel(valid) {
   return valid?.pool_label || {
-    needs_annotation: "需要人工标注",
-    annotated: "已经人工标注",
+    needs_annotation: "L4 中文 Review",
+    annotated: "L5 已人工标注",
     l6: "L6 已审阅",
     invalid: "不合法论文池",
   }[valid?.pool] || "需要人工标注";
@@ -165,6 +166,10 @@ function levelLabel(valid) {
 }
 
 function canPromoteToL6(valid = currentValid()) {
+  return valid.level === "L5_review_ready";
+}
+
+function canDowngradeToL4(valid = currentValid()) {
   return valid.level === "L5_review_ready";
 }
 
@@ -317,6 +322,10 @@ function updateActionAvailability() {
   const canReview = hasActive && inReview && canPromoteToL6(valid);
   if (canReview) markButtonSaved(els.completeCurrent);
   else markButtonDisabled(els.completeCurrent);
+
+  const canDowngrade = hasActive && inReview && canDowngradeToL4(valid);
+  if (canDowngrade) markButtonSaved(els.downgradeToL4);
+  else markButtonDisabled(els.downgradeToL4);
 
   updateDownloadButtons();
 }
@@ -523,6 +532,7 @@ function renderReviewCheckResult(valid = state.activeCard?.valid || {}) {
 function renderReviewActionButton() {
   const valid = state.activeCard?.valid || {};
   const reviewed = valid.pool === "l6";
+  els.downgradeToL4.textContent = canDowngradeToL4(valid) ? "降级到 L4" : "仅 L5 可降级";
   els.completeCurrent.textContent = reviewed
     ? "已审阅"
     : canPromoteToL6(valid)
@@ -757,6 +767,18 @@ function nextNeedingModification(currentId) {
   );
 }
 
+function nextL4Entry(currentId) {
+  const currentIndex = state.entries.findIndex((entry) => entry.id === currentId);
+  const candidates = state.entries
+    .map((entry, index) => ({ entry, index }))
+    .filter(({ entry }) => matchesFilters(entry) && validInfo(entry).level === "L4_chinese_review_ready");
+  return (
+    candidates.find(({ index }) => index > currentIndex)?.entry ||
+    candidates.find(({ index }) => index < currentIndex)?.entry ||
+    null
+  );
+}
+
 async function completeCurrent() {
   if (!state.activeEntryId) return;
   markButtonDisabled(els.completeCurrent);
@@ -779,6 +801,19 @@ async function completeCurrent() {
   }
   await selectEntry(completedId);
   setMessage(`已审阅：${completedId}。当前筛选下没有下一篇需要人工 review 的论文。`);
+}
+
+async function downgradeToL4() {
+  if (!state.activeEntryId) return;
+  markButtonDisabled(els.downgradeToL4);
+  const downgradedId = state.activeEntryId;
+  const payload = await api(`/api/card/${encodeURIComponent(downgradedId)}/downgrade-l4`, { method: "POST" });
+  state.selected.delete(downgradedId);
+  state.activeCard = payload.card;
+  await loadSearchQueue();
+  await loadEntries();
+  await selectEntry(downgradedId);
+  setMessage(`已降级到 L4：${downgradedId}。人工标注已清空，可重新标注。`);
 }
 
 function downloadTargetIds(includeDownloaded, selectedOnly = false) {
@@ -823,6 +858,7 @@ async function downloadSelected() {
 async function saveQueueItem() {
   if (!state.activeCard) return;
   markButtonDisabled(els.saveQueue);
+  const annotatedId = state.activeEntryId;
   const entry = state.activeCard.entry;
   const artifacts = entry.artifacts || {};
   const record = {
@@ -843,9 +879,21 @@ async function saveQueueItem() {
     body: { record },
   });
   state.searchQueue = payload.queue;
-  els.queueStatusText.textContent = `已保存人工标注：${state.activeEntryId}`;
   await loadEntries();
+  const annotated = state.entries.find((item) => item.id === annotatedId);
+  if (validInfo(annotated).level !== "L5_review_ready") {
+    await refreshActiveCard();
+    setMessage(`人工标注未完成：${annotatedId} 仍停留在 L4。`);
+    return;
+  }
+  const next = nextL4Entry(annotatedId);
+  if (next) {
+    setMessage(`已保存人工标注：${annotatedId}，已切换到下一篇 L4 论文。`);
+    await selectEntry(next.id);
+    return;
+  }
   await refreshActiveCard();
+  setMessage(`已保存人工标注：${annotatedId}。当前没有其他 L4 论文。`);
 }
 
 function bind() {
@@ -908,6 +956,10 @@ function bind() {
   }));
   els.goReviewFromUpdate.addEventListener("click", () => switchMode("review"));
   els.goUpdateFromReview.addEventListener("click", () => switchMode("update"));
+  els.downgradeToL4.addEventListener("click", () => downgradeToL4().catch((error) => {
+    updateActionAvailability();
+    setMessage(error.message);
+  }));
   els.completeCurrent.addEventListener("click", () => completeCurrent().catch((error) => {
     updateActionAvailability();
     setMessage(error.message);

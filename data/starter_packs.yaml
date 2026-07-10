@@ -3,284 +3,51 @@ starter_packs:
   emoji: 🌱
   title: 'Beginner 20: Reasoning Data Orientation'
   goal: Build the vocabulary for post-training reasoning data before diving into recipes.
-  entries:
-  - Datasheets for datasets
-  - Data statements for natural language processing
-  - Training language models to follow instructions with human feedback
-  - Chain-of-thought prompting elicits reasoning in large language models
-  - Training verifiers to solve math word problems
-  - STaR
-  - Self-Instruct
-  - Direct preference optimization
-  - Let's Verify Step by Step
-  - GSM8K
-  - MATH dataset
-  - HumanEval
-  - SWE-bench
-  - RewardBench
-  - HealthBench
-  - LiveBench
-  - OpenThoughts
-  - DeepSeek-R1
-  - s1
-  - A Sober Look at Progress in Language Model Reasoning
+  entries: []
 - id: builder_30
   emoji: 🏗️
   title: 'Builder 30: Data Construction and Release Practice'
-  goal: Learn how open reasoning-data recipes source prompts, write traces, filter, audit, and report artifacts.
-  entries:
-  - OpenThoughts
-  - OpenMathReasoning
-  - DeepMath-103K
-  - Big-Math
-  - NaturalReasoning
-  - LIMO
-  - s1
-  - DAPO
-  - DeepScaleR
-  - Open-Reasoner-Zero
-  - R-Zero
-  - Absolute Zero
-  - TTRL
-  - STaR
-  - Self-Instruct
-  - Orca
-  - MAmmoTH
-  - MetaMath
-  - WizardMath
-  - OpenCodeReasoning
-  - KodCode
-  - SWE-Gym
-  - R2E-Gym
-  - ToolLLM
-  - APIGen
-  - DeepSeekMath
-  - DeepSeek-Prover
-  - CoVerRL
-  - Multi-Agent Evolve
-  - Subliminal Learning
+  goal: Learn how open reasoning-data recipes source prompts, write traces, filter,
+    audit, and report artifacts.
+  entries: []
 - id: verifier_reward_25
   emoji: 🧪
   title: Verifier and Reward 25
-  goal: Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure diagnostics.
-  entries:
-  - Training verifiers to solve math word problems
-  - Let's Verify Step by Step
-  - Math-Shepherd
-  - OmegaPRM
-  - ProcessBench
-  - PRMBench
-  - Qwen2.5-Math-PRM
-  - PRIME
-  - PROF
-  - Rewarding progress
-  - RewardBench
-  - JudgeLM
-  - Prometheus 2
-  - Rubrics as rewards
-  - OnlineRubrics
-  - R3
-  - Omni-RRM
-  - Autorubric
-  - Rubric-ARM
-  - One Token to Fool LLM-as-a-Judge
-  - Spurious Rewards
-  - LLMs Gaming Verifiers
-  - From Accuracy to Robustness
-  - Imperfect Verifier
-  - Reward model overoptimization
+  goal: Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure
+    diagnostics.
+  entries: []
 - id: agent_data_25
   emoji: 🌐
   title: Agent Data 25
   goal: Understand trajectories, tool calls, browser/app/OS tasks, and SWE environments.
-  entries:
-  - ReAct
-  - Toolformer
-  - ToolLLM
-  - API-Bank
-  - Gorilla
-  - APIGen
-  - BFCL
-  - ToolSandbox
-  - tau-bench
-  - Mind2Web
-  - WebLINX
-  - BrowserGym
-  - WebArena
-  - VisualWebArena
-  - WorkArena
-  - OSWorld
-  - AndroidWorld
-  - AppWorld
-  - SWE-bench
-  - SWE-bench Verified
-  - SWE-Gym
-  - R2E-Gym
-  - OpenHands
-  - The Agent Company
-  - Terminal-Bench
+  entries: []
 - id: scaling_20
   emoji: 📈
   title: Scaling 20
-  goal: Read scaling claims across RL compute, data size, distillation, and test-time inference budget.
-  entries:
-  - Large Language Monkeys
-  - s1
-  - Kimi K1.5
-  - The Art of Scaling Reinforcement Learning Compute
-  - Scaling Behaviors
-  - Distillation Scaling Laws
-  - pass@
-  - CoT-Pass
-  - Markovian Thinker
-  - TTRL
-  - The Entropy Mechanism
-  - Clip-Low
-  - DAPO
-  - DeepScaleR
-  - 1-shot RLVR
-  - Does RL really
-  - Does supervised fine-tuning memorize
-  - The Invisible Leash
-  - Why Does Self-Distillation
-  - Kimi K2
+  goal: Read scaling claims across RL compute, data size, distillation, and test-time
+    inference budget.
+  entries: []
 - id: representative_track_03
   emoji: 🧮
   title: 'Representative 30: Programmatic Verification'
-  goal: Cover the strongest math, code, proof, scientific-program-search, and real-task verifier surfaces.
-  entries:
-  - HumanEval
-  - Measuring coding challenge competence with APPS
-  - Program Synthesis with Large Language Models
-  - 'CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning'
-  - 'CodeT: Code Generation with Generated Tests'
-  - Competition-Level Code Generation with AlphaCode
-  - 'BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions'
-  - LiveCodeBench
-  - SWE-bench
-  - SWE-bench Verified
-  - 'SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?'
-  - 'MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering'
-  - "PaperBench: Evaluating AI's Ability to Replicate AI Research"
-  - 'DS-1000: A Natural and Reliable Benchmark for Data Science Code Generation'
-  - ScienceAgentBench
-  - SpreadsheetBench
-  - KernelBench
-  - Mathematical discoveries from program search with large language models
-  - 'AlphaEvolve: A coding agent for scientific and algorithmic discovery'
-  - Solving olympiad geometry without human demonstrations
-  - Gold-medalist Performance in Solving Olympiad Geometry with AlphaGeometry2
-  - HOList
-  - miniF2F
-  - LeanDojo
-  - ProofNet
-  - PutnamBench
-  - FrontierMath
-  - Omni-MATH
-  - OlympiadBench
-  - Is Your Code Generated by Large Language Models Really Correct
+  goal: Cover the strongest math, code, proof, scientific-program-search, and real-task
+    verifier surfaces.
+  entries: []
 - id: representative_track_10
   emoji: 🔁
   title: 'Representative 30: RLVR and Test-Time Compute'
-  goal: Compare verifier rewards, repeated sampling, tree search, process rewards, RL scaling, and failure audits.
+  goal: Compare verifier rewards, repeated sampling, tree search, process rewards,
+    RL scaling, and failure audits.
   entries:
-  - Training verifiers to solve math word problems
-  - Self-consistency improves chain of thought reasoning in language models
-  - Tree of Thoughts
-  - Let's Verify Step by Step
-  - Math-Shepherd
-  - OmegaPRM
-  - "Let's reward step by step: Step-Level reward model as the Navigators for Reasoning"
-  - 'V-STaR: Training Verifiers for Self-Taught Reasoners'
-  - 'Generative Verifiers: Reward Modeling as Next-Token Prediction'
-  - ReST-MCTS*
-  - Scaling LLM Test-Time Compute Optimally
-  - 'Inference Scaling Laws: An Empirical Analysis of Compute-Optimal Inference for Problem-Solving with Language Models'
-  - Large Language Monkeys
-  - How Do Large Language Monkeys Get Their Power
-  - s1
-  - DeepSeek-R1
-  - Kimi K1.5
-  - The Art of Scaling Reinforcement Learning Compute for LLMs
-  - DAPO
-  - Open-Reasoner-Zero
-  - PRIME
-  - Free Process Rewards without Process Labels
-  - Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?
-  - Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs
   - TinyV
-  - Spurious Rewards
-  - LLMs Gaming Verifiers
-  - Rewarding progress
-  - DeepSeek-Prover-V1.5
-  - DeepSeek-Prover-V2
 - id: audit_failure_20
   emoji: 🧯
   title: Audit and Failure 20
-  goal: Build the habit of checking leakage, contamination, reward hacking, and judge robustness.
-  entries:
-  - Language models do not always say what they think
-  - Measuring faithfulness
-  - GSM-Symbolic
-  - Spurious Rewards
-  - One Token to Fool
-  - Leaky Thoughts
-  - Subliminal Learning
-  - Search-Time Data Contamination
-  - LastingBench
-  - LiveBench
-  - Humanity's Last Exam
-  - A Sober Look
-  - From Accuracy to Robustness
-  - LLMs Gaming Verifiers
-  - Imperfect Verifier
-  - AI models collapse
-  - Soft Contamination
-  - AbstentionBench
-  - SWE-bench Verified
-  - Reward model overoptimization
+  goal: Build the habit of checking leakage, contamination, reward hacking, and judge
+    robustness.
+  entries: []
 - id: industry_onboarding_40
   emoji: 🏭
   title: Industry Onboarding 40
   goal: A practical path for becoming useful on an LLM post-training data team.
-  entries:
-  - InstructGPT
-  - RLHF
-  - Constitutional AI
-  - DPO
-  - UltraFeedback
-  - Chain-of-thought
-  - STaR
-  - GSM8K
-  - MATH
-  - HumanEval
-  - SWE-bench
-  - Let's Verify Step by Step
-  - Math-Shepherd
-  - RewardBench
-  - HealthBench
-  - OpenThoughts
-  - OpenMathReasoning
-  - DeepMath-103K
-  - Big-Math
-  - LIMO
-  - s1
-  - DAPO
-  - DeepSeek-R1
-  - Kimi K1.5
-  - Qwen3
-  - Magistral
-  - SWE-Gym
-  - R2E-Gym
-  - WebArena
-  - OSWorld
-  - ToolSandbox
-  - ProcessBench
-  - PRMBench
-  - LiveBench
-  - LastingBench
-  - Spurious Rewards
-  - One Token to Fool
-  - Subliminal Learning
-  - Search-Time Data Contamination
-  - Datasheets for datasets
+  entries: []

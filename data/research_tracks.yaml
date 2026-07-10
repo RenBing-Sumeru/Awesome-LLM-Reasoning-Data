@@ -232,6 +232,7 @@ research_tracks:
     focus: false positives, false negatives, checker brittleness, and adversarial formats
     key_risk: model learns verifier quirks instead of task skill
     keywords:
+    - tinyv
     - verifier
     - answer extraction
     - robustness

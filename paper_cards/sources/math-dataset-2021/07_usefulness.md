@@ -1,0 +1,3 @@
+- Use it to inspect answer extraction before treating math accuracy as reward.
+- Compare solution traces with answer-only filtered rollouts.
+- Pin its split and checker when building a math post-training dataset.

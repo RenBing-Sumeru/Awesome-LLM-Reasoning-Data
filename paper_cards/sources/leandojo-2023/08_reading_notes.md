@@ -1,0 +1,3 @@
+- The proof checker, not an LLM judge, supplies the terminal outcome.
+- Reliability of the wrapper is part of verifier quality.
+- State transitions and accessible premises are essential data, not implementation residue.
