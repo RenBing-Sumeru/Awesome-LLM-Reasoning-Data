@@ -213,11 +213,11 @@ These papers have official primary links but still need paper-specific metadata 
 
 ### Other related work
 
+- **[CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution](https://aclanthology.org/2026.acl-long.1376/)** <sub>2026 · ACL 2026 (Long Papers) · L1_link_verified</sub>
+  [Paper](https://aclanthology.org/2026.acl-long.1376/) · [arXiv](https://arxiv.org/abs/2603.17775) · [DOI](https://doi.org/10.18653/v1/2026.acl-long.1376) · [Code](https://github.com/ZJU-REAL/CoVerRL/tree/7cd9822503c684a7539328918bee22f7b59efafb) · [Data](https://github.com/ZJU-REAL/CoVerRL/blob/7cd9822503c684a7539328918bee22f7b59efafb/recipe/cover_rl/data/MATH-7500/math7500_train.parquet) · [Project](https://zju-real.github.io/CoVerRL/)
+  _Curation note:_ link verified; add paper-specific data object, verifier/reward contract, recipe signal, and audit notes before promoting it into the core PRM list.
 - **[An Imperfect Verifier is Good Enough: Learning with Noisy Rewards](https://arxiv.org/abs/2604.07666)** <sub>2026 · arXiv preprint arXiv:2604.07666 · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2604.07666)
-  _Curation note:_ link verified; add paper-specific data object, verifier/reward contract, recipe signal, and audit notes before promoting it into the core PRM list.
-- **[CoVerRL: Breaking the Consensus Trap in Label-Free Reasoning via Generator-Verifier Co-Evolution](https://arxiv.org/abs/2603.17775)** <sub>2026 · arXiv preprint arXiv:2603.17775 · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2603.17775)
   _Curation note:_ link verified; add paper-specific data object, verifier/reward contract, recipe signal, and audit notes before promoting it into the core PRM list.
 - **[LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking](https://arxiv.org/abs/2604.15149)** <sub>2026 · arXiv preprint arXiv:2604.15149 · L1_link_verified</sub>
   [Paper](https://arxiv.org/abs/2604.15149)
@@ -295,8 +295,8 @@ These entries are intentionally separated from verified work. Add official links
   _Audit focus:_ Mutually generated solutions can share systematic errors and converge on an incorrect output set; reported accuracy drops from 96.8 to 92.8 percent in the larger comparison., The 40 percent threshold for difficult Codeforces-derived problems is below a strict majority., Seed problems for which no QWQ-32B candidate passes retain all generated solutions, so seed sft is not uniformly verified.
   _Why it matters:_ It provides a rare operational recipe for scaling difficult code reasoning data and programmatic rewards, while exposing reuse risks around false consensus, retained unverified seed traces, source licensing, config linkage, and mismatch between the published mixture and current repository.
 - 📦 **Nemotron-Math-Proofs-v2**
-  <sub>2026 · NVIDIA Hugging Face dataset release · 📦 data release · 🪜 process supervision · judgment required · sft · evaluation · L3_summary_ready</sub>
-  [Data](https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2/resolve/7665d7f1d006fd89aa852a9dab8060c60b63f814/data/train.jsonl) · [HF](https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2)
+  <sub>2026 · NVIDIA Hugging Face dataset release · 📦 data release · 🪜 process supervision · judgment required · sft · evaluation · L4_carded</sub>
+  [Data](https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2/resolve/7665d7f1d006fd89aa852a9dab8060c60b63f814/data/train.jsonl) · [HF](https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2) · [Card](../../cards/releases/nemotron_math_proofs_v2.md)
   _Data object:_ Two-turn proof, verification or meta-verification conversations; process: messages, problem, subset; Offline proof trace release
   _Feedback / verifier:_ Natural-language verification with embedded boxed 0/0.5/1 judgments
   _Recipe signal:_ teacher: DeepSeek-V4-Pro; generator: DeepSeek-V4-Pro
@@ -363,6 +363,7 @@ These entries are intentionally separated from verified work. Add official links
 - [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs](../../cards/releases/open-proof-corpus.md)
 - [FastMCTS: A Simple Sampling Strategy for Data Synthesis](../../cards/recipes/fastmcts.md)
 - [rStar-Coder: Scaling Competitive Code Reasoning with a Large-Scale Verified Dataset](../../cards/releases/rstar-coder.md)
+- [Nemotron-Math-Proofs-v2](../../cards/releases/nemotron_math_proofs_v2.md)
 
 ## Back to Map
 

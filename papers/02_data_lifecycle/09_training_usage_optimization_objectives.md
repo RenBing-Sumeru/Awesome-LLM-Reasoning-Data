@@ -878,7 +878,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Why it matters:_ It makes selection and rollout allocation auditable parts of RLVR, while preserving missing dynamic-data and verifier evidence.
 - 🏗️ **[AdaSTaR: Adaptive Data Sampling for Training Self-Taught Reasoners](https://openreview.net/forum?id=D6PwC6Xogv)**
   <sub>2025 · NeurIPS 2025 · 🏗️ construction recipe · 📈 scaling study · programmatic · sft · L3_summary_ready</sub>
-  [Paper](https://openreview.net/forum?id=D6PwC6Xogv) · [arXiv](https://arxiv.org/abs/2505.16322) · [Code](https://github.com/reiss-koh/AdaSTaR)
+  [Paper](https://openreview.net/forum?id=D6PwC6Xogv) · [arXiv](https://arxiv.org/abs/2505.16322) · [ACL](https://aclanthology.org/2026.acl-long.1376/) · [Code](https://github.com/reiss-koh/AdaSTaR)
   _Data object:_ A self-generated chain of thought and predicted final answer conditioned on fixed few-shot CoT exemplars; answers are checked against ground truth.; process: observation id, query, ground truth answer; Iterative accumulating STaR/RFT with a hierarchical min-heap over observations and a fresh accepted-CoT set each iteration.
   _Feedback / verifier:_ Rule-based outcome verifier equals one when predicted answer matches ground truth; the most recent K-sample acceptance rate becomes the observation's cached win statistic.
   _Recipe signal:_ teacher: The current model self-generates traces. GPT-4o is used only for a diagnostic false-positive audit, not training verification.; generator: The current iteration's accumulating STaR policy model.
@@ -933,8 +933,8 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Audit focus:_ Textbook provenance and redistribution rights may not be recoverable at item level., Teacher-generated explanations can be plausible but scientifically incorrect despite reference-answer agreement., Mixture selection gains can be confounded with model family, training budget or evaluation extraction changes.
   _Why it matters:_ It extends open post-training data recipes beyond math and code while making source mixture, textbook provenance, teacher correctness, selection attribution and release versioning central audit questions.
 - 📦 **[Nemotron-Post-Training-Dataset-v2](https://arxiv.org/abs/2508.14444)**
-  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · sft · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2508.14444) · [DOI](https://doi.org/10.48550/arXiv.2508.14444) · [Data](https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2)
+  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · sft · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2508.14444) · [DOI](https://doi.org/10.48550/arXiv.2508.14444) · [Data](https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2) · [Card](../../cards/releases/nemotron_post_training_v2.md)
   _Data object:_ uuid, license, generator, version, category, reasoning and messages; process: uuid, license, generator; Mixed multilingual post-training release
   _Feedback / verifier:_ Subset-specific tool rules, IFEval rules, guards and reward models; outcomes absent from public schema
   _Recipe signal:_ teacher: Named DeepSeek and Qwen models; generator: synthetic generation by named models
@@ -981,8 +981,8 @@ _No verified primary-source entries are assigned here yet. Add official paper li
   _Audit focus:_ Mutually generated solutions can share systematic errors and converge on an incorrect output set; reported accuracy drops from 96.8 to 92.8 percent in the larger comparison., The 40 percent threshold for difficult Codeforces-derived problems is below a strict majority., Seed problems for which no QWQ-32B candidate passes retain all generated solutions, so seed sft is not uniformly verified.
   _Why it matters:_ It provides a rare operational recipe for scaling difficult code reasoning data and programmatic rewards, while exposing reuse risks around false consensus, retained unverified seed traces, source licensing, config linkage, and mismatch between the published mixture and current repository.
 - 📦 **[DART-Math: Difficulty-Aware Rejection Tuning for Mathematical Problem-Solving](https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html)**
-  <sub>2024 · NeurIPS 2024 · 📦 data release · 🏗️ construction recipe · programmatic · sft · L3_summary_ready</sub>
-  [Paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2407.13690) · [DOI](https://doi.org/10.52202/079017-0251) · [Code](https://github.com/hkust-nlp/dart-math) · [Data](https://huggingface.co/datasets/hkust-nlp/dart-math-hard) · [HF](https://huggingface.co/collections/hkust-nlp/dart-math)
+  <sub>2024 · NeurIPS 2024 · 📦 data release · 🏗️ construction recipe · programmatic · sft · L4_carded</sub>
+  [Paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2407.13690) · [DOI](https://doi.org/10.52202/079017-0251) · [Code](https://github.com/hkust-nlp/dart-math) · [Data](https://huggingface.co/datasets/hkust-nlp/dart-math-hard) · [HF](https://huggingface.co/collections/hkust-nlp/dart-math) · [Card](../../cards/releases/dart_math.md)
   _Data object:_ Uniform and Hard release query/response pairs; supplementary pools expose correctness and sampling metadata.; process: query, response, answer correctness; Offline difficulty-aware rejection sampling followed by instruction tuning.
   _Feedback / verifier:_ Regex extraction and SymPy symbolic calculation.
   _Recipe signal:_ teacher: DeepSeekMath-7B-RL.; generator: DeepSeekMath-7B-RL via vLLM.

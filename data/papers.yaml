@@ -24658,9 +24658,9 @@
   one_line: Releases factual-reasoning SFT/DPO data while online GRPO is scored by a mixed retrieval and LLM-judge reward.
   one_line_summary: Releases factual-reasoning SFT/DPO data while online GRPO is scored by a mixed retrieval and LLM-judge reward.
   why_it_matters: Shows how detail, relevance and verifier error change factuality data beyond a correct/incorrect label.
-  card: null
+  card: cards/releases/factual_reasoning.md
   needs: ['needs_rollout_release: publish GRPO trajectories and reward logs', 'needs_verifier_audit: pin retrieval, prompts and error analysis', 'needs_license_review: resolve CC-BY-NC and model/source obligations']
-  curation_level: L3_summary_ready
+  curation_level: L4_carded
   verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official paper, code, data and companion verifier verified.}
 
 - id: nemotron-post-training-dataset-v2-2025
@@ -24686,9 +24686,9 @@
   one_line: A gated 6.34M-row multilingual SFT-style release with generator and license fields but no row-level RL/verifier provenance.
   one_line_summary: A gated 6.34M-row multilingual SFT-style release with generator and license fields but no row-level RL/verifier provenance.
   why_it_matters: Demonstrates why a large post-training release must not be inferred to be a complete RL or preference corpus.
-  card: null
+  card: cards/releases/nemotron_post_training_v2.md
   needs: ['needs_access: pin accessible file revisions and checksums', 'needs_audit: release row-to-source, reward, stage and license provenance']
-  curation_level: L3_summary_ready
+  curation_level: L4_carded
   verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official metadata verified; full parquet is gated.}
 
 - id: nemotron-cascade-2-2026
@@ -24767,9 +24767,9 @@
   one_line: WOMD-Reasoning converts Waymo motion scenes into rule-grounded, LLM-authored driving Q&As that include future-trajectory context.
   one_line_summary: WOMD-Reasoning converts Waymo motion scenes into rule-grounded, LLM-authored driving Q&As that include future-trajectory context.
   why_it_matters: Separates deterministic scene grounding from generated explanatory and hindsight-sensitive supervision.
-  card: null
+  card: cards/releases/womd_reasoning.md
   needs: ['needs_snapshot: pin Waymo archive and split manifest', 'needs_generation_audit: pin API prompts/settings and failures', 'needs_causality_audit: label future-dependent Q&As']
-  curation_level: L3_summary_ready
+  curation_level: L4_carded
   verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: medium, notes: Official publication, repository and official gated data endpoint verified.}
 
 - id: guided-rest-2025
@@ -24795,9 +24795,9 @@
   one_line: A guided self-training recipe using positive-score samples and training-time subgoal or reference-code signals.
   one_line_summary: A guided self-training recipe using positive-score samples and training-time subgoal or reference-code signals.
   why_it_matters: Separates deployable signals from privileged training guidance and unreleased selection buffers.
-  card: null
+  card: cards/recipes/guided_rest.md
   needs: ['needs_snapshot: release buffers, rollouts and source revisions', 'needs_leakage_audit: document privileged guidance boundary']
-  curation_level: L3_summary_ready
+  curation_level: L4_carded
   verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: medium, notes: Recipe code verified; frozen generated data absent.}
 
 - id: nemotron-math-proofs-v2-2026
@@ -24823,9 +24823,9 @@
   one_line: NVIDIA release of AoPS-derived DeepSeek proof, verification and meta-verification traces.
   one_line_summary: NVIDIA release of AoPS-derived DeepSeek proof, verification and meta-verification traces.
   why_it_matters: Makes natural-language self-verification and partial release visibility auditable.
-  card: null
+  card: cards/releases/nemotron_math_proofs_v2.md
   needs: ['needs_audit: reconcile full count with partial Dataset Server conversion', 'needs_metadata: quantify scores and failed traces', 'needs_license: verify AoPS provenance']
-  curation_level: L3_summary_ready
+  curation_level: L4_carded
   verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: medium, notes: Public data artifact and sample schema verified.}
 
 - id: tinythinker-2025
@@ -24904,9 +24904,9 @@
   one_line: DART-Math allocates verified synthetic CoTs toward difficult MATH and GSM8K prompts using regex/SymPy answer checks.
   one_line_summary: DART-Math allocates verified synthetic CoTs toward difficult MATH and GSM8K prompts using regex/SymPy answer checks.
   why_it_matters: It exposes how verifier-filtered acceptance, estimated difficulty, and SFT distribution interact.
-  card: null
+  card: cards/releases/dart_math.md
   needs: ['needs_snapshot: pin HF revisions and final-row provenance', 'needs_audit: clarify complete rejected-trace availability', 'needs_decontamination: publish overlap controls']
-  curation_level: L3_summary_ready
+  curation_level: L4_carded
   verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-10', verified_by: paper_curator, confidence: high, notes: Official paper, code, data and accepted-response pool verified.}
 - id: a-survey-of-reinforcement-learning-from-human-feedback-2023
   title: A Survey of Reinforcement Learning from Human Feedback
