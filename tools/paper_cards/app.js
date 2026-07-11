@@ -136,6 +136,18 @@ function markUpdateButtonDirty(button) {
   else markButtonDisabled(button);
 }
 
+function syncSavedCard(payload) {
+  state.activeCard = payload.card;
+  const listEntry = state.entries.find((entry) => entry.id === state.activeEntryId);
+  if (!listEntry) return;
+  Object.assign(listEntry, payload.card.entry);
+  listEntry.paper_card = {
+    ...listEntry.paper_card,
+    status: payload.status?.entries?.[state.activeEntryId] || listEntry.paper_card?.status,
+    valid: payload.card.valid,
+  };
+}
+
 function paperStatus(entry) {
   return entry.paper_card?.status?.state || "new";
 }
@@ -698,10 +710,9 @@ async function saveCurrentSection() {
     method: "POST",
     body: { sections: { [key]: els.chineseSection.value } },
   });
-  state.activeCard = payload.card;
+  syncSavedCard(payload);
+  markButtonSaved(els.saveSection);
   setMessage("已保存中文 section，下载状态已重置为未下载。");
-  await loadEntries();
-  renderDetail();
 }
 
 async function saveHeaderZh() {
@@ -721,10 +732,9 @@ async function saveHeaderZh() {
       },
     },
   });
-  state.activeCard = payload.card;
+  syncSavedCard(payload);
+  markButtonSaved(els.saveHeaderZh);
   setMessage("已保存中文头字段，下载状态已重置为未下载。");
-  await loadEntries();
-  renderDetail();
 }
 
 async function saveInstitutions() {
@@ -740,10 +750,9 @@ async function saveInstitutions() {
       },
     },
   });
-  state.activeCard = payload.card;
+  syncSavedCard(payload);
+  markButtonSaved(els.saveInstitutions);
   setMessage("已保存机构字段，下载状态已重置为未下载。");
-  await loadEntries();
-  renderDetail();
 }
 
 function toggleSelected(entryId, checked) {

@@ -22,6 +22,17 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn('[data-state="dirty"]', css)
         self.assertIn('[data-state="saved"]', css)
 
+    def test_update_saves_do_not_reload_or_repaint_the_editor(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+
+        for function_name in ("saveCurrentSection", "saveHeaderZh", "saveInstitutions"):
+            start = app.index(f"async function {function_name}()")
+            end = app.find("\nasync function ", start + 1)
+            block = app[start:] if end == -1 else app[start:end]
+            self.assertNotIn("await loadEntries()", block, function_name)
+            self.assertNotIn("renderDetail()", block, function_name)
+        self.assertIn("syncSavedCard", app)
+
     def test_reviewed_cards_lock_update_saves_and_download_buttons_enable_for_downloadable_filters(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
