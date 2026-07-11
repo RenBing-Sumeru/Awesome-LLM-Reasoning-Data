@@ -45,6 +45,11 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn("selectedDownloadableEntries", app)
         self.assertNotIn("L6 card download actions", html)
 
+    def test_paper_pool_defaults_to_l4_review(self) -> None:
+        html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn('<option value="needs_annotation" selected>L4 中文 Review</option>', html)
+
     def test_complete_button_only_enables_for_l5_manual_annotation(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
 
