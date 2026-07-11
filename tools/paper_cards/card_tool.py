@@ -1001,9 +1001,6 @@ def write_package(
     for entry_id in entry_ids:
         if entry_id not in entries:
             raise ValueError(f"unknown entry_id: {entry_id}")
-        report = valid_report(entry_id, root, entry=entries[entry_id])
-        if not is_downloadable_report(report):
-            raise ValueError(f"{entry_id}: only L5 or L6 cards can be packaged")
     with zipfile.ZipFile(package_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for entry_id in entry_ids:
             entry = entries[entry_id]

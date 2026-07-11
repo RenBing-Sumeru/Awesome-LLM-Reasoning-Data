@@ -172,11 +172,12 @@ paper_categories:
         with zipfile.ZipFile(package) as archive:
             self.assertIn("cards/sample-paper_ch.md", archive.namelist())
 
-    def test_write_package_rejects_entries_below_l5(self) -> None:
+    def test_write_package_accepts_l4_card(self) -> None:
         self.write_complete_sections()
 
-        with self.assertRaisesRegex(ValueError, "only L5 or L6 cards can be packaged"):
-            card_tool.write_package(["sample-paper"], root=self.root)
+        package = card_tool.write_package(["sample-paper"], root=self.root)
+
+        self.assertTrue(package.exists())
 
     def test_write_package_does_not_mark_packaged(self) -> None:
         self.make_review_ready()

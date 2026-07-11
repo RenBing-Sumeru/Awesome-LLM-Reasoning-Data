@@ -33,17 +33,16 @@ class PaperCardFrontendUiTest(unittest.TestCase):
             self.assertNotIn("renderDetail()", block, function_name)
         self.assertIn("syncSavedCard", app)
 
-    def test_reviewed_cards_lock_update_saves_and_download_buttons_enable_for_downloadable_filters(self) -> None:
+    def test_reviewed_cards_lock_update_saves_without_download_state_ui(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
         self.assertIn("function canUpdateFields()", app)
         self.assertIn("!isL6Locked()", app)
         self.assertIn("markUpdateButtonDirty", app)
-        self.assertIn("function isDownloadableEntry", app)
-        self.assertIn('["annotated", "l6"].includes(validInfo(entry).pool)', app)
-        self.assertIn("selectedDownloadableEntries", app)
-        self.assertNotIn("L6 card download actions", html)
+        self.assertNotIn("downloadedCount", html)
+        self.assertNotIn("downloadedCount", app)
+        self.assertNotIn('"downloaded"', app)
 
     def test_paper_pool_defaults_to_l4_review(self) -> None:
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
@@ -58,18 +57,19 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn('"完成修改该卡片"', app)
         self.assertIn('"已审阅"', app)
 
-    def test_review_can_downgrade_l5_to_l4_and_pool_filter_labels_show_levels(self) -> None:
+    def test_review_actions_are_ordered_after_manual_annotation_without_downgrade(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
-        self.assertIn('id="downgradeToL4"', html)
+        self.assertNotIn('id="downgradeToL4"', html)
         self.assertIn(">L4 中文 Review</option>", html)
         self.assertIn(">L5 已人工标注</option>", html)
         self.assertIn(">L6 已审阅</option>", html)
-        self.assertIn("function canDowngradeToL4", app)
-        self.assertIn('valid.level === "L5_review_ready"', app)
-        self.assertIn("/downgrade-l4", app)
-        self.assertIn("降级到 L4", app)
+        self.assertNotIn("function canDowngradeToL4", app)
+        self.assertNotIn("/downgrade-l4", app)
+        self.assertLess(html.index('id="saveQueue"'), html.index('id="goUpdateFromReview"'))
+        self.assertLess(html.index('id="goUpdateFromReview"'), html.index('id="completeCurrent"'))
+        self.assertGreater(html.index('class="institution-panel"'), html.index('id="queueStatusText"'))
 
     def test_saving_l4_annotation_keeps_it_at_l5_then_moves_to_next_l4(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
@@ -102,7 +102,7 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn("reviewed_at", app)
         self.assertIn("rightTime.localeCompare(leftTime)", app)
 
-    def test_l6_locks_everything_except_download_controls(self) -> None:
+    def test_l6_locks_everything_except_no_removed_download_controls(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
 
         self.assertIn("function isL6Locked", app)
@@ -113,20 +113,30 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn("els.queueReason.disabled = locked || invalid", app)
         self.assertIn("els.chineseSection.disabled = locked", app)
 
-    def test_download_targets_selected_downloadable_cards_first(self) -> None:
+    def test_review_has_one_all_cards_download_and_no_selection_controls(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
-        self.assertIn("function selectedDownloadableEntries(includeDownloaded = true)", app)
-        self.assertIn("function downloadTargetIds(includeDownloaded, selectedOnly = false)", app)
-        self.assertIn("if (selectedOnly) return selected.map((entry) => entry.id)", app)
-        self.assertIn("downloadableEntries(includeDownloaded).map((entry) => entry.id)", app)
-        self.assertIn("downloadSelected", app)
-        self.assertIn('id="downloadSelected"', html)
-        self.assertIn(">下载选中</button>", html)
-        self.assertNotIn(">标注已下载</button>", html)
-        self.assertIn("没有可下载的卡片。", app)
-        self.assertIn("没有选中可下载的卡片。", app)
+        self.assertIn('id="batchDownload"', html)
+        self.assertIn(">一键下载全部 Card</button>", html)
+        self.assertIn("function downloadAllCards", app)
+        self.assertIn("state.entries.map((entry) => entry.id)", app)
+        self.assertNotIn("state.selected", app)
+        self.assertNotIn("data-select-entry", app)
+        self.assertNotIn("downloadUndownloaded", app)
+        self.assertNotIn("downloadSelected", app)
+
+    def test_review_switches_merged_preview_language_and_keeps_header_compact(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn('data-preview-language="ch"', html)
+        self.assertIn('data-preview-language="en"', html)
+        self.assertIn("英文合并版", html)
+        self.assertIn('previewLanguage: "ch"', app)
+        self.assertIn("payload[state.previewLanguage]", app)
+        self.assertNotIn("entry.one_line_summary || entry.why_it_matters", app)
+        self.assertNotIn('<p class="summary">', app)
 
 
 if __name__ == "__main__":
