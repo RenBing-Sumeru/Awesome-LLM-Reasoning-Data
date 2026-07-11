@@ -1,0 +1,5 @@
+- [Paper](https://arxiv.org/abs/2405.16802)
+- [Code](https://github.com/rookie-joe/AutoPSV)
+- Data ID: `autopsv-automated-process-supervised-verifier-2024`
+- Citation status: verified
+- Confidence: high

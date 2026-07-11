@@ -1,0 +1,7 @@
+- [Paper](https://arxiv.org/abs/2406.03816)
+- [Code](https://github.com/THUDM/ReST-MCTS)
+- [Project](https://rest-mcts.github.io/)
+- [PRM data example](https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th)
+- Data ID: `rest-mcts-2024`
+- Citation status: verified
+- Confidence: high

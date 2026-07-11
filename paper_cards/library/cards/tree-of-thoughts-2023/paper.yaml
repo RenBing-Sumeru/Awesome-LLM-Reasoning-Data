@@ -111,6 +111,7 @@ verification:
   notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
 category_ids:
 - scaling_rlvr_test_time_compute
+- rollout_search_test_time_trace_data
 batch:
   id: library-10-scaling-rlvr-ttc
   request_sha256: 950a7ccbd8adb8337fbc15d01ee4f931668a7575d75f2e90d0fe24352807e9c5

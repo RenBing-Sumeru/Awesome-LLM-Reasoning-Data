@@ -1,0 +1,18 @@
+{
+  "title": "Scaling Relationship on Learning Mathematical Reasoning with Large Language Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2308.01825",
+    "arxiv": "https://arxiv.org/abs/2308.01825",
+    "code": "https://github.com/OFA-Sys/gsm8k-ScRel",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2308.01825"
+  },
+  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
+  "category_ids": [
+    "data_construction_open_release_recipes",
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

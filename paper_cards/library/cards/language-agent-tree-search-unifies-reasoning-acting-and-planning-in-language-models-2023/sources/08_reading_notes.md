@@ -1,0 +1,4 @@
+- Are environments and web/tool states replayable?
+- How many interactions and LM calls are allowed per episode?
+- Does reflection measurably repair actions, or merely narrate them?
+- Are failed branches and environment errors retained?

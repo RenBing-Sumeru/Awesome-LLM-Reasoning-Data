@@ -1,0 +1,6 @@
+- Does a verifier confidence drop correspond to an actual reasoning error?
+- Are step boundaries stable across model styles and domains?
+- Are ground-truth-free examples evaluated separately from examples with known answers?
+- How many candidate outputs are sampled before verifier selection?
+- Does PSV selection outperform self-consistency under matched sample budgets?
+- What parts of the repository are withheld or incomplete?

@@ -1,0 +1,3 @@
+- [Paper](https://arxiv.org/abs/2310.04406)
+- [Official code](https://github.com/lapisrocks/LanguageAgentTreeSearch)
+- Data ID: `language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023`

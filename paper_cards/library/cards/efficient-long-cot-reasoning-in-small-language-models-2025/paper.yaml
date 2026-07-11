@@ -1,0 +1,116 @@
+id: efficient-long-cot-reasoning-in-small-language-models-2025
+title: Efficient Long CoT Reasoning in Small Language Models
+year: 2025
+venue: arXiv
+authors:
+- Zhaoyang Wang
+- Jinqi Jiang
+- Tian Qiu
+- Hui Liu
+- Xianfeng Tang
+- Huaxiu Yao
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- math
+- reasoning
+- test_time_compute
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2505.18440
+  arxiv: https://arxiv.org/abs/2505.18440
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.18440
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical reasoning problems used to distill and evaluate long chain-of-thought behavior in small language
+    models.
+  trace_author: A long-CoT teacher provides initial traces; the student also generates on-policy candidate traces for curation.
+  answer_format: Pruned long reasoning trace, final answer, validity outcome, and selected student-training example.
+  process_fields:
+  - problem
+  - teacher_long_cot
+  - pruned_steps
+  - student_candidate_trace
+  - final_answer
+  - validity_check
+  - selected_training_trace
+  environment_or_substrate: Mathematical-reasoning tasks with answer-based validation.
+  verifier_or_reward: Programmatic or answer-based correctness checks validate traces selected for on-policy curation.
+  terminal_predicate: A selected trace reaches a correct final answer under the reported math-task checker.
+recipe_metadata:
+  base_model: Small language models trained and evaluated in the paper's long-CoT distillation experiments.
+  teacher: A long-CoT reasoning model supplies initial traces for pruning and distillation.
+  generator: Teacher traces are pruned; the student generates on-policy candidates to curate useful valid long-CoT data.
+  filtering_rule: Remove unnecessary steps and retain student-generated traces that remain valid and useful under the reported
+    check.
+  sampling_protocol: Long-CoT distillation followed by on-policy student generation and validity-based curation.
+  rollout_count: null
+  temperature: null
+  inference_budget: Long-trace length and student on-policy generation budget are material but should be pinned per experiment
+    before reuse.
+  optimizer_or_scaffold: Trace pruning plus on-policy data curation for efficient long-CoT distillation.
+audit:
+  source_mixture: Teacher long-CoT traces and on-policy student-generated math traces.
+  split: Reported mathematical-reasoning evaluation benchmarks; inspect exact train/evaluation separation before reuse.
+  decontamination: unknown
+  license: unknown
+  lineage: The compressed record depends on teacher identity, pruning policy, student policy version, and answer-validation
+    rule.
+  known_failure_modes:
+  - Pruning can delete uncertainty, corrections, or premises that are important for a valid derivation.
+  - Answer correctness does not prove that the compressed rationale is faithful or pedagogically useful.
+  - On-policy curation can reinforce the student's existing shortcuts and reduce solution diversity.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv primary source pinned; code/data release was not verified.
+inclusion_reason: Fills the long2short lane with a concrete recipe that preserves the teacher/student trace lineage and validity
+  filter rather than treating shorter reasoning as a formatting change.
+related:
+- scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023
+- kimi-k1-5-2025
+tags:
+- long2short
+- long-cot
+- distillation
+- on-policy-curation
+- trace-pruning
+status: verified
+one_line: Distills long chain-of-thought into smaller models by pruning teacher traces and curating valid on-policy student
+  traces.
+card: cards/recipes/efficient-long-cot-reasoning.md
+needs:
+- 'needs_metadata: verify code, data release, and exact trace-pruning configuration before reuse'
+one_line_summary: Distills long chain-of-thought into smaller models by pruning teacher traces and curating valid on-policy
+  student traces.
+why_it_matters: 'It makes long2short reasoning a data-lineage problem: teacher trace, pruning rule, student rollout, checker,
+  and accepted compression all affect the result.'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv primary source pinned.
+category_ids:
+- rollout_search_test_time_trace_data
+- data_construction_open_release_recipes

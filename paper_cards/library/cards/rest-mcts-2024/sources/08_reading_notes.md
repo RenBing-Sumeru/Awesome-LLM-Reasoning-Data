@@ -1,0 +1,6 @@
+- How many node expansions, rollouts, or sampled candidates are used per problem?
+- Are rejected branches or failed candidates released, or only accepted traces?
+- Is the PRM trained on data that overlaps with the evaluation tasks?
+- Does the reported gain persist under matched search budgets against best-of-N and Tree-of-Thought?
+- Are final-answer oracles reliable enough to infer process rewards from partial traces?
+- Can the value model learn shortcut features of the search procedure instead of reasoning quality?

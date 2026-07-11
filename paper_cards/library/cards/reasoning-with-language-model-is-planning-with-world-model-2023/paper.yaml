@@ -1,0 +1,110 @@
+id: reasoning-with-language-model-is-planning-with-world-model-2023
+title: Reasoning with Language Model is Planning with World Model
+year: 2023
+venue: EMNLP
+authors:
+- Shibo Hao
+- Yi Gu
+- Haodi Ma
+- Joshua Jiahua Hong
+- Zhen Wang
+- Daisy Zhe Wang
+- Zhiting Hu
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- planning
+- math
+- test_time_compute
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2305.14992
+  arxiv: https://arxiv.org/abs/2305.14992
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2023.emnlp-main.507/
+  openreview: null
+  acl: https://aclanthology.org/2023.emnlp-main.507/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Plan-generation, mathematical-reasoning, and logical-inference tasks used in the paper.
+  trace_author: An LM alternates between proposing actions/reasoning steps and predicting future states as a world model.
+  answer_format: An MCTS reasoning tree containing states, candidate actions, predicted transitions, rewards, and chosen path.
+  process_fields:
+  - problem
+  - state
+  - action_or_reasoning_step
+  - predicted_next_state
+  - task_reward
+  - search_value
+  - selected_path
+  environment_or_substrate: A language-model world model paired with Monte Carlo tree search.
+  verifier_or_reward: Task-specific rewards and model-predicted state transitions guide MCTS selection.
+  terminal_predicate: A selected plan or answer satisfies the task-specific outcome criterion.
+recipe_metadata:
+  base_model: LLaMA-33B and other prompted LMs in the reported experiments.
+  teacher: Task prompts, task-specific reward definitions, and LM-predicted world states.
+  generator: The LM generates reasoning actions and simulates their next states.
+  filtering_rule: MCTS balances exploration and exploitation using task rewards and estimated values.
+  sampling_protocol: Iterative MCTS expansion, rollout, and backpropagation over language-model reasoning states.
+  rollout_count: null
+  temperature: null
+  inference_budget: Search iterations, branching, rollout depth, and LM calls per task.
+  optimizer_or_scaffold: RAP test-time planning scaffold; no post-training dataset release is claimed.
+audit:
+  source_mixture: Planning, math, and logical-reasoning evaluation tasks.
+  split: Reported benchmark/task settings; inspect individual task splits before reuse.
+  decontamination: unknown
+  license: unknown
+  lineage: Search paths are generated during inference from the base LM and task reward setup.
+  known_failure_modes:
+  - A hallucinated world-model transition can steer search toward an invalid plan.
+  - Improvements can conflate MCTS budget, reward design, and base-model capability.
+  - The selected path hides the distribution of rejected branches unless logs are retained.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv and ACL Anthology links pinned.
+inclusion_reason: Representative MCTS framework in which both reasoning traces and predicted world-state transitions become
+  the search record.
+related:
+- tree-of-thoughts-2023
+- language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023
+tags:
+- rap
+- mcts
+- world-model
+- search-tree
+status: verified
+one_line: Uses an LM as both reasoning agent and world model to build MCTS traces with predicted states and task-specific
+  rewards.
+card: cards/recipes/reasoning-via-planning.md
+needs: []
+one_line_summary: Uses an LM as both reasoning agent and world model to build MCTS traces with predicted states and task-specific
+  rewards.
+why_it_matters: It exposes an often-hidden search record—state prediction, task reward, and tree policy—that is essential
+  for attributing planning gains.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv and ACL Anthology primary sources pinned.
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute

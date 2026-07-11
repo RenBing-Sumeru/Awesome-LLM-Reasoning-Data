@@ -1,0 +1,4 @@
+- How many candidates were generated per prompt, by which model and settings?
+- What normalization and answer checker define “correct”?
+- Are rejected traces available to measure selection bias?
+- Were benchmark evaluation prompts kept out of the augmentation pool?

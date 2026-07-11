@@ -1,0 +1,1 @@
+RAP is reported as evaluation/test-time compute. Search paths could become SFT, distillation, or value-model data only if source policy, transition predictions, reward definition, and rejected branches are retained.

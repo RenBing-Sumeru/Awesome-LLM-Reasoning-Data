@@ -1,0 +1,3 @@
+- [Paper](https://arxiv.org/abs/2308.08998)
+- [DOI](https://doi.org/10.48550/arXiv.2308.08998)
+- Data ID: `reinforced-self-training-rest-for-language-modeling-2023`

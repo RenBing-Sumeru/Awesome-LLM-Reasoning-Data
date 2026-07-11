@@ -1,0 +1,115 @@
+id: rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025
+title: 'ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding'
+year: 2025
+venue: arXiv
+authors:
+- Zhongxiang Sun
+- Qipeng Wang
+- Weijie Yu
+- Xiaoxue Zang
+- Kai Zheng
+- Jun Xu
+- Xiao Zhang
+- Song Yang
+- Han Li
+source_role:
+- process_supervision
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- retrieval
+- multi-hop reasoning
+training_use:
+- process_supervision
+- preference_learning
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- search_substrate
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2501.07861
+  arxiv: https://arxiv.org/abs/2501.07861
+  code: https://github.com/Jeryi-Sun/ReARTeR
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2501.07861
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: retrieval-augmented multi-step reasoning tasks
+  trace_author: retrieval-augmented reasoning policy under PRM/PEM-guided search.
+  answer_format: step-level preference data with retrieval context, process reward score, process explanation, and final answer.
+  process_fields:
+  - query
+  - retrieval context
+  - partial reasoning state
+  - reasoning step
+  - process reward score
+  - process explanation
+  - MCTS branch
+  - preference pair
+  environment_or_substrate: RAG reasoning pipeline
+  verifier_or_reward: Process Reward Model plus Process Explanation Model, with MCTS-guided search.
+  terminal_predicate: final answer quality under retrieval-augmented reasoning
+recipe_metadata:
+  base_model: unknown
+  teacher: PRM/PEM feedback and benchmark supervision.
+  generator: MCTS-guided retrieval-augmented rollouts
+  filtering_rule: trustworthy process rewarding and iterative preference optimization over step-level preference data.
+  sampling_protocol: tree search over retrieval-augmented reasoning steps with look-ahead search for early-step bias.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: iterative preference optimization with PRM/PEM feedback
+audit:
+  source_mixture: retrieval-augmented multi-step reasoning benchmarks; exact source mixture should be checked before reuse.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: retrieved evidence, reasoning step, PRM score, PEM explanation, search branch, and preference label should be kept
+    together.
+  known_failure_modes:
+  - PRM and explanation model may disagree
+  - retrieval context can leak answer evidence unevenly
+  - early-step PRM bias can distort search
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and project GitHub link verified; release completeness, license, and split details should be checked
+    before L5 promotion.
+inclusion_reason: ReARTeR shows how PRMs interact with retrieval and preference optimization, making it valuable for readers
+  who study process rewards beyond pure math final-answer checking.
+related: []
+tags:
+- primary-link-checked
+status: verified
+one_line: Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect step-level
+  preference data.
+card: cards/recipes/rearter.md
+needs:
+- 'needs_metadata: curator should verify atlas fields'
+one_line_summary: Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect
+  step-level preference data.
+why_it_matters: It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores,
+  explanations, and search all affect the reusable data object.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-06-16'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv primary link and GitHub artifact pinned.
+category_ids:
+- process_trace_supervision_data
+- rollout_search_test_time_trace_data

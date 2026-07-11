@@ -1,0 +1,6 @@
+- Is the comparison matched for sample count, cost, and wall-clock constraints?
+- Are reported gains based on oracle coverage or on a deployable selector?
+- Which tasks have automatic verifiers, and which require a learned or heuristic selector?
+- Are rejected or failed candidates visible enough to study selection precision?
+- Does the verifier reward the intended task or only a narrow test harness?
+- Is a full agent attempt counted as one sample in SWE-bench-style tasks?

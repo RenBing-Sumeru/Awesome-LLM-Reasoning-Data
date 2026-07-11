@@ -10,7 +10,8 @@
     "doi": null
   },
   "category_ids": [
-    "scaling_rlvr_test_time_compute"
+    "scaling_rlvr_test_time_compute",
+    "rollout_search_test_time_trace_data"
   ],
   "reason_to_include": "ok",
   "decision_reason": "ok",

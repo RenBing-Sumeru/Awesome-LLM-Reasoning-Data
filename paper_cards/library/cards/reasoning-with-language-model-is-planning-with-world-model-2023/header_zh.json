@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "RAP 用 MCTS 在模型预测的状态空间中展开候选推理步骤，并依据任务奖励选择路径。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据 / construction_recipe论文",
+  "best_for_ch": "适合研究 rollout、搜索轨迹、验证器和 post-training 数据谱系的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shibo Hao, Yi Gu, Haodi Ma, Joshua Jiahua Hong, Zhen Wang, Daisy Zhe Wang, Zhiting Hu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data",
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

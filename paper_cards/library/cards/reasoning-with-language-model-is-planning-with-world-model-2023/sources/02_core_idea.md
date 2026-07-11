@@ -1,0 +1,1 @@
+Each tree node can contain a problem state, candidate action or reasoning step, LM-predicted next state, task reward, estimated value, and selected path. That state-transition lineage is central to the record.

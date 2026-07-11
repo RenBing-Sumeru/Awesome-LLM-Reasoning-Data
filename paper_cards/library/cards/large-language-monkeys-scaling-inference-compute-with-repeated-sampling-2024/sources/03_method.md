@@ -1,0 +1,11 @@
+- Verification contract: programmatic for code, Lean, and repository tests; mixed for math tasks where answer selection may rely on oracle checks, majority voting, or reward-model scoring.
+- Recorded verifier/reward/environment: unit tests, proof checker feedback, benchmark answer checks, majority vote, and reward-model selection.
+- Supervision granularity: answer-level candidates and full SWE-bench agent attempts.
+
+- Base model: Llama 3, Gemma, Pythia, and DeepSeek-Coder-V2-Instruct models in the reported experiments.
+- Teacher: benchmark labels, unit tests, proof checkers, and selection methods rather than a teacher model.
+- Generator: models repeatedly sample independent candidate solutions for each task.
+- Filtering rule: use automatic verifiers where available; compare majority voting and reward-model scoring when no automatic verifier is available.
+- Sampling protocol: repeated independent sampling across large budgets, including up to 10,000 samples for several tasks and 250 SWE-bench Lite attempts.
+- Inference budget: sample count, pass@k/coverage curves, FLOP estimates, and SWE-bench Lite per-attempt costs.
+- Optimizer/scaffold: inference-time repeated sampling; Moatless Tools scaffold for SWE-bench Lite attempts.

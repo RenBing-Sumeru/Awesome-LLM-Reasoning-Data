@@ -1,0 +1,5 @@
+- [Paper](https://arxiv.org/abs/2501.07861)
+- [Code](https://github.com/Jeryi-Sun/ReARTeR)
+- Data ID: `rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025`
+- Citation status: verified
+- Confidence: high

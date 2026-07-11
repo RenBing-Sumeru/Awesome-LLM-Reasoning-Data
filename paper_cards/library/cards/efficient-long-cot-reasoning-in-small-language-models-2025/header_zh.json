@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "方法先裁剪教师长推理中的冗余步骤，再筛选学生自己生成且答案正确的 on-policy 轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据 / construction_recipe论文",
+  "best_for_ch": "适合研究 rollout、搜索轨迹、验证器和 post-training 数据谱系的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhaoyang Wang, Jinqi Jiang, Tian Qiu, Hui Liu, Xianfeng Tang, Huaxiu Yao",
+  "category_ids": [
+    "rollout_search_test_time_trace_data",
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

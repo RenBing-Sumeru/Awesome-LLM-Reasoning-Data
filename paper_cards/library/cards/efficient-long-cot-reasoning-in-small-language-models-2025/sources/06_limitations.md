@@ -1,0 +1,6 @@
+- Which parts of a long trace were removed and by what rule?
+- Are short traces still correct under an independent checker?
+- What candidate-generation and validation budget was used?
+- Do accepted on-policy traces reduce diversity or preserve correction behavior?
+
+Compression can erase uncertainty and self-correction. A correct final answer does not prove a short rationale is faithful, and on-policy selection can reinforce a student's shortcuts.

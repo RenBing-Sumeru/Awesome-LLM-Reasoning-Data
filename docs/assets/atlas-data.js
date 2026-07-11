@@ -156,6 +156,77 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2105.09938"
     },
     {
+      "id": "autopsv-automated-process-supervised-verifier-2024",
+      "title": "AutoPSV: Automated Process-Supervised Verifier",
+      "year": 2024,
+      "venue": "NeurIPS",
+      "authors": [
+        "Jianqiao Lu",
+        "Zhiyang Dou",
+        "Hongru Wang",
+        "Zeyu Cao",
+        "Jianbo Dai",
+        "Yingjia Wan",
+        "Zhijiang Guo"
+      ],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "reward_modeling",
+        "evaluation"
+      ],
+      "domains": [
+        "math",
+        "commonsense",
+        "reasoning"
+      ],
+      "category": [
+        "process_trace_supervision_data",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "🛠️ Automatic process supervision",
+      "tags": [
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Automated process-supervision recipe that derives step annotations from verifier confidence changes.",
+      "why_it_matters": "It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.",
+      "data_object": "reasoning trace with step-level confidence-change annotations.; process: problem, candidate solution, reasoning step; offline reasoning traces",
+      "feedback_verifier": "answer-trained verifier converted into automated process annotations.",
+      "audit_focus": "answer-level verifier confidence can mislabel intermediate steps, relative confidence changes may not identify causal first errors, commonsense and math tasks may require different error taxonomies",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2405.16802",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2405.16802",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2405.16802",
+        "code": "https://github.com/rookie-joe/AutoPSV",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/autopsv-automated-process-supervised-verifier-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2405.16802"
+    },
+    {
       "id": "beyondbench-2026",
       "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
       "year": 2026,
@@ -457,6 +528,75 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2402.03300"
     },
     {
+      "id": "efficient-long-cot-reasoning-in-small-language-models-2025",
+      "title": "Efficient Long CoT Reasoning in Small Language Models",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Zhaoyang Wang",
+        "Jinqi Jiang",
+        "Tian Qiu",
+        "Hui Liu",
+        "Xianfeng Tang",
+        "Huaxiu Yao"
+      ],
+      "source_role": [
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "sft",
+        "distillation"
+      ],
+      "domains": [
+        "math",
+        "reasoning",
+        "test_time_compute"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "✂️ Long2short / distill-from-search",
+      "tags": [
+        "long2short",
+        "long-cot",
+        "distillation",
+        "on-policy-curation",
+        "trace-pruning"
+      ],
+      "one_line_summary": "Distills long chain-of-thought into smaller models by pruning teacher traces and curating valid on-policy student traces.",
+      "why_it_matters": "It makes long2short reasoning a data-lineage problem: teacher trace, pruning rule, student rollout, checker, and accepted compression all affect the result.",
+      "data_object": "Pruned long reasoning trace, final answer, validity outcome, and selected student-training example.; process: problem, teacher long cot, pruned steps; Mathematical-reasoning tasks with answer-based validation.",
+      "feedback_verifier": "Programmatic or answer-based correctness checks validate traces selected for on-policy curation.",
+      "audit_focus": "Pruning can delete uncertainty, corrections, or premises that are important for a valid derivation., Answer correctness does not prove that the compressed rationale is faithful or pedagogically useful., On-policy curation can reinforce the student's existing shortcuts and reduce solution diversity.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2505.18440",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2505.18440",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2505.18440",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/efficient-long-cot-reasoning-in-small-language-models-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2505.18440"
+    },
+    {
       "id": "featurebench-2026",
       "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
       "year": 2026,
@@ -607,6 +747,152 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/geogrambench-2026/sources"
       },
       "primary_link": "https://arxiv.org/abs/2505.17653"
+    },
+    {
+      "id": "language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023",
+      "title": "Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Andy Zhou",
+        "Kai Yan",
+        "Michal Shlapentokh-Rothman",
+        "Haohan Wang",
+        "Yu-Xiong Wang"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "agent_environment"
+      ],
+      "verification_contract": [
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "full_episode"
+      ],
+      "training_use": [
+        "agent_training",
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "agents",
+        "code",
+        "web",
+        "math",
+        "test_time_compute"
+      ],
+      "category": [
+        "environment_agent_trajectory_data",
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🔁 Replayable trajectory data",
+      "tags": [
+        "lats",
+        "mcts",
+        "agent-trajectories",
+        "self-reflection"
+      ],
+      "one_line_summary": "Combines MCTS, LM value functions, self-reflection, and environment feedback into search traces for language agents.",
+      "why_it_matters": "It shows why a reusable agent-search trace must retain the environment state and feedback alongside the selected action path.",
+      "data_object": "A search tree of observations, actions, self-reflections, value estimates, environment feedback, and terminal result.; process: observation, action, reflection; Task environments including programming tests, WebShop-style interaction, and reasoning tasks.",
+      "feedback_verifier": "External environment feedback together with LM-powered value functions and self-reflection.",
+      "audit_focus": "Environment state, web content, and tool versions can make trajectories non-replayable., Reflection text may sound corrective without improving the underlying action policy., Search results can be dominated by interaction budget rather than agent quality.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2310.04406",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2310.04406",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/lapisrocks/LanguageAgentTreeSearch",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2310.04406"
+    },
+    {
+      "id": "large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024",
+      "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
+      "year": 2024,
+      "venue": "arXiv preprint arXiv:2407.21787",
+      "authors": [
+        "Bradley Brown",
+        "Jordan Juravsky",
+        "Ryan Ehrlich",
+        "Ronald Clark",
+        "Quoc V. Le",
+        "Christopher Ré",
+        "Azalia Mirhoseini"
+      ],
+      "source_role": [
+        "scaling_study",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "code",
+        "formal_proofs",
+        "software_engineering",
+        "test_time_compute"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🧠 Self-consistency / repeated sampling",
+      "tags": [
+        "repeated-sampling",
+        "pass-at-k",
+        "test-time-compute",
+        "coverage",
+        "verifier-selection"
+      ],
+      "one_line_summary": "Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style tasks.",
+      "why_it_matters": "It gives atlas readers a concrete way to audit whether a reasoning gain comes from more samples, a usable verifier, a better selector, or a genuinely stronger model or training recipe.",
+      "data_object": "candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.; process: task, model, sample count; math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.",
+      "feedback_verifier": "automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.",
+      "audit_focus": "Coverage can grow with sample budget even when practical selection precision remains poor., Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks., Comparing repeated sampling against single attempts can conflate model quality with inference budget.",
+      "curation_level": "L5_audit_ready",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2407.21787",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2407.21787",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2407.21787"
     },
     {
       "id": "leandojo-2023",
@@ -910,6 +1196,382 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2109.00110"
     },
     {
+      "id": "prime-process-reinforcement-through-implicit-rewards-2025",
+      "title": "PRIME: Process reinforcement through implicit rewards",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Ganqu Cui",
+        "Lifan Yuan",
+        "Zefan Wang",
+        "Hanbin Wang",
+        "Yuchen Zhang",
+        "Jiacheng Chen",
+        "Wendi Li",
+        "Bingxiang He",
+        "Yuchen Fan",
+        "Tianyu Yu",
+        "Qixin Xu",
+        "Weize Chen",
+        "Jiarui Yuan",
+        "Huayu Chen",
+        "Kaiyan Zhang",
+        "Xingtai Lv",
+        "Shuo Wang",
+        "Yuan Yao",
+        "Xu Han",
+        "Hao Peng",
+        "Yu Cheng",
+        "Zhiyuan Liu",
+        "Maosong Sun",
+        "Bowen Zhou",
+        "Ning Ding"
+      ],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward",
+        "answer_level"
+      ],
+      "training_use": [
+        "rlvr",
+        "process_supervision",
+        "reward_modeling"
+      ],
+      "domains": [
+        "math",
+        "code",
+        "reasoning"
+      ],
+      "category": [
+        "process_trace_supervision_data",
+        "training_usage_optimization_objectives"
+      ],
+      "subfield": "🛠️ Automatic process supervision",
+      "tags": [
+        "seeded-from-bib",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.",
+      "why_it_matters": "It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.",
+      "data_object": "policy rollout with final outcome label, implicit process reward estimates, and policy update signal.; process: prompt, policy rollout, outcome label; online RL training loop",
+      "feedback_verifier": "implicit process rewards derived from outcome labels and updated on policy rollouts.",
+      "audit_focus": "implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2502.01456",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2502.01456",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2502.01456",
+        "code": "https://github.com/PRIME-RL/PRIME",
+        "data": "https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout",
+        "huggingface": "https://huggingface.co/PRIME-RL",
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/prime-process-reinforcement-through-implicit-rewards-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2502.01456"
+    },
+    {
+      "id": "re-rest-reflection-reinforced-self-training-for-language-agents-2024",
+      "title": "Re-ReST: Reflection-Reinforced Self-Training for Language Agents",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Zi-Yi Dou",
+        "Cheng-Fu Yang",
+        "Xueqing Wu",
+        "Kai-Wei Chang",
+        "Nanyun Peng"
+      ],
+      "source_role": [
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "full_episode"
+      ],
+      "training_use": [
+        "sft",
+        "agent_training",
+        "test_time_compute"
+      ],
+      "domains": [
+        "agents",
+        "code",
+        "question_answering",
+        "visual_question_answering"
+      ],
+      "category": [
+        "environment_agent_trajectory_data",
+        "data_construction_open_release_recipes"
+      ],
+      "subfield": "🔁 Replayable trajectory data",
+      "tags": [
+        "re-rest",
+        "reflection",
+        "self-training",
+        "agent-trajectories"
+      ],
+      "one_line_summary": "Builds self-training episodes from an agent's initial output, external feedback, reflector revision, and refined trajectory.",
+      "why_it_matters": "It makes rejected or weak agent attempts potentially useful only when their feedback and repair lineage are retained.",
+      "data_object": "Initial agent output, external feedback, reflection, refined output, and selected self-training episode.; process: task input, initial agent output, environment feedback; Task-specific agent environments and feedback mechanisms.",
+      "feedback_verifier": "External feedback such as code unit-test results, plus reflector-generated revisions.",
+      "audit_focus": "A reflector can rationalize an incorrect output instead of fixing it., Feedback quality differs sharply across unit tests, QA labels, and subjective generation tasks., Treating reflection calls as free hides a material test-time compute cost.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2406.01495",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2406.01495",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.01495",
+        "code": "https://github.com/PlusLabNLP/Re-ReST",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/re-rest-reflection-reinforced-self-training-for-language-agents-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2406.01495"
+    },
+    {
+      "id": "rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025",
+      "title": "ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Zhongxiang Sun",
+        "Qipeng Wang",
+        "Weijie Yu",
+        "Xiaoxue Zang",
+        "Kai Zheng",
+        "Jun Xu",
+        "Xiao Zhang",
+        "Song Yang",
+        "Han Li"
+      ],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
+      ],
+      "domains": [
+        "retrieval",
+        "multi-hop reasoning"
+      ],
+      "category": [
+        "process_trace_supervision_data",
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🧪 Process reward models",
+      "tags": [
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect step-level preference data.",
+      "why_it_matters": "It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.",
+      "data_object": "step-level preference data with retrieval context, process reward score, process explanation, and final answer.; process: query, retrieval context, partial reasoning state; RAG reasoning pipeline",
+      "feedback_verifier": "Process Reward Model plus Process Explanation Model, with MCTS-guided search.",
+      "audit_focus": "PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.07861",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.07861",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2501.07861",
+        "code": "https://github.com/Jeryi-Sun/ReARTeR",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2501.07861"
+    },
+    {
+      "id": "reasoning-with-language-model-is-planning-with-world-model-2023",
+      "title": "Reasoning with Language Model is Planning with World Model",
+      "year": 2023,
+      "venue": "EMNLP",
+      "authors": [
+        "Shibo Hao",
+        "Yi Gu",
+        "Haodi Ma",
+        "Joshua Jiahua Hong",
+        "Zhen Wang",
+        "Daisy Zhe Wang",
+        "Zhiting Hu"
+      ],
+      "source_role": [
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "trajectory_value"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "reasoning",
+        "planning",
+        "math",
+        "test_time_compute"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🌳 Search trees / MCTS",
+      "tags": [
+        "rap",
+        "mcts",
+        "world-model",
+        "search-tree"
+      ],
+      "one_line_summary": "Uses an LM as both reasoning agent and world model to build MCTS traces with predicted states and task-specific rewards.",
+      "why_it_matters": "It exposes an often-hidden search record—state prediction, task reward, and tree policy—that is essential for attributing planning gains.",
+      "data_object": "An MCTS reasoning tree containing states, candidate actions, predicted transitions, rewards, and chosen path.; process: problem, state, action or reasoning step; A language-model world model paired with Monte Carlo tree search.",
+      "feedback_verifier": "Task-specific rewards and model-predicted state transitions guide MCTS selection.",
+      "audit_focus": "A hallucinated world-model transition can steer search toward an invalid plan., Improvements can conflate MCTS budget, reward design, and base-model capability., The selected path hides the distribution of rejected branches unless logs are retained.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2305.14992",
+        "venue": "https://aclanthology.org/2023.emnlp-main.507/",
+        "arxiv": "https://arxiv.org/abs/2305.14992",
+        "openreview": null,
+        "acl": "https://aclanthology.org/2023.emnlp-main.507/",
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/reasoning-with-language-model-is-planning-with-world-model-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2305.14992"
+    },
+    {
+      "id": "reinforced-self-training-rest-for-language-modeling-2023",
+      "title": "Reinforced Self-Training (ReST) for Language Modeling",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Caglar Gulcehre",
+        "Tom Le Paine",
+        "Srivatsan Srinivasan",
+        "Ksenia Konyushkova",
+        "Lotte Weerts",
+        "Abhishek Sharma",
+        "Aditya Siddhant",
+        "Alex Ahern",
+        "Miaosen Wang",
+        "Chenjie Gu",
+        "Wolfgang Macherey",
+        "Arnaud Doucet",
+        "Orhan Firat",
+        "Nando de Freitas"
+      ],
+      "source_role": [
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "preference_learning"
+      ],
+      "domains": [
+        "machine_translation",
+        "post_training",
+        "synthetic_data"
+      ],
+      "category": [
+        "data_construction_open_release_recipes",
+        "training_usage_optimization_objectives"
+      ],
+      "subfield": "Other related work",
+      "tags": [
+        "rest",
+        "self-training",
+        "offline-rl",
+        "generated-candidates"
+      ],
+      "one_line_summary": "Alternates policy-generated offline batches with offline RL improvement, making generated candidates and their quality signals the training record.",
+      "why_it_matters": "It is an early, clear reference for separating the generation batch, quality signal, and offline optimizer when interpreting self-training claims.",
+      "data_object": "Input-candidate-output records carrying quality/reward information for offline policy improvement.; process: source input, candidate generation, quality signal; Offline language-model generation and batch reinforcement-learning pipeline.",
+      "feedback_verifier": "Quality signals derived from the paper's alignment/evaluation setup; the exact reward implementation should be retained with any reuse.",
+      "audit_focus": "Quality filtering can collapse output diversity when only high-scoring candidates are retained., Offline reuse can amplify reward-model or metric bias across iterations., Reported gains should not be generalized from translation to verifiable reasoning without an equivalent feedback contract.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2308.08998",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2308.08998",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2308.08998",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/reinforced-self-training-rest-for-language-modeling-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2308.08998"
+    },
+    {
       "id": "rest-em-self-training-2024",
       "title": "Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models",
       "year": 2024,
@@ -1020,6 +1682,76 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2312.06585"
     },
     {
+      "id": "rest-mcts-2024",
+      "title": "ReST-MCTS*",
+      "year": 2024,
+      "venue": "NeurIPS",
+      "authors": [
+        "Dan Zhang",
+        "Sining Zhoubian",
+        "Ziniu Hu",
+        "Yisong Yue",
+        "Yuxiao Dong",
+        "Jie Tang"
+      ],
+      "source_role": [
+        "process_supervision",
+        "construction_recipe",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "reward_modeling",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "process_trace_supervision_data",
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🧪 Process reward models",
+      "tags": [
+        "seeded-from-bib",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.",
+      "why_it_matters": "It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.",
+      "data_object": "searched reasoning trajectory with intermediate node states, final answer, verifier outcome, and inferred process reward.; process: problem, partial solution state, candidate next step; MCTS-style reasoning tree",
+      "feedback_verifier": "process reward model guided by final-answer oracle feedback and MCTS-derived value targets.",
+      "audit_focus": "search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2406.03816",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2406.03816",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.03816",
+        "code": "https://github.com/THUDM/ReST-MCTS",
+        "data": "https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th",
+        "huggingface": "https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th",
+        "project": "https://rest-mcts.github.io/",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/rest-mcts-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2406.03816"
+    },
+    {
       "id": "scaling-llm-test-time-compute-optimally-2024",
       "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
       "year": 2024,
@@ -1055,7 +1787,8 @@ window.ATLAS_DATA = {
         "scaling"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "scaling_rlvr_test_time_compute",
+        "rollout_search_test_time_trace_data"
       ],
       "subfield": "⏱️ Test-time compute",
       "tags": [
@@ -1090,6 +1823,77 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources"
       },
       "primary_link": "https://arxiv.org/abs/2408.03314"
+    },
+    {
+      "id": "scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023",
+      "title": "Scaling Relationship on Learning Mathematical Reasoning with Large Language Models",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Zheng Yuan",
+        "Hongyi Yuan",
+        "Chengpeng Li",
+        "Guanting Dong",
+        "Keming Lu",
+        "Chuanqi Tan",
+        "Chang Zhou",
+        "Jingren Zhou"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "sft",
+        "evaluation"
+      ],
+      "domains": [
+        "math",
+        "reasoning",
+        "synthetic_data"
+      ],
+      "category": [
+        "data_construction_open_release_recipes",
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🔎 Rejection sampling / search-generated data",
+      "tags": [
+        "rejection-sampling",
+        "rft",
+        "math-reasoning",
+        "accepted-traces"
+      ],
+      "one_line_summary": "Studies rejection-sampling fine-tuning, where multiple generated math rationales are answer-checked and only correct paths become augmented SFT data.",
+      "why_it_matters": "It is a clean data-lineage case: the prompt, candidate pool, answer checker, accepted trace, and source model all affect the claimed scaling gain.",
+      "data_object": "A generated reasoning path paired with final answer correctness and selection for the augmented fine-tuning set.; process: math problem, generated rationale, final answer; Mathematical reasoning dataset with answer matching for rejection-sampling selection.",
+      "feedback_verifier": "Final-answer correctness check retains correct reasoning paths.",
+      "audit_focus": "Retaining only correct final answers hides plausible but invalid rationales and collapses failure diversity., Exact-answer matching may accept reasoning with unsupported steps or reject equivalent answer formats., Reusing benchmark prompts for augmentation can contaminate subsequent benchmark evaluation.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2308.01825",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2308.01825",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2308.01825",
+        "code": "https://github.com/OFA-Sys/gsm8k-ScRel",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2308.01825"
     },
     {
       "id": "self-consistency-chain-of-thought-2023",
@@ -1275,7 +2079,8 @@ window.ATLAS_DATA = {
         "games"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "scaling_rlvr_test_time_compute",
+        "rollout_search_test_time_trace_data"
       ],
       "subfield": "⏱️ Test-time compute",
       "tags": [
@@ -1313,13 +2118,13 @@ window.ATLAS_DATA = {
     }
   ],
   "counts": {
-    "total_entries": 17,
-    "verified_entries": 17,
-    "paper_card_sources": 17,
+    "total_entries": 28,
+    "verified_entries": 28,
+    "paper_card_sources": 28,
     "data_releases": 9,
-    "verifiers_rewards": 8,
-    "agent_environments": 4,
-    "scaling_studies": 8,
+    "verifiers_rewards": 11,
+    "agent_environments": 5,
+    "scaling_studies": 11,
     "needs_search": 0
   },
   "categories": [

@@ -1,0 +1,133 @@
+id: prime-process-reinforcement-through-implicit-rewards-2025
+title: 'PRIME: Process reinforcement through implicit rewards'
+year: 2025
+venue: arXiv
+authors:
+- Ganqu Cui
+- Lifan Yuan
+- Zefan Wang
+- Hanbin Wang
+- Yuchen Zhang
+- Jiacheng Chen
+- Wendi Li
+- Bingxiang He
+- Yuchen Fan
+- Tianyu Yu
+- Qixin Xu
+- Weize Chen
+- Jiarui Yuan
+- Huayu Chen
+- Kaiyan Zhang
+- Xingtai Lv
+- Shuo Wang
+- Yuan Yao
+- Xu Han
+- Hao Peng
+- Yu Cheng
+- Zhiyuan Liu
+- Maosong Sun
+- Bowen Zhou
+- Ning Ding
+source_role:
+- process_supervision
+- verifier_reward
+- construction_recipe
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+- answer_level
+domains:
+- math
+- code
+- reasoning
+training_use:
+- rlvr
+- process_supervision
+- reward_modeling
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2502.01456
+  arxiv: https://arxiv.org/abs/2502.01456
+  code: https://github.com/PRIME-RL/PRIME
+  data: https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout
+  project: null
+  huggingface: https://huggingface.co/PRIME-RL
+  doi: https://doi.org/10.48550/arXiv.2502.01456
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: competition math and coding tasks
+  trace_author: current policy samples responses during online RL.
+  answer_format: policy rollout with final outcome label, implicit process reward estimates, and policy update signal.
+  process_fields:
+  - prompt
+  - policy rollout
+  - outcome label
+  - implicit process reward
+  - advantage estimate
+  - policy version
+  environment_or_substrate: online RL training loop
+  verifier_or_reward: implicit process rewards derived from outcome labels and updated on policy rollouts.
+  terminal_predicate: final-answer or code-task correctness
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B-Base for the main reported Eurus-2-7B-PRIME lineage.
+  teacher: outcome verifiers rather than dense human process labels.
+  generator: policy rollouts
+  filtering_rule: prompts can be filtered by policy accuracy band, then outcome rewards and implicit process rewards are combined
+    for advantage estimation.
+  sampling_protocol: on-policy RL rollouts over math and coding prompts.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: PRIME online process-reinforcement pipeline
+audit:
+  source_mixture: competition math and coding prompts; released HF data includes SFT, PRM, RL, and rollout artifacts.
+  split: HF organization exposes multiple datasets, but exact train/eval split mapping should be checked before reuse.
+  decontamination: unknown
+  license: code repository reports Apache-2.0; dataset/model licenses should be checked per HF artifact.
+  lineage: rollout, outcome label, implicit PRM estimate, and policy version must be tracked together.
+  known_failure_modes:
+  - implicit rewards can inherit outcome-verifier shortcuts
+  - online reward updates may introduce reward hacking
+  - benchmark improvements may conflate optimizer and reward-contract changes
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv, official GitHub, and PRIME-RL HF organization pinned; per-artifact data/model license and split details
+    still need curator review.
+inclusion_reason: PRIME is a core PRM/RLVR recipe because it trains with implicit process rewards from policy rollouts and
+  outcome labels rather than dense human step labels.
+related: []
+tags:
+- seeded-from-bib
+- primary-link-checked
+status: verified
+one_line: Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.
+card: cards/verifiers/prime.md
+needs:
+- 'needs_metadata: curator should verify atlas fields'
+one_line_summary: Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome
+  labels.
+why_it_matters: It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome
+  rewards, and RLVR optimization scaffolds.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-06-16'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, GitHub, and HF organization/data links pinned; artifact-internal split and license details remain
+    open.
+category_ids:
+- process_trace_supervision_data
+- training_usage_optimization_objectives

@@ -1,0 +1,6 @@
+- Does the retrieved evidence actually support each reasoning step?
+- Are PRM scalar scores and PEM explanations aligned, or can they disagree?
+- Is the step-level preference data balanced across easy and hard examples?
+- Does look-ahead search reduce early-step bias without hiding failed branches?
+- Are rejected branches and low-score explanations visible?
+- Are gains attributable to retrieval quality, process reward, MCTS budget, or preference optimization?

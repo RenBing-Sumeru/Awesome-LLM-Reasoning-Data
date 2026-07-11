@@ -1,0 +1,6 @@
+- Prompt/source: retrieval-augmented multi-step reasoning tasks.
+- Trace/action author: retrieval-augmented reasoning policy under PRM/PEM-guided search.
+- Answer/artifact format: step-level preference data with retrieval context, scalar process reward, explanation, and final answer.
+- Process fields: query, retrieved evidence, partial reasoning step, PRM score, PEM explanation, MCTS branch, preference pair, final answer.
+- Environment or substrate: RAG reasoning pipeline plus tree search over reasoning steps.
+- Terminal predicate: final answer quality on multi-step reasoning benchmarks.

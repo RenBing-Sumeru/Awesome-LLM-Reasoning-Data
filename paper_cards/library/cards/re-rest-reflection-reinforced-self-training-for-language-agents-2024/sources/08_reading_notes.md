@@ -1,0 +1,4 @@
+- What feedback is available for each task family?
+- Did revision improve terminal success, not only fluency?
+- Are initial failures, edits, and rejected revisions retained?
+- What extra inference budget does reflection consume?

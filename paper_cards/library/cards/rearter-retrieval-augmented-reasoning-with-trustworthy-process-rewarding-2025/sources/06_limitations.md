@@ -1,0 +1,11 @@
+- Does the retrieved evidence actually support each reasoning step?
+- Are PRM scalar scores and PEM explanations aligned, or can they disagree?
+- Is the step-level preference data balanced across easy and hard examples?
+- Does look-ahead search reduce early-step bias without hiding failed branches?
+- Are rejected branches and low-score explanations visible?
+- Are gains attributable to retrieval quality, process reward, MCTS budget, or preference optimization?
+
+- Retrieval context can leak answer evidence unevenly across examples.
+- PRM scores may favor steps that sound plausible but are not grounded in retrieved evidence.
+- PEM explanations can rationalize PRM decisions rather than provide faithful error localization.
+- Dataset split, license, and release completeness need stronger pinning before L5 promotion.

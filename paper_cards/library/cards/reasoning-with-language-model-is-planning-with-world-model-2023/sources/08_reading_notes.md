@@ -1,0 +1,4 @@
+- Are predicted next states checked against the real task environment?
+- What is the branching, rollout, and LM-call budget?
+- Does the reward test the intended outcome or a shortcut?
+- How many invalid branches were filtered away?

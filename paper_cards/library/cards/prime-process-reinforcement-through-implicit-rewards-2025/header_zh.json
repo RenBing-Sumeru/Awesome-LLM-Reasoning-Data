@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "PRIME 在 RL 循环中联合更新策略与隐式奖励信号，无需预先收集人工步骤标签。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据 / process_supervision, verifier_reward, construction_recipe论文",
+  "best_for_ch": "适合研究 rollout、搜索轨迹、验证器和 post-training 数据谱系的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ganqu Cui, Lifan Yuan, Zefan Wang, Hanbin Wang, Yuchen Zhang, Jiacheng Chen, Wendi Li, Bingxiang He, Yuchen Fan, Tianyu Yu, Qixin Xu, Weize Chen, Jiarui Yuan, Huayu Chen, Kaiyan Zhang, Xingtai Lv, Shuo Wang, Yuan Yao, Xu Han, Hao Peng, Yu Cheng, Zhiyuan Liu, Maosong Sun, Bowen Zhou, Ning Ding",
+  "category_ids": [
+    "process_trace_supervision_data",
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

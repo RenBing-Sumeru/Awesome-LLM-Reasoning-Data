@@ -1,0 +1,11 @@
+- Which outcome verifiers define correctness for math and code tasks?
+- Are failed rollouts retained, or are only successful responses exposed?
+- How is prompt filtering by policy accuracy computed, and does it bias the task distribution?
+- Does the implicit PRM improve because it learns progress, or because it learns outcome-verifier shortcuts?
+- Are policy and PRM updates evaluated on held-out task families?
+- Are released HF datasets/models enough to reconstruct the rollout lineage?
+
+- Online reward updates can create reward hacking if the implicit PRM and policy co-adapt to verifier artifacts.
+- Improvements can conflate outcome-verifier quality, optimizer details, prompt filtering, and data quality.
+- Dataset split, license, and decontamination details still need stronger atlas pinning before L5 promotion.
+- Rollout data from one policy version may not be reusable as a general process-supervision dataset for another model.

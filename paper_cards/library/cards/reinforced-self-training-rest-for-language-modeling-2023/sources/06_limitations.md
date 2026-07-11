@@ -1,0 +1,6 @@
+- Which policy version produced every candidate?
+- What quality signal retained or reweighted it?
+- How many grow/improve iterations and samples were used?
+- Does the accepted batch lose diversity or expose preference/reward shortcuts?
+
+Model-generated batches can compound metric bias. Translation results should not be generalized to verifiable reasoning without an equivalent verifier and a documented reward implementation.

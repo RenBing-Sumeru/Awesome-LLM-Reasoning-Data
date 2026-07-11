@@ -2,10 +2,10 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 81
-- markdown links checked: 1428
-- external markdown links discovered: 218
-- unique external URLs discovered: 89
+- artifact URLs discovered: 125
+- markdown links checked: 1717
+- external markdown links discovered: 428
+- unique external URLs discovered: 120
 - live URLs checked: 0
 - failures: 0
 
@@ -25,6 +25,10 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `apps-2021` huggingface: https://huggingface.co/datasets/codeparrot/apps
 - `apps-2021` doi: https://doi.org/10.48550/arXiv.2105.09938
 - `apps-2021` venue: https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html
+- `autopsv-automated-process-supervised-verifier-2024` paper: https://arxiv.org/abs/2405.16802
+- `autopsv-automated-process-supervised-verifier-2024` arxiv: https://arxiv.org/abs/2405.16802
+- `autopsv-automated-process-supervised-verifier-2024` code: https://github.com/rookie-joe/AutoPSV
+- `autopsv-automated-process-supervised-verifier-2024` doi: https://doi.org/10.48550/arXiv.2405.16802
 - `beyondbench-2026` paper: https://arxiv.org/abs/2509.24210
 - `beyondbench-2026` arxiv: https://arxiv.org/abs/2509.24210
 - `beyondbench-2026` code: https://github.com/ctrl-gaurav/BeyondBench
@@ -40,6 +44,9 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `deepseekmath-2024` arxiv: https://arxiv.org/abs/2402.03300
 - `deepseekmath-2024` huggingface: https://huggingface.co/deepseek-ai/deepseek-math-7b-base
 - `deepseekmath-2024` doi: https://doi.org/10.48550/arXiv.2402.03300
+- `efficient-long-cot-reasoning-in-small-language-models-2025` paper: https://arxiv.org/abs/2505.18440
+- `efficient-long-cot-reasoning-in-small-language-models-2025` arxiv: https://arxiv.org/abs/2505.18440
+- `efficient-long-cot-reasoning-in-small-language-models-2025` doi: https://doi.org/10.48550/arXiv.2505.18440
 - `featurebench-2026` paper: https://arxiv.org/abs/2602.10975
 - `featurebench-2026` arxiv: https://arxiv.org/abs/2602.10975
 - `featurebench-2026` doi: https://doi.org/10.48550/arXiv.2602.10975
@@ -50,6 +57,11 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `geogrambench-2026` project: https://github.com/LiAuto-DSR/GeoGramBench
 - `geogrambench-2026` huggingface: https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench
 - `geogrambench-2026` doi: https://doi.org/10.48550/arXiv.2505.17653
+- `language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023` paper: https://arxiv.org/abs/2310.04406
+- `language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023` arxiv: https://arxiv.org/abs/2310.04406
+- `language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023` code: https://github.com/lapisrocks/LanguageAgentTreeSearch
+- `large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024` paper: https://arxiv.org/abs/2407.21787
+- `large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024` arxiv: https://arxiv.org/abs/2407.21787
 - `leandojo-2023` paper: https://arxiv.org/abs/2306.15626
 - `leandojo-2023` arxiv: https://arxiv.org/abs/2306.15626
 - `leandojo-2023` code: https://github.com/lean-dojo/LeanDojo
@@ -75,12 +87,44 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `minif2f-2022` doi: https://doi.org/10.48550/arXiv.2109.00110
 - `minif2f-2022` venue: https://openreview.net/forum?id=9ZPegFuFTFv
 - `minif2f-2022` openreview: https://openreview.net/forum?id=9ZPegFuFTFv
+- `prime-process-reinforcement-through-implicit-rewards-2025` paper: https://arxiv.org/abs/2502.01456
+- `prime-process-reinforcement-through-implicit-rewards-2025` arxiv: https://arxiv.org/abs/2502.01456
+- `prime-process-reinforcement-through-implicit-rewards-2025` code: https://github.com/PRIME-RL/PRIME
+- `prime-process-reinforcement-through-implicit-rewards-2025` data: https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout
+- `prime-process-reinforcement-through-implicit-rewards-2025` huggingface: https://huggingface.co/PRIME-RL
+- `prime-process-reinforcement-through-implicit-rewards-2025` doi: https://doi.org/10.48550/arXiv.2502.01456
+- `re-rest-reflection-reinforced-self-training-for-language-agents-2024` paper: https://arxiv.org/abs/2406.01495
+- `re-rest-reflection-reinforced-self-training-for-language-agents-2024` arxiv: https://arxiv.org/abs/2406.01495
+- `re-rest-reflection-reinforced-self-training-for-language-agents-2024` code: https://github.com/PlusLabNLP/Re-ReST
+- `re-rest-reflection-reinforced-self-training-for-language-agents-2024` doi: https://doi.org/10.48550/arXiv.2406.01495
+- `rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025` paper: https://arxiv.org/abs/2501.07861
+- `rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025` arxiv: https://arxiv.org/abs/2501.07861
+- `rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025` code: https://github.com/Jeryi-Sun/ReARTeR
+- `rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025` doi: https://doi.org/10.48550/arXiv.2501.07861
+- `reasoning-with-language-model-is-planning-with-world-model-2023` paper: https://arxiv.org/abs/2305.14992
+- `reasoning-with-language-model-is-planning-with-world-model-2023` arxiv: https://arxiv.org/abs/2305.14992
+- `reasoning-with-language-model-is-planning-with-world-model-2023` venue: https://aclanthology.org/2023.emnlp-main.507/
+- `reasoning-with-language-model-is-planning-with-world-model-2023` acl: https://aclanthology.org/2023.emnlp-main.507/
+- `reinforced-self-training-rest-for-language-modeling-2023` paper: https://arxiv.org/abs/2308.08998
+- `reinforced-self-training-rest-for-language-modeling-2023` arxiv: https://arxiv.org/abs/2308.08998
+- `reinforced-self-training-rest-for-language-modeling-2023` doi: https://doi.org/10.48550/arXiv.2308.08998
 - `rest-em-self-training-2024` paper: https://arxiv.org/abs/2312.06585
 - `rest-em-self-training-2024` arxiv: https://arxiv.org/abs/2312.06585
 - `rest-em-self-training-2024` doi: https://doi.org/10.48550/arXiv.2312.06585
+- `rest-mcts-2024` paper: https://arxiv.org/abs/2406.03816
+- `rest-mcts-2024` arxiv: https://arxiv.org/abs/2406.03816
+- `rest-mcts-2024` code: https://github.com/THUDM/ReST-MCTS
+- `rest-mcts-2024` data: https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th
+- `rest-mcts-2024` project: https://rest-mcts.github.io/
+- `rest-mcts-2024` huggingface: https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th
+- `rest-mcts-2024` doi: https://doi.org/10.48550/arXiv.2406.03816
 - `scaling-llm-test-time-compute-optimally-2024` paper: https://arxiv.org/abs/2408.03314
 - `scaling-llm-test-time-compute-optimally-2024` arxiv: https://arxiv.org/abs/2408.03314
 - `scaling-llm-test-time-compute-optimally-2024` doi: https://doi.org/10.48550/arXiv.2408.03314
+- `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023` paper: https://arxiv.org/abs/2308.01825
+- `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023` arxiv: https://arxiv.org/abs/2308.01825
+- `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023` code: https://github.com/OFA-Sys/gsm8k-ScRel
+- `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023` doi: https://doi.org/10.48550/arXiv.2308.01825
 - `self-consistency-chain-of-thought-2023` paper: https://arxiv.org/abs/2203.11171
 - `self-consistency-chain-of-thought-2023` arxiv: https://arxiv.org/abs/2203.11171
 - `self-consistency-chain-of-thought-2023` doi: https://doi.org/10.48550/arXiv.2203.11171

@@ -1,0 +1,3 @@
+- [Paper](https://arxiv.org/abs/2406.01495)
+- [Official code](https://github.com/PlusLabNLP/Re-ReST)
+- Data ID: `re-rest-reflection-reinforced-self-training-for-language-agents-2024`

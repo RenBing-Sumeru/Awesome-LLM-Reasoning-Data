@@ -1,0 +1,114 @@
+id: rest-mcts-2024
+title: ReST-MCTS*
+year: 2024
+venue: NeurIPS
+authors:
+- Dan Zhang
+- Sining Zhoubian
+- Ziniu Hu
+- Yisong Yue
+- Yuxiao Dong
+- Jie Tang
+source_role:
+- process_supervision
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- reward_modeling
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2406.03816
+  arxiv: https://arxiv.org/abs/2406.03816
+  code: https://github.com/THUDM/ReST-MCTS
+  data: https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th
+  project: https://rest-mcts.github.io/
+  huggingface: https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th
+  doi: https://doi.org/10.48550/arXiv.2406.03816
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: math and science reasoning problems used for MCTS search, value-model training, and evaluation.
+  trace_author: policy models generate intermediate reasoning steps while MCTS expands candidate paths.
+  answer_format: searched reasoning trajectory with intermediate node states, final answer, verifier outcome, and inferred
+    process reward.
+  process_fields:
+  - problem
+  - partial solution state
+  - candidate next step
+  - search node
+  - process reward or value score
+  - final answer
+  - correctness label
+  environment_or_substrate: MCTS-style reasoning tree
+  verifier_or_reward: process reward model guided by final-answer oracle feedback and MCTS-derived value targets.
+  terminal_predicate: final-answer correctness under search
+recipe_metadata:
+  base_model: Llama, Mistral, and GLM/SciGLM-family policy or value models appear in the released implementation paths.
+  teacher: oracle final answers and search-derived value estimates, not manual dense step labels.
+  generator: policy rollouts expanded by MCTS
+  filtering_rule: select higher-quality traces from process-reward-guided search and infer per-step value targets from paths
+    that can lead to correct answers.
+  sampling_protocol: tree search over intermediate reasoning states; exact rollout budget should be pinned per experiment.
+  rollout_count: null
+  temperature: null
+  inference_budget: search budget varies by experiment; project reports comparisons against Best-of-N, Tree-of-Thought, and
+    self-consistency under stated budgets.
+  optimizer_or_scaffold: ReST-style self-training with MCTS
+audit:
+  source_mixture: math and science reasoning tasks; exact mixture should be checked against the released data and paper experiments.
+  split: released PRM data exposes train/validation/test splits on Hugging Face, but per-experiment task splits need checking.
+  decontamination: unknown
+  license: Hugging Face PRM data card reports apache-2.0; project website is CC BY-SA 4.0; code license should be checked
+    before reuse.
+  lineage: policy traces, MCTS paths, final-answer labels, and inferred value targets should be kept together when reused.
+  known_failure_modes:
+  - search policy may overfit process reward artifacts
+  - accepted traces can hide rejected rollout distribution
+  - inference budget may be conflated with data quality
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv, official project page, GitHub code, and an official HF PRM data artifact are pinned; exact per-experiment
+    rollout budget and split mapping still need curator review.
+inclusion_reason: ReST-MCTS connects self-training, process rewards, and tree search, making it a useful bridge between PRM
+  data and test-time compute.
+related: []
+tags:
+- seeded-from-bib
+- primary-link-checked
+status: verified
+one_line: Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
+card: cards/recipes/rest-mcts.md
+needs:
+- 'needs_metadata: curator should verify atlas fields'
+one_line_summary: Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
+why_it_matters: It shows how a process reward can guide search-generated trajectories, so readers can separate data generation,
+  verifier choice, and inference-budget effects.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-06-16'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, project, code, and HF data links pinned in artifacts.
+category_ids:
+- process_trace_supervision_data
+- rollout_search_test_time_trace_data

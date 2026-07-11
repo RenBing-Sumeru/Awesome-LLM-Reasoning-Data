@@ -1,0 +1,1 @@
+The reusable object is an offline batch of source inputs, policy-generated candidates, their quality/reward signal, policy version, and grow iteration. It is more informative than a final retained output alone.

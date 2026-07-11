@@ -1,0 +1,1 @@
+For each math problem: generated rationale, final answer, answer-check outcome, source model, and retained-for-RFT decision. Correctness labels alone are not enough without the candidate-pool and selection lineage.

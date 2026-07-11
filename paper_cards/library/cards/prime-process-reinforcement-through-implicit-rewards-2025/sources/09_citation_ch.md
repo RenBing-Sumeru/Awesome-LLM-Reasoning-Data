@@ -1,0 +1,6 @@
+- [Paper](https://arxiv.org/abs/2502.01456)
+- [Code](https://github.com/PRIME-RL/PRIME)
+- [Hugging Face organization](https://huggingface.co/PRIME-RL)
+- Data ID: `prime-process-reinforcement-through-implicit-rewards-2025`
+- Citation status: verified
+- Confidence: high

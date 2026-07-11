@@ -1,0 +1,112 @@
+id: language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023
+title: Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models
+year: 2023
+venue: arXiv
+authors:
+- Andy Zhou
+- Kai Yan
+- Michal Shlapentokh-Rothman
+- Haohan Wang
+- Yu-Xiong Wang
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+domains:
+- agents
+- code
+- web
+- math
+- test_time_compute
+training_use:
+- agent_training
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2310.04406
+  arxiv: https://arxiv.org/abs/2310.04406
+  code: https://github.com/lapisrocks/LanguageAgentTreeSearch
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Programming, interactive QA, web-navigation, and mathematical-reasoning tasks.
+  trace_author: A language agent proposes actions and reflections while MCTS expands environment-linked trajectories.
+  answer_format: A search tree of observations, actions, self-reflections, value estimates, environment feedback, and terminal
+    result.
+  process_fields:
+  - observation
+  - action
+  - reflection
+  - node_value
+  - visit_count
+  - environment_feedback
+  - terminal_reward
+  environment_or_substrate: Task environments including programming tests, WebShop-style interaction, and reasoning tasks.
+  verifier_or_reward: External environment feedback together with LM-powered value functions and self-reflection.
+  terminal_predicate: Task completion or task-specific pass criterion in the reported environment.
+recipe_metadata:
+  base_model: GPT-3.5 and GPT-4 family models in reported agent experiments.
+  teacher: Environment feedback and LM-generated reflection/value prompts.
+  generator: The agent generates candidate actions and reflections at search nodes.
+  filtering_rule: MCTS selects and expands nodes using visits, value estimates, reflection, and environmental outcomes.
+  sampling_protocol: Tree expansion and rollout under an MCTS controller; exact budget varies by task.
+  rollout_count: null
+  temperature: null
+  inference_budget: Environment interactions, tree expansions, LM calls, and reflection calls per episode.
+  optimizer_or_scaffold: Gradient-free test-time agent search; no model update is required.
+audit:
+  source_mixture: Diverse agent and reasoning evaluation environments.
+  split: Environment benchmark splits as reported by each task.
+  decontamination: unknown
+  license: unknown
+  lineage: The record combines generated agent traces with mutable environment feedback and evaluator behavior.
+  known_failure_modes:
+  - Environment state, web content, and tool versions can make trajectories non-replayable.
+  - Reflection text may sound corrective without improving the underlying action policy.
+  - Search results can be dominated by interaction budget rather than agent quality.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv source and authors' code repository pinned.
+inclusion_reason: Core agent-search reference that joins MCTS, reflection, and environment feedback into a full trajectory
+  data object.
+related:
+- reasoning-with-language-model-is-planning-with-world-model-2023
+- re-rest-reflection-reinforced-self-training-for-language-agents-2024
+tags:
+- lats
+- mcts
+- agent-trajectories
+- self-reflection
+status: verified
+one_line: Combines MCTS, LM value functions, self-reflection, and environment feedback into search traces for language agents.
+card: cards/agents/language-agent-tree-search.md
+needs: []
+one_line_summary: Combines MCTS, LM value functions, self-reflection, and environment feedback into search traces for language
+  agents.
+why_it_matters: It shows why a reusable agent-search trace must retain the environment state and feedback alongside the selected
+  action path.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and authors' code repository pinned.
+category_ids:
+- environment_agent_trajectory_data
+- rollout_search_test_time_trace_data

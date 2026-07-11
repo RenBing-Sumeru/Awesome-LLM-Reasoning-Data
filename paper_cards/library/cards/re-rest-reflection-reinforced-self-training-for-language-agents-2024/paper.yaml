@@ -1,0 +1,114 @@
+id: re-rest-reflection-reinforced-self-training-for-language-agents-2024
+title: 'Re-ReST: Reflection-Reinforced Self-Training for Language Agents'
+year: 2024
+venue: arXiv
+authors:
+- Zi-Yi Dou
+- Cheng-Fu Yang
+- Xueqing Wu
+- Kai-Wei Chang
+- Nanyun Peng
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- agents
+- code
+- question_answering
+- visual_question_answering
+training_use:
+- sft
+- agent_training
+- test_time_compute
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2406.01495
+  arxiv: https://arxiv.org/abs/2406.01495
+  code: https://github.com/PlusLabNLP/Re-ReST
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2406.01495
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Agent-task inputs spanning multi-hop QA, sequential decision making, code generation, VQA, and text-to-image
+    generation.
+  trace_author: The agent generates an initial trajectory; a reflector rewrites weak samples using the trajectory and external
+    feedback.
+  answer_format: Initial agent output, external feedback, reflection, refined output, and selected self-training episode.
+  process_fields:
+  - task_input
+  - initial_agent_output
+  - environment_feedback
+  - reflection
+  - refined_output
+  - self-training_selection
+  environment_or_substrate: Task-specific agent environments and feedback mechanisms.
+  verifier_or_reward: External feedback such as code unit-test results, plus reflector-generated revisions.
+  terminal_predicate: The refined trajectory meets the task-specific success or quality criterion.
+recipe_metadata:
+  base_model: Open-source language agents evaluated across the paper's task suite.
+  teacher: The agent itself, a reflector, and external task feedback rather than human or stronger-model demonstrations.
+  generator: The agent generates candidates and the reflector produces revisions conditioned on failure feedback.
+  filtering_rule: Refined high-quality samples enrich the self-training set; failed initial samples need not be discarded
+    immediately.
+  sampling_protocol: Generate, observe feedback, reflect/revise, then select for self-training; an inference-time reflection
+    variant is also studied.
+  rollout_count: null
+  temperature: null
+  inference_budget: Initial generation, feedback acquisition, and optional reflection/revision calls per task.
+  optimizer_or_scaffold: Reflection-reinforced self-training loop for language agents.
+audit:
+  source_mixture: Multiple agent task families with heterogeneous feedback mechanisms.
+  split: Use the source benchmark's task split and feedback environment; details vary by domain.
+  decontamination: unknown
+  license: unknown
+  lineage: Refined data depends on both the initial agent policy and a reflector conditioned on environment feedback.
+  known_failure_modes:
+  - A reflector can rationalize an incorrect output instead of fixing it.
+  - Feedback quality differs sharply across unit tests, QA labels, and subjective generation tasks.
+  - Treating reflection calls as free hides a material test-time compute cost.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper and authors' code repository pinned.
+inclusion_reason: Direct example of retaining a failed trajectory, its feedback, and a reflection-based revision as a self-training
+  data object.
+related:
+- reinforced-self-training-rest-for-language-modeling-2023
+- language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023
+tags:
+- re-rest
+- reflection
+- self-training
+- agent-trajectories
+status: verified
+one_line: Builds self-training episodes from an agent's initial output, external feedback, reflector revision, and refined
+  trajectory.
+card: cards/agents/re-rest.md
+needs: []
+one_line_summary: Builds self-training episodes from an agent's initial output, external feedback, reflector revision, and
+  refined trajectory.
+why_it_matters: It makes rejected or weak agent attempts potentially useful only when their feedback and repair lineage are
+  retained.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and authors' code repository pinned.
+category_ids:
+- environment_agent_trajectory_data
+- data_construction_open_release_recipes

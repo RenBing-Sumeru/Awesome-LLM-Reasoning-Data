@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "它把检索证据、过程奖励模型、过程解释模型和 MCTS 结合，生成带证据与偏好信号的搜索轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据 / process_supervision, verifier_reward, construction_recipe论文",
+  "best_for_ch": "适合研究 rollout、搜索轨迹、验证器和 post-training 数据谱系的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhongxiang Sun, Qipeng Wang, Weijie Yu, Xiaoxue Zang, Kai Zheng, Jun Xu, Xiao Zhang, Song Yang, Han Li",
+  "category_ids": [
+    "process_trace_supervision_data",
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

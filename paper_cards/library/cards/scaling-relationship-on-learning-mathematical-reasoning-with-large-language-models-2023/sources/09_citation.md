@@ -1,0 +1,3 @@
+- [Paper](https://arxiv.org/abs/2308.01825)
+- [Official code](https://github.com/OFA-Sys/gsm8k-ScRel)
+- Data ID: `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023`

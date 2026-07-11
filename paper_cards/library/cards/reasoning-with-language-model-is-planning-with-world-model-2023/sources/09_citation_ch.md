@@ -1,0 +1,3 @@
+- [Paper](https://arxiv.org/abs/2305.14992)
+- [EMNLP / ACL Anthology](https://aclanthology.org/2023.emnlp-main.507/)
+- Data ID: `reasoning-with-language-model-is-planning-with-world-model-2023`

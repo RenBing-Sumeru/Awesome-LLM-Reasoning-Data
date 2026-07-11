@@ -1,0 +1,6 @@
+- Prompt/source: competition math and coding tasks.
+- Trace/action author: the current policy samples responses during online RL.
+- Answer/artifact format: rollout responses with final outcome labels and token- or step-like implicit process rewards.
+- Process fields: prompt, sampled response, outcome reward, implicit process reward, advantage estimate, policy update signal.
+- Environment or substrate: online RL loop with math answer checking or code-task feedback.
+- Terminal predicate: final answer or code output is correct under the task verifier.

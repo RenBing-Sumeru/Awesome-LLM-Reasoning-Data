@@ -1,0 +1,11 @@
+- How many node expansions, rollouts, or sampled candidates are used per problem?
+- Are rejected branches or failed candidates released, or only accepted traces?
+- Is the PRM trained on data that overlaps with the evaluation tasks?
+- Does the reported gain persist under matched search budgets against best-of-N and Tree-of-Thought?
+- Are final-answer oracles reliable enough to infer process rewards from partial traces?
+- Can the value model learn shortcut features of the search procedure instead of reasoning quality?
+
+- Full source mixture and decontamination details are not fully captured in this atlas entry.
+- Tree-search improvements can be misattributed to better training data when the search budget or PRM changes.
+- Inferred process rewards can be wrong when an intermediate step happens to lead to a correct final answer through later correction.
+- Released artifacts should be checked for split, license, and exact relationship between policy data and PRM data before reuse.

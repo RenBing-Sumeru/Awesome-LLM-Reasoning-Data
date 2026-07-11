@@ -1,0 +1,3 @@
+- [Paper](https://arxiv.org/abs/2505.18440)
+- [DOI](https://doi.org/10.48550/arXiv.2505.18440)
+- Data ID: `efficient-long-cot-reasoning-in-small-language-models-2025`

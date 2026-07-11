@@ -1,0 +1,117 @@
+id: reinforced-self-training-rest-for-language-modeling-2023
+title: Reinforced Self-Training (ReST) for Language Modeling
+year: 2023
+venue: arXiv
+authors:
+- Caglar Gulcehre
+- Tom Le Paine
+- Srivatsan Srinivasan
+- Ksenia Konyushkova
+- Lotte Weerts
+- Abhishek Sharma
+- Aditya Siddhant
+- Alex Ahern
+- Miaosen Wang
+- Chenjie Gu
+- Wolfgang Macherey
+- Arnaud Doucet
+- Orhan Firat
+- Nando de Freitas
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- machine_translation
+- post_training
+- synthetic_data
+training_use:
+- preference_learning
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2308.08998
+  arxiv: https://arxiv.org/abs/2308.08998
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2308.08998
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Machine-translation inputs used to generate an offline batch from the current policy.
+  trace_author: The current LM policy generates candidate translations during each grow phase.
+  answer_format: Input-candidate-output records carrying quality/reward information for offline policy improvement.
+  process_fields:
+  - source_input
+  - candidate_generation
+  - quality_signal
+  - grow_iteration
+  - offline_update_batch
+  environment_or_substrate: Offline language-model generation and batch reinforcement-learning pipeline.
+  verifier_or_reward: Quality signals derived from the paper's alignment/evaluation setup; the exact reward implementation
+    should be retained with any reuse.
+  terminal_predicate: A candidate is retained for the offline batch under the reported quality-filtering and improvement procedure.
+recipe_metadata:
+  base_model: Language-model policies evaluated for machine translation in the paper.
+  teacher: The policy's own generated batch plus the quality/reward signal; no stronger demonstration teacher is required.
+  generator: The current policy generates an offline batch in the grow phase.
+  filtering_rule: Offline RL updates reweight or select generated examples according to their reported reward/quality signal.
+  sampling_protocol: Alternate grow phases that collect a fixed policy batch with improve phases that reuse it offline.
+  rollout_count: null
+  temperature: null
+  inference_budget: Offline sample-generation budget per grow phase; exact counts vary by experiment.
+  optimizer_or_scaffold: ReST growing-batch offline RL loop.
+audit:
+  source_mixture: Machine-translation inputs and policy-generated translations.
+  split: Reported machine-translation train/evaluation splits.
+  decontamination: unknown
+  license: unknown
+  lineage: The training batch is model-generated and reused across offline updates, so policy version and reward source are
+    lineage-critical.
+  known_failure_modes:
+  - Quality filtering can collapse output diversity when only high-scoring candidates are retained.
+  - Offline reuse can amplify reward-model or metric bias across iterations.
+  - Reported gains should not be generalized from translation to verifiable reasoning without an equivalent feedback contract.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv primary source pinned; no official reusable data artifact was identified.
+inclusion_reason: Foundational grow-and-improve recipe for treating policy-generated candidates and their quality signals
+  as an offline reusable training batch.
+related:
+- re-rest-reflection-reinforced-self-training-for-language-agents-2024
+- scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023
+tags:
+- rest
+- self-training
+- offline-rl
+- generated-candidates
+status: verified
+one_line: Alternates policy-generated offline batches with offline RL improvement, making generated candidates and their quality
+  signals the training record.
+card: cards/recipes/reinforced-self-training.md
+needs:
+- 'needs_metadata: pin the exact reward implementation and release terms before dataset reuse'
+one_line_summary: Alternates policy-generated offline batches with offline RL improvement, making generated candidates and
+  their quality signals the training record.
+why_it_matters: It is an early, clear reference for separating the generation batch, quality signal, and offline optimizer
+  when interpreting self-training claims.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv primary source pinned.
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives

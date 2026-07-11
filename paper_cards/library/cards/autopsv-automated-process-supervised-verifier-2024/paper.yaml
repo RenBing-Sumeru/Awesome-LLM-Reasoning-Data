@@ -1,0 +1,109 @@
+id: autopsv-automated-process-supervised-verifier-2024
+title: 'AutoPSV: Automated Process-Supervised Verifier'
+year: 2024
+venue: NeurIPS
+authors:
+- Jianqiao Lu
+- Zhiyang Dou
+- Hongru Wang
+- Zeyu Cao
+- Jianbo Dai
+- Yingjia Wan
+- Zhijiang Guo
+source_role:
+- process_supervision
+- verifier_reward
+- construction_recipe
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- math
+- commonsense
+- reasoning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2405.16802
+  arxiv: https://arxiv.org/abs/2405.16802
+  code: https://github.com/rookie-joe/AutoPSV
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2405.16802
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: math and commonsense reasoning tasks
+  trace_author: model-generated reasoning steps
+  answer_format: reasoning trace with step-level confidence-change annotations.
+  process_fields:
+  - problem
+  - candidate solution
+  - reasoning step
+  - verifier confidence before and after step
+  - relative confidence change
+  - selected answer outcome
+  environment_or_substrate: offline reasoning traces
+  verifier_or_reward: answer-trained verifier converted into automated process annotations.
+  terminal_predicate: correct final answer or selected correct candidate
+recipe_metadata:
+  base_model: unknown
+  teacher: answer-level verifier trained from final-answer correctness.
+  generator: model-generated candidate reasoning
+  filtering_rule: relative changes in verifier confidence across reasoning steps become process-supervision signals.
+  sampling_protocol: multiple generated outputs are scored or selected by outcome-supervised and process-supervised verifiers.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: automated process-supervised verifier training
+audit:
+  source_mixture: math and commonsense reasoning datasets; exact mixture should be checked against the paper tables.
+  split: unknown
+  decontamination: unknown
+  license: GitHub README reports CC BY 4.0 for the work; code/data reuse terms should be checked before reuse.
+  lineage: candidate response, verifier confidence trajectory, and final-answer label must be preserved together.
+  known_failure_modes:
+  - answer-level verifier confidence can mislabel intermediate steps
+  - relative confidence changes may not identify causal first errors
+  - commonsense and math tasks may require different error taxonomies
+  - official repository notes some code is withheld or not fully released
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and official GitHub link verified; repository notes that portions of the codebase are withheld, so
+    artifact completeness should not be overstated.
+inclusion_reason: AutoPSV is a representative automatic process-supervision paper because it turns an answer-level verifier
+  into step annotations without dense manual labels.
+related: []
+tags:
+- primary-link-checked
+status: verified
+one_line: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
+card: cards/verifiers/autopsv.md
+needs:
+- 'needs_metadata: curator should verify atlas fields'
+one_line_summary: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
+why_it_matters: It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-06-16'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv primary link and GitHub artifact pinned; repository states some components are withheld.
+category_ids:
+- process_trace_supervision_data
+- data_construction_open_release_recipes

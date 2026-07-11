@@ -1,0 +1,6 @@
+- Prompt/source: GSM8K, MATH, MiniF2F-MATH, CodeContests, and SWE-bench Lite tasks.
+- Trace/action author: language models sampled repeatedly at positive temperature; SWE-bench samples are full multi-turn agent attempts.
+- Answer/artifact format: a candidate solution set for each problem, containing final answers, programs, Lean proofs, or repository patches depending on the task.
+- Process fields: task, model, sample count, pass@k, coverage, verifier type, selected-answer method, and inference cost or FLOPs.
+- Environment or substrate: math benchmarks, Lean4 proof checking, programming tests, and SWE-bench Lite repository test suites.
+- Terminal predicate: at least one candidate passes the task verifier, or a selected candidate matches the benchmark answer.

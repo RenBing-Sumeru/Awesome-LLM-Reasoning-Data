@@ -1,0 +1,1 @@
+Each episode can contain task input, initial agent output, external feedback, a reflection, refined output, and the decision to include it in self-training. The failure-to-revision lineage is the important object.

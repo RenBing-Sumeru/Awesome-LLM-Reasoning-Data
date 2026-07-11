@@ -1,0 +1,18 @@
+{
+  "title": "Reinforced Self-Training (ReST) for Language Modeling",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2308.08998",
+    "arxiv": "https://arxiv.org/abs/2308.08998",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2308.08998"
+  },
+  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
+  "category_ids": [
+    "data_construction_open_release_recipes",
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

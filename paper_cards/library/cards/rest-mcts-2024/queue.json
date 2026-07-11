@@ -1,0 +1,18 @@
+{
+  "title": "ReST-MCTS*",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2406.03816",
+    "arxiv": "https://arxiv.org/abs/2406.03816",
+    "code": "https://github.com/THUDM/ReST-MCTS",
+    "data": "https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th",
+    "project": "https://rest-mcts.github.io/",
+    "huggingface": "https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th",
+    "doi": "https://doi.org/10.48550/arXiv.2406.03816"
+  },
+  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
+  "category_ids": [
+    "process_trace_supervision_data",
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}
