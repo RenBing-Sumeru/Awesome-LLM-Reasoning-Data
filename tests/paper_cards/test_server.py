@@ -577,6 +577,16 @@ class ReviewCacheTest(unittest.TestCase):
         self.assertEqual(result, 1)
         http_server.assert_not_called()
 
+    def test_startup_binds_to_configured_host(self) -> None:
+        with patch.object(server, "HOST", "0.0.0.0"):
+            with patch.object(server, "review_index_payload"):
+                with patch.object(server, "ThreadingHTTPServer") as http_server:
+                    result = server.main()
+
+        self.assertEqual(result, 0)
+        http_server.assert_called_once_with(("0.0.0.0", server.PORT), server.PaperCardHandler)
+        http_server.return_value.serve_forever.assert_called_once_with()
+
     def test_saving_chinese_section_refreshes_cache_after_local_write(self) -> None:
         self.add_card("first-card")
         server.review_index_payload(self.root)

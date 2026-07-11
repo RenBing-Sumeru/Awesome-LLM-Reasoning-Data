@@ -18,6 +18,7 @@ except ImportError:  # direct script execution
 
 
 ROOT = card_tool.ROOT
+HOST = os.environ.get("HOST", "127.0.0.1").strip() or "127.0.0.1"
 PORT = int(os.environ.get("PORT", "8768"))
 STATIC_ROOT = Path(__file__).resolve().parent
 CACHE_SCHEMA_VERSION = 1
@@ -687,8 +688,8 @@ def main() -> int:
     except Exception as exc:
         print(f"Review cache warmup failed; server not started: {exc}", file=sys.stderr)
         return 1
-    server = ThreadingHTTPServer(("127.0.0.1", PORT), PaperCardHandler)
-    print(f"Paper card editor: http://127.0.0.1:{PORT}/")
+    server = ThreadingHTTPServer((HOST, PORT), PaperCardHandler)
+    print(f"Paper card editor: http://{HOST}:{PORT}/")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
