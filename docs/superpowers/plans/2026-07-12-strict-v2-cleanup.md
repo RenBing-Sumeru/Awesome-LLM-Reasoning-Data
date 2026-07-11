@@ -177,7 +177,7 @@ Run: `python3 -m unittest discover -s tests/paper_cards -p 'test_*.py'`,
 `python3 scripts/validate_data.py`, `python3 scripts/check_links.py --soft`,
 and `git diff --check`.
 
-- [ ] **Step 3: Restart Review and verify Card-only output**
+- [x] **Step 3: Restart Review and verify Card-only output**
 
 Stop the existing server, clear derived `tmp/paper_cards`, start
 `PORT=8770 python3 tools/paper_cards/server.py`, and query `/api/entries`.
