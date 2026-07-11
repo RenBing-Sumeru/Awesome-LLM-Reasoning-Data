@@ -8,7 +8,7 @@ Use this section to compare instruction traces, preferences, verifiable outcomes
 
 | Track | Main question | Entries | Jump |
 |---|---|---:|---|
-| 🧱 Instruction / Demo / Rationale | demonstration, SFT, CoT, rationale, and teacher-trace data | 1 | [01_instruction_demonstration_rationale_data.md](01_instruction_demonstration_rationale_data.md) |
+| 🧱 Instruction / Demo / Rationale | demonstration, SFT, CoT, rationale, and teacher-trace data | 0 | [01_instruction_demonstration_rationale_data.md](01_instruction_demonstration_rationale_data.md) |
 | 🤝 Preference & Reward Feedback | RLHF, DPO, reward modeling, rubric rewards, and AI feedback | 0 | [02_preference_reward_feedback_data.md](02_preference_reward_feedback_data.md) |
 | 🧮 Programmatic Verification | math, code, proof, and answer-verifiable reasoning data | 17 | [03_programmatically_verifiable_outcome_data.md](03_programmatically_verifiable_outcome_data.md) |
 | 🪜 Process / Trace Supervision | step-level labels, PRMs, rollout values, and first-error signals | 0 | [04_process_trace_supervision_data.md](04_process_trace_supervision_data.md) |

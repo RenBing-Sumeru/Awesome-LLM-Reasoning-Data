@@ -1373,10 +1373,9 @@ window.ATLAS_DATA = {
         "premise-retrieval"
       ],
       "category": [
-        "instruction_demonstration_rationale_data",
         "programmatically_verifiable_outcome_data"
       ],
-      "subfield": "🧱 Instruction tuning / SFT data",
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
       "tags": [
         "neurips-2023",
         "theorem-proving",
