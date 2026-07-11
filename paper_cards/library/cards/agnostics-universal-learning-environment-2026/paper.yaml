@@ -1,0 +1,122 @@
+id: agnostics-universal-learning-environment-2026
+title: 'Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment'
+year: 2026
+venue: ICLR 2026
+authors:
+- Aleksander Boruch-Gruszecki
+- Yangtian Zi
+- Zixuan Wu
+- Tejas Oberoi
+- Carolyn Jane Anderson
+- Joydeep Biswas
+- Arjun Guha
+source_role:
+- data_release
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- code
+- low-resource-programming-languages
+- rlvr
+- execution
+training_use:
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.04865
+  arxiv: https://arxiv.org/abs/2508.04865
+  code: https://github.com/nuprl/Ag-LiveCodeBench-X
+  data: https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X
+  project: https://agnostics.abgru.me/
+  huggingface: https://huggingface.co/nuprl/agnostics
+  doi: https://doi.org/10.48550/arXiv.2508.04865
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Existing unit-test coding datasets rewritten into a language-agnostic input/output format.
+  trace_author: Policy models generate code in target low-resource programming languages.
+  answer_format: Programming solution plus externally observable I/O behavior.
+  process_fields:
+  - target language
+  - compiler or interpreter config
+  - I/O tests
+  - execution result
+  - reward verdict
+  environment_or_substrate: Universal code execution environment configured per language with short YAML-like settings.
+  verifier_or_reward: Programmatic execution verifier that judges behavior rather than language-specific syntax alone.
+  terminal_predicate: Generated program passes the I/O tests in the target language environment.
+recipe_metadata:
+  base_model: Qwen-3 4B/8B and other open-weight coding models evaluated in the paper.
+  teacher: LLM rewrite pipeline for adapting coding datasets into I/O tasks.
+  generator: RLVR policy model emits target-language code.
+  filtering_rule: Externally observable behavior must match expected I/O under the configured execution environment.
+  sampling_protocol: RLVR training and pass@1 evaluation across low-resource languages.
+  rollout_count: null
+  temperature: null
+  inference_budget: Generation and execution budget should be checked in the paper before reuse.
+  optimizer_or_scaffold: Language-agnostic RLVR scaffold with verifier containers and per-language configuration.
+audit:
+  source_mixture: Converted unit-test coding datasets and newly released multi-language benchmark variants.
+  split: Dataset and benchmark split details should be reviewed in the released artifacts.
+  decontamination: Low-resource language variants reduce but do not eliminate leakage risk from source coding tasks.
+  license: Check arXiv, GitHub, Hugging Face, and source dataset licenses before reuse.
+  lineage: Agnostics / Ag-LiveCodeBench-X / Ag-MBPP-X / Ag-Codeforces-X code-RLVR lineage.
+  known_failure_modes:
+  - I/O-only tests may miss semantic edge cases.
+  - Verifier containers can encode language-specific quirks.
+  - Dataset rewriting can change task intent.
+  citation_status: verified
+  confidence: high
+  notes: arXiv record lists ICLR 2026 acceptance and links to official artifacts; detailed release completeness still needs
+    review.
+inclusion_reason: ICLR 2026 paper that directly matches Track 03 by turning code correctness into language-agnostic programmatic
+  RLVR rewards.
+related:
+- livecodebench-holistic-and-contamination-free-evaluation-of-large-language-models-for-code-2024
+- humaneval-hand-written-evaluation-set-2021
+tags:
+- iclr-2026
+- track-03
+- code-rlvr
+- programmatic-verifier
+- low-resource-languages
+status: verified
+one_line: Agnostics builds a language-agnostic code RLVR environment where external I/O behavior becomes the verifier across
+  programming languages.
+card: null
+needs:
+- 'needs_review: human curator should judge whether it enters the formal Track 03 pool'
+one_line_summary: Agnostics builds a language-agnostic code RLVR environment where external I/O behavior becomes the verifier
+  across programming languages.
+why_it_matters: It is a strong 03-direction candidate because it packages code execution, verifier portability, RLVR training,
+  and released artifacts into one reusable post-training surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, project page, GitHub, Hugging Face model/data links checked for initial import.
+category_ids:
+- scaling_rlvr_test_time_compute
+batch:
+  id: library-10-scaling-rlvr-ttc
+  request_sha256: 950a7ccbd8adb8337fbc15d01ee4f931668a7575d75f2e90d0fe24352807e9c5
+  primary_category_id: scaling_rlvr_test_time_compute

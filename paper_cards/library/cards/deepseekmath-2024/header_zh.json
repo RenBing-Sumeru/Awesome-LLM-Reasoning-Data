@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeepSeekMath 同时展示 math data scaling、GRPO/RLVR 和 64-sample self-consistency 对数学推理的贡献。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学 RLVR / 数据规模 / GRPO 技术报告",
+  "best_for_ch": "适合关注 math corpus 构造、GRPO、RLVR 优化和采样预算的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, Y. K. Li, Y. Wu, Daya Guo",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-10T15:11:44Z"
+}

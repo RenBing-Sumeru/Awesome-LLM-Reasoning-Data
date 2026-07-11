@@ -1,0 +1,1 @@
+The official paper and repository document the task scale, training/evaluation tooling, and test-based protocol. For post-training use, the meaningful evidence is a reproducible execution log or test verdict, rather than a bare model score.

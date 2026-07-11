@@ -1,0 +1,4 @@
+- Track generated samples by round.
+- Count unique prompts separately from accepted traces.
+- A binary verifier is a bottleneck.
+- Self-training can amplify hidden shortcuts.

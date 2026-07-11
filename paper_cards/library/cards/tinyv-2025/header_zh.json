@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TinyV 用轻量级学习型验证器找回规则数学验证器漏判的正确答案，从而改善 RLVR 训练奖励。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "验证器错误修正 / RLVR 奖励论文",
+  "best_for_ch": "适合关注 RLVR、数学验证器、奖励建模和 verifier 审计的读者。",
+  "confidence_ch": "高（官方链接已核验，训练细节仍需复核）",
+  "authors_ch": "Zhangchen Xu, Yuetai Li, Fengqing Jiang, Bhaskar Ramasubramanian, Luyao Niu, Bill Yuchen Lin, Radha Poovendran",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-10T15:11:44Z"
+}

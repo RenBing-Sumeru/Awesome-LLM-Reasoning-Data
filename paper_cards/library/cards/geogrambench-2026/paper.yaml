@@ -1,0 +1,113 @@
+id: geogrambench-2026
+title: 'GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs'
+year: 2026
+venue: ICLR 2026
+authors:
+- Shixian Luo
+- Zezhou Zhu
+- Yu Yuan
+- Yuncheng Yang
+- Lianlei Shan
+- Yong Wu
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- geometry
+- program-reasoning
+- symbolic-spatial-reasoning
+- evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.17653
+  arxiv: https://arxiv.org/abs/2505.17653
+  code: https://github.com/LiAuto-DSR/GeoGramBench
+  data: https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench
+  project: https://github.com/LiAuto-DSR/GeoGramBench
+  huggingface: https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench
+  doi: https://doi.org/10.48550/arXiv.2505.17653
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Program-to-Geometry benchmark problems built from procedural drawing code.
+  trace_author: Models interpret code and answer geometric spatial reasoning questions.
+  answer_format: Procedural drawing code, geometry question, model answer, and benchmark score.
+  process_fields:
+  - drawing program
+  - geometry abstraction level
+  - question
+  - model response
+  - answer check
+  environment_or_substrate: Programmatic drawing-code representation of geometric diagrams.
+  verifier_or_reward: Benchmark answer checking over curated geometric reasoning problems.
+  terminal_predicate: Model answer matches the benchmark answer for the generated geometric program problem.
+recipe_metadata:
+  base_model: 17 frontier and open-source models evaluated by the authors.
+  teacher: Curated geometric program reasoning tasks and taxonomy.
+  generator: Benchmark construction pipeline creates program-to-geometry problems.
+  filtering_rule: Problems are organized by three-level geometric complexity taxonomy.
+  sampling_protocol: Pass@1-style evaluation averaged over samples for model comparisons.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation sampling details should be checked in the repository/paper.
+  optimizer_or_scaffold: DeepScaler-based evaluation pipeline in the released repository.
+audit:
+  source_mixture: Curated procedural-code geometry problems and evaluation scripts.
+  split: Problem taxonomy and any train/test separation should be reviewed in released data.
+  decontamination: Geometry code/problem patterns may leak once the dataset is public.
+  license: Repository is MIT; dataset terms should still be checked before reuse.
+  lineage: GeoGramBench program-to-geometry benchmark lineage.
+  known_failure_modes:
+  - Answer checking may hide ambiguity in spatial interpretation.
+  - Procedural code can encode visual assumptions not captured by text.
+  - Sampling and long-response settings affect reported pass rates.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, GitHub, and Hugging Face dataset links checked for initial import.
+inclusion_reason: ICLR 2026 benchmark that tests program-driven geometric reasoning, an adjacent 03 surface where code-like
+  artifacts define verifiable spatial questions.
+related:
+- measuring-mathematical-problem-solving-with-the-math-dataset-2021
+- minif2f-a-cross-system-benchmark-for-formal-olympiad-level-mathematics-2021
+tags:
+- iclr-2026
+- track-03
+- geometry
+- program-to-geometry
+- benchmark
+status: verified
+one_line: GeoGramBench evaluates whether models can reason over geometric information expressed as procedural drawing code.
+card: null
+needs:
+- 'needs_review: human curator should judge whether it enters the formal Track 03 pool'
+one_line_summary: GeoGramBench evaluates whether models can reason over geometric information expressed as procedural drawing
+  code.
+why_it_matters: It broadens Track 03 beyond text math and code execution into symbolic-to-spatial reasoning where programs
+  define the object being verified.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, GitHub, Hugging Face dataset, and ICLR 2026 acceptance note checked.
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier
+  request_sha256: affba9876305e46657a2466c7e5797aef32f5f1ccabeb7604943dc5b9f7efda1
+  primary_category_id: programmatically_verifiable_outcome_data

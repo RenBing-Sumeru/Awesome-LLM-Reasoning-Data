@@ -1,0 +1,117 @@
+id: beyondbench-2026
+title: 'BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models'
+year: 2026
+venue: ICLR 2026
+authors:
+- Gaurav Srivastava
+- Aafiya Hussain
+- Zhenyu Bi
+- Swastik Roy
+- Priya Pitre
+- Meng Lu
+- Morteza Ziyadi
+- Xuan Wang
+source_role:
+- benchmark
+- audit_failure
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- algorithmic-reasoning
+- math
+- contamination
+- evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.24210
+  arxiv: https://arxiv.org/abs/2509.24210
+  code: https://github.com/ctrl-gaurav/BeyondBench
+  data: null
+  project: https://ctrl-gaurav.github.io/BeyondBench/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.24210
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Algorithmically generated reasoning tasks across arithmetic, sequence, NP-complete, and constraint-satisfaction
+    families.
+  trace_author: Evaluated language models solve generated instances; the benchmark generator produces fresh problem instances.
+  answer_format: Generated problem instance, model answer, and deterministic solution check.
+  process_fields:
+  - task family
+  - generator parameters
+  - difficulty suite
+  - deterministic solution
+  - model answer
+  environment_or_substrate: Algorithmic problem generators and deterministic verifiers.
+  verifier_or_reward: Mathematical/programmatic verifier with large combinatorial instance spaces.
+  terminal_predicate: Answer matches the generated instance solution under deterministic verification.
+recipe_metadata:
+  base_model: 101 models evaluated by the authors.
+  teacher: Algorithmic task definitions and mathematical solution procedures.
+  generator: Problem generators produce fresh instances from large combinatorial spaces.
+  filtering_rule: Instances must have deterministic solutions and semantically valid transformations.
+  sampling_protocol: Three-fold evaluation across model families and difficulty suites.
+  rollout_count: null
+  temperature: null
+  inference_budget: Tool-use and no-tool settings should be reviewed separately.
+  optimizer_or_scaffold: Benchmark-free / generated-instance evaluation framework.
+audit:
+  source_mixture: Generated algorithmic reasoning tasks rather than a fixed static dataset.
+  split: Fresh generated instances reduce dependence on static train/test splits.
+  decontamination: Core design goal is contamination resistance through large problem spaces and transformations.
+  license: Check arXiv, project, package, and code licenses before reuse.
+  lineage: BeyondBench generated reasoning benchmark lineage.
+  known_failure_modes:
+  - Generator bugs can invalidate deterministic guarantees.
+  - Models may exploit task templates if generators are exposed.
+  - Tool-use settings can dominate reasoning comparisons.
+  citation_status: verified
+  confidence: high
+  notes: arXiv record lists ICLR 2026 conference acceptance and links project/package/code artifacts.
+inclusion_reason: ICLR 2026 Track 03 benchmark focused on programmatically verified, contamination-resistant reasoning evaluation.
+related:
+- livebench-a-challenging-contamination-free-benchmark-for-large-language-models-2024
+- measuring-mathematical-problem-solving-with-the-math-dataset-2021
+tags:
+- iclr-2026
+- track-03
+- contamination-resistant
+- algorithmic-generation
+- deterministic-verifier
+status: verified
+one_line: BeyondBench generates fresh algorithmic reasoning problems with deterministic verification to reduce static-benchmark
+  contamination.
+card: null
+needs:
+- 'needs_review: human curator should judge whether it enters the formal Track 03 pool'
+one_line_summary: BeyondBench generates fresh algorithmic reasoning problems with deterministic verification to reduce static-benchmark
+  contamination.
+why_it_matters: It is a clean 03-direction candidate because the benchmark is built around generated instances, deterministic
+  answer checks, and explicit contamination-resistance claims.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv and project/code links checked for initial import; release details need review.
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier
+  request_sha256: affba9876305e46657a2466c7e5797aef32f5f1ccabeb7604943dc5b9f7efda1
+  primary_category_id: programmatically_verifiable_outcome_data

@@ -1,0 +1,20 @@
+{
+  "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.14625",
+    "arxiv": null,
+    "code": "https://github.com/uw-nsl/TinyV",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "track_guess": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "reason_to_include": "12345",
+  "decision_reason": "12345",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-10T15:11:44Z"
+}

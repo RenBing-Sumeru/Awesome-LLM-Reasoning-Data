@@ -1,0 +1,113 @@
+id: minif2f-2022
+title: 'MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics'
+year: 2022
+venue: ICLR 2022
+authors:
+- Kunhao Zheng
+- Jesse Michael Han
+- Stanislas Polu
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- formal-mathematics
+- theorem-proving
+- lean
+- proof-checking
+training_use:
+- evaluation
+- rlvr
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2109.00110
+  arxiv: https://arxiv.org/abs/2109.00110
+  code: https://github.com/openai/miniF2F
+  data: https://github.com/openai/miniF2F
+  project: https://github.com/openai/miniF2F
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2109.00110
+  venue: https://openreview.net/forum?id=9ZPegFuFTFv
+  openreview: https://openreview.net/forum?id=9ZPegFuFTFv
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Formalized Olympiad, high-school, and undergraduate mathematics statements from AMC, AIME, IMO, and related
+    sources.
+  trace_author: Human formalizations and prover-generated proof scripts evaluated in each target system.
+  answer_format: Formal theorem statement, target proof-assistant language, candidate proof script, and checker verdict.
+  process_fields:
+  - source problem
+  - formal statement
+  - proof assistant
+  - candidate proof
+  - compilation result
+  environment_or_substrate: Metamath, Lean, Isabelle, and HOL Light formal proof environments.
+  verifier_or_reward: Native proof-assistant kernel/checker acceptance.
+  terminal_predicate: The candidate proof type-checks in the pinned proof system.
+recipe_metadata:
+  base_model: GPT-f baseline for neural theorem proving.
+  teacher: Human formalizations and formal-system proof obligations.
+  generator: Neural theorem prover proposes proof steps or scripts.
+  filtering_rule: Kernel acceptance is necessary but versions, imports, and system-specific encodings matter.
+  sampling_protocol: Proof success rate on held-out formal statements.
+  rollout_count: null
+  temperature: null
+  inference_budget: Search and sample budgets must be reported because proof success is strongly budget-sensitive.
+  optimizer_or_scaffold: Cross-system formal-theorem benchmark; later work may use interactive proof checking for RL.
+audit:
+  source_mixture: 488 formal problem statements across Olympiad and course mathematics sources.
+  split: Benchmark is test-oriented; keep system-specific formalizations and versions pinned.
+  decontamination: Public formal statements and proofs can leak into model corpora; source overlap varies by proof system.
+  license: Review repository and original-problem terms before derived-data release.
+  lineage: Cross-system formal mathematics benchmark used to distinguish proof checking from natural-language answer matching.
+  known_failure_modes:
+  - A proof can depend on undocumented imports or library versions.
+  - Formalization choices can change the difficulty of the original problem.
+  - Kernel success does not validate an informal translation's faithfulness.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv and ICLR OpenReview sources confirm the benchmark scope and target proof systems.
+inclusion_reason: 'Canonical formal-proof benchmark showing the strongest outcome contract in this track: a proof assistant
+  accepts or rejects a proof script.'
+related:
+- leandojo-2023
+- tinyv-2025
+tags:
+- iclr-2022
+- theorem-proving
+- lean
+- formal-proof
+- proof-checker
+- primary-link-checked
+status: verified
+one_line: miniF2F is the cross-system formal-math benchmark where proof-assistant acceptance is the outcome verifier.
+needs:
+- 'needs_audit: pin the proof-assistant version, imports, and formalization provenance for every reported proof result'
+one_line_summary: miniF2F makes formal theorem statements and proof-checker outcomes a directly auditable evaluation record.
+why_it_matters: It separates rigorous proof checking from ordinary answer matching while exposing environment-version and
+  formalization risks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, OpenReview, and GitHub links checked.
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier
+  request_sha256: affba9876305e46657a2466c7e5797aef32f5f1ccabeb7604943dc5b9f7efda1
+  primary_category_id: programmatically_verifiable_outcome_data

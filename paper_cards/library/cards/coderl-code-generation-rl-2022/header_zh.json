@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodeRL 用单元测试和 critic 作为代码生成奖励，并在推理时用反馈驱动 critical sampling。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "代码 RL / 程序化 verifier 论文",
+  "best_for_ch": "适合关注 code RLVR、unit-test reward、critic verifier 和 pass@k 预算的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hung Le, Yue Wang, Akhilesh Deepak Gotmare, Silvio Savarese, Steven C. H. Hoi",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-10T15:11:44Z"
+}

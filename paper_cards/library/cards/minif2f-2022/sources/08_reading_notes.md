@@ -1,0 +1,3 @@
+- The environment is part of the label.
+- A proof assistant gives a strong terminal predicate, not a free contamination guarantee.
+- Store source statement, formalization, proof script, and checker version together.

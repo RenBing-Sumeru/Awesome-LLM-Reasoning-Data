@@ -1,0 +1,20 @@
+{
+  "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2509.24210",
+    "arxiv": null,
+    "code": "https://github.com/ctrl-gaurav/BeyondBench",
+    "data": "https://ctrl-gaurav.github.io/BeyondBench/",
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "track_guess": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "reason_to_include": "cccceeee",
+  "decision_reason": "cccceeee",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-10T15:11:36Z"
+}

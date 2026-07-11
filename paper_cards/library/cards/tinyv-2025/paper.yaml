@@ -1,0 +1,104 @@
+id: tinyv-2025
+title: 'TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning'
+year: 2025
+venue: arXiv
+authors:
+- Zhangchen Xu
+- Yuetai Li
+- Fengqing Jiang
+- Bhaskar Ramasubramanian
+- Luyao Niu
+- Bill Yuchen Lin
+- Radha Poovendran
+source_role:
+- verifier_reward
+- audit_failure
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- math
+training_use:
+- rlvr
+- reward_modeling
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.14625
+  arxiv: https://arxiv.org/abs/2505.14625
+  code: https://github.com/uw-nsl/TinyV
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: math RL outputs and verifier-disagreement cases
+  trace_author: policy model plus verifier model
+  answer_format: candidate answer with recovered reward decision
+  process_fields:
+  - original verifier verdict
+  - TinyV verdict
+  - reward correction
+  environment_or_substrate: offline math verifier stack
+  verifier_or_reward: small LLM verifier augmenting rules
+  terminal_predicate: false-negative correction accepted
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: unknown
+  known_failure_modes: []
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and GitHub links verified; false-negative estimates and extra compute cost should be independently
+    checked.
+  metadata_status: partial
+inclusion_reason: Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+related: []
+tags:
+- curated-card
+- primary-link-checked
+status: verified
+one_line: Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+needs:
+- 'needs_metadata: release-internal fields require curator review'
+one_line_summary: Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+why_it_matters: Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-06-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary link pinned in artifacts.
+curation_level: L4_carded
+category_ids:
+- scaling_rlvr_test_time_compute
+batch:
+  id: library-10-scaling-rlvr-ttc
+  request_sha256: 950a7ccbd8adb8337fbc15d01ee4f931668a7575d75f2e90d0fe24352807e9c5
+  primary_category_id: scaling_rlvr_test_time_compute

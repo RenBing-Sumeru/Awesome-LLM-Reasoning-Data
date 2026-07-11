@@ -1,0 +1,126 @@
+id: leandojo-2023
+title: 'LeanDojo: Theorem Proving with Retrieval-Augmented Language Models'
+year: 2023
+venue: NeurIPS 2023 Datasets and Benchmarks
+authors:
+- Kaiyu Yang
+- Aidan M. Swope
+- Alex Gu
+- Rahul Chalamala
+- Peiyang Song
+- Shixing Yu
+- Saad Godil
+- Ryan Prenger
+- Anima Anandkumar
+source_role:
+- data_release
+- benchmark
+- agent_environment
+- verifier_reward
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- formal-mathematics
+- theorem-proving
+- lean
+- premise-retrieval
+training_use:
+- sft
+- agent_training
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2306.15626
+  arxiv: https://arxiv.org/abs/2306.15626
+  code: https://github.com/lean-dojo/LeanDojo
+  data: https://leandojo.org/leandojo
+  project: https://leandojo.org/leandojo
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2306.15626
+  venue: https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Theorems, definitions, and proofs extracted from a pinned mathlib revision.
+  trace_author: Human Lean proof authors; models contribute candidate tactics during interaction.
+  answer_format: Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker verdict.
+  process_fields:
+  - theorem declaration
+  - proof state
+  - tactic
+  - accessible premise set
+  - next state
+  - kernel response
+  environment_or_substrate: Programmatic Lean 3/Lean 4 interaction environment with a pinned mathlib commit.
+  verifier_or_reward: Lean proof-environment response and terminal kernel acceptance.
+  terminal_predicate: All proof goals close under the configured Lean environment.
+recipe_metadata:
+  base_model: ReProver retrieval-augmented tactic generator.
+  teacher: Human-written mathlib proofs and premise-use annotations.
+  generator: The tactic model interacts with Lean and retrieves accessible premises.
+  filtering_rule: Environment transitions reject invalid tactics; novel-premises split controls memorization shortcuts.
+  sampling_protocol: Pass@1 under a wall-time budget plus premise-retrieval metrics.
+  rollout_count: null
+  temperature: null
+  inference_budget: Ten-minute wall time per theorem in the reported theorem-proving evaluation.
+  optimizer_or_scaffold: Open proof-data extraction, retrieval training, and interactive proof-search environment.
+audit:
+  source_mixture: 96962 theorems, 128163 premises, and 212787 extracted tactics from the pinned mathlib revision.
+  split: Random and novel-premises splits; the latter prevents test proofs from relying only on premises used during training.
+  decontamination: Public mathlib proofs may be in pretraining corpora; split policy and repository revision are critical.
+  license: The paper reports an MIT-licensed open release; review upstream mathlib licensing for derivative use.
+  lineage: Reproducible Lean interaction and data extraction bridge proof benchmarks to state-action reasoning data.
+  known_failure_modes:
+  - Mismatched Lean, mathlib, or import versions change checker behavior.
+  - Proof-environment wrappers can misjudge valid proofs.
+  - Retrieval can mask memorization unless premise-aware splits are used.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS and arXiv sources document data extraction, the pinned mathlib revision, novel-premises split, and
+    environment reliability.
+inclusion_reason: High-quality formal-proof data and environment paper that records state-action proof traces, premise constraints,
+  and kernel-checked terminal outcomes.
+related:
+- minif2f-2022
+- agnostics-universal-learning-environment-2026
+tags:
+- neurips-2023
+- theorem-proving
+- lean
+- proof-environment
+- premise-retrieval
+- primary-link-checked
+status: verified
+one_line: LeanDojo turns a pinned Lean environment into replayable theorem, proof-state, tactic, and kernel-verdict data.
+needs:
+- 'needs_audit: preserve the exact Lean, mathlib, import, timeout, and environment-wrapper versions'
+one_line_summary: LeanDojo is the key proof-data card for programmatic interaction, premise-aware splits, and kernel-checked
+  proof outcomes.
+why_it_matters: 'It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful only
+  under the exact formal environment that checked it.'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS, arXiv, project, and GitHub links checked.
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier
+  request_sha256: affba9876305e46657a2466c7e5797aef32f5f1ccabeb7604943dc5b9f7efda1
+  primary_category_id: programmatically_verifiable_outcome_data

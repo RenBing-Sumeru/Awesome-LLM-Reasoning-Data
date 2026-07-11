@@ -1,0 +1,1 @@
+APPS addresses rigorous code-generation evaluation: a natural-language task is not solved by plausible-looking code, but by code that executes correctly on tests. It exposes the practical verifier contract behind many code-RL and code-agent data pipelines.

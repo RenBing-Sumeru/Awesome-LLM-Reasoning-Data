@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Agnostics 把代码任务改写成通用 I/O 验证环境，让不同编程语言都能用同一类程序化奖励做 RLVR。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代码 RLVR / 通用程序验证环境论文",
+  "best_for_ch": "适合关注代码强化学习、低资源编程语言、执行型 verifier 和可复用训练环境的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Aleksander Boruch-Gruszecki, Yangtian Zi, Zixuan Wu, Tejas Oberoi, Carolyn Jane Anderson, Joydeep Biswas, Arjun Guha",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-10T15:11:44Z"
+}

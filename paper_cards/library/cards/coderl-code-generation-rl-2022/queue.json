@@ -1,0 +1,20 @@
+{
+  "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2207.01780",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "track_guess": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "reason_to_include": "abc",
+  "decision_reason": "abc",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-10T15:11:44Z"
+}

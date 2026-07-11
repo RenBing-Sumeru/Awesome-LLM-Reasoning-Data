@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from tools.paper_cards import card_tool
+from tools.paper_cards import library
 from tools.paper_cards import migrate
 
 
@@ -112,6 +113,26 @@ paper_categories:
         self.assertEqual(queue["track_guess"], ["scaling_rlvr_test_time_compute"])
         self.assertEqual(entry["prompt_batch_id"], "ttc-scan")
         self.assertTrue(migrate.batch_path("ttc-scan", self.root).exists())
+
+    def test_initialize_library_preserves_one_entry_and_its_local_records(self) -> None:
+        migrate.apply_prompt_batch(
+            "ttc-scan",
+            "scaling_rlvr_test_time_compute",
+            ["sample-paper"],
+            request_text="Find test-time compute papers.",
+            root=self.root,
+        )
+
+        result = migrate.initialize_library(root=self.root)
+        card = library.load_card("sample-paper", self.root)
+
+        self.assertEqual(result["entry_ids"], ["sample-paper"])
+        self.assertEqual(card["paper"]["artifacts"]["paper"], "https://arxiv.org/abs/2501.00001")
+        self.assertEqual(card["paper"]["category_ids"], ["scaling_rlvr_test_time_compute"])
+        self.assertEqual(card["paper"]["batch"]["id"], "ttc-scan")
+        self.assertEqual(card["header_zh"]["one_line_summary_ch"], "中文总结。")
+        self.assertEqual(card["queue"]["search_status"], "candidate")
+        self.assertEqual(card["review"]["state"], "reviewed")
 
     def test_prompt_batch_generates_a_batch_id_when_codex_only_supplies_the_prompt_decision(self) -> None:
         batch = migrate.apply_prompt_batch(

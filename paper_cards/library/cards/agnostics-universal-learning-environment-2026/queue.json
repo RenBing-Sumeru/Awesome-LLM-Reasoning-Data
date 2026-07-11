@@ -1,0 +1,20 @@
+{
+  "title": "Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2508.04865",
+    "arxiv": "https://arxiv.org/abs/2508.04865",
+    "code": "https://github.com/nuprl/Ag-LiveCodeBench-X",
+    "data": "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
+    "project": "https://agnostics.abgru.me/",
+    "huggingface": "https://huggingface.co/nuprl/agnostics",
+    "doi": "https://doi.org/10.48550/arXiv.2508.04865"
+  },
+  "track_guess": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "reason_to_include": "",
+  "decision_reason": "",
+  "search_status": "",
+  "review_note": "",
+  "updated_at": "2026-07-10T15:11:44Z"
+}

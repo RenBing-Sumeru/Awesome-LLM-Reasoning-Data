@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GeoGramBench 评测模型能否理解程序化绘图代码中的几何空间信息，并回答抽象几何问题。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "几何程序推理 benchmark / symbolic-to-spatial 评测论文",
+  "best_for_ch": "适合关注几何推理、程序表示、空间理解和 benchmark 设计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shixian Luo, Zezhou Zhu, Yu Yuan, Yuncheng Yang, Lianlei Shan, Yong Wu",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-10T15:11:36Z"
+}

@@ -1,0 +1,126 @@
+id: featurebench-2026
+title: 'FeatureBench: Benchmarking Agentic Coding for Complex Feature Development'
+year: 2026
+venue: ICLR 2026
+authors:
+- Qixing Zhou
+- Jiacheng Zhang
+- Haiyang Wang
+- Rui Hao
+- Jiahe Wang
+- Minghao Han
+- Yuxue Yang
+- Shuzhe Wu
+- Feiyang Pan
+- Lue Fan
+- Dandan Tu
+- Zhaoxiang Zhang
+source_role:
+- benchmark
+- data_release
+- agent_environment
+- construction_recipe
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- code
+- software-engineering
+- agents
+- unit-tests
+training_use:
+- evaluation
+- agent_training
+- audit
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.10975
+  arxiv: https://arxiv.org/abs/2602.10975
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2602.10975
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Feature-level software development tasks automatically derived from open-source repositories and unit-test
+    traces.
+  trace_author: Coding agents produce feature implementations across repository contexts.
+  answer_format: Repository task, code context, generated changes, executable environment, and test result.
+  process_fields:
+  - repository snapshot
+  - feature task
+  - dependency trace
+  - unit tests
+  - execution verdict
+  environment_or_substrate: Executable coding environments derived from 24 open-source repositories.
+  verifier_or_reward: Execution-based evaluation protocol using unit tests and repository behavior checks.
+  terminal_predicate: Agent implementation passes the derived executable evaluation for the feature task.
+recipe_metadata:
+  base_model: Agentic coding models evaluated by the authors.
+  teacher: Repository history and unit tests provide task construction signals.
+  generator: Automated task collection toolkit traces from tests along dependency graphs.
+  filtering_rule: Keep tasks whose separated feature target and surrounding behavior can be validated by executable environments.
+  sampling_protocol: Benchmark evaluation over 200 challenging tasks and 3825 executable environments.
+  rollout_count: null
+  temperature: null
+  inference_budget: Agent scaffold and execution budget should be checked in the paper.
+  optimizer_or_scaffold: Execution-based agentic coding evaluation harness.
+audit:
+  source_mixture: Open-source repositories, commits, pull requests, and unit-test-derived feature tasks.
+  split: Repository/task split and future update policy need human review.
+  decontamination: Automated task derivation helps refresh coverage but public repositories can still leak into training.
+  license: Check each repository and benchmark artifact license before reuse.
+  lineage: FeatureBench executable feature-development benchmark lineage.
+  known_failure_modes:
+  - Unit tests may underspecify the intended feature.
+  - Repository tasks may be contaminated through public code.
+  - Feature extraction can break hidden dependencies.
+  citation_status: verified
+  confidence: high
+  notes: arXiv record lists ICLR 2026 acceptance; code/data release status needs review.
+inclusion_reason: ICLR 2026 benchmark that makes agentic feature development programmatically measurable through executable
+  repository environments.
+related:
+- swe-bench-can-language-models-resolve-real-world-github-issues-2023
+- swe-lancer-can-frontier-llms-earn-one-million-from-real-world-freelance-software-engineering-2025
+tags:
+- iclr-2026
+- track-03
+- agentic-coding
+- executable-benchmark
+- unit-tests
+status: verified
+one_line: FeatureBench evaluates end-to-end feature development by deriving executable coding tasks and environments from
+  repository unit tests.
+card: null
+needs:
+- 'needs_review: human curator should judge whether it enters the formal Track 03 pool'
+one_line_summary: FeatureBench evaluates end-to-end feature development by deriving executable coding tasks and environments
+  from repository unit tests.
+why_it_matters: It moves coding-agent evaluation from isolated bug fixing toward feature-level repository work with programmatic
+  execution checks and refreshable task construction.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv link and ICLR 2026 acceptance note checked; artifact links still need human review.
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier
+  request_sha256: affba9876305e46657a2466c7e5797aef32f5f1ccabeb7604943dc5b9f7efda1
+  primary_category_id: programmatically_verifiable_outcome_data

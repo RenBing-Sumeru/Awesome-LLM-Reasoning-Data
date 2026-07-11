@@ -1,0 +1,20 @@
+{
+  "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.17653",
+    "arxiv": null,
+    "code": "https://github.com/LiAuto-DSR/GeoGramBench",
+    "data": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "track_guess": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "reason_to_include": "他定义了一类几何的新的概念，可作为参考",
+  "decision_reason": "他定义了一类几何的新的概念，可作为参考",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-10T15:11:36Z"
+}

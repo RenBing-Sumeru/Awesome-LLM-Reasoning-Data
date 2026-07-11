@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Self-Consistency 把多次 CoT 采样和答案投票变成最基础的 test-time compute baseline。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "CoT repeated sampling / test-time compute 论文",
+  "best_for_ch": "适合关注 pass@k、采样预算、best-of-N 和 CoT 评测基线的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-10T15:11:44Z"
+}

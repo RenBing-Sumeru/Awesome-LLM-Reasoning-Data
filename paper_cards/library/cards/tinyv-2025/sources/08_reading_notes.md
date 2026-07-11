@@ -1,0 +1,4 @@
+- Verifier errors are training-data errors when rewards come from verifier decisions.
+- Reducing false negatives can change which rollouts become useful RL signal.
+- A learned verifier can repair brittleness, but it also creates a new audit surface.
+- Always ask whether reported RL gains come from better reasoning or better verifier matching.

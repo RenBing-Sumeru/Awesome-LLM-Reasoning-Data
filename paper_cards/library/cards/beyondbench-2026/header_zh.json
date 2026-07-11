@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BeyondBench 用算法生成新题并进行确定性验证，降低静态 benchmark 被训练数据污染的风险。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "抗污染推理评测 / 程序化验证 benchmark",
+  "best_for_ch": "适合关注 benchmark contamination、算法题生成、数学验证和评测可靠性的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Gaurav Srivastava, Aafiya Hussain, Zhenyu Bi, Swastik Roy, Priya Pitre, Meng Lu, Morteza Ziyadi, Xuan Wang",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-10T15:11:36Z"
+}

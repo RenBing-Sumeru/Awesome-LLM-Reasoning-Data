@@ -13,8 +13,10 @@ from typing import Any
 
 try:
     from . import card_tool
+    from . import library
 except ImportError:  # direct script execution
     import card_tool
+    import library
 
 
 FORMAT = "paper-card-local-records"
@@ -83,6 +85,65 @@ def request_digest(request_text: str) -> str:
 
 def generated_batch_id(request_text: str) -> str:
     return f"batch-{request_digest(request_text)[:10]}-{uuid.uuid4().hex[:8]}"
+
+
+def initialize_library(root: Path | str | None = None) -> dict:
+    """Convert the current shared-record layout into Card-local directories."""
+    project = root_path(root)
+    target = library.library_root(project)
+    cards = library.cards_root(project)
+    if cards.exists() and any(cards.iterdir()):
+        raise ValueError("Card library already contains records")
+    target.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(project / "data" / "categories.yaml", target / "categories.yaml")
+    cards.mkdir(exist_ok=True)
+
+    entries = card_tool.load_entries(project)
+    headers = card_tool.load_header_zh(project)["entries"]
+    institutions = card_tool.load_institutions(project)["entries"]
+    queue = card_tool.load_search_queue(project)["entries"]
+    status = card_tool.load_status(project)["entries"]
+    batches = {
+        path.stem: json_payload(path.read_bytes(), path.name)
+        for path in sorted(batches_root(project).glob("*.json"))
+    }
+    written = []
+    for entry_id, entry in sorted(entries.items()):
+        directory = library.card_dir(entry_id, project)
+        directory.mkdir(parents=True)
+        paper = dict(entry)
+        paper["category_ids"] = list(paper.pop("category", []) or [])
+        batch_id = paper.pop("prompt_batch_id", None)
+        if batch_id:
+            batch = batches.get(str(batch_id))
+            if batch is None:
+                raise ValueError(f"missing prompt batch for {entry_id}: {batch_id}")
+            paper["batch"] = {
+                "id": str(batch_id),
+                "request_sha256": batch.get("request_sha256"),
+                "primary_category_id": batch.get("category_id"),
+            }
+        library.clean_category_ids(paper["category_ids"], project)
+        if card_tool.yaml is None:
+            raise RuntimeError("PyYAML is required to write the Card library")
+        (directory / "paper.yaml").write_text(
+            card_tool.yaml.safe_dump(paper, allow_unicode=True, sort_keys=False, width=120),
+            encoding="utf-8",
+        )
+        for name, records, default in [
+            ("header_zh", headers, {}),
+            ("institutions", institutions, {"institutions": [], "has_more": False, "no_institution": False}),
+            ("queue", queue, {}),
+            ("review", status, {"state": "new"}),
+        ]:
+            library.save_card_record(entry_id, name, dict(records.get(entry_id) or default), project)
+        source = card_tool.card_source_dir(entry_id, project)
+        if not source.exists():
+            raise ValueError(f"missing Card sources for {entry_id}")
+        shutil.copytree(source, directory / "sources")
+        library.load_card(entry_id, project)
+        written.append(entry_id)
+    return {"entry_ids": written}
 
 
 def apply_prompt_batch(

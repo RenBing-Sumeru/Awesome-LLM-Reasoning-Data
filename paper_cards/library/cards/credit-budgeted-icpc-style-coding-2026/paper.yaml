@@ -1,0 +1,118 @@
+id: credit-budgeted-icpc-style-coding-2026
+title: 'Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision'
+year: 2026
+venue: ICLR 2026
+authors:
+- Lingfeng Zhou
+- Junhao Shi
+- Jin Gao
+- Dequan Wang
+source_role:
+- benchmark
+- agent_environment
+- scaling_study
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- code
+- agents
+- icpc
+- resource-bounded-evaluation
+training_use:
+- evaluation
+- agent_training
+- test_time_compute
+- audit
+construction_layer:
+- search_substrate
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.10182
+  arxiv: https://arxiv.org/abs/2604.10182
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2604.10182
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: ICPC-style coding problems evaluated inside a credit-budgeted arena.
+  trace_author: Single agents or swarms choose generations, local tests, and time usage under a budget.
+  answer_format: Coding problem, generated solution, local-test decisions, token/time/test spending, and accepted/rejected
+    outcome.
+  process_fields:
+  - token budget
+  - test budget
+  - elapsed time
+  - local test actions
+  - final submission
+  environment_or_substrate: USACOArena interactive ACM-ICPC-style coding arena.
+  verifier_or_reward: Programmatic coding judge plus explicit credit economy over tokens, tests, and time.
+  terminal_predicate: Agent solves the coding problem while staying within the credit budget.
+recipe_metadata:
+  base_model: Frontier single agents and swarms profiled by the authors.
+  teacher: ICPC-style problem set and judge outcomes.
+  generator: Agents generate code and decide when to test or submit.
+  filtering_rule: Arena records performance under fixed credit budgets.
+  sampling_protocol: Cost-aware profiling across agents and swarm settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: 'Budget is explicit: generated tokens, local tests, and elapsed time spend credits.'
+  optimizer_or_scaffold: Credit-budgeted interactive coding arena.
+audit:
+  source_mixture: ICPC-style coding tasks and arena interaction logs.
+  split: Problem set and budget split should be reviewed in artifacts.
+  decontamination: Competitive programming problems may appear online; contamination controls need review.
+  license: Check arXiv and any released arena/problem assets before reuse.
+  lineage: USACOArena credit-budgeted coding-agent evaluation lineage.
+  known_failure_modes:
+  - Budget settings can dominate model ranking.
+  - Local tests can be gamed or overused.
+  - Public programming problems can be contaminated.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv record lists ICLR 2026 acceptance; artifact release status needs review.
+inclusion_reason: ICLR 2026 paper that adds explicit resource constraints to programmatically verified coding-agent evaluation.
+related:
+- livecodebench-holistic-and-contamination-free-evaluation-of-large-language-models-for-code-2024
+- swe-bench-can-language-models-resolve-real-world-github-issues-2023
+tags:
+- iclr-2026
+- track-03
+- coding-agents
+- budgeted-evaluation
+- icpc
+status: verified
+one_line: Credit-Budgeted ICPC-Style Coding evaluates coding agents with a programmatic judge and an explicit credit cost
+  for tokens, tests, and time.
+card: null
+needs:
+- 'needs_review: human curator should judge whether it enters the formal Track 03 pool'
+one_line_summary: Credit-Budgeted ICPC-Style Coding evaluates coding agents with a programmatic judge and an explicit credit
+  cost for tokens, tests, and time.
+why_it_matters: It expands Track 03 from pure correctness to correctness under resource budgets, which is closer to real agent
+  deployment and test-time compute accounting.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-10'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv link and ICLR 2026 acceptance note checked; artifact links still need review.
+category_ids:
+- scaling_rlvr_test_time_compute
+batch:
+  id: library-10-scaling-rlvr-ttc
+  request_sha256: 950a7ccbd8adb8337fbc15d01ee4f931668a7575d75f2e90d0fe24352807e9c5
+  primary_category_id: scaling_rlvr_test_time_compute
