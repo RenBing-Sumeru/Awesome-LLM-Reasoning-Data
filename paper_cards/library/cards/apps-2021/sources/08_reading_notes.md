@@ -1,3 +1,0 @@
-- A program is only the candidate answer; tests and the runtime are part of the label.
-- Test leakage turns evaluation data into a reward-hacking target.
-- Record failures, not just accepted programs, when releasing rollouts.

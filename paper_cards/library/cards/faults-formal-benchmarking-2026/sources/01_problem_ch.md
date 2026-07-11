@@ -1,0 +1,1 @@
+这篇 ICML 2026 论文问的是：机器检查过的 Lean benchmark 到底证明了什么。主来源为 https://arxiv.org/abs/2606.29493，checker 发布在 https://github.com/Shashi456/atp-checkers。相关数据面是“形式化定理加审计输出”：静态检查结果、可认证见证、缺陷类型和可能的修正版。它作为 verifier 鲁棒性研究属于 Programmatically Verifiable Outcome Data，因为它直接检验终局谓词是否可靠。明确边界是：Lean 内核通过只证明编码后的 formal statement，不能证明其忠实表达原题，也不能证明 harness 不可被投机。

@@ -1,1 +1,0 @@
-- Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach. ES-FoMo III Spotlight, 2025. https://openreview.net/forum?id=D6o6Bwtq7h

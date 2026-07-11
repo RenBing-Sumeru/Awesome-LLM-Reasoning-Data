@@ -1,1 +1,0 @@
-The benchmark unifies formal problem statements across Metamath, Lean, Isabelle, and HOL Light. The proof checker supplies a high-precision terminal predicate, while formalization provenance remains an independent audit surface.

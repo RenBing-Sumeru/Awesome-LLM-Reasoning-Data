@@ -1,1 +1,0 @@
-Remember the distinction between the domain task and its verifier: here the decisive outcome is AppWorld goal tests plus deterministic compilation, exception, and partial-test feedback. Read the reported impact together with Terminal-only GRPO-style rewards reveal little about where an interactive coding trajectory failed and provide no deterministic intermediate feedback.

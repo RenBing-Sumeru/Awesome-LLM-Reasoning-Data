@@ -1,1 +1,0 @@
-Use FormalProofBench: Can Models Write Graduate Level Math Proofs That Are Formally Verified? to compare verifier contracts, data lineage, and executable terminal predicates against other cards in this category. It is most useful when the evaluation harness at https://arxiv.org/abs/2603.26996 is available alongside the paper.

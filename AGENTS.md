@@ -3,7 +3,7 @@
 ## Paper Card Library
 
 - `paper_cards/library/` is the canonical paper store. Each paper owns one directory at `paper_cards/library/cards/<entry_id>/` with `paper.yaml`, local JSON records, and `sources/`.
-- `paper.yaml` owns paper metadata and `category_ids`. `header_zh.json`, `queue.json`, and the Review UI mirror the selected categories; do not create a second metadata index.
+- `paper.yaml` owns paper metadata and `category_ids`. `header_zh.json`, `queue.json`, and the Review UI mirror the selected categories; do not create a second metadata index. `queue.json.manual_annotation` is the only human Review record; collection context must not prefill or satisfy it.
 - Categories come only from `paper_cards/library/categories.yaml`. A new Card starts with one category; a maintainer may manually add or remove categories, leaving zero to two distinct controlled IDs. There is no separate per-paper track field.
 - Keep every card-specific field inside its Card directory. `review.json` stores workflow state. Validation reports are derived when requested and are not saved as a shared cache.
 - `tmp/paper_cards/review-index.json` is an ignored, derived Review startup cache only. It is rebuilt automatically when missing or stale and is never canonical paper data.
@@ -16,7 +16,7 @@
 - When adding a paper, create `paper_cards/library/cards/<entry_id>/paper.yaml`, initialize its 9 English and 9 Chinese source sections, and complete the local header, institution, queue, and review records.
 - After papers requested for local inclusion reach L4, run `python3 tools/paper_cards/card_tool.py check` and `python3 scripts/validate_data.py`, fix request-related failures, then start or reuse `PORT=8770 python3 tools/paper_cards/server.py` and return `http://127.0.0.1:8770/`.
 - A Card may keep optional collection provenance under `paper.yaml.batch`. Its `primary_category_id` is only provenance; it is not a Track and does not prevent a second category.
-- `tools/paper_cards/migrate.py library-normalize` synchronizes local category mirrors and removes deprecated field names. `library-init`, `library-verify`, and `library-cutover --yes` are one-time import commands for an older checkout, not daily maintenance commands.
+- `tools/paper_cards/migrate.py library-normalize` synchronizes Card-local category mirrors. There is no shared-layout importer or compatibility fallback in V2.
 
 ## Updating to V2
 

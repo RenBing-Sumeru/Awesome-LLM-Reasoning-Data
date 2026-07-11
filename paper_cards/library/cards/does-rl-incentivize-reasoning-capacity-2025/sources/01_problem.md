@@ -1,4 +1,0 @@
-- Primary source: https://arxiv.org/abs/2504.13837
-- Venue/date: arXiv, 2025
-- Concrete problem: How to improve reliable reasoning under RLVR budgets.
-- Why it matters: It supplies a current benchmark or training signal for the atlas.

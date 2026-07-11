@@ -1,3 +1,0 @@
-一句话贡献：Hilbert 用非形式化推理规划递归的 Lean 证明与修复，但是否接受仍完全由证明器决定。 反馈契约明确为：Lean 4 proof-assistant acceptance and feedback during recursive proof repair。对本分类而言，一条记录包含 形式化 Lean 目标、非形式化推理提示、递归生成的子证明、编译反馈和最终内核判定；最接近的比较基线是：直接一次性形式化忽略了非形式化规划信号，也会在失败后丢掉编译器反馈。
-
-来源与审计记录：Hilbert: Recursively Building Formal Proofs with Informal Reasoning — https://arxiv.org/abs/2509.22819。会议/日期：ICLR 2026；首次公开日期：2025-09-26。确定性 verifier 契约：Lean 4 proof-assistant acceptance and feedback during recursive proof repair。数据对象/评测面：形式化 Lean 目标、非形式化推理提示、递归生成的子证明、编译反馈和最终内核判定。实际流程：系统先给出非形式化分解，再生成 Lean 子证明并编译；失败反馈进入递归修复，只有 Lean 4 接受才终止。 质量/影响力信号：ICLR 2026 conference paper from Apple/UC San Diego; public-model PutnamBench best reported result。复用/审计注意：应区分非形式化提示、递归深度、模型和搜索预算的贡献，并固定 Lean 版本、检查 PutnamBench 切分重叠。

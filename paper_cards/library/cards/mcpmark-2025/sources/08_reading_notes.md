@@ -1,1 +1,0 @@
-Remember the distinction between the domain task and its verifier: here the decisive outcome is Task-specific programmatic scripts check final state across MCP tool environments. Read the reported impact together with Static function-calling or single-turn tool benchmarks do not measure whether a multi-step MCP trajectory leaves the required state behind.

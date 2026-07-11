@@ -1,1 +1,0 @@
-A deterministic checker only proves conformance to its encoded contract. Inspect feedback collection, environment pinning, test completeness, paper/repository licenses, and the distinction between human guidance and ground-truth verification. The benchmark may therefore miss semantic quality outside that contract.

@@ -1,3 +1,0 @@
-- Use it to study proof-checker rewards rather than answer extraction.
-- Pin the theorem prover version and imports in each result.
-- Compare generated proofs across systems only with aligned budgets and formalizations.

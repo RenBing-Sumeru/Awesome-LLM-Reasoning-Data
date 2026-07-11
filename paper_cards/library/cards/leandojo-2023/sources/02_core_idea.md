@@ -1,1 +1,0 @@
-LeanDojo serializes theorem, proof state, tactic, accessible-premise context, and environment response. Its ReProver model uses premise retrieval, but the broader contribution is the replayable formal environment that turns tactic validity and completed proofs into programmatic feedback.

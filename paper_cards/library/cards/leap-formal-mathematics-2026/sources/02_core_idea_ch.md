@@ -1,3 +1,3 @@
-一句话贡献：LEAP 将一次性证明生成改为 agent 搜索并组合已形式化验证的子证明 DAG。 反馈契约明确为：Lean compiler checks every generated proof and proof-DAG composition。对本分类而言，一条记录包含 Lean 形式化数学题、agent 生成的子目标、proof-DAG 节点、已编译证明与 benchmark 结果；最接近的比较基线是：单次生成证明或线性 tactic 搜索较难复用彼此独立验证过的子证明。
+LEAP 的核心贡献是把形式化过程变成 verifier 引导的 agent loop，而不是一次性生成完整证明。它先尝试直接形式化；失败时生成非形式化蓝图和形式化 proof sketch，把目标分解为 AND-OR 图，并依据编译器反馈反复修改候选 Lean 代码。
 
-来源与审计记录：LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks — https://arxiv.org/abs/2606.03303。会议/日期：arXiv；首次公开日期：2026-06-02。确定性 verifier 契约：Lean compiler checks every generated proof and proof-DAG composition。数据对象/评测面：Lean 形式化数学题、agent 生成的子目标、proof-DAG 节点、已编译证明与 benchmark 结果。实际流程：agent 把 Lean 定理拆为子目标，搜索候选子证明并由 Lean 编译器验证，再把通过的节点组合为最终 proof DAG。 质量/影响力信号：Google research technical report; introduces Lean-IMO-Bench and reports all 12 2025 Putnam problems solved。复用/审计注意：要审计 agent 搜索预算、命题翻译、Lean-IMO-Bench 的切分和许可证，以及 Putnam 报告结果的具体协议。
+它的数据面是一串证明状态与可执行结果。Lean 是反馈契约：通过的子目标可回写进证明图复用，被拒绝的候选则带有机器产生的诊断。应对比一次性 Lean 生成、专用 theorem prover、MiniF2F/Putnam 类形式化 benchmark 与其他 agentic prover。方向标签是“蓝图引导、确定性验收的形式化证明搜索”。

@@ -38,7 +38,7 @@
   <rect x="44" y="38" width="1192" height="7" rx="3.5" fill="url(#accent)"/>
   <text class="title" x="76" y="92">Awesome LLM Reasoning Data</text>
   <text class="subtitle" x="78" y="126">A field guide to the data objects, feedback contracts, and audit fields behind reasoning-model post-training.</text>
-  <rect x="78" y="148" width="144" height="30" rx="15" fill="#ecfdf5" stroke="#10a37f" stroke-width="1.4"/><text class="chip" x="150.0" y="168" text-anchor="middle">17 entries</text>
+  <rect x="78" y="148" width="132" height="30" rx="15" fill="#ecfdf5" stroke="#10a37f" stroke-width="1.4"/><text class="chip" x="144.0" y="168" text-anchor="middle">3 entries</text>
   <rect x="188" y="148" width="132" height="30" rx="15" fill="#eff6ff" stroke="#2b8fff" stroke-width="1.4"/><text class="chip" x="254.0" y="168" text-anchor="middle">0 partial</text>
   <rect x="300" y="148" width="172" height="30" rx="15" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.4"/><text class="chip" x="386.0" y="168" text-anchor="middle">0 metadata queue</text>
   <rect x="82" y="205" width="194" height="92" rx="16" fill="#eaf3ff" stroke="#2b8fff" stroke-width="1.8"/>
@@ -80,7 +80,7 @@
   <rect x="662" y="398" width="42" height="26" rx="13" fill="#10a37f" opacity="0.95"/>
   <text class="chip-dark" x="683" y="416" text-anchor="middle">01</text>
   <text class="h-dark" x="720" y="416">Starter Pack</text>
-  <text class="small" x="890" y="416">20 papers to enter the field</text>
+  <text class="small" x="890" y="416">3 current papers</text>
   <rect x="662" y="436" width="42" height="26" rx="13" fill="#2b8fff" opacity="0.95"/>
   <text class="chip-dark" x="683" y="454" text-anchor="middle">02</text>
   <text class="h-dark" x="720" y="454">Paper Map</text>

@@ -1,3 +1,3 @@
-既有工作基线：单次生成证明或线性 tactic 搜索较难复用彼此独立验证过的子证明。 新变化是：LEAP 将一次性证明生成改为 agent 搜索并组合已形式化验证的子证明 DAG。 它是当前方向信号，因为 verifier 是数据对象的中心，不是附带的评测指标。并不新的是底层领域任务；复用时仍要检查：要审计 agent 搜索预算、命题翻译、Lean-IMO-Bench 的切分和许可证，以及 Putnam 报告结果的具体协议。
+既有系统常依赖一次性生成、专用 prover 或较浅的证明搜索。LEAP 把人类式蓝图、formal sketch、显式 AND-OR 依赖结构、迭代 Lean 反馈与困难的新 benchmark 结合起来。它的 2026 方向信号是：长程 agent trace 可以由精确的终止谓词落地，而非由 judge-model 偏好打分。
 
-来源与审计记录：LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks — https://arxiv.org/abs/2606.03303。会议/日期：arXiv；首次公开日期：2026-06-02。确定性 verifier 契约：Lean compiler checks every generated proof and proof-DAG composition。数据对象/评测面：Lean 形式化数学题、agent 生成的子目标、proof-DAG 节点、已编译证明与 benchmark 结果。实际流程：agent 把 Lean 定理拆为子目标，搜索候选子证明并由 Lean 编译器验证，再把通过的节点组合为最终 proof DAG。 质量/影响力信号：Google research technical report; introduces Lean-IMO-Bench and reports all 12 2025 Putnam problems solved。复用/审计注意：要审计 agent 搜索预算、命题翻译、Lean-IMO-Bench 的切分和许可证，以及 Putnam 报告结果的具体协议。
+Google DeepMind 作者和官方 benchmark/代码发布是质量信号。形式化 checker 本身并不新，Lean 反馈也不能自动解决定理陈述是否正确、benchmark 污染或搜索成本。复用前应检查被编码的 statement、工具链版本、检索上下文和逐题计算量。

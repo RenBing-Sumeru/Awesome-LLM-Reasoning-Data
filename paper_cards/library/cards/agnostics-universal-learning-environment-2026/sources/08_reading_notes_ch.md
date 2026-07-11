@@ -1,4 +1,0 @@
-- 03 方向匹配点：代码执行和 I/O 行为就是核心 verifier。
-- 相信训练收益前，先复核公开 verifier 协议。
-- 区分低资源语言能力提升和 benchmark 改写带来的效果。
-- 检查 rejected / failed executions 是否可审计。

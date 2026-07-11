@@ -1,3 +1,0 @@
-RECODE-H: A Benchmark for Research Code Development with Interactive Human Feedback 关注如何用“论文与仓库中的科研代码任务、代码上下文、交互式人工反馈轮次、实现修改和仓库单元测试判定”构成严格的 outcome data，而不是让模型主观评价另一个模型。它的收录边界是程序可验证结果：结论来自 checker 判定，不是看似可信的自然语言回答。
-
-来源与审计记录：RECODE-H: A Benchmark for Research Code Development with Interactive Human Feedback — https://openreview.net/forum?id=IKnuyyPHCV。会议/日期：ICLR 2026；首次公开日期：2025-09-05。确定性 verifier 契约：Repository unit tests decide executable research-code task completion。数据对象/评测面：论文与仓库中的科研代码任务、代码上下文、交互式人工反馈轮次、实现修改和仓库单元测试判定。实际流程：agent 读取论文或仓库任务，在迭代反馈中修改项目，最后由发布的单元测试环境判定实现是否完成任务。 质量/影响力信号：ICLR 2026 conference benchmark: 102 paper/repository tasks with executable unit tests and interactive-feedback protocol。复用/审计注意：应检查反馈如何收集、环境是否固定、测试是否完整、论文和仓库许可证，以及人工指导与真值验证的边界。

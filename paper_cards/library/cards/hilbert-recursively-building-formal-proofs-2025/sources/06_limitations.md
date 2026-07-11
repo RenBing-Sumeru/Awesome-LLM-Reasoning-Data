@@ -1,1 +1,0 @@
-A deterministic checker only proves conformance to its encoded contract. Separate gains from informal hints, recursion depth, model choice, and search budget; pin Lean versions and inspect PutnamBench split overlap. The benchmark may therefore miss semantic quality outside that contract.

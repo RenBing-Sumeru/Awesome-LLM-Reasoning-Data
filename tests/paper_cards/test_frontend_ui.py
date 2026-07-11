@@ -33,7 +33,7 @@ class PaperCardFrontendUiTest(unittest.TestCase):
             self.assertNotIn("renderDetail()", block, function_name)
         self.assertIn("syncSavedCard", app)
 
-    def test_reviewed_cards_lock_update_saves_without_download_state_ui(self) -> None:
+    def test_reviewed_cards_lock_update_saves_without_legacy_state_ui(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
@@ -43,11 +43,44 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertNotIn("downloadedCount", html)
         self.assertNotIn("downloadedCount", app)
         self.assertNotIn('"downloaded"', app)
+        self.assertNotIn("下载状态已重置为未下载", app)
 
     def test_paper_pool_defaults_to_l4_review(self) -> None:
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
         self.assertIn('<option value="needs_annotation" selected>L4 中文 Review</option>', html)
+
+    def test_header_keeps_only_the_workspace_brand_above_paper_pool(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn('class="brand"', html)
+        self.assertNotIn('class="navlinks"', html)
+        self.assertNotIn('class="hero"', html)
+        self.assertNotIn('class="stats"', html)
+        self.assertNotIn('id="totalCount"', html)
+        self.assertNotIn('totalCount:', app)
+        self.assertNotIn('sourceCount:', app)
+        self.assertNotIn('invalidCount:', app)
+
+    def test_initial_list_renders_from_the_server_injected_tmp_snapshot(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
+        init = app[app.index("async function init() {"):]
+
+        self.assertIn('id="reviewBootstrap"', html)
+        self.assertIn('id="workspace" class="workspace" hidden', html)
+        self.assertNotIn("正在加载", html)
+        self.assertIn("function readReviewBootstrap()", app)
+        self.assertIn("const bootstrap = readReviewBootstrap();", init)
+        self.assertIn("state.entries = bootstrap.entries || [];", init)
+        self.assertIn("state.searchQueue = bootstrap.queue || {};", init)
+        self.assertIn('state.activeEntryId = bootstrap.active_entry_id || "";', init)
+        self.assertIn("state.activeCard = bootstrap.active_card || null;", init)
+        self.assertIn("function markActiveListEntry", app)
+        self.assertIn("renderList();", init)
+        self.assertIn("renderDetail();", init)
+        self.assertIn("els.workspace.hidden = false;", init)
 
     def test_complete_button_only_enables_for_l5_manual_annotation(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
@@ -106,7 +139,7 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn("reviewed_at", app)
         self.assertIn("rightTime.localeCompare(leftTime)", app)
 
-    def test_l6_locks_everything_except_no_removed_download_controls(self) -> None:
+    def test_l6_locks_everything_and_exposes_no_legacy_controls(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
 
         self.assertIn("function isL6Locked", app)
@@ -117,18 +150,61 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn("els.queueReason.disabled = locked || invalid", app)
         self.assertIn("els.chineseSection.disabled = locked", app)
 
-    def test_review_has_one_all_cards_download_and_no_selection_controls(self) -> None:
+    def test_review_shows_the_canonical_library_location_without_download_controls(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
-        self.assertIn('id="batchDownload"', html)
-        self.assertIn(">一键下载全部 Card</button>", html)
-        self.assertIn("function downloadAllCards", app)
-        self.assertIn("state.entries.map((entry) => entry.id)", app)
+        self.assertIn('id="libraryLocation"', html)
+        self.assertIn(">显示可迁移 Card 目录</button>", html)
+        self.assertIn("function showLibraryLocation", app)
+        self.assertIn('api("/api/library-location")', app)
+        self.assertIn("payload.library_directory", app)
+        self.assertNotIn("payload.copy_directory", app)
+        self.assertNotIn("downloadAllCards", app)
+        self.assertNotIn("window.location.href", app)
         self.assertNotIn("state.selected", app)
         self.assertNotIn("data-select-entry", app)
         self.assertNotIn("downloadUndownloaded", app)
         self.assertNotIn("downloadSelected", app)
+
+    def test_review_manual_annotation_and_balanced_workspace(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
+        css = (ROOT / "tools" / "paper_cards" / "style.css").read_text(encoding="utf-8")
+        queue_form = app[app.index("function renderQueueForm()"):app.index("function renderReviewCheckResult")]
+
+        self.assertIn("const manual = record.manual_annotation || {};", queue_form)
+        self.assertIn('manual.search_status || ""', queue_form)
+        self.assertIn('manual.decision_reason || ""', queue_form)
+        self.assertNotIn("record.reason_to_include", queue_form)
+        self.assertIn("manual_annotation: {", app)
+        self.assertIn('<option value="">待选择</option>', html)
+        self.assertLess(
+            html.index('class="section-pane english-reference"'),
+            html.index('class="section-pane chinese-maintenance"'),
+        )
+        self.assertIn("align-items: start", css)
+        self.assertIn(".paper-list-panel {\n  min-height: 0;", css)
+        self.assertIn("max-height: 72vh;", css)
+
+    def test_workspace_uses_page_scroll_with_bounded_long_fields(self) -> None:
+        css = (ROOT / "tools" / "paper_cards" / "style.css").read_text(encoding="utf-8")
+
+        self.assertNotIn("height: calc(100vh - 160px);", css)
+        self.assertIn(".workspace {\n  display: grid;\n  grid-template-columns: 390px minmax(0, 1fr);\n  gap: 16px;\n  align-items: start;", css)
+        self.assertNotIn(".mode-shell {\n  flex: 1;", css)
+        self.assertIn("grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);", css)
+        fields = css[css.index(".section-readonly,"):css.index(".header-zh-panel,")]
+        self.assertIn("height: 420px;", fields)
+        self.assertIn("resize: none;", fields)
+        self.assertNotIn("min-height: 340px", fields)
+
+    def test_review_preview_keeps_all_content_in_a_bounded_field(self) -> None:
+        css = (ROOT / "tools" / "paper_cards" / "style.css").read_text(encoding="utf-8")
+
+        self.assertIn(".markdown-preview {\n  min-height: 420px;", css)
+        self.assertIn("max-height: 64vh;", css)
+        self.assertNotIn("height: 280px", css)
 
     def test_review_switches_merged_preview_language_and_keeps_header_compact(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")

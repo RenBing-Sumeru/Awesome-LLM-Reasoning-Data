@@ -1,4 +1,0 @@
-- Primary source: https://arxiv.org/abs/2501.19393
-- Venue/date: arXiv, 2025
-- Concrete problem: How to improve reliable reasoning under test-time scaling budgets.
-- Why it matters: It supplies a current benchmark or training signal for the atlas.

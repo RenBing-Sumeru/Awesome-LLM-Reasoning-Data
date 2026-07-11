@@ -1,3 +1,0 @@
-- One-sentence contribution: Reasoning-as-Logic-Units: Scaling Test-Time Reasoning in Large Language Models Through Logic Unit Alignment studies test-time scaling for reliable reasoning models.
-- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
-- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

@@ -1,3 +1,0 @@
-一句话贡献：它在真实形式化开发的验证条件上、并跨三种证明器评测神经定理证明。 反馈契约明确为：Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions。对本分类而言，一条记录包含 真实软件验证条件、各证明器的上下文、模型生成证明，以及 Isabelle、Lean 或 Rocq 的接受结果；最接近的比较基线是：合成或单一证明器题集看不到验证条件任务中的语言差异和上下文依赖。
-
-来源与审计记录：Neural Theorem Proving for Verification Conditions: A Real-World Benchmark — https://arxiv.org/abs/2601.18944。会议/日期：ICLR 2026；首次公开日期：2026-01-26。确定性 verifier 契约：Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions。数据对象/评测面：真实软件验证条件、各证明器的上下文、模型生成证明，以及 Isabelle、Lean 或 Rocq 的接受结果。实际流程：benchmark 提供验证条件和目标语言上下文，模型综合证明，Isabelle、Lean 或 Rocq 决定是否接受。 质量/影响力信号：ICLR 2026 conference paper; first real-world multi-language VC-proving benchmark。复用/审计注意：复现时要核对证明器版本、import 库、条件抽取来源，以及跨证明器的搜索预算是否等价。

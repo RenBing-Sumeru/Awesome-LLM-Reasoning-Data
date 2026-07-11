@@ -1,0 +1,1 @@
+Read the quality definition together with the verification-oracle section. For a reusable dataset, never retain only the polished invariant: store source query, original invariant, edit lineage, verifier version/verdict, and timeout policy. Separate correctness from any end-to-end speed claim.

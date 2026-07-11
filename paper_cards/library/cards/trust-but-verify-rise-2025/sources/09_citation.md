@@ -1,1 +1,0 @@
-- Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards. arXiv, 2025. https://arxiv.org/abs/2505.13445

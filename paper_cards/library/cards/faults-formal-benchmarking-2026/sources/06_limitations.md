@@ -1,0 +1,1 @@
+A static checker cannot prove that every formal statement preserves its informal meaning. Semantic audit prompts and human review must remain visibly distinct from certified findings. Results can change with Lean, Mathlib, benchmark forks, or patched harnesses. The card should not be read as claiming that all benchmark instances are invalid.

@@ -2,94 +2,25 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 81
-- markdown links checked: 1428
-- external markdown links discovered: 218
-- unique external URLs discovered: 89
+- artifact URLs discovered: 12
+- markdown links checked: 1243
+- external markdown links discovered: 81
+- unique external URLs discovered: 45
 - live URLs checked: 0
 - failures: 0
 
 ## Artifact URLs
-- `agnostics-universal-learning-environment-2026` paper: https://arxiv.org/abs/2508.04865
-- `agnostics-universal-learning-environment-2026` arxiv: https://arxiv.org/abs/2508.04865
-- `agnostics-universal-learning-environment-2026` code: https://github.com/nuprl/Ag-LiveCodeBench-X
-- `agnostics-universal-learning-environment-2026` data: https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X
-- `agnostics-universal-learning-environment-2026` project: https://agnostics.abgru.me/
-- `agnostics-universal-learning-environment-2026` huggingface: https://huggingface.co/nuprl/agnostics
-- `agnostics-universal-learning-environment-2026` doi: https://doi.org/10.48550/arXiv.2508.04865
-- `apps-2021` paper: https://arxiv.org/abs/2105.09938
-- `apps-2021` arxiv: https://arxiv.org/abs/2105.09938
-- `apps-2021` code: https://github.com/hendrycks/apps
-- `apps-2021` data: https://github.com/hendrycks/apps
-- `apps-2021` project: https://github.com/hendrycks/apps
-- `apps-2021` huggingface: https://huggingface.co/datasets/codeparrot/apps
-- `apps-2021` doi: https://doi.org/10.48550/arXiv.2105.09938
-- `apps-2021` venue: https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html
-- `beyondbench-2026` paper: https://arxiv.org/abs/2509.24210
-- `beyondbench-2026` arxiv: https://arxiv.org/abs/2509.24210
-- `beyondbench-2026` code: https://github.com/ctrl-gaurav/BeyondBench
-- `beyondbench-2026` project: https://ctrl-gaurav.github.io/BeyondBench/
-- `beyondbench-2026` doi: https://doi.org/10.48550/arXiv.2509.24210
-- `coderl-code-generation-rl-2022` paper: https://arxiv.org/abs/2207.01780
-- `coderl-code-generation-rl-2022` arxiv: https://arxiv.org/abs/2207.01780
-- `coderl-code-generation-rl-2022` doi: https://doi.org/10.48550/arXiv.2207.01780
-- `credit-budgeted-icpc-style-coding-2026` paper: https://arxiv.org/abs/2604.10182
-- `credit-budgeted-icpc-style-coding-2026` arxiv: https://arxiv.org/abs/2604.10182
-- `credit-budgeted-icpc-style-coding-2026` doi: https://doi.org/10.48550/arXiv.2604.10182
-- `deepseekmath-2024` paper: https://arxiv.org/abs/2402.03300
-- `deepseekmath-2024` arxiv: https://arxiv.org/abs/2402.03300
-- `deepseekmath-2024` huggingface: https://huggingface.co/deepseek-ai/deepseek-math-7b-base
-- `deepseekmath-2024` doi: https://doi.org/10.48550/arXiv.2402.03300
-- `featurebench-2026` paper: https://arxiv.org/abs/2602.10975
-- `featurebench-2026` arxiv: https://arxiv.org/abs/2602.10975
-- `featurebench-2026` doi: https://doi.org/10.48550/arXiv.2602.10975
-- `geogrambench-2026` paper: https://arxiv.org/abs/2505.17653
-- `geogrambench-2026` arxiv: https://arxiv.org/abs/2505.17653
-- `geogrambench-2026` code: https://github.com/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` data: https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` project: https://github.com/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` huggingface: https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` doi: https://doi.org/10.48550/arXiv.2505.17653
-- `leandojo-2023` paper: https://arxiv.org/abs/2306.15626
-- `leandojo-2023` arxiv: https://arxiv.org/abs/2306.15626
-- `leandojo-2023` code: https://github.com/lean-dojo/LeanDojo
-- `leandojo-2023` data: https://leandojo.org/leandojo
-- `leandojo-2023` project: https://leandojo.org/leandojo
-- `leandojo-2023` doi: https://doi.org/10.48550/arXiv.2306.15626
-- `leandojo-2023` venue: https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html
-- `lets-verify-step-by-step-2023` paper: https://arxiv.org/abs/2305.20050
-- `lets-verify-step-by-step-2023` arxiv: https://arxiv.org/abs/2305.20050
-- `lets-verify-step-by-step-2023` doi: https://doi.org/10.48550/arXiv.2305.20050
-- `math-dataset-2021` paper: https://arxiv.org/abs/2103.03874
-- `math-dataset-2021` arxiv: https://arxiv.org/abs/2103.03874
-- `math-dataset-2021` code: https://github.com/hendrycks/math
-- `math-dataset-2021` data: https://github.com/hendrycks/math
-- `math-dataset-2021` project: https://github.com/hendrycks/math
-- `math-dataset-2021` doi: https://doi.org/10.48550/arXiv.2103.03874
-- `math-dataset-2021` venue: https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html
-- `minif2f-2022` paper: https://arxiv.org/abs/2109.00110
-- `minif2f-2022` arxiv: https://arxiv.org/abs/2109.00110
-- `minif2f-2022` code: https://github.com/openai/miniF2F
-- `minif2f-2022` data: https://github.com/openai/miniF2F
-- `minif2f-2022` project: https://github.com/openai/miniF2F
-- `minif2f-2022` doi: https://doi.org/10.48550/arXiv.2109.00110
-- `minif2f-2022` venue: https://openreview.net/forum?id=9ZPegFuFTFv
-- `minif2f-2022` openreview: https://openreview.net/forum?id=9ZPegFuFTFv
-- `rest-em-self-training-2024` paper: https://arxiv.org/abs/2312.06585
-- `rest-em-self-training-2024` arxiv: https://arxiv.org/abs/2312.06585
-- `rest-em-self-training-2024` doi: https://doi.org/10.48550/arXiv.2312.06585
-- `scaling-llm-test-time-compute-optimally-2024` paper: https://arxiv.org/abs/2408.03314
-- `scaling-llm-test-time-compute-optimally-2024` arxiv: https://arxiv.org/abs/2408.03314
-- `scaling-llm-test-time-compute-optimally-2024` doi: https://doi.org/10.48550/arXiv.2408.03314
-- `self-consistency-chain-of-thought-2023` paper: https://arxiv.org/abs/2203.11171
-- `self-consistency-chain-of-thought-2023` arxiv: https://arxiv.org/abs/2203.11171
-- `self-consistency-chain-of-thought-2023` doi: https://doi.org/10.48550/arXiv.2203.11171
-- `tinyv-2025` paper: https://arxiv.org/abs/2505.14625
-- `tinyv-2025` arxiv: https://arxiv.org/abs/2505.14625
-- `tinyv-2025` code: https://github.com/uw-nsl/TinyV
-- `tree-of-thoughts-2023` paper: https://arxiv.org/abs/2305.10601
-- `tree-of-thoughts-2023` arxiv: https://arxiv.org/abs/2305.10601
-- `tree-of-thoughts-2023` code: https://github.com/princeton-nlp/tree-of-thought-llm
-- `tree-of-thoughts-2023` doi: https://doi.org/10.48550/arXiv.2305.10601
+- `faults-formal-benchmarking-2026` paper: https://arxiv.org/abs/2606.29493
+- `faults-formal-benchmarking-2026` arxiv: https://arxiv.org/abs/2606.29493
+- `faults-formal-benchmarking-2026` code: https://github.com/Shashi456/atp-checkers
+- `leap-formal-mathematics-2026` paper: https://arxiv.org/abs/2606.03303
+- `leap-formal-mathematics-2026` arxiv: https://arxiv.org/abs/2606.03303
+- `leap-formal-mathematics-2026` code: https://github.com/google-deepmind/superhuman/tree/main/leap
+- `leap-formal-mathematics-2026` data: https://imobench.github.io/
+- `leap-formal-mathematics-2026` project: https://imobench.github.io/
+- `wonda-invariant-curation-2026` paper: https://arxiv.org/abs/2603.15510
+- `wonda-invariant-curation-2026` arxiv: https://arxiv.org/abs/2603.15510
+- `wonda-invariant-curation-2026` code: https://github.com/idopinto/wonda
+- `wonda-invariant-curation-2026` openreview: https://openreview.net/forum?id=fS28SOioQd
 
 Network probing skipped because `--soft` was used.

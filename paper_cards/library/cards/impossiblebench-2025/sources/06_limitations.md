@@ -1,1 +1,0 @@
-A deterministic checker only proves conformance to its encoded contract. Audit the proof that each task is impossible, sandbox behavior, checker implementation, and false positives caused by ambiguous specifications rather than exploitation. The benchmark may therefore miss semantic quality outside that contract.

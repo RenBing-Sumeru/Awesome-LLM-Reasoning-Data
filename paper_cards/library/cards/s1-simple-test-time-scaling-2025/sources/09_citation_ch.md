@@ -1,1 +1,0 @@
-- s1: Simple test-time scaling. arXiv, 2025. https://arxiv.org/abs/2501.19393

@@ -162,14 +162,11 @@ def paper_card_source_complete(path: str | Path, root: Path = ROOT) -> bool:
 
 def paper_card_inventory(root: Path = ROOT) -> dict[str, str]:
     sources = root / "paper_cards" / "library" / "cards"
-    library_layout = sources.exists()
-    if not library_layout:
-        sources = root / "paper_cards" / "sources"
     if not sources.exists():
         return {}
     cards: dict[str, str] = {}
     for path in sorted(sources.iterdir()):
-        source_dir = path / "sources" if library_layout else path
+        source_dir = path / "sources"
         if path.is_dir() and paper_card_source_complete(source_dir, root):
             cards[path.name] = source_dir.relative_to(root).as_posix()
     return cards

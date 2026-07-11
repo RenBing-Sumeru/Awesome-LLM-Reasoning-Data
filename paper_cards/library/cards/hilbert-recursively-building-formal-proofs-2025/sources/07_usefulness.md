@@ -1,1 +1,0 @@
-Use Hilbert: Recursively Building Formal Proofs with Informal Reasoning to compare verifier contracts, data lineage, and executable terminal predicates against other cards in this category. It is most useful when the evaluation harness at https://arxiv.org/abs/2509.22819 is available alongside the paper.

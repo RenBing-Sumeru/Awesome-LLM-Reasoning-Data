@@ -1,1 +1,0 @@
-Use Group Verification-based Policy Optimization for Interactive Coding Agents to compare verifier contracts, data lineage, and executable terminal predicates against other cards in this category. It is most useful when the evaluation harness at https://openreview.net/forum?id=RY47Tq0VsV is available alongside the paper.

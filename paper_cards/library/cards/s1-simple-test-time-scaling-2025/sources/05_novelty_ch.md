@@ -1,4 +1,0 @@
-- 既有工作基线: Standard CoT, outcome reward, or fixed-budget inference.
-- 新变化: A current test-time scaling mechanism or analysis.
-- 顶会质量信号: arXiv.
-- What to inspect before reuse: Verifier assumptions, contamination, and budget accounting.

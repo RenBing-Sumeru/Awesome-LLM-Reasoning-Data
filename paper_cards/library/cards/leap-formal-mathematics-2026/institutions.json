@@ -1,8 +1,10 @@
 {
   "institutions": [
-    "Google Research"
+    "Google Cloud AI Research",
+    "Google Cloud",
+    "Google DeepMind"
   ],
   "has_more": false,
   "no_institution": false,
-  "updated_at": "2026-07-11T00:00:00Z"
+  "updated_at": "2026-07-11T19:16:09Z"
 }

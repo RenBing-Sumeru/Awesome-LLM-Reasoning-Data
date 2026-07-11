@@ -1,4 +1,0 @@
-- Primary source: https://arxiv.org/abs/2305.20050
-- Venue/date: ICLR 2024, 2023
-- Concrete problem: How to improve reliable reasoning under RLVR budgets.
-- Why it matters: It supplies a current benchmark or training signal for the atlas.

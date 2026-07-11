@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "数据量大管饱，提供了一种更完善的验证策略",
+    "updated_at": "2026-07-11T19:41:52Z"
+  },
+  "updated_at": "2026-07-11T19:41:52Z"
+}

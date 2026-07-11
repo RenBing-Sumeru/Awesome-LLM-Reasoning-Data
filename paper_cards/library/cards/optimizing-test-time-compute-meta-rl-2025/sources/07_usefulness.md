@@ -1,1 +1,0 @@
-- Use this card to compare reward contracts, compute allocation, and reasoning-data objects.

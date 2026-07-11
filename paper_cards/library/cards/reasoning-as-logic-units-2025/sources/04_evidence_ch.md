@@ -1,2 +1,0 @@
-- 证据: Reported experiments cover multiple reasoning benchmarks and compute budgets.
-- Artifact: 官方来源 linked above; code/data availability must be checked before reuse.

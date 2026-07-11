@@ -1,4 +1,0 @@
-- Primary source: https://openreview.net/forum?id=D6o6Bwtq7h
-- Venue/date: ES-FoMo III Spotlight, 2025
-- Concrete problem: How to improve reliable reasoning under test-time scaling budgets.
-- Why it matters: It supplies a current benchmark or training signal for the atlas.

@@ -1,4 +1,0 @@
-- Primary source: https://openreview.net/forum?id=mMgSxbO4H0
-- Venue/date: ICML 2025, 2025
-- Concrete problem: How to improve reliable reasoning under test-time scaling budgets.
-- Why it matters: It supplies a current benchmark or training signal for the atlas.

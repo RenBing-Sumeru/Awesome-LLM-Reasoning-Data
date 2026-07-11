@@ -11,23 +11,7 @@
     <header class="site-header">
       <nav class="topbar" aria-label="Paper card navigation">
         <a class="brand" href="./">Paper Card Workspace</a>
-        <div class="navlinks">
-          <a href="../../docs/index.html">Atlas</a>
-          <a href="../../docs/paper_card_sop.md">SOP</a>
-          <a href="../../paper_cards/library/">Card 库</a>
-        </div>
       </nav>
-      <section class="hero">
-        <div>
-          <p class="eyebrow">双语 Paper Card 工作台</p>
-          <h1>Update 写回中文源文件，Review 查看合并版并下载全部 Card。</h1>
-        </div>
-        <div class="stats">
-          <div><strong id="totalCount">0</strong><span>论文条目</span></div>
-          <div><strong id="sourceCount">0</strong><span>需要标注</span></div>
-          <div><strong id="invalidCount">0</strong><span>不合法</span></div>
-        </div>
-      </section>
     </header>
 
     <main>
@@ -44,16 +28,16 @@
         <label class="wide">搜索
           <input id="query" type="search" placeholder="标题、entry_id、分类、verifier、benchmark">
         </label>
-        <div id="downloadControls" class="bulk-controls" aria-label="All card download">
-          <button id="batchDownload" type="button">一键下载全部 Card</button>
+        <div id="libraryLocationControl" class="bulk-controls" aria-label="Card library migration">
+          <button id="libraryLocation" type="button">显示可迁移 Card 目录</button>
         </div>
       </section>
 
-      <section class="workspace">
+      <section id="workspace" class="workspace" hidden>
         <aside class="paper-list-panel">
           <div class="panel-head">
             <h2>论文列表</h2>
-            <p id="resultSummary">正在加载...</p>
+            <p id="resultSummary" aria-live="polite"></p>
           </div>
           <section id="paperList" class="paper-list" aria-live="polite"></section>
         </aside>
@@ -126,14 +110,14 @@
 
             <div id="sectionTabs" class="section-tabs" aria-label="Card sections"></div>
             <div class="section-editor">
-              <div class="section-pane">
+              <div class="section-pane english-reference">
                 <div class="pane-head">
                   <h3>英文参考</h3>
                   <span>只读</span>
                 </div>
                 <pre id="englishSection" class="section-readonly"></pre>
               </div>
-              <div class="section-pane">
+              <div class="section-pane chinese-maintenance">
                 <div class="pane-head">
                   <h3>中文维护</h3>
                   <span>写入 _ch.md</span>
@@ -171,6 +155,7 @@
               <div class="queue-grid">
                 <label>判决状态
                   <select id="queueStatus">
+                    <option value="">待选择</option>
                     <option value="promoted">纳入正式池</option>
                     <option value="candidate">纳入候选池</option>
                     <option value="rejected">不纳入</option>
@@ -194,6 +179,7 @@
       </section>
     </main>
   </div>
+  <script id="reviewBootstrap" type="application/json"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>

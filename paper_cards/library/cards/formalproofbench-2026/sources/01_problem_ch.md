@@ -1,3 +1,0 @@
-FormalProofBench: Can Models Write Graduate Level Math Proofs That Are Formally Verified? 关注如何用“研究生层次数学命题、Lean 4 定理上下文、模型提交的 proof term 与内核判定”构成严格的 outcome data，而不是让模型主观评价另一个模型。它的收录边界是程序可验证结果：结论来自 checker 判定，不是看似可信的自然语言回答。
-
-来源与审计记录：FormalProofBench: Can Models Write Graduate Level Math Proofs That Are Formally Verified? — https://arxiv.org/abs/2603.26996。会议/日期：ICLR 2026 VerifAI-2 Workshop / arXiv；首次公开日期：2026-03-27。确定性 verifier 契约：Lean 4 kernel acceptance of a submitted proof。数据对象/评测面：研究生层次数学命题、Lean 4 定理上下文、模型提交的 proof term 与内核判定。实际流程：模型读取形式化定理及其 import 上下文，生成 Lean 证明；评测记录 Lean 4 编译成功或失败。 质量/影响力信号：ICLR 2026 VerifAI-2 paper; graduate-level Lean benchmark from Vals AI and EPFL authors。复用/审计注意：复用前要固定 Lean/mathlib 版本、定理 import、切分来源和题目许可证；内核通过并不自动解决数据来源问题。

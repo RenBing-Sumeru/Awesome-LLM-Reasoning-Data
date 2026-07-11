@@ -19,7 +19,7 @@ Follow one week at a time. Each week has a reading set and a small artifact to p
 
 ### Week 1: Learn the map
 - Read docs 00-04.
-- Classify 20 papers.
+- Classify the three current starter papers.
 - Explain three verification contracts.
 
 ### Week 2: Learn verifiers and rewards

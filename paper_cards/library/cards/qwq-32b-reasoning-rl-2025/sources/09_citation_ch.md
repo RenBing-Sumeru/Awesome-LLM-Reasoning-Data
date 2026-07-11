@@ -1,1 +1,0 @@
-- QwQ-32B: Embracing the Power of Reinforcement Learning. arXiv, 2025. https://arxiv.org/abs/2407.10759

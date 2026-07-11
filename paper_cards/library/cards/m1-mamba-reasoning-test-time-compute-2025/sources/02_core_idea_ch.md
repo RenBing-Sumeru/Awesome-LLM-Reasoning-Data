@@ -1,3 +1,0 @@
-- One-sentence contribution: M1: Towards Scalable Test-Time Compute with Mamba Reasoning Models studies test-time scaling for reliable reasoning models.
-- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
-- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

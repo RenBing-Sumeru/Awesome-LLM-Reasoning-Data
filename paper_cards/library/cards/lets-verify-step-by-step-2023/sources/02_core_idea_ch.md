@@ -1,3 +1,0 @@
-- One-sentence contribution: Let's Verify Step by Step studies RLVR for reliable reasoning models.
-- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
-- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

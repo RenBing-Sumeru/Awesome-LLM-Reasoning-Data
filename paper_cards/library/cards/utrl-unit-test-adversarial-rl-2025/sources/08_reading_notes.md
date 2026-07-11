@@ -1,1 +1,0 @@
-Remember the distinction between the domain task and its verifier: here the decisive outcome is Executable unit-test pass/fail and discrimination rewards. Read the reported impact together with Prompted test generation, mutation testing, or tests rewarded only for syntactic validity do not directly optimize discrimination through execution.

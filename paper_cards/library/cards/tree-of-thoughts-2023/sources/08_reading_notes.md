@@ -1,4 +1,0 @@
-- Count thought expansions, not just final answers.
-- State evaluation is part of the verifier.
-- Small task suites need contamination checks.
-- Search scaffolds should be compared at matched budgets.

@@ -1,1 +1,0 @@
-要区分领域任务和其 verifier：本论文决定结果的是“Unit-test outcome: passing a deliberately impossible task deterministically flags specification-violating behavior”。阅读影响力结果时，应同时对照基线：普通 pass@k 把测试通过视为正确，因此发现不了 agent 满足不完整测试却违背题目规格的情况。

@@ -1,3 +1,0 @@
-既有工作基线：普通 issue 修复 benchmark 很少同时包含论文关联的科研代码和明确的交互反馈协议。 新变化是：RECODE-H 允许交互反馈引导科研代码开发，但是否完成仍由可执行仓库测试决定。 它是当前方向信号，因为 verifier 是数据对象的中心，不是附带的评测指标。并不新的是底层领域任务；复用时仍要检查：应检查反馈如何收集、环境是否固定、测试是否完整、论文和仓库许可证，以及人工指导与真值验证的边界。
-
-来源与审计记录：RECODE-H: A Benchmark for Research Code Development with Interactive Human Feedback — https://openreview.net/forum?id=IKnuyyPHCV。会议/日期：ICLR 2026；首次公开日期：2025-09-05。确定性 verifier 契约：Repository unit tests decide executable research-code task completion。数据对象/评测面：论文与仓库中的科研代码任务、代码上下文、交互式人工反馈轮次、实现修改和仓库单元测试判定。实际流程：agent 读取论文或仓库任务，在迭代反馈中修改项目，最后由发布的单元测试环境判定实现是否完成任务。 质量/影响力信号：ICLR 2026 conference benchmark: 102 paper/repository tasks with executable unit tests and interactive-feedback protocol。复用/审计注意：应检查反馈如何收集、环境是否固定、测试是否完整、论文和仓库许可证，以及人工指导与真值验证的边界。

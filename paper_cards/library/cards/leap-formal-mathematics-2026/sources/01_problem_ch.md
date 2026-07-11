@@ -1,3 +1,3 @@
-LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks 关注如何用“Lean 形式化数学题、agent 生成的子目标、proof-DAG 节点、已编译证明与 benchmark 结果”构成严格的 outcome data，而不是让模型主观评价另一个模型。它的收录边界是程序可验证结果：结论来自 checker 判定，不是看似可信的自然语言回答。
+LEAP 研究的是：通用大模型如何生成长的形式化数学证明，并让正确性由机器检查，而不是由“看起来合理”的自然语言论证决定。主来源是 https://arxiv.org/abs/2606.03303，首次公开日期为 2026-06-02；官方项目页为 https://imobench.github.io/。
 
-来源与审计记录：LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks — https://arxiv.org/abs/2606.03303。会议/日期：arXiv；首次公开日期：2026-06-02。确定性 verifier 契约：Lean compiler checks every generated proof and proof-DAG composition。数据对象/评测面：Lean 形式化数学题、agent 生成的子目标、proof-DAG 节点、已编译证明与 benchmark 结果。实际流程：agent 把 Lean 定理拆为子目标，搜索候选子证明并由 Lean 编译器验证，再把通过的节点组合为最终 proof DAG。 质量/影响力信号：Google research technical report; introduces Lean-IMO-Bench and reports all 12 2025 Putnam problems solved。复用/审计注意：要审计 agent 搜索预算、命题翻译、Lean-IMO-Bench 的切分和许可证，以及 Putnam 报告结果的具体协议。
+它属于 Programmatically Verifiable Outcome Data，因为每个结果都是 Lean 证明产物加上编译器/内核的通过或拒绝。它不是自然语言数学 benchmark，也不是主观的证明质量评价。评测对象包括 IMO 风格的形式化定理、agent 蓝图、证明修改、编译器反馈和最终证明状态。官方论文、项目页和 Google DeepMind 代码发布共同给出了任务与可执行终止契约，因此可直接纳入 L4。

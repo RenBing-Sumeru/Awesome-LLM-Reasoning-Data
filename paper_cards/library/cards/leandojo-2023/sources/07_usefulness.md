@@ -1,3 +1,0 @@
-- Use it as the reference record schema for formal proof trajectories.
-- Preserve environment versions and invalid-tactic responses for replay.
-- Use premise-aware splits when judging generalization rather than library memorization.

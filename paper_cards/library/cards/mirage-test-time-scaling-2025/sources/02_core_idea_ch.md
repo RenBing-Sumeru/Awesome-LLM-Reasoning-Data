@@ -1,3 +1,0 @@
-- One-sentence contribution: Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models studies test-time scaling for reliable reasoning models.
-- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
-- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

@@ -1,3 +1,0 @@
-MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use 关注如何用“自然语言 MCP 任务、多服务器工具状态、agent 动作轨迹、最终资源状态和任务专用 checker 输出”构成严格的 outcome data，而不是让模型主观评价另一个模型。它的收录边界是程序可验证结果：结论来自 checker 判定，不是看似可信的自然语言回答。
-
-来源与审计记录：MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use — https://arxiv.org/abs/2509.24002。会议/日期：ICLR 2026；首次公开日期：2025-09-28。确定性 verifier 契约：Task-specific programmatic scripts check final state across MCP tool environments。数据对象/评测面：自然语言 MCP 任务、多服务器工具状态、agent 动作轨迹、最终资源状态和任务专用 checker 输出。实际流程：agent 在配置的多个 MCP server 上调用工具；轨迹结束后，任务专用程序检查最终状态并返回成功或失败。 质量/影响力信号：ICLR 2026 conference benchmark with 127 stateful MCP tasks and released execution tooling。复用/审计注意：复用时要复现 server 镜像、状态重置、凭据、任务 seed 与 checker 脚本；状态 checker 仍可能低规格化用户意图。

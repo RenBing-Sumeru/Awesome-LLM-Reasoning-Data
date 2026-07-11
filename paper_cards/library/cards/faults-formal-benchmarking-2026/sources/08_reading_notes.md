@@ -1,0 +1,1 @@
+Read the trust-boundary figure before treating the counts as a leaderboard statement. Keep three labels separate in downstream data: kernel-accepted proof, mechanically certified benchmark issue, and semantically suspected issue. Re-run checker artifacts under the stated environment before importing corrected examples.

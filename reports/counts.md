@@ -1,79 +1,48 @@
 # Counts Report
 
-total entries: 17
-complete bilingual paper-card sources: 17
+total entries: 3
+complete bilingual paper-card sources: 3
 missing primary paper/arXiv/DOI links: 0
 needs search / partial metadata: 0
 
 ## status
-- verified: 17
+- verified: 3
 
 ## category
-- scaling_rlvr_test_time_compute: 10
-- programmatically_verifiable_outcome_data: 7
+- programmatically_verifiable_outcome_data: 3
 
 ## source_role
-- construction_recipe: 10
-- data_release: 9
-- benchmark: 8
-- scaling_study: 8
-- verifier_reward: 8
-- agent_environment: 4
-- audit_failure: 2
-- process_supervision: 1
+- benchmark: 2
+- data_release: 2
+- infrastructure: 2
+- audit_failure: 1
+- construction_recipe: 1
+- verifier_reward: 1
 
 ## verification_contract
-- programmatic: 13
-- environmental: 6
-- judgment_required: 6
-- mixed: 6
+- programmatic: 2
+- mixed: 1
 
 ## training_use
-- evaluation: 17
-- audit: 10
-- rlvr: 8
-- test_time_compute: 7
-- sft: 5
-- reward_modeling: 4
-- agent_training: 3
-- process_supervision: 1
+- audit: 3
+- evaluation: 3
+- agent_training: 1
+- sft: 1
+- test_time_compute: 1
 
 ## construction_layer
-- release_audit: 10
-- reward_verifier_layer: 10
-- search_substrate: 6
-- optimizer_scaffold: 5
-- scaling_report: 5
-- prompt_sourcing: 4
-- trace_writing: 2
-- self_play_anchor: 1
+- release_audit: 3
+- reward_verifier_layer: 3
+- search_substrate: 1
+- trace_writing: 1
 
 ## year
-- 2026: 5
-- 2023: 4
-- 2024: 3
-- 2021: 2
-- 2022: 2
-- 2025: 1
+- 2026: 3
 
 ## paper-card sources
-- agnostics-universal-learning-environment-2026: 1
-- apps-2021: 1
-- beyondbench-2026: 1
-- coderl-code-generation-rl-2022: 1
-- credit-budgeted-icpc-style-coding-2026: 1
-- deepseekmath-2024: 1
-- featurebench-2026: 1
-- geogrambench-2026: 1
-- leandojo-2023: 1
-- lets-verify-step-by-step-2023: 1
-- math-dataset-2021: 1
-- minif2f-2022: 1
-- rest-em-self-training-2024: 1
-- scaling-llm-test-time-compute-optimally-2024: 1
-- self-consistency-chain-of-thought-2023: 1
-- tinyv-2025: 1
-- tree-of-thoughts-2023: 1
+- faults-formal-benchmarking-2026: 1
+- leap-formal-mathematics-2026: 1
+- wonda-invariant-curation-2026: 1
 
 ## missing primary links (first 80)
 

@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from tools.paper_cards import library
 from tools.paper_cards import card_tool
@@ -130,6 +131,15 @@ category_ids:
         )
 
         self.assertEqual(library.load_card("sample-paper", self.root)["paper"]["category_ids"], [])
+
+    def test_card_record_write_uses_atomic_replace(self) -> None:
+        with patch.object(library.os, "replace", wraps=library.os.replace) as replace:
+            library.save_card_record("sample-paper", "queue", {"search_status": "promoted"}, self.root)
+
+        self.assertTrue(replace.called)
+        self.assertEqual(
+            library.load_card("sample-paper", self.root)["queue"], {"search_status": "promoted"}
+        )
 
 if __name__ == "__main__":
     unittest.main()

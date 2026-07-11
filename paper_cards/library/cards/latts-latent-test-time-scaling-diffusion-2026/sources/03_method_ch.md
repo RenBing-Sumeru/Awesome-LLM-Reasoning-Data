@@ -1,4 +1,0 @@
-- Inputs: Reasoning prompts and model rollouts.
-- Pipeline: Generate, allocate/verify compute, then select or train from verified outcomes.
-- Outputs: Answer, trace, and compute-aware score.
-- Reproducibility notes: Use the official split, budget, and verifier described by the authors.

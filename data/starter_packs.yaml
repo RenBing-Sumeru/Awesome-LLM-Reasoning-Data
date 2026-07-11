@@ -1,53 +1,9 @@
 starter_packs:
-- id: beginner_20
-  emoji: 🌱
-  title: 'Beginner 20: Reasoning Data Orientation'
-  goal: Build the vocabulary for post-training reasoning data before diving into recipes.
-  entries: []
-- id: builder_30
-  emoji: 🏗️
-  title: 'Builder 30: Data Construction and Release Practice'
-  goal: Learn how open reasoning-data recipes source prompts, write traces, filter,
-    audit, and report artifacts.
-  entries: []
-- id: verifier_reward_25
-  emoji: 🧪
-  title: Verifier and Reward 25
-  goal: Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure
-    diagnostics.
-  entries: []
-- id: agent_data_25
-  emoji: 🌐
-  title: Agent Data 25
-  goal: Understand trajectories, tool calls, browser/app/OS tasks, and SWE environments.
-  entries: []
-- id: scaling_20
-  emoji: 📈
-  title: Scaling 20
-  goal: Read scaling claims across RL compute, data size, distillation, and test-time
-    inference budget.
-  entries: []
-- id: representative_track_03
+- id: programmatic_verification_2026
   emoji: 🧮
-  title: 'Representative 30: Programmatic Verification'
-  goal: Cover the strongest math, code, proof, scientific-program-search, and real-task
-    verifier surfaces.
-  entries: []
-- id: representative_track_10
-  emoji: 🔁
-  title: 'Representative 30: RLVR and Test-Time Compute'
-  goal: Compare verifier rewards, repeated sampling, tree search, process rewards,
-    RL scaling, and failure audits.
+  title: 'Programmatic Verification 3: 2026 Collection'
+  goal: Start from three recent, top-institution papers on Lean proof agents, formal-benchmark audit, and verifier-preserving invariant-data curation.
   entries:
-  - TinyV
-- id: audit_failure_20
-  emoji: 🧯
-  title: Audit and Failure 20
-  goal: Build the habit of checking leakage, contamination, reward hacking, and judge
-    robustness.
-  entries: []
-- id: industry_onboarding_40
-  emoji: 🏭
-  title: Industry Onboarding 40
-  goal: A practical path for becoming useful on an LLM post-training data team.
-  entries: []
+  - 'LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks'
+  - 'Faults in Our Formal Benchmarking: Dataset Defects and Evaluation Failures in Lean Theorem Proving'
+  - 'Not All Invariants Are Equal: Curating Training Data to Accelerate Program Verification with SLMs'

@@ -1,1 +1,3 @@
-The paper's evidence is tied to an executable terminal predicate rather than LLM-as-a-judge scoring. Its reported quality or impact signal is: Google research technical report; introduces Lean-IMO-Bench and reports all 12 2025 Putnam problems solved. Before comparing scores, inspect the checker coverage and the release-specific experimental protocol at https://arxiv.org/abs/2606.03303.
+The arXiv paper reports that LEAP solves all 12 Putnam 2025 problems and improves the one-shot formal solve rate of general-purpose models from below 10% to 70% on Lean-IMO-Bench. The official project page further reports 83.3% on the Basic subset and 56.7% on the Advanced subset.
+
+These are strong but environment-bound measurements. The decisive evidence for an individual rollout is not the aggregate solve rate but a reproducible Lean acceptance under the specified dependency and toolchain versions.

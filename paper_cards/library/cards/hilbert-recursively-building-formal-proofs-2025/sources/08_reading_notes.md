@@ -1,1 +1,0 @@
-Remember the distinction between the domain task and its verifier: here the decisive outcome is Lean 4 proof-assistant acceptance and feedback during recursive proof repair. Read the reported impact together with Direct one-shot formalization ignores the useful planning signal in informal reasoning and discards compiler feedback after a failed attempt.

@@ -2,8 +2,17 @@
 from __future__ import annotations
 
 import json
+import os
+import tempfile
+import threading
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
+
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - the local Review server runs on POSIX
+    fcntl = None
 
 try:
     import yaml
@@ -20,6 +29,8 @@ REQUIRED_HEADER_FIELDS = (
     "confidence_ch",
     "authors_ch",
 )
+_CARD_WRITE_LOCK = threading.RLock()
+_CARD_WRITE_STATE = threading.local()
 
 
 def project_root(root: Path | str | None = None) -> Path:
@@ -48,6 +59,58 @@ def load_json_file(path: Path, default: dict[str, Any] | None = None) -> dict[st
     if not isinstance(payload, dict):
         raise ValueError(f"{path}: expected a JSON object")
     return payload
+
+
+@contextmanager
+def card_write_lock(root: Path | str | None = None):
+    """Serialize cooperating Card writers across threads and local processes."""
+    with _CARD_WRITE_LOCK:
+        depth = getattr(_CARD_WRITE_STATE, "depth", 0)
+        if depth == 0:
+            path = project_root(root) / "tmp" / "paper_cards" / ".card-write.lock"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            handle = path.open("a+", encoding="utf-8")
+            if fcntl is not None:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+            _CARD_WRITE_STATE.handle = handle
+        _CARD_WRITE_STATE.depth = depth + 1
+        try:
+            yield
+        finally:
+            _CARD_WRITE_STATE.depth -= 1
+            if depth == 0:
+                handle = _CARD_WRITE_STATE.handle
+                try:
+                    if fcntl is not None:
+                        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+                finally:
+                    handle.close()
+                    del _CARD_WRITE_STATE.handle
+
+
+def atomic_write_text(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False
+        ) as handle:
+            temporary_path = Path(handle.name)
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary_path, path)
+        try:
+            directory_fd = os.open(path.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory_fd)
+            finally:
+                os.close(directory_fd)
+        except OSError:
+            pass
+    finally:
+        if temporary_path is not None and temporary_path.exists():
+            temporary_path.unlink()
 
 
 def load_yaml_file(path: Path) -> dict[str, Any]:
@@ -149,10 +212,8 @@ def save_card_paper(entry_id: str, paper: dict[str, Any], root: Path | str | Non
             batch.pop("primary_category_id", None)
         cleaned["batch"] = batch
     path = card_dir(entry_id, root) / "paper.yaml"
-    path.write_text(
-        yaml.safe_dump(cleaned, allow_unicode=True, sort_keys=False, width=120),
-        encoding="utf-8",
-    )
+    with card_write_lock(root):
+        atomic_write_text(path, yaml.safe_dump(cleaned, allow_unicode=True, sort_keys=False, width=120))
     return cleaned
 
 
@@ -167,5 +228,6 @@ def save_card_record(
     if not isinstance(record, dict):
         raise ValueError(f"{name} record must be an object")
     path = card_dir(entry_id, root) / f"{name}.json"
-    path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    with card_write_lock(root):
+        atomic_write_text(path, json.dumps(record, ensure_ascii=False, indent=2) + "\n")
     return record

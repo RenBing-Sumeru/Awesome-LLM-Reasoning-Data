@@ -23,9 +23,7 @@ const state = {
 const $ = (id) => document.getElementById(id);
 
 const els = {
-  totalCount: $("totalCount"),
-  sourceCount: $("sourceCount"),
-  invalidCount: $("invalidCount"),
+  workspace: $("workspace"),
   stateFilter: $("stateFilter"),
   query: $("query"),
   resultSummary: $("resultSummary"),
@@ -54,8 +52,8 @@ const els = {
   noInstitution: $("noInstitution"),
   completeCurrent: $("completeCurrent"),
   reviewCheckResult: $("reviewCheckResult"),
-  downloadControls: $("downloadControls"),
-  batchDownload: $("batchDownload"),
+  libraryLocationControl: $("libraryLocationControl"),
+  libraryLocation: $("libraryLocation"),
   reviewMarkdown: $("reviewMarkdown"),
   queueStatus: $("queueStatus"),
   queueReason: $("queueReason"),
@@ -270,14 +268,14 @@ function entriesForCurrentView() {
   });
 }
 
-function updateDownloadButtons() {
-  if (!els.downloadControls) return;
-  els.downloadControls.hidden = false;
-  setButtonState(els.batchDownload, state.entries.length ? "saved" : "", !state.entries.length);
+function updateLibraryLocationButton() {
+  if (!els.libraryLocationControl) return;
+  els.libraryLocationControl.hidden = false;
+  setButtonState(els.libraryLocation, "", false);
 }
 
-function renderDownloadControls() {
-  updateDownloadButtons();
+function renderLibraryLocationControl() {
+  updateLibraryLocationButton();
 }
 
 function updateActionAvailability() {
@@ -305,16 +303,7 @@ function updateActionAvailability() {
   if (canReview) markButtonSaved(els.completeCurrent);
   else markButtonDisabled(els.completeCurrent);
 
-  updateDownloadButtons();
-}
-
-function renderStats() {
-  const needs = state.entries.filter((entry) => validInfo(entry).pool === "needs_annotation").length;
-  const invalid = state.entries.filter((entry) => validInfo(entry).pool === "invalid").length;
-  els.totalCount.textContent = state.entries.length;
-  els.sourceCount.textContent = needs;
-  if (els.invalidCount) els.invalidCount.textContent = invalid;
-  renderDownloadControls();
+  updateLibraryLocationButton();
 }
 
 function renderList() {
@@ -338,7 +327,13 @@ function renderList() {
       </button>
     </div>`;
   }).join("") : "<div class='empty small'>没有匹配的论文。</div>";
-  renderDownloadControls();
+  renderLibraryLocationControl();
+}
+
+function markActiveListEntry(entryId) {
+  els.paperList.querySelectorAll(".paper-row").forEach((row) => {
+    row.classList.toggle("active", row.querySelector("[data-entry]")?.dataset.entry === entryId);
+  });
 }
 
 function links(entry) {
@@ -473,8 +468,9 @@ function currentQueueRecord() {
 
 function renderQueueForm() {
   const record = currentQueueRecord() || {};
-  els.queueStatus.value = record.search_status || "candidate";
-  els.queueReason.value = record.decision_reason || record.reason_to_include || "";
+  const manual = record.manual_annotation || {};
+  els.queueStatus.value = manual.search_status || "";
+  els.queueReason.value = manual.decision_reason || "";
   updateActionAvailability();
 }
 
@@ -629,13 +625,26 @@ function renderReview() {
 async function loadEntries() {
   const payload = await api("/api/entries");
   state.entries = payload.entries || [];
-  renderStats();
+  renderLibraryLocationControl();
   renderList();
 }
 
 async function loadSearchQueue() {
   const payload = await api("/api/search-queue");
   state.searchQueue = payload.queue || {};
+}
+
+function readReviewBootstrap() {
+  const element = $("reviewBootstrap");
+  if (!element?.textContent.trim()) return null;
+  try {
+    const bootstrap = JSON.parse(element.textContent);
+    return Array.isArray(bootstrap.entries) && bootstrap.queue && typeof bootstrap.queue === "object"
+      ? bootstrap
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 async function refreshActiveCard() {
@@ -646,9 +655,9 @@ async function refreshActiveCard() {
 
 async function selectEntry(entryId) {
   state.activeEntryId = entryId;
+  markActiveListEntry(entryId);
   state.activeCard = await api(`/api/card/${encodeURIComponent(entryId)}`);
   state.activeSection = "01_problem";
-  renderList();
   renderDetail();
 }
 
@@ -667,7 +676,7 @@ async function saveCurrentSection() {
   });
   syncSavedCard(payload);
   markButtonSaved(els.saveSection);
-  setMessage("已保存中文 section，下载状态已重置为未下载。");
+  setMessage("已保存中文 section。");
 }
 
 async function saveHeaderZh() {
@@ -689,7 +698,7 @@ async function saveHeaderZh() {
   });
   syncSavedCard(payload);
   markButtonSaved(els.saveHeaderZh);
-  setMessage("已保存中文头字段，下载状态已重置为未下载。");
+  setMessage("已保存中文头字段。");
 }
 
 async function saveInstitutions() {
@@ -707,7 +716,7 @@ async function saveInstitutions() {
   });
   syncSavedCard(payload);
   markButtonSaved(els.saveInstitutions);
-  setMessage("已保存机构字段，下载状态已重置为未下载。");
+  setMessage("已保存机构字段。");
 }
 
 function nextNeedingModification(currentId) {
@@ -757,40 +766,22 @@ async function completeCurrent() {
   setMessage(`已审阅：${completedId}。当前筛选下没有下一篇需要人工 review 的论文。`);
 }
 
-async function downloadAllCards() {
-  const ids = state.entries.map((entry) => entry.id);
-  if (!ids.length) {
-    setMessage("没有可下载的 Card。");
-    return;
-  }
-  markButtonDisabled(els.batchDownload);
-  const payload = await api("/api/package", {
-    method: "POST",
-    body: { entry_ids: ids },
-  });
-  setMessage(`已生成下载包：${payload.package}`);
-  window.location.href = payload.download_url;
-  markButtonSaved(els.batchDownload);
+async function showLibraryLocation() {
+  markButtonDisabled(els.libraryLocation);
+  const payload = await api("/api/library-location");
+  setMessage(`可直接迁移 Card 库：${payload.library_directory}`);
+  markButtonSaved(els.libraryLocation);
 }
 
 async function saveQueueItem() {
   if (!state.activeCard) return;
   markButtonDisabled(els.saveQueue);
   const annotatedId = state.activeEntryId;
-  const entry = state.activeCard.entry;
-  const artifacts = entry.artifacts || {};
   const record = {
-    title: entry.title,
-    candidate_links: {
-      paper: entry.primary_link || artifacts.paper || artifacts.arxiv || "",
-      code: artifacts.code || "",
-      data: artifacts.data || artifacts.project || "",
+    manual_annotation: {
+      search_status: els.queueStatus.value,
+      decision_reason: els.queueReason.value,
     },
-    category_ids: arr(entry.category),
-    reason_to_include: els.queueReason.value,
-    decision_reason: els.queueReason.value,
-    search_status: els.queueStatus.value,
-    review_note: "",
   };
   const payload = await api(`/api/search-queue/${encodeURIComponent(state.activeEntryId)}`, {
     method: "POST",
@@ -881,7 +872,7 @@ function bind() {
     updateActionAvailability();
     setMessage(error.message);
   }));
-  els.batchDownload.addEventListener("click", () => downloadAllCards().catch((error) => {
+  els.libraryLocation.addEventListener("click", () => showLibraryLocation().catch((error) => {
     updateActionAvailability();
     setMessage(error.message);
   }));
@@ -900,9 +891,16 @@ function bind() {
 
 async function init() {
   bind();
-  await loadSearchQueue();
-  await loadEntries();
-  if (state.entries.length) {
+  const bootstrap = readReviewBootstrap();
+  if (bootstrap) {
+    state.entries = bootstrap.entries || [];
+    state.searchQueue = bootstrap.queue || {};
+    state.activeEntryId = bootstrap.active_entry_id || "";
+    state.activeCard = bootstrap.active_card || null;
+  } else {
+    await Promise.all([loadSearchQueue(), loadEntries()]);
+  }
+  if (state.entries.length && !state.activeCard) {
     const first = (
       state.entries.find((entry) => validInfo(entry).pool === "needs_annotation") ||
       state.entries.find((entry) => validInfo(entry).pool === "annotated") ||
@@ -911,8 +909,12 @@ async function init() {
     );
     await selectEntry(first.id);
   }
+  renderList();
+  if (state.activeCard) renderDetail();
+  els.workspace.hidden = false;
 }
 
 init().catch((error) => {
+  els.workspace.hidden = false;
   setMessage(error.message);
 });

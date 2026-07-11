@@ -1,3 +1,3 @@
-输入是 Lean 形式化数学题、agent 生成的子目标、proof-DAG 节点、已编译证明与 benchmark 结果。流程：agent 把 Lean 定理拆为子目标，搜索候选子证明并由 Lean 编译器验证，再把通过的节点组合为最终 proof DAG。 输出包括候选 artifact 和可执行的接受判定。训练/评测用途包括：evaluation, agent_training, audit。复现必须取得官方 artifact，并遵守这一审计边界：要审计 agent 搜索预算、命题翻译、Lean-IMO-Bench 的切分和许可证，以及 Putnam 报告结果的具体协议。
+输入是形式化 Lean 定理、可用上下文、检索材料和后端 LLM。流程在直接证明、蓝图生成、子目标分解、formal sketch、Lean 代码生成、编译执行、修订与回溯之间循环。输出包括候选证明、证明图状态、编译器消息和被接受的 Lean 产物。
 
-来源与审计记录：LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks — https://arxiv.org/abs/2606.03303。会议/日期：arXiv；首次公开日期：2026-06-02。确定性 verifier 契约：Lean compiler checks every generated proof and proof-DAG composition。数据对象/评测面：Lean 形式化数学题、agent 生成的子目标、proof-DAG 节点、已编译证明与 benchmark 结果。实际流程：agent 把 Lean 定理拆为子目标，搜索候选子证明并由 Lean 编译器验证，再把通过的节点组合为最终 proof DAG。 质量/影响力信号：Google research technical report; introduces Lean-IMO-Bench and reports all 12 2025 Putnam problems solved。复用/审计注意：要审计 agent 搜索预算、命题翻译、Lean-IMO-Bench 的切分和许可证，以及 Putnam 报告结果的具体协议。
+verifier 是 Lean 编译/内核检查。论文在 IMO-LeanProofBench 上评测，并报告 Putnam 2025 结果；官方项目页报告该 benchmark 的总体 70.0% solve rate。复现必须固定 Lean 环境、定理文件、Mathlib/检索状态、后端模型和搜索预算。应核验官方论文、项目页与解答代码库。

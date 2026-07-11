@@ -1,3 +1,0 @@
-- 用它研究 proof-checker reward，而不是答案提取。
-- 在每个结果中固定 theorem prover 版本和 imports。
-- 只有对齐预算和形式化版本后才能跨系统比较生成证明。

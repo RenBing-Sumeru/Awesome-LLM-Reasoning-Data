@@ -657,7 +657,8 @@ def render_readme(cards: dict[str, str]) -> str:
 
     matches = starter_matches(data)
     starter_rows = ["| # | Work | Link | Paper Card Source |", "|---:|---|---|---|"]
-    first_pack = next((pack for pack in starter_packs() if pack.get("id") == "beginner_20"), starter_packs()[0])
+    packs = starter_packs()
+    first_pack = packs[0] if packs else {"entries": []}
     for index, title in enumerate(first_pack.get("entries", []), 1):
         entry = matches.get(title)
         if entry:

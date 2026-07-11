@@ -1,1 +1,0 @@
-- Rethinking Fine-tuning when Scaling Test-Time Compute: Limiting Confidence Improves Mathematical Reasoning. ICLR 2025 Workshop, 2025. https://openreview.net/forum?id=9L5t04WYAs

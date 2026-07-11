@@ -4,13 +4,13 @@ Public coverage report generated from the Card library and its local source inve
 
 ## Summary
 
-- Total entries: 17
-- Verified entries: 17
-- Verified entries with official paper/arXiv/venue/DOI links: 17 (100.0%)
+- Total entries: 3
+- Verified entries: 3
+- Verified entries with official paper/arXiv/venue/DOI links: 3 (100.0%)
 - Needs search: 0
 - Ambiguous: 0
 - Duplicate: 0
-- Paper-card sources: 17
+- Paper-card sources: 3
 
 ## Curation Levels
 
@@ -18,30 +18,30 @@ Public coverage report generated from the Card library and its local source inve
 - L1_link_verified: 0
 - L2_artifact_verified: 0
 - L3_summary_ready: 0
-- L4_carded: 17
+- L4_carded: 3
 - L5_audit_ready: 0
 
 ## Official Link Coverage
 
-- Official primary paper/arXiv/venue/DOI coverage: 17
-- arXiv coverage: 17
+- Official primary paper/arXiv/venue/DOI coverage: 3
+- arXiv coverage: 3
 - OpenReview coverage: 1
 - ACL coverage: 0
 - PMLR coverage: 0
 - CVF coverage: 0
-- DOI coverage: 16
-- Code coverage: 9
-- Data coverage: 6
-- Hugging Face coverage: 4
-- Project page coverage: 7
-- Paper-card source coverage: 17
+- DOI coverage: 0
+- Code coverage: 3
+- Data coverage: 1
+- Hugging Face coverage: 0
+- Project page coverage: 1
+- Paper-card source coverage: 3
 
 ## Starter Pack Coverage
 
-- Matched Starter Pack entries: 0
-- Official primary links: 0/0 (0.0%)
-- Paper-card source coverage: 0/0 (0.0%)
-- Code/data/Hugging Face coverage: 0/0
+- Matched Starter Pack entries: 3
+- Official primary links: 3/3 (100.0%)
+- Paper-card source coverage: 3/3 (100.0%)
+- Code/data/Hugging Face coverage: 3/3
 
 ## Missing Primary Links
 

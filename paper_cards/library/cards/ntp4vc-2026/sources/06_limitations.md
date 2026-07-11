@@ -1,1 +1,0 @@
-A deterministic checker only proves conformance to its encoded contract. Check prover versions, imported libraries, condition extraction provenance, and whether metrics compare equivalent search budgets across assistants. The benchmark may therefore miss semantic quality outside that contract.

@@ -1,2 +1,0 @@
-- Evidence: Reported experiments cover multiple reasoning benchmarks and compute budgets.
-- Artifact: Primary source linked above; code/data availability must be checked before reuse.

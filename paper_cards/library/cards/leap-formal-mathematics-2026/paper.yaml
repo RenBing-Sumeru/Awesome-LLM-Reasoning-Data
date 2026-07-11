@@ -17,8 +17,9 @@ authors:
 - Tomas Pfister
 - Nanyun Peng
 source_role:
-- model_report
 - benchmark
+- data_release
+- infrastructure
 verification_contract:
 - programmatic
 supervision_granularity:
@@ -27,20 +28,22 @@ supervision_granularity:
 domains:
 - formal-mathematics
 - lean4
-- agentic-reasoning
+- theorem-proving
 training_use:
 - evaluation
 - agent_training
+- test_time_compute
 - audit
 construction_layer:
 - search_substrate
+- reward_verifier_layer
 - release_audit
 artifacts:
   paper: https://arxiv.org/abs/2606.03303
   arxiv: https://arxiv.org/abs/2606.03303
-  code: null
-  data: null
-  project: null
+  code: https://github.com/google-deepmind/superhuman/tree/main/leap
+  data: https://imobench.github.io/
+  project: https://imobench.github.io/
   huggingface: null
   doi: null
   venue: null
@@ -50,73 +53,71 @@ artifacts:
   cvf: null
   bibtex: null
 data_object:
-  prompt_source: Lean formal-math problems, agent-generated proof subgoals, proof-DAG nodes, compiled proofs, and benchmark
-    outcomes
-  trace_author: Model or agent outputs evaluated by the paper's released protocol.
-  answer_format: Candidate artifact together with the executable verifier result.
+  prompt_source: Formalized Olympiad-style Lean theorem statements from IMO-LeanProofBench and Putnam 2025 tasks.
+  trace_author: LEAP agent rollouts containing blueprints, subgoals, proof sketches, Lean edits, compiler feedback, and search
+    decisions.
+  answer_format: A Lean proof artifact plus the Lean checker acceptance or rejection outcome.
   process_fields:
-  - task context
-  - candidate output
-  - verifier result
-  - release protocol
-  environment_or_substrate: Agents decompose a Lean theorem into subgoals, search and verify candidate subproofs with the
-    Lean compiler, then compose accepted nodes into a final proof DAG.
-  verifier_or_reward: Lean compiler checks every generated proof and proof-DAG composition
-  terminal_predicate: 'The supplied programmatic contract accepts the candidate: Lean compiler checks every generated proof
-    and proof-DAG composition.'
+  - informal blueprint
+  - AND-OR proof graph
+  - candidate Lean code
+  - compiler feedback
+  - verified subgoal state
+  environment_or_substrate: The Lean proof environment, retrieval/search tools, and the released IMO-LeanProofBench task suite.
+  verifier_or_reward: Lean compiler and kernel acceptance of formal proof code.
+  terminal_predicate: The candidate Lean proof type-checks in the specified environment.
 recipe_metadata:
-  base_model: See the paper's official experimental protocol.
-  teacher: Deterministic verifier or environment outcome.
-  generator: Agents decompose a Lean theorem into subgoals, search and verify candidate subproofs with the Lean compiler,
-    then compose accepted nodes into a final proof DAG.
-  filtering_rule: Keep outcomes accepted or rejected by the stated executable contract.
-  sampling_protocol: Use the paper-reported splits, seeds, and rollout budget.
+  base_model: Gemini 3.1 Pro in the reported LEAP evaluation; other general-purpose LLMs can be wrapped by the framework.
+  teacher: Deterministic Lean compiler feedback and kernel checking.
+  generator: The agent drafts direct proofs, blueprints, subgoals, sketches, revisions, and search actions.
+  filtering_rule: Retain proof states only when Lean accepts the corresponding proof obligation; rejected states carry compiler
+    feedback.
+  sampling_protocol: Use the paper-reported search, backtracking, and rollout budgets; report them with any reproduction.
   rollout_count: null
   temperature: null
-  inference_budget: Audit the paper-reported search or execution budget.
-  optimizer_or_scaffold: See the official paper and released evaluation harness.
+  inference_budget: The search budget is part of the result and must be reported alongside solve rate.
+  optimizer_or_scaffold: Blueprint-guided AND-OR decomposition, iterative compiler-feedback revision, LeanSearch retrieval,
+    and backtracking.
 audit:
-  source_mixture: Primary paper source and its stated executable evaluation object.
-  split: Use only the release-specific split documented by the authors.
-  decontamination: Audit the agent search budget, theorem translation, Lean-IMO-Bench split and license, and the exact protocol
-    behind the reported Putnam results.
-  license: Verify the primary artifact and any underlying task/repository licenses before reuse.
+  source_mixture: Official arXiv paper, Google DeepMind IMO-Bench project page, and released LEAP solution repository.
+  split: IMO-LeanProofBench Basic and Advanced subsets; Putnam 2025 is reported separately.
+  decontamination: Audit theorem provenance, formalization source, benchmark exposure, Lean/Mathlib version, retrieval corpus,
+    and search budget.
+  license: Verify the project, benchmark, Lean library, and generated solution licenses before reuse.
   lineage: 'Primary source: https://arxiv.org/abs/2606.03303'
   known_failure_modes:
-  - Audit the agent search budget, theorem translation, Lean-IMO-Bench split and license, and the exact protocol behind the
-    reported Putnam results.
+  - Geometry remains materially harder than algebra, combinatorics, and number theory in the reported benchmark.
+  - A checker-accepted proof establishes formal correctness only relative to the encoded theorem statement and pinned Lean
+    environment.
+  - Reported performance depends on the backend model, retrieval corpus, and inference-time search budget.
   citation_status: verified
   confidence: high
-  notes: Release date audited as 2026-06-02; Google research technical report; introduces Lean-IMO-Bench and reports all 12
-    2025 Putnam problems solved
-inclusion_reason: 'Recent programmatically verifiable outcome-data work: Google research technical report; introduces Lean-IMO-Bench
-  and reports all 12 2025 Putnam problems solved'
+  notes: First public arXiv release dated 2026-06-02; official project and code are under the Google DeepMind organization.
+inclusion_reason: Recent Google DeepMind work whose proof artifacts receive deterministic Lean acceptance, making its benchmark
+  and agent traces a direct programmatically verifiable outcome-data surface.
 related: []
 tags:
 - programmatically-verifiable-outcome
-- 2025-2026
-- agentic-formal-math
+- formal-mathematics
+- lean4
+- agentic-proving
+- 2026
 status: verified
-one_line: LEAP uses an agentic proof-search framework to compose formally checked subproofs into a proof DAG rather than relying
-  on one-shot proof generation.
+one_line: LEAP turns blueprint-guided theorem-proving rollouts into Lean-checkable proof outcomes and introduces IMO-LeanProofBench
+  for hard formal mathematics.
 needs:
 - 'needs_review: human curator should assess L5 promotion'
-one_line_summary: LEAP uses an agentic proof-search framework to compose formally checked subproofs into a proof DAG rather
-  than relying on one-shot proof generation.
-why_it_matters: It exposes Lean compiler checks every generated proof and proof-DAG composition as a reusable, auditable outcome
-  contract.
+one_line_summary: LEAP turns blueprint-guided theorem-proving rollouts into Lean-checkable proof outcomes and introduces IMO-LeanProofBench
+  for hard formal mathematics.
+why_it_matters: It makes the Lean compiler a reproducible terminal predicate for long-horizon mathematical agent traces instead
+  of relying on natural-language plausibility.
 curation_level: L4_carded
 verification:
   link_verified: true
-  artifact_verified: false
-  verified_at: '2026-07-11'
+  artifact_verified: true
+  verified_at: '2026-07-12'
   verified_by: curation
   confidence: high
-  notes: Primary source and release date reviewed; Google research technical report; introduces Lean-IMO-Bench and reports
-    all 12 2025 Putnam problems solved
+  notes: Official arXiv paper, Google DeepMind project page, and released solution repository reviewed.
 category_ids:
 - programmatically_verifiable_outcome_data
-batch:
-  id: library-03-programmatic-verifier-2025-20
-  request_sha256: programmatic-outcome-data-2026-07-11
-  primary_category_id: programmatically_verifiable_outcome_data

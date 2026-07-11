@@ -1,141 +1,244 @@
 [
   {
-    "id": "beginner_20",
-    "emoji": "🌱",
-    "title": "Beginner 20: Reasoning Data Orientation",
-    "goal": "Build the vocabulary for post-training reasoning data before diving into recipes.",
-    "entries": []
-  },
-  {
-    "id": "builder_30",
-    "emoji": "🏗️",
-    "title": "Builder 30: Data Construction and Release Practice",
-    "goal": "Learn how open reasoning-data recipes source prompts, write traces, filter, audit, and report artifacts.",
-    "entries": []
-  },
-  {
-    "id": "verifier_reward_25",
-    "emoji": "🧪",
-    "title": "Verifier and Reward 25",
-    "goal": "Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure diagnostics.",
-    "entries": []
-  },
-  {
-    "id": "agent_data_25",
-    "emoji": "🌐",
-    "title": "Agent Data 25",
-    "goal": "Understand trajectories, tool calls, browser/app/OS tasks, and SWE environments.",
-    "entries": []
-  },
-  {
-    "id": "scaling_20",
-    "emoji": "📈",
-    "title": "Scaling 20",
-    "goal": "Read scaling claims across RL compute, data size, distillation, and test-time inference budget.",
-    "entries": []
-  },
-  {
-    "id": "representative_track_03",
+    "id": "programmatic_verification_2026",
     "emoji": "🧮",
-    "title": "Representative 30: Programmatic Verification",
-    "goal": "Cover the strongest math, code, proof, scientific-program-search, and real-task verifier surfaces.",
-    "entries": []
-  },
-  {
-    "id": "representative_track_10",
-    "emoji": "🔁",
-    "title": "Representative 30: RLVR and Test-Time Compute",
-    "goal": "Compare verifier rewards, repeated sampling, tree search, process rewards, RL scaling, and failure audits.",
+    "title": "Programmatic Verification 3: 2026 Collection",
+    "goal": "Start from three recent, top-institution papers on Lean proof agents, formal-benchmark audit, and verifier-preserving invariant-data curation.",
     "entries": [
       {
-        "title": "TinyV",
-        "entry_id": "tinyv-2025",
+        "title": "LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks",
+        "entry_id": "leap-formal-mathematics-2026",
         "matched": true,
         "entry": {
-          "id": "tinyv-2025",
-          "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
-          "year": 2025,
+          "id": "leap-formal-mathematics-2026",
+          "title": "LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks",
+          "year": 2026,
           "venue": "arXiv",
           "authors": [
-            "Zhangchen Xu",
-            "Yuetai Li",
-            "Fengqing Jiang",
-            "Bhaskar Ramasubramanian",
-            "Luyao Niu",
-            "Bill Yuchen Lin",
-            "Radha Poovendran"
+            "Po-Nien Kung",
+            "Linfeng Song",
+            "Dawsen Hwang",
+            "Jinsung Yoon",
+            "Chun-Liang Li",
+            "Simone Severini",
+            "Mirek Olšák",
+            "Edward Lockhart",
+            "Quoc V. Le",
+            "Burak Gokturk",
+            "Thang Luong",
+            "Tomas Pfister",
+            "Nanyun Peng"
           ],
           "source_role": [
-            "verifier_reward",
-            "audit_failure",
-            "construction_recipe"
+            "benchmark",
+            "data_release",
+            "infrastructure"
           ],
           "verification_contract": [
-            "programmatic",
-            "judgment_required",
-            "mixed"
+            "programmatic"
           ],
           "supervision_granularity": [
             "answer_level",
-            "scalar_reward"
+            "full_episode"
           ],
           "training_use": [
-            "rlvr",
-            "reward_modeling",
-            "evaluation"
+            "evaluation",
+            "agent_training",
+            "test_time_compute",
+            "audit"
           ],
           "domains": [
-            "math"
+            "formal-mathematics",
+            "lean4",
+            "theorem-proving"
           ],
           "category": [
-            "scaling_rlvr_test_time_compute"
+            "programmatically_verifiable_outcome_data"
           ],
-          "subfield": "🏋️ RLVR optimization scaling",
+          "subfield": "🧾 Formal proof / Lean / theorem proving",
           "tags": [
-            "curated-card",
-            "primary-link-checked"
+            "programmatically-verifiable-outcome",
+            "formal-mathematics",
+            "lean4",
+            "agentic-proving",
+            2026
           ],
-          "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-          "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-          "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
-          "feedback_verifier": "small LLM verifier augmenting rules",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "one_line_summary": "LEAP turns blueprint-guided theorem-proving rollouts into Lean-checkable proof outcomes and introduces IMO-LeanProofBench for hard formal mathematics.",
+          "why_it_matters": "It makes the Lean compiler a reproducible terminal predicate for long-horizon mathematical agent traces instead of relying on natural-language plausibility.",
+          "data_object": "A Lean proof artifact plus the Lean checker acceptance or rejection outcome.; process: informal blueprint, AND-OR proof graph, candidate Lean code; The Lean proof environment, retrieval/search tools, and the released IMO-LeanProofBench task suite.",
+          "feedback_verifier": "Lean compiler and kernel acceptance of formal proof code.",
+          "audit_focus": "Geometry remains materially harder than algebra, combinatorics, and number theory in the reported benchmark., A checker-accepted proof establishes formal correctness only relative to the encoded theorem statement and pinned Lean environment., Reported performance depends on the backend model, retrieval corpus, and inference-time search budget.",
           "curation_level": "L4_carded",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
-            "paper": "https://arxiv.org/abs/2505.14625",
+            "paper": "https://arxiv.org/abs/2606.03303",
             "venue": null,
-            "arxiv": "https://arxiv.org/abs/2505.14625",
+            "arxiv": "https://arxiv.org/abs/2606.03303",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
             "doi": null,
-            "code": "https://github.com/uw-nsl/TinyV",
+            "code": "https://github.com/google-deepmind/superhuman/tree/main/leap",
+            "data": "https://imobench.github.io/",
+            "huggingface": null,
+            "project": "https://imobench.github.io/",
+            "bibtex": null,
+            "paper_card_source": "paper_cards/library/cards/leap-formal-mathematics-2026/sources"
+          },
+          "primary_link": "https://arxiv.org/abs/2606.03303"
+        }
+      },
+      {
+        "title": "Faults in Our Formal Benchmarking: Dataset Defects and Evaluation Failures in Lean Theorem Proving",
+        "entry_id": "faults-formal-benchmarking-2026",
+        "matched": true,
+        "entry": {
+          "id": "faults-formal-benchmarking-2026",
+          "title": "Faults in Our Formal Benchmarking: Dataset Defects and Evaluation Failures in Lean Theorem Proving",
+          "year": 2026,
+          "venue": "ICML 2026",
+          "authors": [
+            "Pawan Sasanka Ammanamanchi",
+            "Siddharth Bhat",
+            "Stella Biderman"
+          ],
+          "source_role": [
+            "audit_failure",
+            "benchmark",
+            "infrastructure"
+          ],
+          "verification_contract": [
+            "mixed"
+          ],
+          "supervision_granularity": [
+            "answer_level",
+            "step_level"
+          ],
+          "training_use": [
+            "evaluation",
+            "audit"
+          ],
+          "domains": [
+            "formal-mathematics",
+            "lean4",
+            "benchmark-audit"
+          ],
+          "category": [
+            "programmatically_verifiable_outcome_data"
+          ],
+          "subfield": "🧾 Formal proof / Lean / theorem proving",
+          "tags": [
+            "programmatically-verifiable-outcome",
+            "Lean",
+            "benchmark-audit",
+            "verifier-robustness",
+            "ICML-2026"
+          ],
+          "one_line_summary": "Faults in Our Formal Benchmarking audits Lean benchmarks with static checkers and certified witnesses, showing where a kernel-accepted result is not enough.",
+          "why_it_matters": "It turns verifier robustness and statement fidelity into data fields that can be checked, rather than assuming every Lean pass is a trustworthy label.",
+          "data_object": "A finding with its affected theorem, fault type, checker result, and—where applicable—a machine-checkable witness.; process: formal statement, Lean environment, static-check result; Pinned Lean 3/Lean 4 benchmark environments and the released audit checker suite.",
+          "feedback_verifier": "Lean metaprogram/static checks and mechanically certified counterexample, vacuity, or unprovability evidence; semantic prompts are a separate non-deterministic audit layer.",
+          "audit_focus": "A Lean kernel proof certifies the encoded statement, not its informal fidelity., Static checking cannot decide every semantic mismatch., Results depend on the pinned Lean and dependency environment.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
+          "artifacts": {
+            "paper": "https://arxiv.org/abs/2606.29493",
+            "venue": null,
+            "arxiv": "https://arxiv.org/abs/2606.29493",
+            "openreview": null,
+            "acl": null,
+            "pmlr": null,
+            "cvf": null,
+            "doi": null,
+            "code": "https://github.com/Shashi456/atp-checkers",
             "data": null,
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "paper_card_source": "paper_cards/library/cards/tinyv-2025/sources"
+            "paper_card_source": "paper_cards/library/cards/faults-formal-benchmarking-2026/sources"
           },
-          "primary_link": "https://arxiv.org/abs/2505.14625"
+          "primary_link": "https://arxiv.org/abs/2606.29493"
+        }
+      },
+      {
+        "title": "Not All Invariants Are Equal: Curating Training Data to Accelerate Program Verification with SLMs",
+        "entry_id": "wonda-invariant-curation-2026",
+        "matched": true,
+        "entry": {
+          "id": "wonda-invariant-curation-2026",
+          "title": "Not All Invariants Are Equal: Curating Training Data to Accelerate Program Verification with SLMs",
+          "year": 2026,
+          "venue": "ICML 2026",
+          "authors": [
+            "Ido Pinto",
+            "Yizhak Yisrael Elboher",
+            "Haoze Wu",
+            "Nina Narodytska",
+            "Guy Katz"
+          ],
+          "source_role": [
+            "data_release",
+            "construction_recipe",
+            "verifier_reward"
+          ],
+          "verification_contract": [
+            "programmatic"
+          ],
+          "supervision_granularity": [
+            "answer_level",
+            "step_level"
+          ],
+          "training_use": [
+            "sft",
+            "evaluation",
+            "audit"
+          ],
+          "domains": [
+            "program-verification",
+            "loop-invariants",
+            "C-programs"
+          ],
+          "category": [
+            "programmatically_verifiable_outcome_data"
+          ],
+          "subfield": "🧪 Verifier robustness and answer extraction",
+          "tags": [
+            "programmatically-verifiable-outcome",
+            "loop-invariants",
+            "program-verification",
+            "data-curation",
+            "ICML-2026"
+          ],
+          "one_line_summary": "WONDA converts noisy verifier-generated loop invariants into readable training data, rechecking every risky transformation with a formal verifier.",
+          "why_it_matters": "It shows how to improve the pedagogical quality of verifier-backed data without silently replacing correctness with an LLM rewrite judgment.",
+          "data_object": "A candidate loop invariant attached to a program location, with correctness and sufficiency verification outcomes.; process: verification query, raw invariant, normalized AST; UAutomizer-backed program-verification environment with enforced time/memory limits.",
+          "feedback_verifier": "A sound verification oracle checks invariant induction/correctness and sufficiency for the program query.",
+          "audit_focus": "A verifier-valid invariant can be unreadable or overly specialized., LLM rewriting can introduce semantic drift unless every candidate is rechecked., Verification timeouts and UNKNOWN results need an explicit retention policy.",
+          "curation_level": "L4_carded",
+          "status": "verified",
+          "needs_search": false,
+          "artifacts": {
+            "paper": "https://arxiv.org/abs/2603.15510",
+            "venue": null,
+            "arxiv": "https://arxiv.org/abs/2603.15510",
+            "openreview": "https://openreview.net/forum?id=fS28SOioQd",
+            "acl": null,
+            "pmlr": null,
+            "cvf": null,
+            "doi": null,
+            "code": "https://github.com/idopinto/wonda",
+            "data": null,
+            "huggingface": null,
+            "project": null,
+            "bibtex": null,
+            "paper_card_source": "paper_cards/library/cards/wonda-invariant-curation-2026/sources"
+          },
+          "primary_link": "https://arxiv.org/abs/2603.15510"
         }
       }
     ]
-  },
-  {
-    "id": "audit_failure_20",
-    "emoji": "🧯",
-    "title": "Audit and Failure 20",
-    "goal": "Build the habit of checking leakage, contamination, reward hacking, and judge robustness.",
-    "entries": []
-  },
-  {
-    "id": "industry_onboarding_40",
-    "emoji": "🏭",
-    "title": "Industry Onboarding 40",
-    "goal": "A practical path for becoming useful on an LLM post-training data team.",
-    "entries": []
   }
 ]

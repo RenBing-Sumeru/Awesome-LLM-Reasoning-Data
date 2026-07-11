@@ -1,3 +1,0 @@
-- One-sentence contribution: Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards studies RLVR for reliable reasoning models.
-- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
-- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

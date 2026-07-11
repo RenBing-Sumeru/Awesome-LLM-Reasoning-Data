@@ -1,2 +1,0 @@
-- Benchmark and verifier coverage may not transfer to open-ended tasks.
-- Compute accounting and contamination controls require independent audit.

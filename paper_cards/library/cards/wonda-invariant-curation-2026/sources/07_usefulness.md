@@ -1,0 +1,1 @@
+Use WONDA as a recipe for verifier-preserving data editing: retain the before/after artifact, describe the transform, rerun the same check, and record non-success outcomes. It is a strong reference for building SFT corpora from symbolic tools without treating raw machine output as automatically educational.

@@ -1,4 +1,0 @@
-- 官方来源: https://openreview.net/forum?id=mMgSxbO4H0
-- 会议/日期: ICML 2025, 2025
-- 具体问题: How to improve reliable reasoning under test-time scaling budgets.
-- 重要性: It supplies a current benchmark or training signal for the atlas.

@@ -1,3 +1,0 @@
-一句话贡献：它把评测从孤立定理转为需要真实仓库上下文的证明义务。 反馈契约明确为：Lean 4 type checker on repository-context proof obligations。对本分类而言，一条记录包含 带仓库上下文的 Lean 证明义务、依赖 import、模型 proof edit 与 type checker 结果；最接近的比较基线是：单条 Lean 定理 benchmark 会抽掉 import、本地定义和依赖失败，而这些正是软件验证仓库中的真实难点。
-
-来源与审计记录：VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean — https://arxiv.org/abs/2602.18307。会议/日期：arXiv；首次公开日期：2026-02-20。确定性 verifier 契约：Lean 4 type checker on repository-context proof obligations。数据对象/评测面：带仓库上下文的 Lean 证明义务、依赖 import、模型 proof edit 与 type checker 结果。实际流程：系统提供检出的 Lean 仓库上下文，模型补写证明代码，Lean 4 type checker 给出最终通过或失败。 质量/影响力信号：Open 500-obligation software-verification benchmark from UT Austin formal-methods researchers。复用/审计注意：需要从固定 commit 与依赖锁文件复现，并审计证明义务来源、数据切分与各仓库许可证。

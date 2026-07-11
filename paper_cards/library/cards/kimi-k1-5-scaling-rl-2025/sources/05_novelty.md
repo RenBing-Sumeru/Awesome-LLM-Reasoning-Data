@@ -1,4 +1,0 @@
-- Prior work baseline: Standard CoT, outcome reward, or fixed-budget inference.
-- What changes: A current RLVR mechanism or analysis.
-- Top-conference quality signal: arXiv.
-- What to inspect before reuse: Verifier assumptions, contamination, and budget accounting.

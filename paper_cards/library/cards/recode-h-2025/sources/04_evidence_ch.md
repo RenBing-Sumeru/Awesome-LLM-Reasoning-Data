@@ -1,1 +1,0 @@
-论文的证据由可执行终局谓词支撑，而不是 LLM-as-a-judge 打分。其质量或影响力信号为：ICLR 2026 conference benchmark: 102 paper/repository tasks with executable unit tests and interactive-feedback protocol。比较分数前，应在 https://openreview.net/forum?id=IKnuyyPHCV 核对 checker 覆盖范围和该版本的实验协议。

@@ -61,17 +61,16 @@ On startup the Python server warms the ignored derived index at
 `tmp/paper_cards/review-index.json` before binding the port. Missing or stale
 cache data is rebuilt automatically; a failed rebuild stops startup. Manual
 Card-folder changes are picked up on the next request.
+Server mutations hold `tmp/paper_cards/.card-write.lock` and replace Card and
+tmp files atomically. If a different Card changes while one save is in flight,
+the server rebuilds the global tmp index rather than combining two versions.
+The Review form reads and writes only `queue.json.manual_annotation`; source
+collection reasons do not count as manual annotation and never populate the
+form.
 
-## One-time repository migration
+## V2 hot-plug update
 
-Only an older checkout with the former shared layout needs this sequence:
-
-```bash
-python3 tools/paper_cards/migrate.py library-init
-python3 tools/paper_cards/migrate.py library-verify
-python3 tools/paper_cards/migrate.py library-cutover --yes
-python3 tools/paper_cards/migrate.py library-normalize
-```
-
-The cutover command verifies every Card before deleting the legacy files. Do
-not recreate a shared metadata file after this point.
+Copy the whole `paper_cards/library/` directory, or one complete
+`library/cards/<entry_id>/` directory, into the target V2 checkout. Then run
+`library-normalize`, Card check, and data validation. V2 does not import a
+shared layout and does not create ZIP exports or a download state.

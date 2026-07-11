@@ -1,1 +1,0 @@
-Remember the distinction between the domain task and its verifier: here the decisive outcome is Lean 4 type checker on repository-context proof obligations. Read the reported impact together with Standalone Lean theorem benchmarks abstract away imports, local definitions, and dependency failures that occur in software verification repositories.

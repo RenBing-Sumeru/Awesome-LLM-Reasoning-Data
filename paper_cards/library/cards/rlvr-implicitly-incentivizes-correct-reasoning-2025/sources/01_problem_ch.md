@@ -1,4 +1,0 @@
-- 官方来源: https://arxiv.org/abs/2506.14245
-- 会议/日期: arXiv, 2025
-- 具体问题: How to improve reliable reasoning under RLVR budgets.
-- 重要性: It supplies a current benchmark or training signal for the atlas.

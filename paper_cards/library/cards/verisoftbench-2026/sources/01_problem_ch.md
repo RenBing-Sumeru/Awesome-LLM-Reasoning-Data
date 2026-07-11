@@ -1,3 +1,0 @@
-VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean 关注如何用“带仓库上下文的 Lean 证明义务、依赖 import、模型 proof edit 与 type checker 结果”构成严格的 outcome data，而不是让模型主观评价另一个模型。它的收录边界是程序可验证结果：结论来自 checker 判定，不是看似可信的自然语言回答。
-
-来源与审计记录：VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean — https://arxiv.org/abs/2602.18307。会议/日期：arXiv；首次公开日期：2026-02-20。确定性 verifier 契约：Lean 4 type checker on repository-context proof obligations。数据对象/评测面：带仓库上下文的 Lean 证明义务、依赖 import、模型 proof edit 与 type checker 结果。实际流程：系统提供检出的 Lean 仓库上下文，模型补写证明代码，Lean 4 type checker 给出最终通过或失败。 质量/影响力信号：Open 500-obligation software-verification benchmark from UT Austin formal-methods researchers。复用/审计注意：需要从固定 commit 与依赖锁文件复现，并审计证明义务来源、数据切分与各仓库许可证。

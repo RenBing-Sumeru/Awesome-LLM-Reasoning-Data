@@ -1,44 +1,46 @@
 {
-  "generated_at": "2026-07-11",
-  "total_entries": 17,
-  "verified_entries": 17,
-  "verified_with_primary_link": 17,
+  "generated_at": "2026-07-12",
+  "total_entries": 3,
+  "verified_entries": 3,
+  "verified_with_primary_link": 3,
   "verified_primary_link_coverage": "100.0%",
   "curation_levels": {
     "L0_seeded": 0,
     "L1_link_verified": 0,
     "L2_artifact_verified": 0,
     "L3_summary_ready": 0,
-    "L4_carded": 17,
+    "L4_carded": 3,
     "L5_audit_ready": 0
   },
   "official_link_coverage": {
-    "paper_or_primary": 17,
-    "paper": 17,
-    "arxiv": 17,
-    "venue": 4,
+    "paper_or_primary": 3,
+    "paper": 3,
+    "arxiv": 3,
+    "venue": 0,
     "openreview": 1,
     "acl": 0,
     "pmlr": 0,
     "cvf": 0,
-    "doi": 16,
-    "code": 9,
-    "data": 6,
-    "huggingface": 4,
-    "project": 7,
+    "doi": 0,
+    "code": 3,
+    "data": 1,
+    "huggingface": 0,
+    "project": 1,
     "bibtex": 0
   },
-  "starter_pack_20": {
-    "total_matched": 0,
-    "with_primary_link": 0,
-    "paper_card_sources": 0,
-    "primary_link_coverage": "0.0%",
-    "paper_card_source_coverage": "0.0%"
+  "starter_pack": {
+    "id": "programmatic_verification_2026",
+    "title": "Programmatic Verification 3: 2026 Collection",
+    "total_matched": 3,
+    "with_primary_link": 3,
+    "paper_card_sources": 3,
+    "primary_link_coverage": "100.0%",
+    "paper_card_source_coverage": "100.0%"
   },
   "needs_search": 0,
   "ambiguous": 0,
   "duplicate": 0,
   "missing_primary_link": 0,
-  "paper_card_sources": 17,
-  "artifact_verified_entries": 17
+  "paper_card_sources": 3,
+  "artifact_verified_entries": 3
 }

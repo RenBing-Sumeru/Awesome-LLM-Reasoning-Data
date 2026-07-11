@@ -1,1 +1,0 @@
-- LATTS: LAtent space Test Time Scaling for diffusion language models. ICLR 2026 submission, 2026. https://openreview.net/forum?id=Q524K1mgCc

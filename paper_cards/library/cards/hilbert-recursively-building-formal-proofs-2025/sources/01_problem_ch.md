@@ -1,3 +1,0 @@
-Hilbert: Recursively Building Formal Proofs with Informal Reasoning 关注如何用“形式化 Lean 目标、非形式化推理提示、递归生成的子证明、编译反馈和最终内核判定”构成严格的 outcome data，而不是让模型主观评价另一个模型。它的收录边界是程序可验证结果：结论来自 checker 判定，不是看似可信的自然语言回答。
-
-来源与审计记录：Hilbert: Recursively Building Formal Proofs with Informal Reasoning — https://arxiv.org/abs/2509.22819。会议/日期：ICLR 2026；首次公开日期：2025-09-26。确定性 verifier 契约：Lean 4 proof-assistant acceptance and feedback during recursive proof repair。数据对象/评测面：形式化 Lean 目标、非形式化推理提示、递归生成的子证明、编译反馈和最终内核判定。实际流程：系统先给出非形式化分解，再生成 Lean 子证明并编译；失败反馈进入递归修复，只有 Lean 4 接受才终止。 质量/影响力信号：ICLR 2026 conference paper from Apple/UC San Diego; public-model PutnamBench best reported result。复用/审计注意：应区分非形式化提示、递归深度、模型和搜索预算的贡献，并固定 Lean 版本、检查 PutnamBench 切分重叠。
