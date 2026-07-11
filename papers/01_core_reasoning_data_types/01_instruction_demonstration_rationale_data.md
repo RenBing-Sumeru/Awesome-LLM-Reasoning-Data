@@ -40,12 +40,20 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 | Work | Year | Links | Data object | Feedback / verifier | Why it matters |
 |---|---:|---|---|---|---|
+| [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](https://arxiv.org/abs/2306.15626) | 2023 | [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [DOI](https://doi.org/10.48550/arXiv.2306.15626) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://leandojo.org/leandojo) · [Paper Card Source](../../paper_cards/library/cards/leandojo-2023/sources) | Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker verdict.; process: theorem declaration, proof state, tactic; Programmatic Lean 3/Lean 4 interaction environment with a pinned mathlib commit. | Lean proof-environment response and terminal kernel acceptance. | It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful only under the exact formal environment that checked it. |
 
 ## 5. Full Paper List
 
 ### <a id="instruction-tuning-sft-data"></a>🧱 Instruction tuning / SFT data
 
-_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
+- 📦 **[LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](https://arxiv.org/abs/2306.15626)**
+  <sub>2023 · NeurIPS 2023 Datasets and Benchmarks · 📦 data release · 🧰 benchmark · programmatic · environmental · sft · agent training · L4_carded</sub>
+  [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [DOI](https://doi.org/10.48550/arXiv.2306.15626) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://leandojo.org/leandojo) · [Paper Card Source](../../paper_cards/library/cards/leandojo-2023/sources)
+  _Data object:_ Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker verdict.; process: theorem declaration, proof state, tactic; Programmatic Lean 3/Lean 4 interaction environment with a pinned mathlib commit.
+  _Feedback / verifier:_ Lean proof-environment response and terminal kernel acceptance.
+  _Recipe signal:_ teacher: Human-written mathlib proofs and premise-use annotations.; generator: The tactic model interacts with Lean and retrieves accessible premises.
+  _Audit focus:_ Mismatched Lean, mathlib, or import versions change checker behavior., Proof-environment wrappers can misjudge valid proofs., Retrieval can mask memorization unless premise-aware splits are used.
+  _Why it matters:_ It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful only under the exact formal environment that checked it.
 
 ### <a id="human-demonstrations"></a>🧑‍🏫 Human demonstrations
 
@@ -82,7 +90,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ## 8. Related Paper-Card Sources
 
-- No paper-card sources are linked for this category yet.
+- [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](../../paper_cards/library/cards/leandojo-2023/sources)
 
 ## Back to Map
 

@@ -853,6 +853,77 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2602.10975"
     },
     {
+      "id": "formalproofbench-2026",
+      "title": "FormalProofBench: Can Models Write Graduate Level Math Proofs That Are Formally Verified?",
+      "year": 2026,
+      "venue": "ICLR 2026 VerifAI-2 Workshop / arXiv",
+      "authors": [
+        "Nikil Ravi",
+        "Kexing Ying",
+        "Vasilii Nesterov",
+        "Rayan Krishnan",
+        "Elif Uskuplu",
+        "Bingyu Xia",
+        "Janitha Aswedige",
+        "Langston Nashold"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "formal-mathematics",
+        "lean4",
+        "graduate-mathematics"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "📐 Math answer-verifiable data",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "lean4"
+      ],
+      "one_line_summary": "It makes graduate-level mathematical proving measurable by requiring a model to emit Lean 4 code that the kernel accepts.",
+      "why_it_matters": "It exposes Lean 4 kernel acceptance of a submitted proof as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; A model receives a formal theorem and its imported context, writes a Lean proof, and the benchmark records compilation success or failure from Lean 4.",
+      "feedback_verifier": "Lean 4 kernel acceptance of a submitted proof",
+      "audit_focus": "Pin the Lean/mathlib version, theorem imports, split provenance, and statement licenses before treating accepted proofs as reusable training data.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2603.26996",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2603.26996",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/formalproofbench-2026/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2603.26996"
+    },
+    {
       "id": "geogrambench-2026",
       "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
       "year": 2026,
@@ -922,6 +993,215 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/geogrambench-2026/sources"
       },
       "primary_link": "https://arxiv.org/abs/2505.17653"
+    },
+    {
+      "id": "gvpo-interactive-coding-agents-2025",
+      "title": "Group Verification-based Policy Optimization for Interactive Coding Agents",
+      "year": 2025,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Silong Dai",
+        "Changzhi Sun",
+        "Haolun Wu",
+        "Huanran Zheng",
+        "Tao Ji",
+        "Junchi Yan",
+        "Yuanbin Wu",
+        "Dell Zhang",
+        "Xiaoling Wang",
+        "Xuelong Li"
+      ],
+      "source_role": [
+        "agent_environment",
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training",
+        "evaluation"
+      ],
+      "domains": [
+        "coding-agents",
+        "reinforcement-learning",
+        "appworld"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "interactive-coding-rl"
+      ],
+      "one_line_summary": "GVPO combines group policy optimization with outcome- and process-verifiable signals for agents acting in interactive coding environments.",
+      "why_it_matters": "It exposes AppWorld goal tests plus deterministic compilation, exception, and partial-test feedback as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; For each AppWorld task, the method samples a group of trajectories, evaluates final goal tests plus compilation, exception, and partial-test feedback, then optimizes from the verified signals.",
+      "feedback_verifier": "AppWorld goal tests plus deterministic compilation, exception, and partial-test feedback",
+      "audit_focus": "Check the AppWorld release, task seeds, scaffold permissions, partial-test weights, and whether process feedback leaks task solutions.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=RY47Tq0VsV",
+        "venue": "https://openreview.net/forum?id=RY47Tq0VsV",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=RY47Tq0VsV",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/gvpo-interactive-coding-agents-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=RY47Tq0VsV"
+    },
+    {
+      "id": "hilbert-recursively-building-formal-proofs-2025",
+      "title": "Hilbert: Recursively Building Formal Proofs with Informal Reasoning",
+      "year": 2025,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Sumanth Varambally",
+        "Thomas Voice",
+        "Yanchao Sun",
+        "Zhifeng Chen",
+        "Rose Yu",
+        "Ke Ye"
+      ],
+      "source_role": [
+        "model_report",
+        "process_supervision"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "formal-mathematics",
+        "lean4",
+        "proof-repair"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "proof-repair"
+      ],
+      "one_line_summary": "Hilbert lets informal reasoning guide recursive construction and repair of Lean proofs while the proof assistant remains the acceptance authority.",
+      "why_it_matters": "It exposes Lean 4 proof-assistant acceptance and feedback during recursive proof repair as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; The system proposes an informal decomposition, generates Lean subproofs, compiles them, feeds failures back into recursive repair, and terminates only on Lean 4 acceptance.",
+      "feedback_verifier": "Lean 4 proof-assistant acceptance and feedback during recursive proof repair",
+      "audit_focus": "Separate gains from informal hints, recursion depth, model choice, and search budget; pin Lean versions and inspect PutnamBench split overlap.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2509.22819",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2509.22819",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/hilbert-recursively-building-formal-proofs-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2509.22819"
+    },
+    {
+      "id": "impossiblebench-2025",
+      "title": "ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases",
+      "year": 2025,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Ziqian Zhong",
+        "Aditi Raghunathan",
+        "Nicholas Carlini"
+      ],
+      "source_role": [
+        "benchmark",
+        "audit_failure"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit",
+        "agent_training"
+      ],
+      "domains": [
+        "software-engineering",
+        "agent-safety",
+        "unit-tests"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "test-exploitation"
+      ],
+      "one_line_summary": "ImpossibleBench turns a passing result on a deliberately impossible task into a deterministic audit signal that the model exploited a test-suite gap rather than met the specification.",
+      "why_it_matters": "It exposes Unit-test outcome: passing a deliberately impossible task deterministically flags specification-violating behavior as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; A model receives an impossible task and visible tests, writes a program, and the harness executes it; passing tests deterministically flags test-case exploitation for that task.",
+      "feedback_verifier": "Unit-test outcome: passing a deliberately impossible task deterministically flags specification-violating behavior",
+      "audit_focus": "Audit the proof that each task is impossible, sandbox behavior, checker implementation, and false positives caused by ambiguous specifications rather than exploitation.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=SeO4vyAj7E",
+        "venue": "https://openreview.net/forum?id=SeO4vyAj7E",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=SeO4vyAj7E",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/impossiblebench-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=SeO4vyAj7E"
     },
     {
       "id": "kimi-k1-5-scaling-rl-2025",
@@ -1093,9 +1373,10 @@ window.ATLAS_DATA = {
         "premise-retrieval"
       ],
       "category": [
+        "instruction_demonstration_rationale_data",
         "programmatically_verifiable_outcome_data"
       ],
-      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "subfield": "🧱 Instruction tuning / SFT data",
       "tags": [
         "neurips-2023",
         "theorem-proving",
@@ -1129,6 +1410,82 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/leandojo-2023/sources"
       },
       "primary_link": "https://arxiv.org/abs/2306.15626"
+    },
+    {
+      "id": "leap-formal-mathematics-2026",
+      "title": "LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks",
+      "year": 2026,
+      "venue": "arXiv",
+      "authors": [
+        "Po-Nien Kung",
+        "Linfeng Song",
+        "Dawsen Hwang",
+        "Jinsung Yoon",
+        "Chun-Liang Li",
+        "Simone Severini",
+        "Mirek Olšák",
+        "Edward Lockhart",
+        "Quoc V. Le",
+        "Burak Gokturk",
+        "Thang Luong",
+        "Tomas Pfister",
+        "Nanyun Peng"
+      ],
+      "source_role": [
+        "model_report",
+        "benchmark"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "formal-mathematics",
+        "lean4",
+        "agentic-reasoning"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "agentic-formal-math"
+      ],
+      "one_line_summary": "LEAP uses an agentic proof-search framework to compose formally checked subproofs into a proof DAG rather than relying on one-shot proof generation.",
+      "why_it_matters": "It exposes Lean compiler checks every generated proof and proof-DAG composition as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; Agents decompose a Lean theorem into subgoals, search and verify candidate subproofs with the Lean compiler, then compose accepted nodes into a final proof DAG.",
+      "feedback_verifier": "Lean compiler checks every generated proof and proof-DAG composition",
+      "audit_focus": "Audit the agent search budget, theorem translation, Lean-IMO-Bench split and license, and the exact protocol behind the reported Putnam results.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2606.03303",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2606.03303",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/leap-formal-mathematics-2026/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2606.03303"
     },
     {
       "id": "lets-verify-step-by-step-2023",
@@ -1331,6 +1688,86 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2103.03874"
     },
     {
+      "id": "mcpmark-2025",
+      "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
+      "year": 2025,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Zijian Wu",
+        "Xiangyan Liu",
+        "Xinyuan Zhang",
+        "Lingjun Chen",
+        "Fanqing Meng",
+        "Lingxiao Du",
+        "Yiran Zhao",
+        "Fanshi Zhang",
+        "Yaoqi Ye",
+        "Jiawei Wang",
+        "Zirui Wang",
+        "Jinjie Ni",
+        "Yufan Yang",
+        "Arvin Xu",
+        "Michael Qizhe Shieh"
+      ],
+      "source_role": [
+        "benchmark",
+        "agent_environment",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "agents",
+        "model-context-protocol",
+        "tool-use"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "mcp-environment"
+      ],
+      "one_line_summary": "MCPMark makes realistic MCP tool use evaluable through stateful environments whose final states are checked by scripts rather than by an LLM judge.",
+      "why_it_matters": "It exposes Task-specific programmatic scripts check final state across MCP tool environments as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; An agent invokes MCP tools across the configured servers; after the trajectory, a task-specific program examines the resulting state and returns success or failure.",
+      "feedback_verifier": "Task-specific programmatic scripts check final state across MCP tool environments",
+      "audit_focus": "Recreate server images, reset policies, credentials, task seeds, and checker scripts; a state checker can still under-specify intended user behavior.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2509.24002",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2509.24002",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/mcpmark-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2509.24002"
+    },
+    {
       "id": "minif2f-2022",
       "title": "MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics",
       "year": 2022,
@@ -1464,6 +1901,78 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/mirage-test-time-scaling-2025/sources"
       },
       "primary_link": "https://openreview.net/forum?id=tKPqbamNb9"
+    },
+    {
+      "id": "ntp4vc-2026",
+      "title": "Neural Theorem Proving for Verification Conditions: A Real-World Benchmark",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Qiyuan Xu",
+        "Xiaokun Luan",
+        "Renxi Wang",
+        "Joshua Ong Jun Leang",
+        "Peixin Wang",
+        "Haonan Li",
+        "Wenda Li",
+        "Conrad Watt"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "verification-conditions",
+        "isabelle",
+        "lean4",
+        "rocq"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "verification-conditions"
+      ],
+      "one_line_summary": "It evaluates neural theorem proving on verification conditions drawn from real formal-development workflows and across three proof assistants.",
+      "why_it_matters": "It exposes Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; The benchmark presents a verification condition with its target-language context, a model synthesizes a proof, and Isabelle, Lean, or Rocq decides whether that proof is accepted.",
+      "feedback_verifier": "Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions",
+      "audit_focus": "Check prover versions, imported libraries, condition extraction provenance, and whether metrics compare equivalent search budgets across assistants.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2601.18944",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2601.18944",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/ntp4vc-2026/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2601.18944"
     },
     {
       "id": "one-shot-rlvr-2025",
@@ -1718,6 +2227,101 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/reasoning-as-logic-units-2025/sources"
       },
       "primary_link": "https://openreview.net/forum?id=mMgSxbO4H0"
+    },
+    {
+      "id": "recode-h-2025",
+      "title": "RECODE-H: A Benchmark for Research Code Development with Interactive Human Feedback",
+      "year": 2025,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Chunyu Miao",
+        "Henry Peng Zou",
+        "Yangning Li",
+        "Yankai Chen",
+        "Yibo Wang",
+        "Fangxin Wang",
+        "Yifan Li",
+        "Wooseong Yang",
+        "Bowei He",
+        "Xinni Zhang",
+        "Dianzhi Yu",
+        "Hanchen Yang",
+        "Hoang H. Nguyen",
+        "Yue Zhou",
+        "Jie Yang",
+        "Jizhou Guo",
+        "Wenzhe Fan",
+        "Chin-Yuan Yeh",
+        "Panpan Meng",
+        "Liancheng Fang",
+        "Jinhu Qi",
+        "Wei-Chieh Huang",
+        "Zhengyao Gu",
+        "Yuwei Han",
+        "Langzhou He",
+        "Yuyao Yang",
+        "Yinghui Li",
+        "Hai-Tao Zheng",
+        "Xue Liu",
+        "Irwin King",
+        "Philip S. Yu"
+      ],
+      "source_role": [
+        "benchmark",
+        "agent_environment",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "research-code",
+        "coding-agents",
+        "software-engineering"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "research-code"
+      ],
+      "one_line_summary": "RECODE-H evaluates agents on research-code development where interactive feedback may guide work but executable repository tests decide completion.",
+      "why_it_matters": "It exposes Repository unit tests decide executable research-code task completion as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; An agent reads a paper/repository task, edits the project through iterative feedback, and the released unit-test environment evaluates whether the final implementation completes the task.",
+      "feedback_verifier": "Repository unit tests decide executable research-code task completion",
+      "audit_focus": "Inspect feedback collection, environment pinning, test completeness, paper/repository licenses, and the distinction between human guidance and ground-truth verification.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=IKnuyyPHCV",
+        "venue": "https://openreview.net/forum?id=IKnuyyPHCV",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=IKnuyyPHCV",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/recode-h-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=IKnuyyPHCV"
     },
     {
       "id": "rest-em-self-training-2024",
@@ -2568,15 +3172,148 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/trust-but-verify-rise-2025/sources"
       },
       "primary_link": "https://arxiv.org/abs/2505.13445"
+    },
+    {
+      "id": "utrl-unit-test-adversarial-rl-2025",
+      "title": "Learning to Generate Unit Test via Adversarial Reinforcement Learning",
+      "year": 2025,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Dongjun Lee",
+        "Changho Hwang",
+        "Kimin Lee"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training",
+        "evaluation"
+      ],
+      "domains": [
+        "software-engineering",
+        "unit-tests",
+        "reinforcement-learning"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "💻 Code execution / unit-test data",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "unit-test-generation"
+      ],
+      "one_line_summary": "UTRL treats a test generator and implementation generator as adversaries, using executable tests to reward tests that distinguish correct from incorrect code.",
+      "why_it_matters": "It exposes Executable unit-test pass/fail and discrimination rewards as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; The policy generates a unit test, runs it against candidate programs in a sandbox, receives pass/fail and discrimination outcomes, and updates the test generator with the adversarial reward.",
+      "feedback_verifier": "Executable unit-test pass/fail and discrimination rewards",
+      "audit_focus": "Audit sandbox isolation, hidden reference implementations, reward balance, flaky-test filtering, and whether the test suite overfits the sampled candidate programs.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=VqjNYF9nbP",
+        "venue": "https://openreview.net/forum?id=VqjNYF9nbP",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=VqjNYF9nbP",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/utrl-unit-test-adversarial-rl-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=VqjNYF9nbP"
+    },
+    {
+      "id": "verisoftbench-2026",
+      "title": "VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean",
+      "year": 2026,
+      "venue": "arXiv",
+      "authors": [
+        "Yutong Xin",
+        "Qiaochu Chen",
+        "Greg Durrett",
+        "Işil Dillig"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "formal-verification",
+        "lean4",
+        "software-verification"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "programmatically-verifiable-outcome",
+        "2025-2026",
+        "repository-verification"
+      ],
+      "one_line_summary": "It shifts formal-proof evaluation from isolated theorem statements to proof obligations that require real repository context.",
+      "why_it_matters": "It exposes Lean 4 type checker on repository-context proof obligations as a reusable, auditable outcome contract.",
+      "data_object": "Candidate artifact together with the executable verifier result.; process: task context, candidate output, verifier result; For each obligation, the system supplies the checked-out Lean repository context; a model proposes proof code and Lean 4 type-checking supplies the terminal verdict.",
+      "feedback_verifier": "Lean 4 type checker on repository-context proof obligations",
+      "audit_focus": "Reproduce from pinned repository commits and dependency locks; audit obligation provenance, benchmark splits, and each repository license.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2602.18307",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2602.18307",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/verisoftbench-2026/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2602.18307"
     }
   ],
   "counts": {
-    "total_entries": 37,
-    "verified_entries": 37,
-    "paper_card_sources": 37,
-    "data_releases": 8,
-    "verifiers_rewards": 15,
-    "agent_environments": 4,
+    "total_entries": 47,
+    "verified_entries": 47,
+    "paper_card_sources": 47,
+    "data_releases": 14,
+    "verifiers_rewards": 17,
+    "agent_environments": 7,
     "scaling_studies": 21,
     "needs_search": 0
   },
