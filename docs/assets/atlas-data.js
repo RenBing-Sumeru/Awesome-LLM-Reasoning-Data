@@ -1,76 +1,6 @@
 window.ATLAS_DATA = {
   "entries": [
     {
-      "id": "tinyv-2025",
-      "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
-      "year": 2025,
-      "venue": "arXiv",
-      "authors": [
-        "Zhangchen Xu",
-        "Yuetai Li",
-        "Fengqing Jiang",
-        "Bhaskar Ramasubramanian",
-        "Luyao Niu",
-        "Bill Yuchen Lin",
-        "Radha Poovendran"
-      ],
-      "source_role": [
-        "verifier_reward",
-        "audit_failure",
-        "construction_recipe"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "judgment_required",
-        "mixed"
-      ],
-      "supervision_granularity": [
-        "answer_level",
-        "scalar_reward"
-      ],
-      "training_use": [
-        "rlvr",
-        "reward_modeling",
-        "evaluation"
-      ],
-      "domains": [
-        "math"
-      ],
-      "category": [
-        "scaling_rlvr_test_time_compute"
-      ],
-      "subfield": "🏋️ RLVR optimization scaling",
-      "tags": [
-        "curated-card",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-      "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-      "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
-      "feedback_verifier": "small LLM verifier augmenting rules",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2505.14625",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2505.14625",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": null,
-        "code": "https://github.com/uw-nsl/TinyV",
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/tinyv-2025"
-      },
-      "primary_link": "https://arxiv.org/abs/2505.14625"
-    },
-    {
       "id": "agnostics-universal-learning-environment-2026",
       "title": "Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment",
       "year": 2026,
@@ -142,451 +72,9 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/nuprl/agnostics",
         "project": "https://agnostics.abgru.me/",
         "bibtex": null,
-        "paper_card_source": "paper_cards/sources/agnostics-universal-learning-environment-2026"
+        "paper_card_source": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources"
       },
       "primary_link": "https://arxiv.org/abs/2508.04865"
-    },
-    {
-      "id": "featurebench-2026",
-      "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
-      "year": 2026,
-      "venue": "ICLR 2026",
-      "authors": [
-        "Qixing Zhou",
-        "Jiacheng Zhang",
-        "Haiyang Wang",
-        "Rui Hao",
-        "Jiahe Wang",
-        "Minghao Han",
-        "Yuxue Yang",
-        "Shuzhe Wu",
-        "Feiyang Pan",
-        "Lue Fan",
-        "Dandan Tu",
-        "Zhaoxiang Zhang"
-      ],
-      "source_role": [
-        "benchmark",
-        "data_release",
-        "agent_environment",
-        "construction_recipe"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "full_episode",
-        "answer_level"
-      ],
-      "training_use": [
-        "evaluation",
-        "agent_training",
-        "audit"
-      ],
-      "domains": [
-        "code",
-        "software-engineering",
-        "agents",
-        "unit-tests"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧰 Programmatic benchmarks",
-      "tags": [
-        "iclr-2026",
-        "track-03",
-        "agentic-coding",
-        "executable-benchmark",
-        "unit-tests"
-      ],
-      "one_line_summary": "FeatureBench evaluates end-to-end feature development by deriving executable coding tasks and environments from repository unit tests.",
-      "why_it_matters": "It moves coding-agent evaluation from isolated bug fixing toward feature-level repository work with programmatic execution checks and refreshable task construction.",
-      "data_object": "Repository task, code context, generated changes, executable environment, and test result.; process: repository snapshot, feature task, dependency trace; Executable coding environments derived from 24 open-source repositories.",
-      "feedback_verifier": "Execution-based evaluation protocol using unit tests and repository behavior checks.",
-      "audit_focus": "Unit tests may underspecify the intended feature., Repository tasks may be contaminated through public code., Feature extraction can break hidden dependencies.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2602.10975",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2602.10975",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2602.10975",
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/featurebench-2026"
-      },
-      "primary_link": "https://arxiv.org/abs/2602.10975"
-    },
-    {
-      "id": "beyondbench-2026",
-      "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
-      "year": 2026,
-      "venue": "ICLR 2026",
-      "authors": [
-        "Gaurav Srivastava",
-        "Aafiya Hussain",
-        "Zhenyu Bi",
-        "Swastik Roy",
-        "Priya Pitre",
-        "Meng Lu",
-        "Morteza Ziyadi",
-        "Xuan Wang"
-      ],
-      "source_role": [
-        "benchmark",
-        "audit_failure",
-        "construction_recipe"
-      ],
-      "verification_contract": [
-        "programmatic"
-      ],
-      "supervision_granularity": [
-        "answer_level"
-      ],
-      "training_use": [
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "algorithmic-reasoning",
-        "math",
-        "contamination",
-        "evaluation"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧰 Programmatic benchmarks",
-      "tags": [
-        "iclr-2026",
-        "track-03",
-        "contamination-resistant",
-        "algorithmic-generation",
-        "deterministic-verifier"
-      ],
-      "one_line_summary": "BeyondBench generates fresh algorithmic reasoning problems with deterministic verification to reduce static-benchmark contamination.",
-      "why_it_matters": "It is a clean 03-direction candidate because the benchmark is built around generated instances, deterministic answer checks, and explicit contamination-resistance claims.",
-      "data_object": "Generated problem instance, model answer, and deterministic solution check.; process: task family, generator parameters, difficulty suite; Algorithmic problem generators and deterministic verifiers.",
-      "feedback_verifier": "Mathematical/programmatic verifier with large combinatorial instance spaces.",
-      "audit_focus": "Generator bugs can invalidate deterministic guarantees., Models may exploit task templates if generators are exposed., Tool-use settings can dominate reasoning comparisons.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2509.24210",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2509.24210",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2509.24210",
-        "code": "https://github.com/ctrl-gaurav/BeyondBench",
-        "data": null,
-        "huggingface": null,
-        "project": "https://ctrl-gaurav.github.io/BeyondBench/",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/beyondbench-2026"
-      },
-      "primary_link": "https://arxiv.org/abs/2509.24210"
-    },
-    {
-      "id": "credit-budgeted-icpc-style-coding-2026",
-      "title": "Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
-      "year": 2026,
-      "venue": "ICLR 2026",
-      "authors": [
-        "Lingfeng Zhou",
-        "Junhao Shi",
-        "Jin Gao",
-        "Dequan Wang"
-      ],
-      "source_role": [
-        "benchmark",
-        "agent_environment",
-        "scaling_study"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "full_episode",
-        "answer_level"
-      ],
-      "training_use": [
-        "evaluation",
-        "agent_training",
-        "test_time_compute",
-        "audit"
-      ],
-      "domains": [
-        "code",
-        "agents",
-        "icpc",
-        "resource-bounded-evaluation"
-      ],
-      "category": [
-        "scaling_rlvr_test_time_compute"
-      ],
-      "subfield": "⏱️ Test-time compute",
-      "tags": [
-        "iclr-2026",
-        "track-03",
-        "coding-agents",
-        "budgeted-evaluation",
-        "icpc"
-      ],
-      "one_line_summary": "Credit-Budgeted ICPC-Style Coding evaluates coding agents with a programmatic judge and an explicit credit cost for tokens, tests, and time.",
-      "why_it_matters": "It expands Track 03 from pure correctness to correctness under resource budgets, which is closer to real agent deployment and test-time compute accounting.",
-      "data_object": "Coding problem, generated solution, local-test decisions, token/time/test spending, and accepted/rejected outcome.; process: token budget, test budget, elapsed time; USACOArena interactive ACM-ICPC-style coding arena.",
-      "feedback_verifier": "Programmatic coding judge plus explicit credit economy over tokens, tests, and time.",
-      "audit_focus": "Budget settings can dominate model ranking., Local tests can be gamed or overused., Public programming problems can be contaminated.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2604.10182",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2604.10182",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2604.10182",
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026"
-      },
-      "primary_link": "https://arxiv.org/abs/2604.10182"
-    },
-    {
-      "id": "geogrambench-2026",
-      "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
-      "year": 2026,
-      "venue": "ICLR 2026",
-      "authors": [
-        "Shixian Luo",
-        "Zezhou Zhu",
-        "Yu Yuan",
-        "Yuncheng Yang",
-        "Lianlei Shan",
-        "Yong Wu"
-      ],
-      "source_role": [
-        "benchmark",
-        "data_release"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "judgment_required"
-      ],
-      "supervision_granularity": [
-        "answer_level"
-      ],
-      "training_use": [
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "geometry",
-        "program-reasoning",
-        "symbolic-spatial-reasoning",
-        "evaluation"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧰 Programmatic benchmarks",
-      "tags": [
-        "iclr-2026",
-        "track-03",
-        "geometry",
-        "program-to-geometry",
-        "benchmark"
-      ],
-      "one_line_summary": "GeoGramBench evaluates whether models can reason over geometric information expressed as procedural drawing code.",
-      "why_it_matters": "It broadens Track 03 beyond text math and code execution into symbolic-to-spatial reasoning where programs define the object being verified.",
-      "data_object": "Procedural drawing code, geometry question, model answer, and benchmark score.; process: drawing program, geometry abstraction level, question; Programmatic drawing-code representation of geometric diagrams.",
-      "feedback_verifier": "Benchmark answer checking over curated geometric reasoning problems.",
-      "audit_focus": "Answer checking may hide ambiguity in spatial interpretation., Procedural code can encode visual assumptions not captured by text., Sampling and long-response settings affect reported pass rates.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2505.17653",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2505.17653",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2505.17653",
-        "code": "https://github.com/LiAuto-DSR/GeoGramBench",
-        "data": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
-        "huggingface": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
-        "project": "https://github.com/LiAuto-DSR/GeoGramBench",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/geogrambench-2026"
-      },
-      "primary_link": "https://arxiv.org/abs/2505.17653"
-    },
-    {
-      "id": "scaling-llm-test-time-compute-optimally-2024",
-      "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
-      "year": 2024,
-      "venue": "arXiv",
-      "authors": [
-        "Charlie Snell",
-        "Jaehoon Lee",
-        "Kelvin Xu",
-        "Aviral Kumar"
-      ],
-      "source_role": [
-        "scaling_study",
-        "verifier_reward",
-        "construction_recipe"
-      ],
-      "verification_contract": [
-        "mixed",
-        "judgment_required"
-      ],
-      "supervision_granularity": [
-        "answer_level",
-        "process_reward"
-      ],
-      "training_use": [
-        "test_time_compute",
-        "evaluation",
-        "reward_modeling"
-      ],
-      "domains": [
-        "math",
-        "reasoning",
-        "test-time-compute",
-        "scaling"
-      ],
-      "category": [
-        "scaling_rlvr_test_time_compute"
-      ],
-      "subfield": "⏱️ Test-time compute",
-      "tags": [
-        "test-time-compute",
-        "best-of-n",
-        "verifier-guided-search",
-        "scaling-attribution",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "This paper makes test-time compute a budgeted scaling object instead of an informal decoding trick.",
-      "why_it_matters": "Exact-match test-time compute scaling paper that separates best-of-N, verifier-guided search, prompt difficulty, and FLOPs-matched scaling attribution.",
-      "data_object": "Prompt, generated candidate traces, verifier scores, selected answer, and compute budget.; process: prompt difficulty estimate, sample count, verifier reward; Inference-time sampling and verifier-guided search over math-style reasoning tasks.",
-      "feedback_verifier": "Dense process-based verifier reward models plus answer-level evaluation.",
-      "audit_focus": "Verifier quality can dominate the measured scaling curve., Difficulty estimation can leak benchmark-specific assumptions., More samples can be mistaken for more unique data.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2408.03314",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2408.03314",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2408.03314",
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024"
-      },
-      "primary_link": "https://arxiv.org/abs/2408.03314"
-    },
-    {
-      "id": "math-dataset-2021",
-      "title": "Measuring Mathematical Problem Solving With the MATH Dataset",
-      "year": 2021,
-      "venue": "NeurIPS 2021 Datasets and Benchmarks",
-      "authors": [
-        "Dan Hendrycks",
-        "Collin Burns",
-        "Saurav Kadavath",
-        "Akul Arora",
-        "Steven Basart",
-        "Eric Tang",
-        "Dawn Song",
-        "Jacob Steinhardt"
-      ],
-      "source_role": [
-        "benchmark",
-        "data_release"
-      ],
-      "verification_contract": [
-        "programmatic"
-      ],
-      "supervision_granularity": [
-        "answer_level"
-      ],
-      "training_use": [
-        "sft",
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "math",
-        "competition-mathematics",
-        "answer-extraction"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "📐 Math answer-verifiable data",
-      "tags": [
-        "neurips-2021",
-        "math",
-        "answer-verification",
-        "symbolic-normalization",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "MATH pairs competition problems and human solutions with an answer-level outcome surface that later reasoning pipelines reuse.",
-      "why_it_matters": "It establishes the central trade-off for math outcome data: inexpensive final-answer supervision is useful only when extraction, equivalence, and contamination are audited.",
-      "data_object": "Problem statement, LaTeX solution, and boxed final answer.; process: subject, difficulty, full solution; Dataset loader and evaluation scripts distributed with the official repository.",
-      "feedback_verifier": "Extracted final-answer matching with task-specific normalization.",
-      "audit_focus": "Final-answer extraction can reject an otherwise correct derivation., Equivalent symbolic forms can be mishandled by brittle normalization., Public solutions create benchmark-contamination risk.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2103.03874",
-        "venue": "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
-        "arxiv": "https://arxiv.org/abs/2103.03874",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2103.03874",
-        "code": "https://github.com/hendrycks/math",
-        "data": "https://github.com/hendrycks/math",
-        "huggingface": null,
-        "project": "https://github.com/hendrycks/math",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/math-dataset-2021"
-      },
-      "primary_link": "https://arxiv.org/abs/2103.03874"
     },
     {
       "id": "apps-2021",
@@ -663,310 +151,82 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/datasets/codeparrot/apps",
         "project": "https://github.com/hendrycks/apps",
         "bibtex": null,
-        "paper_card_source": "paper_cards/sources/apps-2021"
+        "paper_card_source": "paper_cards/library/cards/apps-2021/sources"
       },
       "primary_link": "https://arxiv.org/abs/2105.09938"
     },
     {
-      "id": "minif2f-2022",
-      "title": "MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics",
-      "year": 2022,
-      "venue": "ICLR 2022",
+      "id": "beyondbench-2026",
+      "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
+      "year": 2026,
+      "venue": "ICLR 2026",
       "authors": [
-        "Kunhao Zheng",
-        "Jesse Michael Han",
-        "Stanislas Polu"
+        "Gaurav Srivastava",
+        "Aafiya Hussain",
+        "Zhenyu Bi",
+        "Swastik Roy",
+        "Priya Pitre",
+        "Meng Lu",
+        "Morteza Ziyadi",
+        "Xuan Wang"
       ],
       "source_role": [
         "benchmark",
-        "data_release"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "answer_level",
-        "full_episode"
-      ],
-      "training_use": [
-        "evaluation",
-        "rlvr",
-        "audit"
-      ],
-      "domains": [
-        "formal-mathematics",
-        "theorem-proving",
-        "lean",
-        "proof-checking"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧾 Formal proof / Lean / theorem proving",
-      "tags": [
-        "iclr-2022",
-        "theorem-proving",
-        "lean",
-        "formal-proof",
-        "proof-checker",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "miniF2F makes formal theorem statements and proof-checker outcomes a directly auditable evaluation record.",
-      "why_it_matters": "It separates rigorous proof checking from ordinary answer matching while exposing environment-version and formalization risks.",
-      "data_object": "Formal theorem statement, target proof-assistant language, candidate proof script, and checker verdict.; process: source problem, formal statement, proof assistant; Metamath, Lean, Isabelle, and HOL Light formal proof environments.",
-      "feedback_verifier": "Native proof-assistant kernel/checker acceptance.",
-      "audit_focus": "A proof can depend on undocumented imports or library versions., Formalization choices can change the difficulty of the original problem., Kernel success does not validate an informal translation's faithfulness.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2109.00110",
-        "venue": "https://openreview.net/forum?id=9ZPegFuFTFv",
-        "arxiv": "https://arxiv.org/abs/2109.00110",
-        "openreview": "https://openreview.net/forum?id=9ZPegFuFTFv",
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2109.00110",
-        "code": "https://github.com/openai/miniF2F",
-        "data": "https://github.com/openai/miniF2F",
-        "huggingface": null,
-        "project": "https://github.com/openai/miniF2F",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/minif2f-2022"
-      },
-      "primary_link": "https://arxiv.org/abs/2109.00110"
-    },
-    {
-      "id": "leandojo-2023",
-      "title": "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models",
-      "year": 2023,
-      "venue": "NeurIPS 2023 Datasets and Benchmarks",
-      "authors": [
-        "Kaiyu Yang",
-        "Aidan M. Swope",
-        "Alex Gu",
-        "Rahul Chalamala",
-        "Peiyang Song",
-        "Shixing Yu",
-        "Saad Godil",
-        "Ryan Prenger",
-        "Anima Anandkumar"
-      ],
-      "source_role": [
-        "data_release",
-        "benchmark",
-        "agent_environment",
-        "verifier_reward"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "state_action_level",
-        "full_episode"
-      ],
-      "training_use": [
-        "sft",
-        "agent_training",
-        "rlvr",
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "formal-mathematics",
-        "theorem-proving",
-        "lean",
-        "premise-retrieval"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧾 Formal proof / Lean / theorem proving",
-      "tags": [
-        "neurips-2023",
-        "theorem-proving",
-        "lean",
-        "proof-environment",
-        "premise-retrieval",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "LeanDojo is the key proof-data card for programmatic interaction, premise-aware splits, and kernel-checked proof outcomes.",
-      "why_it_matters": "It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful only under the exact formal environment that checked it.",
-      "data_object": "Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker verdict.; process: theorem declaration, proof state, tactic; Programmatic Lean 3/Lean 4 interaction environment with a pinned mathlib commit.",
-      "feedback_verifier": "Lean proof-environment response and terminal kernel acceptance.",
-      "audit_focus": "Mismatched Lean, mathlib, or import versions change checker behavior., Proof-environment wrappers can misjudge valid proofs., Retrieval can mask memorization unless premise-aware splits are used.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2306.15626",
-        "venue": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
-        "arxiv": "https://arxiv.org/abs/2306.15626",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2306.15626",
-        "code": "https://github.com/lean-dojo/LeanDojo",
-        "data": "https://leandojo.org/leandojo",
-        "huggingface": null,
-        "project": "https://leandojo.org/leandojo",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/leandojo-2023"
-      },
-      "primary_link": "https://arxiv.org/abs/2306.15626"
-    },
-    {
-      "id": "self-consistency-chain-of-thought-2023",
-      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
-      "year": 2023,
-      "venue": "ICLR 2023",
-      "authors": [
-        "Xuezhi Wang",
-        "Jason Wei",
-        "Dale Schuurmans",
-        "Quoc Le",
-        "Ed Chi",
-        "Sharan Narang",
-        "Aakanksha Chowdhery",
-        "Denny Zhou"
-      ],
-      "source_role": [
-        "scaling_study",
+        "audit_failure",
         "construction_recipe"
       ],
       "verification_contract": [
-        "judgment_required",
-        "mixed"
+        "programmatic"
       ],
       "supervision_granularity": [
-        "answer_level",
-        "full_episode"
+        "answer_level"
       ],
       "training_use": [
-        "test_time_compute",
-        "evaluation"
-      ],
-      "domains": [
-        "math",
-        "commonsense-reasoning",
-        "sampling",
-        "chain-of-thought"
-      ],
-      "category": [
-        "scaling_rlvr_test_time_compute"
-      ],
-      "subfield": "🎲 pass@k / sampling budget",
-      "tags": [
-        "iclr-2023",
-        "self-consistency",
-        "sampling-budget",
-        "pass-at-k-adjacent",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "Self-consistency is the clean baseline for repeated-sampling test-time compute in CoT reasoning.",
-      "why_it_matters": "Top-conference paper that turns repeated sampled reasoning paths into a simple test-time compute scaling primitive.",
-      "data_object": "Prompt, sampled reasoning paths, extracted answers, vote distribution, and selected final answer.; process: sample index, chain-of-thought path, answer extraction; Repeated inference sampling over answer-verifiable and judgment-required reasoning tasks.",
-      "feedback_verifier": "Answer agreement and final-answer checking act as an implicit verifier.",
-      "audit_focus": "More samples can hide answer-extraction bias., Majority vote can amplify a common wrong shortcut., Sampling budget may be incomparable across papers.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2203.11171",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2203.11171",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2203.11171",
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "paper_card_source": "paper_cards/sources/self-consistency-chain-of-thought-2023"
-      },
-      "primary_link": "https://arxiv.org/abs/2203.11171"
-    },
-    {
-      "id": "tree-of-thoughts-2023",
-      "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
-      "year": 2023,
-      "venue": "NeurIPS 2023",
-      "authors": [
-        "Shunyu Yao",
-        "Dian Yu",
-        "Jeffrey Zhao",
-        "Izhak Shafran",
-        "Thomas L. Griffiths",
-        "Yuan Cao",
-        "Karthik Narasimhan"
-      ],
-      "source_role": [
-        "scaling_study",
-        "construction_recipe",
-        "agent_environment"
-      ],
-      "verification_contract": [
-        "judgment_required",
-        "mixed"
-      ],
-      "supervision_granularity": [
-        "step_level",
-        "full_episode"
-      ],
-      "training_use": [
-        "test_time_compute",
         "evaluation",
         "audit"
       ],
       "domains": [
-        "planning",
-        "search",
-        "reasoning",
-        "games"
+        "algorithmic-reasoning",
+        "math",
+        "contamination",
+        "evaluation"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "programmatically_verifiable_outcome_data"
       ],
-      "subfield": "⏱️ Test-time compute",
+      "subfield": "🧰 Programmatic benchmarks",
       "tags": [
-        "neurips-2023",
-        "tree-search",
-        "test-time-compute",
-        "verifier-guided-search",
-        "primary-link-checked"
+        "iclr-2026",
+        "track-03",
+        "contamination-resistant",
+        "algorithmic-generation",
+        "deterministic-verifier"
       ],
-      "one_line_summary": "Tree of Thoughts turns language reasoning into a search trace with explicit branch and evaluation budgets.",
-      "why_it_matters": "Top-conference paper that makes search trees, branch budgets, and self-evaluation explicit test-time compute objects.",
-      "data_object": "Problem, intermediate thought states, branch scores, search actions, and final solution.; process: thought node, branch candidates, state evaluation; Explicit tree search over language-model thought units.",
-      "feedback_verifier": "Self-evaluation, task-specific checks, and final outcome scoring.",
-      "audit_focus": "Value estimates may be prompt-sensitive., Search budget can dominate model ranking., Small task suites can overfit scaffolds.",
+      "one_line_summary": "BeyondBench generates fresh algorithmic reasoning problems with deterministic verification to reduce static-benchmark contamination.",
+      "why_it_matters": "It is a clean 03-direction candidate because the benchmark is built around generated instances, deterministic answer checks, and explicit contamination-resistance claims.",
+      "data_object": "Generated problem instance, model answer, and deterministic solution check.; process: task family, generator parameters, difficulty suite; Algorithmic problem generators and deterministic verifiers.",
+      "feedback_verifier": "Mathematical/programmatic verifier with large combinatorial instance spaces.",
+      "audit_focus": "Generator bugs can invalidate deterministic guarantees., Models may exploit task templates if generators are exposed., Tool-use settings can dominate reasoning comparisons.",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2305.10601",
+        "paper": "https://arxiv.org/abs/2509.24210",
         "venue": null,
-        "arxiv": "https://arxiv.org/abs/2305.10601",
+        "arxiv": "https://arxiv.org/abs/2509.24210",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2305.10601",
-        "code": "https://github.com/princeton-nlp/tree-of-thought-llm",
+        "doi": "https://doi.org/10.48550/arXiv.2509.24210",
+        "code": "https://github.com/ctrl-gaurav/BeyondBench",
         "data": null,
         "huggingface": null,
-        "project": null,
+        "project": "https://ctrl-gaurav.github.io/BeyondBench/",
         "bibtex": null,
-        "paper_card_source": "paper_cards/sources/tree-of-thoughts-2023"
+        "paper_card_source": "paper_cards/library/cards/beyondbench-2026/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2305.10601"
+      "primary_link": "https://arxiv.org/abs/2509.24210"
     },
     {
       "id": "coderl-code-generation-rl-2022",
@@ -1037,86 +297,82 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/sources/coderl-code-generation-rl-2022"
+        "paper_card_source": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources"
       },
       "primary_link": "https://arxiv.org/abs/2207.01780"
     },
     {
-      "id": "lets-verify-step-by-step-2023",
-      "title": "Let's Verify Step by Step",
-      "year": 2023,
-      "venue": "arXiv",
+      "id": "credit-budgeted-icpc-style-coding-2026",
+      "title": "Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
+      "year": 2026,
+      "venue": "ICLR 2026",
       "authors": [
-        "Hunter Lightman",
-        "Vineet Kosaraju",
-        "Yura Burda",
-        "Harri Edwards",
-        "Bowen Baker",
-        "Teddy Lee",
-        "Jan Leike",
-        "John Schulman",
-        "Ilya Sutskever",
-        "Karl Cobbe"
+        "Lingfeng Zhou",
+        "Junhao Shi",
+        "Jin Gao",
+        "Dequan Wang"
       ],
       "source_role": [
-        "process_supervision",
-        "verifier_reward",
-        "data_release"
+        "benchmark",
+        "agent_environment",
+        "scaling_study"
       ],
       "verification_contract": [
-        "judgment_required"
+        "programmatic",
+        "environmental"
       ],
       "supervision_granularity": [
-        "step_level",
-        "process_reward"
+        "full_episode",
+        "answer_level"
       ],
       "training_use": [
-        "process_supervision",
-        "reward_modeling",
+        "evaluation",
+        "agent_training",
         "test_time_compute",
-        "evaluation"
+        "audit"
       ],
       "domains": [
-        "math",
-        "process-supervision",
-        "reward-modeling"
+        "code",
+        "agents",
+        "icpc",
+        "resource-bounded-evaluation"
       ],
       "category": [
         "scaling_rlvr_test_time_compute"
       ],
       "subfield": "⏱️ Test-time compute",
       "tags": [
-        "process-reward-model",
-        "prm800k",
-        "step-level-verifier",
-        "verifier-scaling",
-        "primary-link-checked"
+        "iclr-2026",
+        "track-03",
+        "coding-agents",
+        "budgeted-evaluation",
+        "icpc"
       ],
-      "one_line_summary": "This is the core PRM card for step-level verifier data and process-supervision scaling.",
-      "why_it_matters": "Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time selection.",
-      "data_object": "Problem, reasoning steps, step labels, process reward model score, and final answer.; process: math problem, reasoning step, human step label; PRM800K-style process-supervision dataset for math reasoning.",
-      "feedback_verifier": "Process reward model trained from human step-level labels.",
-      "audit_focus": "Human step labels can encode style preferences., PRM scores can reward locally plausible but globally wrong paths., Verifier calls add TTC cost that must be disclosed.",
+      "one_line_summary": "Credit-Budgeted ICPC-Style Coding evaluates coding agents with a programmatic judge and an explicit credit cost for tokens, tests, and time.",
+      "why_it_matters": "It expands Track 03 from pure correctness to correctness under resource budgets, which is closer to real agent deployment and test-time compute accounting.",
+      "data_object": "Coding problem, generated solution, local-test decisions, token/time/test spending, and accepted/rejected outcome.; process: token budget, test budget, elapsed time; USACOArena interactive ACM-ICPC-style coding arena.",
+      "feedback_verifier": "Programmatic coding judge plus explicit credit economy over tokens, tests, and time.",
+      "audit_focus": "Budget settings can dominate model ranking., Local tests can be gamed or overused., Public programming problems can be contaminated.",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2305.20050",
+        "paper": "https://arxiv.org/abs/2604.10182",
         "venue": null,
-        "arxiv": "https://arxiv.org/abs/2305.20050",
+        "arxiv": "https://arxiv.org/abs/2604.10182",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2305.20050",
+        "doi": "https://doi.org/10.48550/arXiv.2604.10182",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/sources/lets-verify-step-by-step-2023"
+        "paper_card_source": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2305.20050"
+      "primary_link": "https://arxiv.org/abs/2604.10182"
     },
     {
       "id": "deepseekmath-2024",
@@ -1196,9 +452,462 @@ window.ATLAS_DATA = {
         "huggingface": "https://huggingface.co/deepseek-ai/deepseek-math-7b-base",
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/sources/deepseekmath-2024"
+        "paper_card_source": "paper_cards/library/cards/deepseekmath-2024/sources"
       },
       "primary_link": "https://arxiv.org/abs/2402.03300"
+    },
+    {
+      "id": "featurebench-2026",
+      "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Qixing Zhou",
+        "Jiacheng Zhang",
+        "Haiyang Wang",
+        "Rui Hao",
+        "Jiahe Wang",
+        "Minghao Han",
+        "Yuxue Yang",
+        "Shuzhe Wu",
+        "Feiyang Pan",
+        "Lue Fan",
+        "Dandan Tu",
+        "Zhaoxiang Zhang"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release",
+        "agent_environment",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "agent_training",
+        "audit"
+      ],
+      "domains": [
+        "code",
+        "software-engineering",
+        "agents",
+        "unit-tests"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "iclr-2026",
+        "track-03",
+        "agentic-coding",
+        "executable-benchmark",
+        "unit-tests"
+      ],
+      "one_line_summary": "FeatureBench evaluates end-to-end feature development by deriving executable coding tasks and environments from repository unit tests.",
+      "why_it_matters": "It moves coding-agent evaluation from isolated bug fixing toward feature-level repository work with programmatic execution checks and refreshable task construction.",
+      "data_object": "Repository task, code context, generated changes, executable environment, and test result.; process: repository snapshot, feature task, dependency trace; Executable coding environments derived from 24 open-source repositories.",
+      "feedback_verifier": "Execution-based evaluation protocol using unit tests and repository behavior checks.",
+      "audit_focus": "Unit tests may underspecify the intended feature., Repository tasks may be contaminated through public code., Feature extraction can break hidden dependencies.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2602.10975",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2602.10975",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2602.10975",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/featurebench-2026/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2602.10975"
+    },
+    {
+      "id": "geogrambench-2026",
+      "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Shixian Luo",
+        "Zezhou Zhu",
+        "Yu Yuan",
+        "Yuncheng Yang",
+        "Lianlei Shan",
+        "Yong Wu"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "geometry",
+        "program-reasoning",
+        "symbolic-spatial-reasoning",
+        "evaluation"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧰 Programmatic benchmarks",
+      "tags": [
+        "iclr-2026",
+        "track-03",
+        "geometry",
+        "program-to-geometry",
+        "benchmark"
+      ],
+      "one_line_summary": "GeoGramBench evaluates whether models can reason over geometric information expressed as procedural drawing code.",
+      "why_it_matters": "It broadens Track 03 beyond text math and code execution into symbolic-to-spatial reasoning where programs define the object being verified.",
+      "data_object": "Procedural drawing code, geometry question, model answer, and benchmark score.; process: drawing program, geometry abstraction level, question; Programmatic drawing-code representation of geometric diagrams.",
+      "feedback_verifier": "Benchmark answer checking over curated geometric reasoning problems.",
+      "audit_focus": "Answer checking may hide ambiguity in spatial interpretation., Procedural code can encode visual assumptions not captured by text., Sampling and long-response settings affect reported pass rates.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2505.17653",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2505.17653",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2505.17653",
+        "code": "https://github.com/LiAuto-DSR/GeoGramBench",
+        "data": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "huggingface": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "project": "https://github.com/LiAuto-DSR/GeoGramBench",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/geogrambench-2026/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2505.17653"
+    },
+    {
+      "id": "leandojo-2023",
+      "title": "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models",
+      "year": 2023,
+      "venue": "NeurIPS 2023 Datasets and Benchmarks",
+      "authors": [
+        "Kaiyu Yang",
+        "Aidan M. Swope",
+        "Alex Gu",
+        "Rahul Chalamala",
+        "Peiyang Song",
+        "Shixing Yu",
+        "Saad Godil",
+        "Ryan Prenger",
+        "Anima Anandkumar"
+      ],
+      "source_role": [
+        "data_release",
+        "benchmark",
+        "agent_environment",
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "state_action_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "sft",
+        "agent_training",
+        "rlvr",
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "formal-mathematics",
+        "theorem-proving",
+        "lean",
+        "premise-retrieval"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "neurips-2023",
+        "theorem-proving",
+        "lean",
+        "proof-environment",
+        "premise-retrieval",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "LeanDojo is the key proof-data card for programmatic interaction, premise-aware splits, and kernel-checked proof outcomes.",
+      "why_it_matters": "It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful only under the exact formal environment that checked it.",
+      "data_object": "Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker verdict.; process: theorem declaration, proof state, tactic; Programmatic Lean 3/Lean 4 interaction environment with a pinned mathlib commit.",
+      "feedback_verifier": "Lean proof-environment response and terminal kernel acceptance.",
+      "audit_focus": "Mismatched Lean, mathlib, or import versions change checker behavior., Proof-environment wrappers can misjudge valid proofs., Retrieval can mask memorization unless premise-aware splits are used.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2306.15626",
+        "venue": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
+        "arxiv": "https://arxiv.org/abs/2306.15626",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2306.15626",
+        "code": "https://github.com/lean-dojo/LeanDojo",
+        "data": "https://leandojo.org/leandojo",
+        "huggingface": null,
+        "project": "https://leandojo.org/leandojo",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/leandojo-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2306.15626"
+    },
+    {
+      "id": "lets-verify-step-by-step-2023",
+      "title": "Let's Verify Step by Step",
+      "year": 2023,
+      "venue": "arXiv",
+      "authors": [
+        "Hunter Lightman",
+        "Vineet Kosaraju",
+        "Yura Burda",
+        "Harri Edwards",
+        "Bowen Baker",
+        "Teddy Lee",
+        "Jan Leike",
+        "John Schulman",
+        "Ilya Sutskever",
+        "Karl Cobbe"
+      ],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "data_release"
+      ],
+      "verification_contract": [
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "reward_modeling",
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "math",
+        "process-supervision",
+        "reward-modeling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "process-reward-model",
+        "prm800k",
+        "step-level-verifier",
+        "verifier-scaling",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "This is the core PRM card for step-level verifier data and process-supervision scaling.",
+      "why_it_matters": "Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time selection.",
+      "data_object": "Problem, reasoning steps, step labels, process reward model score, and final answer.; process: math problem, reasoning step, human step label; PRM800K-style process-supervision dataset for math reasoning.",
+      "feedback_verifier": "Process reward model trained from human step-level labels.",
+      "audit_focus": "Human step labels can encode style preferences., PRM scores can reward locally plausible but globally wrong paths., Verifier calls add TTC cost that must be disclosed.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2305.20050",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2305.20050",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2305.20050",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2305.20050"
+    },
+    {
+      "id": "math-dataset-2021",
+      "title": "Measuring Mathematical Problem Solving With the MATH Dataset",
+      "year": 2021,
+      "venue": "NeurIPS 2021 Datasets and Benchmarks",
+      "authors": [
+        "Dan Hendrycks",
+        "Collin Burns",
+        "Saurav Kadavath",
+        "Akul Arora",
+        "Steven Basart",
+        "Eric Tang",
+        "Dawn Song",
+        "Jacob Steinhardt"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level"
+      ],
+      "training_use": [
+        "sft",
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "math",
+        "competition-mathematics",
+        "answer-extraction"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "📐 Math answer-verifiable data",
+      "tags": [
+        "neurips-2021",
+        "math",
+        "answer-verification",
+        "symbolic-normalization",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "MATH pairs competition problems and human solutions with an answer-level outcome surface that later reasoning pipelines reuse.",
+      "why_it_matters": "It establishes the central trade-off for math outcome data: inexpensive final-answer supervision is useful only when extraction, equivalence, and contamination are audited.",
+      "data_object": "Problem statement, LaTeX solution, and boxed final answer.; process: subject, difficulty, full solution; Dataset loader and evaluation scripts distributed with the official repository.",
+      "feedback_verifier": "Extracted final-answer matching with task-specific normalization.",
+      "audit_focus": "Final-answer extraction can reject an otherwise correct derivation., Equivalent symbolic forms can be mishandled by brittle normalization., Public solutions create benchmark-contamination risk.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2103.03874",
+        "venue": "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
+        "arxiv": "https://arxiv.org/abs/2103.03874",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2103.03874",
+        "code": "https://github.com/hendrycks/math",
+        "data": "https://github.com/hendrycks/math",
+        "huggingface": null,
+        "project": "https://github.com/hendrycks/math",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/math-dataset-2021/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2103.03874"
+    },
+    {
+      "id": "minif2f-2022",
+      "title": "MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics",
+      "year": 2022,
+      "venue": "ICLR 2022",
+      "authors": [
+        "Kunhao Zheng",
+        "Jesse Michael Han",
+        "Stanislas Polu"
+      ],
+      "source_role": [
+        "benchmark",
+        "data_release"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "environmental"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "rlvr",
+        "audit"
+      ],
+      "domains": [
+        "formal-mathematics",
+        "theorem-proving",
+        "lean",
+        "proof-checking"
+      ],
+      "category": [
+        "programmatically_verifiable_outcome_data"
+      ],
+      "subfield": "🧾 Formal proof / Lean / theorem proving",
+      "tags": [
+        "iclr-2022",
+        "theorem-proving",
+        "lean",
+        "formal-proof",
+        "proof-checker",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "miniF2F makes formal theorem statements and proof-checker outcomes a directly auditable evaluation record.",
+      "why_it_matters": "It separates rigorous proof checking from ordinary answer matching while exposing environment-version and formalization risks.",
+      "data_object": "Formal theorem statement, target proof-assistant language, candidate proof script, and checker verdict.; process: source problem, formal statement, proof assistant; Metamath, Lean, Isabelle, and HOL Light formal proof environments.",
+      "feedback_verifier": "Native proof-assistant kernel/checker acceptance.",
+      "audit_focus": "A proof can depend on undocumented imports or library versions., Formalization choices can change the difficulty of the original problem., Kernel success does not validate an informal translation's faithfulness.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2109.00110",
+        "venue": "https://openreview.net/forum?id=9ZPegFuFTFv",
+        "arxiv": "https://arxiv.org/abs/2109.00110",
+        "openreview": "https://openreview.net/forum?id=9ZPegFuFTFv",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2109.00110",
+        "code": "https://github.com/openai/miniF2F",
+        "data": "https://github.com/openai/miniF2F",
+        "huggingface": null,
+        "project": "https://github.com/openai/miniF2F",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/minif2f-2022/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2109.00110"
     },
     {
       "id": "rest-em-self-training-2024",
@@ -1306,9 +1015,300 @@ window.ATLAS_DATA = {
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/sources/rest-em-self-training-2024"
+        "paper_card_source": "paper_cards/library/cards/rest-em-self-training-2024/sources"
       },
       "primary_link": "https://arxiv.org/abs/2312.06585"
+    },
+    {
+      "id": "scaling-llm-test-time-compute-optimally-2024",
+      "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Charlie Snell",
+        "Jaehoon Lee",
+        "Kelvin Xu",
+        "Aviral Kumar"
+      ],
+      "source_role": [
+        "scaling_study",
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "mixed",
+        "judgment_required"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation",
+        "reward_modeling"
+      ],
+      "domains": [
+        "math",
+        "reasoning",
+        "test-time-compute",
+        "scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "test-time-compute",
+        "best-of-n",
+        "verifier-guided-search",
+        "scaling-attribution",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "This paper makes test-time compute a budgeted scaling object instead of an informal decoding trick.",
+      "why_it_matters": "Exact-match test-time compute scaling paper that separates best-of-N, verifier-guided search, prompt difficulty, and FLOPs-matched scaling attribution.",
+      "data_object": "Prompt, generated candidate traces, verifier scores, selected answer, and compute budget.; process: prompt difficulty estimate, sample count, verifier reward; Inference-time sampling and verifier-guided search over math-style reasoning tasks.",
+      "feedback_verifier": "Dense process-based verifier reward models plus answer-level evaluation.",
+      "audit_focus": "Verifier quality can dominate the measured scaling curve., Difficulty estimation can leak benchmark-specific assumptions., More samples can be mistaken for more unique data.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2408.03314",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2408.03314",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2408.03314",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2408.03314"
+    },
+    {
+      "id": "self-consistency-chain-of-thought-2023",
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "year": 2023,
+      "venue": "ICLR 2023",
+      "authors": [
+        "Xuezhi Wang",
+        "Jason Wei",
+        "Dale Schuurmans",
+        "Quoc Le",
+        "Ed Chi",
+        "Sharan Narang",
+        "Aakanksha Chowdhery",
+        "Denny Zhou"
+      ],
+      "source_role": [
+        "scaling_study",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "judgment_required",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation"
+      ],
+      "domains": [
+        "math",
+        "commonsense-reasoning",
+        "sampling",
+        "chain-of-thought"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🎲 pass@k / sampling budget",
+      "tags": [
+        "iclr-2023",
+        "self-consistency",
+        "sampling-budget",
+        "pass-at-k-adjacent",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Self-consistency is the clean baseline for repeated-sampling test-time compute in CoT reasoning.",
+      "why_it_matters": "Top-conference paper that turns repeated sampled reasoning paths into a simple test-time compute scaling primitive.",
+      "data_object": "Prompt, sampled reasoning paths, extracted answers, vote distribution, and selected final answer.; process: sample index, chain-of-thought path, answer extraction; Repeated inference sampling over answer-verifiable and judgment-required reasoning tasks.",
+      "feedback_verifier": "Answer agreement and final-answer checking act as an implicit verifier.",
+      "audit_focus": "More samples can hide answer-extraction bias., Majority vote can amplify a common wrong shortcut., Sampling budget may be incomparable across papers.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2203.11171",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2203.11171",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2203.11171",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2203.11171"
+    },
+    {
+      "id": "tinyv-2025",
+      "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Zhangchen Xu",
+        "Yuetai Li",
+        "Fengqing Jiang",
+        "Bhaskar Ramasubramanian",
+        "Luyao Niu",
+        "Bill Yuchen Lin",
+        "Radha Poovendran"
+      ],
+      "source_role": [
+        "verifier_reward",
+        "audit_failure",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "judgment_required",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "scalar_reward"
+      ],
+      "training_use": [
+        "rlvr",
+        "reward_modeling",
+        "evaluation"
+      ],
+      "domains": [
+        "math"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "🏋️ RLVR optimization scaling",
+      "tags": [
+        "curated-card",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
+      "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
+      "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
+      "feedback_verifier": "small LLM verifier augmenting rules",
+      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2505.14625",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2505.14625",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": "https://github.com/uw-nsl/TinyV",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/tinyv-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2505.14625"
+    },
+    {
+      "id": "tree-of-thoughts-2023",
+      "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "year": 2023,
+      "venue": "NeurIPS 2023",
+      "authors": [
+        "Shunyu Yao",
+        "Dian Yu",
+        "Jeffrey Zhao",
+        "Izhak Shafran",
+        "Thomas L. Griffiths",
+        "Yuan Cao",
+        "Karthik Narasimhan"
+      ],
+      "source_role": [
+        "scaling_study",
+        "construction_recipe",
+        "agent_environment"
+      ],
+      "verification_contract": [
+        "judgment_required",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "test_time_compute",
+        "evaluation",
+        "audit"
+      ],
+      "domains": [
+        "planning",
+        "search",
+        "reasoning",
+        "games"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "neurips-2023",
+        "tree-search",
+        "test-time-compute",
+        "verifier-guided-search",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Tree of Thoughts turns language reasoning into a search trace with explicit branch and evaluation budgets.",
+      "why_it_matters": "Top-conference paper that makes search trees, branch budgets, and self-evaluation explicit test-time compute objects.",
+      "data_object": "Problem, intermediate thought states, branch scores, search actions, and final solution.; process: thought node, branch candidates, state evaluation; Explicit tree search over language-model thought units.",
+      "feedback_verifier": "Self-evaluation, task-specific checks, and final outcome scoring.",
+      "audit_focus": "Value estimates may be prompt-sensitive., Search budget can dominate model ranking., Small task suites can overfit scaffolds.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2305.10601",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2305.10601",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2305.10601",
+        "code": "https://github.com/princeton-nlp/tree-of-thought-llm",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/tree-of-thoughts-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2305.10601"
     }
   ],
   "counts": {
@@ -3153,7 +3153,7 @@ window.ATLAS_DATA = {
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "paper_card_source": "paper_cards/sources/tinyv-2025"
+              "paper_card_source": "paper_cards/library/cards/tinyv-2025/sources"
             },
             "primary_link": "https://arxiv.org/abs/2505.14625"
           }

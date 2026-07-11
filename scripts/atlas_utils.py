@@ -5,9 +5,15 @@ from collections import Counter
 import csv
 from pathlib import Path
 import re
+import sys
 from typing import Any
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 from common import ROOT, load_yaml_json
+from tools.paper_cards import library
 
 PRIMARY_LINK_KEYS = ["paper", "arxiv", "venue", "openreview", "acl", "pmlr", "cvf", "doi"]
 ARTIFACT_KEYS = [
@@ -75,16 +81,19 @@ def slugify(value: Any, fallback: str = "entry") -> str:
 def entries() -> list[dict[str, Any]]:
     global _ENTRIES_CACHE
     if _ENTRIES_CACHE is None:
-        payload = load_yaml_json(ROOT / "data/papers.yaml")
-        _ENTRIES_CACHE = payload if isinstance(payload, list) else []
+        cards = library.load_cards(ROOT)
+        if cards:
+            _ENTRIES_CACHE = [{**card["paper"], "category": list(card["paper"].get("category_ids") or [])} for card in cards.values()]
+        else:
+            payload = load_yaml_json(ROOT / "data/papers.yaml")
+            _ENTRIES_CACHE = payload if isinstance(payload, list) else []
     return _ENTRIES_CACHE
 
 
 def categories() -> list[dict[str, Any]]:
     global _CATEGORIES_CACHE
     if _CATEGORIES_CACHE is None:
-        payload = load_yaml_json(ROOT / "data/categories.yaml") or {}
-        _CATEGORIES_CACHE = payload.get("paper_categories", [])
+        _CATEGORIES_CACHE = library.category_options(ROOT) if (ROOT / "paper_cards/library/categories.yaml").exists() else (load_yaml_json(ROOT / "data/categories.yaml") or {}).get("paper_categories", [])
     return _CATEGORIES_CACHE
 
 
@@ -156,13 +165,14 @@ def paper_card_source_complete(path: str | Path, root: Path = ROOT) -> bool:
 
 
 def paper_card_inventory(root: Path = ROOT) -> dict[str, str]:
-    sources = root / "paper_cards" / "sources"
+    sources = root / "paper_cards" / "library" / "cards"
     if not sources.exists():
         return {}
     cards: dict[str, str] = {}
     for path in sorted(sources.iterdir()):
-        if path.is_dir() and paper_card_source_complete(path, root):
-            cards[path.name] = path.relative_to(root).as_posix()
+        source_dir = path / "sources"
+        if path.is_dir() and paper_card_source_complete(source_dir, root):
+            cards[path.name] = source_dir.relative_to(root).as_posix()
     return cards
 
 

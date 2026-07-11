@@ -117,7 +117,7 @@
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "paper_card_source": "paper_cards/sources/tinyv-2025"
+            "paper_card_source": "paper_cards/library/cards/tinyv-2025/sources"
           },
           "primary_link": "https://arxiv.org/abs/2505.14625"
         }
