@@ -156,6 +156,70 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2105.09938"
     },
     {
+      "id": "atom-of-thoughts-markov-test-time-scaling-2025",
+      "title": "Atom of Thoughts for Markov LLM Test-Time Scaling",
+      "year": 2025,
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Fengwei Teng",
+        "Quan Shi",
+        "Zhijiang Guo"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Atom of Thoughts for Markov LLM Test-Time Scaling studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=qXSFkP0ELS",
+        "venue": "https://openreview.net/forum?id=qXSFkP0ELS",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=qXSFkP0ELS",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/atom-of-thoughts-markov-test-time-scaling-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=qXSFkP0ELS"
+    },
+    {
       "id": "beyondbench-2026",
       "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
       "year": 2026,
@@ -375,6 +439,68 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2604.10182"
     },
     {
+      "id": "deepseek-r1-2025",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "year": 2025,
+      "venue": "Nature / arXiv",
+      "authors": [
+        "DeepSeek-AI"
+      ],
+      "source_role": [
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "RLVR"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.12948",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.12948",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/deepseek-r1-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2501.12948"
+    },
+    {
       "id": "deepseekmath-2024",
       "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
       "year": 2024,
@@ -455,6 +581,195 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/deepseekmath-2024/sources"
       },
       "primary_link": "https://arxiv.org/abs/2402.03300"
+    },
+    {
+      "id": "does-rl-incentivize-reasoning-capacity-2025",
+      "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Yang Yue",
+        "Gao Huang"
+      ],
+      "source_role": [
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "RLVR"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model? studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2504.13837",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2504.13837",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/does-rl-incentivize-reasoning-capacity-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2504.13837"
+    },
+    {
+      "id": "efficient-test-time-scaling-internal-states-2026",
+      "title": "Efficient Test-Time Scaling of Multi-Step Reasoning by Probing Internal States of Large Language Models",
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "authors": [
+        "Anonymous authors"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Efficient Test-Time Scaling of Multi-Step Reasoning by Probing Internal States of Large Language Models studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=bhEZkAHaT9",
+        "venue": "https://openreview.net/forum?id=bhEZkAHaT9",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=bhEZkAHaT9",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/efficient-test-time-scaling-internal-states-2026/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=bhEZkAHaT9"
+    },
+    {
+      "id": "extending-test-time-scaling-3d-perspective-2025",
+      "title": "Extending Test-Time Scaling: A 3D Perspective with Context, Batch, and Turn",
+      "year": 2025,
+      "venue": "ICLR 2026 submission",
+      "authors": [
+        "Chao Yu",
+        "Qixin Tan",
+        "Jiaxuan Gao"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Extending Test-Time Scaling: A 3D Perspective with Context, Batch, and Turn studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=ywkptEwIFt",
+        "venue": "https://openreview.net/forum?id=ywkptEwIFt",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=ywkptEwIFt",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/extending-test-time-scaling-3d-perspective-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=ywkptEwIFt"
     },
     {
       "id": "featurebench-2026",
@@ -609,6 +924,132 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2505.17653"
     },
     {
+      "id": "kimi-k1-5-scaling-rl-2025",
+      "title": "Kimi k1.5: Scaling Reinforcement Learning with LLMs",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Kimi Team"
+      ],
+      "source_role": [
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "RLVR"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Kimi k1.5: Scaling Reinforcement Learning with LLMs studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.12599",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.12599",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/kimi-k1-5-scaling-rl-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2501.12599"
+    },
+    {
+      "id": "latts-latent-test-time-scaling-diffusion-2026",
+      "title": "LATTS: LAtent space Test Time Scaling for diffusion language models",
+      "year": 2026,
+      "venue": "ICLR 2026 submission",
+      "authors": [
+        "Yihao Liu",
+        "Hangrui Zhou",
+        "Bowen Zhou"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "LATTS: LAtent space Test Time Scaling for diffusion language models studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=Q524K1mgCc",
+        "venue": "https://openreview.net/forum?id=Q524K1mgCc",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=Q524K1mgCc",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/latts-latent-test-time-scaling-diffusion-2026/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=Q524K1mgCc"
+    },
+    {
       "id": "leandojo-2023",
       "title": "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models",
       "year": 2023,
@@ -693,58 +1134,45 @@ window.ATLAS_DATA = {
       "id": "lets-verify-step-by-step-2023",
       "title": "Let's Verify Step by Step",
       "year": 2023,
-      "venue": "arXiv",
+      "venue": "ICLR 2024",
       "authors": [
         "Hunter Lightman",
         "Vineet Kosaraju",
-        "Yura Burda",
-        "Harri Edwards",
-        "Bowen Baker",
-        "Teddy Lee",
-        "Jan Leike",
-        "John Schulman",
-        "Ilya Sutskever",
-        "Karl Cobbe"
+        "Yura Burda"
       ],
       "source_role": [
-        "process_supervision",
-        "verifier_reward",
-        "data_release"
+        "verifier_reward"
       ],
       "verification_contract": [
-        "judgment_required"
+        "programmatic"
       ],
       "supervision_granularity": [
-        "step_level",
-        "process_reward"
+        "answer_level",
+        "full_episode"
       ],
       "training_use": [
-        "process_supervision",
-        "reward_modeling",
-        "test_time_compute",
-        "evaluation"
+        "rlvr",
+        "agent_training"
       ],
       "domains": [
-        "math",
-        "process-supervision",
-        "reward-modeling"
+        "language-model-reasoning",
+        "RLVR"
       ],
       "category": [
         "scaling_rlvr_test_time_compute"
       ],
       "subfield": "⏱️ Test-time compute",
       "tags": [
-        "process-reward-model",
-        "prm800k",
-        "step-level-verifier",
-        "verifier-scaling",
-        "primary-link-checked"
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
       ],
-      "one_line_summary": "This is the core PRM card for step-level verifier data and process-supervision scaling.",
-      "why_it_matters": "Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time selection.",
-      "data_object": "Problem, reasoning steps, step labels, process reward model score, and final answer.; process: math problem, reasoning step, human step label; PRM800K-style process-supervision dataset for math reasoning.",
-      "feedback_verifier": "Process reward model trained from human step-level labels.",
-      "audit_focus": "Human step labels can encode style preferences., PRM scores can reward locally plausible but globally wrong paths., Verifier calls add TTC cost that must be disclosed.",
+      "one_line_summary": "Let's Verify Step by Step studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
@@ -756,7 +1184,7 @@ window.ATLAS_DATA = {
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2305.20050",
+        "doi": null,
         "code": null,
         "data": null,
         "huggingface": null,
@@ -765,6 +1193,70 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources"
       },
       "primary_link": "https://arxiv.org/abs/2305.20050"
+    },
+    {
+      "id": "m1-mamba-reasoning-test-time-compute-2025",
+      "title": "M1: Towards Scalable Test-Time Compute with Mamba Reasoning Models",
+      "year": 2025,
+      "venue": "NeurIPS 2025 ER Workshop",
+      "authors": [
+        "Junxiong Wang",
+        "Alexander M. Rush",
+        "Tri Dao"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "M1: Towards Scalable Test-Time Compute with Mamba Reasoning Models studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=bOnhqVefxk",
+        "venue": "https://openreview.net/forum?id=bOnhqVefxk",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=bOnhqVefxk",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/m1-mamba-reasoning-test-time-compute-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=bOnhqVefxk"
     },
     {
       "id": "math-dataset-2021",
@@ -910,6 +1402,324 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2109.00110"
     },
     {
+      "id": "mirage-test-time-scaling-2025",
+      "title": "Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models",
+      "year": 2025,
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Soumya Suvra Ghosal",
+        "Souradip Chakraborty",
+        "Mengdi Wang"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=tKPqbamNb9",
+        "venue": "https://openreview.net/forum?id=tKPqbamNb9",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=tKPqbamNb9",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/mirage-test-time-scaling-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=tKPqbamNb9"
+    },
+    {
+      "id": "one-shot-rlvr-2025",
+      "title": "Reinforcement Learning for Reasoning in Large Language Models with One Training Example",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Yiping Wang",
+        "Jianfeng Gao",
+        "Weizhu Chen"
+      ],
+      "source_role": [
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "RLVR"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Reinforcement Learning for Reasoning in Large Language Models with One Training Example studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2504.20571",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2504.20571",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/one-shot-rlvr-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2504.20571"
+    },
+    {
+      "id": "optimizing-test-time-compute-meta-rl-2025",
+      "title": "Optimizing Test-Time Compute via Meta Reinforcement Finetuning",
+      "year": 2025,
+      "venue": "ICML 2025",
+      "authors": [
+        "Yuxiao Qu",
+        "Matthew Y. R. Yang",
+        "Ruslan Salakhutdinov"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Optimizing Test-Time Compute via Meta Reinforcement Finetuning studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=TqODUDsU4u",
+        "venue": "https://openreview.net/forum?id=TqODUDsU4u",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=TqODUDsU4u",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/optimizing-test-time-compute-meta-rl-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=TqODUDsU4u"
+    },
+    {
+      "id": "qwq-32b-reasoning-rl-2025",
+      "title": "QwQ-32B: Embracing the Power of Reinforcement Learning",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Qwen Team"
+      ],
+      "source_role": [
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "RLVR"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "QwQ-32B: Embracing the Power of Reinforcement Learning studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2407.10759",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2407.10759",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/qwq-32b-reasoning-rl-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2407.10759"
+    },
+    {
+      "id": "reasoning-as-logic-units-2025",
+      "title": "Reasoning-as-Logic-Units: Scaling Test-Time Reasoning in Large Language Models Through Logic Unit Alignment",
+      "year": 2025,
+      "venue": "ICML 2025",
+      "authors": [
+        "Cheryl Li",
+        "Tianyuan Xu",
+        "Steven Y. Guo"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Reasoning-as-Logic-Units: Scaling Test-Time Reasoning in Large Language Models Through Logic Unit Alignment studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=mMgSxbO4H0",
+        "venue": "https://openreview.net/forum?id=mMgSxbO4H0",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=mMgSxbO4H0",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/reasoning-as-logic-units-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=mMgSxbO4H0"
+    },
+    {
       "id": "rest-em-self-training-2024",
       "title": "Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models",
       "year": 2024,
@@ -1020,6 +1830,262 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2312.06585"
     },
     {
+      "id": "rethinking-finetuning-scaling-test-time-compute-2025",
+      "title": "Rethinking Fine-tuning when Scaling Test-Time Compute: Limiting Confidence Improves Mathematical Reasoning",
+      "year": 2025,
+      "venue": "ICLR 2025 Workshop",
+      "authors": [
+        "Feng Chen",
+        "Allan Raventos",
+        "Nan Cheng"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Rethinking Fine-tuning when Scaling Test-Time Compute: Limiting Confidence Improves Mathematical Reasoning studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=9L5t04WYAs",
+        "venue": "https://openreview.net/forum?id=9L5t04WYAs",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=9L5t04WYAs",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/rethinking-finetuning-scaling-test-time-compute-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=9L5t04WYAs"
+    },
+    {
+      "id": "rlvr-implicitly-incentivizes-correct-reasoning-2025",
+      "title": "Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Xumeng Wen",
+        "Yang Wang",
+        "Mao Yang"
+      ],
+      "source_role": [
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "RLVR"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2506.14245",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2506.14245",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/rlvr-implicitly-incentivizes-correct-reasoning-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2506.14245"
+    },
+    {
+      "id": "s1-simple-test-time-scaling-2025",
+      "title": "s1: Simple test-time scaling",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Yangdi Lyu",
+        "Zihan Wang",
+        "Jie Tang"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "s1: Simple test-time scaling studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.19393",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.19393",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/s1-simple-test-time-scaling-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2501.19393"
+    },
+    {
+      "id": "scaling-evaluation-time-compute-process-evaluators-2025",
+      "title": "Scaling Evaluation-time Compute with Reasoning Models as Process Evaluators",
+      "year": 2025,
+      "venue": "ICLR 2026 submission",
+      "authors": [
+        "Seungone Kim",
+        "Ian Wu",
+        "Graham Neubig"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Scaling Evaluation-time Compute with Reasoning Models as Process Evaluators studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=J4LGokjjii",
+        "venue": "https://openreview.net/forum?id=J4LGokjjii",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=J4LGokjjii",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/scaling-evaluation-time-compute-process-evaluators-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=J4LGokjjii"
+    },
+    {
       "id": "scaling-llm-test-time-compute-optimally-2024",
       "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
       "year": 2024,
@@ -1090,6 +2156,70 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources"
       },
       "primary_link": "https://arxiv.org/abs/2408.03314"
+    },
+    {
+      "id": "scaling-up-test-time-compute-latent-reasoning-2025",
+      "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
+      "year": 2025,
+      "venue": "ES-FoMo III Spotlight",
+      "authors": [
+        "Jonas Geiping",
+        "Sean Michael McLeish",
+        "Neel Jain"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=D6o6Bwtq7h",
+        "venue": "https://openreview.net/forum?id=D6o6Bwtq7h",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=D6o6Bwtq7h",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/scaling-up-test-time-compute-latent-reasoning-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=D6o6Bwtq7h"
     },
     {
       "id": "self-consistency-chain-of-thought-2023",
@@ -1165,6 +2295,70 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources"
       },
       "primary_link": "https://arxiv.org/abs/2203.11171"
+    },
+    {
+      "id": "test-time-scaling-metric-geometry-2025",
+      "title": "Test-Time Scaling via Metric Geometry for LLM Reasoning",
+      "year": 2025,
+      "venue": "ICLR 2026 submission",
+      "authors": [
+        "Zhengqi Pei",
+        "Anran Zhang",
+        "Shuhui Wang"
+      ],
+      "source_role": [
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "test-time-scaling"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Test-Time Scaling via Metric Geometry for LLM Reasoning studies test-time scaling for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for test-time scaling.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://openreview.net/forum?id=WO6ngOsEL3",
+        "venue": "https://openreview.net/forum?id=WO6ngOsEL3",
+        "arxiv": null,
+        "openreview": "https://openreview.net/forum?id=WO6ngOsEL3",
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/test-time-scaling-metric-geometry-2025/sources"
+      },
+      "primary_link": "https://openreview.net/forum?id=WO6ngOsEL3"
     },
     {
       "id": "tinyv-2025",
@@ -1310,16 +2504,80 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/tree-of-thoughts-2023/sources"
       },
       "primary_link": "https://arxiv.org/abs/2305.10601"
+    },
+    {
+      "id": "trust-but-verify-rise-2025",
+      "title": "Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Xiaoyuan Liu",
+        "Dong Yu",
+        "Haitao Mi"
+      ],
+      "source_role": [
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "programmatic"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "rlvr",
+        "agent_training"
+      ],
+      "domains": [
+        "language-model-reasoning",
+        "RLVR"
+      ],
+      "category": [
+        "scaling_rlvr_test_time_compute"
+      ],
+      "subfield": "⏱️ Test-time compute",
+      "tags": [
+        "scaling",
+        "rlvr",
+        "test-time-compute",
+        "2025-2026"
+      ],
+      "one_line_summary": "Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards studies RLVR for reliable reasoning models.",
+      "why_it_matters": "Provides evidence and a reusable evaluation object for RLVR.",
+      "data_object": "Reasoning trace, verifier outcome, and final answer.; process: reasoning tokens, compute budget, verifier score; Benchmark evaluation harness.",
+      "feedback_verifier": "Outcome verifier, process evaluator, or consensus rule.",
+      "audit_focus": "Benchmark coverage and verifier assumptions may limit transfer",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2505.13445",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2505.13445",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": null,
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/trust-but-verify-rise-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2505.13445"
     }
   ],
   "counts": {
-    "total_entries": 17,
-    "verified_entries": 17,
-    "paper_card_sources": 17,
-    "data_releases": 9,
-    "verifiers_rewards": 8,
+    "total_entries": 37,
+    "verified_entries": 37,
+    "paper_card_sources": 37,
+    "data_releases": 8,
+    "verifiers_rewards": 15,
     "agent_environments": 4,
-    "scaling_studies": 8,
+    "scaling_studies": 21,
     "needs_search": 0
   },
   "categories": [

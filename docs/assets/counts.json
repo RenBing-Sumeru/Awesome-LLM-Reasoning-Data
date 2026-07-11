@@ -1,10 +1,10 @@
 {
-  "total_entries": 17,
-  "verified_entries": 17,
-  "paper_card_sources": 17,
-  "data_releases": 9,
-  "verifiers_rewards": 8,
+  "total_entries": 37,
+  "verified_entries": 37,
+  "paper_card_sources": 37,
+  "data_releases": 8,
+  "verifiers_rewards": 15,
   "agent_environments": 4,
-  "scaling_studies": 8,
+  "scaling_studies": 21,
   "needs_search": 0
 }
