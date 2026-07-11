@@ -38,7 +38,9 @@ Missing, malformed, or incompatible snapshots are ignored and rebuilt.
    validity report from that one in-memory pass, writes a fresh snapshot, and
    returns it.
 4. Before the HTTP server begins listening, startup performs step 1–3. The
-   browser therefore opens only after the list cache is ready.
+   browser therefore opens only after the list cache is ready. If this required
+   build fails, startup prints the cause, exits with a non-zero status, and
+   never binds the HTTP port.
 5. Review write endpoints invalidate the snapshot after successfully writing
    the Card. The next list request rebuilds it from the Card directory. Manual
    filesystem changes follow the same path when the next request sees a new
@@ -50,8 +52,9 @@ data, and validation state.
 
 ## Failure handling
 
-- A cache failure never hides the Card library: the server rebuilds from Card
-  directories and serves the live result.
+- A missing, stale, malformed, or incompatible cache is rebuilt automatically
+  from Card directories before startup. If that build fails, startup fails
+  explicitly instead of serving an unverified or empty list.
 - If the library is empty, it writes and serves a valid empty payload.
 - Cache files are local runtime artifacts; validation, renderers, and Git do
   not depend on them.
