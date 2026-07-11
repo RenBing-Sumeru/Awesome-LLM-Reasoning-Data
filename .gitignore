@@ -8,6 +8,7 @@ __pycache__/
 *.tmp
 .DS_Store
 .codex_scratch/
+.worktrees/
 CODEX_*.md
 *_PROMPT*.md
 *_prompt*.md
