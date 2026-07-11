@@ -2,17 +2,20 @@
   "title": "Re-ReST: Reflection-Reinforced Self-Training for Language Agents",
   "candidate_links": {
     "paper": "https://arxiv.org/abs/2406.01495",
-    "arxiv": "https://arxiv.org/abs/2406.01495",
+    "arxiv": null,
     "code": "https://github.com/PlusLabNLP/Re-ReST",
     "data": null,
     "project": null,
     "huggingface": null,
-    "doi": "https://doi.org/10.48550/arXiv.2406.01495"
+    "doi": null
   },
-  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
   "category_ids": [
     "environment_agent_trajectory_data",
     "data_construction_open_release_recipes"
   ],
-  "updated_at": "2026-07-11T00:00:00Z"
+  "reason_to_include": "内容质量需要考量",
+  "decision_reason": "内容质量需要考量",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-11T13:22:19Z"
 }

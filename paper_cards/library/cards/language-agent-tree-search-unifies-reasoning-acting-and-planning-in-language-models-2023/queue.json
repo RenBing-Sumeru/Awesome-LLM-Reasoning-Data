@@ -2,17 +2,20 @@
   "title": "Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models",
   "candidate_links": {
     "paper": "https://arxiv.org/abs/2310.04406",
-    "arxiv": "https://arxiv.org/abs/2310.04406",
+    "arxiv": null,
     "code": "https://github.com/lapisrocks/LanguageAgentTreeSearch",
     "data": null,
     "project": null,
     "huggingface": null,
     "doi": null
   },
-  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
   "category_ids": [
     "environment_agent_trajectory_data",
     "rollout_search_test_time_trace_data"
   ],
-  "updated_at": "2026-07-11T00:00:00Z"
+  "reason_to_include": "年份较早，内容质量需考量",
+  "decision_reason": "年份较早，内容质量需考量",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-11T13:18:57Z"
 }

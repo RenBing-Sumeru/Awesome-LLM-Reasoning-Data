@@ -2,17 +2,20 @@
   "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
   "candidate_links": {
     "paper": "https://arxiv.org/abs/2407.21787",
-    "arxiv": "https://arxiv.org/abs/2407.21787",
+    "arxiv": null,
     "code": null,
     "data": null,
     "project": null,
     "huggingface": null,
     "doi": null
   },
-  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
   "category_ids": [
     "rollout_search_test_time_trace_data",
     "scaling_rlvr_test_time_compute"
   ],
-  "updated_at": "2026-07-11T00:00:00Z"
+  "reason_to_include": "文章质量较高，机构权威",
+  "decision_reason": "文章质量较高，机构权威",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-11T12:01:07Z"
 }

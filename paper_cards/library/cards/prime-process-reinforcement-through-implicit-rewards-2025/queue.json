@@ -2,17 +2,20 @@
   "title": "PRIME: Process reinforcement through implicit rewards",
   "candidate_links": {
     "paper": "https://arxiv.org/abs/2502.01456",
-    "arxiv": "https://arxiv.org/abs/2502.01456",
+    "arxiv": null,
     "code": "https://github.com/PRIME-RL/PRIME",
     "data": "https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout",
     "project": null,
-    "huggingface": "https://huggingface.co/PRIME-RL",
-    "doi": "https://doi.org/10.48550/arXiv.2502.01456"
+    "huggingface": null,
+    "doi": null
   },
-  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
   "category_ids": [
     "process_trace_supervision_data",
     "training_usage_optimization_objectives"
   ],
-  "updated_at": "2026-07-11T00:00:00Z"
+  "reason_to_include": "机构权威，内容质量高",
+  "decision_reason": "机构权威，内容质量高",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-11T13:18:02Z"
 }

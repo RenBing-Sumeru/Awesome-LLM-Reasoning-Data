@@ -2,17 +2,20 @@
   "title": "ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding",
   "candidate_links": {
     "paper": "https://arxiv.org/abs/2501.07861",
-    "arxiv": "https://arxiv.org/abs/2501.07861",
+    "arxiv": null,
     "code": "https://github.com/Jeryi-Sun/ReARTeR",
     "data": null,
     "project": null,
     "huggingface": null,
-    "doi": "https://doi.org/10.48550/arXiv.2501.07861"
+    "doi": null
   },
-  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
   "category_ids": [
     "process_trace_supervision_data",
     "rollout_search_test_time_trace_data"
   ],
-  "updated_at": "2026-07-11T00:00:00Z"
+  "reason_to_include": "内容质量高，机构较为权威",
+  "decision_reason": "内容质量高，机构较为权威",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-11T13:21:31Z"
 }

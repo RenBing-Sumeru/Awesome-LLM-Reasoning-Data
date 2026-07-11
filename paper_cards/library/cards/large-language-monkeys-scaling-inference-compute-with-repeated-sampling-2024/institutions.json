@@ -1,6 +1,10 @@
 {
-  "institutions": [],
+  "institutions": [
+    "Department of Computer Science, Stanford University",
+    "University of Oxford",
+    "Google DeepMind"
+  ],
   "has_more": false,
-  "no_institution": true,
-  "updated_at": "2026-07-11T00:00:00Z"
+  "no_institution": false,
+  "updated_at": "2026-07-11T11:59:30Z"
 }

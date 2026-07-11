@@ -2,17 +2,20 @@
   "title": "Reasoning with Language Model is Planning with World Model",
   "candidate_links": {
     "paper": "https://arxiv.org/abs/2305.14992",
-    "arxiv": "https://arxiv.org/abs/2305.14992",
+    "arxiv": null,
     "code": null,
     "data": null,
     "project": null,
     "huggingface": null,
     "doi": null
   },
-  "review_note": "Migrated from viva-rock Track 05 work; awaiting V2 human annotation.",
   "category_ids": [
     "rollout_search_test_time_trace_data",
     "scaling_rlvr_test_time_compute"
   ],
-  "updated_at": "2026-07-11T00:00:00Z"
+  "reason_to_include": "被EMNLP接收，提供reasoning的新颖解释视角",
+  "decision_reason": "被EMNLP接收，提供reasoning的新颖解释视角",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-11T12:11:41Z"
 }
