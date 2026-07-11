@@ -151,6 +151,11 @@ def invalidate_review_index(root: Path | str | None = None) -> None:
         pass
 
 
+def refresh_after_card_write(root: Path | str | None = None) -> None:
+    """Keep the derived Review snapshot aligned with a successful local write."""
+    refresh_review_index(root)
+
+
 def entries_payload(root: Path | str | None = None) -> dict:
     return review_index_payload(root)
 
@@ -221,6 +226,7 @@ def save_chinese_sections(entry_id: str, sections: dict, root: Path | str | None
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(str(value).rstrip() + "\n", encoding="utf-8")
     status = card_tool.update_status(entry_id, "edited", root=root)
+    refresh_after_card_write(root)
     return {"ok": True, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -236,6 +242,7 @@ def save_institutions_payload(entry_id: str, payload: dict, root: Path | str | N
         root=root,
     )
     status = card_tool.update_status(entry_id, "edited", root=root)
+    refresh_after_card_write(root)
     return {"ok": True, "institutions": record, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -268,6 +275,7 @@ def save_header_zh_payload(entry_id: str, payload: dict, root: Path | str | None
     saved_payload = {**payload, "category_ids": selected_categories}
     record = card_tool.save_header_zh(entry_id, saved_payload, root=root)
     status = card_tool.update_status(entry_id, "edited", root=root)
+    refresh_after_card_write(root)
     return {"ok": True, "header_zh": record, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -301,6 +309,7 @@ def review_payload(entry_id: str, root: Path | str | None = None) -> dict:
     status = card_tool.update_status(entry_id, "reviewed", root=root)
     report = card_tool.valid_report(entry_id, root, entry=entries[entry_id])
     card_tool.save_valid_report(report, root)
+    refresh_after_card_write(root)
     return {"ok": True, "valid": report, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -327,6 +336,7 @@ def downgrade_to_l4_payload(entry_id: str, root: Path | str | None = None) -> di
     status = card_tool.update_status(entry_id, "edited", root=root)
     report = card_tool.valid_report(entry_id, root, entry=entries[entry_id])
     card_tool.save_valid_report(report, root)
+    refresh_after_card_write(root)
     return {"ok": True, "valid": report, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -352,12 +362,14 @@ def mark_downloaded_payload(
             raise ValueError(f"{entry_id}: only L5 or L6 cards can be marked downloaded")
     for entry_id in entry_ids:
         status = card_tool.update_status(entry_id, "downloaded", package_name, root)
+    refresh_after_card_write(root)
     return {"ok": True, "status": status}
 
 
 def init_payload(entry_id: str, root: Path | str | None = None) -> dict:
     assert_not_l6(entry_id, "重新初始化卡片源", root)
     created = card_tool.init_card_source(entry_id, root=root)
+    refresh_after_card_write(root)
     return {"ok": True, "created": [path.name for path in created], "card": card_payload(entry_id, root)}
 
 
@@ -409,11 +421,13 @@ def save_search_queue_item(queue_id: str, record: dict, root: Path | str | None 
     if card_tool.library.card_dir(queue_id, root).exists():
         card_tool.library.save_card_record(queue_id, "queue", cleaned_record, root)
         queue = card_tool.load_search_queue(root)
+        refresh_after_card_write(root)
         return {"ok": True, "queue": queue, "entry": cleaned_record}
     queue = card_tool.load_search_queue(root)
     queue["entries"][queue_id] = cleaned_record
     queue["updated_at"] = cleaned_record["updated_at"]
     card_tool.save_search_queue(queue, root)
+    refresh_after_card_write(root)
     return {"ok": True, "queue": queue, "entry": cleaned_record}
 
 
@@ -434,7 +448,9 @@ def status_payload(
             raise ValueError(f"L6 卡片只允许下载，不能执行：修改状态为 {state}")
         elif state == "reviewed":
             raise ValueError("请通过完成修改该卡片执行 L5 到 L6 晋升")
-    return {"ok": True, "status": card_tool.update_status(entry_id, state, package_name, root)}
+    status = card_tool.update_status(entry_id, state, package_name, root)
+    refresh_after_card_write(root)
+    return {"ok": True, "status": status}
 
 
 class PaperCardHandler(SimpleHTTPRequestHandler):

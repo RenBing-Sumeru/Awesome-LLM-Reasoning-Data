@@ -577,6 +577,16 @@ class ReviewCacheTest(unittest.TestCase):
         self.assertEqual(result, 1)
         http_server.assert_not_called()
 
+    def test_saving_chinese_section_refreshes_cache_after_local_write(self) -> None:
+        self.add_card("first-card")
+        server.review_index_payload(self.root)
+
+        server.save_chinese_sections("first-card", {"01_problem_ch": "updated\n"}, root=self.root)
+
+        snapshot = json.loads(server.review_cache_path(self.root).read_text(encoding="utf-8"))
+        self.assertEqual(snapshot["fingerprint"], server.review_source_fingerprint(self.root))
+        self.assertEqual(snapshot["payload"]["status"]["entries"]["first-card"]["state"], "edited")
+
 
 if __name__ == "__main__":
     unittest.main()

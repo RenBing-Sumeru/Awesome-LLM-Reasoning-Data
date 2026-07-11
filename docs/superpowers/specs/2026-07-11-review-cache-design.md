@@ -41,10 +41,10 @@ Missing, malformed, or incompatible snapshots are ignored and rebuilt.
    browser therefore opens only after the list cache is ready. If this required
    build fails, startup prints the cause, exits with a non-zero status, and
    never binds the HTTP port.
-5. Review write endpoints invalidate the snapshot after successfully writing
-   the Card. The next list request rebuilds it from the Card directory. Manual
-   filesystem changes follow the same path when the next request sees a new
-   fingerprint.
+5. Review write endpoints refresh the snapshot atomically after successfully
+   writing the Card, so the next list request reads the new state directly.
+   Manual filesystem changes follow the same path when the next request sees a
+   new fingerprint.
 
 The cache avoids the current nested behavior where each list entry repeatedly
 loads all Cards to derive status, Chinese header fields, institutions, queue
