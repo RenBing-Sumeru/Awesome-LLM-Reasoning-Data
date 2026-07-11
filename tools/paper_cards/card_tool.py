@@ -291,14 +291,18 @@ def frontmatter(
     entry: dict,
     lang: str,
     root: Path | str | None = None,
+    records: dict | None = None,
 ) -> list[str]:
     title = entry.get("title") or entry.get("id") or "unknown"
     entry_id = str(entry.get("id"))
     authors = entry.get("authors") or []
     author_text = ", ".join(str(author) for author in authors) if authors else "unknown"
     links = " · ".join(link_parts(entry)) or "none"
+    records = records or {}
+    header_record = records.get("header_zh")
+    institution_record_value = records.get("institutions")
     if lang == "ch":
-        header = header_zh_record(entry_id, root)
+        header = header_record if header_record is not None else header_zh_record(entry_id, root)
         author_text_ch = header.get("authors_ch") or (", ".join(str(author) for author in authors) if authors else "未知")
         lines = [
             f"# 论文卡片：{title}",
@@ -311,7 +315,7 @@ def frontmatter(
             f"> **置信度：** {header.get('confidence_ch') or chinese_confidence(audit_confidence(entry))}",
             f"> **年份 / 来源：** {entry.get('year') or 'unknown'} · {entry.get('venue') or 'unknown'}",
             f"> **作者：** {author_text_ch}",
-            f"> **机构：** {institution_text(entry_id, lang, root)}",
+            f"> **机构：** {institution_text(entry_id, lang, root, institution_record_value)}",
             f"> **链接：** {links}",
         ]
         return lines + ["", "---", ""]
@@ -325,7 +329,7 @@ def frontmatter(
         f"> **Confidence:** {entry.get('confidence') or 'needs review'}",
         f"> **Year/source:** {entry.get('year') or 'unknown'} · {entry.get('venue') or 'unknown'}",
         f"> **Authors:** {author_text}",
-        f"> **Institutions:** {institution_text(entry_id, lang, root)}",
+        f"> **Institutions:** {institution_text(entry_id, lang, root, institution_record_value)}",
         f"> **Links:** {links}",
     ]
     return lines + ["", "---", ""]
@@ -335,11 +339,12 @@ def assemble_card(
     entry: dict,
     lang: str,
     root: Path | str | None = None,
+    records: dict | None = None,
 ) -> str:
     if lang not in {"en", "ch"}:
         raise ValueError("lang must be 'en' or 'ch'")
     entry_id = str(entry.get("id"))
-    lines = frontmatter(entry, lang, root)
+    lines = frontmatter(entry, lang, root, records)
     for index, (key, title) in enumerate(SECTIONS, 1):
         heading = SECTION_TITLES_CH[key] if lang == "ch" else title
         lines.append(f"## {index}. {heading}")
@@ -557,8 +562,13 @@ def institution_record(entry_id: str, root: Path | str | None = None) -> dict:
     }
 
 
-def institution_text(entry_id: str, lang: str, root: Path | str | None = None) -> str:
-    record = institution_record(entry_id, root)
+def institution_text(
+    entry_id: str,
+    lang: str,
+    root: Path | str | None = None,
+    record: dict | None = None,
+) -> str:
+    record = record if record is not None else institution_record(entry_id, root)
     if record.get("no_institution"):
         return "没有机构" if lang == "ch" else "No institution"
     names = [str(item).strip() for item in record.get("institutions") or [] if str(item).strip()]

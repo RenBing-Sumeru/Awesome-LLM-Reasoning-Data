@@ -21,11 +21,34 @@ ROOT = card_tool.ROOT
 PORT = int(os.environ.get("PORT", "8768"))
 STATIC_ROOT = Path(__file__).resolve().parent
 CACHE_SCHEMA_VERSION = 1
+CARD_CACHE_SCHEMA_VERSION = 1
 
 
 def review_cache_path(root: Path | str | None = None) -> Path:
     project_root = card_tool.project_root(root)
     return project_root / "tmp" / "paper_cards" / "review-index.json"
+
+
+def card_cache_path(entry_id: str, root: Path | str | None = None) -> Path:
+    return card_tool.project_root(root) / "tmp" / "paper_cards" / "cards" / f"{entry_id}.json"
+
+
+def card_source_fingerprint(entry_id: str, root: Path | str | None = None) -> str:
+    project_root = card_tool.project_root(root)
+    card_dir = card_tool.library.card_dir(entry_id, root)
+    paths = [card_tool.library.library_root(root) / "categories.yaml"]
+    if card_dir.exists():
+        paths.extend(path for path in card_dir.rglob("*") if path.is_file())
+    digest = hashlib.sha256()
+    for path in sorted(paths):
+        try:
+            stat = path.stat()
+            digest.update(
+                f"{path.relative_to(project_root).as_posix()}\0{stat.st_size}\0{stat.st_mtime_ns}\n".encode()
+            )
+        except FileNotFoundError:
+            digest.update(f"missing\0{path.relative_to(project_root).as_posix()}\n".encode())
+    return digest.hexdigest()
 
 
 def review_source_fingerprint(root: Path | str | None = None) -> str:
@@ -81,6 +104,30 @@ def _write_review_cache(path: Path, fingerprint: str, payload: dict) -> None:
         json.dump(snapshot, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     os.replace(temporary_path, path)
+
+
+def _load_card_cache(path: Path, fingerprint: str) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        snapshot = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    payload = snapshot.get("payload") if isinstance(snapshot, dict) else None
+    if (
+        not isinstance(snapshot, dict)
+        or snapshot.get("schema_version") != CARD_CACHE_SCHEMA_VERSION
+        or snapshot.get("fingerprint") != fingerprint
+        or not isinstance(payload, dict)
+        or not isinstance(payload.get("card"), dict)
+        or not isinstance(payload.get("preview"), dict)
+    ):
+        return None
+    return payload
+
+
+def _write_card_cache(path: Path, fingerprint: str, payload: dict) -> None:
+    _write_review_cache(path, fingerprint, payload)
 
 
 def _live_entries_payload(root: Path | str | None = None) -> dict:
@@ -151,9 +198,11 @@ def invalidate_review_index(root: Path | str | None = None) -> None:
         pass
 
 
-def refresh_after_card_write(root: Path | str | None = None) -> None:
+def refresh_after_card_write(root: Path | str | None = None, entry_id: str | None = None) -> None:
     """Keep the derived Review snapshot aligned with a successful local write."""
     refresh_review_index(root)
+    if entry_id:
+        _card_cache_payload(entry_id, root)
 
 
 def entries_payload(root: Path | str | None = None) -> dict:
@@ -171,27 +220,86 @@ def section_maps(entry_id: str, root: Path | str | None = None) -> dict:
     return {"en": english, "ch": chinese}
 
 
-def card_payload(entry_id: str, root: Path | str | None = None) -> dict:
-    entries = card_tool.load_entries(root)
-    if entry_id not in entries:
+def _live_card_payload(entry_id: str, root: Path | str | None = None) -> dict:
+    if not card_tool.library.card_dir(entry_id, root).exists():
+        entries = card_tool.load_entries(root)
+        if entry_id not in entries:
+            raise ValueError(f"unknown entry_id: {entry_id}")
+        category_ids = card_tool.clean_category_ids(
+            entries[entry_id].get("category"),
+            "论文知识点分类",
+            allow_empty=True,
+            root=root,
+        )
+        return {
+            "entry": entries[entry_id],
+            "sections": section_maps(entry_id, root),
+            "institutions": card_tool.institution_record(entry_id, root),
+            "header_zh": card_tool.header_zh_record(entry_id, root),
+            "category_labels": card_tool.category_details(category_ids, root),
+            "category_options": card_tool.category_options(root),
+            "check_errors": card_tool.check_card(entry_id, root),
+            "valid": card_tool.valid_report(entry_id, root, entry=entries[entry_id]),
+            "status": card_tool.load_status(root).get("entries", {}).get(entry_id) or {"state": "new"},
+        }
+    card = card_tool.library.load_card(entry_id, root)
+    entry = {**card["paper"], "category": list(card["paper"].get("category_ids") or [])}
+    index = review_index_payload(root)
+    index_entry = next((item for item in index["entries"] if item.get("id") == entry_id), None)
+    if index_entry is None:
         raise ValueError(f"unknown entry_id: {entry_id}")
     category_ids = card_tool.clean_category_ids(
-        entries[entry_id].get("category"),
+        entry.get("category"),
         "论文知识点分类",
         allow_empty=True,
         root=root,
     )
     return {
-        "entry": entries[entry_id],
+        "entry": entry,
         "sections": section_maps(entry_id, root),
-        "institutions": card_tool.institution_record(entry_id, root),
-        "header_zh": card_tool.header_zh_record(entry_id, root),
+        "institutions": card["institutions"] or {"institutions": [], "has_more": False, "no_institution": False},
+        "header_zh": card["header_zh"],
         "category_labels": card_tool.category_details(category_ids, root),
         "category_options": card_tool.category_options(root),
-        "check_errors": card_tool.check_card(entry_id, root),
-        "valid": card_tool.valid_report(entry_id, root, entry=entries[entry_id]),
-        "status": card_tool.load_status(root).get("entries", {}).get(entry_id) or {"state": "new"},
+        "check_errors": index_entry["paper_card"].get("errors") or [],
+        "valid": index_entry["paper_card"]["valid"],
+        "status": card["review"] or {"state": "new"},
     }
+
+
+def _live_preview_payload(entry_id: str, card: dict, root: Path | str | None = None) -> dict:
+    records = {
+        "header_zh": card["header_zh"],
+        "institutions": card["institutions"],
+    }
+    try:
+        english = card_tool.assemble_card(card["entry"], "en", root, records)
+        chinese = card_tool.assemble_card(card["entry"], "ch", root, records)
+    except FileNotFoundError:
+        english = ""
+        chinese = ""
+    return {
+        "entry_id": entry_id,
+        "en": english,
+        "ch": chinese,
+        "check_errors": card.get("check_errors") or [],
+    }
+
+
+def _card_cache_payload(entry_id: str, root: Path | str | None = None) -> dict:
+    fingerprint = card_source_fingerprint(entry_id, root)
+    path = card_cache_path(entry_id, root)
+    cached = _load_card_cache(path, fingerprint)
+    if cached is not None:
+        return cached
+    card = _live_card_payload(entry_id, root)
+    payload = {"card": card, "preview": _live_preview_payload(entry_id, card, root)}
+    _write_card_cache(path, fingerprint, payload)
+    return payload
+
+
+def card_payload(entry_id: str, root: Path | str | None = None) -> dict:
+    return _card_cache_payload(entry_id, root)["card"]
 
 
 def valid_chinese_key(key: str) -> bool:
@@ -226,7 +334,7 @@ def save_chinese_sections(entry_id: str, sections: dict, root: Path | str | None
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(str(value).rstrip() + "\n", encoding="utf-8")
     status = card_tool.update_status(entry_id, "edited", root=root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, entry_id)
     return {"ok": True, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -242,7 +350,7 @@ def save_institutions_payload(entry_id: str, payload: dict, root: Path | str | N
         root=root,
     )
     status = card_tool.update_status(entry_id, "edited", root=root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, entry_id)
     return {"ok": True, "institutions": record, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -275,20 +383,12 @@ def save_header_zh_payload(entry_id: str, payload: dict, root: Path | str | None
     saved_payload = {**payload, "category_ids": selected_categories}
     record = card_tool.save_header_zh(entry_id, saved_payload, root=root)
     status = card_tool.update_status(entry_id, "edited", root=root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, entry_id)
     return {"ok": True, "header_zh": record, "card": card_payload(entry_id, root), "status": status}
 
 
 def preview_payload(entry_id: str, root: Path | str | None = None) -> dict:
-    entries = card_tool.load_entries(root)
-    if entry_id not in entries:
-        raise ValueError(f"unknown entry_id: {entry_id}")
-    return {
-        "entry_id": entry_id,
-        "en": card_tool.assemble_card(entries[entry_id], "en", root),
-        "ch": card_tool.assemble_card(entries[entry_id], "ch", root),
-        "check_errors": card_tool.check_card(entry_id, root),
-    }
+    return _card_cache_payload(entry_id, root)["preview"]
 
 
 def review_payload(entry_id: str, root: Path | str | None = None) -> dict:
@@ -309,7 +409,7 @@ def review_payload(entry_id: str, root: Path | str | None = None) -> dict:
     status = card_tool.update_status(entry_id, "reviewed", root=root)
     report = card_tool.valid_report(entry_id, root, entry=entries[entry_id])
     card_tool.save_valid_report(report, root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, entry_id)
     return {"ok": True, "valid": report, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -336,7 +436,7 @@ def downgrade_to_l4_payload(entry_id: str, root: Path | str | None = None) -> di
     status = card_tool.update_status(entry_id, "edited", root=root)
     report = card_tool.valid_report(entry_id, root, entry=entries[entry_id])
     card_tool.save_valid_report(report, root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, entry_id)
     return {"ok": True, "valid": report, "card": card_payload(entry_id, root), "status": status}
 
 
@@ -362,14 +462,16 @@ def mark_downloaded_payload(
             raise ValueError(f"{entry_id}: only L5 or L6 cards can be marked downloaded")
     for entry_id in entry_ids:
         status = card_tool.update_status(entry_id, "downloaded", package_name, root)
-    refresh_after_card_write(root)
+    refresh_review_index(root)
+    for entry_id in entry_ids:
+        _card_cache_payload(entry_id, root)
     return {"ok": True, "status": status}
 
 
 def init_payload(entry_id: str, root: Path | str | None = None) -> dict:
     assert_not_l6(entry_id, "重新初始化卡片源", root)
     created = card_tool.init_card_source(entry_id, root=root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, entry_id)
     return {"ok": True, "created": [path.name for path in created], "card": card_payload(entry_id, root)}
 
 
@@ -421,13 +523,13 @@ def save_search_queue_item(queue_id: str, record: dict, root: Path | str | None 
     if card_tool.library.card_dir(queue_id, root).exists():
         card_tool.library.save_card_record(queue_id, "queue", cleaned_record, root)
         queue = card_tool.load_search_queue(root)
-        refresh_after_card_write(root)
+        refresh_after_card_write(root, queue_id)
         return {"ok": True, "queue": queue, "entry": cleaned_record}
     queue = card_tool.load_search_queue(root)
     queue["entries"][queue_id] = cleaned_record
     queue["updated_at"] = cleaned_record["updated_at"]
     card_tool.save_search_queue(queue, root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, queue_id)
     return {"ok": True, "queue": queue, "entry": cleaned_record}
 
 
@@ -449,7 +551,7 @@ def status_payload(
         elif state == "reviewed":
             raise ValueError("请通过完成修改该卡片执行 L5 到 L6 晋升")
     status = card_tool.update_status(entry_id, state, package_name, root)
-    refresh_after_card_write(root)
+    refresh_after_card_write(root, entry_id)
     return {"ok": True, "status": status}
 
 

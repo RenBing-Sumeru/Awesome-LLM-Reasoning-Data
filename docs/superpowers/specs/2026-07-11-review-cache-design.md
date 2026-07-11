@@ -30,6 +30,11 @@ source of truth.
 The snapshot is written to a temporary sibling file and atomically replaced.
 Missing, malformed, or incompatible snapshots are ignored and rebuilt.
 
+Card detail and bilingual preview responses use the same pattern under
+`tmp/paper_cards/cards/<entry_id>.json`. Each Card cache contains the detail
+payload and merged English/Chinese preview under that Card's fingerprint, so
+switching cards and reopening the preview do not repeat full-library scans.
+
 ## Data flow
 
 1. `server.py` calculates the current lightweight filesystem fingerprint.
@@ -42,7 +47,8 @@ Missing, malformed, or incompatible snapshots are ignored and rebuilt.
    build fails, startup prints the cause, exits with a non-zero status, and
    never binds the HTTP port.
 5. Review write endpoints refresh the snapshot atomically after successfully
-   writing the Card, so the next list request reads the new state directly.
+   writing the Card and refresh the affected Card detail/preview snapshot, so
+   the next list or detail request reads the new state directly.
    Manual filesystem changes follow the same path when the next request sees a
    new fingerprint.
 

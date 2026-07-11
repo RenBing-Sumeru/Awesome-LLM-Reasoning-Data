@@ -587,6 +587,17 @@ class ReviewCacheTest(unittest.TestCase):
         self.assertEqual(snapshot["fingerprint"], server.review_source_fingerprint(self.root))
         self.assertEqual(snapshot["payload"]["status"]["entries"]["first-card"]["state"], "edited")
 
+    def test_card_and_preview_payloads_write_card_local_cache(self) -> None:
+        self.add_card("first-card")
+
+        server.card_payload("first-card", self.root)
+        server.preview_payload("first-card", self.root)
+
+        cache_path = server.card_cache_path("first-card", self.root)
+        snapshot = json.loads(cache_path.read_text(encoding="utf-8"))
+        self.assertIn("card", snapshot["payload"])
+        self.assertIn("preview", snapshot["payload"])
+
 
 if __name__ == "__main__":
     unittest.main()
