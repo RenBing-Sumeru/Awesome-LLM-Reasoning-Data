@@ -218,12 +218,12 @@ PAPERS = [
 
 
 RELEASE_DATES = {
-    "formalproofbench-2026": "2026-03-02",
+    "formalproofbench-2026": "2026-03-27",
     "verisoftbench-2026": "2026-02-20",
-    "ntp4vc-2026": "2025-09-19",
+    "ntp4vc-2026": "2026-01-26",
     "leap-formal-mathematics-2026": "2026-06-02",
     "hilbert-recursively-building-formal-proofs-2025": "2025-09-26",
-    "mcpmark-2025": "2025-09-19",
+    "mcpmark-2025": "2025-09-28",
     "gvpo-interactive-coding-agents-2025": "2025-09-19",
     "utrl-unit-test-adversarial-rl-2025": "2025-08-28",
     "recode-h-2025": "2025-09-05",

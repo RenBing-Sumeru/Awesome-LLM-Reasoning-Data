@@ -80,7 +80,7 @@ audit:
     as reusable training data.
   citation_status: verified
   confidence: high
-  notes: Release date audited as 2026-03-02; ICLR 2026 VerifAI-2 paper; graduate-level Lean benchmark from Vals AI and EPFL
+  notes: Release date audited as 2026-03-27; ICLR 2026 VerifAI-2 paper; graduate-level Lean benchmark from Vals AI and EPFL
     authors
 inclusion_reason: 'Recent programmatically verifiable outcome-data work: ICLR 2026 VerifAI-2 paper; graduate-level Lean benchmark
   from Vals AI and EPFL authors'

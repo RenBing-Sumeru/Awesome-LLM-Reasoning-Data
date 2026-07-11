@@ -10,6 +10,13 @@ from pathlib import Path
 from tools.paper_cards import card_tool, library
 
 
+PRIMARY_RELEASE_DATES = {
+    "formalproofbench-2026": "2026-03-27",
+    "ntp4vc-2026": "2026-01-26",
+    "mcpmark-2025": "2025-09-28",
+}
+
+
 class ProgrammaticallyVerifiable2025CandidatesTest(unittest.TestCase):
     def test_candidates_are_ten_recent_unique_programmatically_verified_papers(self) -> None:
         module = importlib.import_module(
@@ -36,6 +43,8 @@ class ProgrammaticallyVerifiable2025CandidatesTest(unittest.TestCase):
             )
 
         self.assertEqual(set(module.RELEASE_DATES), {paper[0] for paper in candidates})
+        for entry_id, expected_date in PRIMARY_RELEASE_DATES.items():
+            self.assertEqual(module.RELEASE_DATES[entry_id], expected_date)
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
             categories_path = root / "paper_cards" / "library" / "categories.yaml"

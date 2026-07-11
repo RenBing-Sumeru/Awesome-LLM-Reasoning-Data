@@ -83,7 +83,7 @@ audit:
     budgets across assistants.
   citation_status: verified
   confidence: high
-  notes: Release date audited as 2025-09-19; ICLR 2026 conference paper; first real-world multi-language VC-proving benchmark
+  notes: Release date audited as 2026-01-26; ICLR 2026 conference paper; first real-world multi-language VC-proving benchmark
 inclusion_reason: 'Recent programmatically verifiable outcome-data work: ICLR 2026 conference paper; first real-world multi-language
   VC-proving benchmark'
 related: []
