@@ -4,9 +4,21 @@
 This declaration is intentionally side-effect free.  Task 2 consumes it to create
 Card directories only after the candidates have passed the review gate.
 """
+from __future__ import annotations
 
-# (id, title, year, venue, authors, primary_url, verifier_kind, impact_signal,
-#  first_public_release_date)
+from datetime import date
+from pathlib import Path
+
+if __package__:
+    from . import library
+else:  # pragma: no cover - exercised by the documented script entry point
+    import library
+
+
+CATEGORY_ID = "programmatically_verifiable_outcome_data"
+EARLIEST_RELEASE_DATE = date(2025, 7, 11)
+
+# (id, title, year, venue, authors, primary_url, verifier_kind, impact_signal)
 PAPERS = [
     (
         "formalproofbench-2026",
@@ -26,7 +38,6 @@ PAPERS = [
         "https://arxiv.org/abs/2603.26996",
         "Lean 4 kernel acceptance of a submitted proof",
         "ICLR 2026 VerifAI-2 paper; graduate-level Lean benchmark from Vals AI and EPFL authors",
-        "2026-03-02",
     ),
     (
         "verisoftbench-2026",
@@ -37,7 +48,6 @@ PAPERS = [
         "https://arxiv.org/abs/2602.18307",
         "Lean 4 type checker on repository-context proof obligations",
         "Open 500-obligation software-verification benchmark from UT Austin formal-methods researchers",
-        "2026-02-20",
     ),
     (
         "ntp4vc-2026",
@@ -57,7 +67,6 @@ PAPERS = [
         "https://arxiv.org/abs/2601.18944",
         "Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions",
         "ICLR 2026 conference paper; first real-world multi-language VC-proving benchmark",
-        "2025-09-19",
     ),
     (
         "leap-formal-mathematics-2026",
@@ -82,7 +91,6 @@ PAPERS = [
         "https://arxiv.org/abs/2606.03303",
         "Lean compiler checks every generated proof and proof-DAG composition",
         "Google research technical report; introduces Lean-IMO-Bench and reports all 12 2025 Putnam problems solved",
-        "2026-06-02",
     ),
     (
         "hilbert-recursively-building-formal-proofs-2025",
@@ -93,7 +101,6 @@ PAPERS = [
         "https://arxiv.org/abs/2509.22819",
         "Lean 4 proof-assistant acceptance and feedback during recursive proof repair",
         "ICLR 2026 conference paper from Apple/UC San Diego; public-model PutnamBench best reported result",
-        "2025-09-26",
     ),
     (
         "mcpmark-2025",
@@ -120,7 +127,6 @@ PAPERS = [
         "https://arxiv.org/abs/2509.24002",
         "Task-specific programmatic scripts check final state across MCP tool environments",
         "ICLR 2026 conference benchmark with 127 stateful MCP tasks and released execution tooling",
-        "2025-09-19",
     ),
     (
         "gvpo-interactive-coding-agents-2025",
@@ -142,7 +148,6 @@ PAPERS = [
         "https://openreview.net/forum?id=RY47Tq0VsV",
         "AppWorld goal tests plus deterministic compilation, exception, and partial-test feedback",
         "ICLR 2026 conference paper; directly combines outcome- and process-verifiable reward signals",
-        "2025-09-19",
     ),
     (
         "utrl-unit-test-adversarial-rl-2025",
@@ -153,7 +158,6 @@ PAPERS = [
         "https://openreview.net/forum?id=VqjNYF9nbP",
         "Executable unit-test pass/fail and discrimination rewards",
         "ICLR 2026 conference paper from KAIST and Microsoft Research; generated tests outperform GPT-4.1/GPT-4o in reported evaluation",
-        "2025-08-28",
     ),
     (
         "recode-h-2025",
@@ -196,7 +200,6 @@ PAPERS = [
         "https://openreview.net/forum?id=IKnuyyPHCV",
         "Repository unit tests decide executable research-code task completion",
         "ICLR 2026 conference benchmark: 102 paper/repository tasks with executable unit tests and interactive-feedback protocol",
-        "2025-09-05",
     ),
     (
         "impossiblebench-2025",
@@ -207,10 +210,73 @@ PAPERS = [
         "https://openreview.net/forum?id=SeO4vyAj7E",
         "Unit-test outcome: passing a deliberately impossible task deterministically flags specification-violating behavior",
         "ICLR 2026 conference paper from Carnegie Mellon and Anthropic; released framework exposes test-suite exploitation",
-        "2025-10-23",
     ),
 ]
 
 
+RELEASE_DATES = {
+    "formalproofbench-2026": "2026-03-02",
+    "verisoftbench-2026": "2026-02-20",
+    "ntp4vc-2026": "2025-09-19",
+    "leap-formal-mathematics-2026": "2026-06-02",
+    "hilbert-recursively-building-formal-proofs-2025": "2025-09-26",
+    "mcpmark-2025": "2025-09-19",
+    "gvpo-interactive-coding-agents-2025": "2025-09-19",
+    "utrl-unit-test-adversarial-rl-2025": "2025-08-28",
+    "recode-h-2025": "2025-09-05",
+    "impossiblebench-2025": "2025-10-23",
+}
+
+
+def validate_candidates(root: Path | str | None = None) -> list[tuple]:
+    """Return the reviewed candidates after checking library and source constraints."""
+    known_categories = {str(category["id"]) for category in library.category_options(root)}
+    if CATEGORY_ID not in known_categories:
+        raise ValueError(f"missing required category: {CATEGORY_ID}")
+
+    if len(PAPERS) != 10:
+        raise ValueError(f"expected 10 candidates, found {len(PAPERS)}")
+    if any(len(paper) != 8 for paper in PAPERS):
+        raise ValueError("each candidate must have exactly eight fields")
+
+    entry_ids = [paper[0] for paper in PAPERS]
+    titles = [paper[1] for paper in PAPERS]
+    if len(set(entry_ids)) != len(entry_ids):
+        raise ValueError("candidate IDs must be unique")
+    if len({title.casefold() for title in titles}) != len(titles):
+        raise ValueError("candidate titles must be unique")
+    if set(RELEASE_DATES) != set(entry_ids):
+        raise ValueError("release-date audit must cover exactly the candidate IDs")
+
+    for entry_id, title, year, venue, authors, url, verifier_kind, impact_signal in PAPERS:
+        if not all((entry_id, title, venue, verifier_kind, impact_signal)):
+            raise ValueError(f"{entry_id}: candidate fields must be non-empty")
+        if not isinstance(year, int) or year < 2025:
+            raise ValueError(f"{entry_id}: year must be 2025 or later")
+        if not isinstance(authors, list) or not authors or not all(isinstance(author, str) and author for author in authors):
+            raise ValueError(f"{entry_id}: authors must be a non-empty list")
+        if not isinstance(url, str) or not url.startswith("https://"):
+            raise ValueError(f"{entry_id}: primary URL must use HTTPS")
+        try:
+            released_at = date.fromisoformat(RELEASE_DATES[entry_id])
+        except (TypeError, ValueError) as error:
+            raise ValueError(f"{entry_id}: release date must use ISO format") from error
+        if released_at < EARLIEST_RELEASE_DATE:
+            raise ValueError(f"{entry_id}: released before {EARLIEST_RELEASE_DATE.isoformat()}")
+
+    cards = library.load_cards(root)
+    existing_titles = {
+        str(card["paper"].get("title") or "").casefold()
+        for card in cards.values()
+    }
+    duplicate_ids = sorted(set(entry_ids) & set(cards))
+    duplicate_titles = sorted({title.casefold() for title in titles} & existing_titles)
+    if duplicate_ids or duplicate_titles:
+        collisions = duplicate_ids + duplicate_titles
+        raise ValueError(f"candidate Cards already exist: {', '.join(collisions)}")
+
+    return PAPERS
+
+
 if __name__ == "__main__":
-    print(f"verified candidates: {len(PAPERS)}")
+    print(f"verified candidates: {len(validate_candidates())}")
