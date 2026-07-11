@@ -57,7 +57,7 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn('"完成修改该卡片"', app)
         self.assertIn('"已审阅"', app)
 
-    def test_review_actions_are_ordered_after_manual_annotation_without_downgrade(self) -> None:
+    def test_update_and_review_actions_follow_the_compact_workflow_order(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
@@ -67,9 +67,13 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn(">L6 已审阅</option>", html)
         self.assertNotIn("function canDowngradeToL4", app)
         self.assertNotIn("/downgrade-l4", app)
-        self.assertLess(html.index('id="saveQueue"'), html.index('id="goUpdateFromReview"'))
+        self.assertLess(html.index('class="institution-panel"'), html.index('class="header-zh-panel"'))
+        self.assertLess(html.index('id="saveInstitutions"'), html.index('class="header-zh-panel"'))
+        self.assertLess(html.index('id="saveHeaderZh"'), html.index('id="sectionTabs"'))
+        self.assertLess(html.index('id="saveStatus"'), html.index('id="saveSection"'))
+        self.assertLess(html.index('id="saveSection"'), html.index('id="goReviewFromUpdate"'))
+        self.assertLess(html.index('id="queueStatusText"'), html.index('id="goUpdateFromReview"'))
         self.assertLess(html.index('id="goUpdateFromReview"'), html.index('id="completeCurrent"'))
-        self.assertGreater(html.index('class="institution-panel"'), html.index('id="queueStatusText"'))
 
     def test_saving_l4_annotation_keeps_it_at_l5_then_moves_to_next_l4(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")

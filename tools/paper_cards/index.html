@@ -63,6 +63,27 @@
           <article id="entryDetail" class="entry-detail" hidden></article>
 
           <div id="updateShell" class="mode-shell" hidden>
+            <section class="institution-panel">
+              <div class="pane-head">
+                <h3>机构信息</h3>
+                <span>写入当前 Card 的 institutions.json</span>
+              </div>
+              <div class="institution-grid">
+                <input class="institution-input" type="text" placeholder="机构 1">
+                <input class="institution-input" type="text" placeholder="机构 2">
+                <input class="institution-input" type="text" placeholder="机构 3">
+                <input class="institution-input" type="text" placeholder="机构 4">
+                <input class="institution-input" type="text" placeholder="机构 5">
+              </div>
+              <div class="check-row">
+                <label><input id="institutionMore" type="checkbox"> 还有更多机构</label>
+                <label><input id="noInstitution" type="checkbox"> 没有机构</label>
+              </div>
+              <div class="actionbar">
+                <button id="saveInstitutions" type="button" class="secondary">保存机构</button>
+              </div>
+            </section>
+
             <section class="header-zh-panel">
               <div class="pane-head">
                 <h3>中文卡片头字段</h3>
@@ -98,6 +119,9 @@
                 <span class="category-label">知识点分类（最多两个）</span>
                 <div id="categoryOptions" class="category-options"></div>
               </div>
+              <div class="actionbar">
+                <button id="saveHeaderZh" type="button">保存中文头字段</button>
+              </div>
             </section>
 
             <div id="sectionTabs" class="section-tabs" aria-label="Card sections"></div>
@@ -118,12 +142,11 @@
               </div>
             </div>
 
+            <p id="saveStatus" class="save-status">Update 只写回机构、中文头字段和中文分段。</p>
             <div class="actionbar">
-              <button id="saveHeaderZh" type="button">保存中文头字段</button>
               <button id="saveSection" type="button">保存中文修改</button>
               <button id="goReviewFromUpdate" type="button" class="secondary">进入 Review</button>
             </div>
-            <p id="saveStatus" class="save-status">Update 只写回中文头字段和中文分段。</p>
           </div>
 
           <div id="reviewShell" class="mode-shell" hidden>
@@ -159,32 +182,13 @@
               </div>
               <div class="actionbar">
                 <button id="saveQueue" type="button">保存人工标注</button>
-                <button id="goUpdateFromReview" type="button" class="secondary">进入 Update</button>
-                <button id="completeCurrent" type="button">完成审阅</button>
               </div>
               <p id="queueStatusText" class="save-status">搜索池标注只记录当前 Card 的人工判决。</p>
-
-              <section class="institution-panel">
-                <div class="pane-head">
-                  <h3>机构信息</h3>
-                  <span>写入当前 Card 的 institutions.json</span>
-                </div>
-                <div class="institution-grid">
-                  <input class="institution-input" type="text" placeholder="机构 1">
-                  <input class="institution-input" type="text" placeholder="机构 2">
-                  <input class="institution-input" type="text" placeholder="机构 3">
-                  <input class="institution-input" type="text" placeholder="机构 4">
-                  <input class="institution-input" type="text" placeholder="机构 5">
-                </div>
-                <div class="check-row">
-                  <label><input id="institutionMore" type="checkbox"> 还有更多机构</label>
-                  <label><input id="noInstitution" type="checkbox"> 没有机构</label>
-                </div>
-                <div class="actionbar">
-                  <button id="saveInstitutions" type="button" class="secondary">保存机构</button>
-                </div>
-              </section>
             </section>
+            <div class="actionbar">
+              <button id="goUpdateFromReview" type="button" class="secondary">进入 Update</button>
+              <button id="completeCurrent" type="button">完成审阅</button>
+            </div>
           </div>
         </section>
       </section>

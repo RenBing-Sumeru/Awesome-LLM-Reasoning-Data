@@ -182,7 +182,7 @@ function canEditQueueFields(valid = currentValid()) {
 }
 
 function canEditInstitutions(valid = currentValid()) {
-  return Boolean(state.activeCard && state.activeEntryId && state.activeMode === "review" && !isL6Locked(valid));
+  return Boolean(state.activeCard && state.activeEntryId && state.activeMode === "update" && !isL6Locked(valid));
 }
 
 function updateFormLockState(valid = currentValid()) {
@@ -391,6 +391,7 @@ function renderDetail() {
   ${state.activeCard.check_errors.length ? `<div class="errors">${state.activeCard.check_errors.map((error) => `<p>${esc(error)}</p>`).join("")}</div>` : ""}`;
 
   if (state.activeMode === "update") {
+    renderInstitutions();
     renderHeaderZh();
     renderTabs();
     renderSection();
@@ -615,7 +616,6 @@ async function loadReviewMarkdown() {
 
 function renderReview() {
   renderQueueForm();
-  renderInstitutions();
   renderReviewCheckResult();
   renderReviewActionButton();
   els.reviewShell.querySelectorAll("[data-preview-language]").forEach((button) => {
