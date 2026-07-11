@@ -5,6 +5,7 @@ from collections import Counter
 from pathlib import Path
 from atlas_utils import paper_card_inventory
 from common import ROOT, load_yaml_json
+from atlas_utils import entries as atlas_entries
 
 FIELDS = ["status", "category", "source_role", "verification_contract", "training_use", "construction_layer", "year"]
 
@@ -34,7 +35,7 @@ def missing_link_entries(entries):
 
 
 def main():
-    entries = load_yaml_json(ROOT / "data/papers.yaml")
+    entries = atlas_entries()
     card_counts, card_files = count_paper_card_sources()
     missing_links = missing_link_entries(entries)
     needs_search = [e for e in entries if e.get("status") in {"needs_search", "needs_url", "needs_metadata", "partial"}]

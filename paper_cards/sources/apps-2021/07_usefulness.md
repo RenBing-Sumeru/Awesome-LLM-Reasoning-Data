@@ -1,3 +1,0 @@
-- Use APPS as the baseline for code-execution verifier records.
-- Store the exact container, tests, and standard input/output protocol.
-- Compare unit-test rewards with stronger hidden-test or behavioral checks.

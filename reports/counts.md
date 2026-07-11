@@ -57,7 +57,23 @@ needs search / partial metadata: 0
 - 2025: 1
 
 ## paper-card sources
-- sources: 17
+- agnostics-universal-learning-environment-2026: 1
+- apps-2021: 1
+- beyondbench-2026: 1
+- coderl-code-generation-rl-2022: 1
+- credit-budgeted-icpc-style-coding-2026: 1
+- deepseekmath-2024: 1
+- featurebench-2026: 1
+- geogrambench-2026: 1
+- leandojo-2023: 1
+- lets-verify-step-by-step-2023: 1
+- math-dataset-2021: 1
+- minif2f-2022: 1
+- rest-em-self-training-2024: 1
+- scaling-llm-test-time-compute-optimally-2024: 1
+- self-consistency-chain-of-thought-2023: 1
+- tinyv-2025: 1
+- tree-of-thoughts-2023: 1
 
 ## missing primary links (first 80)
 

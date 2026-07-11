@@ -8,6 +8,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse
 from common import ROOT, load_yaml_json
+from atlas_utils import entries
 
 MD_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 URL_RE = re.compile(r"^https?://[^\s<>]+$")
@@ -106,8 +107,8 @@ def main():
     parser.add_argument("--workers", type=int, default=12, help="parallel workers for --live")
     args = parser.parse_args()
 
-    entries = load_yaml_json(ROOT / "data/papers.yaml")
-    artifact_urls, bad_artifacts = collect_artifact_urls(entries)
+    paper_entries = entries()
+    artifact_urls, bad_artifacts = collect_artifact_urls(paper_entries)
     md_checked, md_external, local_missing = collect_markdown_links()
     failures = bad_artifacts + local_missing
 

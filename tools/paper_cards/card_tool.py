@@ -999,6 +999,9 @@ def init_card_source(entry_id: str, root: Path | str | None = None, overwrite: b
 
 
 def source_entry_ids(root: Path | str | None = None) -> list[str]:
+    cards = library.load_cards(root)
+    if cards:
+        return sorted(cards)
     base = sources_root(root)
     if not base.exists():
         return []

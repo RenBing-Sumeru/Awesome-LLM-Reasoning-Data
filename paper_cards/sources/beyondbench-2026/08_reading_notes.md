@@ -1,4 +1,0 @@
-- Track 03 fit: deterministic generated-instance verification.
-- Generator correctness is as important as the answer checker.
-- Tool-use and no-tool results should not be mixed.
-- Contamination resistance is a claim to audit, not a default guarantee.

@@ -1,4 +1,0 @@
-- Tests are rewards, not just metrics.
-- Critic calibration should be audited.
-- Critical sampling changes inference budget.
-- Public coding benchmarks need leakage checks.

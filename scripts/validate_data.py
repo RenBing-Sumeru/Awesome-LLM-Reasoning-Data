@@ -19,6 +19,7 @@ from atlas_utils import (
     starter_packs,
 )
 from common import ROOT, load_yaml_json
+from atlas_utils import categories
 
 SCHEMA = load_yaml_json(ROOT / "data/schema.json")
 ENUMS = SCHEMA.get("enums", {})
@@ -27,11 +28,7 @@ URL_RE = re.compile(r"^https?://[^\s<>]+$")
 DOI_RE = re.compile(r"^(https?://doi\.org/)?10\.\d{4,9}/\S+$", re.I)
 LESSON_RE = re.compile(r"^\d\d_.*\.md$")
 MIN_LESSON_WORDS = 700
-CATEGORY_IDS = {
-    str(item.get("id"))
-    for item in (load_yaml_json(ROOT / "data/categories.yaml").get("paper_categories") or [])
-    if isinstance(item, dict) and item.get("id")
-}
+CATEGORY_IDS = {str(item.get("id")) for item in categories() if item.get("id")}
 PUBLIC_SCAN_ROOTS = ["README.md", "README_zh.md", "docs", "papers", "paper_cards", "data", "reports", "scripts", ".github"]
 FORBIDDEN_PUBLIC_PATH_TERMS = [
     ".ds_store",
@@ -255,7 +252,7 @@ def main() -> int:
     warnings: list[str] = []
     data = entries()
     if not data:
-        errors.append("data/papers.yaml must contain a non-empty list")
+        errors.append("Card library must contain at least one paper")
     validate_docs(errors)
     validate_yaml_payloads(errors)
     validate_entries(data, errors, warnings)

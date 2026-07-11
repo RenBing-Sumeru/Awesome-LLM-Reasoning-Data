@@ -1,4 +1,0 @@
-- Track 03 fit: program-defined geometry plus checkable answers.
-- Review ambiguity and answer representation carefully.
-- Taxonomy balance matters because difficulty is geometric, not just textual.
-- Released scripts are important for reproducibility.
