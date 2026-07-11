@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from tools.paper_cards import library
+from tools.paper_cards import card_tool
 
 
 class PaperCardLibraryTest(unittest.TestCase):
@@ -66,6 +67,15 @@ category_ids:
             library.clean_category_ids(
                 ["programmatic_verification", "scaling_rlvr", "programmatic_verification"], self.root
             )
+
+    def test_card_tool_reads_entries_and_sources_from_the_library(self) -> None:
+        entries = card_tool.load_entries(self.root)
+
+        self.assertEqual(entries["sample-paper"]["category"], ["programmatic_verification"])
+        self.assertEqual(
+            card_tool.card_source_dir("sample-paper", self.root),
+            self.root / "paper_cards" / "library" / "cards" / "sample-paper" / "sources",
+        )
 
 
 if __name__ == "__main__":

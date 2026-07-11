@@ -10,6 +10,11 @@ from pathlib import Path
 from typing import Any
 
 try:
+    from . import library
+except ImportError:  # direct script execution
+    import library
+
+try:
     import yaml
 except ImportError:  # pragma: no cover - project requirements include PyYAML
     yaml = None
@@ -216,12 +221,20 @@ def load_yaml(path: Path) -> Any:
 
 
 def load_entries(root: Path | str | None = None) -> dict[str, dict]:
+    cards = library.load_cards(root)
+    if cards:
+        return {
+            entry_id: {**card["paper"], "category": list(card["paper"].get("category_ids") or [])}
+            for entry_id, card in cards.items()
+        }
     payload = load_yaml(project_root(root) / "data" / "papers.yaml")
     entries = payload if isinstance(payload, list) else []
     return {str(entry.get("id")): entry for entry in entries if isinstance(entry, dict) and entry.get("id")}
 
 
 def card_source_dir(entry_id: str, root: Path | str | None = None) -> Path:
+    if library.card_dir(entry_id, root).exists():
+        return library.card_dir(entry_id, root) / "sources"
     return sources_root(root) / entry_id
 
 
@@ -362,6 +375,8 @@ def save_json_file(path: Path, payload: dict) -> None:
 
 
 def category_options(root: Path | str | None = None) -> list[dict]:
+    if (library.library_root(root) / "categories.yaml").exists():
+        return library.category_options(root)
     path = project_root(root) / "data" / "categories.yaml"
     if not path.exists():
         return []
@@ -393,10 +408,16 @@ def clean_category_ids(
     cleaned = [str(item).strip() for item in category_ids if str(item).strip()]
     if not cleaned and allow_empty:
         return []
-    if len(cleaned) != 1:
-        raise ValueError(f"{label}只能保留一个标签")
+    if len(cleaned) > 2:
+        raise ValueError(f"{label}最多保留两个标签")
+    if len(set(cleaned)) != len(cleaned):
+        raise ValueError(f"{label}不能重复")
+    if not cleaned and allow_empty:
+        return []
+    if not cleaned:
+        raise ValueError(f"{label}至少保留一个标签")
     known = {item["id"] for item in category_options(root)}
-    if cleaned[0] not in known:
+    if any(category_id not in known for category_id in cleaned):
         raise ValueError(f"{label}必须是 data/categories.yaml 中的合法知识点")
     return cleaned
 
