@@ -54,6 +54,10 @@ PORT=8770 python3 tools/paper_cards/server.py
 Open `http://127.0.0.1:8770/`. The Update view writes only the active Card.
 The Review view records the manual decision in that Card's `queue.json` and
 updates its `review.json` state when promotion succeeds.
+On startup the Python server warms the ignored derived index at
+`tmp/paper_cards/review-index.json` before binding the port. Missing or stale
+cache data is rebuilt automatically; a failed rebuild stops startup. Manual
+Card-folder changes are picked up on the next request.
 
 ## One-time repository migration
 

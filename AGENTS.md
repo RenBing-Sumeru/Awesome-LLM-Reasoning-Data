@@ -6,6 +6,7 @@
 - `paper.yaml` owns paper metadata and `category_ids`. `header_zh.json`, `queue.json`, and the Review UI mirror the selected categories; do not create a second metadata index.
 - Categories come only from `paper_cards/library/categories.yaml`. A new Card starts with one category; a maintainer may manually add or remove categories, leaving zero to two distinct controlled IDs. There is no separate per-paper track field.
 - Keep every card-specific field inside its Card directory. `review.json` stores workflow state. Validation reports are derived when requested and are not saved as a shared cache.
+- `tmp/paper_cards/review-index.json` is an ignored, derived Review startup cache only. It is rebuilt automatically when missing or stale and is never canonical paper data.
 - The review server may edit Chinese source files and the local JSON records. It must not write shared metadata files.
 
 ## Paper Workflow
@@ -21,6 +22,7 @@
 - Before synchronizing, run `git status --short` and never merge into a dirty worktree.
 - To update from the shared V2 branch, use `git fetch upstream V2` followed by `git merge --ff-only FETCH_HEAD` in a clean checkout. Do not use `pull`, `reset`, or a non-fast-forward merge without explicit user direction.
 - After an update that changes Card tooling, run `python3 tools/paper_cards/migrate.py library-normalize`, `python3 tools/paper_cards/card_tool.py check`, and `python3 scripts/validate_data.py`.
+- Starting `python3 tools/paper_cards/server.py` warms the ignored Review cache before binding its port; a failed warmup exits non-zero instead of serving an unverified list.
 
 ## L4 Paper Card Content
 

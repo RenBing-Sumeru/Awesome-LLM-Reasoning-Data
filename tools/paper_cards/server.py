@@ -2,9 +2,13 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
+import sys
+import tempfile
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from datetime import datetime, timezone
 from urllib.parse import unquote, urlparse
 
 try:
@@ -16,14 +20,93 @@ except ImportError:  # direct script execution
 ROOT = card_tool.ROOT
 PORT = int(os.environ.get("PORT", "8768"))
 STATIC_ROOT = Path(__file__).resolve().parent
+CACHE_SCHEMA_VERSION = 1
 
 
-def entries_payload(root: Path | str | None = None) -> dict:
+def review_cache_path(root: Path | str | None = None) -> Path:
+    project_root = card_tool.project_root(root)
+    return project_root / "tmp" / "paper_cards" / "review-index.json"
+
+
+def review_source_fingerprint(root: Path | str | None = None) -> str:
+    project_root = card_tool.project_root(root)
+    library_root = card_tool.library.library_root(root)
+    paths = [library_root / "categories.yaml"]
+    cards_root = card_tool.library.cards_root(root)
+    if cards_root.exists():
+        paths.extend(path for path in cards_root.rglob("*") if path.is_file())
+    digest = hashlib.sha256()
+    for path in sorted(paths):
+        try:
+            stat = path.stat()
+            relative = path.relative_to(project_root).as_posix()
+            digest.update(f"{relative}\0{stat.st_size}\0{stat.st_mtime_ns}\n".encode())
+        except FileNotFoundError:
+            digest.update(f"missing\0{path.relative_to(project_root).as_posix()}\n".encode())
+    return digest.hexdigest()
+
+
+def _load_review_cache(path: Path, fingerprint: str) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    cached_payload = payload.get("payload") if isinstance(payload, dict) else None
+    if (
+        not isinstance(payload, dict)
+        or payload.get("schema_version") != CACHE_SCHEMA_VERSION
+        or payload.get("fingerprint") != fingerprint
+        or not isinstance(cached_payload, dict)
+        or not isinstance(cached_payload.get("entries"), list)
+        or not isinstance(cached_payload.get("status"), dict)
+    ):
+        return None
+    return cached_payload
+
+
+def _write_review_cache(path: Path, fingerprint: str, payload: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    snapshot = {
+        "schema_version": CACHE_SCHEMA_VERSION,
+        "fingerprint": fingerprint,
+        "built_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "payload": payload,
+    }
+    with tempfile.NamedTemporaryFile(
+        "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False
+    ) as handle:
+        temporary_path = Path(handle.name)
+        json.dump(snapshot, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+    os.replace(temporary_path, path)
+
+
+def _live_entries_payload(root: Path | str | None = None) -> dict:
     entries = []
-    status = card_tool.load_status(root)
-    institutions = card_tool.load_institutions(root)
-    header_zh = card_tool.load_header_zh(root)
-    for source_order, entry in enumerate(card_tool.load_entries(root).values()):
+    cards = card_tool.library.load_cards(root)
+    if cards:
+        entries_map = {
+            entry_id: {**card["paper"], "category": list(card["paper"].get("category_ids") or [])}
+            for entry_id, card in cards.items()
+        }
+        records = {
+            "review": {entry_id: card["review"] for entry_id, card in cards.items()},
+            "institutions": {entry_id: card["institutions"] for entry_id, card in cards.items()},
+            "header_zh": {entry_id: card["header_zh"] for entry_id, card in cards.items()},
+            "queue": {entry_id: card["queue"] for entry_id, card in cards.items()},
+        }
+        status = {"schema_version": 1, "updated_at": None, "entries": records["review"]}
+        institutions = {"schema_version": 1, "updated_at": None, "entries": records["institutions"]}
+        header_zh = {"schema_version": 1, "updated_at": None, "entries": records["header_zh"]}
+    else:
+        entries_map = card_tool.load_entries(root)
+        records = {}
+        status = card_tool.load_status(root)
+        institutions = card_tool.load_institutions(root)
+        header_zh = card_tool.load_header_zh(root)
+    for source_order, entry in enumerate(entries_map.values()):
         entry_id = entry["id"]
         errors = card_tool.check_card(entry_id, root) if card_tool.card_source_dir(entry_id, root).exists() else []
         entries.append({
@@ -34,13 +117,42 @@ def entries_payload(root: Path | str | None = None) -> dict:
                 "errors": errors,
                 "source_order": source_order,
                 "status": status.get("entries", {}).get(entry_id) or {"state": "new"},
-                "institutions": institutions.get("entries", {}).get(entry_id) or card_tool.institution_record(entry_id, root),
+                "institutions": (
+                    institutions.get("entries", {}).get(entry_id)
+                    or {"institutions": [], "has_more": False, "no_institution": False}
+                    if cards
+                    else institutions.get("entries", {}).get(entry_id) or card_tool.institution_record(entry_id, root)
+                ),
                 "header_zh": header_zh.get("entries", {}).get(entry_id) or {},
-                "valid": card_tool.valid_report(entry_id, root, entry=entry),
+                "valid": card_tool.valid_report(entry_id, root, entry=entry, records=records),
             },
         })
     entries.sort(key=lambda item: item.get("paper_card", {}).get("source_order", -1), reverse=True)
     return {"entries": entries, "status": status}
+
+
+def refresh_review_index(root: Path | str | None = None) -> dict:
+    fingerprint = review_source_fingerprint(root)
+    payload = _live_entries_payload(root)
+    _write_review_cache(review_cache_path(root), fingerprint, payload)
+    return payload
+
+
+def review_index_payload(root: Path | str | None = None) -> dict:
+    fingerprint = review_source_fingerprint(root)
+    cached = _load_review_cache(review_cache_path(root), fingerprint)
+    return cached if cached is not None else refresh_review_index(root)
+
+
+def invalidate_review_index(root: Path | str | None = None) -> None:
+    try:
+        review_cache_path(root).unlink()
+    except FileNotFoundError:
+        pass
+
+
+def entries_payload(root: Path | str | None = None) -> dict:
+    return review_index_payload(root)
 
 
 def section_maps(entry_id: str, root: Path | str | None = None) -> dict:
@@ -442,6 +554,11 @@ class PaperCardHandler(SimpleHTTPRequestHandler):
 
 
 def main() -> int:
+    try:
+        review_index_payload(ROOT)
+    except Exception as exc:
+        print(f"Review cache warmup failed; server not started: {exc}", file=sys.stderr)
+        return 1
     server = ThreadingHTTPServer(("127.0.0.1", PORT), PaperCardHandler)
     print(f"Paper card editor: http://127.0.0.1:{PORT}/")
     try:

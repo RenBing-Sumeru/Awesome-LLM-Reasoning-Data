@@ -215,6 +215,8 @@ def load_entries(root: Path | str | None = None) -> dict[str, dict]:
             entry_id: {**card["paper"], "category": list(card["paper"].get("category_ids") or [])}
             for entry_id, card in cards.items()
         }
+    if library.cards_root(root).exists():
+        return {}
     payload = load_yaml(project_root(root) / "data" / "papers.yaml")
     entries = payload if isinstance(payload, list) else []
     return {str(entry.get("id")): entry for entry in entries if isinstance(entry, dict) and entry.get("id")}
@@ -685,8 +687,12 @@ def section_presence_errors(entry_id: str, lang: str, root: Path | str | None = 
     return errors
 
 
-def header_zh_presence_errors(entry_id: str, root: Path | str | None = None) -> list[str]:
-    record = header_zh_record(entry_id, root)
+def header_zh_presence_errors(
+    entry_id: str,
+    root: Path | str | None = None,
+    record: dict | None = None,
+) -> list[str]:
+    record = record if record is not None else header_zh_record(entry_id, root)
     errors = [
         f"缺少中文头字段：{label}"
         for key, label in HEADER_ZH_REQUIRED_FIELDS
@@ -700,8 +706,12 @@ def header_zh_presence_errors(entry_id: str, root: Path | str | None = None) -> 
     return errors
 
 
-def institution_presence_errors(entry_id: str, root: Path | str | None = None) -> list[str]:
-    record = institution_record(entry_id, root)
+def institution_presence_errors(
+    entry_id: str,
+    root: Path | str | None = None,
+    record: dict | None = None,
+) -> list[str]:
+    record = record if record is not None else institution_record(entry_id, root)
     if record.get("no_institution"):
         return []
     if has_text(record.get("institutions")):
@@ -709,8 +719,12 @@ def institution_presence_errors(entry_id: str, root: Path | str | None = None) -
     return ["缺少机构字段：填写至少一个机构，或勾选没有机构"]
 
 
-def review_annotation_presence_errors(entry_id: str, root: Path | str | None = None) -> list[str]:
-    record = load_search_queue(root).get("entries", {}).get(entry_id) or {}
+def review_annotation_presence_errors(
+    entry_id: str,
+    root: Path | str | None = None,
+    record: dict | None = None,
+) -> list[str]:
+    record = record if record is not None else load_search_queue(root).get("entries", {}).get(entry_id) or {}
     errors: list[str] = []
     status = str(record.get("search_status") or "").strip()
     if not status:
@@ -722,7 +736,12 @@ def review_annotation_presence_errors(entry_id: str, root: Path | str | None = N
     return errors
 
 
-def valid_report(entry_id: str, root: Path | str | None = None, entry: dict | None = None) -> dict:
+def valid_report(
+    entry_id: str,
+    root: Path | str | None = None,
+    entry: dict | None = None,
+    records: dict | None = None,
+) -> dict:
     entries = load_entries(root) if entry is None else {}
     entry = entry or entries.get(entry_id)
     timestamp = now_iso()
@@ -764,15 +783,28 @@ def valid_report(entry_id: str, root: Path | str | None = None, entry: dict | No
         level = "L3_card_source_ready"
 
     chinese_errors = section_presence_errors(entry_id, "ch", root)
-    header_errors = header_zh_presence_errors(entry_id, root)
-    institution_errors = institution_presence_errors(entry_id, root)
+    records = records or {}
+    header_errors = header_zh_presence_errors(
+        entry_id,
+        root,
+        (records.get("header_zh") or {}).get(entry_id),
+    )
+    institution_errors = institution_presence_errors(
+        entry_id,
+        root,
+        (records.get("institutions") or {}).get(entry_id),
+    )
     errors.extend(chinese_errors)
     errors.extend(header_errors)
     errors.extend(institution_errors)
     if not metadata_errors and not english_errors and not chinese_errors and not header_errors and not institution_errors:
         level = "L4_chinese_review_ready"
 
-    annotation_errors = review_annotation_presence_errors(entry_id, root)
+    annotation_errors = review_annotation_presence_errors(
+        entry_id,
+        root,
+        (records.get("queue") or {}).get(entry_id),
+    )
     errors.extend(annotation_errors)
     if (
         not metadata_errors
@@ -784,7 +816,7 @@ def valid_report(entry_id: str, root: Path | str | None = None, entry: dict | No
     ):
         level = "L5_review_ready"
 
-    status_record = load_status(root).get("entries", {}).get(entry_id) or {}
+    status_record = (records.get("review") or {}).get(entry_id) or load_status(root).get("entries", {}).get(entry_id) or {}
     if level == "L5_review_ready" and status_record.get("reviewed_at"):
         level = "L6_reviewed"
 

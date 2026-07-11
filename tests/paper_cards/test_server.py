@@ -3,6 +3,7 @@ from __future__ import annotations
 import tempfile
 import unittest
 import json
+from unittest.mock import patch
 from pathlib import Path
 
 from tools.paper_cards import card_tool
@@ -290,6 +291,7 @@ paper_categories:
         self.assertTrue(payload["package"].endswith(".zip"))
         self.assertTrue((self.root / "paper_cards" / "packages" / payload["package"]).exists())
 
+
     def test_save_search_queue_item_rejects_unknown_card_without_creating_shared_queue(self) -> None:
         with self.assertRaisesRegex(ValueError, "unknown entry_id"):
             server.save_search_queue_item(
@@ -491,6 +493,89 @@ paper_categories:
             root=self.root,
         )
         self.assertEqual(downloaded["status"]["entries"]["sample-paper"]["state"], "downloaded")
+
+
+class ReviewCacheTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        library_root = self.root / "paper_cards" / "library"
+        cards_root = library_root / "cards"
+        cards_root.mkdir(parents=True)
+        (library_root / "categories.yaml").write_text(
+            "paper_categories:\n- id: programmatic_verification\n  title: Programmatic Verification\n",
+            encoding="utf-8",
+        )
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def add_card(self, entry_id: str) -> Path:
+        card = self.root / "paper_cards" / "library" / "cards" / entry_id
+        sources = card / "sources"
+        sources.mkdir(parents=True)
+        (card / "paper.yaml").write_text(
+            f"id: {entry_id}\ntitle: {entry_id}\nyear: 2025\nvenue: arXiv\n"
+            "status: verified\ncategory_ids:\n- programmatic_verification\n"
+            "artifacts:\n  paper: https://arxiv.org/abs/2501.00001\n",
+            encoding="utf-8",
+        )
+        for name in ("header_zh.json", "institutions.json", "queue.json", "review.json"):
+            (card / name).write_text("{}\n", encoding="utf-8")
+        for key, _title in card_tool.SECTIONS:
+            (sources / f"{key}.md").write_text(f"{entry_id} en\n", encoding="utf-8")
+            (sources / f"{key}_ch.md").write_text(f"{entry_id} ch\n", encoding="utf-8")
+        return card
+
+    def test_review_index_builds_and_reuses_snapshot(self) -> None:
+        self.add_card("first-card")
+
+        first = server.review_index_payload(self.root)
+        cache_path = server.review_cache_path(self.root)
+        second = server.review_index_payload(self.root)
+
+        self.assertTrue(cache_path.exists())
+        self.assertEqual([entry["id"] for entry in first["entries"]], ["first-card"])
+        self.assertEqual(first, second)
+
+    def test_review_index_rebuilds_after_direct_card_insertion_and_deletion(self) -> None:
+        first_card = self.add_card("first-card")
+        server.review_index_payload(self.root)
+        self.add_card("second-card")
+
+        inserted = server.review_index_payload(self.root)
+        self.assertEqual({entry["id"] for entry in inserted["entries"]}, {"first-card", "second-card"})
+
+        import shutil
+
+        shutil.rmtree(first_card)
+        deleted = server.review_index_payload(self.root)
+        self.assertEqual([entry["id"] for entry in deleted["entries"]], ["second-card"])
+
+    def test_empty_library_builds_an_empty_index(self) -> None:
+        payload = server.review_index_payload(self.root)
+
+        self.assertEqual(payload["entries"], [])
+        self.assertTrue(server.review_cache_path(self.root).exists())
+
+    def test_corrupt_cache_is_rebuilt(self) -> None:
+        self.add_card("first-card")
+        cache_path = server.review_cache_path(self.root)
+        cache_path.parent.mkdir(parents=True)
+        cache_path.write_text("not json\n", encoding="utf-8")
+
+        payload = server.review_index_payload(self.root)
+
+        self.assertEqual([entry["id"] for entry in payload["entries"]], ["first-card"])
+        self.assertEqual(server.review_index_payload(self.root), payload)
+
+    def test_startup_does_not_bind_when_cache_warmup_fails(self) -> None:
+        with patch.object(server, "review_index_payload", side_effect=RuntimeError("broken cache")):
+            with patch.object(server, "ThreadingHTTPServer") as http_server:
+                result = server.main()
+
+        self.assertEqual(result, 1)
+        http_server.assert_not_called()
 
 
 if __name__ == "__main__":

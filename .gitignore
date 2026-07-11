@@ -9,6 +9,7 @@ __pycache__/
 .DS_Store
 .codex_scratch/
 .worktrees/
+tmp/
 CODEX_*.md
 *_PROMPT*.md
 *_prompt*.md

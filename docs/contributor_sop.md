@@ -55,6 +55,11 @@ to two controlled categories, save a manual decision, and promote eligible
 Cards. Each write remains in the selected Card directory. Run
 `python3 tools/paper_cards/migrate.py library-normalize` after a tooling update
 to synchronize local category mirrors and remove deprecated field names.
+The Python server checks and warms the ignored derived cache at
+`tmp/paper_cards/review-index.json` before it binds the port. A missing or stale
+cache is rebuilt automatically; if rebuilding fails, the server exits without
+serving a partial list. Direct Card-folder changes are detected on the next
+request.
 
 ## Generated files
 

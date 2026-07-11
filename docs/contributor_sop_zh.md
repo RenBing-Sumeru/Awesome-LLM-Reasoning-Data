@@ -51,6 +51,11 @@ PORT=8770 python3 tools/paper_cards/server.py
 python3 tools/paper_cards/migrate.py library-normalize
 ```
 
+Python 服务启动时会先检查并预热被 Git 忽略的派生缓存
+`tmp/paper_cards/review-index.json`，然后才监听端口。缓存缺失或过期会自动
+重建；重建失败时服务以非零状态退出，不展示不完整列表。手动增删 Card 目录后，
+下一次请求会自动发现变化。
+
 ## 生成文件
 
 不要手工修改 README、图谱页、站点资源、inventory 或报告。由 Card 库
