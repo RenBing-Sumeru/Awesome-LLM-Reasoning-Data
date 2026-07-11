@@ -25,6 +25,14 @@
 - After an update that changes Card tooling, run `python3 tools/paper_cards/migrate.py library-normalize`, `python3 tools/paper_cards/card_tool.py check`, and `python3 scripts/validate_data.py`.
 - Starting `python3 tools/paper_cards/server.py` warms the ignored Review cache before binding its port; a failed warmup exits non-zero instead of serving an unverified list.
 
+## Codex instructions for historical checkouts
+
+- Treat `paper_cards/library/` as the only Card data to migrate from a historical checkout. Do not restore deleted `data/papers.yaml`, shared sources, shared review JSON, or generated ZIP files.
+- In the historical checkout, first run `git status --short`; preserve any user edits and do not reset them. Copy or merge only `paper_cards/library/` into the V2 checkout.
+- Then run `python3 tools/paper_cards/migrate.py library-normalize`, `python3 tools/paper_cards/card_tool.py check`, and `python3 scripts/validate_data.py`. Fix missing Card-local fields before continuing.
+- Start Review with `PORT=8770 python3 tools/paper_cards/server.py`; startup creates the ignored `tmp` caches. Never copy `tmp/` between versions.
+- A suitable Codex handoff prompt is: `适配到 V2：只迁移 paper_cards/library，保留当前用户修改，删除 legacy 路径，运行 library-normalize、Card check、validate_data 和渲染检查，确认 Review 启动预热成功后再提交。`
+
 ## L4 Paper Card Content
 
 Keep the 9-section card topics unchanged. Sections 1, 2, 3, and 5 must collect enough information for topic screening and L4 promotion:

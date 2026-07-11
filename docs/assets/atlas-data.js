@@ -1129,9 +1129,10 @@ window.ATLAS_DATA = {
         "chain-of-thought"
       ],
       "category": [
+        "environment_agent_trajectory_data",
         "scaling_rlvr_test_time_compute"
       ],
-      "subfield": "🎲 pass@k / sampling budget",
+      "subfield": "Other related work",
       "tags": [
         "iclr-2023",
         "self-consistency",

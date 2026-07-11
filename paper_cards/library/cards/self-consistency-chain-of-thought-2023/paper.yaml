@@ -107,6 +107,7 @@ verification:
   confidence: high
   notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
 category_ids:
+- environment_agent_trajectory_data
 - scaling_rlvr_test_time_compute
 batch:
   id: library-10-scaling-rlvr-ttc

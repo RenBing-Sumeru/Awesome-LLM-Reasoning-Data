@@ -1,7 +1,20 @@
 {
   "title": "Measuring Mathematical Problem Solving With the MATH Dataset",
-  "updated_at": "2026-07-10T15:11:36Z",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2103.03874",
+    "arxiv": null,
+    "code": "https://github.com/hendrycks/math",
+    "data": "https://github.com/hendrycks/math",
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
   "category_ids": [
     "programmatically_verifiable_outcome_data"
-  ]
+  ],
+  "reason_to_include": "123546",
+  "decision_reason": "123546",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-11T04:14:22Z"
 }

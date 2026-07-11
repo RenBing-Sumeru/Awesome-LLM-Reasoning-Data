@@ -13,7 +13,7 @@ Use this section to compare instruction traces, preferences, verifiable outcomes
 | 🧮 Programmatic Verification | math, code, proof, and answer-verifiable reasoning data | 7 | [03_programmatically_verifiable_outcome_data.md](03_programmatically_verifiable_outcome_data.md) |
 | 🪜 Process / Trace Supervision | step-level labels, PRMs, rollout values, and first-error signals | 0 | [04_process_trace_supervision_data.md](04_process_trace_supervision_data.md) |
 | 🔁 Rollout / Search / TTC Trace | search-generated candidates, best-of-N, pass@k, and test-time compute traces | 0 | [05_rollout_search_test_time_trace_data.md](05_rollout_search_test_time_trace_data.md) |
-| 🌐 Environment & Agent Trajectories | tool, web, OS, app, SWE, and replayable environment data | 0 | [06_environment_agent_trajectory_data.md](06_environment_agent_trajectory_data.md) |
+| 🌐 Environment & Agent Trajectories | tool, web, OS, app, SWE, and replayable environment data | 1 | [06_environment_agent_trajectory_data.md](06_environment_agent_trajectory_data.md) |
 | ⚖️ Judgment / Rubric / Domain Expert | LLM judges, expert rubrics, factuality, safety, medical, legal, and finance reasoning | 0 | [07_judgment_rubric_domain_expert_data.md](07_judgment_rubric_domain_expert_data.md) |
 
 ## Data-Type Crosswalk

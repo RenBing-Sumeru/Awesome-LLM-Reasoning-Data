@@ -6,7 +6,8 @@
   "confidence_ch": "高",
   "authors_ch": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou",
   "category_ids": [
+    "environment_agent_trajectory_data",
     "scaling_rlvr_test_time_compute"
   ],
-  "updated_at": "2026-07-10T15:11:44Z"
+  "updated_at": "2026-07-11T03:53:41Z"
 }
