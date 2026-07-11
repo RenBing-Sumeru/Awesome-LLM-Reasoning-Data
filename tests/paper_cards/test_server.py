@@ -577,15 +577,25 @@ class ReviewCacheTest(unittest.TestCase):
         self.assertEqual(result, 1)
         http_server.assert_not_called()
 
-    def test_saving_chinese_section_refreshes_cache_after_local_write(self) -> None:
+    def test_saving_chinese_section_invalidates_index_without_full_refresh(self) -> None:
         self.add_card("first-card")
         server.review_index_payload(self.root)
+        review_cache = server.review_cache_path(self.root)
+        card_cache = server.card_cache_path("first-card", self.root)
 
-        server.save_chinese_sections("first-card", {"01_problem_ch": "updated\n"}, root=self.root)
+        with patch.object(server, "refresh_review_index", wraps=server.refresh_review_index) as refresh:
+            payload = server.save_chinese_sections(
+                "first-card", {"01_problem_ch": "updated\n"}, root=self.root
+            )
 
-        snapshot = json.loads(server.review_cache_path(self.root).read_text(encoding="utf-8"))
-        self.assertEqual(snapshot["fingerprint"], server.review_source_fingerprint(self.root))
-        self.assertEqual(snapshot["payload"]["status"]["entries"]["first-card"]["state"], "edited")
+        self.assertFalse(refresh.called)
+        self.assertFalse(review_cache.exists())
+        self.assertTrue(card_cache.exists())
+        self.assertEqual(payload["card"]["sections"]["ch"]["01_problem_ch"], "updated\n")
+
+        rebuilt = server.entries_payload(self.root)
+        self.assertTrue(review_cache.exists())
+        self.assertEqual(rebuilt["entries"][0]["paper_card"]["status"]["state"], "edited")
 
     def test_card_and_preview_payloads_write_card_local_cache(self) -> None:
         self.add_card("first-card")

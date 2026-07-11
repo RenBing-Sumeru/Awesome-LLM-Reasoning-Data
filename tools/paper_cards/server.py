@@ -199,8 +199,8 @@ def invalidate_review_index(root: Path | str | None = None) -> None:
 
 
 def refresh_after_card_write(root: Path | str | None = None, entry_id: str | None = None) -> None:
-    """Keep the derived Review snapshot aligned with a successful local write."""
-    refresh_review_index(root)
+    """Invalidate the global snapshot and refresh only the changed Card cache."""
+    invalidate_review_index(root)
     if entry_id:
         _card_cache_payload(entry_id, root)
 
@@ -244,10 +244,6 @@ def _live_card_payload(entry_id: str, root: Path | str | None = None) -> dict:
         }
     card = card_tool.library.load_card(entry_id, root)
     entry = {**card["paper"], "category": list(card["paper"].get("category_ids") or [])}
-    index = review_index_payload(root)
-    index_entry = next((item for item in index["entries"] if item.get("id") == entry_id), None)
-    if index_entry is None:
-        raise ValueError(f"unknown entry_id: {entry_id}")
     category_ids = card_tool.clean_category_ids(
         entry.get("category"),
         "论文知识点分类",
@@ -261,8 +257,16 @@ def _live_card_payload(entry_id: str, root: Path | str | None = None) -> dict:
         "header_zh": card["header_zh"],
         "category_labels": card_tool.category_details(category_ids, root),
         "category_options": card_tool.category_options(root),
-        "check_errors": index_entry["paper_card"].get("errors") or [],
-        "valid": index_entry["paper_card"]["valid"],
+        "check_errors": card_tool.check_card(entry_id, root),
+        "valid": card_tool.valid_report(
+            entry_id,
+            root,
+            entry=entry,
+            records={
+                "header_zh": card["header_zh"],
+                "institutions": card["institutions"],
+            },
+        ),
         "status": card["review"] or {"state": "new"},
     }
 
