@@ -2,14 +2,14 @@
 
 ## Goal
 
-Let a curator assign zero, one, or two editable Tracks to each Paper Card, then use them to locate related cards without changing the existing single knowledge-point classification or prompt-batch provenance.
+Give each newly created Paper Card one editable default Track, while allowing a curator to remove it or add one more Track (zero to two total), then use Tracks to locate related cards without changing the existing single knowledge-point classification or prompt-batch provenance.
 
 ## Data Model
 
 - Add `tracks` to each record in `paper_cards/header_zh.json`.
-- `tracks` is a list of zero to two display strings.
+- `tracks` is a list of zero to two display strings. New Card initialization creates one default Track from its knowledge-point classification label; a curator may remove it or add one more.
 - Normalize each value by trimming and collapsing internal whitespace; reject blank values, values longer than 48 characters, and duplicates under Unicode case-folding.
-- Existing records without `tracks` read as `[]`.
+- Existing records without `tracks` read as `[]` and are not rewritten automatically.
 - Keep `data/papers.yaml.category`, `header_zh.category_ids`, `search_queue.track_guess`, and `prompt_batch_id` unchanged. They retain their existing single-classification and batch-validation semantics.
 - Because header records are already included in the migration archive, Tracks migrate with the other local Card metadata.
 
