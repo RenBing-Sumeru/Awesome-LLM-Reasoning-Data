@@ -1,7 +1,20 @@
 {
   "title": "Measuring Coding Challenge Competence With APPS",
-  "updated_at": "2026-07-10T15:11:36Z",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2105.09938",
+    "arxiv": "https://arxiv.org/abs/2105.09938",
+    "code": "https://github.com/hendrycks/apps",
+    "data": "https://github.com/hendrycks/apps",
+    "project": "https://github.com/hendrycks/apps",
+    "huggingface": "https://huggingface.co/datasets/codeparrot/apps",
+    "doi": "https://doi.org/10.48550/arXiv.2105.09938"
+  },
   "category_ids": [
     "programmatically_verifiable_outcome_data"
-  ]
+  ],
+  "reason_to_include": "纳入候选池：APPS 是执行型代码生成 benchmark 的代表工作，任务、候选程序、运行环境和测试判决构成清晰的程序化验证记录；后续需持续审计测试泄漏与 sandbox 差异。",
+  "decision_reason": "纳入候选池：APPS 是执行型代码生成 benchmark 的代表工作，任务、候选程序、运行环境和测试判决构成清晰的程序化验证记录；后续需持续审计测试泄漏与 sandbox 差异。",
+  "search_status": "candidate",
+  "review_note": "Codex reviewed against the bilingual Card and retained as an L5 candidate.",
+  "updated_at": "2026-07-11T12:54:12Z"
 }

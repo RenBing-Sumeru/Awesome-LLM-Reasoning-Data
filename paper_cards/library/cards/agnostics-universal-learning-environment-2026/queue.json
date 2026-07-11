@@ -9,12 +9,12 @@
     "huggingface": "https://huggingface.co/nuprl/agnostics",
     "doi": "https://doi.org/10.48550/arXiv.2508.04865"
   },
-  "reason_to_include": "",
-  "decision_reason": "",
-  "search_status": "",
-  "review_note": "",
-  "updated_at": "2026-07-10T15:11:44Z",
   "category_ids": [
     "scaling_rlvr_test_time_compute"
-  ]
+  ],
+  "reason_to_include": "纳入候选池：提供跨编程语言统一的 I/O 执行验证环境与 RLVR 闭环，官方代码、数据和项目页齐全；后续需复核多语言容器一致性、测试覆盖与许可证。",
+  "decision_reason": "纳入候选池：提供跨编程语言统一的 I/O 执行验证环境与 RLVR 闭环，官方代码、数据和项目页齐全；后续需复核多语言容器一致性、测试覆盖与许可证。",
+  "search_status": "candidate",
+  "review_note": "Codex reviewed against the bilingual Card and retained as an L5 candidate.",
+  "updated_at": "2026-07-11T12:54:04Z"
 }

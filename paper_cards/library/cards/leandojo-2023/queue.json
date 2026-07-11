@@ -1,7 +1,20 @@
 {
   "title": "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models",
-  "updated_at": "2026-07-10T15:11:36Z",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2306.15626",
+    "arxiv": "https://arxiv.org/abs/2306.15626",
+    "code": "https://github.com/lean-dojo/LeanDojo",
+    "data": "https://leandojo.org/leandojo",
+    "project": "https://leandojo.org/leandojo",
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2306.15626"
+  },
   "category_ids": [
     "programmatically_verifiable_outcome_data"
-  ]
+  ],
+  "reason_to_include": "纳入候选池：提供可回放的 Lean 状态—动作轨迹、前提检索数据和 kernel 终止判定，是形式证明 Agent 环境与程序化 verifier 的关键基线；后续需固定 Lean/mathlib 版本与搜索预算。",
+  "decision_reason": "纳入候选池：提供可回放的 Lean 状态—动作轨迹、前提检索数据和 kernel 终止判定，是形式证明 Agent 环境与程序化 verifier 的关键基线；后续需固定 Lean/mathlib 版本与搜索预算。",
+  "search_status": "candidate",
+  "review_note": "Codex reviewed against the bilingual Card and retained as an L5 candidate.",
+  "updated_at": "2026-07-11T12:54:28Z"
 }
