@@ -137,13 +137,63 @@ def initialize_library(root: Path | str | None = None) -> dict:
             ("review", status, {"state": "new"}),
         ]:
             library.save_card_record(entry_id, name, dict(records.get(entry_id) or default), project)
-        source = card_tool.card_source_dir(entry_id, project)
+        source = card_tool.sources_root(project) / entry_id
         if not source.exists():
             raise ValueError(f"missing Card sources for {entry_id}")
         shutil.copytree(source, directory / "sources")
         library.load_card(entry_id, project)
         written.append(entry_id)
     return {"entry_ids": written}
+
+
+def verify_library_parity(root: Path | str | None = None) -> dict:
+    """Confirm every legacy Card record has an identical Card-local counterpart."""
+    project = root_path(root)
+    legacy = {str(item.get("id")): item for item in current_entries_list(project) if item.get("id")}
+    cards = library.load_cards(project)
+    if set(legacy) != set(cards):
+        raise ValueError("library Card IDs do not match legacy paper IDs")
+    headers = card_tool.load_header_zh(project)["entries"]
+    institutions = card_tool.load_institutions(project)["entries"]
+    queue = card_tool.load_search_queue(project)["entries"]
+    status = card_tool.load_status(project)["entries"]
+    for entry_id, entry in legacy.items():
+        card = cards[entry_id]
+        if card["paper"].get("title") != entry.get("title"):
+            raise ValueError(f"library title mismatch: {entry_id}")
+        if card["header_zh"] != (headers.get(entry_id) or {}):
+            raise ValueError(f"library header mismatch: {entry_id}")
+        if card["institutions"] != (institutions.get(entry_id) or {"institutions": [], "has_more": False, "no_institution": False}):
+            raise ValueError(f"library institutions mismatch: {entry_id}")
+        if card["queue"] != (queue.get(entry_id) or {}):
+            raise ValueError(f"library queue mismatch: {entry_id}")
+        if card["review"] != (status.get(entry_id) or {"state": "new"}):
+            raise ValueError(f"library review mismatch: {entry_id}")
+        for source in sorted((card_tool.sources_root(project) / entry_id).glob("*.md")):
+            target = card["sources"] / source.name
+            if not target.exists() or target.read_bytes() != source.read_bytes():
+                raise ValueError(f"library source mismatch: {entry_id}/{source.name}")
+    return {"entry_ids": sorted(cards)}
+
+
+def cutover_library(confirmed: bool = False, root: Path | str | None = None) -> dict:
+    if not confirmed:
+        raise ValueError("library cutover requires confirmed=True")
+    result = verify_library_parity(root)
+    project = root_path(root)
+    for path in [
+        project / "data" / "papers.yaml",
+        project / "data" / "categories.yaml",
+        project / "paper_cards" / "header_zh.json",
+        project / "paper_cards" / "institutions.json",
+        project / "paper_cards" / "search_queue.json",
+        project / "paper_cards" / "status.json",
+        project / "paper_cards" / "valid_status.json",
+    ]:
+        path.unlink(missing_ok=True)
+    for path in [project / "paper_cards" / "sources", project / "paper_cards" / "prompt_batches"]:
+        shutil.rmtree(path, ignore_errors=True)
+    return result
 
 
 def apply_prompt_batch(
@@ -576,6 +626,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     verify = commands.add_parser("verify", help="validate archive checksums and batch categories")
     verify.add_argument("--input", required=True)
     commands.add_parser("verify-current", help="validate current library and local prompt batches")
+    commands.add_parser("library-init", help="convert legacy Card records into the Card library")
+    commands.add_parser("library-verify", help="verify legacy records match the Card library")
+    cutover = commands.add_parser("library-cutover", help="verify then remove legacy Card paths")
+    cutover.add_argument("--yes", action="store_true")
     return parser.parse_args(argv)
 
 
@@ -597,6 +651,12 @@ def main(argv: list[str] | None = None) -> int:
         verify_current_records(root)
     elif args.command == "verify-current":
         payload = verify_current_records(root)
+    elif args.command == "library-init":
+        payload = initialize_library(root)
+    elif args.command == "library-verify":
+        payload = verify_library_parity(root)
+    elif args.command == "library-cutover":
+        payload = cutover_library(args.yes, root)
     else:  # verify
         payload = verify_records(args.input, root)
     print(json.dumps(payload, ensure_ascii=False, indent=2))

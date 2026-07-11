@@ -134,6 +134,17 @@ paper_categories:
         self.assertEqual(card["queue"]["search_status"], "candidate")
         self.assertEqual(card["review"]["state"], "reviewed")
 
+    def test_cutover_requires_parity_then_removes_legacy_records(self) -> None:
+        migrate.initialize_library(root=self.root)
+
+        result = migrate.cutover_library(confirmed=True, root=self.root)
+
+        self.assertEqual(result["entry_ids"], ["sample-paper"])
+        self.assertTrue((self.root / "paper_cards" / "library" / "cards" / "sample-paper" / "paper.yaml").exists())
+        self.assertFalse((self.root / "data" / "papers.yaml").exists())
+        self.assertFalse((self.root / "paper_cards" / "header_zh.json").exists())
+        self.assertFalse((self.root / "paper_cards" / "sources").exists())
+
     def test_prompt_batch_generates_a_batch_id_when_codex_only_supplies_the_prompt_decision(self) -> None:
         batch = migrate.apply_prompt_batch(
             None,
