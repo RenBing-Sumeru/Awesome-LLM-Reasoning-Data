@@ -24500,6 +24500,1926 @@
     verified_by: curation
     confidence: high
     notes: Official arXiv link pinned after source review.
+- id: theorem-prover-judge-synthetic-data-2025
+  title: Theorem Prover as a Judge for Synthetic Data Generation
+  year: 2025
+  venue: ACL 2025
+  authors:
+    - Joshua Ong Jun Leang
+    - Giwon Hong
+    - Wenda Li
+    - Shay B. Cohen
+  source_role:
+    - construction_recipe
+    - verifier_reward
+    - process_supervision
+  verification_contract:
+    - programmatic
+  supervision_granularity:
+    - step_level
+    - full_episode
+    - pairwise_preference
+    - process_reward
+  domains:
+    - mathematics
+  training_use:
+    - sft
+    - preference_learning
+    - process_supervision
+    - reward_modeling
+  construction_layer:
+    - prompt_sourcing
+    - trace_writing
+    - reward_verifier_layer
+    - optimizer_scaffold
+    - release_audit
+  artifacts:
+    paper: https://aclanthology.org/2025.acl-long.1448/
+    arxiv: https://arxiv.org/abs/2502.13137
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: https://doi.org/10.18653/v1/2025.acl-long.1448
+    venue: https://aclanthology.org/2025.acl-long.1448/
+    openreview: null
+    acl: https://aclanthology.org/2025.acl-long.1448/
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Few-shot reverse-question-answering seeds from GSM8K and MATH, concentrating on problem solving, algebra, and counting and probability.
+    trace_author: GPT-4o and chatgpt-4o-latest generate two candidate solutions per synthetic question; GPT-4o formalises questions and answers and performs auto-informalisation/alignment checks.
+    answer_format: A synthetic mathematical question with two natural-language step-by-step solutions, corresponding Lean formalisation attempts, step-level theorem-prover outcomes, and either an SFT target or verified-versus-false DPO pair.
+    process_fields:
+      - source_domain
+      - synthetic_question
+      - candidate_solution_a
+      - candidate_solution_b
+      - question_formalisation
+      - auto_informalisation
+      - alignment_check
+      - answer_formalisation_steps
+      - lean_execution_output
+      - retry_history
+      - verified_false_or_error
+      - sft_or_dpo_allocation
+    environment_or_substrate: Lean theorem proving with CoMAT question conversion, GPT-4o autoformalisation, reverse translation and alignment checking, plus iterative correction from Lean execution errors.
+    verifier_or_reward: Lean validates every formalised reasoning step. Fully verified traces are positive; refuted steps produce False; execution failures produce Error and trigger up to five autoformalisation retries.
+    terminal_predicate: Two verified candidate answers enter SFT; a verified/false pair enters DPO; two false answers are disposed; unresolved formalisation errors after retries do not become verified data.
+  recipe_metadata:
+    base_model: RLTPF experiments cover Llama-2-7B-chat-hf, Llama-3.2-3B-Instruct, Llama-3.1-8B-Instruct, OLMo-2-1124-7B-Instruct and Mistral-7B-Instruct-v0.3 with LoRA.
+    teacher: GPT-4o and chatgpt-4o-latest generate answers; GPT-4o performs autoformalisation, auto-informalisation and alignment checking; Lean provides executable verification feedback.
+    generator: Reverse question answering generates questions from GSM8K/MATH few-shot solutions, followed by two model-generated answers per retained question.
+    filtering_rule: Reject question formalisations that fail round-trip alignment; classify answer proofs as Verified, False or Error; retry Error up to five times; route Verified/Verified to SFT, Verified/False to DPO and False/False to disposal.
+    sampling_protocol: Questions are few-shot, answers zero-shot, and formalisation uses domain-specific 10-shot, 8-shot or 6-shot prompts. Generation is greedy at temperature 0.0 with 3,500 maximum tokens.
+    rollout_count: 2
+    temperature: 0.0
+    inference_budget: Maximum five iterative autoformalisation retries per answer formalisation; dataset-generation cost is reported as approximately $0.60 per sample but varies with retry count.
+    optimizer_or_scaffold: One epoch of LoRA SFT on 2,562 verified examples followed by three DPO epochs on 473 verified-versus-false pairs; effective batch 64, RMSprop, learning rate 3e-5, seed 42 and DPO beta 0.1.
+  audit:
+    source_mixture: GSM8K- and MATH-derived synthetic questions across arithmetic/problem solving, algebra, counting/probability and a small Others category, with two GPT-family response generators and Lean verification.
+    split: SIMQA contains 1,876 GSM8K-derived and 1,632 MATH-derived responses allocated into 2,562 SFT examples and 473 DPO pairs; exact source-row and evaluation-overlap manifests are not released.
+    decontamination: unknown
+    license: The ACL paper is CC BY 4.0. The paper-linked GitHub repository is currently unavailable, so code/data licensing and inherited GSM8K/MATH rights cannot be verified.
+    lineage: GSM8K/MATH few-shot solution to reverse-generated question to CoMAT symbolic form to Lean question formalisation to GPT-4o auto-informalisation/alignment check to two generated solutions to stepwise Lean formalisation and iterative error correction to Verified/False/Error outcomes to SFT/DPO/disposal allocation to RLTPF model training.
+    known_failure_modes:
+      - Lean execution certifies the generated formal statement, not necessarily faithful alignment with the original natural-language question or reasoning intent.
+      - GPT-4o performs both formalisation and round-trip alignment checks, creating correlated self-validation risk.
+      - Execution Error is distinct from mathematical False; retry and eventual exclusion can bias the corpus toward easier-to-formalise questions.
+      - Although execution improves from 60% to 87%, unresolved autoformalisation failures remain and do not establish semantic correctness.
+      - Two False responses are disposed, so useful negative traces and failure diversity are lost from training.
+      - The generated dataset is limited to 3,508 responses and a narrow set of mathematical subdomains.
+      - Problem difficulty is capped by the generators' ability to solve and formalise their own synthetic questions.
+      - Retry count increases with sequence length and incurs substantial API/verification cost.
+      - Exact GPT model snapshots, prompts, Lean environment/library revision and source-row lineage are not consolidated in an immutable manifest.
+      - The official code URL cited by the paper returned 404 on 2026-07-11; SIMQA data, proofs, retry logs and trained checkpoints could not be verified as public releases.
+      - No pretraining decontamination or inherited-license audit is reported.
+      - The DPO preference contract treats Lean-verified output as preferred, but formalisation artifacts can confound preference quality.
+    citation_status: verified
+    confidence: high
+    notes: ACL, DOI and arXiv were verified on 2026-07-11. The paper's official GitHub URL is retained for provenance but currently returns 404; no accessible data/model release was confirmed.
+  inclusion_reason: TP-as-a-Judge is a concrete synthetic reasoning-data recipe that uses round-trip question formalisation, executable step verification and theorem-prover outcomes to route examples into SFT, preference learning or rejection.
+  related: []
+  tags:
+    - theorem-prover-feedback
+    - lean
+    - autoformalisation
+    - synthetic-math-data
+    - step-verification
+    - reverse-question-answering
+    - sft-dpo-routing
+    - rejected-traces
+    - formal-verifier
+    - release-unavailable
+  status: partial
+  category:
+    - preference_reward_feedback_data
+    - programmatically_verifiable_outcome_data
+    - process_trace_supervision_data
+    - data_construction_open_release_recipes
+    - training_usage_optimization_objectives
+    - audit_failure_contamination_verifier_attacks
+  one_line: TP-as-a-Judge round-trips synthetic math questions through Lean, iteratively repairs formalisation errors, and routes verified/false answer pairs into SFT or DPO.
+  one_line_summary: A formal-verification recipe for generating and selecting synthetic mathematical reasoning using Lean step checks, iterative autoformalisation and theorem-prover preference feedback.
+  why_it_matters: It replaces opaque judge scores with executable proof feedback and exposes a reusable data-allocation contract, while making formalisation fidelity, retry bias and release availability explicit audit risks.
+  card: cards/recipes/theorem-prover-judge-synthetic-data-2025.md
+  needs:
+    - 'needs_url: restore or relocate the paper-linked RLTPF repository and publish an immutable release'
+    - 'needs_metadata: release SIMQA rows, Lean proofs, retry histories, disposed pairs, prompts and trained checkpoints'
+    - 'needs_metadata: document code/data/model licenses and inherited GSM8K/MATH rights'
+    - 'needs_metadata: publish exact GPT snapshots, Lean version/library environment, seeds and source-row lineage'
+    - 'needs_metadata: audit natural-language-to-formal-statement faithfulness with independent human or prover checks'
+    - 'needs_metadata: report decontamination and evaluation-overlap checks'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official paper, arXiv and DOI are verified. The official repository URL is paper-backed but currently unavailable, and no public SIMQA/model artifact was confirmed.
+- id: small-models-struggle-strong-reasoners-2025
+  title: Small Models Struggle to Learn from Strong Reasoners
+  year: 2025
+  venue: Findings of ACL
+  authors: [Yuetai Li, Xiang Yue, Zhangchen Xu, Fengqing Jiang, Luyao Niu, Bill Yuchen Lin, Bhaskar Ramasubramanian, Radha Poovendran]
+  source_role: [construction_recipe, scaling_study, audit_failure]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, step_level]
+  domains: [mathematics]
+  training_use: [sft, distillation, evaluation, audit]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, scaling_report, release_audit]
+  artifacts:
+    paper: https://aclanthology.org/2025.findings-acl.1301/
+    arxiv: https://arxiv.org/abs/2502.12143
+    code: https://github.com/Small-Model-Gap/Small-Model-Learnability-Gap
+    data: null
+    project: https://small-model-gap.github.io/
+    huggingface: https://huggingface.co/UWNSL
+    doi: https://doi.org/10.18653/v1/2025.findings-acl.1301
+    venue: https://aclanthology.org/2025.findings-acl.1301/
+    openreview: null
+    acl: https://aclanthology.org/2025.findings-acl.1301/
+    pmlr: null
+    cvf: null
+    bibtex: https://aclanthology.org/2025.findings-acl.1301.bib
+  data_object:
+    prompt_source: The 7500-problem training split of MATH spanning seven mathematics topics.
+    trace_author: QwQ-32B-Preview generates long CoT and Qwen2.5-32B-Instruct generates short CoT; large-small teacher pairs are Qwen2.5-72B/3B-Instruct, Llama-3.1-70B/8B-Instruct, and Gemma-2-27B/9B-it.
+    answer_format: A MATH problem paired with a teacher-generated chain-of-thought response and final answer.
+    process_fields: [problem, teacher_identity, teacher_size, cot_type, reasoning_trace, final_answer, correctness]
+    environment_or_substrate: Offline teacher generation, answer-based rejection sampling, controlled trace-mixture construction, and student supervised fine-tuning.
+    verifier_or_reward: Teacher responses are retained through rejection sampling; paired comparisons use problems for which both compared teachers produce correct answers. Evaluation first uses exact answer matching and then Qwen2.5-32B-Instruct judgment for unmatched forms.
+    terminal_predicate: A generated response yields a final answer judged correct against the MATH solution.
+  recipe_metadata:
+    base_model: Qwen2.5-0.5B/1.5B/3B/7B/14B/32B-Instruct and Llama-3.2-1B/3B, Llama-3.1-8B, and Llama-3.3-70B students; Mix Distillation focuses on Qwen2.5-3B-Instruct and Llama-3.2-3B-Instruct.
+    teacher: QwQ-32B-Preview for long CoT, Qwen2.5-32B-Instruct for short CoT, plus size-controlled Qwen2.5, Llama, and Gemma teacher pairs.
+    generator: Each teacher greedily generates a reasoning response for a MATH prompt; the response and problem form an SFT pair after correctness filtering.
+    filtering_rule: Rejection sampling retains correct responses; pairwise teacher comparisons restrict training to problem-solution pairs correct for both compared teachers.
+    sampling_protocol: Default teacher decoding is greedy. Mix-Long uses long and short CoT in a 1:4 ratio; Mix-Large uses strong- and weak-teacher responses in the same 1:4 ratio.
+    rollout_count: null
+    temperature: null
+    inference_budget: Maximum SFT sequence length 16384; evaluation maximum generation length 16000 tokens.
+    optimizer_or_scaffold: LLaMA-Factory SFT for two epochs; students below 14B use full-parameter AdamW with maximum learning rate 1e-5, while larger students use LoRA with learning rate 1e-4.
+  audit:
+    source_mixture: MATH prompts combined with long/short traces and strong/weak teacher traces from QwQ, Qwen2.5, Llama, and Gemma model families.
+    split: The 7500-example MATH training split is used for construction; exact retained row counts and released split manifests are unavailable.
+    decontamination: unknown
+    license: The ACL paper is CC BY 4.0; licenses and redistribution terms for generated traces and upstream model outputs are not reported as a unified data release.
+    lineage: MATH training prompt -> greedy teacher response -> answer-correctness rejection sampling -> matched correct teacher-pair pool -> long/short or strong/weak 1:4 mixture -> student SFT -> multi-benchmark evaluation.
+    known_failure_modes: [Correct final answers do not prove that intermediate reasoning is valid, Qwen2.5-32B-Instruct judgment can introduce evaluator bias, the 1:4 mixture is tuned on 3B students and may not transfer to other capacities, conclusions are limited primarily to mathematical reasoning, teacher model versions and immutable generation snapshots are not pinned, exact paper-to-dataset and checkpoint mappings require release-level verification, decontamination is unreported.]
+    citation_status: verified
+    confidence: high
+    notes: Official Findings of ACL 2025 proceedings, DOI, arXiv, project page, MIT code repository, and UWNSL Hugging Face organization were verified on 2026-07-11. Exact paper-matched trace datasets, checkpoints, and immutable revisions still require artifact-level mapping.
+  inclusion_reason: Controlled teacher-trace construction study showing that reasoning length and teacher capacity must be matched to student learnability, with a concrete long-short and strong-weak mixing recipe.
+  related: []
+  tags: [reasoning-distillation, teacher-traces, mix-distillation, long-cot, student-capacity, rejection-sampling, learnability-gap]
+  status: partial
+  category: [instruction_demonstration_rationale_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: The paper constructs matched long-short and strong-weak teacher-trace mixtures to show that small students often learn better from simpler or smaller-teacher reasoning.
+  one_line_summary: The paper constructs matched long-short and strong-weak teacher-trace mixtures to show that small students often learn better from simpler or smaller-teacher reasoning.
+  why_it_matters: It turns teacher identity, trace complexity, correctness matching, and student capacity into explicit data-selection variables while documenting a failure of naive strongest-teacher distillation.
+  card: cards/failures/small-models-struggle-strong-reasoners-2025.md
+  needs: ['needs_data_mapping: identify exact paper-matched trace datasets and retained row manifests in the UWNSL releases', 'needs_snapshot: pin the code, dataset, and checkpoint revisions used for the paper', 'needs_generation_metadata: pin teacher model revisions and complete decoding settings', 'needs_lineage: publish per-row teacher and filter provenance', 'needs_decontamination: document overlap checks', 'needs_license: state redistribution terms for generated outputs']
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official paper, venue, DOI, arXiv, project page, MIT repository, and UWNSL Hugging Face organization verified; exact paper-to-artifact mapping and immutable revisions remain partial.
+- id: reinforcement-learning-teachers-test-time-scaling-2025
+  title: Reinforcement Learning Teachers of Test Time Scaling
+  year: 2025
+  venue: NeurIPS
+  authors: [Edoardo Cetin, Tianyu Zhao, Yujin Tang]
+  source_role: [construction_recipe, verifier_reward, model_report]
+  verification_contract: [mixed]
+  supervision_granularity: [step_level, scalar_reward]
+  domains: [mathematics, coding, science, general-reasoning]
+  training_use: [sft, distillation, reward_modeling, rlvr]
+  construction_layer: [trace_writing, reward_verifier_layer, optimizer_scaffold, frontier_pipeline, release_audit]
+  artifacts:
+    paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9a6b278218966499194491f55ccf8b75-Abstract-Conference.html
+    arxiv: https://arxiv.org/abs/2506.08388
+    code: https://github.com/SakanaAI/RLT
+    data: null
+    project: https://sakana.ai/rlt/
+    huggingface: https://huggingface.co/collections/SakanaAI/reinforcement-learning-teachers
+    doi: https://doi.org/10.48550/arXiv.2506.08388
+    venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9a6b278218966499194491f55ccf8b75-Abstract-Conference.html
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9a6b278218966499194491f55ccf8b75-Bibtex-Conference.html
+  data_object:
+    prompt_source: Fewer than 17000 mathematics and coding question-solution pairs from Bespoke-Stratos-17k; the paper also studies a 1000-example subset.
+    trace_author: A Qwen2.5-7B-Instruct reinforcement-learned teacher generates explanations conditioned on each question and its known solution.
+    answer_format: Question and known solution are provided to the teacher; extracted explanation tokens are placed inside think tags and followed by the solution for student distillation.
+    process_fields: [question, solution, optional_reasoning_trace, generated_explanation, student_solution_log_probabilities, explanation_kl_reward]
+    environment_or_substrate: Offline teacher SFT warm-up followed by GRPO training; a frozen Qwen2.5-7B-Instruct student scores whether explanations make the known solution learnable.
+    verifier_or_reward: A dense scalar combines the student's average and minimum log-probability over solution tokens with a KL-based term measuring whether the explanation is a plausible continuation for the student; malformed outputs receive a format penalty.
+    terminal_predicate: The teacher output follows the required explanation format and supplies a trace that raises the student's likelihood of the known solution.
+  recipe_metadata:
+    base_model: Qwen2.5-7B-Instruct for the RLT teacher and fixed reward student; Qwen2.5-7B-Instruct and Qwen2.5-32B-Instruct are downstream distilled students.
+    teacher: A Qwen2.5-7B-Instruct Reinforcement-Learned Teacher trained to explain known solutions; the official collection exposes distilled student models, not a clearly identified reusable teacher checkpoint.
+    generator: The RLT receives a question plus known solution and generates connect-the-dots reasoning explanations; explanation tokens are extracted and combined with the known solution as student SFT examples.
+    filtering_rule: Required tags and format are rewarded with a format penalty for violations; student solution likelihood and explanation KL determine ranking during GRPO. The paper reports using raw RLT outputs for distillation rather than correctness rejection sampling.
+    sampling_protocol: GRPO group size 64, generation temperature 0.7, top-p 1.0, no top-k, min-p 0.0, repetition penalty 1.0, and maximum generation context 16384.
+    rollout_count: 64 completions per GRPO group; total generated trace count and retained student-training row count are not separately disclosed.
+    temperature: 0.7
+    inference_budget: Maximum generation context size 16384 tokens during RLT training; downstream students are susceptible to cropped traces, so the repository recommends recollecting multiple traces for 32B students.
+    optimizer_or_scaffold: SFT warm-up on pre-collected Bespoke examples followed by 125 GRPO steps with batch size 1024 and a dense student-learnability reward; generated explanations then supervise student SFT.
+  audit:
+    source_mixture: Bespoke-Stratos-17k question-solution pairs and example traces, Qwen2.5-7B-Instruct teacher and reward student, plus generated RLT explanations; evaluation covers AIME 2024, MATH-500, and GPQA Diamond.
+    split: A full fewer-than-17000-example training setting and a 1000-example subset are reported; exact released indices and row-level split manifests are unknown.
+    decontamination: unknown
+    license: The official code is Apache-2.0; the paper reports Apache-2.0 for Bespoke-Stratos-17k and Qwen2.5 models, but no separately released generated-trace dataset license was identified.
+    lineage: Bespoke question and known solution -> RLT-format SFT warm-up -> GRPO teacher optimization with frozen-student dense reward -> regenerated explanations -> explanation-plus-solution student SFT examples -> released distilled student checkpoints.
+    known_failure_modes: [The reward is tied to a particular frozen student and may favor student-specific explanations, conditioning on known solutions can produce explanations that rationalize rather than independently derive an answer, the dense reward measures solution-token likelihood rather than proof validity, long explanations may be cropped by student context limits, no official generated-trace dataset or row-level lineage manifest was identified, decontamination is unreported, official Hugging Face artifacts are described as distilled students and do not clearly expose the trained teacher checkpoint.]
+    citation_status: verified
+    confidence: high
+    notes: Official NeurIPS 2025 proceedings, arXiv paper, Sakana AI project page, Apache-2.0 code repository, and official Hugging Face model collection verified on 2026-07-11. Artifact completeness remains partial because generated traces and a clearly labeled teacher checkpoint were not identified.
+  inclusion_reason: NeurIPS 2025 construction recipe that trains a small teacher specifically to generate student-learnable reasoning traces from question-solution pairs using dense downstream-student feedback.
+  related: [bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation-2025]
+  tags: [reasoning-distillation, teacher-traces, reinforcement-learned-teacher, student-conditioned-reward, grpo, cold-start-data, open-code]
+  status: partial
+  category: [instruction_demonstration_rationale_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: RLT trains a 7B teacher with dense student-likelihood feedback to generate explanations from known question-solution pairs for reasoning distillation.
+  one_line_summary: RLT trains a 7B teacher with dense student-likelihood feedback to generate explanations from known question-solution pairs for reasoning distillation.
+  why_it_matters: It makes teacher identity, conditioning, decoding, student-dependent feedback, and trace-to-distillation lineage explicit while exposing missing generated-data and teacher-checkpoint releases.
+  card: cards/recipes/reinforcement-learning-teachers-test-time-scaling-2025.md
+  needs: ['needs_data: release generated RLT explanations with row-level provenance and immutable revisions', 'needs_teacher_checkpoint: identify or release the trained RLT teacher separately from distilled students', 'needs_split: publish exact 1K and 17K manifests', 'needs_decontamination: document overlap checks for training and evaluation sources', 'needs_license: state terms for redistributed generated traces']
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official venue, paper, project, code, and distilled student models verified; generated trace data and a clearly labeled teacher checkpoint remain unavailable.
+- id: limits-inference-scaling-resampling-2026
+  title: The Limits of Inference Scaling Through Resampling
+  year: 2026
+  venue: ICLR 2026
+  authors:
+    - Benedikt Stroebl
+    - Sayash Kapoor
+    - Arvind Narayanan
+  source_role:
+    - scaling_study
+    - audit_failure
+  verification_contract:
+    - programmatic
+  supervision_granularity:
+    - full_episode
+    - answer_level
+  domains:
+    - code
+  training_use:
+    - evaluation
+    - audit
+    - test_time_compute
+  construction_layer:
+    - reward_verifier_layer
+    - scaling_report
+    - release_audit
+  artifacts:
+    paper: https://openreview.net/forum?id=j8H84v6AZ1
+    arxiv: https://arxiv.org/abs/2411.17501
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: https://openreview.net/forum?id=j8H84v6AZ1
+    openreview: https://openreview.net/forum?id=j8H84v6AZ1
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: HumanEval+ and MBPP+ programming tasks; original HumanEval and MBPP unit tests are used as limited verifiers, while extended EvalPlus tests provide the stronger correctness audit.
+    trace_author: Vicuna 7B, Mistral 7B, CodeT5p 16B, CodeGen, CodeGen2, Code Llama 7B and 13B, Llama 3.1, Phi-3, GPT-4o, and Cohere Command-family models sampled candidate Python solutions.
+    answer_format: A generated Python solution for each benchmark programming task.
+    process_fields:
+      - benchmark_task
+      - generator_model
+      - candidate_solution
+      - original_test_pass
+      - extended_test_pass
+      - true_positive_or_false_positive
+      - sampling_attempt
+      - code_quality_instruction
+      - code_quality_compliance
+    environment_or_substrate: EvalPlus execution over HumanEval+/MBPP+, comparing original limited tests with extended test suites; a separate RACE-based setup evaluates readability instructions.
+    verifier_or_reward: Binary pass/fail from the original HumanEval or MBPP unit tests is the imperfect acceptance gate; extended HumanEval+ or MBPP+ tests audit whether an accepted sample is truly correct.
+    terminal_predicate: A candidate is accepted by resampling when it passes the original benchmark tests, even though it may later be classified as a false positive if it fails the extended suite.
+  recipe_metadata:
+    base_model: Multiple proprietary and open model families spanning weaker and stronger code generators; the paper is an evaluation study rather than a single-model training recipe.
+    teacher: null
+    generator: Multiple code-generation LLMs sampled through public APIs or previously released EvalPlus samples.
+    filtering_rule: Accept the first sampled candidate that passes the original HumanEval or MBPP tests; use the corresponding extended test suite only for retrospective true-positive versus false-positive auditing.
+    sampling_protocol: Temperature 0.8 with EvalPlus default settings otherwise. HumanEval+ uses at least 200 samples per task and model for most models and 1,000 for Command Light; MBPP+ uses 50 samples per task and model.
+    rollout_count: null
+    temperature: 0.8
+    inference_budget: The empirical corpus provides 50 to 1,000 samples per task/model depending on benchmark and model; analyses also study the infinite-budget limit and finite optimal stopping under false-positive cost.
+    optimizer_or_scaffold: No LLM training is performed. The study computes conditional correctness, resampling curves, false-positive utility, and code-quality diagnostics.
+  audit:
+    source_mixture: HumanEval/HumanEval+ and MBPP/MBPP+ with samples from multiple open and proprietary model families; some samples come from EvalPlus and others are newly generated through APIs.
+    split: Benchmark tasks follow EvalPlus, with broken or suspected-oracle tasks excluded according to Appendices B.2 and B.3; a released task-level sample manifest was not confirmed.
+    decontamination: unknown
+    license: The arXiv paper is CC BY 4.0. Licenses for newly generated outputs and a consolidated inherited-license manifest for all benchmark/sample inputs are not reported on the official pages checked.
+    lineage: Benchmark prompt to repeated model sampling to original-test acceptance/rejection to extended-test true/false-positive audit; a separate branch applies code-quality prompts and measures instruction compliance.
+    known_failure_modes:
+      - Limited unit tests admit incorrect code as false positives, so increasing the resampling budget cannot remove verifier error.
+      - Weaker generators have higher conditional false-positive rates and may never match a stronger model's single-sample accuracy even with unlimited resampling.
+      - Rejections shift the remaining task mixture toward harder tasks, increasing the relative risk of later false positives.
+      - When false positives carry negative utility, additional sampling can reduce expected value and the optimal budget may be below ten or even zero.
+      - Using the same imperfect verifier for filtering and evaluation would hide the generalization gap.
+      - Results use human-authored unit tests; transfer to LLM-generated tests is explicitly left open.
+      - Extended suites are treated as correctness oracles, but the paper also identifies and excludes tasks with suspected oracle issues.
+      - False positives show worse tested readability compliance, while claims about unmeasured simplicity and modularity remain speculative.
+      - Model APIs and benchmark versions can drift; no complete immutable manifest for all newly sampled outputs was confirmed.
+      - The paper demonstrates implications for rejection-sampled training data but does not release or train on a reasoning-data corpus.
+    citation_status: verified
+    confidence: high
+    notes: ICLR 2026 OpenReview, ICLR virtual poster, and arXiv v3 were checked on 2026-07-11. Official paper and venue links are verified; no dedicated public code, data, model, project, or Hugging Face artifact was confirmed.
+  inclusion_reason: This study provides a direct audit of verifier-gated rejection sampling, showing why false-positive rates, verifier precision, task difficulty, and stopping budget must be recorded when constructing reasoning data from accepted rollouts.
+  related: []
+  tags:
+    - imperfect-verifier
+    - rejection-sampling
+    - verifier-filtering
+    - false-positives
+    - inference-scaling
+    - code-reasoning
+    - data-curation-audit
+    - evalplus
+    - optimal-stopping
+  status: partial
+  category:
+    - programmatically_verifiable_outcome_data
+    - rollout_search_test_time_trace_data
+    - data_construction_open_release_recipes
+    - scaling_rlvr_test_time_compute
+    - audit_failure_contamination_verifier_attacks
+  one_line: The study measures how imperfect unit-test gates retain false-positive code under resampling and shows that more attempts can amplify data-curation and inference risk.
+  one_line_summary: An ICLR 2026 audit of verifier-gated resampling that contrasts limited unit tests with extended test suites across model families and derives finite-budget limits under false-positive cost.
+  why_it_matters: Rejection-sampled reasoning corpora are only as reliable as their acceptance gate; this work makes verifier precision, generator capability, task difficulty, and sampling budget explicit audit dimensions rather than assuming accepted traces are correct.
+  card: cards/failures/limits-inference-scaling-resampling-2026.md
+  needs:
+    - 'needs_metadata: confirm whether OpenReview supplementary material contains a dedicated implementation or generated-sample release and record its license'
+    - 'needs_metadata: release immutable task-level sample manifests with generator versions, API dates, seeds, attempts, and both verifier outcomes'
+    - 'needs_metadata: document licenses for newly generated outputs and inherited benchmark/sample artifacts'
+    - 'needs_metadata: evaluate LLM-generated tests and non-code reasoning verifiers before generalizing the empirical findings'
+    - 'needs_metadata: quantify verifier precision thresholds required for safe training-data rejection sampling'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official ICLR 2026, OpenReview, and arXiv links were verified. The upstream EvalPlus and RACE implementations are cited dependencies, not treated as official paper artifacts; dedicated code/data/model releases remain unconfirmed.
+- id: guru-reasoning360-2025
+  title: Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective
+  year: 2025
+  venue: NeurIPS 2025 Datasets and Benchmarks Track
+  authors:
+  - Jorge (Zhoujun) Cheng
+  - Shibo Hao
+  - Tianyang Liu
+  - Fan Zhou
+  - Yutao Xie
+  - Feng Yao
+  - Yuexin Bian
+  - Nilabjo Dey
+  - Yonghao Zhuang
+  - Yuheng Zha
+  - Yi Gu
+  - Kun Zhou
+  - Yuqi Wang
+  - Yuan Li
+  - Richard Fan
+  - Jianshu She
+  - Chengqian Gao
+  - Abulhair Saparov
+  - Taylor W. Killian
+  - Haonan Li
+  - Mikhail Yurochkin
+  - Eric P. Xing
+  - Zhengzhong Liu
+  - Zhiting Hu
+  source_role:
+  - data_release
+  - construction_recipe
+  - verifier_reward
+  - scaling_study
+  verification_contract:
+  - mixed
+  supervision_granularity:
+  - answer_level
+  domains:
+  - mathematical_reasoning
+  - code
+  - scientific_reasoning
+  - logical_reasoning
+  - simulation
+  - tabular_reasoning
+  training_use:
+  - rlvr
+  construction_layer:
+  - prompt_sourcing
+  - reward_verifier_layer
+  - optimizer_scaffold
+  - release_audit
+  artifacts:
+    paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/c2f71567cd53464161cab3336e8fc865-Abstract-Datasets_and_Benchmarks_Track.html
+    arxiv: https://arxiv.org/abs/2506.14965
+    code: https://github.com/LLM360/Reasoning360
+    data: https://huggingface.co/datasets/LLM360/guru-RL-92k
+    project: https://guru-reasoning.github.io/
+    huggingface: https://huggingface.co/datasets/LLM360/guru-RL-92k
+    doi: null
+    venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/c2f71567cd53464161cab3336e8fc865-Abstract-Datasets_and_Benchmarks_Track.html
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: https://proceedings.neurips.cc/paper_files/paper/2025/hash/c2f71567cd53464161cab3336e8fc865-Abstract-Datasets_and_Benchmarks_Track.html
+  data_object:
+    prompt_source: GURU combines OR1, DAPO and DeepScaler math prompts; LeetCode, TACO-Verified, PrimeIntellect and LiveCodeBench code tasks; WebInstruct-Verified science questions; ARC-AGI, BARC and three synthesized logic-puzzle families; Code I/O (PyEdu) simulation tasks; and HiTab and MultiHierTT tabular questions.
+    trace_author: The release is a prompt-and-verifier RL corpus rather than a stored rollout-trace corpus. During training, Qwen2.5 base policies generate on-policy responses; the released dataset does not expose those training rollouts.
+    answer_format: Released Parquet rows contain a message-list prompt plus domain-specific ground-truth and verification payloads. Expected final answers use boxed expressions, special answer tags, JSON, executable code, or open-ended science answers depending on domain.
+    process_fields:
+    - task_id
+    - prompt
+    - completion
+    - entry_point
+    - test
+    - query
+    - response
+    - input_output
+    - meta
+    - data_source
+    - ability
+    - apply_chat_template
+    - reward_model
+    - extra_info
+    - is_unique
+    - qwen2.5_7b_pass_rate
+    - qwen3_30b_pass_rate
+    environment_or_substrate: Offline multi-domain RLVR in veRL. Code answers are executed in a SandboxFusion-backed sandbox; other domains use symbolic or exact matching, structured-output checks, or a model verifier.
+    verifier_or_reward: Every training item receives binary reward. Math, logic, simulation and tabular tasks use rule-based matching; code requires all selected tests to pass; open-ended science uses a 1.5B general verifier to judge entailment of the reference answer.
+    terminal_predicate: 'A rollout succeeds when its domain-specific checker returns correct: normalized answer match, successful code execution against tests, or positive science-verifier entailment.'
+  recipe_metadata:
+    base_model: Qwen2.5-7B-Base and Qwen2.5-32B-Base for the released GURU-7B and GURU-32B experiments.
+    teacher: Qwen2.5-7B-Instruct and Qwen3-30B-A8B are difficulty-screening models; a 1.5B general verifier judges open-ended science responses. Teachers or generators used inside every upstream source are not uniformly documented by this release.
+    generator: The current Qwen2.5 base policy samples responses on-policy during GRPO. The released 91.9K corpus contains prompts and verification payloads, not archived policy rollouts.
+    filtering_rule: Conservative substring deduplication removes a shorter question when it is a strict substring of another. Heuristics remove overlong prompts and domain-specific low-quality or trivial cases. Difficulty filtering uses 16 samples each from Qwen2.5-7B-Instruct and Qwen3-30B-A8B, excluding weak-model pass rate at least 15/16, strong-model pass rate zero, or weak pass rate above strong pass rate, with additional math and science gap thresholds.
+    sampling_protocol: Difficulty estimation uses 16 trials per sample for each of a weak and strong model. RL training samples 16 policy responses per prompt.
+    rollout_count: 16
+    temperature: 1.0
+    inference_budget: RL uses up to 4K input tokens and 8K generated tokens. Each RL step has 512 prompts, 16 responses per prompt and mini-batches of 64. Reported evaluation uses temperature 0.6 and top-p 0.95.
+    optimizer_or_scaffold: veRL with GRPO and AdamW, 10-step linear warmup, two epochs; GURU-7B uses four eight-GPU nodes and GURU-32B uses sixteen eight-GPU nodes, with each reported run lasting about 2.5 days.
+  audit:
+    source_mixture: Final 91.9K rows comprise approximately 54.4K math, 18.1K code, 3.6K science, 6.3K logic, 3.7K simulation and 6.1K tabular samples, filtered from roughly 684.9K raw candidates.
+    split: The official Hugging Face release exposes one train split with approximately 91.9K rows. No held-out release split is documented on the dataset card.
+    decontamination: Conservative within-corpus substring deduplication is reported, but systematic overlap checks against the 17 evaluation benchmarks are unknown.
+    license: The Hugging Face dataset is labeled MIT and the code repository is Apache-2.0. The paper separately describes upstream content as a mixture of MIT, Apache-2.0, CC BY 4.0 and CC BY-SA assets; compatibility of the aggregate MIT label with every upstream item requires independent review.
+    lineage: Upstream public or synthesized tasks are normalized to domain-specific prompts and verifier payloads, conservatively deduplicated, heuristically filtered, scored by weak and strong models over 16 trials, difficulty-filtered to 91.9K rows, and used for on-policy GRPO training of Qwen2.5 base models. Rows retain data_source and extra_info metadata, but uniformly resolvable row-level source URLs are not established.
+    known_failure_modes:
+    - Strict substring deduplication does not detect paraphrases, translated duplicates or semantically equivalent tasks and may leave evaluation contamination.
+    - Exact and symbolic matching can reject equivalent answers or accept shortcut outputs without validating the reasoning process.
+    - Code reward is only as reliable as the released tests; the paper caps tests at eight per sample, which can admit incorrect programs.
+    - The 1.5B science verifier can produce false-positive or false-negative entailment judgments and is less auditable than hard-rule rewards.
+    - Difficulty filtering may discard genuinely hard or novel samples when the strong model fails all trials and can encode the screening models' capability biases.
+    - English-centric, STEM-heavy source coverage limits linguistic and disciplinary representativeness.
+    - The aggregate dataset license may not fully describe share-alike or platform-specific restrictions inherited from every upstream source.
+    - On-policy responses, rejected candidates and failed verification traces are not part of the released corpus, limiting reward-hacking and training-dynamics audits.
+    citation_status: verified
+    confidence: high
+    notes: NeurIPS proceedings, the full conference paper, official Reasoning360 repository, project page, Hugging Face dataset and model release were checked on 2026-07-11. Citation and core artifacts are verified; immutable data revision, evaluation-overlap audit, rejected examples and stored RL rollouts remain unresolved.
+  inclusion_reason: GURU is a central Track 8 release because it makes a ready-to-train, multi-domain RLVR corpus available together with source-aware preprocessing, three verifier classes, explicit filtering thresholds, training code, models and evaluation tooling.
+  related: []
+  tags:
+  - guru
+  - reasoning360
+  - multi-domain
+  - rlvr
+  - difficulty-filtering
+  - deduplication
+  - rule-based-verifier
+  - code-execution
+  - model-verifier
+  - open-data
+  status: partial
+  category:
+  - programmatically_verifiable_outcome_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  one_line: A released 91.9K six-domain RLVR corpus with source-aware preprocessing, binary domain-specific verifiers, conservative deduplication and weak-versus-strong-model difficulty filtering.
+  one_line_summary: GURU filters roughly 684.9K public and synthetic tasks to 91.9K math, code, science, logic, simulation and table prompts, then supplies rule, execution or model-based rewards for multi-domain GRPO training.
+  why_it_matters: It exposes an unusually complete cross-domain RL data contract, while making clear that verifier errors, upstream-license compatibility, residual benchmark overlap and missing rejected or rollout traces remain material audit risks.
+  card: cards/releases/guru-reasoning360-2025.md
+  needs:
+  - 'needs_metadata: pin and record an immutable Hugging Face dataset revision'
+  - 'needs_metadata: publish a row-level source manifest with original IDs or URLs and upstream license per record'
+  - 'needs_metadata: report overlap and contamination checks against all 17 evaluation tasks'
+  - 'needs_metadata: release representative rejected samples and failure reasons from each filtering stage'
+  - 'needs_metadata: release or summarize on-policy rollout and reward distributions for the reported checkpoints'
+  - 'needs_metadata: quantify false-positive and false-negative rates for symbolic, test-based and science-model verifiers'
+  - 'needs_metadata: clarify aggregate MIT compatibility with CC BY-SA and platform-derived upstream content'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official NeurIPS, arXiv, project, repository, 91.9K-row dataset and GURU model artifacts were verified. Rejected data, rollout traces, immutable revision and full upstream license compatibility remain unresolved.
+- id: grip-2025
+  title: 'GRIP: A Graph-Based Reasoning Instruction Producer'
+  year: 2025
+  venue: NeurIPS 2025
+  authors:
+  - Jiankang Wang
+  - Jianjun Xu
+  - Xiaorui Wang
+  - Yuxin Wang
+  - Mengting Xing
+  - Shancheng Fang
+  - Hongtao Xie
+  source_role:
+  - construction_recipe
+  - scaling_study
+  verification_contract:
+  - judgment_required
+  supervision_granularity:
+  - answer_level
+  domains:
+  - mathematical_reasoning
+  training_use:
+  - sft
+  - distillation
+  construction_layer:
+  - prompt_sourcing
+  - trace_writing
+  - reward_verifier_layer
+  - scaling_report
+  - release_audit
+  artifacts:
+    paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6f1989abe9562c5cd306e070725fe0a3-Abstract-Conference.html
+    arxiv: https://arxiv.org/abs/2412.08864
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: null
+    venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6f1989abe9562c5cd306e070725fe0a3-Abstract-Conference.html
+    openreview: https://openreview.net/forum?id=36TBVGwzAY
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6f1989abe9562c5cd306e070725fe0a3-Abstract-Conference.html
+  data_object:
+    prompt_source: The MATH training split supplies 7.5K seed question-solution pairs. GRIP extracts up to five key concepts per seed, consolidates them to about 10K concepts, and builds a graph whose explicit and implicit concept relationships drive synthesis without placing the seed question itself in the synthesis prompt.
+    trace_author: Qwen2.5-32B synthesizes new questions from selected key-concept combinations. Qwen2.5-Math-7B generates solutions for low- and medium-difficulty questions, while Qwen2.5-Math-72B generates solutions for high-difficulty questions.
+    answer_format: GRIP-MATH is described as 2.1 million mathematical question-solution pairs with natural-language derivations. A downloadable dataset schema is unavailable from the checked official sources.
+    process_fields:
+    - seed_question
+    - extracted_key_concepts
+    - concept_cluster
+    - graph_relationship_type
+    - synthesized_question
+    - assigned_difficulty
+    - synthesized_solution
+    - problem_quality_scores
+    - solution_quality_votes
+    environment_or_substrate: A Key Concepts Relationship Graph connects co-occurring concepts with explicit edges and derives two-hop, three-hop and community combinations for synthesis. The reported implementation used vLLM and eight A100 GPUs for 36 hours.
+    verifier_or_reward: DeepSeek-R1-Distill-Qwen-7B, Qwen2.5-Math-Instruct-7B and DeepSeek-Math-RL score each generated question and solution. Problem scores are weighted by model mathematical ability and must reach 0.85; solutions are retained only when all three models assign a binary score of 1.
+    terminal_predicate: 'A pair enters GRIP-MATH when its weighted question-quality score is at least 0.85 and every evaluation model accepts the solution as mathematically correct and complete.'
+  recipe_metadata:
+    base_model: Qwen1.5-7B, Mistral-7B, Llama-3-8B, Llama-3.1-8B, Qwen2-1.5B and Qwen2-7B are separately fine-tuned on GRIP-MATH for evaluation.
+    teacher: Qwen2.5-32B extracts concepts and synthesizes questions; Qwen2.5-7B and an embedding model filter and consolidate concepts; Qwen2.5-Math-7B and Qwen2.5-Math-72B generate solutions; three open mathematical models jointly evaluate outputs.
+    generator: Qwen2.5-32B generates problems from one-hop, two-hop, three-hop or community concept combinations. A rating model assigns difficulty before a 7B or 72B Qwen2.5-Math model generates the solution.
+    filtering_rule: Vague, incorrect and overly detailed concepts are removed. Embedding similarity of 0.90-1.0 groups concepts directly, 0.70-0.90 triggers LLM synonym review, and below 0.70 remains distinct. Low-weight three-hop relations are removed. Problems below weighted score 0.85 and any solution rejected by one evaluator are discarded.
+    sampling_protocol: Concept combinations are enumerated from explicit one-hop, implicit two-hop and hub-centered three-hop paths plus fully connected communities of three or four concepts. Exact decoding parameters and the number of raw candidates are undisclosed.
+    rollout_count: unknown
+    temperature: unknown
+    inference_budget: Eight A100 GPUs for about 36 hours are reported for synthesizing and scoring roughly 2.1 million records. Token limits, sampling temperature, top-p and retry counts are unknown.
+    optimizer_or_scaffold: Downstream supervised fine-tuning uses LLaMAFactory. Exact synthesis scripts, graph-building implementation and full training configurations are not available through a verified official code release.
+  audit:
+    source_mixture: All seed problems come from the 7.5K-example MATH training split; the final corpus is entirely synthetic mathematical question-solution pairs generated from concept combinations derived from those seeds.
+    split: The paper reports a 2.1M GRIP-MATH training corpus but does not document a public train-validation-test manifest or downloadable release split.
+    decontamination: The paper analyzes embedding similarity to MATH seeds and reports novel concept-combination statistics, but no systematic overlap audit against GSM8K, MATH test, GAOKAO-Eval, SVAMP, ARC-C, MMLU, GPQA, BBH, TheoremQA, MBPP or C-Eval is reported.
+    license: unknown
+    lineage: MATH train questions to Qwen2.5-32B concept extraction to Qwen2.5-7B plus embedding consolidation to a roughly 10K-node relationship graph to concept-combination selection to Qwen2.5-32B question synthesis to difficulty assignment to Qwen2.5-Math solution generation to three-model question scoring and unanimous solution filtering to the reported 2.1M GRIP-MATH corpus.
+    known_failure_modes:
+    - All concepts originate from MATH, so graph recombination can broaden combinations while preserving the seed corpus's topical and stylistic biases.
+    - Embedding thresholds and LLM concept consolidation can incorrectly merge distinct concepts or retain synonymous duplicates.
+    - Implicit graph proximity is not proof that a concept combination defines a coherent or solvable mathematical problem.
+    - Question and solution acceptance relies on correlated open mathematical models, allowing shared misconceptions or stylistic preferences to survive unanimous filtering.
+    - Natural-language model voting does not provide executable, symbolic or formal verification of the generated derivations.
+    - The paper reports no held-out benchmark decontamination, despite training and evaluation both involving common mathematical benchmark families.
+    - No downloadable dataset, code, immutable revision, schema, rejected candidates or model checkpoints were verified from official sources.
+    - The MATH seed license, generated-data license and downstream redistribution terms are not stated in the verified release artifacts.
+    citation_status: verified
+    confidence: medium
+    notes: NeurIPS proceedings, the full official paper, supplemental material, arXiv 2412.08864 and OpenReview record were checked on 2026-07-11. The paper checklist states that code will be released, but no verified official code, dataset, project or Hugging Face artifact was found; those links remain null.
+  inclusion_reason: GRIP is a high-value Track 8 construction recipe because it turns a small reasoning seed set into a graph of reusable concepts, explicitly separates relationship-driven question synthesis from solution generation, and exposes multi-model thresholds for selecting 2.1M training pairs.
+  related: []
+  tags:
+  - grip
+  - grip-math
+  - synthetic-data
+  - knowledge-graph
+  - concept-combination
+  - multi-model-filtering
+  - math-reasoning
+  - sft
+  - open-model-teachers
+  status: partial
+  category:
+  - process_trace_supervision_data
+  - data_construction_open_release_recipes
+  one_line: A graph-based math-data recipe that expands 7.5K MATH seeds into a reported 2.1M question-solution pairs using concept recombination, open-model generation and three-model filtering.
+  one_line_summary: GRIP extracts and consolidates key concepts from MATH, synthesizes questions from explicit and implicit graph relationships, generates difficulty-routed solutions and retains pairs through weighted question scoring plus unanimous solution approval.
+  why_it_matters: It documents a scalable alternative to direct seed rewriting, while its missing public artifacts, correlated model judges, unknown license and absent benchmark-overlap audit prevent stronger release or reproducibility claims.
+  card: cards/recipes/grip-2025.md
+  needs:
+  - 'needs_url: publish and link the official GRIP code repository promised in the NeurIPS checklist'
+  - 'needs_url: publish and link the official GRIP-MATH dataset with an immutable revision'
+  - 'needs_metadata: document the downloadable row schema, splits and record-level lineage fields'
+  - 'needs_metadata: report raw candidate counts and rejection counts for every synthesis and filtering branch'
+  - 'needs_metadata: disclose decoding temperature, top-p, token limits, retries and the difficulty-rating model'
+  - 'needs_metadata: report benchmark overlap and decontamination checks'
+  - 'needs_metadata: state licenses for MATH-derived concepts, generated questions, solutions, code and models'
+  - 'needs_metadata: release rejected examples and independently verify a sample with symbolic or human review'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: medium
+    notes: Citation, venue, paper and supplemental are verified. The reported 2.1M corpus and recipe are documented in the paper, but no official downloadable data or code artifact was verified.
+- id: dyve-2025
+  title: 'Dyve: Thinking Fast and Slow for Dynamic Process Verification'
+  year: 2025
+  venue: EMNLP 2025
+  authors:
+    - Jianyuan Zhong
+    - Zeju Li
+    - Zhijian Xu
+    - Xiangyu Wen
+    - Qiang Xu
+  source_role:
+    - verifier_reward
+    - process_supervision
+    - construction_recipe
+    - data_release
+  verification_contract:
+    - mixed
+  supervision_granularity:
+    - step_level
+    - process_reward
+    - full_episode
+  domains:
+    - mathematics
+  training_use:
+    - sft
+    - reward_modeling
+    - process_supervision
+    - evaluation
+    - test_time_compute
+  construction_layer:
+    - prompt_sourcing
+    - search_substrate
+    - reward_verifier_layer
+    - optimizer_scaffold
+    - release_audit
+  artifacts:
+    paper: https://aclanthology.org/2025.emnlp-main.1136/
+    arxiv: https://arxiv.org/abs/2502.11157
+    code: https://github.com/staymylove/Dyve
+    data: https://huggingface.co/datasets/Jianyuan1/cot-data
+    project: https://github.com/staymylove/Dyve
+    huggingface: https://huggingface.co/Jianyuan1/deepseek-r1-14b-cot-math-reasoning-full
+    doi: https://doi.org/10.18653/v1/2025.emnlp-main.1136
+    venue: https://aclanthology.org/2025.emnlp-main.1136/
+    openreview: null
+    acl: https://aclanthology.org/2025.emnlp-main.1136/
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Approximately 15,000 mathematical query-problem pairs primarily from GSM8K and MATH, augmented with open process-reward data from MathShepherd and RLHFlow; PRM800k is excluded to reduce evaluation leakage.
+    trace_author: OmegaPRM MCTS generates initial rollouts; DeepSeek-V3 judges full-trace agreement with proposed error steps; DeepSeek-R1-Distill-Qwen-32B writes detailed System-2 error explanations.
+    answer_format: A problem and reasoning-step prefix paired either with a one-token `+` System-1 correctness target or a `<think>...</think>` System-2 explanation ending in a `+` or `-` verdict.
+    process_fields:
+      - problem
+      - reasoning_step
+      - prior_steps
+      - omega_prm_error_hypothesis
+      - full_trace_judge_agreement
+      - system_1_or_system_2_mode
+      - verification_explanation
+      - verdict_token
+      - first_error_step
+    environment_or_substrate: OmegaPRM divide-and-conquer MCTS with UCB-style state selection, followed by full-trace judge filtering, class rebalancing and stepwise target synthesis.
+    verifier_or_reward: DeepSeek-V3 confirms or contradicts OmegaPRM error assessments for filtering; the trained Dyve model emits stepwise binary verdicts with optional detailed reasoning.
+    terminal_predicate: Retain a rollout when DeepSeek-V3 confirms its proposed error assessment; during Dyve training and inference, terminate a divergent sequence at the first step assigned or parsed as erroneous.
+  recipe_metadata:
+    base_model: DeepSeek-R1-Distill-Qwen-14B is the main Dyve base; Qwen2.5-14B, Qwen3-8B and Llama-3.1-8B variants are used in ablations.
+    teacher: DeepSeek-V3 supplies trace-level consensus filtering and DeepSeek-R1-Distill-Qwen-32B supplies System-2 explanations and stepwise flagging.
+    generator: OmegaPRM MCTS generates approximately 20 reasoning rollouts per source query.
+    filtering_rule: Keep rollouts whose OmegaPRM error hypothesis is confirmed by DeepSeek-V3, discard contradictions, then rebalance correct and incorrect step examples before generating System-1/System-2 targets.
+    sampling_protocol: Approximately 20 MCTS rollouts per query from 15K source problems. Exact temperatures, seeds, exploration constant, search limits and per-source allocation are not fully reported.
+    rollout_count: 20
+    temperature: null
+    inference_budget: About 1.2 million noisy initial rollouts are reduced to approximately 117K curated traces in the paper; the current official HF train split contains 156,321 rows.
+    optimizer_or_scaffold: Supervised next-token fine-tuning of DeepSeek-R1-Distill-Qwen-14B on mixed one-token System-1 targets and generative System-2 explanations; inference parses each verdict and halts on the first error.
+  audit:
+    source_mixture: GSM8K and MATH prompts plus MathShepherd and RLHFlow process-reward data, with OmegaPRM-generated rollouts and two DeepSeek-family teacher roles.
+    split: PRM800k is excluded to reduce ProcessBench leakage, but exact source splits, semantic overlap checks and released train/evaluation manifests are not fully disclosed.
+    decontamination: PRM800k is explicitly excluded; broader pretraining contamination and cross-source semantic deduplication are unknown.
+    license: The released model card declares MIT. The official dataset page and GitHub repository do not display a license; the paper states that public datasets are used under their licenses but provides no consolidated inherited-license audit.
+    lineage: GSM8K/MATH problems to OmegaPRM MCTS and imported MathShepherd/RLHFlow traces to 1.2M noisy rollouts to DeepSeek-V3 agreement filtering to positive/negative rebalancing to approximately 117K paper traces to DeepSeek-R1-32B System-2 target synthesis to SFT of a DeepSeek-R1-14B verifier; the current HF release exposes 156,321 rows.
+    known_failure_modes:
+      - DeepSeek-V3 agreement can preserve correlated judge errors and defines the hidden acceptance objective.
+      - OmegaPRM error hypotheses and teacher explanations can share model-family or math-domain biases.
+      - Removing about half of rollouts does not establish precision, recall or calibration of the retained labels.
+      - The rebalancing target and sampling rule are not quantified, obscuring how natural error prevalence is altered.
+      - Paper and release counts differ: approximately 117K curated traces versus 156,321 current HF rows, with no version reconciliation.
+      - A top-level dataset license is absent, and inherited rights from GSM8K, MATH, MathShepherd, RLHFlow and generated outputs are not consolidated.
+      - PRM800k exclusion addresses one leakage route but does not establish full decontamination against ProcessBench or base-model pretraining.
+      - Detailed MCTS settings, decoding temperatures, seeds, teacher prompts and immutable revisions are incomplete.
+      - Rejected rollouts, judge disagreements and filtering logs are not exposed by the release pages checked.
+      - System-2 explanations may be plausible post-hoc rationales rather than faithful error localization.
+      - The first-error stopping format omits supervision for downstream steps after a detected error.
+      - Paper evaluations are mathematics-centric, so cross-domain process-verifier transfer is unknown.
+    citation_status: verified
+    confidence: high
+    notes: ACL paper, arXiv, official GitHub, HF data and HF model were checked on 2026-07-11. Artifacts exist, but release count/version reconciliation and dataset/code licensing remain unresolved.
+  inclusion_reason: Dyve provides an open, concrete recipe for converting noisy MCTS rollouts into adaptive step-level verifier supervision through full-trace consensus filtering, rebalancing and teacher-generated error explanations.
+  related: []
+  tags:
+    - process-verifier
+    - process-supervision
+    - consensus-filtering
+    - omega-prm
+    - mcts-rollouts
+    - llm-as-judge
+    - system-1-system-2
+    - first-error-detection
+    - synthetic-reasoning-data
+    - open-release
+  status: partial
+  category:
+    - process_trace_supervision_data
+    - rollout_search_test_time_trace_data
+    - data_construction_open_release_recipes
+    - training_usage_optimization_objectives
+    - scaling_rlvr_test_time_compute
+    - audit_failure_contamination_verifier_attacks
+  one_line: Dyve filters OmegaPRM rollouts through DeepSeek-V3 agreement, synthesizes fast verdicts and slow error explanations, and SFT-trains an adaptive stepwise verifier.
+  one_line_summary: An open process-supervision recipe that reduces noisy MCTS traces through consensus filtering and turns retained steps into mixed one-token and explanatory verifier targets.
+  why_it_matters: The work makes verifier-data refresh a staged data pipeline rather than a monolithic labeler, while exposing judge-correlation, rebalancing, version-count and license risks that affect reuse.
+  card: cards/verifiers/dyve-2025.md
+  needs:
+    - 'needs_metadata: reconcile the approximately 117K paper count with the 156,321-row HF release and publish immutable versions'
+    - 'needs_metadata: add explicit licenses for the dataset and code and audit inherited source licenses'
+    - 'needs_metadata: release rejected rollouts, judge disagreements, filtering logs and class-rebalancing manifests'
+    - 'needs_metadata: report MCTS budgets, UCB constant, decoding temperatures, seeds and teacher prompt versions'
+    - 'needs_metadata: quantify retained-label precision, recall, calibration and teacher-correlation error'
+    - 'needs_metadata: document broader ProcessBench and pretraining decontamination beyond PRM800k exclusion'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official ACL/arXiv, repository, 156,321-row HF dataset and MIT-declared HF model are verified; dataset/code licenses and release-version alignment remain unknown.
+- id: curriculum-distillation-small-models-2025
+  title: Teach Small Models to Reason by Curriculum Distillation
+  year: 2025
+  venue: EMNLP
+  authors: [Wangyi Jiang, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun]
+  source_role: [construction_recipe, scaling_study]
+  verification_contract: [programmatic]
+  supervision_granularity: [answer_level, step_level]
+  domains: [mathematics]
+  training_use: [sft, distillation, evaluation]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts:
+    paper: https://aclanthology.org/2025.emnlp-main.376/
+    arxiv: null
+    code: null
+    data: null
+    project: null
+    huggingface: null
+    doi: https://doi.org/10.18653/v1/2025.emnlp-main.376
+    venue: https://aclanthology.org/2025.emnlp-main.376/
+    openreview: null
+    acl: https://aclanthology.org/2025.emnlp-main.376/
+    pmlr: null
+    cvf: null
+    bibtex: https://aclanthology.org/2025.emnlp-main.376.bib
+  data_object:
+    prompt_source: The 7500-problem MATH training set, categorized into five difficulty levels.
+    trace_author: Qwen2.5-32B-Instruct supplies standard Instruct solutions; DeepSeek-R1-Distill-Qwen-32B supplies Think, NoRethink, NoThink, and condensed Think solutions.
+    answer_format: Each retained MATH problem has correct teacher outputs under all required prompting modes, including explicit reasoning, reasoning without reconsideration, concise answer-oriented reasoning, and standard instruction responses.
+    process_fields: [problem, difficulty_level, teacher_identity, prompting_mode, reasoning_trace, condensed_solution, final_answer, math_verify_result]
+    environment_or_substrate: Offline multi-mode teacher generation, Math-Verify correctness filtering, difficulty-aware curriculum assembly, and two-stage student instruction tuning.
+    verifier_or_reward: Math-Verify checks final-answer correctness; only the 6445 problems for which every prompting mode yields a correct solution are retained.
+    terminal_predicate: All required teacher modes produce a Math-Verify-correct solution for the same MATH problem.
+  recipe_metadata:
+    base_model: Qwen2.5-3B and Qwen2.5-Math-3B students are instruction-tuned; 7B, 14B, and 32B Qwen-derived models are also analyzed for reasoning-paradigm behavior.
+    teacher: Qwen2.5-32B-Instruct and DeepSeek-R1-Distill-Qwen-32B.
+    generator: Each MATH prompt is sampled under the Instruct teacher and under DeepSeek-R1-Distill-Qwen-32B Think, NoRethink, and NoThink modes, with up to four attempts per problem.
+    filtering_rule: Retain only problems for which all prompting modes yield a correct Math-Verify result; curriculum composition then depends on MATH difficulty level.
+    sampling_protocol: Temperature 0.6, top-p 0.95, maximum sequence length 16384, and up to four generation attempts per problem.
+    rollout_count: Up to four attempts per problem and prompting mode; 6445 prompts survive joint correctness filtering.
+    temperature: 0.6
+    inference_budget: Maximum generation sequence length 16384 tokens.
+    optimizer_or_scaffold: Stage 1 uses Qwen2.5-32B-Instruct outputs for levels 1-4 and LRM NoThink outputs for level 5; Stage 2 uses LRM NoThink outputs for levels 1-4 and NoRethink explicit traces for level 5. Students train for two epochs in LlamaFactory with cosine scheduling and maximum learning rate 1e-5.
+  audit:
+    source_mixture: MATH prompts, Qwen2.5-32B-Instruct solutions, and multiple DeepSeek-R1-Distill-Qwen-32B prompting modes, stratified by difficulty.
+    split: 6445 of 7500 MATH training problems pass all-mode correctness filtering; an immutable retained-index manifest was not identified.
+    decontamination: unknown
+    license: The ACL paper is CC BY 4.0; no unified license for the generated multi-mode trace dataset was identified.
+    lineage: MATH problem and difficulty -> two teachers and four response modes -> up to four attempts -> Math-Verify joint correctness filter -> 6445-problem pool -> difficulty-conditioned Stage 1 mixture -> difficulty-conditioned Stage 2 mixture -> student SFT.
+    known_failure_modes: [Final-answer verification does not establish intermediate reasoning validity, joint all-mode filtering may bias the dataset toward problems easy for every teacher mode, curriculum boundaries rely on MATH difficulty labels and may not transfer to other domains, the meanings of Think NoRethink and NoThink depend on prompting and model behavior, generated rows and retained indices are not released, teacher revisions are not pinned, decontamination is unreported.]
+    citation_status: verified
+    confidence: high
+    notes: Official EMNLP 2025 paper, ACL Anthology metadata, PDF, DOI, and checklist verified on 2026-07-11. No official arXiv, project, code, dataset, or model release was identified.
+  inclusion_reason: Formal two-stage construction recipe that varies teacher identity, reasoning mode, and problem difficulty to move small students from concise implicit heuristics toward explicit reasoning.
+  related: [small-models-struggle-strong-reasoners-2025]
+  tags: [curriculum-distillation, teacher-traces, difficulty-curriculum, long-cot, math-verify, multi-mode-generation]
+  status: partial
+  category: [instruction_demonstration_rationale_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: Curriculum Distillation builds a jointly verified 6445-problem multi-mode teacher pool and changes trace type across two difficulty-aware SFT stages.
+  one_line_summary: Curriculum Distillation builds a jointly verified 6445-problem multi-mode teacher pool and changes trace type across two difficulty-aware SFT stages.
+  why_it_matters: It exposes teacher mode, correctness filtering, difficulty stratification, and curriculum order as concrete reasoning-data construction decisions, while leaving the generated corpus unreleased.
+  card: cards/recipes/curriculum-distillation-small-models-2025.md
+  needs: ['needs_data: release the 6445-problem multi-mode trace corpus', 'needs_code: release generation filtering and curriculum scripts', 'needs_lineage: publish retained MATH indices and per-row teacher modes', 'needs_model_revision: pin teacher checkpoints and prompts', 'needs_decontamination: document overlap checks', 'needs_license: state generated-data redistribution terms']
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official EMNLP paper and DOI verified; reusable code, generated data, models, and immutable lineage artifacts remain unconfirmed.
+- id: compassverifier-2025
+  title: 'CompassVerifier: A Unified and Robust Verifier for LLMs Evaluation and Outcome Reward'
+  year: 2025
+  venue: EMNLP 2025
+  authors:
+    - Shudong Liu
+    - Hongwei Liu
+    - Junnan Liu
+    - Linchen Xiao
+    - Songyang Gao
+    - Chengqi Lyu
+    - Yuzhe Gu
+    - Wenwei Zhang
+    - Derek F. Wong
+    - Songyang Zhang
+    - Kai Chen
+  source_role:
+    - benchmark
+    - verifier_reward
+    - data_release
+    - construction_recipe
+  verification_contract:
+    - judgment_required
+  supervision_granularity:
+    - answer_level
+    - scalar_reward
+  domains:
+    - mathematics
+    - general_reasoning
+    - knowledge
+    - science
+  training_use:
+    - reward_modeling
+    - rlvr
+    - evaluation
+    - audit
+  construction_layer:
+    - prompt_sourcing
+    - trace_writing
+    - reward_verifier_layer
+    - optimizer_scaffold
+    - release_audit
+  artifacts:
+    paper: https://aclanthology.org/2025.emnlp-main.1698/
+    arxiv: https://arxiv.org/abs/2508.03686
+    code: https://github.com/open-compass/CompassVerifier
+    data: https://huggingface.co/datasets/opencompass/VerifierBench
+    project: https://open-compass.github.io/CompassVerifier/
+    huggingface: https://huggingface.co/collections/opencompass/compassverifier
+    doi: https://doi.org/10.18653/v1/2025.emnlp-main.1698
+    venue: https://aclanthology.org/2025.emnlp-main.1698/
+    openreview: null
+    acl: https://aclanthology.org/2025.emnlp-main.1698/
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Sixteen benchmarks spanning mathematics, general reasoning, knowledge and science are evaluated through OpenCompass; the paper lists GSM8K, MATH, AIME2024, BBH, GaokaoBench, HLE, KorBench, GPQA, SimpleQA, ChineseSimpleQA, MMLU-Pro, ARC, OlympiadBench, TheoremQA, NuminaMath and DROP.
+    trace_author: Responses from 53 commercial, open and reasoning model variants form the collection pool; DeepSeek-V3 additionally filters problematic cases and generates targeted augmentation data.
+    answer_format: 'A question, reference answer and model response paired with a ternary verification judgment: Correct, Incorrect or Invalid; some annotations include detailed judgment rationales.'
+    process_fields:
+      - question
+      - gold_answer
+      - llm_response
+      - gold_judgment
+      - data_source
+      - domain
+      - answer_type
+      - judgment_rationale
+      - meta_error_pattern
+    environment_or_substrate: OpenCompass generates and aggregates more than 1.325 million source responses; successive model voting, prompt voting, filtering, deduplication and expert adjudication produce benchmark and training pools.
+    verifier_or_reward: CompassVerifier compares a candidate response against a question and reference answer and emits A/Correct, B/Incorrect or C/Invalid; binary reward experiments merge B and C as incorrect.
+    terminal_predicate: For RL evaluation, a CompassVerifier judgment determines the outcome reward; for corpus construction, consensus cases populate training data while disputed high-value cases receive human adjudication and test-set selection.
+  recipe_metadata:
+    base_model: Qwen-series causal language models released at 3B, 7B and 32B scales; the exact base checkpoint for each variant should be read from its model card.
+    teacher: DeepSeek-V3 is used for problematic-case filtering, answer-type classification, complex-formula work and targeted synthetic augmentation; multiple verifier models and human experts supply other labels.
+    generator: Fifty-three model variants generate the original response pool, while DeepSeek-V3 generates targeted adversarial and formula augmentation examples.
+    filtering_rule: Apply multi-expert voting, multi-prompt voting and selected dataset-specific prompts; remove easy consensus from the benchmark, string-deduplicate responses, filter open-ended/proof/incomplete-reference cases, human-label disputes, similarity-filter excess Incorrect cases, and keep train/test disjoint.
+    sampling_protocol: The source response pool is collected with dataset- and model-specific OpenCompass configurations. Exact decoding settings and seeds for all 53 models are not consolidated in the paper.
+    rollout_count: null
+    temperature: null
+    inference_budget: More than 1.325 million collected responses are reduced to a 2,817-row paper test set; the released HF viewer reports approximately 2.82k test rows.
+    optimizer_or_scaffold: 'CompassVerifier training uses 96,832 examples: 54,420 base consensus samples, 24,294 error-driven adversarial samples and 18,118 complex-formula samples. A separate reward experiment applies GRPO to Qwen3-4B-Base on a filtered Open-S1 subset.'
+  audit:
+    source_mixture: Sixteen upstream benchmarks and 53 response-generating model variants with heterogeneous formats, languages, licenses and generation settings.
+    split: The paper states that VerifierBench test and CompassVerifier training sets do not overlap; the released HF artifact exposes a test split of about 2.82k rows, while the full 96,832-example verifier training corpus release status is not clearly documented.
+    decontamination: Train/test overlap is explicitly checked at the paper's dataset level, but cross-source semantic deduplication, source-model pretraining contamination and external benchmark leakage are unknown.
+    license: Repository code is Apache-2.0; the released VerifierBench dataset card declares CC-BY-SA-4.0; the ACL paper is CC BY 4.0. Compatibility and inherited rights across all upstream questions, references and model outputs are not fully audited.
+    lineage: Sixteen benchmark questions and references to 53-model OpenCompass responses to multi-model and multi-prompt judgments to deduplication/problem filtering to expert adjudication and error-pattern analysis to a 2,817-row benchmark; consensus training data plus DeepSeek-V3 adversarial/formula augmentation yields the 96,832-example verifier corpus and three released checkpoints.
+    known_failure_modes:
+      - Correlated model judges can turn consensus into confidently wrong labels, especially when prompts or model families share biases.
+      - DeepSeek-V3 is used for filtering, answer-type classification and synthesis, concentrating hidden-objective and teacher-provenance risk.
+      - Human reviewers report divergent penalty thresholds, so Correct, Incorrect and Invalid boundaries may encode annotator policy rather than objective equivalence alone.
+      - Removing proof, open-ended and ambiguous-threshold questions narrows coverage to reference-answer-verifiable tasks.
+      - Some experiments collapse Invalid into Incorrect, losing the distinction between a wrong response and a flawed question/reference/trace.
+      - String and similarity filters can preferentially remove repetitive invalid or incorrect modes and reshape the apparent label distribution.
+      - The paper reports more than 30 meta patterns in one analysis and over 40 error categories in another without a single versioned taxonomy manifest.
+      - Appendix A.8 says 224,294 synthetic adversarial examples in prose, but Table 13 and the reported total require 24,294; the larger count is treated as an unresolved typo.
+      - The public dataset release exposes the 2,817-row benchmark, while release completeness for all training examples, rationales, votes, filter decisions and rejected records is unclear.
+      - Decoding parameters, seeds and immutable model/API revisions are not consolidated across the 53-model source collection.
+      - Upstream benchmark and generated-output license compatibility is not established by the dataset's top-level license alone.
+    citation_status: verified
+    confidence: high
+    notes: ACL paper, official project, GitHub repository, VerifierBench dataset and HF model collection were checked on 2026-07-11. Core artifacts are released, but full training-corpus lineage and the Appendix A.8 count discrepancy remain audit blockers.
+  inclusion_reason: CompassVerifier exposes a reusable outcome-verification data pipeline that combines large-scale response collection, staged model voting, expert adjudication, meta-error-driven synthesis and released benchmark/checkpoints for filtering reasoning outputs and supplying RL rewards.
+  related: []
+  tags:
+    - outcome-verifier
+    - verifierbench
+    - reward-model
+    - human-adjudication
+    - meta-error-patterns
+    - synthetic-augmentation
+    - multi-model-voting
+    - data-filtering
+    - reasoning-evaluation
+    - open-release
+  status: partial
+  category:
+    - preference_reward_feedback_data
+    - programmatically_verifiable_outcome_data
+    - judgment_rubric_domain_expert_data
+    - data_construction_open_release_recipes
+    - training_usage_optimization_objectives
+    - audit_failure_contamination_verifier_attacks
+  one_line: CompassVerifier turns 53-model benchmark outputs into expert-calibrated verifier data, augments observed error boundaries, and releases VerifierBench plus three outcome-verifier checkpoints.
+  one_line_summary: A staged outcome-verification pipeline and open release spanning multi-model voting, prompt variation, expert adjudication, error-driven synthetic augmentation and ternary correctness labels.
+  why_it_matters: Reasoning-data filters often rely on opaque regexes or general judges; CompassVerifier makes the verifier itself a trainable, testable and released data object while exposing threshold, teacher, label-policy and lineage risks.
+  card: cards/verifiers/compassverifier-2025.md
+  needs:
+    - 'needs_metadata: clarify and correct the 24,294 versus 224,294 adversarial-sample discrepancy in Appendix A.8'
+    - 'needs_metadata: document whether all 96,832 verifier-training examples, rationales, votes, rejected samples and filter decisions are released'
+    - 'needs_metadata: publish immutable source manifests with benchmark versions, model/API revisions, decoding settings and generation dates'
+    - 'needs_metadata: audit inherited licenses for upstream questions, references and generated model outputs'
+    - 'needs_metadata: document semantic deduplication and contamination checks beyond stated train/test non-overlap'
+    - 'needs_metadata: version the complete meta-error taxonomy and annotation guidelines'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official ACL, arXiv, project, Apache-2.0 code repository, CC-BY-SA-4.0 VerifierBench dataset and three-model HF collection were verified.
+- id: caco-code-assisted-cot-2025
+  title: Scaling Code-Assisted Chain-of-Thoughts and Instructions for Model Reasoning
+  year: 2025
+  venue: NeurIPS 2025
+  authors: [Honglin Lin, Qizhi Pei, Zhuoshi Pan, Yu Li, Xin Gao, Juntao Li, Conghui He, Lijun Wu]
+  source_role: [data_release, construction_recipe, scaling_study]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, step_level]
+  domains: [mathematical_reasoning, code, algorithmic_reasoning]
+  training_use: [sft, distillation]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, scaling_report, release_audit]
+  artifacts:
+    paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3267aa172c31ae3641c32ecc6e42e5cd-Abstract-Conference.html
+    arxiv: https://arxiv.org/abs/2510.04081
+    code: https://github.com/LHL3341/Caco
+    data: https://huggingface.co/datasets/LHL3341/Caco-1.3M
+    project: https://github.com/LHL3341/Caco
+    huggingface: https://huggingface.co/datasets/LHL3341/Caco-1.3M
+    doi: null
+    venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3267aa172c31ae3641c32ecc6e42e5cd-Abstract-Conference.html
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3267aa172c31ae3641c32ecc6e42e5cd-Abstract-Conference.html
+  data_object:
+    prompt_source: Mathematical seeds come from MATH (7.5K), DeepScaleR (40K) and BigMath (251K); algorithmic seeds are 40K KodCode problems. Qwen2.5-72B-Instruct converts source solutions to a unified executable Python form, yielding 146K verified seed Code CoTs, including 122K math and 24K code records.
+    trace_author: A Qwen2.5-Coder-7B CodeGen model samples new executable Code CoTs. Qwen3-8B reverse-engineers each accepted program into a natural-language problem and separately generates its language CoT. Qwen3-32B judges solvability, answer correctness and code-language CoT consistency.
+    answer_format: The released Caco-1.3M records expose an instruction and natural-language output, while the construction pipeline additionally maintains the executable Python Code CoT used to derive and verify the pair.
+    process_fields: [instruction, output, code_cot, execution_output, generated_problem, language_cot, answer_consistency, cot_consistency]
+    environment_or_substrate: Python execution validates program syntax, runtime behavior, output stability and structural properties. AST and rule filters reject inefficient, trivial, overly long or inconsistent programs before natural-language reversal.
+    verifier_or_reward: Seed programs must execute and match known answers. Sampled programs must execute and satisfy structural filters. Final records require the natural-language final answer to equal program output and a positive Qwen3-32B consistency judgment between code and language reasoning.
+    terminal_predicate: 'A final pair is retained only when its underlying code executes, the inferred language answer matches the execution output, and the evaluator accepts alignment between the natural-language CoT and Code CoT.'
+  recipe_metadata:
+    base_model: Qwen2.5-Coder-7B is fine-tuned as unconditional CodeGen; downstream effectiveness is tested by SFT of DeepSeekMath-7B, Qwen2.5-Math-7B and Llama-3-8B.
+    teacher: Qwen2.5-72B-Instruct unifies source solutions into Code CoTs; Qwen3-8B generates reversed problems and language solutions; Qwen3-32B performs solvability, correctness and consistency evaluation.
+    generator: CodeGen samples executable reasoning programs without conditioning on a problem. Qwen3-8B then performs separate problem reversal and language-CoT generation from the code and representative input-output examples.
+    filtering_rule: Programs must be syntactically valid, executable, efficient, structurally consistent and within length limits. BigMath seeds retain solve rate below 0.3. Final answer mismatch or negative code-language consistency judgment removes the pair.
+    sampling_protocol: Unified Code CoTs use one sample at temperature 0.6. CodeGen samples at temperature 0.9 with maximum 1024 tokens. Qwen3-8B reversal uses temperature 0.7, top-p 0.8, top-k 20, min-p 0 and thinking disabled.
+    rollout_count: 1
+    temperature: 0.9
+    inference_budget: The pipeline generates about 5.3M sampled programs, filters them to roughly 4.6M executable and structurally valid programs, and retains about 1.3M final instruction-answer pairs. Exact retry counts and total token volume are unknown.
+    optimizer_or_scaffold: CodeGen and downstream SFT use LLaMAFactory. Downstream models train for three epochs with learning rate 5e-5, batch size 128, cosine decay and warmup ratio 0.03.
+  audit:
+    source_mixture: MATH, DeepScaleR, BigMath and KodCode provide source tasks or solutions. The final 1.3M records are synthetic natural-language problems and reasoning traces derived from executable program patterns.
+    split: The official HF artifact exposes the Caco-1.3M corpus; a separately justified validation or test split and a stage-by-stage immutable manifest are not documented in the paper.
+    decontamination: Embedding-based diversity analysis is reported, but systematic exact or semantic overlap checks against MATH, GSM8K, CollegeMath, DeepMind Mathematics, OlympiadBench and TheoremQA evaluation sets are unknown.
+    license: The official Hugging Face dataset card labels Caco-1.3M Apache-2.0. Compatibility with every upstream MATH, DeepScaleR, BigMath and KodCode source record requires separate review.
+    lineage: Four upstream corpora to Qwen2.5-72B unified executable seeds to 146K verified Code CoTs to Qwen2.5-Coder-7B CodeGen to 5.3M sampled programs to 4.6M executable and structural survivors to Qwen3-8B problem reversal and language CoT generation to execution-answer comparison and Qwen3-32B consistency filtering to Caco-1.3M.
+    known_failure_modes:
+    - Executability guarantees that a program runs, not that its encoded mathematical assumptions or derivation are correct.
+    - Generated tests and representative inputs may underspecify a program, allowing incorrect generalized instructions.
+    - Qwen3-32B consistency judgments can share biases with Qwen3-8B generation and do not constitute independent formal verification.
+    - Reverse engineering code into a problem can create ambiguous specifications or language solutions that only fit sampled inputs.
+    - The release does not include all 5.3M candidates, rejected programs or stage-specific failure labels needed to audit selection bias.
+    - No systematic evaluation-set decontamination is reported despite using widely reused math sources.
+    - Aggregate Apache-2.0 labeling does not by itself establish compatibility with every upstream dataset license.
+    citation_status: verified
+    confidence: high
+    notes: NeurIPS paper, arXiv, official GitHub and HF Caco-1.3M release were checked on 2026-07-11. Core data and code exist; rejected candidates, complete record-level upstream lineage, immutable audited revision and evaluation overlap remain unresolved.
+  inclusion_reason: Caco is a core Track 8 release because it exposes a closed-loop recipe that turns heterogeneous math and code solutions into executable reasoning programs, scales those programs independently of prompts, and reconstructs 1.3M instruction-CoT pairs under execution and model-based consistency filters.
+  related: []
+  tags: [caco, code-assisted-cot, executable-reasoning, instruction-reversal, synthetic-data, math-reasoning, codegen, multi-stage-filtering]
+  status: partial
+  category: [programmatically_verifiable_outcome_data, process_trace_supervision_data, data_construction_open_release_recipes]
+  one_line: An open 1.3M instruction-CoT release reverse-engineered from executable reasoning programs generated and filtered through a multi-stage code-validation pipeline.
+  one_line_summary: Caco trains an unconditional code-reasoning generator on 146K verified seeds, filters 5.3M samples to 4.6M executable programs, and retains 1.3M reversed problems whose language answers and CoTs agree with code execution.
+  why_it_matters: It makes executable code an intermediate data contract for scalable reasoning synthesis, while exposing audit risks from underspecified reversal, correlated model judgment, missing rejected programs, upstream-license compatibility and unreported benchmark overlap.
+  card: cards/releases/caco-code-assisted-cot-2025.md
+  needs:
+  - 'needs_metadata: pin the audited GitHub and Hugging Face revisions'
+  - 'needs_metadata: publish record-level upstream IDs and licenses'
+  - 'needs_metadata: expose Code CoTs and stage-specific acceptance or rejection reasons for every final record'
+  - 'needs_metadata: release representative rejected programs and failed reversals'
+  - 'needs_metadata: report exact and semantic overlap checks against all evaluation sets'
+  - 'needs_metadata: quantify executor, answer-extraction and Qwen3 consistency-judge error rates'
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: Official paper, code and Apache-2.0-labeled HF data are available. Immutable revisions, rejected data, complete lineage and contamination analysis remain unresolved.
+- id: self-improvement-paradox-crescent-2025
+  title: 'The Self-Improvement Paradox: Can Language Models Bootstrap Reasoning Capabilities without External Scaffolding?'
+  year: 2025
+  venue: Findings of ACL
+  authors: [Yutao Sun, Mingshuai Chen, Tiancheng Zhao, Ruochen Xu, Zilun Zhang, Jianwei Yin]
+  source_role: [construction_recipe, scaling_study]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, full_episode]
+  domains: [mathematics]
+  training_use: [sft, distillation]
+  construction_layer: [prompt_sourcing, trace_writing, self_play_anchor, reward_verifier_layer, optimizer_scaffold]
+  artifacts: {paper: https://aclanthology.org/2025.findings-acl.337/, arxiv: https://arxiv.org/abs/2502.13441, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2025.findings-acl.337, venue: https://aclanthology.org/2025.findings-acl.337/, openreview: null, acl: https://aclanthology.org/2025.findings-acl.337/, pmlr: null, cvf: null, bibtex: https://aclanthology.org/2025.findings-acl.337.bib}
+  data_object:
+    prompt_source: Math word problems synthesized from a fixed bait prompt without a seed QA dataset.
+    trace_author: The same aligned Llama3-8B-Instruct or Llama2-7B-Chat model generates questions, rewrites duplicates, and samples CoT answers.
+    answer_format: A generated math word problem paired with one CoT solution selected from the modal final-answer group among five samples.
+    process_fields: [raw question, question embedding, distance score, rewritten question, sampled CoT answers, extracted final answer, answer frequency, selected rationale]
+    environment_or_substrate: Offline generation with all-MiniLM-L6-v2 embeddings, FAISS, rejection-sampling rewrites, answer extraction, and majority voting.
+    verifier_or_reward: No correctness verifier; diversity uses embedding distance and answer quality uses same-model consensus.
+    terminal_predicate: Question satisfies the diversity criterion and the retained answer belongs to the modal extracted-answer group.
+  recipe_metadata:
+    base_model: Llama3-8B-Instruct and Llama2-7B-Chat.
+    teacher: The policy itself; all-MiniLM-L6-v2 supplies deduplication representations rather than answer supervision.
+    generator: Generate questions, rewrite embedding-near duplicates, sample five CoT solutions, group by final answer, and keep one modal rationale.
+    filtering_rule: Apply embedding-distance rejection rewrites and majority-answer selection; exact threshold and tie frequency are unknown.
+    sampling_protocol: 75000 candidate pairs for Llama3 and 50000 for Llama2, with five answers per question.
+    rollout_count: 5
+    temperature: null
+    inference_budget: Five solution generations per retained question plus any repeated deduplication rewrites.
+    optimizer_or_scaffold: One-epoch SFT, max length 2048, AdamW, LR 1e-5, 3% warmup, batch 128, DeepSpeed Stage 3, bf16, and FlashAttention-2.
+  audit:
+    source_mixture: Fully synthesized math questions and same-model answers shaped by a human-authored bait prompt and external embedding machinery.
+    split: Synthetic training evaluated on GSM8K, ASDiv, and GSM-Plus-mini; no released immutable data split.
+    decontamination: unknown
+    license: unknown
+    lineage: Bait prompt to model questions to embedding deduplication and rewrites to five CoT answers to majority selection to SFT or distillation.
+    known_failure_modes: [Majority agreement can be wrong, Final-answer agreement does not validate reasoning, Embedding diversity does not ensure novelty or benchmark independence, Filtering thresholds and temperatures are incomplete, Zero-scaffolding claims omit the bait prompt and external encoder, Some gains are answer-format improvements, Other domains and base models are untested, No artifacts or decontamination confirmed]
+    citation_status: verified
+    confidence: medium
+    notes: Official Findings ACL, DOI, and arXiv verified on 2026-07-11.
+  inclusion_reason: Compact from-scratch QA recipe using bait prompting, semantic deduplication, and same-model consensus.
+  related: []
+  tags: [crescent, self-improvement, synthetic-questions, self-deduplication, rejection-sampling, majority-voting, math-reasoning]
+  status: partial
+  category: [instruction_demonstration_rationale_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: Crescent generates math questions, rewrites embedding-near duplicates, and selects one of five same-model CoT answers by majority vote.
+  one_line_summary: Crescent generates math questions, rewrites embedding-near duplicates, and selects one of five same-model CoT answers by majority vote.
+  why_it_matters: It isolates a seed-free QA recipe while exposing consensus, semantic-duplication, hidden-scaffold, formatting, and artifact risks.
+  card: null
+  needs: ['needs_code: no official implementation confirmed', 'needs_data: no official QA release confirmed', 'needs_model: no checkpoint confirmed', 'needs_recipe_metadata: recover thresholds and temperatures', 'needs_decontamination: not reported']
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-07-11'
+    verified_by: curation
+    confidence: medium
+    notes: 'Paper and venue verified; code, data, model, and immutable config unresolved.'
+- id: regenesis-2025
+  title: 'ReGenesis: LLMs can Grow into Reasoning Generalists via Self-Improvement'
+  year: 2025
+  venue: ICLR 2025 Oral
+  authors: [Xiangyu Peng, Congying Xia, Xinyi Yang, Caiming Xiong, Chien-Sheng Wu, Chen Xing]
+  source_role: [construction_recipe, process_supervision]
+  verification_contract: [programmatic]
+  supervision_granularity: [answer_level, step_level]
+  domains: [math, logic, commonsense, natural-language-inference]
+  training_use: [sft, process_supervision]
+  construction_layer: [prompt_sourcing, trace_writing, optimizer_scaffold, release_audit]
+  artifacts: {paper: 'https://proceedings.iclr.cc/paper_files/paper/2025/hash/9c77f2ce42151b2c2e26d2cf47f99564-Abstract-Conference.html', arxiv: 'https://arxiv.org/abs/2410.02108', code: null, data: null, project: null, huggingface: null, doi: 'https://doi.org/10.48550/arXiv.2410.02108', venue: 'https://proceedings.iclr.cc/paper_files/paper/2025/hash/9c77f2ce42151b2c2e26d2cf47f99564-Abstract-Conference.html', openreview: 'https://openreview.net/forum?id=YUYJsHOf3c', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: Training instructions and answers from GSM8K, NumGLUE, ReClor, ARC-Challenge and StrategyQA; GSM8K human rationales are excluded.
+    trace_author: The target model adapts guidelines, writes structures and generates concrete paths.
+    answer_format: Instruction paired with self-generated step-by-step path and ground-truth answer.
+    process_fields: [general guideline, task-specific guideline, reasoning structure, candidate path, predicted answer, ground-truth answer, filter outcome, optional hint retry]
+    environment_or_substrate: Offline abstract-to-concrete synthesis over fixed answer-labeled datasets followed by one-time SFT.
+    verifier_or_reward: Exact-match ground-truth filtering; self-consistency majority vote is also studied.
+    terminal_predicate: Retain paths with matching answers; retry failures with answer exposed upstream as a hint.
+  recipe_metadata:
+    base_model: Mistral-7B-Instruct-v0.3 in main experiments; Meta-Llama-3-8B-Instruct in analysis.
+    teacher: Target model generates paths; dataset answers provide terminal supervision and retry hints.
+    generator: General guideline to adapted guideline to reasoning structure to concrete path and answer.
+    filtering_rule: Exact-match filtering in main setup, majority vote alternative, and answer-hinted retry when no path passes.
+    sampling_protocol: Generate 25 paths per instruction and randomly retain up to 5 correct paths.
+    rollout_count: 25
+    temperature: 0.85
+    inference_budget: null
+    optimizer_or_scaffold: One-time SFT on instruction to retained path-plus-answer targets.
+  audit:
+    source_mixture: Five training datasets across math, logic and commonsense; final counts depend on pass rates and random retention.
+    split: Training splits generate paths and test splits evaluate in-domain performance; six separate OOD tasks are evaluated.
+    decontamination: unknown
+    license: OpenReview paper is CC BY 4.0; no generated-data or code license is available because no official release was verified.
+    lineage: Source instruction and answer to guidelines to structure to candidate path to answer filter to optional hint retry to retained paths and SFT.
+    known_failure_modes: [correct answers do not prove valid reasoning, exact match rejects equivalents, hints can induce rationalization, self-generation inherits model biases, random retention does not optimize diversity, majority vote reinforces correlated errors, mixture confounds attribution, no official data/code release, no explicit decontamination]
+    citation_status: verified
+    confidence: high
+    notes: Official OpenReview, ICLR proceedings/oral and arXiv verified on 2026-07-11; no official code/data release was found.
+  inclusion_reason: ReGenesis converts answer-labeled tasks into diverse self-generated paths through an explicit abstract-to-concrete recipe with filtering and hint recovery.
+  related: []
+  tags: [self-improvement, self-generated-reasoning, abstract-to-concrete, reasoning-guidelines, reasoning-structures, answer-filtering, ground-truth-hints]
+  status: partial
+  category: [instruction_demonstration_rationale_data, process_trace_supervision_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: ReGenesis converts general guidelines into task-specific structures and answer-filtered paths, retaining up to five trajectories per instruction for SFT.
+  one_line_summary: ReGenesis converts general guidelines into task-specific structures and answer-filtered paths, retaining up to five trajectories per instruction for SFT.
+  why_it_matters: It makes the abstraction ladder before trace generation an explicit construction variable and documents terminal filtering and hint recovery.
+  card: cards/recipes/regenesis-2025.md
+  needs: ['needs_code: locate author-confirmed implementation', 'needs_data: locate official generated-path release', 'needs_license: establish generated-data license', 'needs_snapshot: pin prompts and source versions', 'needs_decontamination: document overlap checks', 'needs_process_audit: measure rationalization and hint leakage']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-11', verified_by: curation, confidence: high, notes: Official citation verified; no official code or generated dataset found.}
+- id: llm-evaluators-recognize-and-favor-their-own-generations-2024
+  title: LLM Evaluators Recognize and Favor Their Own Generations
+  year: 2024
+  venue: NeurIPS 2024
+  authors: [Arjun Panickssery, Samuel R. Bowman, Shi Feng]
+  source_role: [audit_failure, verifier_reward, data_release]
+  verification_contract: [judgment_required]
+  supervision_granularity: [answer_level, pairwise_preference, scalar_reward]
+  domains: [summarization, llm-evaluation, alignment]
+  training_use: [sft, evaluation, audit]
+  construction_layer: [trace_writing, reward_verifier_layer, release_audit]
+  artifacts: {paper: 'https://proceedings.neurips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html', arxiv: 'https://arxiv.org/abs/2404.13076', code: 'https://github.com/ArjunPanickssery/self_recognition', data: 'https://github.com/ArjunPanickssery/self_recognition', project: 'https://github.com/ArjunPanickssery/self_recognition', huggingface: null, doi: 'https://doi.org/10.52202/079017-2197', venue: 'https://proceedings.neurips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html', openreview: null, acl: null, pmlr: null, cvf: null, bibtex: 'https://proceedings.neurips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Bibtex-Conference.bib'}
+  data_object: {prompt_source: 'Two thousand sampled XSUM and CNN/DailyMail articles with human summaries.', trace_author: 'GPT-4, GPT-3.5, and Llama-2-7B-Chat generate summaries and act as evaluators under separate prompts.', answer_format: 'Articles, human/model summaries, source labels, pairwise and individual judgments, confidence scores, and human preferences.', process_fields: [article, dataset, human_summary, generated_summary, generator_model, evaluator_model, alternative_source, option_order, self_recognition_choice, self_recognition_confidence, self_preference_choice, self_preference_score, human_preference, fine_tuning_task], environment_or_substrate: 'Offline summarization and prompted or fine-tuned LLM evaluation.', verifier_or_reward: 'LLM pairwise quality choices or Likert ratings plus separate authorship-identification prompts.', terminal_predicate: 'Evaluator emits option 1/2, yes/no, or a 1-5 quality score.'}
+  recipe_metadata: {base_model: 'Llama-2-7B-Chat and GPT-3.5 are fine-tuned; GPT-4 is also evaluated.', teacher: 'Human summaries and a limited human preference audit; no single teacher defines labels.', generator: 'GPT-4, GPT-3.5, and Llama-2-7B-Chat at temperature zero.', filtering_rule: 'Pair own with other-source summaries, evaluate both orders, normalize option probabilities, and average.', sampling_protocol: '2,000 sampled articles; 500 train and 500 evaluation articles per dataset; 300 human-evaluated pairs with three judgments each.', rollout_count: null, temperature: 0.0, inference_budget: unknown, optimizer_or_scaffold: 'Prompted evaluation plus supervised self-recognition fine-tuning; Llama uses Adam for one epoch at 5e-5.'}
+  audit:
+    source_mixture: XSUM/CNN-DailyMail articles and summaries, three LLM generators, model judgments, and human comparison subset.
+    split: Paper specifies train/evaluation counts; repository exposes artifacts without immutable release manifest.
+    decontamination: unknown
+    license: unknown
+    lineage: Article and human summary -> model generation -> pair/individual evaluation -> recognition/preference scores -> optional fine-tuning -> cross-dataset and human audit.
+    known_failure_modes: [Evaluator may reward stylistic self-similarity, ordering bias can reverse choices, example-level quality is not fully controlled, scope is limited to summarization and three model families, API versions can drift, repository has no displayed license/tag, decontamination is unreported.]
+    citation_status: verified
+    confidence: high
+    notes: Proceedings, arXiv, DOI, repository, generated summaries, fine-tuning data, and results verified on 2026-07-11.
+  inclusion_reason: Direct audit of a hidden feedback failure in LLM-based filtering and evaluation.
+  related: []
+  tags: [llm-as-judge, self-preference, self-recognition, evaluator-bias, reward-model-audit, summarization, human-evaluation]
+  status: partial
+  category: [preference_reward_feedback_data, judgment_rubric_domain_expert_data, data_construction_open_release_recipes, training_usage_optimization_objectives, benchmarks_evaluation_surfaces]
+  one_line: A released audit shows that LLM evaluators can recognize and disproportionately favor outputs from their own model family.
+  one_line_summary: A released audit shows that LLM evaluators can recognize and disproportionately favor outputs from their own model family.
+  why_it_matters: Self-preference can distort model-based filtering, reward modeling, synthetic-data selection, and benchmarks.
+  card: null
+  needs: ['needs_license: state release terms', 'needs_snapshot: pin immutable artifacts', 'needs_model_versions: record API snapshots', 'needs_quality_control: add example-level human labels', 'needs_scope: test reasoning traces and more evaluators', 'needs_decontamination: assess overlap']
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: 'Formal paper and released artifacts verified; licensing, immutable versioning, and API snapshots remain unresolved.'
+- id: self-taught-evaluators-2024
+  title: Self-Taught Evaluators
+  year: 2024
+  venue: unknown
+  authors: [Tianlu Wang, Ilia Kulikov, Olga Golovneva, Ping Yu, Weizhe Yuan, Jane Dwivedi-Yu, Richard Yuanzhe Pang, Maryam Fazel-Zarandi, Jason Weston, Xian Li]
+  source_role: [construction_recipe, verifier_reward, data_release]
+  verification_contract: [judgment_required]
+  supervision_granularity: [pairwise_preference, answer_level]
+  domains: [general-reasoning, code, mathematics, safety]
+  training_use: [sft, preference_learning, reward_modeling, evaluation, test_time_compute]
+  construction_layer: [prompt_sourcing, trace_writing, self_play_anchor, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: https://arxiv.org/abs/2408.02666, arxiv: https://arxiv.org/abs/2408.02666, code: https://github.com/facebookresearch/RAM/tree/main/projects/self_taught_evaluator, data: https://huggingface.co/datasets/facebook/Self-taught-evaluator-DPO-data, project: https://github.com/facebookresearch/RAM/tree/main/projects/self_taught_evaluator, huggingface: https://huggingface.co/facebook/Self-taught-evaluator-llama3.1-70B, doi: null, venue: null, openreview: null, acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: Human-written WildChat instructions; the paper selects 20582 reasoning-category prompts.
+    trace_author: Mixtral 8x22B constructs main-paper pairs and initial judgments; later iterations use the current evaluator; released DPO data use Llama-3.1-70B-Instruct.
+    answer_format: Instruction, two randomized responses, evaluation plan or rationale, and final A/B judgment.
+    process_fields: [instruction, baseline response, modified instruction, mismatched response, response order, evaluation plan, final verdict, synthetic preference label, iteration]
+    environment_or_substrate: Offline synthetic pair construction and LLM-as-a-Judge rejection sampling.
+    verifier_or_reward: A generative pairwise judge produces a rationale and A/B verdict.
+    terminal_predicate: Retain a trace when its verdict agrees with the constructed preference.
+  recipe_metadata:
+    base_model: Llama-3-70B-Instruct in the paper; released checkpoint uses Llama-3.1-70B-Instruct.
+    teacher: Mixtral 8x22B initially and the current evaluator in later iterations; released DPO data use Llama-3.1-70B-Instruct.
+    generator: Select difficult prompts, generate baseline and deliberately mismatched responses, sample judgments, and retain label-consistent traces.
+    filtering_rule: Discard pairs without a matching judgment, randomize positions, and balance A/B labels.
+    sampling_protocol: Five paper iterations over 20582 prompts; release pipeline uses temperature 0.7, top_p 0.9, and max_tokens 4096.
+    rollout_count: null
+    temperature: 0.7
+    inference_budget: 32-sample majority voting in paper evaluation.
+    optimizer_or_scaffold: Iterative NLL SFT in the paper; released checkpoint uses SFT followed by DPO plus NLL.
+  audit:
+    source_mixture: WildChat prompts with synthetic response pairs and generated judgment traces; released DPO artifact is a later Llama-3.1 construction.
+    split: Held-out model-selection set; RewardBench, MT-Bench, and HelpSteer2 are evaluation surfaces.
+    decontamination: unknown
+    license: Self-Taught Evaluator Research License and Acceptable Use Policy; gated access.
+    lineage: WildChat prompt to category selection to response pair to judgment sampling and rejection filtering to iterative SFT and later DPO release.
+    known_failure_modes: [Constructed preferences can be wrong, Agreement filtering can reinforce seed bias, Judges are order and prompt sensitive, Related model families have correlated errors, Binary training omits ties, Paper and released artifacts differ, No decontamination reported]
+    citation_status: verified
+    confidence: medium
+    notes: Official Meta code, gated data, and model verified on 2026-07-11; no formal venue confirmed.
+  inclusion_reason: End-to-end synthetic evaluator-data loop with code, preference data, and a trained judge.
+  related: []
+  tags: [self-improvement, llm-as-a-judge, synthetic-preferences, rejection-sampling, wildchat, dpo, gated-release]
+  status: partial
+  category: [preference_reward_feedback_data, judgment_rubric_domain_expert_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: Self-Taught Evaluators creates synthetic chosen-rejected pairs and filters self-generated judge rationales for iterative evaluator training.
+  one_line_summary: Self-Taught Evaluators creates synthetic chosen-rejected pairs and filters self-generated judge rationales for iterative evaluator training.
+  why_it_matters: It releases an evaluator-refresh recipe while exposing label, self-confirmation, bias, license, and version-drift risks.
+  card: null
+  needs: ['needs_venue: formal venue unconfirmed', 'needs_snapshot: pin code data and model revisions', 'needs_lineage: map release stages', 'needs_decontamination: not reported']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-11', verified_by: curation, confidence: medium, notes: Official Meta artifacts verified; venue and paper-to-release mapping remain partial.}
+- id: self-explore-2024
+  title: 'Self-Explore: Enhancing Mathematical Reasoning in Language Models with Fine-grained Rewards'
+  year: 2024
+  venue: Findings of EMNLP 2024
+  authors: [Hyeonbin Hwang, Doyoung Kim, Seungone Kim, Seonghyeon Ye, Minjoon Seo]
+  source_role: [construction_recipe, process_supervision, verifier_reward]
+  verification_contract: [programmatic]
+  supervision_granularity: [answer_level, step_level, pairwise_preference]
+  domains: [math]
+  training_use: [sft, preference_learning, process_supervision]
+  construction_layer: [trace_writing, search_substrate, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: 'https://aclanthology.org/2024.findings-emnlp.78/', arxiv: 'https://arxiv.org/abs/2404.10346', code: 'https://github.com/hbin0701/Self-Explore', data: 'https://github.com/hbin0701/Self-Explore/tree/master/data', project: 'https://github.com/hbin0701/Self-Explore', huggingface: 'https://huggingface.co/hbin0701/DeepSeek_MATH_Self_Explore', doi: 'https://doi.org/10.18653/v1/2024.findings-emnlp.78', venue: 'https://aclanthology.org/2024.findings-emnlp.78/', openreview: null, acl: 'https://aclanthology.org/2024.findings-emnlp.78/', pmlr: null, cvf: null, bibtex: 'https://aclanthology.org/2024.findings-emnlp.78.bib'}
+  data_object: {prompt_source: 'GSM8K and MATH training questions and solutions.', trace_author: 'Each target model generates its own rationales and step-conditioned continuations.', answer_format: 'Math problem with rationale and final answer; granular rows contain question plus correct prefix, first-pit rejected step, and correct continuation.', process_fields: [question, generated_rationale, extracted_final_answer, outcome_correctness, correct_prefix, first_pit_step, chosen_continuation, rejected_step, source_model], environment_or_substrate: 'Offline self-generation, rejection sampling, step-conditioned search, and preference construction.', verifier_or_reward: 'Extracted-final-answer agreement labels traces and recovery continuations.', terminal_predicate: 'Extracted final answer equals ground truth.'}
+  recipe_metadata: {base_model: 'Mistral-7B, Llemma-7B, and DeepSeek-Math-7B-Base.', teacher: 'No external teacher; target-model family supplies generator and explorer.', generator: 'SFT model samples rationales; RFT successor samples continuations from rejected steps.', filtering_rule: 'Heuristic deduplication, answer-correct RFT retention, maximum-edit-distance pairing, and first-unrecoverable-step localization.', sampling_protocol: '100 rationales per problem at temperature 0.7; four continuations per step at temperature 0.7; up to eight pairs per problem.', rollout_count: 100, temperature: 0.7, inference_budget: 'Four continuation samples per candidate step.', optimizer_or_scaffold: 'SFT, rejection-sampling fine-tuning, then DPO-style preference learning.'}
+  audit:
+    source_mixture: GSM8K/MATH source data plus model-specific self-generated correct and incorrect rationales.
+    split: Repository has source train/test files but not generated RFT, outcome-pair, or granular-pair splits.
+    decontamination: unknown
+    license: Paper reports datasets/models MIT except Mistral Apache-2.0; repository code and generated-data terms are unstated.
+    lineage: Source problem -> SFT candidates -> deduplication and answer extraction -> RFT/outcome pairs -> recovery search -> first-pit pairs -> DPO.
+    known_failure_modes: [Finite-search first-pit labels are not objective error proofs, final-answer matches can accept flawed rationales, self-training can reduce diversity and amplify overconfidence, generated pair artifacts are unreleased, decontamination is unreported.]
+    citation_status: verified
+    confidence: high
+    notes: Official ACL paper, code, source-task files, and checkpoint verified on 2026-07-11; generated preference data remain unavailable.
+  inclusion_reason: Recycles incorrect self-generated rationales into first-error-localized preference supervision.
+  related: []
+  tags: [self-training, rejection-sampling, first-error-localization, step-level-preference, dpo, mathematical-reasoning, search-generated-data]
+  status: partial
+  category: [preference_reward_feedback_data, process_trace_supervision_data, rollout_search_test_time_trace_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: Self-Explore samples continuations from rejected math rationales to localize a first unrecoverable step and construct preference data.
+  one_line_summary: Self-Explore samples continuations from rejected math rationales to localize a first unrecoverable step and construct preference data.
+  why_it_matters: It turns rejected traces into step-level signals while exposing finite-search labels and missing generated pairs as audit risks.
+  card: cards/recipes/self-explore-2024.md
+  needs: ['needs_data: release generated pair and exploration artifacts', 'needs_lineage: map pairs to source and checkpoints', 'needs_license: state code and generated-data terms', 'needs_decontamination: document overlap checks', 'needs_error_audit: compare labels with human or symbolic judgments']
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: high
+    notes: 'Paper, code, source data, and checkpoint verified; generated preference datasets remain unavailable.'
+- id: megamath-2025
+  title: 'MegaMath: Pushing the Limits of Open Math Corpora'
+  year: 2025
+  venue: COLM 2025
+  authors: [Fan Zhou, Zengzhi Wang, Nikhil Ranjan, Zhoujun Cheng, Liping Tang, Guowei He, Zhengzhong Liu, Eric P. Xing]
+  source_role: [data_release, construction_recipe]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, unknown]
+  domains: [math, code]
+  training_use: [unknown]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, release_audit]
+  artifacts:
+    paper: https://openreview.net/forum?id=SHB0sLrZrh
+    arxiv: https://arxiv.org/abs/2504.02807
+    code: https://github.com/LLM360/MegaMath
+    data: https://huggingface.co/datasets/LLM360/MegaMath
+    project: https://github.com/LLM360/MegaMath
+    huggingface: https://huggingface.co/datasets/LLM360/MegaMath
+    doi: https://doi.org/10.48550/arXiv.2504.02807
+    venue: https://openreview.net/forum?id=SHB0sLrZrh
+    openreview: https://openreview.net/forum?id=SHB0sLrZrh
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: English mathematical web documents from 99 Common Crawl snapshots, math-related Stack V2 code, and synthetic records derived from web or code sources.
+    trace_author: Original web and code authors for recalled records; multiple disclosed Qwen and Llama teachers generate or refine synthetic subsets.
+    answer_format: Mathematical text, source code, question-answer records with worked solutions, translated Python, or interleaved text-expression-result-code blocks.
+    process_fields: [extracted mathematical text, source code metadata, question, answer with reasoning, translated Python, interleaved text and code, component metadata]
+    environment_or_substrate: Offline corpus construction from Common Crawl WARC and Stack V2 with LLM synthesis and restricted code execution.
+    verifier_or_reward: fastText and FineMath classifiers, LLM judgments, a learned code filter, MinHash-LSH deduplication, and AST-gated execution checks.
+    terminal_predicate: Records pass component-specific extraction, filtering, deduplication, safety and decontamination rules; text-code blocks additionally pass execution checks.
+  recipe_metadata:
+    base_model: TinyLlama-1B for proxy ablations; Llama-3.2-1B and Llama-3.2-3B for larger demonstrations.
+    teacher: Llama-3.1-70B-Instruct, Llama-3.3-70B-Instruct, Qwen-2.5-72B-Instruct and Qwen2.5-Coder-32B-Instruct in disclosed component roles.
+    generator: Two-stage web extraction, code recall, Q&A extraction/refinement, code translation, and executable interleaved text-code generation.
+    filtering_rule: English and URL filtering, fastText math filtering, MinHash-LSH deduplication, FineMath/LLM refinement, learned code filtering, AST/execution checks, and exact 13-gram decontamination.
+    sampling_protocol: Web data spans 99 Common Crawl snapshots; exact settings for every synthetic component are not uniformly disclosed.
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: Offline corpus curation validated by proxy-model pre-training ablations.
+  audit:
+    source_mixture: 215.1M samples and 371.6B tokens comprising 279.0B web, 28.1B code, and 64.5B synthetic tokens.
+    split: Current HF viewer exposes one train split; immutable component mapping and count reconciliation require audit.
+    decontamination: Exact 13-gram matching against 12 math benchmarks removes about 0.01%; semantic contamination is not ruled out.
+    license: HF declares ODC-By and GitHub code Apache-2.0; item-level source rights remain heterogeneous.
+    lineage: Common Crawl and Stack V2 records pass component pipelines and seed synthetic variants before decontamination and release.
+    known_failure_modes: [learned filters can misclassify records, LLM refinement can introduce errors, execution does not prove mathematical correctness, exact matching misses semantic leakage, source licenses are heterogeneous, mutable release counts differ, some pipeline documentation is incomplete]
+    citation_status: verified
+    confidence: high
+    notes: Official arXiv, COLM OpenReview, GitHub and HF dataset verified on 2026-07-11; item provenance and immutable versioning remain partial.
+  inclusion_reason: MegaMath is a large open mathematical corpus with documented extraction, filtering, code recall, synthesis, execution checking and decontamination recipes.
+  related: []
+  tags: [math-pretraining, open-release, common-crawl, code-data, synthetic-data, filtering, deduplication, decontamination, data-lineage]
+  status: partial
+  category: [data_construction_open_release_recipes]
+  one_line: MegaMath releases a 371.6B-token math corpus spanning filtered web text, recalled code, and synthetic Q&A and text-code records.
+  one_line_summary: MegaMath releases a 371.6B-token math corpus spanning filtered web text, recalled code, and synthetic Q&A and text-code records.
+  why_it_matters: It exposes a large-scale open recipe for extraction, learned filtering, deduplication, teacher synthesis, execution checks and release variants upstream of reasoning training.
+  card: cards/releases/megamath-2025.md
+  needs: ['needs_snapshot: pin immutable HF revision', 'needs_provenance: audit item-level lineage and licenses', 'needs_recipe: pin incomplete generation settings', 'needs_decontamination: assess semantic overlap']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-11', verified_by: curation, confidence: high, notes: Official citation and artifacts verified; release internals remain partial.}
+- id: natural-thoughts-2025
+  title: 'NaturalThoughts: Selecting and Distilling Reasoning Traces for General Reasoning Tasks'
+  year: 2025
+  venue: arXiv
+  authors: [Yang Li, Youssef Emad, Karthik Padthe, Jack Lanchantin, Weizhe Yuan, Thao Nguyen, Jason Weston, Shang-Wen Li, Dong Wang, Ilia Kulikov, Xian Li]
+  source_role: [construction_recipe, scaling_study]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, step_level]
+  domains: [general-reasoning, stem, multidisciplinary]
+  training_use: [sft, distillation]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, scaling_report, release_audit]
+  artifacts: {paper: 'https://arxiv.org/abs/2507.01921', arxiv: 'https://arxiv.org/abs/2507.01921', code: null, data: null, project: null, huggingface: null, doi: 'https://doi.org/10.48550/arXiv.2507.01921', venue: null, openreview: 'https://openreview.net/forum?id=tMw8xgMk4Y', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: NaturalReasoning, a pool of 2.8 million questions spanning multiple domains.
+    trace_author: DeepSeek-R1 generates reasoning traces and final answers; Llama-3.1-70B-Instruct supplies domain, strategy, and verbosity annotations.
+    answer_format: Question paired with a System-2 reasoning trace and System-1 final answer; selected mixtures may retain only the final answer.
+    process_fields: [question, system_2_reasoning_trace, system_1_final_answer, domain, topic, reasoning_strategies, verbosity_score, model_agreement]
+    environment_or_substrate: Offline teacher-trace generation, annotation, filtering, and supervised distillation.
+    verifier_or_reward: Programmatic length and clustering properties combined with model-generated strategy, verbosity, and response-agreement judgments.
+    terminal_predicate: unknown
+  recipe_metadata:
+    base_model: Llama-3.1-8B-Instruct and Qwen2.5-7B-Instruct; Llama-3.3-70B-Instruct is used in a scaling experiment.
+    teacher: DeepSeek-R1.
+    generator: DeepSeek-R1 generates traces and final answers from NaturalReasoning questions.
+    filtering_rule: Random scaling, domain and embedding diversity, strategy diversity, trace length, verbosity, model disagreement, and System-1/System-2 mixing.
+    sampling_protocol: Length selection uses p=(l/C)^tau with C=5000 and tau=2.5; strategy filtering targets 4-8 unique strategies; teacher decoding settings are undisclosed.
+    rollout_count: null
+    temperature: null
+    inference_budget: 16384-token maximum sequence length in the reported training/evaluation setup; teacher generation budget is unknown.
+    optimizer_or_scaffold: Offline SFT strong-to-weak distillation with System-1, System-2, and mixed variants.
+  audit:
+    source_mixture: NaturalReasoning questions, DeepSeek-R1 responses, and Llama-3.1-70B-Instruct annotations; immutable snapshots are unavailable.
+    split: unknown
+    decontamination: unknown
+    license: unknown
+    lineage: NaturalReasoning questions -> DeepSeek-R1 responses -> Llama annotations -> diversity/difficulty filtering -> System-1/System-2 mixture -> student SFT.
+    known_failure_modes: [Model disagreement is a proxy rather than ground truth, annotation-model bias can affect strategy and verbosity labels, no official dataset snapshot or row-level lineage was identified, teacher decoding and rejection settings are undisclosed, decontamination is unreported, off-policy findings may not transfer to on-policy training.]
+    citation_status: verified
+    confidence: medium
+    notes: Official arXiv paper and DOI verified on 2026-07-11; OpenReview submission does not establish formal acceptance; no code or dataset release identified.
+  inclusion_reason: Systematic recipe for generating, annotating, selecting, scaling, and selectively shortening teacher reasoning traces for general reasoning distillation.
+  related: []
+  tags: [reasoning-distillation, teacher-traces, data-selection, difficulty-filtering, reasoning-strategies, mixed-distillation, scaling]
+  status: partial
+  category: [instruction_demonstration_rationale_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: NaturalThoughts studies how to generate, annotate, filter, scale, and mix full versus answer-only DeepSeek-R1 traces.
+  one_line_summary: NaturalThoughts studies how to generate, annotate, filter, scale, and mix full versus answer-only DeepSeek-R1 traces.
+  why_it_matters: It makes trace diversity, difficulty, verbosity, and composition explicit while exposing release, lineage, and verifier-audit gaps.
+  card: null
+  needs: ['needs_data: release records and filtered subsets', 'needs_lineage: publish row-level mappings', 'needs_generation_metadata: disclose teacher settings', 'needs_license: state redistribution terms', 'needs_decontamination: document overlap checks', 'needs_venue: retain arXiv until official acceptance is confirmed']
+  curation_level: L3_summary_ready
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: medium
+    notes: 'Paper and DOI verified; code, data, licensing, immutable metadata, and formal venue remain unconfirmed.'
+- id: infinitymath-2024
+  title: 'InfinityMATH: A Scalable Instruction Tuning Dataset in Programmatic Mathematical Reasoning'
+  year: 2024
+  venue: CIKM
+  authors: [Bo-Wen Zhang, Yan Yan, Lin Li, Guang Liu]
+  source_role: [data_release, construction_recipe]
+  verification_contract: [programmatic]
+  supervision_granularity: [answer_level, step_level]
+  domains: [mathematics, programmatic-reasoning]
+  training_use: [sft]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, release_audit]
+  artifacts:
+    paper: https://arxiv.org/abs/2408.07089
+    arxiv: https://arxiv.org/abs/2408.07089
+    code: null
+    data: https://huggingface.co/datasets/BAAI/InfinityMATH
+    project: null
+    huggingface: https://huggingface.co/datasets/BAAI/InfinityMATH
+    doi: https://doi.org/10.1145/3627673.3679122
+    venue: https://dl.acm.org/doi/10.1145/3627673.3679122
+    openreview: null
+    acl: null
+    pmlr: null
+    cvf: null
+    bibtex: null
+  data_object:
+    prompt_source: Problems from AQuA-RAT, GSM8K, MATH, NUMGLUE, MathQA, TheoremQA, and DeepMind Mathematics.
+    trace_author: An LLM generates number-independent function programs; the paper discusses GPT-4, but an immutable generator snapshot is not pinned.
+    answer_format: Original and generalized problems, generated Python program, variables, original answer, generated answer, source, and ID.
+    process_fields: [source, original_problem, general_problem, generated_program, variables, ori_answer, gen_answer]
+    environment_or_substrate: Offline Python execution over synthesized function-call programs.
+    verifier_or_reward: Python execution followed by comparison with the source ground-truth answer, with interpreter feedback used for optional bug repair.
+    terminal_predicate: The generated program executes and returns the expected answer.
+  recipe_metadata:
+    base_model: Llama2-7B, CodeLlama-7B, and Aquila2-7B are downstream fine-tuning models.
+    teacher: GPT-4 is discussed for synthesis, but the exact snapshot is unknown.
+    generator: Mask numbers, generate a reusable documented function, reconstruct the original instance, execute it, and optionally repair bugs.
+    filtering_rule: Retain samples passing Python execution and answer comparison; exact tolerances and rejection counts are unknown.
+    sampling_protocol: 101380 successful samples from seven source datasets; generalized templates can be instantiated with valid numbers.
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: Offline program synthesis, execution checking, bug repair, and numeric instantiation.
+  audit:
+    source_mixture: 101380 samples from seven named math datasets.
+    split: Official HF repository exposes a train split; no immutable paper-matched revision is pinned.
+    decontamination: unknown
+    license: Apache-2.0 is declared by HF; upstream compatibility requires separate audit.
+    lineage: Source math problems to number masking to LLM programs to execution checks and optional repair to released JSONL.
+    known_failure_modes: [Answer agreement can accept brittle logic, Numeric substitutions may alter semantics, Generator settings and rejection counts are incomplete, Upstream versions and item IDs are not pinned, Mixed ori_answer types break the HF viewer]
+    citation_status: verified
+    confidence: medium
+    notes: Official arXiv, ACM, and BAAI HF sources verified on 2026-07-11.
+  inclusion_reason: Open scalable recipe for reusable programmatic math templates with executable checking.
+  related: []
+  tags: [math-reasoning, program-of-thought, synthetic-data, programmatic-verification, open-release]
+  status: partial
+  category: [instruction_demonstration_rationale_data, executable_code_feedback_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: InfinityMATH releases 101380 programmatic math examples built by masking numbers, generating reusable Python templates, and execution-checking outputs.
+  one_line_summary: InfinityMATH releases 101380 programmatic math examples built by masking numbers, generating reusable Python templates, and execution-checking outputs.
+  why_it_matters: It exposes a scalable executable construction recipe and its provenance, license, schema, and answer-only verification risks.
+  card: cards/releases/infinitymath-2024.md
+  needs: ['needs_code: no official standalone code repository confirmed', 'needs_snapshot: pin exact HF revision', 'needs_lineage: audit upstream versions and licenses', 'needs_decontamination: not reported']
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: true
+    verified_at: '2026-07-11'
+    verified_by: curation
+    confidence: medium
+    notes: 'Official paper, venue, and data verified; reproduction settings remain partial.'
+- id: alphamath-almost-zero-2024
+  title: 'AlphaMath Almost Zero: Process Supervision without Process'
+  year: 2024
+  venue: NeurIPS 2024
+  authors: [Guoxin Chen, Minpeng Liao, Chengxi Li, Kai Fan]
+  source_role: [construction_recipe, process_supervision, data_release, verifier_reward]
+  verification_contract: [mixed]
+  supervision_granularity: [step_level, process_reward, trajectory_value, answer_level]
+  domains: [math, code]
+  training_use: [sft, process_supervision, reward_modeling, test_time_compute]
+  construction_layer: [search_substrate, trace_writing, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: 'https://proceedings.neurips.cc/paper_files/paper/2024/hash/30dfe47a3ccbee68cffa0c19ccb1bc00-Abstract-Conference.html', arxiv: 'https://arxiv.org/abs/2405.03553', code: 'https://github.com/MARIO-Math-Reasoning/Super_MARIO', data: 'https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset', project: 'https://github.com/MARIO-Math-Reasoning/Super_MARIO', huggingface: 'https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset', doi: 'https://doi.org/10.52202/079017-0870', venue: 'https://proceedings.neurips.cc/paper_files/paper/2024/hash/30dfe47a3ccbee68cffa0c19ccb1bc00-Abstract-Conference.html', openreview: null, acl: null, pmlr: null, cvf: null, bibtex: 'https://proceedings.neurips.cc/paper_files/paper/2024/hash/30dfe47a3ccbee68cffa0c19ccb1bc00-Bibtex-Conference.bib'}
+  data_object:
+    prompt_source: Approximately 15K GSM8K and MATH train question-final-answer pairs with human solutions omitted.
+    trace_author: The current policy model generates textual and Python-assisted paths during MCTS.
+    answer_format: Question, final answer, and XML-like step records with reasoning, optional code/output, priors, Q values and depth.
+    process_fields: [generated step, policy prior P, MCTS Q value, depth, terminal outcome, Python code and output, source ID, final answer]
+    environment_or_substrate: Offline MCTS over partial math solutions with optional Python execution.
+    verifier_or_reward: Final-answer equivalence gives terminal +/-1 rewards; nonterminal rewards are zero and MCTS backs values into step targets.
+    terminal_predicate: A path completes or reaches depth limit and is judged by predicted-answer equivalence.
+  recipe_metadata:
+    base_model: DeepSeekMath-Base-7B in main experiments.
+    teacher: The policy model itself; no GPT-4 or human process teacher.
+    generator: Shared policy/value model inside MCTS.
+    filtering_rule: Sample at most four correct and four incorrect terminal paths per question and round; correct paths train policy and both classes train value.
+    sampling_protocol: Three rounds, ten trees per question-answer pair; round 1 uses two ReAct demos selected from 20, later rounds use zero-demo XML prompts.
+    rollout_count: Ten trees per question per round; reported inference default is 40 simulations.
+    temperature: null
+    inference_budget: Maximum described depth 8; reported MCTS inference default 40 simulations and SBS B2=5.
+    optimizer_or_scaffold: Joint next-token loss on correct paths and value regression on both correct and incorrect paths.
+  audit:
+    source_mixture: GSM8K and MATH training questions; current round-3 HF release reports 115551 rows.
+    split: Source train splits and released round-3 trainset; immutable revisions and per-source counts require audit.
+    decontamination: unknown
+    license: Code is MIT; dataset license is not declared and source-license inheritance requires audit.
+    lineage: Source QA to policy/value initialization to iterative MCTS to positive/negative paths with Q values to joint training and round-3 release.
+    known_failure_modes: [final-answer checks can accept invalid reasoning, Q values are bootstrapped estimates, value false positives are documented, execution does not verify logic, search is budget-sensitive, no explicit decontamination located, released code may differ from internal code, dataset license is undisclosed]
+    citation_status: verified
+    confidence: high
+    notes: Official NeurIPS, arXiv, code, dataset and checkpoint verified on 2026-07-11; license and code parity remain unresolved.
+  inclusion_reason: AlphaMath converts question-answer pairs into positive and negative MCTS paths plus step-level value targets without external process annotations.
+  related: []
+  tags: [math-reasoning, mcts, search-generated-data, process-supervision, step-values, positive-negative-traces, open-release]
+  status: partial
+  category: [process_trace_supervision_data, rollout_search_test_time_trace_data, data_construction_open_release_recipes, training_usage_optimization_objectives]
+  one_line: AlphaMath turns GSM8K and MATH question-answer pairs into positive and negative MCTS paths with backed-up step values.
+  one_line_summary: AlphaMath turns GSM8K and MATH question-answer pairs into positive and negative MCTS paths with backed-up step values.
+  why_it_matters: It derives process supervision and step-value targets from final-answer checks and model search while exposing their audit limits.
+  card: cards/recipes/alphamath-almost-zero-2024.md
+  needs: ['needs_snapshot: pin immutable artifacts', 'needs_license: confirm dataset license', 'needs_decontamination: document overlap checks', 'needs_value_audit: measure step-value errors']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-11', verified_by: curation, confidence: high, notes: Official citation and artifacts verified; release internals remain partial.}
+- id: fixing-distribution-shifts-of-llm-self-critique-2025
+  title: Fixing Distribution Shifts of LLM Self-Critique via On-Policy Self-Play Training
+  year: 2025
+  venue: ACL 2025
+  authors: [Rong Bao, Donglei Yu, Kai Fan, Minpeng Liao]
+  source_role: [construction_recipe, verifier_reward, process_supervision]
+  verification_contract: [programmatic]
+  supervision_granularity: [answer_level, full_episode, scalar_reward, process_reward]
+  domains: [math, self-critique]
+  training_use: [sft, process_supervision, rlvr]
+  construction_layer: [trace_writing, self_play_anchor, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: 'https://aclanthology.org/2025.acl-long.865/', arxiv: null, code: 'https://github.com/rbao2018/SCOP', data: null, project: 'https://github.com/rbao2018/SCOP', huggingface: null, doi: 'https://doi.org/10.18653/v1/2025.acl-long.865', venue: 'https://aclanthology.org/2025.acl-long.865/', openreview: null, acl: 'https://aclanthology.org/2025.acl-long.865/', pmlr: null, cvf: null, bibtex: 'https://aclanthology.org/2025.acl-long.865.bib'}
+  data_object: {prompt_source: 'GSM8K/MATH for initialization; cleaned Numina-CoT for RL.', trace_author: 'Qwen2.5-72B-Instruct initializes critiques; current 7B policy generates on-policy reasoning, critiques, and corrections.', answer_format: 'Question followed by reasoning, critique, sampled corrections, final answers, and stage rewards.', process_fields: [question, golden_reasoning, golden_answer, policy_reasoning, reasoning_correctness, critique, critique_hallucination_flag, correction, correction_correctness, critique_reward, correction_reward], environment_or_substrate: 'On-policy reasoning-critique-correction self-play before PPO updates.', verifier_or_reward: 'Final-answer verification plus Monte Carlo correction-success critique reward and hallucination penalty.', terminal_predicate: 'Extracted answer matches gold.'}
+  recipe_metadata: {base_model: 'DeepSeek-Math-7B-Base and Qwen2.5-7B-Base.', teacher: 'Qwen2.5-72B-Instruct.', generator: 'Initialized current policy.', filtering_rule: 'Retain initialization items with at least 6/8 correct annotator corrections; remove RL prompts always solved by policy or never solved by annotator in eight samples.', sampling_protocol: 'Four critiques and eight corrections per critique at temperature 0.6 and top-p 0.9.', rollout_count: 32, temperature: 0.6, inference_budget: 'Four-by-eight samples, maximum 2048 output tokens.', optimizer_or_scaffold: 'Pair-SFT then PPO with stage rewards and KL penalty 0.05.'}
+  audit:
+    source_mixture: GSM8K/MATH, Qwen2.5-72B annotations, cleaned Numina-CoT prompts, and current-policy trajectories.
+    split: Paper reports 60K initialization examples but no released rows, prompt manifest, trajectories, or checkpoints.
+    decontamination: unknown
+    license: Official placeholder repository is MIT; unreleased data/trajectory/checkpoint licenses are unknown.
+    lineage: GSM8K/MATH -> policy reasoning -> Qwen critiques/corrections -> validation -> Pair-SFT -> cleaned Numina prompts -> current-policy self-play -> rewards -> PPO.
+    known_failure_modes: [Official repository has no implementation, data and trajectories are unreleased, finite Monte Carlo rewards are noisy, hallucination rule is coarse, initialization remains teacher-dependent, sampling is costly, prompt filtering can remove hard skills, policy collapse remains possible, decontamination is unreported.]
+    citation_status: verified
+    confidence: medium
+    notes: Official ACL paper, DOI, and repository verified on 2026-07-11; repository contains only MIT LICENSE and .gitignore.
+  inclusion_reason: Explicit current-policy refresh recipe for reasoning, critique, and correction data with stage-specific rewards.
+  related: []
+  tags: [on-policy, self-play, self-critique, correction, monte-carlo-reward, process-reward, ppo, distribution-shift]
+  status: partial
+  category: [programmatically_verifiable_outcome_data, process_trace_supervision_data, rollout_search_test_time_trace_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: SCOP refreshes reasoning, critique, and correction trajectories on-policy and rewards critiques by sampled correction success.
+  one_line_summary: SCOP refreshes reasoning, critique, and correction trajectories on-policy and rewards critiques by sampled correction success.
+  why_it_matters: It makes critique-data freshness explicit while exposing sampling bias, teacher initialization, hidden trajectories, and an unfulfilled code release.
+  card: cards/recipes/fixing-distribution-shifts-of-llm-self-critique-2025.md
+  needs: ['needs_code: publish implementation', 'needs_data: release initialization and prompt manifests', 'needs_trajectories: release samples and rewards', 'needs_lineage: map trajectories to source and checkpoints', 'needs_license: state generated-asset terms', 'needs_decontamination: document overlap checks']
+  curation_level: L4_carded
+  verification:
+    link_verified: true
+    artifact_verified: false
+    verified_at: '2026-07-11'
+    verified_by: paper_curator
+    confidence: medium
+    notes: 'Formal publication and repository URL verified; no executable code, data, or checkpoints are present.'
+- id: generative-verifiers-next-token-prediction-2025
+  title: 'Generative Verifiers: Reward Modeling as Next-Token Prediction'
+  year: 2025
+  venue: ICLR
+  authors: [Lunjun Zhang, Arian Hosseini, Hritik Bansal, Seyed Mehran Kazemi, Aviral Kumar, Rishabh Agarwal]
+  source_role: [verifier_reward, construction_recipe, data_release]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, scalar_reward, step_level]
+  domains: [mathematics, algorithmic-reasoning]
+  training_use: [sft, reward_modeling, evaluation, test_time_compute]
+  construction_layer: [prompt_sourcing, trace_writing, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: https://arxiv.org/abs/2408.15240, arxiv: https://arxiv.org/abs/2408.15240, code: null, data: https://github.com/genrm-star/genrm-critiques, project: https://sites.google.com/view/generative-reward-models, huggingface: null, doi: null, venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/214308a2d5e3f83ef9ad2739e1cbc46d-Abstract-Conference.html, openreview: null, acl: null, pmlr: null, cvf: null, bibtex: https://proceedings.iclr.cc/paper_files/paper/2025/hash/214308a2d5e3f83ef9ad2739e1cbc46d-Bibtex-Conference.html}
+  data_object:
+    prompt_source: Algorithmic Last Letter and Word Sorting tasks plus GSM8K; MATH500 and MMLU math are evaluation only.
+    trace_author: Programmatic oracle rationale generators for algorithmic tasks and Gemini 1.0 Pro for GSM8K verification rationales.
+    answer_format: Problem and candidate solution paired with a Yes/No token or verification rationale ending in a verdict.
+    process_fields: [problem, candidate solution, correctness label, verification rationale, final verdict, reference solution used during synthesis]
+    environment_or_substrate: Offline algorithmic checks and known-answer math grading with reference-guided rationale synthesis.
+    verifier_or_reward: Next-token verifier uses Yes probability, optionally averaged across generated rationales.
+    terminal_predicate: Candidate label is known and retained rationale verdict matches it.
+  recipe_metadata:
+    base_model: Gemma-2B for algorithmic tasks and Gemma 2B, 7B, and Gemma-2 9B for GSM8K.
+    teacher: Programmatic oracle generators and Gemini 1.0 Pro.
+    generator: Generate candidates, label them, synthesize verification rationales, filter verdicts, and mix verification with correct-solution generation.
+    filtering_rule: Balance labels, deduplicate algorithmic data, remove invalid responses, cap GSM8K at 16 correct and 16 incorrect per problem, and filter verdict mismatches.
+    sampling_protocol: About 50K Last Letter and 100K Word Sorting records; GSM8K uses 50 solutions per training problem before capping.
+    rollout_count: null
+    temperature: null
+    inference_budget: Normally 32 verification rationales per candidate for majority scoring.
+    optimizer_or_scaffold: Next-token SFT over verification, rationale, and correct-solution targets.
+  audit:
+    source_mixture: Programmatic algorithmic data plus GSM8K candidates and Gemini-generated rationales.
+    split: Length generalization for algorithmic tasks and GSM8K training with MATH500/MMLU held out.
+    decontamination: unknown
+    license: MIT in the official data repository.
+    lineage: Task query to candidate solution to correctness label to oracle or reference-guided rationale to filtering to verifier SFT.
+    known_failure_modes: [Synthetic rationales can contain errors, Reference-guided synthesis uses privileged information, Final answers can hide invalid reasoning, Yes-token rewards may be miscalibrated, Majority votes are correlated, No official code or checkpoints confirmed]
+    citation_status: verified
+    confidence: medium
+    notes: Official ICLR, arXiv, project, and data repository verified on 2026-07-11.
+  inclusion_reason: Releases verification rationales and a recipe for generative reward modeling with next-token prediction.
+  related: []
+  tags: [generative-verifier, reward-modeling, verification-rationales, synthetic-critiques, majority-voting]
+  status: partial
+  category: [instruction_demonstration_rationale_data, preference_reward_feedback_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: Generative Verifiers releases synthetic verification rationales and trains rationale-producing reward models with next-token prediction.
+  one_line_summary: Generative Verifiers releases synthetic verification rationales and trains rationale-producing reward models with next-token prediction.
+  why_it_matters: It makes verification a language-data recipe while exposing teacher, privileged-reference, calibration, and version risks.
+  card: cards/verifiers/generative-verifiers-next-token-prediction-2025.md
+  needs: ['needs_code: no official implementation confirmed', 'needs_model: no checkpoint release confirmed', 'needs_snapshot: pin exact rationale subsets', 'needs_decontamination: not reported']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-11', verified_by: curation, confidence: medium, notes: Official data verified; code and checkpoints unresolved.}
+- id: genius-unsupervised-self-training-2025
+  title: 'Genius: A Generalizable and Purely Unsupervised Self-Training Framework For Advanced Reasoning'
+  year: 2025
+  venue: ACL
+  authors: [Fangzhi Xu, Hang Yan, Chang Ma, Haiteng Zhao, Qiushi Sun, Kanzhi Cheng, Junxian He, Jun Liu, Zhiyong Wu]
+  source_role: [construction_recipe, process_supervision, data_release]
+  verification_contract: [judgment_required]
+  supervision_granularity: [step_level, pairwise_preference, trajectory_value]
+  domains: [general-reasoning, mathematics, code]
+  training_use: [preference_learning, process_supervision]
+  construction_layer: [prompt_sourcing, search_substrate, self_play_anchor, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: https://aclanthology.org/2025.acl-long.644/, arxiv: https://arxiv.org/abs/2504.08672, code: https://github.com/xufangzhi/Genius, data: https://huggingface.co/collections/xufangzhi/genius, project: https://github.com/xufangzhi/Genius, huggingface: https://huggingface.co/collections/xufangzhi/genius, doi: https://doi.org/10.18653/v1/2025.acl-long.644, venue: https://aclanthology.org/2025.acl-long.644/, openreview: null, acl: https://aclanthology.org/2025.acl-long.644/, pmlr: null, cvf: null, bibtex: https://aclanthology.org/2025.acl-long.644.bib}
+  data_object:
+    prompt_source: Unlabeled Magpie reasoning and OpenHermes-derived queries; official variants use 25K and 32K queries.
+    trace_author: The Llama-3.1-8B-Instruct policy generates candidate steps and future continuations.
+    answer_format: Query, stepwise response, candidates, future rollouts, foresight scores, and weighted step preferences.
+    process_fields: [query, response prefix, candidate next step, future rollout, foresight score, chosen step, rejected step, preference weight]
+    environment_or_substrate: Offline self-exploration in natural-language generation without an external answer checker.
+    verifier_or_reward: Uncertainty over same-policy future outcomes estimates candidate-step value.
+    terminal_predicate: No external correctness predicate; steps are selected by foresight scores.
+  recipe_metadata:
+    base_model: Llama-3.1-8B-Instruct.
+    teacher: No external teacher; the policy produces candidates, futures, and rewards.
+    generator: Sample candidate steps, roll out futures, compute foresight scores, select paths, and form weighted preferences.
+    filtering_rule: Rank and re-sample candidate steps using foresight scores; ACO calibrates optimization by score gaps.
+    sampling_protocol: Quick-start defaults are step_beam_size 2, num_rollout 4, num_foresight 4.
+    rollout_count: 4
+    temperature: null
+    inference_budget: Four future simulations per candidate under documented defaults.
+    optimizer_or_scaffold: Advantage-Calibrated Optimization over weighted step preferences.
+  audit:
+    source_mixture: Magpie and OpenHermes queries with Llama-3.1 self-generated candidates, futures, values, and ACO training.
+    split: HF collection lists source datasets and two trained checkpoints; exact generated preference snapshots require audit.
+    decontamination: unknown
+    license: unknown
+    lineage: Query to policy prefix to candidate steps to future rollouts to foresight scores to weighted pairs to ACO checkpoint.
+    known_failure_modes: [Low uncertainty does not imply correctness, Same-policy rollouts have correlated errors, Small rollout budgets yield noisy values, Local choices can miss global paths, ACO cannot create missing correctness information, Upstream query provenance and licenses remain, Full preference release is unconfirmed]
+    citation_status: verified
+    confidence: medium
+    notes: Official ACL, code, HF source datasets, and checkpoints verified on 2026-07-11.
+  inclusion_reason: Open step-level preference construction recipe without answer labels or an auxiliary verifier.
+  related: []
+  tags: [unsupervised-self-training, self-reward, foresight-sampling, step-level-preferences, aco, model-release]
+  status: partial
+  category: [instruction_demonstration_rationale_data, preference_reward_feedback_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: Genius turns unlabeled queries into self-generated step candidates, future-rollout foresight scores, and weighted preferences for ACO.
+  one_line_summary: Genius turns unlabeled queries into self-generated step candidates, future-rollout foresight scores, and weighted preferences for ACO.
+  why_it_matters: It provides a policy-internal reasoning-data recipe while exposing self-reward, correlated-rollout, provenance, and release risks.
+  card: cards/recipes/genius-unsupervised-self-training-2025.md
+  needs: ['needs_snapshot: pin code model and data revisions', 'needs_data: confirm full generated preference release', 'needs_license: confirm compatibility', 'needs_decontamination: not reported']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-11', verified_by: curation, confidence: medium, notes: Code and checkpoints verified; full preference data and licenses remain partial.}
+
+- id: small-language-models-strong-verifiers-2024
+  title: Small Language Models Need Strong Verifiers to Self-Correct Reasoning
+  year: 2024
+  venue: Findings of ACL 2024
+  authors: [Yunxiang Zhang, Muhammad Khalifa, Lajanugen Logeswaran, Jaekyeom Kim, Moontae Lee, Honglak Lee, Lu Wang]
+  source_role: [construction_recipe, process_supervision, verifier_reward, audit_failure]
+  verification_contract: [mixed]
+  supervision_granularity: [step_level, answer_level, scalar_reward]
+  domains: [math, commonsense]
+  training_use: [sft, process_supervision, reward_modeling, evaluation, audit]
+  construction_layer: [trace_writing, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: 'https://aclanthology.org/2024.findings-acl.924/', arxiv: 'https://arxiv.org/abs/2404.17140', code: 'https://github.com/yunx-z/SCORE', data: 'https://github.com/yunx-z/SCORE/tree/main/data', project: 'https://yunx-z.github.io/SCORE/', huggingface: null, doi: 'https://doi.org/10.18653/v1/2024.findings-acl.924', venue: 'https://aclanthology.org/2024.findings-acl.924/', openreview: null, acl: 'https://aclanthology.org/2024.findings-acl.924/', pmlr: null, cvf: null, bibtex: 'https://aclanthology.org/2024.findings-acl.924.bib'}
+  data_object:
+    prompt_source: GSM8K and CommonsenseQA training questions; MATH, QASC and RiddleSense support transfer evaluation.
+    trace_author: LLaMA-2-13B-chat or Gemma-7B-it generates model-specific solutions, critiques and corrections.
+    answer_format: Question, incorrect initial solution, first-error critique, and corrected solution.
+    process_fields: [question, incorrect solution, construction-time correct hint, copied steps, step feedback, first-error critique, corrected solution, answer label]
+    environment_or_substrate: Offline self-correction-data pipeline with final-answer scoring and critique/correction passes.
+    verifier_or_reward: Rule filters, final-answer correctness, correction-recovery filtering, learned small-LM verifier, and experimental GPT-4/oracle verifiers.
+    terminal_predicate: Retain structurally valid critiques that provide the correct answer and enable a correct revision.
+  recipe_metadata:
+    base_model: LLaMA-2-13B-chat or Gemma-7B-it.
+    teacher: The same small model generates critiques using correct solutions as temporary hints; GPT-4 is an inference-time verifier only.
+    generator: Sample ten CoT solutions, label answers, pair incorrect with correct, generate and filter critique, then build SFT records.
+    filtering_rule: Equal step/feedback counts, exact step copying, correct last-step answer, and successful corrected-answer recovery.
+    sampling_protocol: Ten initial solutions per question and one critique per incorrect-correct pair.
+    rollout_count: 10
+    temperature: null
+    inference_budget: One correction iteration.
+    optimizer_or_scaffold: Cross-entropy SFT of refiner; class-reweighted binary self-verifier training.
+  audit:
+    source_mixture: GSM8K and CommonsenseQA; final critique counts range from 4623 to 24511 by model/task.
+    split: Train for construction, dev for verifier threshold, designated test/evaluation splits for five tasks.
+    decontamination: unknown
+    license: Paper is CC BY 4.0; code/data release license is not declared.
+    lineage: Source question to ten CoTs to labels and pairs to hint-conditioned critiques to filters to first-error SFT data and verifier evaluation.
+    known_failure_modes: [answer scoring can accept invalid reasoning, hints can induce copying, generator and filter errors are correlated, weak verifiers erase gains, GPT-4 adds proprietary dependence, yield is model-dependent, one iteration only, no explicit decontamination, code/data license undeclared]
+    citation_status: verified
+    confidence: high
+    notes: Official ACL, arXiv and SCORE repository verified on 2026-07-11; immutable release and license remain partial.
+  inclusion_reason: SCORE turns correct and incorrect reasoning chains into first-error critique-correction supervision and isolates verifier strength as a deployment bottleneck.
+  related: []
+  tags: [self-correction, critique-data, first-error-feedback, rejection-sampling, filtering, verifier-strength, self-verifier]
+  status: partial
+  category: [process_trace_supervision_data, preference_reward_feedback_data, data_construction_open_release_recipes, training_usage_optimization_objectives, audit_failure_contamination_verifier_attacks]
+  one_line: SCORE constructs first-error critique-correction data and shows that refiner gains require a sufficiently strong verifier.
+  one_line_summary: SCORE constructs first-error critique-correction data and shows that refiner gains require a sufficiently strong verifier.
+  why_it_matters: It makes verifier quality an explicit part of the construction and deployment contract for self-correction data.
+  card: null
+  needs: ['needs_snapshot: pin repository revision and data counts', 'needs_license: establish code/data licenses', 'needs_decontamination: document overlap checks', 'needs_verifier_audit: measure correction-trigger errors']
+  curation_level: L3_summary_ready
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-11', verified_by: curation, confidence: high, notes: Official citation and repository verified; release metadata remain partial.}
+- id: spc-self-play-critic-2025
+  title: 'SPC: Evolving Self-Play Critic via Adversarial Games for LLM Reasoning'
+  year: 2025
+  venue: NeurIPS 2025
+  authors: [Jiaqi Chen, Bang Zhang, Ruotian Ma, Peisong Wang, Xiaodan Liang, Zhaopeng Tu, Xiaolong Li, Kwan-Yee K. Wong]
+  source_role: [verifier_reward, construction_recipe, process_supervision, data_release]
+  verification_contract: [judgment_required]
+  supervision_granularity: [step_level, scalar_reward, process_reward]
+  domains: [math]
+  training_use: [reward_modeling, process_supervision, rlvr, evaluation, test_time_compute]
+  construction_layer: [self_play_anchor, trace_writing, reward_verifier_layer, optimizer_scaffold, release_audit]
+  artifacts: {paper: 'https://papers.nips.cc/paper_files/paper/2025/hash/cb7baa005c239c1c7c4098c2a9e00450-Abstract-Conference.html', arxiv: 'https://arxiv.org/abs/2504.19162', code: 'https://github.com/chen-judge/SPC/', data: 'https://connecthkuhk-my.sharepoint.com/%3Af%3A/g/personal/jadge_connect_hku_hk/EkB9OYBHr_tGmGeJ5xxTncgBXFnln9nPP4jmCKNcQSSDIQ?e=oF7b6g', project: 'https://chen-judge.github.io/SPC/', huggingface: 'https://huggingface.co/judge/SPC-Critic-2', doi: 'https://doi.org/10.48550/arXiv.2504.19162', venue: 'https://papers.nips.cc/paper_files/paper/2025/hash/cb7baa005c239c1c7c4098c2a9e00450-Abstract-Conference.html', openreview: 'https://openreview.net/forum?id=JddJvNSiHk', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: Correct mathematical reasoning solutions provide partial prefixes and selected correct next steps; exact source mixture requires file audit.
+    trace_author: Sneaky generator corrupts steps and critic judges them.
+    answer_format: Partial solution, correct or corrupted candidate step, error judgment, and binary game outcome.
+    process_fields: [partial prefix, correct step, error type, corrupted step, candidate identity, critic judgment, critic reward, generator reward, round]
+    environment_or_substrate: Two-player adversarial self-play over reasoning steps followed by critic training and verifier-guided search.
+    verifier_or_reward: Successful detection gives critic +1 and generator -1; deception reverses rewards.
+    terminal_predicate: A confrontation ends after critic classification and is scored against the constructed candidate identity.
+  recipe_metadata:
+    base_model: Released critics use a Qwen2-family architecture; exact paper initialization should be pinned.
+    teacher: No human step-label teacher in iterative self-play; initial correct steps and round-0 SFT bootstrap the critic.
+    generator: Select predefined error type and rewrite a correct step into a difficult incorrect step.
+    filtering_rule: Generated adversarial examples enter training under game rules; exact corruption-validity checks require audit.
+    sampling_protocol: Randomly choose correct step and prefix, generate corruption, confront critic, and repeat for two RL rounds.
+    rollout_count: null
+    temperature: null
+    inference_budget: null
+    optimizer_or_scaffold: Round-0 SFT followed by adversarial RL from binary game outcomes.
+  audit:
+    source_mixture: Round-0 SFT critic data and round-2 RL critic data containing rounds 1 and 2; counts require file audit.
+    split: Separate generated training files and three evaluation files; immutable counts are not in visible README.
+    decontamination: unknown
+    license: HF checkpoints are MIT; code and SharePoint data licenses were not verified.
+    lineage: Correct steps to error corruption to critic game and rewards to iterative RL data to round-2 checkpoint and search evaluation.
+    known_failure_modes: [corruptions can be malformed or accidentally correct, critic can exploit artifacts, co-adaptation can narrow error distribution, binary rewards omit severity, source quality constrains lineage, SharePoint access is gated, release counts and licenses are incomplete, search gains are budget-sensitive]
+    citation_status: verified
+    confidence: medium
+    notes: Official OpenReview, NeurIPS, arXiv, project, GitHub, data location and HF checkpoints verified on 2026-07-11; data access and metadata remain partial.
+  inclusion_reason: SPC continuously creates adversarial correct/incorrect step judgments and binary rewards to train an evolving critic without manual step labels.
+  related: []
+  tags: [self-play, adversarial-data, process-critic, step-verification, synthetic-errors, reinforcement-learning, open-release]
+  status: partial
+  category: [process_trace_supervision_data, preference_reward_feedback_data, data_construction_open_release_recipes, training_usage_optimization_objectives, rollout_search_test_time_trace_data]
+  one_line: SPC co-evolves an error generator and step critic, releasing SFT and RL critic data plus checkpoints.
+  one_line_summary: SPC co-evolves an error generator and step critic, releasing SFT and RL critic data plus checkpoints.
+  why_it_matters: It refreshes verifier training data as a generator learns harder errors while exposing co-adaptation and corruption-validity risks.
+  card: cards/verifiers/spc-self-play-critic-2025.md
+  needs: ['needs_data_access: verify public SharePoint access', 'needs_snapshot: pin artifact revisions', 'needs_metadata: record counts and schema', 'needs_license: establish code/data licenses', 'needs_recipe: pin base model and error taxonomy']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-11', verified_by: curation, confidence: medium, notes: Official citation and artifacts verified; data accessibility and metadata remain partial.}
+- id: v-star-training-verifiers-self-taught-reasoners-2024
+  title: 'V-STaR: Training Verifiers for Self-Taught Reasoners'
+  year: 2024
+  venue: COLM
+  authors: [Arian Hosseini, Xingdi Yuan, Nikolay Malkin, Aaron Courville, Alessandro Sordoni, Rishabh Agarwal]
+  source_role: [construction_recipe, verifier_reward]
+  verification_contract: [mixed]
+  supervision_granularity: [answer_level, pairwise_preference, scalar_reward]
+  domains: [mathematics, code]
+  training_use: [sft, preference_learning, reward_modeling, test_time_compute]
+  construction_layer: [search_substrate, self_play_anchor, reward_verifier_layer, optimizer_scaffold]
+  artifacts: {paper: https://arxiv.org/abs/2402.06457, arxiv: https://arxiv.org/abs/2402.06457, code: null, data: null, project: null, huggingface: null, doi: null, venue: 'https://openreview.net/forum?id=stmqBSW2dV', openreview: 'https://openreview.net/forum?id=stmqBSW2dV', acl: null, pmlr: null, cvf: null, bibtex: null}
+  data_object:
+    prompt_source: GSM8K and MBPP training problems.
+    trace_author: The previous iteration's LLaMA2 or CodeLLaMA generator.
+    answer_format: Problem, generated rationale or program, binary outcome label, and correct-versus-incorrect preference pairs.
+    process_fields: [problem, generated solution, final answer or program, binary correctness label, correct completion, incorrect completion, iteration]
+    environment_or_substrate: Iterative self-training with answer checking for math and executable tests for code.
+    verifier_or_reward: A DPO verifier contrasts correct and incorrect solutions and ranks candidates at inference.
+    terminal_predicate: Correct final math answer or passing MBPP tests.
+  recipe_metadata:
+    base_model: LLaMA2 and CodeLLaMA 7B and 13B with LoRA.
+    teacher: The iteratively updated generator itself.
+    generator: Sample candidates, label outcomes, retain correct traces for generator SFT, and retain all traces for verifier training.
+    filtering_rule: Correct traces augment the generator; Cartesian products of correct and incorrect traces form DPO pairs.
+    sampling_protocol: Three iterations with 16 completions per query per iteration.
+    rollout_count: 48
+    temperature: null
+    inference_budget: Best-of-64 evaluated from 128 generations per problem.
+    optimizer_or_scaffold: Rejection-sampling SFT plus DPO verifier optimization.
+  audit:
+    source_mixture: Original GSM8K or MBPP SFT data plus iteratively generated labeled solutions.
+    split: Standard train/test tasks with MATH and HumanEval transfer evaluation.
+    decontamination: unknown
+    license: unknown
+    lineage: Training query to generator samples to answer or test checking to generator and verifier buffers to DPO pairs.
+    known_failure_modes: [Final-answer labels can accept invalid rationales, Public tests can accept overfit code, Outcome labels do not localize errors, Cartesian pairs are correlated, Best-of-k gains depend on inference budget, No official artifacts confirmed]
+    citation_status: verified
+    confidence: medium
+    notes: Official COLM OpenReview and arXiv verified on 2026-07-11.
+  inclusion_reason: Preserves accepted and rejected self-generated traces and converts them into iterative verifier supervision.
+  related: []
+  tags: [self-improvement, rejection-sampling, verifier-training, dpo, outcome-supervision]
+  status: partial
+  category: [preference_reward_feedback_data, executable_code_feedback_data, data_construction_open_release_recipes, training_usage_optimization_objectives, scaling_rlvr_test_time_compute]
+  one_line: V-STaR keeps correct traces for generator SFT and converts correct-incorrect pairs into DPO verifier data.
+  one_line_summary: V-STaR keeps correct traces for generator SFT and converts correct-incorrect pairs into DPO verifier data.
+  why_it_matters: It makes rejected generations reusable while exposing outcome-label, test, pairing, and artifact risks.
+  card: cards/verifiers/v-star-training-verifiers-self-taught-reasoners-2024.md
+  needs: ['needs_code: no official implementation confirmed', 'needs_data: no official generated dataset confirmed', 'needs_model: no checkpoint confirmed', 'needs_decontamination: not reported']
+  curation_level: L4_carded
+  verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-11', verified_by: curation, confidence: medium, notes: Paper and venue verified; implementation artifacts unresolved.}
 
 - id: depo-2026
   title: Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward
