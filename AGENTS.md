@@ -8,6 +8,7 @@
 - Keep every card-specific field inside its Card directory. `review.json` stores workflow state. Validation reports are derived when requested and are not saved as a shared cache.
 - `tmp/paper_cards/review-index.json` is an ignored, derived Review startup cache only. It is rebuilt automatically when missing or stale and is never canonical paper data.
 - The review server may edit Chinese source files and the local JSON records. It must not write shared metadata files.
+- Required Chinese header fields and institution disposition must never be empty. `card_tool check` and Card-header saves assert this; use `no_institution: true` when no institution is known.
 
 ## Paper Workflow
 

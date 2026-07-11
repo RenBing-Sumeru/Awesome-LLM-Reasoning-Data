@@ -1,10 +1,10 @@
 {
-  "one_line_summary_ch": "",
+  "one_line_summary_ch": "MATH 汇集一万两千五百道竞赛数学题和解答，用最终答案匹配评测数学推理。",
   "reading_priority_ch": "可读",
-  "paper_type_ch": "",
-  "best_for_ch": "",
-  "confidence_ch": "",
-  "authors_ch": "",
+  "paper_type_ch": "数学推理 benchmark",
+  "best_for_ch": "适合研究数学数据、答案抽取和可验证推理训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dan Hendrycks, Collin Burns, Saurav Kadavath, Akul Arora, Steven Basart, Eric Tang, Dawn Song, Jacob Steinhardt",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],

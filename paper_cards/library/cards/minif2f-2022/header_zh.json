@@ -1,10 +1,10 @@
 {
-  "one_line_summary_ch": "",
+  "one_line_summary_ch": "MiniF2F 将奥数和高中数学题形式化到多个证明系统，用内核检查证明脚本是否通过。",
   "reading_priority_ch": "可读",
-  "paper_type_ch": "",
-  "best_for_ch": "",
-  "confidence_ch": "",
-  "authors_ch": "",
+  "paper_type_ch": "形式化数学 benchmark",
+  "best_for_ch": "适合研究形式化证明、跨系统验证和 theorem-proving agent 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kunhao Zheng, Jesse Michael Han, Stanislaw Polu",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],

@@ -372,7 +372,17 @@ def save_header_zh_payload(entry_id: str, payload: dict, root: Path | str | None
         else card_tool.clean_category_ids(raw_categories, "论文知识点分类", allow_empty=True, root=root)
     )
     if card_tool.library.card_dir(entry_id, root).exists():
-        paper = card_tool.library.load_card(entry_id, root)["paper"]
+        existing_card = card_tool.library.load_card(entry_id, root)
+        candidate_header = {**existing_card["header_zh"], **payload, "category_ids": selected_categories}
+        header_errors = card_tool.library.card_header_errors(
+            entry_id,
+            candidate_header,
+            existing_card["institutions"],
+            root,
+        )
+        if header_errors:
+            raise ValueError("; ".join(header_errors))
+        paper = existing_card["paper"]
         paper["category_ids"] = selected_categories
         card_tool.library.save_card_paper(entry_id, paper, root)
         queue = dict(card_tool.load_search_queue(root).get("entries", {}).get(entry_id) or {})

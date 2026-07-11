@@ -1,10 +1,10 @@
 {
-  "one_line_summary_ch": "",
+  "one_line_summary_ch": "APPS 用一万道真实编程题和测试执行结果衡量代码生成模型的功能正确性。",
   "reading_priority_ch": "可读",
-  "paper_type_ch": "",
-  "best_for_ch": "",
-  "confidence_ch": "",
-  "authors_ch": "",
+  "paper_type_ch": "代码生成 benchmark",
+  "best_for_ch": "适合研究代码生成、执行验证和代码 RLVR 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dan Hendrycks, Steven Basart, Saurav Kadavath, Mantas Mazeika, Akul Arora, Ethan Guo, Collin Burns, Samir Puranik, Horace He, Dawn Song, Jacob Steinhardt",
   "category_ids": [
     "programmatically_verifiable_outcome_data"
   ],

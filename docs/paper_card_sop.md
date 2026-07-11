@@ -29,6 +29,9 @@ paper metadata index.
    01, 02, 03, and 05 must contain evidence-backed L4 detail.
 4. Fill `header_zh.json`, `institutions.json`, and `queue.json` in the same
    Card. The Review UI is the preferred editor for Chinese fields.
+   `one_line_summary_ch`, `reading_priority_ch`, `paper_type_ch`,
+   `best_for_ch`, `confidence_ch`, and `authors_ch` are required; institutions
+   must be listed or explicitly marked with `no_institution: true`.
 5. Keep review state in `review.json`; validation reports are calculated on
    demand and are never maintained as a global cache.
 

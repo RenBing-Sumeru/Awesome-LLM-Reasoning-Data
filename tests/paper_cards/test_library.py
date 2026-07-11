@@ -110,6 +110,10 @@ category_ids:
 
         self.assertFalse((self.root / "paper_cards" / "valid_status.json").exists())
 
+    def test_card_assertion_rejects_empty_required_header_fields(self) -> None:
+        with self.assertRaisesRegex(ValueError, "paper_type_ch"):
+            library.assert_card_complete("sample-paper", self.root)
+
     def test_header_save_can_remove_the_final_category(self) -> None:
         server.save_header_zh_payload(
             "sample-paper",

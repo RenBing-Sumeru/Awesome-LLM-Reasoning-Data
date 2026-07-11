@@ -12,6 +12,14 @@ except ImportError:  # pragma: no cover - dependency is required by the project
 
 
 RECORD_NAMES = {"header_zh", "institutions", "queue", "review"}
+REQUIRED_HEADER_FIELDS = (
+    "one_line_summary_ch",
+    "reading_priority_ch",
+    "paper_type_ch",
+    "best_for_ch",
+    "confidence_ch",
+    "authors_ch",
+)
 
 
 def project_root(root: Path | str | None = None) -> Path:
@@ -87,6 +95,31 @@ def load_card(entry_id: str, root: Path | str | None = None) -> dict[str, Any]:
         "review": load_json_file(directory / "review.json"),
         "sources": directory / "sources",
     }
+
+
+def card_header_errors(
+    entry_id: str,
+    header_zh: dict[str, Any],
+    institutions: dict[str, Any],
+    root: Path | str | None = None,
+) -> list[str]:
+    errors = [
+        f"{entry_id}: missing required header_zh field {field}"
+        for field in REQUIRED_HEADER_FIELDS
+        if not str(header_zh.get(field) or "").strip()
+    ]
+    if not institutions.get("no_institution") and not any(
+        str(item).strip() for item in institutions.get("institutions") or []
+    ):
+        errors.append(f"{entry_id}: institutions must be filled or marked no_institution")
+    return errors
+
+
+def assert_card_complete(entry_id: str, root: Path | str | None = None) -> None:
+    card = load_card(entry_id, root)
+    errors = card_header_errors(entry_id, card["header_zh"], card["institutions"], root)
+    if errors:
+        raise ValueError("; ".join(errors))
 
 
 def load_cards(root: Path | str | None = None) -> dict[str, dict[str, Any]]:

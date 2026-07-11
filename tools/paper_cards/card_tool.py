@@ -257,6 +257,9 @@ def check_card(entry_id: str, root: Path | str | None = None) -> list[str]:
             errors.append(f"{entry_id}: missing {rel}")
         elif not path.read_text(encoding="utf-8").strip():
             errors.append(f"{entry_id}: empty {rel}")
+    if library.card_dir(entry_id, root).exists():
+        card = library.load_card(entry_id, root)
+        errors.extend(library.card_header_errors(entry_id, card["header_zh"], card["institutions"], root))
     return errors
 
 
