@@ -435,6 +435,9 @@ def category_labels_for_entry(entry: dict, header: dict | None = None, root: Pat
 
 
 def load_header_zh(root: Path | str | None = None) -> dict:
+    cards = library.load_cards(root)
+    if cards:
+        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["header_zh"] for entry_id, card in cards.items()}}
     payload = load_json_file(header_zh_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
     entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
     return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
@@ -467,8 +470,11 @@ def save_header_zh(entry_id: str, record: dict, root: Path | str | None = None) 
     entries = load_entries(root)
     if entry_id not in entries:
         raise ValueError(f"unknown entry_id: {entry_id}")
-    payload = load_header_zh(root)
     cleaned = clean_header_zh_record(record, root)
+    if library.card_dir(entry_id, root).exists():
+        library.save_card_record(entry_id, "header_zh", cleaned, root)
+        return cleaned
+    payload = load_header_zh(root)
     payload["entries"][entry_id] = cleaned
     payload["updated_at"] = cleaned["updated_at"]
     save_header_zh_payload(payload, root)
@@ -499,6 +505,9 @@ def chinese_confidence(value: str) -> str:
 
 
 def load_institutions(root: Path | str | None = None) -> dict:
+    cards = library.load_cards(root)
+    if cards:
+        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["institutions"] for entry_id, card in cards.items()}}
     payload = load_json_file(institutions_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
     entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
     return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
@@ -541,6 +550,9 @@ def save_institutions(
         raise ValueError(f"unknown entry_id: {entry_id}")
     payload = load_institutions(root)
     record = clean_institution_record(institutions, has_more, no_institution)
+    if library.card_dir(entry_id, root).exists():
+        library.save_card_record(entry_id, "institutions", record, root)
+        return record
     payload["entries"][entry_id] = record
     payload["updated_at"] = record["updated_at"]
     save_institutions_payload(payload, root)
@@ -568,6 +580,9 @@ def institution_text(entry_id: str, lang: str, root: Path | str | None = None) -
 
 
 def load_status(root: Path | str | None = None) -> dict:
+    cards = library.load_cards(root)
+    if cards:
+        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["review"] for entry_id, card in cards.items()}}
     payload = load_json_file(status_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
     entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
     for record in entries.values():
@@ -608,6 +623,9 @@ def update_status(
         record.pop("reviewed_at", None)
     if package_name:
         record["last_package"] = package_name
+    if library.card_dir(entry_id, root).exists():
+        library.save_card_record(entry_id, "review", record, root)
+        return load_status(root)
     payload["entries"][entry_id] = record
     payload["updated_at"] = timestamp
     save_status(payload, root)
@@ -615,6 +633,9 @@ def update_status(
 
 
 def load_search_queue(root: Path | str | None = None) -> dict:
+    cards = library.load_cards(root)
+    if cards:
+        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["queue"] for entry_id, card in cards.items()}}
     payload = load_json_file(search_queue_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
     entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
     return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}

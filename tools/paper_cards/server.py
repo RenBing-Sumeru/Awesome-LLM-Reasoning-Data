@@ -265,6 +265,10 @@ def save_search_queue_item(queue_id: str, record: dict, root: Path | str | None 
         "review_note": str(record.get("review_note") or "").strip(),
         "updated_at": card_tool.now_iso(),
     }
+    if card_tool.library.card_dir(queue_id, root).exists():
+        card_tool.library.save_card_record(queue_id, "queue", cleaned_record, root)
+        queue = card_tool.load_search_queue(root)
+        return {"ok": True, "queue": queue, "entry": cleaned_record}
     queue = card_tool.load_search_queue(root)
     queue["entries"][queue_id] = cleaned_record
     queue["updated_at"] = cleaned_record["updated_at"]

@@ -197,8 +197,8 @@ paper_categories:
         path = self.root / "paper_cards" / "header_zh.json"
         self.assertTrue(path.exists())
 
-    def test_save_header_zh_payload_rejects_multiple_categories(self) -> None:
-        with self.assertRaisesRegex(ValueError, "只能保留一个"):
+    def test_save_header_zh_payload_rejects_more_than_two_categories(self) -> None:
+        with self.assertRaisesRegex(ValueError, "最多保留两个"):
             server.save_header_zh_payload(
                 "sample-paper",
                 {
@@ -211,6 +211,7 @@ paper_categories:
                     "category_ids": [
                         "programmatically_verifiable_outcome_data",
                         "scaling_rlvr_test_time_compute",
+                        "third-category",
                     ],
                 },
                 root=self.root,
@@ -320,8 +321,8 @@ paper_categories:
                 root=self.root,
             )
 
-    def test_save_search_queue_item_rejects_multiple_category_guesses(self) -> None:
-        with self.assertRaisesRegex(ValueError, "只能保留一个"):
+    def test_save_search_queue_item_rejects_more_than_two_category_guesses(self) -> None:
+        with self.assertRaisesRegex(ValueError, "最多保留两个"):
             server.save_search_queue_item(
                 "candidate-paper",
                 {
@@ -329,6 +330,7 @@ paper_categories:
                     "track_guess": [
                         "programmatically_verifiable_outcome_data",
                         "scaling_rlvr_test_time_compute",
+                        "third-category",
                     ],
                     "search_status": "candidate",
                 },
