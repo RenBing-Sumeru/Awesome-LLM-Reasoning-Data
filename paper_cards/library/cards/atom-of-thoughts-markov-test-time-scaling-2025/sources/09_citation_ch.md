@@ -1,0 +1,1 @@
+- Atom of Thoughts for Markov LLM Test-Time Scaling. NeurIPS 2025, 2025. https://openreview.net/forum?id=qXSFkP0ELS

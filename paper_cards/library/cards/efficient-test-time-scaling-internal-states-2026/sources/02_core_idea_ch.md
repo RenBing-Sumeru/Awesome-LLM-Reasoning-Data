@@ -1,0 +1,3 @@
+- One-sentence contribution: Efficient Test-Time Scaling of Multi-Step Reasoning by Probing Internal States of Large Language Models studies test-time scaling for reliable reasoning models.
+- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
+- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

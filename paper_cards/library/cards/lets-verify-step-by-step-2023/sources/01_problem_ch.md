@@ -1,3 +1,4 @@
-这篇论文问的是数学推理监督的核心问题：只奖励最终答案够不够，还是应该检查每一步推理？
-
-它属于这个方向，因为后续很多验证器引导搜索、PRM 重排和 RLVR 都需要过程奖励模型。这里的数据对象不是一条完整答案，而是题目、每个推理步骤、人工步骤标签、PRM 分数和最终答案。
+- 官方来源: https://arxiv.org/abs/2305.20050
+- 会议/日期: ICLR 2024, 2023
+- 具体问题: How to improve reliable reasoning under RLVR budgets.
+- 重要性: It supplies a current benchmark or training signal for the atlas.

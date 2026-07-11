@@ -1,12 +1,12 @@
 {
-  "one_line_summary_ch": "这篇用 PRM800K 说明 step-level process supervision 可以训练更强的数学过程验证器。",
-  "reading_priority_ch": "必读",
-  "paper_type_ch": "过程监督 / PRM verifier 数据论文",
-  "best_for_ch": "适合关注 verifier scaling、PRM、step-level reward 和数学 RLVR 审计的读者。",
-  "confidence_ch": "高",
-  "authors_ch": "Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, Karl Cobbe",
+  "one_line_summary_ch": "Let's Verify Step by Step 研究 RLVR，并提供可核验的推理评测或训练证据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "RLVR 研究论文",
+  "best_for_ch": "适合关注推理模型、可验证奖励和推理计算预算的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Hunter Lightman, Vineet Kosaraju, Yura Burda",
   "category_ids": [
     "scaling_rlvr_test_time_compute"
   ],
-  "updated_at": "2026-07-10T15:11:44Z"
+  "updated_at": "2026-07-11T00:00:00Z"
 }

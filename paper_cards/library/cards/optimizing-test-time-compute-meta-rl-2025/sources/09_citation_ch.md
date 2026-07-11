@@ -1,0 +1,1 @@
+- Optimizing Test-Time Compute via Meta Reinforcement Finetuning. ICML 2025, 2025. https://openreview.net/forum?id=TqODUDsU4u

@@ -1,0 +1,3 @@
+- One-sentence contribution: LATTS: LAtent space Test Time Scaling for diffusion language models studies test-time scaling for reliable reasoning models.
+- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
+- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

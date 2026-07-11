@@ -1,0 +1,1 @@
+- DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning. Nature / arXiv, 2025. https://arxiv.org/abs/2501.12948

@@ -1,0 +1,1 @@
+- Test-Time Scaling via Metric Geometry for LLM Reasoning. ICLR 2026 submission, 2025. https://openreview.net/forum?id=WO6ngOsEL3

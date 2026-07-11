@@ -1,0 +1,1 @@
+- Kimi k1.5: Scaling Reinforcement Learning with LLMs. arXiv, 2025. https://arxiv.org/abs/2501.12599

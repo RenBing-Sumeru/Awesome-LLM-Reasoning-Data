@@ -1,0 +1,1 @@
+- Reinforcement Learning for Reasoning in Large Language Models with One Training Example. arXiv, 2025. https://arxiv.org/abs/2504.20571

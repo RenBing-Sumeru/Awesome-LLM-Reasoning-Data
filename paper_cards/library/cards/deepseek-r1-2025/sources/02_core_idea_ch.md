@@ -1,0 +1,3 @@
+- One-sentence contribution: DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning studies RLVR for reliable reasoning models.
+- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
+- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

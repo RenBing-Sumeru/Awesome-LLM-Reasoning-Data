@@ -1,0 +1,16 @@
+{
+  "title": "M1: Towards Scalable Test-Time Compute with Mamba Reasoning Models",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=bOnhqVefxk",
+    "arxiv": null,
+    "openreview": "https://openreview.net/forum?id=bOnhqVefxk"
+  },
+  "reason_to_include": "test-time scaling 最新代表性论文",
+  "decision_reason": "Primary source and venue/institution quality signal",
+  "search_status": "candidate",
+  "review_note": "",
+  "updated_at": "2026-07-11T00:00:00Z",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ]
+}

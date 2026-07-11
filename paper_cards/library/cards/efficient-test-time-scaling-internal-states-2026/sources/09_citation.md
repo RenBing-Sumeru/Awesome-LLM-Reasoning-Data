@@ -1,0 +1,1 @@
+- Efficient Test-Time Scaling of Multi-Step Reasoning by Probing Internal States of Large Language Models. ICLR 2026, 2026. https://openreview.net/forum?id=bhEZkAHaT9

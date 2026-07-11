@@ -1,3 +1,3 @@
-核心思想是用人类标注的步骤级反馈训练过程奖励模型。PRM 不只判断最后答案对不对，还判断中间步骤是否走在正确路线上。
-
-对 atlas 来说，这篇的价值是把验证器扩展具体化了：验证器也需要数据、标签、主动学习和校准，而不是一个默认可靠的黑盒。
+- One-sentence contribution: Let's Verify Step by Step studies RLVR for reliable reasoning models.
+- Core mechanism: The paper allocates, verifies, or optimizes additional reasoning computation.
+- Feedback contract: A verifier, evaluator, or consensus rule scores the trajectory.

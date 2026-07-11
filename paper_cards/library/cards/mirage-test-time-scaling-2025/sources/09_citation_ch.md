@@ -1,0 +1,1 @@
+- Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models. NeurIPS 2025, 2025. https://openreview.net/forum?id=tKPqbamNb9

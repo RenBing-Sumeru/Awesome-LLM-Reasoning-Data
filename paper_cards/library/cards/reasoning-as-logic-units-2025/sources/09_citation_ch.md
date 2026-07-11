@@ -1,0 +1,1 @@
+- Reasoning-as-Logic-Units: Scaling Test-Time Reasoning in Large Language Models Through Logic Unit Alignment. ICML 2025, 2025. https://openreview.net/forum?id=mMgSxbO4H0

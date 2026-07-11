@@ -1,0 +1,4 @@
+- 官方来源: https://openreview.net/forum?id=D6o6Bwtq7h
+- 会议/日期: ES-FoMo III Spotlight, 2025
+- 具体问题: How to improve reliable reasoning under test-time scaling budgets.
+- 重要性: It supplies a current benchmark or training signal for the atlas.

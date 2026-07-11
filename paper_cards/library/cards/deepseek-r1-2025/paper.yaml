@@ -1,0 +1,98 @@
+id: deepseek-r1-2025
+title: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement
+  Learning'
+year: 2025
+venue: Nature / arXiv
+authors:
+- DeepSeek-AI
+source_role:
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- language-model-reasoning
+- RLVR
+training_use:
+- rlvr
+- agent_training
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.12948
+  arxiv: https://arxiv.org/abs/2501.12948
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical, coding, or general reasoning benchmark tasks.
+  trace_author: Language model inference or RL trajectories.
+  answer_format: Reasoning trace, verifier outcome, and final answer.
+  process_fields:
+  - reasoning tokens
+  - compute budget
+  - verifier score
+  environment_or_substrate: Benchmark evaluation harness.
+  verifier_or_reward: Outcome verifier, process evaluator, or consensus rule.
+  terminal_predicate: Correct verified answer or budget termination.
+recipe_metadata:
+  base_model: Open language model
+  teacher: Verified benchmark answers
+  generator: Model rollout
+  filtering_rule: Verified outcomes
+  sampling_protocol: Reported paper protocol
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-reported compute budget
+  optimizer_or_scaffold: RLVR
+audit:
+  source_mixture: Official paper and benchmark artifacts
+  split: See official paper
+  decontamination: Requires checking benchmark overlap
+  license: Check official source license
+  lineage: Primary paper record
+  known_failure_modes:
+  - Benchmark coverage and verifier assumptions may limit transfer
+  citation_status: verified
+  confidence: medium
+  notes: Metadata verified against the linked primary source.
+inclusion_reason: Recent primary-source work representing RLVR.
+related: []
+tags:
+- scaling
+- rlvr
+- test-time-compute
+- 2025-2026
+status: verified
+one_line: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement
+  Learning studies RLVR for reliable reasoning models.'
+needs:
+- 'needs_review: human curator should judge promotion'
+one_line_summary: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement
+  Learning studies RLVR for reliable reasoning models.'
+why_it_matters: Provides evidence and a reusable evaluation object for RLVR.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: medium
+  notes: Primary source linked.
+category_ids:
+- scaling_rlvr_test_time_compute
+batch:
+  id: library-11-scaling-rlvr-ttc
+  request_sha256: batch-2026-07-11
+  primary_category_id: scaling_rlvr_test_time_compute

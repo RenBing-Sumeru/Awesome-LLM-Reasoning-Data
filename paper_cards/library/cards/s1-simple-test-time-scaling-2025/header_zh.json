@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "s1: Simple test-time scaling 研究 test-time scaling，并提供可核验的推理评测或训练证据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "test-time scaling 研究论文",
+  "best_for_ch": "适合关注推理模型、可验证奖励和推理计算预算的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yangdi Lyu, Zihan Wang, Jie Tang",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

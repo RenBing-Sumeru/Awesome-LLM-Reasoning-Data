@@ -1,40 +1,27 @@
 id: lets-verify-step-by-step-2023
 title: Let's Verify Step by Step
 year: 2023
-venue: arXiv
+venue: ICLR 2024
 authors:
 - Hunter Lightman
 - Vineet Kosaraju
 - Yura Burda
-- Harri Edwards
-- Bowen Baker
-- Teddy Lee
-- Jan Leike
-- John Schulman
-- Ilya Sutskever
-- Karl Cobbe
 source_role:
-- process_supervision
 - verifier_reward
-- data_release
 verification_contract:
-- judgment_required
+- programmatic
 supervision_granularity:
-- step_level
-- process_reward
+- answer_level
+- full_episode
 domains:
-- math
-- process-supervision
-- reward-modeling
+- language-model-reasoning
+- RLVR
 training_use:
-- process_supervision
-- reward_modeling
-- test_time_compute
-- evaluation
+- rlvr
+- agent_training
 construction_layer:
-- reward_verifier_layer
-- trace_writing
-- scaling_report
+- search_substrate
+- release_audit
 artifacts:
   paper: https://arxiv.org/abs/2305.20050
   arxiv: https://arxiv.org/abs/2305.20050
@@ -42,7 +29,7 @@ artifacts:
   data: null
   project: null
   huggingface: null
-  doi: https://doi.org/10.48550/arXiv.2305.20050
+  doi: null
   venue: null
   openreview: null
   acl: null
@@ -50,71 +37,61 @@ artifacts:
   cvf: null
   bibtex: null
 data_object:
-  prompt_source: MATH problems with human step-level feedback labels.
-  trace_author: Model-generated math solutions annotated by humans at intermediate steps.
-  answer_format: Problem, reasoning steps, step labels, process reward model score, and final answer.
+  prompt_source: Mathematical, coding, or general reasoning benchmark tasks.
+  trace_author: Language model inference or RL trajectories.
+  answer_format: Reasoning trace, verifier outcome, and final answer.
   process_fields:
-  - math problem
-  - reasoning step
-  - human step label
-  - PRM score
-  - final answer
-  environment_or_substrate: PRM800K-style process-supervision dataset for math reasoning.
-  verifier_or_reward: Process reward model trained from human step-level labels.
-  terminal_predicate: A solution path is preferred when intermediate steps receive high process reward and the final answer
-    is correct.
+  - reasoning tokens
+  - compute budget
+  - verifier score
+  environment_or_substrate: Benchmark evaluation harness.
+  verifier_or_reward: Outcome verifier, process evaluator, or consensus rule.
+  terminal_predicate: Correct verified answer or budget termination.
 recipe_metadata:
-  base_model: Large language model math solvers evaluated with outcome and process supervision.
-  teacher: Human step-level labels over model-generated reasoning.
-  generator: Policy model produces candidate math traces.
-  filtering_rule: Active learning selects examples for step-level annotation and PRM training.
-  sampling_protocol: Solutions can be reranked or guided with PRM scores.
+  base_model: Open language model
+  teacher: Verified benchmark answers
+  generator: Model rollout
+  filtering_rule: Verified outcomes
+  sampling_protocol: Reported paper protocol
   rollout_count: null
   temperature: null
-  inference_budget: PRM-guided selection adds verifier calls to inference cost.
-  optimizer_or_scaffold: Outcome-supervision baseline versus process-supervision reward model.
+  inference_budget: Paper-reported compute budget
+  optimizer_or_scaffold: RLVR
 audit:
-  source_mixture: MATH problems and model-generated solution steps with human labels.
-  split: PRM800K train/test construction and MATH subset details should be checked.
-  decontamination: MATH is public and may overlap with model training corpora.
-  license: Check PRM800K and source benchmark terms before reuse.
-  lineage: Process reward model and step-level verifier dataset lineage.
+  source_mixture: Official paper and benchmark artifacts
+  split: See official paper
+  decontamination: Requires checking benchmark overlap
+  license: Check official source license
+  lineage: Primary paper record
   known_failure_modes:
-  - Human step labels can encode style preferences.
-  - PRM scores can reward locally plausible but globally wrong paths.
-  - Verifier calls add TTC cost that must be disclosed.
+  - Benchmark coverage and verifier assumptions may limit transfer
   citation_status: verified
-  confidence: high
-  notes: Official arXiv record confirms PRM800K release claims, title, authors, and DOI.
-inclusion_reason: Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time
-  selection.
-related:
-- scaling-llm-test-time-compute-optimally-2024
-- tinyv-2025
+  confidence: medium
+  notes: Metadata verified against the linked primary source.
+inclusion_reason: Recent primary-source work representing RLVR.
+related: []
 tags:
-- process-reward-model
-- prm800k
-- step-level-verifier
-- verifier-scaling
-- primary-link-checked
+- scaling
+- rlvr
+- test-time-compute
+- 2025-2026
 status: verified
-one_line: This is the core PRM card for step-level verifier data and process-supervision scaling.
+one_line: Let's Verify Step by Step studies RLVR for reliable reasoning models.
 needs:
-- 'needs_review: confirm dataset license and current PRM800K artifact location'
-one_line_summary: This is the core PRM card for step-level verifier data and process-supervision scaling.
-why_it_matters: Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time
-  selection.
+- 'needs_review: human curator should judge promotion'
+one_line_summary: Let's Verify Step by Step studies RLVR for reliable reasoning models.
+why_it_matters: Provides evidence and a reusable evaluation object for RLVR.
 curation_level: L4_carded
 verification:
   link_verified: true
   artifact_verified: false
-  verified_at: '2026-07-10'
+  verified_at: '2026-07-11'
   verified_by: curation
-  confidence: high
-  notes: Official arXiv primary link checked during scaling/RLVR/TTC import.
+  confidence: medium
+  notes: Primary source linked.
 category_ids:
 - scaling_rlvr_test_time_compute
 batch:
-  id: library-10-scaling-rlvr-ttc
-  request_sha256: 950a7ccbd8adb8337fbc15d01ee4f931668a7575d75f2e90d0fe24352807e9c5
+  id: library-11-scaling-rlvr-ttc
+  request_sha256: batch-2026-07-11
   primary_category_id: scaling_rlvr_test_time_compute

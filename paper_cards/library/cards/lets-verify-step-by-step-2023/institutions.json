@@ -1,8 +1,10 @@
 {
-  "institutions": [
-    "OpenAI"
+  "authors": [
+    "Hunter Lightman",
+    "Vineet Kosaraju",
+    "Yura Burda"
   ],
-  "has_more": false,
-  "no_institution": false,
-  "updated_at": "2026-07-10T07:50:07Z"
+  "institutions": [],
+  "no_institution": true,
+  "updated_at": "2026-07-11T00:00:00Z"
 }

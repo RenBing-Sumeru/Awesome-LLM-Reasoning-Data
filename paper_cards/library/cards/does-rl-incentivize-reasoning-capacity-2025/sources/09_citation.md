@@ -1,0 +1,1 @@
+- Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?. arXiv, 2025. https://arxiv.org/abs/2504.13837

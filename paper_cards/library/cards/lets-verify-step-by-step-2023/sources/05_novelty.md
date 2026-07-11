@@ -1,11 +1,4 @@
-Prior-work baseline: greedy decoding, ordinary SFT, answer-only evaluation, or fixed benchmark scoring, depending on the paper.
-
-What changes: turns verifier training from answer-level reward into dense process-reward data.
-
-Direction signal: this paper gives the track a concrete unit to audit: samples, branches, verifier labels, synthetic accepted traces, RL reward, or inference FLOPs.
-
-Quality signal: High-impact OpenAI process-supervision release with official arXiv primary source; not listed as a top-conference paper in the arXiv record..
-
-What is not new: the underlying reasoning benchmarks and final-answer scoring are often inherited from prior work.
-
-Inspect before reuse: verifier independence, data lineage, sampling budget, benchmark overlap, artifact license, and whether improvements are attributed to the right lever.
+- Prior work baseline: Standard CoT, outcome reward, or fixed-budget inference.
+- What changes: A current RLVR mechanism or analysis.
+- Top-conference quality signal: ICLR 2024.
+- What to inspect before reuse: Verifier assumptions, contamination, and budget accounting.

@@ -1,0 +1,4 @@
+- 官方来源: https://arxiv.org/abs/2501.19393
+- 会议/日期: arXiv, 2025
+- 具体问题: How to improve reliable reasoning under test-time scaling budgets.
+- 重要性: It supplies a current benchmark or training signal for the atlas.
