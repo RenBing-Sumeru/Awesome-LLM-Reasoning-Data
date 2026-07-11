@@ -542,14 +542,28 @@ input[type="radio"] {
 
 .category-options {
   min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
 }
 
-.category-singleton {
-  display: block;
+.category-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: var(--ink);
   font-size: 13px;
-  font-weight: 750;
-  line-height: 1.45;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.category-option input {
+  margin: 0;
+}
+
+.category-option:has(input:disabled) {
+  color: var(--muted);
+  cursor: not-allowed;
 }
 
 .category-unbound {

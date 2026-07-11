@@ -504,7 +504,7 @@ taxonomy:
   - training_use
   - construction_layer
   - status
-  status_policy: Entries without official paper/code/data links in data/papers.yaml remain visible but are marked needs_search
+  status_policy: Cards without official paper/code/data links remain visible but are marked needs_search
     in generated pages. The atlas does not invent links.
   emoji_legend:
     🧭: survey / primer

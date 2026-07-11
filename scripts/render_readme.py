@@ -513,7 +513,7 @@ def research_question_table() -> str:
         "|---|---|",
         f"| What counts as post-training reasoning data? | [docs/01](docs/01_what_is_post_training_reasoning_data.md) + [Foundations](papers/{category_file('foundations_and_primers')}) |",
         f"| How do we verify reasoning data? | [Programmatic](papers/{category_file('programmatically_verifiable_outcome_data')}) + [Process supervision](papers/{category_file('process_trace_supervision_data')}) + [Verifiers](docs/06_verifiers_and_rewards.md) |",
-        f"| How are open reasoning datasets constructed? | [Construction recipes](papers/{category_file('data_construction_open_release_recipes')}) + [paper-card sources](paper_cards/sources/) |",
+        f"| How are open reasoning datasets constructed? | [Construction recipes](papers/{category_file('data_construction_open_release_recipes')}) + [Card library](paper_cards/library/cards/) |",
         f"| What data does RLVR actually need? | [Programmatic verification](papers/{category_file('programmatically_verifiable_outcome_data')}) + [Scaling/RLVR](papers/{category_file('scaling_rlvr_test_time_compute')}) |",
         f"| How should agent trajectories be serialized? | [Agent data](papers/{category_file('environment_agent_trajectory_data')}) + [docs/07](docs/07_agent_trajectory_data.md) |",
         f"| How do frontier reports disclose or hide data recipes? | [Frontier reports](papers/{category_file('frontier_reports_data_disclosure_ledger')}) |",
@@ -531,7 +531,7 @@ def readme_en() -> str:
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)]({PAGES_URL})
-[![Entries](https://img.shields.io/badge/entries-{s['total']}-2563eb)](data/papers.yaml)
+[![Entries](https://img.shields.io/badge/entries-{s['total']}-2563eb)](paper_cards/library/cards/)
 [![Verified](https://img.shields.io/badge/verified-{s['verified']}-0f766e)](reports/link_coverage.md)
 [![Paper Cards](https://img.shields.io/badge/paper--card%20sources-{s['cards']}-7c3aed)](paper_cards/README.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -707,9 +707,9 @@ This repository should work like a small open course. You do not need to read ev
 | Stage | Learn | Main resources | Output you should have |
 |---:|---|---|---|
 | 1 | Vocabulary and mental model | [60-second version](#-60-second-version), [docs/00](docs/00_start_here.md), [docs/01](docs/01_what_is_post_training_reasoning_data.md) | You can explain the difference between answer data, trace data, reward data, verifier data, and trajectory data. |
-| 2 | Feedback contracts | [docs/02](docs/02_verifier_anchored_taxonomy.md), [docs/06](docs/06_verifiers_and_rewards.md), [paper-card sources](paper_cards/sources/) | You can identify whether a work uses programmatic, environmental, judgment-required, or mixed verification. |
+| 2 | Feedback contracts | [docs/02](docs/02_verifier_anchored_taxonomy.md), [docs/06](docs/06_verifiers_and_rewards.md), [Card library](paper_cards/library/cards/) | You can identify whether a work uses programmatic, environmental, judgment-required, or mixed verification. |
 | 3 | Core papers | [Starter Pack](#-starter-pack-20-must-read-papers), [papers/README.md](papers/README.md), [paper_cards/README.md](paper_cards/README.md) | You can locate the canonical papers for math, code, process supervision, agents, RLVR, and audit. |
-| 4 | Data construction | [docs/05](docs/05_construction_cookbook.md), [paper-card sources](paper_cards/sources/) | You can describe prompt sourcing, teacher generation, filtering, verifier pinning, and release metadata. |
+| 4 | Data construction | [docs/05](docs/05_construction_cookbook.md), [Card library](paper_cards/library/cards/) | You can describe prompt sourcing, teacher generation, filtering, verifier pinning, and release metadata. |
 | 5 | Specialized tracks | [programmatic data]({paper_link('programmatically_verifiable_outcome_data')}), [agents]({paper_link('environment_agent_trajectory_data')}), [rubrics]({paper_link('judgment_rubric_domain_expert_data')}), [scaling]({paper_link('scaling_rlvr_test_time_compute')}) | You can choose a subfield and follow its top papers and audit questions. |
 | 6 | Audit and contribution | [docs/09](docs/09_audit_and_failure_modes.md), [reports/link_coverage.md](reports/link_coverage.md), [CONTRIBUTING.md](CONTRIBUTING.md) | You can tell what is verified, what is missing, and how to improve an entry without hallucinating links. |
 
@@ -722,7 +722,7 @@ Read these as a learning path, not as a citation dump. The rightmost columns tel
 Next steps:
 
 - Newcomer: read [docs/00_start_here.md](docs/00_start_here.md) and [docs/01_what_is_post_training_reasoning_data.md](docs/01_what_is_post_training_reasoning_data.md).
-- Builder: read [docs/05_construction_cookbook.md](docs/05_construction_cookbook.md) and compare paper-card sources in [paper_cards/sources/](paper_cards/sources/).
+- Builder: read [docs/05_construction_cookbook.md](docs/05_construction_cookbook.md) and compare Card-local sources in [paper_cards/library/cards/](paper_cards/library/cards/).
 - Auditor: read [docs/09_audit_and_failure_modes.md](docs/09_audit_and_failure_modes.md) and compare reviewed paper-card sources from [paper_cards/README.md](paper_cards/README.md).
 
 ---
@@ -848,7 +848,7 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 | [docs/](docs/) | Conceptual lessons: mental model, taxonomy, construction cookbook, verifiers, agent trajectories, scaling, and failure modes. |
 | [papers/](papers/README.md) | Field navigation map: category pages with read-first tables, full paper lists, audit checklists, related paper-card sources, and open gaps. |
 | [paper_cards/](paper_cards/README.md) | Bilingual paper-card source files and local review workflow. |
-| [data/papers.yaml](data/papers.yaml) | Structured source of truth for paper metadata, roles, contracts, summaries, links, and curation levels. |
+| [paper_cards/library/cards/](paper_cards/library/cards/) | Structured source of truth: each Card owns its paper metadata, local review records, and bilingual sources. |
 | [docs/index.html](docs/index.html) | Searchable web atlas generated from structured data. |
 | [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, quality audits, and live-link reports. |
 | [exports/](exports/) | CSV, JSON, and BibTeX exports for readers who want to reuse the atlas data. |
@@ -906,7 +906,7 @@ The long categorized lists live in [papers/](papers/README.md). Each category pa
 Paper-card sources turn citations into reviewable bilingual sections. The full assembled cards are generated by Python and are not maintained by hand.
 
 - [Paper-card workflow](paper_cards/README.md)
-- [Paper-card sources](paper_cards/sources/)
+- [Card library](paper_cards/library/cards/)
 
 ## 🔎 Searchable Website
 
@@ -1065,7 +1065,7 @@ def readme_zh() -> str:
 | 1 | 基础概念和 mental model | [docs/00](docs/00_start_here.md)、[docs/01](docs/01_what_is_post_training_reasoning_data.md) | 能解释 answer data、trace data、reward data、verifier data、trajectory data 的区别。 |
 | 2 | 反馈契约 | [docs/02](docs/02_verifier_anchored_taxonomy.md)、[docs/06](docs/06_verifiers_and_rewards.md) | 能判断一篇工作使用 programmatic、environmental、judgment-required 还是 mixed verification。 |
 | 3 | 核心论文 | [Starter Pack](#-starter-pack20-篇必读)、[papers/README.md](papers/README.md)、[paper_cards/README.md](paper_cards/README.md) | 能定位 math/code/process/agent/RLVR/audit 的代表性工作。 |
-| 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[paper_cards/sources/](paper_cards/sources/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
+| 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[Card 库](paper_cards/library/cards/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
 | 5 | 专题深入 | [math/code/proof]({paper_link('programmatically_verifiable_outcome_data')})、[agents]({paper_link('environment_agent_trajectory_data')})、[rubrics]({paper_link('judgment_rubric_domain_expert_data')})、[scaling]({paper_link('scaling_rlvr_test_time_compute')}) | 能沿一个子领域继续读论文、看双语卡片源、查官方链接。 |
 | 6 | 审计与贡献 | [docs/09](docs/09_audit_and_failure_modes.md)、[reports/link_coverage.md](reports/link_coverage.md)、[CONTRIBUTING.md](CONTRIBUTING.md) | 能判断什么已经验证、什么还缺失，并且可以给仓库补高质量条目。 |
 
@@ -1114,7 +1114,7 @@ def readme_zh() -> str:
 | [docs/](docs/) | 系统学习材料：概念、taxonomy、construction cookbook、verifier、agent trajectory、scaling、failure modes。 |
 | [papers/](papers/README.md) | 论文导航地图：按子领域组织 read-first、full list、audit checklist、related paper-card sources。 |
 | [paper_cards/](paper_cards/README.md) | 双语 paper-card 源文件和本地 review 工作流。 |
-| [data/papers.yaml](data/papers.yaml) | 结构化数据源：记录 metadata、role、contract、summary、link、curation level。 |
+| [paper_cards/library/cards/](paper_cards/library/cards/) | 结构化唯一来源：每个 Card 独立维护元数据、局部 review 记录和双语正文。 |
 | [docs/index.html](docs/index.html) | 可搜索网页 atlas：可以按 year、role、contract、training use、curation level 等过滤。 |
 | [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、质量审查、link check。 |
 | [exports/](exports/) | CSV、JSON、BibTeX，方便复用这个 atlas。 |

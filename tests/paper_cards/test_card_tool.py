@@ -160,8 +160,7 @@ paper_categories:
         self.assertIn("阅读优先级：必读", extra)
         self.assertIn("当前英文备注字段", extra)
         self.assertIn("人工确认有用。", annotation)
-        self.assertTrue((self.root / "paper_cards" / "generated" / "sample-paper_zh_extra_fields.md").exists())
-        self.assertTrue((self.root / "paper_cards" / "generated" / "sample-paper_human_annotation.md").exists())
+        self.assertFalse((self.root / "paper_cards" / "generated").exists())
         self.assertFalse((self.root / "review").exists())
 
     def test_write_package_accepts_l5_review_ready(self) -> None:
@@ -387,6 +386,13 @@ paper_categories:
         self.assertEqual(report["level"], "L6_reviewed")
         self.assertEqual(report["pool"], "l6")
 
+    def test_write_package_does_not_persist_generated_review_files(self) -> None:
+        self.make_review_ready()
+
+        card_tool.write_package(["sample-paper"], root=self.root)
+
+        self.assertFalse((self.root / "paper_cards" / "generated").exists())
+
     def test_valid_report_lists_missing_l5_text_fields(self) -> None:
         self.write_complete_sections()
 
@@ -405,7 +411,8 @@ paper_categories:
 
         self.assertFalse(report["ok"])
         self.assertEqual(report["pool"], "invalid")
-        self.assertIn("缺少卡片源目录：paper_cards/sources/sample-paper", report["blocking_errors"])
+        expected = f"缺少卡片源目录：{self.source_dir.relative_to(self.root).as_posix()}"
+        self.assertIn(expected, report["blocking_errors"])
 
     def test_valid_report_rejects_freeform_reading_priority(self) -> None:
         self.write_complete_sections()

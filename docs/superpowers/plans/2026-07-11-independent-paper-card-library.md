@@ -202,10 +202,10 @@ Expected: PASS.
 - Modify: `scripts/validate_data.py`
 - Modify: `paper_cards/README.md`
 - Modify: `AGENTS.md`
-- Remove: `data/papers.yaml`, `paper_cards/header_zh.json`, `paper_cards/institutions.json`, `paper_cards/search_queue.json`, `paper_cards/status.json`, `paper_cards/valid_status.json`, `paper_cards/sources/`, `paper_cards/prompt_batches/`
+- Remove the former shared metadata, local-review JSON, source, and batch-record layout after parity verification.
 
 **Interfaces:**
-- Build scripts consume the library loader and write generated indexes under `data/_generated/` and `docs/assets/`.
+- Build scripts consume the library loader and write generated indexes under `docs/assets/`.
 - Validation rejects any Card-local file that is missing, any invalid category list, or inconsistent batch provenance.
 
 - [ ] **Step 1: Write failing generated-index tests**
@@ -220,7 +220,7 @@ def test_generated_entries_are_derived_from_library_cards(self) -> None:
 
 Run: `PYTHONPATH=. python3 tests/paper_cards/test_atlas_migration.py`
 
-Expected: FAIL because generated assets still read `data/papers.yaml`.
+Expected: FAIL until generated assets read the Card library.
 
 - [ ] **Step 3: Implement output generation and delete legacy sources**
 

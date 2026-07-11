@@ -14,7 +14,7 @@
         <div class="navlinks">
           <a href="../../docs/index.html">Atlas</a>
           <a href="../../docs/paper_card_sop.md">SOP</a>
-          <a href="../../paper_cards/status.json">状态 JSON</a>
+          <a href="../../paper_cards/library/">Card 库</a>
         </div>
       </nav>
       <section class="hero">
@@ -43,7 +43,7 @@
           </select>
         </label>
         <label class="wide">搜索
-          <input id="query" type="search" placeholder="标题、entry_id、track、verifier、benchmark">
+          <input id="query" type="search" placeholder="标题、entry_id、分类、verifier、benchmark">
         </label>
         <div id="downloadControls" class="bulk-controls" aria-label="Downloadable card actions">
           <button id="batchDownload" type="button">全部重新下载</button>
@@ -69,7 +69,7 @@
             <section class="header-zh-panel">
               <div class="pane-head">
                 <h3>中文卡片头字段</h3>
-                <span>写入 paper_cards/header_zh.json</span>
+                <span>写入当前 Card 的 header_zh.json</span>
               </div>
               <div class="header-zh-grid">
                 <label class="wide">一句话评价
@@ -94,11 +94,11 @@
                   <input id="confidenceCh" type="text" placeholder="高 / 中 / 低 / 待复核">
                 </label>
                 <label class="wide">作者显示
-                  <input id="authorsCh" type="text" placeholder="作者名；未填则使用 data/papers.yaml">
+                  <input id="authorsCh" type="text" placeholder="作者名；未填则使用当前 Card 的 paper.yaml">
                 </label>
               </div>
               <div class="category-context">
-                <span class="category-label">知识点分类</span>
+                <span class="category-label">知识点分类（最多两个）</span>
                 <div id="categoryOptions" class="category-options"></div>
               </div>
             </section>
@@ -124,7 +124,7 @@
             <section class="institution-panel">
               <div class="pane-head">
                 <h3>机构信息</h3>
-                <span>写入 paper_cards/institutions.json</span>
+                <span>写入当前 Card 的 institutions.json</span>
               </div>
               <div class="institution-grid">
                 <input class="institution-input" type="text" placeholder="机构 1">
@@ -173,7 +173,7 @@
             <section class="queue-panel">
               <div class="pane-head">
                 <h3>搜索池人工标注</h3>
-                <span>写入 paper_cards/search_queue.json</span>
+                <span>写入当前 Card 的 queue.json</span>
               </div>
               <div class="queue-grid">
                 <label>判决状态
@@ -190,7 +190,7 @@
               <div class="actionbar">
                 <button id="saveQueue" type="button">保存人工标注</button>
               </div>
-              <p id="queueStatusText" class="save-status">搜索池标注只记录人工判决，不提升到 data/papers.yaml。</p>
+              <p id="queueStatusText" class="save-status">搜索池标注只记录当前 Card 的人工判决。</p>
             </section>
           </div>
         </section>

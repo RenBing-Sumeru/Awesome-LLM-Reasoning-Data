@@ -290,28 +290,22 @@ paper_categories:
         self.assertTrue(payload["package"].endswith(".zip"))
         self.assertTrue((self.root / "paper_cards" / "packages" / payload["package"]).exists())
 
-    def test_save_search_queue_item_writes_local_queue_only(self) -> None:
-        papers_before = (self.root / "data" / "papers.yaml").read_text(encoding="utf-8")
+    def test_save_search_queue_item_rejects_unknown_card_without_creating_shared_queue(self) -> None:
+        with self.assertRaisesRegex(ValueError, "unknown entry_id"):
+            server.save_search_queue_item(
+                "candidate-paper",
+                {
+                    "title": "Candidate Paper",
+                    "candidate_links": {"paper": "https://arxiv.org/abs/2501.12345"},
+                    "category_ids": ["programmatically_verifiable_outcome_data"],
+                    "reason_to_include": "Relevant verifier paper.",
+                    "search_status": "candidate",
+                    "review_note": "Needs official code check.",
+                },
+                root=self.root,
+            )
 
-        payload = server.save_search_queue_item(
-            "candidate-paper",
-            {
-                "title": "Candidate Paper",
-                "candidate_links": {"paper": "https://arxiv.org/abs/2501.12345"},
-                "track_guess": ["programmatically_verifiable_outcome_data"],
-                "reason_to_include": "Relevant verifier paper.",
-                "search_status": "candidate",
-                "review_note": "Needs official code check.",
-            },
-            root=self.root,
-        )
-
-        self.assertEqual(payload["entry"]["title"], "Candidate Paper")
-        self.assertEqual(payload["entry"]["decision_reason"], "Relevant verifier paper.")
-        queue_path = self.root / "paper_cards" / "search_queue.json"
-        queue = json.loads(queue_path.read_text(encoding="utf-8"))
-        self.assertIn("candidate-paper", queue["entries"])
-        self.assertEqual((self.root / "data" / "papers.yaml").read_text(encoding="utf-8"), papers_before)
+        self.assertFalse((self.root / "paper_cards" / "search_queue.json").exists())
 
     def test_save_search_queue_item_rejects_invalid_status(self) -> None:
         with self.assertRaises(ValueError):
@@ -321,13 +315,13 @@ paper_categories:
                 root=self.root,
             )
 
-    def test_save_search_queue_item_rejects_more_than_two_category_guesses(self) -> None:
+    def test_save_search_queue_item_rejects_more_than_two_categories(self) -> None:
         with self.assertRaisesRegex(ValueError, "最多保留两个"):
             server.save_search_queue_item(
-                "candidate-paper",
+                "sample-paper",
                 {
                     "title": "Candidate Paper",
-                    "track_guess": [
+                    "category_ids": [
                         "programmatically_verifiable_outcome_data",
                         "scaling_rlvr_test_time_compute",
                         "third-category",

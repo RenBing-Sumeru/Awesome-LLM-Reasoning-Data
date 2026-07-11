@@ -128,8 +128,11 @@ def validate_entries(data: list[dict], errors: list[str], warnings: list[str]) -
         if entry.get("status") not in set(ENUMS.get("status", [])):
             errors.append(f"{where}: invalid status={entry.get('status')}")
         categories = as_list(entry.get("category"))
-        if len(categories) != 1 or categories[0] not in CATEGORY_IDS:
-            errors.append(f"{where}: category must be exactly one taxonomy label")
+        if len(categories) > 2:
+            errors.append(f"{where}: category may contain at most two taxonomy labels")
+        unknown_categories = [category for category in categories if category not in CATEGORY_IDS]
+        if unknown_categories:
+            errors.append(f"{where}: unknown category labels: {', '.join(str(item) for item in unknown_categories)}")
         if "prompt_batch_id" in entry and not isinstance(entry.get("prompt_batch_id"), str):
             errors.append(f"{where}: prompt_batch_id must be a string when present")
         level = curation_level(entry, cards.get(entry.get("id")))
@@ -175,13 +178,23 @@ def validate_starter_pack(data: list[dict], errors: list[str]) -> None:
     for title in (pack or {}).get("entries", []):
         entry = matches.get(title)
         if not entry:
-            errors.append(f"beginner starter entry does not match data/papers.yaml: {title}")
+            errors.append(f"beginner starter entry does not match the Card library: {title}")
         elif not primary_link(entry):
             errors.append(f"beginner starter entry missing official primary link: {title} -> {entry.get('id')}")
 
 
 def validate_paper_cards(data: list[dict], errors: list[str]) -> None:
     entry_ids = {entry.get("id") for entry in data}
+    cards = ROOT / "paper_cards" / "library" / "cards"
+    if cards.exists():
+        for directory in sorted(path for path in cards.iterdir() if path.is_dir()):
+            source = directory / "sources"
+            rel = directory.relative_to(ROOT).as_posix()
+            if directory.name not in entry_ids:
+                errors.append(f"Card library entry_id not found in Card metadata: {rel}")
+            if not paper_card_source_complete(source, ROOT):
+                errors.append(f"incomplete Card-local source: {rel}/sources")
+        return
     sources = ROOT / "paper_cards" / "sources"
     if not sources.exists():
         return
@@ -190,7 +203,7 @@ def validate_paper_cards(data: list[dict], errors: list[str]) -> None:
             continue
         rel = path.relative_to(ROOT).as_posix()
         if path.name not in entry_ids:
-            errors.append(f"paper-card source entry_id not found in data/papers.yaml: {rel}")
+            errors.append(f"paper-card source entry_id not found in legacy metadata: {rel}")
         if not paper_card_source_complete(path, ROOT):
             errors.append(f"incomplete paper-card source: {rel}")
 

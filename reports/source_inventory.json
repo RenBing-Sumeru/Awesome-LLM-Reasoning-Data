@@ -9,7 +9,7 @@
     },
     {
       "path": "README.md",
-      "bytes": 96125,
+      "bytes": 96395,
       "urls": [
         "https://www.tsinghua.edu.cn/en/",
         "https://english.pku.edu.cn/",
@@ -77,7 +77,7 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "bytes": 3928,
+      "bytes": 4199,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -93,7 +93,7 @@
     },
     {
       "path": "README_zh.md",
-      "bytes": 66823,
+      "bytes": 67068,
       "urls": [
         "https://arxiv.org/abs/2606.02113",
         "https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/",
@@ -134,275 +134,213 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 3731,
+      "bytes": 3512,
       "urls": [
         "http://127.0.0.1:8770/`."
       ],
       "arxiv_ids": [],
       "headings": [
         "# Local Agent Rules",
-        "## Paper Selection Requests",
+        "## Paper Card Library",
+        "## Paper Workflow",
+        "## Updating to V2",
         "## L4 Paper Card Content"
       ]
     },
     {
       "path": "paper_cards/README.md",
-      "bytes": 3357,
+      "bytes": 1681,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
-        "# Paper Cards",
-        "## Local Record Migration",
-        "# 1. Make an immutable archive and remove only its local card/review records.",
-        "# 2. Update the repository version. Run the version-specific adjustment script, if supplied.",
-        "# 3. Restore the archive exactly, then validate the archive and local category batches.",
-        "# 4. Regenerate derived state and open Review."
+        "# Paper Card Library",
+        "## One-time legacy import"
       ]
     },
     {
-      "path": "paper_cards/generated/beyondbench-2026_zh_extra_fields.md",
-      "bytes": 1368,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# 备注中文额外修改字段：BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
-        "## 中文字段",
-        "## 当前英文备注字段"
-      ]
-    },
-    {
-      "path": "paper_cards/generated/credit-budgeted-icpc-style-coding-2026_human_annotation.md",
-      "bytes": 350,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# 人工标注文本：Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision"
-      ]
-    },
-    {
-      "path": "paper_cards/generated/beyondbench-2026_human_annotation.md",
-      "bytes": 295,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# 人工标注文本：BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models"
-      ]
-    },
-    {
-      "path": "paper_cards/generated/tree-of-thoughts-2023_zh_extra_fields.md",
-      "bytes": 1355,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# 备注中文额外修改字段：Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
-        "## 中文字段",
-        "## 当前英文备注字段"
-      ]
-    },
-    {
-      "path": "paper_cards/generated/tree-of-thoughts-2023_human_annotation.md",
-      "bytes": 296,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# 人工标注文本：Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
-      ]
-    },
-    {
-      "path": "paper_cards/generated/credit-budgeted-icpc-style-coding-2026_zh_extra_fields.md",
-      "bytes": 1304,
-      "urls": [],
-      "arxiv_ids": [],
-      "headings": [
-        "# 备注中文额外修改字段：Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
-        "## 中文字段",
-        "## 当前英文备注字段"
-      ]
-    },
-    {
-      "path": "paper_cards/sources/leandojo-2023/04_evidence.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/04_evidence.md",
       "bytes": 353,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/05_novelty.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/05_novelty.md",
       "bytes": 236,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/03_method_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/03_method_ch.md",
       "bytes": 376,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/08_reading_notes.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/08_reading_notes.md",
       "bytes": 220,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/04_evidence_ch.md",
       "bytes": 341,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/02_core_idea.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/02_core_idea.md",
       "bytes": 289,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/06_limitations.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/06_limitations.md",
       "bytes": 308,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/06_limitations_ch.md",
       "bytes": 263,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/09_citation.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/09_citation.md",
       "bytes": 231,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/02_core_idea_ch.md",
       "bytes": 250,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/07_usefulness.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/07_usefulness.md",
       "bytes": 233,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/08_reading_notes_ch.md",
       "bytes": 197,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/07_usefulness_ch.md",
       "bytes": 181,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/05_novelty_ch.md",
       "bytes": 217,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/01_problem_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/01_problem_ch.md",
       "bytes": 255,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/01_problem.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/01_problem.md",
       "bytes": 298,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/09_citation_ch.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/09_citation_ch.md",
       "bytes": 231,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/leandojo-2023/03_method.md",
+      "path": "paper_cards/library/cards/leandojo-2023/sources/03_method.md",
       "bytes": 432,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/04_evidence.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/04_evidence.md",
       "bytes": 487,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/05_novelty.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/05_novelty.md",
       "bytes": 772,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/03_method_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/03_method_ch.md",
       "bytes": 427,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/08_reading_notes.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/08_reading_notes.md",
       "bytes": 201,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/04_evidence_ch.md",
       "bytes": 311,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/02_core_idea.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/02_core_idea.md",
       "bytes": 656,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/06_limitations.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/06_limitations.md",
       "bytes": 433,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/06_limitations_ch.md",
       "bytes": 310,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/09_citation.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/09_citation.md",
       "bytes": 301,
       "urls": [],
       "arxiv_ids": [
@@ -411,49 +349,49 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/02_core_idea_ch.md",
       "bytes": 383,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/07_usefulness.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/07_usefulness.md",
       "bytes": 517,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/08_reading_notes_ch.md",
       "bytes": 208,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/07_usefulness_ch.md",
       "bytes": 313,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/05_novelty_ch.md",
       "bytes": 362,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/01_problem_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/01_problem_ch.md",
       "bytes": 413,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/01_problem.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/01_problem.md",
       "bytes": 1140,
       "urls": [
         "https://arxiv.org/abs/2305.10601"
@@ -462,7 +400,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/09_citation_ch.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/09_citation_ch.md",
       "bytes": 290,
       "urls": [],
       "arxiv_ids": [
@@ -471,7 +409,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tree-of-thoughts-2023/03_method.md",
+      "path": "paper_cards/library/cards/tree-of-thoughts-2023/sources/03_method.md",
       "bytes": 838,
       "urls": [
         "https://arxiv.org/abs/2305.10601;",
@@ -482,63 +420,63 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/04_evidence.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/04_evidence.md",
       "bytes": 487,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/05_novelty.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/05_novelty.md",
       "bytes": 768,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/03_method_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/03_method_ch.md",
       "bytes": 389,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/08_reading_notes.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/08_reading_notes.md",
       "bytes": 187,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/04_evidence_ch.md",
       "bytes": 356,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/02_core_idea.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/02_core_idea.md",
       "bytes": 625,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/06_limitations.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/06_limitations.md",
       "bytes": 445,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/06_limitations_ch.md",
       "bytes": 342,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/09_citation.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/09_citation.md",
       "bytes": 315,
       "urls": [],
       "arxiv_ids": [
@@ -547,49 +485,49 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/02_core_idea_ch.md",
       "bytes": 383,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/07_usefulness.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/07_usefulness.md",
       "bytes": 501,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/08_reading_notes_ch.md",
       "bytes": 190,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/07_usefulness_ch.md",
       "bytes": 294,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/05_novelty_ch.md",
       "bytes": 372,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/01_problem_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/01_problem_ch.md",
       "bytes": 419,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/01_problem.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/01_problem.md",
       "bytes": 1128,
       "urls": [
         "https://arxiv.org/abs/2203.11171"
@@ -598,7 +536,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/09_citation_ch.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/09_citation_ch.md",
       "bytes": 304,
       "urls": [],
       "arxiv_ids": [
@@ -607,7 +545,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/self-consistency-chain-of-thought-2023/03_method.md",
+      "path": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources/03_method.md",
       "bytes": 787,
       "urls": [
         "https://arxiv.org/abs/2203.11171;",
@@ -617,63 +555,63 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/04_evidence.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/04_evidence.md",
       "bytes": 337,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/05_novelty.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/05_novelty.md",
       "bytes": 298,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/03_method_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/03_method_ch.md",
       "bytes": 280,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/08_reading_notes.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/08_reading_notes.md",
       "bytes": 255,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/04_evidence_ch.md",
       "bytes": 261,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/02_core_idea.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/02_core_idea.md",
       "bytes": 366,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/06_limitations.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/06_limitations.md",
       "bytes": 309,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/06_limitations_ch.md",
       "bytes": 278,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/09_citation.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/09_citation.md",
       "bytes": 479,
       "urls": [],
       "arxiv_ids": [
@@ -682,56 +620,56 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/02_core_idea_ch.md",
       "bytes": 307,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/07_usefulness.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/07_usefulness.md",
       "bytes": 315,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/08_reading_notes_ch.md",
       "bytes": 225,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/07_usefulness_ch.md",
       "bytes": 293,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/05_novelty_ch.md",
       "bytes": 256,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/01_problem_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/01_problem_ch.md",
       "bytes": 292,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/01_problem.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/01_problem.md",
       "bytes": 362,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/09_citation_ch.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/09_citation_ch.md",
       "bytes": 463,
       "urls": [],
       "arxiv_ids": [
@@ -740,70 +678,70 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/featurebench-2026/03_method.md",
+      "path": "paper_cards/library/cards/featurebench-2026/sources/03_method.md",
       "bytes": 372,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/04_evidence.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/04_evidence.md",
       "bytes": 506,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/05_novelty.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/05_novelty.md",
       "bytes": 800,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/03_method_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/03_method_ch.md",
       "bytes": 380,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/08_reading_notes.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/08_reading_notes.md",
       "bytes": 173,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/04_evidence_ch.md",
       "bytes": 263,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/02_core_idea.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/02_core_idea.md",
       "bytes": 645,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/06_limitations.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/06_limitations.md",
       "bytes": 487,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/06_limitations_ch.md",
       "bytes": 302,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/09_citation.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/09_citation.md",
       "bytes": 330,
       "urls": [],
       "arxiv_ids": [
@@ -812,49 +750,49 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/02_core_idea_ch.md",
       "bytes": 378,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/07_usefulness.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/07_usefulness.md",
       "bytes": 510,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/08_reading_notes_ch.md",
       "bytes": 198,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/07_usefulness_ch.md",
       "bytes": 356,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/05_novelty_ch.md",
       "bytes": 321,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/01_problem_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/01_problem_ch.md",
       "bytes": 416,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/01_problem.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/01_problem.md",
       "bytes": 1114,
       "urls": [
         "https://arxiv.org/abs/2207.01780"
@@ -863,7 +801,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/09_citation_ch.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/09_citation_ch.md",
       "bytes": 319,
       "urls": [],
       "arxiv_ids": [
@@ -872,7 +810,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/coderl-code-generation-rl-2022/03_method.md",
+      "path": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources/03_method.md",
       "bytes": 806,
       "urls": [
         "https://arxiv.org/abs/2207.01780;",
@@ -882,63 +820,63 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/04_evidence.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/04_evidence.md",
       "bytes": 523,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/05_novelty.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/05_novelty.md",
       "bytes": 839,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/03_method_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/03_method_ch.md",
       "bytes": 374,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/08_reading_notes.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/08_reading_notes.md",
       "bytes": 192,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/04_evidence_ch.md",
       "bytes": 282,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/02_core_idea.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/02_core_idea.md",
       "bytes": 605,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/06_limitations.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/06_limitations.md",
       "bytes": 489,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/06_limitations_ch.md",
       "bytes": 300,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/09_citation.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/09_citation.md",
       "bytes": 256,
       "urls": [],
       "arxiv_ids": [
@@ -947,49 +885,49 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/02_core_idea_ch.md",
       "bytes": 338,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/07_usefulness.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/07_usefulness.md",
       "bytes": 508,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/08_reading_notes_ch.md",
       "bytes": 221,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/07_usefulness_ch.md",
       "bytes": 313,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/05_novelty_ch.md",
       "bytes": 286,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/01_problem_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/01_problem_ch.md",
       "bytes": 377,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/01_problem.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/01_problem.md",
       "bytes": 1098,
       "urls": [
         "https://arxiv.org/abs/2305.20050"
@@ -998,7 +936,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/09_citation_ch.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/09_citation_ch.md",
       "bytes": 238,
       "urls": [],
       "arxiv_ids": [
@@ -1007,7 +945,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/lets-verify-step-by-step-2023/03_method.md",
+      "path": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources/03_method.md",
       "bytes": 788,
       "urls": [
         "https://arxiv.org/abs/2305.20050;",
@@ -1017,63 +955,63 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/04_evidence.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/04_evidence.md",
       "bytes": 493,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/05_novelty.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/05_novelty.md",
       "bytes": 769,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/03_method_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/03_method_ch.md",
       "bytes": 391,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/08_reading_notes.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/08_reading_notes.md",
       "bytes": 175,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/04_evidence_ch.md",
       "bytes": 323,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/02_core_idea.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/02_core_idea.md",
       "bytes": 621,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/06_limitations.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/06_limitations.md",
       "bytes": 448,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/06_limitations_ch.md",
       "bytes": 294,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/09_citation.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/09_citation.md",
       "bytes": 313,
       "urls": [],
       "arxiv_ids": [
@@ -1082,49 +1020,49 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/02_core_idea_ch.md",
       "bytes": 378,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/07_usefulness.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/07_usefulness.md",
       "bytes": 525,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/08_reading_notes_ch.md",
       "bytes": 171,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/07_usefulness_ch.md",
       "bytes": 363,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/05_novelty_ch.md",
       "bytes": 316,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/01_problem_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/01_problem_ch.md",
       "bytes": 389,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/01_problem.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/01_problem.md",
       "bytes": 1125,
       "urls": [
         "https://arxiv.org/abs/2312.06585"
@@ -1133,7 +1071,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/09_citation_ch.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/09_citation_ch.md",
       "bytes": 302,
       "urls": [],
       "arxiv_ids": [
@@ -1142,7 +1080,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/rest-em-self-training-2024/03_method.md",
+      "path": "paper_cards/library/cards/rest-em-self-training-2024/sources/03_method.md",
       "bytes": 780,
       "urls": [
         "https://arxiv.org/abs/2312.06585;",
@@ -1152,63 +1090,63 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/04_evidence.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/04_evidence.md",
       "bytes": 321,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/05_novelty.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/05_novelty.md",
       "bytes": 286,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/03_method_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/03_method_ch.md",
       "bytes": 279,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/08_reading_notes.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/08_reading_notes.md",
       "bytes": 251,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/04_evidence_ch.md",
       "bytes": 258,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/02_core_idea.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/02_core_idea.md",
       "bytes": 302,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/06_limitations.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/06_limitations.md",
       "bytes": 262,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/06_limitations_ch.md",
       "bytes": 204,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/09_citation.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/09_citation.md",
       "bytes": 432,
       "urls": [],
       "arxiv_ids": [
@@ -1217,56 +1155,56 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/02_core_idea_ch.md",
       "bytes": 284,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/07_usefulness.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/07_usefulness.md",
       "bytes": 344,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/08_reading_notes_ch.md",
       "bytes": 231,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/07_usefulness_ch.md",
       "bytes": 251,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/05_novelty_ch.md",
       "bytes": 252,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/01_problem_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/01_problem_ch.md",
       "bytes": 270,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/01_problem.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/01_problem.md",
       "bytes": 349,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/09_citation_ch.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/09_citation_ch.md",
       "bytes": 416,
       "urls": [],
       "arxiv_ids": [
@@ -1275,70 +1213,70 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/beyondbench-2026/03_method.md",
+      "path": "paper_cards/library/cards/beyondbench-2026/sources/03_method.md",
       "bytes": 323,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/04_evidence.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/04_evidence.md",
       "bytes": 299,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/05_novelty.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/05_novelty.md",
       "bytes": 262,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/03_method_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/03_method_ch.md",
       "bytes": 236,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/08_reading_notes.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/08_reading_notes.md",
       "bytes": 253,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/04_evidence_ch.md",
       "bytes": 244,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/02_core_idea.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/02_core_idea.md",
       "bytes": 329,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/06_limitations.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/06_limitations.md",
       "bytes": 278,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/06_limitations_ch.md",
       "bytes": 235,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/09_citation.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/09_citation.md",
       "bytes": 376,
       "urls": [],
       "arxiv_ids": [
@@ -1347,56 +1285,56 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/02_core_idea_ch.md",
       "bytes": 280,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/07_usefulness.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/07_usefulness.md",
       "bytes": 258,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/08_reading_notes_ch.md",
       "bytes": 237,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/07_usefulness_ch.md",
       "bytes": 228,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/05_novelty_ch.md",
       "bytes": 212,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/01_problem_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/01_problem_ch.md",
       "bytes": 288,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/01_problem.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/01_problem.md",
       "bytes": 324,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/09_citation_ch.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/09_citation_ch.md",
       "bytes": 360,
       "urls": [],
       "arxiv_ids": [
@@ -1405,196 +1343,196 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/geogrambench-2026/03_method.md",
+      "path": "paper_cards/library/cards/geogrambench-2026/sources/03_method.md",
       "bytes": 314,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/04_evidence.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/04_evidence.md",
       "bytes": 312,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/05_novelty.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/05_novelty.md",
       "bytes": 323,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/03_method_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/03_method_ch.md",
       "bytes": 317,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/08_reading_notes.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/08_reading_notes.md",
       "bytes": 224,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/04_evidence_ch.md",
       "bytes": 289,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/02_core_idea.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/02_core_idea.md",
       "bytes": 260,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/06_limitations.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/06_limitations.md",
       "bytes": 278,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/06_limitations_ch.md",
       "bytes": 231,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/09_citation.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/09_citation.md",
       "bytes": 229,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/02_core_idea_ch.md",
       "bytes": 192,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/07_usefulness.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/07_usefulness.md",
       "bytes": 213,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/08_reading_notes_ch.md",
       "bytes": 179,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/07_usefulness_ch.md",
       "bytes": 191,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/05_novelty_ch.md",
       "bytes": 282,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/01_problem_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/01_problem_ch.md",
       "bytes": 334,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/01_problem.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/01_problem.md",
       "bytes": 447,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/09_citation_ch.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/09_citation_ch.md",
       "bytes": 229,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/math-dataset-2021/03_method.md",
+      "path": "paper_cards/library/cards/math-dataset-2021/sources/03_method.md",
       "bytes": 400,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/04_evidence.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/04_evidence.md",
       "bytes": 545,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/05_novelty.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/05_novelty.md",
       "bytes": 856,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/03_method_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/03_method_ch.md",
       "bytes": 517,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/08_reading_notes.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/08_reading_notes.md",
       "bytes": 233,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/04_evidence_ch.md",
       "bytes": 429,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/02_core_idea.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/02_core_idea.md",
       "bytes": 686,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/06_limitations.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/06_limitations.md",
       "bytes": 475,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/06_limitations_ch.md",
       "bytes": 399,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/09_citation.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/09_citation.md",
       "bytes": 337,
       "urls": [],
       "arxiv_ids": [
@@ -1603,49 +1541,49 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/02_core_idea_ch.md",
       "bytes": 505,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/07_usefulness.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/07_usefulness.md",
       "bytes": 507,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/08_reading_notes_ch.md",
       "bytes": 228,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/07_usefulness_ch.md",
       "bytes": 355,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/05_novelty_ch.md",
       "bytes": 391,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/01_problem_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/01_problem_ch.md",
       "bytes": 580,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/01_problem.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/01_problem.md",
       "bytes": 1171,
       "urls": [
         "https://arxiv.org/abs/2408.03314"
@@ -1654,7 +1592,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/09_citation_ch.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/09_citation_ch.md",
       "bytes": 319,
       "urls": [],
       "arxiv_ids": [
@@ -1663,7 +1601,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/scaling-llm-test-time-compute-optimally-2024/03_method.md",
+      "path": "paper_cards/library/cards/scaling-llm-test-time-compute-optimally-2024/sources/03_method.md",
       "bytes": 828,
       "urls": [
         "https://arxiv.org/abs/2408.03314;",
@@ -1673,63 +1611,63 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/04_evidence.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/04_evidence.md",
       "bytes": 523,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/05_novelty.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/05_novelty.md",
       "bytes": 851,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/03_method_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/03_method_ch.md",
       "bytes": 381,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/08_reading_notes.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/08_reading_notes.md",
       "bytes": 211,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/04_evidence_ch.md",
       "bytes": 308,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/02_core_idea.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/02_core_idea.md",
       "bytes": 702,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/06_limitations.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/06_limitations.md",
       "bytes": 483,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/06_limitations_ch.md",
       "bytes": 297,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/09_citation.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/09_citation.md",
       "bytes": 301,
       "urls": [],
       "arxiv_ids": [
@@ -1738,49 +1676,49 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/02_core_idea_ch.md",
       "bytes": 397,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/07_usefulness.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/07_usefulness.md",
       "bytes": 511,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/08_reading_notes_ch.md",
       "bytes": 230,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/07_usefulness_ch.md",
       "bytes": 323,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/05_novelty_ch.md",
       "bytes": 303,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/01_problem_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/01_problem_ch.md",
       "bytes": 419,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/01_problem.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/01_problem.md",
       "bytes": 1181,
       "urls": [
         "https://arxiv.org/abs/2402.03300"
@@ -1789,7 +1727,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/09_citation_ch.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/09_citation_ch.md",
       "bytes": 283,
       "urls": [],
       "arxiv_ids": [
@@ -1798,7 +1736,7 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/deepseekmath-2024/03_method.md",
+      "path": "paper_cards/library/cards/deepseekmath-2024/sources/03_method.md",
       "bytes": 927,
       "urls": [
         "https://arxiv.org/abs/2402.03300;",
@@ -1809,63 +1747,63 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/04_evidence.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/04_evidence.md",
       "bytes": 500,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/05_novelty.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/05_novelty.md",
       "bytes": 381,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/03_method_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/03_method_ch.md",
       "bytes": 514,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/08_reading_notes.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/08_reading_notes.md",
       "bytes": 345,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/04_evidence_ch.md",
       "bytes": 461,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/02_core_idea.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/02_core_idea.md",
       "bytes": 386,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/06_limitations.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/06_limitations.md",
       "bytes": 399,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/06_limitations_ch.md",
       "bytes": 338,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/09_citation.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/09_citation.md",
       "bytes": 273,
       "urls": [],
       "arxiv_ids": [
@@ -1874,56 +1812,56 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/02_core_idea_ch.md",
       "bytes": 390,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/07_usefulness.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/07_usefulness.md",
       "bytes": 490,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/08_reading_notes_ch.md",
       "bytes": 335,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/07_usefulness_ch.md",
       "bytes": 486,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/05_novelty_ch.md",
       "bytes": 369,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/01_problem_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/01_problem_ch.md",
       "bytes": 498,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/01_problem.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/01_problem.md",
       "bytes": 552,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/09_citation_ch.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/09_citation_ch.md",
       "bytes": 263,
       "urls": [],
       "arxiv_ids": [
@@ -1932,70 +1870,70 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/tinyv-2025/03_method.md",
+      "path": "paper_cards/library/cards/tinyv-2025/sources/03_method.md",
       "bytes": 545,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/04_evidence.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/04_evidence.md",
       "bytes": 458,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/05_novelty.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/05_novelty.md",
       "bytes": 298,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/03_method_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/03_method_ch.md",
       "bytes": 363,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/08_reading_notes.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/08_reading_notes.md",
       "bytes": 286,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/04_evidence_ch.md",
       "bytes": 386,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/02_core_idea.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/02_core_idea.md",
       "bytes": 398,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/06_limitations.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/06_limitations.md",
       "bytes": 318,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/06_limitations_ch.md",
       "bytes": 295,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/09_citation.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/09_citation.md",
       "bytes": 473,
       "urls": [],
       "arxiv_ids": [
@@ -2004,56 +1942,56 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/02_core_idea_ch.md",
       "bytes": 367,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/07_usefulness.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/07_usefulness.md",
       "bytes": 403,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/08_reading_notes_ch.md",
       "bytes": 266,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/07_usefulness_ch.md",
       "bytes": 314,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/05_novelty_ch.md",
       "bytes": 231,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/01_problem_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/01_problem_ch.md",
       "bytes": 380,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/01_problem.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/01_problem.md",
       "bytes": 390,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/09_citation_ch.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/09_citation_ch.md",
       "bytes": 457,
       "urls": [],
       "arxiv_ids": [
@@ -2062,196 +2000,196 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/agnostics-universal-learning-environment-2026/03_method.md",
+      "path": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources/03_method.md",
       "bytes": 423,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/04_evidence.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/04_evidence.md",
       "bytes": 241,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/05_novelty.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/05_novelty.md",
       "bytes": 216,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/03_method_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/03_method_ch.md",
       "bytes": 317,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/08_reading_notes.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/08_reading_notes.md",
       "bytes": 226,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/04_evidence_ch.md",
       "bytes": 208,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/02_core_idea.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/02_core_idea.md",
       "bytes": 221,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/06_limitations.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/06_limitations.md",
       "bytes": 245,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/06_limitations_ch.md",
       "bytes": 223,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/09_citation.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/09_citation.md",
       "bytes": 216,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/02_core_idea_ch.md",
       "bytes": 172,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/07_usefulness.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/07_usefulness.md",
       "bytes": 212,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/08_reading_notes_ch.md",
       "bytes": 211,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/07_usefulness_ch.md",
       "bytes": 194,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/05_novelty_ch.md",
       "bytes": 167,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/01_problem_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/01_problem_ch.md",
       "bytes": 241,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/01_problem.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/01_problem.md",
       "bytes": 257,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/09_citation_ch.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/09_citation_ch.md",
       "bytes": 216,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/apps-2021/03_method.md",
+      "path": "paper_cards/library/cards/apps-2021/sources/03_method.md",
       "bytes": 384,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/04_evidence.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/04_evidence.md",
       "bytes": 296,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/05_novelty.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/05_novelty.md",
       "bytes": 245,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/03_method_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/03_method_ch.md",
       "bytes": 234,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/08_reading_notes.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/08_reading_notes.md",
       "bytes": 234,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/04_evidence_ch.md",
       "bytes": 238,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/02_core_idea.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/02_core_idea.md",
       "bytes": 270,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/06_limitations.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/06_limitations.md",
       "bytes": 250,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/06_limitations_ch.md",
       "bytes": 197,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/09_citation.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/09_citation.md",
       "bytes": 349,
       "urls": [],
       "arxiv_ids": [
@@ -2260,56 +2198,56 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/02_core_idea_ch.md",
       "bytes": 252,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/07_usefulness.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/07_usefulness.md",
       "bytes": 257,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/08_reading_notes_ch.md",
       "bytes": 224,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/07_usefulness_ch.md",
       "bytes": 237,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/05_novelty_ch.md",
       "bytes": 221,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/01_problem_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/01_problem_ch.md",
       "bytes": 275,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/01_problem.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/01_problem.md",
       "bytes": 299,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/09_citation_ch.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/09_citation_ch.md",
       "bytes": 333,
       "urls": [],
       "arxiv_ids": [
@@ -2318,133 +2256,133 @@
       "headings": []
     },
     {
-      "path": "paper_cards/sources/credit-budgeted-icpc-style-coding-2026/03_method.md",
+      "path": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources/03_method.md",
       "bytes": 271,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/04_evidence.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/04_evidence.md",
       "bytes": 234,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/05_novelty.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/05_novelty.md",
       "bytes": 220,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/03_method_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/03_method_ch.md",
       "bytes": 332,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/08_reading_notes.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/08_reading_notes.md",
       "bytes": 216,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/04_evidence_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/04_evidence_ch.md",
       "bytes": 184,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/02_core_idea.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/02_core_idea.md",
       "bytes": 229,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/06_limitations.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/06_limitations.md",
       "bytes": 266,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/06_limitations_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/06_limitations_ch.md",
       "bytes": 228,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/09_citation.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/09_citation.md",
       "bytes": 243,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/02_core_idea_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/02_core_idea_ch.md",
       "bytes": 180,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/07_usefulness.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/07_usefulness.md",
       "bytes": 220,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/08_reading_notes_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/08_reading_notes_ch.md",
       "bytes": 178,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/07_usefulness_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/07_usefulness_ch.md",
       "bytes": 204,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/05_novelty_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/05_novelty_ch.md",
       "bytes": 175,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/01_problem_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/01_problem_ch.md",
       "bytes": 174,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/01_problem.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/01_problem.md",
       "bytes": 231,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/09_citation_ch.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/09_citation_ch.md",
       "bytes": 243,
       "urls": [],
       "arxiv_ids": [],
       "headings": []
     },
     {
-      "path": "paper_cards/sources/minif2f-2022/03_method.md",
+      "path": "paper_cards/library/cards/minif2f-2022/sources/03_method.md",
       "bytes": 377,
       "urls": [],
       "arxiv_ids": [],
@@ -2543,7 +2481,7 @@
     },
     {
       "path": "papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md",
-      "bytes": 21630,
+      "bytes": 21924,
       "urls": [
         "https://arxiv.org/abs/2602.10975",
         "https://arxiv.org/abs/2602.10975",
@@ -2726,7 +2664,7 @@
     },
     {
       "path": "papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md",
-      "bytes": 26428,
+      "bytes": 26848,
       "urls": [
         "https://arxiv.org/abs/2508.04865",
         "https://arxiv.org/abs/2508.04865",
@@ -2918,17 +2856,18 @@
     },
     {
       "path": "docs/paper_card_sop.md",
-      "bytes": 4137,
-      "urls": [],
+      "bytes": 2571,
+      "urls": [
+        "http://127.0.0.1:8770/`."
+      ],
       "arxiv_ids": [],
       "headings": [
         "# Paper Card SOP",
-        "## Source Rules",
-        "## Chinese Header Fields",
-        "## Level Gates",
-        "## Required Files",
-        "## Section Intent",
-        "## Workflow"
+        "## Source of truth",
+        "## Create or complete a Card",
+        "## Category policy",
+        "## Review and validation",
+        "## One-time repository migration"
       ]
     },
     {
@@ -3077,22 +3016,19 @@
     },
     {
       "path": "docs/contributor_sop.md",
-      "bytes": 27891,
-      "urls": [],
+      "bytes": 3347,
+      "urls": [
+        "http://127.0.0.1:8770/`"
+      ],
       "arxiv_ids": [],
       "headings": [
-        "# Contributor SOP for Scaling the Atlas",
-        "## 0. Project Goal",
-        "## 1. Non-Negotiable Rules",
-        "## 2. Source-of-Truth Map",
-        "## 3. Standard Workflow Overview",
-        "## 4. Work Queues",
-        "## 5. Candidate Paper Screening",
-        "### 5.1 Inclusion Criteria",
-        "### 5.2 Exclusion Criteria",
-        "### 5.3 The Five-Sentence Triage",
-        "## 6. Official Source Search Protocol",
-        "## 7. Research Track Classification"
+        "# Contributor SOP",
+        "## Operating model",
+        "## Add or update a paper",
+        "## Card quality bar",
+        "## Review workflow",
+        "## Generated files",
+        "## Updating a checkout"
       ]
     },
     {
@@ -3167,22 +3103,19 @@
     },
     {
       "path": "docs/contributor_sop_zh.md",
-      "bytes": 28191,
-      "urls": [],
+      "bytes": 2996,
+      "urls": [
+        "http://127.0.0.1:8770/`"
+      ],
       "arxiv_ids": [],
       "headings": [
-        "# 项目扩展中文 SOP：如何规模化维护 Awesome LLM Reasoning Data",
-        "## 0. 项目目标",
-        "## 1. 不可违反的硬规则",
-        "## 2. 项目文件地图",
-        "## 3. 标准工作流总览",
-        "## 4. 工作队列类型",
-        "## 5. 候选论文筛选 SOP",
-        "### 5.0 用户选题请求处理规则",
-        "### 5.1 可以收录的内容",
-        "### 5.2 不应该收录的内容",
-        "### 5.3 五句话初筛",
-        "## 6. 官方来源搜索 SOP"
+        "# 贡献者 SOP",
+        "## 工作模型",
+        "## 新增或更新论文",
+        "## L4 质量要求",
+        "## Review 与校验",
+        "## 生成文件",
+        "## 同步 V2"
       ]
     },
     {
@@ -3207,7 +3140,7 @@
     },
     {
       "path": "docs/00_start_here.md",
-      "bytes": 8001,
+      "bytes": 7993,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -3226,26 +3159,60 @@
       ]
     },
     {
+      "path": "docs/superpowers/plans/2026-07-11-independent-paper-card-library.md",
+      "bytes": 9860,
+      "urls": [
+        "https://arxiv.org/abs/2501.00001"
+      ],
+      "arxiv_ids": [],
+      "headings": [
+        "# Independent Paper Card Library Implementation Plan",
+        "## Global Constraints",
+        "### Task 1: Library paths, schema, and Card-local loader",
+        "### Task 2: One-time migration and parity validation",
+        "### Task 3: Switch Card tooling and Review API to the library",
+        "### Task 4: Category editor with zero-to-two selection and filtering",
+        "### Task 5: Generate compatibility outputs and remove legacy editable sources"
+      ]
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-11-independent-paper-card-library-design.md",
+      "bytes": 3936,
+      "urls": [],
+      "arxiv_ids": [],
+      "headings": [
+        "# Independent Paper Card Library Design",
+        "## Goal",
+        "## Canonical Library",
+        "## Categories and Batch Provenance",
+        "## Derived Compatibility Outputs",
+        "## Migration",
+        "## Review UI",
+        "## Verification",
+        "## Scope Exclusions"
+      ]
+    },
+    {
       "path": "exports/papers.bib",
       "bytes": 7378,
       "urls": [
-        "https://arxiv.org/abs/2505.14625",
         "https://arxiv.org/abs/2508.04865",
-        "https://arxiv.org/abs/2602.10975",
-        "https://arxiv.org/abs/2509.24210",
-        "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2505.17653",
-        "https://arxiv.org/abs/2408.03314",
-        "https://arxiv.org/abs/2103.03874",
         "https://arxiv.org/abs/2105.09938",
-        "https://arxiv.org/abs/2109.00110",
-        "https://arxiv.org/abs/2306.15626",
-        "https://arxiv.org/abs/2203.11171",
-        "https://arxiv.org/abs/2305.10601",
+        "https://arxiv.org/abs/2509.24210",
         "https://arxiv.org/abs/2207.01780",
-        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2604.10182",
         "https://arxiv.org/abs/2402.03300",
-        "https://arxiv.org/abs/2312.06585"
+        "https://arxiv.org/abs/2602.10975",
+        "https://arxiv.org/abs/2505.17653",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2103.03874",
+        "https://arxiv.org/abs/2109.00110",
+        "https://arxiv.org/abs/2312.06585",
+        "https://arxiv.org/abs/2408.03314",
+        "https://arxiv.org/abs/2203.11171",
+        "https://arxiv.org/abs/2505.14625",
+        "https://arxiv.org/abs/2305.10601"
       ],
       "arxiv_ids": [],
       "headings": []
@@ -3262,31 +3229,6 @@
         "## Audit Fields",
         "## Checklist"
       ]
-    },
-    {
-      "path": "data/citations.bib",
-      "bytes": 7378,
-      "urls": [
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2508.04865",
-        "https://arxiv.org/abs/2602.10975",
-        "https://arxiv.org/abs/2509.24210",
-        "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2505.17653",
-        "https://arxiv.org/abs/2408.03314",
-        "https://arxiv.org/abs/2103.03874",
-        "https://arxiv.org/abs/2105.09938",
-        "https://arxiv.org/abs/2109.00110",
-        "https://arxiv.org/abs/2306.15626",
-        "https://arxiv.org/abs/2203.11171",
-        "https://arxiv.org/abs/2305.10601",
-        "https://arxiv.org/abs/2207.01780",
-        "https://arxiv.org/abs/2305.20050",
-        "https://arxiv.org/abs/2402.03300",
-        "https://arxiv.org/abs/2312.06585"
-      ],
-      "arxiv_ids": [],
-      "headings": []
     },
     {
       "path": "reports/link_sources_v2.md",
@@ -3380,7 +3322,7 @@
     },
     {
       "path": "reports/counts.md",
-      "bytes": 1098,
+      "bytes": 1585,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -3399,7 +3341,7 @@
     },
     {
       "path": "reports/inventory.md",
-      "bytes": 722,
+      "bytes": 709,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -3411,7 +3353,7 @@
     },
     {
       "path": "reports/v0.1.0_release_notes.md",
-      "bytes": 3559,
+      "bytes": 3541,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -3427,7 +3369,7 @@
     },
     {
       "path": "reports/link_coverage.md",
-      "bytes": 988,
+      "bytes": 981,
       "urls": [],
       "arxiv_ids": [],
       "headings": [
@@ -3443,9 +3385,6 @@
       "path": "reports/link_check.md",
       "bytes": 6359,
       "urls": [
-        "https://arxiv.org/abs/2505.14625",
-        "https://arxiv.org/abs/2505.14625",
-        "https://github.com/uw-nsl/TinyV",
         "https://arxiv.org/abs/2508.04865",
         "https://arxiv.org/abs/2508.04865",
         "https://github.com/nuprl/Ag-LiveCodeBench-X",
@@ -3453,34 +3392,6 @@
         "https://agnostics.abgru.me/",
         "https://huggingface.co/nuprl/agnostics",
         "https://doi.org/10.48550/arXiv.2508.04865",
-        "https://arxiv.org/abs/2602.10975",
-        "https://arxiv.org/abs/2602.10975",
-        "https://doi.org/10.48550/arXiv.2602.10975",
-        "https://arxiv.org/abs/2509.24210",
-        "https://arxiv.org/abs/2509.24210",
-        "https://github.com/ctrl-gaurav/BeyondBench",
-        "https://ctrl-gaurav.github.io/BeyondBench/",
-        "https://doi.org/10.48550/arXiv.2509.24210",
-        "https://arxiv.org/abs/2604.10182",
-        "https://arxiv.org/abs/2604.10182",
-        "https://doi.org/10.48550/arXiv.2604.10182",
-        "https://arxiv.org/abs/2505.17653",
-        "https://arxiv.org/abs/2505.17653",
-        "https://github.com/LiAuto-DSR/GeoGramBench",
-        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
-        "https://github.com/LiAuto-DSR/GeoGramBench",
-        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
-        "https://doi.org/10.48550/arXiv.2505.17653",
-        "https://arxiv.org/abs/2408.03314",
-        "https://arxiv.org/abs/2408.03314",
-        "https://doi.org/10.48550/arXiv.2408.03314",
-        "https://arxiv.org/abs/2103.03874",
-        "https://arxiv.org/abs/2103.03874",
-        "https://github.com/hendrycks/math",
-        "https://github.com/hendrycks/math",
-        "https://github.com/hendrycks/math",
-        "https://doi.org/10.48550/arXiv.2103.03874",
-        "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
         "https://arxiv.org/abs/2105.09938",
         "https://arxiv.org/abs/2105.09938",
         "https://github.com/hendrycks/apps",
@@ -3489,10 +3400,41 @@
         "https://huggingface.co/datasets/codeparrot/apps",
         "https://doi.org/10.48550/arXiv.2105.09938",
         "https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html",
-        "https://arxiv.org/abs/2109.00110",
-        "https://arxiv.org/abs/2109.00110",
-        "https://github.com/openai/miniF2F",
-        "https://github.com/openai/miniF2F"
+        "https://arxiv.org/abs/2509.24210",
+        "https://arxiv.org/abs/2509.24210",
+        "https://github.com/ctrl-gaurav/BeyondBench",
+        "https://ctrl-gaurav.github.io/BeyondBench/",
+        "https://doi.org/10.48550/arXiv.2509.24210",
+        "https://arxiv.org/abs/2207.01780",
+        "https://arxiv.org/abs/2207.01780",
+        "https://doi.org/10.48550/arXiv.2207.01780",
+        "https://arxiv.org/abs/2604.10182",
+        "https://arxiv.org/abs/2604.10182",
+        "https://doi.org/10.48550/arXiv.2604.10182",
+        "https://arxiv.org/abs/2402.03300",
+        "https://arxiv.org/abs/2402.03300",
+        "https://huggingface.co/deepseek-ai/deepseek-math-7b-base",
+        "https://doi.org/10.48550/arXiv.2402.03300",
+        "https://arxiv.org/abs/2602.10975",
+        "https://arxiv.org/abs/2602.10975",
+        "https://doi.org/10.48550/arXiv.2602.10975",
+        "https://arxiv.org/abs/2505.17653",
+        "https://arxiv.org/abs/2505.17653",
+        "https://github.com/LiAuto-DSR/GeoGramBench",
+        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "https://github.com/LiAuto-DSR/GeoGramBench",
+        "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
+        "https://doi.org/10.48550/arXiv.2505.17653",
+        "https://arxiv.org/abs/2306.15626",
+        "https://arxiv.org/abs/2306.15626",
+        "https://github.com/lean-dojo/LeanDojo",
+        "https://leandojo.org/leandojo",
+        "https://leandojo.org/leandojo",
+        "https://doi.org/10.48550/arXiv.2306.15626",
+        "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
+        "https://arxiv.org/abs/2305.20050",
+        "https://arxiv.org/abs/2305.20050",
+        "https://doi.org/10.48550/arXiv.2305.20050"
       ],
       "arxiv_ids": [],
       "headings": [

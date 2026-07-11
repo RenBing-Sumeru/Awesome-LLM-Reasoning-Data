@@ -9,12 +9,12 @@
     "huggingface": null,
     "doi": "https://doi.org/10.48550/arXiv.2602.10975"
   },
-  "track_guess": [
-    "programmatically_verifiable_outcome_data"
-  ],
   "reason_to_include": "",
   "decision_reason": "",
   "search_status": "",
   "review_note": "",
-  "updated_at": "2026-07-10T15:11:36Z"
+  "updated_at": "2026-07-10T15:11:36Z",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
 }

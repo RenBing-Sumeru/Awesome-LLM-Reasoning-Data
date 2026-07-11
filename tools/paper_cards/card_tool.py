@@ -175,10 +175,6 @@ def packages_root(root: Path | str | None = None) -> Path:
     return paper_cards_root(root) / "packages"
 
 
-def generated_root(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "generated"
-
-
 def status_path(root: Path | str | None = None) -> Path:
     return paper_cards_root(root) / "status.json"
 
@@ -199,14 +195,6 @@ def valid_status_path(root: Path | str | None = None) -> Path:
     return paper_cards_root(root) / "valid_status.json"
 
 
-def zh_extra_fields_path(entry_id: str, root: Path | str | None = None) -> Path:
-    return generated_root(root) / f"{entry_id}_zh_extra_fields.md"
-
-
-def human_annotation_path(entry_id: str, root: Path | str | None = None) -> Path:
-    return generated_root(root) / f"{entry_id}_human_annotation.md"
-
-
 def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
@@ -216,7 +204,7 @@ def load_yaml(path: Path) -> Any:
     if not text.strip():
         return []
     if yaml is None:
-        raise RuntimeError("PyYAML is required to read data/papers.yaml")
+        raise RuntimeError("PyYAML is required to read legacy paper metadata during migration")
     return yaml.safe_load(text)
 
 
@@ -401,7 +389,7 @@ def category_title_map(root: Path | str | None = None) -> dict[str, str]:
 def clean_category_ids(
     value: Any,
     label: str = "知识点分类",
-    allow_empty: bool = False,
+    allow_empty: bool = True,
     root: Path | str | None = None,
 ) -> list[str]:
     category_ids = value if isinstance(value, list) else []
@@ -418,7 +406,7 @@ def clean_category_ids(
         raise ValueError(f"{label}至少保留一个标签")
     known = {item["id"] for item in category_options(root)}
     if any(category_id not in known for category_id in cleaned):
-        raise ValueError(f"{label}必须是 data/categories.yaml 中的合法知识点")
+        raise ValueError(f"{label}必须是 Card 分类目录中的合法知识点")
     return cleaned
 
 
@@ -646,12 +634,16 @@ def save_search_queue(payload: dict, root: Path | str | None = None) -> None:
 
 
 def load_valid_status(root: Path | str | None = None) -> dict:
+    if library.load_cards(root):
+        return {"schema_version": 1, "updated_at": None, "entries": {}}
     payload = load_json_file(valid_status_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
     entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
     return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
 
 
 def save_valid_status(payload: dict, root: Path | str | None = None) -> None:
+    if library.load_cards(root):
+        return
     save_json_file(valid_status_path(root), payload)
 
 
@@ -678,7 +670,11 @@ def section_presence_errors(entry_id: str, lang: str, root: Path | str | None = 
     errors: list[str] = []
     base = card_source_dir(entry_id, root)
     if not base.exists():
-        return [f"缺少卡片源目录：paper_cards/sources/{entry_id}"]
+        try:
+            relative = base.relative_to(project_root(root)).as_posix()
+        except ValueError:
+            relative = base.as_posix()
+        return [f"缺少卡片源目录：{relative}"]
     for key, _title in SECTIONS:
         path = source_file(entry_id, key, lang, root)
         label = "中文 section" if lang == "ch" else "英文 section"
@@ -809,6 +805,12 @@ def valid_report(entry_id: str, root: Path | str | None = None, entry: dict | No
 
 
 def save_valid_report(report: dict, root: Path | str | None = None) -> dict:
+    if library.load_cards(root):
+        return {
+            "schema_version": 1,
+            "updated_at": report.get("checked_at") or now_iso(),
+            "entries": {report["entry_id"]: report},
+        }
     payload = load_valid_status(root)
     payload["entries"][report["entry_id"]] = report
     payload["updated_at"] = report.get("checked_at") or now_iso()
@@ -889,15 +891,10 @@ def human_annotation_markdown(entry: dict, root: Path | str | None = None, gener
     return "\n".join(lines).rstrip() + "\n"
 
 
-def write_review_generated_files(entry_id: str, entry: dict, root: Path | str | None = None) -> dict[str, str]:
+def review_generated_content(entry_id: str, entry: dict, root: Path | str | None = None) -> dict[str, str]:
     generated_at = now_iso()
     extra = zh_extra_fields_markdown(entry, root, generated_at)
     annotation = human_annotation_markdown(entry, root, generated_at)
-    zh_path = zh_extra_fields_path(entry_id, root)
-    annotation_path = human_annotation_path(entry_id, root)
-    zh_path.parent.mkdir(parents=True, exist_ok=True)
-    zh_path.write_text(extra, encoding="utf-8")
-    annotation_path.write_text(annotation, encoding="utf-8")
     return {
         "zh_extra_fields": extra,
         "human_annotation": annotation,
@@ -911,13 +908,14 @@ def package_manifest(entry_ids: list[str], root: Path | str | None = None) -> di
         entry = entries.get(entry_id)
         if not entry:
             raise ValueError(f"unknown entry_id: {entry_id}")
+        source_dir = card_source_dir(entry_id, root).relative_to(project_root(root)).as_posix()
         items.append({
             "entry_id": entry_id,
             "title": entry.get("title"),
             "primary_link": (entry.get("artifacts") or {}).get("paper") or (entry.get("artifacts") or {}).get("arxiv"),
             "status": entry.get("status"),
             "curation_level": entry.get("curation_level"),
-            "source_dir": f"paper_cards/sources/{entry_id}",
+            "source_dir": source_dir,
             "assembled_en": f"assembled/{entry_id}_en.md",
             "assembled_ch": f"assembled/{entry_id}_ch.md",
             "check_errors": check_card(entry_id, root),
@@ -964,7 +962,7 @@ def write_package(
     with zipfile.ZipFile(package_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for entry_id in entry_ids:
             entry = entries[entry_id]
-            generated = write_review_generated_files(entry_id, entry, root_path)
+            generated = review_generated_content(entry_id, entry, root_path)
             archive.writestr(f"cards/{entry_id}_en.md", assemble_card(entry, "en", root))
             archive.writestr(f"cards/{entry_id}_ch.md", assemble_card(entry, "ch", root))
             archive.writestr(f"annotations/{entry_id}_zh_extra_fields.md", generated["zh_extra_fields"])

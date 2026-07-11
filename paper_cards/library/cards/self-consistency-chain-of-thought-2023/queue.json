@@ -1,7 +1,7 @@
 {
   "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
-  "track_guess": [
+  "updated_at": "2026-07-10T15:11:44Z",
+  "category_ids": [
     "scaling_rlvr_test_time_compute"
-  ],
-  "updated_at": "2026-07-10T15:11:44Z"
+  ]
 }

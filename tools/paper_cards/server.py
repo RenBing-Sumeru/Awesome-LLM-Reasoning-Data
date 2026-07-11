@@ -61,6 +61,7 @@ def card_payload(entry_id: str, root: Path | str | None = None) -> dict:
     category_ids = card_tool.clean_category_ids(
         entries[entry_id].get("category"),
         "论文知识点分类",
+        allow_empty=True,
         root=root,
     )
     return {
@@ -69,6 +70,7 @@ def card_payload(entry_id: str, root: Path | str | None = None) -> dict:
         "institutions": card_tool.institution_record(entry_id, root),
         "header_zh": card_tool.header_zh_record(entry_id, root),
         "category_labels": card_tool.category_details(category_ids, root),
+        "category_options": card_tool.category_options(root),
         "check_errors": card_tool.check_card(entry_id, root),
         "valid": card_tool.valid_report(entry_id, root, entry=entries[entry_id]),
         "status": card_tool.load_status(root).get("entries", {}).get(entry_id) or {"state": "new"},
@@ -130,11 +132,28 @@ def save_header_zh_payload(entry_id: str, payload: dict, root: Path | str | None
     if not isinstance(payload, dict):
         raise ValueError("header_zh object is required")
     entry = card_tool.load_entries(root).get(entry_id) or {}
-    entry_categories = card_tool.clean_category_ids(entry.get("category"), "论文知识点分类", root=root)
+    entry_categories = card_tool.clean_category_ids(
+        entry.get("category"),
+        "论文知识点分类",
+        allow_empty=True,
+        root=root,
+    )
     raw_categories = payload.get("category_ids")
-    if raw_categories is not None and card_tool.clean_category_ids(raw_categories, root=root) != entry_categories:
-        raise ValueError("知识点分类必须与论文库标签一致")
-    saved_payload = {**payload, "category_ids": entry_categories}
+    selected_categories = (
+        entry_categories
+        if raw_categories is None
+        else card_tool.clean_category_ids(raw_categories, "论文知识点分类", allow_empty=True, root=root)
+    )
+    if card_tool.library.card_dir(entry_id, root).exists():
+        paper = card_tool.library.load_card(entry_id, root)["paper"]
+        paper["category_ids"] = selected_categories
+        card_tool.library.save_card_paper(entry_id, paper, root)
+        queue = dict(card_tool.load_search_queue(root).get("entries", {}).get(entry_id) or {})
+        queue["category_ids"] = selected_categories
+        card_tool.library.save_card_record(entry_id, "queue", queue, root)
+    elif selected_categories != entry_categories:
+        raise ValueError("旧版共享布局不支持修改知识点分类；请先迁移到 Card 库")
+    saved_payload = {**payload, "category_ids": selected_categories}
     record = card_tool.save_header_zh(entry_id, saved_payload, root=root)
     status = card_tool.update_status(entry_id, "edited", root=root)
     return {"ok": True, "header_zh": record, "card": card_payload(entry_id, root), "status": status}
@@ -186,9 +205,12 @@ def downgrade_to_l4_payload(entry_id: str, root: Path | str | None = None) -> di
     for key in ["search_status", "decision_reason", "reason_to_include", "review_note"]:
         record.pop(key, None)
     record["updated_at"] = card_tool.now_iso()
-    queue["entries"][entry_id] = record
-    queue["updated_at"] = record["updated_at"]
-    card_tool.save_search_queue(queue, root)
+    if card_tool.library.card_dir(entry_id, root).exists():
+        card_tool.library.save_card_record(entry_id, "queue", record, root)
+    else:
+        queue["entries"][entry_id] = record
+        queue["updated_at"] = record["updated_at"]
+        card_tool.save_search_queue(queue, root)
 
     status = card_tool.update_status(entry_id, "edited", root=root)
     report = card_tool.valid_report(entry_id, root, entry=entries[entry_id])
@@ -238,27 +260,34 @@ def save_search_queue_item(queue_id: str, record: dict, root: Path | str | None 
     assert_not_l6(queue_id, "修改人工标注", root)
     if not isinstance(record, dict):
         raise ValueError("record object is required")
+    entry = card_tool.load_entries(root).get(queue_id)
+    if not entry:
+        raise ValueError(f"unknown entry_id: {queue_id}")
     search_status = record.get("search_status") or "candidate"
     if search_status not in card_tool.SEARCH_STATUSES:
         raise ValueError(f"invalid search_status: {search_status}")
     candidate_links = record.get("candidate_links") if isinstance(record.get("candidate_links"), dict) else {}
     allowed_link_keys = ["paper", "arxiv", "code", "data", "project", "huggingface", "doi"]
     cleaned_links = {key: str(candidate_links.get(key) or "").strip() or None for key in allowed_link_keys}
-    entry = card_tool.load_entries(root).get(queue_id) or {}
     entry_categories = entry.get("category") if isinstance(entry.get("category"), list) else []
-    expected_categories = card_tool.clean_category_ids(entry_categories, "论文知识点分类", root=root) if entry_categories else None
-    raw_track_guess = record.get("track_guess") if isinstance(record.get("track_guess"), list) else []
-    track_guess = expected_categories if not raw_track_guess and expected_categories else card_tool.clean_category_ids(
-        raw_track_guess,
+    expected_categories = (
+        card_tool.clean_category_ids(entry_categories, "论文知识点分类", allow_empty=True, root=root)
+        if entry
+        else None
+    )
+    raw_category_ids = record.get("category_ids") if isinstance(record.get("category_ids"), list) else []
+    category_ids = expected_categories if not raw_category_ids and expected_categories is not None else card_tool.clean_category_ids(
+        raw_category_ids,
         "搜索知识点分类",
+        allow_empty=True,
         root=root,
     )
-    if expected_categories and track_guess != expected_categories:
+    if expected_categories is not None and category_ids != expected_categories:
         raise ValueError("搜索知识点分类必须与论文库标签一致")
     cleaned_record = {
         "title": str(record.get("title") or "").strip(),
         "candidate_links": cleaned_links,
-        "track_guess": track_guess,
+        "category_ids": category_ids,
         "reason_to_include": str(record.get("reason_to_include") or "").strip(),
         "decision_reason": str(record.get("decision_reason") or record.get("reason_to_include") or "").strip(),
         "search_status": search_status,

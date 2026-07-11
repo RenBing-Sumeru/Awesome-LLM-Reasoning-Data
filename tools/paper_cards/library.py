@@ -96,6 +96,33 @@ def load_cards(root: Path | str | None = None) -> dict[str, dict[str, Any]]:
     return {path.name: load_card(path.name, root) for path in sorted(directory.iterdir()) if path.is_dir()}
 
 
+def save_card_paper(entry_id: str, paper: dict[str, Any], root: Path | str | None = None) -> dict[str, Any]:
+    """Persist the canonical metadata record for one Card."""
+    if yaml is None:
+        raise RuntimeError("PyYAML is required to write the Card library")
+    if not isinstance(paper, dict):
+        raise ValueError("paper record must be an object")
+    cleaned = dict(paper)
+    if cleaned.get("id") != entry_id:
+        raise ValueError("paper id must match the Card directory")
+    cleaned["category_ids"] = clean_category_ids(cleaned.get("category_ids"), root)
+    batch = cleaned.get("batch")
+    if isinstance(batch, dict):
+        batch = dict(batch)
+        if cleaned["category_ids"]:
+            if batch.get("primary_category_id") not in cleaned["category_ids"]:
+                batch["primary_category_id"] = cleaned["category_ids"][0]
+        else:
+            batch.pop("primary_category_id", None)
+        cleaned["batch"] = batch
+    path = card_dir(entry_id, root) / "paper.yaml"
+    path.write_text(
+        yaml.safe_dump(cleaned, allow_unicode=True, sort_keys=False, width=120),
+        encoding="utf-8",
+    )
+    return cleaned
+
+
 def save_card_record(
     entry_id: str,
     name: str,

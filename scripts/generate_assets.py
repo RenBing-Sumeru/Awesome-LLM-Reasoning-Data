@@ -12,7 +12,8 @@ from __future__ import annotations
 from pathlib import Path
 import html
 
-from common import ROOT, load_yaml_json
+from common import ROOT
+from atlas_utils import entries, paper_card_inventory
 
 WIDE = (1280, 720)
 SOCIAL = (1280, 640)
@@ -139,15 +140,15 @@ def badge(x: int, y: int, label: str, fill: str, stroke: str, dark: bool = False
 
 
 def load_counts() -> dict[str, int]:
-    entries = load_yaml_json(ROOT / "data/papers.yaml") or []
-    counts = {"entries": len(entries), "verified": 0, "partial": 0, "needs_metadata": 0, "cards": 0}
-    for item in entries:
+    card_entries = entries()
+    counts = {"entries": len(card_entries), "verified": 0, "partial": 0, "needs_metadata": 0, "cards": 0}
+    for item in card_entries:
         status = str(item.get("status") or "").strip()
         if status in counts:
             counts[status] += 1
         elif status == "needs_search":
             counts["needs_metadata"] += 1
-    counts["cards"] = len(list((ROOT / "cards").glob("**/*.md"))) - 1
+    counts["cards"] = len(paper_card_inventory())
     return counts
 
 

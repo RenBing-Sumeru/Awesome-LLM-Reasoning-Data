@@ -7,6 +7,7 @@ from pathlib import Path
 
 from tools.paper_cards import library
 from tools.paper_cards import card_tool
+from tools.paper_cards import server
 
 
 class PaperCardLibraryTest(unittest.TestCase):
@@ -77,6 +78,54 @@ category_ids:
             self.root / "paper_cards" / "library" / "cards" / "sample-paper" / "sources",
         )
 
+    def test_header_save_changes_card_categories_without_shared_records(self) -> None:
+        payload = server.save_header_zh_payload(
+            "sample-paper",
+            {
+                "one_line_summary_ch": "中文总结。",
+                "reading_priority_ch": "可读",
+                "paper_type_ch": "数据论文",
+                "best_for_ch": "研究者",
+                "confidence_ch": "高",
+                "authors_ch": "Ada Author",
+                "category_ids": ["programmatic_verification", "scaling_rlvr"],
+            },
+            root=self.root,
+        )
+
+        self.assertEqual(
+            library.load_card("sample-paper", self.root)["paper"]["category_ids"],
+            ["programmatic_verification", "scaling_rlvr"],
+        )
+        self.assertEqual(payload["header_zh"]["category_ids"], ["programmatic_verification", "scaling_rlvr"])
+        self.assertEqual(
+            library.load_card("sample-paper", self.root)["queue"]["category_ids"],
+            ["programmatic_verification", "scaling_rlvr"],
+        )
+        self.assertFalse((self.root / "paper_cards" / "header_zh.json").exists())
+        self.assertFalse((self.root / "paper_cards" / "status.json").exists())
+
+    def test_valid_report_cache_is_not_written_outside_the_card_directory(self) -> None:
+        card_tool.save_valid_report({"entry_id": "sample-paper", "level": "L4_chinese_review_ready"}, self.root)
+
+        self.assertFalse((self.root / "paper_cards" / "valid_status.json").exists())
+
+    def test_header_save_can_remove_the_final_category(self) -> None:
+        server.save_header_zh_payload(
+            "sample-paper",
+            {
+                "one_line_summary_ch": "中文总结。",
+                "reading_priority_ch": "可读",
+                "paper_type_ch": "数据论文",
+                "best_for_ch": "研究者",
+                "confidence_ch": "高",
+                "authors_ch": "Ada Author",
+                "category_ids": [],
+            },
+            root=self.root,
+        )
+
+        self.assertEqual(library.load_card("sample-paper", self.root)["paper"]["category_ids"], [])
 
 if __name__ == "__main__":
     unittest.main()

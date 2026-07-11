@@ -82,18 +82,14 @@ def entries() -> list[dict[str, Any]]:
     global _ENTRIES_CACHE
     if _ENTRIES_CACHE is None:
         cards = library.load_cards(ROOT)
-        if cards:
-            _ENTRIES_CACHE = [{**card["paper"], "category": list(card["paper"].get("category_ids") or [])} for card in cards.values()]
-        else:
-            payload = load_yaml_json(ROOT / "data/papers.yaml")
-            _ENTRIES_CACHE = payload if isinstance(payload, list) else []
+        _ENTRIES_CACHE = [{**card["paper"], "category": list(card["paper"].get("category_ids") or [])} for card in cards.values()]
     return _ENTRIES_CACHE
 
 
 def categories() -> list[dict[str, Any]]:
     global _CATEGORIES_CACHE
     if _CATEGORIES_CACHE is None:
-        _CATEGORIES_CACHE = library.category_options(ROOT) if (ROOT / "paper_cards/library/categories.yaml").exists() else (load_yaml_json(ROOT / "data/categories.yaml") or {}).get("paper_categories", [])
+        _CATEGORIES_CACHE = library.category_options(ROOT) if (ROOT / "paper_cards/library/categories.yaml").exists() else []
     return _CATEGORIES_CACHE
 
 

@@ -17,7 +17,7 @@ def main():
         for e in parse(path, verified)[0]:
             if e["key"] not in merged or e["verified_bib"]: merged[e["key"]] = e
     entries = sorted(merged.values(), key=lambda x: x["key"])
-    write_json(ROOT/"data/_generated/bib_index.json", {"entries": entries, "failed_blocks": failed})
+    write_json(ROOT/"reports/bib_index.json", {"entries": entries, "failed_blocks": failed})
     lines = ["# BibTeX Index", "", f"Entries: {len(entries)}", ""]
     lines += [f"- `{e['key']}` ({'verified' if e['verified_bib'] else 'main'}): {e['title'] or 'unknown title'}" for e in entries]
     (ROOT/"reports/bib_index.md").write_text("\n".join(lines)+"\n", encoding="utf-8")

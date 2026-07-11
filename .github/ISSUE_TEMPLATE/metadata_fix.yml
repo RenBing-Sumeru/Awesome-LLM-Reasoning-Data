@@ -7,7 +7,7 @@ body:
     id: target
     attributes:
       label: Entry ID or file path
-      description: Example deepseek-r1-2025 or paper_cards/sources/deepseek-r1-2025/01_problem_ch.md
+      description: Example deepseek-r1-2025 or paper_cards/library/cards/deepseek-r1-2025/sources/01_problem_ch.md
     validations:
       required: true
   - type: dropdown

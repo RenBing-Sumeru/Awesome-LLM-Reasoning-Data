@@ -9,12 +9,12 @@
     "huggingface": "https://huggingface.co/nuprl/agnostics",
     "doi": "https://doi.org/10.48550/arXiv.2508.04865"
   },
-  "track_guess": [
-    "scaling_rlvr_test_time_compute"
-  ],
   "reason_to_include": "",
   "decision_reason": "",
   "search_status": "",
   "review_note": "",
-  "updated_at": "2026-07-10T15:11:44Z"
+  "updated_at": "2026-07-10T15:11:44Z",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ]
 }

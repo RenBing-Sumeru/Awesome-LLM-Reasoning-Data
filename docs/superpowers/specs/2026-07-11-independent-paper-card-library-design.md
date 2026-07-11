@@ -2,7 +2,7 @@
 
 ## Goal
 
-Make each Paper Card directory the only hand-maintained source for that paper. The review frontend reads the Card library directly; `data/papers.yaml` and site indexes become generated compatibility artifacts rather than editable sources.
+Make each Paper Card directory the only hand-maintained source for that paper. The review frontend reads the Card library directly; all renderer indexes are derived outputs rather than editable sources.
 
 ## Canonical Library
 
@@ -39,7 +39,7 @@ paper_cards/library/
 
 ## Derived Compatibility Outputs
 
-- A build command scans `paper_cards/library/cards/`, validates every Card, and writes `data/papers.yaml`, `data/_generated/entries.json`, site assets, counts, and reports.
+- A build command scans `paper_cards/library/cards/`, validates every Card, and writes site assets, counts, and reports.
 - Generated outputs are never edited by the review frontend or by Card-generation agents.
 - Existing site scripts consume the generated index during the transition. The review server consumes the library directly.
 - Cached validity reports are regenerated from the library and are not canonical records.
@@ -50,7 +50,7 @@ paper_cards/library/
 2. Validate count, IDs, metadata, categories, source-file checksums, Chinese header fields, institutions, queue records, review state, and batch provenance against the old layout.
 3. Switch the review server and Card tooling to the library loader.
 4. Generate compatibility outputs and compare them with the existing generated outputs.
-5. Remove the old hand-maintained `data/papers.yaml`, shared local JSON files, `sources/`, and batch-record layout only after a clean-clone validation passes.
+5. Remove the old hand-maintained shared metadata, review JSON, source, and batch-record layout only after a clean-clone validation passes.
 
 ## Review UI
 

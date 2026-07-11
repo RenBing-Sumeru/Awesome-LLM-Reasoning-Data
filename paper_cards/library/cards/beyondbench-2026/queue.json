@@ -9,12 +9,12 @@
     "huggingface": null,
     "doi": null
   },
-  "track_guess": [
-    "programmatically_verifiable_outcome_data"
-  ],
   "reason_to_include": "cccceeee",
   "decision_reason": "cccceeee",
   "search_status": "candidate",
   "review_note": "",
-  "updated_at": "2026-07-10T15:11:36Z"
+  "updated_at": "2026-07-10T15:11:36Z",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
 }

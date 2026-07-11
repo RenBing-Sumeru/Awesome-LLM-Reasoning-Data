@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Suggest primary-source search queries for entries that still need links.
 
-This script intentionally does not invent links. It reads `data/papers.yaml` and
+This script intentionally does not invent links. It reads the Card library and
 prints search queries for entries without paper/arXiv/DOI/code/data/project links.
-Curators can run the queries, verify primary sources, then update the YAML.
+Curators can run the queries, verify primary sources, then update each Card's
+`paper.yaml`.
 """
 from __future__ import annotations
 
 import argparse
-from common import ROOT, load_yaml_json
+from atlas_utils import entries
 
 ARTIFACT_KEYS = ["paper", "arxiv", "doi", "code", "data", "project", "huggingface"]
 
@@ -24,8 +25,7 @@ def main() -> int:
     parser.add_argument("--status", default="needs_metadata,needs_search,needs_url,partial", help="comma-separated statuses to inspect")
     args = parser.parse_args()
     statuses = {item.strip() for item in args.status.split(",") if item.strip()}
-    entries = load_yaml_json(ROOT / "data/papers.yaml")
-    selected = [e for e in entries if e.get("status") in statuses and not has_artifact(e)]
+    selected = [entry for entry in entries() if entry.get("status") in statuses and not has_artifact(entry)]
     print(f"entries needing primary links: {len(selected)}")
     for entry in selected[: args.limit]:
         title = entry.get("title") or entry.get("id")

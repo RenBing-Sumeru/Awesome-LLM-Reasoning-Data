@@ -208,8 +208,8 @@ def render_index_html(counts: dict) -> str:
   </main>
 
   <footer class="site-footer">
-    <span>Generated from structured atlas metadata.</span>
-    <a href="{REPO_BLOB}/data/papers.yaml">data/papers.yaml</a>
+    <span>Generated from the independent Card library.</span>
+    <a href="{REPO_BLOB}/paper_cards/library/cards/">Card library</a>
     <a href="assets/entries.json">entries.json</a>
     <a href="{REPO_BLOB}/reports/link_check.md">link check</a>
   </footer>
@@ -232,8 +232,6 @@ def render(target_root: Path = ROOT) -> None:
     write_json(target_root / "docs/assets/categories.json", cats)
     write_json(target_root / "docs/assets/research_tracks.json", tracks)
     write_json(target_root / "docs/assets/starter_packs.json", packs)
-    write_json(target_root / "data/_generated/entries.json", items)
-    write_json(target_root / "data/_generated/counts.json", counts)
     fallback = {
         "entries": items,
         "counts": counts,
@@ -250,7 +248,6 @@ def check() -> int:
     with tempfile.TemporaryDirectory() as tmp:
         temp = Path(tmp)
         (temp / "docs/assets").mkdir(parents=True)
-        (temp / "data/_generated").mkdir(parents=True)
         render(temp)
         checks = [
             ("docs/assets/entries.json", ROOT / "docs/assets/entries.json"),

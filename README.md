@@ -5,7 +5,7 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
 [![Local Atlas](https://img.shields.io/badge/site-searchable%20atlas-0f766e)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
-[![Entries](https://img.shields.io/badge/entries-17-2563eb)](data/papers.yaml)
+[![Entries](https://img.shields.io/badge/entries-17-2563eb)](paper_cards/library/cards/)
 [![Verified](https://img.shields.io/badge/verified-17-0f766e)](reports/link_coverage.md)
 [![Paper Cards](https://img.shields.io/badge/paper--card%20sources-17-7c3aed)](paper_cards/README.md)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -421,7 +421,7 @@ Post-training reasoning data is multi-axis. A math paper can be a benchmark, an 
 |---|---|
 | What counts as post-training reasoning data? | [docs/01](docs/01_what_is_post_training_reasoning_data.md) + [Foundations](papers/00_background_foundations/00_foundations_and_primers.md) |
 | How do we verify reasoning data? | [Programmatic](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) + [Process supervision](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md) + [Verifiers](docs/06_verifiers_and_rewards.md) |
-| How are open reasoning datasets constructed? | [Construction recipes](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md) + [paper-card sources](paper_cards/sources/) |
+| How are open reasoning datasets constructed? | [Construction recipes](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md) + [Card library](paper_cards/library/cards/) |
 | What data does RLVR actually need? | [Programmatic verification](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) + [Scaling/RLVR](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) |
 | How should agent trajectories be serialized? | [Agent data](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md) + [docs/07](docs/07_agent_trajectory_data.md) |
 | How do frontier reports disclose or hide data recipes? | [Frontier reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md) |
@@ -545,9 +545,9 @@ This repository should work like a small open course. You do not need to read ev
 | Stage | Learn | Main resources | Output you should have |
 |---:|---|---|---|
 | 1 | Vocabulary and mental model | [60-second version](#-60-second-version), [docs/00](docs/00_start_here.md), [docs/01](docs/01_what_is_post_training_reasoning_data.md) | You can explain the difference between answer data, trace data, reward data, verifier data, and trajectory data. |
-| 2 | Feedback contracts | [docs/02](docs/02_verifier_anchored_taxonomy.md), [docs/06](docs/06_verifiers_and_rewards.md), [paper-card sources](paper_cards/sources/) | You can identify whether a work uses programmatic, environmental, judgment-required, or mixed verification. |
+| 2 | Feedback contracts | [docs/02](docs/02_verifier_anchored_taxonomy.md), [docs/06](docs/06_verifiers_and_rewards.md), [Card library](paper_cards/library/cards/) | You can identify whether a work uses programmatic, environmental, judgment-required, or mixed verification. |
 | 3 | Core papers | [Starter Pack](#-starter-pack-20-must-read-papers), [papers/README.md](papers/README.md), [paper_cards/README.md](paper_cards/README.md) | You can locate the canonical papers for math, code, process supervision, agents, RLVR, and audit. |
-| 4 | Data construction | [docs/05](docs/05_construction_cookbook.md), [paper-card sources](paper_cards/sources/) | You can describe prompt sourcing, teacher generation, filtering, verifier pinning, and release metadata. |
+| 4 | Data construction | [docs/05](docs/05_construction_cookbook.md), [Card library](paper_cards/library/cards/) | You can describe prompt sourcing, teacher generation, filtering, verifier pinning, and release metadata. |
 | 5 | Specialized tracks | [programmatic data](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md), [agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md), [rubrics](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md), [scaling](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) | You can choose a subfield and follow its top papers and audit questions. |
 | 6 | Audit and contribution | [docs/09](docs/09_audit_and_failure_modes.md), [reports/link_coverage.md](reports/link_coverage.md), [CONTRIBUTING.md](CONTRIBUTING.md) | You can tell what is verified, what is missing, and how to improve an entry without hallucinating links. |
 
@@ -561,7 +561,7 @@ Read these as a learning path, not as a citation dump. The rightmost columns tel
 Next steps:
 
 - Newcomer: read [docs/00_start_here.md](docs/00_start_here.md) and [docs/01_what_is_post_training_reasoning_data.md](docs/01_what_is_post_training_reasoning_data.md).
-- Builder: read [docs/05_construction_cookbook.md](docs/05_construction_cookbook.md) and compare paper-card sources in [paper_cards/sources/](paper_cards/sources/).
+- Builder: read [docs/05_construction_cookbook.md](docs/05_construction_cookbook.md) and compare Card-local sources in [paper_cards/library/cards/](paper_cards/library/cards/).
 - Auditor: read [docs/09_audit_and_failure_modes.md](docs/09_audit_and_failure_modes.md) and compare reviewed paper-card sources from [paper_cards/README.md](paper_cards/README.md).
 
 ---
@@ -687,7 +687,7 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 | [docs/](docs/) | Conceptual lessons: mental model, taxonomy, construction cookbook, verifiers, agent trajectories, scaling, and failure modes. |
 | [papers/](papers/README.md) | Field navigation map: category pages with read-first tables, full paper lists, audit checklists, related paper-card sources, and open gaps. |
 | [paper_cards/](paper_cards/README.md) | Bilingual paper-card source files and local review workflow. |
-| [data/papers.yaml](data/papers.yaml) | Structured source of truth for paper metadata, roles, contracts, summaries, links, and curation levels. |
+| [paper_cards/library/cards/](paper_cards/library/cards/) | Structured source of truth: each Card owns its paper metadata, local review records, and bilingual sources. |
 | [docs/index.html](docs/index.html) | Searchable web atlas generated from structured data. |
 | [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, quality audits, and live-link reports. |
 | [exports/](exports/) | CSV, JSON, and BibTeX exports for readers who want to reuse the atlas data. |
@@ -745,7 +745,7 @@ The long categorized lists live in [papers/](papers/README.md). Each category pa
 Paper-card sources turn citations into reviewable bilingual sections. The full assembled cards are generated by Python and are not maintained by hand.
 
 - [Paper-card workflow](paper_cards/README.md)
-- [Paper-card sources](paper_cards/sources/)
+- [Card library](paper_cards/library/cards/)
 
 ## 🔎 Searchable Website
 

@@ -27,7 +27,7 @@ Never guess arXiv IDs, GitHub repositories, DOI links, or Hugging Face pages. If
 
 ## Required Metadata
 
-For `data/papers.yaml`, include:
+For `paper_cards/library/cards/<entry_id>/paper.yaml`, include:
 
 - `id`, `title`, `year`, `venue`, `authors`
 - `source_role`
@@ -45,6 +45,10 @@ For `data/papers.yaml`, include:
 - `tags`
 - `status`
 - `curation_level`
+
+Set `category_ids` to controlled IDs from `paper_cards/library/categories.yaml`.
+New Cards normally start with one category; a maintainer may keep zero to two
+categories when the paper spans more than one area. Do not add a Track field.
 
 Use `unknown`, `needs_search`, or `ambiguous` when evidence is missing. Do not fill uncertain fields with plausible-sounding guesses.
 
@@ -66,7 +70,8 @@ Avoid generic praise such as "important paper for LLMs" or "useful for reasoning
 
 ## Adding a Card
 
-Cards live under `cards/releases/`, `cards/verifiers/`, `cards/agents/`, `cards/recipes/`, `cards/failures/`, or `cards/benchmarks/`.
+Cards live under `paper_cards/library/cards/<entry_id>/`. Each directory owns
+its metadata, review records, and bilingual sources.
 
 Each card should include:
 
@@ -95,7 +100,7 @@ python scripts/validate_data.py
 python scripts/render_site.py --check
 python scripts/render_papers.py --check
 python scripts/render_readme.py --check
-python scripts/render_cards.py --check
+python tools/paper_cards/card_tool.py check
 python scripts/coverage_report.py
 python scripts/check_links.py --soft
 ```

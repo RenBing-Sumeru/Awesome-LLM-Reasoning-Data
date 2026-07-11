@@ -301,7 +301,7 @@
 |---|---|
 | What counts as post-training reasoning data? | [docs/01](docs/01_what_is_post_training_reasoning_data.md) + [Foundations](papers/00_background_foundations/00_foundations_and_primers.md) |
 | How do we verify reasoning data? | [Programmatic](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) + [Process supervision](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md) + [Verifiers](docs/06_verifiers_and_rewards.md) |
-| How are open reasoning datasets constructed? | [Construction recipes](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md) + [paper-card sources](paper_cards/sources/) |
+| How are open reasoning datasets constructed? | [Construction recipes](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md) + [Card library](paper_cards/library/cards/) |
 | What data does RLVR actually need? | [Programmatic verification](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) + [Scaling/RLVR](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) |
 | How should agent trajectories be serialized? | [Agent data](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md) + [docs/07](docs/07_agent_trajectory_data.md) |
 | How do frontier reports disclose or hide data recipes? | [Frontier reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md) |
@@ -376,7 +376,7 @@
 | 1 | 基础概念和 mental model | [docs/00](docs/00_start_here.md)、[docs/01](docs/01_what_is_post_training_reasoning_data.md) | 能解释 answer data、trace data、reward data、verifier data、trajectory data 的区别。 |
 | 2 | 反馈契约 | [docs/02](docs/02_verifier_anchored_taxonomy.md)、[docs/06](docs/06_verifiers_and_rewards.md) | 能判断一篇工作使用 programmatic、environmental、judgment-required 还是 mixed verification。 |
 | 3 | 核心论文 | [Starter Pack](#-starter-pack20-篇必读)、[papers/README.md](papers/README.md)、[paper_cards/README.md](paper_cards/README.md) | 能定位 math/code/process/agent/RLVR/audit 的代表性工作。 |
-| 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[paper_cards/sources/](paper_cards/sources/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
+| 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[Card 库](paper_cards/library/cards/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
 | 5 | 专题深入 | [math/code/proof](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md)、[agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md)、[rubrics](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md)、[scaling](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) | 能沿一个子领域继续读论文、看双语卡片源、查官方链接。 |
 | 6 | 审计与贡献 | [docs/09](docs/09_audit_and_failure_modes.md)、[reports/link_coverage.md](reports/link_coverage.md)、[CONTRIBUTING.md](CONTRIBUTING.md) | 能判断什么已经验证、什么还缺失，并且可以给仓库补高质量条目。 |
 
@@ -426,7 +426,7 @@
 | [docs/](docs/) | 系统学习材料：概念、taxonomy、construction cookbook、verifier、agent trajectory、scaling、failure modes。 |
 | [papers/](papers/README.md) | 论文导航地图：按子领域组织 read-first、full list、audit checklist、related paper-card sources。 |
 | [paper_cards/](paper_cards/README.md) | 双语 paper-card 源文件和本地 review 工作流。 |
-| [data/papers.yaml](data/papers.yaml) | 结构化数据源：记录 metadata、role、contract、summary、link、curation level。 |
+| [paper_cards/library/cards/](paper_cards/library/cards/) | 结构化唯一来源：每个 Card 独立维护元数据、局部 review 记录和双语正文。 |
 | [docs/index.html](docs/index.html) | 可搜索网页 atlas：可以按 year、role、contract、training use、curation level 等过滤。 |
 | [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、质量审查、link check。 |
 | [exports/](exports/) | CSV、JSON、BibTeX，方便复用这个 atlas。 |

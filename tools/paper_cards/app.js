@@ -207,6 +207,10 @@ function updateFormLockState(valid = currentValid()) {
   els.noInstitution.disabled = locked;
   els.queueStatus.disabled = locked || invalid;
   els.queueReason.disabled = locked || invalid;
+  const selectedCategories = selectedCategoryIds();
+  els.categoryOptions.querySelectorAll("[data-category-id]").forEach((control) => {
+    control.disabled = locked || (!control.checked && selectedCategories.length >= 2);
+  });
 }
 
 function institutionText(record) {
@@ -430,15 +434,23 @@ function renderHeaderZh() {
   els.bestForCh.value = header.best_for_ch || "";
   els.confidenceCh.value = header.confidence_ch || "";
   els.authorsCh.value = header.authors_ch || authors || "";
-  renderCategoryReadOnly();
+  renderCategoryEditor();
   updateActionAvailability();
 }
 
-function renderCategoryReadOnly() {
-  const categories = state.activeCard?.category_labels || [];
-  els.categoryOptions.innerHTML = categories.length ? categories.map((item) => (
-    `<span class="category-singleton">${esc(item.title)}</span>`
-  )).join("") : "<span class='category-unbound'>未绑定论文任务</span>";
+function selectedCategoryIds() {
+  return Array.from(els.categoryOptions.querySelectorAll("[data-category-id]:checked"))
+    .map((control) => control.dataset.categoryId)
+    .filter(Boolean);
+}
+
+function renderCategoryEditor() {
+  const selected = new Set(arr(state.activeCard?.entry?.category));
+  const options = state.activeCard?.category_options || [];
+  els.categoryOptions.innerHTML = options.map((item) => {
+    const checked = selected.has(item.id) ? " checked" : "";
+    return `<label class="category-option"><input type="checkbox" data-category-id="${esc(item.id)}"${checked}>${esc(item.title)}</label>`;
+  }).join("") || "<span class='category-unbound'>没有可用分类</span>";
 }
 
 function renderTabs() {
@@ -705,6 +717,7 @@ async function saveHeaderZh() {
         best_for_ch: els.bestForCh.value,
         confidence_ch: els.confidenceCh.value,
         authors_ch: els.authorsCh.value,
+        category_ids: selectedCategoryIds(),
       },
     },
   });
@@ -852,7 +865,7 @@ async function saveQueueItem() {
       code: artifacts.code || "",
       data: artifacts.data || artifacts.project || "",
     },
-    track_guess: arr(entry.category),
+    category_ids: arr(entry.category),
     reason_to_include: els.queueReason.value,
     decision_reason: els.queueReason.value,
     search_status: els.queueStatus.value,
@@ -908,6 +921,15 @@ function bind() {
     input.addEventListener("input", () => markUpdateButtonDirty(els.saveHeaderZh));
   });
   els.readingPriorityCh.addEventListener("change", () => markUpdateButtonDirty(els.saveHeaderZh));
+  els.categoryOptions.addEventListener("change", (event) => {
+    if (!event.target.matches("[data-category-id]")) return;
+    if (selectedCategoryIds().length > 2) {
+      event.target.checked = false;
+      setMessage("知识点分类最多选择两个。");
+    }
+    updateFormLockState();
+    markUpdateButtonDirty(els.saveHeaderZh);
+  });
   els.chineseSection.addEventListener("input", () => markUpdateButtonDirty(els.saveSection));
   institutionInputs().forEach((input) => {
     input.addEventListener("input", () => markUpdateButtonDirty(els.saveInstitutions));

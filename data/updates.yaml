@@ -1,8 +1,8 @@
 updates:
 - date: '2026-06-01'
   title: Three-part paper atlas generated
-  summary: Added the 3-section, 14-track paper atlas under papers/ plus a renderer and coverage report. Pages prioritize local
-    papers.yaml metadata and mark missing official links as needs_search.
+  summary: Added the 3-section, 14-category paper atlas under papers/ plus a renderer and coverage report. Pages prioritize
+    Card-library metadata and mark missing official links as needs_search.
   links:
   - papers/README.md
   - reports/paper_coverage_report.md
@@ -17,7 +17,7 @@ updates:
   summary: Added category metadata, emoji labels, related docs/cards, open questions, and selection rules for rendering the
     paper atlas.
   links:
-  - data/categories.yaml
+  - paper_cards/library/categories.yaml
   - scripts/render_papers.py
 - date: '2025-06-05'
   title: OpenThoughts data recipe tracked

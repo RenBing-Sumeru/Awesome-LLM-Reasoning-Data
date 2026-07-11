@@ -9,12 +9,12 @@
     "huggingface": null,
     "doi": null
   },
-  "track_guess": [
-    "scaling_rlvr_test_time_compute"
-  ],
   "reason_to_include": "djfkladjfkla",
   "decision_reason": "djfkladjfkla",
   "search_status": "candidate",
   "review_note": "",
-  "updated_at": "2026-07-10T15:11:44Z"
+  "updated_at": "2026-07-10T15:11:44Z",
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ]
 }

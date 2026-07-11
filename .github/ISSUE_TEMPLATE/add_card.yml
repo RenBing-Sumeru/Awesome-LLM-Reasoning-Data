@@ -7,14 +7,14 @@ body:
     id: source_path
     attributes:
       label: Proposed paper-card source path
-      description: Example paper_cards/sources/openthoughts
+      description: Example paper_cards/library/cards/openthoughts/sources
     validations:
       required: true
   - type: input
     id: entry_id
     attributes:
-      label: data/papers.yaml entry_id
-      description: The source directory must match an existing entry_id.
+      label: Card entry_id
+      description: The Card directory and paper.yaml id must use this entry_id.
     validations:
       required: true
   - type: textarea

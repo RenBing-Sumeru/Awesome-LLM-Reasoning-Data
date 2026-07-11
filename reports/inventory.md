@@ -26,4 +26,4 @@ Local scratch prompts, private paper PDFs, Python caches, temporary build artifa
 
 ## Notes
 
-The structured atlas is in `data/papers.yaml`; generated display data is under `data/_generated/` and `docs/assets/`; the static browsing experience starts at `docs/index.html`.
+The structured atlas is in `paper_cards/library/cards/`; generated display data is under `docs/assets/`; the static browsing experience starts at `docs/index.html`.

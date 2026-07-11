@@ -9,12 +9,12 @@
     "huggingface": null,
     "doi": null
   },
-  "track_guess": [
-    "programmatically_verifiable_outcome_data"
-  ],
   "reason_to_include": "他定义了一类几何的新的概念，可作为参考",
   "decision_reason": "他定义了一类几何的新的概念，可作为参考",
   "search_status": "candidate",
   "review_note": "",
-  "updated_at": "2026-07-10T15:11:36Z"
+  "updated_at": "2026-07-10T15:11:36Z",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
 }

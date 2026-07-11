@@ -64,15 +64,18 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn("await selectEntry(next.id);", app)
         self.assertIn("已保存人工标注", app)
 
-    def test_category_is_displayed_as_one_read_only_metadata_value(self) -> None:
+    def test_category_editor_allows_zero_to_two_controlled_values(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
 
-        self.assertIn("function renderCategoryReadOnly", app)
-        self.assertIn('class="category-singleton"', app)
+        self.assertIn("function renderCategoryEditor", app)
+        self.assertIn("function selectedCategoryIds", app)
+        self.assertIn("category_ids: selectedCategoryIds()", app)
+        self.assertIn('data-category-id=', app)
+        self.assertIn("selectedCategories.length >= 2", app)
         self.assertIn('class="category-context"', html)
+        self.assertNotIn("function renderCategoryReadOnly", app)
         self.assertNotIn('type="radio" name="categoryId"', app)
-        self.assertNotIn("function selectedCategoryId", app)
 
     def test_l6_filter_sorts_by_review_time_descending(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")

@@ -50,7 +50,6 @@ def main() -> int:
     out = "\n\n".join(items) + "\n"
     (ROOT / "exports").mkdir(exist_ok=True)
     (ROOT / "exports/papers.bib").write_text(out, encoding="utf-8")
-    (ROOT / "data/citations.bib").write_text(out, encoding="utf-8")
     print(f"exported {len(items)} bibtex entries")
     return 0
 

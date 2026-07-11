@@ -79,7 +79,7 @@ def main() -> int:
     lines = [
         "# Link Coverage",
         "",
-        "Public coverage report generated from `data/papers.yaml` and the paper-card source inventory.",
+        "Public coverage report generated from the Card library and its local source inventory.",
         "",
         "## Summary",
         "",

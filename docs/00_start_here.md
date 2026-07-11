@@ -9,7 +9,7 @@
 
 ## Core idea in one paragraph
 
-This repository is a learning-first atlas. README gives the map, docs teach concepts, data files store structured entries, cards turn papers into auditable release records, and the website makes the atlas searchable.
+This repository is a learning-first atlas. README gives the map, docs teach concepts, each Card stores its structured paper record, and the website makes the atlas searchable.
 
 ## Beginner explanation
 
@@ -29,7 +29,7 @@ Use four layers: taxonomy, quality, construction, and scaling. Each layer asks w
 ## Practical checklist
 
 - [ ] Pick a path.
-- [ ] Use data/papers.yaml for metadata.
+- [ ] Use `paper_cards/library/cards/<entry_id>/paper.yaml` for metadata.
 - [ ] Use cards when adding resources.
 - [ ] Keep unknowns explicit.
 
