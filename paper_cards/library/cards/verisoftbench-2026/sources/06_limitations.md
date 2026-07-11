@@ -1,0 +1,1 @@
+A deterministic checker only proves conformance to its encoded contract. Reproduce from pinned repository commits and dependency locks; audit obligation provenance, benchmark splits, and each repository license. The benchmark may therefore miss semantic quality outside that contract.

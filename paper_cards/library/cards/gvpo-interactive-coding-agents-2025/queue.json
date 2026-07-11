@@ -1,0 +1,26 @@
+{
+  "title": "Group Verification-based Policy Optimization for Interactive Coding Agents",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=RY47Tq0VsV",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null,
+    "venue": "https://openreview.net/forum?id=RY47Tq0VsV",
+    "openreview": "https://openreview.net/forum?id=RY47Tq0VsV",
+    "acl": null,
+    "pmlr": null,
+    "cvf": null,
+    "bibtex": null
+  },
+  "reason_to_include": "ICLR 2026 conference paper; directly combines outcome- and process-verifiable reward signals；结果由 AppWorld goal tests plus deterministic compilation, exception, and partial-test feedback 判定。",
+  "decision_reason": "主来源、发布日期与程序化验证契约均已在候选审计中核对。",
+  "search_status": "candidate",
+  "review_note": "L4 内容已完成，仍等待人工 L5 决策。",
+  "updated_at": "2026-07-11T00:00:00Z",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
+}

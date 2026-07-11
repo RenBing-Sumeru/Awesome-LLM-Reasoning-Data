@@ -1,0 +1,3 @@
+一句话贡献：它要求模型输出能被 Lean 4 内核接受的代码，从而把研究生层次数学证明变成可度量任务。 反馈契约明确为：Lean 4 kernel acceptance of a submitted proof。对本分类而言，一条记录包含 研究生层次数学命题、Lean 4 定理上下文、模型提交的 proof term 与内核判定；最接近的比较基线是：miniF2F、Putnam 类奥赛或本科题集较少覆盖研究生层次的形式化证明难度。
+
+来源与审计记录：FormalProofBench: Can Models Write Graduate Level Math Proofs That Are Formally Verified? — https://arxiv.org/abs/2603.26996。会议/日期：ICLR 2026 VerifAI-2 Workshop / arXiv；首次公开日期：2026-03-02。确定性 verifier 契约：Lean 4 kernel acceptance of a submitted proof。数据对象/评测面：研究生层次数学命题、Lean 4 定理上下文、模型提交的 proof term 与内核判定。实际流程：模型读取形式化定理及其 import 上下文，生成 Lean 证明；评测记录 Lean 4 编译成功或失败。 质量/影响力信号：ICLR 2026 VerifAI-2 paper; graduate-level Lean benchmark from Vals AI and EPFL authors。复用/审计注意：复用前要固定 Lean/mathlib 版本、定理 import、切分来源和题目许可证；内核通过并不自动解决数据来源问题。

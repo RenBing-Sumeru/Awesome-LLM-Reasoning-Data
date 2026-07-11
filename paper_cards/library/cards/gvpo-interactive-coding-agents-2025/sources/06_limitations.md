@@ -1,0 +1,1 @@
+A deterministic checker only proves conformance to its encoded contract. Check the AppWorld release, task seeds, scaffold permissions, partial-test weights, and whether process feedback leaks task solutions. The benchmark may therefore miss semantic quality outside that contract.

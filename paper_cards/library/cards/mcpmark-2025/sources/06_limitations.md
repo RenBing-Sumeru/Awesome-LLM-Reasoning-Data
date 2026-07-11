@@ -1,0 +1,1 @@
+A deterministic checker only proves conformance to its encoded contract. Recreate server images, reset policies, credentials, task seeds, and checker scripts; a state checker can still under-specify intended user behavior. The benchmark may therefore miss semantic quality outside that contract.

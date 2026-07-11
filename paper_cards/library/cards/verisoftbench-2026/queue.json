@@ -1,0 +1,26 @@
+{
+  "title": "VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2602.18307",
+    "arxiv": "https://arxiv.org/abs/2602.18307",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null,
+    "venue": null,
+    "openreview": null,
+    "acl": null,
+    "pmlr": null,
+    "cvf": null,
+    "bibtex": null
+  },
+  "reason_to_include": "Open 500-obligation software-verification benchmark from UT Austin formal-methods researchers；结果由 Lean 4 type checker on repository-context proof obligations 判定。",
+  "decision_reason": "主来源、发布日期与程序化验证契约均已在候选审计中核对。",
+  "search_status": "candidate",
+  "review_note": "L4 内容已完成，仍等待人工 L5 决策。",
+  "updated_at": "2026-07-11T00:00:00Z",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
+}

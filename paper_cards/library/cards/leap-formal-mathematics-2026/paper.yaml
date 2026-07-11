@@ -1,0 +1,122 @@
+id: leap-formal-mathematics-2026
+title: 'LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks'
+year: 2026
+venue: arXiv
+authors:
+- Po-Nien Kung
+- Linfeng Song
+- Dawsen Hwang
+- Jinsung Yoon
+- Chun-Liang Li
+- Simone Severini
+- Mirek Olšák
+- Edward Lockhart
+- Quoc V. Le
+- Burak Gokturk
+- Thang Luong
+- Tomas Pfister
+- Nanyun Peng
+source_role:
+- model_report
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- formal-mathematics
+- lean4
+- agentic-reasoning
+training_use:
+- evaluation
+- agent_training
+- audit
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.03303
+  arxiv: https://arxiv.org/abs/2606.03303
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Lean formal-math problems, agent-generated proof subgoals, proof-DAG nodes, compiled proofs, and benchmark
+    outcomes
+  trace_author: Model or agent outputs evaluated by the paper's released protocol.
+  answer_format: Candidate artifact together with the executable verifier result.
+  process_fields:
+  - task context
+  - candidate output
+  - verifier result
+  - release protocol
+  environment_or_substrate: Agents decompose a Lean theorem into subgoals, search and verify candidate subproofs with the
+    Lean compiler, then compose accepted nodes into a final proof DAG.
+  verifier_or_reward: Lean compiler checks every generated proof and proof-DAG composition
+  terminal_predicate: 'The supplied programmatic contract accepts the candidate: Lean compiler checks every generated proof
+    and proof-DAG composition.'
+recipe_metadata:
+  base_model: See the paper's official experimental protocol.
+  teacher: Deterministic verifier or environment outcome.
+  generator: Agents decompose a Lean theorem into subgoals, search and verify candidate subproofs with the Lean compiler,
+    then compose accepted nodes into a final proof DAG.
+  filtering_rule: Keep outcomes accepted or rejected by the stated executable contract.
+  sampling_protocol: Use the paper-reported splits, seeds, and rollout budget.
+  rollout_count: null
+  temperature: null
+  inference_budget: Audit the paper-reported search or execution budget.
+  optimizer_or_scaffold: See the official paper and released evaluation harness.
+audit:
+  source_mixture: Primary paper source and its stated executable evaluation object.
+  split: Use only the release-specific split documented by the authors.
+  decontamination: Audit the agent search budget, theorem translation, Lean-IMO-Bench split and license, and the exact protocol
+    behind the reported Putnam results.
+  license: Verify the primary artifact and any underlying task/repository licenses before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2606.03303'
+  known_failure_modes:
+  - Audit the agent search budget, theorem translation, Lean-IMO-Bench split and license, and the exact protocol behind the
+    reported Putnam results.
+  citation_status: verified
+  confidence: high
+  notes: Release date audited as 2026-06-02; Google research technical report; introduces Lean-IMO-Bench and reports all 12
+    2025 Putnam problems solved
+inclusion_reason: 'Recent programmatically verifiable outcome-data work: Google research technical report; introduces Lean-IMO-Bench
+  and reports all 12 2025 Putnam problems solved'
+related: []
+tags:
+- programmatically-verifiable-outcome
+- 2025-2026
+- agentic-formal-math
+status: verified
+one_line: LEAP uses an agentic proof-search framework to compose formally checked subproofs into a proof DAG rather than relying
+  on one-shot proof generation.
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: LEAP uses an agentic proof-search framework to compose formally checked subproofs into a proof DAG rather
+  than relying on one-shot proof generation.
+why_it_matters: It exposes Lean compiler checks every generated proof and proof-DAG composition as a reusable, auditable outcome
+  contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary source and release date reviewed; Google research technical report; introduces Lean-IMO-Bench and reports
+    all 12 2025 Putnam problems solved
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier-2025-20
+  request_sha256: programmatic-outcome-data-2026-07-11
+  primary_category_id: programmatically_verifiable_outcome_data

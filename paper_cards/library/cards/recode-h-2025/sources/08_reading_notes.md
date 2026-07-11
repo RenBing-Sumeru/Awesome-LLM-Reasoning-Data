@@ -1,0 +1,1 @@
+Remember the distinction between the domain task and its verifier: here the decisive outcome is Repository unit tests decide executable research-code task completion. Read the reported impact together with Issue-resolution coding benchmarks rarely combine paper-linked research code with an explicit interactive-feedback protocol.

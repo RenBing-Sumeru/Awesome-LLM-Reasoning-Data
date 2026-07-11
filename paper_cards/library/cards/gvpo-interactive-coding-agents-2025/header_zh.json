@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GVPO 把 group policy optimization 与交互式代码环境中的 outcome/process 可验证信号结合起来。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "交互式代码 Agent 的验证奖励优化方法",
+  "best_for_ch": "关注可执行 verifier、形式化证明、代码测试或 Agent 环境的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Silong Dai, Changzhi Sun, Haolun Wu, Huanran Zheng, Tao Ji, Junchi Yan, Yuanbin Wu, Dell Zhang, Xiaoling Wang, Xuelong Li",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

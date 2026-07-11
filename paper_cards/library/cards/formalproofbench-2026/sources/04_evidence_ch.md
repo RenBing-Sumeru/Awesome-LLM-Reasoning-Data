@@ -1,0 +1,1 @@
+论文的证据由可执行终局谓词支撑，而不是 LLM-as-a-judge 打分。其质量或影响力信号为：ICLR 2026 VerifAI-2 paper; graduate-level Lean benchmark from Vals AI and EPFL authors。比较分数前，应在 https://arxiv.org/abs/2603.26996 核对 checker 覆盖范围和该版本的实验协议。

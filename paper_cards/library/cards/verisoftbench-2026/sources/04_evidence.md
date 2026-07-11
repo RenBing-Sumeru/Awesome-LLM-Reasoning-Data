@@ -1,0 +1,1 @@
+The paper's evidence is tied to an executable terminal predicate rather than LLM-as-a-judge scoring. Its reported quality or impact signal is: Open 500-obligation software-verification benchmark from UT Austin formal-methods researchers. Before comparing scores, inspect the checker coverage and the release-specific experimental protocol at https://arxiv.org/abs/2602.18307.

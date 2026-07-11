@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LEAP 将一次性证明生成改为 agent 搜索并组合已形式化验证的子证明 DAG。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Agentic 形式化数学系统与 benchmark",
+  "best_for_ch": "关注可执行 verifier、形式化证明、代码测试或 Agent 环境的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Po-Nien Kung, Linfeng Song, Dawsen Hwang, Jinsung Yoon, Chun-Liang Li, Simone Severini, Mirek Olšák, Edward Lockhart, Quoc V. Le, Burak Gokturk, Thang Luong, Tomas Pfister, Nanyun Peng",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

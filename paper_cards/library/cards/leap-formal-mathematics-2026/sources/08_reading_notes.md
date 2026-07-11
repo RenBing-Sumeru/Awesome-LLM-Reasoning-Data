@@ -1,0 +1,1 @@
+Remember the distinction between the domain task and its verifier: here the decisive outcome is Lean compiler checks every generated proof and proof-DAG composition. Read the reported impact together with Single-pass proof generation and linear tactic search provide weaker reuse of independently checked subproofs.

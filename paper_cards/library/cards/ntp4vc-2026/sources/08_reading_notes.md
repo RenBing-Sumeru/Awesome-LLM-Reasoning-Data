@@ -1,0 +1,1 @@
+Remember the distinction between the domain task and its verifier: here the decisive outcome is Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions. Read the reported impact together with Synthetic or single-assistant theorem suites do not expose the language and context variation present in verification-condition proving.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RECODE-H 允许交互反馈引导科研代码开发，但是否完成仍由可执行仓库测试决定。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "带交互反馈的科研代码开发 benchmark",
+  "best_for_ch": "关注可执行 verifier、形式化证明、代码测试或 Agent 环境的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chunyu Miao, Henry Peng Zou, Yangning Li, Yankai Chen, Yibo Wang, Fangxin Wang, Yifan Li, Wooseong Yang, Bowei He, Xinni Zhang, Dianzhi Yu, Hanchen Yang, Hoang H. Nguyen, Yue Zhou, Jie Yang, Jizhou Guo, Wenzhe Fan, Chin-Yuan Yeh, Panpan Meng, Liancheng Fang, Jinhu Qi, Wei-Chieh Huang, Zhengyao Gu, Yuwei Han, Langzhou He, Yuyao Yang, Yinghui Li, Hai-Tao Zheng, Xue Liu, Irwin King, Philip S. Yu",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

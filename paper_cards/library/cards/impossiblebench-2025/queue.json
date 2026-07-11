@@ -1,0 +1,26 @@
+{
+  "title": "ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=SeO4vyAj7E",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null,
+    "venue": "https://openreview.net/forum?id=SeO4vyAj7E",
+    "openreview": "https://openreview.net/forum?id=SeO4vyAj7E",
+    "acl": null,
+    "pmlr": null,
+    "cvf": null,
+    "bibtex": null
+  },
+  "reason_to_include": "ICLR 2026 conference paper from Carnegie Mellon and Anthropic; released framework exposes test-suite exploitation；结果由 Unit-test outcome: passing a deliberately impossible task deterministically flags specification-violating behavior 判定。",
+  "decision_reason": "主来源、发布日期与程序化验证契约均已在候选审计中核对。",
+  "search_status": "candidate",
+  "review_note": "L4 内容已完成，仍等待人工 L5 决策。",
+  "updated_at": "2026-07-11T00:00:00Z",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
+}

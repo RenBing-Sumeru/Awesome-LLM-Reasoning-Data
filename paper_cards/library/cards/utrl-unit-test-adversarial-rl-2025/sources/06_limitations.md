@@ -1,0 +1,1 @@
+A deterministic checker only proves conformance to its encoded contract. Audit sandbox isolation, hidden reference implementations, reward balance, flaky-test filtering, and whether the test suite overfits the sampled candidate programs. The benchmark may therefore miss semantic quality outside that contract.

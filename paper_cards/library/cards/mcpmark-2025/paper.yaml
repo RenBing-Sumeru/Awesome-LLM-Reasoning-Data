@@ -1,0 +1,126 @@
+id: mcpmark-2025
+title: 'MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use'
+year: 2025
+venue: ICLR 2026
+authors:
+- Zijian Wu
+- Xiangyan Liu
+- Xinyuan Zhang
+- Lingjun Chen
+- Fanqing Meng
+- Lingxiao Du
+- Yiran Zhao
+- Fanshi Zhang
+- Yaoqi Ye
+- Jiawei Wang
+- Zirui Wang
+- Jinjie Ni
+- Yufan Yang
+- Arvin Xu
+- Michael Qizhe Shieh
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- agents
+- model-context-protocol
+- tool-use
+training_use:
+- evaluation
+- agent_training
+- audit
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.24002
+  arxiv: https://arxiv.org/abs/2509.24002
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: natural-language MCP tasks, multi-server tool states, agent action traces, final resource states, and task-specific
+    checker outputs
+  trace_author: Model or agent outputs evaluated by the paper's released protocol.
+  answer_format: Candidate artifact together with the executable verifier result.
+  process_fields:
+  - task context
+  - candidate output
+  - verifier result
+  - release protocol
+  environment_or_substrate: An agent invokes MCP tools across the configured servers; after the trajectory, a task-specific
+    program examines the resulting state and returns success or failure.
+  verifier_or_reward: Task-specific programmatic scripts check final state across MCP tool environments
+  terminal_predicate: 'The supplied programmatic contract accepts the candidate: Task-specific programmatic scripts check
+    final state across MCP tool environments.'
+recipe_metadata:
+  base_model: See the paper's official experimental protocol.
+  teacher: Deterministic verifier or environment outcome.
+  generator: An agent invokes MCP tools across the configured servers; after the trajectory, a task-specific program examines
+    the resulting state and returns success or failure.
+  filtering_rule: Keep outcomes accepted or rejected by the stated executable contract.
+  sampling_protocol: Use the paper-reported splits, seeds, and rollout budget.
+  rollout_count: null
+  temperature: null
+  inference_budget: Audit the paper-reported search or execution budget.
+  optimizer_or_scaffold: See the official paper and released evaluation harness.
+audit:
+  source_mixture: Primary paper source and its stated executable evaluation object.
+  split: Use only the release-specific split documented by the authors.
+  decontamination: Recreate server images, reset policies, credentials, task seeds, and checker scripts; a state checker can
+    still under-specify intended user behavior.
+  license: Verify the primary artifact and any underlying task/repository licenses before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2509.24002'
+  known_failure_modes:
+  - Recreate server images, reset policies, credentials, task seeds, and checker scripts; a state checker can still under-specify
+    intended user behavior.
+  citation_status: verified
+  confidence: high
+  notes: Release date audited as 2025-09-19; ICLR 2026 conference benchmark with 127 stateful MCP tasks and released execution
+    tooling
+inclusion_reason: 'Recent programmatically verifiable outcome-data work: ICLR 2026 conference benchmark with 127 stateful
+  MCP tasks and released execution tooling'
+related: []
+tags:
+- programmatically-verifiable-outcome
+- 2025-2026
+- mcp-environment
+status: verified
+one_line: MCPMark makes realistic MCP tool use evaluable through stateful environments whose final states are checked by scripts
+  rather than by an LLM judge.
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MCPMark makes realistic MCP tool use evaluable through stateful environments whose final states are checked
+  by scripts rather than by an LLM judge.
+why_it_matters: It exposes Task-specific programmatic scripts check final state across MCP tool environments as a reusable,
+  auditable outcome contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary source and release date reviewed; ICLR 2026 conference benchmark with 127 stateful MCP tasks and released
+    execution tooling
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier-2025-20
+  request_sha256: programmatic-outcome-data-2026-07-11
+  primary_category_id: programmatically_verifiable_outcome_data

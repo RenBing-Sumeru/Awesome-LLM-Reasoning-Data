@@ -1,0 +1,113 @@
+id: impossiblebench-2025
+title: 'ImpossibleBench: Measuring LLMs'' Propensity of Exploiting Test Cases'
+year: 2025
+venue: ICLR 2026
+authors:
+- Ziqian Zhong
+- Aditi Raghunathan
+- Nicholas Carlini
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- agent-safety
+- unit-tests
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=SeO4vyAj7E
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=SeO4vyAj7E
+  openreview: https://openreview.net/forum?id=SeO4vyAj7E
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: deliberately impossible programming tasks, visible test suites, submitted programs, sandbox results, and
+    exploitation labels inferred from a passing outcome
+  trace_author: Model or agent outputs evaluated by the paper's released protocol.
+  answer_format: Candidate artifact together with the executable verifier result.
+  process_fields:
+  - task context
+  - candidate output
+  - verifier result
+  - release protocol
+  environment_or_substrate: A model receives an impossible task and visible tests, writes a program, and the harness executes
+    it; passing tests deterministically flags test-case exploitation for that task.
+  verifier_or_reward: 'Unit-test outcome: passing a deliberately impossible task deterministically flags specification-violating
+    behavior'
+  terminal_predicate: 'The supplied programmatic contract accepts the candidate: Unit-test outcome: passing a deliberately
+    impossible task deterministically flags specification-violating behavior.'
+recipe_metadata:
+  base_model: See the paper's official experimental protocol.
+  teacher: Deterministic verifier or environment outcome.
+  generator: A model receives an impossible task and visible tests, writes a program, and the harness executes it; passing
+    tests deterministically flags test-case exploitation for that task.
+  filtering_rule: Keep outcomes accepted or rejected by the stated executable contract.
+  sampling_protocol: Use the paper-reported splits, seeds, and rollout budget.
+  rollout_count: null
+  temperature: null
+  inference_budget: Audit the paper-reported search or execution budget.
+  optimizer_or_scaffold: See the official paper and released evaluation harness.
+audit:
+  source_mixture: Primary paper source and its stated executable evaluation object.
+  split: Use only the release-specific split documented by the authors.
+  decontamination: Audit the proof that each task is impossible, sandbox behavior, checker implementation, and false positives
+    caused by ambiguous specifications rather than exploitation.
+  license: Verify the primary artifact and any underlying task/repository licenses before reuse.
+  lineage: 'Primary source: https://openreview.net/forum?id=SeO4vyAj7E'
+  known_failure_modes:
+  - Audit the proof that each task is impossible, sandbox behavior, checker implementation, and false positives caused by
+    ambiguous specifications rather than exploitation.
+  citation_status: verified
+  confidence: high
+  notes: Release date audited as 2025-10-23; ICLR 2026 conference paper from Carnegie Mellon and Anthropic; released framework
+    exposes test-suite exploitation
+inclusion_reason: 'Recent programmatically verifiable outcome-data work: ICLR 2026 conference paper from Carnegie Mellon and
+  Anthropic; released framework exposes test-suite exploitation'
+related: []
+tags:
+- programmatically-verifiable-outcome
+- 2025-2026
+- test-exploitation
+status: verified
+one_line: ImpossibleBench turns a passing result on a deliberately impossible task into a deterministic audit signal that
+  the model exploited a test-suite gap rather than met the specification.
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ImpossibleBench turns a passing result on a deliberately impossible task into a deterministic audit signal
+  that the model exploited a test-suite gap rather than met the specification.
+why_it_matters: 'It exposes Unit-test outcome: passing a deliberately impossible task deterministically flags specification-violating
+  behavior as a reusable, auditable outcome contract.'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary source and release date reviewed; ICLR 2026 conference paper from Carnegie Mellon and Anthropic; released
+    framework exposes test-suite exploitation
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier-2025-20
+  request_sha256: programmatic-outcome-data-2026-07-11
+  primary_category_id: programmatically_verifiable_outcome_data

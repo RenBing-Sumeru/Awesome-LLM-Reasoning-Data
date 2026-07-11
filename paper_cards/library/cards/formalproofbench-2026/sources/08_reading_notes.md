@@ -1,0 +1,1 @@
+Remember the distinction between the domain task and its verifier: here the decisive outcome is Lean 4 kernel acceptance of a submitted proof. Read the reported impact together with Olympiad and undergraduate formal-math suites such as miniF2F or Putnam-style sets leave the graduate-level difficulty boundary under-measured.

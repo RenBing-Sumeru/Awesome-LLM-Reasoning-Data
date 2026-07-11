@@ -1,0 +1,1 @@
+Use LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks to compare verifier contracts, data lineage, and executable terminal predicates against other cards in this category. It is most useful when the evaluation harness at https://arxiv.org/abs/2606.03303 is available alongside the paper.

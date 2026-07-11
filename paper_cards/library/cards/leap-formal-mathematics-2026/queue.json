@@ -1,0 +1,26 @@
+{
+  "title": "LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.03303",
+    "arxiv": "https://arxiv.org/abs/2606.03303",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null,
+    "venue": null,
+    "openreview": null,
+    "acl": null,
+    "pmlr": null,
+    "cvf": null,
+    "bibtex": null
+  },
+  "reason_to_include": "Google research technical report; introduces Lean-IMO-Bench and reports all 12 2025 Putnam problems solved；结果由 Lean compiler checks every generated proof and proof-DAG composition 判定。",
+  "decision_reason": "主来源、发布日期与程序化验证契约均已在候选审计中核对。",
+  "search_status": "candidate",
+  "review_note": "L4 内容已完成，仍等待人工 L5 决策。",
+  "updated_at": "2026-07-11T00:00:00Z",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
+}

@@ -1,0 +1,111 @@
+id: verisoftbench-2026
+title: 'VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean'
+year: 2026
+venue: arXiv
+authors:
+- Yutong Xin
+- Qiaochu Chen
+- Greg Durrett
+- Işil Dillig
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- formal-verification
+- lean4
+- software-verification
+training_use:
+- evaluation
+- agent_training
+- audit
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.18307
+  arxiv: https://arxiv.org/abs/2602.18307
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: repository-context Lean proof obligations, dependency imports, model proof edits, and type-checker outcomes
+  trace_author: Model or agent outputs evaluated by the paper's released protocol.
+  answer_format: Candidate artifact together with the executable verifier result.
+  process_fields:
+  - task context
+  - candidate output
+  - verifier result
+  - release protocol
+  environment_or_substrate: For each obligation, the system supplies the checked-out Lean repository context; a model proposes
+    proof code and Lean 4 type-checking supplies the terminal verdict.
+  verifier_or_reward: Lean 4 type checker on repository-context proof obligations
+  terminal_predicate: 'The supplied programmatic contract accepts the candidate: Lean 4 type checker on repository-context
+    proof obligations.'
+recipe_metadata:
+  base_model: See the paper's official experimental protocol.
+  teacher: Deterministic verifier or environment outcome.
+  generator: For each obligation, the system supplies the checked-out Lean repository context; a model proposes proof code
+    and Lean 4 type-checking supplies the terminal verdict.
+  filtering_rule: Keep outcomes accepted or rejected by the stated executable contract.
+  sampling_protocol: Use the paper-reported splits, seeds, and rollout budget.
+  rollout_count: null
+  temperature: null
+  inference_budget: Audit the paper-reported search or execution budget.
+  optimizer_or_scaffold: See the official paper and released evaluation harness.
+audit:
+  source_mixture: Primary paper source and its stated executable evaluation object.
+  split: Use only the release-specific split documented by the authors.
+  decontamination: Reproduce from pinned repository commits and dependency locks; audit obligation provenance, benchmark splits,
+    and each repository license.
+  license: Verify the primary artifact and any underlying task/repository licenses before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2602.18307'
+  known_failure_modes:
+  - Reproduce from pinned repository commits and dependency locks; audit obligation provenance, benchmark splits, and each
+    repository license.
+  citation_status: verified
+  confidence: high
+  notes: Release date audited as 2026-02-20; Open 500-obligation software-verification benchmark from UT Austin formal-methods
+    researchers
+inclusion_reason: 'Recent programmatically verifiable outcome-data work: Open 500-obligation software-verification benchmark
+  from UT Austin formal-methods researchers'
+related: []
+tags:
+- programmatically-verifiable-outcome
+- 2025-2026
+- repository-verification
+status: verified
+one_line: It shifts formal-proof evaluation from isolated theorem statements to proof obligations that require real repository
+  context.
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: It shifts formal-proof evaluation from isolated theorem statements to proof obligations that require real
+  repository context.
+why_it_matters: It exposes Lean 4 type checker on repository-context proof obligations as a reusable, auditable outcome contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary source and release date reviewed; Open 500-obligation software-verification benchmark from UT Austin formal-methods
+    researchers
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier-2025-20
+  request_sha256: programmatic-outcome-data-2026-07-11
+  primary_category_id: programmatically_verifiable_outcome_data

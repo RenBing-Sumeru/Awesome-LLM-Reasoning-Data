@@ -1,0 +1,1 @@
+Use ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases to compare verifier contracts, data lineage, and executable terminal predicates against other cards in this category. It is most useful when the evaluation harness at https://openreview.net/forum?id=SeO4vyAj7E is available alongside the paper.

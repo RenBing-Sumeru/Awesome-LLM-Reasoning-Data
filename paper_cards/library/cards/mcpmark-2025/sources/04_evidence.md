@@ -1,0 +1,1 @@
+The paper's evidence is tied to an executable terminal predicate rather than LLM-as-a-judge scoring. Its reported quality or impact signal is: ICLR 2026 conference benchmark with 127 stateful MCP tasks and released execution tooling. Before comparing scores, inspect the checker coverage and the release-specific experimental protocol at https://arxiv.org/abs/2509.24002.

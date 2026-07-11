@@ -1,0 +1,117 @@
+id: ntp4vc-2026
+title: 'Neural Theorem Proving for Verification Conditions: A Real-World Benchmark'
+year: 2026
+venue: ICLR 2026
+authors:
+- Qiyuan Xu
+- Xiaokun Luan
+- Renxi Wang
+- Joshua Ong Jun Leang
+- Peixin Wang
+- Haonan Li
+- Wenda Li
+- Conrad Watt
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- verification-conditions
+- isabelle
+- lean4
+- rocq
+training_use:
+- evaluation
+- agent_training
+- audit
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.18944
+  arxiv: https://arxiv.org/abs/2601.18944
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: real-world verification conditions, prover-specific contexts, generated proofs, and acceptance results from
+    Isabelle, Lean, or Rocq
+  trace_author: Model or agent outputs evaluated by the paper's released protocol.
+  answer_format: Candidate artifact together with the executable verifier result.
+  process_fields:
+  - task context
+  - candidate output
+  - verifier result
+  - release protocol
+  environment_or_substrate: The benchmark presents a verification condition with its target-language context, a model synthesizes
+    a proof, and Isabelle, Lean, or Rocq decides whether that proof is accepted.
+  verifier_or_reward: Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions
+  terminal_predicate: 'The supplied programmatic contract accepts the candidate: Isabelle, Lean, and Rocq proof-checker acceptance
+    for verification conditions.'
+recipe_metadata:
+  base_model: See the paper's official experimental protocol.
+  teacher: Deterministic verifier or environment outcome.
+  generator: The benchmark presents a verification condition with its target-language context, a model synthesizes a proof,
+    and Isabelle, Lean, or Rocq decides whether that proof is accepted.
+  filtering_rule: Keep outcomes accepted or rejected by the stated executable contract.
+  sampling_protocol: Use the paper-reported splits, seeds, and rollout budget.
+  rollout_count: null
+  temperature: null
+  inference_budget: Audit the paper-reported search or execution budget.
+  optimizer_or_scaffold: See the official paper and released evaluation harness.
+audit:
+  source_mixture: Primary paper source and its stated executable evaluation object.
+  split: Use only the release-specific split documented by the authors.
+  decontamination: Check prover versions, imported libraries, condition extraction provenance, and whether metrics compare
+    equivalent search budgets across assistants.
+  license: Verify the primary artifact and any underlying task/repository licenses before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2601.18944'
+  known_failure_modes:
+  - Check prover versions, imported libraries, condition extraction provenance, and whether metrics compare equivalent search
+    budgets across assistants.
+  citation_status: verified
+  confidence: high
+  notes: Release date audited as 2025-09-19; ICLR 2026 conference paper; first real-world multi-language VC-proving benchmark
+inclusion_reason: 'Recent programmatically verifiable outcome-data work: ICLR 2026 conference paper; first real-world multi-language
+  VC-proving benchmark'
+related: []
+tags:
+- programmatically-verifiable-outcome
+- 2025-2026
+- verification-conditions
+status: verified
+one_line: It evaluates neural theorem proving on verification conditions drawn from real formal-development workflows and
+  across three proof assistants.
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: It evaluates neural theorem proving on verification conditions drawn from real formal-development workflows
+  and across three proof assistants.
+why_it_matters: It exposes Isabelle, Lean, and Rocq proof-checker acceptance for verification conditions as a reusable, auditable
+  outcome contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary source and release date reviewed; ICLR 2026 conference paper; first real-world multi-language VC-proving
+    benchmark
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier-2025-20
+  request_sha256: programmatic-outcome-data-2026-07-11
+  primary_category_id: programmatically_verifiable_outcome_data

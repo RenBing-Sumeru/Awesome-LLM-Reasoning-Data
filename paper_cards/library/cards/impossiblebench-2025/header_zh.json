@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ImpossibleBench 把不可能任务上的测试通过变成确定性的审计信号：模型利用了测试空隙，而非满足规格。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "测试用例利用风险 benchmark",
+  "best_for_ch": "关注可执行 verifier、形式化证明、代码测试或 Agent 环境的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ziqian Zhong, Aditi Raghunathan, Nicholas Carlini",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

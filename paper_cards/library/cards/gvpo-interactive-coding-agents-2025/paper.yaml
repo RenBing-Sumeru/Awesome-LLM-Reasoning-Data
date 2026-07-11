@@ -1,0 +1,120 @@
+id: gvpo-interactive-coding-agents-2025
+title: Group Verification-based Policy Optimization for Interactive Coding Agents
+year: 2025
+venue: ICLR 2026
+authors:
+- Silong Dai
+- Changzhi Sun
+- Haolun Wu
+- Huanran Zheng
+- Tao Ji
+- Junchi Yan
+- Yuanbin Wu
+- Dell Zhang
+- Xiaoling Wang
+- Xuelong Li
+source_role:
+- agent_environment
+- verifier_reward
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- coding-agents
+- reinforcement-learning
+- appworld
+training_use:
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=RY47Tq0VsV
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=RY47Tq0VsV
+  openreview: https://openreview.net/forum?id=RY47Tq0VsV
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: AppWorld task states, group agent rollouts, code/tool actions, compiler and exception signals, partial tests,
+    and final goal-test scores
+  trace_author: Model or agent outputs evaluated by the paper's released protocol.
+  answer_format: Candidate artifact together with the executable verifier result.
+  process_fields:
+  - task context
+  - candidate output
+  - verifier result
+  - release protocol
+  environment_or_substrate: For each AppWorld task, the method samples a group of trajectories, evaluates final goal tests
+    plus compilation, exception, and partial-test feedback, then optimizes from the verified signals.
+  verifier_or_reward: AppWorld goal tests plus deterministic compilation, exception, and partial-test feedback
+  terminal_predicate: 'The supplied programmatic contract accepts the candidate: AppWorld goal tests plus deterministic compilation,
+    exception, and partial-test feedback.'
+recipe_metadata:
+  base_model: See the paper's official experimental protocol.
+  teacher: Deterministic verifier or environment outcome.
+  generator: For each AppWorld task, the method samples a group of trajectories, evaluates final goal tests plus compilation,
+    exception, and partial-test feedback, then optimizes from the verified signals.
+  filtering_rule: Keep outcomes accepted or rejected by the stated executable contract.
+  sampling_protocol: Use the paper-reported splits, seeds, and rollout budget.
+  rollout_count: null
+  temperature: null
+  inference_budget: Audit the paper-reported search or execution budget.
+  optimizer_or_scaffold: See the official paper and released evaluation harness.
+audit:
+  source_mixture: Primary paper source and its stated executable evaluation object.
+  split: Use only the release-specific split documented by the authors.
+  decontamination: Check the AppWorld release, task seeds, scaffold permissions, partial-test weights, and whether process
+    feedback leaks task solutions.
+  license: Verify the primary artifact and any underlying task/repository licenses before reuse.
+  lineage: 'Primary source: https://openreview.net/forum?id=RY47Tq0VsV'
+  known_failure_modes:
+  - Check the AppWorld release, task seeds, scaffold permissions, partial-test weights, and whether process feedback leaks
+    task solutions.
+  citation_status: verified
+  confidence: high
+  notes: Release date audited as 2025-09-19; ICLR 2026 conference paper; directly combines outcome- and process-verifiable
+    reward signals
+inclusion_reason: 'Recent programmatically verifiable outcome-data work: ICLR 2026 conference paper; directly combines outcome-
+  and process-verifiable reward signals'
+related: []
+tags:
+- programmatically-verifiable-outcome
+- 2025-2026
+- interactive-coding-rl
+status: verified
+one_line: GVPO combines group policy optimization with outcome- and process-verifiable signals for agents acting in interactive
+  coding environments.
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: GVPO combines group policy optimization with outcome- and process-verifiable signals for agents acting in
+  interactive coding environments.
+why_it_matters: It exposes AppWorld goal tests plus deterministic compilation, exception, and partial-test feedback as a reusable,
+  auditable outcome contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary source and release date reviewed; ICLR 2026 conference paper; directly combines outcome- and process-verifiable
+    reward signals
+category_ids:
+- programmatically_verifiable_outcome_data
+batch:
+  id: library-03-programmatic-verifier-2025-20
+  request_sha256: programmatic-outcome-data-2026-07-11
+  primary_category_id: programmatically_verifiable_outcome_data

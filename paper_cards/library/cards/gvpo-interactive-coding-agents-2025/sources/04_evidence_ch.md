@@ -1,0 +1,1 @@
+论文的证据由可执行终局谓词支撑，而不是 LLM-as-a-judge 打分。其质量或影响力信号为：ICLR 2026 conference paper; directly combines outcome- and process-verifiable reward signals。比较分数前，应在 https://openreview.net/forum?id=RY47Tq0VsV 核对 checker 覆盖范围和该版本的实验协议。

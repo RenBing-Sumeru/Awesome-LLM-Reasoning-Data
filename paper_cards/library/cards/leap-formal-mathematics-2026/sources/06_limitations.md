@@ -1,0 +1,1 @@
+A deterministic checker only proves conformance to its encoded contract. Audit the agent search budget, theorem translation, Lean-IMO-Bench split and license, and the exact protocol behind the reported Putnam results. The benchmark may therefore miss semantic quality outside that contract.

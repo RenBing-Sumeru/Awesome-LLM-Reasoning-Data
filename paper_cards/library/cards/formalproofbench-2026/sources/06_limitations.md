@@ -1,0 +1,1 @@
+A deterministic checker only proves conformance to its encoded contract. Pin the Lean/mathlib version, theorem imports, split provenance, and statement licenses before treating accepted proofs as reusable training data. The benchmark may therefore miss semantic quality outside that contract.

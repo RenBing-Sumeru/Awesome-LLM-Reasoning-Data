@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "它要求模型输出能被 Lean 4 内核接受的代码，从而把研究生层次数学证明变成可度量任务。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "形式化数学证明 benchmark",
+  "best_for_ch": "关注可执行 verifier、形式化证明、代码测试或 Agent 环境的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Nikil Ravi, Kexing Ying, Vasilii Nesterov, Rayan Krishnan, Elif Uskuplu, Bingyu Xia, Janitha Aswedige, Langston Nashold",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}
