@@ -1,3 +1,3 @@
-The procedure relies on the paper's quality/reward setup for generated outputs and its translation evaluations. Preserve that exact signal before treating the batch as reusable reasoning data.
+The current policy generates an offline batch in the grow phase. Alternate grow phases that collect a fixed policy batch with improve phases that reuse it offline. Offline RL updates reweight or select generated examples according to their reported reward/quality signal.
 
-The current policy generates a batch in a grow phase. An offline RL improve phase reuses the batch, then the updated policy creates the next batch.
+The resulting record contains Input-candidate-output records carrying quality/reward information for offline policy improvement. The reported use is preference learning.

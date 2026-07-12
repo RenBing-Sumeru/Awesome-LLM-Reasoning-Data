@@ -1,3 +1,0 @@
-- The reference solution is a data object; the final-answer checker is a separate contract.
-- Report symbolic normalization, not only accuracy.
-- Keep benchmark evaluation separate from reward calibration whenever possible.

@@ -1,0 +1,6 @@
+- Sampling protocol: sample 100 completions per training problem for verifier data and 100 per test problem for the main best-of-N result; sweep 25 to 3,200 at test time.
+- Inference budget: candidate count per problem; the paper reports test@N, verifier-ranked solve rate, and top-sample voting ablations.
+- Rollout count: 100
+- Temperature: 0.7
+- Feedback contract: a learned verifier predicts correctness from the problem and candidate solution; labels come only from final-answer correctness.
+- Remaining checks: needs_review: distinguish released GSM8K data from unreleased generated rollouts and verifier scores

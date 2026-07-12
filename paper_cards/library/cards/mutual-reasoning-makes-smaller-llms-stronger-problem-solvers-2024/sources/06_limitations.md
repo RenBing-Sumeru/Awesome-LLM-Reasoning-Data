@@ -1,0 +1,3 @@
+Agreement is not correctness and two related SLMs can share the same shortcut; no standalone full trajectory corpus is released; model calls and action branching make costs high; benchmark prompts and public solutions raise contamination risk. Search budget or selector quality can be mistaken for base-model capability.
+
+Reproduction also depends on split policy (Use official experiment splits; verify construction/evaluation overlap before reuse.), decontamination (unknown), and license provenance (Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.).

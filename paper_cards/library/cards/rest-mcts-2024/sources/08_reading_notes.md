@@ -1,6 +1,6 @@
-- How many node expansions, rollouts, or sampled candidates are used per problem?
-- Are rejected branches or failed candidates released, or only accepted traces?
-- Is the PRM trained on data that overlaps with the evaluation tasks?
-- Does the reported gain persist under matched search budgets against best-of-N and Tree-of-Thought?
-- Are final-answer oracles reliable enough to infer process rewards from partial traces?
-- Can the value model learn shortcut features of the search procedure instead of reasoning quality?
+- Sampling protocol: tree search over intermediate reasoning states; exact rollout budget should be pinned per experiment.
+- Inference budget: search budget varies by experiment; project reports comparisons against Best-of-N, Tree-of-Thought, and self-consistency under stated budgets.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: process reward model guided by final-answer oracle feedback and MCTS-derived value targets.
+- Remaining checks: needs_metadata: curator should verify atlas fields

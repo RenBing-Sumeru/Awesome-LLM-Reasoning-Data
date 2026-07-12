@@ -6,8 +6,7 @@
   "confidence_ch": "高",
   "authors_ch": "Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, Karthik Narasimhan",
   "category_ids": [
-    "scaling_rlvr_test_time_compute",
     "rollout_search_test_time_trace_data"
   ],
-  "updated_at": "2026-07-10T15:11:44Z"
+  "updated_at": "2026-07-11T00:00:00Z"
 }

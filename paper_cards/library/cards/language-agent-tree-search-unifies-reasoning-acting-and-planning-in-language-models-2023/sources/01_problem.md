@@ -1,6 +1,3 @@
-LATS joins MCTS, LM value functions, self-reflection, and external environment feedback to search over full language-agent trajectories.
+Programming, interactive QA, web-navigation, and mathematical-reasoning tasks.
 
-- Year / venue: 2023 · arXiv.
-- Author affiliations: University of Illinois Urbana-Champaign; Lapis Labs.
-- Atlas role: agent-search construction recipe.
-- It evaluates programming, interactive QA, web navigation, and math tasks.
+The reusable object is A search tree of observations, actions, self-reflections, value estimates, environment feedback, and terminal result. Core agent-search reference that joins MCTS, reflection, and environment feedback into a full trajectory data object.

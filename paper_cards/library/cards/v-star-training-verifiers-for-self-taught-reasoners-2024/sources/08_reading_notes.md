@@ -1,0 +1,6 @@
+- Sampling protocol: Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage.
+- Inference budget: Experiment-specific; preserve sample count, search expansions, token budget, and verifier calls when reproducing.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: unit tests or exact-answer checks label generated solutions; DPO learns to prefer correct solutions over incorrect ones
+- Remaining checks: human review of unresolved metadata

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "每道 GSM8K 题生成 100 条完整解题轨迹，并由学习式验证器选出得分最高的候选。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理数据 / construction_recipe, scaling_study, verifier_reward 论文",
+  "best_for_ch": "适合研究 best-of-N、验证器训练、候选覆盖率与选择误差的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, John Schulman",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

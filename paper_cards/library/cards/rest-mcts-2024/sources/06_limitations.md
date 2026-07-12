@@ -1,11 +1,3 @@
-- How many node expansions, rollouts, or sampled candidates are used per problem?
-- Are rejected branches or failed candidates released, or only accepted traces?
-- Is the PRM trained on data that overlaps with the evaluation tasks?
-- Does the reported gain persist under matched search budgets against best-of-N and Tree-of-Thought?
-- Are final-answer oracles reliable enough to infer process rewards from partial traces?
-- Can the value model learn shortcut features of the search procedure instead of reasoning quality?
+search policy may overfit process reward artifacts. accepted traces can hide rejected rollout distribution. inference budget may be conflated with data quality.
 
-- Full source mixture and decontamination details are not fully captured in this atlas entry.
-- Tree-search improvements can be misattributed to better training data when the search budget or PRM changes.
-- Inferred process rewards can be wrong when an intermediate step happens to lead to a correct final answer through later correction.
-- Released artifacts should be checked for split, license, and exact relationship between policy data and PRM data before reuse.
+Reproduction also depends on split policy (released PRM data exposes train/validation/test splits on Hugging Face, but per-experiment task splits need checking.), decontamination (unknown), and license provenance (Hugging Face PRM data card reports apache-2.0; project website is CC BY-SA 4.0; code license should be checked before reuse.).

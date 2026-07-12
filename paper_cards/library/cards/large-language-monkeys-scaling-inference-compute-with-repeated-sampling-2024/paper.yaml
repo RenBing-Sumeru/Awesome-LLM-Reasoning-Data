@@ -110,7 +110,6 @@ tags:
 status: verified
 one_line: Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style
   tasks, separating oracle coverage from practical sample selection.
-card: cards/recipes/large-language-monkeys-scaling-inference-compute-with-repeated-sampling.md
 needs: []
 one_line_summary: Studies repeated sampling as an inference-compute scaling axis across math, code, formal proof, and SWE-bench-style
   tasks.
@@ -123,7 +122,6 @@ verification:
   verified_by: curation
   confidence: high
   notes: Official primary link pinned in artifacts.
-curation_level: L5_audit_ready
+curation_level: L4_carded
 category_ids:
 - rollout_search_test_time_trace_data
-- scaling_rlvr_test_time_compute

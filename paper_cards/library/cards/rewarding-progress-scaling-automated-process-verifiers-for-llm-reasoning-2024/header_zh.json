@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将过程奖励定义为 prover 衡量的“进展”，训练 Process Advantage Verifier，以提高搜索与在线 RL 的效率。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据 / process_supervision, verifier_reward, scaling_study论文",
+  "best_for_ch": "适合研究 rollout、搜索轨迹、验证器、拒绝采样与 post-training 数据谱系的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Amrith Setlur, Chirag Nagpal, Adam Fisch, Xinyang Geng, Jacob Eisenstein, Rishabh Agarwal, Alekh Agarwal, Jonathan Berant, Aviral Kumar",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

@@ -1,3 +1,3 @@
-The accepted records directly enter SFT. This is Track 05's core rejection-sampling pattern: search/generation is a data-construction stage, not just evaluation.
+It is a clean data-lineage case: the prompt, candidate pool, answer checker, accepted trace, and source model all affect the claimed scaling gain.
 
-It is a clear example where gains attributed to “more data” may instead depend on candidate diversity, checker behavior, source-model strength, and selective visibility of accepted traces.
+For reuse, preserve math_problem, generated_rationale, final_answer, correctness_check, source_model, retained_for_rft, together with model/version, split, stopping rule, and total compute.

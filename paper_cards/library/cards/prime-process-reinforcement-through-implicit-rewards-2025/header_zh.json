@@ -6,8 +6,7 @@
   "confidence_ch": "高",
   "authors_ch": "Ganqu Cui, Lifan Yuan, Zefan Wang, Hanbin Wang, Yuchen Zhang, Jiacheng Chen, Wendi Li, Bingxiang He, Yuchen Fan, Tianyu Yu, Qixin Xu, Weize Chen, Jiarui Yuan, Huayu Chen, Kaiyan Zhang, Xingtai Lv, Shuo Wang, Yuan Yao, Xu Han, Hao Peng, Yu Cheng, Zhiyuan Liu, Maosong Sun, Bowen Zhou, Ning Ding",
   "category_ids": [
-    "process_trace_supervision_data",
-    "training_usage_optimization_objectives"
+    "rollout_search_test_time_trace_data"
   ],
   "updated_at": "2026-07-11T00:00:00Z"
 }

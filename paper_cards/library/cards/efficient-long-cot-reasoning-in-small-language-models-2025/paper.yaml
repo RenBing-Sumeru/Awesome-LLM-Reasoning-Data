@@ -96,7 +96,6 @@ tags:
 status: verified
 one_line: Distills long chain-of-thought into smaller models by pruning teacher traces and curating valid on-policy student
   traces.
-card: cards/recipes/efficient-long-cot-reasoning.md
 needs:
 - 'needs_metadata: verify code, data release, and exact trace-pruning configuration before reuse'
 one_line_summary: Distills long chain-of-thought into smaller models by pruning teacher traces and curating valid on-policy
@@ -113,4 +112,3 @@ verification:
   notes: Official arXiv primary source pinned.
 category_ids:
 - rollout_search_test_time_trace_data
-- data_construction_open_release_recipes

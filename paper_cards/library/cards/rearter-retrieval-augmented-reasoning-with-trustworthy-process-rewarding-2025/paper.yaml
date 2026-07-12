@@ -95,7 +95,6 @@ tags:
 status: verified
 one_line: Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect step-level
   preference data.
-card: cards/recipes/rearter.md
 needs:
 - 'needs_metadata: curator should verify atlas fields'
 one_line_summary: Retrieval-augmented reasoning recipe that uses trustworthy process rewards, explanations, and MCTS to collect
@@ -111,5 +110,4 @@ verification:
   confidence: high
   notes: Official arXiv primary link and GitHub artifact pinned.
 category_ids:
-- process_trace_supervision_data
 - rollout_search_test_time_trace_data

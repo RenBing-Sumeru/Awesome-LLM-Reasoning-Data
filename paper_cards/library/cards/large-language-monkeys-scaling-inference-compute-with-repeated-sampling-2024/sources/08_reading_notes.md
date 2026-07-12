@@ -1,6 +1,6 @@
-- Is the comparison matched for sample count, cost, and wall-clock constraints?
-- Are reported gains based on oracle coverage or on a deployable selector?
-- Which tasks have automatic verifiers, and which require a learned or heuristic selector?
-- Are rejected or failed candidates visible enough to study selection precision?
-- Does the verifier reward the intended task or only a narrow test harness?
-- Is a full agent attempt counted as one sample in SWE-bench-style tasks?
+- Sampling protocol: repeated independent sampling across sample budgets, including up to 10,000 samples for several benchmark tasks and 250 attempts for SWE-bench Lite.
+- Inference budget: sample budget, pass@k/coverage curves, FLOP estimates, and SWE-bench Lite per-attempt costs.
+- Rollout count: 10000
+- Temperature: needs review
+- Feedback contract: automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.
+- Remaining checks: human review of unresolved metadata

@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T13:16:48Z",
   "category_ids": [
-    "environment_agent_trajectory_data",
-    "data_construction_open_release_recipes"
+    "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "内容质量需要考量",
-  "decision_reason": "内容质量需要考量",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-11T13:22:19Z"
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "没看懂，需要仔细考量一下",
+    "updated_at": "2026-07-12T13:16:48Z"
+  }
 }

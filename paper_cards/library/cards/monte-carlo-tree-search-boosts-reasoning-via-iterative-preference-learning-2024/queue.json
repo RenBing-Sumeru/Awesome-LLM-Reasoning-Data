@@ -1,0 +1,21 @@
+{
+  "title": "Monte Carlo Tree Search Boosts Reasoning via Iterative Preference Learning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2405.00451",
+    "arxiv": "https://arxiv.org/abs/2405.00451",
+    "code": "https://github.com/YuxiXie/MCTS-DPO",
+    "data": "https://github.com/YuxiXie/MCTS-DPO#dataset-download",
+    "project": "https://github.com/YuxiXie/MCTS-DPO",
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:25:37Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "迭代DPO的在线策略",
+    "updated_at": "2026-07-12T13:25:37Z"
+  }
+}

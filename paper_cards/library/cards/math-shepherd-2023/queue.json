@@ -1,0 +1,21 @@
+{
+  "title": "Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2312.08935",
+    "arxiv": null,
+    "code": null,
+    "data": "https://huggingface.co/datasets/peiyi9979/Math-Shepherd",
+    "project": null,
+    "huggingface": "https://huggingface.co/datasets/peiyi9979/Math-Shepherd",
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:22:30Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "PRM自动标注，但年份较早",
+    "updated_at": "2026-07-12T13:22:30Z"
+  }
+}

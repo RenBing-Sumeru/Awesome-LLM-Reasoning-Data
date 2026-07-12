@@ -1,0 +1,21 @@
+{
+  "title": "HyperTree Proof Search for Neural Theorem Proving",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2205.11491",
+    "arxiv": "https://arxiv.org/abs/2205.11491",
+    "code": "https://github.com/facebookresearch/Evariste",
+    "data": "https://github.com/facebookresearch/Evariste/tree/main/formal",
+    "project": "https://openreview.net/forum?id=J4pX8Q8cxHH",
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T12:53:43Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "年份太久远",
+    "updated_at": "2026-07-12T12:53:43Z"
+  }
+}

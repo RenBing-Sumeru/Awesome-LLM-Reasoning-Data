@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "在固定 FLOP 或价格预算下，弱而便宜的生成器凭借更多采样可构造出更有效的过滤后推理训练数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理数据 / scaling_study, construction_recipe 论文",
+  "best_for_ch": "适合研究合成推理数据、拒绝采样、预算匹配和 weak-to-strong 训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hritik Bansal, Arian Hosseini, Rishabh Agarwal, Vinh Q. Tran, Mehran Kazemi",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

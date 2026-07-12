@@ -1,3 +1,3 @@
-ReST-MCTS* combines process-reward-guided tree search with reinforced self-training. The important data object is not just a final correct answer, but a searched reasoning trace with inferred per-step value targets that can train both a policy model and a process reward model.
+Compared with single-path generation, best-of-N, and outcome-only filtering, the paper contributes this change: Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
 
-It matters for Track 05 because it makes the search budget, PRM guidance, accepted traces, and per-step value targets part of the reusable record.
+The reusable novelty is the paper-specific connection between generation, selection or verification, and the retained reasoning trace; generic sampling, search, SFT, or final-answer evaluation remain upstream components.

@@ -1,5 +1,10 @@
-- [Paper](https://arxiv.org/abs/2405.16802)
-- [Code](https://github.com/rookie-joe/AutoPSV)
-- Data ID: `autopsv-automated-process-supervised-verifier-2024`
-- Citation status: verified
-- Confidence: high
+Temporary citation, to be replaced by official BibTeX after human review:
+
+```bibtex
+@misc{autopsv_automated_process_supervised_verifier_2024,
+  title = {AutoPSV: Automated Process-Supervised Verifier},
+  author = {Jianqiao Lu and Zhiyang Dou and Hongru Wang and Zeyu Cao and Jianbo Dai and Yingjia Wan and Zhijiang Guo},
+  year = {2024},
+  howpublished = {NeurIPS}
+}
+```

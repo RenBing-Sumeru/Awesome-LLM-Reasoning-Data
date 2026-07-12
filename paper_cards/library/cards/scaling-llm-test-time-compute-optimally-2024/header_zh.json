@@ -6,8 +6,7 @@
   "confidence_ch": "高（原文链接已核验，会议归属需复核）",
   "authors_ch": "Charlie Snell, Jaehoon Lee, Kelvin Xu, Aviral Kumar",
   "category_ids": [
-    "scaling_rlvr_test_time_compute",
     "rollout_search_test_time_trace_data"
   ],
-  "updated_at": "2026-07-11T04:13:40Z"
+  "updated_at": "2026-07-11T00:00:00Z"
 }

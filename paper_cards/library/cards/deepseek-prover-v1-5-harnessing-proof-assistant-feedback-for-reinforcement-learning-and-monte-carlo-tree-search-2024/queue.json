@@ -1,0 +1,21 @@
+{
+  "title": "DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2408.08152",
+    "arxiv": "https://arxiv.org/abs/2408.08152",
+    "code": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+    "data": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5/tree/main/datasets",
+    "project": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL",
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T08:04:05Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "Deepseek推出的验证器，但年份较早",
+    "updated_at": "2026-07-12T08:04:05Z"
+  }
+}

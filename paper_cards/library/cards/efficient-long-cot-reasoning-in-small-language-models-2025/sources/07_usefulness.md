@@ -1,3 +1,3 @@
-Pruned teacher traces and accepted student traces enter SFT/distillation. Reuse must retain teacher identity, pruning configuration, student policy version, prompt split, and answer checker.
+It makes long2short reasoning a data-lineage problem: teacher trace, pruning rule, student rollout, checker, and accepted compression all affect the result.
 
-It fills Track 05's long2short lane with a data-centric view: efficient reasoning is created through trace pruning, student search, and filtering—not merely through shorter formatting.
+For reuse, preserve problem, teacher_long_cot, pruned_steps, student_candidate_trace, final_answer, validity_check, selected_training_trace, together with model/version, split, stopping rule, and total compute.

@@ -1,3 +1,3 @@
-PRIME updates a process reward signal online from policy rollouts and outcome labels, so dense process rewards can be used during RL without manually collected step labels.
+Compared with single-path generation, best-of-N, and outcome-only filtering, the paper contributes this change: Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.
 
-For Track 05, the key object is an on-policy rollout with outcome feedback and implicit process-reward estimates, not a static human-labeled step dataset.
+The reusable novelty is the paper-specific connection between generation, selection or verification, and the retained reasoning trace; generic sampling, search, SFT, or final-answer evaluation remain upstream components.

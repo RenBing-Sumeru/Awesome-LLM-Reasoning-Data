@@ -1,0 +1,25 @@
+{
+  "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2501.12948",
+    "arxiv": null,
+    "code": "https://github.com/deepseek-ai/DeepSeek-R1",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "reason_to_include": "Nature接收，Deepseek代表作",
+  "decision_reason": "Nature接收，Deepseek代表作",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-12T07:57:47Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "Nature接收，Deepseek的代表thinking模型",
+    "updated_at": "2026-07-12T07:57:47Z"
+  }
+}

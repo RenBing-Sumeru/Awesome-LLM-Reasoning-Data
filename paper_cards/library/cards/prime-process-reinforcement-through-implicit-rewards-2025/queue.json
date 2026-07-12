@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T13:17:51Z",
   "category_ids": [
-    "process_trace_supervision_data",
-    "training_usage_optimization_objectives"
+    "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "机构权威，内容质量高",
-  "decision_reason": "机构权威，内容质量高",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-11T13:18:02Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "RL循环的联合更新策略，较新",
+    "updated_at": "2026-07-12T13:17:51Z"
+  }
 }

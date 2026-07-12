@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用 MCTS 将只有题目与答案的数学数据转成搜索推理轨迹，并自动推断步骤级价值监督。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数据构造 / 过程监督 / 扩展规律与计算预算论文",
+  "best_for_ch": "适合研究树搜索轨迹、验证器、选择器、搜索派生训练数据与测试时计算的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Guoxin Chen, Minpeng Liao, Chengxi Li, Kai Fan",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

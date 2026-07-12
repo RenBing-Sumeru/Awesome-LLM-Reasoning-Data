@@ -1,0 +1,3 @@
+A generator SLM explores human-like reasoning actions with MCTS while a peer SLM discriminates complete trajectories by mutual consistency.
+
+A target SLM uses a richer action set inside MCTS to construct diverse trajectories. A second SLM of similar capability independently discriminates candidates; mutually consistent trajectories are favored for the final solution. The feedback contract is: The peer SLM is a model-based discriminator rather than a programmatic verifier. Mutual agreement and search statistics select trajectories; benchmark answer matching evaluates the final output. The terminal condition is: Task answer acceptance or formal proof closure under the reported verifier.

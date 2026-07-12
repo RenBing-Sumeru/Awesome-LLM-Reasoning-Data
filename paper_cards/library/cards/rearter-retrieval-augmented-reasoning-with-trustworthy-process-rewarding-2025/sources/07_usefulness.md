@@ -1,5 +1,3 @@
-Recorded training/evaluation use: process_supervision, preference_learning, test_time_compute.
+It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
 
-The searched traces can become step-level preference data for post-training a retrieval-augmented reasoner. At inference time, the same PRM/PEM stack can act as a selector or refinement mechanism, so training-data effects and test-time search effects must be separated.
-
-ReARTeR broadens Track 05 beyond pure math search: the trace includes retrieval evidence and process explanations in addition to scalar rewards. That makes it a useful example for auditing how search traces become preference data in knowledge-intensive reasoning.
+For reuse, preserve query, retrieval context, partial reasoning state, reasoning step, process reward score, process explanation, MCTS branch, preference pair, together with model/version, split, stopping rule, and total compute.

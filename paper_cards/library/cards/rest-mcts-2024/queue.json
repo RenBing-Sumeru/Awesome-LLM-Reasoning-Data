@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T08:12:54Z",
   "category_ids": [
-    "process_trace_supervision_data",
     "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "被顶会接受，多名contributer推荐",
-  "decision_reason": "被顶会接受，多名contributer推荐",
-  "search_status": "promoted",
-  "review_note": "",
-  "updated_at": "2026-07-11T12:06:15Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "NIPS接收，优化了搜索树的搜索逻辑",
+    "updated_at": "2026-07-12T08:12:54Z"
+  }
 }

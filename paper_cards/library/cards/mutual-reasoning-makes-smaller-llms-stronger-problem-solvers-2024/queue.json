@@ -1,0 +1,21 @@
+{
+  "title": "Mutual Reasoning Makes Smaller LLMs Stronger Problem-Solvers",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2408.06195",
+    "arxiv": "https://arxiv.org/abs/2408.06195",
+    "code": "https://github.com/zhentingqi/rStar",
+    "data": "https://github.com/zhentingqi/rStar/tree/main/data",
+    "project": "https://github.com/zhentingqi/rStar",
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:21:54Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "ICLR接收，审视简单模型的reasoning过程",
+    "updated_at": "2026-07-12T13:21:54Z"
+  }
+}

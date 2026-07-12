@@ -1,6 +1,3 @@
-- Are environments and web/tool states replayable?
-- How many interactions and LM calls are allowed per episode?
-- Does reflection measurably repair actions, or merely narrate them?
-- Are failed branches and environment errors retained?
+Environment state, web content, and tool versions can make trajectories non-replayable. Reflection text may sound corrective without improving the underlying action policy. Search results can be dominated by interaction budget rather than agent quality.
 
-Mutable environments make traces hard to reproduce. Search budgets can overshadow policy quality, and model reflections can sound convincing without increasing task success.
+Reproduction also depends on split policy (Environment benchmark splits as reported by each task.), decontamination (unknown), and license provenance (unknown).

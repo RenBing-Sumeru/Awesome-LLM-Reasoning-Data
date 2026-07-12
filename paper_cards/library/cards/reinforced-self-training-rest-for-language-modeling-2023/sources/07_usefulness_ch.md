@@ -1,1 +1,3 @@
-可用于设计生成—筛选—优化循环；应固定每轮生成策略、奖励模型、数据去重和复用次数。
+它是在解释自我训练声明时分离生成批次、质量信号和离线优化器的早期、清晰的参考。
+
+为了重用，请保留 source_input、candidate_ Generation、quality_signal、grow_iteration、offline_update_batch 以及模型/版本、数据划分、停止规则和总计算。

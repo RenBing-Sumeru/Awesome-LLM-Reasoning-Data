@@ -1,4 +1,6 @@
-- Separate unique prompts from repeated rollouts.
-- Ask whether the verifier or the policy produces the gain.
-- Compare methods at matched FLOPs or matched sample budgets.
-- Do not reuse the curve without checking benchmark overlap.
+- Sampling protocol: Best-of-N baselines, verifier-guided search, and adaptive compute allocation are compared.
+- Inference budget: The paper reports budgeted test-time compute and FLOPs-matched comparisons.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Dense process-based verifier reward models plus answer-level evaluation.
+- Remaining checks: needs_review: confirm official venue status and artifact release before treating it as a top-conference item

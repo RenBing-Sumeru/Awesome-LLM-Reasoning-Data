@@ -1,4 +1,4 @@
-临时引用，后续需要从官方 BibTeX 复核：
+临时引用，人工 review 后替换为官方 BibTeX：
 
 ```bibtex
 @misc{tree_of_thoughts_2023,

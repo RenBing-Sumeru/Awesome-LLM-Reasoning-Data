@@ -1,0 +1,3 @@
+它使采样预算成为综合推理数据质量的核心组成部分，而不是将教师实力视为唯一变量。
+
+为了重用，保留问题、generator_model、candidate_solution、final_answer、 Correctness_label、sample_count、estimated_flops_or_price、coverage、diversity、false_positive_rate，以及模型/版本、数据划分、停止规则和总计算。

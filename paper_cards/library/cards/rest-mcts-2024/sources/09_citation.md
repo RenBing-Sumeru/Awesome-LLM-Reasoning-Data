@@ -1,7 +1,10 @@
-- [Paper](https://arxiv.org/abs/2406.03816)
-- [Code](https://github.com/THUDM/ReST-MCTS)
-- [Project](https://rest-mcts.github.io/)
-- [PRM data example](https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th)
-- Data ID: `rest-mcts-2024`
-- Citation status: verified
-- Confidence: high
+Temporary citation, to be replaced by official BibTeX after human review:
+
+```bibtex
+@misc{rest_mcts_2024,
+  title = {ReST-MCTS*},
+  author = {Dan Zhang and Sining Zhoubian and Ziniu Hu and Yisong Yue and Yuxiao Dong and Jie Tang},
+  year = {2024},
+  howpublished = {NeurIPS}
+}
+```

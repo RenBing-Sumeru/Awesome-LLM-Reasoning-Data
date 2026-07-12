@@ -1,0 +1,3 @@
+Answer equivalence and extraction can be brittle; successful terminal answers do not prove every intermediate step is sound; incomplete release of rejected branches, visit counts, and policy versions weakens causal audit; MCTS compute can be mistaken for model improvement. Search budget or selector quality can be mistaken for base-model capability.
+
+Reproduction also depends on split policy (Use official experiment splits; verify construction/evaluation overlap before reuse.), decontamination (unknown), and license provenance (Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.).

@@ -1,0 +1,3 @@
+The policy or teacher model generates candidate reasoning traces. Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage. Train R1-Zero with large-scale RL, add cold-start traces for R1, run reasoning RL, rejection-sample successful readable responses into SFT data, mix non-reasoning data, run further RL, and distill R1 outputs.
+
+The resulting record contains prompt, policy checkpoint, sampled long reasoning response, final answer, accuracy and format rewards, rejection-sampling decision, SFT mixture membership, and distilled student target. The reported use is rlvr, sft, distillation, test time compute.

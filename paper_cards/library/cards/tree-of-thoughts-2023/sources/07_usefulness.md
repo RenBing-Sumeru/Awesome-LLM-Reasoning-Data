@@ -1,7 +1,3 @@
-Usefulness: use it when auditing claims about MCTS-like reasoning, search traces, or verifier-guided TTC.
+Top-conference paper that makes search trees, branch budgets, and self-evaluation explicit test-time compute objects.
 
-Research use: compare it with papers that change only one lever, such as rollout count, verifier strength, data mixture, or optimizer.
-
-Engineering use: extract the feedback contract and make it explicit before reusing the method in a training or evaluation pipeline.
-
-Review use: ask whether reported gains come from more unique data, more repeated attempts, better verification, or better budget allocation.
+For reuse, preserve thought node, branch candidates, state evaluation, search policy, backtracking event, final answer, together with model/version, split, stopping rule, and total compute.

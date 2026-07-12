@@ -174,13 +174,14 @@ def validate_entries(data: list[dict], errors: list[str], warnings: list[str]) -
 
 def validate_starter_pack(data: list[dict], errors: list[str]) -> None:
     matches = starter_matches(data)
-    pack = next((item for item in starter_packs() if item.get("id") == "beginner_20"), None)
+    packs = starter_packs()
+    pack = packs[0] if packs else None
     for title in (pack or {}).get("entries", []):
         entry = matches.get(title)
         if not entry:
-            errors.append(f"beginner starter entry does not match the Card library: {title}")
+            errors.append(f"starter-pack entry does not match the Card library: {title}")
         elif not primary_link(entry):
-            errors.append(f"beginner starter entry missing official primary link: {title} -> {entry.get('id')}")
+            errors.append(f"starter-pack entry missing official primary link: {title} -> {entry.get('id')}")
 
 
 def validate_paper_cards(data: list[dict], errors: list[str]) -> None:
@@ -195,17 +196,6 @@ def validate_paper_cards(data: list[dict], errors: list[str]) -> None:
             if not paper_card_source_complete(source, ROOT):
                 errors.append(f"incomplete Card-local source: {rel}/sources")
         return
-    sources = ROOT / "paper_cards" / "sources"
-    if not sources.exists():
-        return
-    for path in sorted(sources.iterdir()):
-        if not path.is_dir():
-            continue
-        rel = path.relative_to(ROOT).as_posix()
-        if path.name not in entry_ids:
-            errors.append(f"paper-card source entry_id not found in legacy metadata: {rel}")
-        if not paper_card_source_complete(path, ROOT):
-            errors.append(f"incomplete paper-card source: {rel}")
 
 
 def scan_leakage(errors: list[str]) -> None:

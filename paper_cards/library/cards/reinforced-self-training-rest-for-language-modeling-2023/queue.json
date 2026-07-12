@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T08:15:21Z",
   "category_ids": [
-    "data_construction_open_release_recipes",
-    "training_usage_optimization_objectives"
+    "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "内容质量高，年份较早",
-  "decision_reason": "内容质量高，年份较早",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-11T13:20:01Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "机构权威，奠定了自训练方法的baseline，但年份较早",
+    "updated_at": "2026-07-12T08:15:21Z"
+  }
 }

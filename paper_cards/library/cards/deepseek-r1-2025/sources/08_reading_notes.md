@@ -1,0 +1,6 @@
+- Sampling protocol: Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage.
+- Inference budget: Experiment-specific; preserve sample count, search expansions, token budget, and verifier calls when reproducing.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: rule-based accuracy rewards and format rewards dominate verifiable reasoning tasks; quality filters and model-based signals supplement broader data
+- Remaining checks: human review of unresolved metadata

@@ -1,1 +1,0 @@
-miniF2F makes Olympiad-level mathematical claims executable in several formal systems. Its decision boundary is strict: a natural-language answer is not sufficient; a candidate proof must be accepted by the target proof assistant.

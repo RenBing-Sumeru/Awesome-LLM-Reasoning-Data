@@ -1,141 +1,90 @@
 [
   {
-    "id": "beginner_20",
-    "emoji": "🌱",
-    "title": "Beginner 20: Reasoning Data Orientation",
-    "goal": "Build the vocabulary for post-training reasoning data before diving into recipes.",
-    "entries": []
-  },
-  {
-    "id": "builder_30",
-    "emoji": "🏗️",
-    "title": "Builder 30: Data Construction and Release Practice",
-    "goal": "Learn how open reasoning-data recipes source prompts, write traces, filter, audit, and report artifacts.",
-    "entries": []
-  },
-  {
-    "id": "verifier_reward_25",
-    "emoji": "🧪",
-    "title": "Verifier and Reward 25",
-    "goal": "Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure diagnostics.",
-    "entries": []
-  },
-  {
-    "id": "agent_data_25",
-    "emoji": "🌐",
-    "title": "Agent Data 25",
-    "goal": "Understand trajectories, tool calls, browser/app/OS tasks, and SWE environments.",
-    "entries": []
-  },
-  {
-    "id": "scaling_20",
-    "emoji": "📈",
-    "title": "Scaling 20",
-    "goal": "Read scaling claims across RL compute, data size, distillation, and test-time inference budget.",
-    "entries": []
-  },
-  {
-    "id": "representative_track_03",
-    "emoji": "🧮",
-    "title": "Representative 30: Programmatic Verification",
-    "goal": "Cover the strongest math, code, proof, scientific-program-search, and real-task verifier surfaces.",
-    "entries": []
-  },
-  {
-    "id": "representative_track_10",
+    "id": "local_review_core",
     "emoji": "🔁",
-    "title": "Representative 30: RLVR and Test-Time Compute",
-    "goal": "Compare verifier rewards, repeated sampling, tree search, process rewards, RL scaling, and failure audits.",
+    "title": "Local Review Core",
+    "goal": "Start with a canonical search-trace paper retained in the local curated library.",
     "entries": [
       {
-        "title": "TinyV",
-        "entry_id": "tinyv-2025",
+        "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+        "entry_id": "tree-of-thoughts-2023",
         "matched": true,
         "entry": {
-          "id": "tinyv-2025",
-          "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
-          "year": 2025,
-          "venue": "arXiv",
+          "id": "tree-of-thoughts-2023",
+          "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+          "year": 2023,
+          "venue": "NeurIPS 2023",
           "authors": [
-            "Zhangchen Xu",
-            "Yuetai Li",
-            "Fengqing Jiang",
-            "Bhaskar Ramasubramanian",
-            "Luyao Niu",
-            "Bill Yuchen Lin",
-            "Radha Poovendran"
+            "Shunyu Yao",
+            "Dian Yu",
+            "Jeffrey Zhao",
+            "Izhak Shafran",
+            "Thomas L. Griffiths",
+            "Yuan Cao",
+            "Karthik Narasimhan"
           ],
           "source_role": [
-            "verifier_reward",
-            "audit_failure",
-            "construction_recipe"
+            "scaling_study",
+            "construction_recipe",
+            "agent_environment"
           ],
           "verification_contract": [
-            "programmatic",
             "judgment_required",
             "mixed"
           ],
           "supervision_granularity": [
-            "answer_level",
-            "scalar_reward"
+            "step_level",
+            "full_episode"
           ],
           "training_use": [
-            "rlvr",
-            "reward_modeling",
-            "evaluation"
+            "test_time_compute",
+            "evaluation",
+            "audit"
           ],
           "domains": [
-            "math"
+            "planning",
+            "search",
+            "reasoning",
+            "games"
           ],
           "category": [
-            "scaling_rlvr_test_time_compute"
+            "rollout_search_test_time_trace_data"
           ],
-          "subfield": "🏋️ RLVR optimization scaling",
+          "subfield": "🌳 Search trees / MCTS",
           "tags": [
-            "curated-card",
+            "neurips-2023",
+            "tree-search",
+            "test-time-compute",
+            "verifier-guided-search",
             "primary-link-checked"
           ],
-          "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-          "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-          "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
-          "feedback_verifier": "small LLM verifier augmenting rules",
-          "audit_focus": "check links, lineage, verifier, split, and contamination",
+          "one_line_summary": "Tree of Thoughts turns language reasoning into a search trace with explicit branch and evaluation budgets.",
+          "why_it_matters": "Top-conference paper that makes search trees, branch budgets, and self-evaluation explicit test-time compute objects.",
+          "data_object": "Problem, intermediate thought states, branch scores, search actions, and final solution.; process: thought node, branch candidates, state evaluation; Explicit tree search over language-model thought units.",
+          "feedback_verifier": "Self-evaluation, task-specific checks, and final outcome scoring.",
+          "audit_focus": "Value estimates may be prompt-sensitive., Search budget can dominate model ranking., Small task suites can overfit scaffolds.",
           "curation_level": "L4_carded",
           "status": "verified",
           "needs_search": false,
           "artifacts": {
-            "paper": "https://arxiv.org/abs/2505.14625",
+            "paper": "https://arxiv.org/abs/2305.10601",
             "venue": null,
-            "arxiv": "https://arxiv.org/abs/2505.14625",
+            "arxiv": "https://arxiv.org/abs/2305.10601",
             "openreview": null,
             "acl": null,
             "pmlr": null,
             "cvf": null,
-            "doi": null,
-            "code": "https://github.com/uw-nsl/TinyV",
+            "doi": "https://doi.org/10.48550/arXiv.2305.10601",
+            "code": "https://github.com/princeton-nlp/tree-of-thought-llm",
             "data": null,
             "huggingface": null,
             "project": null,
             "bibtex": null,
-            "paper_card_source": "paper_cards/library/cards/tinyv-2025/sources"
+            "paper_card_source": "paper_cards/library/cards/tree-of-thoughts-2023/sources"
           },
-          "primary_link": "https://arxiv.org/abs/2505.14625"
+          "primary_link": "https://arxiv.org/abs/2305.10601"
         }
       }
     ]
-  },
-  {
-    "id": "audit_failure_20",
-    "emoji": "🧯",
-    "title": "Audit and Failure 20",
-    "goal": "Build the habit of checking leakage, contamination, reward hacking, and judge robustness.",
-    "entries": []
-  },
-  {
-    "id": "industry_onboarding_40",
-    "emoji": "🏭",
-    "title": "Industry Onboarding 40",
-    "goal": "A practical path for becoming useful on an LLM post-training data team.",
-    "entries": []
   }
 ]

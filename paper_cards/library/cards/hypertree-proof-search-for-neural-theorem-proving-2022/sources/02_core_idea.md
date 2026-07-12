@@ -1,0 +1,3 @@
+AlphaZero-style HyperTree Proof Search learns online from kernel-checked AND/OR proof searches across formal theorem-proving environments.
+
+A transformer proposes tactics and estimates proof progress. HTPS expands hyper-tree nodes whose tactics may create several subgoals, propagates solved and value information, and converts proof-search experience into online policy/value updates. The feedback contract is: Metamath, Lean, or equivalent formal kernels check tactics and proof closure; HTPS policy/value estimates and AlphaZero-style search statistics choose expansions. The terminal condition is: Task answer acceptance or formal proof closure under the reported verifier.

@@ -1,0 +1,21 @@
+{
+  "title": "AlphaMath Almost Zero: Process Supervision without Process",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2405.03553",
+    "arxiv": "https://arxiv.org/abs/2405.03553",
+    "code": "https://github.com/MARIO-Math-Reasoning/Super_MARIO",
+    "data": "https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset",
+    "project": "https://openreview.net/forum?id=VaXnxQ3UKo",
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T07:54:36Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "机构权威，理论证明夯实，但年份较早",
+    "updated_at": "2026-07-12T07:54:36Z"
+  }
+}

@@ -1,0 +1,6 @@
+- Sampling protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call budget per experiment.
+- Inference budget: Varies by experiment and must be reported with results.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Lean 4 and mathlib provide executable proof validity and terminal closure; RMaxTS combines policy likelihood, search statistics, and intrinsic reward to select expansions.
+- Remaining checks: human review of unresolved metadata

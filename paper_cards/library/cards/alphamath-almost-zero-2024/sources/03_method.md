@@ -1,0 +1,3 @@
+A policy model expands step-level solutions in MCTS. Terminal answer checks are backed up through the tree to form process supervision and value-model targets; the learned value model then guides step-level beam search or further MCTS. Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call budget per experiment. Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+
+The resulting record contains math problem; partial solution state; candidate next step; MCTS node and branch; rollout terminal answer; correctness result; backed-up node value; selected reasoning path. The reported use is process supervision, preference learning, test time compute.

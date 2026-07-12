@@ -1,4 +1,0 @@
-- Step labels are data, not just explanations.
-- PRM reward creates a reusable verifier surface.
-- Active learning changes label distribution.
-- Process reward still needs final-answer audit.

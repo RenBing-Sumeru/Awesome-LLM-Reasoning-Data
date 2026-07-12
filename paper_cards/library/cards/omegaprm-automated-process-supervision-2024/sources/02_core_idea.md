@@ -1,0 +1,3 @@
+OmegaPRM uses divide-and-conquer MCTS to locate reasoning errors efficiently and generate large-scale balanced process supervision for PRMs.
+
+Build a search tree over a proposed solution, use divide-and-conquer exploration to find the earliest error, balance positive and negative nodes, train a PRM, and select outputs with weighted self-consistency. The feedback contract is: an outcome reward model or answer checker scores completed continuations; search converts outcome evidence into step labels. The terminal condition is: A candidate reaches the paper's accepted correctness or selection condition.

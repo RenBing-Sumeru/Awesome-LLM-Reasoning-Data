@@ -1,0 +1,6 @@
+- Sampling protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call budget per experiment.
+- Inference budget: Varies by experiment and must be reported with results.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Metamath, Lean, or equivalent formal kernels check tactics and proof closure; HTPS policy/value estimates and AlphaZero-style search statistics choose expansions.
+- Remaining checks: human review of unresolved metadata

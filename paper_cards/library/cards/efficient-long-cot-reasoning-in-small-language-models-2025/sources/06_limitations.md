@@ -1,6 +1,3 @@
-- Which parts of a long trace were removed and by what rule?
-- Are short traces still correct under an independent checker?
-- What candidate-generation and validation budget was used?
-- Do accepted on-policy traces reduce diversity or preserve correction behavior?
+Pruning can delete uncertainty, corrections, or premises that are important for a valid derivation. Answer correctness does not prove that the compressed rationale is faithful or pedagogically useful. On-policy curation can reinforce the student's existing shortcuts and reduce solution diversity.
 
-Compression can erase uncertainty and self-correction. A correct final answer does not prove a short rationale is faithful, and on-policy selection can reinforce a student's shortcuts.
+Reproduction also depends on split policy (Reported mathematical-reasoning evaluation benchmarks; inspect exact train/evaluation separation before reuse.), decontamination (unknown), and license provenance (unknown).

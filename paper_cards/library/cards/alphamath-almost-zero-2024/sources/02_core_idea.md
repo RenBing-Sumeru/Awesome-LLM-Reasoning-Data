@@ -1,0 +1,3 @@
+MCTS turns answer-only mathematics problems into searched reasoning traces and automatically inferred step-level value supervision.
+
+A policy model expands step-level solutions in MCTS. Terminal answer checks are backed up through the tree to form process supervision and value-model targets; the learned value model then guides step-level beam search or further MCTS. The feedback contract is: Final-answer matching or the task answer checker supplies the terminal outcome; an MCTS-derived value model acts as the selector for partial states. The terminal condition is: Task answer acceptance or formal proof closure under the reported verifier.

@@ -1,0 +1,3 @@
+The official repository explicitly says it does not run out of the box after internal dependencies were removed; most code is CC-BY-NC; no packaged full online trajectory corpus is supplied; formal-system versions and premise sets strongly affect replay. Search budget or selector quality can be mistaken for base-model capability.
+
+Reproduction also depends on split policy (Use official experiment splits; verify construction/evaluation overlap before reuse.), decontamination (unknown), and license provenance (Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.).

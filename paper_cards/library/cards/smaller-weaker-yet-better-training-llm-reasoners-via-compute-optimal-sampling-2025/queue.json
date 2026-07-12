@@ -1,0 +1,21 @@
+{
+  "title": "Smaller, Weaker, Yet Better: Training LLM Reasoners via Compute-Optimal Sampling",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2408.16737",
+    "arxiv": "https://arxiv.org/abs/2408.16737",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:03:57Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "近年ICLR接收，高效构造合成推理数据",
+    "updated_at": "2026-07-12T13:03:57Z"
+  }
+}

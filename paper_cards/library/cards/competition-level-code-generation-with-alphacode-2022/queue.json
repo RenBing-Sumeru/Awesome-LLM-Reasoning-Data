@@ -1,0 +1,21 @@
+{
+  "title": "Competition-Level Code Generation with AlphaCode",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2203.07814",
+    "arxiv": "https://arxiv.org/abs/2203.07814",
+    "code": "https://github.com/google-deepmind/code_contests",
+    "data": "https://github.com/google-deepmind/code_contests",
+    "project": "https://deepmind.google/blog/competitive-programming-with-alphacode/",
+    "huggingface": null,
+    "doi": "https://doi.org/10.1126/science.abq1158"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T08:10:46Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "机构权威，改善了采样过滤方式，但年份较早",
+    "updated_at": "2026-07-12T08:10:46Z"
+  }
+}

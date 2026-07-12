@@ -1,0 +1,124 @@
+id: smaller-weaker-yet-better-training-llm-reasoners-via-compute-optimal-sampling-2025
+title: 'Smaller, Weaker, Yet Better: Training LLM Reasoners via Compute-Optimal Sampling'
+year: 2025
+venue: ICLR 2025 Poster
+authors:
+- Hritik Bansal
+- Arian Hosseini
+- Rishabh Agarwal
+- Vinh Q. Tran
+- Mehran Kazemi
+source_role:
+- scaling_study
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- math
+- test_time_compute
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2408.16737
+  arxiv: https://arxiv.org/abs/2408.16737
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: https://openreview.net/forum?id=3OyaXFQuDl
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH and GSM8K training questions with reference final answers.
+  trace_author: Gemma2-9B, Gemma2-27B, Gemini-1.5-Flash, or Gemini-1.5-Pro samples complete reasoning solutions.
+  answer_format: per-question candidate reasoning sets with final answers, correctness filters, generator identity, and compute-
+    or price-matched budget records.
+  process_fields:
+  - question
+  - generator_model
+  - candidate_solution
+  - final_answer
+  - correctness_label
+  - sample_count
+  - estimated_flops_or_price
+  - coverage
+  - diversity
+  - false_positive_rate
+  environment_or_substrate: exact reference-answer checks for math, with LM-as-a-judge variants when gold answers are withheld.
+  verifier_or_reward: final-answer matching is the default selector; Gemini models serve as judges in the no-ground-truth
+    setting.
+  terminal_predicate: retain a sampled reasoning trace when its final answer matches the reference or is accepted by the designated
+    judge.
+recipe_metadata:
+  base_model: Gemma-7B, Gemma2-9B, and Gemma2-27B students; Gemma2 and Gemini-1.5 generators.
+  teacher: stronger-expensive or weaker-cheap generator models under matched sampling budgets.
+  generator: Gemma2-9B versus 27B and Gemini-1.5-Flash versus Pro.
+  filtering_rule: remove candidates whose final answer fails the reference check; compare no filtering and LM-as-a-judge when
+    references are unavailable.
+  sampling_protocol: compare 27B:9B at 1:3 and 10:30 samples per question; compare Pro:Flash at 1:35 by August 2024 output-token
+    price, with a five-Flash-sample cheaper setting.
+  rollout_count: 35
+  temperature: 0.7
+  inference_budget: decoder FLOP proxy for open models and output-token price proxy for proprietary Gemini models; evaluation
+    also reports maj@1,4,8,16.
+  optimizer_or_scaffold: filtered synthetic-data SFT in knowledge-distillation, self-improvement, and weak-to-strong settings.
+audit:
+  source_mixture: MATH and GSM8K prompts, reference answers, and synthetic solutions from open and proprietary model families.
+  split: benchmark training sets generate fine-tuning data; standard held-out benchmark splits evaluate students.
+  decontamination: inherited benchmark and generator-pretraining contamination is not fully resolved.
+  license: paper is public; no official generated dataset or code artifact is linked.
+  lineage: experimental candidate sets are described but not released as an official reusable dataset.
+  known_failure_modes:
+  - Final-answer filtering admits false-positive reasoning, and weaker generators exhibit a higher measured false-positive
+    rate.
+  - Parameter count approximates generation FLOPs and API price approximates proprietary-model compute only coarsely.
+  - The August 2024 Pro-to-Flash price ratio is time-dependent and should not be treated as a universal compute ratio.
+  - Higher coverage and diversity may add more bad traces when no reliable verifier is available.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv and ICLR OpenReview records verified; no official code or data release was pinned.
+inclusion_reason: Direct Track 05 study of how candidate-set size, generator cost, filtering, diversity, and false positives
+  shape synthetic reasoning data under fixed budgets.
+related:
+- reinforced-self-training-rest-for-language-modeling-2023
+- self-consistency-chain-of-thought-2023
+- large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024
+tags:
+- compute-optimal-sampling
+- synthetic-reasoning-data
+- rejection-sampling
+- weak-to-strong
+- budget-matching
+status: verified
+one_line: Shows that more samples from a weaker, cheaper generator can produce better filtered reasoning-training data under
+  a fixed budget.
+card: null
+needs:
+- 'needs_review: no official generated-data artifact; preserve FLOP-matched versus price-matched distinctions'
+one_line_summary: Shows that more samples from a weaker, cheaper generator can produce better filtered reasoning-training
+  data under a fixed budget.
+why_it_matters: It makes sampling budget a first-class part of synthetic reasoning-data quality rather than treating teacher
+  strength as the only variable.
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and ICLR acceptance checked; generated candidate sets and training scripts are not officially linked.
+curation_level: L4_carded
+category_ids:
+- rollout_search_test_time_trace_data

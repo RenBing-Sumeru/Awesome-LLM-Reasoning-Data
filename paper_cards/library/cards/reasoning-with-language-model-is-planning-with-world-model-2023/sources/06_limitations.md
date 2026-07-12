@@ -1,6 +1,3 @@
-- Are predicted next states checked against the real task environment?
-- What is the branching, rollout, and LM-call budget?
-- Does the reward test the intended outcome or a shortcut?
-- How many invalid branches were filtered away?
+A hallucinated world-model transition can steer search toward an invalid plan. Improvements can conflate MCTS budget, reward design, and base-model capability. The selected path hides the distribution of rejected branches unless logs are retained.
 
-World-model hallucinations can mislead search. A higher MCTS budget, a different reward definition, or a stronger base LM can each explain an apparent improvement.
+Reproduction also depends on split policy (Reported benchmark/task settings; inspect individual task splits before reuse.), decontamination (unknown), and license provenance (unknown).

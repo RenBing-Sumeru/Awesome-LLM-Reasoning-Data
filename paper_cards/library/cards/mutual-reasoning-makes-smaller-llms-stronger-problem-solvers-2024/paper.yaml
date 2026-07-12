@@ -1,0 +1,121 @@
+id: mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024
+title: Mutual Reasoning Makes Smaller LLMs Stronger Problem-Solvers
+year: 2024
+venue: ICLR
+authors:
+- Zhenting Qi
+- Mingyuan Ma
+- Jiahang Xu
+- Li Lyna Zhang
+- Fan Yang
+- Mao Yang
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- preference_learning
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2408.06195
+  arxiv: https://arxiv.org/abs/2408.06195
+  code: https://github.com/zhentingqi/rStar
+  data: https://github.com/zhentingqi/rStar/tree/main/data
+  project: https://github.com/zhentingqi/rStar
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2408.06195
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Small models often explore shallow or repetitive chains, and self-evaluation by the same model is poorly
+    calibrated. rStar asks whether separating generation from peer discrimination can improve MCTS reasoning without fine-tuning
+    or a superior teacher.
+  trace_author: A target SLM uses a richer action set inside MCTS to construct diverse trajectories. A second SLM of similar
+    capability independently discriminates candidates; mutually consistent trajectories are favored for the final solution.
+  answer_format: task prompt; MCTS state; human-like reasoning action; generated intermediate state; complete trajectory;
+    generator answer; discriminator reconstruction or verdict; mutual-consistency label; selected path; compute budget
+  process_fields:
+  - task prompt
+  - MCTS state
+  - human-like reasoning action
+  - generated intermediate state
+  - complete trajectory
+  - generator answer
+  - discriminator reconstruction or verdict
+  - mutual-consistency label
+  - selected path
+  - compute budget
+  environment_or_substrate: Search tree or formal proof-search substrate described by the paper.
+  verifier_or_reward: The peer SLM is a model-based discriminator rather than a programmatic verifier. Mutual agreement and
+    search statistics select trajectories; benchmark answer matching evaluates the final output.
+  terminal_predicate: Task answer acceptance or formal proof closure under the reported verifier.
+recipe_metadata:
+  base_model: See the paper and official repository for experiment-specific policy and selector checkpoints.
+  teacher: Search outcomes, verifier feedback, and model/value estimates rather than manual dense step labels.
+  generator: A target SLM uses a richer action set inside MCTS to construct diverse trajectories. A second SLM of similar
+    capability independently discriminates candidates; mutually consistent trajectories are favored for the final solution.
+  filtering_rule: Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+  sampling_protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call
+    budget per experiment.
+  rollout_count: null
+  temperature: null
+  inference_budget: Varies by experiment and must be reported with results.
+  optimizer_or_scaffold: Search-guided collection and the paper-specific training or inference scaffold.
+audit:
+  source_mixture: Paper-specific benchmark and construction sources; preserve upstream dataset identifiers and licenses.
+  split: Use official experiment splits; verify construction/evaluation overlap before reuse.
+  decontamination: unknown
+  license: Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.
+  lineage: Keep prompt, policy/version, full branch structure, verifier outputs, search statistics, selected path, and budget
+    together.
+  known_failure_modes:
+  - Agreement is not correctness and two related SLMs can share the same shortcut; no standalone full trajectory corpus is
+    released; model calls and action branching make costs high; benchmark prompts and public solutions raise contamination
+    risk.
+  - Search budget or selector quality can be mistaken for base-model capability.
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and official code/data or project artifacts were checked; release completeness still requires reviewer
+    judgment.
+inclusion_reason: A generator SLM explores human-like reasoning actions with MCTS while a peer SLM discriminates complete
+  trajectories by mutual consistency.
+related: []
+tags:
+- track-05
+- primary-link-checked
+status: verified
+one_line: A generator SLM explores human-like reasoning actions with MCTS while a peer SLM discriminates complete trajectories
+  by mutual consistency.
+card: paper_cards/library/cards/mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024
+needs:
+- website review
+one_line_summary: A generator SLM explores human-like reasoning actions with MCTS while a peer SLM discriminates complete
+  trajectories by mutual consistency.
+why_it_matters: Use it to study generator–selector separation, model-based verification, heterogeneous search actions, and
+  the difference between mutual consistency and executable correctness.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official primary paper and associated artifact links pinned.
+category_ids:
+- rollout_search_test_time_trace_data

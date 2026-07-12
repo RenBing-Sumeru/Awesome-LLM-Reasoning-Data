@@ -1,0 +1,3 @@
+On-policy MCTS converts outcome validation and self-evaluation into step-level preference pairs for iterative DPO.
+
+The current policy expands an MCTS tree. Outcome validation and stepwise self-evaluation update node quality; alternatives are converted to step-level preference examples and the policy is updated with DPO before the next collection round. The feedback contract is: Task answer validation supplies terminal evidence, while the language model's stepwise self-evaluation provides a softer local judge; MCTS statistics select nodes and determine preferences. The terminal condition is: Task answer acceptance or formal proof closure under the reported verifier.

@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T13:26:26Z",
   "category_ids": [
-    "rollout_search_test_time_trace_data",
-    "data_construction_open_release_recipes"
+    "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "未被接收，内容质量值得考量",
-  "decision_reason": "未被接收，内容质量值得考量",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-11T13:15:27Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "衡量小模型reasoning的数学推理问题，年份较新",
+    "updated_at": "2026-07-12T13:26:26Z"
+  }
 }

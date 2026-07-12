@@ -1,0 +1,3 @@
+The current policy expands an MCTS tree. Outcome validation and stepwise self-evaluation update node quality; alternatives are converted to step-level preference examples and the policy is updated with DPO before the next collection round. Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call budget per experiment. Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+
+The resulting record contains reasoning prompt; partial state; candidate next steps sharing a parent; search visit/value; rollout outcome; step self-evaluation; chosen/rejected pair; policy iteration; inference budget. The reported use is process supervision, preference learning, test time compute.

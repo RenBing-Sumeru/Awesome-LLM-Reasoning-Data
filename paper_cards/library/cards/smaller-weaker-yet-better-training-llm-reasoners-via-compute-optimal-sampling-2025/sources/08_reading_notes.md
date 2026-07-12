@@ -1,0 +1,6 @@
+- Sampling protocol: compare 27B:9B at 1:3 and 10:30 samples per question; compare Pro:Flash at 1:35 by August 2024 output-token price, with a five-Flash-sample cheaper setting.
+- Inference budget: decoder FLOP proxy for open models and output-token price proxy for proprietary Gemini models; evaluation also reports maj@1,4,8,16.
+- Rollout count: 35
+- Temperature: 0.7
+- Feedback contract: final-answer matching is the default selector; Gemini models serve as judges in the no-ground-truth setting.
+- Remaining checks: needs_review: no official generated-data artifact; preserve FLOP-matched versus price-matched distinctions

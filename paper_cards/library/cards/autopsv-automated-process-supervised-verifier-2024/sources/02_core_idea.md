@@ -1,6 +1,3 @@
-- Prompt/source: math and commonsense reasoning tasks.
-- Trace/action author: language models generate multi-step reasoning outputs.
-- Answer/artifact format: reasoning trace with per-step confidence-change labels or process-supervision targets.
-- Process fields: problem, candidate solution, reasoning step, verifier confidence before/after the step, relative confidence change, selected answer outcome.
-- Environment or substrate: offline reasoning traces and verifier evaluation.
-- Terminal predicate: final answer correctness or selected-candidate correctness.
+Automated process-supervision recipe that derives step annotations from verifier confidence changes.
+
+model-generated reasoning steps. The feedback contract is: answer-trained verifier converted into automated process annotations. The terminal condition is: correct final answer or selected correct candidate.

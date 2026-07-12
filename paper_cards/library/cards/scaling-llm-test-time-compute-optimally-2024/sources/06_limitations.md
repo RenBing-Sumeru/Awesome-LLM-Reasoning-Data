@@ -1,5 +1,3 @@
-Main limitations: depends on verifier calibration, task difficulty estimates, and benchmark overlap controls.
+Verifier quality can dominate the measured scaling curve. Difficulty estimation can leak benchmark-specific assumptions. More samples can be mistaken for more unique data.
 
-Audit risks: Verifier quality can dominate the measured scaling curve., Difficulty estimation can leak benchmark-specific assumptions., More samples can be mistaken for more unique data..
-
-Missing or fragile details: exact sample budgets, temperature settings, verifier refresh, split hygiene, and artifact licenses may need a human curator before training reuse.
+Reproduction also depends on split policy (Benchmark split should be checked before reusing curves as training evidence.), decontamination (Public math benchmarks may overlap with model pretraining or verifier training.), and license provenance (Check arXiv and any released code/data before reuse.).

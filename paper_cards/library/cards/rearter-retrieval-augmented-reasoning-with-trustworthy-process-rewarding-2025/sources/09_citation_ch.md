@@ -1,5 +1,10 @@
-- [Paper](https://arxiv.org/abs/2501.07861)
-- [Code](https://github.com/Jeryi-Sun/ReARTeR)
-- Data ID: `rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025`
-- Citation status: verified
-- Confidence: high
+临时引用，人工 review 后替换为官方 BibTeX：
+
+```bibtex
+@misc{rearter_retrieval_augmented_reasoning_with_trustworthy_process_rewarding_2025,
+  title = {ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding},
+  author = {Zhongxiang Sun and Qipeng Wang and Weijie Yu and Xiaoxue Zang and Kai Zheng and Jun Xu and Xiao Zhang and Song Yang and Han Li},
+  year = {2025},
+  howpublished = {arXiv}
+}
+```

@@ -13,7 +13,7 @@ from pathlib import Path
 import html
 
 from common import ROOT
-from atlas_utils import entries, paper_card_inventory
+from atlas_utils import entries, paper_card_inventory, starter_packs
 
 WIDE = (1280, 720)
 SOCIAL = (1280, 640)
@@ -187,8 +187,10 @@ def render_overview(counts: dict[str, int]) -> str:
         parts.append(text(132, 429 + i * 35, item, "body"))
     parts.append('  <rect x="630" y="345" width="560" height="224" rx="22" fill="#111827" stroke="#334155" stroke-width="1.6"/>')
     parts.append(text(662, 388, "Reading route", "h-dark"))
+    packs = starter_packs()
+    starter_count = len((packs[0] if packs else {}).get("entries", []))
     route = [
-        ("01", "Starter Pack", "20 papers to enter the field"),
+        ("01", "Starter Pack", f"{starter_count} current papers"),
         ("02", "Paper Map", "clusters by data object and feedback contract"),
         ("03", "Cards", "release, verifier, recipe, agent, failure templates"),
         ("04", "Audit Queue", "metadata gaps stay visible until checked"),

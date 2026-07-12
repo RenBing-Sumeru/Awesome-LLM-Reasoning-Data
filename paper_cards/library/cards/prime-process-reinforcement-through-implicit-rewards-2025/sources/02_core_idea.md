@@ -1,6 +1,3 @@
-- Prompt/source: competition math and coding tasks.
-- Trace/action author: the current policy samples responses during online RL.
-- Answer/artifact format: rollout responses with final outcome labels and token- or step-like implicit process rewards.
-- Process fields: prompt, sampled response, outcome reward, implicit process reward, advantage estimate, policy update signal.
-- Environment or substrate: online RL loop with math answer checking or code-task feedback.
-- Terminal predicate: final answer or code output is correct under the task verifier.
+Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.
+
+current policy samples responses during online RL. The feedback contract is: implicit process rewards derived from outcome labels and updated on policy rollouts. The terminal condition is: final-answer or code-task correctness.

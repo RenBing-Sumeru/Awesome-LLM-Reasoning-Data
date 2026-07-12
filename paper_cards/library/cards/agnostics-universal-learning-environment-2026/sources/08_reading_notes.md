@@ -1,4 +1,0 @@
-- Track 03 fit: code execution and I/O behavior are the core verifier.
-- Review the released verifier protocol before trusting training claims.
-- Separate low-resource language improvement from benchmark conversion effects.
-- Check whether rejected and failed executions are auditable.

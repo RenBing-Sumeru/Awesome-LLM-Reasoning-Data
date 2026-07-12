@@ -1,3 +1,3 @@
-The batch is explicitly training data for offline policy improvement. It is relevant to Track 05 because selection quality, policy version, and reuse across iterations change what “self-generated data” means.
+It is an early, clear reference for separating the generation batch, quality signal, and offline optimizer when interpreting self-training claims.
 
-ReST provides a compact lineage model for any iterative self-training claim: generation batch, quality signal, optimizer, and policy version must remain separable.
+For reuse, preserve source_input, candidate_generation, quality_signal, grow_iteration, offline_update_batch, together with model/version, split, stopping rule, and total compute.

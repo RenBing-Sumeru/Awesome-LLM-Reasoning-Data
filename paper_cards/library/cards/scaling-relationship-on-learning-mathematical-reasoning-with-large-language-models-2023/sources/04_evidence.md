@@ -1,1 +1,3 @@
-The accepted records directly enter SFT. This is Track 05's core rejection-sampling pattern: search/generation is a data-construction stage, not just evaluation.
+Official evidence note: Official arXiv source and project code repository pinned.
+
+Review the reported results against the exact task surface and feedback strength. Separate candidate coverage, verifier or selector precision, accepted-trajectory quality, post-training policy gain, and total generation/search/environment cost. Citation status is verified with high confidence.

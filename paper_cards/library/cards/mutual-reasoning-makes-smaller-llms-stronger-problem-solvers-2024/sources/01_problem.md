@@ -1,0 +1,3 @@
+Small models often explore shallow or repetitive chains, and self-evaluation by the same model is poorly calibrated. rStar asks whether separating generation from peer discrimination can improve MCTS reasoning without fine-tuning or a superior teacher.
+
+The reusable object is task prompt; MCTS state; human-like reasoning action; generated intermediate state; complete trajectory; generator answer; discriminator reconstruction or verdict; mutual-consistency label; selected path; compute budget. A generator SLM explores human-like reasoning actions with MCTS while a peer SLM discriminates complete trajectories by mutual consistency.

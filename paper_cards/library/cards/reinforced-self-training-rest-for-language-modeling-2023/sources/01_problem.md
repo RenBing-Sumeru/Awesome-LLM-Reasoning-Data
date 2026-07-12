@@ -1,6 +1,3 @@
-ReST alternates between a grow phase that collects policy-generated candidates and an improve phase that reuses that offline batch for policy improvement.
+Machine-translation inputs used to generate an offline batch from the current policy.
 
-- Year / venue: 2023 · arXiv.
-- Author affiliations: Google DeepMind; Google Research.
-- Atlas role: self-training and offline-RL construction recipe.
-- The paper demonstrates the loop in machine translation, not a general reasoning benchmark.
+The reusable object is Input-candidate-output records carrying quality/reward information for offline policy improvement. Foundational grow-and-improve recipe for treating policy-generated candidates and their quality signals as an offline reusable training batch.

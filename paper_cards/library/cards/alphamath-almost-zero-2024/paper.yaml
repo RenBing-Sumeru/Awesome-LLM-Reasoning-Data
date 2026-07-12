@@ -1,0 +1,119 @@
+id: alphamath-almost-zero-2024
+title: 'AlphaMath Almost Zero: Process Supervision without Process'
+year: 2024
+venue: NeurIPS
+authors:
+- Guoxin Chen
+- Minpeng Liao
+- Chengxi Li
+- Kai Fan
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- preference_learning
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2405.03553
+  arxiv: https://arxiv.org/abs/2405.03553
+  code: https://github.com/MARIO-Math-Reasoning/Super_MARIO
+  data: https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset
+  project: https://openreview.net/forum?id=VaXnxQ3UKo
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2405.03553
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Dense process annotations are costly, yet answer-only math data does not directly say which partial reasoning
+    states are promising. AlphaMath asks whether a pretrained model, final-answer supervision, and search can manufacture
+    useful process targets without human or GPT-4 step labels.
+  trace_author: A policy model expands step-level solutions in MCTS. Terminal answer checks are backed up through the tree
+    to form process supervision and value-model targets; the learned value model then guides step-level beam search or further
+    MCTS.
+  answer_format: math problem; partial solution state; candidate next step; MCTS node and branch; rollout terminal answer;
+    correctness result; backed-up node value; selected reasoning path
+  process_fields:
+  - math problem
+  - partial solution state
+  - candidate next step
+  - MCTS node and branch
+  - rollout terminal answer
+  - correctness result
+  - backed-up node value
+  - selected reasoning path
+  environment_or_substrate: Search tree or formal proof-search substrate described by the paper.
+  verifier_or_reward: Final-answer matching or the task answer checker supplies the terminal outcome; an MCTS-derived value
+    model acts as the selector for partial states.
+  terminal_predicate: Task answer acceptance or formal proof closure under the reported verifier.
+recipe_metadata:
+  base_model: See the paper and official repository for experiment-specific policy and selector checkpoints.
+  teacher: Search outcomes, verifier feedback, and model/value estimates rather than manual dense step labels.
+  generator: A policy model expands step-level solutions in MCTS. Terminal answer checks are backed up through the tree to
+    form process supervision and value-model targets; the learned value model then guides step-level beam search or further
+    MCTS.
+  filtering_rule: Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+  sampling_protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call
+    budget per experiment.
+  rollout_count: null
+  temperature: null
+  inference_budget: Varies by experiment and must be reported with results.
+  optimizer_or_scaffold: Search-guided collection and the paper-specific training or inference scaffold.
+audit:
+  source_mixture: Paper-specific benchmark and construction sources; preserve upstream dataset identifiers and licenses.
+  split: Use official experiment splits; verify construction/evaluation overlap before reuse.
+  decontamination: unknown
+  license: Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.
+  lineage: Keep prompt, policy/version, full branch structure, verifier outputs, search statistics, selected path, and budget
+    together.
+  known_failure_modes:
+  - Answer equivalence and extraction can be brittle; successful terminal answers do not prove every intermediate step is
+    sound; incomplete release of rejected branches, visit counts, and policy versions weakens causal audit; MCTS compute can
+    be mistaken for model improvement.
+  - Search budget or selector quality can be mistaken for base-model capability.
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and official code/data or project artifacts were checked; release completeness still requires reviewer
+    judgment.
+inclusion_reason: MCTS turns answer-only mathematics problems into searched reasoning traces and automatically inferred step-level
+  value supervision.
+related: []
+tags:
+- track-05
+- primary-link-checked
+status: verified
+one_line: MCTS turns answer-only mathematics problems into searched reasoning traces and automatically inferred step-level
+  value supervision.
+card: paper_cards/library/cards/alphamath-almost-zero-2024
+needs:
+- website review
+one_line_summary: MCTS turns answer-only mathematics problems into searched reasoning traces and automatically inferred step-level
+  value supervision.
+why_it_matters: Use this Card when designing answer-only-to-process-data pipelines, value-guided search, or comparisons between
+  MCTS, beam search, and dense process annotation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official primary paper and associated artifact links pinned.
+category_ids:
+- rollout_search_test_time_trace_data

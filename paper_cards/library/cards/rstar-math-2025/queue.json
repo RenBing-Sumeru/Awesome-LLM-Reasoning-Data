@@ -1,0 +1,21 @@
+{
+  "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2501.04519",
+    "arxiv": "https://arxiv.org/abs/2501.04519",
+    "code": "https://github.com/microsoft/rStar/tree/rStar-math",
+    "data": "https://huggingface.co/datasets/ElonTusk2001/rstar_sft",
+    "project": "https://huggingface.co/datasets/ElonTusk2001/rstar_ppm",
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:13:33Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "多种策略协同生成轨迹数据，年份较新",
+    "updated_at": "2026-07-12T13:13:33Z"
+  }
+}

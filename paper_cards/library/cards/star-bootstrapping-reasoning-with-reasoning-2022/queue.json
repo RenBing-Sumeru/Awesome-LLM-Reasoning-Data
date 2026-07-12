@@ -1,0 +1,21 @@
+{
+  "title": "STaR: Bootstrapping Reasoning With Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2203.14465",
+    "arxiv": null,
+    "code": "https://github.com/ezelikman/STaR",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:02:59Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "定义rollout新范式，机构权威，但年份太早",
+    "updated_at": "2026-07-12T13:02:59Z"
+  }
+}

@@ -1,0 +1,3 @@
+Dense process annotations are costly, yet answer-only math data does not directly say which partial reasoning states are promising. AlphaMath asks whether a pretrained model, final-answer supervision, and search can manufacture useful process targets without human or GPT-4 step labels.
+
+The reusable object is math problem; partial solution state; candidate next step; MCTS node and branch; rollout terminal answer; correctness result; backed-up node value; selected reasoning path. MCTS turns answer-only mathematics problems into searched reasoning traces and automatically inferred step-level value supervision.

@@ -1,0 +1,6 @@
+- Sampling protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call budget per experiment.
+- Inference budget: Varies by experiment and must be reported with results.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: The peer SLM is a model-based discriminator rather than a programmatic verifier. Mutual agreement and search statistics select trajectories; benchmark answer matching evaluates the final output.
+- Remaining checks: human review of unresolved metadata

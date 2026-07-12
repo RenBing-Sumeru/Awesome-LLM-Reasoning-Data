@@ -1,0 +1,6 @@
+- Sampling protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call budget per experiment.
+- Inference budget: Varies by experiment and must be reported with results.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Final-answer matching or the task answer checker supplies the terminal outcome; an MCTS-derived value model acts as the selector for partial states.
+- Remaining checks: human review of unresolved metadata

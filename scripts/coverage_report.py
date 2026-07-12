@@ -32,9 +32,10 @@ def main() -> int:
     verified = [entry for entry in data if entry.get("status") == "verified"]
     primary_verified = [entry for entry in verified if primary_link(entry)]
     starters = starter_matches(data)
-    beginner_pack = next((pack for pack in starter_packs() if pack.get("id") == "beginner_20"), None)
-    beginner_titles = beginner_pack.get("entries", []) if beginner_pack else []
-    starter_entries = [starters[title] for title in beginner_titles if title in starters]
+    packs = starter_packs()
+    starter_pack = packs[0] if packs else {"entries": []}
+    starter_titles = starter_pack.get("entries", [])
+    starter_entries = [starters[title] for title in starter_titles if title in starters]
     starter_primary = [entry for entry in starter_entries if primary_link(entry)]
     starter_carded = [entry for entry in starter_entries if cards.get(entry.get("id"))]
 
@@ -61,7 +62,9 @@ def main() -> int:
             "paper_or_primary": sum(1 for entry in data if primary_link(entry)),
             **artifact_counts,
         },
-        "starter_pack_20": {
+        "starter_pack": {
+            "id": starter_pack.get("id"),
+            "title": starter_pack.get("title"),
             "total_matched": len(starter_entries),
             "with_primary_link": len(starter_primary),
             "paper_card_sources": len(starter_carded),
@@ -117,8 +120,8 @@ def main() -> int:
         "## Starter Pack Coverage",
         "",
         f"- Matched Starter Pack entries: {len(starter_entries)}",
-        f"- Official primary links: {len(starter_primary)}/{len(starter_entries)} ({report['starter_pack_20']['primary_link_coverage']})",
-        f"- Paper-card source coverage: {len(starter_carded)}/{len(starter_entries)} ({report['starter_pack_20']['paper_card_source_coverage']})",
+        f"- Official primary links: {len(starter_primary)}/{len(starter_entries)} ({report['starter_pack']['primary_link_coverage']})",
+        f"- Paper-card source coverage: {len(starter_carded)}/{len(starter_entries)} ({report['starter_pack']['paper_card_source_coverage']})",
         f"- Code/data/Hugging Face coverage: {sum(1 for entry in starter_entries if any(artifacts(entry).get(k) for k in ['code', 'data', 'huggingface']))}/{len(starter_entries)}",
         "",
         "## Missing Primary Links",
@@ -173,8 +176,8 @@ def main() -> int:
         f"- Generated at: {report['generated_at']}",
         f"- Entries with verified primary links: {report['verified_with_primary_link']}",
         f"- Entries still needing primary-source search: {report['missing_primary_link']}",
-        f"- Starter Pack primary-link coverage: {report['starter_pack_20']['primary_link_coverage']}",
-        f"- Starter Pack paper-card source coverage: {report['starter_pack_20']['paper_card_source_coverage']}",
+        f"- Starter Pack primary-link coverage: {report['starter_pack']['primary_link_coverage']}",
+        f"- Starter Pack paper-card source coverage: {report['starter_pack']['paper_card_source_coverage']}",
         "",
         "## Verification Policy",
         "",

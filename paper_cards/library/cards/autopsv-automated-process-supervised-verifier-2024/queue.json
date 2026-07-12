@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T13:06:54Z",
   "category_ids": [
-    "process_trace_supervision_data",
-    "data_construction_open_release_recipes"
+    "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "被顶会接收，机构和内容权威",
-  "decision_reason": "被顶会接收，机构和内容权威",
-  "search_status": "promoted",
-  "review_note": "",
-  "updated_at": "2026-07-11T13:10:58Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "对推理任务中自动加入置信度，但年份较早",
+    "updated_at": "2026-07-12T13:06:54Z"
+  }
 }

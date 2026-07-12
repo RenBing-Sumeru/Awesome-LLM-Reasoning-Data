@@ -1,159 +1,70 @@
 window.ATLAS_DATA = {
   "entries": [
     {
-      "id": "agnostics-universal-learning-environment-2026",
-      "title": "Agnostics: Learning to Code in Any Programming Language via Reinforcement with a Universal Learning Environment",
-      "year": 2026,
-      "venue": "ICLR 2026",
+      "id": "alphamath-almost-zero-2024",
+      "title": "AlphaMath Almost Zero: Process Supervision without Process",
+      "year": 2024,
+      "venue": "NeurIPS",
       "authors": [
-        "Aleksander Boruch-Gruszecki",
-        "Yangtian Zi",
-        "Zixuan Wu",
-        "Tejas Oberoi",
-        "Carolyn Jane Anderson",
-        "Joydeep Biswas",
-        "Arjun Guha"
+        "Guoxin Chen",
+        "Minpeng Liao",
+        "Chengxi Li",
+        "Kai Fan"
       ],
       "source_role": [
-        "data_release",
-        "verifier_reward",
         "construction_recipe",
+        "process_supervision",
         "scaling_study"
       ],
       "verification_contract": [
-        "programmatic",
-        "environmental"
+        "mixed"
       ],
       "supervision_granularity": [
-        "answer_level",
-        "scalar_reward"
+        "step_level",
+        "full_episode"
       ],
       "training_use": [
-        "rlvr",
-        "evaluation",
-        "audit"
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
       ],
       "domains": [
-        "code",
-        "low-resource-programming-languages",
-        "rlvr",
-        "execution"
+        "math",
+        "reasoning"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🏋️ RLVR optimization scaling",
+      "subfield": "🌳 Search trees / MCTS",
       "tags": [
-        "iclr-2026",
-        "track-03",
-        "code-rlvr",
-        "programmatic-verifier",
-        "low-resource-languages"
-      ],
-      "one_line_summary": "Agnostics builds a language-agnostic code RLVR environment where external I/O behavior becomes the verifier across programming languages.",
-      "why_it_matters": "It is a strong 03-direction candidate because it packages code execution, verifier portability, RLVR training, and released artifacts into one reusable post-training surface.",
-      "data_object": "Programming solution plus externally observable I/O behavior.; process: target language, compiler or interpreter config, I/O tests; Universal code execution environment configured per language with short YAML-like settings.",
-      "feedback_verifier": "Programmatic execution verifier that judges behavior rather than language-specific syntax alone.",
-      "audit_focus": "I/O-only tests may miss semantic edge cases., Verifier containers can encode language-specific quirks., Dataset rewriting can change task intent.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2508.04865",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2508.04865",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2508.04865",
-        "code": "https://github.com/nuprl/Ag-LiveCodeBench-X",
-        "data": "https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X",
-        "huggingface": "https://huggingface.co/nuprl/agnostics",
-        "project": "https://agnostics.abgru.me/",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/agnostics-universal-learning-environment-2026/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2508.04865"
-    },
-    {
-      "id": "apps-2021",
-      "title": "Measuring Coding Challenge Competence With APPS",
-      "year": 2021,
-      "venue": "NeurIPS 2021 Datasets and Benchmarks",
-      "authors": [
-        "Dan Hendrycks",
-        "Steven Basart",
-        "Saurav Kadavath",
-        "Mantas Mazeika",
-        "Akul Arora",
-        "Ethan Guo",
-        "Collin Burns",
-        "Samir Puranik",
-        "Horace He",
-        "Dawn Song",
-        "Jacob Steinhardt"
-      ],
-      "source_role": [
-        "benchmark",
-        "data_release"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "answer_level",
-        "scalar_reward"
-      ],
-      "training_use": [
-        "sft",
-        "rlvr",
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "code",
-        "program-synthesis",
-        "unit-tests"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "💻 Code execution / unit-test data",
-      "tags": [
-        "neurips-2021",
-        "code",
-        "execution",
-        "unit-tests",
-        "hidden-tests",
+        "track-05",
         "primary-link-checked"
       ],
-      "one_line_summary": "APPS is the core code-execution benchmark for studying how unit tests become outcome supervision.",
-      "why_it_matters": "It makes the verifier contract concrete: generated code earns credit only through a pinned execution environment and test suite.",
-      "data_object": "Natural-language specification, starter code where applicable, input/output examples, candidate Python program, and test outcomes.; process: problem difficulty, input-output tests, candidate program; Sandboxed Python execution with public and private test cases.",
-      "feedback_verifier": "Functional correctness under test execution.",
-      "audit_focus": "Tests can under-specify intended behavior., Public or leaked tests reward benchmark memorization., Sandbox and dependency differences can make execution non-reproducible.",
+      "one_line_summary": "MCTS turns answer-only mathematics problems into searched reasoning traces and automatically inferred step-level value supervision.",
+      "why_it_matters": "Use this Card when designing answer-only-to-process-data pipelines, value-guided search, or comparisons between MCTS, beam search, and dense process annotation.",
+      "data_object": "math problem; partial solution state; candidate next step; MCTS node and branch; rollout terminal answer; correctness result; backed-up node value; selected reasoning path; process: math problem, partial solution state, candidate next step; Search tree or formal proof-search substrate described by the paper.",
+      "feedback_verifier": "Final-answer matching or the task answer checker supplies the terminal outcome; an MCTS-derived value model acts as the selector for partial states.",
+      "audit_focus": "Answer equivalence and extraction can be brittle; successful terminal answers do not prove every intermediate step is sound; incomplete release of rejected branches, visit counts, and policy versions weakens causal audit; MCTS compute can be mistaken for model improvement., Search budget or selector quality can be mistaken for base-model capability.",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2105.09938",
-        "venue": "https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html",
-        "arxiv": "https://arxiv.org/abs/2105.09938",
+        "paper": "https://arxiv.org/abs/2405.03553",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2405.03553",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2105.09938",
-        "code": "https://github.com/hendrycks/apps",
-        "data": "https://github.com/hendrycks/apps",
-        "huggingface": "https://huggingface.co/datasets/codeparrot/apps",
-        "project": "https://github.com/hendrycks/apps",
+        "doi": "https://doi.org/10.48550/arXiv.2405.03553",
+        "code": "https://github.com/MARIO-Math-Reasoning/Super_MARIO",
+        "data": "https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset",
+        "huggingface": null,
+        "project": "https://openreview.net/forum?id=VaXnxQ3UKo",
         "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/apps-2021/sources"
+        "paper_card_source": "paper_cards/library/cards/alphamath-almost-zero-2024/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2105.09938"
+      "primary_link": "https://arxiv.org/abs/2405.03553"
     },
     {
       "id": "autopsv-automated-process-supervised-verifier-2024",
@@ -193,10 +104,9 @@ window.ATLAS_DATA = {
         "reasoning"
       ],
       "category": [
-        "process_trace_supervision_data",
-        "data_construction_open_release_recipes"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🛠️ Automatic process supervision",
+      "subfield": "Other related work",
       "tags": [
         "primary-link-checked"
       ],
@@ -227,247 +137,201 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2405.16802"
     },
     {
-      "id": "beyondbench-2026",
-      "title": "BeyondBench: Contamination-Resistant Evaluation of Reasoning in Language Models",
-      "year": 2026,
-      "venue": "ICLR 2026",
-      "authors": [
-        "Gaurav Srivastava",
-        "Aafiya Hussain",
-        "Zhenyu Bi",
-        "Swastik Roy",
-        "Priya Pitre",
-        "Meng Lu",
-        "Morteza Ziyadi",
-        "Xuan Wang"
-      ],
-      "source_role": [
-        "benchmark",
-        "audit_failure",
-        "construction_recipe"
-      ],
-      "verification_contract": [
-        "programmatic"
-      ],
-      "supervision_granularity": [
-        "answer_level"
-      ],
-      "training_use": [
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "algorithmic-reasoning",
-        "math",
-        "contamination",
-        "evaluation"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧰 Programmatic benchmarks",
-      "tags": [
-        "iclr-2026",
-        "track-03",
-        "contamination-resistant",
-        "algorithmic-generation",
-        "deterministic-verifier"
-      ],
-      "one_line_summary": "BeyondBench generates fresh algorithmic reasoning problems with deterministic verification to reduce static-benchmark contamination.",
-      "why_it_matters": "It is a clean 03-direction candidate because the benchmark is built around generated instances, deterministic answer checks, and explicit contamination-resistance claims.",
-      "data_object": "Generated problem instance, model answer, and deterministic solution check.; process: task family, generator parameters, difficulty suite; Algorithmic problem generators and deterministic verifiers.",
-      "feedback_verifier": "Mathematical/programmatic verifier with large combinatorial instance spaces.",
-      "audit_focus": "Generator bugs can invalidate deterministic guarantees., Models may exploit task templates if generators are exposed., Tool-use settings can dominate reasoning comparisons.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2509.24210",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2509.24210",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2509.24210",
-        "code": "https://github.com/ctrl-gaurav/BeyondBench",
-        "data": null,
-        "huggingface": null,
-        "project": "https://ctrl-gaurav.github.io/BeyondBench/",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/beyondbench-2026/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2509.24210"
-    },
-    {
-      "id": "coderl-code-generation-rl-2022",
-      "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
+      "id": "competition-level-code-generation-with-alphacode-2022",
+      "title": "Competition-Level Code Generation with AlphaCode",
       "year": 2022,
-      "venue": "NeurIPS 2022",
+      "venue": "Science 378(6624), 1092-1097",
       "authors": [
-        "Hung Le",
-        "Yue Wang",
-        "Akhilesh Deepak Gotmare",
-        "Silvio Savarese",
-        "Steven C. H. Hoi"
+        "Yujia Li",
+        "David Choi",
+        "Junyoung Chung",
+        "Nate Kushman",
+        "Julian Schrittwieser",
+        "Rémi Leblond",
+        "Tom Eccles",
+        "James Keeling",
+        "Felix Gimeno",
+        "Agustin Dal Lago",
+        "Thomas Hubert",
+        "Peter Choy",
+        "Cyprien de Masson d'Autume",
+        "Igor Babuschkin",
+        "Xinyun Chen",
+        "Po-Sen Huang",
+        "Johannes Welbl",
+        "Sven Gowal",
+        "Alexey Cherepanov",
+        "James Molloy",
+        "Daniel J. Mankowitz",
+        "Esme Sutherland Robson",
+        "Pushmeet Kohli",
+        "Nando de Freitas",
+        "Koray Kavukcuoglu",
+        "Oriol Vinyals"
       ],
       "source_role": [
-        "verifier_reward",
-        "construction_recipe",
-        "scaling_study"
+        "model_report",
+        "scaling_study",
+        "construction_recipe"
       ],
       "verification_contract": [
         "programmatic"
       ],
       "supervision_granularity": [
         "answer_level",
-        "scalar_reward"
-      ],
-      "training_use": [
-        "rlvr",
-        "reward_modeling",
-        "test_time_compute",
-        "evaluation"
-      ],
-      "domains": [
-        "code",
-        "program-synthesis",
-        "unit-tests",
-        "rl"
-      ],
-      "category": [
-        "scaling_rlvr_test_time_compute"
-      ],
-      "subfield": "⏱️ Test-time compute",
-      "tags": [
-        "neurips-2022",
-        "code-rl",
-        "unit-tests",
-        "critical-sampling",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "CodeRL is an early top-conference bridge between code verifiers, RL rewards, and inference-time critical sampling.",
-      "why_it_matters": "Top-conference code RL paper that connects programmatic verifiers, learned critics, RL optimization, and inference-time resampling.",
-      "data_object": "Problem, generated program, unit-test feedback, critic score, and final selected code.; process: problem statement, candidate program, unit-test result; Program execution and unit-test evaluation environment.",
-      "feedback_verifier": "Unit tests and a critic trained to predict functional correctness.",
-      "audit_focus": "Unit tests can be incomplete or overfit., Critic scores may reward test-passing shortcuts., Inference regeneration budget changes pass@k comparability.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2207.01780",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2207.01780",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2207.01780",
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/coderl-code-generation-rl-2022/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2207.01780"
-    },
-    {
-      "id": "credit-budgeted-icpc-style-coding-2026",
-      "title": "Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
-      "year": 2026,
-      "venue": "ICLR 2026",
-      "authors": [
-        "Lingfeng Zhou",
-        "Junhao Shi",
-        "Jin Gao",
-        "Dequan Wang"
-      ],
-      "source_role": [
-        "benchmark",
-        "agent_environment",
-        "scaling_study"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "full_episode",
-        "answer_level"
+        "full_episode"
       ],
       "training_use": [
         "evaluation",
-        "agent_training",
-        "test_time_compute",
-        "audit"
+        "test_time_compute"
       ],
       "domains": [
         "code",
-        "agents",
-        "icpc",
-        "resource-bounded-evaluation"
+        "competitive_programming",
+        "test_time_compute"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "⏱️ Test-time compute",
+      "subfield": "🧠 Self-consistency / repeated sampling",
       "tags": [
-        "iclr-2026",
-        "track-03",
-        "coding-agents",
-        "budgeted-evaluation",
-        "icpc"
+        "alphacode",
+        "repeated-sampling",
+        "program-filtering",
+        "behavioral-clustering",
+        "competitive-programming"
       ],
-      "one_line_summary": "Credit-Budgeted ICPC-Style Coding evaluates coding agents with a programmatic judge and an explicit credit cost for tokens, tests, and time.",
-      "why_it_matters": "It expands Track 03 from pure correctness to correctness under resource budgets, which is closer to real agent deployment and test-time compute accounting.",
-      "data_object": "Coding problem, generated solution, local-test decisions, token/time/test spending, and accepted/rejected outcome.; process: token budget, test budget, elapsed time; USACOArena interactive ACM-ICPC-style coding arena.",
-      "feedback_verifier": "Programmatic coding judge plus explicit credit economy over tokens, tests, and time.",
-      "audit_focus": "Budget settings can dominate model ranking., Local tests can be gamed or overused., Public programming problems can be contaminated.",
+      "one_line_summary": "Samples up to one million programs per model and problem, then filters and clusters them into ten contest submissions.",
+      "why_it_matters": "It shows how generation budget, executable feedback, diversity control, and a hard external submission budget interact.",
+      "data_object": "per-problem program pools with compilation status, example-test behavior, behavioral cluster membership, rank, and up to ten submitted programs.; process: problem statement, language, sampled program; compiler, public example tests, learned test-input generation, behavioral clustering, and hidden Codeforces judging.",
+      "feedback_verifier": "compilation and example-test filtering followed by clustering and model-based ranking; hidden tests provide terminal evaluation only.",
+      "audit_focus": "Example tests reject more than 99 percent of samples but do not guarantee hidden-test correctness., One million samples per model per problem is far removed from the final ten-submission evaluation budget., Behavioral clustering depends on generated tests and can merge semantically different programs or miss equivalent ones.",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2604.10182",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2604.10182",
+        "paper": "https://arxiv.org/abs/2203.07814",
+        "venue": "https://www.science.org/doi/10.1126/science.abq1158",
+        "arxiv": "https://arxiv.org/abs/2203.07814",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2604.10182",
-        "code": null,
-        "data": null,
+        "doi": "https://doi.org/10.1126/science.abq1158",
+        "code": "https://github.com/google-deepmind/code_contests",
+        "data": "https://github.com/google-deepmind/code_contests",
         "huggingface": null,
-        "project": null,
+        "project": "https://deepmind.google/blog/competitive-programming-with-alphacode/",
         "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/credit-budgeted-icpc-style-coding-2026/sources"
+        "paper_card_source": "paper_cards/library/cards/competition-level-code-generation-with-alphacode-2022/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2604.10182"
+      "primary_link": "https://arxiv.org/abs/2203.07814"
     },
     {
-      "id": "deepseekmath-2024",
-      "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+      "id": "deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024",
+      "title": "DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search",
       "year": 2024,
       "venue": "arXiv",
       "authors": [
-        "Zhihong Shao",
-        "Peiyi Wang",
-        "Qihao Zhu",
-        "Runxin Xu",
+        "Huajian Xin",
+        "Z. Z. Ren",
         "Junxiao Song",
-        "Xiao Bi",
-        "Haowei Zhang",
-        "Mingchuan Zhang",
-        "Y. K. Li",
-        "Y. Wu",
-        "Daya Guo"
+        "Zhihong Shao",
+        "Wanjia Zhao",
+        "Haocheng Wang",
+        "Bo Liu",
+        "Liyue Zhang",
+        "Xuan Lu",
+        "Qiushi Du",
+        "Wenjun Gao",
+        "Qihao Zhu",
+        "Dejian Yang",
+        "Zhibin Gou",
+        "Z. F. Wu",
+        "Fuli Luo",
+        "Chong Ruan"
       ],
       "source_role": [
-        "data_release",
-        "scaling_study",
-        "verifier_reward",
-        "construction_recipe"
+        "construction_recipe",
+        "process_supervision",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🌳 Search trees / MCTS",
+      "tags": [
+        "track-05",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "Lean feedback and intrinsic-reward RMaxTS produce diverse, kernel-checkable formal proof paths at training and inference time.",
+      "why_it_matters": "Use this Card for formal-verifier-anchored search traces, RL from proof feedback, proof-path diversity, and the distinction between kernel validity and informal mathematical faithfulness.",
+      "data_object": "Lean theorem and imports; generated proof candidate; proof-assistant response; valid or failed proof path; RMaxTS node; intrinsic reward; selected path; terminal kernel verdict; search budget; process: Lean theorem and imports, generated proof candidate, proof-assistant response; Search tree or formal proof-search substrate described by the paper.",
+      "feedback_verifier": "Lean 4 and mathlib provide executable proof validity and terminal closure; RMaxTS combines policy likelihood, search statistics, and intrinsic reward to select expansions.",
+      "audit_focus": "The training-time search corpus is not released as a standalone dataset; Lean and mathlib version drift changes replay; intrinsic reward may improve diversity without semantic progress; search cost and whole-proof generation length complicate matched-budget comparisons., Search budget or selector quality can be mistaken for base-model capability.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2408.08152",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2408.08152",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2408.08152",
+        "code": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+        "data": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5/tree/main/datasets",
+        "huggingface": null,
+        "project": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2408.08152"
+    },
+    {
+      "id": "deepseek-r1-2025",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "year": 2025,
+      "venue": "Nature",
+      "authors": [
+        "DeepSeek-AI",
+        "Daya Guo",
+        "Dejian Yang",
+        "Haowei Zhang",
+        "Junxiao Song",
+        "Ruoyu Zhang",
+        "Runxin Xu",
+        "Qihao Zhu",
+        "Shirong Ma",
+        "Peiyi Wang",
+        "Xiao Bi",
+        "Xiaokang Zhang",
+        "Xingkai Yu",
+        "Yu Wu",
+        "Zhihong Shao"
+      ],
+      "source_role": [
+        "model_report",
+        "construction_recipe",
+        "scaling_study"
       ],
       "verification_contract": [
         "programmatic",
@@ -475,57 +339,52 @@ window.ATLAS_DATA = {
       ],
       "supervision_granularity": [
         "answer_level",
-        "scalar_reward"
+        "full_episode"
       ],
       "training_use": [
-        "sft",
         "rlvr",
-        "evaluation",
+        "sft",
+        "distillation",
         "test_time_compute"
       ],
       "domains": [
         "math",
-        "rlvr",
-        "data-scaling",
-        "open-models"
+        "code",
+        "reasoning"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "📈 Data scaling",
+      "subfield": "🔎 Rejection sampling traces",
       "tags": [
-        "deepseekmath",
-        "grpo",
-        "math-rlvr",
-        "data-scaling",
-        "self-consistency-64",
-        "primary-link-checked"
+        "primary-link-checked",
+        "track-05-candidate"
       ],
-      "one_line_summary": "DeepSeekMath is the compact open-model card linking math data scale, GRPO, RLVR, and self-consistency budget.",
-      "why_it_matters": "High-impact math RLVR report that ties data scaling, GRPO optimization, and 64-sample self-consistency into one reproducible reading target.",
-      "data_object": "Math prompt, generated solution, final answer, reward signal, and optional self-consistency samples.; process: corpus filter signal, SFT example, RL prompt; Open mathematical reasoning model training pipeline.",
-      "feedback_verifier": "GRPO reward setup and final-answer/math evaluation, with self-consistency as TTC evaluation.",
-      "audit_focus": "Web data filtering may preserve benchmark leakage., GRPO gains can be confused with data-scale gains., Self-consistency improves scores but costs 64 samples.",
+      "one_line_summary": "Combines rule-rewarded on-policy reasoning rollouts, rejection-sampled SFT data, multi-stage RL, and long-CoT distillation.",
+      "why_it_matters": "The report links emergent long reasoning under outcome RL to a practical multi-stage recipe that repairs readability and transfers behavior by rejection sampling and distillation.",
+      "data_object": "prompt, policy checkpoint, sampled long reasoning response, final answer, accuracy and format rewards, rejection-sampling decision, SFT mixture membership, and distilled student target; process: problem or prompt, candidate rollout or reasoning state, feedback or verifier signal; Offline and on-policy reasoning rollout/search pipeline",
+      "feedback_verifier": "rule-based accuracy rewards and format rewards dominate verifiable reasoning tasks; quality filters and model-based signals supplement broader data",
+      "audit_focus": "the complete training rollout corpus and rejected distribution are not released, multi-stage gains conflate RL, cold-start data, rejection sampling, and distillation, rule correctness does not verify the faithfulness or efficiency of a long rationale",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2402.03300",
+        "paper": "https://arxiv.org/abs/2501.12948",
         "venue": null,
-        "arxiv": "https://arxiv.org/abs/2402.03300",
+        "arxiv": "https://arxiv.org/abs/2501.12948",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2402.03300",
-        "code": null,
+        "doi": "https://doi.org/10.48550/arXiv.2501.12948",
+        "code": "https://github.com/deepseek-ai/DeepSeek-R1",
         "data": null,
-        "huggingface": "https://huggingface.co/deepseek-ai/deepseek-math-7b-base",
+        "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/deepseekmath-2024/sources"
+        "paper_card_source": "paper_cards/library/cards/deepseek-r1-2025/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2402.03300"
+      "primary_link": "https://arxiv.org/abs/2501.12948"
     },
     {
       "id": "efficient-long-cot-reasoning-in-small-language-models-2025",
@@ -559,8 +418,7 @@ window.ATLAS_DATA = {
         "test_time_compute"
       ],
       "category": [
-        "rollout_search_test_time_trace_data",
-        "data_construction_open_release_recipes"
+        "rollout_search_test_time_trace_data"
       ],
       "subfield": "✂️ Long2short / distill-from-search",
       "tags": [
@@ -597,156 +455,74 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2505.18440"
     },
     {
-      "id": "featurebench-2026",
-      "title": "FeatureBench: Benchmarking Agentic Coding for Complex Feature Development",
-      "year": 2026,
-      "venue": "ICLR 2026",
+      "id": "hypertree-proof-search-for-neural-theorem-proving-2022",
+      "title": "HyperTree Proof Search for Neural Theorem Proving",
+      "year": 2022,
+      "venue": "NeurIPS",
       "authors": [
-        "Qixing Zhou",
-        "Jiacheng Zhang",
-        "Haiyang Wang",
-        "Rui Hao",
-        "Jiahe Wang",
-        "Minghao Han",
-        "Yuxue Yang",
-        "Shuzhe Wu",
-        "Feiyang Pan",
-        "Lue Fan",
-        "Dandan Tu",
-        "Zhaoxiang Zhang"
+        "Guillaume Lample",
+        "Marie-Anne Lachaux",
+        "Thibaut Lavril",
+        "Xavier Martinet",
+        "Amaury Hayat",
+        "Gabriel Ebner",
+        "Aurélien Rodriguez",
+        "Timothée Lacroix"
       ],
       "source_role": [
-        "benchmark",
-        "data_release",
-        "agent_environment",
-        "construction_recipe"
+        "construction_recipe",
+        "process_supervision",
+        "scaling_study"
       ],
       "verification_contract": [
-        "programmatic",
-        "environmental"
+        "mixed"
       ],
       "supervision_granularity": [
-        "full_episode",
-        "answer_level"
+        "step_level",
+        "full_episode"
       ],
       "training_use": [
-        "evaluation",
-        "agent_training",
-        "audit"
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
       ],
       "domains": [
-        "code",
-        "software-engineering",
-        "agents",
-        "unit-tests"
+        "math",
+        "reasoning"
       ],
       "category": [
-        "programmatically_verifiable_outcome_data"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🧰 Programmatic benchmarks",
+      "subfield": "⏱️ Test-time compute logs",
       "tags": [
-        "iclr-2026",
-        "track-03",
-        "agentic-coding",
-        "executable-benchmark",
-        "unit-tests"
+        "track-05",
+        "primary-link-checked"
       ],
-      "one_line_summary": "FeatureBench evaluates end-to-end feature development by deriving executable coding tasks and environments from repository unit tests.",
-      "why_it_matters": "It moves coding-agent evaluation from isolated bug fixing toward feature-level repository work with programmatic execution checks and refreshable task construction.",
-      "data_object": "Repository task, code context, generated changes, executable environment, and test result.; process: repository snapshot, feature task, dependency trace; Executable coding environments derived from 24 open-source repositories.",
-      "feedback_verifier": "Execution-based evaluation protocol using unit tests and repository behavior checks.",
-      "audit_focus": "Unit tests may underspecify the intended feature., Repository tasks may be contaminated through public code., Feature extraction can break hidden dependencies.",
+      "one_line_summary": "AlphaZero-style HyperTree Proof Search learns online from kernel-checked AND/OR proof searches across formal theorem-proving environments.",
+      "why_it_matters": "Use it for AND/OR proof-tree schemas, kernel-grounded trajectory collection, online expert iteration, and comparison with flat best-first or whole-proof sampling.",
+      "data_object": "formal theorem; accessible premises; proof state; tactic action; multiple child subgoals; AND/OR hyper-tree edge; policy/value estimate; kernel response; solved/failed proof; online-training example; process: formal theorem, accessible premises, proof state; Search tree or formal proof-search substrate described by the paper.",
+      "feedback_verifier": "Metamath, Lean, or equivalent formal kernels check tactics and proof closure; HTPS policy/value estimates and AlphaZero-style search statistics choose expansions.",
+      "audit_focus": "The official repository explicitly says it does not run out of the box after internal dependencies were removed; most code is CC-BY-NC; no packaged full online trajectory corpus is supplied; formal-system versions and premise sets strongly affect replay., Search budget or selector quality can be mistaken for base-model capability.",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2602.10975",
+        "paper": "https://arxiv.org/abs/2205.11491",
         "venue": null,
-        "arxiv": "https://arxiv.org/abs/2602.10975",
+        "arxiv": "https://arxiv.org/abs/2205.11491",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2602.10975",
-        "code": null,
-        "data": null,
+        "doi": "https://doi.org/10.48550/arXiv.2205.11491",
+        "code": "https://github.com/facebookresearch/Evariste",
+        "data": "https://github.com/facebookresearch/Evariste/tree/main/formal",
         "huggingface": null,
-        "project": null,
+        "project": "https://openreview.net/forum?id=J4pX8Q8cxHH",
         "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/featurebench-2026/sources"
+        "paper_card_source": "paper_cards/library/cards/hypertree-proof-search-for-neural-theorem-proving-2022/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2602.10975"
-    },
-    {
-      "id": "geogrambench-2026",
-      "title": "GeoGramBench: Benchmarking the Geometric Program Reasoning in Modern LLMs",
-      "year": 2026,
-      "venue": "ICLR 2026",
-      "authors": [
-        "Shixian Luo",
-        "Zezhou Zhu",
-        "Yu Yuan",
-        "Yuncheng Yang",
-        "Lianlei Shan",
-        "Yong Wu"
-      ],
-      "source_role": [
-        "benchmark",
-        "data_release"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "judgment_required"
-      ],
-      "supervision_granularity": [
-        "answer_level"
-      ],
-      "training_use": [
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "geometry",
-        "program-reasoning",
-        "symbolic-spatial-reasoning",
-        "evaluation"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧰 Programmatic benchmarks",
-      "tags": [
-        "iclr-2026",
-        "track-03",
-        "geometry",
-        "program-to-geometry",
-        "benchmark"
-      ],
-      "one_line_summary": "GeoGramBench evaluates whether models can reason over geometric information expressed as procedural drawing code.",
-      "why_it_matters": "It broadens Track 03 beyond text math and code execution into symbolic-to-spatial reasoning where programs define the object being verified.",
-      "data_object": "Procedural drawing code, geometry question, model answer, and benchmark score.; process: drawing program, geometry abstraction level, question; Programmatic drawing-code representation of geometric diagrams.",
-      "feedback_verifier": "Benchmark answer checking over curated geometric reasoning problems.",
-      "audit_focus": "Answer checking may hide ambiguity in spatial interpretation., Procedural code can encode visual assumptions not captured by text., Sampling and long-response settings affect reported pass rates.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2505.17653",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2505.17653",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2505.17653",
-        "code": "https://github.com/LiAuto-DSR/GeoGramBench",
-        "data": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
-        "huggingface": "https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench",
-        "project": "https://github.com/LiAuto-DSR/GeoGramBench",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/geogrambench-2026/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2505.17653"
+      "primary_link": "https://arxiv.org/abs/2205.11491"
     },
     {
       "id": "language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023",
@@ -783,10 +559,9 @@ window.ATLAS_DATA = {
         "test_time_compute"
       ],
       "category": [
-        "environment_agent_trajectory_data",
         "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🔁 Replayable trajectory data",
+      "subfield": "🌳 Search trees / MCTS",
       "tags": [
         "lats",
         "mcts",
@@ -857,8 +632,7 @@ window.ATLAS_DATA = {
         "test_time_compute"
       ],
       "category": [
-        "rollout_search_test_time_trace_data",
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
       "subfield": "🧠 Self-consistency / repeated sampling",
       "tags": [
@@ -873,7 +647,7 @@ window.ATLAS_DATA = {
       "data_object": "candidate solution set for each problem, with final answers, code submissions, Lean proofs, or repository patches depending on task.; process: task, model, sample count; math benchmarks, Lean4 proof checker, programming contest tests, and SWE-bench Lite repository test suites.",
       "feedback_verifier": "automatic unit tests or Lean checker where available; oracle answer checks, majority voting, or reward-model scoring for math-answer selection.",
       "audit_focus": "Coverage can grow with sample budget even when practical selection precision remains poor., Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks., Comparing repeated sampling against single attempts can conflate model quality with inference budget.",
-      "curation_level": "L5_audit_ready",
+      "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
@@ -895,110 +669,29 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2407.21787"
     },
     {
-      "id": "leandojo-2023",
-      "title": "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models",
+      "id": "math-shepherd-2023",
+      "title": "Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations",
       "year": 2023,
-      "venue": "NeurIPS 2023 Datasets and Benchmarks",
+      "venue": "ACL",
       "authors": [
-        "Kaiyu Yang",
-        "Aidan M. Swope",
-        "Alex Gu",
-        "Rahul Chalamala",
-        "Peiyang Song",
-        "Shixing Yu",
-        "Saad Godil",
-        "Ryan Prenger",
-        "Anima Anandkumar"
-      ],
-      "source_role": [
-        "data_release",
-        "benchmark",
-        "agent_environment",
-        "verifier_reward"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "state_action_level",
-        "full_episode"
-      ],
-      "training_use": [
-        "sft",
-        "agent_training",
-        "rlvr",
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "formal-mathematics",
-        "theorem-proving",
-        "lean",
-        "premise-retrieval"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧾 Formal proof / Lean / theorem proving",
-      "tags": [
-        "neurips-2023",
-        "theorem-proving",
-        "lean",
-        "proof-environment",
-        "premise-retrieval",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "LeanDojo is the key proof-data card for programmatic interaction, premise-aware splits, and kernel-checked proof outcomes.",
-      "why_it_matters": "It demonstrates that verifier reproducibility is part of the data contract: a proof trace is meaningful only under the exact formal environment that checked it.",
-      "data_object": "Theorem, local proof state, accessible premises, candidate tactic, next proof state, and final checker verdict.; process: theorem declaration, proof state, tactic; Programmatic Lean 3/Lean 4 interaction environment with a pinned mathlib commit.",
-      "feedback_verifier": "Lean proof-environment response and terminal kernel acceptance.",
-      "audit_focus": "Mismatched Lean, mathlib, or import versions change checker behavior., Proof-environment wrappers can misjudge valid proofs., Retrieval can mask memorization unless premise-aware splits are used.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2306.15626",
-        "venue": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html",
-        "arxiv": "https://arxiv.org/abs/2306.15626",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2306.15626",
-        "code": "https://github.com/lean-dojo/LeanDojo",
-        "data": "https://leandojo.org/leandojo",
-        "huggingface": null,
-        "project": "https://leandojo.org/leandojo",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/leandojo-2023/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2306.15626"
-    },
-    {
-      "id": "lets-verify-step-by-step-2023",
-      "title": "Let's Verify Step by Step",
-      "year": 2023,
-      "venue": "arXiv",
-      "authors": [
-        "Hunter Lightman",
-        "Vineet Kosaraju",
-        "Yura Burda",
-        "Harri Edwards",
-        "Bowen Baker",
-        "Teddy Lee",
-        "Jan Leike",
-        "John Schulman",
-        "Ilya Sutskever",
-        "Karl Cobbe"
+        "Peiyi Wang",
+        "Lei Li",
+        "Zhihong Shao",
+        "Runxin Xu",
+        "Damai Dai",
+        "Yifei Li",
+        "Deli Chen",
+        "Yu Wu",
+        "Zhifang Sui"
       ],
       "source_role": [
         "process_supervision",
         "verifier_reward",
-        "data_release"
+        "construction_recipe"
       ],
       "verification_contract": [
-        "judgment_required"
+        "programmatic",
+        "mixed"
       ],
       "supervision_granularity": [
         "step_level",
@@ -1007,193 +700,258 @@ window.ATLAS_DATA = {
       "training_use": [
         "process_supervision",
         "reward_modeling",
-        "test_time_compute",
-        "evaluation"
+        "rlvr",
+        "test_time_compute"
       ],
       "domains": [
         "math",
-        "process-supervision",
-        "reward-modeling"
+        "reasoning"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "⏱️ Test-time compute",
+      "subfield": "🎲 Multiple rollouts / best-of-N",
       "tags": [
-        "process-reward-model",
-        "prm800k",
-        "step-level-verifier",
-        "verifier-scaling",
-        "primary-link-checked"
+        "primary-link-checked",
+        "track-05-candidate"
       ],
-      "one_line_summary": "This is the core PRM card for step-level verifier data and process-supervision scaling.",
-      "why_it_matters": "Core verifier-scaling paper for process supervision, PRM training, active learning, and PRM-guided test-time selection.",
-      "data_object": "Problem, reasoning steps, step labels, process reward model score, and final answer.; process: math problem, reasoning step, human step label; PRM800K-style process-supervision dataset for math reasoning.",
-      "feedback_verifier": "Process reward model trained from human step-level labels.",
-      "audit_focus": "Human step labels can encode style preferences., PRM scores can reward locally plausible but globally wrong paths., Verifier calls add TTC cost that must be disclosed.",
+      "one_line_summary": "Uses Monte Carlo continuations and final-answer checks to create automatic step labels for PRM training, reranking, and stepwise PPO.",
+      "why_it_matters": "It replaces expensive human process labels with rollout-derived labels and demonstrates the same verifier in both best-of-N selection and policy optimization.",
+      "data_object": "math problem, complete solution, step prefix, continuation rollouts, final-answer outcomes, automatic step label, PRM score, and selected response; process: problem or prompt, candidate rollout or reasoning state, feedback or verifier signal; Offline and on-policy reasoning rollout/search pipeline",
+      "feedback_verifier": "final-answer correctness of sampled continuations is aggregated into process supervision for each reasoning step",
+      "audit_focus": "Monte Carlo labels depend strongly on continuation count and policy strength, a recoverable prefix may be labeled positive despite a locally invalid step, answer matching cannot establish faithfulness of the intermediate derivation",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2305.20050",
+        "paper": "https://arxiv.org/abs/2312.08935",
         "venue": null,
-        "arxiv": "https://arxiv.org/abs/2305.20050",
+        "arxiv": "https://arxiv.org/abs/2312.08935",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2305.20050",
+        "doi": "https://doi.org/10.48550/arXiv.2312.08935",
+        "code": null,
+        "data": "https://huggingface.co/datasets/peiyi9979/Math-Shepherd",
+        "huggingface": "https://huggingface.co/datasets/peiyi9979/Math-Shepherd",
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/math-shepherd-2023/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2312.08935"
+    },
+    {
+      "id": "monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024",
+      "title": "Monte Carlo Tree Search Boosts Reasoning via Iterative Preference Learning",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Yuxi Xie",
+        "Anirudh Goyal",
+        "Wenyue Zheng",
+        "Min-Yen Kan",
+        "Timothy P. Lillicrap",
+        "Kenji Kawaguchi",
+        "Michael Shieh"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "process_supervision",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🌳 Search trees / MCTS",
+      "tags": [
+        "track-05",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "On-policy MCTS converts outcome validation and self-evaluation into step-level preference pairs for iterative DPO.",
+      "why_it_matters": "Use this Card to specify online tree collection, sibling-pair extraction, mixed hard/soft judging, and the boundary between search-time traces and preference-training data.",
+      "data_object": "reasoning prompt; partial state; candidate next steps sharing a parent; search visit/value; rollout outcome; step self-evaluation; chosen/rejected pair; policy iteration; inference budget; process: reasoning prompt, partial state, candidate next steps sharing a parent; Search tree or formal proof-search substrate described by the paper.",
+      "feedback_verifier": "Task answer validation supplies terminal evidence, while the language model's stepwise self-evaluation provides a softer local judge; MCTS statistics select nodes and determine preferences.",
+      "audit_focus": "Self-evaluation can reinforce shared policy/judge errors; missing released search logs limits audit; dataset-specific answer checks differ in strength; iterative gains can conflate data freshness, DPO, and increased search compute., Search budget or selector quality can be mistaken for base-model capability.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2405.00451",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2405.00451",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2405.00451",
+        "code": "https://github.com/YuxiXie/MCTS-DPO",
+        "data": "https://github.com/YuxiXie/MCTS-DPO#dataset-download",
+        "huggingface": null,
+        "project": "https://github.com/YuxiXie/MCTS-DPO",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2405.00451"
+    },
+    {
+      "id": "mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024",
+      "title": "Mutual Reasoning Makes Smaller LLMs Stronger Problem-Solvers",
+      "year": 2024,
+      "venue": "ICLR",
+      "authors": [
+        "Zhenting Qi",
+        "Mingyuan Ma",
+        "Jiahang Xu",
+        "Li Lyna Zhang",
+        "Fan Yang",
+        "Mao Yang"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "process_supervision",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🌳 Search trees / MCTS",
+      "tags": [
+        "track-05",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "A generator SLM explores human-like reasoning actions with MCTS while a peer SLM discriminates complete trajectories by mutual consistency.",
+      "why_it_matters": "Use it to study generator–selector separation, model-based verification, heterogeneous search actions, and the difference between mutual consistency and executable correctness.",
+      "data_object": "task prompt; MCTS state; human-like reasoning action; generated intermediate state; complete trajectory; generator answer; discriminator reconstruction or verdict; mutual-consistency label; selected path; compute budget; process: task prompt, MCTS state, human-like reasoning action; Search tree or formal proof-search substrate described by the paper.",
+      "feedback_verifier": "The peer SLM is a model-based discriminator rather than a programmatic verifier. Mutual agreement and search statistics select trajectories; benchmark answer matching evaluates the final output.",
+      "audit_focus": "Agreement is not correctness and two related SLMs can share the same shortcut; no standalone full trajectory corpus is released; model calls and action branching make costs high; benchmark prompts and public solutions raise contamination risk., Search budget or selector quality can be mistaken for base-model capability.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2408.06195",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2408.06195",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2408.06195",
+        "code": "https://github.com/zhentingqi/rStar",
+        "data": "https://github.com/zhentingqi/rStar/tree/main/data",
+        "huggingface": null,
+        "project": "https://github.com/zhentingqi/rStar",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2408.06195"
+    },
+    {
+      "id": "omegaprm-automated-process-supervision-2024",
+      "title": "Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": [
+        "Liangchen Luo",
+        "Yinxiao Liu",
+        "Rosanne Liu",
+        "Samrat Phatale",
+        "Meiqi Guo",
+        "Harsh Lara",
+        "Yunxuan Li",
+        "Lei Shu",
+        "Yun Zhu",
+        "Lei Meng",
+        "Jiao Sun",
+        "Abhinav Rastogi"
+      ],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "construction_recipe"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "process_supervision",
+        "reward_modeling",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🌳 Search trees / MCTS",
+      "tags": [
+        "primary-link-checked",
+        "track-05-candidate"
+      ],
+      "one_line_summary": "OmegaPRM uses divide-and-conquer MCTS to locate reasoning errors efficiently and generate large-scale balanced process supervision for PRMs.",
+      "why_it_matters": "OmegaPRM improves over independent per-step Monte Carlo estimation by allocating search adaptively and using binary-search-like error localization.",
+      "data_object": "math problem, reasoning prefix, MCTS node, sampled continuation, terminal outcome, estimated value, first-error boundary, and positive or negative process annotation; process: problem or prompt, candidate rollout or reasoning state, feedback or verifier signal; Offline and on-policy reasoning rollout/search pipeline",
+      "feedback_verifier": "an outcome reward model or answer checker scores completed continuations; search converts outcome evidence into step labels",
+      "audit_focus": "first-error localization assumes later continuations diagnose earlier steps reliably, search-tree labels depend on the ORM and prover policy, reported annotation scale does not by itself disclose per-problem compute or rejected branches",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2406.06592",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2406.06592",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2406.06592",
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/lets-verify-step-by-step-2023/sources"
+        "paper_card_source": "paper_cards/library/cards/omegaprm-automated-process-supervision-2024/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2305.20050"
-    },
-    {
-      "id": "math-dataset-2021",
-      "title": "Measuring Mathematical Problem Solving With the MATH Dataset",
-      "year": 2021,
-      "venue": "NeurIPS 2021 Datasets and Benchmarks",
-      "authors": [
-        "Dan Hendrycks",
-        "Collin Burns",
-        "Saurav Kadavath",
-        "Akul Arora",
-        "Steven Basart",
-        "Eric Tang",
-        "Dawn Song",
-        "Jacob Steinhardt"
-      ],
-      "source_role": [
-        "benchmark",
-        "data_release"
-      ],
-      "verification_contract": [
-        "programmatic"
-      ],
-      "supervision_granularity": [
-        "answer_level"
-      ],
-      "training_use": [
-        "sft",
-        "evaluation",
-        "audit"
-      ],
-      "domains": [
-        "math",
-        "competition-mathematics",
-        "answer-extraction"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "📐 Math answer-verifiable data",
-      "tags": [
-        "neurips-2021",
-        "math",
-        "answer-verification",
-        "symbolic-normalization",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "MATH pairs competition problems and human solutions with an answer-level outcome surface that later reasoning pipelines reuse.",
-      "why_it_matters": "It establishes the central trade-off for math outcome data: inexpensive final-answer supervision is useful only when extraction, equivalence, and contamination are audited.",
-      "data_object": "Problem statement, LaTeX solution, and boxed final answer.; process: subject, difficulty, full solution; Dataset loader and evaluation scripts distributed with the official repository.",
-      "feedback_verifier": "Extracted final-answer matching with task-specific normalization.",
-      "audit_focus": "Final-answer extraction can reject an otherwise correct derivation., Equivalent symbolic forms can be mishandled by brittle normalization., Public solutions create benchmark-contamination risk.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2103.03874",
-        "venue": "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
-        "arxiv": "https://arxiv.org/abs/2103.03874",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2103.03874",
-        "code": "https://github.com/hendrycks/math",
-        "data": "https://github.com/hendrycks/math",
-        "huggingface": null,
-        "project": "https://github.com/hendrycks/math",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/math-dataset-2021/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2103.03874"
-    },
-    {
-      "id": "minif2f-2022",
-      "title": "MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics",
-      "year": 2022,
-      "venue": "ICLR 2022",
-      "authors": [
-        "Kunhao Zheng",
-        "Jesse Michael Han",
-        "Stanislas Polu"
-      ],
-      "source_role": [
-        "benchmark",
-        "data_release"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "environmental"
-      ],
-      "supervision_granularity": [
-        "answer_level",
-        "full_episode"
-      ],
-      "training_use": [
-        "evaluation",
-        "rlvr",
-        "audit"
-      ],
-      "domains": [
-        "formal-mathematics",
-        "theorem-proving",
-        "lean",
-        "proof-checking"
-      ],
-      "category": [
-        "programmatically_verifiable_outcome_data"
-      ],
-      "subfield": "🧾 Formal proof / Lean / theorem proving",
-      "tags": [
-        "iclr-2022",
-        "theorem-proving",
-        "lean",
-        "formal-proof",
-        "proof-checker",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "miniF2F makes formal theorem statements and proof-checker outcomes a directly auditable evaluation record.",
-      "why_it_matters": "It separates rigorous proof checking from ordinary answer matching while exposing environment-version and formalization risks.",
-      "data_object": "Formal theorem statement, target proof-assistant language, candidate proof script, and checker verdict.; process: source problem, formal statement, proof assistant; Metamath, Lean, Isabelle, and HOL Light formal proof environments.",
-      "feedback_verifier": "Native proof-assistant kernel/checker acceptance.",
-      "audit_focus": "A proof can depend on undocumented imports or library versions., Formalization choices can change the difficulty of the original problem., Kernel success does not validate an informal translation's faithfulness.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2109.00110",
-        "venue": "https://openreview.net/forum?id=9ZPegFuFTFv",
-        "arxiv": "https://arxiv.org/abs/2109.00110",
-        "openreview": "https://openreview.net/forum?id=9ZPegFuFTFv",
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2109.00110",
-        "code": "https://github.com/openai/miniF2F",
-        "data": "https://github.com/openai/miniF2F",
-        "huggingface": null,
-        "project": "https://github.com/openai/miniF2F",
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/minif2f-2022/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2109.00110"
+      "primary_link": "https://arxiv.org/abs/2406.06592"
     },
     {
       "id": "prime-process-reinforcement-through-implicit-rewards-2025",
@@ -1252,10 +1010,9 @@ window.ATLAS_DATA = {
         "reasoning"
       ],
       "category": [
-        "process_trace_supervision_data",
-        "training_usage_optimization_objectives"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🛠️ Automatic process supervision",
+      "subfield": "Other related work",
       "tags": [
         "seeded-from-bib",
         "primary-link-checked"
@@ -1319,10 +1076,9 @@ window.ATLAS_DATA = {
         "visual_question_answering"
       ],
       "category": [
-        "environment_agent_trajectory_data",
-        "data_construction_open_release_recipes"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🔁 Replayable trajectory data",
+      "subfield": "⏱️ Test-time compute logs",
       "tags": [
         "re-rest",
         "reflection",
@@ -1393,10 +1149,9 @@ window.ATLAS_DATA = {
         "multi-hop reasoning"
       ],
       "category": [
-        "process_trace_supervision_data",
         "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🧪 Process reward models",
+      "subfield": "🌳 Search trees / MCTS",
       "tags": [
         "primary-link-checked"
       ],
@@ -1460,8 +1215,7 @@ window.ATLAS_DATA = {
         "test_time_compute"
       ],
       "category": [
-        "rollout_search_test_time_trace_data",
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
       "subfield": "🌳 Search trees / MCTS",
       "tags": [
@@ -1535,8 +1289,7 @@ window.ATLAS_DATA = {
         "synthetic_data"
       ],
       "category": [
-        "data_construction_open_release_recipes",
-        "training_usage_optimization_objectives"
+        "rollout_search_test_time_trace_data"
       ],
       "subfield": "Other related work",
       "tags": [
@@ -1570,116 +1323,6 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/reinforced-self-training-rest-for-language-modeling-2023/sources"
       },
       "primary_link": "https://arxiv.org/abs/2308.08998"
-    },
-    {
-      "id": "rest-em-self-training-2024",
-      "title": "Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models",
-      "year": 2024,
-      "venue": "TMLR 2024",
-      "authors": [
-        "Avi Singh",
-        "John D. Co-Reyes",
-        "Rishabh Agarwal",
-        "Ankesh Anand",
-        "Piyush Patil",
-        "Xavier Garcia",
-        "Peter J. Liu",
-        "James Harrison",
-        "Jaehoon Lee",
-        "Kelvin Xu",
-        "Aaron Parisi",
-        "Abhishek Kumar",
-        "Alex Alemi",
-        "Alex Rizkowsky",
-        "Azade Nova",
-        "Ben Adlam",
-        "Bernd Bohnet",
-        "Gamaleldin Elsayed",
-        "Hanie Sedghi",
-        "Igor Mordatch",
-        "Isabelle Simpson",
-        "Izzeddin Gur",
-        "Jasper Snoek",
-        "Jeffrey Pennington",
-        "Jiri Hron",
-        "Kathleen Kenealy",
-        "Kevin Swersky",
-        "Kshiteej Mahajan",
-        "Laura Culp",
-        "Lechao Xiao",
-        "Maxwell L. Bileschi",
-        "Noah Constant",
-        "Roman Novak",
-        "Rosanne Liu",
-        "Tris Warkentin",
-        "Yundi Qian",
-        "Yamini Bansal",
-        "Ethan Dyer",
-        "Behnam Neyshabur",
-        "Jascha Sohl-Dickstein",
-        "Noah Fiedel"
-      ],
-      "source_role": [
-        "scaling_study",
-        "construction_recipe",
-        "verifier_reward"
-      ],
-      "verification_contract": [
-        "programmatic",
-        "mixed"
-      ],
-      "supervision_granularity": [
-        "answer_level",
-        "scalar_reward"
-      ],
-      "training_use": [
-        "sft",
-        "rlvr",
-        "evaluation"
-      ],
-      "domains": [
-        "math",
-        "code",
-        "self-training",
-        "data-reuse"
-      ],
-      "category": [
-        "scaling_rlvr_test_time_compute"
-      ],
-      "subfield": "📈 Data scaling",
-      "tags": [
-        "tmlr-2024",
-        "rest-em",
-        "self-training",
-        "data-reuse",
-        "verifier-filtering",
-        "primary-link-checked"
-      ],
-      "one_line_summary": "ReST-EM is the data-reuse card for scaling self-training with verifier-filtered generated solutions.",
-      "why_it_matters": "Strong self-training scaling paper for data reuse, scalar feedback filtering, and verifier-mediated synthetic data generation.",
-      "data_object": "Prompt, generated sample, binary feedback result, filtered training example, and iteration number.; process: self-training round, sampled solution, binary verifier result; Expectation-maximization self-training loop over verifiable problem-solving tasks.",
-      "feedback_verifier": "Binary correctness feedback from answer checks or execution-style evaluators.",
-      "audit_focus": "Filtered data may become repetitive., Verifier errors are amplified across rounds., Data reuse counts can be mistaken for new unique data.",
-      "curation_level": "L4_carded",
-      "status": "verified",
-      "needs_search": false,
-      "artifacts": {
-        "paper": "https://arxiv.org/abs/2312.06585",
-        "venue": null,
-        "arxiv": "https://arxiv.org/abs/2312.06585",
-        "openreview": null,
-        "acl": null,
-        "pmlr": null,
-        "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2312.06585",
-        "code": null,
-        "data": null,
-        "huggingface": null,
-        "project": null,
-        "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/rest-em-self-training-2024/sources"
-      },
-      "primary_link": "https://arxiv.org/abs/2312.06585"
     },
     {
       "id": "rest-mcts-2024",
@@ -1717,10 +1360,9 @@ window.ATLAS_DATA = {
         "reasoning"
       ],
       "category": [
-        "process_trace_supervision_data",
         "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🧪 Process reward models",
+      "subfield": "🌳 Search trees / MCTS",
       "tags": [
         "seeded-from-bib",
         "primary-link-checked"
@@ -1750,6 +1392,221 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/rest-mcts-2024/sources"
       },
       "primary_link": "https://arxiv.org/abs/2406.03816"
+    },
+    {
+      "id": "rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024",
+      "title": "Rewarding Progress: Scaling Automated Process Verifiers for LLM Reasoning",
+      "year": 2024,
+      "venue": "ICLR",
+      "authors": [
+        "Amrith Setlur",
+        "Chirag Nagpal",
+        "Adam Fisch",
+        "Xinyang Geng",
+        "Jacob Eisenstein",
+        "Rishabh Agarwal",
+        "Alekh Agarwal",
+        "Jonathan Berant",
+        "Aviral Kumar"
+      ],
+      "source_role": [
+        "process_supervision",
+        "verifier_reward",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "process_reward"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "rlvr",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "⏱️ Test-time compute logs",
+      "tags": [
+        "primary-link-checked",
+        "track-05-candidate"
+      ],
+      "one_line_summary": "Defines process reward as prover-measured progress and trains Process Advantage Verifiers for more efficient search and online RL.",
+      "why_it_matters": "The work argues that absolute prefix solvability is not the right process target; the useful signal is the step's marginal progress under a complementary prover.",
+      "data_object": "problem, reasoning state before a step, proposed step, state after the step, prover rollout success estimates, process advantage target, PAV score, and search or RL outcome; process: problem or prompt, candidate rollout or reasoning state, feedback or verifier signal; Offline and on-policy reasoning rollout/search pipeline",
+      "feedback_verifier": "progress is the change in future success probability before and after a step under a prover policy distinct from the base policy",
+      "audit_focus": "progress estimates inherit variance and bias from the chosen prover, a weak prover helps only when its errors complement the base policy, search and RL gains can be misattributed if rollout budgets and prover calls are omitted",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2410.08146",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2410.08146",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2410.08146",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2410.08146"
+    },
+    {
+      "id": "rstar-math-2025",
+      "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Xinyu Guan",
+        "Li Lyna Zhang",
+        "Yifei Liu",
+        "Ning Shang",
+        "Youran Sun",
+        "Yi Zhu",
+        "Fan Yang",
+        "Mao Yang"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "process_supervision",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "step_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "process_supervision",
+        "preference_learning",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🌳 Search trees / MCTS",
+      "tags": [
+        "track-05",
+        "primary-link-checked"
+      ],
+      "one_line_summary": "MCTS, code execution, and a process preference model co-evolve policy traces and sibling-step preference data across four rounds.",
+      "why_it_matters": "Use it as a reference architecture for tree-to-SFT and tree-to-preference conversion, iterative policy/verifier co-training, and compute-aware test-time deep thinking.",
+      "data_object": "math question; code-augmented reasoning step; executable snippet and result; MCTS parent/child relation; complete rollout; terminal answer; visit/value statistics; SFT trace; sibling preference pair; evolution round; process: math question, code-augmented reasoning step, executable snippet and result; Search tree or formal proof-search substrate described by the paper.",
+      "feedback_verifier": "A code executor and final-answer checker provide grounded outcome signals; the learned process preference model ranks partial paths and guides later MCTS.",
+      "audit_focus": "Public SFT/PPM tables are derived views, not necessarily full tree logs; code execution can validate an accidental shortcut; NuminaMath and MetaMath lineage and licenses must be retained; results depend heavily on GPU/search budget and PPM calibration., Search budget or selector quality can be mistaken for base-model capability.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.04519",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.04519",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2501.04519",
+        "code": "https://github.com/microsoft/rStar/tree/rStar-math",
+        "data": "https://huggingface.co/datasets/ElonTusk2001/rstar_sft",
+        "huggingface": null,
+        "project": "https://huggingface.co/datasets/ElonTusk2001/rstar_ppm",
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/rstar-math-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2501.04519"
+    },
+    {
+      "id": "s1-simple-test-time-scaling-2025",
+      "title": "s1: Simple test-time scaling",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": [
+        "Niklas Muennighoff",
+        "Zitong Yang",
+        "Weijia Shi",
+        "Xiang Lisa Li",
+        "Li Fei-Fei",
+        "Hannaneh Hajishirzi",
+        "Luke Zettlemoyer",
+        "Percy Liang",
+        "Emmanuel Candès",
+        "Tatsunori Hashimoto"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "data_release",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "full_episode",
+        "answer_level"
+      ],
+      "training_use": [
+        "sft",
+        "distillation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "⏱️ Test-time compute logs",
+      "tags": [
+        "primary-link-checked",
+        "track-05-candidate"
+      ],
+      "one_line_summary": "Curates 1,000 difficult, diverse, high-quality long reasoning traces for SFT and controls inference compute through budget forcing.",
+      "why_it_matters": "s1 isolates a deliberately small trace set and a simple decoding intervention, making training-data scale and inference-budget effects easier to study together.",
+      "data_object": "question, source dataset, teacher reasoning trace, difficulty score, diversity cluster, quality decision, selected SFT record, token budget, forced stop or Wait extension, and final answer; process: problem or prompt, candidate rollout or reasoning state, feedback or verifier signal; Offline and on-policy reasoning rollout/search pipeline",
+      "feedback_verifier": "teacher-generated trace quality, benchmark answer correctness, and curation criteria for difficulty, diversity, and quality",
+      "audit_focus": "teacher trace lineage and filtering choices dominate a very small dataset, appending Wait may teach or exploit a formatting artifact rather than general search, token budget is an incomplete proxy for actual inference compute and useful reasoning",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2501.19393",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2501.19393",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2501.19393",
+        "code": "https://github.com/simplescaling/s1",
+        "data": "https://huggingface.co/datasets/simplescaling/s1K",
+        "huggingface": "https://huggingface.co/simplescaling/s1-32B",
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/s1-simple-test-time-scaling-2025/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2501.19393"
     },
     {
       "id": "scaling-llm-test-time-compute-optimally-2024",
@@ -1787,10 +1644,9 @@ window.ATLAS_DATA = {
         "scaling"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute",
         "rollout_search_test_time_trace_data"
       ],
-      "subfield": "⏱️ Test-time compute",
+      "subfield": "⏱️ Test-time compute logs",
       "tags": [
         "test-time-compute",
         "best-of-n",
@@ -1859,10 +1715,9 @@ window.ATLAS_DATA = {
         "synthetic_data"
       ],
       "category": [
-        "data_construction_open_release_recipes",
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🔎 Rejection sampling / search-generated data",
+      "subfield": "🔎 Rejection sampling traces",
       "tags": [
         "rejection-sampling",
         "rft",
@@ -1896,26 +1751,22 @@ window.ATLAS_DATA = {
       "primary_link": "https://arxiv.org/abs/2308.01825"
     },
     {
-      "id": "self-consistency-chain-of-thought-2023",
-      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
-      "year": 2023,
-      "venue": "ICLR 2023",
+      "id": "smaller-weaker-yet-better-training-llm-reasoners-via-compute-optimal-sampling-2025",
+      "title": "Smaller, Weaker, Yet Better: Training LLM Reasoners via Compute-Optimal Sampling",
+      "year": 2025,
+      "venue": "ICLR 2025 Poster",
       "authors": [
-        "Xuezhi Wang",
-        "Jason Wei",
-        "Dale Schuurmans",
-        "Quoc Le",
-        "Ed Chi",
-        "Sharan Narang",
-        "Aakanksha Chowdhery",
-        "Denny Zhou"
+        "Hritik Bansal",
+        "Arian Hosseini",
+        "Rishabh Agarwal",
+        "Vinh Q. Tran",
+        "Mehran Kazemi"
       ],
       "source_role": [
         "scaling_study",
         "construction_recipe"
       ],
       "verification_contract": [
-        "judgment_required",
         "mixed"
       ],
       "supervision_granularity": [
@@ -1923,122 +1774,193 @@ window.ATLAS_DATA = {
         "full_episode"
       ],
       "training_use": [
-        "test_time_compute",
+        "sft",
+        "distillation",
         "evaluation"
       ],
       "domains": [
         "math",
-        "commonsense-reasoning",
-        "sampling",
-        "chain-of-thought"
+        "test_time_compute"
       ],
       "category": [
-        "environment_agent_trajectory_data",
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "Other related work",
+      "subfield": "🔎 Rejection sampling traces",
       "tags": [
-        "iclr-2023",
-        "self-consistency",
-        "sampling-budget",
-        "pass-at-k-adjacent",
-        "primary-link-checked"
+        "compute-optimal-sampling",
+        "synthetic-reasoning-data",
+        "rejection-sampling",
+        "weak-to-strong",
+        "budget-matching"
       ],
-      "one_line_summary": "Self-consistency is the clean baseline for repeated-sampling test-time compute in CoT reasoning.",
-      "why_it_matters": "Top-conference paper that turns repeated sampled reasoning paths into a simple test-time compute scaling primitive.",
-      "data_object": "Prompt, sampled reasoning paths, extracted answers, vote distribution, and selected final answer.; process: sample index, chain-of-thought path, answer extraction; Repeated inference sampling over answer-verifiable and judgment-required reasoning tasks.",
-      "feedback_verifier": "Answer agreement and final-answer checking act as an implicit verifier.",
-      "audit_focus": "More samples can hide answer-extraction bias., Majority vote can amplify a common wrong shortcut., Sampling budget may be incomparable across papers.",
+      "one_line_summary": "Shows that more samples from a weaker, cheaper generator can produce better filtered reasoning-training data under a fixed budget.",
+      "why_it_matters": "It makes sampling budget a first-class part of synthetic reasoning-data quality rather than treating teacher strength as the only variable.",
+      "data_object": "per-question candidate reasoning sets with final answers, correctness filters, generator identity, and compute- or price-matched budget records.; process: question, generator model, candidate solution; exact reference-answer checks for math, with LM-as-a-judge variants when gold answers are withheld.",
+      "feedback_verifier": "final-answer matching is the default selector; Gemini models serve as judges in the no-ground-truth setting.",
+      "audit_focus": "Final-answer filtering admits false-positive reasoning, and weaker generators exhibit a higher measured false-positive rate., Parameter count approximates generation FLOPs and API price approximates proprietary-model compute only coarsely., The August 2024 Pro-to-Flash price ratio is time-dependent and should not be treated as a universal compute ratio.",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2203.11171",
+        "paper": "https://arxiv.org/abs/2408.16737",
         "venue": null,
-        "arxiv": "https://arxiv.org/abs/2203.11171",
-        "openreview": null,
+        "arxiv": "https://arxiv.org/abs/2408.16737",
+        "openreview": "https://openreview.net/forum?id=3OyaXFQuDl",
         "acl": null,
         "pmlr": null,
         "cvf": null,
-        "doi": "https://doi.org/10.48550/arXiv.2203.11171",
+        "doi": null,
         "code": null,
         "data": null,
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/self-consistency-chain-of-thought-2023/sources"
+        "paper_card_source": "paper_cards/library/cards/smaller-weaker-yet-better-training-llm-reasoners-via-compute-optimal-sampling-2025/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2203.11171"
+      "primary_link": "https://arxiv.org/abs/2408.16737"
     },
     {
-      "id": "tinyv-2025",
-      "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
-      "year": 2025,
-      "venue": "arXiv",
+      "id": "star-bootstrapping-reasoning-with-reasoning-2022",
+      "title": "STaR: Bootstrapping Reasoning With Reasoning",
+      "year": 2022,
+      "venue": "NeurIPS",
       "authors": [
-        "Zhangchen Xu",
-        "Yuetai Li",
-        "Fengqing Jiang",
-        "Bhaskar Ramasubramanian",
-        "Luyao Niu",
-        "Bill Yuchen Lin",
-        "Radha Poovendran"
+        "Eric Zelikman",
+        "Yuhuai Wu",
+        "Jesse Mu",
+        "Noah D. Goodman"
       ],
       "source_role": [
-        "verifier_reward",
-        "audit_failure",
-        "construction_recipe"
+        "construction_recipe",
+        "model_report"
       ],
       "verification_contract": [
-        "programmatic",
-        "judgment_required",
-        "mixed"
+        "programmatic"
       ],
       "supervision_granularity": [
         "answer_level",
-        "scalar_reward"
+        "full_episode"
       ],
       "training_use": [
-        "rlvr",
-        "reward_modeling",
-        "evaluation"
+        "sft",
+        "distillation"
       ],
       "domains": [
-        "math"
+        "math",
+        "commonsense",
+        "reasoning"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute"
+        "rollout_search_test_time_trace_data"
       ],
-      "subfield": "🏋️ RLVR optimization scaling",
+      "subfield": "✂️ Long2short / distill-from-search",
       "tags": [
-        "curated-card",
-        "primary-link-checked"
+        "primary-link-checked",
+        "track-05-candidate"
       ],
-      "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-      "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-      "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
-      "feedback_verifier": "small LLM verifier augmenting rules",
-      "audit_focus": "check links, lineage, verifier, split, and contamination",
+      "one_line_summary": "Iteratively generates rationales, filters them by answer correctness, and fine-tunes on the retained self-generated reasoning traces.",
+      "why_it_matters": "STaR turns a small rationale seed into an iterative generate-filter-train loop and explicitly recovers some failures through answer-conditioned rationalization.",
+      "data_object": "question, generated rationale, predicted answer, correctness decision, rationalization flag, model iteration, and retention decision; process: problem or prompt, candidate rollout or reasoning state, feedback or verifier signal; Offline and on-policy reasoning rollout/search pipeline",
+      "feedback_verifier": "dataset ground-truth answer matching; failed examples may be regenerated while conditioning on the correct answer",
+      "audit_focus": "answer-conditioned rationalization can leak the target into the trace, retaining only correct answers hides rejected rollout diversity, acceptance rates depend on prompt, sampler, and model iteration",
       "curation_level": "L4_carded",
       "status": "verified",
       "needs_search": false,
       "artifacts": {
-        "paper": "https://arxiv.org/abs/2505.14625",
+        "paper": "https://arxiv.org/abs/2203.14465",
         "venue": null,
-        "arxiv": "https://arxiv.org/abs/2505.14625",
+        "arxiv": "https://arxiv.org/abs/2203.14465",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2203.14465",
+        "code": "https://github.com/ezelikman/STaR",
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/star-bootstrapping-reasoning-with-reasoning-2022/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2203.14465"
+    },
+    {
+      "id": "training-verifiers-to-solve-math-word-problems-2021",
+      "title": "Training Verifiers to Solve Math Word Problems",
+      "year": 2021,
+      "venue": "arXiv preprint arXiv:2110.14168",
+      "authors": [
+        "Karl Cobbe",
+        "Vineet Kosaraju",
+        "Mohammad Bavarian",
+        "Mark Chen",
+        "Heewoo Jun",
+        "Lukasz Kaiser",
+        "Matthias Plappert",
+        "Jerry Tworek",
+        "Jacob Hilton",
+        "Reiichiro Nakano",
+        "Christopher Hesse",
+        "John Schulman"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "scaling_study",
+        "verifier_reward"
+      ],
+      "verification_contract": [
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "scalar_reward",
+        "full_episode"
+      ],
+      "training_use": [
+        "reward_modeling",
+        "evaluation",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "test_time_compute"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🎲 Multiple rollouts / best-of-N",
+      "tags": [
+        "best-of-n",
+        "learned-verifier",
+        "gsm8k",
+        "outcome-labels",
+        "test-time-compute"
+      ],
+      "one_line_summary": "Generates 100 GSM8K solutions per problem and uses a learned verifier to select the highest-scoring candidate.",
+      "why_it_matters": "It is an early auditable template for separating candidate coverage from selector quality in reasoning systems.",
+      "data_object": "per-problem candidate sets containing a natural-language derivation, calculator annotations, and a final numeric answer.; process: problem, candidate solution, final answer; GSM8K answer matching with an injected calculator protocol for annotated arithmetic spans.",
+      "feedback_verifier": "a learned verifier predicts correctness from the problem and candidate solution; labels come only from final-answer correctness.",
+      "audit_focus": "Final-answer labels can mark flawed reasoning as correct when it reaches the right number accidentally., Oracle test@N measures coverage, not whether the learned verifier can identify a correct candidate., More generator training improves greedy accuracy while collapsing high-temperature candidate diversity.",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2110.14168",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2110.14168",
         "openreview": null,
         "acl": null,
         "pmlr": null,
         "cvf": null,
         "doi": null,
-        "code": "https://github.com/uw-nsl/TinyV",
-        "data": null,
+        "code": "https://github.com/openai/grade-school-math",
+        "data": "https://github.com/openai/grade-school-math",
         "huggingface": null,
         "project": null,
         "bibtex": null,
-        "paper_card_source": "paper_cards/library/cards/tinyv-2025/sources"
+        "paper_card_source": "paper_cards/library/cards/training-verifiers-to-solve-math-word-problems-2021/sources"
       },
-      "primary_link": "https://arxiv.org/abs/2505.14625"
+      "primary_link": "https://arxiv.org/abs/2110.14168"
     },
     {
       "id": "tree-of-thoughts-2023",
@@ -2079,10 +2001,9 @@ window.ATLAS_DATA = {
         "games"
       ],
       "category": [
-        "scaling_rlvr_test_time_compute",
         "rollout_search_test_time_trace_data"
       ],
-      "subfield": "⏱️ Test-time compute",
+      "subfield": "🌳 Search trees / MCTS",
       "tags": [
         "neurips-2023",
         "tree-search",
@@ -2115,16 +2036,86 @@ window.ATLAS_DATA = {
         "paper_card_source": "paper_cards/library/cards/tree-of-thoughts-2023/sources"
       },
       "primary_link": "https://arxiv.org/abs/2305.10601"
+    },
+    {
+      "id": "v-star-training-verifiers-for-self-taught-reasoners-2024",
+      "title": "V-STaR: Training Verifiers for Self-Taught Reasoners",
+      "year": 2024,
+      "venue": "COLM",
+      "authors": [
+        "Arian Hosseini",
+        "Xingdi Yuan",
+        "Nikolay Malkin",
+        "Aaron Courville",
+        "Alessandro Sordoni",
+        "Rishabh Agarwal"
+      ],
+      "source_role": [
+        "construction_recipe",
+        "verifier_reward",
+        "scaling_study"
+      ],
+      "verification_contract": [
+        "programmatic",
+        "mixed"
+      ],
+      "supervision_granularity": [
+        "answer_level",
+        "full_episode"
+      ],
+      "training_use": [
+        "sft",
+        "reward_modeling",
+        "test_time_compute"
+      ],
+      "domains": [
+        "math",
+        "code",
+        "reasoning"
+      ],
+      "category": [
+        "rollout_search_test_time_trace_data"
+      ],
+      "subfield": "🎲 Multiple rollouts / best-of-N",
+      "tags": [
+        "primary-link-checked",
+        "track-05-candidate"
+      ],
+      "one_line_summary": "Reuses both correct and incorrect self-generated solutions to co-evolve a reasoner and a DPO-trained verifier for best-of-N selection.",
+      "why_it_matters": "Unlike STaR, V-STaR does not discard incorrect generations: it converts them into preference data and closes the loop between generator and selector.",
+      "data_object": "problem, policy iteration, sampled solution, correctness label, positive-negative verifier pair, verifier score, candidate set, and selected answer; process: problem or prompt, candidate rollout or reasoning state, feedback or verifier signal; Offline and on-policy reasoning rollout/search pipeline",
+      "feedback_verifier": "unit tests or exact-answer checks label generated solutions; DPO learns to prefer correct solutions over incorrect ones",
+      "audit_focus": "incorrect labels inherit weaknesses of tests and answer normalization, verifier gains may be confounded with larger candidate budgets, pairs from the current policy may narrow verifier coverage across iterations",
+      "curation_level": "L4_carded",
+      "status": "verified",
+      "needs_search": false,
+      "artifacts": {
+        "paper": "https://arxiv.org/abs/2402.06457",
+        "venue": null,
+        "arxiv": "https://arxiv.org/abs/2402.06457",
+        "openreview": null,
+        "acl": null,
+        "pmlr": null,
+        "cvf": null,
+        "doi": "https://doi.org/10.48550/arXiv.2402.06457",
+        "code": null,
+        "data": null,
+        "huggingface": null,
+        "project": null,
+        "bibtex": null,
+        "paper_card_source": "paper_cards/library/cards/v-star-training-verifiers-for-self-taught-reasoners-2024/sources"
+      },
+      "primary_link": "https://arxiv.org/abs/2402.06457"
     }
   ],
   "counts": {
-    "total_entries": 28,
-    "verified_entries": 28,
-    "paper_card_sources": 28,
-    "data_releases": 9,
-    "verifiers_rewards": 11,
-    "agent_environments": 5,
-    "scaling_studies": 11,
+    "total_entries": 29,
+    "verified_entries": 29,
+    "paper_card_sources": 29,
+    "data_releases": 1,
+    "verifiers_rewards": 9,
+    "agent_environments": 2,
+    "scaling_studies": 18,
     "needs_search": 0
   },
   "categories": [
@@ -3842,143 +3833,92 @@ window.ATLAS_DATA = {
   ],
   "starter_packs": [
     {
-      "id": "beginner_20",
-      "emoji": "🌱",
-      "title": "Beginner 20: Reasoning Data Orientation",
-      "goal": "Build the vocabulary for post-training reasoning data before diving into recipes.",
-      "entries": []
-    },
-    {
-      "id": "builder_30",
-      "emoji": "🏗️",
-      "title": "Builder 30: Data Construction and Release Practice",
-      "goal": "Learn how open reasoning-data recipes source prompts, write traces, filter, audit, and report artifacts.",
-      "entries": []
-    },
-    {
-      "id": "verifier_reward_25",
-      "emoji": "🧪",
-      "title": "Verifier and Reward 25",
-      "goal": "Compare programmatic verifiers, PRMs, rubric rewards, LLM judges, and failure diagnostics.",
-      "entries": []
-    },
-    {
-      "id": "agent_data_25",
-      "emoji": "🌐",
-      "title": "Agent Data 25",
-      "goal": "Understand trajectories, tool calls, browser/app/OS tasks, and SWE environments.",
-      "entries": []
-    },
-    {
-      "id": "scaling_20",
-      "emoji": "📈",
-      "title": "Scaling 20",
-      "goal": "Read scaling claims across RL compute, data size, distillation, and test-time inference budget.",
-      "entries": []
-    },
-    {
-      "id": "representative_track_03",
-      "emoji": "🧮",
-      "title": "Representative 30: Programmatic Verification",
-      "goal": "Cover the strongest math, code, proof, scientific-program-search, and real-task verifier surfaces.",
-      "entries": []
-    },
-    {
-      "id": "representative_track_10",
+      "id": "local_review_core",
       "emoji": "🔁",
-      "title": "Representative 30: RLVR and Test-Time Compute",
-      "goal": "Compare verifier rewards, repeated sampling, tree search, process rewards, RL scaling, and failure audits.",
+      "title": "Local Review Core",
+      "goal": "Start with a canonical search-trace paper retained in the local curated library.",
       "entries": [
         {
-          "title": "TinyV",
-          "entry_id": "tinyv-2025",
+          "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+          "entry_id": "tree-of-thoughts-2023",
           "matched": true,
           "entry": {
-            "id": "tinyv-2025",
-            "title": "TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning",
-            "year": 2025,
-            "venue": "arXiv",
+            "id": "tree-of-thoughts-2023",
+            "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+            "year": 2023,
+            "venue": "NeurIPS 2023",
             "authors": [
-              "Zhangchen Xu",
-              "Yuetai Li",
-              "Fengqing Jiang",
-              "Bhaskar Ramasubramanian",
-              "Luyao Niu",
-              "Bill Yuchen Lin",
-              "Radha Poovendran"
+              "Shunyu Yao",
+              "Dian Yu",
+              "Jeffrey Zhao",
+              "Izhak Shafran",
+              "Thomas L. Griffiths",
+              "Yuan Cao",
+              "Karthik Narasimhan"
             ],
             "source_role": [
-              "verifier_reward",
-              "audit_failure",
-              "construction_recipe"
+              "scaling_study",
+              "construction_recipe",
+              "agent_environment"
             ],
             "verification_contract": [
-              "programmatic",
               "judgment_required",
               "mixed"
             ],
             "supervision_granularity": [
-              "answer_level",
-              "scalar_reward"
+              "step_level",
+              "full_episode"
             ],
             "training_use": [
-              "rlvr",
-              "reward_modeling",
-              "evaluation"
+              "test_time_compute",
+              "evaluation",
+              "audit"
             ],
             "domains": [
-              "math"
+              "planning",
+              "search",
+              "reasoning",
+              "games"
             ],
             "category": [
-              "scaling_rlvr_test_time_compute"
+              "rollout_search_test_time_trace_data"
             ],
-            "subfield": "🏋️ RLVR optimization scaling",
+            "subfield": "🌳 Search trees / MCTS",
             "tags": [
-              "curated-card",
+              "neurips-2023",
+              "tree-search",
+              "test-time-compute",
+              "verifier-guided-search",
               "primary-link-checked"
             ],
-            "one_line_summary": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-            "why_it_matters": "Lightweight verifier aimed at recovering false negatives from rule-based math verifiers during RL training.",
-            "data_object": "candidate answer with recovered reward decision; process: original verifier verdict, TinyV verdict, reward correction; offline math verifier stack",
-            "feedback_verifier": "small LLM verifier augmenting rules",
-            "audit_focus": "check links, lineage, verifier, split, and contamination",
+            "one_line_summary": "Tree of Thoughts turns language reasoning into a search trace with explicit branch and evaluation budgets.",
+            "why_it_matters": "Top-conference paper that makes search trees, branch budgets, and self-evaluation explicit test-time compute objects.",
+            "data_object": "Problem, intermediate thought states, branch scores, search actions, and final solution.; process: thought node, branch candidates, state evaluation; Explicit tree search over language-model thought units.",
+            "feedback_verifier": "Self-evaluation, task-specific checks, and final outcome scoring.",
+            "audit_focus": "Value estimates may be prompt-sensitive., Search budget can dominate model ranking., Small task suites can overfit scaffolds.",
             "curation_level": "L4_carded",
             "status": "verified",
             "needs_search": false,
             "artifacts": {
-              "paper": "https://arxiv.org/abs/2505.14625",
+              "paper": "https://arxiv.org/abs/2305.10601",
               "venue": null,
-              "arxiv": "https://arxiv.org/abs/2505.14625",
+              "arxiv": "https://arxiv.org/abs/2305.10601",
               "openreview": null,
               "acl": null,
               "pmlr": null,
               "cvf": null,
-              "doi": null,
-              "code": "https://github.com/uw-nsl/TinyV",
+              "doi": "https://doi.org/10.48550/arXiv.2305.10601",
+              "code": "https://github.com/princeton-nlp/tree-of-thought-llm",
               "data": null,
               "huggingface": null,
               "project": null,
               "bibtex": null,
-              "paper_card_source": "paper_cards/library/cards/tinyv-2025/sources"
+              "paper_card_source": "paper_cards/library/cards/tree-of-thoughts-2023/sources"
             },
-            "primary_link": "https://arxiv.org/abs/2505.14625"
+            "primary_link": "https://arxiv.org/abs/2305.10601"
           }
         }
       ]
-    },
-    {
-      "id": "audit_failure_20",
-      "emoji": "🧯",
-      "title": "Audit and Failure 20",
-      "goal": "Build the habit of checking leakage, contamination, reward hacking, and judge robustness.",
-      "entries": []
-    },
-    {
-      "id": "industry_onboarding_40",
-      "emoji": "🏭",
-      "title": "Industry Onboarding 40",
-      "goal": "A practical path for becoming useful on an LLM post-training data team.",
-      "entries": []
     }
   ]
 };

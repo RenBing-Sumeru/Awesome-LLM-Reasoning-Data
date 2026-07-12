@@ -95,7 +95,6 @@ tags:
 status: verified
 one_line: Builds self-training episodes from an agent's initial output, external feedback, reflector revision, and refined
   trajectory.
-card: cards/agents/re-rest.md
 needs: []
 one_line_summary: Builds self-training episodes from an agent's initial output, external feedback, reflector revision, and
   refined trajectory.
@@ -110,5 +109,4 @@ verification:
   confidence: high
   notes: Official arXiv paper and authors' code repository pinned.
 category_ids:
-- environment_agent_trajectory_data
-- data_construction_open_release_recipes
+- rollout_search_test_time_trace_data

@@ -1,4 +1,6 @@
-- How many candidates were generated per prompt, by which model and settings?
-- What normalization and answer checker define “correct”?
-- Are rejected traces available to measure selection bias?
-- Were benchmark evaluation prompts kept out of the augmentation pool?
+- Sampling protocol: Generate diverse candidate paths, answer-check them, then fine-tune on accepted augmented data.
+- Inference budget: Candidate-generation count and diversity determine the accepted RFT pool; exact settings vary by experiment.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Final-answer correctness check retains correct reasoning paths.
+- Remaining checks: human review of unresolved metadata

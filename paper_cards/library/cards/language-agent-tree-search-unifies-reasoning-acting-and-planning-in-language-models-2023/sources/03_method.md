@@ -1,3 +1,3 @@
-The contract is environmental: task environments provide outcomes, while LM-generated value functions and reflections guide intermediate selection.
+The agent generates candidate actions and reflections at search nodes. Tree expansion and rollout under an MCTS controller; exact budget varies by task. MCTS selects and expands nodes using visits, value estimates, reflection, and environmental outcomes.
 
-An agent proposes actions; MCTS expands and revisits them using values, reflections, and environment responses. The procedure is gradient-free at test time.
+The resulting record contains A search tree of observations, actions, self-reflections, value estimates, environment feedback, and terminal result. The reported use is agent training, evaluation, test time compute.

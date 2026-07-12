@@ -1,1 +1,0 @@
-The official ICLR paper documents the benchmark's 488 statements and cross-system design. The relevant evidence is checker acceptance under a pinned system version; comparable proof rates also require matched search and time budgets.

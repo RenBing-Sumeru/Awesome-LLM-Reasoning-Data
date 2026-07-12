@@ -1,4 +1,0 @@
-- Track 03 fit: executable unit-test environments are the verifier.
-- Review task derivation and dependency tracing carefully.
-- Passing tests may not equal complete feature implementation.
-- Public repositories create contamination and license concerns.

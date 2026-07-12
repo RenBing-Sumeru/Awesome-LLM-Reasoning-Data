@@ -11,24 +11,7 @@
     <header class="site-header">
       <nav class="topbar" aria-label="Paper card navigation">
         <a class="brand" href="./">Paper Card Workspace</a>
-        <div class="navlinks">
-          <a href="../../docs/index.html">Atlas</a>
-          <a href="../../docs/paper_card_sop.md">SOP</a>
-          <a href="../../paper_cards/library/">Card 库</a>
-        </div>
       </nav>
-      <section class="hero">
-        <div>
-          <p class="eyebrow">双语 Paper Card 工作台</p>
-          <h1>Update 写回中文源文件，Review 查看中文合并版并批量下载。</h1>
-        </div>
-        <div class="stats">
-          <div><strong id="totalCount">0</strong><span>论文条目</span></div>
-          <div><strong id="sourceCount">0</strong><span>需要标注</span></div>
-          <div><strong id="downloadedCount">0</strong><span>可下载</span></div>
-          <div><strong id="invalidCount">0</strong><span>不合法</span></div>
-        </div>
-      </section>
     </header>
 
     <main>
@@ -45,18 +28,16 @@
         <label class="wide">搜索
           <input id="query" type="search" placeholder="标题、entry_id、分类、verifier、benchmark">
         </label>
-        <div id="downloadControls" class="bulk-controls" aria-label="Downloadable card actions">
-          <button id="batchDownload" type="button">全部重新下载</button>
-          <button id="downloadUndownloaded" type="button" class="secondary">下载未下载</button>
-          <button id="downloadSelected" type="button" class="secondary">下载选中</button>
+        <div id="libraryLocationControl" class="bulk-controls" aria-label="Card library migration">
+          <button id="libraryLocation" type="button">显示可迁移 Card 目录</button>
         </div>
       </section>
 
-      <section class="workspace">
+      <section id="workspace" class="workspace" hidden>
         <aside class="paper-list-panel">
           <div class="panel-head">
             <h2>论文列表</h2>
-            <p id="resultSummary">正在加载...</p>
+            <p id="resultSummary" aria-live="polite"></p>
           </div>
           <section id="paperList" class="paper-list" aria-live="polite"></section>
         </aside>
@@ -66,6 +47,27 @@
           <article id="entryDetail" class="entry-detail" hidden></article>
 
           <div id="updateShell" class="mode-shell" hidden>
+            <section class="institution-panel">
+              <div class="pane-head">
+                <h3>机构信息</h3>
+                <span>写入当前 Card 的 institutions.json</span>
+              </div>
+              <div class="institution-grid">
+                <input class="institution-input" type="text" placeholder="机构 1">
+                <input class="institution-input" type="text" placeholder="机构 2">
+                <input class="institution-input" type="text" placeholder="机构 3">
+                <input class="institution-input" type="text" placeholder="机构 4">
+                <input class="institution-input" type="text" placeholder="机构 5">
+              </div>
+              <div class="check-row">
+                <label><input id="institutionMore" type="checkbox"> 还有更多机构</label>
+                <label><input id="noInstitution" type="checkbox"> 没有机构</label>
+              </div>
+              <div class="actionbar">
+                <button id="saveInstitutions" type="button" class="secondary">保存机构</button>
+              </div>
+            </section>
+
             <section class="header-zh-panel">
               <div class="pane-head">
                 <h3>中文卡片头字段</h3>
@@ -101,18 +103,21 @@
                 <span class="category-label">知识点分类（最多两个）</span>
                 <div id="categoryOptions" class="category-options"></div>
               </div>
+              <div class="actionbar">
+                <button id="saveHeaderZh" type="button">保存中文头字段</button>
+              </div>
             </section>
 
             <div id="sectionTabs" class="section-tabs" aria-label="Card sections"></div>
             <div class="section-editor">
-              <div class="section-pane">
+              <div class="section-pane english-reference">
                 <div class="pane-head">
                   <h3>英文参考</h3>
                   <span>只读</span>
                 </div>
                 <pre id="englishSection" class="section-readonly"></pre>
               </div>
-              <div class="section-pane">
+              <div class="section-pane chinese-maintenance">
                 <div class="pane-head">
                   <h3>中文维护</h3>
                   <span>写入 _ch.md</span>
@@ -121,51 +126,23 @@
               </div>
             </div>
 
-            <section class="institution-panel">
-              <div class="pane-head">
-                <h3>机构信息</h3>
-                <span>写入当前 Card 的 institutions.json</span>
-              </div>
-              <div class="institution-grid">
-                <input class="institution-input" type="text" placeholder="机构 1">
-                <input class="institution-input" type="text" placeholder="机构 2">
-                <input class="institution-input" type="text" placeholder="机构 3">
-                <input class="institution-input" type="text" placeholder="机构 4">
-                <input class="institution-input" type="text" placeholder="机构 5">
-              </div>
-              <div class="check-row">
-                <label><input id="institutionMore" type="checkbox"> 还有更多机构</label>
-                <label><input id="noInstitution" type="checkbox"> 没有机构</label>
-              </div>
-            </section>
-
+            <p id="saveStatus" class="save-status">Update 只写回机构、中文头字段和中文分段。</p>
             <div class="actionbar">
-              <button id="saveHeaderZh" type="button">保存中文头字段</button>
               <button id="saveSection" type="button">保存中文修改</button>
-              <button id="saveInstitutions" type="button" class="secondary">保存机构</button>
               <button id="goReviewFromUpdate" type="button" class="secondary">进入 Review</button>
             </div>
-            <p id="saveStatus" class="save-status">Update 只写回中文头字段、中文分段和机构字段。</p>
           </div>
 
           <div id="reviewShell" class="mode-shell" hidden>
-            <section class="review-actions">
-              <div>
-                <h3>Review 操作</h3>
-                <p id="selectionSummary">未标记卡片。</p>
-              </div>
-              <div class="actionbar compact">
-                <button id="goUpdateFromReview" type="button" class="secondary">进入 Update</button>
-                <button id="downgradeToL4" type="button" class="secondary">降级到 L4</button>
-                <button id="completeCurrent" type="button">完成修改该卡片</button>
-              </div>
-            </section>
             <div id="reviewCheckResult" class="valid-result" aria-live="polite"></div>
 
             <section class="preview-panel">
               <div class="pane-head">
-                <h3>中文合并版</h3>
-                <span>Markdown 渲染，仅作为 review 依据</span>
+                <h3>合并版</h3>
+                <div class="preview-language" aria-label="Merged card language">
+                  <button type="button" data-preview-language="ch" class="active">中文合并版</button>
+                  <button type="button" data-preview-language="en">英文合并版</button>
+                </div>
               </div>
               <div id="reviewMarkdown" class="markdown-preview"></div>
             </section>
@@ -178,6 +155,7 @@
               <div class="queue-grid">
                 <label>判决状态
                   <select id="queueStatus">
+                    <option value="">待选择</option>
                     <option value="promoted">纳入正式池</option>
                     <option value="candidate">纳入候选池</option>
                     <option value="rejected">不纳入</option>
@@ -192,11 +170,16 @@
               </div>
               <p id="queueStatusText" class="save-status">搜索池标注只记录当前 Card 的人工判决。</p>
             </section>
+            <div class="actionbar">
+              <button id="goUpdateFromReview" type="button" class="secondary">进入 Update</button>
+              <button id="completeCurrent" type="button">完成审阅</button>
+            </div>
           </div>
         </section>
       </section>
     </main>
   </div>
+  <script id="reviewBootstrap" type="application/json"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>

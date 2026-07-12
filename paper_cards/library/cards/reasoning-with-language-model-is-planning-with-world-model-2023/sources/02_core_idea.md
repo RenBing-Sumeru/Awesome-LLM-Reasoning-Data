@@ -1,1 +1,3 @@
-Each tree node can contain a problem state, candidate action or reasoning step, LM-predicted next state, task reward, estimated value, and selected path. That state-transition lineage is central to the record.
+Uses an LM as both reasoning agent and world model to build MCTS traces with predicted states and task-specific rewards.
+
+An LM alternates between proposing actions/reasoning steps and predicting future states as a world model. The feedback contract is: Task-specific rewards and model-predicted state transitions guide MCTS selection. The terminal condition is: A selected plan or answer satisfies the task-specific outcome criterion.

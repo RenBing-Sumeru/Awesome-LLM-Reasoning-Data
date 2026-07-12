@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T08:16:54Z",
   "category_ids": [
-    "rollout_search_test_time_trace_data",
-    "scaling_rlvr_test_time_compute"
+    "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "被EMNLP接收，提供reasoning的新颖解释视角",
-  "decision_reason": "被EMNLP接收，提供reasoning的新颖解释视角",
-  "search_status": "promoted",
-  "review_note": "",
-  "updated_at": "2026-07-11T12:11:41Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "语言模型的全新定位，揭示了新的推理组件",
+    "updated_at": "2026-07-12T08:16:54Z"
+  }
 }

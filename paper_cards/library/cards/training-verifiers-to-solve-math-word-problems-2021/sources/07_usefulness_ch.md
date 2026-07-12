@@ -1,0 +1,3 @@
+它是一个早期的可审计模板，用于将推理系统中的候选覆盖范围与选择器质量分开。
+
+为了重用，保留问题、candidate_solution、final_answer、outcome_label、token_level_verifier_score、solution_level_verifier_score、sample_rank、sample_count，以及模型/版本、数据划分、停止规则和总计算。

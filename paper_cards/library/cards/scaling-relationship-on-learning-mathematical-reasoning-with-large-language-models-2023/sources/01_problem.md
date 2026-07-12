@@ -1,6 +1,3 @@
-This study makes rejection-sampling fine-tuning concrete: generate many math rationales, answer-check them, and use only correct paths as augmented SFT data.
+GSM8K mathematical word-problem training and evaluation records.
 
-- Year / venue: 2023 · arXiv.
-- Author affiliations: Alibaba DAMO Academy.
-- Atlas role: RFT construction recipe and scaling study.
-- It studies supervised-data scale, generated-data scale, and model quality for mathematical reasoning.
+The reusable object is A generated reasoning path paired with final answer correctness and selection for the augmented fine-tuning set. A central RFT study that explicitly turns multiple generated math paths and answer-based acceptance into an SFT data-scaling recipe.

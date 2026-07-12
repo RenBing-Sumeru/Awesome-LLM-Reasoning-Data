@@ -1,0 +1,119 @@
+id: s1-simple-test-time-scaling-2025
+title: 's1: Simple test-time scaling'
+year: 2025
+venue: arXiv
+authors:
+- Niklas Muennighoff
+- Zitong Yang
+- Weijia Shi
+- Xiang Lisa Li
+- Li Fei-Fei
+- Hannaneh Hajishirzi
+- Luke Zettlemoyer
+- Percy Liang
+- Emmanuel Candès
+- Tatsunori Hashimoto
+source_role:
+- construction_recipe
+- data_release
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- math
+- reasoning
+training_use:
+- sft
+- distillation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2501.19393
+  arxiv: https://arxiv.org/abs/2501.19393
+  code: https://github.com/simplescaling/s1
+  data: https://huggingface.co/datasets/simplescaling/s1K
+  project: null
+  huggingface: https://huggingface.co/simplescaling/s1-32B
+  doi: https://doi.org/10.48550/arXiv.2501.19393
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark and training tasks described in the primary paper.
+  trace_author: Start from a larger question pool, score and filter for difficulty, diversity, and quality, obtain long reasoning
+    traces, retain s1K, fine-tune Qwen2
+  answer_format: question, source dataset, teacher reasoning trace, difficulty score, diversity cluster, quality decision,
+    selected SFT record, token budget, forced stop or Wait extension, and final answer
+  process_fields:
+  - problem or prompt
+  - candidate rollout or reasoning state
+  - feedback or verifier signal
+  - sampling or search metadata
+  - retention or selection decision
+  - final answer or terminal outcome
+  environment_or_substrate: Offline and on-policy reasoning rollout/search pipeline
+  verifier_or_reward: teacher-generated trace quality, benchmark answer correctness, and curation criteria for difficulty,
+    diversity, and quality
+  terminal_predicate: A candidate reaches the paper's accepted correctness or selection condition.
+recipe_metadata:
+  base_model: See the primary paper and released artifacts for experiment-specific checkpoints.
+  teacher: teacher-generated trace quality, benchmark answer correctness, and curation criteria for difficulty, diversity,
+    and quality
+  generator: The policy or teacher model generates candidate reasoning traces.
+  filtering_rule: Start from a larger question pool, score and filter for difficulty, diversity, and quality, obtain long
+    reasoning traces, retain s1K, fine-tune Qwen2.5-32B-Instruct, then force shorter or longer thinking at test time.
+  sampling_protocol: Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing
+    lineage.
+  rollout_count: null
+  temperature: null
+  inference_budget: Experiment-specific; preserve sample count, search expansions, token budget, and verifier calls when reproducing.
+  optimizer_or_scaffold: sft, distillation, test_time_compute
+audit:
+  source_mixture: Task mixture and benchmark splits are described in the primary paper; preserve per-record provenance.
+  split: Use official train/evaluation splits and record any curation pool separately.
+  decontamination: Paper-specific; do not infer decontamination beyond explicit disclosures.
+  license: Check each official paper, code, data, and model artifact separately before reuse.
+  lineage: question, source dataset, teacher reasoning trace, difficulty score, diversity cluster, quality decision, selected
+    SFT record, token budget, forced stop or Wait extension, and final answer
+  known_failure_modes:
+  - teacher trace lineage and filtering choices dominate a very small dataset
+  - appending Wait may teach or exploit a formatting artifact rather than general search
+  - token budget is an incomplete proxy for actual inference compute and useful reasoning
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv metadata and the listed official artifacts were checked for this candidate Card.
+inclusion_reason: Curates 1,000 difficult, diverse, high-quality long reasoning traces for SFT and controls inference compute
+  through budget forcing.
+related: []
+tags:
+- primary-link-checked
+- track-05-candidate
+status: verified
+one_line: Curates 1,000 difficult, diverse, high-quality long reasoning traces for SFT and controls inference compute through
+  budget forcing.
+card: cards/track-05/s1-simple-test-time-scaling-2025.md
+needs: []
+one_line_summary: Curates 1,000 difficult, diverse, high-quality long reasoning traces for SFT and controls inference compute
+  through budget forcing.
+why_it_matters: s1 isolates a deliberately small trace set and a simple decoding intervention, making training-data scale
+  and inference-budget effects easier to study together.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and listed official artifact links are pinned.
+category_ids:
+- rollout_search_test_time_trace_data

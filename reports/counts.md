@@ -1,97 +1,90 @@
 # Counts Report
 
-total entries: 28
-complete bilingual paper-card sources: 28
+total entries: 29
+complete bilingual paper-card sources: 29
 missing primary paper/arXiv/DOI links: 0
 needs search / partial metadata: 0
 
 ## status
-- verified: 28
+- verified: 29
 
 ## category
-- scaling_rlvr_test_time_compute: 13
-- rollout_search_test_time_trace_data: 8
-- programmatically_verifiable_outcome_data: 7
-- data_construction_open_release_recipes: 5
-- process_trace_supervision_data: 4
-- environment_agent_trajectory_data: 3
-- training_usage_optimization_objectives: 2
+- rollout_search_test_time_trace_data: 29
 
 ## source_role
-- construction_recipe: 21
-- scaling_study: 11
-- verifier_reward: 11
-- data_release: 9
-- benchmark: 8
-- agent_environment: 5
-- process_supervision: 5
-- audit_failure: 2
+- construction_recipe: 28
+- scaling_study: 18
+- process_supervision: 13
+- verifier_reward: 9
+- model_report: 3
+- agent_environment: 2
+- data_release: 1
 
 ## verification_contract
-- programmatic: 19
-- mixed: 14
-- environmental: 7
-- judgment_required: 6
+- mixed: 24
+- programmatic: 14
+- judgment_required: 2
+- environmental: 1
 
 ## training_use
-- evaluation: 22
-- test_time_compute: 13
-- audit: 10
-- rlvr: 9
+- test_time_compute: 22
+- process_supervision: 12
+- evaluation: 10
+- reward_modeling: 9
+- preference_learning: 8
 - sft: 8
-- reward_modeling: 7
-- agent_training: 5
-- process_supervision: 5
-- preference_learning: 2
-- distillation: 1
+- distillation: 5
+- rlvr: 4
+- agent_training: 2
+- audit: 1
 
 ## construction_layer
-- reward_verifier_layer: 18
-- optimizer_scaffold: 12
-- search_substrate: 11
-- release_audit: 10
-- trace_writing: 8
-- scaling_report: 7
-- prompt_sourcing: 4
+- reward_verifier_layer: 21
+- search_substrate: 19
+- trace_writing: 13
+- optimizer_scaffold: 11
+- scaling_report: 6
+- frontier_pipeline: 1
+- prompt_sourcing: 1
 - self_play_anchor: 1
 
 ## year
-- 2023: 8
-- 2024: 7
-- 2026: 5
-- 2025: 4
-- 2021: 2
-- 2022: 2
+- 2024: 12
+- 2025: 7
+- 2023: 6
+- 2022: 3
+- 2021: 1
 
 ## paper-card sources
-- agnostics-universal-learning-environment-2026: 1
-- apps-2021: 1
+- alphamath-almost-zero-2024: 1
 - autopsv-automated-process-supervised-verifier-2024: 1
-- beyondbench-2026: 1
-- coderl-code-generation-rl-2022: 1
-- credit-budgeted-icpc-style-coding-2026: 1
-- deepseekmath-2024: 1
+- competition-level-code-generation-with-alphacode-2022: 1
+- deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024: 1
+- deepseek-r1-2025: 1
 - efficient-long-cot-reasoning-in-small-language-models-2025: 1
-- featurebench-2026: 1
-- geogrambench-2026: 1
+- hypertree-proof-search-for-neural-theorem-proving-2022: 1
 - language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023: 1
 - large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024: 1
-- leandojo-2023: 1
-- lets-verify-step-by-step-2023: 1
-- math-dataset-2021: 1
-- minif2f-2022: 1
+- math-shepherd-2023: 1
+- monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024: 1
+- mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024: 1
+- omegaprm-automated-process-supervision-2024: 1
 - prime-process-reinforcement-through-implicit-rewards-2025: 1
 - re-rest-reflection-reinforced-self-training-for-language-agents-2024: 1
 - rearter-retrieval-augmented-reasoning-with-trustworthy-process-rewarding-2025: 1
 - reasoning-with-language-model-is-planning-with-world-model-2023: 1
 - reinforced-self-training-rest-for-language-modeling-2023: 1
-- rest-em-self-training-2024: 1
 - rest-mcts-2024: 1
+- rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024: 1
+- rstar-math-2025: 1
+- s1-simple-test-time-scaling-2025: 1
 - scaling-llm-test-time-compute-optimally-2024: 1
 - scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023: 1
-- self-consistency-chain-of-thought-2023: 1
-- tinyv-2025: 1
+- smaller-weaker-yet-better-training-llm-reasoners-via-compute-optimal-sampling-2025: 1
+- star-bootstrapping-reasoning-with-reasoning-2022: 1
+- training-verifiers-to-solve-math-word-problems-2021: 1
 - tree-of-thoughts-2023: 1
+- v-star-training-verifiers-for-self-taught-reasoners-2024: 1
 
 ## missing primary links (first 80)
 

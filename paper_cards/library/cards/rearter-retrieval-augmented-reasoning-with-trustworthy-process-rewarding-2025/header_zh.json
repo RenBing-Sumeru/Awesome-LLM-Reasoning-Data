@@ -6,7 +6,6 @@
   "confidence_ch": "高",
   "authors_ch": "Zhongxiang Sun, Qipeng Wang, Weijie Yu, Xiaoxue Zang, Kai Zheng, Jun Xu, Xiao Zhang, Song Yang, Han Li",
   "category_ids": [
-    "process_trace_supervision_data",
     "rollout_search_test_time_trace_data"
   ],
   "updated_at": "2026-07-11T00:00:00Z"

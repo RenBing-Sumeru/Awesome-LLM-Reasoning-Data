@@ -6,8 +6,7 @@
   "confidence_ch": "高",
   "authors_ch": "Zhaoyang Wang, Jinqi Jiang, Tian Qiu, Hui Liu, Xianfeng Tang, Huaxiu Yao",
   "category_ids": [
-    "rollout_search_test_time_trace_data",
-    "data_construction_open_release_recipes"
+    "rollout_search_test_time_trace_data"
   ],
   "updated_at": "2026-07-11T00:00:00Z"
 }

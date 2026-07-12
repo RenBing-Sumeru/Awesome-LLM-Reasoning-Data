@@ -1,3 +1,3 @@
-Feedback is mixed: some tasks provide environmental or unit-test feedback, while other settings use task-specific quality signals. The reflector itself is not a verifier.
+The agent generates candidates and the reflector produces revisions conditioned on failure feedback. Generate, observe feedback, reflect/revise, then select for self-training; an inference-time reflection variant is also studied. Refined high-quality samples enrich the self-training set; failed initial samples need not be discarded immediately.
 
-The agent first generates a candidate, receives feedback, and a reflector rewrites low-quality samples. Refined high-quality examples enrich the self-training set; the paper also studies reflection at inference time.
+The resulting record contains Initial agent output, external feedback, reflection, refined output, and selected self-training episode. The reported use is sft, agent training, test time compute.

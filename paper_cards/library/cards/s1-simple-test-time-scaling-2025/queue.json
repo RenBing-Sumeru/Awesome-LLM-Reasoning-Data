@@ -1,0 +1,21 @@
+{
+  "title": "s1: Simple test-time scaling",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2501.19393",
+    "arxiv": null,
+    "code": "https://github.com/simplescaling/s1",
+    "data": "https://huggingface.co/datasets/simplescaling/s1K",
+    "project": null,
+    "huggingface": "https://huggingface.co/simplescaling/s1-32B",
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:12:53Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "精选长推理轨迹数据，机构权威",
+    "updated_at": "2026-07-12T13:12:53Z"
+  }
+}

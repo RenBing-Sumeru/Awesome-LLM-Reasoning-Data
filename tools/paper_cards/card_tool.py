@@ -2,9 +2,7 @@
 from __future__ import annotations
 
 import argparse
-import json
 import sys
-import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -13,12 +11,6 @@ try:
     from . import library
 except ImportError:  # direct script execution
     import library
-
-try:
-    import yaml
-except ImportError:  # pragma: no cover - project requirements include PyYAML
-    yaml = None
-
 
 ROOT = Path(__file__).resolve().parents[2]
 SECTIONS = [
@@ -116,7 +108,7 @@ RICH_SECTION_TEMPLATES = {
     },
 }
 
-STATUS_STATES = {"new", "edited", "reviewed", "downloaded"}
+STATUS_STATES = {"new", "edited", "reviewed"}
 SEARCH_STATUSES = {"candidate", "rejected", "promoted"}
 SEARCH_STATUS_LABELS = {
     "candidate": "纳入候选池",
@@ -141,7 +133,6 @@ VALID_LEVEL_LABELS = {
     "L5_review_ready": "L5 已人工标注",
     "L6_reviewed": "L6 已审阅",
 }
-DOWNLOADABLE_LEVELS = {"L5_review_ready", "L6_reviewed"}
 VALID_POOL_LABELS = {
     "needs_annotation": "L4 中文 Review",
     "annotated": "L5 已人工标注",
@@ -167,65 +158,20 @@ def paper_cards_root(root: Path | str | None = None) -> Path:
     return project_root(root) / "paper_cards"
 
 
-def sources_root(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "sources"
-
-
-def packages_root(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "packages"
-
-
-def status_path(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "status.json"
-
-
-def search_queue_path(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "search_queue.json"
-
-
-def institutions_path(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "institutions.json"
-
-
-def header_zh_path(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "header_zh.json"
-
-
-def valid_status_path(root: Path | str | None = None) -> Path:
-    return paper_cards_root(root) / "valid_status.json"
-
-
 def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def load_yaml(path: Path) -> Any:
-    text = path.read_text(encoding="utf-8")
-    if not text.strip():
-        return []
-    if yaml is None:
-        raise RuntimeError("PyYAML is required to read legacy paper metadata during migration")
-    return yaml.safe_load(text)
-
-
 def load_entries(root: Path | str | None = None) -> dict[str, dict]:
     cards = library.load_cards(root)
-    if cards:
-        return {
-            entry_id: {**card["paper"], "category": list(card["paper"].get("category_ids") or [])}
-            for entry_id, card in cards.items()
-        }
-    if library.cards_root(root).exists():
-        return {}
-    payload = load_yaml(project_root(root) / "data" / "papers.yaml")
-    entries = payload if isinstance(payload, list) else []
-    return {str(entry.get("id")): entry for entry in entries if isinstance(entry, dict) and entry.get("id")}
+    return {
+        entry_id: {**card["paper"], "category": list(card["paper"].get("category_ids") or [])}
+        for entry_id, card in cards.items()
+    }
 
 
 def card_source_dir(entry_id: str, root: Path | str | None = None) -> Path:
-    if library.card_dir(entry_id, root).exists():
-        return library.card_dir(entry_id, root) / "sources"
-    return sources_root(root) / entry_id
+    return library.card_dir(entry_id, root) / "sources"
 
 
 def expected_files(entry_id: str, root: Path | str | None = None) -> list[Path]:
@@ -357,39 +303,9 @@ def assemble_card(
     return "\n".join(lines).rstrip() + "\n"
 
 
-def load_json_file(path: Path, default: dict) -> dict:
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        return default
-    if not isinstance(payload, dict):
-        return default
-    return payload
-
-
-def save_json_file(path: Path, payload: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
 def category_options(root: Path | str | None = None) -> list[dict]:
-    if (library.library_root(root) / "categories.yaml").exists():
-        return library.category_options(root)
-    path = project_root(root) / "data" / "categories.yaml"
-    if not path.exists():
-        return []
-    payload = load_yaml(path) or {}
-    categories = payload.get("paper_categories") if isinstance(payload, dict) else []
-    out = []
-    for item in categories or []:
-        if isinstance(item, dict) and item.get("id"):
-            out.append({
-                "id": str(item.get("id")),
-                "title": str(item.get("title") or item.get("id")),
-                "summary": str(item.get("summary") or ""),
-                "order": item.get("order", 999),
-            })
-    return sorted(out, key=lambda item: item.get("order", 999))
+    path = library.library_root(root) / "categories.yaml"
+    return library.category_options(root) if path.exists() else []
 
 
 def category_title_map(root: Path | str | None = None) -> dict[str, str]:
@@ -434,15 +350,7 @@ def category_labels_for_entry(entry: dict, header: dict | None = None, root: Pat
 
 def load_header_zh(root: Path | str | None = None) -> dict:
     cards = library.load_cards(root)
-    if cards:
-        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["header_zh"] for entry_id, card in cards.items()}}
-    payload = load_json_file(header_zh_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
-    entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
-    return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
-
-
-def save_header_zh_payload(payload: dict, root: Path | str | None = None) -> None:
-    save_json_file(header_zh_path(root), payload)
+    return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["header_zh"] for entry_id, card in cards.items()}}
 
 
 def clean_header_zh_record(record: dict, root: Path | str | None = None) -> dict:
@@ -469,13 +377,7 @@ def save_header_zh(entry_id: str, record: dict, root: Path | str | None = None) 
     if entry_id not in entries:
         raise ValueError(f"unknown entry_id: {entry_id}")
     cleaned = clean_header_zh_record(record, root)
-    if library.card_dir(entry_id, root).exists():
-        library.save_card_record(entry_id, "header_zh", cleaned, root)
-        return cleaned
-    payload = load_header_zh(root)
-    payload["entries"][entry_id] = cleaned
-    payload["updated_at"] = cleaned["updated_at"]
-    save_header_zh_payload(payload, root)
+    library.save_card_record(entry_id, "header_zh", cleaned, root)
     return cleaned
 
 
@@ -504,15 +406,7 @@ def chinese_confidence(value: str) -> str:
 
 def load_institutions(root: Path | str | None = None) -> dict:
     cards = library.load_cards(root)
-    if cards:
-        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["institutions"] for entry_id, card in cards.items()}}
-    payload = load_json_file(institutions_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
-    entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
-    return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
-
-
-def save_institutions_payload(payload: dict, root: Path | str | None = None) -> None:
-    save_json_file(institutions_path(root), payload)
+    return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["institutions"] for entry_id, card in cards.items()}}
 
 
 def clean_institution_record(
@@ -546,14 +440,8 @@ def save_institutions(
     entries = load_entries(root)
     if entry_id not in entries:
         raise ValueError(f"unknown entry_id: {entry_id}")
-    payload = load_institutions(root)
     record = clean_institution_record(institutions, has_more, no_institution)
-    if library.card_dir(entry_id, root).exists():
-        library.save_card_record(entry_id, "institutions", record, root)
-        return record
-    payload["entries"][entry_id] = record
-    payload["updated_at"] = record["updated_at"]
-    save_institutions_payload(payload, root)
+    library.save_card_record(entry_id, "institutions", record, root)
     return record
 
 
@@ -584,82 +472,31 @@ def institution_text(
 
 def load_status(root: Path | str | None = None) -> dict:
     cards = library.load_cards(root)
-    if cards:
-        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["review"] for entry_id, card in cards.items()}}
-    payload = load_json_file(status_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
-    entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
-    for record in entries.values():
-        if isinstance(record, dict):
-            record.pop("packaged_at", None)
-            if record.get("state") == "packaged":
-                record["state"] = "new"
-            if record.get("state") in {"new", "edited"}:
-                record.pop("downloaded_at", None)
-                record.pop("reviewed_at", None)
-    return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
-
-
-def save_status(payload: dict, root: Path | str | None = None) -> None:
-    save_json_file(status_path(root), payload)
+    return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["review"] for entry_id, card in cards.items()}}
 
 
 def update_status(
     entry_id: str,
     state: str,
-    package_name: str | None = None,
     root: Path | str | None = None,
 ) -> dict:
     if state not in STATUS_STATES:
         raise ValueError(f"invalid state: {state}")
-    payload = load_status(root)
     timestamp = now_iso()
-    record = dict(payload["entries"].get(entry_id) or {})
+    record = dict(library.load_card(entry_id, root)["review"])
     record["state"] = state
     record["updated_at"] = timestamp
-    record.pop("packaged_at", None)
-    if state == "downloaded":
-        record["downloaded_at"] = timestamp
     if state == "reviewed":
         record["reviewed_at"] = timestamp
     if state in {"new", "edited"}:
-        record.pop("downloaded_at", None)
         record.pop("reviewed_at", None)
-    if package_name:
-        record["last_package"] = package_name
-    if library.card_dir(entry_id, root).exists():
-        library.save_card_record(entry_id, "review", record, root)
-        return load_status(root)
-    payload["entries"][entry_id] = record
-    payload["updated_at"] = timestamp
-    save_status(payload, root)
-    return payload
+    library.save_card_record(entry_id, "review", record, root)
+    return load_status(root)
 
 
 def load_search_queue(root: Path | str | None = None) -> dict:
     cards = library.load_cards(root)
-    if cards:
-        return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["queue"] for entry_id, card in cards.items()}}
-    payload = load_json_file(search_queue_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
-    entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
-    return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
-
-
-def save_search_queue(payload: dict, root: Path | str | None = None) -> None:
-    save_json_file(search_queue_path(root), payload)
-
-
-def load_valid_status(root: Path | str | None = None) -> dict:
-    if library.load_cards(root):
-        return {"schema_version": 1, "updated_at": None, "entries": {}}
-    payload = load_json_file(valid_status_path(root), {"schema_version": 1, "updated_at": None, "entries": {}})
-    entries = payload.get("entries") if isinstance(payload.get("entries"), dict) else {}
-    return {"schema_version": payload.get("schema_version", 1), "updated_at": payload.get("updated_at"), "entries": entries}
-
-
-def save_valid_status(payload: dict, root: Path | str | None = None) -> None:
-    if library.load_cards(root):
-        return
-    save_json_file(valid_status_path(root), payload)
+    return {"schema_version": 1, "updated_at": None, "entries": {entry_id: card["queue"] for entry_id, card in cards.items()}}
 
 
 def has_text(value: Any) -> bool:
@@ -738,13 +575,14 @@ def review_annotation_presence_errors(
     record: dict | None = None,
 ) -> list[str]:
     record = record if record is not None else load_search_queue(root).get("entries", {}).get(entry_id) or {}
+    manual = record.get("manual_annotation") if isinstance(record.get("manual_annotation"), dict) else {}
     errors: list[str] = []
-    status = str(record.get("search_status") or "").strip()
+    status = str(manual.get("search_status") or "").strip()
     if not status:
         errors.append("缺少人工标注：判决状态")
     elif status not in SEARCH_STATUSES:
         errors.append(f"判决状态只能选择：{'、'.join(SEARCH_STATUS_LABELS[status] for status in ['promoted', 'candidate', 'rejected'])}")
-    if not has_text(record.get("decision_reason") or record.get("reason_to_include")):
+    if not has_text(manual.get("decision_reason")):
         errors.append("缺少人工标注：一句话描述理由")
     return errors
 
@@ -850,169 +688,11 @@ def valid_report(
 
 
 def save_valid_report(report: dict, root: Path | str | None = None) -> dict:
-    if library.load_cards(root):
-        return {
-            "schema_version": 1,
-            "updated_at": report.get("checked_at") or now_iso(),
-            "entries": {report["entry_id"]: report},
-        }
-    payload = load_valid_status(root)
-    payload["entries"][report["entry_id"]] = report
-    payload["updated_at"] = report.get("checked_at") or now_iso()
-    save_valid_status(payload, root)
-    return payload
-
-
-def is_downloadable_report(report: dict) -> bool:
-    return report.get("level") in DOWNLOADABLE_LEVELS
-
-
-def generated_value(value: Any, fallback: str = "未填写") -> str:
-    if isinstance(value, list):
-        items = [str(item).strip() for item in value if str(item).strip()]
-        return " · ".join(items) if items else fallback
-    text = str(value or "").strip()
-    return text if text else fallback
-
-
-def zh_extra_fields_markdown(entry: dict, root: Path | str | None = None, generated_at: str | None = None) -> str:
-    entry_id = str(entry.get("id"))
-    header = header_zh_record(entry_id, root)
-    title = entry.get("title") or entry_id
-    authors = entry.get("authors") or []
-    lines = [
-        f"# 备注中文额外修改字段：{title}",
-        "",
-        f"- entry_id: `{entry_id}`",
-        f"- generated_at: `{generated_at or now_iso()}`",
-        "",
-        "## 中文字段",
-        "",
-        f"- 一句话评价：{generated_value(header.get('one_line_summary_ch'))}",
-        f"- 阅读优先级：{generated_value(header.get('reading_priority_ch'))}",
-        f"- 论文类型：{generated_value(header.get('paper_type_ch'))}",
-        f"- 知识点分类：{category_labels_for_entry(entry, header, root)}",
-        f"- 适合读者：{generated_value(header.get('best_for_ch'))}",
-        f"- 置信度：{generated_value(header.get('confidence_ch'))}",
-        f"- 作者显示：{generated_value(header.get('authors_ch'))}",
-        f"- 机构：{institution_text(entry_id, 'ch', root)}",
-        "",
-        "## 当前英文备注字段",
-        "",
-        f"- One-sentence review: {generated_value(entry.get('one_line_summary') or entry.get('one_line'), 'unknown')}",
-        f"- Reading priority: {generated_value(entry.get('reading_priority'), 'needs review')}",
-        f"- Paper type: {generated_value(entry.get('paper_type'), 'needs review')}",
-        f"- Best for: {generated_value(entry.get('best_for'), 'needs review')}",
-        f"- Confidence: {generated_value(entry.get('confidence'), 'needs review')}",
-        f"- Authors: {generated_value(authors, 'unknown')}",
-    ]
-    return "\n".join(lines).rstrip() + "\n"
-
-
-def human_annotation_markdown(entry: dict, root: Path | str | None = None, generated_at: str | None = None) -> str:
-    entry_id = str(entry.get("id"))
-    title = entry.get("title") or entry_id
-    record = load_search_queue(root).get("entries", {}).get(entry_id) or {}
-    status = str(record.get("search_status") or "").strip()
-    reason = str(record.get("decision_reason") or record.get("reason_to_include") or "").strip()
-    note = str(record.get("review_note") or "").strip()
-    valid = valid_report(entry_id, root, entry=entry)
-    lines = [
-        f"# 人工标注文本：{title}",
-        "",
-        f"- entry_id: `{entry_id}`",
-        f"- generated_at: `{generated_at or now_iso()}`",
-        f"- L 等级：{valid.get('level_label') or valid.get('level')}",
-        f"- 论文池：{valid.get('pool_label') or valid.get('pool')}",
-        f"- 判决状态：{SEARCH_STATUS_LABELS.get(status, status or '未填写')}",
-        f"- 一句话描述理由：{reason or '未填写'}",
-    ]
-    if note:
-        lines.append(f"- 备注：{note}")
-    errors = valid.get("errors") or []
-    if errors:
-        lines += ["", "## 审阅检查缺项", ""]
-        lines += [f"- {error}" for error in errors]
-    return "\n".join(lines).rstrip() + "\n"
-
-
-def review_generated_content(entry_id: str, entry: dict, root: Path | str | None = None) -> dict[str, str]:
-    generated_at = now_iso()
-    extra = zh_extra_fields_markdown(entry, root, generated_at)
-    annotation = human_annotation_markdown(entry, root, generated_at)
     return {
-        "zh_extra_fields": extra,
-        "human_annotation": annotation,
+        "schema_version": 1,
+        "updated_at": report.get("checked_at") or now_iso(),
+        "entries": {report["entry_id"]: report},
     }
-
-
-def package_manifest(entry_ids: list[str], root: Path | str | None = None) -> dict:
-    entries = load_entries(root)
-    items = []
-    for entry_id in entry_ids:
-        entry = entries.get(entry_id)
-        if not entry:
-            raise ValueError(f"unknown entry_id: {entry_id}")
-        source_dir = card_source_dir(entry_id, root).relative_to(project_root(root)).as_posix()
-        items.append({
-            "entry_id": entry_id,
-            "title": entry.get("title"),
-            "primary_link": (entry.get("artifacts") or {}).get("paper") or (entry.get("artifacts") or {}).get("arxiv"),
-            "status": entry.get("status"),
-            "curation_level": entry.get("curation_level"),
-            "source_dir": source_dir,
-            "assembled_en": f"assembled/{entry_id}_en.md",
-            "assembled_ch": f"assembled/{entry_id}_ch.md",
-            "check_errors": check_card(entry_id, root),
-        })
-    return {"schema_version": 1, "generated_at": now_iso(), "entries": items}
-
-
-def manifest_markdown(manifest: dict) -> str:
-    lines = [
-        "# Paper Card Package",
-        "",
-        f"- Generated at: {manifest.get('generated_at')}",
-        f"- Entries: {len(manifest.get('entries') or [])}",
-        "",
-        "| Entry | Title | Status | Level | Errors |",
-        "|---|---|---|---|---:|",
-    ]
-    for item in manifest.get("entries") or []:
-        lines.append(
-            f"| `{item.get('entry_id')}` | {item.get('title') or ''} | "
-            f"{item.get('status') or ''} | {item.get('curation_level') or ''} | "
-            f"{len(item.get('check_errors') or [])} |"
-        )
-    return "\n".join(lines) + "\n"
-
-
-def write_package(
-    entry_ids: list[str],
-    package_dir: Path | None = None,
-    root: Path | str | None = None,
-) -> Path:
-    root_path = project_root(root)
-    package_dir = package_dir or packages_root(root)
-    package_dir.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    package_path = package_dir / f"paper-card-package-{stamp}.zip"
-    entries = load_entries(root)
-    for entry_id in entry_ids:
-        if entry_id not in entries:
-            raise ValueError(f"unknown entry_id: {entry_id}")
-        report = valid_report(entry_id, root, entry=entries[entry_id])
-        if not is_downloadable_report(report):
-            raise ValueError(f"{entry_id}: only L5 or L6 cards can be packaged")
-    with zipfile.ZipFile(package_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for entry_id in entry_ids:
-            entry = entries[entry_id]
-            generated = review_generated_content(entry_id, entry, root_path)
-            archive.writestr(f"cards/{entry_id}_en.md", assemble_card(entry, "en", root))
-            archive.writestr(f"cards/{entry_id}_ch.md", assemble_card(entry, "ch", root))
-            archive.writestr(f"annotations/{entry_id}_zh_extra_fields.md", generated["zh_extra_fields"])
-            archive.writestr(f"annotations/{entry_id}_human_annotation.md", generated["human_annotation"])
-    return package_path
 
 
 def init_card_source(entry_id: str, root: Path | str | None = None, overwrite: bool = False) -> list[Path]:
@@ -1028,11 +708,11 @@ def init_card_source(entry_id: str, root: Path | str | None = None, overwrite: b
         template = RICH_SECTION_TEMPLATES.get(key)
         if overwrite or not en.exists():
             text = template["en"] if template else f"Fill this section: {title}\n"
-            en.write_text(text.rstrip() + "\n", encoding="utf-8")
+            library.atomic_write_text(en, text.rstrip() + "\n")
             created.append(en)
         if overwrite or not ch.exists():
             text = template["ch"] if template else f"填写本节：{SECTION_TITLES_CH.get(key, title)}\n"
-            ch.write_text(text.rstrip() + "\n", encoding="utf-8")
+            library.atomic_write_text(ch, text.rstrip() + "\n")
             created.append(ch)
     existing_header = load_header_zh(root).get("entries", {}).get(entry_id) or {}
     if not str(existing_header.get("reading_priority_ch") or "").strip():
@@ -1042,13 +722,7 @@ def init_card_source(entry_id: str, root: Path | str | None = None, overwrite: b
 
 
 def source_entry_ids(root: Path | str | None = None) -> list[str]:
-    cards = library.load_cards(root)
-    if cards:
-        return sorted(cards)
-    base = sources_root(root)
-    if not base.exists():
-        return []
-    return sorted(path.name for path in base.iterdir() if path.is_dir())
+    return sorted(library.load_cards(root))
 
 
 def check_all(root: Path | str | None = None) -> dict[str, list[str]]:
@@ -1057,10 +731,12 @@ def check_all(root: Path | str | None = None) -> dict[str, list[str]]:
 
 def search_report(root: Path | str | None = None) -> str:
     queue = load_search_queue(root)
-    lines = ["# Paper Card Search Queue", ""]
+    lines = ["# Paper Card Manual Annotations", ""]
     grouped: dict[str, list[tuple[str, dict]]] = {status: [] for status in sorted(SEARCH_STATUSES)}
+    grouped["unannotated"] = []
     for entry_id, record in queue.get("entries", {}).items():
-        status = record.get("search_status") or "candidate"
+        manual = record.get("manual_annotation") if isinstance(record.get("manual_annotation"), dict) else {}
+        status = str(manual.get("search_status") or "").strip() or "unannotated"
         grouped.setdefault(status, []).append((entry_id, record))
     for status, records in grouped.items():
         lines += [f"## {status}", ""]
@@ -1068,7 +744,8 @@ def search_report(root: Path | str | None = None) -> str:
             lines += ["- None", ""]
             continue
         for entry_id, record in sorted(records):
-            lines.append(f"- `{entry_id}` · {record.get('title') or ''} · {record.get('reason_to_include') or ''}")
+            manual = record.get("manual_annotation") if isinstance(record.get("manual_annotation"), dict) else {}
+            lines.append(f"- `{entry_id}` · {manual.get('decision_reason') or ''}")
         lines.append("")
     return "\n".join(lines)
 
@@ -1097,13 +774,6 @@ def cmd_build(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_package(args: argparse.Namespace) -> int:
-    entry_ids = [item.strip() for item in args.entries.split(",") if item.strip()]
-    package = write_package(entry_ids, root=args.root)
-    print(package)
-    return 0
-
-
 def cmd_init(args: argparse.Namespace) -> int:
     created = init_card_source(args.entry, root=args.root, overwrite=args.overwrite)
     for path in created:
@@ -1128,10 +798,6 @@ def build_parser() -> argparse.ArgumentParser:
     build.add_argument("--entry", required=True)
     build.add_argument("--lang", choices=["en", "ch"], required=True)
     build.set_defaults(func=cmd_build)
-
-    package = sub.add_parser("package")
-    package.add_argument("--entries", required=True)
-    package.set_defaults(func=cmd_package)
 
     init = sub.add_parser("init")
     init.add_argument("--entry", required=True)

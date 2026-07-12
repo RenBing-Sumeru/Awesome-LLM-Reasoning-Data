@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "在线策略 MCTS 将终局验证和步骤自评转成步骤级偏好对，用于迭代 DPO。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数据构造 / 过程监督 / 扩展规律与计算预算论文",
+  "best_for_ch": "适合研究树搜索轨迹、验证器、选择器、搜索派生训练数据与测试时计算的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuxi Xie, Anirudh Goyal, Wenyue Zheng, Min-Yen Kan, Timothy P. Lillicrap, Kenji Kawaguchi, Michael Shieh",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

@@ -95,7 +95,6 @@ tags:
 status: verified
 one_line: Studies rejection-sampling fine-tuning, where multiple generated math rationales are answer-checked and only correct
   paths become augmented SFT data.
-card: cards/recipes/rejection-sampling-fine-tuning-scaling.md
 needs: []
 one_line_summary: Studies rejection-sampling fine-tuning, where multiple generated math rationales are answer-checked and
   only correct paths become augmented SFT data.
@@ -110,5 +109,4 @@ verification:
   confidence: high
   notes: Official arXiv primary source and OFA-Sys project repository pinned.
 category_ids:
-- data_construction_open_release_recipes
-- scaling_rlvr_test_time_compute
+- rollout_search_test_time_trace_data

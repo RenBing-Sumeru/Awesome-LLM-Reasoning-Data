@@ -1,0 +1,3 @@
+Final-answer labels can mark flawed reasoning as correct when it reaches the right number accidentally. Oracle test@N measures coverage, not whether the learned verifier can identify a correct candidate. More generator training improves greedy accuracy while collapsing high-temperature candidate diversity. The proprietary GPT-3-family checkpoints and generated verifier-training rollouts are not released.
+
+Reproduction also depends on split policy (7,500 training problems and 1,000 held-out test problems.), decontamination (GSM8K was newly collected, but model-pretraining overlap is not fully auditable from the paper.), and license provenance (MIT for the official grade-school-math repository.).

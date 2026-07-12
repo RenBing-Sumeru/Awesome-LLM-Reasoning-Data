@@ -1,1 +1,3 @@
-可用于 Agent 自训练与失败修复数据构造，需保存原始失败、反馈、反思器版本和筛选判定。
+只有当保留反馈和修复谱系时，它才使得被拒绝或弱的代理尝试可能有用。
+
+为了重用，保留task_input、initial_agent_output、environment_feedback、reflection、refined_output、self-training_selection以及模型/版本、数据划分、停止规则和总计算。

@@ -1,3 +1,3 @@
-Episodes can inform agent training or evaluation. Reuse requires pinning environment versions, observations, tool schemas, feedback, and the search/reflection policy that produced each action.
+It shows why a reusable agent-search trace must retain the environment state and feedback alongside the selected action path.
 
-LATS is a clean case where environment feedback, search policy, and selected agent path jointly define the data object.
+For reuse, preserve observation, action, reflection, node_value, visit_count, environment_feedback, terminal_reward, together with model/version, split, stopping rule, and total compute.

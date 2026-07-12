@@ -1,4 +1,6 @@
-- Which parts of a long trace were removed and by what rule?
-- Are short traces still correct under an independent checker?
-- What candidate-generation and validation budget was used?
-- Do accepted on-policy traces reduce diversity or preserve correction behavior?
+- Sampling protocol: Long-CoT distillation followed by on-policy student generation and validity-based curation.
+- Inference budget: Long-trace length and student on-policy generation budget are material but should be pinned per experiment before reuse.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Programmatic or answer-based correctness checks validate traces selected for on-policy curation.
+- Remaining checks: needs_metadata: verify code, data release, and exact trace-pruning configuration before reuse

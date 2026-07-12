@@ -1,3 +1,3 @@
-AutoPSV trains an answer-level verifier and uses changes in its confidence across reasoning steps to generate process-level annotations automatically.
+Compared with single-path generation, best-of-N, and outcome-only filtering, the paper contributes this change: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
 
-For rollout/search data, the key point is that multiple generated outputs and their intermediate steps become a candidate-selection surface: the verifier is used to choose better answers and to label reasoning progress without manual step labels.
+The reusable novelty is the paper-specific connection between generation, selection or verification, and the retained reasoning trace; generic sampling, search, SFT, or final-answer evaluation remain upstream components.

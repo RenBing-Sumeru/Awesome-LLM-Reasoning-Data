@@ -1,12 +1,3 @@
-- Is the comparison matched for sample count, cost, and wall-clock constraints?
-- Are reported gains based on oracle coverage or on a deployable selector?
-- Which tasks have automatic verifiers, and which require a learned or heuristic selector?
-- Are rejected or failed candidates visible enough to study selection precision?
-- Does the verifier reward the intended task or only a narrow test harness?
-- Is a full agent attempt counted as one sample in SWE-bench-style tasks?
+Coverage can grow with sample budget even when practical selection precision remains poor. Automatic-verifier domains can overstate transfer to open-ended math or judgment-required tasks. Comparing repeated sampling against single attempts can conflate model quality with inference budget. Reward models and majority voting plateau in some no-verifier settings, leaving a gap between oracle coverage and usable performance.
 
-- Coverage can grow with sample budget even when practical selection precision remains poor.
-- Automatic-verifier domains can overstate transfer to open-ended or judgment-required tasks.
-- Comparing repeated sampling against single attempts can conflate model quality with inference budget.
-- Reward models and majority voting can plateau in no-verifier settings, leaving a gap between oracle coverage and usable performance.
-- The paper is an evaluation/scaling study, not a released training dataset; reuse should preserve the benchmark and verifier context.
+Reproduction also depends on split policy (benchmark test or evaluation subsets as reported by each task.), decontamination (unknown), and license provenance (unknown).

@@ -1,0 +1,3 @@
+它显示了生成预算、可执行反馈、多样性控制和严格的外部提交预算如何相互作用。
+
+为了重用，请保留 Problem_statement、语言、sampled_program、compilation_result、example_test_result、behavior_cluster、model_score、selected_submission、sample_count 以及模型/版本、数据划分、停止规则和总计算。

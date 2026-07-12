@@ -1,0 +1,124 @@
+id: rstar-math-2025
+title: 'rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking'
+year: 2025
+venue: arXiv
+authors:
+- Xinyu Guan
+- Li Lyna Zhang
+- Yifei Liu
+- Ning Shang
+- Youran Sun
+- Yi Zhu
+- Fan Yang
+- Mao Yang
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- preference_learning
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2501.04519
+  arxiv: https://arxiv.org/abs/2501.04519
+  code: https://github.com/microsoft/rStar/tree/rStar-math
+  data: https://huggingface.co/datasets/ElonTusk2001/rstar_sft
+  project: https://huggingface.co/datasets/ElonTusk2001/rstar_ppm
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2501.04519
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Small language models need both stronger search and trustworthy intermediate selection, but superior-model
+    distillation obscures where reasoning capability comes from. rStar-Math studies whether verified MCTS traces can bootstrap
+    both a math policy and its process preference model.
+  trace_author: The policy expands code-augmented chains in MCTS, execution and answer checks validate outcomes, and complete
+    trees are converted into successful SFT trajectories plus sibling-step preference pairs for a process preference model.
+    Policy and PPM are retrained and used in the next round.
+  answer_format: math question; code-augmented reasoning step; executable snippet and result; MCTS parent/child relation;
+    complete rollout; terminal answer; visit/value statistics; SFT trace; sibling preference pair; evolution round
+  process_fields:
+  - math question
+  - code-augmented reasoning step
+  - executable snippet and result
+  - MCTS parent/child relation
+  - complete rollout
+  - terminal answer
+  - visit/value statistics
+  - SFT trace
+  - sibling preference pair
+  - evolution round
+  environment_or_substrate: Search tree or formal proof-search substrate described by the paper.
+  verifier_or_reward: A code executor and final-answer checker provide grounded outcome signals; the learned process preference
+    model ranks partial paths and guides later MCTS.
+  terminal_predicate: Task answer acceptance or formal proof closure under the reported verifier.
+recipe_metadata:
+  base_model: See the paper and official repository for experiment-specific policy and selector checkpoints.
+  teacher: Search outcomes, verifier feedback, and model/value estimates rather than manual dense step labels.
+  generator: The policy expands code-augmented chains in MCTS, execution and answer checks validate outcomes, and complete
+    trees are converted into successful SFT trajectories plus sibling-step preference pairs for a process preference model.
+    Policy and PPM are retrained and used in the next round.
+  filtering_rule: Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+  sampling_protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call
+    budget per experiment.
+  rollout_count: null
+  temperature: null
+  inference_budget: Varies by experiment and must be reported with results.
+  optimizer_or_scaffold: Search-guided collection and the paper-specific training or inference scaffold.
+audit:
+  source_mixture: Paper-specific benchmark and construction sources; preserve upstream dataset identifiers and licenses.
+  split: Use official experiment splits; verify construction/evaluation overlap before reuse.
+  decontamination: unknown
+  license: Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.
+  lineage: Keep prompt, policy/version, full branch structure, verifier outputs, search statistics, selected path, and budget
+    together.
+  known_failure_modes:
+  - Public SFT/PPM tables are derived views, not necessarily full tree logs; code execution can validate an accidental shortcut;
+    NuminaMath and MetaMath lineage and licenses must be retained; results depend heavily on GPU/search budget and PPM calibration.
+  - Search budget or selector quality can be mistaken for base-model capability.
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and official code/data or project artifacts were checked; release completeness still requires reviewer
+    judgment.
+inclusion_reason: MCTS, code execution, and a process preference model co-evolve policy traces and sibling-step preference
+  data across four rounds.
+related: []
+tags:
+- track-05
+- primary-link-checked
+status: verified
+one_line: MCTS, code execution, and a process preference model co-evolve policy traces and sibling-step preference data across
+  four rounds.
+card: paper_cards/library/cards/rstar-math-2025
+needs:
+- website review
+one_line_summary: MCTS, code execution, and a process preference model co-evolve policy traces and sibling-step preference
+  data across four rounds.
+why_it_matters: Use it as a reference architecture for tree-to-SFT and tree-to-preference conversion, iterative policy/verifier
+  co-training, and compute-aware test-time deep thinking.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official primary paper and associated artifact links pinned.
+category_ids:
+- rollout_search_test_time_trace_data

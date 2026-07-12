@@ -1,4 +1,6 @@
-- Which policy version produced every candidate?
-- What quality signal retained or reweighted it?
-- How many grow/improve iterations and samples were used?
-- Does the accepted batch lose diversity or expose preference/reward shortcuts?
+- Sampling protocol: Alternate grow phases that collect a fixed policy batch with improve phases that reuse it offline.
+- Inference budget: Offline sample-generation budget per grow phase; exact counts vary by experiment.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Quality signals derived from the paper's alignment/evaluation setup; the exact reward implementation should be retained with any reuse.
+- Remaining checks: needs_metadata: pin the exact reward implementation and release terms before dataset reuse

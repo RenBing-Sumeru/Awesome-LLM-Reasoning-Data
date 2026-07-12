@@ -1,4 +1,6 @@
-- Are predicted next states checked against the real task environment?
-- What is the branching, rollout, and LM-call budget?
-- Does the reward test the intended outcome or a shortcut?
-- How many invalid branches were filtered away?
+- Sampling protocol: Iterative MCTS expansion, rollout, and backpropagation over language-model reasoning states.
+- Inference budget: Search iterations, branching, rollout depth, and LM calls per task.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Task-specific rewards and model-predicted state transitions guide MCTS selection.
+- Remaining checks: human review of unresolved metadata

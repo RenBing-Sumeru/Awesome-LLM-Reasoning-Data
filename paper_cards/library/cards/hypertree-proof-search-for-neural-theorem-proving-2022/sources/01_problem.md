@@ -1,0 +1,3 @@
+Formal proofs branch into tactics that may create several dependent subgoals, so an ordinary sequence or single-goal tree loses essential structure. HTPS asks how a neural prover can search this hyper-tree and learn online from previously unsuccessful theorem searches.
+
+The reusable object is formal theorem; accessible premises; proof state; tactic action; multiple child subgoals; AND/OR hyper-tree edge; policy/value estimate; kernel response; solved/failed proof; online-training example. AlphaZero-style HyperTree Proof Search learns online from kernel-checked AND/OR proof searches across formal theorem-proving environments.

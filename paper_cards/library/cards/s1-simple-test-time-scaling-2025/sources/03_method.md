@@ -1,0 +1,3 @@
+The policy or teacher model generates candidate reasoning traces. Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage. Start from a larger question pool, score and filter for difficulty, diversity, and quality, obtain long reasoning traces, retain s1K, fine-tune Qwen2.5-32B-Instruct, then force shorter or longer thinking at test time.
+
+The resulting record contains question, source dataset, teacher reasoning trace, difficulty score, diversity cluster, quality decision, selected SFT record, token budget, forced stop or Wait extension, and final answer. The reported use is sft, distillation, test time compute.

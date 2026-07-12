@@ -1,7 +1,3 @@
-Usefulness: use it as the anchor card for TTC budget accounting and scaling attribution audits.
+Exact-match test-time compute scaling paper that separates best-of-N, verifier-guided search, prompt difficulty, and FLOPs-matched scaling attribution.
 
-Research use: compare it with papers that change only one lever, such as rollout count, verifier strength, data mixture, or optimizer.
-
-Engineering use: extract the feedback contract and make it explicit before reusing the method in a training or evaluation pipeline.
-
-Review use: ask whether reported gains come from more unique data, more repeated attempts, better verification, or better budget allocation.
+For reuse, preserve prompt difficulty estimate, sample count, verifier reward, test-time method, compute budget, final answer, together with model/version, split, stopping rule, and total compute.

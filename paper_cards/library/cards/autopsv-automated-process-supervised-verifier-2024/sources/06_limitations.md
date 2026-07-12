@@ -1,11 +1,3 @@
-- Does a verifier confidence drop correspond to an actual reasoning error?
-- Are step boundaries stable across model styles and domains?
-- Are ground-truth-free examples evaluated separately from examples with known answers?
-- How many candidate outputs are sampled before verifier selection?
-- Does PSV selection outperform self-consistency under matched sample budgets?
-- What parts of the repository are withheld or incomplete?
+answer-level verifier confidence can mislabel intermediate steps. relative confidence changes may not identify causal first errors. commonsense and math tasks may require different error taxonomies. official repository notes some code is withheld or not fully released.
 
-- The official repository says portions of the codebase are withheld, so artifact completeness should not be overstated.
-- Confidence-change labels may detect correlation with final correctness rather than causal reasoning errors.
-- Commonsense and math reasoning may need different error taxonomies.
-- If used for training, the verifier can reward steps that look confidence-improving without being faithful or necessary.
+Reproduction also depends on split policy (unknown), decontamination (unknown), and license provenance (GitHub README reports CC BY 4.0 for the work; code/data reuse terms should be checked before reuse.).

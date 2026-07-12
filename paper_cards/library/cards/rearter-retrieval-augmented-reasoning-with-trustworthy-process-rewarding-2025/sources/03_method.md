@@ -1,10 +1,3 @@
-- Verification contract: mixed. PRM scalar scores guide search, while PEM explanations help refine steps and expose reasoning quality.
-- Recorded verifier/reward/environment: Process Reward Model, Process Explanation Model, retrieval context, and MCTS-guided search.
-- Supervision granularity: step_level and process_reward.
+MCTS-guided retrieval-augmented rollouts. tree search over retrieval-augmented reasoning steps with look-ahead search for early-step bias. trustworthy process rewarding and iterative preference optimization over step-level preference data.
 
-- Base model: unknown in the atlas entry.
-- Teacher: PRM/PEM feedback and benchmark supervision.
-- Generator: retrieval-augmented rollouts expanded by MCTS.
-- Filtering rule: trustworthy process rewarding plus iterative preference optimization.
-- Sampling protocol: tree search over retrieval-augmented reasoning steps; look-ahead search is used to reduce early-step bias.
-- Optimizer/scaffold: off-policy preference learning and iterative preference optimization.
+The resulting record contains step-level preference data with retrieval context, process reward score, process explanation, and final answer. The reported use is process supervision, preference learning, test time compute.

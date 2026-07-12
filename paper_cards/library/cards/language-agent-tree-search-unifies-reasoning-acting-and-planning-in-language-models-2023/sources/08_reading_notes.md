@@ -1,4 +1,6 @@
-- Are environments and web/tool states replayable?
-- How many interactions and LM calls are allowed per episode?
-- Does reflection measurably repair actions, or merely narrate them?
-- Are failed branches and environment errors retained?
+- Sampling protocol: Tree expansion and rollout under an MCTS controller; exact budget varies by task.
+- Inference budget: Environment interactions, tree expansions, LM calls, and reflection calls per episode.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: External environment feedback together with LM-powered value functions and self-reflection.
+- Remaining checks: human review of unresolved metadata

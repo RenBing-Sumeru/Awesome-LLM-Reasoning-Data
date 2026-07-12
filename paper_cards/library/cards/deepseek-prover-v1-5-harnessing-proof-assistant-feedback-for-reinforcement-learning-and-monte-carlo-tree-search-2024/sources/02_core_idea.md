@@ -1,0 +1,3 @@
+Lean feedback and intrinsic-reward RMaxTS produce diverse, kernel-checkable formal proof paths at training and inference time.
+
+The model is specialized and supervised on formal proofs, refined with reinforcement learning from proof-assistant feedback, then used by RMaxTS. RMaxTS explores whole-proof paths with an intrinsic reward intended to favor diverse promising attempts. The feedback contract is: Lean 4 and mathlib provide executable proof validity and terminal closure; RMaxTS combines policy likelihood, search statistics, and intrinsic reward to select expansions. The terminal condition is: Task answer acceptance or formal proof closure under the reported verifier.

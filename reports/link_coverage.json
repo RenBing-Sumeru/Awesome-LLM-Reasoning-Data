@@ -1,44 +1,46 @@
 {
-  "generated_at": "2026-07-11",
-  "total_entries": 28,
-  "verified_entries": 28,
-  "verified_with_primary_link": 28,
+  "generated_at": "2026-07-12",
+  "total_entries": 29,
+  "verified_entries": 29,
+  "verified_with_primary_link": 29,
   "verified_primary_link_coverage": "100.0%",
   "curation_levels": {
     "L0_seeded": 0,
     "L1_link_verified": 0,
     "L2_artifact_verified": 0,
     "L3_summary_ready": 0,
-    "L4_carded": 27,
-    "L5_audit_ready": 1
+    "L4_carded": 29,
+    "L5_audit_ready": 0
   },
   "official_link_coverage": {
-    "paper_or_primary": 28,
-    "paper": 28,
-    "arxiv": 28,
-    "venue": 5,
+    "paper_or_primary": 29,
+    "paper": 29,
+    "arxiv": 29,
+    "venue": 2,
     "openreview": 1,
     "acl": 1,
     "pmlr": 0,
     "cvf": 0,
     "doi": 24,
-    "code": 16,
-    "data": 8,
-    "huggingface": 6,
+    "code": 19,
+    "data": 12,
+    "huggingface": 5,
     "project": 8,
     "bibtex": 0
   },
-  "starter_pack_20": {
-    "total_matched": 0,
-    "with_primary_link": 0,
-    "paper_card_sources": 0,
-    "primary_link_coverage": "0.0%",
-    "paper_card_source_coverage": "0.0%"
+  "starter_pack": {
+    "id": "local_review_core",
+    "title": "Local Review Core",
+    "total_matched": 1,
+    "with_primary_link": 1,
+    "paper_card_sources": 1,
+    "primary_link_coverage": "100.0%",
+    "paper_card_source_coverage": "100.0%"
   },
   "needs_search": 0,
   "ambiguous": 0,
   "duplicate": 0,
   "missing_primary_link": 0,
-  "paper_card_sources": 28,
-  "artifact_verified_entries": 28
+  "paper_card_sources": 29,
+  "artifact_verified_entries": 29
 }

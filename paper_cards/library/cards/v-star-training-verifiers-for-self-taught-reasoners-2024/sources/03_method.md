@@ -1,0 +1,3 @@
+The policy or teacher model generates candidate reasoning traces. Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage. Sample many solutions, partition them by automatic correctness, fine-tune the reasoner on positives, train the verifier with correct/incorrect pairs, rerank candidates, and iterate.
+
+The resulting record contains problem, policy iteration, sampled solution, correctness label, positive-negative verifier pair, verifier score, candidate set, and selected answer. The reported use is sft, reward modeling, test time compute.

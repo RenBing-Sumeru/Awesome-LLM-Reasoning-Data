@@ -1,0 +1,133 @@
+id: deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024
+title: 'DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search'
+year: 2024
+venue: arXiv
+authors:
+- Huajian Xin
+- Z. Z. Ren
+- Junxiao Song
+- Zhihong Shao
+- Wanjia Zhao
+- Haocheng Wang
+- Bo Liu
+- Liyue Zhang
+- Xuan Lu
+- Qiushi Du
+- Wenjun Gao
+- Qihao Zhu
+- Dejian Yang
+- Zhibin Gou
+- Z. F. Wu
+- Fuli Luo
+- Chong Ruan
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- preference_learning
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2408.08152
+  arxiv: https://arxiv.org/abs/2408.08152
+  code: https://github.com/deepseek-ai/DeepSeek-Prover-V1.5
+  data: https://github.com/deepseek-ai/DeepSeek-Prover-V1.5/tree/main/datasets
+  project: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2408.08152
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Whole-proof generation wastes useful partial progress and struggles to explore diverse formal proof paths.
+    The paper asks how proof-assistant feedback can train a Lean prover and how Monte Carlo search can expand beyond independent
+    whole-proof samples.
+  trace_author: The model is specialized and supervised on formal proofs, refined with reinforcement learning from proof-assistant
+    feedback, then used by RMaxTS. RMaxTS explores whole-proof paths with an intrinsic reward intended to favor diverse promising
+    attempts.
+  answer_format: Lean theorem and imports; generated proof candidate; proof-assistant response; valid or failed proof path;
+    RMaxTS node; intrinsic reward; selected path; terminal kernel verdict; search budget
+  process_fields:
+  - Lean theorem and imports
+  - generated proof candidate
+  - proof-assistant response
+  - valid or failed proof path
+  - RMaxTS node
+  - intrinsic reward
+  - selected path
+  - terminal kernel verdict
+  - search budget
+  environment_or_substrate: Search tree or formal proof-search substrate described by the paper.
+  verifier_or_reward: Lean 4 and mathlib provide executable proof validity and terminal closure; RMaxTS combines policy likelihood,
+    search statistics, and intrinsic reward to select expansions.
+  terminal_predicate: Task answer acceptance or formal proof closure under the reported verifier.
+recipe_metadata:
+  base_model: See the paper and official repository for experiment-specific policy and selector checkpoints.
+  teacher: Search outcomes, verifier feedback, and model/value estimates rather than manual dense step labels.
+  generator: The model is specialized and supervised on formal proofs, refined with reinforcement learning from proof-assistant
+    feedback, then used by RMaxTS. RMaxTS explores whole-proof paths with an intrinsic reward intended to favor diverse promising
+    attempts.
+  filtering_rule: Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+  sampling_protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call
+    budget per experiment.
+  rollout_count: null
+  temperature: null
+  inference_budget: Varies by experiment and must be reported with results.
+  optimizer_or_scaffold: Search-guided collection and the paper-specific training or inference scaffold.
+audit:
+  source_mixture: Paper-specific benchmark and construction sources; preserve upstream dataset identifiers and licenses.
+  split: Use official experiment splits; verify construction/evaluation overlap before reuse.
+  decontamination: unknown
+  license: Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.
+  lineage: Keep prompt, policy/version, full branch structure, verifier outputs, search statistics, selected path, and budget
+    together.
+  known_failure_modes:
+  - The training-time search corpus is not released as a standalone dataset; Lean and mathlib version drift changes replay;
+    intrinsic reward may improve diversity without semantic progress; search cost and whole-proof generation length complicate
+    matched-budget comparisons.
+  - Search budget or selector quality can be mistaken for base-model capability.
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and official code/data or project artifacts were checked; release completeness still requires reviewer
+    judgment.
+inclusion_reason: Lean feedback and intrinsic-reward RMaxTS produce diverse, kernel-checkable formal proof paths at training
+  and inference time.
+related: []
+tags:
+- track-05
+- primary-link-checked
+status: verified
+one_line: Lean feedback and intrinsic-reward RMaxTS produce diverse, kernel-checkable formal proof paths at training and inference
+  time.
+card: paper_cards/library/cards/deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024
+needs:
+- website review
+one_line_summary: Lean feedback and intrinsic-reward RMaxTS produce diverse, kernel-checkable formal proof paths at training
+  and inference time.
+why_it_matters: Use this Card for formal-verifier-anchored search traces, RL from proof feedback, proof-path diversity, and
+  the distinction between kernel validity and informal mathematical faithfulness.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official primary paper and associated artifact links pinned.
+category_ids:
+- rollout_search_test_time_trace_data

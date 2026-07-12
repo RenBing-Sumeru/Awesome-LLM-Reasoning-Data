@@ -1,6 +1,3 @@
-Re-ReST keeps a weak agent attempt in the loop: external feedback is given to a reflector, which revises the attempt into a possible self-training example.
+Agent-task inputs spanning multi-hop QA, sequential decision making, code generation, VQA, and text-to-image generation.
 
-- Year / venue: 2024 · arXiv.
-- Author affiliations: University of California, Los Angeles.
-- Atlas role: reflection-based agent self-training recipe.
-- The evaluation spans QA, sequential decisions, code, VQA, and text-to-image tasks.
+The reusable object is Initial agent output, external feedback, reflection, refined output, and selected self-training episode. Direct example of retaining a failed trajectory, its feedback, and a reflection-based revision as a self-training data object.

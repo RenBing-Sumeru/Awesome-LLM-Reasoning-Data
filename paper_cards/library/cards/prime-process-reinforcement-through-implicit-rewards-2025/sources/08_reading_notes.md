@@ -1,6 +1,6 @@
-- Which outcome verifiers define correctness for math and code tasks?
-- Are failed rollouts retained, or are only successful responses exposed?
-- How is prompt filtering by policy accuracy computed, and does it bias the task distribution?
-- Does the implicit PRM improve because it learns progress, or because it learns outcome-verifier shortcuts?
-- Are policy and PRM updates evaluated on held-out task families?
-- Are released HF datasets/models enough to reconstruct the rollout lineage?
+- Sampling protocol: on-policy RL rollouts over math and coding prompts.
+- Inference budget: needs review
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: implicit process rewards derived from outcome labels and updated on policy rollouts.
+- Remaining checks: needs_metadata: curator should verify atlas fields

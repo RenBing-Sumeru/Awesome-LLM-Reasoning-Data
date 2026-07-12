@@ -1,0 +1,121 @@
+id: monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024
+title: Monte Carlo Tree Search Boosts Reasoning via Iterative Preference Learning
+year: 2024
+venue: arXiv
+authors:
+- Yuxi Xie
+- Anirudh Goyal
+- Wenyue Zheng
+- Min-Yen Kan
+- Timothy P. Lillicrap
+- Kenji Kawaguchi
+- Michael Shieh
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- preference_learning
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2405.00451
+  arxiv: https://arxiv.org/abs/2405.00451
+  code: https://github.com/YuxiXie/MCTS-DPO
+  data: https://github.com/YuxiXie/MCTS-DPO#dataset-download
+  project: https://github.com/YuxiXie/MCTS-DPO
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2405.00451
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Outcome rewards are sparse, while conventional DPO sees response-level pairs and misses the branching evidence
+    inside search. This work asks whether MCTS look-ahead can collect on-policy alternatives and translate instance-level
+    success into granular preferences.
+  trace_author: The current policy expands an MCTS tree. Outcome validation and stepwise self-evaluation update node quality;
+    alternatives are converted to step-level preference examples and the policy is updated with DPO before the next collection
+    round.
+  answer_format: reasoning prompt; partial state; candidate next steps sharing a parent; search visit/value; rollout outcome;
+    step self-evaluation; chosen/rejected pair; policy iteration; inference budget
+  process_fields:
+  - reasoning prompt
+  - partial state
+  - candidate next steps sharing a parent
+  - search visit/value
+  - rollout outcome
+  - step self-evaluation
+  - chosen/rejected pair
+  - policy iteration
+  - inference budget
+  environment_or_substrate: Search tree or formal proof-search substrate described by the paper.
+  verifier_or_reward: Task answer validation supplies terminal evidence, while the language model's stepwise self-evaluation
+    provides a softer local judge; MCTS statistics select nodes and determine preferences.
+  terminal_predicate: Task answer acceptance or formal proof closure under the reported verifier.
+recipe_metadata:
+  base_model: See the paper and official repository for experiment-specific policy and selector checkpoints.
+  teacher: Search outcomes, verifier feedback, and model/value estimates rather than manual dense step labels.
+  generator: The current policy expands an MCTS tree. Outcome validation and stepwise self-evaluation update node quality;
+    alternatives are converted to step-level preference examples and the policy is updated with DPO before the next collection
+    round.
+  filtering_rule: Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+  sampling_protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call
+    budget per experiment.
+  rollout_count: null
+  temperature: null
+  inference_budget: Varies by experiment and must be reported with results.
+  optimizer_or_scaffold: Search-guided collection and the paper-specific training or inference scaffold.
+audit:
+  source_mixture: Paper-specific benchmark and construction sources; preserve upstream dataset identifiers and licenses.
+  split: Use official experiment splits; verify construction/evaluation overlap before reuse.
+  decontamination: unknown
+  license: Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.
+  lineage: Keep prompt, policy/version, full branch structure, verifier outputs, search statistics, selected path, and budget
+    together.
+  known_failure_modes:
+  - Self-evaluation can reinforce shared policy/judge errors; missing released search logs limits audit; dataset-specific
+    answer checks differ in strength; iterative gains can conflate data freshness, DPO, and increased search compute.
+  - Search budget or selector quality can be mistaken for base-model capability.
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and official code/data or project artifacts were checked; release completeness still requires reviewer
+    judgment.
+inclusion_reason: On-policy MCTS converts outcome validation and self-evaluation into step-level preference pairs for iterative
+  DPO.
+related: []
+tags:
+- track-05
+- primary-link-checked
+status: verified
+one_line: On-policy MCTS converts outcome validation and self-evaluation into step-level preference pairs for iterative DPO.
+card: paper_cards/library/cards/monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024
+needs:
+- website review
+one_line_summary: On-policy MCTS converts outcome validation and self-evaluation into step-level preference pairs for iterative
+  DPO.
+why_it_matters: Use this Card to specify online tree collection, sibling-pair extraction, mixed hard/soft judging, and the
+  boundary between search-time traces and preference-training data.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official primary paper and associated artifact links pinned.
+category_ids:
+- rollout_search_test_time_trace_data

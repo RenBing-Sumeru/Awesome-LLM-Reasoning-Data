@@ -1,0 +1,3 @@
+Combines rule-rewarded on-policy reasoning rollouts, rejection-sampled SFT data, multi-stage RL, and long-CoT distillation.
+
+Train R1-Zero with large-scale RL, add cold-start traces for R1, run reasoning RL, rejection-sample successful readable responses into SFT data, mix non-reasoning data, run further RL, and distill R1 outputs. The feedback contract is: rule-based accuracy rewards and format rewards dominate verifiable reasoning tasks; quality filters and model-based signals supplement broader data. The terminal condition is: A candidate reaches the paper's accepted correctness or selection condition.

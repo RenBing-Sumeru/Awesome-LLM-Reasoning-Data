@@ -1,0 +1,3 @@
+Small language models need both stronger search and trustworthy intermediate selection, but superior-model distillation obscures where reasoning capability comes from. rStar-Math studies whether verified MCTS traces can bootstrap both a math policy and its process preference model.
+
+The reusable object is math question; code-augmented reasoning step; executable snippet and result; MCTS parent/child relation; complete rollout; terminal answer; visit/value statistics; SFT trace; sibling preference pair; evolution round. MCTS, code execution, and a process preference model co-evolve policy traces and sibling-step preference data across four rounds.

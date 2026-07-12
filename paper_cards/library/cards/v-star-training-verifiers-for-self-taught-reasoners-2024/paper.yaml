@@ -1,0 +1,116 @@
+id: v-star-training-verifiers-for-self-taught-reasoners-2024
+title: 'V-STaR: Training Verifiers for Self-Taught Reasoners'
+year: 2024
+venue: COLM
+authors:
+- Arian Hosseini
+- Xingdi Yuan
+- Nikolay Malkin
+- Aaron Courville
+- Alessandro Sordoni
+- Rishabh Agarwal
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- math
+- code
+- reasoning
+training_use:
+- sft
+- reward_modeling
+- test_time_compute
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2402.06457
+  arxiv: https://arxiv.org/abs/2402.06457
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2402.06457
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark and training tasks described in the primary paper.
+  trace_author: Sample many solutions, partition them by automatic correctness, fine-tune the reasoner on positives, train
+    the verifier with correct/incorrect pairs, rerank candidates, and iterate
+  answer_format: problem, policy iteration, sampled solution, correctness label, positive-negative verifier pair, verifier
+    score, candidate set, and selected answer
+  process_fields:
+  - problem or prompt
+  - candidate rollout or reasoning state
+  - feedback or verifier signal
+  - sampling or search metadata
+  - retention or selection decision
+  - final answer or terminal outcome
+  environment_or_substrate: Offline and on-policy reasoning rollout/search pipeline
+  verifier_or_reward: unit tests or exact-answer checks label generated solutions; DPO learns to prefer correct solutions
+    over incorrect ones
+  terminal_predicate: A candidate reaches the paper's accepted correctness or selection condition.
+recipe_metadata:
+  base_model: See the primary paper and released artifacts for experiment-specific checkpoints.
+  teacher: unit tests or exact-answer checks label generated solutions; DPO learns to prefer correct solutions over incorrect
+    ones
+  generator: The policy or teacher model generates candidate reasoning traces.
+  filtering_rule: Sample many solutions, partition them by automatic correctness, fine-tune the reasoner on positives, train
+    the verifier with correct/incorrect pairs, rerank candidates, and iterate.
+  sampling_protocol: Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing
+    lineage.
+  rollout_count: null
+  temperature: null
+  inference_budget: Experiment-specific; preserve sample count, search expansions, token budget, and verifier calls when reproducing.
+  optimizer_or_scaffold: sft, reward_modeling, test_time_compute
+audit:
+  source_mixture: Task mixture and benchmark splits are described in the primary paper; preserve per-record provenance.
+  split: Use official train/evaluation splits and record any curation pool separately.
+  decontamination: Paper-specific; do not infer decontamination beyond explicit disclosures.
+  license: Check each official paper, code, data, and model artifact separately before reuse.
+  lineage: problem, policy iteration, sampled solution, correctness label, positive-negative verifier pair, verifier score,
+    candidate set, and selected answer
+  known_failure_modes:
+  - incorrect labels inherit weaknesses of tests and answer normalization
+  - verifier gains may be confounded with larger candidate budgets
+  - pairs from the current policy may narrow verifier coverage across iterations
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv metadata and the listed official artifacts were checked for this candidate Card.
+inclusion_reason: Reuses both correct and incorrect self-generated solutions to co-evolve a reasoner and a DPO-trained verifier
+  for best-of-N selection.
+related: []
+tags:
+- primary-link-checked
+- track-05-candidate
+status: verified
+one_line: Reuses both correct and incorrect self-generated solutions to co-evolve a reasoner and a DPO-trained verifier for
+  best-of-N selection.
+card: cards/track-05/v-star-training-verifiers-for-self-taught-reasoners-2024.md
+needs: []
+one_line_summary: Reuses both correct and incorrect self-generated solutions to co-evolve a reasoner and a DPO-trained verifier
+  for best-of-N selection.
+why_it_matters: 'Unlike STaR, V-STaR does not discard incorrect generations: it converts them into preference data and closes
+  the loop between generator and selector.'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper is pinned; no official reusable code or data artifact is asserted.
+category_ids:
+- rollout_search_test_time_trace_data

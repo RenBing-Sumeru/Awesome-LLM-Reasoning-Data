@@ -1,4 +1,6 @@
-- Count thought expansions, not just final answers.
-- State evaluation is part of the verifier.
-- Small task suites need contamination checks.
-- Search scaffolds should be compared at matched budgets.
+- Sampling protocol: Breadth/depth and branch counts define the main TTC budget.
+- Inference budget: Number of generated thoughts, evaluations, and search steps.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Self-evaluation, task-specific checks, and final outcome scoring.
+- Remaining checks: needs_review: record task-specific branch counts before comparing against sampling-only baselines

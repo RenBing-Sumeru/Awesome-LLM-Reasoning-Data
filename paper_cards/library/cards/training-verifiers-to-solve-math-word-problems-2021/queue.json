@@ -1,0 +1,21 @@
+{
+  "title": "Training Verifiers to Solve Math Word Problems",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2110.14168",
+    "arxiv": "https://arxiv.org/abs/2110.14168",
+    "code": "https://github.com/openai/grade-school-math",
+    "data": "https://github.com/openai/grade-school-math",
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:01:27Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "数学证明基础性工作，但年份太早",
+    "updated_at": "2026-07-12T13:01:27Z"
+  }
+}

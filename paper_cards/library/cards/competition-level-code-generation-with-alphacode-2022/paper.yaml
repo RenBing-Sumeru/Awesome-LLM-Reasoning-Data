@@ -1,0 +1,144 @@
+id: competition-level-code-generation-with-alphacode-2022
+title: Competition-Level Code Generation with AlphaCode
+year: 2022
+venue: Science 378(6624), 1092-1097
+authors:
+- Yujia Li
+- David Choi
+- Junyoung Chung
+- Nate Kushman
+- Julian Schrittwieser
+- Rémi Leblond
+- Tom Eccles
+- James Keeling
+- Felix Gimeno
+- Agustin Dal Lago
+- Thomas Hubert
+- Peter Choy
+- Cyprien de Masson d'Autume
+- Igor Babuschkin
+- Xinyun Chen
+- Po-Sen Huang
+- Johannes Welbl
+- Sven Gowal
+- Alexey Cherepanov
+- James Molloy
+- Daniel J. Mankowitz
+- Esme Sutherland Robson
+- Pushmeet Kohli
+- Nando de Freitas
+- Koray Kavukcuoglu
+- Oriol Vinyals
+source_role:
+- model_report
+- scaling_study
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- code
+- competitive_programming
+- test_time_compute
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2203.07814
+  arxiv: https://arxiv.org/abs/2203.07814
+  code: https://github.com/google-deepmind/code_contests
+  data: https://github.com/google-deepmind/code_contests
+  project: https://deepmind.google/blog/competitive-programming-with-alphacode/
+  huggingface: null
+  doi: https://doi.org/10.1126/science.abq1158
+  venue: https://www.science.org/doi/10.1126/science.abq1158
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: CodeContests competitive-programming statements from Codeforces and related contest platforms.
+  trace_author: AlphaCode policy models sample Python and C++ programs at very large scale.
+  answer_format: per-problem program pools with compilation status, example-test behavior, behavioral cluster membership,
+    rank, and up to ten submitted programs.
+  process_fields:
+  - problem_statement
+  - language
+  - sampled_program
+  - compilation_result
+  - example_test_result
+  - behavior_cluster
+  - model_score
+  - selected_submission
+  - sample_count
+  environment_or_substrate: compiler, public example tests, learned test-input generation, behavioral clustering, and hidden
+    Codeforces judging.
+  verifier_or_reward: compilation and example-test filtering followed by clustering and model-based ranking; hidden tests
+    provide terminal evaluation only.
+  terminal_predicate: a selected submitted program passes the hidden contest judge within a ten-submission budget.
+recipe_metadata:
+  base_model: decoder-only and encoder-decoder transformer policy models from 300M to 41B parameters.
+  teacher: accepted and rejected competitive-programming submissions plus contest tests; no superior teacher model is used
+    at inference.
+  generator: an ensemble of AlphaCode models samples programs independently for each problem.
+  filtering_rule: remove noncompiling and example-test-failing samples, cluster survivors by behavior on generated inputs,
+    then rank representatives.
+  sampling_protocol: draw one million samples per problem from each model in the main large-scale analysis before filtering
+    and clustering.
+  rollout_count: 1000000
+  temperature: null
+  inference_budget: massive generation followed by a realistic maximum of ten external submissions per problem.
+  optimizer_or_scaffold: sampling, compilation, example-test filtering, generated-input behavioral clustering, and submission
+    ranking.
+audit:
+  source_mixture: public GitHub code for pretraining and CodeContests problems and submissions for fine-tuning and evaluation.
+  split: chronological contest holdouts and simulated participation in ten recent Codeforces contests.
+  decontamination: evaluation contests postdate the training cutoff; the paper also analyzes copying and near-duplicate behavior.
+  license: Apache-2.0 for the official CodeContests repository; upstream contest content retains source-specific terms.
+  lineage: the official release contains CodeContests problems, solutions, tests, and tooling, not the million-sample model
+    pools, cluster records, or ranking scores.
+  known_failure_modes:
+  - Example tests reject more than 99 percent of samples but do not guarantee hidden-test correctness.
+  - One million samples per model per problem is far removed from the final ten-submission evaluation budget.
+  - Behavioral clustering depends on generated tests and can merge semantically different programs or miss equivalent ones.
+  - The sampled program pools and exact production ranking pipeline are not fully released.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, Science DOI, DeepMind project page, and Google DeepMind CodeContests repository verified.
+inclusion_reason: Canonical code-reasoning example where an enormous rollout pool is converted into a small deployable submission
+  set through executable filtering and clustering.
+related:
+- apps-2021
+- large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024
+- coderl-code-generation-rl-2022
+tags:
+- alphacode
+- repeated-sampling
+- program-filtering
+- behavioral-clustering
+- competitive-programming
+status: verified
+one_line: Samples up to one million programs per model and problem, then filters and clusters them into ten contest submissions.
+card: null
+needs:
+- 'needs_review: keep released CodeContests artifacts separate from unreleased AlphaCode sample pools and cluster logs'
+one_line_summary: Samples up to one million programs per model and problem, then filters and clusters them into ten contest
+  submissions.
+why_it_matters: It shows how generation budget, executable feedback, diversity control, and a hard external submission budget
+  interact.
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official primary and artifact links checked; generated rollout pools are not part of the public CodeContests release.
+curation_level: L4_carded
+category_ids:
+- rollout_search_test_time_trace_data

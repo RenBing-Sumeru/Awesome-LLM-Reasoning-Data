@@ -1,3 +1,3 @@
-Final-answer correctness is the programmatic acceptance contract. It checks the answer, not every rationale step.
+Supervised models sample augmented rationales for each math problem. Generate diverse candidate paths, answer-check them, then fine-tune on accepted augmented data. Rejection sampling retains correct paths and can combine accepted paths from multiple models.
 
-Supervised models generate diverse candidate reasoning paths. The system answer-checks them, retains correct examples, can mix accepted paths from multiple models, and fine-tunes on that augmented pool.
+The resulting record contains A generated reasoning path paired with final answer correctness and selection for the augmented fine-tuning set. The reported use is sft, evaluation.

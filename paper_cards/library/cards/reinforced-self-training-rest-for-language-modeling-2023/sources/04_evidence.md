@@ -1,1 +1,3 @@
-The batch is explicitly training data for offline policy improvement. It is relevant to Track 05 because selection quality, policy version, and reuse across iterations change what “self-generated data” means.
+Official evidence note: Official arXiv primary source pinned; no official reusable data artifact was identified.
+
+Review the reported results against the exact task surface and feedback strength. Separate candidate coverage, verifier or selector precision, accepted-trajectory quality, post-training policy gain, and total generation/search/environment cost. Citation status is verified with high confidence.

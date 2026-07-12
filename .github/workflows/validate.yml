@@ -28,10 +28,8 @@ jobs:
         run: python scripts/render_readme.py --check
       - name: Check bilingual paper-card sources
         run: python tools/paper_cards/card_tool.py check
-      - name: Verify prompt-batch provenance
-        run: python tools/paper_cards/migrate.py verify-current
-      - name: Test paper-card migration
-        run: PYTHONPATH=. python tests/paper_cards/test_migrate.py
+      - name: Test Card-local paper workflow
+        run: python3 -m unittest discover -s tests/paper_cards -p 'test_*.py'
       - name: Coverage report
         run: python scripts/coverage_report.py
       - name: Link check soft

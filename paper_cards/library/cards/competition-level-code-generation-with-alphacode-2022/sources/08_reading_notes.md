@@ -1,0 +1,6 @@
+- Sampling protocol: draw one million samples per problem from each model in the main large-scale analysis before filtering and clustering.
+- Inference budget: massive generation followed by a realistic maximum of ten external submissions per problem.
+- Rollout count: 1000000
+- Temperature: needs review
+- Feedback contract: compilation and example-test filtering followed by clustering and model-based ranking; hidden tests provide terminal evaluation only.
+- Remaining checks: needs_review: keep released CodeContests artifacts separate from unreleased AlphaCode sample pools and cluster logs

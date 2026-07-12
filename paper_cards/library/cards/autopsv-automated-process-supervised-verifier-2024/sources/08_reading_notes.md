@@ -1,6 +1,6 @@
-- Does a verifier confidence drop correspond to an actual reasoning error?
-- Are step boundaries stable across model styles and domains?
-- Are ground-truth-free examples evaluated separately from examples with known answers?
-- How many candidate outputs are sampled before verifier selection?
-- Does PSV selection outperform self-consistency under matched sample budgets?
-- What parts of the repository are withheld or incomplete?
+- Sampling protocol: multiple generated outputs are scored or selected by outcome-supervised and process-supervised verifiers.
+- Inference budget: needs review
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: answer-trained verifier converted into automated process annotations.
+- Remaining checks: needs_metadata: curator should verify atlas fields

@@ -1,0 +1,3 @@
+MCTS, code execution, and a process preference model co-evolve policy traces and sibling-step preference data across four rounds.
+
+The policy expands code-augmented chains in MCTS, execution and answer checks validate outcomes, and complete trees are converted into successful SFT trajectories plus sibling-step preference pairs for a process preference model. Policy and PPM are retrained and used in the next round. The feedback contract is: A code executor and final-answer checker provide grounded outcome signals; the learned process preference model ranks partial paths and guides later MCTS. The terminal condition is: Task answer acceptance or formal proof closure under the reported verifier.

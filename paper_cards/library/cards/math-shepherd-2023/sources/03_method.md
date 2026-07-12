@@ -1,0 +1,3 @@
+The policy or teacher model generates candidate reasoning traces. Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage. Generate candidate solutions, split them into steps, sample continuations from prefixes, check terminal answers, derive process labels, train Math-Shepherd, then use it for reranking or PPO.
+
+The resulting record contains math problem, complete solution, step prefix, continuation rollouts, final-answer outcomes, automatic step label, PRM score, and selected response. The reported use is process supervision, reward modeling, rlvr, test time compute.

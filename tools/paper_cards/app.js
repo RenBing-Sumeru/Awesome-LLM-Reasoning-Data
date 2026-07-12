@@ -16,19 +16,14 @@ const state = {
   activeCard: null,
   activeSection: "01_problem",
   activeMode: "update",
-  selected: new Set(),
+  previewLanguage: "ch",
   searchQueue: {},
-  lastPackage: "",
-  lastDownloadIds: [],
 };
 
 const $ = (id) => document.getElementById(id);
 
 const els = {
-  totalCount: $("totalCount"),
-  sourceCount: $("sourceCount"),
-  downloadedCount: $("downloadedCount"),
-  invalidCount: $("invalidCount"),
+  workspace: $("workspace"),
   stateFilter: $("stateFilter"),
   query: $("query"),
   resultSummary: $("resultSummary"),
@@ -52,17 +47,13 @@ const els = {
   saveInstitutions: $("saveInstitutions"),
   goReviewFromUpdate: $("goReviewFromUpdate"),
   goUpdateFromReview: $("goUpdateFromReview"),
-  downgradeToL4: $("downgradeToL4"),
   saveStatus: $("saveStatus"),
   institutionMore: $("institutionMore"),
   noInstitution: $("noInstitution"),
-  selectionSummary: $("selectionSummary"),
   completeCurrent: $("completeCurrent"),
   reviewCheckResult: $("reviewCheckResult"),
-  downloadControls: $("downloadControls"),
-  batchDownload: $("batchDownload"),
-  downloadUndownloaded: $("downloadUndownloaded"),
-  downloadSelected: $("downloadSelected"),
+  libraryLocationControl: $("libraryLocationControl"),
+  libraryLocation: $("libraryLocation"),
   reviewMarkdown: $("reviewMarkdown"),
   queueStatus: $("queueStatus"),
   queueReason: $("queueReason"),
@@ -154,10 +145,9 @@ function paperStatus(entry) {
 
 function statusLabel(entry) {
   const status = paperStatus(entry);
-  if (status === "downloaded") return "已下载";
   if (status === "reviewed") return "已审阅";
-  if (status === "edited") return "已修改未下载";
-  return "未下载";
+  if (status === "edited") return "已修改";
+  return "";
 }
 
 function validInfo(entry) {
@@ -181,20 +171,16 @@ function canPromoteToL6(valid = currentValid()) {
   return valid.level === "L5_review_ready";
 }
 
-function canDowngradeToL4(valid = currentValid()) {
-  return valid.level === "L5_review_ready";
-}
-
 function isL6Locked(valid = currentValid()) {
   return valid.pool === "l6";
 }
 
-function isDownloadableEntry(entry) {
-  return ["annotated", "l6"].includes(validInfo(entry).pool);
-}
-
 function canEditQueueFields(valid = currentValid()) {
   return Boolean(state.activeCard && state.activeEntryId && state.activeMode === "review" && valid.pool !== "invalid" && valid.pool !== "l6");
+}
+
+function canEditInstitutions(valid = currentValid()) {
+  return Boolean(state.activeCard && state.activeEntryId && state.activeMode === "update" && !isL6Locked(valid));
 }
 
 function updateFormLockState(valid = currentValid()) {
@@ -265,21 +251,6 @@ function needsModification(entry) {
   return ["needs_annotation", "annotated"].includes(validInfo(entry).pool);
 }
 
-function downloadableEntries(includeDownloaded = true) {
-  return state.entries.filter((entry) => {
-    if (!matchesFilters(entry) || !isDownloadableEntry(entry)) return false;
-    return includeDownloaded || paperStatus(entry) !== "downloaded";
-  });
-}
-
-function selectedDownloadableEntries(includeDownloaded = true) {
-  return Array.from(state.selected)
-    .map((id) => state.entries.find((entry) => entry.id === id))
-    .filter(Boolean)
-    .filter((entry) => isDownloadableEntry(entry))
-    .filter((entry) => includeDownloaded || paperStatus(entry) !== "downloaded");
-}
-
 function reviewSortTimestamp(entry) {
   const status = entry?.paper_card?.status || {};
   return status.reviewed_at || status.updated_at || "";
@@ -297,19 +268,14 @@ function entriesForCurrentView() {
   });
 }
 
-function updateDownloadButtons() {
-  if (!els.downloadControls) return;
-  els.downloadControls.hidden = false;
-  const all = downloadTargetIds(true).length;
-  const undownloaded = downloadTargetIds(false).length;
-  const selected = downloadTargetIds(true, true).length;
-  setButtonState(els.batchDownload, all ? "saved" : "", !all);
-  setButtonState(els.downloadUndownloaded, undownloaded ? "saved" : "", !undownloaded);
-  setButtonState(els.downloadSelected, selected ? "saved" : "", !selected);
+function updateLibraryLocationButton() {
+  if (!els.libraryLocationControl) return;
+  els.libraryLocationControl.hidden = false;
+  setButtonState(els.libraryLocation, "", false);
 }
 
-function renderDownloadControls() {
-  updateDownloadButtons();
+function renderLibraryLocationControl() {
+  updateLibraryLocationButton();
 }
 
 function updateActionAvailability() {
@@ -322,12 +288,13 @@ function updateActionAvailability() {
   if (hasActive && inUpdate && !isL6Locked(valid)) {
     markButtonSaved(els.saveHeaderZh);
     markButtonSaved(els.saveSection);
-    markButtonSaved(els.saveInstitutions);
   } else {
     markButtonDisabled(els.saveHeaderZh);
     markButtonDisabled(els.saveSection);
-    markButtonDisabled(els.saveInstitutions);
   }
+
+  if (canEditInstitutions(valid)) markButtonSaved(els.saveInstitutions);
+  else markButtonDisabled(els.saveInstitutions);
 
   if (hasActive && inReview && canEditQueueFields(valid)) markButtonSaved(els.saveQueue);
   else markButtonDisabled(els.saveQueue);
@@ -336,52 +303,37 @@ function updateActionAvailability() {
   if (canReview) markButtonSaved(els.completeCurrent);
   else markButtonDisabled(els.completeCurrent);
 
-  const canDowngrade = hasActive && inReview && canDowngradeToL4(valid);
-  if (canDowngrade) markButtonSaved(els.downgradeToL4);
-  else markButtonDisabled(els.downgradeToL4);
-
-  updateDownloadButtons();
-}
-
-function renderStats() {
-  const needs = state.entries.filter((entry) => validInfo(entry).pool === "needs_annotation").length;
-  const downloadable = state.entries.filter((entry) => isDownloadableEntry(entry)).length;
-  const invalid = state.entries.filter((entry) => validInfo(entry).pool === "invalid").length;
-  els.totalCount.textContent = state.entries.length;
-  els.sourceCount.textContent = needs;
-  els.downloadedCount.textContent = downloadable;
-  if (els.invalidCount) els.invalidCount.textContent = invalid;
-  renderDownloadControls();
+  updateLibraryLocationButton();
 }
 
 function renderList() {
   const shown = entriesForCurrentView();
-  els.resultSummary.textContent = `${shown.length} / ${state.entries.length} 条 · 已选中 ${state.selected.size} 条`;
+  els.resultSummary.textContent = `${shown.length} / ${state.entries.length} 条`;
   els.paperList.innerHTML = shown.length ? shown.map((entry) => {
     const active = entry.id === state.activeEntryId ? "active" : "";
-    const selected = state.selected.has(entry.id) ? "checked" : "";
     const valid = validInfo(entry);
     const errors = arr(valid.errors).length;
     const poolClass = `pool-${valid.pool || "needs_annotation"}`;
     return `<div class="paper-row ${active}">
-      <label class="row-check" title="选择下载">
-        <input type="checkbox" data-select-entry="${esc(entry.id)}" ${selected}>
-      </label>
       <button class="row-main" type="button" data-entry="${esc(entry.id)}">
         <span class="row-title">${esc(entry.title)}</span>
         <span class="row-meta">${esc(entry.year || "n.d.")} · ${esc(entry.venue || "unknown")}</span>
         <span class="row-tags">
           <b class="${esc(poolClass)}">${esc(poolLabel(valid))}</b>
           <em>${esc(levelLabel(valid))}</em>
-          ${paperStatus(entry) !== "new" ? `<em>${esc(statusLabel(entry))}</em>` : ""}
+          ${statusLabel(entry) ? `<em>${esc(statusLabel(entry))}</em>` : ""}
           ${errors ? `<em>${errors} 缺项</em>` : ""}
-          ${state.selected.has(entry.id) ? "<em>已选中</em>" : ""}
         </span>
       </button>
     </div>`;
   }).join("") : "<div class='empty small'>没有匹配的论文。</div>";
-  renderSelectionSummary();
-  renderDownloadControls();
+  renderLibraryLocationControl();
+}
+
+function markActiveListEntry(entryId) {
+  els.paperList.querySelectorAll(".paper-row").forEach((row) => {
+    row.classList.toggle("active", row.querySelector("[data-entry]")?.dataset.entry === entryId);
+  });
 }
 
 function links(entry) {
@@ -406,6 +358,14 @@ function renderDetail() {
   const entry = state.activeCard.entry;
   const valid = state.activeCard.valid || {};
   const status = activeEntry() ? statusLabel(activeEntry()) : statusLabel({ paper_card: { status: state.activeCard.status } });
+  const metaLine = [
+    entry.year || "n.d.",
+    entry.venue || "unknown",
+    entry.status || "unknown",
+    levelLabel(valid),
+    poolLabel(valid),
+    status,
+  ].filter(Boolean).join(" · ");
   els.emptyState.hidden = true;
   els.entryDetail.hidden = false;
   els.updateShell.hidden = state.activeMode !== "update";
@@ -418,19 +378,18 @@ function renderDetail() {
     <div>
       <p class="entry-id">${esc(entry.id)}</p>
       <h2>${esc(entry.title)}</h2>
-      <p class="meta-line">${esc(entry.year || "n.d.")} · ${esc(entry.venue || "unknown")} · ${esc(entry.status || "unknown")} · ${esc(levelLabel(valid))} · ${esc(poolLabel(valid))} · ${esc(status)}</p>
+      <p class="meta-line">${esc(metaLine)}</p>
       <p class="institution-line">机构：${esc(institutionText(state.activeCard.institutions))}</p>
     </div>
     <div class="linkbar">${links(entry)}</div>
   </div>
-  <p class="summary">${esc(shortText(entry.one_line_summary || entry.why_it_matters || ""))}</p>
   ${state.activeCard.check_errors.length ? `<div class="errors">${state.activeCard.check_errors.map((error) => `<p>${esc(error)}</p>`).join("")}</div>` : ""}`;
 
   if (state.activeMode === "update") {
+    renderInstitutions();
     renderHeaderZh();
     renderTabs();
     renderSection();
-    renderInstitutions();
   } else {
     renderReview();
   }
@@ -509,8 +468,9 @@ function currentQueueRecord() {
 
 function renderQueueForm() {
   const record = currentQueueRecord() || {};
-  els.queueStatus.value = record.search_status || "candidate";
-  els.queueReason.value = record.decision_reason || record.reason_to_include || "";
+  const manual = record.manual_annotation || {};
+  els.queueStatus.value = manual.search_status || "";
+  els.queueReason.value = manual.decision_reason || "";
   updateActionAvailability();
 }
 
@@ -547,22 +507,11 @@ function renderReviewCheckResult(valid = state.activeCard?.valid || {}) {
 function renderReviewActionButton() {
   const valid = state.activeCard?.valid || {};
   const reviewed = valid.pool === "l6";
-  els.downgradeToL4.textContent = canDowngradeToL4(valid) ? "降级到 L4" : "仅 L5 可降级";
   els.completeCurrent.textContent = reviewed
     ? "已审阅"
     : canPromoteToL6(valid)
       ? "完成修改该卡片"
       : "等待人工标注";
-  updateActionAvailability();
-}
-
-function renderSelectionSummary() {
-  if (!els.selectionSummary) return;
-  const selectedEntries = Array.from(state.selected).map((id) => state.entries.find((entry) => entry.id === id)).filter(Boolean);
-  const ready = selectedEntries.filter((entry) => isDownloadableEntry(entry));
-  els.selectionSummary.textContent = selectedEntries.length
-    ? `已选中 ${selectedEntries.length} 条，其中 ${ready.length} 条可下载。`
-    : "未选中卡片。";
   updateActionAvailability();
 }
 
@@ -658,14 +607,16 @@ async function loadReviewMarkdown() {
     return;
   }
   const payload = await api(`/api/card/${encodeURIComponent(state.activeEntryId)}/preview`, { method: "POST" });
-  els.reviewMarkdown.innerHTML = renderMarkdown(payload.ch);
+  els.reviewMarkdown.innerHTML = renderMarkdown(payload[state.previewLanguage]);
 }
 
 function renderReview() {
-  renderSelectionSummary();
   renderQueueForm();
   renderReviewCheckResult();
   renderReviewActionButton();
+  els.reviewShell.querySelectorAll("[data-preview-language]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.previewLanguage === state.previewLanguage);
+  });
   loadReviewMarkdown().catch((error) => {
     els.reviewMarkdown.innerHTML = `<div class="errors"><p>${esc(error.message)}</p></div>`;
   });
@@ -674,13 +625,26 @@ function renderReview() {
 async function loadEntries() {
   const payload = await api("/api/entries");
   state.entries = payload.entries || [];
-  renderStats();
+  renderLibraryLocationControl();
   renderList();
 }
 
 async function loadSearchQueue() {
   const payload = await api("/api/search-queue");
   state.searchQueue = payload.queue || {};
+}
+
+function readReviewBootstrap() {
+  const element = $("reviewBootstrap");
+  if (!element?.textContent.trim()) return null;
+  try {
+    const bootstrap = JSON.parse(element.textContent);
+    return Array.isArray(bootstrap.entries) && bootstrap.queue && typeof bootstrap.queue === "object"
+      ? bootstrap
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 async function refreshActiveCard() {
@@ -691,9 +655,9 @@ async function refreshActiveCard() {
 
 async function selectEntry(entryId) {
   state.activeEntryId = entryId;
+  markActiveListEntry(entryId);
   state.activeCard = await api(`/api/card/${encodeURIComponent(entryId)}`);
   state.activeSection = "01_problem";
-  renderList();
   renderDetail();
 }
 
@@ -712,7 +676,7 @@ async function saveCurrentSection() {
   });
   syncSavedCard(payload);
   markButtonSaved(els.saveSection);
-  setMessage("已保存中文 section，下载状态已重置为未下载。");
+  setMessage("已保存中文 section。");
 }
 
 async function saveHeaderZh() {
@@ -734,7 +698,7 @@ async function saveHeaderZh() {
   });
   syncSavedCard(payload);
   markButtonSaved(els.saveHeaderZh);
-  setMessage("已保存中文头字段，下载状态已重置为未下载。");
+  setMessage("已保存中文头字段。");
 }
 
 async function saveInstitutions() {
@@ -752,13 +716,7 @@ async function saveInstitutions() {
   });
   syncSavedCard(payload);
   markButtonSaved(els.saveInstitutions);
-  setMessage("已保存机构字段，下载状态已重置为未下载。");
-}
-
-function toggleSelected(entryId, checked) {
-  if (checked) state.selected.add(entryId);
-  else state.selected.delete(entryId);
-  renderList();
+  setMessage("已保存机构字段。");
 }
 
 function nextNeedingModification(currentId) {
@@ -797,7 +755,6 @@ async function completeCurrent() {
     setMessage(`审阅前检查未通过：${arr(payload.valid?.errors).length} 个缺项。`);
     return;
   }
-  state.selected.delete(completedId);
   await loadEntries();
   const next = nextNeedingModification(completedId);
   if (next) {
@@ -809,76 +766,22 @@ async function completeCurrent() {
   setMessage(`已审阅：${completedId}。当前筛选下没有下一篇需要人工 review 的论文。`);
 }
 
-async function downgradeToL4() {
-  if (!state.activeEntryId) return;
-  markButtonDisabled(els.downgradeToL4);
-  const downgradedId = state.activeEntryId;
-  const payload = await api(`/api/card/${encodeURIComponent(downgradedId)}/downgrade-l4`, { method: "POST" });
-  state.selected.delete(downgradedId);
-  state.activeCard = payload.card;
-  await loadSearchQueue();
-  await loadEntries();
-  await selectEntry(downgradedId);
-  setMessage(`已降级到 L4：${downgradedId}。人工标注已清空，可重新标注。`);
-}
-
-function downloadTargetIds(includeDownloaded, selectedOnly = false) {
-  const selected = selectedDownloadableEntries(includeDownloaded);
-  if (selectedOnly) return selected.map((entry) => entry.id);
-  return downloadableEntries(includeDownloaded).map((entry) => entry.id);
-}
-
-async function downloadCards(includeDownloaded, selectedOnly = false) {
-  const ids = downloadTargetIds(includeDownloaded, selectedOnly);
-  if (!ids.length) {
-    setMessage(selectedOnly ? "没有选中可下载的卡片。" : includeDownloaded ? "没有可下载的卡片。" : "没有未下载的卡片。");
-    return;
-  }
-  if (selectedOnly) markButtonDisabled(els.downloadSelected);
-  else if (includeDownloaded) markButtonDisabled(els.batchDownload);
-  else markButtonDisabled(els.downloadUndownloaded);
-  const payload = await api("/api/package", {
-    method: "POST",
-    body: { entry_ids: ids },
-  });
-  state.lastPackage = payload.package;
-  state.lastDownloadIds = ids;
-  setMessage(`已生成下载包：${payload.package}`);
-  window.location.href = payload.download_url;
-  await loadEntries();
-  await refreshActiveCard();
-}
-
-async function batchDownload() {
-  await downloadCards(true);
-}
-
-async function downloadUndownloaded() {
-  await downloadCards(false);
-}
-
-async function downloadSelected() {
-  await downloadCards(true, true);
+async function showLibraryLocation() {
+  markButtonDisabled(els.libraryLocation);
+  const payload = await api("/api/library-location");
+  setMessage(`可直接迁移 Card 库：${payload.library_directory}`);
+  markButtonSaved(els.libraryLocation);
 }
 
 async function saveQueueItem() {
   if (!state.activeCard) return;
   markButtonDisabled(els.saveQueue);
   const annotatedId = state.activeEntryId;
-  const entry = state.activeCard.entry;
-  const artifacts = entry.artifacts || {};
   const record = {
-    title: entry.title,
-    candidate_links: {
-      paper: entry.primary_link || artifacts.paper || artifacts.arxiv || "",
-      code: artifacts.code || "",
-      data: artifacts.data || artifacts.project || "",
+    manual_annotation: {
+      search_status: els.queueStatus.value,
+      decision_reason: els.queueReason.value,
     },
-    category_ids: arr(entry.category),
-    reason_to_include: els.queueReason.value,
-    decision_reason: els.queueReason.value,
-    search_status: els.queueStatus.value,
-    review_note: "",
   };
   const payload = await api(`/api/search-queue/${encodeURIComponent(state.activeEntryId)}`, {
     method: "POST",
@@ -907,11 +810,6 @@ function bind() {
     el.addEventListener("input", renderList);
   });
   els.paperList.addEventListener("click", (event) => {
-    const checkbox = event.target.closest("[data-select-entry]");
-    if (checkbox) {
-      toggleSelected(checkbox.dataset.selectEntry, checkbox.checked);
-      return;
-    }
     const button = event.target.closest("[data-entry]");
     if (button) selectEntry(button.dataset.entry).catch((error) => setMessage(error.message));
   });
@@ -970,26 +868,20 @@ function bind() {
   }));
   els.goReviewFromUpdate.addEventListener("click", () => switchMode("review"));
   els.goUpdateFromReview.addEventListener("click", () => switchMode("update"));
-  els.downgradeToL4.addEventListener("click", () => downgradeToL4().catch((error) => {
-    updateActionAvailability();
-    setMessage(error.message);
-  }));
   els.completeCurrent.addEventListener("click", () => completeCurrent().catch((error) => {
     updateActionAvailability();
     setMessage(error.message);
   }));
-  els.batchDownload.addEventListener("click", () => batchDownload().catch((error) => {
+  els.libraryLocation.addEventListener("click", () => showLibraryLocation().catch((error) => {
     updateActionAvailability();
     setMessage(error.message);
   }));
-  els.downloadUndownloaded.addEventListener("click", () => downloadUndownloaded().catch((error) => {
-    updateActionAvailability();
-    setMessage(error.message);
-  }));
-  els.downloadSelected.addEventListener("click", () => downloadSelected().catch((error) => {
-    updateActionAvailability();
-    setMessage(error.message);
-  }));
+  els.reviewShell.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-preview-language]");
+    if (!button) return;
+    state.previewLanguage = button.dataset.previewLanguage;
+    renderReview();
+  });
   els.saveQueue.addEventListener("click", () => saveQueueItem().catch((error) => {
     if (canEditQueueFields()) markButtonDirty(els.saveQueue);
     else markButtonDisabled(els.saveQueue);
@@ -999,9 +891,16 @@ function bind() {
 
 async function init() {
   bind();
-  await loadSearchQueue();
-  await loadEntries();
-  if (state.entries.length) {
+  const bootstrap = readReviewBootstrap();
+  if (bootstrap) {
+    state.entries = bootstrap.entries || [];
+    state.searchQueue = bootstrap.queue || {};
+    state.activeEntryId = bootstrap.active_entry_id || "";
+    state.activeCard = bootstrap.active_card || null;
+  } else {
+    await Promise.all([loadSearchQueue(), loadEntries()]);
+  }
+  if (state.entries.length && !state.activeCard) {
     const first = (
       state.entries.find((entry) => validInfo(entry).pool === "needs_annotation") ||
       state.entries.find((entry) => validInfo(entry).pool === "annotated") ||
@@ -1010,8 +909,12 @@ async function init() {
     );
     await selectEntry(first.id);
   }
+  renderList();
+  if (state.activeCard) renderDetail();
+  els.workspace.hidden = false;
 }
 
 init().catch((error) => {
+  els.workspace.hidden = false;
   setMessage(error.message);
 });

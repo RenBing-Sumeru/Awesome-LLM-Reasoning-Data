@@ -1,4 +1,0 @@
-- Formalization can alter or omit assumptions from the source problem.
-- Imports and library versions affect checker behavior.
-- Public benchmark proofs can be memorized.
-- Kernel acceptance verifies the formal statement, not automatically the informal translation.

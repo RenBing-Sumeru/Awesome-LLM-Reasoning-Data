@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
-  "reason_to_include": "djfkladjfkla",
-  "decision_reason": "djfkladjfkla",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-10T15:11:44Z",
+  "updated_at": "2026-07-12T12:52:48Z",
   "category_ids": [
-    "scaling_rlvr_test_time_compute",
     "rollout_search_test_time_trace_data"
-  ]
+  ],
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "机构权威，扩展CoT形式的基础性工作，但年份较早",
+    "updated_at": "2026-07-12T12:52:48Z"
+  }
 }

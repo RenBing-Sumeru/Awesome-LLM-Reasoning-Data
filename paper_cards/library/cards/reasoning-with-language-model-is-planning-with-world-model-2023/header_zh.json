@@ -6,8 +6,7 @@
   "confidence_ch": "高",
   "authors_ch": "Shibo Hao, Yi Gu, Haodi Ma, Joshua Jiahua Hong, Zhen Wang, Daisy Zhe Wang, Zhiting Hu",
   "category_ids": [
-    "rollout_search_test_time_trace_data",
-    "scaling_rlvr_test_time_compute"
+    "rollout_search_test_time_trace_data"
   ],
   "updated_at": "2026-07-11T00:00:00Z"
 }

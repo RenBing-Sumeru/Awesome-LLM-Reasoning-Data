@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "结合规则奖励的 on-policy 推理 rollout、rejection-sampling SFT 数据、多阶段 RL 与长思维链蒸馏。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据 / model_report, construction_recipe, scaling_study论文",
+  "best_for_ch": "适合研究 rollout、搜索轨迹、验证器、拒绝采样与 post-training 数据谱系的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "DeepSeek-AI, Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Ruoyu Zhang, Runxin Xu, Qihao Zhu, Shirong Ma, Peiyi Wang, Xiao Bi, Xiaokang Zhang, Xingkai Yu, Yu Wu, Zhihong Shao",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

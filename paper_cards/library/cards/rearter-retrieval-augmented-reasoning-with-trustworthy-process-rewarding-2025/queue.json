@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T08:18:21Z",
   "category_ids": [
-    "process_trace_supervision_data",
     "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "内容质量高，机构较为权威",
-  "decision_reason": "内容质量高，机构较为权威",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-11T13:21:31Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "优化搜索轨迹的生成范式，研究较新",
+    "updated_at": "2026-07-12T08:18:21Z"
+  }
 }

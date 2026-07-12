@@ -1,0 +1,125 @@
+id: hypertree-proof-search-for-neural-theorem-proving-2022
+title: HyperTree Proof Search for Neural Theorem Proving
+year: 2022
+venue: NeurIPS
+authors:
+- Guillaume Lample
+- Marie-Anne Lachaux
+- Thibaut Lavril
+- Xavier Martinet
+- Amaury Hayat
+- Gabriel Ebner
+- Aurélien Rodriguez
+- Timothée Lacroix
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- preference_learning
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2205.11491
+  arxiv: https://arxiv.org/abs/2205.11491
+  code: https://github.com/facebookresearch/Evariste
+  data: https://github.com/facebookresearch/Evariste/tree/main/formal
+  project: https://openreview.net/forum?id=J4pX8Q8cxHH
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2205.11491
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Formal proofs branch into tactics that may create several dependent subgoals, so an ordinary sequence or
+    single-goal tree loses essential structure. HTPS asks how a neural prover can search this hyper-tree and learn online
+    from previously unsuccessful theorem searches.
+  trace_author: A transformer proposes tactics and estimates proof progress. HTPS expands hyper-tree nodes whose tactics may
+    create several subgoals, propagates solved and value information, and converts proof-search experience into online policy/value
+    updates.
+  answer_format: formal theorem; accessible premises; proof state; tactic action; multiple child subgoals; AND/OR hyper-tree
+    edge; policy/value estimate; kernel response; solved/failed proof; online-training example
+  process_fields:
+  - formal theorem
+  - accessible premises
+  - proof state
+  - tactic action
+  - multiple child subgoals
+  - AND/OR hyper-tree edge
+  - policy/value estimate
+  - kernel response
+  - solved/failed proof
+  - online-training example
+  environment_or_substrate: Search tree or formal proof-search substrate described by the paper.
+  verifier_or_reward: Metamath, Lean, or equivalent formal kernels check tactics and proof closure; HTPS policy/value estimates
+    and AlphaZero-style search statistics choose expansions.
+  terminal_predicate: Task answer acceptance or formal proof closure under the reported verifier.
+recipe_metadata:
+  base_model: See the paper and official repository for experiment-specific policy and selector checkpoints.
+  teacher: Search outcomes, verifier feedback, and model/value estimates rather than manual dense step labels.
+  generator: A transformer proposes tactics and estimates proof progress. HTPS expands hyper-tree nodes whose tactics may
+    create several subgoals, propagates solved and value information, and converts proof-search experience into online policy/value
+    updates.
+  filtering_rule: Retain or prefer trajectories and steps supported by search values and the paper's verifier contract.
+  sampling_protocol: Tree search over partial reasoning or proof states; pin the exact node, rollout, token, and verifier-call
+    budget per experiment.
+  rollout_count: null
+  temperature: null
+  inference_budget: Varies by experiment and must be reported with results.
+  optimizer_or_scaffold: Search-guided collection and the paper-specific training or inference scaffold.
+audit:
+  source_mixture: Paper-specific benchmark and construction sources; preserve upstream dataset identifiers and licenses.
+  split: Use official experiment splits; verify construction/evaluation overlap before reuse.
+  decontamination: unknown
+  license: Mixed artifact licenses; verify paper, code, generated data, and upstream problem licenses independently.
+  lineage: Keep prompt, policy/version, full branch structure, verifier outputs, search statistics, selected path, and budget
+    together.
+  known_failure_modes:
+  - The official repository explicitly says it does not run out of the box after internal dependencies were removed; most
+    code is CC-BY-NC; no packaged full online trajectory corpus is supplied; formal-system versions and premise sets strongly
+    affect replay.
+  - Search budget or selector quality can be mistaken for base-model capability.
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv and official code/data or project artifacts were checked; release completeness still requires reviewer
+    judgment.
+inclusion_reason: AlphaZero-style HyperTree Proof Search learns online from kernel-checked AND/OR proof searches across formal
+  theorem-proving environments.
+related: []
+tags:
+- track-05
+- primary-link-checked
+status: verified
+one_line: AlphaZero-style HyperTree Proof Search learns online from kernel-checked AND/OR proof searches across formal theorem-proving
+  environments.
+card: paper_cards/library/cards/hypertree-proof-search-for-neural-theorem-proving-2022
+needs:
+- website review
+one_line_summary: AlphaZero-style HyperTree Proof Search learns online from kernel-checked AND/OR proof searches across formal
+  theorem-proving environments.
+why_it_matters: Use it for AND/OR proof-tree schemas, kernel-grounded trajectory collection, online expert iteration, and
+  comparison with flat best-first or whole-proof sampling.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official primary paper and associated artifact links pinned.
+category_ids:
+- rollout_search_test_time_trace_data

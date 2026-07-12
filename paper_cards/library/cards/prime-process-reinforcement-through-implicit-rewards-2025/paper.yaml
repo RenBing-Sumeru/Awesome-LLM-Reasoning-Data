@@ -112,7 +112,6 @@ tags:
 - primary-link-checked
 status: verified
 one_line: Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome labels.
-card: cards/verifiers/prime.md
 needs:
 - 'needs_metadata: curator should verify atlas fields'
 one_line_summary: Online process-reinforcement recipe that derives implicit process rewards from policy rollouts and outcome
@@ -129,5 +128,4 @@ verification:
   notes: Official arXiv, GitHub, and HF organization/data links pinned; artifact-internal split and license details remain
     open.
 category_ids:
-- process_trace_supervision_data
-- training_usage_optimization_objectives
+- rollout_search_test_time_trace_data

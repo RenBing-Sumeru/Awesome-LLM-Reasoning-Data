@@ -97,7 +97,6 @@ tags:
 status: verified
 one_line: Alternates policy-generated offline batches with offline RL improvement, making generated candidates and their quality
   signals the training record.
-card: cards/recipes/reinforced-self-training.md
 needs:
 - 'needs_metadata: pin the exact reward implementation and release terms before dataset reuse'
 one_line_summary: Alternates policy-generated offline batches with offline RL improvement, making generated candidates and
@@ -113,5 +112,4 @@ verification:
   confidence: high
   notes: Official arXiv primary source pinned.
 category_ids:
-- data_construction_open_release_recipes
-- training_usage_optimization_objectives
+- rollout_search_test_time_trace_data

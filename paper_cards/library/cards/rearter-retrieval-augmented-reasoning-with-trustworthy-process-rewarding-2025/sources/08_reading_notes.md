@@ -1,6 +1,6 @@
-- Does the retrieved evidence actually support each reasoning step?
-- Are PRM scalar scores and PEM explanations aligned, or can they disagree?
-- Is the step-level preference data balanced across easy and hard examples?
-- Does look-ahead search reduce early-step bias without hiding failed branches?
-- Are rejected branches and low-score explanations visible?
-- Are gains attributable to retrieval quality, process reward, MCTS budget, or preference optimization?
+- Sampling protocol: tree search over retrieval-augmented reasoning steps with look-ahead search for early-step bias.
+- Inference budget: needs review
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: Process Reward Model plus Process Explanation Model, with MCTS-guided search.
+- Remaining checks: needs_metadata: curator should verify atlas fields

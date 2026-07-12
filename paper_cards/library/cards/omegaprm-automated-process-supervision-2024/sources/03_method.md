@@ -1,0 +1,3 @@
+The policy or teacher model generates candidate reasoning traces. Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage. Build a search tree over a proposed solution, use divide-and-conquer exploration to find the earliest error, balance positive and negative nodes, train a PRM, and select outputs with weighted self-consistency.
+
+The resulting record contains math problem, reasoning prefix, MCTS node, sampled continuation, terminal outcome, estimated value, first-error boundary, and positive or negative process annotation. The reported use is process supervision, reward modeling, test time compute.

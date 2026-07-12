@@ -1,5 +1,3 @@
-Main limitations: the scaffold is task-sensitive and the evaluation function can be as important as the base model.
+Value estimates may be prompt-sensitive. Search budget can dominate model ranking. Small task suites can overfit scaffolds.
 
-Audit risks: Value estimates may be prompt-sensitive., Search budget can dominate model ranking., Small task suites can overfit scaffolds..
-
-Missing or fragile details: exact sample budgets, temperature settings, verifier refresh, split hygiene, and artifact licenses may need a human curator before training reuse.
+Reproduction also depends on split policy (Task generation and test settings should be kept separate from prompt examples.), decontamination (Game/task templates can be memorized once public.), and license provenance (Check code repository and task assets before reuse.).

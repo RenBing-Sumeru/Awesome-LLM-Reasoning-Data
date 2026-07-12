@@ -6,8 +6,7 @@
   "confidence_ch": "高",
   "authors_ch": "Zheng Yuan, Hongyi Yuan, Chengpeng Li, Guanting Dong, Keming Lu, Chuanqi Tan, Chang Zhou, Jingren Zhou",
   "category_ids": [
-    "data_construction_open_release_recipes",
-    "scaling_rlvr_test_time_compute"
+    "rollout_search_test_time_trace_data"
   ],
   "updated_at": "2026-07-11T00:00:00Z"
 }

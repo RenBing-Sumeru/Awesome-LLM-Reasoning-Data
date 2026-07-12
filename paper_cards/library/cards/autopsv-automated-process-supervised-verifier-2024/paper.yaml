@@ -91,7 +91,6 @@ tags:
 - primary-link-checked
 status: verified
 one_line: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
-card: cards/verifiers/autopsv.md
 needs:
 - 'needs_metadata: curator should verify atlas fields'
 one_line_summary: Automated process-supervision recipe that derives step annotations from verifier confidence changes.
@@ -105,5 +104,4 @@ verification:
   confidence: high
   notes: Official arXiv primary link and GitHub artifact pinned; repository states some components are withheld.
 category_ids:
-- process_trace_supervision_data
-- data_construction_open_release_recipes
+- rollout_search_test_time_trace_data

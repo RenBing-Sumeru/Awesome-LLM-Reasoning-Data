@@ -1,0 +1,118 @@
+id: rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024
+title: 'Rewarding Progress: Scaling Automated Process Verifiers for LLM Reasoning'
+year: 2024
+venue: ICLR
+authors:
+- Amrith Setlur
+- Chirag Nagpal
+- Adam Fisch
+- Xinyang Geng
+- Jacob Eisenstein
+- Rishabh Agarwal
+- Alekh Agarwal
+- Jonathan Berant
+- Aviral Kumar
+source_role:
+- process_supervision
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- math
+- reasoning
+training_use:
+- reward_modeling
+- rlvr
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2410.08146
+  arxiv: https://arxiv.org/abs/2410.08146
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2410.08146
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark and training tasks described in the primary paper.
+  trace_author: Collect prover rollouts from adjacent reasoning states, estimate before/after success, form process-advantage
+    labels, train PAVs, and use dense scores in beam search or online RL
+  answer_format: problem, reasoning state before a step, proposed step, state after the step, prover rollout success estimates,
+    process advantage target, PAV score, and search or RL outcome
+  process_fields:
+  - problem or prompt
+  - candidate rollout or reasoning state
+  - feedback or verifier signal
+  - sampling or search metadata
+  - retention or selection decision
+  - final answer or terminal outcome
+  environment_or_substrate: Offline and on-policy reasoning rollout/search pipeline
+  verifier_or_reward: progress is the change in future success probability before and after a step under a prover policy distinct
+    from the base policy
+  terminal_predicate: A candidate reaches the paper's accepted correctness or selection condition.
+recipe_metadata:
+  base_model: See the primary paper and released artifacts for experiment-specific checkpoints.
+  teacher: progress is the change in future success probability before and after a step under a prover policy distinct from
+    the base policy
+  generator: The policy or teacher model generates candidate reasoning traces.
+  filtering_rule: Collect prover rollouts from adjacent reasoning states, estimate before/after success, form process-advantage
+    labels, train PAVs, and use dense scores in beam search or online RL.
+  sampling_protocol: Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing
+    lineage.
+  rollout_count: null
+  temperature: null
+  inference_budget: Experiment-specific; preserve sample count, search expansions, token budget, and verifier calls when reproducing.
+  optimizer_or_scaffold: reward_modeling, rlvr, test_time_compute
+audit:
+  source_mixture: Task mixture and benchmark splits are described in the primary paper; preserve per-record provenance.
+  split: Use official train/evaluation splits and record any curation pool separately.
+  decontamination: Paper-specific; do not infer decontamination beyond explicit disclosures.
+  license: Check each official paper, code, data, and model artifact separately before reuse.
+  lineage: problem, reasoning state before a step, proposed step, state after the step, prover rollout success estimates,
+    process advantage target, PAV score, and search or RL outcome
+  known_failure_modes:
+  - progress estimates inherit variance and bias from the chosen prover
+  - a weak prover helps only when its errors complement the base policy
+  - search and RL gains can be misattributed if rollout budgets and prover calls are omitted
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv metadata and the listed official artifacts were checked for this candidate Card.
+inclusion_reason: Defines process reward as prover-measured progress and trains Process Advantage Verifiers for more efficient
+  search and online RL.
+related: []
+tags:
+- primary-link-checked
+- track-05-candidate
+status: verified
+one_line: Defines process reward as prover-measured progress and trains Process Advantage Verifiers for more efficient search
+  and online RL.
+card: cards/track-05/rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024.md
+needs: []
+one_line_summary: Defines process reward as prover-measured progress and trains Process Advantage Verifiers for more efficient
+  search and online RL.
+why_it_matters: The work argues that absolute prefix solvability is not the right process target; the useful signal is the
+  step's marginal progress under a complementary prover.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper is pinned; no official reusable code or data artifact is asserted.
+category_ids:
+- rollout_search_test_time_trace_data

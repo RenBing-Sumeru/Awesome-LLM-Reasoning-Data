@@ -93,7 +93,6 @@ tags:
 - self-reflection
 status: verified
 one_line: Combines MCTS, LM value functions, self-reflection, and environment feedback into search traces for language agents.
-card: cards/agents/language-agent-tree-search.md
 needs: []
 one_line_summary: Combines MCTS, LM value functions, self-reflection, and environment feedback into search traces for language
   agents.
@@ -108,5 +107,4 @@ verification:
   confidence: high
   notes: Official arXiv paper and authors' code repository pinned.
 category_ids:
-- environment_agent_trajectory_data
 - rollout_search_test_time_trace_data

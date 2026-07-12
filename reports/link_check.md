@@ -2,91 +2,76 @@
 
 Link validation for local files, artifact URL formats, and optional live external probes.
 
-- artifact URLs discovered: 125
-- markdown links checked: 1717
-- external markdown links discovered: 428
-- unique external URLs discovered: 120
+- artifact URLs discovered: 130
+- markdown links checked: 1475
+- external markdown links discovered: 253
+- unique external URLs discovered: 130
 - live URLs checked: 0
 - failures: 0
 
 ## Artifact URLs
-- `agnostics-universal-learning-environment-2026` paper: https://arxiv.org/abs/2508.04865
-- `agnostics-universal-learning-environment-2026` arxiv: https://arxiv.org/abs/2508.04865
-- `agnostics-universal-learning-environment-2026` code: https://github.com/nuprl/Ag-LiveCodeBench-X
-- `agnostics-universal-learning-environment-2026` data: https://huggingface.co/datasets/nuprl/Ag-LiveCodeBench-X
-- `agnostics-universal-learning-environment-2026` project: https://agnostics.abgru.me/
-- `agnostics-universal-learning-environment-2026` huggingface: https://huggingface.co/nuprl/agnostics
-- `agnostics-universal-learning-environment-2026` doi: https://doi.org/10.48550/arXiv.2508.04865
-- `apps-2021` paper: https://arxiv.org/abs/2105.09938
-- `apps-2021` arxiv: https://arxiv.org/abs/2105.09938
-- `apps-2021` code: https://github.com/hendrycks/apps
-- `apps-2021` data: https://github.com/hendrycks/apps
-- `apps-2021` project: https://github.com/hendrycks/apps
-- `apps-2021` huggingface: https://huggingface.co/datasets/codeparrot/apps
-- `apps-2021` doi: https://doi.org/10.48550/arXiv.2105.09938
-- `apps-2021` venue: https://proceedings.neurips.cc/paper_files/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html
+- `alphamath-almost-zero-2024` paper: https://arxiv.org/abs/2405.03553
+- `alphamath-almost-zero-2024` arxiv: https://arxiv.org/abs/2405.03553
+- `alphamath-almost-zero-2024` code: https://github.com/MARIO-Math-Reasoning/Super_MARIO
+- `alphamath-almost-zero-2024` data: https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset
+- `alphamath-almost-zero-2024` project: https://openreview.net/forum?id=VaXnxQ3UKo
+- `alphamath-almost-zero-2024` doi: https://doi.org/10.48550/arXiv.2405.03553
 - `autopsv-automated-process-supervised-verifier-2024` paper: https://arxiv.org/abs/2405.16802
 - `autopsv-automated-process-supervised-verifier-2024` arxiv: https://arxiv.org/abs/2405.16802
 - `autopsv-automated-process-supervised-verifier-2024` code: https://github.com/rookie-joe/AutoPSV
 - `autopsv-automated-process-supervised-verifier-2024` doi: https://doi.org/10.48550/arXiv.2405.16802
-- `beyondbench-2026` paper: https://arxiv.org/abs/2509.24210
-- `beyondbench-2026` arxiv: https://arxiv.org/abs/2509.24210
-- `beyondbench-2026` code: https://github.com/ctrl-gaurav/BeyondBench
-- `beyondbench-2026` project: https://ctrl-gaurav.github.io/BeyondBench/
-- `beyondbench-2026` doi: https://doi.org/10.48550/arXiv.2509.24210
-- `coderl-code-generation-rl-2022` paper: https://arxiv.org/abs/2207.01780
-- `coderl-code-generation-rl-2022` arxiv: https://arxiv.org/abs/2207.01780
-- `coderl-code-generation-rl-2022` doi: https://doi.org/10.48550/arXiv.2207.01780
-- `credit-budgeted-icpc-style-coding-2026` paper: https://arxiv.org/abs/2604.10182
-- `credit-budgeted-icpc-style-coding-2026` arxiv: https://arxiv.org/abs/2604.10182
-- `credit-budgeted-icpc-style-coding-2026` doi: https://doi.org/10.48550/arXiv.2604.10182
-- `deepseekmath-2024` paper: https://arxiv.org/abs/2402.03300
-- `deepseekmath-2024` arxiv: https://arxiv.org/abs/2402.03300
-- `deepseekmath-2024` huggingface: https://huggingface.co/deepseek-ai/deepseek-math-7b-base
-- `deepseekmath-2024` doi: https://doi.org/10.48550/arXiv.2402.03300
+- `competition-level-code-generation-with-alphacode-2022` paper: https://arxiv.org/abs/2203.07814
+- `competition-level-code-generation-with-alphacode-2022` arxiv: https://arxiv.org/abs/2203.07814
+- `competition-level-code-generation-with-alphacode-2022` code: https://github.com/google-deepmind/code_contests
+- `competition-level-code-generation-with-alphacode-2022` data: https://github.com/google-deepmind/code_contests
+- `competition-level-code-generation-with-alphacode-2022` project: https://deepmind.google/blog/competitive-programming-with-alphacode/
+- `competition-level-code-generation-with-alphacode-2022` doi: https://doi.org/10.1126/science.abq1158
+- `competition-level-code-generation-with-alphacode-2022` venue: https://www.science.org/doi/10.1126/science.abq1158
+- `deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024` paper: https://arxiv.org/abs/2408.08152
+- `deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024` arxiv: https://arxiv.org/abs/2408.08152
+- `deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024` code: https://github.com/deepseek-ai/DeepSeek-Prover-V1.5
+- `deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024` data: https://github.com/deepseek-ai/DeepSeek-Prover-V1.5/tree/main/datasets
+- `deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024` project: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL
+- `deepseek-prover-v1-5-harnessing-proof-assistant-feedback-for-reinforcement-learning-and-monte-carlo-tree-search-2024` doi: https://doi.org/10.48550/arXiv.2408.08152
+- `deepseek-r1-2025` paper: https://arxiv.org/abs/2501.12948
+- `deepseek-r1-2025` arxiv: https://arxiv.org/abs/2501.12948
+- `deepseek-r1-2025` code: https://github.com/deepseek-ai/DeepSeek-R1
+- `deepseek-r1-2025` huggingface: https://huggingface.co/deepseek-ai/DeepSeek-R1
+- `deepseek-r1-2025` doi: https://doi.org/10.48550/arXiv.2501.12948
 - `efficient-long-cot-reasoning-in-small-language-models-2025` paper: https://arxiv.org/abs/2505.18440
 - `efficient-long-cot-reasoning-in-small-language-models-2025` arxiv: https://arxiv.org/abs/2505.18440
 - `efficient-long-cot-reasoning-in-small-language-models-2025` doi: https://doi.org/10.48550/arXiv.2505.18440
-- `featurebench-2026` paper: https://arxiv.org/abs/2602.10975
-- `featurebench-2026` arxiv: https://arxiv.org/abs/2602.10975
-- `featurebench-2026` doi: https://doi.org/10.48550/arXiv.2602.10975
-- `geogrambench-2026` paper: https://arxiv.org/abs/2505.17653
-- `geogrambench-2026` arxiv: https://arxiv.org/abs/2505.17653
-- `geogrambench-2026` code: https://github.com/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` data: https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` project: https://github.com/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` huggingface: https://huggingface.co/datasets/LiAuto-DSR/GeoGramBench
-- `geogrambench-2026` doi: https://doi.org/10.48550/arXiv.2505.17653
+- `hypertree-proof-search-for-neural-theorem-proving-2022` paper: https://arxiv.org/abs/2205.11491
+- `hypertree-proof-search-for-neural-theorem-proving-2022` arxiv: https://arxiv.org/abs/2205.11491
+- `hypertree-proof-search-for-neural-theorem-proving-2022` code: https://github.com/facebookresearch/Evariste
+- `hypertree-proof-search-for-neural-theorem-proving-2022` data: https://github.com/facebookresearch/Evariste/tree/main/formal
+- `hypertree-proof-search-for-neural-theorem-proving-2022` project: https://openreview.net/forum?id=J4pX8Q8cxHH
+- `hypertree-proof-search-for-neural-theorem-proving-2022` doi: https://doi.org/10.48550/arXiv.2205.11491
 - `language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023` paper: https://arxiv.org/abs/2310.04406
 - `language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023` arxiv: https://arxiv.org/abs/2310.04406
 - `language-agent-tree-search-unifies-reasoning-acting-and-planning-in-language-models-2023` code: https://github.com/lapisrocks/LanguageAgentTreeSearch
 - `large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024` paper: https://arxiv.org/abs/2407.21787
 - `large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024` arxiv: https://arxiv.org/abs/2407.21787
-- `leandojo-2023` paper: https://arxiv.org/abs/2306.15626
-- `leandojo-2023` arxiv: https://arxiv.org/abs/2306.15626
-- `leandojo-2023` code: https://github.com/lean-dojo/LeanDojo
-- `leandojo-2023` data: https://leandojo.org/leandojo
-- `leandojo-2023` project: https://leandojo.org/leandojo
-- `leandojo-2023` doi: https://doi.org/10.48550/arXiv.2306.15626
-- `leandojo-2023` venue: https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html
-- `lets-verify-step-by-step-2023` paper: https://arxiv.org/abs/2305.20050
-- `lets-verify-step-by-step-2023` arxiv: https://arxiv.org/abs/2305.20050
-- `lets-verify-step-by-step-2023` doi: https://doi.org/10.48550/arXiv.2305.20050
-- `math-dataset-2021` paper: https://arxiv.org/abs/2103.03874
-- `math-dataset-2021` arxiv: https://arxiv.org/abs/2103.03874
-- `math-dataset-2021` code: https://github.com/hendrycks/math
-- `math-dataset-2021` data: https://github.com/hendrycks/math
-- `math-dataset-2021` project: https://github.com/hendrycks/math
-- `math-dataset-2021` doi: https://doi.org/10.48550/arXiv.2103.03874
-- `math-dataset-2021` venue: https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html
-- `minif2f-2022` paper: https://arxiv.org/abs/2109.00110
-- `minif2f-2022` arxiv: https://arxiv.org/abs/2109.00110
-- `minif2f-2022` code: https://github.com/openai/miniF2F
-- `minif2f-2022` data: https://github.com/openai/miniF2F
-- `minif2f-2022` project: https://github.com/openai/miniF2F
-- `minif2f-2022` doi: https://doi.org/10.48550/arXiv.2109.00110
-- `minif2f-2022` venue: https://openreview.net/forum?id=9ZPegFuFTFv
-- `minif2f-2022` openreview: https://openreview.net/forum?id=9ZPegFuFTFv
+- `math-shepherd-2023` paper: https://arxiv.org/abs/2312.08935
+- `math-shepherd-2023` arxiv: https://arxiv.org/abs/2312.08935
+- `math-shepherd-2023` data: https://huggingface.co/datasets/peiyi9979/Math-Shepherd
+- `math-shepherd-2023` huggingface: https://huggingface.co/datasets/peiyi9979/Math-Shepherd
+- `math-shepherd-2023` doi: https://doi.org/10.48550/arXiv.2312.08935
+- `monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024` paper: https://arxiv.org/abs/2405.00451
+- `monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024` arxiv: https://arxiv.org/abs/2405.00451
+- `monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024` code: https://github.com/YuxiXie/MCTS-DPO
+- `monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024` data: https://github.com/YuxiXie/MCTS-DPO#dataset-download
+- `monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024` project: https://github.com/YuxiXie/MCTS-DPO
+- `monte-carlo-tree-search-boosts-reasoning-via-iterative-preference-learning-2024` doi: https://doi.org/10.48550/arXiv.2405.00451
+- `mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024` paper: https://arxiv.org/abs/2408.06195
+- `mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024` arxiv: https://arxiv.org/abs/2408.06195
+- `mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024` code: https://github.com/zhentingqi/rStar
+- `mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024` data: https://github.com/zhentingqi/rStar/tree/main/data
+- `mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024` project: https://github.com/zhentingqi/rStar
+- `mutual-reasoning-makes-smaller-llms-stronger-problem-solvers-2024` doi: https://doi.org/10.48550/arXiv.2408.06195
+- `omegaprm-automated-process-supervision-2024` paper: https://arxiv.org/abs/2406.06592
+- `omegaprm-automated-process-supervision-2024` arxiv: https://arxiv.org/abs/2406.06592
+- `omegaprm-automated-process-supervision-2024` doi: https://doi.org/10.48550/arXiv.2406.06592
 - `prime-process-reinforcement-through-implicit-rewards-2025` paper: https://arxiv.org/abs/2502.01456
 - `prime-process-reinforcement-through-implicit-rewards-2025` arxiv: https://arxiv.org/abs/2502.01456
 - `prime-process-reinforcement-through-implicit-rewards-2025` code: https://github.com/PRIME-RL/PRIME
@@ -108,9 +93,6 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `reinforced-self-training-rest-for-language-modeling-2023` paper: https://arxiv.org/abs/2308.08998
 - `reinforced-self-training-rest-for-language-modeling-2023` arxiv: https://arxiv.org/abs/2308.08998
 - `reinforced-self-training-rest-for-language-modeling-2023` doi: https://doi.org/10.48550/arXiv.2308.08998
-- `rest-em-self-training-2024` paper: https://arxiv.org/abs/2312.06585
-- `rest-em-self-training-2024` arxiv: https://arxiv.org/abs/2312.06585
-- `rest-em-self-training-2024` doi: https://doi.org/10.48550/arXiv.2312.06585
 - `rest-mcts-2024` paper: https://arxiv.org/abs/2406.03816
 - `rest-mcts-2024` arxiv: https://arxiv.org/abs/2406.03816
 - `rest-mcts-2024` code: https://github.com/THUDM/ReST-MCTS
@@ -118,6 +100,21 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `rest-mcts-2024` project: https://rest-mcts.github.io/
 - `rest-mcts-2024` huggingface: https://huggingface.co/datasets/zd21/ReST-MCTS-PRM-0th
 - `rest-mcts-2024` doi: https://doi.org/10.48550/arXiv.2406.03816
+- `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` paper: https://arxiv.org/abs/2410.08146
+- `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` arxiv: https://arxiv.org/abs/2410.08146
+- `rewarding-progress-scaling-automated-process-verifiers-for-llm-reasoning-2024` doi: https://doi.org/10.48550/arXiv.2410.08146
+- `rstar-math-2025` paper: https://arxiv.org/abs/2501.04519
+- `rstar-math-2025` arxiv: https://arxiv.org/abs/2501.04519
+- `rstar-math-2025` code: https://github.com/microsoft/rStar/tree/rStar-math
+- `rstar-math-2025` data: https://huggingface.co/datasets/ElonTusk2001/rstar_sft
+- `rstar-math-2025` project: https://huggingface.co/datasets/ElonTusk2001/rstar_ppm
+- `rstar-math-2025` doi: https://doi.org/10.48550/arXiv.2501.04519
+- `s1-simple-test-time-scaling-2025` paper: https://arxiv.org/abs/2501.19393
+- `s1-simple-test-time-scaling-2025` arxiv: https://arxiv.org/abs/2501.19393
+- `s1-simple-test-time-scaling-2025` code: https://github.com/simplescaling/s1
+- `s1-simple-test-time-scaling-2025` data: https://huggingface.co/datasets/simplescaling/s1K
+- `s1-simple-test-time-scaling-2025` huggingface: https://huggingface.co/simplescaling/s1-32B
+- `s1-simple-test-time-scaling-2025` doi: https://doi.org/10.48550/arXiv.2501.19393
 - `scaling-llm-test-time-compute-optimally-2024` paper: https://arxiv.org/abs/2408.03314
 - `scaling-llm-test-time-compute-optimally-2024` arxiv: https://arxiv.org/abs/2408.03314
 - `scaling-llm-test-time-compute-optimally-2024` doi: https://doi.org/10.48550/arXiv.2408.03314
@@ -125,15 +122,23 @@ Link validation for local files, artifact URL formats, and optional live externa
 - `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023` arxiv: https://arxiv.org/abs/2308.01825
 - `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023` code: https://github.com/OFA-Sys/gsm8k-ScRel
 - `scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models-2023` doi: https://doi.org/10.48550/arXiv.2308.01825
-- `self-consistency-chain-of-thought-2023` paper: https://arxiv.org/abs/2203.11171
-- `self-consistency-chain-of-thought-2023` arxiv: https://arxiv.org/abs/2203.11171
-- `self-consistency-chain-of-thought-2023` doi: https://doi.org/10.48550/arXiv.2203.11171
-- `tinyv-2025` paper: https://arxiv.org/abs/2505.14625
-- `tinyv-2025` arxiv: https://arxiv.org/abs/2505.14625
-- `tinyv-2025` code: https://github.com/uw-nsl/TinyV
+- `smaller-weaker-yet-better-training-llm-reasoners-via-compute-optimal-sampling-2025` paper: https://arxiv.org/abs/2408.16737
+- `smaller-weaker-yet-better-training-llm-reasoners-via-compute-optimal-sampling-2025` arxiv: https://arxiv.org/abs/2408.16737
+- `smaller-weaker-yet-better-training-llm-reasoners-via-compute-optimal-sampling-2025` openreview: https://openreview.net/forum?id=3OyaXFQuDl
+- `star-bootstrapping-reasoning-with-reasoning-2022` paper: https://arxiv.org/abs/2203.14465
+- `star-bootstrapping-reasoning-with-reasoning-2022` arxiv: https://arxiv.org/abs/2203.14465
+- `star-bootstrapping-reasoning-with-reasoning-2022` code: https://github.com/ezelikman/STaR
+- `star-bootstrapping-reasoning-with-reasoning-2022` doi: https://doi.org/10.48550/arXiv.2203.14465
+- `training-verifiers-to-solve-math-word-problems-2021` paper: https://arxiv.org/abs/2110.14168
+- `training-verifiers-to-solve-math-word-problems-2021` arxiv: https://arxiv.org/abs/2110.14168
+- `training-verifiers-to-solve-math-word-problems-2021` code: https://github.com/openai/grade-school-math
+- `training-verifiers-to-solve-math-word-problems-2021` data: https://github.com/openai/grade-school-math
 - `tree-of-thoughts-2023` paper: https://arxiv.org/abs/2305.10601
 - `tree-of-thoughts-2023` arxiv: https://arxiv.org/abs/2305.10601
 - `tree-of-thoughts-2023` code: https://github.com/princeton-nlp/tree-of-thought-llm
 - `tree-of-thoughts-2023` doi: https://doi.org/10.48550/arXiv.2305.10601
+- `v-star-training-verifiers-for-self-taught-reasoners-2024` paper: https://arxiv.org/abs/2402.06457
+- `v-star-training-verifiers-for-self-taught-reasoners-2024` arxiv: https://arxiv.org/abs/2402.06457
+- `v-star-training-verifiers-for-self-taught-reasoners-2024` doi: https://doi.org/10.48550/arXiv.2402.06457
 
 Network probing skipped because `--soft` was used.

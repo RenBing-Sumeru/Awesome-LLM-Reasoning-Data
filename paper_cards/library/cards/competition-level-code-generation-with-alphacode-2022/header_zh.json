@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "每题每个模型采样一百万个程序，再经编译、示例测试和行为聚类压缩为最多十次提交。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理数据 / model_report, scaling_study, construction_recipe 论文",
+  "best_for_ch": "适合研究代码大规模采样、程序验证、候选去冗余与预算归因的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yujia Li, David Choi, Junyoung Chung, Nate Kushman, Julian Schrittwieser, Rémi Leblond, Tom Eccles, James Keeling, Felix Gimeno, Agustin Dal Lago, Thomas Hubert, Peter Choy, Cyprien de Masson d'Autume, Igor Babuschkin, Xinyun Chen, Po-Sen Huang, Johannes Welbl, Sven Gowal, Alexey Cherepanov, James Molloy, Daniel J. Mankowitz, Esme Sutherland Robson, Pushmeet Kohli, Nando de Freitas, Koray Kavukcuoglu, Oriol Vinyals",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-11T00:00:00Z"
+}

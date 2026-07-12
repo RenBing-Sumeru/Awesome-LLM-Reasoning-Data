@@ -1,4 +1,4 @@
-Temporary citation needs verification from the official source:
+Temporary citation, to be replaced by official BibTeX after human review:
 
 ```bibtex
 @misc{scaling_llm_test_time_compute_optimally_2024,

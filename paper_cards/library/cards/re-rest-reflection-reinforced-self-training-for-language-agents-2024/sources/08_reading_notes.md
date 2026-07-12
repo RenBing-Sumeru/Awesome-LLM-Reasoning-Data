@@ -1,4 +1,6 @@
-- What feedback is available for each task family?
-- Did revision improve terminal success, not only fluency?
-- Are initial failures, edits, and rejected revisions retained?
-- What extra inference budget does reflection consume?
+- Sampling protocol: Generate, observe feedback, reflect/revise, then select for self-training; an inference-time reflection variant is also studied.
+- Inference budget: Initial generation, feedback acquisition, and optional reflection/revision calls per task.
+- Rollout count: needs review
+- Temperature: needs review
+- Feedback contract: External feedback such as code unit-test results, plus reflector-generated revisions.
+- Remaining checks: human review of unresolved metadata

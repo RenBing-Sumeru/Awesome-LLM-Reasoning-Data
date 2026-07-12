@@ -1,0 +1,130 @@
+id: training-verifiers-to-solve-math-word-problems-2021
+title: Training Verifiers to Solve Math Word Problems
+year: 2021
+venue: arXiv preprint arXiv:2110.14168
+authors:
+- Karl Cobbe
+- Vineet Kosaraju
+- Mohammad Bavarian
+- Mark Chen
+- Heewoo Jun
+- Lukasz Kaiser
+- Matthias Plappert
+- Jerry Tworek
+- Jacob Hilton
+- Reiichiro Nakano
+- Christopher Hesse
+- John Schulman
+source_role:
+- construction_recipe
+- scaling_study
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+- full_episode
+domains:
+- math
+- test_time_compute
+training_use:
+- reward_modeling
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2110.14168
+  arxiv: https://arxiv.org/abs/2110.14168
+  code: https://github.com/openai/grade-school-math
+  data: https://github.com/openai/grade-school-math
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K, with 7,500 training and 1,000 test grade-school math word problems.
+  trace_author: GPT-3-family generators fine-tuned for two epochs sample complete natural-language solutions.
+  answer_format: per-problem candidate sets containing a natural-language derivation, calculator annotations, and a final
+    numeric answer.
+  process_fields:
+  - problem
+  - candidate_solution
+  - final_answer
+  - outcome_label
+  - token_level_verifier_score
+  - solution_level_verifier_score
+  - sample_rank
+  - sample_count
+  environment_or_substrate: GSM8K answer matching with an injected calculator protocol for annotated arithmetic spans.
+  verifier_or_reward: a learned verifier predicts correctness from the problem and candidate solution; labels come only from
+    final-answer correctness.
+  terminal_predicate: the selected candidate reaches the reference final answer; oracle test@N asks whether any candidate
+    does.
+recipe_metadata:
+  base_model: GPT-3-family 6B and 175B generators and verifiers.
+  teacher: GSM8K reference answers provide binary outcome labels; there is no stronger teacher model.
+  generator: a two-epoch fine-tuned generator sampled at positive temperature for candidate-set construction.
+  filtering_rule: label every completion by final-answer match, train a verifier, then return the candidate with maximum verifier
+    score.
+  sampling_protocol: sample 100 completions per training problem for verifier data and 100 per test problem for the main best-of-N
+    result; sweep 25 to 3,200 at test time.
+  rollout_count: 100
+  temperature: 0.7
+  inference_budget: candidate count per problem; the paper reports test@N, verifier-ranked solve rate, and top-sample voting
+    ablations.
+  optimizer_or_scaffold: separate generator and verifier networks; token-level verifier predictions are trained jointly with
+    a language-modeling objective.
+audit:
+  source_mixture: human-written GSM8K problems and solutions plus model-generated candidate solutions.
+  split: 7,500 training problems and 1,000 held-out test problems.
+  decontamination: GSM8K was newly collected, but model-pretraining overlap is not fully auditable from the paper.
+  license: MIT for the official grade-school-math repository.
+  lineage: the official repository releases GSM8K and evaluation utilities, not the full 100-way generated rollout pool or
+    verifier scores used in the paper.
+  known_failure_modes:
+  - Final-answer labels can mark flawed reasoning as correct when it reaches the right number accidentally.
+  - Oracle test@N measures coverage, not whether the learned verifier can identify a correct candidate.
+  - More generator training improves greedy accuracy while collapsing high-temperature candidate diversity.
+  - The proprietary GPT-3-family checkpoints and generated verifier-training rollouts are not released.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper and OpenAI grade-school-math repository verified; artifact scope is narrower than the experimental
+    rollout data.
+inclusion_reason: Foundational best-of-N reasoning paper that makes the candidate pool, outcome labels, verifier, sampling
+  temperature, and selection budget explicit.
+related:
+- self-consistency-chain-of-thought-2023
+- lets-verify-step-by-step-2023
+- large-language-monkeys-scaling-inference-compute-with-repeated-sampling-2024
+tags:
+- best-of-n
+- learned-verifier
+- gsm8k
+- outcome-labels
+- test-time-compute
+status: verified
+one_line: Generates 100 GSM8K solutions per problem and uses a learned verifier to select the highest-scoring candidate.
+card: null
+needs:
+- 'needs_review: distinguish released GSM8K data from unreleased generated rollouts and verifier scores'
+one_line_summary: Generates 100 GSM8K solutions per problem and uses a learned verifier to select the highest-scoring candidate.
+why_it_matters: It is an early auditable template for separating candidate coverage from selector quality in reasoning systems.
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and repository checked; repository does not contain the paper's complete sampled candidate sets.
+curation_level: L4_carded
+category_ids:
+- rollout_search_test_time_trace_data

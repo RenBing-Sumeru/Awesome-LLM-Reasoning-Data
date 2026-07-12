@@ -1,3 +1,3 @@
-RAP is reported as evaluation/test-time compute. Search paths could become SFT, distillation, or value-model data only if source policy, transition predictions, reward definition, and rejected branches are retained.
+It exposes an often-hidden search record—state prediction, task reward, and tree policy—that is essential for attributing planning gains.
 
-RAP shows that tree-search traces include more than a rationale: predicted state transitions and search policy choices may be the real source of the result.
+For reuse, preserve problem, state, action_or_reasoning_step, predicted_next_state, task_reward, search_value, selected_path, together with model/version, split, stopping rule, and total compute.

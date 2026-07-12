@@ -1,0 +1,3 @@
+The policy or teacher model generates candidate reasoning traces. Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing lineage. Collect prover rollouts from adjacent reasoning states, estimate before/after success, form process-advantage labels, train PAVs, and use dense scores in beam search or online RL.
+
+The resulting record contains problem, reasoning state before a step, proposed step, state after the step, prover rollout success estimates, process advantage target, PAV score, and search or RL outcome. The reported use is reward modeling, rlvr, test time compute.

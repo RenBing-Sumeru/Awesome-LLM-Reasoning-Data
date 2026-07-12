@@ -1,6 +1,3 @@
-- Prompt/source: math and science reasoning problems, including tasks prepared for MCTS evaluation and value-model training.
-- Trace/action author: policy models generate intermediate reasoning steps while MCTS* expands a search tree.
-- Answer/artifact format: searched reasoning paths with node states, intermediate steps, final answers, verifier outcomes, and inferred process rewards.
-- Process fields: problem, partial solution state, candidate next step, PRM/value score, search policy choice, final answer, and correctness label where available.
-- Environment or substrate: MCTS* reasoning tree over natural-language solution steps.
-- Terminal predicate: final answer matches the oracle answer or task checker under the reported evaluation setup.
+Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
+
+policy models generate intermediate reasoning steps while MCTS expands candidate paths. The feedback contract is: process reward model guided by final-answer oracle feedback and MCTS-derived value targets. The terminal condition is: final-answer correctness under search.

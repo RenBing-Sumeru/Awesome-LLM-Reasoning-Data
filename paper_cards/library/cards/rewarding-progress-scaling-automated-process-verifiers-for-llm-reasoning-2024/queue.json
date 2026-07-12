@@ -1,0 +1,21 @@
+{
+  "title": "Rewarding Progress: Scaling Automated Process Verifiers for LLM Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2410.08146",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:15:41Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "审视prover的新视角，提出的方法性能较强",
+    "updated_at": "2026-07-12T13:15:41Z"
+  }
+}

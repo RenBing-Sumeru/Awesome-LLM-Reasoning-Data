@@ -95,7 +95,6 @@ tags:
 - primary-link-checked
 status: verified
 one_line: Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
-card: cards/recipes/rest-mcts.md
 needs:
 - 'needs_metadata: curator should verify atlas fields'
 one_line_summary: Process-reward-guided tree search recipe for collecting reasoning traces and inferred per-step value targets.
@@ -110,5 +109,4 @@ verification:
   confidence: high
   notes: Official arXiv, project, code, and HF data links pinned in artifacts.
 category_ids:
-- process_trace_supervision_data
 - rollout_search_test_time_trace_data

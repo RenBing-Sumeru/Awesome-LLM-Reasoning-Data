@@ -1,6 +1,3 @@
-- Which policy version produced every candidate?
-- What quality signal retained or reweighted it?
-- How many grow/improve iterations and samples were used?
-- Does the accepted batch lose diversity or expose preference/reward shortcuts?
+Quality filtering can collapse output diversity when only high-scoring candidates are retained. Offline reuse can amplify reward-model or metric bias across iterations. Reported gains should not be generalized from translation to verifiable reasoning without an equivalent feedback contract.
 
-Model-generated batches can compound metric bias. Translation results should not be generalized to verifiable reasoning without an equivalent verifier and a documented reward implementation.
+Reproduction also depends on split policy (Reported machine-translation train/evaluation splits.), decontamination (unknown), and license provenance (unknown).

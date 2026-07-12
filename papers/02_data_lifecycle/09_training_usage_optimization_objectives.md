@@ -44,8 +44,6 @@ Read this page as a data map, not only a bibliography. For each paper, ask what 
 
 | Work | Year | Links | Data object | Feedback / verifier | Why it matters |
 |---|---:|---|---|---|---|
-| [PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456) | 2025 | [Paper](https://arxiv.org/abs/2502.01456) · [DOI](https://doi.org/10.48550/arXiv.2502.01456) · [Code](https://github.com/PRIME-RL/PRIME) · [Data](https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout) · [HF](https://huggingface.co/PRIME-RL) · [Paper Card Source](../../paper_cards/library/cards/prime-process-reinforcement-through-implicit-rewards-2025/sources) | policy rollout with final outcome label, implicit process reward estimates, and policy update signal.; process: prompt, policy rollout, outcome label; online RL training loop | implicit process rewards derived from outcome labels and updated on policy rollouts. | It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds. |
-| [Reinforced Self-Training (ReST) for Language Modeling](https://arxiv.org/abs/2308.08998) | 2023 | [Paper](https://arxiv.org/abs/2308.08998) · [DOI](https://doi.org/10.48550/arXiv.2308.08998) · [Paper Card Source](../../paper_cards/library/cards/reinforced-self-training-rest-for-language-modeling-2023/sources) | Input-candidate-output records carrying quality/reward information for offline policy improvement.; process: source input, candidate generation, quality signal; Offline language-model generation and batch reinforcement-learning pipeline. | Quality signals derived from the paper's alignment/evaluation setup; the exact reward implementation should be retained with any reuse. | It is an early, clear reference for separating the generation batch, quality signal, and offline optimizer when interpreting self-training claims. |
 
 ## 5. Full Paper List
 
@@ -71,14 +69,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ### <a id="rlvr-verifier-rl"></a>🏋️ RLVR / verifier RL
 
-- 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
-  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2502.01456) · [DOI](https://doi.org/10.48550/arXiv.2502.01456) · [Code](https://github.com/PRIME-RL/PRIME) · [Data](https://huggingface.co/datasets/PRIME-RL/Eurus-2-Rollout) · [HF](https://huggingface.co/PRIME-RL) · [Paper Card Source](../../paper_cards/library/cards/prime-process-reinforcement-through-implicit-rewards-2025/sources)
-  _Data object:_ policy rollout with final outcome label, implicit process reward estimates, and policy update signal.; process: prompt, policy rollout, outcome label; online RL training loop
-  _Feedback / verifier:_ implicit process rewards derived from outcome labels and updated on policy rollouts.
-  _Recipe signal:_ teacher: outcome verifiers rather than dense human process labels.; generator: policy rollouts
-  _Audit focus:_ implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes
-  _Why it matters:_ It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
+_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
 
 ### <a id="agent-training"></a>🌐 Agent training
 
@@ -87,17 +78,6 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 ### <a id="evaluation-reranking-audit"></a>🧪 Evaluation / reranking / audit
 
 _No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
-
-### <a id="other-related-work"></a>Other related work
-
-- 🏗️ **[Reinforced Self-Training (ReST) for Language Modeling](https://arxiv.org/abs/2308.08998)**
-  <sub>2023 · arXiv · 🏗️ construction recipe · mixed · preference learning · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2308.08998) · [DOI](https://doi.org/10.48550/arXiv.2308.08998) · [Paper Card Source](../../paper_cards/library/cards/reinforced-self-training-rest-for-language-modeling-2023/sources)
-  _Data object:_ Input-candidate-output records carrying quality/reward information for offline policy improvement.; process: source input, candidate generation, quality signal; Offline language-model generation and batch reinforcement-learning pipeline.
-  _Feedback / verifier:_ Quality signals derived from the paper's alignment/evaluation setup; the exact reward implementation should be retained with any reuse.
-  _Recipe signal:_ teacher: The policy's own generated batch plus the quality/reward signal; no stronger demonstration teacher is required.; generator: The current policy generates an offline batch in the grow phase.
-  _Audit focus:_ Quality filtering can collapse output diversity when only high-scoring candidates are retained., Offline reuse can amplify reward-model or metric bias across iterations., Reported gains should not be generalized from translation to verifiable reasoning without an equivalent feedback contract.
-  _Why it matters:_ It is an early, clear reference for separating the generation batch, quality signal, and offline optimizer when interpreting self-training claims.
 
 ## 6. What to Audit
 
@@ -114,8 +94,7 @@ _No verified primary-source entries are assigned here yet. Add official paper li
 
 ## 8. Related Paper-Card Sources
 
-- [PRIME: Process reinforcement through implicit rewards](../../paper_cards/library/cards/prime-process-reinforcement-through-implicit-rewards-2025/sources)
-- [Reinforced Self-Training (ReST) for Language Modeling](../../paper_cards/library/cards/reinforced-self-training-rest-for-language-modeling-2023/sources)
+- No paper-card sources are linked for this category yet.
 
 ## Back to Map
 

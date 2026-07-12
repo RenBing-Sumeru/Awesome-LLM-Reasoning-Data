@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T13:04:30Z",
   "category_ids": [
-    "data_construction_open_release_recipes",
-    "scaling_rlvr_test_time_compute"
+    "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "未被接收，年份较早。",
-  "decision_reason": "未被接收，年份较早。",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-11T13:16:19Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "核心的RFT文章，机构权威，年份较早",
+    "updated_at": "2026-07-12T13:04:30Z"
+  }
 }

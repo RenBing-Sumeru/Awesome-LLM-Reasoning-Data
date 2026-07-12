@@ -1,0 +1,21 @@
+{
+  "title": "Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2406.06592",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-12T13:19:36Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "自动化监督方法，机构权威，时间稍早",
+    "updated_at": "2026-07-12T13:19:36Z"
+  }
+}

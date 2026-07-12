@@ -1,6 +1,3 @@
-- How many candidates were generated per prompt, by which model and settings?
-- What normalization and answer checker define “correct”?
-- Are rejected traces available to measure selection bias?
-- Were benchmark evaluation prompts kept out of the augmentation pool?
+Retaining only correct final answers hides plausible but invalid rationales and collapses failure diversity. Exact-answer matching may accept reasoning with unsupported steps or reject equivalent answer formats. Reusing benchmark prompts for augmentation can contaminate subsequent benchmark evaluation.
 
-Final-answer checks can accept unsupported rationales and hide failure diversity. Benchmark-prompt reuse can contaminate evaluation, while exact matching may reject equivalent answers.
+Reproduction also depends on split policy (Generated augmentation is based on the reported training setup; evaluation is on GSM8K.), decontamination (unknown), and license provenance (Check GSM8K and code-repository terms before redistributing generated derivatives.).

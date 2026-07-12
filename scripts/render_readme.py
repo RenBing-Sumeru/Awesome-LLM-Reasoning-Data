@@ -176,7 +176,8 @@ def starter_table() -> str:
     data = all_entries()
     cards = all_cards()
     matches = starter_matches(data)
-    beginner = next((pack for pack in starter_packs() if pack.get("id") == "beginner_20"), starter_packs()[0])
+    packs = starter_packs()
+    beginner = packs[0] if packs else {"entries": []}
     rows = ["| # | Paper / report | Lens | Start with this question | Paper Card Source |", "|---:|---|---|---|---|"]
     for index, title in enumerate(beginner.get("entries", []), 1):
         entry = matches.get(title)
@@ -524,6 +525,8 @@ def research_question_table() -> str:
 
 def readme_en() -> str:
     s = stats()
+    packs = starter_packs()
+    starter_count = len((packs[0] if packs else {}).get("entries", []))
     return f"""<h1><a href="https://www.tsinghua.edu.cn/en/"><img align="right" src="assets/institutions/tsinghua-university.png" height="48" alt="Tsinghua University"></a><a href="https://english.pku.edu.cn/"><img align="right" src="assets/institutions/peking-university.png" height="48" alt="Peking University"></a>🌟 Awesome LLM Reasoning Data</h1>
 
 > A learning repository for understanding post-training reasoning data: what it is, how it is built, how it is verified, how it enters training, and how to audit it.
@@ -551,7 +554,7 @@ To answer that, the repo combines four layers:
 
 - 🧭 **Learning guides** that explain concepts and reading paths.
 - 📚 **Paper maps** that organize work by subfield rather than by publication date.
-- 🗂️ **Paper-card sources** that support bilingual review, local editing, and generated submission packages.
+- 🗂️ **Card-local paper sources** that support bilingual review, local editing, and hot-plug migration by copying the canonical library.
 - 🔎 **Searchable structured metadata** so readers can filter by verifier type, training use, curation level, and artifact availability.
 
 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113).
@@ -658,7 +661,7 @@ Read this repository if you want to answer questions like:
 | 🔎 Research Questions | Jump from a question to the right paper track | [jump](#-browse-by-research-question) |
 | 📊 Snapshot | Current verified/card/artifact coverage | [jump](#snapshot-stats) |
 | 🛣️ Learning Roadmap | Learn the field in 6 stages | [jump](#-learning-roadmap) |
-| 🧭 Starter Pack | 20 papers to read first | [jump](#-starter-pack-20-must-read-papers) |
+| 🧭 Starter Pack | {starter_count} papers to read first | [jump](#-starter-pack-{starter_count}-must-read-papers) |
 | 🧮 Core Paper Map | The compact map from data objects to papers | [jump](#-core-paper-map) |
 | 🗺️ Category Map | Programmatic, environmental, judgment-required, scaling, audit | [jump](#-category-map) |
 | 🧰 Build Data | Construction stack for reasoning datasets | [jump](#-how-to-build-a-reasoning-dataset) |
@@ -708,14 +711,14 @@ This repository should work like a small open course. You do not need to read ev
 |---:|---|---|---|
 | 1 | Vocabulary and mental model | [60-second version](#-60-second-version), [docs/00](docs/00_start_here.md), [docs/01](docs/01_what_is_post_training_reasoning_data.md) | You can explain the difference between answer data, trace data, reward data, verifier data, and trajectory data. |
 | 2 | Feedback contracts | [docs/02](docs/02_verifier_anchored_taxonomy.md), [docs/06](docs/06_verifiers_and_rewards.md), [Card library](paper_cards/library/cards/) | You can identify whether a work uses programmatic, environmental, judgment-required, or mixed verification. |
-| 3 | Core papers | [Starter Pack](#-starter-pack-20-must-read-papers), [papers/README.md](papers/README.md), [paper_cards/README.md](paper_cards/README.md) | You can locate the canonical papers for math, code, process supervision, agents, RLVR, and audit. |
+| 3 | Core papers | [Starter Pack](#-starter-pack-{starter_count}-must-read-papers), [papers/README.md](papers/README.md), [paper_cards/README.md](paper_cards/README.md) | You can locate the canonical papers for math, code, process supervision, agents, RLVR, and audit. |
 | 4 | Data construction | [docs/05](docs/05_construction_cookbook.md), [Card library](paper_cards/library/cards/) | You can describe prompt sourcing, teacher generation, filtering, verifier pinning, and release metadata. |
 | 5 | Specialized tracks | [programmatic data]({paper_link('programmatically_verifiable_outcome_data')}), [agents]({paper_link('environment_agent_trajectory_data')}), [rubrics]({paper_link('judgment_rubric_domain_expert_data')}), [scaling]({paper_link('scaling_rlvr_test_time_compute')}) | You can choose a subfield and follow its top papers and audit questions. |
 | 6 | Audit and contribution | [docs/09](docs/09_audit_and_failure_modes.md), [reports/link_coverage.md](reports/link_coverage.md), [CONTRIBUTING.md](CONTRIBUTING.md) | You can tell what is verified, what is missing, and how to improve an entry without hallucinating links. |
 
-## 🧭 Starter Pack: 20 Must-Read Papers
+## 🧭 Starter Pack: {starter_count} Must-Read Papers
 
-Read these as a learning path, not as a citation dump. The rightmost columns tell you what question each paper should answer before you move on.
+Read these {starter_count} papers as a learning path, not as a citation dump. The rightmost columns tell you what question each paper should answer before you move on.
 
 {starter_table()}
 
@@ -859,7 +862,7 @@ Scaling claims become much clearer when you treat the training data, verifier, a
 
 | If your question is... | Use this path |
 |---|---|
-| "I am new. What should I read first?" | Start with [docs/00](docs/00_start_here.md), then the [Starter Pack](#-starter-pack-20-must-read-papers). |
+| "I am new. What should I read first?" | Start with [docs/00](docs/00_start_here.md), then the [Starter Pack](#-starter-pack-{starter_count}-must-read-papers). |
 | "I want to build a reasoning dataset." | Read [docs/05](docs/05_construction_cookbook.md), then inspect relevant paper-card sources. |
 | "I want to know whether a benchmark is reusable." | Open the relevant paper-card source, then check its verifier, data split, contamination risk, and official links. |
 | "I want to understand RLVR." | Follow programmatic math/code/proof papers, verifier/reward sources, and scaling/RLVR category pages. |
@@ -932,6 +935,8 @@ MIT. See [LICENSE](LICENSE).
 
 def readme_zh() -> str:
     s = stats()
+    packs = starter_packs()
+    starter_count = len((packs[0] if packs else {}).get("entries", []))
     return f"""# 🌟 Awesome LLM Reasoning Data
 
 > 一个系统学习“大模型后训练推理数据”的开源仓库：从概念、论文、数据构造、验证器、奖励信号、Agent 轨迹、RLVR、benchmark 到审计风险。
@@ -1064,14 +1069,14 @@ def readme_zh() -> str:
 |---:|---|---|---|
 | 1 | 基础概念和 mental model | [docs/00](docs/00_start_here.md)、[docs/01](docs/01_what_is_post_training_reasoning_data.md) | 能解释 answer data、trace data、reward data、verifier data、trajectory data 的区别。 |
 | 2 | 反馈契约 | [docs/02](docs/02_verifier_anchored_taxonomy.md)、[docs/06](docs/06_verifiers_and_rewards.md) | 能判断一篇工作使用 programmatic、environmental、judgment-required 还是 mixed verification。 |
-| 3 | 核心论文 | [Starter Pack](#-starter-pack20-篇必读)、[papers/README.md](papers/README.md)、[paper_cards/README.md](paper_cards/README.md) | 能定位 math/code/process/agent/RLVR/audit 的代表性工作。 |
+| 3 | 核心论文 | [Starter Pack](#-starter-pack{starter_count}-篇必读)、[papers/README.md](papers/README.md)、[paper_cards/README.md](paper_cards/README.md) | 能定位 math/code/process/agent/RLVR/audit 的代表性工作。 |
 | 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[Card 库](paper_cards/library/cards/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
 | 5 | 专题深入 | [math/code/proof]({paper_link('programmatically_verifiable_outcome_data')})、[agents]({paper_link('environment_agent_trajectory_data')})、[rubrics]({paper_link('judgment_rubric_domain_expert_data')})、[scaling]({paper_link('scaling_rlvr_test_time_compute')}) | 能沿一个子领域继续读论文、看双语卡片源、查官方链接。 |
 | 6 | 审计与贡献 | [docs/09](docs/09_audit_and_failure_modes.md)、[reports/link_coverage.md](reports/link_coverage.md)、[CONTRIBUTING.md](CONTRIBUTING.md) | 能判断什么已经验证、什么还缺失，并且可以给仓库补高质量条目。 |
 
-## 🧭 Starter Pack：20 篇必读
+## 🧭 Starter Pack：{starter_count} 篇必读
 
-把这 20 篇当作学习路线，而不是简单引用列表。每篇都对应一个你需要掌握的问题。
+把这 {starter_count} 篇当作学习路线，而不是简单引用列表。每篇都对应一个你需要掌握的问题。
 
 {starter_table()}
 
@@ -1124,7 +1129,7 @@ def readme_zh() -> str:
 
 | 你的问题 | 推荐路径 |
 |---|---|
-| “我是新手，先读什么？” | [docs/00](docs/00_start_here.md) -> [Starter Pack](#-starter-pack20-篇必读) -> [paper_cards/README.md](paper_cards/README.md) |
+| “我是新手，先读什么？” | [docs/00](docs/00_start_here.md) -> [Starter Pack](#-starter-pack{starter_count}-篇必读) -> [paper_cards/README.md](paper_cards/README.md) |
 | “我想构造一个 reasoning dataset。” | [docs/05](docs/05_construction_cookbook.md) -> 相关双语 paper-card source。 |
 | “我想判断一个 benchmark 能不能复用。” | 打开对应 paper-card source，看 verifier、split、contamination、official links。 |
 | “我想理解 RLVR。” | 看 [programmatic data]({paper_link('programmatically_verifiable_outcome_data')})、verifier/reward 相关条目、scaling/RLVR 页面。 |

@@ -6,7 +6,6 @@
   "confidence_ch": "高",
   "authors_ch": "Andy Zhou, Kai Yan, Michal Shlapentokh-Rothman, Haohan Wang, Yu-Xiong Wang",
   "category_ids": [
-    "environment_agent_trajectory_data",
     "rollout_search_test_time_trace_data"
   ],
   "updated_at": "2026-07-11T00:00:00Z"

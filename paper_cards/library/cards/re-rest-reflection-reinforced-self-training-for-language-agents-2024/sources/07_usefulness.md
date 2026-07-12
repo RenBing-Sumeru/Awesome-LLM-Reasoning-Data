@@ -1,3 +1,3 @@
-Refined episodes are used for SFT and agent training. Preserve the original failure, feedback source, reflector prompt/model, and selection rule so the revision can be audited.
+It makes rejected or weak agent attempts potentially useful only when their feedback and repair lineage are retained.
 
-Re-ReST demonstrates why rejected traces should not be discarded blindly: with explicit feedback and repair lineage, they can become controlled training evidence.
+For reuse, preserve task_input, initial_agent_output, environment_feedback, reflection, refined_output, self-training_selection, together with model/version, split, stopping rule, and total compute.

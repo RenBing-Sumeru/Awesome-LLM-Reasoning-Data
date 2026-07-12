@@ -1,0 +1,125 @@
+id: deepseek-r1-2025
+title: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning'
+year: 2025
+venue: Nature
+authors:
+- DeepSeek-AI
+- Daya Guo
+- Dejian Yang
+- Haowei Zhang
+- Junxiao Song
+- Ruoyu Zhang
+- Runxin Xu
+- Qihao Zhu
+- Shirong Ma
+- Peiyi Wang
+- Xiao Bi
+- Xiaokang Zhang
+- Xingkai Yu
+- Yu Wu
+- Zhihong Shao
+source_role:
+- model_report
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- math
+- code
+- reasoning
+training_use:
+- rlvr
+- sft
+- distillation
+- test_time_compute
+construction_layer:
+- trace_writing
+- frontier_pipeline
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2501.12948
+  arxiv: https://arxiv.org/abs/2501.12948
+  code: https://github.com/deepseek-ai/DeepSeek-R1
+  data: null
+  project: null
+  huggingface: https://huggingface.co/deepseek-ai/DeepSeek-R1
+  doi: https://doi.org/10.48550/arXiv.2501.12948
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark and training tasks described in the primary paper.
+  trace_author: Train R1-Zero with large-scale RL, add cold-start traces for R1, run reasoning RL, rejection-sample successful
+    readable responses into SFT data, mix non-reasoning data, run further RL, and distill R1 outputs
+  answer_format: prompt, policy checkpoint, sampled long reasoning response, final answer, accuracy and format rewards, rejection-sampling
+    decision, SFT mixture membership, and distilled student target
+  process_fields:
+  - problem or prompt
+  - candidate rollout or reasoning state
+  - feedback or verifier signal
+  - sampling or search metadata
+  - retention or selection decision
+  - final answer or terminal outcome
+  environment_or_substrate: Offline and on-policy reasoning rollout/search pipeline
+  verifier_or_reward: rule-based accuracy rewards and format rewards dominate verifiable reasoning tasks; quality filters
+    and model-based signals supplement broader data
+  terminal_predicate: A candidate reaches the paper's accepted correctness or selection condition.
+recipe_metadata:
+  base_model: See the primary paper and released artifacts for experiment-specific checkpoints.
+  teacher: rule-based accuracy rewards and format rewards dominate verifiable reasoning tasks; quality filters and model-based
+    signals supplement broader data
+  generator: The policy or teacher model generates candidate reasoning traces.
+  filtering_rule: Train R1-Zero with large-scale RL, add cold-start traces for R1, run reasoning RL, rejection-sample successful
+    readable responses into SFT data, mix non-reasoning data, run further RL, and distill R1 outputs.
+  sampling_protocol: Multiple candidates, continuations, or search states are generated and retained with their feedback-bearing
+    lineage.
+  rollout_count: null
+  temperature: null
+  inference_budget: Experiment-specific; preserve sample count, search expansions, token budget, and verifier calls when reproducing.
+  optimizer_or_scaffold: rlvr, sft, distillation, test_time_compute
+audit:
+  source_mixture: Task mixture and benchmark splits are described in the primary paper; preserve per-record provenance.
+  split: Use official train/evaluation splits and record any curation pool separately.
+  decontamination: Paper-specific; do not infer decontamination beyond explicit disclosures.
+  license: Check each official paper, code, data, and model artifact separately before reuse.
+  lineage: prompt, policy checkpoint, sampled long reasoning response, final answer, accuracy and format rewards, rejection-sampling
+    decision, SFT mixture membership, and distilled student target
+  known_failure_modes:
+  - the complete training rollout corpus and rejected distribution are not released
+  - multi-stage gains conflate RL, cold-start data, rejection sampling, and distillation
+  - rule correctness does not verify the faithfulness or efficiency of a long rationale
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv metadata and the listed official artifacts were checked for this candidate Card.
+inclusion_reason: Combines rule-rewarded on-policy reasoning rollouts, rejection-sampled SFT data, multi-stage RL, and long-CoT
+  distillation.
+related: []
+tags:
+- primary-link-checked
+- track-05-candidate
+status: verified
+one_line: Combines rule-rewarded on-policy reasoning rollouts, rejection-sampled SFT data, multi-stage RL, and long-CoT distillation.
+card: cards/track-05/deepseek-r1-2025.md
+needs: []
+one_line_summary: Combines rule-rewarded on-policy reasoning rollouts, rejection-sampled SFT data, multi-stage RL, and long-CoT
+  distillation.
+why_it_matters: The report links emergent long reasoning under outcome RL to a practical multi-stage recipe that repairs readability
+  and transfers behavior by rejection sampling and distillation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and listed official artifact links are pinned.
+category_ids:
+- rollout_search_test_time_trace_data

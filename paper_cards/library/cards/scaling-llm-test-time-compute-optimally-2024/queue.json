@@ -9,13 +9,13 @@
     "huggingface": null,
     "doi": null
   },
+  "updated_at": "2026-07-12T13:05:53Z",
   "category_ids": [
-    "scaling_rlvr_test_time_compute",
     "rollout_search_test_time_trace_data"
   ],
-  "reason_to_include": "ok",
-  "decision_reason": "ok",
-  "search_status": "candidate",
-  "review_note": "",
-  "updated_at": "2026-07-11T04:37:11Z"
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "关注test-time-compute的分类策略，推荐等级高",
+    "updated_at": "2026-07-12T13:05:53Z"
+  }
 }

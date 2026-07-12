@@ -91,7 +91,6 @@ tags:
 status: verified
 one_line: Uses an LM as both reasoning agent and world model to build MCTS traces with predicted states and task-specific
   rewards.
-card: cards/recipes/reasoning-via-planning.md
 needs: []
 one_line_summary: Uses an LM as both reasoning agent and world model to build MCTS traces with predicted states and task-specific
   rewards.
@@ -107,4 +106,3 @@ verification:
   notes: Official arXiv and ACL Anthology primary sources pinned.
 category_ids:
 - rollout_search_test_time_trace_data
-- scaling_rlvr_test_time_compute
