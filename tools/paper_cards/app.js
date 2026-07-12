@@ -163,6 +163,19 @@ function poolLabel(valid) {
   }[valid?.pool] || "需要人工标注";
 }
 
+function manualAnnotationStatusLabel(entry) {
+  if (validInfo(entry).pool !== "annotated") return "";
+  const record = state.searchQueue?.entries?.[entry.id] || {};
+  const manual = record.manual_annotation || {};
+  const status = manual.search_status || "";
+  const labels = {
+    candidate: "候选",
+    promoted: "已入选",
+    rejected: "已排除",
+  };
+  return labels[status] ? `人工标注：${labels[status]}` : "人工标注：待补充";
+}
+
 function levelLabel(valid) {
   return valid?.level_label || valid?.level || "L0 候选论文";
 }
@@ -314,13 +327,17 @@ function renderList() {
     const valid = validInfo(entry);
     const errors = arr(valid.errors).length;
     const poolClass = `pool-${valid.pool || "needs_annotation"}`;
+    const poolStatus = poolLabel(valid);
+    const manualStatus = manualAnnotationStatusLabel(entry);
+    const levelStatus = levelLabel(valid);
     return `<div class="paper-row ${active}">
       <button class="row-main" type="button" data-entry="${esc(entry.id)}">
         <span class="row-title">${esc(entry.title)}</span>
         <span class="row-meta">${esc(entry.year || "n.d.")} · ${esc(entry.venue || "unknown")}</span>
         <span class="row-tags">
-          <b class="${esc(poolClass)}">${esc(poolLabel(valid))}</b>
-          <em>${esc(levelLabel(valid))}</em>
+          <b class="${esc(poolClass)}">${esc(poolStatus)}</b>
+          ${manualStatus ? `<em class="manual-annotation">${esc(manualStatus)}</em>` : ""}
+          ${levelStatus && levelStatus !== poolStatus ? `<em>${esc(levelStatus)}</em>` : ""}
           ${statusLabel(entry) ? `<em>${esc(statusLabel(entry))}</em>` : ""}
           ${errors ? `<em>${errors} 缺项</em>` : ""}
         </span>

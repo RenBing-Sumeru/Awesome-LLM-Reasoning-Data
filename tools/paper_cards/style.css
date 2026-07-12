@@ -251,6 +251,11 @@ input[type="radio"] {
   color: var(--blue);
 }
 
+.row-tags em.manual-annotation {
+  background: #f3f4f6;
+  color: #475467;
+}
+
 .editor-panel {
   min-height: 680px;
   padding: 14px;

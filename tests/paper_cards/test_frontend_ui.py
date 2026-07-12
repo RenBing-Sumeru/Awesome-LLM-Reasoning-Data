@@ -117,6 +117,25 @@ class PaperCardFrontendUiTest(unittest.TestCase):
         self.assertIn("await selectEntry(next.id);", app)
         self.assertIn("已保存人工标注", app)
 
+    def test_l5_list_tag_shows_the_manual_annotation_status(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn("function manualAnnotationStatusLabel", app)
+        self.assertIn("manual.search_status", app)
+        self.assertIn('class="manual-annotation"', app)
+        self.assertIn("manualAnnotationStatusLabel(entry)", app)
+
+    def test_l5_list_does_not_duplicate_an_identical_level_label(self) -> None:
+        app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn("const levelStatus = levelLabel(valid);", app)
+        self.assertIn("levelStatus !== poolStatus", app)
+
+    def test_review_page_cache_busts_the_workspace_module(self) -> None:
+        html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
+
+        self.assertRegex(html, r'src="app\.js\?v=[^"]+"')
+
     def test_category_editor_allows_zero_to_two_controlled_values(self) -> None:
         app = (ROOT / "tools" / "paper_cards" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "tools" / "paper_cards" / "index.html").read_text(encoding="utf-8")
