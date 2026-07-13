@@ -71,8 +71,6 @@ Each track page includes a track explanation, a read-first table, the full paper
 
 ### 🧭 1 · Background / Foundations `00`
 
-*build the shared vocabulary before opening dense primary papers.*
-
 <blockquote>
 
 <details>
@@ -90,8 +88,6 @@ Each track page includes a track explanation, a read-first table, the full paper
 </blockquote>
 
 ### 🧬 2 · Core Reasoning Data Types `01–07`
-
-*compare the actual records: demonstrations, preferences, verifiable outcomes, process labels, rollout traces, agent episodes, and rubrics.*
 
 <blockquote>
 
@@ -186,8 +182,6 @@ Each track page includes a track explanation, a read-first table, the full paper
 
 ### 🛠️ 3 · Data Lifecycle `08–13`
 
-*follow the lifecycle from construction recipes to training use, scaling, benchmarks, frontier disclosures, and failure audits.*
-
 <blockquote>
 
 <details>
@@ -271,36 +265,36 @@ Each track page includes a track explanation, a read-first table, the full paper
 
 </blockquote>
 
-## 🧭 Learning Path
+## 🛤️ Learning Path
 
 Four stages, in reading order. Each stage starts from the learning guides; the must-read papers for each stage are being curated and will land here.
 
 **🌱 Stage 1 · Build the mental model** — what the field studies and how the data is organized
 
-- 🧭 [00 · Start here](docs/00_start_here.md) — zero-to-field overview and reading paths
-- 🧠 [01 · What is post-training reasoning data?](docs/01_what_is_post_training_reasoning_data.md) — the verifier-bearing sample mental model
+- 🏁 [00 · Start here](docs/00_start_here.md) — zero-to-field overview and reading paths
+- 💡 [01 · What is post-training reasoning data?](docs/01_what_is_post_training_reasoning_data.md) — the verifier-bearing sample mental model
 - 🗺️ [02 · Verifier-anchored taxonomy](docs/02_verifier_anchored_taxonomy.md) — classify papers by feedback contract, not only domain
-- 📜 Stage must-reads: curation in progress
+- 📖 Stage must-reads: curation in progress
 
 **🔬 Stage 2 · Know the data objects** — what a well-formed sample looks like and how quality is measured
 
-- 📦 [03 · Reasoning data objects](docs/03_reasoning_data_objects.md) — what fields each data object must serialize
-- 🎯 [04 · Data quality](docs/04_data_quality.md) — quality dimensions beyond accuracy
-- 📜 Stage must-reads: curation in progress
+- 🗃️ [03 · Reasoning data objects](docs/03_reasoning_data_objects.md) — what fields each data object must serialize
+- 💎 [04 · Data quality](docs/04_data_quality.md) — quality dimensions beyond accuracy
+- 📖 Stage must-reads: curation in progress
 
 **⚙️ Stage 3 · Construct, verify, and train** — how data is produced, scored, trained on, and scaled
 
-- 🏗️ [05 · Construction cookbook](docs/05_construction_cookbook.md) — prompt sourcing, teacher traces, filtering, release metadata
-- ⚖️ [06 · Verifiers and rewards](docs/06_verifiers_and_rewards.md) — how to audit checkers, judges, rubrics, and rewards
-- 🌐 [07 · Agent trajectory data](docs/07_agent_trajectory_data.md) — state/action/replay fields for tools, web, OS, and SWE
-- 📈 [08 · Scaling and test-time compute](docs/08_scaling_and_test_time_compute.md) — separate data, verifier, optimizer, and budget effects
-- 📜 Stage must-reads: curation in progress
+- 🏭 [05 · Construction cookbook](docs/05_construction_cookbook.md) — prompt sourcing, teacher traces, filtering, release metadata
+- ✅ [06 · Verifiers and rewards](docs/06_verifiers_and_rewards.md) — how to audit checkers, judges, rubrics, and rewards
+- 🕹️ [07 · Agent trajectory data](docs/07_agent_trajectory_data.md) — state/action/replay fields for tools, web, OS, and SWE
+- 📶 [08 · Scaling and test-time compute](docs/08_scaling_and_test_time_compute.md) — separate data, verifier, optimizer, and budget effects
+- 📖 Stage must-reads: curation in progress
 
-**🛡️ Stage 4 · Audit and practice** — how to catch leakage and gaming, then apply it in engineering
+**🕵️ Stage 4 · Audit and practice** — how to catch leakage and gaming, then apply it in engineering
 
-- 🧯 [09 · Audit and failure modes](docs/09_audit_and_failure_modes.md) — leakage, contamination, verifier gaming, judge attacks
-- 🛠️ [10 · Industry onboarding path](docs/10_industry_onboarding_path.md) — a practical path for engineers entering the field
-- 📜 Stage must-reads: curation in progress
+- 🚨 [09 · Audit and failure modes](docs/09_audit_and_failure_modes.md) — leakage, contamination, verifier gaming, judge attacks
+- 🔧 [10 · Industry onboarding path](docs/10_industry_onboarding_path.md) — a practical path for engineers entering the field
+- 📖 Stage must-reads: curation in progress
 
 ## 🔎 Searchable Website (In Progress)
 

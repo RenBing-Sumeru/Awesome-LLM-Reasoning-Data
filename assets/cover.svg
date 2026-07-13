@@ -16,6 +16,17 @@
     <path d="M599 240 C597 210 601 184 598 158 C597 138 599 118 597 98" stroke-width="9"/>
     <path d="M598 172 C586 156 579 143 577 126" stroke-width="5"/>
     <path d="M598 150 C611 138 618 126 620 110" stroke-width="5"/>
+    <path d="M466 194 C461 182 456 172 453 163" stroke-width="4"/>
+    <path d="M465 196 C452 190 441 184 433 179" stroke-width="3.5"/>
+    <path d="M500 236 C472 238 446 236 422 233" stroke-width="4"/>
+    <path d="M502 306 C488 295 474 284 463 274" stroke-width="3.5"/>
+    <path d="M519 210 C518 202 517 194 516 186" stroke-width="3"/>
+    <path d="M732 184 C725 172 719 162 714 156" stroke-width="4"/>
+    <path d="M734 186 C749 182 764 179 776 176" stroke-width="3.5"/>
+    <path d="M685 200 C681 190 678 182 677 175" stroke-width="3"/>
+    <path d="M694 268 C685 259 678 252 673 246" stroke-width="3.5"/>
+    <path d="M701 300 C723 285 743 268 760 252" stroke-width="4"/>
+    <path d="M694 268 C701 268 707 268 713 268" stroke-width="3"/>
   </g>
 
   <!-- group blossoms: big circle = group, inner dots = tracks -->
@@ -26,7 +37,7 @@
   <!-- track blossoms -->
   <g>
     <g transform="translate(600 110)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.07;0.1;0.12;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="17" fill="#16a34a" fill-opacity="0.5"/></g></g>
-    <g transform="translate(622 96)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.09;0.12;0.14;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="6" fill="#4ade80" fill-opacity="0.45"/></g></g>
+    <g transform="translate(621 101)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.09;0.12;0.14;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="6" fill="#4ade80" fill-opacity="0.45"/></g></g>
     <g transform="translate(582 128)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.1;0.13;0.15;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#86efac" fill-opacity="0.5"/></g></g>
 
     <g transform="translate(452 158)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.13;0.16;0.18;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="17" fill="#3b82f6" fill-opacity="0.55"/></g></g>
@@ -37,7 +48,7 @@
     <g transform="translate(430 176)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.255;0.285;0.305;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="11" fill="#0284c7" fill-opacity="0.55"/></g></g>
     <g transform="translate(478 214)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.28;0.31;0.33;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="21" fill="#4f46e5" fill-opacity="0.5"/></g></g>
     <g transform="translate(500 240)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.3;0.33;0.35;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="6" fill="#60a5fa" fill-opacity="0.45"/></g></g>
-    <g transform="translate(442 198)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.31;0.34;0.36;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#38bdf8" fill-opacity="0.5"/></g></g>
+    <g transform="translate(446 190)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.31;0.34;0.36;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#38bdf8" fill-opacity="0.5"/></g></g>
 
     <g transform="translate(712 150)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.35;0.38;0.4;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="16" fill="#a855f7" fill-opacity="0.55"/></g></g>
     <g transform="translate(780 174)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.375;0.405;0.425;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="12" fill="#c026d3" fill-opacity="0.5"/></g></g>
@@ -46,7 +57,7 @@
     <g transform="translate(670 240)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.45;0.48;0.5;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="15" fill="#9333ea" fill-opacity="0.5"/></g></g>
     <g transform="translate(676 168)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.475;0.505;0.525;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="11" fill="#f43f5e" fill-opacity="0.55"/></g></g>
     <g transform="translate(734 206)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.5;0.53;0.55;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="7" fill="#c084fc" fill-opacity="0.4"/></g></g>
-    <g transform="translate(748 282)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.51;0.54;0.56;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#f0abfc" fill-opacity="0.5"/></g></g>
+    <g transform="translate(736 278)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.51;0.54;0.56;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#f0abfc" fill-opacity="0.5"/></g></g>
   </g>
 
   <!-- labels -->
