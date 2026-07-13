@@ -1,0 +1,4 @@
+- Data object: problem, semantic-step boundaries, rollout group, confidence, dynamic truncation point, relative reward, answer, and token count.
+- Construction: Step-GRPO structures traces with linguistic step markers, exposes the policy to concise high-confidence truncated rollouts, and applies a step-aware group-relative reward.
+- Feedback: Terminal correctness protects solvability; group baselines and step counts determine when redundancy is penalized without a uniform raw-token penalty.
+- Main audit risk: Linguistic markers are imperfect semantic boundaries, and high confidence may terminate fluent but incomplete reasoning.

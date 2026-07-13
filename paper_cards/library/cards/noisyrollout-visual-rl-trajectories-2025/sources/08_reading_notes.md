@@ -1,0 +1,4 @@
+- Data object: visual problem, clean or distorted image, sampled reasoning trajectory, noise level, reward, annealing stage, and answer.
+- Construction: NoisyRollout mixes trajectories collected from clean and moderately distorted images during RL and gradually anneals the distortion schedule.
+- Feedback: Verifiable task answers score each rollout, while image corruption level becomes explicit context for deciding which trajectories enter each training stage.
+- Main audit risk: Noise can change the task semantics rather than only perception difficulty, so clean and corrupted trajectories are not automatically label-equivalent.

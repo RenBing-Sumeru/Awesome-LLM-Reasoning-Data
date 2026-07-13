@@ -1,0 +1,17 @@
+{
+  "title": "Harnessing Negative Signals: Reinforcement Distillation from Teacher Data for LLM Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.74/",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2026.acl-long.74"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z",
+  "manual_annotation": {}
+}

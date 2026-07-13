@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RePrism 为每个提示构造多条多样且正确的回答，并训练特殊噪声嵌入作为采样不同推理路径的隐式信号。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用成组正确轨迹研究覆盖率，但应把语义策略多样性与词面、嵌入距离分开审计。",
+  "confidence_ch": "高",
+  "authors_ch": "Bohan Lyu, Qixin Xu, Zihan Zhu, Yesai Wu, Zhong Zhang, Haotian Chen, Xin Cong, Xiaojiang Liu, Zhiyuan Liu, Maosong Sun",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

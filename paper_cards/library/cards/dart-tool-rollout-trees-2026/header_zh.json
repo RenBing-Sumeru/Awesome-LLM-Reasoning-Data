@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DART 在长 CoT rollout 的有前景位置分支以发现工具使用机会，再给工具调用确有帮助的子轨迹分配树结构过程优势。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用完整 rollout 树训练或审计工具推理，但必须保留不调用工具的基线与执行失败。",
+  "confidence_ch": "高",
+  "authors_ch": "Kun Li, Zenan Xu, Junan Li, Zengrui Jin, Jinghao Deng, Zexuan Qiu, Bo Zhou",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

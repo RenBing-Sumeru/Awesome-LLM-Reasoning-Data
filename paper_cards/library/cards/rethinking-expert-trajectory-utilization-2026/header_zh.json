@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Plasticity-Ceiling 框架改变专家数据规模、难度与 SFT 到 RL 的切换时机，测量基础表现和剩余 RL 可塑性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用它规划 SFT 后接 RL 的数据与 checkpoint，但应保留每个子集定义和验证曲线，而非只留下最佳最终模型。",
+  "confidence_ch": "高",
+  "authors_ch": "Bowen Ding, Yuhan Chen, Jiayang Lyu, Jiyao Yuan, Qi Zhu, Shuangshuang Tian, Dantong Zhu, Futing Wang, Heyuan Deng, Fei Mi, Lifeng Shang, Tao Lin",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

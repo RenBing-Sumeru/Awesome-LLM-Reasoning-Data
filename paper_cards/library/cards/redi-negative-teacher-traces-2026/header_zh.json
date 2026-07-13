@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "两阶段配方先在正轨迹上做 SFT，再用 REINFORCE 风格的 REDI 目标同时利用正轨迹和原本被丢弃的负教师轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可把 REDI 作为保留失败教师数据的基线，并保存源轨迹与答案检查器以便之后细粒度重标。",
+  "confidence_ch": "高",
+  "authors_ch": "Shuyao Xu, Cheng Peng, Jiangxuan Long, Weidi Xu, Wei Chu, Yuan Qi",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

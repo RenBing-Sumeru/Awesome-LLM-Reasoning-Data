@@ -1,0 +1,4 @@
+- Data object: problem, raw rollout, verified intermediate proposition, critical pitfall, shared experience-bank version, next attempt, and final answer.
+- Construction: RSE distills completed attempts into a shared bank of positive intermediate conclusions and negative failure patterns, then conditions later search on that cumulative memory.
+- Feedback: A reasoning distiller independently checks propositions and classifies dead ends or logic flaws; later terminal outcomes test whether recycled entries reduce repeated work.
+- Main audit risk: Distilled propositions may lose conditions, failure summaries can overgeneralize, and an erroneous bank entry can contaminate every later attempt.

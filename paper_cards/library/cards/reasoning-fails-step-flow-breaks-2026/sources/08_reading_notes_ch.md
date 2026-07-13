@@ -1,0 +1,4 @@
+- 数据对象：问题、思维步骤、最终总结、逐层 attention-gradient 图、浅层锁定或深层衰减标签、干预与答案。
+- 构造方式：Step-Saliency 把 attention-gradient 分数汇总为问题、思维与总结之间的步骤图，StepFlow 再针对两类反复出现的信息流中断做干预。
+- 反馈机制：最终正确性对轨迹分组；saliency 图揭示浅层只锁定当前步骤，以及深层逐渐遗忘早期思维上下文。
+- 主要审计风险：attention-gradient saliency 不是因果解释，汇总选择也可能人为制造步骤边界或衰减。

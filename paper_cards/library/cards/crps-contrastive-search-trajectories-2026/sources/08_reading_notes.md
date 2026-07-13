@@ -1,0 +1,4 @@
+- Data object: problem, MCTS tree, high- and low-quality paths, reflective comparison, failure pivot, synthesized chain, and verified answer.
+- Construction: CRPS contrasts high- and low-quality MCTS trajectories, extracts decisive pivots and failure causes, and synthesizes a corrected chain instead of retaining only successful rollouts.
+- Feedback: Search values and terminal correctness identify contrast pairs; a structured reflection stage converts their difference into a training example.
+- Main audit risk: Synthetic reflection may invent a neat failure story that is not the actual causal difference between branches.

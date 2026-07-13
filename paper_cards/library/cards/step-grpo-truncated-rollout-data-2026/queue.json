@@ -1,0 +1,21 @@
+{
+  "title": "Step-GRPO: Internalizing Dynamic Early Exit for Efficient Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.990/",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2026.acl-long.990"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T11:15:38Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "算法方面",
+    "updated_at": "2026-07-13T11:15:38Z"
+  }
+}

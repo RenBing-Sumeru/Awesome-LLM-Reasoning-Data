@@ -1,0 +1,4 @@
+- Data object: problem, source model, misleading or helpful partial trace, continuation model, recoverability or guidability label, answer, and training-condition metadata.
+- Construction: Twin tests inject misleading traces to measure recoverability and stronger-model correct prefixes to measure whether a collaborator can guide a weaker continuation.
+- Feedback: Final answers score recovery and guidance; controlled comparisons vary distillation teacher, RL use, and data selection across 15 open-weight models.
+- Main audit risk: Injected traces may be stylistically out of distribution, and final correctness cannot show whether a model actually used or ignored the collaborator's reasoning.

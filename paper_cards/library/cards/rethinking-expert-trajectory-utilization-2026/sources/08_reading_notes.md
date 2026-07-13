@@ -1,0 +1,4 @@
+- Data object: expert trajectory, difficulty bin, SFT data scale, validation-loss curve, RL transition point, policy rollout, and final ceiling.
+- Construction: The Plasticity-Ceiling framework varies expert-data scale, difficulty, and the SFT-to-RL transition to measure foundation performance and remaining RL plasticity.
+- Feedback: SFT validation loss marks stable or mild-overfitting regimes, while later RL rollouts and task correctness reveal how much improvement each trajectory subset still permits.
+- Main audit risk: Data scale, difficulty, training duration, and RL budget can interact, so the framework requires matched optimization and generation compute.

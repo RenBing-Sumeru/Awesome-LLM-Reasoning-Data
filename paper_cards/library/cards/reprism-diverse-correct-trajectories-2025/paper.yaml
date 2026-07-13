@@ -1,0 +1,120 @@
+id: reprism-diverse-correct-trajectories-2025
+title: Diversity-aware Training for Test-time Scaling
+year: 2025
+venue: ICLR 2026 submission
+authors:
+- Bohan Lyu
+- Qixin Xu
+- Zihan Zhu
+- Yesai Wu
+- Zhong Zhang
+- Haotian Chen
+- Xin Cong
+- Xiaojiang Liu
+- Zhiyuan Liu
+- Maosong Sun
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- math
+- code
+- agents
+training_use:
+- sft
+- rlvr
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=UVL10ozjtl
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: https://openreview.net/forum?id=UVL10ozjtl
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in ICLR 2026 submission; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: prompt, multiple diverse correct trajectories, answer check, reasoning-diversity relation, special-token
+    noise embedding, sampled path, and pass@N result
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Correctness filters trajectories and within-prompt diversity defines the grouped supervision;
+    pass@N measures whether new samples cover more valid solution modes.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: RePrism constructs prompt groups with multiple diverse correct answers and trains special noisy embeddings
+    as implicit signals for sampling distinct reasoning paths.
+  filtering_rule: Correctness filters trajectories and within-prompt diversity defines the grouped supervision;
+    pass@N measures whether new samples cover more valid solution modes.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: sft, rlvr
+audit:
+  source_mixture: Domains reported by ICLR 2026 submission; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: prompt, multiple diverse correct trajectories, answer check, reasoning-diversity relation, special-token
+    noise embedding, sampled path, and pass@N result
+  known_failure_modes:
+  - Surface or embedding diversity may not correspond to genuinely different reasoning, and answer-equivalent traces
+    can share the same hidden flaw.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on prompt, multiple diverse correct trajectories, answer
+  check, reasoning-diversity relation, special-token noise embedding, sampled path, and pass@N result.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: RePrism constructs prompt groups with multiple diverse correct answers and trains special noisy embeddings
+  as implicit signals for sampling distinct reasoning paths.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: RePrism constructs prompt groups with multiple diverse correct answers and trains special noisy
+  embeddings as implicit signals for sampling distinct reasoning paths.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-04
+  primary_category_id: rollout_search_test_time_trace_data

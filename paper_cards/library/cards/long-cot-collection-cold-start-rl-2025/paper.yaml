@@ -103,7 +103,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Builds the 100K-example Long CoT Collection with short-CoT models and controllable thought budgets
   to provide an open cold start for later RLVR.
-why_it_matters: Its distinctive Track 05 contribution is controllable thought-budget annotation attached to generated
+why_it_matters: Its distinctive data-centric contribution is controllable thought-budget annotation attached to generated
   training trajectories and an explicit test of how those trajectories affect later rollout-based RL.
 curation_level: L4_carded
 verification:

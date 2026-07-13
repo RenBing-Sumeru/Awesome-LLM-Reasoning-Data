@@ -106,7 +106,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Generates about 40 million multi-pass reasoning responses for 3.34 million queries and selects
   training data with pass rate and coefficient-of-variation difficulty signals.
-why_it_matters: Its Track 05 contribution is the mapping from a multi-model candidate set to difficulty, variability,
+why_it_matters: Its data-centric contribution is the mapping from a multi-model candidate set to difficulty, variability,
   and retention decisions at very large scale.
 curation_level: L4_carded
 verification:

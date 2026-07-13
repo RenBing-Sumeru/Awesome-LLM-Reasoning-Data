@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "双测试注入误导轨迹测量可恢复性，并注入更强模型的正确前缀，测量协作者能否引导较弱模型续写。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用成对的前缀—续写记录评估协作数据，但必须始终明确源模型与续写模型身份。",
+  "confidence_ch": "高",
+  "authors_ch": "Aochong Oliver Li, Tanya Goyal",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

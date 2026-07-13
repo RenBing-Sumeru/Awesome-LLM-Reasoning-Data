@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该研究把推理步骤与逐层表示路径对齐，比较正确与错误解，并派生用于中途预测与 steering 的轨迹信号。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可把步骤—表示对齐记录作为诊断数据，但应把模型、层、token 区间、标签与干预绑定保存。",
+  "confidence_ch": "高",
+  "authors_ch": "Lihao Sun, Hang Dong, Bo Qiao, Qingwei Lin, Dongmei Zhang, Saravan Rajmohan",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "T-STAR 把独立链中的功能相似步骤合并为认知树，回传终局结果，并在关键分岔处把成功推理嫁接到失败分支。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "使用嫁接轨迹时必须链接两条源分支与合并准则，使其反事实性质保持可见。",
+  "confidence_ch": "高",
+  "authors_ch": "Yu Li, Sizhe Tang, Tian Lan",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

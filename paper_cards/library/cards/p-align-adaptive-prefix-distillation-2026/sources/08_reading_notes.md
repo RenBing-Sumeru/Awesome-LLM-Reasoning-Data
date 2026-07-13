@@ -1,0 +1,4 @@
+- Data object: problem, full teacher CoT, candidate truncation point, suffix sufficiency judgment, selected prefix, student completion, and answer.
+- Construction: P-ALIGN adaptively truncates teacher trajectories by deciding whether the remaining suffix is concise and sufficient, then supervises the student with the selected prefix.
+- Feedback: Suffix sufficiency governs truncation, and downstream answer accuracy tests whether a prefix supplies usable guidance without redundant uncertain content.
+- Main audit risk: A sufficiency judge may prefer teacher-like phrasing, and prefix supervision can obscure whether the student learned to initiate reasoning independently.

@@ -112,7 +112,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Builds MMathCoT-1M and DualMath-1.1M, pairing multimodal reasoning trajectories with automated
   labels for logical validity and visual grounding.
-why_it_matters: Its Track 05 contribution is the lineage from full multimodal trajectories to dual labels, process
+why_it_matters: Its data-centric contribution is the lineage from full multimodal trajectories to dual labels, process
   rewards, and online rollout updates.
 curation_level: L4_carded
 verification:

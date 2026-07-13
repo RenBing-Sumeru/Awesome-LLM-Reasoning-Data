@@ -105,7 +105,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Constructs 9K long-CoT examples across eight scientific disciplines and more than 1,000 topics
   using automated cross-validation of problem validity and answer correctness.
-why_it_matters: 'Its Track 05 value lies in the retained generation-and-judgment trace: which model proposed a sample,
+why_it_matters: 'Its value for data-centric reasoning research lies in the retained generation-and-judgment trace: which model proposed a sample,
   which models validated it, and where they disagreed.'
 curation_level: L4_carded
 verification:

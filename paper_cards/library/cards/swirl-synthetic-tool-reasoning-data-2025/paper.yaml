@@ -1,0 +1,116 @@
+id: swirl-synthetic-tool-reasoning-data-2025
+title: Synthetic Data Generation & Multi-Step RL for Reasoning & Tool Use
+year: 2025
+venue: arXiv preprint arXiv:2504.04736
+authors:
+- Anna Goldie
+- Azalia Mirhoseini
+- Hao Zhou
+- Irene Cai
+- Christopher D. Manning
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- multi-hop QA
+- math
+- tool use
+training_use:
+- sft
+- rlvr
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.04736
+  arxiv: https://arxiv.org/abs/2504.04736
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.04736
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in arXiv preprint arXiv:2504.04736; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: source task, synthetic multi-step trajectory, action sub-trajectory, tool call and result, filter
+    outcome, reward, and final answer
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Task outcomes and tool execution provide feedback at terminal and action levels; filtered
+    synthetic data is regenerated as the policy changes.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: SWiRL iteratively generates reasoning-and-tool-use demonstrations, decomposes each episode into action-aligned
+    sub-trajectories, filters them, and applies multi-step reinforcement learning.
+  filtering_rule: Task outcomes and tool execution provide feedback at terminal and action levels; filtered synthetic
+    data is regenerated as the policy changes.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: sft, rlvr
+audit:
+  source_mixture: Domains reported by arXiv preprint arXiv:2504.04736; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: source task, synthetic multi-step trajectory, action sub-trajectory, tool call and result, filter outcome,
+    reward, and final answer
+  known_failure_modes:
+  - Sub-trajectory decomposition can detach an action from the earlier evidence that made it valid, and synthetic
+    filters may favor familiar tool patterns.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on source task, synthetic multi-step trajectory, action
+  sub-trajectory, tool call and result, filter outcome, reward, and final answer.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: SWiRL iteratively generates reasoning-and-tool-use demonstrations, decomposes each episode into action-aligned
+  sub-trajectories, filters them, and applies multi-step reinforcement learning.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: SWiRL iteratively generates reasoning-and-tool-use demonstrations, decomposes each episode into
+  action-aligned sub-trajectories, filters them, and applies multi-step reinforcement learning.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-02
+  primary_category_id: rollout_search_test_time_trace_data

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Step-Saliency 把 attention-gradient 分数汇总为问题、思维与总结之间的步骤图，StepFlow 再针对两类反复出现的信息流中断做干预。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可把步骤图作为诊断标注，但应保留原始 token 区间、层编号、汇总规则与干预结果。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoyu Xu, Yulan Pan, Xiaosong Yuan, Zhihong Shen, Minghao Su, Yuanhao Su, Xiaofeng Zhang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

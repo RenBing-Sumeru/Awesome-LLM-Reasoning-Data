@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RSE 把已完成尝试蒸馏为共享经验库中的正向中间结论与负向失败模式，再让后续搜索以该累积记忆为条件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "应把版本化经验库作为数据对象，并将每个命题或陷阱链接到精确源片段与验证记录。",
+  "confidence_ch": "高",
+  "authors_ch": "Xinglin Wang, Jiayi Shi, Shaoxiong Feng, Peiwen Yuan, Yiwei Li, Yueqi Zhang, Chuyi Tan, Ji Zhang, Boyuan Pan, Yao Hu, Kan Li",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

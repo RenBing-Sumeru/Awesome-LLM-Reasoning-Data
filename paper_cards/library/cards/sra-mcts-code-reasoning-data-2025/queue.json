@@ -1,0 +1,17 @@
+{
+  "title": "SRA-MCTS: Self-driven Reasoning Augmentation with Monte Carlo Tree Search for Code Generation",
+  "candidate_links": {
+    "paper": "https://www.ijcai.org/proceedings/2025/965",
+    "arxiv": null,
+    "code": "https://github.com/DIRECT-BIT/SRA-MCTS",
+    "data": "https://github.com/DIRECT-BIT/SRA-MCTS",
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.24963/ijcai.2025/965"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z",
+  "manual_annotation": {}
+}

@@ -1,0 +1,112 @@
+id: probing-reasoning-trace-trajectories-2026
+title: Probing the Trajectories of Reasoning Traces in Large Language Models
+year: 2026
+venue: arXiv preprint arXiv:2601.23163
+authors:
+- Marthe Ballon
+- Brecht Verbeken
+- Vincent Ginis
+- Andres Algaba
+source_role:
+- audit_failure
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- science
+- general reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.23163
+  arxiv: https://arxiv.org/abs/2601.23163
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2601.23163
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in arXiv preprint arXiv:2601.23163; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: benchmark item, full trace, fixed-percentile prefix, injected model, answer distribution, commitment
+    score, and final correctness
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Final labels and induced answer distributions measure how accuracy and commitment evolve along
+    traces from Qwen3 and gpt-oss models on GPQA Diamond and MMLU-Pro.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: The protocol generates a trace, truncates it at fixed token percentiles, reinjects each prefix into
+    the same or another model, and records next-token answer probabilities.
+  filtering_rule: Final labels and induced answer distributions measure how accuracy and commitment evolve along
+    traces from Qwen3 and gpt-oss models on GPQA Diamond and MMLU-Pro.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: evaluation, audit
+audit:
+  source_mixture: Domains reported by arXiv preprint arXiv:2601.23163; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: benchmark item, full trace, fixed-percentile prefix, injected model, answer distribution, commitment
+    score, and final correctness
+  known_failure_modes:
+  - Prefix injection creates a counterfactual continuation rather than observing the original hidden state, and
+    token-percentile cuts may split semantic steps.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on benchmark item, full trace, fixed-percentile prefix,
+  injected model, answer distribution, commitment score, and final correctness.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: The protocol generates a trace, truncates it at fixed token percentiles, reinjects each prefix into the
+  same or another model, and records next-token answer probabilities.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: The protocol generates a trace, truncates it at fixed token percentiles, reinjects each prefix
+  into the same or another model, and records next-token answer probabilities.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-03
+  primary_category_id: rollout_search_test_time_trace_data

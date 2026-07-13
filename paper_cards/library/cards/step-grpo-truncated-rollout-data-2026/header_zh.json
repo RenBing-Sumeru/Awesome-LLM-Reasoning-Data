@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Step-GRPO 用语言标记组织推理步骤，让策略接触简洁高置信截断 rollout，并施加步骤感知的组内相对奖励。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用截断与完整 rollout 对审计提前退出，但需保证步骤切分和组内相对基线可复现。",
+  "confidence_ch": "高",
+  "authors_ch": "Benteng Chen, Weida Wang, Shufei Zhang, Mingbao Lin, Min Zhang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

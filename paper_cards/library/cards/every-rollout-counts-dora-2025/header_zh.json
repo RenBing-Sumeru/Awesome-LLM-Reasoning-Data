@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DORA 把测试时搜索表述为资源分配，在搜索状态之间分配固定 rollout 预算，以最大化找到正确解的概率。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "应使用逐状态分配日志比较测试时数据效率，而不能只看总 token 数或最终正确率。",
+  "confidence_ch": "高",
+  "authors_ch": "Xinglin Wang, Yiwei Li, Shaoxiong Feng, Peiwen Yuan, Yueqi Zhang, Jiayi Shi, Chuyi Tan, Boyuan Pan, Yao Hu, Kan Li",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

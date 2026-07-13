@@ -1,0 +1,113 @@
+id: tstar-cognitive-tree-grafting-2026
+title: 'Reason in Chains, Learn in Trees: Self-Rectification and Grafting for Multi-turn Agent Policy Optimization'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Yu Li
+- Sizhe Tang
+- Tian Lan
+source_role:
+- construction_recipe
+- process_supervision
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- agents
+- planning
+- embodied interaction
+training_use:
+- rlvr
+- process_supervision
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.229/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.229
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.229/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in Findings of ACL 2026; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: multi-turn task, sampled chain, merged functional node, cognitive-tree edge, terminal reward, step
+    advantage, grafted correction, and policy update
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Trajectory rewards induce variance-reduced step advantages on the merged tree; successful-versus-failed
+    contrasts create corrective examples and a surgical loss.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: T-STAR merges functionally similar steps from independent chains into a Cognitive Tree, back-propagates
+    outcomes, and grafts successful reasoning onto failed branches at critical divergences.
+  filtering_rule: Trajectory rewards induce variance-reduced step advantages on the merged tree; successful-versus-failed
+    contrasts create corrective examples and a surgical loss.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: rlvr, process_reward
+audit:
+  source_mixture: Domains reported by Findings of ACL 2026; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: multi-turn task, sampled chain, merged functional node, cognitive-tree edge, terminal reward, step advantage,
+    grafted correction, and policy update
+  known_failure_modes:
+  - Functional node merging can collapse distinct states, and synthetic grafts may create a trajectory that no policy
+    actually executed end to end.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on multi-turn task, sampled chain, merged functional node,
+  cognitive-tree edge, terminal reward, step advantage, grafted correction, and policy update.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: T-STAR merges functionally similar steps from independent chains into a Cognitive Tree, back-propagates
+  outcomes, and grafts successful reasoning onto failed branches at critical divergences.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: T-STAR merges functionally similar steps from independent chains into a Cognitive Tree, back-propagates
+  outcomes, and grafts successful reasoning onto failed branches at critical divergences.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-04
+  primary_category_id: rollout_search_test_time_trace_data

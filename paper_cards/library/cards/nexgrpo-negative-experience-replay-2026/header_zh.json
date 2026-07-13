@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "NexGRPO 有选择地保留失败样本：置信度门控去除无效噪声和饱和错误，边界采样则找回语义上接近正确解的错误轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可把该方法作为负数据策展配方，但应保留全部被拒失败轨迹，以审计置信度门控删掉了什么。",
+  "confidence_ch": "高",
+  "authors_ch": "Jialiang Guo, Fucheng Xiong, Xu He, Haodong Zhao, Xingyang Li, Ke Zeng, Xunliang Cai",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

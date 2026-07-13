@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "11 个教师分别为 5,000 道题生成轨迹；RSR 用平均 token 排名除以平均负对数似然，衡量针对特定学生的信息量与对齐度。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "使用 RSR 时必须记录目标学生 checkpoint；更换学生就会改变数据排序。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuming Yang, Mingyoung Lai, Wanxu Zhao, Xiaoran Fan, Zhiheng Xi, Mingqi Wu, Chiyue Huang, Jun Zhao, Haijun Lv, Jian Tong, Yunhua Zhou, Yicheng Zou, Qipeng Guo, Tao Gui, Qi Zhang, Xuanjing Huang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

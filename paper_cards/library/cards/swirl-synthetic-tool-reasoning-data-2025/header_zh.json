@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWiRL 迭代生成推理与工具使用 demonstration，把整段 episode 分解为动作对齐的子轨迹，过滤后用于多步强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可把 SWiRL 作为迭代数据生成的谱系模型：对策略、完整 episode、分解边界、工具返回与过滤决定做版本化。",
+  "confidence_ch": "高",
+  "authors_ch": "Anna Goldie, Azalia Mirhoseini, Hao Zhou, Irene Cai, Christopher D. Manning",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

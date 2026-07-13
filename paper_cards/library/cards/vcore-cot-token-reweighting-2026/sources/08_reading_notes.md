@@ -1,0 +1,4 @@
+- Data object: long-CoT trajectory, token position, token loss and gradient statistics, constrained weight, model checkpoint, and answer result.
+- Construction: VCORE formulates CoT supervision as constrained optimization and adaptively allocates weight across tokens while controlling variance.
+- Feedback: Optimization statistics generate token weights; downstream math and code correctness assesses whether the reweighted same corpus generalizes better.
+- Main audit risk: Token importance is inferred from the current optimizer and model, so weights are not portable labels and may amplify formatting artifacts.

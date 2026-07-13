@@ -1,0 +1,17 @@
+{
+  "title": "Reasoning-as-Logic-Units: Scaling Test-Time Reasoning in Large Language Models Through Logic Unit Alignment",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=mMgSxbO4H0",
+    "arxiv": null,
+    "code": "https://github.com/DeepAccept/RaLU",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z",
+  "manual_annotation": {}
+}

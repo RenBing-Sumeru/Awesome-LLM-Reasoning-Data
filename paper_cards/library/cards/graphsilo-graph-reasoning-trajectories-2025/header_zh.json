@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GraphSILO 用蒙特卡洛树搜索构造任务导向轨迹，标注图推理中间步骤，并用这些记录训练图过程奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "仅在分支祖先、标签来源和失败兄弟节点可用时，才应把树记录作为过程监督数据使用。",
+  "confidence_ch": "高",
+  "authors_ch": "Miao Peng, Nuo Chen, Zongrui Suo, Jia Li",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

@@ -1,0 +1,4 @@
+- Data object: problem, dynamic rollout tree, branch position, tool call and result, sub-trajectory process advantage, terminal answer, and retention decision.
+- Construction: DART branches at promising positions in long-CoT rollouts to discover tool-use opportunities, then assigns tree-based process advantage to sub-trajectories where tool calls help.
+- Feedback: Tool execution and task correctness provide outcomes; comparisons among sibling branches estimate the contribution of a specific tool-integrated segment.
+- Main audit risk: Branching only at model-selected promising positions misses counterfactual tool opportunities, and process advantage inherits tree-search bias.

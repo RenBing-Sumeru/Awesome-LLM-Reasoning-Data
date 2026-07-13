@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SRA-MCTS 探索多样的代码中间推理分支并进行自评，再把选中的思维路径与可执行代码配对形成监督数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "仅在测试日志、自评分与未选兄弟分支均被保留时，才应把这些 rollout 树用作代码推理数据。",
+  "confidence_ch": "高",
+  "authors_ch": "Bin Xu, Yiguan Lin, Yinghao Li, Yang Gao",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

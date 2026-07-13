@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CRPS 对比高质量与低质量 MCTS 轨迹，抽取关键转折点与失败原因，再合成纠正后的推理链，而不是只保留成功 rollout。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "使用这些数据时应同时保留两条源路径与树上下文，以便对照搜索记录核验合成解释。",
+  "confidence_ch": "高",
+  "authors_ch": "Peiyang Liu, Zhirui Chen, Xi Wang, Di Liang, Youru Li, Zhi Cai, Wei Ye",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

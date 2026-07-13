@@ -1,0 +1,4 @@
+- Data object: problem, original long trace, progressive reasoning segment, functional verification or correction segment, refined trace, answer, and token budget.
+- Construction: LIMOPro separates progress-making reasoning from functional elements such as verification, alternatives, and corrections, then refines trajectories for more efficient test-time scaling.
+- Feedback: Answer correctness and efficiency comparisons evaluate the refined records; segment roles are the central supervision metadata.
+- Main audit risk: Functional labels can be subjective, and removing verification may improve average length while harming recovery on difficult cases.

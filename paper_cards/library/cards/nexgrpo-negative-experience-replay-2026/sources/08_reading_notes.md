@@ -1,0 +1,4 @@
+- Data object: problem, failed rollout, confidence estimate, semantic distance to correct solutions, gating decision, replay record, reward, and later policy outcome.
+- Construction: NexGRPO retains selected failures: confidence gating removes invalid noise and saturated errors, while boundary sampling retrieves wrong trajectories near correct solutions.
+- Feedback: Verifiable rewards mark success or failure; confidence and solution-neighborhood signals decide which negative experiences are replayed.
+- Main audit risk: Semantic proximity to a correct answer does not prove that a failed trajectory contains a locally repairable reasoning step.

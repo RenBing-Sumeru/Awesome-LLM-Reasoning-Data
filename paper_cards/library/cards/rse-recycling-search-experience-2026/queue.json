@@ -1,0 +1,17 @@
+{
+  "title": "Do Not Waste Your Rollouts: Recycling Search Experience for Efficient Test-Time Scaling",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=Pc4t2M15w7",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z",
+  "manual_annotation": {}
+}

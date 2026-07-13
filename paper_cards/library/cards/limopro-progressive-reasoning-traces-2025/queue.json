@@ -1,0 +1,17 @@
+{
+  "title": "LIMOPro: Reasoning Refinement for Efficient Test-Time Scaling",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=W9Y0jtf45v",
+    "arxiv": null,
+    "code": "https://github.com/GAIR-NLP/LIMOPro",
+    "data": "https://github.com/GAIR-NLP/LIMOPro",
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z",
+  "manual_annotation": {}
+}

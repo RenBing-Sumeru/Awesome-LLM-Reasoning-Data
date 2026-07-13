@@ -1,0 +1,4 @@
+- Data object: math problem, teacher identity, long-CoT trajectory, student token ranks, token surprisal, RSR score, selection decision, and post-training result.
+- Construction: Eleven teachers each generate trajectories for 5,000 problems; RSR divides average token rank by average negative log-likelihood to score student-specific informativeness and alignment.
+- Feedback: The student model itself supplies rank and surprisal signals, while three independent generation runs and downstream training test whether the score predicts useful data.
+- Main audit risk: A student-likelihood metric can encode tokenizer and calibration artifacts, and correlation across 55 pairings does not guarantee causal selection gains.

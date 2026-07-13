@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "分析定位那些使轨迹随后局部连贯却整体错误的早期转折；GUARD 只在不确定性尖峰处分支以重定向轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用转折—反事实表研究失败起点，并保留全部采样替代路径，而非只留成功重定向。",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Zhu, Jian Zhang, Lixing Yu, Kun Yue, Zhiwen Tang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

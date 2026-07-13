@@ -90,7 +90,7 @@ audit:
   citation_status: verified
   confidence: high
   notes: Official arXiv and ICLR OpenReview records verified; no official code or data release was pinned.
-inclusion_reason: Direct Track 05 study of how candidate-set size, generator cost, filtering, diversity, and false positives
+inclusion_reason: Direct study of how candidate-set size, generator cost, filtering, diversity, and false positives
   shape synthetic reasoning data under fixed budgets.
 related:
 - reinforced-self-training-rest-for-language-modeling-2023

@@ -1,0 +1,113 @@
+id: litecot-difficulty-aware-trace-pruning-2025
+title: 'Concise Reasoning, Big Gains: Pruning Long Reasoning Trace with Difficulty-Aware Prompting'
+year: 2025
+venue: arXiv preprint arXiv:2505.19716
+authors:
+- Yifan Wu
+- Jingze Shi
+- Bingheng Wu
+- Jiayi Zhang
+- Xiaotian Lin
+- Nan Tang
+- Yuyu Luo
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- math
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.19716
+  arxiv: https://arxiv.org/abs/2505.19716
+  code: https://github.com/Evanwu1125/LiteCoT
+  data: https://github.com/Evanwu1125/LiteCoT
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.19716
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in arXiv preprint arXiv:2505.19716; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: problem, original long teacher trace, teacher-assigned difficulty, rewritten concise trace, final
+    answer, and token count
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Final-answer checks preserve correctness after rewriting, while difficulty prompts and length
+    statistics govern how aggressively each trajectory is compressed.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: LiteCoT asks a teacher to judge problem difficulty and rewrite each long trace to a matching reasoning
+    budget, yielding 100,000 examples averaging roughly 720 tokens.
+  filtering_rule: Final-answer checks preserve correctness after rewriting, while difficulty prompts and length
+    statistics govern how aggressively each trajectory is compressed.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: sft, distillation
+audit:
+  source_mixture: Domains reported by arXiv preprint arXiv:2505.19716; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: problem, original long teacher trace, teacher-assigned difficulty, rewritten concise trace, final answer,
+    and token count
+  known_failure_modes:
+  - Teacher difficulty judgments and rewrites can erase useful alternatives or silently repair flawed source traces.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on problem, original long teacher trace, teacher-assigned
+  difficulty, rewritten concise trace, final answer, and token count.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: LiteCoT asks a teacher to judge problem difficulty and rewrite each long trace to a matching reasoning
+  budget, yielding 100,000 examples averaging roughly 720 tokens.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: LiteCoT asks a teacher to judge problem difficulty and rewrite each long trace to a matching reasoning
+  budget, yielding 100,000 examples averaging roughly 720 tokens.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-02
+  primary_category_id: rollout_search_test_time_trace_data

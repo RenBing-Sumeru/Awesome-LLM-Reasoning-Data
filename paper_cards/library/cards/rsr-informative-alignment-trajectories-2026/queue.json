@@ -1,0 +1,17 @@
+{
+  "title": "Which Reasoning Trajectories Teach Students to Reason Better? A Simple Metric of Informative Alignment",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1950/",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2026.acl-long.1950"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z",
+  "manual_annotation": {}
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "流水线从近期研究论文合成 2,000 个候选题，经推理密度与难度过滤，再由人机协同多智能体流程和数学家审核保留 100 题。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用于研究高难科学推理数据构造，但应把论文谱系和每个拒绝阶段与候选样本绑定。",
+  "confidence_ch": "高",
+  "authors_ch": "Wenhao Liu, Zhenyi Lu, Xinyu Hu, Jerry Zhang, Dailin Li, Jiacheng Cen, Huilin Cao, Haiteng Wang, Yuhan Li, Xie Kun, Dandan Li, Pei Zhang, Chengbo Zhang, Yuxiang Ren, Xiaohong Huang, Yan Ma",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

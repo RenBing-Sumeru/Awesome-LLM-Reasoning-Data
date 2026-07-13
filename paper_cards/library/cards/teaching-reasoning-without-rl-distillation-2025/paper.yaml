@@ -121,7 +121,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Compares 20 expert-model Long-CoT demonstrations with human and non-reasoning-model traces refined
   through prompting and multi-pass editing, releasing the data across stages.
-why_it_matters: That negative comparison makes trajectory authorship and editing history first-class Track 05 metadata
+why_it_matters: That negative comparison makes trajectory authorship and editing history first-class reasoning-data metadata
   instead of treating every correct rationale as interchangeable.
 curation_level: L4_carded
 verification:

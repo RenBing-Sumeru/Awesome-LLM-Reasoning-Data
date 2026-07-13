@@ -1,0 +1,4 @@
+- Data object: coding problem, MCTS node and branch, intermediate reasoning, self-evaluation, selected thinking trace, generated code, and test result.
+- Construction: SRA-MCTS explores diverse intermediate code-reasoning branches, self-evaluates them, and pairs a selected thinking path with executable code to form supervised data.
+- Feedback: Self-evaluation guides tree search and program tests provide terminal feedback; the final SFT record combines reasoning and code.
+- Main audit risk: Model self-scores can reinforce stylistic confidence, and test suites may accept semantically incomplete programs.

@@ -1,8 +1,23 @@
 {
   "institutions": [
-    "待人工审核：请从官方 PDF 核验作者机构"
+    "Stanford University",
+    "University of Washington",
+    "BespokeLabs.ai",
+    "Toyota Research Institute",
+    "University of California, Berkeley",
+    "The University of Texas at Austin",
+    "University of California, Los Angeles",
+    "Jülich Supercomputing Centre",
+    "LAION",
+    "New York University",
+    "University of North Carolina at Chapel Hill",
+    "Arizona State University",
+    "Lila Sciences",
+    "Cornell Tech",
+    "Technical University of Munich",
+    "Open-Ψ (Open-Sci) Collective"
   ],
   "has_more": false,
   "no_institution": false,
-  "updated_at": "2026-07-13T07:40:31Z"
+  "updated_at": "2026-07-13T09:04:05Z"
 }

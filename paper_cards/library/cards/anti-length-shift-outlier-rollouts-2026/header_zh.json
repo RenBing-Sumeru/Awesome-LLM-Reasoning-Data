@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "动态异常截断只抑制全正确 rollout 组中的极端长度尾部，并结合 KL 正则与预测式采样。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "应使用完整正确 rollout 组审计裁剪；只发布截断后的存活样本会隐藏异常值的定义。",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Wu, Liyi Chen, Congxi Xiao, Tianfu Wang, Qimeng Wang, Chengqiang Lu, Yan Gao, Yiwu, Yao Hu, Hui Xiong",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

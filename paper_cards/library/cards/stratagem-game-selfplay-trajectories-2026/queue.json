@@ -1,0 +1,17 @@
+{
+  "title": "Stratagem: Learning Transferable Reasoning via Trajectory-Modulated Game Self-Play",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.897/",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2026.acl-long.897"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z",
+  "manual_annotation": {}
+}

@@ -1,0 +1,4 @@
+- Data object: benchmark item, full trace, fixed-percentile prefix, injected model, answer distribution, commitment score, and final correctness.
+- Construction: The protocol generates a trace, truncates it at fixed token percentiles, reinjects each prefix into the same or another model, and records next-token answer probabilities.
+- Feedback: Final labels and induced answer distributions measure how accuracy and commitment evolve along traces from Qwen3 and gpt-oss models on GPQA Diamond and MMLU-Pro.
+- Main audit risk: Prefix injection creates a counterfactual continuation rather than observing the original hidden state, and token-percentile cuts may split semantic steps.

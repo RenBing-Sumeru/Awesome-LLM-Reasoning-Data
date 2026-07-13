@@ -1,0 +1,17 @@
+{
+  "title": "Reason in Chains, Learn in Trees: Self-Rectification and Grafting for Multi-turn Agent Policy Optimization",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.229/",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2026.findings-acl.229"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z",
+  "manual_annotation": {}
+}

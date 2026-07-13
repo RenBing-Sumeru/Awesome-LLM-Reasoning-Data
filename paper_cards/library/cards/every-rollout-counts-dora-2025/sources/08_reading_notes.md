@@ -1,0 +1,4 @@
+- Data object: test item, search state, estimated success probability, fixed rollout budget, per-state allocation, sampled paths, and selected answer.
+- Construction: DORA formulates test-time search as resource allocation and distributes a fixed rollout budget across search states to maximize the chance of finding a correct solution.
+- Feedback: State-level success estimates drive allocation, while terminal correctness measures whether the resulting portfolio of rollouts contains a valid answer.
+- Main audit risk: Allocation quality depends on calibrated success estimates and the assumed independence or search structure; miscalibration can starve rare paths.

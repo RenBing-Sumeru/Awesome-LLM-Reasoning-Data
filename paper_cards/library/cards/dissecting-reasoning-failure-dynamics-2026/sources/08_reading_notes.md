@@ -1,0 +1,4 @@
+- Data object: problem, generated trajectory, transition position, token entropy spike, alternative continuations, first-deviation label, and terminal answer.
+- Construction: The analysis locates early transitions after which traces stay locally coherent but become globally wrong; GUARD branches only at uncertainty spikes to redirect them.
+- Feedback: Final correctness separates failed traces, localized entropy identifies candidate pivots, and counterfactual continuations test whether the same state still permits a correct path.
+- Main audit risk: Entropy spikes are not semantic error labels, and the earliest recoverable branch may differ from the actual causal mistake.

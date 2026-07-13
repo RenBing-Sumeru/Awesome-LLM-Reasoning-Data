@@ -1,0 +1,4 @@
+- Data object: problem, generated program, static-analysis logic unit, natural-language explanation, unit judgment, rewind-and-correct history, execution result, and final answer.
+- Construction: RaLU decomposes a generated program into static-analysis units, asks the model to judge and explain each unit, and rewinds when code logic and task requirements do not align.
+- Feedback: Program structure and execution provide anchors, while iterative unit judgments record where natural-language reasoning and code disagree.
+- Main audit risk: A program can encode a wrong problem interpretation consistently, and model self-judgment is not an independent proof of unit correctness.

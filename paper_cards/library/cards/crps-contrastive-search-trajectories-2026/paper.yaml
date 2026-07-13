@@ -1,0 +1,115 @@
+id: crps-contrastive-search-trajectories-2026
+title: 'Learning from Contrasts: Synthesizing Reasoning Paths from Diverse Search Trajectories'
+year: 2026
+venue: ACL 2026
+authors:
+- Peiyang Liu
+- Zhirui Chen
+- Xi Wang
+- Di Liang
+- Youru Li
+- Zhi Cai
+- Wei Ye
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.501/
+  arxiv: null
+  code: https://github.com/PeiYangLiu/CRPS.git
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.501
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.501/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in ACL 2026; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: problem, MCTS tree, high- and low-quality paths, reflective comparison, failure pivot, synthesized
+    chain, and verified answer
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Search values and terminal correctness identify contrast pairs; a structured reflection stage
+    converts their difference into a training example.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: CRPS contrasts high- and low-quality MCTS trajectories, extracts decisive pivots and failure causes,
+    and synthesizes a corrected chain instead of retaining only successful rollouts.
+  filtering_rule: Search values and terminal correctness identify contrast pairs; a structured reflection stage
+    converts their difference into a training example.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: sft, distillation
+audit:
+  source_mixture: Domains reported by ACL 2026; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: problem, MCTS tree, high- and low-quality paths, reflective comparison, failure pivot, synthesized chain,
+    and verified answer
+  known_failure_modes:
+  - Synthetic reflection may invent a neat failure story that is not the actual causal difference between branches.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on problem, MCTS tree, high- and low-quality paths, reflective
+  comparison, failure pivot, synthesized chain, and verified answer.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: CRPS contrasts high- and low-quality MCTS trajectories, extracts decisive pivots and failure causes, and
+  synthesizes a corrected chain instead of retaining only successful rollouts.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: CRPS contrasts high- and low-quality MCTS trajectories, extracts decisive pivots and failure causes,
+  and synthesizes a corrected chain instead of retaining only successful rollouts.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-02
+  primary_category_id: rollout_search_test_time_trace_data

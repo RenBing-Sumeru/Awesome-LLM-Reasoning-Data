@@ -98,7 +98,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Releases large-scale first-order-logic operation traces with programmatic verification and diagnostic
   tasks for masked operations and step completion.
-why_it_matters: Its Track 05 contribution is a reusable search trace whose nodes, transitions, and terminal proof
+why_it_matters: Its data-centric contribution is a reusable search trace whose nodes, transitions, and terminal proof
   state all have an explicit checker.
 curation_level: L4_carded
 verification:

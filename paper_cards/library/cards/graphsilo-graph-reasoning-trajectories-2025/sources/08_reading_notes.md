@@ -1,0 +1,4 @@
+- Data object: graph task, task-oriented MCTS tree, state transition, fine-grained process label, terminal answer, and retained trajectory.
+- Construction: GraphSILO builds task-oriented trajectories with Monte Carlo tree search, labels intermediate graph-reasoning steps, and uses those records to train a graph process reward model.
+- Feedback: Step labels and terminal task correctness jointly score branches; transfer tests examine whether the learned feedback captures graph reasoning rather than one benchmark format.
+- Main audit risk: MCTS policy bias and automatically assigned step labels may create correlated errors that terminal accuracy does not expose.

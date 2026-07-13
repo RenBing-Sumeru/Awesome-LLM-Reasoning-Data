@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "P-ALIGN 通过判断剩余后缀是否简洁且充分来动态截断教师轨迹，再用选定前缀监督学生。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用完整与截断轨迹对测量可学习性，并保留所有候选切分点与充分性分数。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhenghao Liu, Zhuoyang Wu, Xinze Li, Yukun Yan, Shuo Wang, Zulong Chen, Yu Gu, Ge Yu, Maosong Sun",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

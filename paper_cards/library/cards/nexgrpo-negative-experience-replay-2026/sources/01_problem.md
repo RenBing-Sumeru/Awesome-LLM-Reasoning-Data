@@ -1,0 +1,3 @@
+Reasoning-data pipelines often discard provenance, failed candidates, or intermediate feedback, making model gains hard to attribute. Turning Failures into Value: Negative Experience Replay for RLVR via Confidence Gating and Boundary Failure Sampling focuses on a concrete trajectory-data decision rather than treating the training corpus as a flat set of answers.
+
+Problem, failed rollout, confidence estimate, semantic distance to correct solutions, gating decision, replay record, reward, and later policy outcome is the record that must remain reconstructable for this paper's claims to be audited.

@@ -1,0 +1,4 @@
+- Data object: game context, self-play trajectory, terminal outcome, reasoning transferability coefficient, evolution reward, selection weight, and downstream evaluation.
+- Construction: STRATAGEM scores self-play trajectories for domain-agnostic reasoning and rewards reasoning evolution across changing contexts instead of using only game wins.
+- Feedback: Terminal game results provide outcomes, while transferability and evolution scores decide which trajectories receive stronger reinforcement.
+- Main audit risk: A learned transferability score can mistake generic phrasing for abstract reasoning, and game-specific search dynamics may still leak into selected traces.

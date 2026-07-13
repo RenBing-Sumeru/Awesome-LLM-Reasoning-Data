@@ -1,0 +1,17 @@
+{
+  "title": "Probing the Trajectories of Reasoning Traces in Large Language Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.23163",
+    "arxiv": "https://arxiv.org/abs/2601.23163",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2601.23163"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z",
+  "manual_annotation": {}
+}

@@ -1,0 +1,4 @@
+- Data object: trusted demonstration, partial solution prefix, guided rollout, per-sample pass-rate history, EMA learning progress, weight, and answer.
+- Construction: LPPO augments hard instances with prefixes from trusted demonstrations and updates each sample's weight from an exponential moving average of its pass rate.
+- Feedback: Verifiable answers score rollouts; prefix identity and learning-progress history decide which samples receive more influence as the policy changes.
+- Main audit risk: Expert prefixes can leak most of a solution, while EMA pass rates depend on rollout count and can lag behind rapid policy changes.

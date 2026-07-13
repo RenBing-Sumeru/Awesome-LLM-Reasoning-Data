@@ -1,0 +1,4 @@
+- Data object: question, thinking steps, final summary, layer-wise attention-gradient map, shallow lock-in or deep-decay label, intervention, and answer.
+- Construction: Step-Saliency pools attention-gradient scores into step-to-step maps over question, thinking, and summary, then StepFlow modifies the two recurring broken-flow patterns.
+- Feedback: Final correctness groups traces; saliency maps expose shallow lock-in on the current step and deep decay of earlier thinking context.
+- Main audit risk: Attention-gradient saliency is not a causal explanation, and pooling choices can manufacture apparent step boundaries or decay.

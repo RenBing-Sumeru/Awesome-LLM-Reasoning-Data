@@ -1,0 +1,4 @@
+- Data object: multi-turn task, sampled chain, merged functional node, cognitive-tree edge, terminal reward, step advantage, grafted correction, and policy update.
+- Construction: T-STAR merges functionally similar steps from independent chains into a Cognitive Tree, back-propagates outcomes, and grafts successful reasoning onto failed branches at critical divergences.
+- Feedback: Trajectory rewards induce variance-reduced step advantages on the merged tree; successful-versus-failed contrasts create corrective examples and a surgical loss.
+- Main audit risk: Functional node merging can collapse distinct states, and synthetic grafts may create a trajectory that no policy actually executed end to end.

@@ -1,0 +1,17 @@
+{
+  "title": "Discovery and Reinforcement of Tool-Integrated Reasoning Chains via Rollout Trees",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.08274",
+    "arxiv": "https://arxiv.org/abs/2601.08274",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2601.08274"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z",
+  "manual_annotation": {}
+}

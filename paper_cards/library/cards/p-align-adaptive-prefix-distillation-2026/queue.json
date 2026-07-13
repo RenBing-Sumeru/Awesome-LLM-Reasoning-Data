@@ -1,0 +1,17 @@
+{
+  "title": "Long-Chain Reasoning Distillation via Adaptive Prefix Alignment",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.822/",
+    "arxiv": null,
+    "code": "https://github.com/NEUIR/P-ALIGN",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2026.acl-long.822"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z",
+  "manual_annotation": {}
+}

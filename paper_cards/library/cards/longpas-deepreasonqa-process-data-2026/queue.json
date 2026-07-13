@@ -1,0 +1,17 @@
+{
+  "title": "Incentivizing In-depth Reasoning over Long Contexts with Process Advantage Shaping",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1306/",
+    "arxiv": null,
+    "code": "https://github.com/GKNL/LongPAS",
+    "data": "https://github.com/GKNL/LongPAS",
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z",
+  "manual_annotation": {}
+}

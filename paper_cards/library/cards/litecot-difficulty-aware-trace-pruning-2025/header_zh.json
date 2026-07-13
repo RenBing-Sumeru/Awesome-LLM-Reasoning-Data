@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LiteCoT 让教师判断题目难度，并把每条长轨迹重写到匹配的推理预算，最终得到 10 万条平均约 720 token 的样本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用成对的长短轨迹研究压缩，但必须同时保留原文、重写提示和答案检查结果。",
+  "confidence_ch": "高",
+  "authors_ch": "Yifan Wu, Jingze Shi, Bingheng Wu, Jiayi Zhang, Xiaotian Lin, Nan Tang, Yuyu Luo",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

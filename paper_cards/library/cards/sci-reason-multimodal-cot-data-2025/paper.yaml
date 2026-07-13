@@ -106,7 +106,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Pairs 12,066 PubMed images with 12,626 questions, answers, and concise inference chains for complex
   academic multimodal reasoning.
-why_it_matters: Its Track 05 value is a dataset where the visual source, reasoning trajectory, and answer can be
+why_it_matters: Its value for data-centric reasoning research is a dataset where the visual source, reasoning trajectory, and answer can be
   audited together across academic domains.
 curation_level: L4_carded
 verification:

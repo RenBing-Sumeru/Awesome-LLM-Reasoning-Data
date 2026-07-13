@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "STRATAGEM 不只使用游戏胜负，而是给自博弈轨迹的领域无关推理打分，并奖励跨变化上下文的推理演化。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用自博弈记录研究可迁移轨迹选择，并保留游戏状态、对手、各评分分量与失败轨迹。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiachong Feng, Deyi Yin, Xiaocheng Feng, Yi Jiang, Libo Qin, Yangfan Ye, Lei Huang, Weitao Ma, Qiming Li, Yuxuan Gu, Bing Qin, Lingpeng Kong",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

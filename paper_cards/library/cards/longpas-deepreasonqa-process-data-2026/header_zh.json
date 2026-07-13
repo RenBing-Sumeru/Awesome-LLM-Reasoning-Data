@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeepReasonQA 合成带有 KG 真值推理链的高难长上下文问题；LongPAS 按有效性与相关性给 rollout 步骤评分，以利用几乎正确的失败轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "使用 DeepReasonQA 时应保留 KG 谱系、几乎正确的负轨迹、逐步分数与终局结果。",
+  "confidence_ch": "高",
+  "authors_ch": "Miao Peng, Weizhou Shen, Nuo Chen, Chenliang Li, Ming Yan, Jia Li",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

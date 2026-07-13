@@ -1,0 +1,11 @@
+Official primary-source metadata was checked on 2026-07-13.
+
+```bibtex
+@inproceedings{tstar_cognitive_tree_grafting_2026,
+  title = {Reason in Chains, Learn in Trees: Self-Rectification and Grafting for Multi-turn Agent Policy Optimization},
+  author = {Yu Li and Sizhe Tang and Tian Lan},
+  booktitle = {Findings of ACL 2026},
+  year = {2026},
+  url = {https://aclanthology.org/2026.findings-acl.229/}
+}
+```

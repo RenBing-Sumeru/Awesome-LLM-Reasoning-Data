@@ -1,0 +1,117 @@
+id: p-align-adaptive-prefix-distillation-2026
+title: Long-Chain Reasoning Distillation via Adaptive Prefix Alignment
+year: 2026
+venue: ACL 2026
+authors:
+- Zhenghao Liu
+- Zhuoyang Wu
+- Xinze Li
+- Yukun Yan
+- Shuo Wang
+- Zulong Chen
+- Yu Gu
+- Ge Yu
+- Maosong Sun
+source_role:
+- construction_recipe
+- process_supervision
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- math
+training_use:
+- distillation
+- sft
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.822/
+  arxiv: null
+  code: https://github.com/NEUIR/P-ALIGN
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.822
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.822/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in ACL 2026; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: problem, full teacher CoT, candidate truncation point, suffix sufficiency judgment, selected prefix,
+    student completion, and answer
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Suffix sufficiency governs truncation, and downstream answer accuracy tests whether a prefix
+    supplies usable guidance without redundant uncertain content.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: P-ALIGN adaptively truncates teacher trajectories by deciding whether the remaining suffix is concise
+    and sufficient, then supervises the student with the selected prefix.
+  filtering_rule: Suffix sufficiency governs truncation, and downstream answer accuracy tests whether a prefix supplies
+    usable guidance without redundant uncertain content.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: distillation, sft
+audit:
+  source_mixture: Domains reported by ACL 2026; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: problem, full teacher CoT, candidate truncation point, suffix sufficiency judgment, selected prefix,
+    student completion, and answer
+  known_failure_modes:
+  - A sufficiency judge may prefer teacher-like phrasing, and prefix supervision can obscure whether the student
+    learned to initiate reasoning independently.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on problem, full teacher CoT, candidate truncation point,
+  suffix sufficiency judgment, selected prefix, student completion, and answer.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: P-ALIGN adaptively truncates teacher trajectories by deciding whether the remaining suffix is concise
+  and sufficient, then supervises the student with the selected prefix.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: P-ALIGN adaptively truncates teacher trajectories by deciding whether the remaining suffix is
+  concise and sufficient, then supervises the student with the selected prefix.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-03
+  primary_category_id: rollout_search_test_time_trace_data

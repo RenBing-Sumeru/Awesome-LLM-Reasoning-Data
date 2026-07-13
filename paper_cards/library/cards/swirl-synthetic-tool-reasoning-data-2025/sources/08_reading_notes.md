@@ -1,0 +1,4 @@
+- Data object: source task, synthetic multi-step trajectory, action sub-trajectory, tool call and result, filter outcome, reward, and final answer.
+- Construction: SWiRL iteratively generates reasoning-and-tool-use demonstrations, decomposes each episode into action-aligned sub-trajectories, filters them, and applies multi-step reinforcement learning.
+- Feedback: Task outcomes and tool execution provide feedback at terminal and action levels; filtered synthetic data is regenerated as the policy changes.
+- Main audit risk: Sub-trajectory decomposition can detach an action from the earlier evidence that made it valid, and synthetic filters may favor familiar tool patterns.

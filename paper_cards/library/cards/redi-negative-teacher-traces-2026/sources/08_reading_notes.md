@@ -1,0 +1,4 @@
+- Data object: Open-R1 problem, teacher reasoning trace, positive or negative answer label, SFT stage, REDI weight, and student outcome.
+- Construction: The two-stage recipe first performs SFT on positive traces, then applies a REINFORCE-style REDI objective to both positive and previously discarded negative teacher traces.
+- Feedback: Answer correctness supplies offline signs for each trace; the refinement objective converts those labels into positive and negative learning signals without new online rollouts.
+- Main audit risk: A wrong final answer does not locate the harmful step, and negative traces may contain mostly correct reasoning that token-level objectives suppress indiscriminately.

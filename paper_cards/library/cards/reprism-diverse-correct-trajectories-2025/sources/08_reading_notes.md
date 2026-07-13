@@ -1,0 +1,4 @@
+- Data object: prompt, multiple diverse correct trajectories, answer check, reasoning-diversity relation, special-token noise embedding, sampled path, and pass@N result.
+- Construction: RePrism constructs prompt groups with multiple diverse correct answers and trains special noisy embeddings as implicit signals for sampling distinct reasoning paths.
+- Feedback: Correctness filters trajectories and within-prompt diversity defines the grouped supervision; pass@N measures whether new samples cover more valid solution modes.
+- Main audit risk: Surface or embedding diversity may not correspond to genuinely different reasoning, and answer-equivalent traces can share the same hidden flaw.

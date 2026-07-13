@@ -1,0 +1,17 @@
+{
+  "title": "Concise Reasoning, Big Gains: Pruning Long Reasoning Trace with Difficulty-Aware Prompting",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.19716",
+    "arxiv": "https://arxiv.org/abs/2505.19716",
+    "code": "https://github.com/Evanwu1125/LiteCoT",
+    "data": "https://github.com/Evanwu1125/LiteCoT",
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2505.19716"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z",
+  "manual_annotation": {}
+}

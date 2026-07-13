@@ -149,7 +149,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Systematically studies and scales an open reasoning-data pipeline to 1.2 million math, code, and
   science examples with teacher-generated trajectories.
-why_it_matters: Its main contribution for Track 05 is the lineage between teacher rollouts, filtering choices, data
+why_it_matters: Its main data-centric contribution is the lineage between teacher rollouts, filtering choices, data
   scale, and student behavior, rather than a new decoding algorithm.
 curation_level: L4_carded
 verification:

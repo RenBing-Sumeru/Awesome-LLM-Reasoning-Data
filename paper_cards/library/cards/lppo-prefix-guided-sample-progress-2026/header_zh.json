@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LPPO 用可信 demonstration 的前缀增强困难样本，并依据逐样本通过率的指数移动平均更新样本权重。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用逐样本历史研究课程学习，但应分别记录无引导与有引导结果，并对通过率估计器做版本化。",
+  "confidence_ch": "高",
+  "authors_ch": "Xinjie Chen, Minpeng Liao, Guoxin Chen, Chengxi Li, Biao Fu, Kai Fan, Xinggao Liu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

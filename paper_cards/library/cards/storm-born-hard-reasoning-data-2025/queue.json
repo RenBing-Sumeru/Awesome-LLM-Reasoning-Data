@@ -1,0 +1,21 @@
+{
+  "title": "STORM-BORN: A Challenging Dataset for Reasoning over Research Papers",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.1227/",
+    "arxiv": null,
+    "code": "https://github.com/lwhere/STORM-BORN",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2025.findings-acl.1227"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T11:15:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ACL Findings, 高质量推理轨迹数据",
+    "updated_at": "2026-07-13T11:15:19Z"
+  }
+}

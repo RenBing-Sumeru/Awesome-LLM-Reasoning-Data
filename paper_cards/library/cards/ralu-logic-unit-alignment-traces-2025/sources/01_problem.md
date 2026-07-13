@@ -1,0 +1,3 @@
+Reasoning-data pipelines often discard provenance, failed candidates, or intermediate feedback, making model gains hard to attribute. Reasoning-as-Logic-Units: Scaling Test-Time Reasoning in Large Language Models Through Logic Unit Alignment focuses on a concrete trajectory-data decision rather than treating the training corpus as a flat set of answers.
+
+Problem, generated program, static-analysis logic unit, natural-language explanation, unit judgment, rewind-and-correct history, execution result, and final answer is the record that must remain reconstructable for this paper's claims to be audited.

@@ -1,0 +1,4 @@
+- Data object: problem, original long teacher trace, teacher-assigned difficulty, rewritten concise trace, final answer, and token count.
+- Construction: LiteCoT asks a teacher to judge problem difficulty and rewrite each long trace to a matching reasoning budget, yielding 100,000 examples averaging roughly 720 tokens.
+- Feedback: Final-answer checks preserve correctness after rewriting, while difficulty prompts and length statistics govern how aggressively each trajectory is compressed.
+- Main audit risk: Teacher difficulty judgments and rewrites can erase useful alternatives or silently repair flawed source traces.

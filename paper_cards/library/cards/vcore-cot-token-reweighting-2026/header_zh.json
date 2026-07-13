@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VCORE 把 CoT 监督表述为约束优化，在控制方差的同时自适应分配各 token 的权重。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "应把 token 权重日志视为派生过程元数据，而非关于推理重要性的模型无关真值。",
+  "confidence_ch": "高",
+  "authors_ch": "Xuan Gong, Senmiao Wang, Hanbo Huang, Ruoyu Sun, Shiyu Liang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

@@ -1,0 +1,113 @@
+id: graphsilo-graph-reasoning-trajectories-2025
+title: Rewarding Graph Reasoning Process makes LLMs more Generalized Reasoners
+year: 2025
+venue: arXiv preprint arXiv:2503.00845
+authors:
+- Miao Peng
+- Nuo Chen
+- Zongrui Suo
+- Jia Li
+source_role:
+- construction_recipe
+- process_supervision
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- graph reasoning
+training_use:
+- process_supervision
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.00845
+  arxiv: https://arxiv.org/abs/2503.00845
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.00845
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in arXiv preprint arXiv:2503.00845; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: graph task, task-oriented MCTS tree, state transition, fine-grained process label, terminal answer,
+    and retained trajectory
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Step labels and terminal task correctness jointly score branches; transfer tests examine whether
+    the learned feedback captures graph reasoning rather than one benchmark format.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: GraphSILO builds task-oriented trajectories with Monte Carlo tree search, labels intermediate graph-reasoning
+    steps, and uses those records to train a graph process reward model.
+  filtering_rule: Step labels and terminal task correctness jointly score branches; transfer tests examine whether
+    the learned feedback captures graph reasoning rather than one benchmark format.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: process_reward, evaluation
+audit:
+  source_mixture: Domains reported by arXiv preprint arXiv:2503.00845; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: graph task, task-oriented MCTS tree, state transition, fine-grained process label, terminal answer, and
+    retained trajectory
+  known_failure_modes:
+  - MCTS policy bias and automatically assigned step labels may create correlated errors that terminal accuracy
+    does not expose.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on graph task, task-oriented MCTS tree, state transition,
+  fine-grained process label, terminal answer, and retained trajectory.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: GraphSILO builds task-oriented trajectories with Monte Carlo tree search, labels intermediate graph-reasoning
+  steps, and uses those records to train a graph process reward model.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: GraphSILO builds task-oriented trajectories with Monte Carlo tree search, labels intermediate
+  graph-reasoning steps, and uses those records to train a graph process reward model.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-02
+  primary_category_id: rollout_search_test_time_trace_data

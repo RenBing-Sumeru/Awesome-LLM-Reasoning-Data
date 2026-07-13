@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "NoisyRollout 在强化学习期间混合从干净图像和中等扰动图像采集的轨迹，并逐步退火扰动强度。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用配对扰动记录研究稳健视觉推理，并保留精确变换、随机种子、rollout 与正确性结果。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiangyan Liu, Jinjie Ni, Zijian Wu, Chao Du, Longxu Dou, Haonan Wang, Tianyu Pang, Michael Qizhe Shieh",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

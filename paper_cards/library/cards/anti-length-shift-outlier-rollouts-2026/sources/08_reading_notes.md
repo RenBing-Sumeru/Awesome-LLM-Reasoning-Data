@@ -1,0 +1,4 @@
+- Data object: problem, fully correct rollout group, response length distribution, extreme-tail flag, truncated tokens, KL term, and final reward.
+- Construction: Dynamic Outlier Truncation suppresses only extreme response-length tails within fully correct rollout groups and combines this intervention with KL regularization and predictive sampling.
+- Feedback: Verifiable correctness defines eligible groups; within-group length statistics identify redundant outliers instead of penalizing every long solution.
+- Main audit risk: Long correct solutions in a group may contain rare but necessary strategies, and group statistics change with sampling temperature and model maturity.

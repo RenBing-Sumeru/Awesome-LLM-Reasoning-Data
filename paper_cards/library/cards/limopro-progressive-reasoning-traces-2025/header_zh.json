@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LIMOPro 区分推进解题的推理与验证、替代方案和纠错等功能性成分，再精炼轨迹以提高测试时扩展效率。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可用片段对齐的轨迹对研究删减对象，但应把困难样本与平均 token 节省分开审计。",
+  "confidence_ch": "高",
+  "authors_ch": "Yang Xiao, Jessie Wang, Ruifeng Yuan, Chunpu Xu, Kaishuai Xu, Wenjie Li, Pengfei Liu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:52:54Z"
+}

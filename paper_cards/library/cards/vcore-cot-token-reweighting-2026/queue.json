@@ -1,0 +1,21 @@
+{
+  "title": "VCORE: Variance-Controlled Optimization-based Reweighting for Chain-of-Thought Supervision",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1298/",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2026.acl-long.1298"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T11:08:23Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "算法侧的论文",
+    "updated_at": "2026-07-13T11:08:23Z"
+  }
+}

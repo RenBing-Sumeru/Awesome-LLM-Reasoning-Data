@@ -1,0 +1,4 @@
+- Data object: math problem, reasoning step, layer-wise hidden representation, trajectory phase, correctness label, mid-trace score, and steering intervention.
+- Construction: The study aligns reasoning steps with layer-wise representation paths, compares correct and incorrect solutions, and derives trajectory signals for mid-reasoning prediction and steering.
+- Feedback: Final correctness labels supervise geometric comparisons; late-stage divergence supplies a signal for predicting and redirecting a trajectory before the answer.
+- Main audit risk: Hidden-state geometry is checkpoint- and layer-specific, while step segmentation and steering directions may not transfer across prompts or architectures.

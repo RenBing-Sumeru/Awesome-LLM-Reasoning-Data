@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该协议先生成轨迹，再按固定 token 百分位截断，把各前缀重新注入同一或另一模型，并记录下一 token 的答案概率。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "可把前缀—回答表用于轨迹处理诊断，但必须明确模型配对、切分位置和控制条件。",
+  "confidence_ch": "高",
+  "authors_ch": "Marthe Ballon, Brecht Verbeken, Vincent Ginis, Andres Algaba",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z"
+}

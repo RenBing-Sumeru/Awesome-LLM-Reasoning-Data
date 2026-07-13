@@ -1,0 +1,4 @@
+- Data object: knowledge-graph source, synthetic multi-hop long-context QA, ground-truth chain, rollout step, validity and relevance scores, terminal answer, and process advantage.
+- Construction: DeepReasonQA synthesizes difficult long-context questions with inherent KG reasoning chains; LongPAS scores rollout steps for validity and relevance to recover signal from almost-correct failures.
+- Feedback: KG chains provide reference entities and relations, while step validity and relevance shape credit beyond the sparse final reward.
+- Main audit risk: KG-derived chains may omit valid alternate reasoning, and model-judged validity or relevance can reward lexical overlap with the reference path.

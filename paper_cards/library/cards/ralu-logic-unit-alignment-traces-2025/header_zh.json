@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RaLU 用静态分析把生成程序分解为逻辑单元，让模型逐单元判断和解释，并在代码逻辑与任务要求不一致时回退纠正。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹数据构造与审计",
+  "best_for_ch": "仅在可执行代码、静态分析区间与纠正谱系均保留时，才应把单元对齐对话历史当作过程数据。",
+  "confidence_ch": "高",
+  "authors_ch": "Cheryl Li, Tianyuan Xu, Steven Y. Guo",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:59:23Z"
+}

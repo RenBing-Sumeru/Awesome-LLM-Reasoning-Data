@@ -110,7 +110,7 @@ needs:
 - 'needs_review: verify unresolved affiliations and unreleased artifacts'
 one_line_summary: Studies Long-CoT data scale, difficulty, and domain mixture up to one million samples while releasing
   RedStar data and models.
-why_it_matters: For Track 05, the central contribution is an empirical map from trajectory count and difficulty
+why_it_matters: The central data-centric contribution is an empirical map from trajectory count and difficulty
   to slow-reasoning behavior, not a new search operator.
 curation_level: L4_carded
 verification:

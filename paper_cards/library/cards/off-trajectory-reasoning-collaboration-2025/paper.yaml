@@ -1,0 +1,110 @@
+id: off-trajectory-reasoning-collaboration-2025
+title: 'Off-Trajectory Reasoning: Can LLMs Collaborate on Reasoning Trajectory?'
+year: 2025
+venue: arXiv preprint arXiv:2510.06410
+authors:
+- Aochong Oliver Li
+- Tanya Goyal
+source_role:
+- audit_failure
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- math
+- general reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.06410
+  arxiv: https://arxiv.org/abs/2510.06410
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.06410
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks described in arXiv preprint arXiv:2510.06410; retain per-example origin.
+  trace_author: The paper-specified policy, teacher, search procedure, or reviewer.
+  answer_format: problem, source model, misleading or helpful partial trace, continuation model, recoverability
+    or guidability label, answer, and training-condition metadata
+  process_fields:
+  - source task
+  - complete candidate trajectory
+  - feedback or verifier record
+  - selection decision
+  - terminal outcome
+  environment_or_substrate: The paper-specific reasoning, search, tool-use, visual, or code environment.
+  verifier_or_reward: Final answers score recovery and guidance; controlled comparisons vary distillation teacher,
+    RL use, and data selection across 15 open-weight models.
+  terminal_predicate: Official answer checks, program tests, environment outcomes, or reviewed reference answers
+    where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper for generator identities.
+  generator: Twin tests inject misleading traces to measure recoverability and stronger-model correct prefixes to
+    measure whether a collaborator can guide a weaker continuation.
+  filtering_rule: Final answers score recovery and guidance; controlled comparisons vary distillation teacher, RL
+    use, and data selection across 15 open-weight models.
+  sampling_protocol: Retain all candidates, feedback values, and selection decisions before constructing the reported
+    subset.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve rollout and token budgets.
+  optimizer_or_scaffold: evaluation, audit
+audit:
+  source_mixture: Domains reported by arXiv preprint arXiv:2510.06410; preserve source-level provenance.
+  split: Use the official split and group related source items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, and dataset licenses separately.
+  lineage: problem, source model, misleading or helpful partial trace, continuation model, recoverability or guidability
+    label, answer, and training-condition metadata
+  known_failure_modes:
+  - Injected traces may be stylistically out of distribution, and final correctness cannot show whether a model
+    actually used or ignored the collaborator's reasoning.
+  - Rejected candidates or reviewer disagreements may be unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata checked on 2026-07-13; affiliations remain pending unless separately verified.
+inclusion_reason: Data-centric paper centered on problem, source model, misleading or helpful partial
+  trace, continuation model, recoverability or guidability label, answer, and training-condition metadata.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: Twin tests inject misleading traces to measure recoverability and stronger-model correct prefixes to measure
+  whether a collaborator can guide a weaker continuation.
+needs:
+- 'needs_review: verify affiliations, artifact release status, and fine-grained construction details'
+one_line_summary: Twin tests inject misleading traces to measure recoverability and stronger-model correct prefixes
+  to measure whether a collaborator can guide a weaker continuation.
+why_it_matters: It makes trajectory construction, feedback, and retention explicit enough for data-lineage audit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, OpenReview, or arXiv source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-04
+  primary_category_id: rollout_search_test_time_trace_data

@@ -1,0 +1,4 @@
+- Data object: research-paper source, synthetic question, multi-agent reasoning trajectory, human mathematician review, answer, and hardness decision.
+- Construction: The pipeline synthesizes 2,000 candidates from recent research papers, applies reasoning-density and difficulty filters, and retains 100 questions after human-in-the-loop multi-agent construction and mathematician review.
+- Feedback: Model-based proposal and critique are followed by expert review; benchmark accuracy supplies a terminal difficulty signal rather than validating every intermediate claim.
+- Main audit risk: The tiny retained fraction makes reviewer policy and source-paper overlap decisive audit surfaces.

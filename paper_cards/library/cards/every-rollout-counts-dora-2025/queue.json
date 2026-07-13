@@ -1,0 +1,17 @@
+{
+  "title": "Every Rollout Counts: Optimal Resource Allocation for Efficient Test-Time Scaling",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=xSHqNf5Pdc",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:57:05Z",
+  "manual_annotation": {}
+}
