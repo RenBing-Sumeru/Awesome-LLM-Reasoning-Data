@@ -4,7 +4,7 @@
 
   <!-- tree -->
   <g stroke="#b49a7f" fill="none" stroke-linecap="round">
-    <path d="M600 455 C597 400 592 350 596 300 C598 268 602 240 599 212" stroke-width="22"/>
+    <path d="M600 425 C598 388 594 345 596 300 C598 268 602 240 599 212" stroke-width="22"/>
     <path d="M597 312 C565 286 534 264 505 240 C487 225 473 210 466 194" stroke-width="11"/>
     <path d="M540 264 C528 246 521 230 519 210" stroke-width="5"/>
     <path d="M598 352 C562 337 531 326 502 306" stroke-width="8"/>

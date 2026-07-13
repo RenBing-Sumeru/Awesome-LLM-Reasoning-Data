@@ -49,20 +49,20 @@ CATEGORY_GROUPS = [
 ]
 
 TRACK_ZH = {
-    "foundations_and_primers": "🧭 基础入门与综述",
-    "instruction_demonstration_rationale_data": "🧱 指令、示范与思维链数据",
-    "preference_reward_feedback_data": "🤝 偏好与奖励反馈数据",
-    "programmatically_verifiable_outcome_data": "🧮 可程序验证的结果数据",
-    "process_trace_supervision_data": "🪜 过程与步骤监督数据",
-    "rollout_search_test_time_trace_data": "🔁 采样、搜索与推理时轨迹数据",
-    "environment_agent_trajectory_data": "🌐 环境与智能体轨迹数据",
-    "judgment_rubric_domain_expert_data": "⚖️ 评审、评分标准与领域专家数据",
-    "data_construction_open_release_recipes": "🏗️ 数据构造与开源发布",
-    "training_usage_optimization_objectives": "🎯 训练用途与优化目标",
-    "scaling_rlvr_test_time_compute": "📈 规模化、RLVR 与推理时计算",
-    "benchmarks_evaluation_surfaces": "🧰 基准与评测",
-    "frontier_reports_data_disclosure_ledger": "🚀 前沿模型报告与数据披露",
-    "audit_failure_contamination_verifier_attacks": "🧯 审计、污染与失效模式",
+    "foundations_and_primers": "基础入门与综述",
+    "instruction_demonstration_rationale_data": "指令、示范与思维链数据",
+    "preference_reward_feedback_data": "偏好与奖励反馈数据",
+    "programmatically_verifiable_outcome_data": "可程序验证的结果数据",
+    "process_trace_supervision_data": "过程与步骤监督数据",
+    "rollout_search_test_time_trace_data": "采样、搜索与推理时轨迹数据",
+    "environment_agent_trajectory_data": "环境与智能体轨迹数据",
+    "judgment_rubric_domain_expert_data": "评审、评分标准与领域专家数据",
+    "data_construction_open_release_recipes": "数据构造与开源发布",
+    "training_usage_optimization_objectives": "训练用途与优化目标",
+    "scaling_rlvr_test_time_compute": "规模化、RLVR 与推理时计算",
+    "benchmarks_evaluation_surfaces": "基准与评测",
+    "frontier_reports_data_disclosure_ledger": "前沿模型报告与数据披露",
+    "audit_failure_contamination_verifier_attacks": "审计、污染与失效模式",
 }
 
 SUBFIELD_ZH = {
@@ -276,7 +276,8 @@ def contents_tree(zh: bool = False) -> str:
         details = []
         for track in group_tracks:
             cid = track.get("category_id")
-            label = TRACK_ZH.get(cid, track.get("navigator_title")) if zh else track.get("navigator_title")
+            nav_label = re.sub(r"^[^\x00-\x7F]+\s*", "", track.get("navigator_title") or "")
+            label = TRACK_ZH.get(cid, nav_label) if zh else nav_label
             count = category_count(cid)
             unit = "篇" if zh else ("paper" if count == 1 else "papers")
             page = f"papers/{category_file(cid)}"
@@ -357,55 +358,55 @@ def learning_path(zh: bool = False) -> str:
     if zh:
         stages = [
             ("🌱", "第一阶段 · 建立心智模型", "这个领域在研究什么，数据按什么逻辑分类", [
-                ("🏁", "00 · 从这里开始", "docs/00_start_here.md", "领域速览与阅读路线"),
-                ("💡", "01 · 什么是后训练推理数据", "docs/01_what_is_post_training_reasoning_data.md", "带验证器的样本这一核心模型"),
-                ("🗺️", "02 · 以验证器为锚的分类", "docs/02_verifier_anchored_taxonomy.md", "按反馈契约而非领域给论文归类"),
+                ("00 · 从这里开始", "docs/00_start_here.md", "领域速览与阅读路线"),
+                ("01 · 什么是后训练推理数据", "docs/01_what_is_post_training_reasoning_data.md", "带验证器的样本这一核心模型"),
+                ("02 · 以验证器为锚的分类", "docs/02_verifier_anchored_taxonomy.md", "按反馈契约而非领域给论文归类"),
             ]),
             ("🔬", "第二阶段 · 认识数据对象", "一条合格的样本长什么样，质量如何衡量", [
-                ("🗃️", "03 · 推理数据对象", "docs/03_reasoning_data_objects.md", "每类数据对象需要记录哪些字段"),
-                ("💎", "04 · 数据质量", "docs/04_data_quality.md", "准确率之外的质量维度"),
+                ("03 · 推理数据对象", "docs/03_reasoning_data_objects.md", "每类数据对象需要记录哪些字段"),
+                ("04 · 数据质量", "docs/04_data_quality.md", "准确率之外的质量维度"),
             ]),
             ("⚙️", "第三阶段 · 构造、验证与训练", "数据如何生产、由什么打分、如何进入训练并规模化", [
-                ("🏭", "05 · 构造手册", "docs/05_construction_cookbook.md", "题目来源、教师轨迹、过滤与发布元数据"),
-                ("✅", "06 · 验证器与奖励", "docs/06_verifiers_and_rewards.md", "如何审计校验器、评审、评分标准与奖励"),
-                ("🕹️", "07 · 智能体轨迹数据", "docs/07_agent_trajectory_data.md", "工具、网页、系统与软件工程任务的字段要求"),
-                ("📶", "08 · 规模化与推理时计算", "docs/08_scaling_and_test_time_compute.md", "区分数据、验证器、优化器与预算的贡献"),
+                ("05 · 构造手册", "docs/05_construction_cookbook.md", "题目来源、教师轨迹、过滤与发布元数据"),
+                ("06 · 验证器与奖励", "docs/06_verifiers_and_rewards.md", "如何审计校验器、评审、评分标准与奖励"),
+                ("07 · 智能体轨迹数据", "docs/07_agent_trajectory_data.md", "工具、网页、系统与软件工程任务的字段要求"),
+                ("08 · 规模化与推理时计算", "docs/08_scaling_and_test_time_compute.md", "区分数据、验证器、优化器与预算的贡献"),
             ]),
             ("🕵️", "第四阶段 · 审计与实战", "如何识别泄漏与投机，如何把方法落到工程里", [
-                ("🚨", "09 · 审计与失效模式", "docs/09_audit_and_failure_modes.md", "泄漏、污染、验证器欺骗与评审攻击"),
-                ("🔧", "10 · 工程实践路线", "docs/10_industry_onboarding_path.md", "工程师进入该领域的实用路径"),
+                ("09 · 审计与失效模式", "docs/09_audit_and_failure_modes.md", "泄漏、污染、验证器欺骗与评审攻击"),
+                ("10 · 工程实践路线", "docs/10_industry_onboarding_path.md", "工程师进入该领域的实用路径"),
             ]),
         ]
-        papers_line = "- 📖 本阶段必读论文：整理中"
+        papers_line = "- 本阶段必读论文：整理中"
         dash = "——"
     else:
         stages = [
             ("🌱", "Stage 1 · Build the mental model", "what the field studies and how the data is organized", [
-                ("🏁", "00 · Start here", "docs/00_start_here.md", "zero-to-field overview and reading paths"),
-                ("💡", "01 · What is post-training reasoning data?", "docs/01_what_is_post_training_reasoning_data.md", "the verifier-bearing sample mental model"),
-                ("🗺️", "02 · Verifier-anchored taxonomy", "docs/02_verifier_anchored_taxonomy.md", "classify papers by feedback contract, not only domain"),
+                ("00 · Start here", "docs/00_start_here.md", "zero-to-field overview and reading paths"),
+                ("01 · What is post-training reasoning data?", "docs/01_what_is_post_training_reasoning_data.md", "the verifier-bearing sample mental model"),
+                ("02 · Verifier-anchored taxonomy", "docs/02_verifier_anchored_taxonomy.md", "classify papers by feedback contract, not only domain"),
             ]),
             ("🔬", "Stage 2 · Know the data objects", "what a well-formed sample looks like and how quality is measured", [
-                ("🗃️", "03 · Reasoning data objects", "docs/03_reasoning_data_objects.md", "what fields each data object must serialize"),
-                ("💎", "04 · Data quality", "docs/04_data_quality.md", "quality dimensions beyond accuracy"),
+                ("03 · Reasoning data objects", "docs/03_reasoning_data_objects.md", "what fields each data object must serialize"),
+                ("04 · Data quality", "docs/04_data_quality.md", "quality dimensions beyond accuracy"),
             ]),
             ("⚙️", "Stage 3 · Construct, verify, and train", "how data is produced, scored, trained on, and scaled", [
-                ("🏭", "05 · Construction cookbook", "docs/05_construction_cookbook.md", "prompt sourcing, teacher traces, filtering, release metadata"),
-                ("✅", "06 · Verifiers and rewards", "docs/06_verifiers_and_rewards.md", "how to audit checkers, judges, rubrics, and rewards"),
-                ("🕹️", "07 · Agent trajectory data", "docs/07_agent_trajectory_data.md", "state/action/replay fields for tools, web, OS, and SWE"),
-                ("📶", "08 · Scaling and test-time compute", "docs/08_scaling_and_test_time_compute.md", "separate data, verifier, optimizer, and budget effects"),
+                ("05 · Construction cookbook", "docs/05_construction_cookbook.md", "prompt sourcing, teacher traces, filtering, release metadata"),
+                ("06 · Verifiers and rewards", "docs/06_verifiers_and_rewards.md", "how to audit checkers, judges, rubrics, and rewards"),
+                ("07 · Agent trajectory data", "docs/07_agent_trajectory_data.md", "state/action/replay fields for tools, web, OS, and SWE"),
+                ("08 · Scaling and test-time compute", "docs/08_scaling_and_test_time_compute.md", "separate data, verifier, optimizer, and budget effects"),
             ]),
             ("🕵️", "Stage 4 · Audit and practice", "how to catch leakage and gaming, then apply it in engineering", [
-                ("🚨", "09 · Audit and failure modes", "docs/09_audit_and_failure_modes.md", "leakage, contamination, verifier gaming, judge attacks"),
-                ("🔧", "10 · Industry onboarding path", "docs/10_industry_onboarding_path.md", "a practical path for engineers entering the field"),
+                ("09 · Audit and failure modes", "docs/09_audit_and_failure_modes.md", "leakage, contamination, verifier gaming, judge attacks"),
+                ("10 · Industry onboarding path", "docs/10_industry_onboarding_path.md", "a practical path for engineers entering the field"),
             ]),
         ]
-        papers_line = "- 📖 Stage must-reads: curation in progress"
+        papers_line = "- Stage must-reads: curation in progress"
         dash = " — "
     blocks = []
     for stage_emoji, stage_title, stage_goal, guides in stages:
         lines = [f"**{stage_emoji} {stage_title}**{dash}{stage_goal}", ""]
-        lines += [f"- {emoji} [{title}]({path}){dash}{blurb}" for emoji, title, path, blurb in guides]
+        lines += [f"- [{title}]({path}) - {blurb}" for title, path, blurb in guides]
         lines.append(papers_line)
         blocks.append("\n".join(lines))
     return "\n\n".join(blocks)
@@ -479,14 +480,14 @@ def badges() -> str:
 [![Ask]({ask["badge"]})]({ASK_URL})
 [![Entries](https://img.shields.io/badge/entries-{s['total']}-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-{s['verified']}-0f766e)](reports/link_coverage.md)
-[![Cards](https://img.shields.io/badge/cards-{s['cards']}-7c3aed)](cards/README.md)
-[![L5](https://img.shields.io/badge/L5%20audit--ready-{s['l5']}-ea580c)](reports/five_task_quality_audit.md)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)"""
+[![Cards](https://img.shields.io/badge/cards-{s['cards']}-7c3aed)](cards/README.md)"""
 
 
 def readme_en() -> str:
     ask = ask_launch_status()
     return f"""# 🌟 Awesome LLM Reasoning Data
+
+**English** · [简体中文](README_zh.md)
 
 > A curated, field-learning repository for post-training reasoning data: what it is, how it is built, how it is verified, how it enters training, and how to audit it.
 
@@ -500,21 +501,25 @@ def readme_en() -> str:
 
 > When a model becomes better at reasoning after post-training, what data record, feedback signal, verifier, reward, environment, or judge actually made that possible?
 
-📄 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113) · 🔎 Searchable site: in progress · 🤖 Ask: [{ask["en_text"]}]({ASK_URL})
+- 📄 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
+- 🔎 Searchable site: in progress
+- 🤖 Ask: [{ask["en_text"]}]({ASK_URL})
 
 ## 🚀 How to Use This Repo
 
-A useful reasoning-data sample is rarely `prompt -> answer`. It is usually:
+A useful reasoning-data sample is rarely `prompt → answer`. It is usually:
 
-`task/context -> trace/actions -> answer/artifact -> verifier/reward/judge/environment -> metadata`
+`task/context → trace/actions → answer/artifact → verifier/reward/judge/environment → metadata`
 
 Pick the path that matches your goal:
 
-- 🧭 **New to the field** — walk the [Learning Path](#-learning-path) from Stage 1, starting with [00 · Start here](docs/00_start_here.md).
-- 🏗️ **Building a dataset** — follow the [construction cookbook](docs/05_construction_cookbook.md), then compare [release cards](cards/releases/) and [recipe cards](cards/recipes/).
-- 🧪 **Auditing verifiers or claims** — start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and [audit and failure modes](docs/09_audit_and_failure_modes.md).
-- 🔎 **Looking for a specific paper** — jump into the [Contents](#-contents) below, or grep [data/papers.yaml](data/papers.yaml) and [exports/](exports/).
-- 🤝 **Contributing** — pick a gap from [needs_search](reports/needs_search.md) and read [CONTRIBUTING.md](CONTRIBUTING.md).
+| Your goal | Suggested route |
+|---|---|
+| New to the field | Walk the [Learning Path](#-learning-path) from Stage 1, starting with [00 · Start here](docs/00_start_here.md) |
+| Building a dataset | Follow the [construction cookbook](docs/05_construction_cookbook.md), then compare [release cards](cards/releases/) and [recipe cards](cards/recipes/) |
+| Auditing verifiers or claims | Start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and [audit and failure modes](docs/09_audit_and_failure_modes.md) |
+| Looking for a specific paper | Jump into the [Contents](#-contents) below, or grep [data/papers.yaml](data/papers.yaml) and [exports/](exports/) |
+| Contributing | Pick a gap from [needs_search](reports/needs_search.md) and read [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 ## 🔥 Latest Updates
 
@@ -567,6 +572,8 @@ def readme_zh() -> str:
     ask = ask_launch_status()
     return f"""# 🌟 Awesome LLM Reasoning Data
 
+[English](README.md) · **简体中文**
+
 > 系统学习大模型后训练推理数据的精选仓库：数据是什么、如何构造、如何验证、如何进入训练、如何审计。
 
 {badges()}
@@ -579,21 +586,25 @@ def readme_zh() -> str:
 
 > 模型经过后训练后推理能力变强，背后究竟是哪条数据记录、哪种反馈信号、哪个验证器、奖励、环境或评审在起作用？
 
-📄 配套论文：[A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113) · 🔎 检索网站：制作中 · 🤖 {ask["zh_text"].split("（")[0]}：[{ask["zh_text"]}]({ASK_URL})
+- 📄 配套论文：[A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
+- 🔎 检索网站：制作中
+- 🤖 问答助手：[{ask["zh_text"].split("（")[1].rstrip("）")}]({ASK_URL})
 
 ## 🚀 如何使用本仓库
 
-一条有用的推理数据样本，通常不是 `提问 -> 答案`，而是：
+一条有用的推理数据样本，通常不是 `提问 → 答案`，而是：
 
-`任务/上下文 -> 推理轨迹/动作 -> 答案/产物 -> 验证器/奖励/评审/环境 -> 元数据`
+`任务/上下文 → 推理轨迹/动作 → 答案/产物 → 验证器/奖励/评审/环境 → 元数据`
 
 按你的目标选择路径：
 
-- 🧭 **初学者**——沿[学习路径](#-学习路径)从第一阶段读起，第一篇是[00 · 从这里开始](docs/00_start_here.md)。
-- 🏗️ **要构造数据集**——按[05 · 构造手册](docs/05_construction_cookbook.md)走一遍，再对照[发布卡片](cards/releases/)与[配方卡片](cards/recipes/)。
-- 🧪 **要审计验证器或结论**——从[06 · 验证器与奖励](docs/06_verifiers_and_rewards.md)和[09 · 审计与失效模式](docs/09_audit_and_failure_modes.md)入手。
-- 🔎 **要查某篇论文**——直接进下方[分类目录](#-分类目录)，或检索 [data/papers.yaml](data/papers.yaml) 与[导出文件](exports/)。
-- 🤝 **想参与贡献**——从[待补清单](reports/needs_search.md)挑一条，读[贡献指南](CONTRIBUTING.md)。
+| 你的目标 | 建议路线 |
+|---|---|
+| 初学者入门 | 沿[学习路径](#-学习路径)从第一阶段读起，第一篇是 [00 · 从这里开始](docs/00_start_here.md) |
+| 构造数据集 | 按 [05 · 构造手册](docs/05_construction_cookbook.md) 走一遍，再对照[发布卡片](cards/releases/)与[配方卡片](cards/recipes/) |
+| 审计验证器或结论 | 从 [06 · 验证器与奖励](docs/06_verifiers_and_rewards.md) 与 [09 · 审计与失效模式](docs/09_audit_and_failure_modes.md) 入手 |
+| 查找某篇论文 | 直接进下方[分类目录](#-分类目录)，或检索 [data/papers.yaml](data/papers.yaml) 与[导出文件](exports/) |
+| 参与贡献 | 从[待补清单](reports/needs_search.md)挑一条，读[贡献指南](CONTRIBUTING.md) |
 
 ## 🔥 最新动态
 

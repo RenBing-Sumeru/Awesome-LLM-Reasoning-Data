@@ -1,5 +1,7 @@
 # 🌟 Awesome LLM Reasoning Data
 
+**English** · [简体中文](README_zh.md)
+
 > A curated, field-learning repository for post-training reasoning data: what it is, how it is built, how it is verified, how it enters training, and how to audit it.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
@@ -9,8 +11,6 @@
 [![Entries](https://img.shields.io/badge/entries-280-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-165-0f766e)](reports/link_coverage.md)
 [![Cards](https://img.shields.io/badge/cards-87-7c3aed)](cards/README.md)
-[![L5](https://img.shields.io/badge/L5%20audit--ready-53-ea580c)](reports/five_task_quality_audit.md)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 <p align="center">
   <img src="assets/cover.svg" width="92%" alt="Awesome LLM Reasoning Data">
@@ -20,21 +20,25 @@
 
 > When a model becomes better at reasoning after post-training, what data record, feedback signal, verifier, reward, environment, or judge actually made that possible?
 
-📄 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113) · 🔎 Searchable site: in progress · 🤖 Ask: [source-grounded AI assistant · launch pending](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
+- 📄 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
+- 🔎 Searchable site: in progress
+- 🤖 Ask: [source-grounded AI assistant · launch pending](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 
 ## 🚀 How to Use This Repo
 
-A useful reasoning-data sample is rarely `prompt -> answer`. It is usually:
+A useful reasoning-data sample is rarely `prompt → answer`. It is usually:
 
-`task/context -> trace/actions -> answer/artifact -> verifier/reward/judge/environment -> metadata`
+`task/context → trace/actions → answer/artifact → verifier/reward/judge/environment → metadata`
 
 Pick the path that matches your goal:
 
-- 🧭 **New to the field** — walk the [Learning Path](#-learning-path) from Stage 1, starting with [00 · Start here](docs/00_start_here.md).
-- 🏗️ **Building a dataset** — follow the [construction cookbook](docs/05_construction_cookbook.md), then compare [release cards](cards/releases/) and [recipe cards](cards/recipes/).
-- 🧪 **Auditing verifiers or claims** — start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and [audit and failure modes](docs/09_audit_and_failure_modes.md).
-- 🔎 **Looking for a specific paper** — jump into the [Contents](#-contents) below, or grep [data/papers.yaml](data/papers.yaml) and [exports/](exports/).
-- 🤝 **Contributing** — pick a gap from [needs_search](reports/needs_search.md) and read [CONTRIBUTING.md](CONTRIBUTING.md).
+| Your goal | Suggested route |
+|---|---|
+| New to the field | Walk the [Learning Path](#-learning-path) from Stage 1, starting with [00 · Start here](docs/00_start_here.md) |
+| Building a dataset | Follow the [construction cookbook](docs/05_construction_cookbook.md), then compare [release cards](cards/releases/) and [recipe cards](cards/recipes/) |
+| Auditing verifiers or claims | Start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and [audit and failure modes](docs/09_audit_and_failure_modes.md) |
+| Looking for a specific paper | Jump into the [Contents](#-contents) below, or grep [data/papers.yaml](data/papers.yaml) and [exports/](exports/) |
+| Contributing | Pick a gap from [needs_search](reports/needs_search.md) and read [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 ## 🔥 Latest Updates
 
@@ -74,7 +78,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 <blockquote>
 
 <details>
-<summary><code>00</code> <b><a href="papers/00_background_foundations/00_foundations_and_primers.md">🧭 Foundations & Primers</a></b> · 84 papers</summary>
+<summary><code>00</code> <b><a href="papers/00_background_foundations/00_foundations_and_primers.md">Foundations & Primers</a></b> · 84 papers</summary>
 
 - [🧭 Post-training surveys](papers/00_background_foundations/00_foundations_and_primers.md#post-training-surveys)
 - [🧠 Reasoning LLM surveys](papers/00_background_foundations/00_foundations_and_primers.md#reasoning-llm-surveys)
@@ -92,7 +96,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 <blockquote>
 
 <details>
-<summary><code>01</code> <b><a href="papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md">🧱 Instruction / Demo / Rationale</a></b> · 58 papers</summary>
+<summary><code>01</code> <b><a href="papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md">Instruction / Demo / Rationale</a></b> · 58 papers</summary>
 
 - [🧱 Instruction tuning / SFT data](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#instruction-tuning-sft-data)
 - [🧑‍🏫 Human demonstrations](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#human-demonstrations)
@@ -104,7 +108,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>02</code> <b><a href="papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md">🤝 Preference & Reward Feedback</a></b> · 73 papers</summary>
+<summary><code>02</code> <b><a href="papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md">Preference & Reward Feedback</a></b> · 73 papers</summary>
 
 - [🤝 Human preference data / RLHF](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#human-preference-data-rlhf)
 - [⚖️ DPO / preference optimization](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#dpo-preference-optimization)
@@ -116,7 +120,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>03</code> <b><a href="papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md">🧮 Programmatic Verification</a></b> · 94 papers</summary>
+<summary><code>03</code> <b><a href="papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md">Programmatic Verification</a></b> · 94 papers</summary>
 
 - [📐 Math answer-verifiable data](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-answer-verifiable-data)
 - [🧮 Math RLVR datasets](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-rlvr-datasets)
@@ -128,7 +132,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>04</code> <b><a href="papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md">🪜 Process / Trace Supervision</a></b> · 25 papers</summary>
+<summary><code>04</code> <b><a href="papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md">Process / Trace Supervision</a></b> · 25 papers</summary>
 
 - [🪜 Human step-level labels](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#human-step-level-labels)
 - [🧪 Process reward models](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#process-reward-models)
@@ -140,7 +144,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>05</code> <b><a href="papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md">🔁 Rollout / Search / TTC Trace</a></b> · 39 papers</summary>
+<summary><code>05</code> <b><a href="papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md">Rollout / Search / TTC Trace</a></b> · 39 papers</summary>
 
 - [🎲 Multiple rollouts / best-of-N](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#multiple-rollouts-best-of-n)
 - [🌳 Search trees / MCTS](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#search-trees-mcts)
@@ -152,7 +156,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>06</code> <b><a href="papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md">🌐 Environment & Agent Trajectories</a></b> · 95 papers</summary>
+<summary><code>06</code> <b><a href="papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md">Environment & Agent Trajectories</a></b> · 95 papers</summary>
 
 - [🛠️ Tool-use data](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#tool-use-data)
 - [🌍 Web/browser agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#web-browser-agents)
@@ -165,7 +169,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>07</code> <b><a href="papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md">⚖️ Judgment / Rubric / Domain Expert</a></b> · 83 papers</summary>
+<summary><code>07</code> <b><a href="papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md">Judgment / Rubric / Domain Expert</a></b> · 83 papers</summary>
 
 - [⚖️ LLM-as-judge data](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#llm-as-judge-data)
 - [🧑‍⚖️ Human/expert judgment](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#human-expert-judgment)
@@ -185,7 +189,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 <blockquote>
 
 <details>
-<summary><code>08</code> <b><a href="papers/02_data_lifecycle/08_data_construction_open_release_recipes.md">🏗️ Construction & Open Releases</a></b> · 108 papers</summary>
+<summary><code>08</code> <b><a href="papers/02_data_lifecycle/08_data_construction_open_release_recipes.md">Construction & Open Releases</a></b> · 108 papers</summary>
 
 - [🧱 Prompt sourcing](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#prompt-sourcing)
 - [✍️ Teacher trace generation](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#teacher-trace-generation)
@@ -198,7 +202,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>09</code> <b><a href="papers/02_data_lifecycle/09_training_usage_optimization_objectives.md">🎯 Training Usage & Objectives</a></b> · 97 papers</summary>
+<summary><code>09</code> <b><a href="papers/02_data_lifecycle/09_training_usage_optimization_objectives.md">Training Usage & Objectives</a></b> · 97 papers</summary>
 
 - [🧱 SFT / instruction tuning](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#sft-instruction-tuning)
 - [📚 Distillation](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#distillation)
@@ -212,7 +216,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md">📈 Scaling / RLVR / TTC</a></b> · 90 papers</summary>
+<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md">Scaling / RLVR / TTC</a></b> · 90 papers</summary>
 
 - [📈 Data scaling](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-scaling)
 - [🔁 Data reuse and uniqueness](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-reuse-and-uniqueness)
@@ -225,7 +229,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>11</code> <b><a href="papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md">🧰 Benchmarks & Evaluation</a></b> · 109 papers</summary>
+<summary><code>11</code> <b><a href="papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md">Benchmarks & Evaluation</a></b> · 109 papers</summary>
 
 - [📐 Math benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#math-benchmarks)
 - [💻 Code benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#code-benchmarks)
@@ -238,7 +242,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>12</code> <b><a href="papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md">🚀 Frontier Disclosure Ledger</a></b> · 40 papers</summary>
+<summary><code>12</code> <b><a href="papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md">Frontier Disclosure Ledger</a></b> · 40 papers</summary>
 
 - [🚀 DeepSeek-R1 family](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#deepseek-r1-family)
 - [🌙 Kimi reasoning reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#kimi-reasoning-reports)
@@ -250,7 +254,7 @@ Each track page includes a track explanation, a read-first table, the full paper
 </details>
 
 <details>
-<summary><code>13</code> <b><a href="papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md">🧯 Audit & Failure Modes</a></b> · 68 papers</summary>
+<summary><code>13</code> <b><a href="papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md">Audit & Failure Modes</a></b> · 68 papers</summary>
 
 - [🧯 Benchmark contamination](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#benchmark-contamination)
 - [🔍 Search-time contamination](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#search-time-contamination)
@@ -271,30 +275,30 @@ Four stages, in reading order. Each stage starts from the learning guides; the m
 
 **🌱 Stage 1 · Build the mental model** — what the field studies and how the data is organized
 
-- 🏁 [00 · Start here](docs/00_start_here.md) — zero-to-field overview and reading paths
-- 💡 [01 · What is post-training reasoning data?](docs/01_what_is_post_training_reasoning_data.md) — the verifier-bearing sample mental model
-- 🗺️ [02 · Verifier-anchored taxonomy](docs/02_verifier_anchored_taxonomy.md) — classify papers by feedback contract, not only domain
-- 📖 Stage must-reads: curation in progress
+- [00 · Start here](docs/00_start_here.md) - zero-to-field overview and reading paths
+- [01 · What is post-training reasoning data?](docs/01_what_is_post_training_reasoning_data.md) - the verifier-bearing sample mental model
+- [02 · Verifier-anchored taxonomy](docs/02_verifier_anchored_taxonomy.md) - classify papers by feedback contract, not only domain
+- Stage must-reads: curation in progress
 
 **🔬 Stage 2 · Know the data objects** — what a well-formed sample looks like and how quality is measured
 
-- 🗃️ [03 · Reasoning data objects](docs/03_reasoning_data_objects.md) — what fields each data object must serialize
-- 💎 [04 · Data quality](docs/04_data_quality.md) — quality dimensions beyond accuracy
-- 📖 Stage must-reads: curation in progress
+- [03 · Reasoning data objects](docs/03_reasoning_data_objects.md) - what fields each data object must serialize
+- [04 · Data quality](docs/04_data_quality.md) - quality dimensions beyond accuracy
+- Stage must-reads: curation in progress
 
 **⚙️ Stage 3 · Construct, verify, and train** — how data is produced, scored, trained on, and scaled
 
-- 🏭 [05 · Construction cookbook](docs/05_construction_cookbook.md) — prompt sourcing, teacher traces, filtering, release metadata
-- ✅ [06 · Verifiers and rewards](docs/06_verifiers_and_rewards.md) — how to audit checkers, judges, rubrics, and rewards
-- 🕹️ [07 · Agent trajectory data](docs/07_agent_trajectory_data.md) — state/action/replay fields for tools, web, OS, and SWE
-- 📶 [08 · Scaling and test-time compute](docs/08_scaling_and_test_time_compute.md) — separate data, verifier, optimizer, and budget effects
-- 📖 Stage must-reads: curation in progress
+- [05 · Construction cookbook](docs/05_construction_cookbook.md) - prompt sourcing, teacher traces, filtering, release metadata
+- [06 · Verifiers and rewards](docs/06_verifiers_and_rewards.md) - how to audit checkers, judges, rubrics, and rewards
+- [07 · Agent trajectory data](docs/07_agent_trajectory_data.md) - state/action/replay fields for tools, web, OS, and SWE
+- [08 · Scaling and test-time compute](docs/08_scaling_and_test_time_compute.md) - separate data, verifier, optimizer, and budget effects
+- Stage must-reads: curation in progress
 
 **🕵️ Stage 4 · Audit and practice** — how to catch leakage and gaming, then apply it in engineering
 
-- 🚨 [09 · Audit and failure modes](docs/09_audit_and_failure_modes.md) — leakage, contamination, verifier gaming, judge attacks
-- 🔧 [10 · Industry onboarding path](docs/10_industry_onboarding_path.md) — a practical path for engineers entering the field
-- 📖 Stage must-reads: curation in progress
+- [09 · Audit and failure modes](docs/09_audit_and_failure_modes.md) - leakage, contamination, verifier gaming, judge attacks
+- [10 · Industry onboarding path](docs/10_industry_onboarding_path.md) - a practical path for engineers entering the field
+- Stage must-reads: curation in progress
 
 ## 🔎 Searchable Website (In Progress)
 
