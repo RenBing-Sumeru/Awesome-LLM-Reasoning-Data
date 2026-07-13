@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Long CoT Collection 包含 10 万条由短 CoT LLM 生成的推理过程；提示会诱导更长的推理策略，并提供可控的思考预算。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长推理轨迹数据集与冷启动配方",
+  "best_for_ch": "适合研究非 R1 教师数据、思考预算控制和 RLVR 冷启动的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hyungjoo Chae, Dongjin Kang, Jihyuk Kim, Beong-woo Kwak, Sunghyun Park, Haeju Park, Jinyoung Yeo, Moontae Lee, Kyungjae Lee",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

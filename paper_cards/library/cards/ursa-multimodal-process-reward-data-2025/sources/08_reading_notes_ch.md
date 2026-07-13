@@ -1,0 +1,4 @@
+- 数据对象：MMathCoT-1M 完整轨迹和 DualMath-1.1M 过程标签。
+- 反馈：分离的视觉 grounding 与演绎有效性判断。
+- 训练路径：SFT、PRM 训练，再进行 PS-GRPO 在线 rollout。
+- 主要风险：相关自动标签和 reward hacking 可能在百万规模下继续存在。

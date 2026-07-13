@@ -1,0 +1,17 @@
+{
+  "title": "RedStar: Does Scaling Long-CoT Data Unlock Better Slow-Reasoning Systems?",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2501.11284",
+    "arxiv": "https://arxiv.org/abs/2501.11284",
+    "code": null,
+    "data": "https://huggingface.co/RedStar-Reasoning",
+    "project": "https://huggingface.co/RedStar-Reasoning",
+    "huggingface": "https://huggingface.co/RedStar-Reasoning",
+    "doi": "https://doi.org/10.48550/arXiv.2501.11284"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z",
+  "manual_annotation": {}
+}

@@ -1,0 +1,4 @@
+- Data object: query, generator, sampling pass, trajectory, correctness, pass rate, CV, grade, and selection.
+- Scale: 3.34 million queries and about 40 million responses.
+- Selection signal: repeated-rollout correctness and variability.
+- Main risk: measured difficulty changes with generator mixture, budget, and answer checker.

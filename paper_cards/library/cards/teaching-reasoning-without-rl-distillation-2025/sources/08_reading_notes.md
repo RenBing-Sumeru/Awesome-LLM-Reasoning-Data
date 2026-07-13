@@ -1,0 +1,4 @@
+- Data object: problem, trace author, raw draft, editing stage, final rationale, answer, and student outcome.
+- Scale: the central expert-data probe uses 20 QwQ demonstrations.
+- Main finding: refined human and ordinary-model traces do not match the expert-trace effect.
+- Main risk: example selection and teacher-specific style dominate such a small experiment.

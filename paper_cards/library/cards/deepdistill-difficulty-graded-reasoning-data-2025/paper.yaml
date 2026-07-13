@@ -1,0 +1,123 @@
+id: deepdistill-difficulty-graded-reasoning-data-2025
+title: 'DeepDistill: Enhancing LLM Reasoning Capabilities via Large-Scale Difficulty-Graded Data Training'
+year: 2025
+venue: arXiv preprint arXiv:2504.17565
+authors:
+- Xiaoyu Tian
+- Sitong Zhao
+- Haotian Wang
+- Shuaiting Chen
+- Yiping Peng
+- Yunjie Ji
+- Han Zhao
+- Xiangang Li
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- math
+- general reasoning
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2504.17565
+  arxiv: https://arxiv.org/abs/2504.17565
+  code: null
+  data: https://huggingface.co/datasets/a-m-team/AM-DeepSeek-Distilled-40M
+  project: null
+  huggingface: https://huggingface.co/datasets/a-m-team/AM-DeepSeek-Distilled-40M
+  doi: https://doi.org/10.48550/arXiv.2504.17565
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks or source collections described in arXiv preprint arXiv:2504.17565.
+  trace_author: The paper-specified human, teacher model, symbolic generator, or evaluated policy produces the trajectory.
+  answer_format: unique query, generator model, sampling pass, complete distilled response, final answer, correctness
+    result, pass rate, coefficient of variation, difficulty grade, and selection decision
+  process_fields:
+  - prompt or task
+  - candidate reasoning trajectory or state-action trace
+  - feedback or validation signal
+  - selection or retention decision
+  - final answer or terminal outcome
+  environment_or_substrate: Reasoning-trajectory generation, selection, or evaluation pipeline described by the
+    paper.
+  verifier_or_reward: Answer-level correctness across repeated responses produces pass-rate and coefficient-of-variation
+    signals used to grade difficulty and select valuable training examples.
+  terminal_predicate: The official task answer, environment success condition, or symbolic checker determines terminal
+    success where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper and released artifacts for generator identities.
+  generator: Paper-specific human, model, or symbolic generator.
+  filtering_rule: Collect roughly 40 million responses from several models over multiple passes for 3.34 million
+    queries, compute difficulty statistics, and select a graded training subset.
+  sampling_protocol: Preserve all reported candidate counts, generator identities, feedback records, and retention
+    decisions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve sample count, token budget, verifier calls, and rejected traces when
+    reproducing.
+  optimizer_or_scaffold: sft, distillation, evaluation
+audit:
+  source_mixture: Sources and domains reported by arXiv preprint arXiv:2504.17565; preserve per-record provenance.
+  split: Use the official split and keep generation prompts separate from evaluation items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, image, and dataset licenses separately before reuse.
+  lineage: unique query, generator model, sampling pass, complete distilled response, final answer, correctness
+    result, pass rate, coefficient of variation, difficulty grade, and selection decision
+  known_failure_modes:
+  - Repeated responses from related models can underestimate true uncertainty.
+  - Pass-rate difficulty depends on the sampled generators and answer checker.
+  - Forty million responses can contain duplicate or benchmark-contaminated trajectories.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata was checked on 2026-07-13; unresolved artifact and affiliation fields
+    remain explicit.
+inclusion_reason: Generates about 40 million multi-pass reasoning responses for 3.34 million queries and selects
+  training data with pass rate and coefficient-of-variation difficulty signals.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: Generates about 40 million multi-pass reasoning responses for 3.34 million queries and selects training
+  data with pass rate and coefficient-of-variation difficulty signals.
+needs:
+- 'needs_review: verify unresolved affiliations and unreleased artifacts'
+one_line_summary: Generates about 40 million multi-pass reasoning responses for 3.34 million queries and selects
+  training data with pass rate and coefficient-of-variation difficulty signals.
+why_it_matters: Its Track 05 contribution is the mapping from a multi-model candidate set to difficulty, variability,
+  and retention decisions at very large scale.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue or arXiv primary source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-01
+  primary_category_id: rollout_search_test_time_trace_data

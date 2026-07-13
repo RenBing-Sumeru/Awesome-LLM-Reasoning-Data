@@ -1,0 +1,4 @@
+- Data object: prompt, domain metadata, QwQ-32B trajectory, answer, filter outcome, and dataset version.
+- Scale: OpenThoughts3 contains 1.2 million math, code, and science examples.
+- Attribution surface: more than 1,000 controlled pipeline experiments precede the scale-up.
+- Main risk: teacher style, rejected-sample opacity, and benchmark lineage can be mistaken for a pure scale effect.

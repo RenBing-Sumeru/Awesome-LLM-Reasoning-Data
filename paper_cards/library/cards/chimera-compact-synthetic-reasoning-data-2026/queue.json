@@ -1,0 +1,17 @@
+{
+  "title": "CHIMERA: Compact Synthetic Data for Generalizable LLM Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.00889",
+    "arxiv": "https://arxiv.org/abs/2603.00889",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2603.00889"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z",
+  "manual_annotation": {}
+}

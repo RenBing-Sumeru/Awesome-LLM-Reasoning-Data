@@ -1,0 +1,4 @@
+- Data object: PubMed image, question, answer, inference chain, source provenance, and split.
+- Scale: 12,066 images and 12,626 question-answer-chain records.
+- Diagnostic finding: more than half of errors are attributed to multi-step inference breakdowns.
+- Main risk: chain plausibility is not the same as step-level scientific verification.

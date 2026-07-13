@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FOL-Traces 把逻辑推理表示为可执行的符号操作序列，而不是不可验证的文字解释。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "程序验证逻辑推理轨迹数据集",
+  "best_for_ch": "适合研究结构化逻辑步骤、过程保真度和可执行验证的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Isabelle Lee, Sarah Liaw, Dani Yogatama",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

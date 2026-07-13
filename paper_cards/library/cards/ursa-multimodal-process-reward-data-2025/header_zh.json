@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该框架先构建 MMathCoT-1M 以增强多模态推理策略，再用两种步骤质量视角构建 DualMath-1.1M。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态数学轨迹与过程监督数据",
+  "best_for_ch": "适合研究视觉 grounding、步骤正确性、PRM 数据和在线 RL 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ruilin Luo, Zhuofan Zheng, Yifan Wang, Xinzhe Ni, Zicheng Lin, Songtao Jiang, Yiyao Yu, Chufan Shi, Lei Wang, Ruihang Chu, Jin Zeng, Yujiu Yang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

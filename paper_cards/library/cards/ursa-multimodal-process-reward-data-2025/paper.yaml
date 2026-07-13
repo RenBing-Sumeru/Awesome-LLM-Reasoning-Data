@@ -1,0 +1,129 @@
+id: ursa-multimodal-process-reward-data-2025
+title: Unlocking Multimodal Mathematical Reasoning via Process Reward Model
+year: 2025
+venue: NeurIPS 2025 Main Track
+authors:
+- Ruilin Luo
+- Zhuofan Zheng
+- Yifan Wang
+- Xinzhe Ni
+- Zicheng Lin
+- Songtao Jiang
+- Yiyao Yu
+- Chufan Shi
+- Lei Wang
+- Ruihang Chu
+- Jin Zeng
+- Yujiu Yang
+source_role:
+- data_release
+- process_supervision
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+- full_episode
+domains:
+- multimodal math
+training_use:
+- sft
+- reward_modeling
+- process_supervision
+- rlvr
+- test_time_compute
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2501.04686
+  arxiv: https://arxiv.org/abs/2501.04686
+  code: https://github.com/URSA-MATH/URSA-MATH
+  data: https://github.com/URSA-MATH/URSA-MATH
+  project: https://github.com/URSA-MATH/URSA-MATH
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2501.04686
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks or source collections described in NeurIPS 2025 Main Track.
+  trace_author: The paper-specified human, teacher model, symbolic generator, or evaluated policy produces the trajectory.
+  answer_format: multimodal math problem, image, long-CoT trajectory, reasoning step, visual-grounding label, deductive-validity
+    label, process reward, and final answer
+  process_fields:
+  - prompt or task
+  - candidate reasoning trajectory or state-action trace
+  - feedback or validation signal
+  - selection or retention decision
+  - final answer or terminal outcome
+  environment_or_substrate: Reasoning-trajectory generation, selection, or evaluation pipeline described by the
+    paper.
+  verifier_or_reward: An automated dual-view labeling pipeline scores both perceptual grounding fidelity and deductive
+    chain validity; the resulting PRM guides PS-GRPO.
+  terminal_predicate: The official task answer, environment success condition, or symbolic checker determines terminal
+    success where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper and released artifacts for generator identities.
+  generator: Paper-specific human, model, or symbolic generator.
+  filtering_rule: Construct MMathCoT-1M for SFT, synthesize DualMath-1.1M with dual-view process labels, train a
+    reward model, and use it during process-supervised online RL.
+  sampling_protocol: Preserve all reported candidate counts, generator identities, feedback records, and retention
+    decisions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve sample count, token budget, verifier calls, and rejected traces when
+    reproducing.
+  optimizer_or_scaffold: sft, reward_modeling, process_supervision, rlvr, test_time_compute
+audit:
+  source_mixture: Sources and domains reported by NeurIPS 2025 Main Track; preserve per-record provenance.
+  split: Use the official split and keep generation prompts separate from evaluation items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, image, and dataset licenses separately before reuse.
+  lineage: multimodal math problem, image, long-CoT trajectory, reasoning step, visual-grounding label, deductive-validity
+    label, process reward, and final answer
+  known_failure_modes:
+  - Automatic perceptual and logical labels can share errors with the policy.
+  - Reward hacking can exploit weaknesses in the multimodal PRM.
+  - Dataset scale does not reveal the distribution of rejected or disputed steps.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata was checked on 2026-07-13; unresolved artifact and affiliation fields
+    remain explicit.
+inclusion_reason: Builds MMathCoT-1M and DualMath-1.1M, pairing multimodal reasoning trajectories with automated
+  labels for logical validity and visual grounding.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: Builds MMathCoT-1M and DualMath-1.1M, pairing multimodal reasoning trajectories with automated labels
+  for logical validity and visual grounding.
+needs:
+- 'needs_review: verify unresolved affiliations and unreleased artifacts'
+one_line_summary: Builds MMathCoT-1M and DualMath-1.1M, pairing multimodal reasoning trajectories with automated
+  labels for logical validity and visual grounding.
+why_it_matters: Its Track 05 contribution is the lineage from full multimodal trajectories to dual labels, process
+  rewards, and online rollout updates.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue or arXiv primary source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-01
+  primary_category_id: rollout_search_test_time_trace_data

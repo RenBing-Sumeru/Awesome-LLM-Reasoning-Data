@@ -1,0 +1,17 @@
+{
+  "title": "One Missing Piece for Open-Source Reasoning Models: A Dataset to Mitigate Cold-Starting Short CoT LLMs in RL",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-industry.85/",
+    "arxiv": "https://arxiv.org/abs/2506.02338",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": "https://doi.org/10.18653/v1/2025.acl-industry.85"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z",
+  "manual_annotation": {}
+}

@@ -1,0 +1,17 @@
+{
+  "title": "FOL-Traces: Verified First-Order Logic Reasoning Traces at Scale",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-eacl.115/",
+    "arxiv": "https://arxiv.org/abs/2505.14932",
+    "code": null,
+    "data": "https://huggingface.co/datasets/fol-traces/fol-traces",
+    "project": null,
+    "huggingface": "https://huggingface.co/datasets/fol-traces/fol-traces",
+    "doi": "https://doi.org/10.18653/v1/2026.findings-eacl.115"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z",
+  "manual_annotation": {}
+}

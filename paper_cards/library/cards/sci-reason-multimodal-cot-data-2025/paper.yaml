@@ -1,0 +1,123 @@
+id: sci-reason-multimodal-cot-data-2025
+title: 'SCI-Reason: A Dataset with Chain-of-Thought Rationales for Complex Multimodal Reasoning in Academic Areas'
+year: 2025
+venue: arXiv preprint arXiv:2504.06637
+authors:
+- Chenghao Ma
+- Haihong E.
+- Junpeng Ding
+- Jun Zhang
+- Ziyan Ma
+- Huang Qing
+- Bofei Gao
+- Liang Chen
+- Yifan Zhu
+- Meina Song
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- multimodal science
+- academic VQA
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.06637
+  arxiv: https://arxiv.org/abs/2504.06637
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.06637
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks or source collections described in arXiv preprint arXiv:2504.06637.
+  trace_author: The paper-specified human, teacher model, symbolic generator, or evaluated policy produces the trajectory.
+  answer_format: PubMed image, academic-domain provenance, question, answer, concise inference chain, split assignment,
+    and model evaluation record
+  process_fields:
+  - prompt or task
+  - candidate reasoning trajectory or state-action trace
+  - feedback or validation signal
+  - selection or retention decision
+  - final answer or terminal outcome
+  environment_or_substrate: Reasoning-trajectory generation, selection, or evaluation pipeline described by the
+    paper.
+  verifier_or_reward: Answer correctness and curated inference chains provide supervision; the abstract does not
+    fully specify whether every intermediate step has an independent verifier.
+  terminal_predicate: The official task answer, environment success condition, or symbolic checker determines terminal
+    success where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper and released artifacts for generator identities.
+  generator: Paper-specific human, model, or symbolic generator.
+  filtering_rule: Extract real academic images and question-answer pairs from PubMed, add accurate concise inference
+    chains, and divide 12,626 examples into train, validation, and test splits.
+  sampling_protocol: Preserve all reported candidate counts, generator identities, feedback records, and retention
+    decisions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve sample count, token budget, verifier calls, and rejected traces when
+    reproducing.
+  optimizer_or_scaffold: sft, evaluation
+audit:
+  source_mixture: Sources and domains reported by arXiv preprint arXiv:2504.06637; preserve per-record provenance.
+  split: Use the official split and keep generation prompts separate from evaluation items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, image, and dataset licenses separately before reuse.
+  lineage: PubMed image, academic-domain provenance, question, answer, concise inference chain, split assignment,
+    and model evaluation record
+  known_failure_modes:
+  - Inference-chain annotation may introduce model or annotator explanations not grounded in the source article.
+  - PubMed image reuse requires license and provenance checks.
+  - Train-test similarity across figures from related papers can inflate generalization.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata was checked on 2026-07-13; unresolved artifact and affiliation fields
+    remain explicit.
+inclusion_reason: Pairs 12,066 PubMed images with 12,626 questions, answers, and concise inference chains for complex
+  academic multimodal reasoning.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: Pairs 12,066 PubMed images with 12,626 questions, answers, and concise inference chains for complex academic
+  multimodal reasoning.
+needs:
+- 'needs_review: verify unresolved affiliations and unreleased artifacts'
+one_line_summary: Pairs 12,066 PubMed images with 12,626 questions, answers, and concise inference chains for complex
+  academic multimodal reasoning.
+why_it_matters: Its Track 05 value is a dataset where the visual source, reasoning trajectory, and answer can be
+  audited together across academic domains.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue or arXiv primary source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-01
+  primary_category_id: rollout_search_test_time_trace_data

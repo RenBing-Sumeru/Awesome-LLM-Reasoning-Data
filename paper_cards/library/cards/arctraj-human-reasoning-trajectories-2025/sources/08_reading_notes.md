@@ -1,0 +1,4 @@
+- Data object: ARC grid state, object-level action, timestamp, next state, trajectory, and success.
+- Scale: around 10,000 human trajectories over 400 ARC-AGI-1 training tasks.
+- Feedback: the target grid defines terminal success.
+- Main risk: interface affordances and participant familiarity shape the observed search traces.

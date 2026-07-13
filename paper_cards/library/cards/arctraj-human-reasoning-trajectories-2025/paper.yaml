@@ -1,0 +1,117 @@
+id: arctraj-human-reasoning-trajectories-2025
+title: 'ARCTraj: A Dataset and Benchmark of Human Reasoning Trajectories for Abstract Problem Solving'
+year: 2025
+venue: KDD 2026 Datasets and Benchmarks
+authors:
+- Sejin Kim
+- Hayan Choi
+- Seokki Lee
+- Sundong Kim
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- ARC
+- abstract visual reasoning
+training_use:
+- agent_training
+- evaluation
+construction_layer:
+- trace_writing
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.11079
+  arxiv: https://arxiv.org/abs/2511.11079
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2511.11079
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks or source collections described in KDD 2026 Datasets and Benchmarks.
+  trace_author: The paper-specified human, teacher model, symbolic generator, or evaluated policy produces the trajectory.
+  answer_format: ARC task identifier, grid state, selected object, edit action, timestamp, intermediate state, complete
+    human trajectory, and success label
+  process_fields:
+  - prompt or task
+  - candidate reasoning trajectory or state-action trace
+  - feedback or validation signal
+  - selection or retention decision
+  - final answer or terminal outcome
+  environment_or_substrate: Reasoning-trajectory generation, selection, or evaluation pipeline described by the
+    paper.
+  verifier_or_reward: The ARC target grid supplies a terminal success predicate, while the O2ARC interface records
+    temporally ordered human actions.
+  terminal_predicate: The official task answer, environment success condition, or symbolic checker determines terminal
+    success where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper and released artifacts for generator identities.
+  generator: Paper-specific human, model, or symbolic generator.
+  filtering_rule: Collect object-level edit histories through O2ARC, abstract the actions, formulate trajectories
+    as an MDP, and analyze successful and unsuccessful behavior over 400 training tasks.
+  sampling_protocol: Preserve all reported candidate counts, generator identities, feedback records, and retention
+    decisions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve sample count, token budget, verifier calls, and rejected traces when
+    reproducing.
+  optimizer_or_scaffold: agent_training, evaluation
+audit:
+  source_mixture: Sources and domains reported by KDD 2026 Datasets and Benchmarks; preserve per-record provenance.
+  split: Use the official split and keep generation prompts separate from evaluation items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, image, and dataset licenses separately before reuse.
+  lineage: ARC task identifier, grid state, selected object, edit action, timestamp, intermediate state, complete
+    human trajectory, and success label
+  known_failure_modes:
+  - Interface affordances shape the observed human search policy.
+  - Repeated participants and task familiarity can bias trajectory diversity.
+  - Success labels do not explain whether intermediate actions were intentional or accidental.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata was checked on 2026-07-13; unresolved artifact and affiliation fields
+    remain explicit.
+inclusion_reason: Records around 10,000 temporally ordered human object-edit trajectories with timestamps and success
+  labels over 400 ARC-AGI-1 training tasks.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: Records around 10,000 temporally ordered human object-edit trajectories with timestamps and success labels
+  over 400 ARC-AGI-1 training tasks.
+needs:
+- 'needs_review: verify unresolved affiliations and unreleased artifacts'
+one_line_summary: Records around 10,000 temporally ordered human object-edit trajectories with timestamps and success
+  labels over 400 ARC-AGI-1 training tasks.
+why_it_matters: This makes backtracking, redundant edits, timing, and failed episodes first-class data instead of
+  polishing them away from a final explanation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue or arXiv primary source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-01
+  primary_category_id: rollout_search_test_time_trace_data

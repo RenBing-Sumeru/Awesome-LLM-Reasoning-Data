@@ -1,0 +1,17 @@
+{
+  "title": "Unlocking Multimodal Mathematical Reasoning via Process Reward Model",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2501.04686",
+    "arxiv": "https://arxiv.org/abs/2501.04686",
+    "code": "https://github.com/URSA-MATH/URSA-MATH",
+    "data": "https://github.com/URSA-MATH/URSA-MATH",
+    "project": "https://github.com/URSA-MATH/URSA-MATH",
+    "huggingface": null,
+    "doi": "https://doi.org/10.48550/arXiv.2501.04686"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z",
+  "manual_annotation": {}
+}

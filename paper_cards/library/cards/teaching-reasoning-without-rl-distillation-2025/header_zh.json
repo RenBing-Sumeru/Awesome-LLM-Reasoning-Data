@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "研究只用 20 条 QwQ-32B-Preview 长推理 demonstration 轻量微调 Qwen2.5-32B，形成一个刻意控制的小数据探针。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "小样本长 CoT 数据质量研究",
+  "best_for_ch": "适合研究教师轨迹可学习性、人类编辑和小样本冷启动的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Du, Branislav Kisacanin, George Armstrong, Shubham Toshniwal, Ivan Moshkov, Alexan Ayrapetyan, Sadegh Mahdavi, Dan Zhao, Shizhe Diao, Dragan Masulovic, Marius Stanean, Advaith Avadhanam, Max Wang, Ashmit Dutta, Shitij Govil, Sri Yanamandara, Mihir Tandon, Sriram Ananthakrishnan, Vedant Rathi, David Zhang, Joonseok Kang, Leon Luo, Titu Andreescu, Boris Ginsburg, Igor Gitman",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

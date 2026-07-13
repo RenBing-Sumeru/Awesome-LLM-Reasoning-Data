@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该报告把长 CoT 规模和样本难度视为可控训练变量，并探索最高 100 万条样本的语料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长 CoT 数据规模研究",
+  "best_for_ch": "适合研究轨迹数量、难度和领域混合如何影响慢思考模型的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Haotian Xu, Xing Wu, Weinong Wang, Zhongzhi Li, Da Zheng, Boyuan Chen, Yi Hu, Shijia Kang, Jiaming Ji, Yingying Zhang, Zhijiang Guo, Yaodong Yang, Muhan Zhang, Debing Zhang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

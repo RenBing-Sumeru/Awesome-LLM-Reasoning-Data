@@ -1,0 +1,4 @@
+- Data object: discipline, topic, synthetic problem, long CoT, answer, validator judgments, and retention.
+- Scale: 9K samples across eight disciplines and more than 1,000 topics.
+- Feedback: strong reasoners cross-validate both problem validity and answer correctness.
+- Main risk: correlated model judges can agree on the same unsupported scientific claim.

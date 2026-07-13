@@ -1,0 +1,17 @@
+{
+  "title": "DeepDistill: Enhancing LLM Reasoning Capabilities via Large-Scale Difficulty-Graded Data Training",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.17565",
+    "arxiv": "https://arxiv.org/abs/2504.17565",
+    "code": null,
+    "data": "https://huggingface.co/datasets/a-m-team/AM-DeepSeek-Distilled-40M",
+    "project": null,
+    "huggingface": "https://huggingface.co/datasets/a-m-team/AM-DeepSeek-Distilled-40M",
+    "doi": "https://doi.org/10.48550/arXiv.2504.17565"
+  },
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z",
+  "manual_annotation": {}
+}

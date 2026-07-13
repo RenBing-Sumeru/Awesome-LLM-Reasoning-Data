@@ -1,0 +1,4 @@
+- Data object: source problem, domain, Long-CoT trace, answer, difficulty, mixture, and scale.
+- Reported range: experiments extend to one million Long-CoT samples.
+- Small-data signal: 21K mixed code-math examples are reported to reach 46.7% on AIME.
+- Main risk: scale, difficulty, domain mixture, teacher, and model capacity change together.

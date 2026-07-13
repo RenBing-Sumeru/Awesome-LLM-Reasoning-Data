@@ -1,0 +1,4 @@
+- Data object: problem, strategy prompt, short-CoT teacher, long rationale, thought budget, and final answer.
+- Release scale: 100K long-CoT rationales.
+- Training path: SFT cold start followed by RLVR.
+- Main risk: prompted long-form behavior may be stylistic unless answer checks and rejected traces are auditable.

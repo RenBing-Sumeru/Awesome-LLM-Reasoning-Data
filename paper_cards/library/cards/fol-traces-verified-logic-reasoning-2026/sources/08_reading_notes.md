@@ -1,0 +1,4 @@
+- Data object: symbolic state, operation, arguments, next state, and complete verified trace.
+- Feedback: every transition is checked by a first-order-logic executor.
+- Diagnostics: masked operation prediction and one- or two-step completion.
+- Main risk: synthetic templates can reward surface regularities instead of semantic inference.

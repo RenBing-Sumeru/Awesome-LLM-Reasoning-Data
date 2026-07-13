@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该数据集包含来自 PubMed 的 12,066 张图像和 12,626 个问答对，每个问答对都附有简洁推理链。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "学术图像多模态推理轨迹数据集",
+  "best_for_ch": "适合研究真实学术图像、推理链标注和跨域多模态训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chenghao Ma, Haihong E., Junpeng Ding, Jun Zhang, Ziyan Ma, Huang Qing, Bofei Gao, Liang Chen, Yifan Zhu, Meina Song",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CHIMERA 包含 9,000 条合成长 CoT 样本，覆盖 8 个科学学科和 1,000 多个细粒度主题。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "紧凑型跨领域合成推理数据集",
+  "best_for_ch": "适合研究小而广的冷启动数据、主题覆盖和自动交叉验证的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xinyu Zhu, Yihao Feng, Yanchao Sun, Xianzhi Du, Pingzhi Li, Olli Saarikivi, Yun Zhu, Yu Meng",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

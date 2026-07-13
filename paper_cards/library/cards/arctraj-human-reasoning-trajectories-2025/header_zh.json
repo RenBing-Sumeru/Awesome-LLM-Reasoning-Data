@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该数据集记录 O2ARC 界面中按时间排序的对象级人类动作，并附带任务 ID、时间戳、中间状态和成功标签。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "人类推理轨迹数据集与基准",
+  "best_for_ch": "适合研究人类搜索路径、状态动作记录和 ARC 轨迹学习的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sejin Kim, Hayan Choi, Seokki Lee, Sundong Kim",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-13T07:40:31Z"
+}

@@ -1,0 +1,138 @@
+id: teaching-reasoning-without-rl-distillation-2025
+title: The Challenge of Teaching Reasoning to LLMs Without RL or Distillation
+year: 2025
+venue: arXiv preprint arXiv:2507.09850
+authors:
+- Wei Du
+- Branislav Kisacanin
+- George Armstrong
+- Shubham Toshniwal
+- Ivan Moshkov
+- Alexan Ayrapetyan
+- Sadegh Mahdavi
+- Dan Zhao
+- Shizhe Diao
+- Dragan Masulovic
+- Marius Stanean
+- Advaith Avadhanam
+- Max Wang
+- Ashmit Dutta
+- Shitij Govil
+- Sri Yanamandara
+- Mihir Tandon
+- Sriram Ananthakrishnan
+- Vedant Rathi
+- David Zhang
+- Joonseok Kang
+- Leon Luo
+- Titu Andreescu
+- Boris Ginsburg
+- Igor Gitman
+source_role:
+- data_release
+- scaling_study
+- audit_failure
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- math
+training_use:
+- sft
+- distillation
+- audit
+construction_layer:
+- trace_writing
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.09850
+  arxiv: https://arxiv.org/abs/2507.09850
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.09850
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks or source collections described in arXiv preprint arXiv:2507.09850.
+  trace_author: The paper-specified human, teacher model, symbolic generator, or evaluated policy produces the trajectory.
+  answer_format: math problem, trajectory author type, raw rationale, editing stage, structural guidance, final
+    long-CoT demonstration, answer, and student training outcome
+  process_fields:
+  - prompt or task
+  - candidate reasoning trajectory or state-action trace
+  - feedback or validation signal
+  - selection or retention decision
+  - final answer or terminal outcome
+  environment_or_substrate: Reasoning-trajectory generation, selection, or evaluation pipeline described by the
+    paper.
+  verifier_or_reward: Final-answer performance compares trace sources; multi-pass editing and structural review
+    refine human and non-reasoning-model trajectories, but do not provide a programmatic verifier for every step.
+  terminal_predicate: The official task answer, environment success condition, or symbolic checker determines terminal
+    success where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper and released artifacts for generator identities.
+  generator: Paper-specific human, model, or symbolic generator.
+  filtering_rule: Start from 20 QwQ-32B-Preview demonstrations, construct alternative human and non-reasoning-model
+    traces, refine them with prompting and multiple editing stages, and compare light fine-tuning outcomes.
+  sampling_protocol: Preserve all reported candidate counts, generator identities, feedback records, and retention
+    decisions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve sample count, token budget, verifier calls, and rejected traces when
+    reproducing.
+  optimizer_or_scaffold: sft, distillation, audit
+audit:
+  source_mixture: Sources and domains reported by arXiv preprint arXiv:2507.09850; preserve per-record provenance.
+  split: Use the official split and keep generation prompts separate from evaluation items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, image, and dataset licenses separately before reuse.
+  lineage: math problem, trajectory author type, raw rationale, editing stage, structural guidance, final long-CoT
+    demonstration, answer, and student training outcome
+  known_failure_modes:
+  - Twenty demonstrations make results sensitive to individual examples.
+  - Teacher-specific style can be mistaken for general reasoning structure.
+  - Human editing quality and effort are difficult to normalize across stages.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata was checked on 2026-07-13; unresolved artifact and affiliation fields
+    remain explicit.
+inclusion_reason: Compares 20 expert-model Long-CoT demonstrations with human and non-reasoning-model traces refined
+  through prompting and multi-pass editing, releasing the data across stages.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: Compares 20 expert-model Long-CoT demonstrations with human and non-reasoning-model traces refined through
+  prompting and multi-pass editing, releasing the data across stages.
+needs:
+- 'needs_review: verify unresolved affiliations and unreleased artifacts'
+one_line_summary: Compares 20 expert-model Long-CoT demonstrations with human and non-reasoning-model traces refined
+  through prompting and multi-pass editing, releasing the data across stages.
+why_it_matters: That negative comparison makes trajectory authorship and editing history first-class Track 05 metadata
+  instead of treating every correct rationale as interchangeable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue or arXiv primary source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-01
+  primary_category_id: rollout_search_test_time_trace_data

@@ -1,0 +1,166 @@
+id: openthoughts-data-recipes-reasoning-models-2025
+title: 'OpenThoughts: Data Recipes for Reasoning Models'
+year: 2025
+venue: arXiv preprint arXiv:2506.04178
+authors:
+- Etash Guha
+- Ryan Marten
+- Sedrick Keh
+- Negin Raoof
+- Georgios Smyrnis
+- Hritik Bansal
+- Marianna Nezhurina
+- Jean Mercat
+- Trung Vu
+- Zayne Sprague
+- Ashima Suvarna
+- Benjamin Feuer
+- Liangyu Chen
+- Zaid Khan
+- Eric Frankel
+- Sachin Grover
+- Caroline Choi
+- Niklas Muennighoff
+- Shiye Su
+- Wanjia Zhao
+- John Yang
+- Shreyas Pimpalgaonkar
+- Kartik Sharma
+- Charlie Cheng-Jie Ji
+- Yichuan Deng
+- Sarah Pratt
+- Vivek Ramanujan
+- Jon Saad-Falcon
+- Jeffrey Li
+- Achal Dave
+- Alon Albalak
+- Kushal Arora
+- Blake Wulfe
+- Chinmay Hegde
+- Greg Durrett
+- Sewoong Oh
+- Mohit Bansal
+- Saadia Gabriel
+- Aditya Grover
+- Kai-Wei Chang
+- Vaishaal Shankar
+- Aaron Gokaslan
+- Mike A. Merrill
+- Tatsunori Hashimoto
+- Yejin Choi
+- Jenia Jitsev
+- Reinhard Heckel
+- Maheswaran Sathiamoorthy
+- Alexandros G. Dimakis
+- Ludwig Schmidt
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- math
+- code
+- science
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.04178
+  arxiv: https://arxiv.org/abs/2506.04178
+  code: https://github.com/open-thoughts/open-thoughts
+  data: https://www.openthoughts.ai/
+  project: https://www.openthoughts.ai/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.04178
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official tasks or source collections described in arXiv preprint arXiv:2506.04178.
+  trace_author: The paper-specified human, teacher model, symbolic generator, or evaluated policy produces the trajectory.
+  answer_format: prompt, domain and source metadata, QwQ-32B reasoning trajectory, final answer, filtering decision,
+    dataset version, and student-training record
+  process_fields:
+  - prompt or task
+  - candidate reasoning trajectory or state-action trace
+  - feedback or validation signal
+  - selection or retention decision
+  - final answer or terminal outcome
+  environment_or_substrate: Reasoning-trajectory generation, selection, or evaluation pipeline described by the
+    paper.
+  verifier_or_reward: Domain-specific answer checks and pipeline filters select trajectories; the paper also compares
+    recipe choices through more than 1,000 controlled experiments.
+  terminal_predicate: The official task answer, environment success condition, or symbolic checker determines terminal
+    success where available.
+recipe_metadata:
+  base_model: See the primary paper for experiment-specific checkpoints.
+  teacher: See the primary paper and released artifacts for generator identities.
+  generator: Paper-specific human, model, or symbolic generator.
+  filtering_rule: Iterate from OpenThoughts2 to OpenThoughts3, vary each generation-stage choice in controlled experiments,
+    then scale the selected recipe to 1.2 million examples.
+  sampling_protocol: Preserve all reported candidate counts, generator identities, feedback records, and retention
+    decisions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific; preserve sample count, token budget, verifier calls, and rejected traces when
+    reproducing.
+  optimizer_or_scaffold: sft, distillation, evaluation
+audit:
+  source_mixture: Sources and domains reported by arXiv preprint arXiv:2506.04178; preserve per-record provenance.
+  split: Use the official split and keep generation prompts separate from evaluation items.
+  decontamination: Do not infer decontamination beyond explicit primary-source disclosures.
+  license: Check paper, code, model, image, and dataset licenses separately before reuse.
+  lineage: prompt, domain and source metadata, QwQ-32B reasoning trajectory, final answer, filtering decision, dataset
+    version, and student-training record
+  known_failure_modes:
+  - Teacher-specific styles may dominate the retained trajectories.
+  - Benchmark overlap and prompt lineage must be audited across dataset versions.
+  - The public abstract does not enumerate every domain-specific rejection rule.
+  citation_status: verified
+  confidence: high
+  notes: Official primary-source metadata was checked on 2026-07-13; unresolved artifact and affiliation fields
+    remain explicit.
+inclusion_reason: Systematically studies and scales an open reasoning-data pipeline to 1.2 million math, code, and
+  science examples with teacher-generated trajectories.
+related: []
+tags:
+- track-05
+- reasoning-data
+- trajectory-data
+- primary-link-checked
+status: verified
+one_line: Systematically studies and scales an open reasoning-data pipeline to 1.2 million math, code, and science
+  examples with teacher-generated trajectories.
+needs:
+- 'needs_review: verify unresolved affiliations and unreleased artifacts'
+one_line_summary: Systematically studies and scales an open reasoning-data pipeline to 1.2 million math, code, and
+  science examples with teacher-generated trajectories.
+why_it_matters: Its main contribution for Track 05 is the lineage between teacher rollouts, filtering choices, data
+  scale, and student behavior, rather than a new decoding algorithm.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official venue or arXiv primary source checked.
+category_ids:
+- rollout_search_test_time_trace_data
+batch:
+  id: track-05-data-centric-2025-2026-batch-01
+  primary_category_id: rollout_search_test_time_trace_data

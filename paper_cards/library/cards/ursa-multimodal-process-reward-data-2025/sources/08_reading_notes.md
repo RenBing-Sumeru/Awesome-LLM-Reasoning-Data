@@ -1,0 +1,4 @@
+- Data objects: MMathCoT-1M full trajectories and DualMath-1.1M process labels.
+- Feedback: separate visual-grounding and deductive-validity judgments.
+- Training path: SFT, PRM training, then PS-GRPO online rollouts.
+- Main risk: correlated automatic labels and reward hacking can survive at million-example scale.
