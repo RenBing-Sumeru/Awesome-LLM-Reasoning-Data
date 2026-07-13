@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-label="大模型推理数据精选：3 大板块 · 14 个方向">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1120"/>
+      <stop offset="0.55" stop-color="#111a2e"/>
+      <stop offset="1" stop-color="#16223c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="0.5" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0" r="1">
+      <stop offset="0" stop-color="#3b82f6" stop-opacity="0.14"/>
+      <stop offset="0.6" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="280" rx="14" fill="url(#bg)"/>
+  <rect width="1200" height="280" rx="14" fill="url(#glow)"/>
+  <rect x="0.5" y="0.5" width="1199" height="279" rx="13.5" fill="none" stroke="#334155" stroke-opacity="0.55"/>
+  <g font-family="'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" text-anchor="middle">
+    <text x="600" y="66" fill="#f8fafc" font-size="38" font-weight="700" letter-spacing="9">AWESOME&#160;&#160;LLM&#160;&#160;REASONING&#160;&#160;DATA</text>
+    <rect x="450" y="86" width="300" height="3" rx="1.5" fill="url(#accent)"/>
+    <rect x="450" y="86" width="56" height="3" rx="1.5" fill="#f8fafc" opacity="0.35">
+      <animate attributeName="x" values="450;694;450" dur="4.2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="600" y="122" fill="#cbd5e1" font-size="19" letter-spacing="5">后训练推理数据：构造 &#183; 验证 &#183; 训练 &#183; 审计</text>
+
+    <!-- 板块一：基础与入门（00） -->
+    <circle cx="210" cy="162" r="13" fill="none" stroke="url(#accent)" stroke-width="1.5"/>
+    <text x="210" y="167" fill="#e2e8f0" font-size="14" font-weight="700">1</text>
+    <text x="210" y="202" fill="#e2e8f0" font-size="17" font-weight="600" letter-spacing="2">基础与入门 &#183; 00</text>
+    <text x="210" y="236" fill="#93c5fd" font-size="15" letter-spacing="1">00 &#183; 基础入门与综述
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="4.2s" repeatCount="indefinite"/>
+    </text>
+
+    <!-- 板块二：核心数据类型（01–07） -->
+    <circle cx="600" cy="162" r="13" fill="none" stroke="url(#accent)" stroke-width="1.5"/>
+    <text x="600" y="167" fill="#e2e8f0" font-size="14" font-weight="700">2</text>
+    <text x="600" y="202" fill="#e2e8f0" font-size="17" font-weight="600" letter-spacing="2">核心数据类型 &#183; 01&#8211;07</text>
+    <g fill="#93c5fd" font-size="15" letter-spacing="1">
+      <text x="600" y="236" opacity="0">01 &#183; 指令、示范与思维链数据
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0;0.014;0.129;0.143;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="600" y="236" opacity="0">02 &#183; 偏好与奖励反馈数据
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.143;0.157;0.271;0.286;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="600" y="236" opacity="0">03 &#183; 可程序验证的结果数据
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.286;0.3;0.414;0.429;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="600" y="236" opacity="0">04 &#183; 过程与步骤监督数据
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.429;0.443;0.557;0.571;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="600" y="236" opacity="0">05 &#183; 采样、搜索与推理时轨迹
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.571;0.586;0.7;0.714;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="600" y="236" opacity="0">06 &#183; 环境与智能体轨迹数据
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.714;0.729;0.843;0.857;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="600" y="236" opacity="0">07 &#183; 评审、评分标准与专家数据
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.857;0.871;0.986;1;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+    </g>
+
+    <!-- 板块三：数据生命周期（08–13） -->
+    <circle cx="990" cy="162" r="13" fill="none" stroke="url(#accent)" stroke-width="1.5"/>
+    <text x="990" y="167" fill="#e2e8f0" font-size="14" font-weight="700">3</text>
+    <text x="990" y="202" fill="#e2e8f0" font-size="17" font-weight="600" letter-spacing="2">数据生命周期 &#183; 08&#8211;13</text>
+    <g fill="#93c5fd" font-size="15" letter-spacing="1">
+      <text x="990" y="236" opacity="0">08 &#183; 数据构造与开源发布
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0;0.017;0.15;0.167;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="990" y="236" opacity="0">09 &#183; 训练用途与优化目标
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.167;0.183;0.317;0.333;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="990" y="236" opacity="0">10 &#183; 规模化、RLVR 与推理时计算
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.333;0.35;0.483;0.5;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="990" y="236" opacity="0">11 &#183; 基准与评测
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.517;0.65;0.667;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="990" y="236" opacity="0">12 &#183; 前沿模型报告与数据披露
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.667;0.683;0.817;0.833;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+      <text x="990" y="236" opacity="0">13 &#183; 审计、污染与失效模式
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.833;0.85;0.983;1;1" dur="16.8s" repeatCount="indefinite"/>
+      </text>
+    </g>
+  </g>
+</svg>
