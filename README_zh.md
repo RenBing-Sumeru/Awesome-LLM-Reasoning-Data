@@ -30,7 +30,7 @@
 
 按你的目标选择路径：
 
-- 🧭 **初学者**——先读[00 · 从这里开始](docs/00_start_here.md)，再看[必读 20 篇](#-必读-20-篇)，然后读[01 · 什么是后训练推理数据](docs/01_what_is_post_training_reasoning_data.md)。
+- 🧭 **初学者**——沿[学习路径](#-学习路径)从第一阶段读起，第一篇是[00 · 从这里开始](docs/00_start_here.md)。
 - 🏗️ **要构造数据集**——按[05 · 构造手册](docs/05_construction_cookbook.md)走一遍，再对照[发布卡片](cards/releases/)与[配方卡片](cards/recipes/)。
 - 🧪 **要审计验证器或结论**——从[06 · 验证器与奖励](docs/06_verifiers_and_rewards.md)和[09 · 审计与失效模式](docs/09_audit_and_failure_modes.md)入手。
 - 🔎 **要查某篇论文**——直接进下方[分类目录](#-分类目录)，或检索 [data/papers.yaml](data/papers.yaml) 与[导出文件](exports/)。
@@ -69,12 +69,14 @@
 
 每个方向都有独立页面，包含方向说明、优先阅读表、完整论文列表与审计清单。
 
-### 🧭 基础与入门
+### 🧭 一、基础与入门 `00`
 
-先建立共同语言，再进入信息密度更高的一手论文。
+*先建立共同语言，再进入信息密度更高的一手论文。*
+
+<blockquote>
 
 <details>
-<summary><b><a href="papers/00_background_foundations/00_foundations_and_primers.md">🧭 基础入门与综述</a></b> · 84 篇</summary>
+<summary><code>00</code> <b><a href="papers/00_background_foundations/00_foundations_and_primers.md">🧭 基础入门与综述</a></b> · 84 篇</summary>
 
 - [🧭 后训练综述](papers/00_background_foundations/00_foundations_and_primers.md#post-training-surveys)
 - [🧠 推理大模型综述](papers/00_background_foundations/00_foundations_and_primers.md#reasoning-llm-surveys)
@@ -85,12 +87,16 @@
 
 </details>
 
-### 🧬 核心数据类型
+</blockquote>
 
-逐类比较真实的数据记录：示范、偏好、可验证结果、过程标注、采样轨迹、智能体轨迹与评分标准。
+### 🧬 二、核心数据类型 `01–07`
+
+*逐类比较真实的数据记录：示范、偏好、可验证结果、过程标注、采样轨迹、智能体轨迹与评分标准。*
+
+<blockquote>
 
 <details>
-<summary><b><a href="papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md">🧱 指令、示范与思维链数据</a></b> · 58 篇</summary>
+<summary><code>01</code> <b><a href="papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md">🧱 指令、示范与思维链数据</a></b> · 58 篇</summary>
 
 - [🧱 指令微调数据](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#instruction-tuning-sft-data)
 - [🧑‍🏫 人工示范数据](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#human-demonstrations)
@@ -102,7 +108,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md">🤝 偏好与奖励反馈数据</a></b> · 73 篇</summary>
+<summary><code>02</code> <b><a href="papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md">🤝 偏好与奖励反馈数据</a></b> · 73 篇</summary>
 
 - [🤝 人类偏好数据（RLHF）](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#human-preference-data-rlhf)
 - [⚖️ 偏好优化（DPO 系）](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#dpo-preference-optimization)
@@ -114,7 +120,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md">🧮 可程序验证的结果数据</a></b> · 94 篇</summary>
+<summary><code>03</code> <b><a href="papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md">🧮 可程序验证的结果数据</a></b> · 94 篇</summary>
 
 - [📐 数学答案可验证数据](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-answer-verifiable-data)
 - [🧮 数学 RLVR 数据集](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-rlvr-datasets)
@@ -126,7 +132,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md">🪜 过程与步骤监督数据</a></b> · 25 篇</summary>
+<summary><code>04</code> <b><a href="papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md">🪜 过程与步骤监督数据</a></b> · 25 篇</summary>
 
 - [🪜 人工步骤级标注](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#human-step-level-labels)
 - [🧪 过程奖励模型（PRM）](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#process-reward-models)
@@ -138,7 +144,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md">🔁 采样、搜索与推理时轨迹数据</a></b> · 39 篇</summary>
+<summary><code>05</code> <b><a href="papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md">🔁 采样、搜索与推理时轨迹数据</a></b> · 39 篇</summary>
 
 - [🎲 多次采样与 best-of-N](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#multiple-rollouts-best-of-n)
 - [🌳 搜索树与蒙特卡洛树搜索](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#search-trees-mcts)
@@ -150,7 +156,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md">🌐 环境与智能体轨迹数据</a></b> · 95 篇</summary>
+<summary><code>06</code> <b><a href="papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md">🌐 环境与智能体轨迹数据</a></b> · 95 篇</summary>
 
 - [🛠️ 工具使用数据](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#tool-use-data)
 - [🌍 网页浏览智能体](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#web-browser-agents)
@@ -163,7 +169,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md">⚖️ 评审、评分标准与领域专家数据</a></b> · 83 篇</summary>
+<summary><code>07</code> <b><a href="papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md">⚖️ 评审、评分标准与领域专家数据</a></b> · 83 篇</summary>
 
 - [⚖️ 大模型评审数据](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#llm-as-judge-data)
 - [🧑‍⚖️ 人类与专家评审](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#human-expert-judgment)
@@ -176,12 +182,16 @@
 
 </details>
 
-### 🛠️ 数据生命周期
+</blockquote>
 
-沿构造、训练、规模化、评测、前沿披露与失效审计的完整链条阅读。
+### 🛠️ 三、数据生命周期 `08–13`
+
+*沿构造、训练、规模化、评测、前沿披露与失效审计的完整链条阅读。*
+
+<blockquote>
 
 <details>
-<summary><b><a href="papers/02_data_lifecycle/08_data_construction_open_release_recipes.md">🏗️ 数据构造与开源发布</a></b> · 108 篇</summary>
+<summary><code>08</code> <b><a href="papers/02_data_lifecycle/08_data_construction_open_release_recipes.md">🏗️ 数据构造与开源发布</a></b> · 108 篇</summary>
 
 - [🧱 题目与提示来源](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#prompt-sourcing)
 - [✍️ 教师模型轨迹生成](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#teacher-trace-generation)
@@ -194,7 +204,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/02_data_lifecycle/09_training_usage_optimization_objectives.md">🎯 训练用途与优化目标</a></b> · 97 篇</summary>
+<summary><code>09</code> <b><a href="papers/02_data_lifecycle/09_training_usage_optimization_objectives.md">🎯 训练用途与优化目标</a></b> · 97 篇</summary>
 
 - [🧱 监督微调（SFT）](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#sft-instruction-tuning)
 - [📚 蒸馏](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#distillation)
@@ -208,7 +218,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md">📈 规模化、RLVR 与推理时计算</a></b> · 90 篇</summary>
+<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md">📈 规模化、RLVR 与推理时计算</a></b> · 90 篇</summary>
 
 - [📈 数据规模化](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-scaling)
 - [🔁 数据复用与去重](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-reuse-and-uniqueness)
@@ -221,7 +231,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md">🧰 基准与评测</a></b> · 109 篇</summary>
+<summary><code>11</code> <b><a href="papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md">🧰 基准与评测</a></b> · 109 篇</summary>
 
 - [📐 数学基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#math-benchmarks)
 - [💻 代码基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#code-benchmarks)
@@ -234,7 +244,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md">🚀 前沿模型报告与数据披露</a></b> · 40 篇</summary>
+<summary><code>12</code> <b><a href="papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md">🚀 前沿模型报告与数据披露</a></b> · 40 篇</summary>
 
 - [🚀 DeepSeek-R1 系列](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#deepseek-r1-family)
 - [🌙 Kimi 推理报告](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#kimi-reasoning-reports)
@@ -246,7 +256,7 @@
 </details>
 
 <details>
-<summary><b><a href="papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md">🧯 审计、污染与失效模式</a></b> · 68 篇</summary>
+<summary><code>13</code> <b><a href="papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md">🧯 审计、污染与失效模式</a></b> · 68 篇</summary>
 
 - [🧯 基准污染](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#benchmark-contamination)
 - [🔍 搜索阶段污染](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#search-time-contamination)
@@ -259,46 +269,38 @@
 
 </details>
 
-## 🧭 必读 20 篇
+</blockquote>
 
-把这 20 篇当作一条学习路线，而不是引用清单。每一篇都回答一个你绕不开的问题。
+## 🧭 学习路径
 
-| # | 论文 / 报告 | 读它回答什么 | 卡片 |
-|---:|---|---|---|
-| 1 | [Datasheets for datasets](https://arxiv.org/abs/1803.09010) | 📋 发布文档——数据集被复用之前必须披露什么？ | [卡片](cards/releases/datasheets-for-datasets.md) |
-| 2 | [Data statements for natural language processing](https://aclanthology.org/Q18-1041/) | 🧬 数据来历——哪些人群、语言与标注假设会随数据一起流传？ | [卡片](cards/releases/data-statements-for-natural-language-processing.md) |
-| 3 | [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155) | 🧑‍🏫 RLHF 流程——示范、偏好、奖励与策略优化如何分工？ | [卡片](cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md) |
-| 4 | [Chain-of-thought prompting elicits reasoning in large language models](https://arxiv.org/abs/2201.11903) | 🧠 推理轨迹——一段解题理由何时成为可复用的训练对象？ | [卡片](cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md) |
-| 5 | [Training verifiers to solve math word problems](https://arxiv.org/abs/2110.14168) | 🧪 验证器——生成的解答到底由什么打分？ | [卡片](cards/verifiers/training-verifiers-to-solve-math-word-problems.md) |
-| 6 | [STaR: Bootstrapping reasoning with reasoning](https://arxiv.org/abs/2203.14465) | 🔁 自我提升——哪些生成轨迹能通过答案筛选存活下来？ | [卡片](cards/recipes/star-bootstrapping-reasoning-with-reasoning.md) |
-| 7 | [Self-Instruct: Aligning language models with self-generated instructions](https://arxiv.org/abs/2212.10560) | 🏗️ 合成数据——生成的指令在训练前如何被过滤？ | [卡片](cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) |
-| 8 | [Direct preference optimization: Your language model is secretly a reward model](https://arxiv.org/abs/2305.18290) | ⚖️ 偏好数据——偏好对直接训练策略时会发生什么变化？ | [卡片](cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) |
-| 9 | [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) | 🪜 过程监督——步骤级反馈比只看结果多带来什么？ | [卡片](cards/verifiers/prm800k.md) |
-| 10 | [GSM8K: Grade School Math 8K](https://arxiv.org/abs/2110.14168) | 🧮 答案校验——一个小而可验证的数学集为何仍是重要基准？ | [卡片](cards/benchmarks/gsm8k-grade-school-math-8k.md) |
-| 11 | [Measuring mathematical problem solving with the MATH dataset](https://arxiv.org/abs/2103.03874) | 🧮 高难数学——更难的题目如何改变轨迹与验证器的要求？ | [卡片](cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md) |
-| 12 | [HumanEval: Hand-Written Evaluation Set](https://arxiv.org/abs/2107.03374) | 💻 单元测试——可执行测试如何构成一种反馈契约？ | [卡片](cards/benchmarks/humaneval-hand-written-evaluation-set.md) |
-| 13 | [SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770) | 🌐 智能体环境——哪些字段让修复代码仓库成为可回放的任务？ | [卡片](cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) |
-| 14 | [RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787) | 🏅 奖励评测——奖励模型在通用对话之外何时失效？ | [卡片](cards/verifiers/rewardbench.md) |
-| 15 | [HealthBench](https://arxiv.org/abs/2505.08775) | ⚕️ 评分标准——高风险领域的评分标准如何做到可审计？ | [卡片](cards/verifiers/healthbench.md) |
-| 16 | [LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) | 🧯 抗污染——基准如何在记忆效应下保持新鲜？ | [卡片](cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md) |
-| 17 | [OpenThoughts: Data recipes for reasoning models](https://arxiv.org/abs/2506.04178) | 🏗️ 开源配方——提示、轨迹、过滤与消融字段披露了多少？ | [卡片](cards/releases/openthoughts.md) |
-| 18 | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) | 🚀 RLVR 报告——从公开前沿报告能推断什么、不能推断什么？ | [卡片](cards/recipes/deepseek_r1.md) |
-| 19 | [s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393) | ⏱️ 推理时计算——推理预算何时成为数据故事的一部分？ | [卡片](cards/releases/s1.md) |
-| 20 | [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](https://arxiv.org/abs/2504.07086) | 🔍 可复现性——哪些指标提升能扛住解码与评测审计？ | [卡片](cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) |
+四个阶段循序渐进。每个阶段先读学习指南搭好框架，各阶段的必读论文正在整理，会陆续补充进来。
 
-## 📖 学习指南
+**🌱 第一阶段 · 建立心智模型**——这个领域在研究什么，数据按什么逻辑分类
 
 - 🧭 [00 · 从这里开始](docs/00_start_here.md)——领域速览与阅读路线
 - 🧠 [01 · 什么是后训练推理数据](docs/01_what_is_post_training_reasoning_data.md)——带验证器的样本这一核心模型
 - 🗺️ [02 · 以验证器为锚的分类](docs/02_verifier_anchored_taxonomy.md)——按反馈契约而非领域给论文归类
+- 📜 本阶段必读论文：整理中
+
+**🔬 第二阶段 · 认识数据对象**——一条合格的样本长什么样，质量如何衡量
+
 - 📦 [03 · 推理数据对象](docs/03_reasoning_data_objects.md)——每类数据对象需要记录哪些字段
 - 🎯 [04 · 数据质量](docs/04_data_quality.md)——准确率之外的质量维度
+- 📜 本阶段必读论文：整理中
+
+**⚙️ 第三阶段 · 构造、验证与训练**——数据如何生产、由什么打分、如何进入训练并规模化
+
 - 🏗️ [05 · 构造手册](docs/05_construction_cookbook.md)——题目来源、教师轨迹、过滤与发布元数据
 - ⚖️ [06 · 验证器与奖励](docs/06_verifiers_and_rewards.md)——如何审计校验器、评审、评分标准与奖励
 - 🌐 [07 · 智能体轨迹数据](docs/07_agent_trajectory_data.md)——工具、网页、系统与软件工程任务的字段要求
 - 📈 [08 · 规模化与推理时计算](docs/08_scaling_and_test_time_compute.md)——区分数据、验证器、优化器与预算的贡献
+- 📜 本阶段必读论文：整理中
+
+**🛡️ 第四阶段 · 审计与实战**——如何识别泄漏与投机，如何把方法落到工程里
+
 - 🧯 [09 · 审计与失效模式](docs/09_audit_and_failure_modes.md)——泄漏、污染、验证器欺骗与评审攻击
 - 🛠️ [10 · 工程实践路线](docs/10_industry_onboarding_path.md)——工程师进入该领域的实用路径
+- 📜 本阶段必读论文：整理中
 
 ## 🔎 检索网站（制作中）
 

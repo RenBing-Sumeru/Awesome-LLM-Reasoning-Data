@@ -16,8 +16,6 @@ from atlas_utils import (
     entries,
     primary_link,
     research_tracks,
-    starter_matches,
-    starter_packs,
 )
 from common import ROOT
 from set_ask_backend_url import extract_backend_url, validate_public_config_text
@@ -169,52 +167,6 @@ SUBFIELD_ZH = {
     "📉 Reproducibility failures": "📉 可复现性失效",
 }
 
-STARTER_LENS = {
-    "Datasheets for datasets": ("📋 release docs", "What must be disclosed before anyone reuses a dataset?"),
-    "Data statements for natural language processing": ("🧬 provenance", "Which population, language, and annotation assumptions travel with the data?"),
-    "Training language models to follow instructions with human feedback": ("🧑‍🏫 RLHF pipeline", "How do demonstrations, preferences, rewards, and policy optimization separate?"),
-    "Chain-of-thought prompting elicits reasoning in large language models": ("🧠 traces", "When does a rationale become a reusable training object?"),
-    "Training verifiers to solve math word problems": ("🧪 verifier", "What exactly scores a generated solution?"),
-    "STaR": ("🔁 self-improvement", "Which generated traces survive answer-based filtering?"),
-    "Self-Instruct": ("🏗️ synthetic data", "How do generated instructions get filtered before training?"),
-    "Direct preference optimization": ("⚖️ preference data", "What changes when preference pairs directly train the policy?"),
-    "Let's Verify Step by Step": ("🪜 process supervision", "What does step-level feedback buy over outcome-only labels?"),
-    "GSM8K": ("🧮 answer checks", "Why is a small verifiable math set still a useful sanity check?"),
-    "MATH dataset": ("🧮 hard math", "How do harder problems change trace and verifier requirements?"),
-    "HumanEval": ("💻 unit tests", "What makes executable tests a feedback contract?"),
-    "SWE-bench": ("🌐 agent environment", "What fields make repository repair a replayable episode?"),
-    "RewardBench": ("🏅 reward eval", "When does a reward model fail outside generic chat helpfulness?"),
-    "HealthBench": ("⚕️ rubrics", "How do high-stakes rubrics become auditable?"),
-    "LiveBench": ("🧯 contamination", "How can benchmarks stay fresh against memorization?"),
-    "OpenThoughts": ("🏗️ open recipe", "Which prompt, trace, filtering, and ablation fields are disclosed?"),
-    "DeepSeek-R1": ("🚀 RLVR report", "What can and cannot be inferred from a public frontier report?"),
-    "s1": ("⏱️ test-time compute", "When is inference budget part of the data story?"),
-    "A Sober Look at Progress in Language Model Reasoning": ("🔍 reproducibility", "Which reported gains survive decoding and evaluation audits?"),
-}
-
-STARTER_LENS_ZH = {
-    "Datasheets for datasets": ("📋 发布文档", "数据集被复用之前必须披露什么？"),
-    "Data statements for natural language processing": ("🧬 数据来历", "哪些人群、语言与标注假设会随数据一起流传？"),
-    "Training language models to follow instructions with human feedback": ("🧑‍🏫 RLHF 流程", "示范、偏好、奖励与策略优化如何分工？"),
-    "Chain-of-thought prompting elicits reasoning in large language models": ("🧠 推理轨迹", "一段解题理由何时成为可复用的训练对象？"),
-    "Training verifiers to solve math word problems": ("🧪 验证器", "生成的解答到底由什么打分？"),
-    "STaR": ("🔁 自我提升", "哪些生成轨迹能通过答案筛选存活下来？"),
-    "Self-Instruct": ("🏗️ 合成数据", "生成的指令在训练前如何被过滤？"),
-    "Direct preference optimization": ("⚖️ 偏好数据", "偏好对直接训练策略时会发生什么变化？"),
-    "Let's Verify Step by Step": ("🪜 过程监督", "步骤级反馈比只看结果多带来什么？"),
-    "GSM8K": ("🧮 答案校验", "一个小而可验证的数学集为何仍是重要基准？"),
-    "MATH dataset": ("🧮 高难数学", "更难的题目如何改变轨迹与验证器的要求？"),
-    "HumanEval": ("💻 单元测试", "可执行测试如何构成一种反馈契约？"),
-    "SWE-bench": ("🌐 智能体环境", "哪些字段让修复代码仓库成为可回放的任务？"),
-    "RewardBench": ("🏅 奖励评测", "奖励模型在通用对话之外何时失效？"),
-    "HealthBench": ("⚕️ 评分标准", "高风险领域的评分标准如何做到可审计？"),
-    "LiveBench": ("🧯 抗污染", "基准如何在记忆效应下保持新鲜？"),
-    "OpenThoughts": ("🏗️ 开源配方", "提示、轨迹、过滤与消融字段披露了多少？"),
-    "DeepSeek-R1": ("🚀 RLVR 报告", "从公开前沿报告能推断什么、不能推断什么？"),
-    "s1": ("⏱️ 推理时计算", "推理预算何时成为数据故事的一部分？"),
-    "A Sober Look at Progress in Language Model Reasoning": ("🔍 可复现性", "哪些指标提升能扛住解码与评测审计？"),
-}
-
 
 def all_entries() -> list[dict]:
     global _ENTRIES_CACHE
@@ -315,15 +267,21 @@ def subfield_slug(name: str) -> str:
 
 
 def contents_tree(zh: bool = False) -> str:
+    zh_ordinals = ["一", "二", "三"]
     blocks = []
-    for group in CATEGORY_GROUPS:
+    number = 0
+    for index, group in enumerate(CATEGORY_GROUPS):
         group_tracks = tracks_for_group(group["id"])
         if not group_tracks:
             continue
+        start, end = number, number + len(group_tracks) - 1
+        span = f"{start:02d}" if start == end else f"{start:02d}–{end:02d}"
         title = group["zh_title"] if zh else group["title"]
         promise = group["zh_promise"] if zh else group["promise"]
-        blocks.append(f"### {group['emoji']} {title}")
-        blocks.append(promise)
+        ordinal = f"{zh_ordinals[index]}、" if zh else f"{index + 1} · "
+        blocks.append(f"### {group['emoji']} {ordinal}{title} `{span}`")
+        blocks.append(f"*{promise}*")
+        details = []
         for track in group_tracks:
             cid = track.get("category_id")
             label = TRACK_ZH.get(cid, track.get("navigator_title")) if zh else track.get("navigator_title")
@@ -335,12 +293,14 @@ def contents_tree(zh: bool = False) -> str:
                 f"({page}#{subfield_slug(sf.get('name', 'Subfield'))})"
                 for sf in track.get("subfields") or []
             )
-            blocks.append(
+            details.append(
                 "<details>\n"
-                f'<summary><b><a href="{page}">{label}</a></b> · {count} {unit}</summary>\n\n'
+                f'<summary><code>{number:02d}</code> <b><a href="{page}">{label}</a></b> · {count} {unit}</summary>\n\n'
                 f"{subs}\n\n"
                 "</details>"
             )
+            number += 1
+        blocks.append("<blockquote>\n\n" + "\n\n".join(details) + "\n\n</blockquote>")
     return "\n\n".join(blocks)
 
 
@@ -401,64 +361,62 @@ def snapshot_details(zh: bool = False) -> str:
     return f"<details>\n<summary>{header}</summary>\n\n{table}\n\n</details>"
 
 
-def starter_table(zh: bool = False) -> str:
-    data = all_entries()
-    cards = all_cards()
-    matches = starter_matches(data)
-    beginner = next((pack for pack in starter_packs() if pack.get("id") == "beginner_20"), starter_packs()[0])
+def learning_path(zh: bool = False) -> str:
     if zh:
-        rows = ["| # | 论文 / 报告 | 读它回答什么 | 卡片 |", "|---:|---|---|---|"]
-    else:
-        rows = ["| # | Paper / report | Read it for | Card |", "|---:|---|---|---|"]
-    for index, title in enumerate(beginner.get("entries", []), 1):
-        if zh:
-            lens, question = STARTER_LENS_ZH.get(title, ("📚 路标", "这篇工作公开了什么数据对象、验证器与审计风险？"))
-            focus = f"{lens}——{question}"
-            card_label = "卡片"
-        else:
-            lens, question = STARTER_LENS.get(title, ("📚 waypoint", "What data object, verifier, and audit risk does this work expose?"))
-            focus = f"{lens} — {question}"
-            card_label = "Card"
-        entry = matches.get(title)
-        if not entry:
-            rows.append(f"| {index} | {title} | {focus} | needs_card |")
-            continue
-        link = f"[{entry.get('title')}]({primary_link(entry)})" if primary_link(entry) else entry.get("title")
-        card = f"[{card_label}]({cards[entry.get('id')]})" if cards.get(entry.get("id")) else "needs_card"
-        rows.append(f"| {index} | {link} | {focus} | {card} |")
-    return "\n".join(rows)
-
-
-def learning_guides(zh: bool = False) -> str:
-    if zh:
-        items = [
-            ("🧭", "00 · 从这里开始", "docs/00_start_here.md", "领域速览与阅读路线"),
-            ("🧠", "01 · 什么是后训练推理数据", "docs/01_what_is_post_training_reasoning_data.md", "带验证器的样本这一核心模型"),
-            ("🗺️", "02 · 以验证器为锚的分类", "docs/02_verifier_anchored_taxonomy.md", "按反馈契约而非领域给论文归类"),
-            ("📦", "03 · 推理数据对象", "docs/03_reasoning_data_objects.md", "每类数据对象需要记录哪些字段"),
-            ("🎯", "04 · 数据质量", "docs/04_data_quality.md", "准确率之外的质量维度"),
-            ("🏗️", "05 · 构造手册", "docs/05_construction_cookbook.md", "题目来源、教师轨迹、过滤与发布元数据"),
-            ("⚖️", "06 · 验证器与奖励", "docs/06_verifiers_and_rewards.md", "如何审计校验器、评审、评分标准与奖励"),
-            ("🌐", "07 · 智能体轨迹数据", "docs/07_agent_trajectory_data.md", "工具、网页、系统与软件工程任务的字段要求"),
-            ("📈", "08 · 规模化与推理时计算", "docs/08_scaling_and_test_time_compute.md", "区分数据、验证器、优化器与预算的贡献"),
-            ("🧯", "09 · 审计与失效模式", "docs/09_audit_and_failure_modes.md", "泄漏、污染、验证器欺骗与评审攻击"),
-            ("🛠️", "10 · 工程实践路线", "docs/10_industry_onboarding_path.md", "工程师进入该领域的实用路径"),
+        stages = [
+            ("🌱", "第一阶段 · 建立心智模型", "这个领域在研究什么，数据按什么逻辑分类", [
+                ("🧭", "00 · 从这里开始", "docs/00_start_here.md", "领域速览与阅读路线"),
+                ("🧠", "01 · 什么是后训练推理数据", "docs/01_what_is_post_training_reasoning_data.md", "带验证器的样本这一核心模型"),
+                ("🗺️", "02 · 以验证器为锚的分类", "docs/02_verifier_anchored_taxonomy.md", "按反馈契约而非领域给论文归类"),
+            ]),
+            ("🔬", "第二阶段 · 认识数据对象", "一条合格的样本长什么样，质量如何衡量", [
+                ("📦", "03 · 推理数据对象", "docs/03_reasoning_data_objects.md", "每类数据对象需要记录哪些字段"),
+                ("🎯", "04 · 数据质量", "docs/04_data_quality.md", "准确率之外的质量维度"),
+            ]),
+            ("⚙️", "第三阶段 · 构造、验证与训练", "数据如何生产、由什么打分、如何进入训练并规模化", [
+                ("🏗️", "05 · 构造手册", "docs/05_construction_cookbook.md", "题目来源、教师轨迹、过滤与发布元数据"),
+                ("⚖️", "06 · 验证器与奖励", "docs/06_verifiers_and_rewards.md", "如何审计校验器、评审、评分标准与奖励"),
+                ("🌐", "07 · 智能体轨迹数据", "docs/07_agent_trajectory_data.md", "工具、网页、系统与软件工程任务的字段要求"),
+                ("📈", "08 · 规模化与推理时计算", "docs/08_scaling_and_test_time_compute.md", "区分数据、验证器、优化器与预算的贡献"),
+            ]),
+            ("🛡️", "第四阶段 · 审计与实战", "如何识别泄漏与投机，如何把方法落到工程里", [
+                ("🧯", "09 · 审计与失效模式", "docs/09_audit_and_failure_modes.md", "泄漏、污染、验证器欺骗与评审攻击"),
+                ("🛠️", "10 · 工程实践路线", "docs/10_industry_onboarding_path.md", "工程师进入该领域的实用路径"),
+            ]),
         ]
-        return "\n".join(f"- {emoji} [{title}]({path})——{blurb}" for emoji, title, path, blurb in items)
-    items = [
-        ("🧭", "00 · Start here", "docs/00_start_here.md", "zero-to-field overview and reading paths"),
-        ("🧠", "01 · What is post-training reasoning data?", "docs/01_what_is_post_training_reasoning_data.md", "the verifier-bearing sample mental model"),
-        ("🗺️", "02 · Verifier-anchored taxonomy", "docs/02_verifier_anchored_taxonomy.md", "classify papers by feedback contract, not only domain"),
-        ("📦", "03 · Reasoning data objects", "docs/03_reasoning_data_objects.md", "what fields each data object must serialize"),
-        ("🎯", "04 · Data quality", "docs/04_data_quality.md", "quality dimensions beyond accuracy"),
-        ("🏗️", "05 · Construction cookbook", "docs/05_construction_cookbook.md", "prompt sourcing, teacher traces, filtering, release metadata"),
-        ("⚖️", "06 · Verifiers and rewards", "docs/06_verifiers_and_rewards.md", "how to audit checkers, judges, rubrics, and rewards"),
-        ("🌐", "07 · Agent trajectory data", "docs/07_agent_trajectory_data.md", "state/action/replay fields for tools, web, OS, and SWE"),
-        ("📈", "08 · Scaling and test-time compute", "docs/08_scaling_and_test_time_compute.md", "separate data, verifier, optimizer, and budget effects"),
-        ("🧯", "09 · Audit and failure modes", "docs/09_audit_and_failure_modes.md", "leakage, contamination, verifier gaming, judge attacks"),
-        ("🛠️", "10 · Industry onboarding path", "docs/10_industry_onboarding_path.md", "a practical path for engineers entering the field"),
-    ]
-    return "\n".join(f"- {emoji} [{title}]({path}) — {blurb}" for emoji, title, path, blurb in items)
+        papers_line = "- 📜 本阶段必读论文：整理中"
+        dash = "——"
+    else:
+        stages = [
+            ("🌱", "Stage 1 · Build the mental model", "what the field studies and how the data is organized", [
+                ("🧭", "00 · Start here", "docs/00_start_here.md", "zero-to-field overview and reading paths"),
+                ("🧠", "01 · What is post-training reasoning data?", "docs/01_what_is_post_training_reasoning_data.md", "the verifier-bearing sample mental model"),
+                ("🗺️", "02 · Verifier-anchored taxonomy", "docs/02_verifier_anchored_taxonomy.md", "classify papers by feedback contract, not only domain"),
+            ]),
+            ("🔬", "Stage 2 · Know the data objects", "what a well-formed sample looks like and how quality is measured", [
+                ("📦", "03 · Reasoning data objects", "docs/03_reasoning_data_objects.md", "what fields each data object must serialize"),
+                ("🎯", "04 · Data quality", "docs/04_data_quality.md", "quality dimensions beyond accuracy"),
+            ]),
+            ("⚙️", "Stage 3 · Construct, verify, and train", "how data is produced, scored, trained on, and scaled", [
+                ("🏗️", "05 · Construction cookbook", "docs/05_construction_cookbook.md", "prompt sourcing, teacher traces, filtering, release metadata"),
+                ("⚖️", "06 · Verifiers and rewards", "docs/06_verifiers_and_rewards.md", "how to audit checkers, judges, rubrics, and rewards"),
+                ("🌐", "07 · Agent trajectory data", "docs/07_agent_trajectory_data.md", "state/action/replay fields for tools, web, OS, and SWE"),
+                ("📈", "08 · Scaling and test-time compute", "docs/08_scaling_and_test_time_compute.md", "separate data, verifier, optimizer, and budget effects"),
+            ]),
+            ("🛡️", "Stage 4 · Audit and practice", "how to catch leakage and gaming, then apply it in engineering", [
+                ("🧯", "09 · Audit and failure modes", "docs/09_audit_and_failure_modes.md", "leakage, contamination, verifier gaming, judge attacks"),
+                ("🛠️", "10 · Industry onboarding path", "docs/10_industry_onboarding_path.md", "a practical path for engineers entering the field"),
+            ]),
+        ]
+        papers_line = "- 📜 Stage must-reads: curation in progress"
+        dash = " — "
+    blocks = []
+    for stage_emoji, stage_title, stage_goal, guides in stages:
+        lines = [f"**{stage_emoji} {stage_title}**{dash}{stage_goal}", ""]
+        lines += [f"- {emoji} [{title}]({path}){dash}{blurb}" for emoji, title, path, blurb in guides]
+        lines.append(papers_line)
+        blocks.append("\n".join(lines))
+    return "\n\n".join(blocks)
 
 
 def repo_structure_details(zh: bool = False) -> str:
@@ -560,7 +518,7 @@ A useful reasoning-data sample is rarely `prompt -> answer`. It is usually:
 
 Pick the path that matches your goal:
 
-- 🧭 **New to the field** — read [00 · Start here](docs/00_start_here.md), then the [Starter Pack](#-starter-pack-20-must-read-papers), then [01 · What is post-training reasoning data?](docs/01_what_is_post_training_reasoning_data.md).
+- 🧭 **New to the field** — walk the [Learning Path](#-learning-path) from Stage 1, starting with [00 · Start here](docs/00_start_here.md).
 - 🏗️ **Building a dataset** — follow the [construction cookbook](docs/05_construction_cookbook.md), then compare [release cards](cards/releases/) and [recipe cards](cards/recipes/).
 - 🧪 **Auditing verifiers or claims** — start from [verifiers and rewards](docs/06_verifiers_and_rewards.md) and [audit and failure modes](docs/09_audit_and_failure_modes.md).
 - 🔎 **Looking for a specific paper** — jump into the [Contents](#-contents) below, or grep [data/papers.yaml](data/papers.yaml) and [exports/](exports/).
@@ -580,15 +538,11 @@ Each track page includes a track explanation, a read-first table, the full paper
 
 {contents_tree()}
 
-## 🧭 Starter Pack: 20 Must-Read Papers
+## 🧭 Learning Path
 
-Read these as a learning path, not as a citation dump. Each paper answers one question you need before moving on.
+Four stages, in reading order. Each stage starts from the learning guides; the must-read papers for each stage are being curated and will land here.
 
-{starter_table()}
-
-## 📖 Learning Guides
-
-{learning_guides()}
+{learning_path()}
 
 ## 🔎 Searchable Website (In Progress)
 
@@ -643,7 +597,7 @@ def readme_zh() -> str:
 
 按你的目标选择路径：
 
-- 🧭 **初学者**——先读[00 · 从这里开始](docs/00_start_here.md)，再看[必读 20 篇](#-必读-20-篇)，然后读[01 · 什么是后训练推理数据](docs/01_what_is_post_training_reasoning_data.md)。
+- 🧭 **初学者**——沿[学习路径](#-学习路径)从第一阶段读起，第一篇是[00 · 从这里开始](docs/00_start_here.md)。
 - 🏗️ **要构造数据集**——按[05 · 构造手册](docs/05_construction_cookbook.md)走一遍，再对照[发布卡片](cards/releases/)与[配方卡片](cards/recipes/)。
 - 🧪 **要审计验证器或结论**——从[06 · 验证器与奖励](docs/06_verifiers_and_rewards.md)和[09 · 审计与失效模式](docs/09_audit_and_failure_modes.md)入手。
 - 🔎 **要查某篇论文**——直接进下方[分类目录](#-分类目录)，或检索 [data/papers.yaml](data/papers.yaml) 与[导出文件](exports/)。
@@ -663,15 +617,11 @@ def readme_zh() -> str:
 
 {contents_tree(zh=True)}
 
-## 🧭 必读 20 篇
+## 🧭 学习路径
 
-把这 20 篇当作一条学习路线，而不是引用清单。每一篇都回答一个你绕不开的问题。
+四个阶段循序渐进。每个阶段先读学习指南搭好框架，各阶段的必读论文正在整理，会陆续补充进来。
 
-{starter_table(zh=True)}
-
-## 📖 学习指南
-
-{learning_guides(zh=True)}
+{learning_path(zh=True)}
 
 ## 🔎 检索网站（制作中）
 

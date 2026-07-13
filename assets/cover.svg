@@ -1,90 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-label="Awesome LLM Reasoning Data: 3 groups, 14 tracks">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b1120"/>
-      <stop offset="0.55" stop-color="#111a2e"/>
-      <stop offset="1" stop-color="#16223c"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#2dd4bf"/>
-      <stop offset="0.5" stop-color="#60a5fa"/>
-      <stop offset="1" stop-color="#a78bfa"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0" r="1">
-      <stop offset="0" stop-color="#3b82f6" stop-opacity="0.14"/>
-      <stop offset="0.6" stop-color="#3b82f6" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="1200" height="280" rx="14" fill="url(#bg)"/>
-  <rect width="1200" height="280" rx="14" fill="url(#glow)"/>
-  <rect x="0.5" y="0.5" width="1199" height="279" rx="13.5" fill="none" stroke="#334155" stroke-opacity="0.55"/>
-  <g font-family="'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">
-    <text x="600" y="66" fill="#f8fafc" font-size="38" font-weight="700" letter-spacing="9">AWESOME&#160;&#160;LLM&#160;&#160;REASONING&#160;&#160;DATA</text>
-    <rect x="450" y="86" width="300" height="3" rx="1.5" fill="url(#accent)"/>
-    <rect x="450" y="86" width="56" height="3" rx="1.5" fill="#f8fafc" opacity="0.35">
-      <animate attributeName="x" values="450;694;450" dur="4.2s" repeatCount="indefinite"/>
-    </rect>
-    <text x="600" y="122" fill="#cbd5e1" font-size="19" letter-spacing="2">Post-training reasoning data &#8212; built &#183; verified &#183; trained on &#183; audited</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-label="Awesome LLM Reasoning Data: a blossoming tree where 3 groups contain 14 tracks">
+  <rect width="1200" height="500" rx="16" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="1199" height="499" rx="15.5" fill="none" stroke="#e2e8f0"/>
 
-    <!-- Group 1: Background / Foundations (00) -->
-    <circle cx="210" cy="162" r="13" fill="none" stroke="url(#accent)" stroke-width="1.5"/>
-    <text x="210" y="167" fill="#e2e8f0" font-size="14" font-weight="700">1</text>
-    <text x="210" y="202" fill="#e2e8f0" font-size="15" font-weight="600" letter-spacing="1">BACKGROUND &#38; FOUNDATIONS &#183; 00</text>
-    <text x="210" y="236" fill="#93c5fd" font-size="14" letter-spacing="0.5">00 &#183; Foundations &#38; Primers
-      <animate attributeName="opacity" values="0.55;1;0.55" dur="4.2s" repeatCount="indefinite"/>
-    </text>
+  <!-- tree -->
+  <g stroke="#b49a7f" fill="none" stroke-linecap="round">
+    <path d="M600 455 C597 400 592 350 596 300 C598 268 602 240 599 212" stroke-width="22"/>
+    <path d="M597 312 C565 286 534 264 505 240 C487 225 473 210 466 194" stroke-width="11"/>
+    <path d="M540 264 C528 246 521 230 519 210" stroke-width="5"/>
+    <path d="M598 352 C562 337 531 326 502 306" stroke-width="8"/>
+    <path d="M523 317 C509 302 501 289 498 272" stroke-width="4.5"/>
+    <path d="M598 302 C630 274 662 252 692 230 C712 215 726 200 732 184" stroke-width="11"/>
+    <path d="M660 252 C674 236 683 220 685 200" stroke-width="5"/>
+    <path d="M599 347 C640 331 669 322 701 300" stroke-width="8"/>
+    <path d="M669 313 C683 298 691 285 694 268" stroke-width="4.5"/>
+    <path d="M599 240 C597 210 601 184 598 158 C597 138 599 118 597 98" stroke-width="9"/>
+    <path d="M598 172 C586 156 579 143 577 126" stroke-width="5"/>
+    <path d="M598 150 C611 138 618 126 620 110" stroke-width="5"/>
+  </g>
 
-    <!-- Group 2: Core Reasoning Data Types (01–07) -->
-    <circle cx="600" cy="162" r="13" fill="none" stroke="url(#accent)" stroke-width="1.5"/>
-    <text x="600" y="167" fill="#e2e8f0" font-size="14" font-weight="700">2</text>
-    <text x="600" y="202" fill="#e2e8f0" font-size="15" font-weight="600" letter-spacing="1">CORE DATA TYPES &#183; 01&#8211;07</text>
-    <g fill="#93c5fd" font-size="14" letter-spacing="0.5">
-      <text x="600" y="236" opacity="0">01 &#183; Instruction &#38; Demonstration Data
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0;0.014;0.129;0.143;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="600" y="236" opacity="0">02 &#183; Preference &#38; Reward Feedback
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.143;0.157;0.271;0.286;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="600" y="236" opacity="0">03 &#183; Verifiable Outcome Data
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.286;0.3;0.414;0.429;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="600" y="236" opacity="0">04 &#183; Process / Step Supervision
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.429;0.443;0.557;0.571;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="600" y="236" opacity="0">05 &#183; Rollout &#38; Search Traces
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.571;0.586;0.7;0.714;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="600" y="236" opacity="0">06 &#183; Agent Trajectory Data
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.714;0.729;0.843;0.857;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="600" y="236" opacity="0">07 &#183; Judgment &#38; Expert Rubrics
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.857;0.871;0.986;1;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-    </g>
+  <!-- group blossoms: big circle = group, inner dots = tracks -->
+  <g transform="translate(600 112)"><circle r="44" fill="#4ade80" fill-opacity="0.32" stroke="#16a34a" stroke-opacity="0.4" stroke-width="1.5"><animateTransform attributeName="transform" type="scale" values="0;0;1.06;1;1;0;0" keyTimes="0;0.03;0.065;0.09;0.86;0.93;1" dur="10s" repeatCount="indefinite"/></circle></g>
+  <g transform="translate(472 212)"><circle r="114" fill="#60a5fa" fill-opacity="0.26" stroke="#2563eb" stroke-opacity="0.35" stroke-width="1.5"><animateTransform attributeName="transform" type="scale" values="0;0;1.06;1;1;0;0" keyTimes="0;0.1;0.135;0.16;0.86;0.93;1" dur="10s" repeatCount="indefinite"/></circle></g>
+  <g transform="translate(726 208)"><circle r="108" fill="#d8b4fe" fill-opacity="0.28" stroke="#9333ea" stroke-opacity="0.35" stroke-width="1.5"><animateTransform attributeName="transform" type="scale" values="0;0;1.06;1;1;0;0" keyTimes="0;0.32;0.355;0.38;0.86;0.93;1" dur="10s" repeatCount="indefinite"/></circle></g>
 
-    <!-- Group 3: Data Lifecycle (08–13) -->
-    <circle cx="990" cy="162" r="13" fill="none" stroke="url(#accent)" stroke-width="1.5"/>
-    <text x="990" y="167" fill="#e2e8f0" font-size="14" font-weight="700">3</text>
-    <text x="990" y="202" fill="#e2e8f0" font-size="15" font-weight="600" letter-spacing="1">DATA LIFECYCLE &#183; 08&#8211;13</text>
-    <g fill="#93c5fd" font-size="14" letter-spacing="0.5">
-      <text x="990" y="236" opacity="0">08 &#183; Data Construction &#38; Release
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0;0.017;0.15;0.167;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="990" y="236" opacity="0">09 &#183; Training Usage &#38; Objectives
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.167;0.183;0.317;0.333;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="990" y="236" opacity="0">10 &#183; Scaling &#38; Test-Time Compute
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.333;0.35;0.483;0.5;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="990" y="236" opacity="0">11 &#183; Benchmarks &#38; Evaluation
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.517;0.65;0.667;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="990" y="236" opacity="0">12 &#183; Frontier Data Disclosure
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.667;0.683;0.817;0.833;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-      <text x="990" y="236" opacity="0">13 &#183; Audit &#38; Failure Modes
-        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.833;0.85;0.983;1;1" dur="16.8s" repeatCount="indefinite"/>
-      </text>
-    </g>
+  <!-- track blossoms -->
+  <g>
+    <g transform="translate(600 110)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.07;0.1;0.12;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="17" fill="#16a34a" fill-opacity="0.5"/></g></g>
+    <g transform="translate(622 96)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.09;0.12;0.14;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="6" fill="#4ade80" fill-opacity="0.45"/></g></g>
+    <g transform="translate(582 128)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.1;0.13;0.15;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#86efac" fill-opacity="0.5"/></g></g>
+
+    <g transform="translate(452 158)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.13;0.16;0.18;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="17" fill="#3b82f6" fill-opacity="0.55"/></g></g>
+    <g transform="translate(516 180)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.155;0.185;0.205;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="12" fill="#0ea5e9" fill-opacity="0.5"/></g></g>
+    <g transform="translate(508 254)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.18;0.21;0.23;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="16" fill="#06b6d4" fill-opacity="0.55"/></g></g>
+    <g transform="translate(458 270)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.205;0.235;0.255;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="12" fill="#6366f1" fill-opacity="0.5"/></g></g>
+    <g transform="translate(414 232)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.23;0.26;0.28;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="18" fill="#2563eb" fill-opacity="0.5"/></g></g>
+    <g transform="translate(430 176)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.255;0.285;0.305;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="11" fill="#0284c7" fill-opacity="0.55"/></g></g>
+    <g transform="translate(478 214)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.28;0.31;0.33;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="21" fill="#4f46e5" fill-opacity="0.5"/></g></g>
+    <g transform="translate(500 240)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.3;0.33;0.35;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="6" fill="#60a5fa" fill-opacity="0.45"/></g></g>
+    <g transform="translate(442 198)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.31;0.34;0.36;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#38bdf8" fill-opacity="0.5"/></g></g>
+
+    <g transform="translate(712 150)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.35;0.38;0.4;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="16" fill="#a855f7" fill-opacity="0.55"/></g></g>
+    <g transform="translate(780 174)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.375;0.405;0.425;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="12" fill="#c026d3" fill-opacity="0.5"/></g></g>
+    <g transform="translate(768 246)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.4;0.43;0.45;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="17" fill="#db2777" fill-opacity="0.5"/></g></g>
+    <g transform="translate(716 268)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.425;0.455;0.475;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="13" fill="#e11d48" fill-opacity="0.55"/></g></g>
+    <g transform="translate(670 240)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.45;0.48;0.5;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="15" fill="#9333ea" fill-opacity="0.5"/></g></g>
+    <g transform="translate(676 168)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.475;0.505;0.525;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="11" fill="#f43f5e" fill-opacity="0.55"/></g></g>
+    <g transform="translate(734 206)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.5;0.53;0.55;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="7" fill="#c084fc" fill-opacity="0.4"/></g></g>
+    <g transform="translate(748 282)"><g><animateTransform attributeName="transform" type="scale" values="0;0;1.2;1;1;0;0" keyTimes="0;0.51;0.54;0.56;0.86;0.93;1" dur="10s" repeatCount="indefinite"/><circle r="5" fill="#f0abfc" fill-opacity="0.5"/></g></g>
+  </g>
+
+  <!-- labels -->
+  <g font-family="'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="700">
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.025;0.065;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="600" y="34" text-anchor="middle" font-size="20" fill="#16a34a">① Foundations</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.08;0.12;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="600" y="58" text-anchor="middle" font-size="15" fill="#15803d">00 · Foundations &#38; Primers</text></g>
+
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.095;0.135;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="472" y="86" text-anchor="middle" font-size="20" fill="#2563eb">② Core Data Types</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.13;0.17;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="330" y="92" text-anchor="end" font-size="17" fill="#3b82f6">01 · Instruction &#38; CoT Data</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.155;0.195;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="306" y="132" text-anchor="end" font-size="16" fill="#0ea5e9">02 · Preference &#38; Reward Data</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.22;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="322" y="172" text-anchor="end" font-size="17" fill="#06b6d4">03 · Verifiable Outcome Data</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.205;0.245;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="298" y="212" text-anchor="end" font-size="16" fill="#6366f1">04 · Process Supervision Data</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23;0.27;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="318" y="252" text-anchor="end" font-size="17" fill="#2563eb">05 · Rollout &#38; Search Traces</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.255;0.295;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="300" y="292" text-anchor="end" font-size="16" fill="#0284c7">06 · Agent Trajectory Data</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.32;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="326" y="332" text-anchor="end" font-size="17" fill="#4f46e5">07 · Judgment &#38; Expert Data</text></g>
+
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.315;0.355;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="726" y="88" text-anchor="middle" font-size="20" fill="#9333ea">③ Data Lifecycle</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.35;0.39;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="870" y="98" font-size="17" fill="#a855f7">08 · Construction &#38; Release</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.375;0.415;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="892" y="142" font-size="16" fill="#c026d3">09 · Training Objectives</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.44;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="876" y="186" font-size="17" fill="#db2777">10 · Scaling &#38; Test-Time Compute</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.425;0.465;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="898" y="230" font-size="16" fill="#e11d48">11 · Benchmarks &#38; Evaluation</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.49;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="872" y="274" font-size="17" fill="#9333ea">12 · Frontier Data Disclosure</text></g>
+    <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.475;0.515;0.86;0.93;1" dur="10s" repeatCount="indefinite"/>
+      <text x="890" y="318" font-size="16" fill="#f43f5e">13 · Audit &#38; Failure Modes</text></g>
+
+    <text x="600" y="489" text-anchor="middle" font-size="24" fill="#a18a72">3 groups · 14 tracks · 280+ papers</text>
   </g>
 </svg>
