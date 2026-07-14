@@ -1,495 +1,360 @@
 # 🌟 Awesome LLM Reasoning Data
 
-> 一个系统学习“大模型后训练推理数据”的开源仓库：从概念、论文、数据构造、验证器、奖励信号、Agent 轨迹、RLVR、benchmark 到审计风险。
+[English](README.md) · **简体中文**
 
-[论文：A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
+> 系统学习大模型后训练推理数据的精选仓库：数据是什么、如何构造、如何验证、如何进入训练、如何审计。
 
-[🤖 Ask the Atlas（即将上线）](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/) · [🌐 网页版 Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · [📚 论文分类地图](papers/README.md)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
+[![Website](https://img.shields.io/badge/website-in%20progress-6b7280)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Ask](https://img.shields.io/badge/Ask-launch%20pending-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
+[![Entries](https://img.shields.io/badge/entries-280-2563eb)](data/papers.yaml)
+[![Verified](https://img.shields.io/badge/verified-165-0f766e)](reports/link_coverage.md)
+[![Cards](https://img.shields.io/badge/cards-87-7c3aed)](cards/README.md)
 
 <p align="center">
-  <img src="assets/overview.svg" width="92%" alt="Awesome LLM Reasoning Data overview">
+  <img src="assets/cover_zh.svg" width="92%" alt="大模型后训练推理数据精选">
 </p>
 
-## 这个项目是什么？
+**本仓库是一份领域地图，而不只是论文清单**：学习指南讲清概念，分类页按子方向组织论文，论文卡片概括数据对象与风险，项目网站索引全部结构化元数据。所有内容围绕一个核心问题展开：
 
-这个仓库不是只为了收集论文标题，也不是为了复刻论文综述的写法。它的目标是成为一个**学习型仓库**：让想了解大模型后训练推理数据的人，可以沿着这里的学习路线，从基本概念一路学到数据构造、verifier/reward、RLVR、Agent 轨迹、frontier model report 和 failure audit。
+> 模型经过后训练后推理能力变强，背后究竟是哪条数据记录、哪种反馈信号、哪个验证器、奖励、环境或评审在起作用？
 
-它重点回答一个问题：
+- 📄 配套论文：[A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
+- 🌐 项目网站：制作中
+- 🤖 问答助手：[即将上线](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 
-> 一个模型经过后训练之后推理能力变强，背后到底是什么数据记录、反馈信号、验证器、奖励、环境或裁判在起作用？
+## 🚀 如何使用本仓库
 
-所以这里关注的不是单纯的 `paper list`，而是每篇工作公开了什么数据对象、反馈契约、构造流程、训练用途、官方链接和审计风险。
+一条有用的推理数据样本，通常不是 `提问 → 答案`，而是：
 
-核心记录通常不是：
+<p align="center">
+  <img src="assets/sample_shape_zh.svg" width="92%" alt="任务/上下文 → 推理轨迹/动作 → 答案/产物 → 验证器/奖励/评审/环境 → 元数据">
+</p>
 
-`prompt -> answer`
+按你的目标选择路径：
 
-而更像：
+| 你的目标 | 建议路线 |
+|---|---|
+| 初学者入门 | 沿[学习路径](#-学习路径)从第一阶段读起，第一篇是 [00 · 从这里开始](docs/00_start_here.md) |
+| 构造数据集 | 按 [05 · 构造手册](docs/05_construction_cookbook.md) 走一遍，再对照[发布卡片](cards/releases/)与[配方卡片](cards/recipes/) |
+| 审计验证器或结论 | 从 [06 · 验证器与奖励](docs/06_verifiers_and_rewards.md) 与 [09 · 审计与失效模式](docs/09_audit_and_failure_modes.md) 入手 |
+| 查找某篇论文 | 直接进下方[分类目录](#-分类目录)，或检索 [data/papers.yaml](data/papers.yaml) 与[导出文件](exports/) |
+| 参与贡献 | 从[待补清单](reports/needs_search.md)挑一条，读[贡献指南](CONTRIBUTING.md) |
 
-`任务/上下文 -> 推理轨迹/动作 -> 答案/产物 -> 验证器/奖励/裁判/环境 -> 元数据`
+## 🔥 最新动态
 
-## 🔥 最新状态
+| 日期 | 更新 |
+|---|---|
+| 2026-06-15 | 已验证条目达 **165 条**，关联卡片 **87 张**，其中 **53 张**达到可审计级别。 |
+| 2026-06-15 | 完成两轮制品核验：固定 **41 个代码**、**27 个数据**、**20 个 Hugging Face**、**25 个项目主页**官方链接。 |
+| 2026-06-15 | 项目网站、论文目录、导出文件与质检报告全部由结构化元数据自动生成，所有数字可复现。 |
+
+> 元数据从严处理：未经本地核验的链接一律留在[待补清单](reports/needs_search.md)，不会被提前收录。
+
+<details>
+<summary>📊 数据规模</summary>
 
 | 指标 | 数量 |
 |---|---:|
 | 总条目 | 280 |
 | 已验证官方主链接 | 165 |
-| 有 paper/arXiv/venue/DOI 链接 | 165 |
-| entry-linked 卡片 | 87 |
-| L5 audit-ready | 53 |
-| 仍需搜索 | 115 |
-| 官方 code 链接 | 41 |
-| 官方 data 链接 | 27 |
+| 含论文、arXiv、会议或 DOI 链接 | 165 |
+| 关联卡片 | 87 |
+| 卡片文件 | 89 |
+| 可审计条目（L5） | 53 |
+| 待补链接或元数据 | 115 |
+| 官方代码链接 | 41 |
+| 官方数据链接 | 27 |
 | Hugging Face 链接 | 20 |
-| project 链接 | 25 |
+| 项目主页链接 | 25 |
 
-## 🧭 按研究领域浏览
+</details>
 
-其他 Awesome 往往只告诉读者“有哪些论文”。这个仓库还需要告诉读者：每类后训练推理数据解决什么问题、论文公开了什么 data object、verifier/reward/recipe 是什么、以及应该如何审计。
+## 📚 分类目录
 
-### 🧭 Background / Foundations（入门与基础）
+每个方向都有独立页面，包含方向说明、优先阅读表、完整论文列表与审计清单。
 
-先建立共同词汇和领域地图，再进入细分论文。
+### 🧭 一、基础与入门 `00`
 
-| 研究轨道 | 二级方向 | 适合用来做什么 | 条目数 | 入口 |
-|---|---|---|---:|---|
-| 🧭 Foundations & Primers | 🧭 Post-training surveys<br>🧠 Reasoning LLM surveys<br>📦 Data documentation / datasheets<br>🧪 RLHF / reward-model surveys<br>🌐 Agent data / tool-use surveys<br>🧯 Contamination / evaluation surveys | 先建立领域地图，再进入一手论文 | 84 | [进入](papers/00_background_foundations/00_foundations_and_primers.md) |
+<blockquote>
 
-### 🧬 Core Reasoning Data Types（核心数据类型）
+<details>
+<summary><code>00</code> <b><a href="papers/00_background_foundations/00_foundations_and_primers.md">基础入门与综述</a></b> · 84 篇</summary>
 
-按真实数据对象理解论文：demonstration、preference、verifiable outcome、process label、rollout trace、agent episode、rubric。
+- [🧭 后训练综述](papers/00_background_foundations/00_foundations_and_primers.md#post-training-surveys)
+- [🧠 推理大模型综述](papers/00_background_foundations/00_foundations_and_primers.md#reasoning-llm-surveys)
+- [📦 数据文档与数据说明书](papers/00_background_foundations/00_foundations_and_primers.md#data-documentation-datasheets)
+- [🧪 RLHF 与奖励模型综述](papers/00_background_foundations/00_foundations_and_primers.md#rlhf-reward-model-surveys)
+- [🌐 智能体与工具使用综述](papers/00_background_foundations/00_foundations_and_primers.md#agent-data-tool-use-surveys)
+- [🧯 数据污染与评测综述](papers/00_background_foundations/00_foundations_and_primers.md#contamination-evaluation-surveys)
 
-| 研究轨道 | 二级方向 | 适合用来做什么 | 条目数 | 入口 |
-|---|---|---|---:|---|
-| 🧱 Instruction / Demo / Rationale | 🧱 Instruction tuning / SFT data<br>🧑‍🏫 Human demonstrations<br>🤖 Synthetic instruction data<br>🧠 Chain-of-thought / rationale data<br>🔁 Self-training / STaR<br>✂️ Long/short CoT distillation | 理解 instruction、demonstration、rationale 和 teacher trace 如何成为训练数据 | 58 | [进入](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md) |
-| 🤝 Preference & Reward Feedback | 🤝 Human preference data / RLHF<br>⚖️ DPO / preference optimization<br>🎚️ Scalar reward / ORM data<br>🤖 RLAIF / synthetic feedback<br>🧪 Reward-model benchmarks<br>🧾 Rubric-conditioned rewards | 比较 preference、reward、DPO、RLAIF、rubric reward 和 judge feedback | 73 | [进入](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md) |
-| 🧮 Programmatic Verification | 📐 Math answer-verifiable data<br>🧮 Math RLVR datasets<br>💻 Code execution / unit-test data<br>🧾 Formal proof / Lean / theorem proving<br>🧪 Verifier robustness and answer extraction<br>🧰 Programmatic benchmarks | 学习 math/code/proof 中可程序验证的 outcome 数据 | 94 | [进入](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) |
-| 🪜 Process / Trace Supervision | 🪜 Human step-level labels<br>🧪 Process reward models<br>🔁 Rollout-value supervision<br>🛠️ Automatic process supervision<br>❌ First-error localization<br>📊 PRM benchmarks and evaluation | 定位 step-level label、PRM、rollout value 和 first-error 监督 | 25 | [进入](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md) |
-| 🔁 Rollout / Search / TTC Trace | 🎲 Multiple rollouts / best-of-N<br>🌳 Search trees / MCTS<br>🔎 Rejection sampling traces<br>🧠 Self-consistency / repeated sampling<br>⏱️ Test-time compute logs<br>✂️ Long2short / distill-from-search | 阅读 rollout、search、best-of-N、pass@k 和 test-time trace 数据 | 39 | [进入](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md) |
-| 🌐 Environment & Agent Trajectories | 🛠️ Tool-use data<br>🌍 Web/browser agents<br>📱 App/mobile agents<br>🖥️ OS/desktop agents<br>🧑‍💻 SWE/repository agents<br>🔁 Replayable trajectory data<br>🧰 Agent benchmarks and terminal predicates | 研究工具、网页、OS、App 和代码仓库级 agent 轨迹数据 | 95 | [进入](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md) |
-| ⚖️ Judgment / Rubric / Domain Expert | ⚖️ LLM-as-judge data<br>🧑‍⚖️ Human/expert judgment<br>🩺 Medical reasoning / health rubrics<br>🛡️ Safety reasoning data<br>🧾 Factuality / grounding<br>⚖️ Legal reasoning<br>🏦 Financial reasoning<br>🧪 Rubric reward models | 理解 rubric、LLM judge、高风险领域和专家评估数据 | 83 | [进入](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md) |
+</details>
 
-### 🛠️ Data Lifecycle（构造、训练、评测与审计）
+</blockquote>
 
-沿着构造、训练、scaling、benchmark、frontier report 和 failure audit 的生命周期阅读。
+### 🧬 二、核心数据类型 `01–07`
 
-| 研究轨道 | 二级方向 | 适合用来做什么 | 条目数 | 入口 |
-|---|---|---|---:|---|
-| 🏗️ Construction & Open Releases | 🧱 Prompt sourcing<br>✍️ Teacher trace generation<br>🔎 Rejection sampling / search-generated data<br>🔁 Self-play / self-improvement<br>🧪 Filtering and verifier refresh<br>🏗️ Open reasoning data releases<br>🧬 Data lineage and release metadata | 学习推理数据如何构造、过滤、发布和复现 | 108 | [进入](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md) |
-| 🎯 Training Usage & Objectives | 🧱 SFT / instruction tuning<br>📚 Distillation<br>⚖️ Preference optimization<br>🎚️ Reward modeling / ORM<br>🪜 PRM / process supervision<br>🏋️ RLVR / verifier RL<br>🌐 Agent training<br>🧪 Evaluation / reranking / audit | 判断数据如何进入 SFT、DPO、RM、PRM、RLVR、agent training、evaluation 或 audit | 97 | [进入](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md) |
-| 📈 Scaling / RLVR / TTC | 📈 Data scaling<br>🔁 Data reuse and uniqueness<br>⏱️ Test-time compute<br>🎲 pass@k / sampling budget<br>🧪 Verifier scaling<br>🏋️ RLVR optimization scaling<br>🔍 Scaling attribution | 拆解 RLVR、数据规模和 test-time compute 的贡献 | 90 | [进入](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) |
-| 🧰 Benchmarks & Evaluation | 📐 Math benchmarks<br>💻 Code benchmarks<br>🧾 Proof benchmarks<br>🌐 Agent benchmarks<br>⚖️ Rubric/domain benchmarks<br>🧪 Reward-model benchmarks<br>🧯 Live / contamination-resistant benchmarks | 选择评测面、benchmark 和可复用反馈契约 | 109 | [进入](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md) |
-| 🚀 Frontier Disclosure Ledger | 🚀 DeepSeek-R1 family<br>🌙 Kimi reasoning reports<br>🐉 Qwen reasoning/math/code reports<br>🧠 Magistral / Phi / Nemotron style reports<br>🧪 RLVR recipe reports<br>🧬 What is disclosed vs hidden | 把前沿模型报告当作部分公开的数据配方来阅读 | 40 | [进入](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md) |
-| 🧯 Audit & Failure Modes | 🧯 Benchmark contamination<br>🔍 Search-time contamination<br>🧬 Hidden lineage / teacher leakage<br>🎮 Reward hacking<br>🧪 Verifier gaming<br>⚖️ LLM-as-judge attacks<br>🧨 Spurious rewards<br>📉 Reproducibility failures | 审计污染、泄漏、verifier gaming、reward hacking 和 judge attack | 68 | [进入](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md) |
+<blockquote>
 
-## 📚 详细论文分类目录
+<details>
+<summary><code>01</code> <b><a href="papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md">指令、示范与思维链数据</a></b> · 58 篇</summary>
 
-下面只展示已经有官方主链接的代表论文；如果某个子方向还没有 verified 条目，它会明确标成 needs search，而不是伪造链接。每行的 `data` 和 `feedback` 帮你判断这篇论文是不是你要读的那类后训练推理数据。
+- [🧱 指令微调数据](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#instruction-tuning-sft-data)
+- [🧑‍🏫 人工示范数据](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#human-demonstrations)
+- [🤖 合成指令数据](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#synthetic-instruction-data)
+- [🧠 思维链与解题理由数据](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#chain-of-thought-rationale-data)
+- [🔁 自我训练（STaR 系）](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#self-training-star)
+- [✂️ 长短思维链蒸馏](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#long-short-cot-distillation)
 
-### 🧭 Background / Foundations（入门与基础）
+</details>
 
-#### 🧭 Foundations & Primers
+<details>
+<summary><code>02</code> <b><a href="papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md">偏好与奖励反馈数据</a></b> · 73 篇</summary>
 
-> beginners building the field map before primary papers · [完整页面](papers/00_background_foundations/00_foundations_and_primers.md)
+- [🤝 人类偏好数据（RLHF）](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#human-preference-data-rlhf)
+- [⚖️ 偏好优化（DPO 系）](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#dpo-preference-optimization)
+- [🎚️ 标量奖励与结果奖励数据](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#scalar-reward-orm-data)
+- [🤖 AI 反馈与合成偏好（RLAIF）](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rlaif-synthetic-feedback)
+- [🧪 奖励模型基准](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#reward-model-benchmarks)
+- [🧾 基于评分标准的奖励](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rubric-conditioned-rewards)
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🧭 Post-training surveys](papers/00_background_foundations/00_foundations_and_primers.md#post-training-surveys) | field-level maps of post-training, reasoning models, and data-centric LLM practice | [A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328) (2025, arXiv)<br><sub>data: taxonomy of reward-model data sources, objectives, applications, evaluations, and cha…; feedback: reward model as proxy objective for downstream post-training.</sub><br>[A Survey on Human Preference Learning for Large Language Models](https://arxiv.org/abs/2406.11191) (2024, arXiv)<br><sub>data: preference-centered taxonomy over feedback data, preference modeling, preference usag…; feedback: human preference signal transformed into reward, preference loss, or evalua…</sub><br>[Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216) (2024, arXiv)<br><sub>data: technical survey comparing RLHF and RLVR policy-gradient style post-training methods.…; feedback: learned preference rewards, verifiable rewards, and policy-gradient objecti…</sub> | survey taxonomy hides concrete data objects |
-| [🧠 Reasoning LLM surveys](papers/00_background_foundations/00_foundations_and_primers.md#reasoning-llm-surveys) | reasoning-model lineages, claims, and recurring evaluation patterns | [A Survey of Reasoning with Foundation Models](https://arxiv.org/abs/2502.17419) (2025, arXiv)<br><sub>data: survey taxonomy and literature map.; literature survey.; feedback: metadata pending</sub><br>[Reasoning with Large Language Models, a Survey](https://arxiv.org/abs/2407.11511) (2024, arXiv)<br><sub>data: survey taxonomy and literature map.; literature survey.; feedback: metadata pending</sub> | model-centric framing obscures data and verifier details |
-| [📦 Data documentation / datasheets](papers/00_background_foundations/00_foundations_and_primers.md#data-documentation-datasheets) | datasheets, data statements, lineage, license, and release metadata | [Data statements for natural language processing](https://aclanthology.org/Q18-1041/) (2018, TACL) · [Card](cards/releases/data-statements-for-natural-language-processing.md)<br><sub>data: survey background; feedback: metadata pending</sub><br>[Datasheets for datasets](https://arxiv.org/abs/1803.09010) (2018, arXiv) · [Card](cards/releases/datasheets-for-datasets.md)<br><sub>data: survey background; feedback: metadata pending</sub> | reusable data lacks provenance or consent context |
-| [🧪 RLHF / reward-model surveys](papers/00_background_foundations/00_foundations_and_primers.md#rlhf-reward-model-surveys) | background linking preference data, reward models, and reasoning rewards | [A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328) (2025, arXiv)<br><sub>data: taxonomy of reward-model data sources, objectives, applications, evaluations, and cha…; feedback: reward model as proxy objective for downstream post-training.</sub><br>[A Survey of Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2312.14925) (2023, TMLR)<br><sub>data: survey taxonomy over feedback collection, reward modeling, and policy optimization.;…; feedback: learned reward model from human feedback.</sub> | generic alignment lessons are over-applied to verifiable reasoning |
-| [🌐 Agent data / tool-use surveys](papers/00_background_foundations/00_foundations_and_primers.md#agent-data-tool-use-surveys) | orientation for tools, web tasks, OS tasks, and repository agents | [A Survey on Evaluation of LLM-based Agents](https://arxiv.org/abs/2503.16416) (2025, arXiv)<br><sub>data: survey taxonomy for agent evaluation tasks and environments.; process: task, environm…; feedback: environmental and benchmark evaluators summarized by the survey.</sub> | agent traces are treated as transcripts rather than replayable episodes |
-| [🧯 Contamination / evaluation surveys](papers/00_background_foundations/00_foundations_and_primers.md#contamination-evaluation-surveys) | reproducibility, contamination, model collapse, and benchmark refresh | [LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) (2024, arXiv) · [Card](cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)<br><sub>data: answer level; feedback: programmatic, mixed</sub><br>[Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385) (2024, arXiv)<br><sub>data: overlap and reporting analysis.; process: training corpus, evaluation set, overlap es…; feedback: overlap analysis rather than a reward model.</sub> | benchmark deltas are accepted without overlap checks |
+</details>
 
-### 🧬 Core Reasoning Data Types（核心数据类型）
+<details>
+<summary><code>03</code> <b><a href="papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md">可程序验证的结果数据</a></b> · 94 篇</summary>
 
-#### 🧱 Instruction / Demo / Rationale
+- [📐 数学答案可验证数据](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-answer-verifiable-data)
+- [🧮 数学 RLVR 数据集](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-rlvr-datasets)
+- [💻 代码执行与单元测试数据](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#code-execution-unit-test-data)
+- [🧾 形式化证明与定理证明（Lean）](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#formal-proof-lean-theorem-proving)
+- [🧪 验证器稳健性与答案抽取](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#verifier-robustness-and-answer-extraction)
+- [🧰 程序化评测基准](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#programmatic-benchmarks)
 
-> demonstration, SFT, CoT, rationale, and teacher-trace data · [完整页面](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md)
+</details>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🧱 Instruction tuning / SFT data](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#instruction-tuning-sft-data) | instruction-response examples, demonstrations, and target behavior records | [Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120) (2024, ICML) · [Card](cards/recipes/magicoder.md)<br><sub>data: instruction-response coding example, often linked to a code reference or task scaffol…; feedback: coding benchmark pass rates and optional executable checks.</sub><br>[Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) (2024, arXiv) · [Card](cards/recipes/tulu-3.md)<br><sub>data: instruction-response examples, preference pairs, verifiable task outputs, and model-e…; feedback: mixture of preference labels, reward models, and verifiable rewards dependi…</sub><br>[Self-Instruct: Aligning language models with self-generated instructions](https://arxiv.org/abs/2212.10560) (2023, ACL) · [Card](cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md)<br><sub>data: answer level; feedback: mixed</sub><br>[OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](https://arxiv.org/abs/2410.01560) (2024, ICLR) · [Card](cards/releases/openmathinstruct-2.md)<br><sub>data: problem-solution pair with natural-language mathematical reasoning and final answer.;…; feedback: answer checks and benchmark evaluation over math tasks.</sub> | prompt sources and mixture weights are hidden |
-| [🧑‍🏫 Human demonstrations](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#human-demonstrations) | human-written solutions, explanations, rationales, and expert demonstrations | Needs verified primary-source additions; see [needs_search](reports/needs_search.md). | human trace policy and expertise are unclear |
-| [🤖 Synthetic instruction data](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#synthetic-instruction-data) | self-instruct, teacher-generated tasks, and synthetic instruction mixtures | [Orca: Progressive learning from complex explanation traces of GPT-4](https://arxiv.org/abs/2306.02707) (2023, arXiv) · [Card](cards/recipes/orca.md)<br><sub>data: instruction response with detailed explanation, intermediate reasoning, and final ans…; feedback: downstream reasoning, exam, and benchmark evaluation rather than a single a…</sub><br>[KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](https://arxiv.org/abs/2503.02951) (2025, ACL Findings) · [Card](cards/releases/kodcode.md)<br><sub>data: question-solution-test triplet; process: problem, solution, unit tests; code executio…; feedback: test-based self-verification</sub> | synthetic prompts collapse diversity or inherit teacher artifacts |
-| [🧠 Chain-of-thought / rationale data](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#chain-of-thought-rationale-data) | rationales, CoT traces, self-consistency, and reasoning-style supervision | [Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171) (2023, ICLR) · [Card](cards/recipes/self-consistency-chain-of-thought.md)<br><sub>data: multiple rationales and final answers for the same prompt.; process: sampling tempera…; feedback: majority or marginalization over sampled answers.</sub> | trace style is mistaken for faithful reasoning |
-| [🔁 Self-training / STaR](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#self-training-star) | bootstrapped traces, self-training, critique loops, and filtered self-improvement | [STaR: Bootstrapping reasoning with reasoning](https://arxiv.org/abs/2203.14465) (2022, NeurIPS) · [Card](cards/recipes/star-bootstrapping-reasoning-with-reasoning.md)<br><sub>data: answer level; feedback: mixed</sub><br>[Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122) (2024, arXiv) · [Card](cards/recipes/qwen2-5-math.md)<br><sub>data: math solution, final answer, optional tool/code execution trace, and reward-model sco…; feedback: math answer checks, reward model signals, and benchmark evaluations.</sub> | feedback loop repeats hidden errors or shortcuts |
-| [✂️ Long/short CoT distillation](papers/01_core_reasoning_data_types/01_instruction_demonstration_rationale_data.md#long-short-cot-distillation) | teacher long traces, distilled short traces, and reasoning compression | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) (2025, arXiv) · [Card](cards/recipes/deepseek_r1.md)<br><sub>data: answer level; feedback: mixed</sub> | distillation loses uncertainty and failed attempts |
+<details>
+<summary><code>04</code> <b><a href="papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md">过程与步骤监督数据</a></b> · 25 篇</summary>
 
-#### 🤝 Preference & Reward Feedback
+- [🪜 人工步骤级标注](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#human-step-level-labels)
+- [🧪 过程奖励模型（PRM）](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#process-reward-models)
+- [🔁 采样价值监督](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#rollout-value-supervision)
+- [🛠️ 自动过程监督](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#automatic-process-supervision)
+- [❌ 首个错误定位](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#first-error-localization)
+- [📊 过程奖励模型评测](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#prm-benchmarks-and-evaluation)
 
-> RLHF, DPO, reward modeling, rubric rewards, and AI feedback · [完整页面](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md)
+</details>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🤝 Human preference data / RLHF](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#human-preference-data-rlhf) | human comparison data, helpful/harmless feedback, and RLHF reward targets | [A Survey of Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2312.14925) (2023, TMLR)<br><sub>data: survey taxonomy over feedback collection, reward modeling, and policy optimization.;…; feedback: learned reward model from human feedback.</sub><br>[Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155) (2022, NeurIPS) · [Card](cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md)<br><sub>data: pairwise preference; scalar reward; feedback: judgment required</sub><br>[A Survey on Human Preference Learning for Large Language Models](https://arxiv.org/abs/2406.11191) (2024, arXiv)<br><sub>data: preference-centered taxonomy over feedback data, preference modeling, preference usag…; feedback: human preference signal transformed into reward, preference loss, or evalua…</sub><br>[A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future](https://arxiv.org/abs/2504.12328) (2025, arXiv)<br><sub>data: taxonomy of reward-model data sources, objectives, applications, evaluations, and cha…; feedback: reward model as proxy objective for downstream post-training.</sub> | annotator assumptions and disagreement are hidden |
-| [⚖️ DPO / preference optimization](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#dpo-preference-optimization) | pairwise data used directly for preference optimization | [Direct preference optimization: Your language model is secretly a reward model](https://arxiv.org/abs/2305.18290) (2023, NeurIPS) · [Card](cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)<br><sub>data: pairwise preference; feedback: judgment required</sub><br>[Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629) (2024, arXiv)<br><sub>data: step-wise preference pairs; process: reasoning step, preferred continuation, rejected…; feedback: step-wise preference optimization objective</sub> | preference pairs are reused outside collection context |
-| [🎚️ Scalar reward / ORM data](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#scalar-reward-orm-data) | outcome reward labels, scalar scores, and trained reward-model targets | [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122) (2024, arXiv) · [Card](cards/recipes/qwen2-5-math.md)<br><sub>data: math solution, final answer, optional tool/code execution trace, and reward-model sco…; feedback: math answer checks, reward model signals, and benchmark evaluations.</sub> | scalar reward hides why an answer is better |
-| [🤖 RLAIF / synthetic feedback](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rlaif-synthetic-feedback) | model-generated preferences, critiques, and constitutional feedback | [Constitutional AI: Harmlessness from AI feedback](https://arxiv.org/abs/2212.08073) (2022, arXiv preprint) · [Card](cards/recipes/constitutional-ai.md)<br><sub>data: original answer, self-critique, revised answer, preference pair, reward-model score.;…; feedback: AI preference model trained from comparisons guided by constitutional princ…</sub><br>[UltraFeedback: Boosting language models with high-quality feedback](https://arxiv.org/abs/2310.01377) (2023, ICML) · [Card](cards/releases/ultrafeedback.md)<br><sub>data: instruction, candidate responses, fine-grained ratings, textual critiques, and derive…; feedback: AI-generated scalar and textual feedback over response quality dimensions.</sub> | synthetic judge behavior is treated as human preference |
-| [🧪 Reward-model benchmarks](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#reward-model-benchmarks) | rewardbench-style evaluation data and reward-model stress tests | [RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787) (2024, NeurIPS) · [Card](cards/verifiers/rewardbench.md)<br><sub>data: pairwise or scalar reward decisions; process: prompt, chosen/rejected response, rewar…; feedback: reward model or judge</sub> | benchmark preference does not predict downstream training value |
-| [🧾 Rubric-conditioned rewards](papers/01_core_reasoning_data_types/02_preference_reward_feedback_data.md#rubric-conditioned-rewards) | rubric scores, critique-plus-score records, and domain-specific reward signals | [Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535) (2024, EMNLP) · [Card](cards/verifiers/prometheus-2.md)<br><sub>data: rubric-conditioned scalar score, critique, or pairwise preference output.; process: i…; feedback: Prometheus 2 judge output aligned against human/proprietary-judge benchmark…</sub><br>[Rewarding progress: Scaling automated process verifiers for LLM reasoning](https://arxiv.org/abs/2410.08146) (2024, ICLR) · [Card](cards/verifiers/rewarding-progress.md)<br><sub>data: step-level process advantage score plus final answer/correctness signal.; process: pr…; feedback: Process Advantage Verifier trained to predict progress toward correct answe…</sub> | rubric wording becomes an exploitable reward channel |
+<details>
+<summary><code>05</code> <b><a href="papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md">采样、搜索与推理时轨迹数据</a></b> · 39 篇</summary>
 
-#### 🧮 Programmatic Verification
+- [🎲 多次采样与 best-of-N](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#multiple-rollouts-best-of-n)
+- [🌳 搜索树与蒙特卡洛树搜索](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#search-trees-mcts)
+- [🔎 拒绝采样轨迹](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#rejection-sampling-traces)
+- [🧠 自洽性与重复采样](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#self-consistency-repeated-sampling)
+- [⏱️ 推理时计算记录](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#test-time-compute-logs)
+- [✂️ 长变短与搜索蒸馏](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#long2short-distill-from-search)
 
-> math, code, proof, and answer-verifiable reasoning data · [完整页面](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md)
+</details>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [📐 Math answer-verifiable data](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-answer-verifiable-data) | math problems, final answers, solution traces, and answer checkers | [GSM8K: Grade School Math 8K](https://arxiv.org/abs/2110.14168) (2021, arXiv / OpenAI dataset) · [Card](cards/benchmarks/gsm8k-grade-school-math-8k.md)<br><sub>data: natural-language solution with final numeric answer; process: question, solution, fin…; feedback: answer extraction and arithmetic correctness checks</sub><br>[Training verifiers to solve math word problems](https://arxiv.org/abs/2110.14168) (2021, arXiv) · [Card](cards/verifiers/training-verifiers-to-solve-math-word-problems.md)<br><sub>data: answer level; scalar reward; feedback: programmatic, judgment required</sub><br>[DeepMath-103K](https://arxiv.org/abs/2504.11456) (2025, arXiv) · [Card](cards/releases/deepmath_103k.md)<br><sub>data: answer level; feedback: programmatic</sub><br>[OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](https://arxiv.org/abs/2410.01560) (2024, ICLR) · [Card](cards/releases/openmathinstruct-2.md)<br><sub>data: problem-solution pair with natural-language mathematical reasoning and final answer.;…; feedback: answer checks and benchmark evaluation over math tasks.</sub> | answer extraction and normalization inflate scores |
-| [🧮 Math RLVR datasets](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#math-rlvr-datasets) | math records used for rejection sampling, SFT, PRMs, and RLVR | [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300) (2024, arXiv) · [Card](cards/recipes/deepseekmath.md)<br><sub>data: natural-language mathematical solution plus final answer, sometimes sampled multiple…; feedback: answer correctness and GRPO-style reward over math tasks.</sub> | data reuse and contamination are not reported |
-| [💻 Code execution / unit-test data](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#code-execution-unit-test-data) | code problems, unit tests, generated tests, execution logs, and repair tasks | [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](https://arxiv.org/abs/2403.07974) (2024, arXiv) · [Card](cards/benchmarks/livecodebench.md)<br><sub>data: program submission or code-related output evaluated by tests or task-specific checks.…; feedback: programmatic tests and task-specific correctness checks.</sub><br>[Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374) (2021, arXiv) · [Card](cards/benchmarks/evaluating-large-language-models-trained-on-code.md)<br><sub>data: executable Python function.; process: prompt, generated code, unit-test results, samp…; feedback: HumanEval tests and pass@k evaluation.</sub><br>[HumanEval: Hand-Written Evaluation Set](https://arxiv.org/abs/2107.03374) (2021, arXiv / OpenAI dataset) · [Card](cards/benchmarks/humaneval-hand-written-evaluation-set.md)<br><sub>data: Python function completion; process: prompt, canonical solution, unit tests; Python e…; feedback: unit tests</sub><br>[Measuring coding challenge competence with APPS](https://arxiv.org/abs/2105.09938) (2021, NeurIPS) · [Card](cards/benchmarks/apps.md)<br><sub>data: Python code submission evaluated against test cases.; process: difficulty, prompt, st…; feedback: unit-test pass/fail signal.</sub> | flaky or leaked tests become the reward |
-| [🧾 Formal proof / Lean / theorem proving](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#formal-proof-lean-theorem-proving) | Lean, proof scripts, tactic environments, theorem statements, and proof checkers | [DeepSeek-Prover: Advancing theorem proving in LLMs](https://arxiv.org/abs/2405.14333) (2024, arXiv) · [Card](cards/recipes/deepseek-prover.md)<br><sub>data: Lean 4 theorem statement and proof script checked by Lean.; process: informal problem…; feedback: Lean kernel/checker acceptance.</sub><br>[LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626) (2023, NeurIPS Datasets and Benchmarks) · [Card](cards/agents/leandojo.md)<br><sub>data: Lean tactic sequence or proof script checked by Lean.; process: repository commit, th…; feedback: Lean checker and environment feedback.</sub><br>[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152) (2024, arXiv) · [Card](cards/recipes/deepseek-prover-v1-5.md)<br><sub>data: Lean proof script, proof-search path, feedback signal, and verification result.; proc…; feedback: proof assistant feedback used for RL and search selection.</sub><br>[miniF2F: A cross-system benchmark for formal olympiad-level mathematics](https://arxiv.org/abs/2109.00110) (2021, ICLR) · [Card](cards/benchmarks/minif2f.md)<br><sub>data: formal proof accepted by a target proof assistant.; process: formal system, theorem s…; feedback: proof assistant kernel/checker acceptance.</sub> | proof succeeds only under an undocumented environment |
-| [🧪 Verifier robustness and answer extraction](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#verifier-robustness-and-answer-extraction) | false positives, false negatives, checker brittleness, and adversarial formats | [AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802) (2024, arXiv)<br><sub>data: step-level confidence-change annotations; process: reasoning step, verifier confidenc…; feedback: answer-trained verifier converted into process annotations</sub> | model learns verifier quirks instead of task skill |
-| [🧰 Programmatic benchmarks](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md#programmatic-benchmarks) | evaluation sets whose scoring can become a post-training signal | [SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168) (2024, NeurIPS Datasets and Benchmarks) · [Card](cards/benchmarks/scicode.md)<br><sub>data: code solution evaluated with scientist-annotated tests or expected outputs.; process:…; feedback: test cases and scientist-curated gold solutions.</sub><br>[LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) (2024, arXiv) · [Card](cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)<br><sub>data: answer level; feedback: programmatic, mixed</sub><br>[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) (2025, arXiv) · [Card](cards/verifiers/prmbench.md)<br><sub>data: step-level labels or scores; process: step, label, error type; offline reasoning trac…; feedback: process-level reward model benchmark</sub><br>[ProcessBench: Identifying Process Errors in Mathematical Reasoning](https://arxiv.org/abs/2412.06559) (2024, arXiv) · [Card](cards/verifiers/processbench.md)<br><sub>data: step labels or first-error markers; process: reasoning step, error marker, diagnostic…; feedback: process-error detector</sub> | benchmark scoring is reused as reward without audit |
+<details>
+<summary><code>06</code> <b><a href="papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md">环境与智能体轨迹数据</a></b> · 95 篇</summary>
 
-#### 🪜 Process / Trace Supervision
+- [🛠️ 工具使用数据](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#tool-use-data)
+- [🌍 网页浏览智能体](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#web-browser-agents)
+- [📱 移动应用智能体](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#app-mobile-agents)
+- [🖥️ 操作系统与桌面智能体](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#os-desktop-agents)
+- [🧑‍💻 软件工程与代码仓库智能体](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#swe-repository-agents)
+- [🔁 可回放轨迹数据](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#replayable-trajectory-data)
+- [🧰 智能体基准与终止判定](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#agent-benchmarks-and-terminal-predicates)
 
-> step-level labels, PRMs, rollout values, and first-error signals · [完整页面](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md)
+</details>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🪜 Human step-level labels](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#human-step-level-labels) | human-labeled intermediate steps and first-error annotations | [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) (2023, arXiv) · [Card](cards/verifiers/prm800k.md)<br><sub>data: step-level labels and final answers; process: step, label, solution trace; offline ma…; feedback: process reward model trained from step labels</sub> | step boundaries and label policy are ambiguous |
-| [🧪 Process reward models](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#process-reward-models) | PRMs, process verifiers, calibration, and reward-model training | [ReST-MCTS*](https://arxiv.org/abs/2406.03816) (2024, arXiv)<br><sub>data: reasoning trajectory with intermediate search states; process: node state, rollout ca…; feedback: process reward guided tree search</sub> | process reward rises while final correctness does not |
-| [🔁 Rollout-value supervision](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#rollout-value-supervision) | rollout values, search-derived labels, and automated progress signals | [Math-Shepherd](https://arxiv.org/abs/2312.08935) (2024, arXiv) · [Card](cards/verifiers/math_shepherd.md)<br><sub>data: step-level rollout-value labels; process: reasoning step, rollout result, process rew…; feedback: rollout-derived process reward signal</sub><br>[Rewarding progress: Scaling automated process verifiers for LLM reasoning](https://arxiv.org/abs/2410.08146) (2024, ICLR) · [Card](cards/verifiers/rewarding-progress.md)<br><sub>data: step-level process advantage score plus final answer/correctness signal.; process: pr…; feedback: Process Advantage Verifier trained to predict progress toward correct answe…</sub> | rollout policy leaks solver strength into labels |
-| [🛠️ Automatic process supervision](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#automatic-process-supervision) | programmatic or model-generated process labels without dense human annotation | [PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456) (2025, arXiv)<br><sub>data: rollout with implicit process reward signal; process: policy rollout, outcome label,…; feedback: implicit process rewards derived from outcome labels</sub><br>[OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592) (2024, arXiv) · [Card](cards/verifiers/omegaprm.md)<br><sub>data: process supervision annotations; process: partial reasoning prefix, first-error signa…; feedback: automated process reward signal</sub><br>[AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802) (2024, arXiv)<br><sub>data: step-level confidence-change annotations; process: reasoning step, verifier confidenc…; feedback: answer-trained verifier converted into process annotations</sub> | automatic labels silently inherit verifier bias |
-| [❌ First-error localization](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#first-error-localization) | where a solution first becomes invalid and how that signal is used | [Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629) (2024, arXiv)<br><sub>data: step-wise preference pairs; process: reasoning step, preferred continuation, rejected…; feedback: step-wise preference optimization objective</sub> | localized errors are not causally linked to correction |
-| [📊 PRM benchmarks and evaluation](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md#prm-benchmarks-and-evaluation) | ProcessBench, PRMBench, Qwen PRM, and evaluation surfaces for process rewards | [PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) (2025, arXiv) · [Card](cards/verifiers/prmbench.md)<br><sub>data: step-level labels or scores; process: step, label, error type; offline reasoning trac…; feedback: process-level reward model benchmark</sub><br>[ProcessBench: Identifying Process Errors in Mathematical Reasoning](https://arxiv.org/abs/2412.06559) (2024, arXiv) · [Card](cards/verifiers/processbench.md)<br><sub>data: step labels or first-error markers; process: reasoning step, error marker, diagnostic…; feedback: process-error detector</sub> | PRM benchmark success does not transfer to training use |
+<details>
+<summary><code>07</code> <b><a href="papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md">评审、评分标准与领域专家数据</a></b> · 83 篇</summary>
 
-#### 🔁 Rollout / Search / TTC Trace
+- [⚖️ 大模型评审数据](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#llm-as-judge-data)
+- [🧑‍⚖️ 人类与专家评审](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#human-expert-judgment)
+- [🩺 医疗推理与健康评分标准](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#medical-reasoning-health-rubrics)
+- [🛡️ 安全推理数据](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#safety-reasoning-data)
+- [🧾 事实性与依据核查](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#factuality-grounding)
+- [⚖️ 法律推理](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#legal-reasoning)
+- [🏦 金融推理](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#financial-reasoning)
+- [🧪 评分标准奖励模型](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#rubric-reward-models)
 
-> search-generated candidates, best-of-N, pass@k, and test-time compute traces · [完整页面](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md)
+</details>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🎲 Multiple rollouts / best-of-N](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#multiple-rollouts-best-of-n) | sets of sampled attempts and selected accepted answers | [Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374) (2021, arXiv) · [Card](cards/benchmarks/evaluating-large-language-models-trained-on-code.md)<br><sub>data: executable Python function.; process: prompt, generated code, unit-test results, samp…; feedback: HumanEval tests and pass@k evaluation.</sub> | only accepted traces are visible |
-| [🌳 Search trees / MCTS](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#search-trees-mcts) | tree search, MCTS, verifier-guided search, and path selection | [ReST-MCTS*](https://arxiv.org/abs/2406.03816) (2024, arXiv)<br><sub>data: reasoning trajectory with intermediate search states; process: node state, rollout ca…; feedback: process reward guided tree search</sub><br>[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152) (2024, arXiv) · [Card](cards/recipes/deepseek-prover-v1-5.md)<br><sub>data: Lean proof script, proof-search path, feedback signal, and verification result.; proc…; feedback: proof assistant feedback used for RL and search selection.</sub> | tree policy or value model is hidden |
-| [🔎 Rejection sampling traces](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#rejection-sampling-traces) | accepted and rejected candidates produced during filtering | [Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/) (2024, OpenAI / SWE-bench report) · [Card](cards/agents/swe-bench-verified.md)<br><sub>data: patch diff applied to a repository plus test execution results.; process: repository,…; feedback: post-patch unit tests plus human filtering of task validity.</sub> | rejected examples are not released |
-| [🧠 Self-consistency / repeated sampling](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#self-consistency-repeated-sampling) | vote-based or agreement-based reasoning from repeated samples | [Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171) (2023, ICLR) · [Card](cards/recipes/self-consistency-chain-of-thought.md)<br><sub>data: multiple rationales and final answers for the same prompt.; process: sampling tempera…; feedback: majority or marginalization over sampled answers.</sub><br>[DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300) (2024, arXiv) · [Card](cards/recipes/deepseekmath.md)<br><sub>data: natural-language mathematical solution plus final answer, sometimes sampled multiple…; feedback: answer correctness and GRPO-style reward over math tasks.</sub> | sampling budget is not comparable |
-| [⏱️ Test-time compute logs](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#test-time-compute-logs) | thinking budgets, inference-time scaling, and runtime search traces | [s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393) (2025, arXiv) · [Card](cards/releases/s1.md)<br><sub>data: answer level; feedback: mixed</sub><br>[MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585) (2025, arXiv preprint arXiv:2506.13585) · [Card](cards/recipes/minimax_m1.md)<br><sub>data: reasoning output, code/tool result, or agent task output; process: reasoning output,…; feedback: programmatic, environment, and benchmark feedback</sub><br>[OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](https://arxiv.org/abs/2507.09075) (2025, arXiv) · [Card](cards/releases/opencodereasoning_ii.md)<br><sub>data: question-solution-critique triple; process: solution, critique, language/runtime labe…; feedback: tests and critique model signals</sub><br>[TTRL: Test-Time Reinforcement Learning](https://arxiv.org/abs/2504.16084) (2025, arXiv preprint arXiv:2504.16084) · [Card](cards/recipes/ttrl.md)<br><sub>data: candidate response with reward/adaptation signal; process: unlabeled input, rollout,…; feedback: task-specific or learned reward used during adaptation</sub> | training and inference budget effects are conflated |
-| [✂️ Long2short / distill-from-search](papers/01_core_reasoning_data_types/05_rollout_search_test_time_trace_data.md#long2short-distill-from-search) | using long search traces to train shorter or cheaper behavior | Needs verified primary-source additions; see [needs_search](reports/needs_search.md). | teacher search artifacts become hidden data lineage |
+</blockquote>
 
-#### 🌐 Environment & Agent Trajectories
+### 🛠️ 三、数据生命周期 `08–13`
 
-> tool, web, OS, app, SWE, and replayable environment data · [完整页面](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md)
+<blockquote>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🛠️ Tool-use data](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#tool-use-data) | tool calls, function signatures, API banks, and tool-use traces | [Toolformer: Language models can teach themselves to use tools](https://arxiv.org/abs/2302.04761) (2023, NeurIPS) · [Card](cards/agents/toolformer.md)<br><sub>data: text sequence with inserted API call and tool result markup.; process: candidate call…; feedback: language-model likelihood improvement after including tool result.</sub><br>[ToolLLM: Facilitating large language models to master 16000+ real-world APIs](https://arxiv.org/abs/2307.16789) (2023, ICLR) · [Card](cards/agents/toolllm_toolbench.md)<br><sub>data: tool-call trajectory plus final response; process: API call, arguments, tool response…; feedback: tool response validity and task success checks</sub><br>[Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122) (2024, arXiv) · [Card](cards/recipes/qwen2-5-math.md)<br><sub>data: math solution, final answer, optional tool/code execution trace, and reward-model sco…; feedback: math answer checks, reward model signals, and benchmark evaluations.</sub> | tool schemas change or hide execution failures |
-| [🌍 Web/browser agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#web-browser-agents) | web tasks, browser state, navigation traces, and page observations | [WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854) (2023, ICLR) · [Card](cards/agents/webarena.md)<br><sub>data: environment interaction trajectory; process: observation, action, state; browser-acce…; feedback: task-specific success evaluator</sub><br>[BrowserGym: A gym environment for web agents](https://arxiv.org/abs/2412.05467) (2024, arXiv) · [Card](cards/agents/browsergym.md)<br><sub>data: browser trajectory; process: DOM/state observation, action, reward/result; gym-style…; feedback: environment task evaluator</sub><br>[DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300) (2024, arXiv) · [Card](cards/recipes/deepseekmath.md)<br><sub>data: natural-language mathematical solution plus final answer, sometimes sampled multiple…; feedback: answer correctness and GRPO-style reward over math tasks.</sub><br>[GPQA](https://arxiv.org/abs/2311.12022) (2023, arXiv) · [Card](cards/benchmarks/gpqa.md)<br><sub>data: multiple-choice answer with optional rationale and expert label.; process: domain, qu…; feedback: expert-authored answer key and validation protocol.</sub> | web state is not replayable after collection |
-| [📱 App/mobile agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#app-mobile-agents) | mobile apps, app-world tasks, UI actions, and user simulators | [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](https://arxiv.org/abs/2407.18901) (2024, arXiv) · [Card](cards/agents/appworld.md)<br><sub>data: API/tool action trajectory; process: tool call, state transition, observation; simula…; feedback: programmatic environment assertions</sub><br>[AndroidWorld: A dynamic benchmarking environment for autonomous agents](https://arxiv.org/abs/2405.14573) (2024, arXiv) · [Card](cards/agents/androidworld.md)<br><sub>data: Android action trajectory; process: screen observation, UI action, state transition;…; feedback: task-specific success evaluator</sub> | UI state and app versions are not pinned |
-| [🖥️ OS/desktop agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#os-desktop-agents) | desktop/OS tasks, filesystem state, shell actions, and multi-app workflows | [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972) (2024, NeurIPS) · [Card](cards/agents/osworld.md)<br><sub>data: GUI/OS action trajectory; process: observation, action, environment state; desktop op…; feedback: task completion evaluator</sub> | hidden environment state makes episodes non-reproducible |
-| [🧑‍💻 SWE/repository agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#swe-repository-agents) | GitHub issues, code patches, tests, commits, and repository repair episodes | [SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770) (2023, ICLR) · [Card](cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md)<br><sub>data: full episode; state action level; feedback: environmental, programmatic</sub><br>[Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/) (2024, OpenAI / SWE-bench report) · [Card](cards/agents/swe-bench-verified.md)<br><sub>data: patch diff applied to a repository plus test execution results.; process: repository,…; feedback: post-patch unit tests plus human filtering of task validity.</sub><br>[R2E-Gym](https://arxiv.org/abs/2504.07164) (2025, arXiv) · [Card](cards/agents/r2e_gym.md)<br><sub>data: full episode; state action level; feedback: environmental, programmatic</sub><br>[SWE-Gym](https://arxiv.org/abs/2412.21139) (2025, arXiv) · [Card](cards/agents/swe_gym.md)<br><sub>data: full episode; state action level; feedback: environmental, programmatic</sub> | repository commit, tests, and scaffold are not pinned |
-| [🔁 Replayable trajectory data](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#replayable-trajectory-data) | state-action-observation schemas, terminal predicates, and failure traces | [ReAct: Synergizing reasoning and acting in language models](https://arxiv.org/abs/2210.03629) (2023, ICLR) · [Card](cards/agents/react.md)<br><sub>data: trajectory containing reasoning note, action, observation, and final answer or task c…; feedback: environment success, answer correctness, or task-specific evaluation.</sub> | success transcript cannot be replayed or audited |
-| [🧰 Agent benchmarks and terminal predicates](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md#agent-benchmarks-and-terminal-predicates) | agent evaluation suites, task resets, terminal predicates, and success/failure labels | [miniF2F: A cross-system benchmark for formal olympiad-level mathematics](https://arxiv.org/abs/2109.00110) (2021, ICLR) · [Card](cards/benchmarks/minif2f.md)<br><sub>data: formal proof accepted by a target proof assistant.; process: formal system, theorem s…; feedback: proof assistant kernel/checker acceptance.</sub><br>[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) (2025, arXiv) · [Card](cards/verifiers/prmbench.md)<br><sub>data: step-level labels or scores; process: step, label, error type; offline reasoning trac…; feedback: process-level reward model benchmark</sub><br>[FinanceBench: A benchmark for financial question answering](https://arxiv.org/abs/2311.11944) (2023, arXiv)<br><sub>data: answer level; feedback: judgment required, mixed</sub><br>[TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance](https://aclanthology.org/2021.acl-long.254/) (2021, ACL)<br><sub>data: answer level; step level; feedback: mixed</sub> | score is reported without a replayable predicate |
+<details>
+<summary><code>08</code> <b><a href="papers/02_data_lifecycle/08_data_construction_open_release_recipes.md">数据构造与开源发布</a></b> · 108 篇</summary>
 
-#### ⚖️ Judgment / Rubric / Domain Expert
+- [🧱 题目与提示来源](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#prompt-sourcing)
+- [✍️ 教师模型轨迹生成](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#teacher-trace-generation)
+- [🔎 拒绝采样与搜索生成数据](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#rejection-sampling-search-generated-data)
+- [🔁 自博弈与自我提升](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#self-play-self-improvement)
+- [🧪 数据过滤与验证器更新](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#filtering-and-verifier-refresh)
+- [🏗️ 开源推理数据发布](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#open-reasoning-data-releases)
+- [🧬 数据谱系与发布元数据](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#data-lineage-and-release-metadata)
 
-> LLM judges, expert rubrics, factuality, safety, medical, legal, and finance reasoning · [完整页面](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md)
+</details>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [⚖️ LLM-as-judge data](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#llm-as-judge-data) | model judges, preference judgments, judge prompts, and evaluator models | [Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685) (2023, NeurIPS Datasets and Benchmarks) · [Card](cards/verifiers/mt-bench-chatbot-arena.md)<br><sub>data: model response, judge score, pairwise preference, or arena battle outcome.; process:…; feedback: strong model judge and human preference comparisons.</sub><br>[Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535) (2024, EMNLP) · [Card](cards/verifiers/prometheus-2.md)<br><sub>data: rubric-conditioned scalar score, critique, or pairwise preference output.; process: i…; feedback: Prometheus 2 judge output aligned against human/proprietary-judge benchmark…</sub><br>[One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794) (2025, arXiv) · [Card](cards/verifiers/one_token_to_fool_judge.md)<br><sub>data: scalar reward; feedback: judgment required</sub> | judge is sensitive to style, position, or prompt attacks |
-| [🧑‍⚖️ Human/expert judgment](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#human-expert-judgment) | human labels, expert adjudication, disagreement handling, and rubric design | [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122) (2024, arXiv) · [Card](cards/recipes/qwen2-5-math.md)<br><sub>data: math solution, final answer, optional tool/code execution trace, and reward-model sco…; feedback: math answer checks, reward model signals, and benchmark evaluations.</sub><br>[Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155) (2022, NeurIPS) · [Card](cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md)<br><sub>data: pairwise preference; scalar reward; feedback: judgment required</sub><br>[A Survey on Human Preference Learning for Large Language Models](https://arxiv.org/abs/2406.11191) (2024, arXiv)<br><sub>data: preference-centered taxonomy over feedback data, preference modeling, preference usag…; feedback: human preference signal transformed into reward, preference loss, or evalua…</sub><br>[A Survey of Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2312.14925) (2023, TMLR)<br><sub>data: survey taxonomy over feedback collection, reward modeling, and policy optimization.;…; feedback: learned reward model from human feedback.</sub> | expertise and adjudication policy are not disclosed |
-| [🩺 Medical reasoning / health rubrics](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#medical-reasoning-health-rubrics) | health, biomedical, scientific, and evidence-grounded reasoning tasks | [HealthBench](https://arxiv.org/abs/2505.08775) (2025, arXiv) · [Card](cards/verifiers/healthbench.md)<br><sub>data: response with rubric/judge evaluation; process: prompt, response, rubric dimension; o…; feedback: rubric-guided expert/LLM judgment</sub><br>[GPQA](https://arxiv.org/abs/2311.12022) (2023, arXiv) · [Card](cards/benchmarks/gpqa.md)<br><sub>data: multiple-choice answer with optional rationale and expert label.; process: domain, qu…; feedback: expert-authored answer key and validation protocol.</sub> | rubrics are not calibrated for high-stakes error |
-| [🛡️ Safety reasoning data](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#safety-reasoning-data) | safety reasoning, refusals, jailbreaks, harmfulness, and guardrail data | [AbstentionBench](https://arxiv.org/abs/2506.09038) (2025, arXiv) · [Card](cards/benchmarks/abstentionbench.md)<br><sub>data: model response, abstention decision, and correctness/abstention judgment.; process: s…; feedback: human-validated judges and benchmark labels for abstention scenarios.</sub><br>[Leaky Thoughts](https://arxiv.org/abs/2506.15674) (2025, arXiv) · [Card](cards/failures/leaky-thoughts.md)<br><sub>data: internal reasoning trace, final answer, and leakage/extraction outcome.; process: sen…; feedback: extraction probes and agentic evaluations.</sub><br>[Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949) (2025, arXiv) · [Card](cards/recipes/llama_nemotron.md)<br><sub>data: answer level; feedback: mixed</sub> | safe-looking refusals replace correct domain reasoning |
-| [🧾 Factuality / grounding](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#factuality-grounding) | claims, citations, retrieval grounding, fact checking, and evidence quality | [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511) (2023, ICLR) · [Card](cards/recipes/self-rag.md)<br><sub>data: generation with retrieval decisions, critique signals, and final answer.; process: qu…; feedback: critique signals and task-specific factuality/answer-quality evaluation.</sub> | citation style masks unsupported claims |
-| [⚖️ Legal reasoning](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#legal-reasoning) | legal QA, statutes, case reasoning, contracts, and expert legal rubrics | [LegalBench](https://arxiv.org/abs/2308.11462) (2023, NeurIPS)<br><sub>data: answer level; feedback: judgment required, mixed</sub> | splits leak templates or jurisdiction assumptions |
-| [🏦 Financial reasoning](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#financial-reasoning) | financial QA, tabular/text numerical reasoning, filings, and analyst-style judgments | [FinanceBench: A benchmark for financial question answering](https://arxiv.org/abs/2311.11944) (2023, arXiv)<br><sub>data: answer level; feedback: judgment required, mixed</sub><br>[FinQA: A dataset of numerical reasoning over financial data](https://aclanthology.org/2021.emnlp-main.300/) (2021, EMNLP)<br><sub>data: answer level; step level; feedback: mixed</sub><br>[TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance](https://aclanthology.org/2021.acl-long.254/) (2021, ACL)<br><sub>data: answer level; step level; feedback: mixed</sub> | splits leak templates or memorized company facts |
-| [🧪 Rubric reward models](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md#rubric-reward-models) | rubrics as trainable rewards and domain-conditioned reward models | [RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787) (2024, NeurIPS) · [Card](cards/verifiers/rewardbench.md)<br><sub>data: pairwise or scalar reward decisions; process: prompt, chosen/rejected response, rewar…; feedback: reward model or judge</sub> | rubric scores are optimized without semantic robustness |
+<details>
+<summary><code>09</code> <b><a href="papers/02_data_lifecycle/09_training_usage_optimization_objectives.md">训练用途与优化目标</a></b> · 97 篇</summary>
 
-### 🛠️ Data Lifecycle（构造、训练、评测与审计）
+- [🧱 监督微调（SFT）](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#sft-instruction-tuning)
+- [📚 蒸馏](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#distillation)
+- [⚖️ 偏好优化](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#preference-optimization)
+- [🎚️ 奖励建模（ORM）](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#reward-modeling-orm)
+- [🪜 过程监督（PRM）](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#prm-process-supervision)
+- [🏋️ 可验证奖励强化学习（RLVR）](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#rlvr-verifier-rl)
+- [🌐 智能体训练](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#agent-training)
+- [🧪 评测、重排与审计](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#evaluation-reranking-audit)
 
-#### 🏗️ Construction & Open Releases
+</details>
 
-> building, filtering, releasing, and reproducing reasoning datasets · [完整页面](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md)
+<details>
+<summary><code>10</code> <b><a href="papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md">规模化、RLVR 与推理时计算</a></b> · 90 篇</summary>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🧱 Prompt sourcing](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#prompt-sourcing) | question pools, seed sources, licenses, difficulty, and base-model pass rates | [OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](https://arxiv.org/abs/2410.01560) (2024, ICLR) · [Card](cards/releases/openmathinstruct-2.md)<br><sub>data: problem-solution pair with natural-language mathematical reasoning and final answer.;…; feedback: answer checks and benchmark evaluation over math tasks.</sub><br>[KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding](https://arxiv.org/abs/2503.02951) (2025, ACL Findings) · [Card](cards/releases/kodcode.md)<br><sub>data: question-solution-test triplet; process: problem, solution, unit tests; code executio…; feedback: test-based self-verification</sub><br>[OpenMathReasoning: A large-scale dataset of math reasoning traces](https://arxiv.org/abs/2504.16891) (2025, arXiv) · [Card](cards/releases/openmathreasoning.md)<br><sub>data: answer level; feedback: programmatic</sub><br>[s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393) (2025, arXiv) · [Card](cards/releases/s1.md)<br><sub>data: answer level; feedback: mixed</sub> | prompt sources are mixed without attribution |
-| [✍️ Teacher trace generation](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#teacher-trace-generation) | teacher models, trace policies, sampling settings, and distillation targets | [Subliminal Learning](https://arxiv.org/abs/2507.14805) (2025, arXiv) · [Card](cards/failures/subliminal-learning.md)<br><sub>data: generated data plus downstream behavioral evaluation of the student.; process: teache…; feedback: trait probes after student training.</sub><br>[Orca: Progressive learning from complex explanation traces of GPT-4](https://arxiv.org/abs/2306.02707) (2023, arXiv) · [Card](cards/recipes/orca.md)<br><sub>data: instruction response with detailed explanation, intermediate reasoning, and final ans…; feedback: downstream reasoning, exam, and benchmark evaluation rather than a single a…</sub><br>[Phi-4-reasoning Technical Report](https://arxiv.org/abs/2504.21318) (2025, arXiv) · [Card](cards/recipes/phi4_reasoning.md)<br><sub>data: answer level; feedback: mixed</sub><br>[ToolLLM: Facilitating large language models to master 16000+ real-world APIs](https://arxiv.org/abs/2307.16789) (2023, ICLR) · [Card](cards/agents/toolllm_toolbench.md)<br><sub>data: tool-call trajectory plus final response; process: API call, arguments, tool response…; feedback: tool response validity and task success checks</sub> | teacher identity or sampling protocol is hidden |
-| [🔎 Rejection sampling / search-generated data](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#rejection-sampling-search-generated-data) | candidate generation, search budget, filtering, and accepted/rejected examples | [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152) (2024, arXiv) · [Card](cards/recipes/deepseek-prover-v1-5.md)<br><sub>data: Lean proof script, proof-search path, feedback signal, and verification result.; proc…; feedback: proof assistant feedback used for RL and search selection.</sub><br>[Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374) (2021, arXiv) · [Card](cards/benchmarks/evaluating-large-language-models-trained-on-code.md)<br><sub>data: executable Python function.; process: prompt, generated code, unit-test results, samp…; feedback: HumanEval tests and pass@k evaluation.</sub><br>[OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592) (2024, arXiv) · [Card](cards/verifiers/omegaprm.md)<br><sub>data: process supervision annotations; process: partial reasoning prefix, first-error signa…; feedback: automated process reward signal</sub><br>[ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](https://arxiv.org/abs/2501.07861) (2025, arXiv)<br><sub>data: step-level preference data with process scores and explanations; process: retrieval c…; feedback: process reward model plus process explanation model</sub> | only accepted traces are released |
-| [🔁 Self-play / self-improvement](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#self-play-self-improvement) | self-improvement, co-evolution, generator-verifier cycles, and curricula | [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122) (2024, arXiv) · [Card](cards/recipes/qwen2-5-math.md)<br><sub>data: math solution, final answer, optional tool/code execution trace, and reward-model sco…; feedback: math answer checks, reward model signals, and benchmark evaluations.</sub><br>[Absolute Zero: Reinforced Self-play Reasoning with Zero Data](https://arxiv.org/abs/2505.03335) (2025, arXiv preprint arXiv:2505.03335) · [Card](cards/recipes/absolute_zero.md)<br><sub>data: generated task, solution, and verified answer; process: proposed task, solution, veri…; feedback: executor-backed verifiable reward</sub><br>[AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802) (2024, arXiv)<br><sub>data: step-level confidence-change annotations; process: reasoning step, verifier confidenc…; feedback: answer-trained verifier converted into process annotations</sub><br>[LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626) (2023, NeurIPS Datasets and Benchmarks) · [Card](cards/agents/leandojo.md)<br><sub>data: Lean tactic sequence or proof script checked by Lean.; process: repository commit, th…; feedback: Lean checker and environment feedback.</sub> | feedback loop amplifies hidden shortcuts |
-| [🧪 Filtering and verifier refresh](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#filtering-and-verifier-refresh) | answer filters, judge filters, decontamination, and verifier updates | [Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387) (2025, arXiv) · [Card](cards/releases/big_math.md)<br><sub>data: math problem, answer, and verification signal; process: problem, answer, verification…; feedback: answer-level math verifier</sub><br>[DAPO](https://arxiv.org/abs/2503.14476) (2025, arXiv) · [Card](cards/releases/dapo.md)<br><sub>data: answer level; feedback: programmatic</sub><br>[DeepMath-103K](https://arxiv.org/abs/2504.11456) (2025, arXiv) · [Card](cards/releases/deepmath_103k.md)<br><sub>data: answer level; feedback: programmatic</sub> | filter thresholds become hidden objectives |
-| [🏗️ Open reasoning data releases](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#open-reasoning-data-releases) | open datasets, code, HF releases, recipes, ablations, and reproducibility | [OpenThoughts: Data recipes for reasoning models](https://arxiv.org/abs/2506.04178) (2025, arXiv) · [Card](cards/releases/openthoughts.md)<br><sub>data: reasoning traces and final answers; process: question, reasoning trace, answer; offli…; feedback: filters, benchmark feedback, and recipe ablations</sub> | dataset is open but recipe details are not |
-| [🧬 Data lineage and release metadata](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md#data-lineage-and-release-metadata) | datasheets, splits, lineage, licensing, versioning, and known failures | [Training a helpful and harmless assistant with reinforcement learning from human feedback](https://arxiv.org/abs/2204.05862) (2022, arXiv)<br><sub>data: pairwise preference; scalar reward; feedback: judgment required</sub> | reuse loses the release context |
+- [📈 数据规模化](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-scaling)
+- [🔁 数据复用与去重](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-reuse-and-uniqueness)
+- [⏱️ 推理时计算](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#test-time-compute)
+- [🎲 pass@k 与采样预算](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#pass-k-sampling-budget)
+- [🧪 验证器规模化](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#verifier-scaling)
+- [🏋️ RLVR 优化规模化](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#rlvr-optimization-scaling)
+- [🔍 规模化收益归因](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#scaling-attribution)
 
-#### 🎯 Training Usage & Objectives
+</details>
 
-> how data enters SFT, DPO, RM, PRM, RLVR, agents, evaluation, and audit · [完整页面](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md)
+<details>
+<summary><code>11</code> <b><a href="papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md">基准与评测</a></b> · 109 篇</summary>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🧱 SFT / instruction tuning](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#sft-instruction-tuning) | data used as supervised target behavior | [OpenMathInstruct-2: Accelerating AI for math with massive open-source instruction data](https://arxiv.org/abs/2410.01560) (2024, ICLR) · [Card](cards/releases/openmathinstruct-2.md)<br><sub>data: problem-solution pair with natural-language mathematical reasoning and final answer.;…; feedback: answer checks and benchmark evaluation over math tasks.</sub><br>[Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) (2024, arXiv) · [Card](cards/recipes/tulu-3.md)<br><sub>data: instruction-response examples, preference pairs, verifiable task outputs, and model-e…; feedback: mixture of preference labels, reward models, and verifiable rewards dependi…</sub><br>[Toolformer: Language models can teach themselves to use tools](https://arxiv.org/abs/2302.04761) (2023, NeurIPS) · [Card](cards/agents/toolformer.md)<br><sub>data: text sequence with inserted API call and tool result markup.; process: candidate call…; feedback: language-model likelihood improvement after including tool result.</sub><br>[Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155) (2022, NeurIPS) · [Card](cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md)<br><sub>data: pairwise preference; scalar reward; feedback: judgment required</sub> | target text hides verifier and source assumptions |
-| [📚 Distillation](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#distillation) | teacher outputs, traces, or policies distilled into a student | [Subliminal Learning](https://arxiv.org/abs/2507.14805) (2025, arXiv) · [Card](cards/failures/subliminal-learning.md)<br><sub>data: generated data plus downstream behavioral evaluation of the student.; process: teache…; feedback: trait probes after student training.</sub><br>[Orca: Progressive learning from complex explanation traces of GPT-4](https://arxiv.org/abs/2306.02707) (2023, arXiv) · [Card](cards/recipes/orca.md)<br><sub>data: instruction response with detailed explanation, intermediate reasoning, and final ans…; feedback: downstream reasoning, exam, and benchmark evaluation rather than a single a…</sub><br>[Phi-4-reasoning Technical Report](https://arxiv.org/abs/2504.21318) (2025, arXiv) · [Card](cards/recipes/phi4_reasoning.md)<br><sub>data: answer level; feedback: mixed</sub><br>[OpenThoughts: Data recipes for reasoning models](https://arxiv.org/abs/2506.04178) (2025, arXiv) · [Card](cards/releases/openthoughts.md)<br><sub>data: reasoning traces and final answers; process: question, reasoning trace, answer; offli…; feedback: filters, benchmark feedback, and recipe ablations</sub> | teacher lineage is hidden |
-| [⚖️ Preference optimization](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#preference-optimization) | pairwise feedback for DPO/IPO/KTO-style objectives | [Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629) (2024, arXiv)<br><sub>data: step-wise preference pairs; process: reasoning step, preferred continuation, rejected…; feedback: step-wise preference optimization objective</sub><br>[Direct preference optimization: Your language model is secretly a reward model](https://arxiv.org/abs/2305.18290) (2023, NeurIPS) · [Card](cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md)<br><sub>data: pairwise preference; feedback: judgment required</sub> | pair context does not match downstream use |
-| [🎚️ Reward modeling / ORM](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#reward-modeling-orm) | scalar or pairwise data used to train outcome rewards | Needs verified primary-source additions; see [needs_search](reports/needs_search.md). | reward can be overoptimized |
-| [🪜 PRM / process supervision](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#prm-process-supervision) | step-level or trace-level signals used to train process rewards | [Rewarding progress: Scaling automated process verifiers for LLM reasoning](https://arxiv.org/abs/2410.08146) (2024, ICLR) · [Card](cards/verifiers/rewarding-progress.md)<br><sub>data: step-level process advantage score plus final answer/correctness signal.; process: pr…; feedback: Process Advantage Verifier trained to predict progress toward correct answe…</sub><br>[Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) (2023, arXiv) · [Card](cards/verifiers/prm800k.md)<br><sub>data: step-level labels and final answers; process: step, label, solution trace; offline ma…; feedback: process reward model trained from step labels</sub><br>[OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592) (2024, arXiv) · [Card](cards/verifiers/omegaprm.md)<br><sub>data: process supervision annotations; process: partial reasoning prefix, first-error signa…; feedback: automated process reward signal</sub> | PRM rewards trace style |
-| [🏋️ RLVR / verifier RL](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#rlvr-verifier-rl) | programmatic or verifier rewards used in RL | [Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216) (2024, arXiv)<br><sub>data: technical survey comparing RLHF and RLVR policy-gradient style post-training methods.…; feedback: learned preference rewards, verifiable rewards, and policy-gradient objecti…</sub><br>[DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801) (2025, arXiv) · [Card](cards/recipes/deepseek-prover-v2.md)<br><sub>data: subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: pr…; feedback: Lean verification and RL reward over formal proof success.</sub><br>[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152) (2024, arXiv) · [Card](cards/recipes/deepseek-prover-v1-5.md)<br><sub>data: Lean proof script, proof-search path, feedback signal, and verification result.; proc…; feedback: proof assistant feedback used for RL and search selection.</sub><br>[TTRL: Test-Time Reinforcement Learning](https://arxiv.org/abs/2504.16084) (2025, arXiv preprint arXiv:2504.16084) · [Card](cards/recipes/ttrl.md)<br><sub>data: candidate response with reward/adaptation signal; process: unlabeled input, rollout,…; feedback: task-specific or learned reward used during adaptation</sub> | verifier false positives become policy incentives |
-| [🌐 Agent training](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#agent-training) | environment episodes, tool traces, or terminal rewards for agent policies | [BrowserGym: A gym environment for web agents](https://arxiv.org/abs/2412.05467) (2024, arXiv) · [Card](cards/agents/browsergym.md)<br><sub>data: browser trajectory; process: DOM/state observation, action, reward/result; gym-style…; feedback: environment task evaluator</sub><br>[AndroidWorld: A dynamic benchmarking environment for autonomous agents](https://arxiv.org/abs/2405.14573) (2024, arXiv) · [Card](cards/agents/androidworld.md)<br><sub>data: Android action trajectory; process: screen observation, UI action, state transition;…; feedback: task-specific success evaluator</sub><br>[WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854) (2023, ICLR) · [Card](cards/agents/webarena.md)<br><sub>data: environment interaction trajectory; process: observation, action, state; browser-acce…; feedback: task-specific success evaluator</sub><br>[LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626) (2023, NeurIPS Datasets and Benchmarks) · [Card](cards/agents/leandojo.md)<br><sub>data: Lean tactic sequence or proof script checked by Lean.; process: repository commit, th…; feedback: Lean checker and environment feedback.</sub> | environment cannot be replayed |
-| [🧪 Evaluation / reranking / audit](papers/02_data_lifecycle/09_training_usage_optimization_objectives.md#evaluation-reranking-audit) | data used for scoring, selection, reporting, or failure analysis | [LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) (2024, arXiv) · [Card](cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)<br><sub>data: answer level; feedback: programmatic, mixed</sub><br>[SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168) (2024, NeurIPS Datasets and Benchmarks) · [Card](cards/benchmarks/scicode.md)<br><sub>data: code solution evaluated with scientist-annotated tests or expected outputs.; process:…; feedback: test cases and scientist-curated gold solutions.</sub><br>[miniF2F: A cross-system benchmark for formal olympiad-level mathematics](https://arxiv.org/abs/2109.00110) (2021, ICLR) · [Card](cards/benchmarks/minif2f.md)<br><sub>data: formal proof accepted by a target proof assistant.; process: formal system, theorem s…; feedback: proof assistant kernel/checker acceptance.</sub><br>[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) (2025, arXiv) · [Card](cards/verifiers/prmbench.md)<br><sub>data: step-level labels or scores; process: step, label, error type; offline reasoning trac…; feedback: process-level reward model benchmark</sub> | evaluation data becomes training data |
+- [📐 数学基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#math-benchmarks)
+- [💻 代码基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#code-benchmarks)
+- [🧾 证明基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#proof-benchmarks)
+- [🌐 智能体基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#agent-benchmarks)
+- [⚖️ 评分标准与领域基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#rubric-domain-benchmarks)
+- [🧪 奖励模型基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#reward-model-benchmarks)
+- [🧯 动态与抗污染基准](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#live-contamination-resistant-benchmarks)
 
-#### 📈 Scaling / RLVR / TTC
+</details>
 
-> data scale, RLVR, verifier scaling, pass@k, and inference budget claims · [完整页面](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md)
+<details>
+<summary><code>12</code> <b><a href="papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md">前沿模型报告与数据披露</a></b> · 40 篇</summary>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [📈 Data scaling](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-scaling) | number, diversity, difficulty, and uniqueness of examples | [OpenMathReasoning: A large-scale dataset of math reasoning traces](https://arxiv.org/abs/2504.16891) (2025, arXiv) · [Card](cards/releases/openmathreasoning.md)<br><sub>data: answer level; feedback: programmatic</sub><br>[DeepSeek-Prover: Advancing theorem proving in LLMs](https://arxiv.org/abs/2405.14333) (2024, arXiv) · [Card](cards/recipes/deepseek-prover.md)<br><sub>data: Lean 4 theorem statement and proof script checked by Lean.; process: informal problem…; feedback: Lean kernel/checker acceptance.</sub><br>[UltraFeedback: Boosting language models with high-quality feedback](https://arxiv.org/abs/2310.01377) (2023, ICML) · [Card](cards/releases/ultrafeedback.md)<br><sub>data: instruction, candidate responses, fine-grained ratings, textual critiques, and derive…; feedback: AI-generated scalar and textual feedback over response quality dimensions.</sub><br>[Big-Math-RL-Verified](https://arxiv.org/abs/2502.17387) (2025, arXiv) · [Card](cards/releases/big_math.md)<br><sub>data: math problem, answer, and verification signal; process: problem, answer, verification…; feedback: answer-level math verifier</sub> | unique examples and repeated rollouts are conflated |
-| [🔁 Data reuse and uniqueness](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#data-reuse-and-uniqueness) | reuse counts, deduplication, repeated prompts, and train/test overlap | [Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385) (2024, arXiv)<br><sub>data: overlap and reporting analysis.; process: training corpus, evaluation set, overlap es…; feedback: overlap analysis rather than a reward model.</sub> | same source examples are counted as fresh data |
-| [⏱️ Test-time compute](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#test-time-compute) | sampling, search, self-critique, thinking budgets, and inference-time scaling | [s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393) (2025, arXiv) · [Card](cards/releases/s1.md)<br><sub>data: answer level; feedback: mixed</sub><br>[MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585) (2025, arXiv preprint arXiv:2506.13585) · [Card](cards/recipes/minimax_m1.md)<br><sub>data: reasoning output, code/tool result, or agent task output; process: reasoning output,…; feedback: programmatic, environment, and benchmark feedback</sub><br>[TTRL: Test-Time Reinforcement Learning](https://arxiv.org/abs/2504.16084) (2025, arXiv preprint arXiv:2504.16084) · [Card](cards/recipes/ttrl.md)<br><sub>data: candidate response with reward/adaptation signal; process: unlabeled input, rollout,…; feedback: task-specific or learned reward used during adaptation</sub><br>[The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786) (2025, arXiv) · [Card](cards/recipes/the-art-of-scaling-rl-compute.md)<br><sub>data: training runs, reward outcomes, validation curves, and ablation results.; process: lo…; feedback: compute-performance curves and recipe ablations.</sub> | different inference budgets are compared |
-| [🎲 pass@k / sampling budget](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#pass-k-sampling-budget) | pass@k, repeated sampling, best-of-N, and budget-aware evaluation | [Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374) (2021, arXiv) · [Card](cards/benchmarks/evaluating-large-language-models-trained-on-code.md)<br><sub>data: executable Python function.; process: prompt, generated code, unit-test results, samp…; feedback: HumanEval tests and pass@k evaluation.</sub> | reported gains hide selection or budget changes |
-| [🧪 Verifier scaling](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#verifier-scaling) | how verifier strength, refresh, and coverage scale with training | Needs verified primary-source additions; see [needs_search](reports/needs_search.md). | verifier becomes stale or easy to exploit |
-| [🏋️ RLVR optimization scaling](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#rlvr-optimization-scaling) | policy optimization, reward contracts, curriculum, and rollout policy | [DAPO](https://arxiv.org/abs/2503.14476) (2025, arXiv) · [Card](cards/releases/dapo.md)<br><sub>data: answer level; feedback: programmatic</sub><br>[DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801) (2025, arXiv) · [Card](cards/recipes/deepseek-prover-v2.md)<br><sub>data: subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: pr…; feedback: Lean verification and RL reward over formal proof success.</sub><br>[DeepSeek-R1](https://arxiv.org/abs/2501.12948) (2025, arXiv) · [Card](cards/recipes/deepseek_r1.md)<br><sub>data: answer level; feedback: mixed</sub><br>[Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) (2024, arXiv) · [Card](cards/recipes/tulu-3.md)<br><sub>data: instruction-response examples, preference pairs, verifiable task outputs, and model-e…; feedback: mixture of preference labels, reward models, and verifiable rewards dependi…</sub> | optimizer/scaffold gains are mistaken for data gains |
-| [🔍 Scaling attribution](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md#scaling-attribution) | separating data, verifier, optimizer, model, and inference-budget effects | Needs verified primary-source additions; see [needs_search](reports/needs_search.md). | ablation tables do not isolate the source of improvement |
+- [🚀 DeepSeek-R1 系列](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#deepseek-r1-family)
+- [🌙 Kimi 推理报告](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#kimi-reasoning-reports)
+- [🐉 Qwen 推理、数学与代码报告](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#qwen-reasoning-math-code-reports)
+- [🧠 Magistral、Phi、Nemotron 类报告](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#magistral-phi-nemotron-style-reports)
+- [🧪 RLVR 配方报告](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#rlvr-recipe-reports)
+- [🧬 披露了什么、隐藏了什么](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#what-is-disclosed-vs-hidden)
 
-#### 🧰 Benchmarks & Evaluation
+</details>
 
-> evaluation surfaces and reusable feedback contracts · [完整页面](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md)
+<details>
+<summary><code>13</code> <b><a href="papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md">审计、污染与失效模式</a></b> · 68 篇</summary>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [📐 Math benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#math-benchmarks) | math problem sets, answer extraction, verifier compatibility, and difficulty | [GSM8K: Grade School Math 8K](https://arxiv.org/abs/2110.14168) (2021, arXiv / OpenAI dataset) · [Card](cards/benchmarks/gsm8k-grade-school-math-8k.md)<br><sub>data: natural-language solution with final numeric answer; process: question, solution, fin…; feedback: answer extraction and arithmetic correctness checks</sub><br>[Training verifiers to solve math word problems](https://arxiv.org/abs/2110.14168) (2021, arXiv) · [Card](cards/verifiers/training-verifiers-to-solve-math-word-problems.md)<br><sub>data: answer level; scalar reward; feedback: programmatic, judgment required</sub><br>[Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122) (2024, arXiv) · [Card](cards/recipes/qwen2-5-math.md)<br><sub>data: math solution, final answer, optional tool/code execution trace, and reward-model sco…; feedback: math answer checks, reward model signals, and benchmark evaluations.</sub><br>[Measuring mathematical problem solving with the MATH dataset](https://arxiv.org/abs/2103.03874) (2021, NeurIPS Datasets and Benchmarks) · [Card](cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md)<br><sub>data: answer level; feedback: programmatic</sub> | short-answer normalization hides reasoning errors |
-| [💻 Code benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#code-benchmarks) | coding tasks, generated tests, hidden tests, repair tasks, and live coding | [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](https://arxiv.org/abs/2403.07974) (2024, arXiv) · [Card](cards/benchmarks/livecodebench.md)<br><sub>data: program submission or code-related output evaluated by tests or task-specific checks.…; feedback: programmatic tests and task-specific correctness checks.</sub><br>[Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374) (2021, arXiv) · [Card](cards/benchmarks/evaluating-large-language-models-trained-on-code.md)<br><sub>data: executable Python function.; process: prompt, generated code, unit-test results, samp…; feedback: HumanEval tests and pass@k evaluation.</sub><br>[HumanEval: Hand-Written Evaluation Set](https://arxiv.org/abs/2107.03374) (2021, arXiv / OpenAI dataset) · [Card](cards/benchmarks/humaneval-hand-written-evaluation-set.md)<br><sub>data: Python function completion; process: prompt, canonical solution, unit tests; Python e…; feedback: unit tests</sub><br>[Measuring coding challenge competence with APPS](https://arxiv.org/abs/2105.09938) (2021, NeurIPS) · [Card](cards/benchmarks/apps.md)<br><sub>data: Python code submission evaluated against test cases.; process: difficulty, prompt, st…; feedback: unit-test pass/fail signal.</sub> | unit tests are brittle, leaked, or too narrow |
-| [🧾 Proof benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#proof-benchmarks) | formal proof datasets, proof assistants, theorem statements, and checking | [miniF2F: A cross-system benchmark for formal olympiad-level mathematics](https://arxiv.org/abs/2109.00110) (2021, ICLR) · [Card](cards/benchmarks/minif2f.md)<br><sub>data: formal proof accepted by a target proof assistant.; process: formal system, theorem s…; feedback: proof assistant kernel/checker acceptance.</sub><br>[LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626) (2023, NeurIPS Datasets and Benchmarks) · [Card](cards/agents/leandojo.md)<br><sub>data: Lean tactic sequence or proof script checked by Lean.; process: repository commit, th…; feedback: Lean checker and environment feedback.</sub> | proof checker version and imports are not pinned |
-| [🌐 Agent benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#agent-benchmarks) | web, tool, OS, app, and SWE environments with terminal predicates | [Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/) (2024, OpenAI / SWE-bench report) · [Card](cards/agents/swe-bench-verified.md)<br><sub>data: patch diff applied to a repository plus test execution results.; process: repository,…; feedback: post-patch unit tests plus human filtering of task validity.</sub><br>[SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770) (2023, ICLR) · [Card](cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md)<br><sub>data: full episode; state action level; feedback: environmental, programmatic</sub><br>[SWE-Gym](https://arxiv.org/abs/2412.21139) (2025, arXiv) · [Card](cards/agents/swe_gym.md)<br><sub>data: full episode; state action level; feedback: environmental, programmatic</sub><br>[BrowserGym: A gym environment for web agents](https://arxiv.org/abs/2412.05467) (2024, arXiv) · [Card](cards/agents/browsergym.md)<br><sub>data: browser trajectory; process: DOM/state observation, action, reward/result; gym-style…; feedback: environment task evaluator</sub> | benchmark episodes cannot be replayed |
-| [⚖️ Rubric/domain benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#rubric-domain-benchmarks) | medical, safety, legal, finance, science, factuality, and expert rubrics | [HealthBench](https://arxiv.org/abs/2505.08775) (2025, arXiv) · [Card](cards/verifiers/healthbench.md)<br><sub>data: response with rubric/judge evaluation; process: prompt, response, rubric dimension; o…; feedback: rubric-guided expert/LLM judgment</sub><br>[AbstentionBench](https://arxiv.org/abs/2506.09038) (2025, arXiv) · [Card](cards/benchmarks/abstentionbench.md)<br><sub>data: model response, abstention decision, and correctness/abstention judgment.; process: s…; feedback: human-validated judges and benchmark labels for abstention scenarios.</sub><br>[TruthfulQA](https://arxiv.org/abs/2109.07958) (2022, ACL) · [Card](cards/benchmarks/truthfulqa.md)<br><sub>data: free-form generation or multiple-choice answer with truthfulness and informativeness…; feedback: human references plus automated/human scoring protocols for truthfulness an…</sub><br>[FinanceBench: A benchmark for financial question answering](https://arxiv.org/abs/2311.11944) (2023, arXiv)<br><sub>data: answer level; feedback: judgment required, mixed</sub> | rubric or judge expertise is insufficiently disclosed |
-| [🧪 Reward-model benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#reward-model-benchmarks) | reward model, LLM-judge, PRM, and rubric evaluation suites | [RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787) (2024, NeurIPS) · [Card](cards/verifiers/rewardbench.md)<br><sub>data: pairwise or scalar reward decisions; process: prompt, chosen/rejected response, rewar…; feedback: reward model or judge</sub><br>[Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685) (2023, NeurIPS Datasets and Benchmarks) · [Card](cards/verifiers/mt-bench-chatbot-arena.md)<br><sub>data: model response, judge score, pairwise preference, or arena battle outcome.; process:…; feedback: strong model judge and human preference comparisons.</sub><br>[One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794) (2025, arXiv) · [Card](cards/verifiers/one_token_to_fool_judge.md)<br><sub>data: scalar reward; feedback: judgment required</sub><br>[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) (2025, arXiv) · [Card](cards/verifiers/prmbench.md)<br><sub>data: step-level labels or scores; process: step, label, error type; offline reasoning trac…; feedback: process-level reward model benchmark</sub> | benchmark reward preference does not reflect training value |
-| [🧯 Live / contamination-resistant benchmarks](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md#live-contamination-resistant-benchmarks) | live, refreshed, hidden, or contamination-aware evaluation | [LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) (2024, arXiv) · [Card](cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)<br><sub>data: answer level; feedback: programmatic, mixed</sub><br>[Language Model Developers Should Report Train-Test Overlap](https://arxiv.org/abs/2410.08385) (2024, arXiv)<br><sub>data: overlap and reporting analysis.; process: training corpus, evaluation set, overlap es…; feedback: overlap analysis rather than a reward model.</sub> | static benchmark becomes a training target |
+- [🧯 基准污染](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#benchmark-contamination)
+- [🔍 搜索阶段污染](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#search-time-contamination)
+- [🧬 隐藏谱系与教师泄漏](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#hidden-lineage-teacher-leakage)
+- [🎮 奖励投机](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reward-hacking)
+- [🧪 验证器欺骗](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#verifier-gaming)
+- [⚖️ 大模型评审攻击](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#llm-as-judge-attacks)
+- [🧨 虚假奖励](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#spurious-rewards)
+- [📉 可复现性失效](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reproducibility-failures)
 
-#### 🚀 Frontier Disclosure Ledger
+</details>
 
-> reading frontier reports as partial data-recipe disclosures · [完整页面](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md)
+</blockquote>
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🚀 DeepSeek-R1 family](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#deepseek-r1-family) | RLVR, distillation, reasoning traces, and public recipe disclosure | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) (2025, arXiv) · [Card](cards/recipes/deepseek_r1.md)<br><sub>data: answer level; feedback: mixed</sub> | report describes outcomes but not enough data partitions |
-| [🌙 Kimi reasoning reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#kimi-reasoning-reports) | long-context reasoning, RL compute, and frontier inference budgets | [Kimi K1.5: Scaling Reinforcement Learning with LLMs](https://arxiv.org/abs/2501.12599) (2025, arXiv) · [Card](cards/recipes/kimi_k15.md)<br><sub>data: answer level; feedback: mixed</sub> | test-time compute is mixed with training-data effects |
-| [🐉 Qwen reasoning/math/code reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#qwen-reasoning-math-code-reports) | math, code, PRM, and open-weight reasoning model families | [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122) (2024, arXiv) · [Card](cards/recipes/qwen2-5-math.md)<br><sub>data: math solution, final answer, optional tool/code execution trace, and reward-model sco…; feedback: math answer checks, reward model signals, and benchmark evaluations.</sub><br>[Qwen3 Technical Report](https://arxiv.org/abs/2505.09388) (2025, arXiv) · [Card](cards/recipes/qwen3.md)<br><sub>data: answer level; feedback: mixed</sub> | release cards do not separate SFT, RLVR, and evaluation data |
-| [🧠 Magistral / Phi / Nemotron style reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#magistral-phi-nemotron-style-reports) | open-weight reasoning reports with partial data and reward disclosures | [Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949) (2025, arXiv) · [Card](cards/recipes/llama_nemotron.md)<br><sub>data: answer level; feedback: mixed</sub><br>[Magistral](https://arxiv.org/abs/2506.10910) (2025, arXiv) · [Card](cards/recipes/magistral.md)<br><sub>data: answer level; feedback: mixed</sub><br>[MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585) (2025, arXiv preprint arXiv:2506.13585) · [Card](cards/recipes/minimax_m1.md)<br><sub>data: reasoning output, code/tool result, or agent task output; process: reasoning output,…; feedback: programmatic, environment, and benchmark feedback</sub><br>[Phi-4-reasoning Technical Report](https://arxiv.org/abs/2504.21318) (2025, arXiv) · [Card](cards/recipes/phi4_reasoning.md)<br><sub>data: answer level; feedback: mixed</sub> | model-card claims cannot be mapped to concrete data objects |
-| [🧪 RLVR recipe reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#rlvr-recipe-reports) | reports that expose reward contracts, rollout policies, or RL scaffolds | [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801) (2025, arXiv) · [Card](cards/recipes/deepseek-prover-v2.md)<br><sub>data: subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: pr…; feedback: Lean verification and RL reward over formal proof success.</sub><br>[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152) (2024, arXiv) · [Card](cards/recipes/deepseek-prover-v1-5.md)<br><sub>data: Lean proof script, proof-search path, feedback signal, and verification result.; proc…; feedback: proof assistant feedback used for RL and search selection.</sub><br>[Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300) (2025, arXiv) · [Card](cards/recipes/scaling-behaviors-rl-post-training.md)<br><sub>data: problem, generated solution/answer, reward outcome, and training curve metrics.; proc…; feedback: answer-level reward for mathematical reasoning and scaling curves.</sub><br>[Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535) (2024, EMNLP) · [Card](cards/verifiers/prometheus-2.md)<br><sub>data: rubric-conditioned scalar score, critique, or pairwise preference output.; process: i…; feedback: Prometheus 2 judge output aligned against human/proprietary-judge benchmark…</sub> | RL gains are attributed without verifier coverage |
-| [🧬 What is disclosed vs hidden](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md#what-is-disclosed-vs-hidden) | data sources, filters, lineage, safety mixtures, and undisclosed partitions | [Skywork Open Reasoner 1 Technical Report](https://arxiv.org/abs/2505.22312) (2025, arXiv preprint arXiv:2505.22312)<br><sub>data: metadata pending; feedback: metadata pending</sub><br>[rStar2-Agent: Agentic Reasoning Technical Report](https://arxiv.org/abs/2508.20722) (2025, arXiv preprint arXiv:2508.20722)<br><sub>data: survey background; feedback: metadata pending</sub> | opaque mixtures are reused as open recipes |
+## 🛤️ 学习路径
 
-#### 🧯 Audit & Failure Modes
+四个阶段循序渐进。每个阶段先读学习指南搭好框架，各阶段的必读论文正在整理，会陆续补充进来。
 
-> leakage, contamination, verifier gaming, judge attacks, and reproducibility failures · [完整页面](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md)
+**🌱 第一阶段 · 建立心智模型**——这个领域在研究什么，数据按什么逻辑分类
 
-| 子方向 | 这个方向看什么 | 代表论文直达 | 审计风险 |
-|---|---|---|---|
-| [🧯 Benchmark contamination](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#benchmark-contamination) | train/test overlap, stale evaluations, and benchmark refresh | [LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) (2024, arXiv) · [Card](cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md)<br><sub>data: answer level; feedback: programmatic, mixed</sub><br>[LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](https://arxiv.org/abs/2403.07974) (2024, arXiv) · [Card](cards/benchmarks/livecodebench.md)<br><sub>data: program submission or code-related output evaluated by tests or task-specific checks.…; feedback: programmatic tests and task-specific correctness checks.</sub><br>[SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168) (2024, NeurIPS Datasets and Benchmarks) · [Card](cards/benchmarks/scicode.md)<br><sub>data: code solution evaluated with scientist-annotated tests or expected outputs.; process:…; feedback: test cases and scientist-curated gold solutions.</sub><br>[PRMBench: A fine-grained and challenging benchmark for process-level reward models](https://arxiv.org/abs/2501.03124) (2025, arXiv) · [Card](cards/verifiers/prmbench.md)<br><sub>data: step-level labels or scores; process: step, label, error type; offline reasoning trac…; feedback: process-level reward model benchmark</sub> | memorized items are reported as reasoning progress |
-| [🔍 Search-time contamination](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#search-time-contamination) | contamination introduced by search, tools, retrieval, or inference scaffolds | [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511) (2023, ICLR) · [Card](cards/recipes/self-rag.md)<br><sub>data: generation with retrieval decisions, critique signals, and final answer.; process: qu…; feedback: critique signals and task-specific factuality/answer-quality evaluation.</sub> | test-time tool access leaks answer traces |
-| [🧬 Hidden lineage / teacher leakage](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#hidden-lineage-teacher-leakage) | teacher-model traces, synthetic data inheritance, and hidden trait transfer | [Subliminal Learning](https://arxiv.org/abs/2507.14805) (2025, arXiv) · [Card](cards/failures/subliminal-learning.md)<br><sub>data: generated data plus downstream behavioral evaluation of the student.; process: teache…; feedback: trait probes after student training.</sub><br>[Leaky Thoughts](https://arxiv.org/abs/2506.15674) (2025, arXiv) · [Card](cards/failures/leaky-thoughts.md)<br><sub>data: internal reasoning trace, final answer, and leakage/extraction outcome.; process: sen…; feedback: extraction probes and agentic evaluations.</sub> | student behavior inherits undisclosed teacher artifacts |
-| [🎮 Reward hacking](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reward-hacking) | ways reward models, tests, or judges can be optimized as shortcuts | [Spurious Rewards](https://arxiv.org/abs/2506.10947) (2025, arXiv) · [Card](cards/verifiers/spurious_rewards.md)<br><sub>data: scalar reward; feedback: programmatic</sub> | reward rises while real quality falls |
-| [🧪 Verifier gaming](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#verifier-gaming) | models exploiting checkers, answer formats, or judge blind spots | [DeepMath-103K](https://arxiv.org/abs/2504.11456) (2025, arXiv) · [Card](cards/releases/deepmath_103k.md)<br><sub>data: answer level; feedback: programmatic</sub><br>[TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning](https://arxiv.org/abs/2505.14625) (2025, arXiv) · [Card](cards/verifiers/tinyv.md)<br><sub>data: candidate answer with recovered reward decision; process: original verifier verdict,…; feedback: small LLM verifier augmenting rules</sub> | verifier-passing examples are semantically wrong |
-| [⚖️ LLM-as-judge attacks](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#llm-as-judge-attacks) | one-token attacks, position bias, verbosity bias, and prompt attacks | [One Token to Fool LLM-as-a-Judge](https://arxiv.org/abs/2507.08794) (2025, arXiv) · [Card](cards/verifiers/one_token_to_fool_judge.md)<br><sub>data: scalar reward; feedback: judgment required</sub><br>[Judging LLM-as-a-judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685) (2023, NeurIPS Datasets and Benchmarks) · [Card](cards/verifiers/mt-bench-chatbot-arena.md)<br><sub>data: model response, judge score, pairwise preference, or arena battle outcome.; process:…; feedback: strong model judge and human preference comparisons.</sub><br>[Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535) (2024, EMNLP) · [Card](cards/verifiers/prometheus-2.md)<br><sub>data: rubric-conditioned scalar score, critique, or pairwise preference output.; process: i…; feedback: Prometheus 2 judge output aligned against human/proprietary-judge benchmark…</sub> | judge score changes for non-semantic reasons |
-| [🧨 Spurious rewards](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#spurious-rewards) | shortcut rewards, memorization-triggered rewards, and wrong-behavior correlations | [Spurious Rewards](https://arxiv.org/abs/2506.10947) (2025, arXiv) · [Card](cards/verifiers/spurious_rewards.md)<br><sub>data: scalar reward; feedback: programmatic</sub> | reward improves while model learns a shortcut |
-| [📉 Reproducibility failures](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md#reproducibility-failures) | decoding, evaluation, scaffold, and data reporting failures | [AbstentionBench](https://arxiv.org/abs/2506.09038) (2025, arXiv) · [Card](cards/benchmarks/abstentionbench.md)<br><sub>data: model response, abstention decision, and correctness/abstention judgment.; process: s…; feedback: human-validated judges and benchmark labels for abstention scenarios.</sub><br>[HealthBench](https://arxiv.org/abs/2505.08775) (2025, arXiv) · [Card](cards/verifiers/healthbench.md)<br><sub>data: response with rubric/judge evaluation; process: prompt, response, rubric dimension; o…; feedback: rubric-guided expert/LLM judgment</sub><br>[Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/) (2024, OpenAI / SWE-bench report) · [Card](cards/agents/swe-bench-verified.md)<br><sub>data: patch diff applied to a repository plus test execution results.; process: repository,…; feedback: post-patch unit tests plus human filtering of task validity.</sub><br>[RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787) (2024, NeurIPS) · [Card](cards/verifiers/rewardbench.md)<br><sub>data: pairwise or scalar reward decisions; process: prompt, chosen/rejected response, rewar…; feedback: reward model or judge</sub> | reported gains disappear under controlled reruns |
+- [00 · 从这里开始](docs/00_start_here.md) - 领域速览与阅读路线
+- [01 · 什么是后训练推理数据](docs/01_what_is_post_training_reasoning_data.md) - 带验证器的样本这一核心模型
+- [02 · 以验证器为锚的分类](docs/02_verifier_anchored_taxonomy.md) - 按反馈契约而非领域给论文归类
+- 本阶段必读论文：整理中
 
-## 🧩 四种浏览视角
+**🔬 第二阶段 · 认识数据对象**——一条合格的样本长什么样，质量如何衡量
 
-后训练推理数据不是单一树状分类。同一篇 math paper 可能同时是 benchmark、SFT trace release、PRM 数据源、RLVR verifier 和 contamination 风险。因此首页需要提供四个视角：
+- [03 · 推理数据对象](docs/03_reasoning_data_objects.md) - 每类数据对象需要记录哪些字段
+- [04 · 数据质量](docs/04_data_quality.md) - 准确率之外的质量维度
+- 本阶段必读论文：整理中
 
-| View | Question | Examples | Use it when... |
-|---|---|---|---|
-| 🔍 By feedback contract | Who decides correctness? | programmatic, environmental, judgment-required, mixed | you need to understand the verifier/reward/judge/environment behind a paper. |
-| 📦 By data object | What is serialized? | answer, trace, step label, preference pair, reward, trajectory, rubric | you need to compare what the dataset actually stores. |
-| 🛠️ By training use | How does it enter post-training? | SFT, distillation, PRM, RM, RLHF, RLVR, agent training, evaluation | you need to map papers to an engineering pipeline. |
-| 🧪 By task domain | Where does it operate? | math, code, proof, tools, SWE, web, medical, safety, legal, finance | you need a domain-specific literature route. |
+**⚙️ 第三阶段 · 构造、验证与训练**——数据如何生产、由什么打分、如何进入训练并规模化
 
-## 🔎 按研究问题进入
+- [05 · 构造手册](docs/05_construction_cookbook.md) - 题目来源、教师轨迹、过滤与发布元数据
+- [06 · 验证器与奖励](docs/06_verifiers_and_rewards.md) - 如何审计校验器、评审、评分标准与奖励
+- [07 · 智能体轨迹数据](docs/07_agent_trajectory_data.md) - 工具、网页、系统与软件工程任务的字段要求
+- [08 · 规模化与推理时计算](docs/08_scaling_and_test_time_compute.md) - 区分数据、验证器、优化器与预算的贡献
+- 本阶段必读论文：整理中
 
-| Research question | Best entry |
+**🕵️ 第四阶段 · 审计与实战**——如何识别泄漏与投机，如何把方法落到工程里
+
+- [09 · 审计与失效模式](docs/09_audit_and_failure_modes.md) - 泄漏、污染、验证器欺骗与评审攻击
+- [10 · 工程实践路线](docs/10_industry_onboarding_path.md) - 工程师进入该领域的实用路径
+- 本阶段必读论文：整理中
+
+## 🌐 项目网站（制作中）
+
+项目网站与本 README 由同一份结构化元数据生成，所有数字与 [data/papers.yaml](data/papers.yaml) 保持一致。网站正在打磨中，上线后将汇集以下功能：
+
+| 模块 | 能做什么 |
 |---|---|
-| What counts as post-training reasoning data? | [docs/01](docs/01_what_is_post_training_reasoning_data.md) + [Foundations](papers/00_background_foundations/00_foundations_and_primers.md) |
-| How do we verify reasoning data? | [Programmatic](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) + [Process supervision](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md) + [Verifiers](docs/06_verifiers_and_rewards.md) |
-| How are open reasoning datasets constructed? | [Construction recipes](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md) + [Release cards](cards/releases/) |
-| What data does RLVR actually need? | [Programmatic verification](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) + [Scaling/RLVR](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) |
-| How should agent trajectories be serialized? | [Agent data](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md) + [docs/07](docs/07_agent_trajectory_data.md) |
-| How do frontier reports disclose or hide data recipes? | [Frontier reports](papers/02_data_lifecycle/12_frontier_reports_data_disclosure_ledger.md) |
-| How do contamination and verifier gaming affect claims? | [Audit/failure modes](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md) |
-| Which benchmarks are still useful for reasoning data? | [Benchmarks and evaluation](papers/02_data_lifecycle/11_benchmarks_evaluation_surfaces.md) |
+| 🔎 论文检索 | 按标题、作者、标签、摘要与会议关键词检索，并按年份、会议、来源角色、验证契约、监督粒度、训练用途、整理等级、状态与制品可用性筛选 |
+| 🗂️ 方向浏览 | 与[分类目录](#-分类目录)一一对应的 14 个方向标签页 |
+| 🛤️ 阅读路径 | 面向初学者、数据构造者与审计者的推荐阅读路线 |
+| 🤖 问答助手 | 基于学习指南与论文卡片、带出处的智能问答 |
+| 📊 实时统计 | 一眼看到条目、已验证与卡片数量 |
 
-## 🎯 你可以在这里学到什么
+上线前可先使用上方[分类目录](#-分类目录)与[导出文件](exports/)。
 
-| 学习目标 | 这个仓库提供什么 |
-|---|---|
-| 🧠 建立整体认知 | 解释 post-training reasoning data 为什么不只是 prompt-answer，而是 trace、action、feedback、metadata 的组合。 |
-| 🧮 理解可验证推理数据 | 学习 math answer checker、code unit tests、proof checker、可执行环境如何产生训练和评测信号。 |
-| 🪜 理解过程监督 | 比较 outcome reward、step label、PRM、rollout value、first-error localization。 |
-| 🏗️ 理解数据构造 recipe | 跟踪 prompt sourcing、teacher generation、search、filtering、dedup、decontamination、release metadata。 |
-| 🌐 理解 Agent 轨迹数据 | 看 tool use、browser、app world、OS task、repository-level SWE episode 需要存储哪些字段。 |
-| ⚖️ 理解裁判和 rubric | 学习 rubric evaluation、open evaluator model、reward model、人类偏好数据和 judge attack。 |
-| 📈 理解 RLVR 和 scaling | 区分 data scale、verifier quality、optimizer scaffold、inference budget。 |
-| 🧯 学会审计失败 | 识别 leakage、contamination、verifier gaming、reward hacking、hidden lineage、benchmark fragility。 |
-
-## 👥 适合谁阅读？
-
-| 读者 | 推荐路径 |
-|---|---|
-| 刚入门的同学 | 先看 60 秒版本，再看 Starter Pack 和 docs 前两章。 |
-| 想进入后训练方向的研究者 | 先用 papers/ 找子方向，再看 L5 cards，最后打开原论文。 |
-| 数据集构造者 | 按 construction stack 检查 prompt、trace、verifier、filter、metadata 是否齐全。 |
-| RLVR / verifier 工程师 | 看 verifier audit、process supervision、programmatic benchmark 和 scaling 页面。 |
-| Agent 研究者 | 看 agent trajectory 章节和 SWE-bench/ReAct/Toolformer/environment cards。 |
-| 读书会组织者 | 直接把 Starter Pack 和 category pages 当作分周 syllabus。 |
-
-## 🚀 60 秒版本
-
-一个有用的后训练推理数据样本，通常不只是：
-
-`prompt -> answer`
-
-而更像：
-
-`任务/上下文 -> 推理轨迹/动作 -> 答案/产物 -> 验证器/奖励/裁判/环境 -> 元数据`
-
-这个仓库希望帮读者快速回答：
-
-- 🧪 答案到底由什么验证：单元测试、证明器、奖励模型、LLM 裁判、rubric，还是环境？
-- 🪜 反馈是挂在最终答案、每一步、rollout、状态动作转移，还是完整 episode 上？
-- 🧬 released data 来自哪个 teacher/base model/prompt source/filter/split/license？
-- 📈 性能提升来自更多数据、更好 verifier、更多 inference budget，还是报告口径？
-- 🧯 verifier 会在哪里失败、泄漏、过拟合、被 reward hack？
-
-## 📌 快速入口
-
-| 我想要... | 入口 |
-|---|---|
-| 📚 按研究领域找论文 | [papers/README.md](papers/README.md) |
-| 🧭 看完整 Research Track Navigator | [按研究领域浏览](#-按研究领域浏览) |
-| 📚 看细分方向代表论文 | [详细论文分类目录](#-详细论文分类目录) |
-| 🧭 快速理解领域 | [docs/00_start_here.md](docs/00_start_here.md) |
-| 📚 找论文地图 | [papers/README.md](papers/README.md) |
-| 🧮 看数学/代码/证明数据 | [papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) |
-| 🪜 看过程监督/PRM | [papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md) |
-| 🌐 看 Agent 环境数据 | [papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md) |
-| 🔎 看可搜索网页 | [在线网页](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) |
-| 🗂️ 看卡片库 | [cards/README.md](cards/README.md) |
-| 📊 看链接覆盖率 | [reports/link_coverage.md](reports/link_coverage.md) |
-| 🤝 贡献论文或卡片 | [CONTRIBUTING.md](CONTRIBUTING.md) |
-
-## 🛣️ 学习路线
-
-这个仓库应该像一门小型公开课，而不是一个静态目录。你不需要一开始读完所有论文，可以按下面路线逐层进入。
-
-| 阶段 | 学什么 | 主要入口 | 学完应该能做到什么 |
-|---:|---|---|---|
-| 1 | 基础概念和 mental model | [docs/00](docs/00_start_here.md)、[docs/01](docs/01_what_is_post_training_reasoning_data.md) | 能解释 answer data、trace data、reward data、verifier data、trajectory data 的区别。 |
-| 2 | 反馈契约 | [docs/02](docs/02_verifier_anchored_taxonomy.md)、[docs/06](docs/06_verifiers_and_rewards.md) | 能判断一篇工作使用 programmatic、environmental、judgment-required 还是 mixed verification。 |
-| 3 | 核心论文 | [Starter Pack](#-starter-pack20-篇必读)、[papers/README.md](papers/README.md)、[cards/README.md](cards/README.md) | 能定位 math/code/process/agent/RLVR/audit 的代表性工作。 |
-| 4 | 数据构造 | [docs/05](docs/05_construction_cookbook.md)、[cards/releases/](cards/releases/)、[cards/recipes/](cards/recipes/) | 能描述 prompt sourcing、teacher generation、filtering、verifier pinning、release metadata。 |
-| 5 | 专题深入 | [math/code/proof](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md)、[agents](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md)、[rubrics](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md)、[scaling](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) | 能沿一个子领域继续读论文、看卡片、查官方链接。 |
-| 6 | 审计与贡献 | [docs/09](docs/09_audit_and_failure_modes.md)、[reports/link_coverage.md](reports/link_coverage.md)、[CONTRIBUTING.md](CONTRIBUTING.md) | 能判断什么已经验证、什么还缺失，并且可以给仓库补高质量条目。 |
-
-## 🧭 Starter Pack：20 篇必读
-
-把这 20 篇当作学习路线，而不是简单引用列表。每篇都对应一个你需要掌握的问题。
-
-| # | Paper / report | Lens | Start with this question | Card |
-|---:|---|---|---|---|
-| 1 | [Datasheets for datasets](https://arxiv.org/abs/1803.09010) | 📋 release docs | What must be disclosed before anyone reuses a dataset? | [Card](cards/releases/datasheets-for-datasets.md) |
-| 2 | [Data statements for natural language processing](https://aclanthology.org/Q18-1041/) | 🧬 provenance | Which population, language, and annotation assumptions travel with the data? | [Card](cards/releases/data-statements-for-natural-language-processing.md) |
-| 3 | [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155) | 🧑‍🏫 RLHF pipeline | How do demonstrations, preferences, rewards, and policy optimization separate? | [Card](cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md) |
-| 4 | [Chain-of-thought prompting elicits reasoning in large language models](https://arxiv.org/abs/2201.11903) | 🧠 traces | When does a rationale become a reusable training object? | [Card](cards/releases/chain-of-thought-prompting-elicits-reasoning-in-large-language-models.md) |
-| 5 | [Training verifiers to solve math word problems](https://arxiv.org/abs/2110.14168) | 🧪 verifier | What exactly scores a generated solution? | [Card](cards/verifiers/training-verifiers-to-solve-math-word-problems.md) |
-| 6 | [STaR: Bootstrapping reasoning with reasoning](https://arxiv.org/abs/2203.14465) | 🔁 self-improvement | Which generated traces survive answer-based filtering? | [Card](cards/recipes/star-bootstrapping-reasoning-with-reasoning.md) |
-| 7 | [Self-Instruct: Aligning language models with self-generated instructions](https://arxiv.org/abs/2212.10560) | 🏗️ synthetic data | How do generated instructions get filtered before training? | [Card](cards/recipes/self-instruct-aligning-language-models-with-self-generated-instructions.md) |
-| 8 | [Direct preference optimization: Your language model is secretly a reward model](https://arxiv.org/abs/2305.18290) | ⚖️ preference data | What changes when preference pairs directly train the policy? | [Card](cards/releases/direct-preference-optimization-your-language-model-is-secretly-a-reward-model.md) |
-| 9 | [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) | 🪜 process supervision | What does step-level feedback buy over outcome-only labels? | [Card](cards/verifiers/prm800k.md) |
-| 10 | [GSM8K: Grade School Math 8K](https://arxiv.org/abs/2110.14168) | 🧮 answer checks | Why is a small verifiable math set still a useful sanity check? | [Card](cards/benchmarks/gsm8k-grade-school-math-8k.md) |
-| 11 | [Measuring mathematical problem solving with the MATH dataset](https://arxiv.org/abs/2103.03874) | 🧮 hard math | How do harder problems change trace and verifier requirements? | [Card](cards/benchmarks/measuring-mathematical-problem-solving-with-the-math-dataset.md) |
-| 12 | [HumanEval: Hand-Written Evaluation Set](https://arxiv.org/abs/2107.03374) | 💻 unit tests | What makes executable tests a feedback contract? | [Card](cards/benchmarks/humaneval-hand-written-evaluation-set.md) |
-| 13 | [SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770) | 🌐 agent environment | What fields make repository repair a replayable episode? | [Card](cards/agents/swe-bench-can-language-models-resolve-real-world-github-issues.md) |
-| 14 | [RewardBench: Evaluating Reward Models for Language Modeling](https://arxiv.org/abs/2403.13787) | 🏅 reward eval | When does a reward model fail outside generic chat helpfulness? | [Card](cards/verifiers/rewardbench.md) |
-| 15 | [HealthBench](https://arxiv.org/abs/2505.08775) | ⚕️ rubrics | How do high-stakes rubrics become auditable? | [Card](cards/verifiers/healthbench.md) |
-| 16 | [LiveBench: A challenging, contamination-free benchmark for large language models](https://arxiv.org/abs/2406.19314) | 🧯 contamination | How can benchmarks stay fresh against memorization? | [Card](cards/failures/livebench-a-challenging-contamination-free-benchmark-for-large-language-models.md) |
-| 17 | [OpenThoughts: Data recipes for reasoning models](https://arxiv.org/abs/2506.04178) | 🏗️ open recipe | Which prompt, trace, filtering, and ablation fields are disclosed? | [Card](cards/releases/openthoughts.md) |
-| 18 | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) | 🚀 RLVR report | What can and cannot be inferred from a public frontier report? | [Card](cards/recipes/deepseek_r1.md) |
-| 19 | [s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393) | ⏱️ test-time compute | When is inference budget part of the data story? | [Card](cards/releases/s1.md) |
-| 20 | [A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility](https://arxiv.org/abs/2504.07086) | 🔍 reproducibility | Which reported gains survive decoding and evaluation audits? | [Card](cards/releases/a-sober-look-at-progress-in-language-model-reasoning-pitfalls-and-paths-to-reproducibility.md) |
-
-## 🧮 核心地图
-
-<p align="center">
-  <img src="assets/paper_map.svg" width="92%" alt="Core paper map for reasoning data">
-</p>
-
-| 方向 | 代表入口 | 重点看什么 |
-|---|---|---|
-| 🧮 数学/代码/证明 | [Programmatically Verifiable Outcome Data](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md) | answer checker、unit tests、proof checker、去污染 |
-| 🪜 过程监督 | [Process and Trace Supervision Data](papers/01_core_reasoning_data_types/04_process_trace_supervision_data.md) | step labels、PRM、first-error、rollout value |
-| 🏗️ 构造 recipe | [Data Construction and Open Release Recipes](papers/02_data_lifecycle/08_data_construction_open_release_recipes.md) | prompt source、teacher trace、filtering、ablation |
-| 🌐 Agent 环境 | [Environment and Agent Trajectory Data](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md) | state/action/observation、terminal predicate、replay |
-| ⚖️ Rubric/Judge | [Judgment, Rubric, and Domain-Expert Data](papers/01_core_reasoning_data_types/07_judgment_rubric_domain_expert_data.md) | rubric provenance、judge prompt、校准与攻击 |
-| 📈 Scaling/RLVR | [Scaling, RLVR, and Test-Time Compute](papers/02_data_lifecycle/10_scaling_rlvr_test_time_compute.md) | 数据复用、pass@k、inference budget、reward contract |
-| 🧯 Failure/Audit | [Audit and Failure Modes](papers/02_data_lifecycle/13_audit_failure_contamination_verifier_attacks.md) | leakage、contamination、verifier gaming、judge attack |
-
-## 🧰 构造和审计框架
-
-<p align="center">
-  <img src="assets/construction_stack.svg" width="90%" alt="Reasoning dataset construction stack">
-</p>
-
-| 层 | 需要记录什么 |
-|---|---|
-| 📥 Prompt sourcing | source mix、license、split、difficulty、base-model pass rate |
-| ✍️ Trace writing | human/teacher/search/self-play trace、采样参数、rollout 数 |
-| 🔍 Search substrate | beam/search/MCTS/self-critique/scaffold 细节 |
-| 🧪 Verifier layer | checker、judge、environment、rubric、reward model 版本 |
-| 🧹 Filtering | pass/fail bands、rejection reasons、ambiguous cases |
-| 🏋️ Optimizer/scaffold | SFT、distillation、RLVR、PRM、agent training 的进入方式 |
-| 🧬 Release metadata | attribution、lineage、splits、license、known failure modes |
-
-## 🧩 仓库结构
+<details>
+<summary>🧩 仓库结构</summary>
 
 | 路径 | 用途 |
 |---|---|
-| [docs/](docs/) | 系统学习材料：概念、taxonomy、construction cookbook、verifier、agent trajectory、scaling、failure modes。 |
-| [papers/](papers/README.md) | 论文导航地图：按子领域组织 read-first、full list、audit checklist、related cards。 |
-| [cards/](cards/README.md) | 学习卡片：解释论文/数据/验证器/recipe/benchmark/failure 的核心观点、数据对象、风险和链接。 |
-| [data/papers.yaml](data/papers.yaml) | 结构化数据源：记录 metadata、role、contract、summary、link、curation level。 |
-| [docs/index.html](docs/index.html) | 可搜索网页 atlas：可以按 year、role、contract、training use、curation level 等过滤。 |
-| [reports/](reports/) | QA 和覆盖率报告：link coverage、needs search、release notes、质量审查、link check。 |
-| [exports/](exports/) | CSV、JSON、BibTeX，方便复用这个 atlas。 |
-| [ROADMAP.md](ROADMAP.md) | 高引用路线和后续贡献优先级。 |
+| [docs/](docs/) | 系统学习材料：核心概念、分类方法、构造手册、验证器、智能体轨迹、规模化与失效模式。 |
+| [papers/](papers/README.md) | 论文导航：每个方向一页，含优先阅读表、完整列表与审计清单。 |
+| [cards/](cards/README.md) | 论文卡片：概括数据对象、验证器、构造配方、风险与官方链接。 |
+| [data/papers.yaml](data/papers.yaml) | 结构化数据源：元数据、角色、契约、摘要、链接与整理等级。 |
+| [docs/index.html](docs/index.html) | 项目网站（制作中）：由结构化数据自动生成。 |
+| [reports/](reports/) | 质检与覆盖率报告：链接覆盖、待补清单、发布说明与质量审查。 |
+| [exports/](exports/) | CSV、JSON 与 BibTeX 导出，方便复用本仓库数据。 |
+| [scripts/](scripts/) | 可复现的生成与校验脚本。 |
+| [ROADMAP.md](ROADMAP.md) | 公开路线图与贡献优先级。 |
 
-## 🧪 实际怎么用？
+</details>
 
-| 你的问题 | 推荐路径 |
+## 🤝 参与贡献
+
+请不要只提交论文标题。一次有价值的贡献应包含官方链接、来源角色、验证契约、监督粒度、训练用途和一句话摘要，有条件时再补卡片与审计字段。入口见[贡献指南](CONTRIBUTING.md)；待补条目见[待补清单](reports/needs_search.md)与[路线图](ROADMAP.md)。
+
+<details>
+<summary>🧱 整理等级</summary>
+
+| 等级 | 含义 |
 |---|---|
-| “我是新手，先读什么？” | [docs/00](docs/00_start_here.md) -> [Starter Pack](#-starter-pack20-篇必读) -> [cards/README.md](cards/README.md) |
-| “我想构造一个 reasoning dataset。” | [docs/05](docs/05_construction_cookbook.md) -> [release cards](cards/releases/) -> [recipe cards](cards/recipes/) |
-| “我想判断一个 benchmark 能不能复用。” | 打开对应 benchmark card，看 verifier、split、contamination、official links。 |
-| “我想理解 RLVR。” | 看 [programmatic data](papers/01_core_reasoning_data_types/03_programmatically_verifiable_outcome_data.md)、verifier cards、scaling/RLVR 页面。 |
-| “我想研究 Agent 数据。” | 看 [agent papers](papers/01_core_reasoning_data_types/06_environment_agent_trajectory_data.md), 重点检查 action schema、terminal predicate、replay metadata。 |
-| “我想给仓库贡献。” | 从 [needs_search](reports/needs_search.md) 找条目，验证官方链接，再补 metadata 和 card。 |
+| `L0_seeded` | 只有题目或书目线索。 |
+| `L1_link_verified` | 已核实论文、arXiv、会议或 DOI 官方链接。 |
+| `L2_artifact_verified` | 代码、数据、项目或模型等制品链接也已核实。 |
+| `L3_summary_ready` | 已有一句话摘要与价值说明。 |
+| `L4_carded` | 已有本地卡片，解释数据对象、验证器、用途与审计要点。 |
+| `L5_audit_ready` | 卡片包含具体风险、缺失字段与审计问题。 |
 
-## 🌱 高引用路线
+</details>
 
-这个仓库想要变得更容易被收藏、引用和复用，关键不是继续堆最长列表，而是提升**深度、可信度和可复用性**。完整路线见 [ROADMAP.md](ROADMAP.md)。
+## 📜 引用
 
-| 优先级 | 下一步最值得做什么 | 为什么有助于高引用 |
-|---:|---|---|
-| P0 | 保持公开仓库干净：不能出现私有规划文件、prompt/spec 文件、本地系统文件。 | 读者看到的是维护良好的研究资源，而不是构建工作区。 |
-| P1 | 把高影响力 `L1_link_verified` 条目提升到 `L4_carded` 或 `L5_audit_ready`。 | 深度卡片让仓库不只是 paper list。 |
-| P1 | 给已 verified 的核心论文补官方 code/data/Hugging Face/project 链接。 | 数据构造者可以直接复用官方资源。 |
-| P1 | 优先补薄弱子方向，再加长尾条目。 | 科研读者更容易把它当作平衡的领域地图。 |
-| P2 | 继续润色中文版和论文引用元数据。 | 更适合读书会、课程、综述和中文社区传播。 |
+如果本仓库对你的研究、数据构造、验证器设计或读书会有帮助，请引用配套论文并链接本仓库，格式见 [CITATION.cff](CITATION.cff)。
 
-## 🧱 Curation Levels
+## 📄 许可
 
-| Level | Meaning |
-|---|---|
-| `L0_seeded` | Only a title or bibliography seed is known. |
-| `L1_link_verified` | Official paper, arXiv, venue, or DOI link is pinned. |
-| `L2_artifact_verified` | Code, data, project, or model artifact links are also checked. |
-| `L3_summary_ready` | One-line summary and why-it-matters rationale are present. |
-| `L4_carded` | A local card explains data object, verifier, use, and audit fields. |
-| `L5_audit_ready` | The card includes concrete risks, missing fields, and audit questions. |
-
-## 🔎 可搜索网页
-
-可以直接打开 [在线网页](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)，也可以本地打开 [docs/index.html](docs/index.html)。它支持按 year、venue、source role、verification contract、granularity、training use、curation level、status、artifact availability 过滤。
-
-## 📖 引用
-
-如果这个 atlas 对你的相关工作、数据构造、验证器设计或 reading group 有帮助，请引用配套论文并链接本仓库。引用信息见 [CITATION.cff](CITATION.cff)。
+MIT，见 [LICENSE](LICENSE)。

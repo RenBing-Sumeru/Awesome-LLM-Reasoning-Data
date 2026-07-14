@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大模型后训练推理数据精选</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">Awesome LLM Reasoning Data</a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/README_zh.md">README</a>
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/README.md">论文目录</a>
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/cards/README.md">论文卡片</a>
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_coverage.md">链接覆盖</a>
+        <a class="ask" href="ask/?lang=zh">问答 ↗</a>
+        <a class="lang" href="./" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">后训练推理数据的精选领域地图</p>
+        <h1>什么样的数据，<br>真正教会模型推理？</h1>
+        <p class="lede">每条论文条目都回答一个实际问题：当模型在后训练之后推理能力变强，是哪份数据记录、哪种反馈信号、验证器、奖励、环境或评审让它成为可能。</p>
+        <p class="statline">
+          <b id="totalEntries">280</b> 篇论文<span class="sep">|</span>
+          <b id="verifiedEntries">165</b> 篇已验证<span class="sep">|</span>
+          <b id="cardedEntries">87</b> 张卡片<span class="sep">|</span>
+          更新于 2026 年 6 月
+        </p>
+      </div>
+      <div class="hero-media"><img class="hero-art" src="assets/cover_zh.svg" alt="大模型后训练推理数据精选：三大板块十四个方向的繁花之树"></div>
+    </section>
+
+    <section>
+      <div class="sechead">
+        <span class="secnum">01</span>
+        <h2>按方向浏览</h2>
+        <p>十四个方向，编号与 README 目录一致。点击任意方向即可筛选下方论文。</p>
+      </div>
+      <div id="trackGroups" class="groups"></div>
+    </section>
+
+    <section>
+      <div class="sechead">
+        <span class="secnum">02</span>
+        <h2>阅读路径</h2>
+        <p>为不同读者准备的阅读顺序。</p>
+      </div>
+      <div id="pathTabs" class="pathtabs"></div>
+      <div id="pathPanel" class="pathpanel"></div>
+    </section>
+
+    <section id="search">
+      <div class="sechead">
+        <span class="secnum">03</span>
+        <h2>检索论文</h2>
+        <p>支持标题、作者、标签、摘要、发表处全文检索。</p>
+      </div>
+      <div class="searchbar">
+        <input id="q" type="search" placeholder="检索 280 篇论文——试试 “process reward”、“Lean”、“contamination”…">
+        <button id="reset" class="fbtn" type="button">重置</button>
+      </div>
+      <div class="filters">
+        <label>方向<select id="category"><option value="">全部方向</option></select></label>
+        <label>子方向<select id="subfield"><option value="">全部子方向</option></select></label>
+        <label>年份<select id="year"><option value="">全部年份</option></select></label>
+        <label>发表处<select id="venue"><option value="">全部发表处</option></select></label>
+      </div>
+      <div class="resultmeta">
+        <span class="count" id="resultSummary">正在加载数据…</span>
+        <a id="sliceAsk" href="ask/?lang=zh">🤖 就当前筛选提问 →</a>
+      </div>
+      <section id="results" class="cards" aria-live="polite"></section>
+    </section>
+  </main>
+
+  <footer class="sitefooter">
+    <div class="wrap">
+      <span>由结构化元数据生成。</span>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/data/papers.yaml">data/papers.yaml</a>
+      <a href="assets/entries.json">entries.json</a>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_check.md">链接检查</a>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/LICENSE">MIT 许可证</a>
+    </div>
+  </footer>
+
+  <script src="assets/atlas-data.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -139,7 +139,7 @@ test("workflow prerequisite env blocks cover manifest required names", () => {
 test("admin dashboard keeps the operations runway above detailed tables", () => {
   const adminHtml = fs.readFileSync(`${appRoot}/public/admin.html`, "utf8");
   const adminJs = fs.readFileSync(`${appRoot}/public/assets/admin.js`, "utf8");
-  const adminCss = fs.readFileSync(`${appRoot}/public/assets/ask.css`, "utf8");
+  const adminCss = fs.readFileSync(`${appRoot}/public/assets/admin.css`, "utf8");
 
   assert.match(adminHtml, /id="opsRunway"/);
   assert.match(adminHtml, /id="launchWizard"/);

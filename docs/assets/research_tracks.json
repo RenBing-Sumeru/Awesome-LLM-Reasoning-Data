@@ -89,7 +89,9 @@
           "livebench"
         ]
       }
-    ]
+    ],
+    "group": "background_foundations",
+    "title_zh": "基础入门与综述"
   },
   {
     "category_id": "instruction_demonstration_rationale_data",
@@ -169,7 +171,9 @@
           "long2short"
         ]
       }
-    ]
+    ],
+    "group": "core_reasoning_data_types",
+    "title_zh": "指令、示范与思维链数据"
   },
   {
     "category_id": "preference_reward_feedback_data",
@@ -245,7 +249,9 @@
           "score"
         ]
       }
-    ]
+    ],
+    "group": "core_reasoning_data_types",
+    "title_zh": "偏好与奖励反馈数据"
   },
   {
     "category_id": "programmatically_verifiable_outcome_data",
@@ -328,7 +334,9 @@
           "frontiermath"
         ]
       }
-    ]
+    ],
+    "group": "core_reasoning_data_types",
+    "title_zh": "可程序验证的结果数据"
   },
   {
     "category_id": "process_trace_supervision_data",
@@ -403,7 +411,9 @@
           "benchmark"
         ]
       }
-    ]
+    ],
+    "group": "core_reasoning_data_types",
+    "title_zh": "过程与步骤监督数据"
   },
   {
     "category_id": "rollout_search_test_time_trace_data",
@@ -477,7 +487,9 @@
           "distillation"
         ]
       }
-    ]
+    ],
+    "group": "core_reasoning_data_types",
+    "title_zh": "采样、搜索与推理时轨迹数据"
   },
   {
     "category_id": "environment_agent_trajectory_data",
@@ -569,7 +581,9 @@
           "benchmark"
         ]
       }
-    ]
+    ],
+    "group": "core_reasoning_data_types",
+    "title_zh": "环境与智能体轨迹数据"
   },
   {
     "category_id": "judgment_rubric_domain_expert_data",
@@ -672,7 +686,9 @@
           "rubrics as rewards"
         ]
       }
-    ]
+    ],
+    "group": "core_reasoning_data_types",
+    "title_zh": "评审、评分标准与领域专家数据"
   },
   {
     "category_id": "data_construction_open_release_recipes",
@@ -764,7 +780,9 @@
           "split"
         ]
       }
-    ]
+    ],
+    "group": "data_lifecycle",
+    "title_zh": "数据构造与开源发布"
   },
   {
     "category_id": "training_usage_optimization_objectives",
@@ -858,7 +876,9 @@
           "benchmark"
         ]
       }
-    ]
+    ],
+    "group": "data_lifecycle",
+    "title_zh": "训练用途与优化目标"
   },
   {
     "category_id": "scaling_rlvr_test_time_compute",
@@ -944,7 +964,9 @@
           "origin"
         ]
       }
-    ]
+    ],
+    "group": "data_lifecycle",
+    "title_zh": "规模化、RLVR 与推理时计算"
   },
   {
     "category_id": "benchmarks_evaluation_surfaces",
@@ -1036,7 +1058,9 @@
           "lasting"
         ]
       }
-    ]
+    ],
+    "group": "data_lifecycle",
+    "title_zh": "基准与评测"
   },
   {
     "category_id": "frontier_reports_data_disclosure_ledger",
@@ -1112,7 +1136,9 @@
           "hidden"
         ]
       }
-    ]
+    ],
+    "group": "data_lifecycle",
+    "title_zh": "前沿模型报告与数据披露"
   },
   {
     "category_id": "audit_failure_contamination_verifier_attacks",
@@ -1211,6 +1237,8 @@
           "evaluation"
         ]
       }
-    ]
+    ],
+    "group": "data_lifecycle",
+    "title_zh": "审计、污染与失效模式"
   }
 ]

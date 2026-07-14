@@ -3,96 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Awesome LLM Reasoning Data Atlas</title>
+  <title>Awesome LLM Reasoning Data</title>
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="topbar" aria-label="Primary navigation">
+  <header class="topbar">
+    <div class="wrap">
       <a class="brand" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">Awesome LLM Reasoning Data</a>
-      <div class="navlinks">
+      <nav class="navlinks" aria-label="Primary navigation">
         <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
         <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data#readme">README</a>
         <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/README.md">Papers</a>
         <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/cards/README.md">Cards</a>
-        <a href="ask/">Ask the Atlas</a>
         <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_coverage.md">Coverage</a>
-      </div>
-    </nav>
-    <section class="hero">
-      <div>
-        <p class="eyebrow">Searchable research atlas</p>
-        <h1>Browse reasoning-data papers by research track, data object, verifier, and audit signal.</h1>
-        <p class="lede">Use this page like a lightweight literature database: start from a field tab, narrow by subfield or feedback contract, then open the paper, card, code, data, or project link.</p>
-      </div>
-      <div class="stat-panel" aria-label="Atlas statistics">
-        <div><strong id="totalEntries">280</strong><span>entries</span></div>
-        <div><strong id="verifiedEntries">165</strong><span>verified</span></div>
-        <div><strong id="cardedEntries">87</strong><span>carded</span></div>
-        <div><strong id="needsSearch">115</strong><span>needs search</span></div>
-      </div>
-    </section>
+        <a class="ask" href="ask/">Ask ↗</a>
+        <a class="lang" href="zh.html" lang="zh-CN">中文</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="quick-stats" aria-label="Role statistics">
-      <div><strong id="dataReleases">36</strong><span>data releases</span></div>
-      <div><strong id="verifiersRewards">20</strong><span>verifiers/rewards</span></div>
-      <div><strong id="agentEnvironments">16</strong><span>agent environments</span></div>
-      <div><strong id="scalingStudies">18</strong><span>scaling studies</span></div>
-    </section>
-
-    <section class="track-section">
-      <div class="section-head">
-        <h2>Research Tracks</h2>
-        <p>Jump by field first, then use filters for data object, verifier, training use, and artifact coverage.</p>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">A curated field map of post-training reasoning data</p>
+        <h1>What data actually teaches a model to reason?</h1>
+        <p class="lede">Every entry answers one practical question: when a model becomes better at reasoning after post-training, which data record, feedback signal, verifier, reward, environment, or judge made that possible.</p>
+        <p class="statline">
+          <b id="totalEntries">280</b> entries<span class="sep">|</span>
+          <b id="verifiedEntries">165</b> verified<span class="sep">|</span>
+          <b id="cardedEntries">87</b> cards<span class="sep">|</span>
+          updated June 2026
+        </p>
       </div>
-      <div id="trackTabs" class="track-tabs"></div>
-      <div id="trackAssistant" class="track-assistant"></div>
+      <div class="hero-media"><img class="hero-art" src="assets/cover.svg" alt="Awesome LLM Reasoning Data: a blossoming tree of 14 tracks in 3 groups"></div>
     </section>
 
-    <section class="controls" aria-label="Search and filters">
-      <label class="search"><span>Search</span><input id="q" type="search" placeholder="title, author, tag, summary, venue"></label>
-      <label><span>Research area</span><select id="category"><option value="">All areas</option></select></label>
-      <label><span>Subfield</span><select id="subfield"><option value="">All subfields</option></select></label>
-      <label><span>Year</span><select id="year"><option value="">All years</option></select></label>
-      <label><span>Venue</span><select id="venue"><option value="">All venues</option></select></label>
-      <label><span>Source role</span><select id="sourceRole"><option value="">All roles</option></select></label>
-      <label><span>Contract</span><select id="contract"><option value="">All contracts</option></select></label>
-      <label><span>Granularity</span><select id="granularity"><option value="">All granularities</option></select></label>
-      <label><span>Training use</span><select id="trainingUse"><option value="">All uses</option></select></label>
-      <label><span>Curation</span><select id="curation"><option value="">All levels</option></select></label>
-      <label><span>Status</span><select id="status"><option value="">All statuses</option></select></label>
-      <label><span>Artifact</span><select id="artifact"><option value="">Any artifact</option></select></label>
-      <button id="reset" type="button">Reset</button>
-    </section>
-
-    <section class="path-section">
-      <div class="section-head">
-        <h2>Reading Paths</h2>
-        <p>Curated paths for different readers: begin with the essentials, then branch into verifiers, agent environments, construction recipes, or audit work.</p>
+    <section>
+      <div class="sechead">
+        <span class="secnum">01</span>
+        <h2>Browse by track</h2>
+        <p>Fourteen tracks, numbered as in the README contents. Click one to filter the collection below.</p>
       </div>
-      <div id="pathTabs" class="path-tabs"></div>
-      <div id="pathPanel" class="path-panel"></div>
+      <div id="trackGroups" class="groups"></div>
     </section>
 
-    <section class="results-head">
-      <h2>Results</h2>
-      <p id="resultSummary">Loading atlas data...</p>
+    <section>
+      <div class="sechead">
+        <span class="secnum">02</span>
+        <h2>Reading paths</h2>
+        <p>Curated routes for different readers.</p>
+      </div>
+      <div id="pathTabs" class="pathtabs"></div>
+      <div id="pathPanel" class="pathpanel"></div>
     </section>
-    <div id="filterAssistant" class="filter-assistant"></div>
-    <section id="results" class="result-grid" aria-live="polite"></section>
+
+    <section id="search">
+      <div class="sechead">
+        <span class="secnum">03</span>
+        <h2>Search the collection</h2>
+        <p>Full-text over titles, authors, tags, summaries, venues.</p>
+      </div>
+      <div class="searchbar">
+        <input id="q" type="search" placeholder="Search 280 entries — try “process reward”, “Lean”, “contamination”…">
+        <button id="reset" class="fbtn" type="button">Reset</button>
+      </div>
+      <div class="filters">
+        <label>Track<select id="category"><option value="">All tracks</option></select></label>
+        <label>Subfield<select id="subfield"><option value="">All subfields</option></select></label>
+        <label>Year<select id="year"><option value="">All years</option></select></label>
+        <label>Venue<select id="venue"><option value="">All venues</option></select></label>
+      </div>
+      <div class="resultmeta">
+        <span class="count" id="resultSummary">Loading data…</span>
+        <a id="sliceAsk" href="ask/">🤖 Ask about this slice →</a>
+      </div>
+      <section id="results" class="cards" aria-live="polite"></section>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <span>Generated from structured atlas metadata.</span>
-    <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/data/papers.yaml">data/papers.yaml</a>
-    <a href="assets/entries.json">entries.json</a>
-    <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_check.md">link check</a>
+  <footer class="sitefooter">
+    <div class="wrap">
+      <span>Generated from structured metadata.</span>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/data/papers.yaml">data/papers.yaml</a>
+      <a href="assets/entries.json">entries.json</a>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_check.md">link check</a>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/LICENSE">MIT license</a>
+    </div>
   </footer>
 
   <script src="assets/atlas-data.js"></script>
+  <script src="assets/i18n.js"></script>
   <script src="assets/site.js"></script>
-  <a class="floating-ask" href="ask/">🤖 Ask Atlas</a>
 </body>
 </html>
