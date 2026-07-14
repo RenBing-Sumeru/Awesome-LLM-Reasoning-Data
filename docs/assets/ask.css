@@ -1,20 +1,20 @@
 :root {
   color-scheme: light;
-  --ink: #182033;
-  --muted: #65748a;
-  --line: #d7e1ec;
+  --ink: #1d1b16;
+  --muted: #6f6a5e;
+  --line: #e6e1d5;
   --panel: #ffffff;
-  --soft: #f5f8fb;
+  --soft: #f5f2ea;
   --mint: #0f766e;
   --blue: #2563eb;
-  --violet: #7c3aed;
-  --amber: #b45309;
+  --violet: #b0447c;
+  --amber: #a16207;
   --red: #b42318;
-  --orange: #ea580c;
+  --orange: #b0447c;
   --paper: #7f1d1d;
   --repo: #0f766e;
-  --model: #5b21b6;
-  --shadow: 0 18px 48px rgba(15, 23, 42, .12);
+  --model: #b0447c;
+  --shadow: none;
 }
 
 * { box-sizing: border-box; letter-spacing: 0; }
@@ -23,10 +23,7 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background:
-    linear-gradient(180deg, rgba(232, 245, 241, .94) 0, rgba(232, 245, 241, 0) 310px),
-    linear-gradient(120deg, rgba(37, 99, 235, .08), rgba(15, 118, 110, .08) 42%, rgba(234, 88, 12, .07)),
-    #fffdf8;
+  background: #fbfaf6;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   overflow-x: hidden;
 }
@@ -2112,3 +2109,26 @@ td.preview {
 @media (max-width: 340px) {
   .launch-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- editorial theme sync (matches docs/assets/site.css) ---------- */
+
+* {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+h1, h2, h3 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC", serif;
+  font-weight: 500;
+}
+
+.brand {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.ops-progress span { background: var(--mint) !important; }
+.ops-progress.warn span { background: var(--amber) !important; }

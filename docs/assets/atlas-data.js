@@ -16553,7 +16553,8 @@ window.ATLAS_DATA = {
     "verifiers_rewards": 20,
     "agent_environments": 16,
     "scaling_studies": 18,
-    "needs_search": 115
+    "needs_search": 115,
+    "audit_ready_entries": 53
   },
   "categories": [
     {
@@ -17142,7 +17143,9 @@ window.ATLAS_DATA = {
             "livebench"
           ]
         }
-      ]
+      ],
+      "group": "background_foundations",
+      "title_zh": "基础入门与综述"
     },
     {
       "category_id": "instruction_demonstration_rationale_data",
@@ -17222,7 +17225,9 @@ window.ATLAS_DATA = {
             "long2short"
           ]
         }
-      ]
+      ],
+      "group": "core_reasoning_data_types",
+      "title_zh": "指令、示范与思维链数据"
     },
     {
       "category_id": "preference_reward_feedback_data",
@@ -17298,7 +17303,9 @@ window.ATLAS_DATA = {
             "score"
           ]
         }
-      ]
+      ],
+      "group": "core_reasoning_data_types",
+      "title_zh": "偏好与奖励反馈数据"
     },
     {
       "category_id": "programmatically_verifiable_outcome_data",
@@ -17381,7 +17388,9 @@ window.ATLAS_DATA = {
             "frontiermath"
           ]
         }
-      ]
+      ],
+      "group": "core_reasoning_data_types",
+      "title_zh": "可程序验证的结果数据"
     },
     {
       "category_id": "process_trace_supervision_data",
@@ -17456,7 +17465,9 @@ window.ATLAS_DATA = {
             "benchmark"
           ]
         }
-      ]
+      ],
+      "group": "core_reasoning_data_types",
+      "title_zh": "过程与步骤监督数据"
     },
     {
       "category_id": "rollout_search_test_time_trace_data",
@@ -17530,7 +17541,9 @@ window.ATLAS_DATA = {
             "distillation"
           ]
         }
-      ]
+      ],
+      "group": "core_reasoning_data_types",
+      "title_zh": "采样、搜索与推理时轨迹数据"
     },
     {
       "category_id": "environment_agent_trajectory_data",
@@ -17622,7 +17635,9 @@ window.ATLAS_DATA = {
             "benchmark"
           ]
         }
-      ]
+      ],
+      "group": "core_reasoning_data_types",
+      "title_zh": "环境与智能体轨迹数据"
     },
     {
       "category_id": "judgment_rubric_domain_expert_data",
@@ -17725,7 +17740,9 @@ window.ATLAS_DATA = {
             "rubrics as rewards"
           ]
         }
-      ]
+      ],
+      "group": "core_reasoning_data_types",
+      "title_zh": "评审、评分标准与领域专家数据"
     },
     {
       "category_id": "data_construction_open_release_recipes",
@@ -17817,7 +17834,9 @@ window.ATLAS_DATA = {
             "split"
           ]
         }
-      ]
+      ],
+      "group": "data_lifecycle",
+      "title_zh": "数据构造与开源发布"
     },
     {
       "category_id": "training_usage_optimization_objectives",
@@ -17911,7 +17930,9 @@ window.ATLAS_DATA = {
             "benchmark"
           ]
         }
-      ]
+      ],
+      "group": "data_lifecycle",
+      "title_zh": "训练用途与优化目标"
     },
     {
       "category_id": "scaling_rlvr_test_time_compute",
@@ -17997,7 +18018,9 @@ window.ATLAS_DATA = {
             "origin"
           ]
         }
-      ]
+      ],
+      "group": "data_lifecycle",
+      "title_zh": "规模化、RLVR 与推理时计算"
     },
     {
       "category_id": "benchmarks_evaluation_surfaces",
@@ -18089,7 +18112,9 @@ window.ATLAS_DATA = {
             "lasting"
           ]
         }
-      ]
+      ],
+      "group": "data_lifecycle",
+      "title_zh": "基准与评测"
     },
     {
       "category_id": "frontier_reports_data_disclosure_ledger",
@@ -18165,7 +18190,9 @@ window.ATLAS_DATA = {
             "hidden"
           ]
         }
-      ]
+      ],
+      "group": "data_lifecycle",
+      "title_zh": "前沿模型报告与数据披露"
     },
     {
       "category_id": "audit_failure_contamination_verifier_attacks",
@@ -18264,7 +18291,9 @@ window.ATLAS_DATA = {
             "evaluation"
           ]
         }
-      ]
+      ],
+      "group": "data_lifecycle",
+      "title_zh": "审计、污染与失效模式"
     }
   ],
   "starter_packs": [
@@ -19648,7 +19677,9 @@ window.ATLAS_DATA = {
             "primary_link": "https://arxiv.org/abs/2504.07086"
           }
         }
-      ]
+      ],
+      "title_zh": "新手 20：推理数据入门",
+      "goal_zh": "在钻进具体配方之前，先建立后训练推理数据的基本概念体系。"
     },
     {
       "id": "builder_30",
@@ -21643,7 +21674,9 @@ window.ATLAS_DATA = {
             "primary_link": "https://arxiv.org/abs/2507.14805"
           }
         }
-      ]
+      ],
+      "title_zh": "构造 30：数据构造与发布实践",
+      "goal_zh": "学习开源推理数据配方如何选题、生成轨迹、过滤、审计并发布产物。"
     },
     {
       "id": "verifier_reward_25",
@@ -23300,7 +23333,9 @@ window.ATLAS_DATA = {
             "primary_link": null
           }
         }
-      ]
+      ],
+      "title_zh": "验证与奖励 25",
+      "goal_zh": "对比程序化验证器、过程奖励模型、评分标准奖励、大模型评审与失效诊断。"
     },
     {
       "id": "agent_data_25",
@@ -24953,7 +24988,9 @@ window.ATLAS_DATA = {
             "primary_link": null
           }
         }
-      ]
+      ],
+      "title_zh": "智能体数据 25",
+      "goal_zh": "理解轨迹、工具调用、网页与应用与操作系统任务，以及软件工程环境。"
     },
     {
       "id": "scaling_20",
@@ -26113,7 +26150,9 @@ window.ATLAS_DATA = {
             "primary_link": "https://arxiv.org/abs/2507.20534"
           }
         }
-      ]
+      ],
+      "title_zh": "规模化 20",
+      "goal_zh": "读懂强化学习算力、数据规模、蒸馏与推理时计算预算的规模化结论。"
     },
     {
       "id": "audit_failure_20",
@@ -27373,7 +27412,9 @@ window.ATLAS_DATA = {
             "primary_link": null
           }
         }
-      ]
+      ],
+      "title_zh": "审计与失效 20",
+      "goal_zh": "养成检查数据泄漏、污染、奖励作弊与评审稳健性的习惯。"
     },
     {
       "id": "industry_onboarding_40",
@@ -29954,7 +29995,9 @@ window.ATLAS_DATA = {
             "primary_link": "https://arxiv.org/abs/1803.09010"
           }
         }
-      ]
+      ],
+      "title_zh": "工业实践 40",
+      "goal_zh": "一条面向大模型后训练数据团队的实用上手路径。"
     }
   ]
 };

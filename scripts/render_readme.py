@@ -305,14 +305,14 @@ def latest_updates(zh: bool = False) -> str:
             "|---|---|",
             f"| 2026-06-15 | 已验证条目达 **{s['verified']} 条**，关联卡片 **{s['cards']} 张**，其中 **{s['l5']} 张**达到可审计级别。 |",
             f"| 2026-06-15 | 完成两轮制品核验：固定 **{s['code']} 个代码**、**{s['data']} 个数据**、**{s['hf']} 个 Hugging Face**、**{s['project']} 个项目主页**官方链接。 |",
-            "| 2026-06-15 | 检索网站、论文目录、导出文件与质检报告全部由结构化元数据自动生成，所有数字可复现。 |",
+            "| 2026-06-15 | 项目网站、论文目录、导出文件与质检报告全部由结构化元数据自动生成，所有数字可复现。 |",
         ])
     return "\n".join([
         "| Date | Update |",
         "|---|---|",
         f"| 2026-06-15 | Promoted the collection to **{s['verified']} verified entries**, **{s['cards']} linked cards**, and **{s['l5']} L5 audit-ready cards**. |",
         f"| 2026-06-15 | Pinned official artifacts: **{s['code']} code**, **{s['data']} data**, **{s['hf']} Hugging Face**, and **{s['project']} project** links. |",
-        "| 2026-06-15 | Rebuilt the searchable site, paper pages, exports, and QA reports from structured metadata, so every count stays reproducible. |",
+        "| 2026-06-15 | Rebuilt the project website, paper pages, exports, and QA reports from structured metadata, so every count stays reproducible. |",
     ])
 
 
@@ -419,7 +419,7 @@ def repo_structure_details(zh: bool = False) -> str:
             ("[papers/](papers/README.md)", "论文导航：每个方向一页，含优先阅读表、完整列表与审计清单。"),
             ("[cards/](cards/README.md)", "论文卡片：概括数据对象、验证器、构造配方、风险与官方链接。"),
             ("[data/papers.yaml](data/papers.yaml)", "结构化数据源：元数据、角色、契约、摘要、链接与整理等级。"),
-            ("[docs/index.html](docs/index.html)", "检索网站（制作中）：由结构化数据自动生成。"),
+            ("[docs/index.html](docs/index.html)", "项目网站（制作中）：由结构化数据自动生成。"),
             ("[reports/](reports/)", "质检与覆盖率报告：链接覆盖、待补清单、发布说明与质量审查。"),
             ("[exports/](exports/)", "CSV、JSON 与 BibTeX 导出，方便复用本仓库数据。"),
             ("[scripts/](scripts/)", "可复现的生成与校验脚本。"),
@@ -433,7 +433,7 @@ def repo_structure_details(zh: bool = False) -> str:
             ("[papers/](papers/README.md)", "Field navigation: one page per track with read-first tables, full paper lists, and audit checklists."),
             ("[cards/](cards/README.md)", "Learning cards: paper/data/verifier/recipe/benchmark/failure summaries with links and audit questions."),
             ("[data/papers.yaml](data/papers.yaml)", "Structured source of truth for paper metadata, roles, contracts, summaries, links, and curation levels."),
-            ("[docs/index.html](docs/index.html)", "Searchable web index (in progress), generated from structured data."),
+            ("[docs/index.html](docs/index.html)", "Project website (in progress), generated from structured data."),
             ("[reports/](reports/)", "Public QA and coverage: link coverage, needs-search, release notes, and quality audits."),
             ("[exports/](exports/)", "CSV, JSON, and BibTeX exports for readers who want to reuse the data."),
             ("[scripts/](scripts/)", "Reproducible generators and validators."),
@@ -476,7 +476,7 @@ def badges() -> str:
     ask = ask_launch_status()
     return f"""[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
-[![Site](https://img.shields.io/badge/site-in%20progress-6b7280)]({PAGES_URL})
+[![Website](https://img.shields.io/badge/website-in%20progress-6b7280)]({PAGES_URL})
 [![Ask]({ask["badge"]})]({ASK_URL})
 [![Entries](https://img.shields.io/badge/entries-{s['total']}-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-{s['verified']}-0f766e)](reports/link_coverage.md)
@@ -497,12 +497,12 @@ def readme_en() -> str:
   <img src="assets/cover.svg" width="92%" alt="Awesome LLM Reasoning Data">
 </p>
 
-**Awesome LLM Reasoning Data** is a field map, not just a paper list: learning guides explain the concepts, category pages organize the papers by subfield, cards summarize data objects and risks, and a searchable site indexes the structured metadata. Everything is organized around one practical question:
+**Awesome LLM Reasoning Data** is a field map, not just a paper list: learning guides explain the concepts, category pages organize the papers by subfield, cards summarize data objects and risks, and a project website indexes the structured metadata. Everything is organized around one practical question:
 
 > When a model becomes better at reasoning after post-training, what data record, feedback signal, verifier, reward, environment, or judge actually made that possible?
 
 - 📄 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
-- 🔎 Searchable site: in progress
+- 🌐 Project website: in progress
 - 🤖 Ask: [{ask["en_text"]}]({ASK_URL})
 
 ## 🚀 How to Use This Repo
@@ -543,9 +543,19 @@ Four stages, in reading order. Each stage starts from the learning guides; the m
 
 {learning_path()}
 
-## 🔎 Searchable Website (In Progress)
+## 🌐 Project Website (In Progress)
 
-The searchable site is still being built. Once it ships, it will support search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability. Until then, use the [Contents](#-contents) above and the [exports/](exports/) files.
+The project website is generated from the same structured metadata as this README, so every number stays consistent with [data/papers.yaml](data/papers.yaml). It is still being polished; at launch it will bring together:
+
+| Module | What you can do |
+|---|---|
+| 🔎 Paper search | Search titles, authors, tags, summaries, and venues, then narrow by year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability |
+| 🗂️ Track browsing | Browse the same 14 research tracks as the [Contents](#-contents), one tab per track |
+| 🛤️ Reading paths | Follow curated routes for newcomers, dataset builders, and auditors |
+| 🤖 Ask assistant | Ask questions and get source-grounded answers backed by the guides and cards |
+| 📊 Live stats | See entry, verified, and card counts at a glance |
+
+Until launch, use the [Contents](#-contents) above and the [exports/](exports/) files.
 
 {repo_structure_details()}
 
@@ -584,12 +594,12 @@ def readme_zh() -> str:
   <img src="assets/cover_zh.svg" width="92%" alt="大模型后训练推理数据精选">
 </p>
 
-**本仓库是一份领域地图，而不只是论文清单**：学习指南讲清概念，分类页按子方向组织论文，论文卡片概括数据对象与风险，检索网站索引全部结构化元数据。所有内容围绕一个核心问题展开：
+**本仓库是一份领域地图，而不只是论文清单**：学习指南讲清概念，分类页按子方向组织论文，论文卡片概括数据对象与风险，项目网站索引全部结构化元数据。所有内容围绕一个核心问题展开：
 
 > 模型经过后训练后推理能力变强，背后究竟是哪条数据记录、哪种反馈信号、哪个验证器、奖励、环境或评审在起作用？
 
 - 📄 配套论文：[A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
-- 🔎 检索网站：制作中
+- 🌐 项目网站：制作中
 - 🤖 问答助手：[{ask["zh_text"].split("（")[1].rstrip("）")}]({ASK_URL})
 
 ## 🚀 如何使用本仓库
@@ -630,9 +640,19 @@ def readme_zh() -> str:
 
 {learning_path(zh=True)}
 
-## 🔎 检索网站（制作中）
+## 🌐 项目网站（制作中）
 
-检索网站正在制作中。上线后将支持关键词检索，并可按年份、会议、来源角色、验证契约、监督粒度、训练用途、整理等级、状态与制品可用性筛选。上线前可先使用上方[分类目录](#-分类目录)与[导出文件](exports/)。
+项目网站与本 README 由同一份结构化元数据生成，所有数字与 [data/papers.yaml](data/papers.yaml) 保持一致。网站正在打磨中，上线后将汇集以下功能：
+
+| 模块 | 能做什么 |
+|---|---|
+| 🔎 论文检索 | 按标题、作者、标签、摘要与会议关键词检索，并按年份、会议、来源角色、验证契约、监督粒度、训练用途、整理等级、状态与制品可用性筛选 |
+| 🗂️ 方向浏览 | 与[分类目录](#-分类目录)一一对应的 14 个方向标签页 |
+| 🛤️ 阅读路径 | 面向初学者、数据构造者与审计者的推荐阅读路线 |
+| 🤖 问答助手 | 基于学习指南与论文卡片、带出处的智能问答 |
+| 📊 实时统计 | 一眼看到条目、已验证与卡片数量 |
+
+上线前可先使用上方[分类目录](#-分类目录)与[导出文件](exports/)。
 
 {repo_structure_details(zh=True)}
 

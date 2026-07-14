@@ -6,7 +6,7 @@
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
-[![Site](https://img.shields.io/badge/site-in%20progress-6b7280)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Website](https://img.shields.io/badge/website-in%20progress-6b7280)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![Ask](https://img.shields.io/badge/Ask-launch%20pending-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 [![Entries](https://img.shields.io/badge/entries-280-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-165-0f766e)](reports/link_coverage.md)
@@ -16,12 +16,12 @@
   <img src="assets/cover_zh.svg" width="92%" alt="大模型后训练推理数据精选">
 </p>
 
-**本仓库是一份领域地图，而不只是论文清单**：学习指南讲清概念，分类页按子方向组织论文，论文卡片概括数据对象与风险，检索网站索引全部结构化元数据。所有内容围绕一个核心问题展开：
+**本仓库是一份领域地图，而不只是论文清单**：学习指南讲清概念，分类页按子方向组织论文，论文卡片概括数据对象与风险，项目网站索引全部结构化元数据。所有内容围绕一个核心问题展开：
 
 > 模型经过后训练后推理能力变强，背后究竟是哪条数据记录、哪种反馈信号、哪个验证器、奖励、环境或评审在起作用？
 
 - 📄 配套论文：[A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
-- 🔎 检索网站：制作中
+- 🌐 项目网站：制作中
 - 🤖 问答助手：[即将上线](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 
 ## 🚀 如何使用本仓库
@@ -48,7 +48,7 @@
 |---|---|
 | 2026-06-15 | 已验证条目达 **165 条**，关联卡片 **87 张**，其中 **53 张**达到可审计级别。 |
 | 2026-06-15 | 完成两轮制品核验：固定 **41 个代码**、**27 个数据**、**20 个 Hugging Face**、**25 个项目主页**官方链接。 |
-| 2026-06-15 | 检索网站、论文目录、导出文件与质检报告全部由结构化元数据自动生成，所有数字可复现。 |
+| 2026-06-15 | 项目网站、论文目录、导出文件与质检报告全部由结构化元数据自动生成，所有数字可复现。 |
 
 > 元数据从严处理：未经本地核验的链接一律留在[待补清单](reports/needs_search.md)，不会被提前收录。
 
@@ -302,9 +302,19 @@
 - [10 · 工程实践路线](docs/10_industry_onboarding_path.md) - 工程师进入该领域的实用路径
 - 本阶段必读论文：整理中
 
-## 🔎 检索网站（制作中）
+## 🌐 项目网站（制作中）
 
-检索网站正在制作中。上线后将支持关键词检索，并可按年份、会议、来源角色、验证契约、监督粒度、训练用途、整理等级、状态与制品可用性筛选。上线前可先使用上方[分类目录](#-分类目录)与[导出文件](exports/)。
+项目网站与本 README 由同一份结构化元数据生成，所有数字与 [data/papers.yaml](data/papers.yaml) 保持一致。网站正在打磨中，上线后将汇集以下功能：
+
+| 模块 | 能做什么 |
+|---|---|
+| 🔎 论文检索 | 按标题、作者、标签、摘要与会议关键词检索，并按年份、会议、来源角色、验证契约、监督粒度、训练用途、整理等级、状态与制品可用性筛选 |
+| 🗂️ 方向浏览 | 与[分类目录](#-分类目录)一一对应的 14 个方向标签页 |
+| 🛤️ 阅读路径 | 面向初学者、数据构造者与审计者的推荐阅读路线 |
+| 🤖 问答助手 | 基于学习指南与论文卡片、带出处的智能问答 |
+| 📊 实时统计 | 一眼看到条目、已验证与卡片数量 |
+
+上线前可先使用上方[分类目录](#-分类目录)与[导出文件](exports/)。
 
 <details>
 <summary>🧩 仓库结构</summary>
@@ -315,7 +325,7 @@
 | [papers/](papers/README.md) | 论文导航：每个方向一页，含优先阅读表、完整列表与审计清单。 |
 | [cards/](cards/README.md) | 论文卡片：概括数据对象、验证器、构造配方、风险与官方链接。 |
 | [data/papers.yaml](data/papers.yaml) | 结构化数据源：元数据、角色、契约、摘要、链接与整理等级。 |
-| [docs/index.html](docs/index.html) | 检索网站（制作中）：由结构化数据自动生成。 |
+| [docs/index.html](docs/index.html) | 项目网站（制作中）：由结构化数据自动生成。 |
 | [reports/](reports/) | 质检与覆盖率报告：链接覆盖、待补清单、发布说明与质量审查。 |
 | [exports/](exports/) | CSV、JSON 与 BibTeX 导出，方便复用本仓库数据。 |
 | [scripts/](scripts/) | 可复现的生成与校验脚本。 |

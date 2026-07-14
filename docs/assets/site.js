@@ -6,35 +6,64 @@ let activePackId = "";
 let activeTrackId = "";
 const REPO_BLOB_ROOT = "https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main";
 const ASK_ENTRY = "ask/";
-const ASK_TRACK_PROMPTS = {
-  find_papers: "Recommend the most important papers in this track. Group them by data object, verifier type, and training use.",
-  audit: "Generate an audit checklist for this research track. Focus on data lineage, verifier gaming, contamination, and reproducibility.",
-  build: "Design a practical dataset-building recipe for this research track. Include prompt source, traces, verifier, filtering, and metadata.",
-};
+const LANG = (document.documentElement.lang || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
+const I18N = window.ATLAS_I18N || {};
 
-const ids = [
-  "q", "category", "subfield", "year", "venue", "sourceRole", "contract", "granularity",
-  "trainingUse", "curation", "status", "artifact"
+const T = {
+  en: {
+    showingAll: n => `Showing all ${n} entries · verified first`,
+    showingSome: (m, n) => `${m} of ${n} entries · verified first`,
+    empty: "No entries match these filters.",
+    loadError: "Could not load docs/assets/entries.json. Run python scripts/render_site.py.",
+    ask: "Ask —",
+    explain: "Explain",
+    audit: "Audit",
+    compare: "Compare",
+    linkPending: "link pending",
+    card: "Card",
+    pending: "pending",
+    unknownVenue: "unknown venue",
+    noSummary: "No local summary yet.",
+    pathsUnavailable: "Reading paths are unavailable until starter_packs.json is generated.",
+  },
+  zh: {
+    showingAll: n => `共展示全部 ${n} 篇 · 已验证优先`,
+    showingSome: (m, n) => `匹配 ${m} / ${n} 篇 · 已验证优先`,
+    empty: "没有符合当前筛选的论文。",
+    loadError: "无法加载 docs/assets/entries.json，请运行 python scripts/render_site.py。",
+    ask: "提问 —",
+    explain: "解读",
+    audit: "审计",
+    compare: "对比",
+    linkPending: "链接整理中",
+    card: "卡片",
+    pending: "待补",
+    unknownVenue: "发表处待补",
+    noSummary: "暂无摘要。",
+    pathsUnavailable: "阅读路径数据尚未生成。",
+  },
+}[LANG];
+
+const GROUPS = [
+  { id: "background_foundations", title: "Foundations", cls: "g-found", card: "c-found" },
+  { id: "core_reasoning_data_types", title: "Core Data Types", cls: "g-types", card: "c-types" },
+  { id: "data_lifecycle", title: "Data Lifecycle", cls: "g-life", card: "c-life" },
 ];
+
+const ids = ["q", "category", "subfield", "year", "venue"];
 
 const els = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
 Object.assign(els, {
   reset: document.getElementById("reset"),
   results: document.getElementById("results"),
   resultSummary: document.getElementById("resultSummary"),
-  trackTabs: document.getElementById("trackTabs"),
-  trackAssistant: document.getElementById("trackAssistant"),
-  filterAssistant: document.getElementById("filterAssistant"),
+  trackGroups: document.getElementById("trackGroups"),
+  sliceAsk: document.getElementById("sliceAsk"),
   pathTabs: document.getElementById("pathTabs"),
   pathPanel: document.getElementById("pathPanel"),
   totalEntries: document.getElementById("totalEntries"),
   verifiedEntries: document.getElementById("verifiedEntries"),
-  cardedEntries: document.getElementById("cardedEntries"),
-  needsSearch: document.getElementById("needsSearch"),
-  dataReleases: document.getElementById("dataReleases"),
-  verifiersRewards: document.getElementById("verifiersRewards"),
-  agentEnvironments: document.getElementById("agentEnvironments"),
-  scalingStudies: document.getElementById("scalingStudies")
+  cardedEntries: document.getElementById("cardedEntries")
 });
 
 function arr(value) {
@@ -54,36 +83,59 @@ function display(value) {
   return String(value ?? "unknown").replaceAll("_", " ");
 }
 
+function stripEmoji(text) {
+  return String(text || "").replace(/^[^\x00-\x7F]+\s*/, "").trim();
+}
+
 function repoBlob(path) {
   return `${REPO_BLOB_ROOT}/${String(path || "").replace(/^\.\.\//, "")}`;
 }
 
-function shortText(value, limit = 150) {
-  const text = String(value ?? "").replace(/\s+/g, " ").trim();
-  return text.length > limit ? `${text.slice(0, limit - 1)}…` : text;
+function trackFor(categoryId) {
+  return researchTracks.find(item => item.category_id === categoryId) || null;
+}
+
+function groupTitle(group) {
+  if (LANG === "zh") return I18N.group_zh?.[group.id] || group.title;
+  return group.title;
 }
 
 function categoryLabel(value) {
-  const track = researchTracks.find(item => item.category_id === value);
-  return track?.navigator_title || display(value);
+  const track = trackFor(value);
+  if (!track) return display(value);
+  if (LANG === "zh" && track.title_zh) return track.title_zh;
+  return stripEmoji(track.navigator_title || track.short_title);
+}
+
+function subfieldLabel(value) {
+  if (LANG === "zh") return I18N.subfield_zh?.[value] || value;
+  return value;
+}
+
+function packTitle(pack) {
+  if (LANG === "zh" && pack.title_zh) return pack.title_zh;
+  return pack.title;
+}
+
+function packGoal(pack) {
+  if (LANG === "zh" && pack.goal_zh) return pack.goal_zh;
+  return pack.goal || "";
+}
+
+function cardClass(categoryId) {
+  const track = trackFor(categoryId);
+  const group = GROUPS.find(item => item.id === track?.group);
+  return group ? group.card : "";
 }
 
 function askUrl(params = {}) {
   const url = new URL(ASK_ENTRY, window.location.href);
+  if (LANG === "zh") url.searchParams.set("lang", "zh");
   Object.entries(params).forEach(([key, value]) => {
     const text = String(value ?? "").trim();
     if (text) url.searchParams.set(key, text);
   });
   return url.href;
-}
-
-function currentTrack() {
-  return researchTracks.find(item => item.category_id === activeTrackId) || null;
-}
-
-function trackQuestion(track, mode = "find_papers") {
-  const label = track?.navigator_title || track?.short_title || "post-training reasoning data";
-  return `${ASK_TRACK_PROMPTS[mode] || ASK_TRACK_PROMPTS.find_papers} Track: ${label}.`;
 }
 
 function entryQuestion(entry, mode = "explain") {
@@ -102,46 +154,31 @@ function selectedFilterSummary() {
   const query = els.q.value.trim();
   if (query) parts.push(`search: ${query}`);
   const pairs = [
-    ["category", "area", categoryLabel],
-    ["subfield", "subfield", display],
+    ["category", "track", categoryLabel],
+    ["subfield", "subfield", value => stripEmoji(value) || value],
     ["year", "year", display],
     ["venue", "venue", display],
-    ["sourceRole", "role", display],
-    ["contract", "contract", display],
-    ["granularity", "granularity", display],
-    ["trainingUse", "training use", display],
-    ["curation", "curation", display],
-    ["status", "status", display],
-    ["artifact", "artifact", display],
   ];
   pairs.forEach(([id, label, formatter]) => {
     const value = els[id]?.value;
     if (value) parts.push(`${label}: ${formatter(value)}`);
   });
-  return parts.length ? parts.join("; ") : "the full post-training reasoning-data atlas";
+  return parts.length ? parts.join("; ") : "the full post-training reasoning-data collection";
 }
 
 function setText(id, value) {
   if (els[id]) els[id].textContent = value;
 }
 
-function loadOptions(id, values) {
+function loadOptions(id, values, labeler) {
   const select = els[id];
   const seen = [...new Set(values.filter(Boolean).map(String))].sort((a, b) => display(a).localeCompare(display(b)));
   seen.forEach(value => {
     const option = document.createElement("option");
     option.value = value;
-    option.textContent = display(value);
+    option.textContent = labeler ? labeler(value) : display(value);
     select.appendChild(option);
   });
-}
-
-function artifactAvailable(entry, kind) {
-  if (!kind) return true;
-  const artifacts = entry.artifacts || {};
-  if (kind === "primary") return Boolean(entry.primary_link);
-  if (kind === "data_or_hf") return Boolean(artifacts.data || artifacts.huggingface);
-  return Boolean(artifacts[kind]);
 }
 
 function haystack(entry) {
@@ -162,9 +199,7 @@ function haystack(entry) {
     entry.data_object,
     entry.feedback_verifier,
     entry.audit_focus,
-    entry.curation_level,
-    entry.status,
-    entry.needs_search ? "needs search missing primary link needs metadata" : ""
+    entry.status
   ].join(" ").toLowerCase();
 }
 
@@ -175,14 +210,6 @@ function matches(entry) {
   if (els.category.value && !arr(entry.category).includes(els.category.value)) return false;
   if (els.subfield.value && entry.subfield !== els.subfield.value) return false;
   if (els.venue.value && entry.venue !== els.venue.value) return false;
-  if (els.sourceRole.value && !arr(entry.source_role).includes(els.sourceRole.value)) return false;
-  if (els.contract.value && !arr(entry.verification_contract).includes(els.contract.value)) return false;
-  if (els.granularity.value && !arr(entry.supervision_granularity).includes(els.granularity.value)) return false;
-  if (els.trainingUse.value && !arr(entry.training_use).includes(els.trainingUse.value)) return false;
-  if (els.curation.value && entry.curation_level !== els.curation.value) return false;
-  if (els.status.value === "needs_search" && !entry.needs_search) return false;
-  if (els.status.value && els.status.value !== "needs_search" && entry.status !== els.status.value) return false;
-  if (!artifactAvailable(entry, els.artifact.value)) return false;
   return true;
 }
 
@@ -192,10 +219,6 @@ function sortEntries(items) {
     const bScore = (b.status === "verified" ? 4 : 0) + (b.artifacts?.card ? 2 : 0) + (b.primary_link ? 1 : 0);
     return bScore - aScore || (b.year || 0) - (a.year || 0) || String(a.title).localeCompare(String(b.title));
   });
-}
-
-function tag(value, kind = "") {
-  return `<span class="tag ${esc(kind)}">${esc(display(value))}</span>`;
 }
 
 function links(entry) {
@@ -220,12 +243,12 @@ function links(entry) {
       seen.add(url);
     }
   });
-  if (entry.artifacts?.card) out.push(`<a href="${esc(repoBlob(entry.artifacts.card))}" target="_blank" rel="noreferrer">Card</a>`);
+  if (entry.artifacts?.card) out.push(`<a href="${esc(repoBlob(entry.artifacts.card))}" target="_blank" rel="noreferrer">${esc(T.card)}</a>`);
   return out.join("");
 }
 
 function askAction(entry, mode, label) {
-  return `<a class="ask-action ${esc(mode)}" href="${esc(askUrl({
+  return `<a href="${esc(askUrl({
     entry: entry.id,
     mode,
     question: entryQuestion(entry, mode),
@@ -233,120 +256,93 @@ function askAction(entry, mode, label) {
 }
 
 function card(entry) {
+  const firstCat = arr(entry.category)[0];
   const title = entry.primary_link
     ? `<a href="${esc(entry.primary_link)}" target="_blank" rel="noreferrer">${esc(entry.title)}</a>`
     : esc(entry.title);
-  return `<article class="entry-card">
-    <div class="meta">${esc(entry.year || "n.d.")} · ${esc(entry.venue || "unknown venue")}</div>
+  const meta = [entry.year || "n.d.", entry.venue || T.unknownVenue];
+  if (firstCat) meta.push(categoryLabel(firstCat));
+  return `<article class="card ${cardClass(firstCat)}">
+    <div class="cmeta">${esc(meta.join(" · "))}</div>
     <h3>${title}</h3>
-    <div class="tags">
-      ${arr(entry.source_role).slice(0, 2).map(v => tag(v)).join("")}
-      ${arr(entry.verification_contract).slice(0, 2).map(v => tag(v)).join("")}
-      ${arr(entry.category).slice(0, 1).map(v => tag(categoryLabel(v))).join("")}
-      ${entry.subfield ? tag(entry.subfield) : ""}
-      ${tag(entry.status || "unknown", entry.status === "verified" ? "verified" : "needs")}
-      ${tag(entry.curation_level || "L0_seeded", entry.curation_level)}
-    </div>
-    <p class="summary">${esc(entry.one_line_summary || "No local summary yet.")}</p>
-    <dl class="facts">
-      <div><dt>Data</dt><dd>${esc(shortText(entry.data_object || "metadata pending"))}</dd></div>
-      <div><dt>Feedback</dt><dd>${esc(shortText(entry.feedback_verifier || "metadata pending"))}</dd></div>
-      <div><dt>Audit</dt><dd>${esc(shortText(entry.audit_focus || "check links, lineage, verifier, split, and contamination"))}</dd></div>
-    </dl>
-    <p class="why">${esc(entry.why_it_matters || "Needs curator rationale.")}</p>
-    <div class="links">${links(entry) || "<span class='tag needs'>needs search</span>"}</div>
-    <div class="ask-actions" aria-label="Ask the Atlas actions">
-      ${askAction(entry, "explain", "🤖 Explain")}
-      ${askAction(entry, "audit", "🧯 Audit")}
-      ${askAction(entry, "compare", "🔁 Compare")}
-    </div>
+    <p class="csum">${esc(entry.one_line_summary || T.noSummary)}</p>
+    ${entry.why_it_matters ? `<p class="cwhy">${esc(entry.why_it_matters)}</p>` : ""}
+    <div class="cfoot">${links(entry) || `<span class="cstatus needs">${esc(T.linkPending)}</span>`}</div>
+    <div class="cask">${esc(T.ask)}${askAction(entry, "explain", T.explain)}${askAction(entry, "audit", T.audit)}${askAction(entry, "compare", T.compare)}</div>
   </article>`;
 }
 
 function render() {
   const shown = sortEntries(entries.filter(matches));
-  els.resultSummary.textContent = `${shown.length} of ${entries.length} entries match the current filters.`;
-  renderFilterAssistant(shown.length);
+  els.resultSummary.textContent = shown.length === entries.length
+    ? T.showingAll(entries.length)
+    : T.showingSome(shown.length, entries.length);
+  renderSliceAsk();
   els.results.innerHTML = shown.length
     ? shown.slice(0, 220).map(card).join("")
-    : "<div class='empty'>No entries match these filters.</div>";
+    : `<div class='empty'>${esc(T.empty)}</div>`;
 }
 
-function renderTracks() {
-  if (!els.trackTabs) return;
-  const allButton = `<button type="button" class="${!activeTrackId ? "active" : ""}" data-track="">All</button>`;
-  const buttons = researchTracks.map(track => (
-    `<button type="button" class="${track.category_id === activeTrackId ? "active" : ""}" data-track="${esc(track.category_id)}">${esc(track.navigator_title || track.short_title || track.category_id)}</button>`
-  )).join("");
-  els.trackTabs.innerHTML = allButton + buttons;
-  renderTrackAssistant();
-}
-
-function renderTrackAssistant() {
-  if (!els.trackAssistant) return;
-  const track = currentTrack();
-  const title = track?.navigator_title || "Ask across the atlas";
-  const body = track
-    ? `Use Ask the Atlas to turn the ${title} track into a reading path, construction recipe, or audit checklist.`
-    : "Choose a research track, then ask for a guided map across papers, data objects, verifiers, and failure modes.";
-  const trackParams = track ? { track: track.category_id } : {};
-  els.trackAssistant.innerHTML = `<div>
-    <span>Context assistant</span>
-    <strong>${esc(title)}</strong>
-    <p>${esc(body)}</p>
-  </div>
-  <div class="assistant-actions">
-    <a class="primary" href="${esc(askUrl({
-      ...trackParams,
-      mode: "find_papers",
-      question: track ? trackQuestion(track, "find_papers") : "Give me a field map of post-training reasoning data and recommend what to read first.",
-    }))}">🤖 Ask about this track</a>
-    <a href="${esc(askUrl({
-      ...trackParams,
-      mode: "audit",
-      question: track ? trackQuestion(track, "audit") : "Generate an audit checklist for post-training reasoning-data releases.",
-    }))}">🧯 Audit lens</a>
-    <a href="${esc(askUrl({
-      ...trackParams,
-      mode: "build",
-      question: track ? trackQuestion(track, "build") : "Design a practical post-training reasoning-data construction recipe.",
-    }))}">🏗️ Build recipe</a>
-  </div>`;
-}
-
-function renderFilterAssistant(resultCount) {
-  if (!els.filterAssistant) return;
+function renderSliceAsk() {
+  if (!els.sliceAsk) return;
   const summary = selectedFilterSummary();
   const question = `Using the current atlas slice (${summary}), recommend the strongest papers to read first. Explain the data objects, verifier or reward contracts, and audit risks.`;
-  els.filterAssistant.innerHTML = `<div>
-    <span>Filtered slice</span>
-    <strong>${esc(resultCount)} matching entries</strong>
-    <p>${esc(summary)}</p>
-  </div>
-    <a href="${esc(askUrl({ mode: "find_papers", question }))}">🤖 Ask about these results</a>`;
+  els.sliceAsk.href = askUrl({ mode: "find_papers", question });
+}
+
+function renderTrackGroups() {
+  if (!els.trackGroups) return;
+  const countByCategory = {};
+  entries.forEach(entry => {
+    arr(entry.category).forEach(cat => {
+      countByCategory[cat] = (countByCategory[cat] || 0) + 1;
+    });
+  });
+  els.trackGroups.innerHTML = GROUPS.map(group => {
+    const rows = researchTracks
+      .map((track, index) => ({ track, index }))
+      .filter(({ track }) => track.group === group.id)
+      .map(({ track, index }) => {
+        const id = track.category_id;
+        const active = id === activeTrackId ? " class=\"active\"" : "";
+        return `<li><a${active} href="#search" data-track="${esc(id)}">
+          <span class="tnum">${String(index).padStart(2, "0")}</span>
+          <span class="tname">${esc(categoryLabel(id))}</span>
+          <span class="tcount">${countByCategory[id] || 0}</span>
+        </a></li>`;
+      }).join("");
+    return `<div class="group ${group.cls}"><h3>${esc(groupTitle(group))}</h3><ul>${rows}</ul></div>`;
+  }).join("");
 }
 
 function renderPaths() {
+  if (!els.pathTabs || !els.pathPanel) return;
   if (!starterPacks.length) {
-    els.pathPanel.innerHTML = "<p>Reading paths are unavailable until starter_packs.json is generated.</p>";
+    els.pathPanel.innerHTML = `<p>${esc(T.pathsUnavailable)}</p>`;
     return;
   }
   if (!activePackId) activePackId = starterPacks[0].id;
   els.pathTabs.innerHTML = starterPacks.map(pack => (
-    `<button type="button" class="${pack.id === activePackId ? "active" : ""}" data-pack="${esc(pack.id)}">${esc(pack.emoji || "")} ${esc(pack.title)}</button>`
+    `<button type="button" class="${pack.id === activePackId ? "active" : ""}" data-pack="${esc(pack.id)}">${esc(packTitle(pack))}</button>`
   )).join("");
   const pack = starterPacks.find(item => item.id === activePackId) || starterPacks[0];
   const items = pack.entries.slice(0, 20).map((item, index) => {
     const entry = item.entry;
     const href = entry?.primary_link || repoBlob("reports/needs_search.md");
     const cardPath = entry?.artifacts?.card;
+    const meta = [entry?.year || T.pending, entry?.venue || display(entry?.status || T.pending)];
+    const cardLink = cardPath
+      ? ` · <a href="${esc(repoBlob(cardPath))}" target="_blank" rel="noreferrer">${esc(T.card)}</a>`
+      : "";
     return `<li>
-      <strong>${index + 1}. <a href="${esc(href)}">${esc(entry?.title || item.title)}</a></strong>
-      <small>${esc(entry?.year || "pending")} · ${esc(entry?.status || "needs_search")} · ${esc(entry?.curation_level || "L0_seeded")}</small>
-      ${cardPath ? `<a href="${esc(repoBlob(cardPath))}" target="_blank" rel="noreferrer">Card</a>` : ""}
+      <span class="n">${index + 1}</span>
+      <div>
+        <strong><a href="${esc(href)}" target="_blank" rel="noreferrer">${esc(entry?.title || item.title)}</a></strong>
+        <small>${esc(meta.join(" · "))}${cardLink}</small>
+      </div>
     </li>`;
   }).join("");
-  els.pathPanel.innerHTML = `<h3>${esc(pack.title)}</h3><p>${esc(pack.goal || "")}</p><ol>${items}</ol>`;
+  els.pathPanel.innerHTML = `<p>${esc(packGoal(pack))}</p><ol class="pathlist">${items}</ol>`;
 }
 
 async function loadJson(path, fallback) {
@@ -360,51 +356,33 @@ async function loadJson(path, fallback) {
 }
 
 function populateFilters() {
-  loadOptions("category", entries.flatMap(entry => arr(entry.category)));
-  [...els.category.options].forEach(option => {
-    if (option.value) option.textContent = categoryLabel(option.value);
-  });
-  loadOptions("subfield", entries.map(entry => entry.subfield));
+  loadOptions("category", entries.flatMap(entry => arr(entry.category)), categoryLabel);
+  loadOptions("subfield", entries.map(entry => entry.subfield), subfieldLabel);
   loadOptions("year", entries.map(entry => entry.year).sort((a, b) => b - a));
   loadOptions("venue", entries.map(entry => entry.venue));
-  loadOptions("sourceRole", entries.flatMap(entry => arr(entry.source_role)));
-  loadOptions("contract", entries.flatMap(entry => arr(entry.verification_contract)));
-  loadOptions("granularity", entries.flatMap(entry => arr(entry.supervision_granularity)));
-  loadOptions("trainingUse", entries.flatMap(entry => arr(entry.training_use)));
-  loadOptions("curation", entries.map(entry => entry.curation_level));
-  loadOptions("status", entries.map(entry => entry.status));
-  const needsSearchOption = document.createElement("option");
-  needsSearchOption.value = "needs_search";
-  needsSearchOption.textContent = "needs search / missing primary link";
-  els.status.appendChild(needsSearchOption);
-  [
-    ["primary", "Paper / venue / DOI"],
-    ["code", "Code"],
-    ["data_or_hf", "Data or Hugging Face"],
-    ["project", "Project"],
-    ["card", "Card"]
-  ].forEach(([value, label]) => {
-    const option = document.createElement("option");
-    option.value = value;
-    option.textContent = label;
-    els.artifact.appendChild(option);
-  });
 }
 
 function bind() {
-  ids.forEach(id => els[id].addEventListener("input", render));
+  ids.forEach(id => els[id].addEventListener("input", () => {
+    if (id === "category") {
+      activeTrackId = els.category.value;
+      renderTrackGroups();
+    }
+    render();
+  }));
   els.reset.addEventListener("click", () => {
     ids.forEach(id => { els[id].value = ""; });
     activeTrackId = "";
-    renderTracks();
+    renderTrackGroups();
     render();
   });
-  els.trackTabs?.addEventListener("click", event => {
-    const button = event.target.closest("[data-track]");
-    if (!button) return;
-    activeTrackId = button.dataset.track || "";
+  els.trackGroups?.addEventListener("click", event => {
+    const link = event.target.closest("[data-track]");
+    if (!link) return;
+    const id = link.dataset.track || "";
+    activeTrackId = id === activeTrackId ? "" : id;
     els.category.value = activeTrackId;
-    renderTracks();
+    renderTrackGroups();
     render();
   });
   els.pathTabs.addEventListener("click", event => {
@@ -424,18 +402,13 @@ async function init() {
   setText("totalEntries", counts.total_entries || entries.length);
   setText("verifiedEntries", counts.verified_entries || 0);
   setText("cardedEntries", counts.carded_entries || 0);
-  setText("needsSearch", counts.needs_search || 0);
-  setText("dataReleases", counts.data_releases || 0);
-  setText("verifiersRewards", counts.verifiers_rewards || 0);
-  setText("agentEnvironments", counts.agent_environments || 0);
-  setText("scalingStudies", counts.scaling_studies || 0);
   if (!entries.length) {
-    els.resultSummary.textContent = "Could not load docs/assets/entries.json. Run python scripts/render_site.py.";
+    els.resultSummary.textContent = T.loadError;
     els.results.innerHTML = "<div class='empty'>No generated data available.</div>";
     return;
   }
   populateFilters();
-  renderTracks();
+  renderTrackGroups();
   renderPaths();
   bind();
   render();

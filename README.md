@@ -6,7 +6,7 @@
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Paper](https://img.shields.io/badge/arXiv-2606.02113-b31b1b)](https://arxiv.org/abs/2606.02113)
-[![Site](https://img.shields.io/badge/site-in%20progress-6b7280)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
+[![Website](https://img.shields.io/badge/website-in%20progress-6b7280)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/)
 [![Ask](https://img.shields.io/badge/Ask-launch%20pending-7c3aed)](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 [![Entries](https://img.shields.io/badge/entries-280-2563eb)](data/papers.yaml)
 [![Verified](https://img.shields.io/badge/verified-165-0f766e)](reports/link_coverage.md)
@@ -16,12 +16,12 @@
   <img src="assets/cover.svg" width="92%" alt="Awesome LLM Reasoning Data">
 </p>
 
-**Awesome LLM Reasoning Data** is a field map, not just a paper list: learning guides explain the concepts, category pages organize the papers by subfield, cards summarize data objects and risks, and a searchable site indexes the structured metadata. Everything is organized around one practical question:
+**Awesome LLM Reasoning Data** is a field map, not just a paper list: learning guides explain the concepts, category pages organize the papers by subfield, cards summarize data objects and risks, and a project website indexes the structured metadata. Everything is organized around one practical question:
 
 > When a model becomes better at reasoning after post-training, what data record, feedback signal, verifier, reward, environment, or judge actually made that possible?
 
 - 📄 Companion paper: [A Primer in Post-Training Reasoning Data](https://arxiv.org/abs/2606.02113)
-- 🔎 Searchable site: in progress
+- 🌐 Project website: in progress
 - 🤖 Ask: [source-grounded AI assistant · launch pending](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/)
 
 ## 🚀 How to Use This Repo
@@ -48,7 +48,7 @@ Pick the path that matches your goal:
 |---|---|
 | 2026-06-15 | Promoted the collection to **165 verified entries**, **87 linked cards**, and **53 L5 audit-ready cards**. |
 | 2026-06-15 | Pinned official artifacts: **41 code**, **27 data**, **20 Hugging Face**, and **25 project** links. |
-| 2026-06-15 | Rebuilt the searchable site, paper pages, exports, and QA reports from structured metadata, so every count stays reproducible. |
+| 2026-06-15 | Rebuilt the project website, paper pages, exports, and QA reports from structured metadata, so every count stays reproducible. |
 
 > Metadata stays conservative: links that are not verified locally remain in [needs_search](reports/needs_search.md) instead of being promoted.
 
@@ -302,9 +302,19 @@ Four stages, in reading order. Each stage starts from the learning guides; the m
 - [10 · Industry onboarding path](docs/10_industry_onboarding_path.md) - a practical path for engineers entering the field
 - Stage must-reads: curation in progress
 
-## 🔎 Searchable Website (In Progress)
+## 🌐 Project Website (In Progress)
 
-The searchable site is still being built. Once it ships, it will support search plus filters for year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability. Until then, use the [Contents](#-contents) above and the [exports/](exports/) files.
+The project website is generated from the same structured metadata as this README, so every number stays consistent with [data/papers.yaml](data/papers.yaml). It is still being polished; at launch it will bring together:
+
+| Module | What you can do |
+|---|---|
+| 🔎 Paper search | Search titles, authors, tags, summaries, and venues, then narrow by year, venue, source role, verification contract, supervision granularity, training use, curation level, status, and artifact availability |
+| 🗂️ Track browsing | Browse the same 14 research tracks as the [Contents](#-contents), one tab per track |
+| 🛤️ Reading paths | Follow curated routes for newcomers, dataset builders, and auditors |
+| 🤖 Ask assistant | Ask questions and get source-grounded answers backed by the guides and cards |
+| 📊 Live stats | See entry, verified, and card counts at a glance |
+
+Until launch, use the [Contents](#-contents) above and the [exports/](exports/) files.
 
 <details>
 <summary>🧩 Repository structure</summary>
@@ -315,7 +325,7 @@ The searchable site is still being built. Once it ships, it will support search 
 | [papers/](papers/README.md) | Field navigation: one page per track with read-first tables, full paper lists, and audit checklists. |
 | [cards/](cards/README.md) | Learning cards: paper/data/verifier/recipe/benchmark/failure summaries with links and audit questions. |
 | [data/papers.yaml](data/papers.yaml) | Structured source of truth for paper metadata, roles, contracts, summaries, links, and curation levels. |
-| [docs/index.html](docs/index.html) | Searchable web index (in progress), generated from structured data. |
+| [docs/index.html](docs/index.html) | Project website (in progress), generated from structured data. |
 | [reports/](reports/) | Public QA and coverage: link coverage, needs-search, release notes, and quality audits. |
 | [exports/](exports/) | CSV, JSON, and BibTeX exports for readers who want to reuse the data. |
 | [scripts/](scripts/) | Reproducible generators and validators. |

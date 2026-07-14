@@ -6,5 +6,6 @@
   "verifiers_rewards": 20,
   "agent_environments": 16,
   "scaling_studies": 18,
-  "needs_search": 115
+  "needs_search": 115,
+  "audit_ready_entries": 53
 }

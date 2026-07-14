@@ -82,7 +82,19 @@ function normalizeMode(mode) {
   return allowed.has(mode) ? mode : "explain";
 }
 
+function isZh() {
+  return (document.documentElement.lang || "").toLowerCase().startsWith("zh");
+}
+
 function defaultPrompts() {
+  if (isZh()) {
+    return [
+      "什么是后训练推理数据？",
+      "应该先读哪些 PRM 论文？",
+      "如何构建数学 RLVR 数据集？",
+      "智能体轨迹数据应该审计什么？",
+    ];
+  }
   return [
     "What is post-training reasoning data?",
     "Which PRM papers should I read first?",
@@ -378,10 +390,12 @@ function renderConsent() {
   if (!BACKEND_CONFIGURED) {
     els.privacyOptOut.disabled = true;
     els.acceptNotice.disabled = true;
-    els.acceptNotice.textContent = "Launch pending";
-    els.consentStatus.innerHTML = `The public frontend is ready. Connect the secure backend URL in <code>docs/assets/ask-config.js</code> after deployment.`;
+    els.acceptNotice.textContent = isZh() ? "等待上线" : "Launch pending";
+    els.consentStatus.innerHTML = isZh()
+      ? `公开前端已就绪。后端部署完成后，在 <code>docs/assets/ask-config.js</code> 中填入安全后端地址。`
+      : `The public frontend is ready. Connect the secure backend URL in <code>docs/assets/ask-config.js</code> after deployment.`;
     els.askButton.disabled = false;
-    els.askButton.textContent = "Preview answer";
+    els.askButton.textContent = isZh() ? "预览回答" : "Preview answer";
     return;
   }
   if (!state.user) {
@@ -412,17 +426,29 @@ function renderConsent() {
 }
 
 function renderLaunchPending() {
+  const zh = isZh();
   if (els.launchMatrix) els.launchMatrix.hidden = false;
-  els.userBadge.textContent = "Launch pending";
-  els.quotaNumber.textContent = "soon";
+  els.userBadge.textContent = zh ? "等待上线" : "Launch pending";
+  els.quotaNumber.textContent = zh ? "即将" : "soon";
   els.loginButton.hidden = false;
-  els.loginButton.textContent = "Deployment guide";
+  els.loginButton.textContent = zh ? "部署指南" : "Deployment guide";
   els.logoutButton.hidden = true;
   els.adminLink.hidden = true;
   els.refreshRewards.disabled = true;
-  els.rewardStatus.textContent = "GitHub login, star/fork rewards, quota, and admin analytics activate after the secure backend is deployed.";
+  els.rewardStatus.textContent = zh
+    ? "GitHub 登录、星标/复刻奖励、配额与管理分析将在安全后端部署后启用。"
+    : "GitHub login, star/fork rewards, quota, and admin analytics activate after the secure backend is deployed.";
   els.sources.className = "source-list";
-  els.sources.innerHTML = `
+  els.sources.innerHTML = zh ? `
+    <a class="source-item" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/apps/ask-atlas/PRODUCTION.md" target="_blank" rel="noreferrer">
+      <strong>上线清单</strong>
+      <small><span>部署</span> · GitHub OAuth、Vercel、Postgres、Upstash 与模型密钥</small>
+    </a>
+    <a class="source-item" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/tree/main/apps/ask-atlas" target="_blank" rel="noreferrer">
+      <strong>问答后端源码</strong>
+      <small><span>代码</span> · 安全 API、配额、RAG、模型路由与管理后台</small>
+    </a>
+  ` : `
     <a class="source-item" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/apps/ask-atlas/PRODUCTION.md" target="_blank" rel="noreferrer">
       <strong>Launch checklist</strong>
       <small><span>setup</span> · GitHub OAuth, Vercel, Postgres, Upstash, and provider secrets</small>
@@ -433,9 +459,40 @@ function renderLaunchPending() {
     </a>
   `;
   els.history.className = "sources-empty";
-  els.history.textContent = "History appears after GitHub login is connected.";
+  els.history.textContent = zh
+    ? "接入 GitHub 登录后会显示历史记录。"
+    : "History appears after GitHub login is connected.";
   if (!els.messages.querySelector("[data-launch-pending]")) {
-    els.messages.innerHTML = `
+    els.messages.innerHTML = zh ? `
+      <article class="message assistant launch-message" data-launch-pending="true">
+        <h3>问答助手已准备就绪，等待上线</h3>
+        <p>网站界面已经接好 GitHub 登录、有据可依的回答、星标/复刻奖励、反馈与私密管理后台。</p>
+        <p>最后一步是接入安全后端地址。API 密钥、成本上限、token 日志与用户分析必须留在后端，所以这个公开的 GitHub Pages 前端会等待后端配置完成。</p>
+        <div class="launch-brief">
+          <div>
+            <strong>现在可以体验</strong>
+            <ul>
+              <li>预览“论文优先”的回答风格。</li>
+              <li>试试方向、卡片与项目导航类提问。</li>
+              <li>查看引用来源与后续操作的展示方式。</li>
+            </ul>
+          </div>
+          <div>
+            <strong>后端接入后解锁</strong>
+            <ul>
+              <li>GitHub OAuth、每日配额、星标/复刻奖励。</li>
+              <li>带 token 与成本上限的 360 模型路由。</li>
+              <li>覆盖用户、问题、成本与缺口的管理分析。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="answer-meta">
+          <span class="evidence-pill evidence-atlas">前端就绪</span>
+          <span>后端待接入</span>
+          <span>密钥受保护</span>
+        </div>
+      </article>
+    ` : `
       <article class="message assistant launch-message" data-launch-pending="true">
         <h3>Ask the Atlas is ready to launch</h3>
         <p>The website UI is already wired for GitHub login, source-grounded answers, star/fork rewards, feedback, and a private admin dashboard.</p>
@@ -555,7 +612,9 @@ function setContextFromUrl() {
   const type = track ? "track" : card ? "card" : entry ? "entry" : "";
   state.context = value ? { type, value } : null;
   if (state.context) {
-    const label = type === "track" ? "Track context" : type === "card" ? "Card context" : "Entry context";
+    const label = isZh()
+      ? (type === "track" ? "方向上下文" : type === "card" ? "卡片上下文" : "条目上下文")
+      : (type === "track" ? "Track context" : type === "card" ? "Card context" : "Entry context");
     els.contextPill.hidden = false;
     els.contextPill.innerHTML = `<strong>${esc(label)}</strong><span>${esc(humanize(value))}</span>`;
     renderSuggestions(contextPrompts(state.context));
@@ -749,6 +808,14 @@ els.suggestions.addEventListener("click", (event) => {
   if (button) els.question.value = button.dataset.suggestionPrompt || button.textContent;
   updateCount();
   els.question.focus();
+});
+window.addEventListener("ask-atlas-lang", () => {
+  renderSuggestions(contextPrompts(state.context));
+  if (!BACKEND_CONFIGURED) {
+    const pending = els.messages.querySelector("[data-launch-pending]");
+    if (pending) pending.remove();
+    renderLaunchPending();
+  }
 });
 document.querySelectorAll("[data-fill]").forEach((button) => {
   button.addEventListener("click", () => {

@@ -1379,7 +1379,9 @@
           "primary_link": "https://arxiv.org/abs/2504.07086"
         }
       }
-    ]
+    ],
+    "title_zh": "新手 20：推理数据入门",
+    "goal_zh": "在钻进具体配方之前，先建立后训练推理数据的基本概念体系。"
   },
   {
     "id": "builder_30",
@@ -3374,7 +3376,9 @@
           "primary_link": "https://arxiv.org/abs/2507.14805"
         }
       }
-    ]
+    ],
+    "title_zh": "构造 30：数据构造与发布实践",
+    "goal_zh": "学习开源推理数据配方如何选题、生成轨迹、过滤、审计并发布产物。"
   },
   {
     "id": "verifier_reward_25",
@@ -5031,7 +5035,9 @@
           "primary_link": null
         }
       }
-    ]
+    ],
+    "title_zh": "验证与奖励 25",
+    "goal_zh": "对比程序化验证器、过程奖励模型、评分标准奖励、大模型评审与失效诊断。"
   },
   {
     "id": "agent_data_25",
@@ -6684,7 +6690,9 @@
           "primary_link": null
         }
       }
-    ]
+    ],
+    "title_zh": "智能体数据 25",
+    "goal_zh": "理解轨迹、工具调用、网页与应用与操作系统任务，以及软件工程环境。"
   },
   {
     "id": "scaling_20",
@@ -7844,7 +7852,9 @@
           "primary_link": "https://arxiv.org/abs/2507.20534"
         }
       }
-    ]
+    ],
+    "title_zh": "规模化 20",
+    "goal_zh": "读懂强化学习算力、数据规模、蒸馏与推理时计算预算的规模化结论。"
   },
   {
     "id": "audit_failure_20",
@@ -9104,7 +9114,9 @@
           "primary_link": null
         }
       }
-    ]
+    ],
+    "title_zh": "审计与失效 20",
+    "goal_zh": "养成检查数据泄漏、污染、奖励作弊与评审稳健性的习惯。"
   },
   {
     "id": "industry_onboarding_40",
@@ -11685,6 +11697,8 @@
           "primary_link": "https://arxiv.org/abs/1803.09010"
         }
       }
-    ]
+    ],
+    "title_zh": "工业实践 40",
+    "goal_zh": "一条面向大模型后训练数据团队的实用上手路径。"
   }
 ]

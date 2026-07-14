@@ -4,105 +4,106 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ask the Atlas</title>
-  <link rel="stylesheet" href="/assets/ask.css?v=ask-atlas-app-20260619-1">
+  <link rel="stylesheet" href="/assets/ask.css?v=ask-atlas-app-20260714-1">
 </head>
 <body class="ask-page">
   <header class="shell-header">
     <a class="brand" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">Awesome LLM Reasoning Data</a>
     <nav class="header-actions" aria-label="Primary">
-      <a href="https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/">Atlas Site</a>
+      <a data-i18n="nav.site" href="https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/">Atlas Site</a>
       <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data#readme">README</a>
-      <a id="adminLink" href="/admin" hidden>Admin</a>
-      <button id="loginButton" type="button">Sign in with GitHub</button>
-      <button id="logoutButton" type="button" hidden>Sign out</button>
+      <a id="adminLink" data-i18n="nav.admin" href="/admin" hidden>Admin</a>
+      <button id="langToggle" type="button">中文</button>
+      <button id="loginButton" data-i18n="nav.login" type="button">Sign in with GitHub</button>
+      <button id="logoutButton" data-i18n="nav.logout" type="button" hidden>Sign out</button>
     </nav>
   </header>
 
   <main class="ask-shell">
     <section class="hero-panel">
       <div>
-        <p class="eyebrow">Source-grounded research assistant</p>
-        <h1>Ask the Atlas</h1>
-        <p class="lede">Learn post-training reasoning data through the companion paper, paper maps, cards, and structured atlas metadata.</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Source-grounded research assistant</p>
+        <h1 data-i18n="hero.title">Ask the Atlas</h1>
+        <p class="lede" data-i18n="hero.lede">Learn post-training reasoning data through the companion paper, paper maps, cards, and structured atlas metadata.</p>
         <div class="hero-signals" aria-label="Assistant capabilities">
-          <span>🧭 concept tutor</span>
-          <span>📚 paper finder</span>
-          <span>🧪 verifier coach</span>
-          <span>🧯 audit copilot</span>
+          <span data-i18n="hero.sig1">🧭 concept tutor</span>
+          <span data-i18n="hero.sig2">📚 paper finder</span>
+          <span data-i18n="hero.sig3">🧪 verifier coach</span>
+          <span data-i18n="hero.sig4">🧯 audit copilot</span>
         </div>
         <div class="hero-console" aria-label="Answer contract summary">
           <div>
-            <span>Answer contract</span>
-            <strong>Paper → Atlas → Model</strong>
+            <span data-i18n="console.k1">Answer contract</span>
+            <strong data-i18n="console.v1">Paper → Atlas → Model</strong>
           </div>
           <div>
-            <span>Best for</span>
-            <strong>learning paths, paper maps, audits</strong>
+            <span data-i18n="console.k2">Best for</span>
+            <strong data-i18n="console.v2">learning paths, paper maps, audits</strong>
           </div>
           <div>
-            <span>Owner view</span>
-            <strong>quota, cost, questions, gaps</strong>
+            <span data-i18n="console.k3">Owner view</span>
+            <strong data-i18n="console.v3">quota, cost, questions, gaps</strong>
           </div>
         </div>
       </div>
       <div class="quota-card" aria-live="polite">
         <div>
-          <span id="userBadge">Not signed in</span>
+          <span id="userBadge" data-i18n="quota.badge">Not signed in</span>
           <strong id="quotaNumber">0</strong>
-          <small>questions available today</small>
+          <small data-i18n="quota.small">questions available today</small>
         </div>
         <ul class="quota-perks" aria-label="Quota rewards">
-          <li><b>Base</b><span>2/day</span></li>
-          <li><b>Star</b><span>10/day</span></li>
-          <li><b>Fork</b><span>+20</span></li>
+          <li><b data-i18n="quota.base.k">Base</b><span data-i18n="quota.base.v">2/day</span></li>
+          <li><b data-i18n="quota.star.k">Star</b><span data-i18n="quota.star.v">10/day</span></li>
+          <li><b data-i18n="quota.fork.k">Fork</b><span data-i18n="quota.fork.v">+20</span></li>
         </ul>
         <div class="trust-stack" aria-label="Evidence priority">
-          <span><b>01 Paper</b><small>companion primer first</small></span>
-          <span><b>02 Atlas</b><small>README, tracks, cards</small></span>
-          <span><b>03 Model</b><small>labeled fallback only</small></span>
+          <span><b data-i18n="trust.1.k">01 Paper</b><small data-i18n="trust.1.v">companion primer first</small></span>
+          <span><b data-i18n="trust.2.k">02 Atlas</b><small data-i18n="trust.2.v">README, tracks, cards</small></span>
+          <span><b data-i18n="trust.3.k">03 Model</b><small data-i18n="trust.3.v">labeled fallback only</small></span>
         </div>
       </div>
     </section>
 
     <section id="notice" class="notice">
-      <strong>Usage notice</strong>
-      <p>When the secure backend is connected, this free assistant is paid for by the project maintainer. To prevent abuse and improve the atlas, the backend logs GitHub identity, question and answer text unless you opt out, selected model, token usage, estimated cost, sources, and feedback. Please do not enter private, sensitive, or confidential information.</p>
+      <strong data-i18n="notice.title">Usage notice</strong>
+      <p data-i18n="notice.body">When the secure backend is connected, this free assistant is paid for by the project maintainer. To prevent abuse and improve the atlas, the backend logs GitHub identity, question and answer text unless you opt out, selected model, token usage, estimated cost, sources, and feedback. Please do not enter private, sensitive, or confidential information.</p>
       <label class="privacy-toggle">
         <input id="privacyOptOut" type="checkbox">
-        <span>Do not store my raw question or answer text in project logs. Keep only hashes, usage, sources, and cost metadata. The current question is still sent to the configured model provider to generate an answer.</span>
+        <span data-i18n="notice.optout">Do not store my raw question or answer text in project logs. Keep only hashes, usage, sources, and cost metadata. The current question is still sent to the configured model provider to generate an answer.</span>
       </label>
       <div class="consent-actions">
-        <button id="acceptNotice" type="button">I understand and agree</button>
-        <span id="consentStatus">Sign in with GitHub to accept this notice.</span>
+        <button id="acceptNotice" data-i18n="notice.accept" type="button">I understand and agree</button>
+        <span id="consentStatus" data-i18n="notice.status">Sign in with GitHub to accept this notice.</span>
       </div>
     </section>
 
     <section id="launchMatrix" class="launch-matrix" hidden aria-label="Launch readiness preview">
       <div class="launch-copy">
-        <p class="eyebrow">Launch preview</p>
-        <h2>Built as a real learning console, waiting for the secure backend switch.</h2>
-        <p>The public page shows the product surface; OAuth, model calls, quotas, token accounting, and admin analytics stay behind the backend.</p>
+        <p class="eyebrow" data-i18n="launch.eyebrow">Launch preview</p>
+        <h2 data-i18n="launch.title">Built as a real learning console, waiting for the secure backend switch.</h2>
+        <p data-i18n="launch.lede">The public page shows the product surface; OAuth, model calls, quotas, token accounting, and admin analytics stay behind the backend.</p>
       </div>
       <div class="launch-grid">
         <article class="ready">
           <span>01</span>
-          <strong>Frontend</strong>
-          <small>Pages UI, modes, context links, source panel, history shell</small>
+          <strong data-i18n="launch.1.t">Frontend</strong>
+          <small data-i18n="launch.1.d">Pages UI, modes, context links, source panel, history shell</small>
         </article>
         <article class="built">
           <span>02</span>
-          <strong>Backend code</strong>
-          <small>OAuth, RAG, 360 API routing, quota reservation, logs</small>
+          <strong data-i18n="launch.2.t">Backend code</strong>
+          <small data-i18n="launch.2.d">OAuth, RAG, 360 API routing, quota reservation, logs</small>
         </article>
         <article class="growth">
           <span>03</span>
-          <strong>Growth rules</strong>
-          <small>2/day base quota, 10/day for verified star users, +20 fork reward</small>
+          <strong data-i18n="launch.3.t">Growth rules</strong>
+          <small data-i18n="launch.3.d">2/day base quota, 10/day for verified star users, +20 fork reward</small>
         </article>
         <article class="pending">
           <span>04</span>
-          <strong>Activation</strong>
-          <small>Set HTTPS backend URL after Vercel, Postgres, Redis, OAuth, and secrets</small>
+          <strong data-i18n="launch.4.t">Activation</strong>
+          <small data-i18n="launch.4.d">Set HTTPS backend URL after Vercel, Postgres, Redis, OAuth, and secrets</small>
         </article>
       </div>
     </section>
@@ -111,55 +112,55 @@
 
     <section class="ask-recipes" aria-label="Starter workflows">
       <article>
-        <span>🧭 Learn</span>
-        <strong>Start from zero</strong>
-        <button data-fill="Explain post-training reasoning data for a new researcher. Give me the core objects, why verifiers matter, and what to read first." type="button">Ask for a field map</button>
+        <span data-i18n="recipe.1.tag">🧭 Learn</span>
+        <strong data-i18n="recipe.1.t">Start from zero</strong>
+        <button data-i18n="recipe.1.btn" data-fill="Explain post-training reasoning data for a new researcher. Give me the core objects, why verifiers matter, and what to read first." type="button">Ask for a field map</button>
       </article>
       <article>
-        <span>📚 Survey</span>
-        <strong>Find papers by subfield</strong>
-        <button data-fill="I want to study process supervision and PRM. Which papers should I read first, and what data object does each paper contribute?" type="button">Build a reading list</button>
+        <span data-i18n="recipe.2.tag">📚 Survey</span>
+        <strong data-i18n="recipe.2.t">Find papers by subfield</strong>
+        <button data-i18n="recipe.2.btn" data-fill="I want to study process supervision and PRM. Which papers should I read first, and what data object does each paper contribute?" type="button">Build a reading list</button>
       </article>
       <article>
-        <span>🏗️ Build</span>
-        <strong>Design a dataset recipe</strong>
-        <button data-fill="Design a math RLVR dataset recipe. Include prompt source, trace generation, verifier, filtering, metadata, and audit checks." type="button">Draft a recipe</button>
+        <span data-i18n="recipe.3.tag">🏗️ Build</span>
+        <strong data-i18n="recipe.3.t">Design a dataset recipe</strong>
+        <button data-i18n="recipe.3.btn" data-fill="Design a math RLVR dataset recipe. Include prompt source, trace generation, verifier, filtering, metadata, and audit checks." type="button">Draft a recipe</button>
       </article>
       <article>
-        <span>🧯 Audit</span>
-        <strong>Check a release</strong>
-        <button data-fill="Create an audit checklist for a reasoning-data release. Focus on contamination, hidden teacher lineage, verifier gaming, and reproducibility." type="button">Generate checks</button>
+        <span data-i18n="recipe.4.tag">🧯 Audit</span>
+        <strong data-i18n="recipe.4.t">Check a release</strong>
+        <button data-i18n="recipe.4.btn" data-fill="Create an audit checklist for a reasoning-data release. Focus on contamination, hidden teacher lineage, verifier gaming, and reproducibility." type="button">Generate checks</button>
       </article>
     </section>
 
     <section class="workspace">
       <aside class="side-panel" aria-label="Question modes">
-        <h2>Mode</h2>
+        <h2 data-i18n="mode.title">Mode</h2>
         <div class="mode-list" id="modeList">
-          <button class="active" data-mode="explain" type="button">🧭 Explain</button>
-          <button data-mode="find_papers" type="button">📚 Find Papers</button>
-          <button data-mode="compare" type="button">🔁 Compare</button>
-          <button data-mode="build" type="button">🏗️ Build Data</button>
-          <button data-mode="audit" type="button">🧯 Audit</button>
-          <button data-mode="quiz" type="button">🎓 Quiz Me</button>
+          <button class="active" data-i18n="mode.explain" data-mode="explain" type="button">🧭 Explain</button>
+          <button data-i18n="mode.find" data-mode="find_papers" type="button">📚 Find Papers</button>
+          <button data-i18n="mode.compare" data-mode="compare" type="button">🔁 Compare</button>
+          <button data-i18n="mode.build" data-mode="build" type="button">🏗️ Build Data</button>
+          <button data-i18n="mode.audit" data-mode="audit" type="button">🧯 Audit</button>
+          <button data-i18n="mode.quiz" data-mode="quiz" type="button">🎓 Quiz Me</button>
         </div>
 
         <label class="field">
-          <span>Model</span>
+          <span data-i18n="model.label">Model</span>
           <select id="modelSelect">
-            <option value="auto">Auto Recommended</option>
+            <option data-i18n="model.auto" value="auto">Auto Recommended</option>
           </select>
         </label>
 
         <div class="reward-box">
-          <h2>Rewards</h2>
-          <p>Base users get 2 questions/day. Verified star users get 10/day, and forked users receive a one-time +20 credit reward.</p>
+          <h2 data-i18n="reward.title">Rewards</h2>
+          <p data-i18n="reward.body">Base users get 2 questions/day. Verified star users get 10/day, and forked users receive a one-time +20 credit reward.</p>
           <div class="reward-meter" aria-label="Reward rules">
-            <span><b>No star</b>2/day</span>
-            <span><b>Star</b>10/day</span>
-            <span><b>Fork</b>+20 once</span>
+            <span data-i18n-html="reward.m1"><b>No star</b>2/day</span>
+            <span data-i18n-html="reward.m2"><b>Star</b>10/day</span>
+            <span data-i18n-html="reward.m3"><b>Fork</b>+20 once</span>
           </div>
-          <button id="refreshRewards" type="button">Check star/fork rewards</button>
+          <button id="refreshRewards" data-i18n="reward.refresh" type="button">Check star/fork rewards</button>
           <div id="rewardStatus" class="mini-status"></div>
         </div>
       </aside>
@@ -167,56 +168,56 @@
       <section class="chat-panel" aria-label="Ask the Atlas chat">
         <div id="contextPill" class="context-pill" hidden></div>
         <div class="suggestions" id="suggestions">
-          <button type="button">What is post-training reasoning data?</button>
-          <button type="button">Which PRM papers should I read first?</button>
-          <button type="button">How should I build a math RLVR dataset?</button>
-          <button type="button">What should I audit in agent trajectory data?</button>
+          <button data-i18n="sugg.1" type="button">What is post-training reasoning data?</button>
+          <button data-i18n="sugg.2" type="button">Which PRM papers should I read first?</button>
+          <button data-i18n="sugg.3" type="button">How should I build a math RLVR dataset?</button>
+          <button data-i18n="sugg.4" type="button">What should I audit in agent trajectory data?</button>
         </div>
         <div id="messages" class="messages" aria-live="polite"></div>
         <form id="askForm" class="composer">
-          <textarea id="question" maxlength="4000" placeholder="Ask about this project, post-training reasoning data, PRM, RLVR, verifier design, agent trajectories, benchmark contamination, or a specific paper card..." required></textarea>
+          <textarea id="question" maxlength="4000" data-i18n-placeholder="composer.placeholder" placeholder="Ask about this project, post-training reasoning data, PRM, RLVR, verifier design, agent trajectories, benchmark contamination, or a specific paper card..." required></textarea>
           <div class="composer-bar">
             <span id="charCount">0 / 4000</span>
-            <button id="askButton" type="submit">Ask Atlas</button>
+            <button id="askButton" data-i18n="composer.ask" type="submit">Ask Atlas</button>
           </div>
         </form>
       </section>
 
       <aside class="source-panel" aria-label="Sources">
-        <h2>Sources Used</h2>
-        <div id="sources" class="sources-empty">Sources will appear after an answer.</div>
-        <h2>Recent History</h2>
-        <div id="history" class="sources-empty">Sign in to see your recent questions.</div>
-        <h2>Next Actions</h2>
+        <h2 data-i18n="src.title">Sources Used</h2>
+        <div id="sources" class="sources-empty" data-i18n="src.empty">Sources will appear after an answer.</div>
+        <h2 data-i18n="hist.title">Recent History</h2>
+        <div id="history" class="sources-empty" data-i18n="hist.empty">Sign in to see your recent questions.</div>
+        <h2 data-i18n="act.title">Next Actions</h2>
         <div class="action-list">
-          <button data-fill="Give me a 2-hour reading path for post-training reasoning data." type="button">Generate reading path</button>
-          <button data-fill="Compare PRM, ORM, and RLVR from a data-object perspective." type="button">Compare concepts</button>
-          <button data-fill="Create an audit checklist for a reasoning dataset release." type="button">Audit checklist</button>
+          <button data-i18n="act.1" data-fill="Give me a 2-hour reading path for post-training reasoning data." type="button">Generate reading path</button>
+          <button data-i18n="act.2" data-fill="Compare PRM, ORM, and RLVR from a data-object perspective." type="button">Compare concepts</button>
+          <button data-i18n="act.3" data-fill="Create an audit checklist for a reasoning dataset release." type="button">Audit checklist</button>
         </div>
       </aside>
     </section>
 
     <section class="evidence-contract" aria-label="Evidence contract">
       <div>
-        <p class="eyebrow">Evidence contract</p>
-        <h2>Every answer tells you where the claim comes from.</h2>
-        <p>Ask the Atlas first checks the companion paper, then this repository's paper maps and cards, and only then uses model background knowledge when repository evidence is limited.</p>
+        <p class="eyebrow" data-i18n="ev.eyebrow">Evidence contract</p>
+        <h2 data-i18n="ev.title">Every answer tells you where the claim comes from.</h2>
+        <p data-i18n="ev.lede">Ask the Atlas first checks the companion paper, then this repository's paper maps and cards, and only then uses model background knowledge when repository evidence is limited.</p>
       </div>
       <ol class="evidence-steps">
         <li>
           <span>01</span>
-          <strong>Companion paper</strong>
-          <small>Highest-trust explanation when the primer covers the concept.</small>
+          <strong data-i18n="ev.1.t">Companion paper</strong>
+          <small data-i18n="ev.1.d">Highest-trust explanation when the primer covers the concept.</small>
         </li>
         <li>
           <span>02</span>
-          <strong>Repository atlas</strong>
-          <small>README, guides, tracks, cards, and generated metadata.</small>
+          <strong data-i18n="ev.2.t">Repository atlas</strong>
+          <small data-i18n="ev.2.d">README, guides, tracks, cards, and generated metadata.</small>
         </li>
         <li>
           <span>03</span>
-          <strong>Model background</strong>
-          <small>Clearly labeled fallback for in-scope gaps.</small>
+          <strong data-i18n="ev.3.t">Model background</strong>
+          <small data-i18n="ev.3.d">Clearly labeled fallback for in-scope gaps.</small>
         </li>
       </ol>
     </section>
@@ -224,22 +225,23 @@
     <section class="impact-grid" aria-label="Ask the Atlas workflow">
       <article>
         <span>01</span>
-        <strong>Ask inside the field or repo</strong>
-        <p>Questions can cover post-training reasoning data, verifiers, rewards, agent trajectories, evaluation, audit topics, or how to navigate this project.</p>
+        <strong data-i18n="impact.1.t">Ask inside the field or repo</strong>
+        <p data-i18n="impact.1.d">Questions can cover post-training reasoning data, verifiers, rewards, agent trajectories, evaluation, audit topics, or how to navigate this project.</p>
       </article>
       <article>
         <span>02</span>
-        <strong>Ground in atlas sources</strong>
-        <p>Answers retrieve README, guides, paper maps, cards, generated metadata, and the configured companion paper text.</p>
+        <strong data-i18n="impact.2.t">Ground in atlas sources</strong>
+        <p data-i18n="impact.2.d">Answers retrieve README, guides, paper maps, cards, generated metadata, and the configured companion paper text.</p>
       </article>
       <article>
         <span>03</span>
-        <strong>Turn curiosity into growth</strong>
-        <p>GitHub login enables quota, star/fork rewards, feedback, and admin analytics that reveal missing docs and cards.</p>
+        <strong data-i18n="impact.3.t">Turn curiosity into growth</strong>
+        <p data-i18n="impact.3.d">GitHub login enables quota, star/fork rewards, feedback, and admin analytics that reveal missing docs and cards.</p>
       </article>
     </section>
   </main>
 
-  <script src="/assets/ask.js?v=ask-atlas-app-20260619-1" type="module"></script>
+  <script src="/assets/ask-i18n.js?v=ask-atlas-app-20260714-1"></script>
+  <script src="/assets/ask.js?v=ask-atlas-app-20260714-1" type="module"></script>
 </body>
 </html>

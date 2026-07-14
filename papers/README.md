@@ -207,9 +207,9 @@ The same paper can sit on multiple axes. Use this matrix to translate a domain i
 - ⚠️ needs_search entries remain visible but are not promoted as verified.
 - Curation levels run from `L0_seeded` to `L5_audit_ready`.
 
-## Searchable Site
+## Project Website
 
-- [Open the searchable atlas](../docs/index.html)
+- [Open the project website (in progress)](../docs/index.html)
 - [Link coverage report](../reports/link_coverage.md)
 
 ## Reports
