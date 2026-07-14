@@ -509,7 +509,9 @@ def readme_en() -> str:
 
 A useful reasoning-data sample is rarely `prompt → answer`. It is usually:
 
-`task/context → trace/actions → answer/artifact → verifier/reward/judge/environment → metadata`
+<p align="center">
+  <img src="assets/sample_shape.svg" width="92%" alt="task/context → trace/actions → answer/artifact → verifier/reward/judge/environment → metadata">
+</p>
 
 Pick the path that matches your goal:
 
@@ -594,7 +596,9 @@ def readme_zh() -> str:
 
 一条有用的推理数据样本，通常不是 `提问 → 答案`，而是：
 
-`任务/上下文 → 推理轨迹/动作 → 答案/产物 → 验证器/奖励/评审/环境 → 元数据`
+<p align="center">
+  <img src="assets/sample_shape_zh.svg" width="92%" alt="任务/上下文 → 推理轨迹/动作 → 答案/产物 → 验证器/奖励/评审/环境 → 元数据">
+</p>
 
 按你的目标选择路径：
 

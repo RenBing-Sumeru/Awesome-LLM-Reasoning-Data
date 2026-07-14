@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 120" role="img" aria-label="任务/上下文 → 推理轨迹/动作 → 答案/产物 → 验证器/奖励/评审/环境 → 元数据">
+  <rect width="1300" height="120" rx="14" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="1299" height="119" rx="13.5" fill="none" stroke="#e2e8f0"/>
+
+  <g stroke-width="1.5">
+    <rect x="40" y="32" width="180" height="56" rx="28" fill="#4ade80" fill-opacity="0.30" stroke="#16a34a" stroke-opacity="0.45"/>
+    <rect x="280" y="32" width="200" height="56" rx="28" fill="#60a5fa" fill-opacity="0.28" stroke="#2563eb" stroke-opacity="0.45"/>
+    <rect x="540" y="32" width="160" height="56" rx="28" fill="#67e8f9" fill-opacity="0.32" stroke="#0891b2" stroke-opacity="0.45"/>
+    <rect x="760" y="32" width="310" height="56" rx="28" fill="#d8b4fe" fill-opacity="0.30" stroke="#9333ea" stroke-opacity="0.45"/>
+    <rect x="1130" y="32" width="130" height="56" rx="28" fill="#f9a8d4" fill-opacity="0.32" stroke="#db2777" stroke-opacity="0.45"/>
+  </g>
+
+  <g stroke="#b49a7f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M228 61 C242 57 258 57 268 60"/><path d="M257 53 L268 60 L256 66"/>
+    <path d="M488 61 C502 57 518 57 528 60"/><path d="M517 53 L528 60 L516 66"/>
+    <path d="M708 61 C722 57 738 57 748 60"/><path d="M737 53 L748 60 L736 66"/>
+    <path d="M1078 61 C1092 57 1108 57 1118 60"/><path d="M1107 53 L1118 60 L1106 66"/>
+  </g>
+
+  <g font-family="'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" font-weight="700" font-size="24" text-anchor="middle">
+    <text x="130" y="68" fill="#15803d">任务/上下文</text>
+    <text x="380" y="68" fill="#1e40af">推理轨迹/动作</text>
+    <text x="620" y="68" fill="#0e7490">答案/产物</text>
+    <text x="915" y="68" fill="#7e22ce">验证器/奖励/评审/环境</text>
+    <text x="1195" y="68" fill="#be185d">元数据</text>
+  </g>
+</svg>

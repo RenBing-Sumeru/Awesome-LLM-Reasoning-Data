@@ -28,7 +28,9 @@
 
 A useful reasoning-data sample is rarely `prompt → answer`. It is usually:
 
-`task/context → trace/actions → answer/artifact → verifier/reward/judge/environment → metadata`
+<p align="center">
+  <img src="assets/sample_shape.svg" width="92%" alt="task/context → trace/actions → answer/artifact → verifier/reward/judge/environment → metadata">
+</p>
 
 Pick the path that matches your goal:
 
