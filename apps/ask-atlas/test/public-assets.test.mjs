@@ -44,7 +44,7 @@ test("launch-pending preview keeps the public Ask page useful before backend act
   assert.match(askHtml, /id="askForm"/);
   assert.match(askHtml, /id="privacyOptOut"/);
 
-  assert.match(askJs, /els\.askButton\.textContent = "Preview answer"/);
+  assert.match(askJs, /els\.askButton\.textContent = isZh\(\) \? "预览回答" : "Preview answer"/);
   assert.match(askJs, /Demo preview · no model call/);
   assert.match(askJs, /function renderAdminSetupBanner/);
   assert.match(askJs, /login-required/);

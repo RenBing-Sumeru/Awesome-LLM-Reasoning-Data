@@ -6,7 +6,7 @@ from pathlib import Path
 from common import ROOT
 
 
-ASK_NAME = "Ask the Atlas"
+ASK_NAMES = ("Ask the Atlas", "Ask assistant", "问答助手")
 ASK_LINK_MARKERS = ("/ask/", "ask/")
 
 REQUIRED_MARKDOWN = [
@@ -31,7 +31,8 @@ REQUIRED_MARKDOWN = [
 
 def has_ask_entrypoint(path: Path) -> bool:
     text = path.read_text(encoding="utf-8")
-    return ASK_NAME in text and any(marker in text for marker in ASK_LINK_MARKERS)
+    has_name = any(name in text for name in ASK_NAMES)
+    return has_name and any(marker in text for marker in ASK_LINK_MARKERS)
 
 
 def main() -> int:
