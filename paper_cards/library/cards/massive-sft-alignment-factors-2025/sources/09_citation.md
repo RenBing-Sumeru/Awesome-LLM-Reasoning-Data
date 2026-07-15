@@ -1,0 +1,1 @@
+Harada, Y., Yamauchi, Y., Oda, Y., Oseki, Y., Miyao, Y., & Takagi, Y. (2025). Massive Supervised Fine-tuning Experiments Reveal How Data, Layer, and Training Factors Shape LLM Alignment Quality. EMNLP 2025 Main. https://arxiv.org/abs/2506.14681

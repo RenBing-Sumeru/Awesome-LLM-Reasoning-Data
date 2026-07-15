@@ -1,0 +1,3 @@
+The paper’s most direct evidence is the scale of an executable, public repair surface: its Python release contains more than 50K tasks from 128 repositories and includes trajectories intended for agent training. Unlike a record that preserves only an issue and a patch, these instances also preserve an environment and tests, allowing a proposed change to be run and checked again.
+
+This establishes the scale of the construction and replayability, not a universal performance gain for every coding model. Tests observe only encoded behavior, and repository dependencies can decay over time. A reuse study should rebuild the environment, run the stated tests, and distinguish a failed repair from a timeout or an infrastructure failure.

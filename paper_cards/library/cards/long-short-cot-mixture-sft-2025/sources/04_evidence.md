@@ -1,0 +1,3 @@
+The paper's central evidence is the paired quality-and-cost result: its long-short mixture reports a 2.3% average accuracy improvement and a 47.61% average reduction in response length. Reporting both measures is important because a shorter rationale alone could reflect premature termination, while an accuracy result alone does not establish an efficiency benefit.
+
+The evidence supports the claim that the reported mixture works under the paper's tasks, models, and rewriting protocol. It does not isolate a universally optimal short-trace length or mixture ratio, and the absence of a confirmed official release limits independent checks of the exact examples. A reproducer should therefore compare long-only, short-only, and mixed targets under the same token accounting.

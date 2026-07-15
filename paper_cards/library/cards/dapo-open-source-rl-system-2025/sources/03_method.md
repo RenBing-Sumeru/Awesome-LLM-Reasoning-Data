@@ -1,0 +1,3 @@
+The pipeline begins by preparing math questions with integer target answers. The current policy generates solutions, a programmatic parser checks the terminal answer, and the resulting reward is used with DAPO’s update and dynamic-sampling procedure to select useful rollout signal.
+
+The trained policy is then evaluated with separate math benchmarks. A reproduction must pin the prompt revision, answer-extraction rules, rollout count, base checkpoint, parallel implementation, optimizer settings, and total training budget; a correct integer is the stated terminal condition, not a certificate for every reasoning step.

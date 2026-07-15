@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SWE-smith 从真实代码仓库构造可执行软件工程任务与轨迹，用于训练和评测代码智能体。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程 Agent 训练数据与可执行环境论文（NeurIPS 2025 Spotlight）",
+  "best_for_ch": "研究 Agent SFT、工具轨迹、SWE 环境和可执行奖励的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Carlos E. Jimenez 等（SWE-bench / 多机构协作）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

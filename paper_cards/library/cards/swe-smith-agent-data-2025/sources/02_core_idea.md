@@ -1,0 +1,3 @@
+SWE-smith treats a software-engineering example as a small reproducible development setting, not a static question-answer pair. A task retains its repository and environment so that an agent can inspect files, use tools, edit code, and let tests determine whether the attempt worked. Each trajectory therefore has a stated state and observable consequence.
+
+This makes the data useful both for imitating successful tool use and for evaluating repair in a real codebase. The public Python release covers more than 50K instances from 128 repositories, illustrating the aim to scale executable environments together with behavior traces. It should still be used with a pinned release and independent checks of source-repository licenses, task environments, and release terms.

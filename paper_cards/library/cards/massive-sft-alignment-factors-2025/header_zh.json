@@ -1,0 +1,9 @@
+{
+  "one_line_summary_ch": "通过千余次受控 SFT 实验，分离数据、可训练层和训练设置如何共同塑造对齐质量。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模受控监督微调实验研究（EMNLP 2025 Main）",
+  "best_for_ch": "需要根据证据选择 SFT 数据、适配层与训练超参数的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuto Harada、Yusuke Yamauchi 等（llm-jp）",
+  "category_ids": ["training_usage_optimization_objectives"]
+}

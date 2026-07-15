@@ -1,0 +1,1 @@
+Use MM-PRM when ranking multimodal mathematical candidate paths with a trustworthy final-answer check. Preserve the search tree and checker outputs, train the PRM on a pinned data version, and report generator, search cost, and Best-of-N budget separately. It is not a suitable recipe for visual tasks without a reliable terminal predicate.

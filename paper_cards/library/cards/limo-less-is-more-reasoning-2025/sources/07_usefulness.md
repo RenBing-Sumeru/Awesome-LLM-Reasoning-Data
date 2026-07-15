@@ -1,0 +1,1 @@
+Use LIMO as a data-selection baseline when training under a tight mathematical-reasoning budget. Keep model, tokens, and prompting fixed while comparing selected, random, and larger sets on non-overlapping benchmarks. It is not a representative corpus for general factual knowledge, code, or domains where the original selection criteria and solution format no longer apply.

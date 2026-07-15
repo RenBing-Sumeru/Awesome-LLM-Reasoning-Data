@@ -1,0 +1,103 @@
+id: swe-smith-agent-data-2025
+title: 'SWE-smith: Scaling Data for Software Engineering Agents'
+year: 2025
+venue: NeurIPS 2025 Spotlight
+authors:
+- Carlos E. Jimenez
+- John Yang
+- Alexander Wettig
+- Shunyu Yao
+- Kexin Pei
+- Ofir Press
+- Danqi Chen
+- Karthik Narasimhan
+source_role:
+- data_release
+- agent_environment
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- software-engineering
+- agentic-reasoning
+training_use:
+- agent_training
+- sft
+- evaluation
+construction_layer:
+- frontier_pipeline
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.21798
+  arxiv: https://arxiv.org/abs/2504.21798
+  venue: https://openreview.net/forum?id=63iVrXc8cC
+  code: https://github.com/SWE-bench/SWE-smith
+  data: https://huggingface.co/datasets/SWE-bench/SWE-smith-py
+  project: https://swesmith.com
+  huggingface: https://huggingface.co/datasets/SWE-bench/SWE-smith-py
+  doi: null
+data_object:
+  prompt_source: GitHub repositories and automated issue/task construction.
+  trace_author: SWE-agent-LM trajectories for training agent behavior.
+  answer_format: Executable repository state, task statement, tests, patch, and optional trajectory.
+  process_fields:
+  - repo
+  - issue
+  - environment
+  - tests
+  - patch
+  - trajectory
+  environment_or_substrate: Containerized software repositories and test execution.
+  verifier_or_reward: Unit-test pass/fail behavior in the task environment.
+  terminal_predicate: Patch passes required tests without regressions.
+recipe_metadata:
+  base_model: SWE-agent-LM-32B
+  teacher: Agent trajectories and repository test outcomes
+  generator: Automated task generation from repositories.
+  filtering_rule: Keep tasks with reproducible environments and valid tests.
+  sampling_protocol: 50K instances from 128 repositories in the original Python release.
+  rollout_count: null
+  temperature: null
+  inference_budget: Agent rollouts need explicit tool and token budgets.
+  optimizer_or_scaffold: SFT of agent trajectories and executable evaluation.
+audit:
+  source_mixture: Official paper, SWE-smith site/repository, and SWE-bench organization dataset.
+  split: Treat repository-level partitions and SWE-bench evaluation as separate.
+  decontamination: Audit repository commits, PR/issue leakage, tests, and evaluation overlap.
+  license: Verify per-repository licenses and the dataset release terms.
+  lineage: 'Primary source: https://arxiv.org/abs/2504.21798'
+  known_failure_modes:
+  - Repository contamination
+  - Fragile environments
+  - Test suites can under-specify intended behavior
+  citation_status: verified
+  confidence: high
+  notes: Official documentation identifies 50K+ Hugging Face tasks and trajectories.
+inclusion_reason: A major public agent-training dataset where executable environments define reward and evaluation.
+related: []
+tags:
+- agent-training
+- software-engineering
+- executable-environment
+one_line: SWE-smith scales executable software-engineering tasks and trajectories for agent training.
+why_it_matters: It makes environment construction and trajectory data first-class training objectives.
+status: verified
+needs: []
+one_line_summary: SWE-smith scales executable software-engineering tasks and trajectories for agent training.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper
+  venue: null
+  project: null
+  code: null
+  and data checked.: null
+category_ids:
+- training_usage_optimization_objectives

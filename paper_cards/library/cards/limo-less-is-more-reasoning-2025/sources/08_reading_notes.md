@@ -1,0 +1,1 @@
+The durable lesson is that post-training examples may activate existing knowledge rather than replace pretraining. The 817-sample scale and AIME/MATH scores are concrete anchors, but “less is more” is conditional on the base model, curation process, trace form, and clean evaluation boundary.

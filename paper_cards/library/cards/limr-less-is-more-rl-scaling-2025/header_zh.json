@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LIMR 用 Learning Impact Measurement 选择 1,389 条高价值样本，研究 RLVR 的数据效率。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "RL 训练样本选择与数据扩展研究",
+  "best_for_ch": "研究 RLVR、课程/样本选择和训练成本优化的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yixin Ye 等（GAIR）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

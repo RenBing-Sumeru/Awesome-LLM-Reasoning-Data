@@ -1,0 +1,147 @@
+id: openthoughts-data-recipes-2025
+title: 'OpenThoughts: Data Recipes for Reasoning Models'
+year: 2025
+venue: arXiv 2025
+authors:
+- Etash Guha
+- Ryan Marten
+- Sedrick Keh
+- Negin Raoof
+- Georgios Smyrnis
+- Hritik Bansal
+- Marianna Nezhurina
+- Jean Mercat
+- Trung Vu
+- Zayne Sprague
+- Ashima Suvarna
+- Benjamin Feuer
+- Liangyu Chen
+- Zaid Khan
+- Eric Frankel
+- Sachin Grover
+- Caroline Choi
+- Niklas Muennighoff
+- Shiye Su
+- Wanjia Zhao
+- John Yang
+- Shreyas Pimpalgaonkar
+- Kartik Sharma
+- Charlie Cheng-Jie Ji
+- Yichuan Deng
+- Sarah Pratt
+- Vivek Ramanujan
+- Jon Saad-Falcon
+- Jeffrey Li
+- Achal Dave
+- Alon Albalak
+- Kushal Arora
+- Blake Wulfe
+- Chinmay Hegde
+- Greg Durrett
+- Sewoong Oh
+- Mohit Bansal
+- Saadia Gabriel
+- Aditya Grover
+- Kai-Wei Chang
+- Vaishaal Shankar
+- Aaron Gokaslan
+- Mike A. Merrill
+- Tatsunori Hashimoto
+- Yejin Choi
+- Jenia Jitsev
+- Reinhard Heckel
+- Maheswaran Sathiamoorthy
+- Alexandros G. Dimakis
+- Ludwig Schmidt
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- process_reward
+domains:
+- mathematical-reasoning
+- code-reasoning
+- scientific-reasoning
+training_use:
+- sft
+- distillation
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.04178
+  arxiv: https://arxiv.org/abs/2506.04178
+  venue: null
+  code: https://github.com/open-thoughts/open-thoughts
+  data: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+  project: https://openthoughts.ai
+  huggingface: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+  doi: null
+data_object:
+  prompt_source: Math, code, and science questions selected through controlled data-pipeline experiments.
+  trace_author: QwQ-32B annotations generated for selected questions.
+  answer_format: Prompt, reasoning trace, and task-specific answer fields.
+  process_fields:
+  - question
+  - source
+  - filtered_pool
+  - annotation
+  - domain
+  environment_or_substrate: Distillation/SFT recipe evaluated with OpenThinker models.
+  verifier_or_reward: Data filtering and evaluation protocol; not a single universal formal verifier.
+  terminal_predicate: Quality-filtered trace retained by the selected recipe and measured on benchmarks.
+recipe_metadata:
+  base_model: OpenThinker3-7B
+  teacher: QwQ-32B
+  generator: Source selection, filtering, deduplication, and 16x annotation pipeline.
+  filtering_rule: 1,000+ ablations select sourcing, filtering, and annotation strategies.
+  sampling_protocol: 75K selected questions expanded to 1.2M annotated examples.
+  rollout_count: 16
+  temperature: null
+  inference_budget: Training data recipe is the focus; report model evaluation budgets separately.
+  optimizer_or_scaffold: Large-scale reasoning SFT/distillation.
+audit:
+  source_mixture: Official arXiv paper, OpenThoughts site and repository, and OpenThoughts organization dataset.
+  split: 850K math, 250K code, and 100K science records in the published dataset.
+  decontamination: Preserve source/selection provenance and check benchmark overlap by domain.
+  license: Apache-2.0 on the official dataset.
+  lineage: 'Primary source: https://arxiv.org/abs/2506.04178'
+  known_failure_modes:
+  - Teacher contamination risk
+  - Synthetic trace style concentration
+  - Data recipe may be model-specific
+  citation_status: verified
+  confidence: high
+  notes: Dataset card documents the official paper and 1.2M data-recipe pipeline.
+inclusion_reason: A broad released distillation/SFT recipe with ablations that directly target data-use decisions.
+related: []
+tags:
+- sft
+- distillation
+- data-recipes
+- scaling
+one_line: OpenThoughts systematically ablates how open reasoning data should be sourced, filtered, and annotated for SFT.
+why_it_matters: It is a cross-domain empirical reference for reasoning-data optimization.
+status: verified
+needs: []
+one_line_summary: OpenThoughts systematically ablates how open reasoning data should be sourced, filtered, and annotated for
+  SFT.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper
+  project: null
+  code: null
+  and data checked.: null
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,3 @@
+Local Average Log Probability (LALP) replaces global average log probability with a score over segmented reasoning steps. For every step, the student sees the prompt and only a small window of preceding steps; the method averages these local token probabilities, so a verbose trace cannot dominate merely because its full document is globally fluent.
+
+The data object is an answer-verified teacher response plus its step boundaries and student-side local score. LALP is used both to choose a teacher before fine-tuning and to select one response per prompt from a mixed pool. Final-answer correctness controls candidate validity; the local score decides which valid supervision is most suitable for the student.

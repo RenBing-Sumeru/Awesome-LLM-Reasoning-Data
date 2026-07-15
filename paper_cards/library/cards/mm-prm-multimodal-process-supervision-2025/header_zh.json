@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MM-PRM 从 1 万图文数学题生成 70 万以上步骤级标注，用于训练多模态过程奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态过程监督与 PRM 数据构造论文",
+  "best_for_ch": "研究图文推理、MCTS 标注和步骤级奖励模型的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Lingxiao Du 等（ModalMinds 项目）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

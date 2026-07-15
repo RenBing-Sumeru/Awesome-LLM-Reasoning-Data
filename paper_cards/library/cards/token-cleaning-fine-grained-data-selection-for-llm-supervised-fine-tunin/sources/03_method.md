@@ -1,0 +1,3 @@
+The experiments start with 300K curated instruction examples: 50K each from Flan_v2, Open Assistant 1, Stanford Alpaca, Dolly, and WizardLM. For each response token, the pipeline calculates a loss-disparity influence score and retains the top proportion; the main setting keeps 60% of tokens. Prompt tokens remain outside the SFT loss as usual.
+
+Fixed cleaning uses one base/reference pair for the full pool. Self-evolving cleaning partitions the data into five 10K subsets after warm-up, repeatedly scores the next subset with a fixed base and latest reference, masks low-score tokens, and fine-tunes the reference on the cleaned subset. The final model is evaluated on seven downstream tasks including TruthfulQA, TydiQA, MMLU, HellaSwag, ARC-C, and BoolQ.

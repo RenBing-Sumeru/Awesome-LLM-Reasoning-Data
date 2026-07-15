@@ -1,0 +1,3 @@
+For each seed problem, the policy generates and expands candidate steps under MCTS. An answer checker evaluates leaves, the search procedure assigns path-level supervision, and sampled paths are formatted as PRM records. The trained reward model scores competing candidates in a fixed Best-of-N setup.
+
+Reproduction requires the MM-K12 revision, image preprocessing, policy checkpoint, answer-checker behavior, MCTS configuration, label propagation rule, candidate count, and benchmark split. A final-answer check anchors the pipeline but does not independently validate every intermediate statement.

@@ -1,0 +1,1 @@
+Remember the audit sequence: object first, feedback second, optimization third, evidence last. A paper title can identify a promising direction, but only the official source can establish the actual data schema, verification boundary, and released artifacts.

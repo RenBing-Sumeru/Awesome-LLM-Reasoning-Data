@@ -1,0 +1,3 @@
+The method scores a token by the influence of a model update: the loss disparity between a base model and a stronger reference model under the same context. A higher negative-influence score means the reference model has improved confidence on that token, which the paper uses as evidence that it carries useful task-specific supervision.
+
+A threshold converts scores into a training mask. The fixed-model variant scores the whole pool once; the self-evolving variant warms up on an initial split, cleans the next split with the current reference, then updates that reference on the cleaned data. The supervised object is therefore not an entire answer but selected positions inside it.

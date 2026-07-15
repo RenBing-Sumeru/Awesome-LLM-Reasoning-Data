@@ -1,0 +1,1 @@
+Teacher traces may contain subtle errors or stylistic bias, and a mixed-domain dataset can hide regressions in an individual domain. Many ablations do not automatically settle provenance, licensing, or benchmark overlap. Reuse requires a pinned release, per-domain source and license review, and time- and content-based decontamination against target evaluations.

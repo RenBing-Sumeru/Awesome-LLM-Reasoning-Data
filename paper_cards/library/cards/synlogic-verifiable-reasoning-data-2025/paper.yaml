@@ -1,0 +1,105 @@
+id: synlogic-verifiable-reasoning-data-2025
+title: 'SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond'
+year: 2025
+venue: arXiv 2025
+authors:
+- Junteng Liu
+- Yuanxiang Fan
+- Zhuo Jiang
+- Han Ding
+- Yongyi Hu
+- Chi Zhang
+- Yiqi Shi
+- Shitong Weng
+- Aili Chen
+- Shiqi Chen
+- Yunan Huang
+- Mozhi Zhang
+- Pengyu Zhao
+- Junjie Yan
+- Junxian He
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- logical-reasoning
+- reinforcement-learning
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.19641
+  arxiv: https://arxiv.org/abs/2505.19641
+  venue: null
+  code: https://github.com/MiniMax-AI/SynLogic
+  data: https://huggingface.co/datasets/MiniMaxAI/SynLogic
+  project: https://github.com/MiniMax-AI/SynLogic
+  huggingface: https://huggingface.co/datasets/MiniMaxAI/SynLogic
+  doi: null
+data_object:
+  prompt_source: Programmatically synthesized logical reasoning tasks across 35 task families.
+  trace_author: Tasks are generated from controllable templates; RL traces are produced online.
+  answer_format: Task prompt, structured answer, and automatic verifier.
+  process_fields:
+  - task_type
+  - difficulty
+  - prompt
+  - answer
+  - verifier
+  environment_or_substrate: Rule-based task generators and automatic verifiers for RLVR.
+  verifier_or_reward: Simple task-specific rules evaluate correctness.
+  terminal_predicate: Candidate answer satisfies the task verifier.
+recipe_metadata:
+  base_model: 7B and 32B models
+  teacher: None; reward is programmatic.
+  generator: Controllable synthesis across 35 logic-task generators.
+  filtering_rule: Easy configuration targets 7B models; hard configuration covers all 35 tasks for 32B models.
+  sampling_protocol: Official dataset provides easy and hard configurations.
+  rollout_count: null
+  temperature: null
+  inference_budget: Treat RL rollout budget independently from task difficulty.
+  optimizer_or_scaffold: RL with verifiable rewards.
+audit:
+  source_mixture: Official arXiv paper, MiniMax GitHub repository, and MiniMaxAI Hugging Face dataset.
+  split: Easy has about 16K train instances; hard has about 33K, with 35 task types overall.
+  decontamination: Synthetic generator configuration and verifier version must be recorded.
+  license: MIT on the official dataset.
+  lineage: 'Primary source: https://arxiv.org/abs/2505.19641'
+  known_failure_modes:
+  - Synthetic logic distribution may differ from natural reasoning
+  - Reward is only as complete as the verifier
+  - Transfer claims require domain-held-out tests
+  citation_status: verified
+  confidence: high
+  notes: Official data card identifies task configurations, sample counts, verifiers, and paper.
+inclusion_reason: A released RLVR data resource whose difficulty and task mix are explicitly training knobs.
+related: []
+tags:
+- rlvr
+- verifiable-data
+- logical-reasoning
+one_line: SynLogic makes task family, difficulty, and programmatic reward explicit levers for RL reasoning training.
+why_it_matters: It broadens outcome-verifiable reasoning data beyond math-only settings.
+status: verified
+needs: []
+one_line_summary: SynLogic makes task family, difficulty, and programmatic reward explicit levers for RL reasoning training.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper
+  code: null
+  and dataset checked.: null
+category_ids:
+- training_usage_optimization_objectives

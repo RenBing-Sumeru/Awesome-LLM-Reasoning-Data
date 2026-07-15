@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LIMO 以 817 条高质量数学推理样本检验少量精筛数据能否替代大规模 SFT 语料。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理 SFT 数据效率论文（COLM 2025）",
+  "best_for_ch": "研究 SFT 样本选择、数据规模和推理蒸馏的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yixin Ye 等（GAIR）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

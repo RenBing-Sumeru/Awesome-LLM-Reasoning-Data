@@ -1,0 +1,108 @@
+id: token-cleaning-fine-grained-data-selection-for-llm-supervised-fine-tunin
+title: 'Token Cleaning: Fine-Grained Data Selection for LLM Supervised Fine-Tuning'
+year: 2025
+venue: ICML 2025
+authors:
+- Jinlong Pang
+- Na Di
+- Zhaowei Zhu
+- Jiaheng Wei
+- Hao Cheng
+- Chen Qian
+- Yang Liu
+source_role:
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- instruction-following
+training_use:
+- sft
+- evaluation
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2502.01968
+  arxiv: https://arxiv.org/abs/2502.01968
+  venue: https://openreview.net/forum?id=tXkOUS3vLS
+  code: https://github.com/UCSC-REAL/TokenCleaning
+  data: null
+  project: https://github.com/UCSC-REAL/TokenCleaning
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: A 300K high-quality SFT pool drawn from five public instruction datasets.
+  trace_author: Original dataset authors; the method computes a per-response-token
+    selection mask.
+  answer_format: Instruction-response sequence with retained and masked response tokens.
+  process_fields:
+  - base_model
+  - reference_model
+  - token_influence
+  - threshold
+  - mask
+  environment_or_substrate: LLaMA-3.2-3B SFT and downstream benchmark evaluation.
+  verifier_or_reward: Token quality is the negative loss-disparity influence between
+    base and reference models.
+  terminal_predicate: A response token is retained when its score clears the selected
+    proportion threshold.
+recipe_metadata:
+  base_model: LLaMA-3.2-3B in the reported main experiments.
+  teacher: A warm-up or iteratively updated reference model.
+  generator: Influence-guided token scoring from loss disparities.
+  filtering_rule: Keep a fixed selected proportion of highest-scoring response tokens;
+    the main experiments use 0.6.
+  sampling_protocol: 300K samples total; self-evolving cleaning uses five sequential
+    10K subsets.
+  rollout_count: null
+  temperature: null
+  inference_budget: To be verified from the official paper.
+  optimizer_or_scaffold: Fixed-model one-shot cleaning or self-evolving sequential
+    cleaning.
+audit:
+  source_mixture: Five 50K-sample subsets from Flan_v2, Open Assistant 1, Stanford
+    Alpaca, Dolly, and WizardLM.
+  split: Self-evolving cleaning divides the 300K pool into five 10K-sample subsets.
+  decontamination: Underlying SFT-source provenance and benchmark overlap require
+    separate checks.
+  license: Check the TokenCleaning repository and all five source datasets separately.
+  lineage: 'Primary source: https://openreview.net/forum?id=tXkOUS3vLS'
+  known_failure_modes:
+  - A fixed token-retention ratio may remove rare but useful supervision.
+  - Self-evolving cleaning can amplify an early reference model’s bias.
+  - Influence scores require models with a shared tokenizer.
+  citation_status: link_verified
+  confidence: high
+  notes: Official arXiv HTML paper and linked GitHub repository checked.
+inclusion_reason: A concrete SFT data-cleaning method that selects response tokens
+  by model-update influence.
+related: []
+tags:
+- sft
+- token-selection
+- data-cleaning
+one_line: Token Cleaning removes low-influence response tokens from SFT supervision
+  while retaining task-specific signals.
+why_it_matters: It makes the SFT loss mask a data-selection decision below the example
+  level.
+status: verified
+needs: []
+one_line_summary: Token Cleaning removes low-influence response tokens from SFT supervision
+  while retaining task-specific signals.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: User-supplied official paper URL; remaining metadata needs source verification.
+  venue: null
+  project: null
+  code: null
+  and data checked.: null
+category_ids:
+- training_usage_optimization_objectives

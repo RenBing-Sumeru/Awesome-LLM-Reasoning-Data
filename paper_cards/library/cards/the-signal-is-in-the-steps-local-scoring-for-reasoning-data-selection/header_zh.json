@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LALP 用学生模型对局部推理步骤评分，筛选更能迁移的长思维链训练数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理蒸馏的数据选择与步骤级评分论文（arXiv 2025）",
+  "best_for_ch": "需要从多个教师的长推理轨迹中筛选 SFT 数据的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hoang Anh Just、Myeongseob Ko、Ruoxi Jia（Virginia Tech）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

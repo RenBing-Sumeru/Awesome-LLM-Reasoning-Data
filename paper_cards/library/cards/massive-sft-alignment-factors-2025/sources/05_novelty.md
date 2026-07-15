@@ -1,0 +1,3 @@
+Its novelty is the experimental object, not a newly invented SFT loss. Earlier recipe comparisons often change several ingredients at once and leave readers with a narrative recommendation. Here the configuration itself becomes a first-class record, so data choice, trainable capacity, and optimization settings can be inspected as separable causes.
+
+That change matters because the released evidence can support conditional decisions. A later contributor can identify the slice closest to a target model and budget, then test whether the observed tendency survives under a new dataset. It does not make the study a source-data release, and it does not remove the need to inspect the licenses and provenance of the ten original datasets.

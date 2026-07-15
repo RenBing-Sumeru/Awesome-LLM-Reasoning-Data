@@ -1,0 +1,3 @@
+The paper evaluates on List Function, 1D-ARC, ACRE, and MiniSCAN, separating task sources by holding out ten percent for testing. Across three student backbones, ReDis beats equivalent few-shot prompting baselines on all reported tasks, so the claim is tested on more than one inductive format.
+
+The sharpest comparison holds the hypothesis search space close to GPT-4o's. A LLaMA-3-based ReDis system is reported to improve relatively over GPT-4o by 23.2% on 1D-ARC, 2.8% on ACRE, and 66.6% on MiniSCAN, while being more token-efficient on three tasks. These numbers support the pipeline under these datasets and search conditions, not a general claim that teacher-free inductive reasoning is solved.

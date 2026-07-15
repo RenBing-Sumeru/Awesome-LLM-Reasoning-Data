@@ -1,0 +1,3 @@
+Large-scale reasoning RL is difficult to reproduce because the choice of training prompts, reward parsing, rollout sampling, policy update, and systems implementation is often hidden. Matching a base model and a math benchmark is therefore insufficient to identify why a reported result was obtained.
+
+DAPO asks whether these components can be exposed as one inspectable system. It turns curated math prompts with integer targets into online RL tasks and releases the associated algorithm, code, and processed data, so that a proposed improvement can be tied to an explicit reward and training procedure.

@@ -1,0 +1,101 @@
+id: redis-reasoning-distillation-2025
+title: 'Improving In-Context Learning with Reasoning Distillation'
+year: 2025
+venue: arXiv preprint
+authors:
+- Nafis Sadeq
+- Xin Xu
+- Zhouhang Xie
+- Julian McAuley
+- Byungkyu Kang
+- Prarit Lamba
+- Xiang Gao
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- pairwise_preference
+domains:
+- inductive-reasoning
+- in-context-learning
+training_use:
+- sft
+- preference_learning
+- distillation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.10647
+  arxiv: https://arxiv.org/abs/2504.10647
+  venue: null
+  code: https://github.com/NafisSadeq/reasoning-distillation
+  data: https://github.com/NafisSadeq/reasoning-distillation
+  project: https://github.com/NafisSadeq/reasoning-distillation
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.10647
+data_object:
+  prompt_source: Few-shot inductive-reasoning tasks from List Function, 1D-ARC, ACRE, and MiniSCAN.
+  trace_author: GPT-4o generates candidate natural-language hypotheses and rule-following outputs.
+  answer_format: Rule-generation examples, rule-following examples, and chosen/rejected hypothesis pairs.
+  process_fields:
+  - demonstrations
+  - candidate hypothesis
+  - rule-following result
+  - noisy fitness score
+  - chosen/rejected pair
+  environment_or_substrate: Inductive reasoning tasks with held-out input-output instances.
+  verifier_or_reward: Teacher-mediated rule-following checks estimate how many demonstrations a candidate hypothesis satisfies.
+  terminal_predicate: A retained hypothesis passes the stated quality threshold or forms a sufficiently separated preference pair.
+recipe_metadata:
+  base_model: LLaMA-3, Mistral, and Qwen student backbones.
+  teacher: GPT-4o.
+  generator: Teacher-generated hypotheses and rule-following responses.
+  filtering_rule: Retain SFT hypotheses that satisfy at least half of a task's demonstrations; construct preference pairs with a score-gap threshold.
+  sampling_protocol: The paper reports 39,736 rule-generation SFT, 88,369 rule-following SFT, and 108,768 preference examples.
+  rollout_count: 50 candidate hypotheses per task during data augmentation.
+  temperature: null
+  inference_budget: Hypothesis search space is an explicit inference-time efficiency variable.
+  optimizer_or_scaffold: LoRA SFT followed by preference alignment; ORPO is best overall in the reported setting.
+audit:
+  source_mixture: Official arXiv HTML paper and its linked repository.
+  split: Ten percent of each task source is held out for testing; the rest supplies augmentation inputs.
+  decontamination: Task-level train/test separation should be checked when reusing the generated corpus.
+  license: Verify the repository and each underlying task dataset before redistribution.
+  lineage: 'Primary source: https://arxiv.org/abs/2504.10647'
+  known_failure_modes:
+  - Fitness is noisy because a language model performs rule following.
+  - The generated rules are bounded by teacher behavior and selected task families.
+  - Reported gains may not transfer to semantic tasks with no clear demonstration contract.
+  citation_status: verified
+  confidence: high
+  notes: The official paper states that code, dataset, and checkpoints are released through the linked repository.
+inclusion_reason: A concrete pipeline for turning teacher hypotheses into filtered SFT and preference data for inductive reasoning.
+related: []
+tags:
+- reasoning-distillation
+- synthetic-rationales
+- preference-data
+one_line: ReDis distills rule generation and rule following into filtered SFT and preference examples for inductive in-context learning.
+why_it_matters: It treats the quality of an intermediate rule as a training signal instead of only imitating final answers.
+status: verified
+needs: []
+one_line_summary: ReDis distills rule generation and rule following into filtered SFT and preference examples for inductive in-context learning.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and linked repository checked.
+  venue: null
+  project: null
+  code: null
+  and data checked.: null
+category_ids:
+- training_usage_optimization_objectives

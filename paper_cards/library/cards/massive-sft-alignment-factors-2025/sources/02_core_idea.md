@@ -1,0 +1,3 @@
+The central idea is to treat SFT quality as a factorized empirical question. Instead of naming one corpus or one tuning method as generally best, the study varies data domains, data scale, full versus LoRA adaptation, trainable layers, epochs, and learning-rate schedules across a broad collection of model families.
+
+The resulting object is a table of model configurations and evaluation outcomes. That table lets a practitioner ask a narrower question—such as whether adding data helps a chosen family under LoRA—without silently substituting a different base model or training budget. The public release supplies the consolidated evaluation side of this object, not a new unified source corpus.

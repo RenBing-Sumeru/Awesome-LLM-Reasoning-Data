@@ -1,0 +1,3 @@
+Few-shot demonstrations can show a language model what inputs and outputs look like without teaching the rule that connects them. In inductive tasks, plain imitation can therefore improve an answer superficially while leaving the student unable to form or test a reusable hypothesis. The missing training object is an account of the intermediate rule and evidence for whether it explains the demonstrations.
+
+ReDis asks how a black-box teacher can provide that object when ground-truth rules are unavailable. It turns teacher-generated candidate rules and their execution on demonstrations into filtered supervised targets and preference pairs, aiming to make a student both propose rules and follow them on unseen cases.

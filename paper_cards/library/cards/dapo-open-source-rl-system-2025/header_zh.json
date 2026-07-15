@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DAPO 公开 17K 可验证数学提示、动态采样策略与大规模 RLVR 训练系统。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模推理 RLVR 系统与数据论文（ICLR 2026）",
+  "best_for_ch": "需要复现 GRPO 类训练、可验证奖励与动态采样的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Qiying Yu 等（ByteDance、Tsinghua University 等）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

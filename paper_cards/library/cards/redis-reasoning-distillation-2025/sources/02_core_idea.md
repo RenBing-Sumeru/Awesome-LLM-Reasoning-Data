@@ -1,0 +1,3 @@
+ReDis distills a two-stage reasoning behavior: generate a natural-language hypothesis from demonstrations, then use that hypothesis to produce an answer. GPT-4o supplies multiple candidate hypotheses and performs rule following, which yields a noisy estimate of how well each rule accounts for the available examples.
+
+That estimate changes data use. Rules that clear a satisfaction threshold become SFT examples, while rules with a sufficiently different score become chosen and rejected examples for preference alignment. The feedback is not a human label or a final-answer-only reward; it is a task-local signal about whether a proposed rule survives the demonstrations.

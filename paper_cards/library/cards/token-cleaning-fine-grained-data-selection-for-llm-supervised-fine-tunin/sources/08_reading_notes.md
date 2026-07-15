@@ -1,0 +1,1 @@
+Remember the level change: the paper does not rank answers, it ranks predicted response tokens. The influence score comes from loss disparity, the operational decision is a token mask, and the key trade-off is lower label noise against fewer learning positions. Fixed cleaning is the stable baseline; self-evolving cleaning is the higher-upside but feedback-sensitive variant.

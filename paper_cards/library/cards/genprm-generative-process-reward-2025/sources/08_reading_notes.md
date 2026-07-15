@@ -1,0 +1,1 @@
+The key idea is not simply a 23K dialogue release, but a decision interface built from progress estimation, generated analysis, and verification. GenPRM makes a process reward expandable at inference time, yet its apparent interpretability is useful only when data lineage, verifier coverage, and benchmark isolation are kept visible.

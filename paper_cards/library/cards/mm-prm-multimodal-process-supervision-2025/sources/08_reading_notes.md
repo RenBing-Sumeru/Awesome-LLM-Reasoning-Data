@@ -1,0 +1,1 @@
+The important point is how answer verification flows back through the search tree, not the annotation count alone. The 10K seeds, MCTS settings, checker, and candidate budget jointly define what the 700K labels mean; improved path ranking is useful evidence, not a guarantee of human-certified reasoning.

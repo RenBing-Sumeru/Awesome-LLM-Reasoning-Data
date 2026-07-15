@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SynLogic 合成 35 类可自动验证逻辑任务，以可控难度和任务配比支持 RLVR 训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可验证逻辑推理数据与 RLVR 训练论文",
+  "best_for_ch": "需要扩展数学之外的 RLVR 数据、规则验证器或难度课程的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Junteng Liu 等（MiniMax）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

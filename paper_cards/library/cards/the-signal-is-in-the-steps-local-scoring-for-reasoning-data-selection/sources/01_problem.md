@@ -1,0 +1,3 @@
+Reasoning distillation often offers several answer-correct traces for one prompt, especially when the pool combines teachers with different verbosity and styles. Selecting the trace with the highest whole-response probability under the student sounds model-aware, yet it can reward familiar wording and long-range self-conditioning instead of the transitions the student can reuse.
+
+This paper asks which correct trace should enter SFT when teachers are heterogeneous and solutions are long. It argues that students generalize by recombining locally familiar reasoning steps, not by copying an entire trajectory, and therefore recasts data selection as a step-level learnability problem.

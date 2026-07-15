@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenThoughts 通过 1,000 多次消融确定推理数据的来源、筛选与标注配方，并发布 120 万条数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放推理数据配方、蒸馏与 SFT 规模研究",
+  "best_for_ch": "研究推理数据构造、蒸馏、SFT 数据配比和数据消融的贡献者。",
+  "confidence_ch": "高",
+  "authors_ch": "Etash Guha 等（OpenThoughts 多机构协作）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

@@ -1,0 +1,93 @@
+id: limr-less-is-more-rl-scaling-2025
+title: 'LIMR: Less is More for RL Scaling'
+year: 2025
+venue: arXiv 2025
+authors:
+- Xuefeng Li
+- Haoyang Zou
+- Pengfei Liu
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+- reinforcement-learning
+training_use:
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.11886
+  arxiv: https://arxiv.org/abs/2502.11886
+  venue: null
+  code: https://github.com/GAIR-NLP/LIMR
+  data: https://huggingface.co/datasets/GAIR/LIMR
+  project: https://github.com/GAIR-NLP/LIMR
+  huggingface: https://huggingface.co/datasets/GAIR/LIMR
+  doi: null
+data_object:
+  prompt_source: Mathematical reasoning prompts selected from a larger RL corpus.
+  trace_author: Prompts paired with verifiable final answers for online RL.
+  answer_format: Prompt, answer, source, and sample identifier.
+  process_fields:
+  - id
+  - prompt
+  - answer
+  - source
+  environment_or_substrate: Rule-based mathematical outcome verification during online RL.
+  verifier_or_reward: Correctness of the final mathematical answer.
+  terminal_predicate: Verifiable final answer receives positive reward.
+recipe_metadata:
+  base_model: Qwen-family 7B-scale reasoning models
+  teacher: None; the paper studies online RL sample selection.
+  generator: Learning Impact Measurement ranks training samples.
+  filtering_rule: Retain the 1,389 high-impact samples from an 8,523-sample collection.
+  sampling_protocol: Compare selected and full training sets under matched RL settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: Keep rollout/evaluation budgets explicit when reproducing comparisons.
+  optimizer_or_scaffold: RL training with Learning Impact Measurement tooling.
+audit:
+  source_mixture: Official arXiv paper, GAIR repository, and GAIR Hugging Face dataset.
+  split: Released LIMR training set has 1,389 records.
+  decontamination: Inspect prompt origins and held-out benchmark overlap.
+  license: Verify the dataset card and upstream problem licenses before redistribution.
+  lineage: 'Primary source: https://arxiv.org/abs/2502.11886'
+  known_failure_modes:
+  - Impact estimates depend on base model
+  - Math-only conclusions may not transfer
+  - Outcome reward does not assess reasoning steps
+  citation_status: verified
+  confidence: high
+  notes: Official paper, repository, and dataset page were checked.
+inclusion_reason: A direct RLVR data-selection study, with released selected prompts and measurement tooling.
+related: []
+tags:
+- rlvr
+- data-selection
+- optimization
+one_line: LIMR measures the marginal training impact of RL prompts instead of assuming more prompts are better.
+why_it_matters: It turns sample value into a training optimization target.
+status: verified
+needs: []
+one_line_summary: LIMR measures the marginal training impact of RL prompts instead of assuming more prompts are better.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper
+  code: null
+  and data checked.: null
+category_ids:
+- training_usage_optimization_objectives

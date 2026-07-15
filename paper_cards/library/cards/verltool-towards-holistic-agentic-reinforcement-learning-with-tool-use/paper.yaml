@@ -1,0 +1,81 @@
+id: verltool-towards-holistic-agentic-reinforcement-learning-with-tool-use
+title: 'VerlTool: Towards Holistic Agentic Reinforcement Learning with Tool Use'
+year: 2026
+venue: Official paper page
+authors: []
+source_role:
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+training_use:
+- unknown
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://openreview.net/forum?id=g2LCOW43Md
+  arxiv: null
+  venue: https://openreview.net/forum?id=g2LCOW43Md
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: To be verified from the official paper.
+  trace_author: To be verified from the official paper.
+  answer_format: To be verified from the official paper.
+  process_fields:
+  - to_be_verified
+  environment_or_substrate: To be verified from the official paper.
+  verifier_or_reward: To be verified from the official paper.
+  terminal_predicate: To be verified from the official paper.
+recipe_metadata:
+  base_model: To be verified from the official paper.
+  teacher: To be verified from the official paper.
+  generator: To be verified from the official paper.
+  filtering_rule: To be verified from the official paper.
+  sampling_protocol: To be verified from the official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: To be verified from the official paper.
+  optimizer_or_scaffold: To be verified from the official paper.
+audit:
+  source_mixture: Official paper link supplied for this Card.
+  split: To be verified from the official paper.
+  decontamination: To be verified from the official paper.
+  license: To be verified from the official paper and linked artifacts.
+  lineage: 'Primary source: https://openreview.net/forum?id=g2LCOW43Md'
+  known_failure_modes:
+  - Artifact and metadata verification pending
+  citation_status: link_verified
+  confidence: medium
+  notes: User-supplied official paper URL; remaining metadata needs source verification.
+inclusion_reason: The paper studies a reasoning post-training optimization decision.
+related: []
+tags:
+- reasoning
+- post-training
+one_line: The work studies a reasoning post-training optimization decision.
+why_it_matters: It makes a training-use decision explicit enough to inspect and verify.
+status: partial
+needs:
+- official_metadata_verification
+one_line_summary: The work studies a reasoning post-training optimization decision.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: User-supplied official paper URL; remaining metadata needs source verification.
+  venue: null
+  project: null
+  code: null
+  and data checked.: null
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,3 @@
+The novelty is to treat response-token masking as the unit of data curation for SFT. Sample filters, reward scores, and global quality ratings decide whether an example survives; Token Cleaning keeps the example but edits which predicted positions create gradients, using model-update influence rather than frequency or a judge label.
+
+It also separates a conservative one-shot protocol from a sequential adaptive protocol and supplies a theory for their different behavior. The method is not a new source dataset or a proof that every low-score token is wrong. A reproducer must retain the base/reference identities, tokenizer compatibility, threshold, warm-up split, and sequential ordering.
