@@ -1,0 +1,3 @@
+Preference alignment is often staged: supervised fine-tuning first learns desirable demonstrations, then a separate method uses preference pairs to adjust the policy. This division duplicates training machinery and often retains a frozen reference model even though the original supervised objective already contains much of the desired behavior.
+
+ORPO asks whether the rejected response can be made useful inside supervised fine-tuning itself. The goal is to consume a favored and disfavored answer together in one objective, so that instruction learning and preference discrimination do not have to be isolated as separate phases.

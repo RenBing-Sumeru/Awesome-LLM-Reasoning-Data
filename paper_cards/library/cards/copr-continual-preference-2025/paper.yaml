@@ -1,0 +1,72 @@
+id: copr-continual-preference-2025
+title: 'COPR: Continual Human Preference Learning via Optimal Policy Regularization'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Han Zhang, Lin Gui, Yu Lei, Yuanzhao Zhai, Yehong Zhang, Zhuo Zhang, Yulan He, Hui Wang, Yue Yu, Kam-Fai Wong, Bin Liang, Ruifeng Xu]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, continual_learning, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.281/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.281/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.281
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.281/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Sequential preference tasks in the paper's continual-alignment benchmark.
+  trace_author: Human preference datasets and the current and historical policy distributions derived during sequential learning.
+  answer_format: Prompt, chosen response, rejected response, task identity, current-policy likelihood, historical-policy likelihood, moderate reward, and constrained objective terms.
+  process_fields: [prompt, chosen, rejected, task, current_policy, historical_policy, moderate_reward, constraint]
+  environment_or_substrate: Offline continual preference optimization across task- and domain-incremental settings.
+  verifier_or_reward: Pairwise preference loss is converted into a moderate reward; historical optimal policies form regularization constraints.
+  terminal_predicate: Improve the new task while satisfying constraints that preserve earlier optimal-policy behavior and output diversity.
+recipe_metadata:
+  base_model: LLaMA-2-7B-Chat in the reported continual-alignment experiments.
+  teacher: Sequential human preference feedback datasets and historical optimal policies.
+  generator: No new response generator is central; the method consumes sequential preference tasks.
+  filtering_rule: No sample deletion rule; historical policy sampling distributions constrain the optimization of newly arriving preference data.
+  sampling_protocol: Train sequentially in task-incremental and domain-incremental continual-learning settings.
+  rollout_count: Not reported as a central construction parameter.
+  temperature: Not reported.
+  inference_budget: The method avoids an RL loop but requires access to historical-policy information during continual updates.
+  optimizer_or_scaffold: Moderate-reward objective and Lagrangian-dual constrained optimization.
+audit:
+  source_mixture: Sequential preference datasets used in the continual-alignment benchmark.
+  split: The paper evaluates task-incremental and domain-incremental learning, including new and historical tasks.
+  decontamination: No broad contamination audit is reported.
+  license: Verify every source preference dataset and model license before reconstructing the sequence.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.281/'
+  known_failure_modes: [Historical-policy storage or access can be costly, Constraint tuning can be unstable, Preference conflict is not resolved by the method alone, Evidence is limited to reported continual-alignment tasks]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, experiment tables, and limitations were checked on 2026-07-15; no official code or new data release is declared.
+inclusion_reason: It directly specifies how new preference records and historical preference information jointly enter an optimization objective over time.
+related: []
+tags: [continual-alignment, preference-learning, policy-regularization, data-sequences]
+status: verified
+one_line_summary: COPR constrains continual preference updates with historical optimal-policy distributions so new feedback can be learned without collapsing earlier preferences.
+reading_priority: useful
+paper_type: Continual preference-optimization and policy-regularization study
+best_for: Readers building alignment systems that receive preference data over time and need to retain earlier behavior while adapting to new tasks.
+confidence: high
+why_it_matters: It makes the arrival order and historical consumption of preference data explicit components of the training objective.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no official code or standalone data release is declared.
+category_ids: [training_usage_optimization_objectives]

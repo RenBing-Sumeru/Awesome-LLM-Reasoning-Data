@@ -1,0 +1,3 @@
+The ACL version reports that a 7B policy guided by the framework exceeds Qwen2.5-72B-Instruct by 8.6 percentage points and generalizes to seven out-of-distribution benchmarks. The paper also evaluates training data with answers from experts, web users, and other language models to test whether the reward interface works across different answer sources.
+
+These results support the proposed reference-based, model-judged reward contract in the reported settings. They do not show that every free-form reference is adequate, that the teacher judge is unbiased, or that the same soft reward remains calibrated after transfer to a new domain.

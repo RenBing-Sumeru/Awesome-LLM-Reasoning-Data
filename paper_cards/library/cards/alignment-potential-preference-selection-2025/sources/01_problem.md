@@ -1,0 +1,3 @@
+Offline preference optimization is highly sensitive to which response pairs it consumes. Existing selectors often favor either a large external reward margin or a small margin under the current policy, but the two signals can rank the same pair in opposite ways. Neither rule directly says how far the policy is from the preference behavior that the external reward model represents.
+
+This paper asks which pairs have the greatest remaining capacity to improve a policy's alignment. It reframes selection as measuring the difference between the current policy's implicit margin and a target explicit reward margin, then chooses records where closing that gap is expected to be most useful.

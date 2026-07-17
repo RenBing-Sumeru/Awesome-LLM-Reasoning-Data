@@ -1,0 +1,1 @@
+Xun Deng, Han Zhong, Rui Ai, Fuli Feng, Zheng Wang, and Xiangnan He. 2025. Less is More: Improving LLM Alignment via Preference Data Selection. Advances in Neural Information Processing Systems. https://arxiv.org/abs/2502.14560

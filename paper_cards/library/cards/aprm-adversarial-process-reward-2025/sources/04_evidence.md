@@ -1,0 +1,3 @@
+Across five mathematics benchmarks and matched test-time budgets, APRM reports an average 3.4-point improvement over the strongest PRM baseline. With GPT-OSS-120B, its average is 83.0 versus 81.7 for ReST-MCTS; with GPT-OSS-20B, it is 85.0 versus 82.3. The reported largest out-of-distribution gain is 5.3 points.
+
+The paper also compares prompting, static hard negatives, and MCTS-derived PRM data. These results support the narrower empirical claim that the adaptive generator produces more useful negatives than a fixed collection in the evaluated mathematical settings, although the work remains under review and needs independent replication.

@@ -1,0 +1,15 @@
+{
+  "title": "R-PRM: Reasoning-Driven Process Reward Modeling",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.679/"
+  },
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:22Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "同时比较批评、标量奖励与联合训练，是 Agent 轨迹反馈如何被消费的直接证据",
+    "updated_at": "2026-07-15T12:33:22Z"
+  }
+}

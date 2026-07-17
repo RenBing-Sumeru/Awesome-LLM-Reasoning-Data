@@ -1,0 +1,90 @@
+id: r-prm-reasoning-driven-process-reward-2025
+title: 'R-PRM: Reasoning-Driven Process Reward Modeling'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Shuaijie She
+- Junxiao Liu
+- Yifeng Liu
+- Jiajun Chen
+- Xin Huang
+- Shujian Huang
+source_role:
+- process_supervision
+verification_contract: judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- mathematical-reasoning
+training_use:
+- process_supervision
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.679/
+  arxiv: https://arxiv.org/abs/2503.21295
+  venue: https://aclanthology.org/2025.emnlp-main.679/
+  code: https://github.com/NJUNLP/R-PRM
+  data: https://huggingface.co/datasets/kevinpro/R-PRM
+  project: null
+  huggingface: https://huggingface.co/datasets/kevinpro/R-PRM
+  doi: null
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.679/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See official paper and release.
+  trace_author: As specified in the official paper.
+  answer_format: Process-supervision record described in the official paper.
+  process_fields:
+  - task
+  - trace
+  - step feedback
+  environment_or_substrate: See official paper.
+  verifier_or_reward: See official paper.
+  terminal_predicate: See official paper.
+recipe_metadata:
+  base_model: See official paper.
+  teacher: See official paper.
+  generator: See official paper.
+  filtering_rule: See official paper.
+  sampling_protocol: See official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not fully disclosed.
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See official release.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release and its pinned revision.
+  lineage: 'Primary source: https://aclanthology.org/2025.emnlp-main.679/'
+  known_failure_modes:
+  - Generated or learned process feedback can be miscalibrated.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, affiliation evidence, and official artifact links
+    checked; standalone data is null when no release was confirmed.
+inclusion_reason: The paper changes how process records, reward signals, or environment
+  feedback are consumed by post-training optimization.
+related: []
+tags:
+- post-training
+- process-supervision
+status: verified
+needs: []
+one_line_summary: R-PRM turns step evaluation into explicit reasoning, bootstraps
+  it from limited labels, and refines it with preference data.
+why_it_matters: It exposes a process-feedback object and its consumer in post-training.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

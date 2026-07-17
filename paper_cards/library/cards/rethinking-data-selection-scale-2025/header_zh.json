@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "这项大规模 SFT 审计发现，常见自评分选择器往往无法稳定优于重复随机抽样。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模监督微调数据选择复现实证论文（Findings of EMNLP 2025）",
+  "best_for_ch": "研究指令数据筛选、SFT 实证设计和数据选择消融的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tingyu Xia, Bowen Yu, Kai Dang, An Yang, Yuan Wu, Yuan Tian, Yi Chang, Junyang Lin",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:00:00Z"
+}

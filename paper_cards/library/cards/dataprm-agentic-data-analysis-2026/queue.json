@@ -1,0 +1,15 @@
+{
+  "title": "Rewarding the Scientific Process: Process-Level Reward Modeling for Agentic Data Analysis",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2604.24198"
+  },
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:39Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "环境探测和三元过程奖励为数据分析 Agent 提供了重要的过程反馈范式",
+    "updated_at": "2026-07-15T12:33:39Z"
+  }
+}

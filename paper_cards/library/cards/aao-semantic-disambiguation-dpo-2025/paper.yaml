@@ -1,0 +1,72 @@
+id: aao-semantic-disambiguation-dpo-2025
+title: 'Ambiguity Awareness Optimization: Towards Semantic Disambiguation for Direct Preference Optimization'
+year: 2025
+venue: EMNLP 2025
+authors: [Jian Li, Shenglin Yin, Yujia Zhang, Alan Zhao, Xi Chen, Xiaohui Zhou, Pengfei Xu]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [step_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.460/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.460/
+  code: https://github.com/InsLin/AAO
+  data: https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.460
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.460/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback for open-domain alignment and Anthropic-HH for harmlessness alignment, with UltraChat-200k or Alpaca used to prepare base-model SFT checkpoints.
+  trace_author: Existing chosen and rejected responses; AAO derives token embeddings, cross-answer similarity scores, token groups, and loss weights during training.
+  answer_format: Prompt, chosen response, rejected response, token embeddings, normalized maximum cross-answer similarities, adaptive thresholds, token group, and token weight.
+  process_fields: [instruction, chosen, rejected, token_similarity, ambiguous_token, transitional_token, key_token, adaptive_thresholds, token_weight]
+  environment_or_substrate: Offline DPO-style optimization with token-level logit reweighting and a reference policy.
+  verifier_or_reward: Source preference labels specify chosen and rejected responses; semantic similarity from the model's own embeddings determines token weighting.
+  terminal_predicate: Highly similar cross-answer tokens are suppressed, dissimilar key tokens are emphasized, and transitional tokens retain unit weight.
+recipe_metadata:
+  base_model: Llama-3.1-8B and Mistral-7B in base and instruction-tuned settings.
+  teacher: Existing preference labels; AAO introduces no external reward model or annotation pass.
+  generator: No generation stage is added to the preference corpus.
+  filtering_rule: No hard filtering; calculate each token's maximum normalized similarity to tokens in the opposite response and reweight token logits using adaptive thresholds.
+  sampling_protocol: AdamW for one epoch, batch size 16, and learning rate 5e-7 in the reported AAO setup.
+  rollout_count: Not applicable to the offline preference records.
+  temperature: Not a central reported training variable.
+  inference_budget: Adds token-embedding similarity, a lightweight adaptive module, and auxiliary losses; reported Mistral training time rises from 77.81 to 78.12 minutes.
+  optimizer_or_scaffold: Ambiguity Awareness Optimization, a token-reweighted DPO-compatible objective.
+audit:
+  source_mixture: Public preference data combined with model-derived cross-answer token similarities and learned threshold outputs.
+  split: AlpacaEval 2, MT-Bench, Arena-Hard, and Llama-Guard safety evaluation; base-model safety uses prompts mixed from AdvBench and JailbreakBench.
+  decontamination: No broad contamination audit is reported.
+  license: Verify the terms for UltraFeedback, Anthropic-HH, UltraChat, Alpaca, benchmarks, models, and the implementation before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.emnlp-main.460/'
+  known_failure_modes: [Ambiguity hypothesis lacks a fully rigorous gradient-dynamics analysis, Similarity-to-importance mapping is empirically chosen, Token similarity can inherit model representation bias, Main helpfulness metrics rely on LLM judges]
+  citation_status: verified
+  confidence: high
+  notes: Official EMNLP paper, PDF affiliations, paper-declared code URL, named data sources, method, results, and limitations were checked on 2026-07-16.
+inclusion_reason: It changes the training contribution of fields inside each preference record by using cross-answer semantic similarity to suppress ambiguous tokens and emphasize discriminative ones.
+related: []
+tags: [preference-optimization, token-weighting, semantic-similarity, dpo]
+status: verified
+one_line_summary: AAO reweights tokens in DPO preference pairs using their semantic similarity across chosen and rejected responses, reducing ambiguous supervision and emphasizing discriminative content.
+reading_priority: essential
+paper_type: Token-level preference-data weighting and optimization-objective study
+best_for: Readers studying whether a preference pair should be consumed uniformly when much of its chosen and rejected text says the same thing.
+confidence: high
+why_it_matters: It makes semantic redundancy within a preference pair an auditable token-level training signal instead of letting identical content receive opposing DPO gradients.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: The official EMNLP paper, the paper-declared code URL, and the named public UltraFeedback data release were checked.
+category_ids: [training_usage_optimization_objectives]

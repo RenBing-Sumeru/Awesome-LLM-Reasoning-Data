@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-16T09:47:08Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "证明偏好对难度必须与模型容量匹配，并据此筛除会损害对齐的过难样本",
+    "updated_at": "2026-07-16T09:47:08Z"
+  }
+}

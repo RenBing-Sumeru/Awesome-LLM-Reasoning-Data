@@ -1,0 +1,1 @@
+Seed explanations and preference labels are model-generated after a limited annotation stage, so their errors can become self-reinforcing. The hosted dataset is large but its license, source-trace provenance, and the boundary between human and synthetic labels must be checked per revision before redistribution or high-stakes use.

@@ -1,0 +1,3 @@
+The training set is treated as a fixed-capacity portfolio. When difficult or uncertain examples enter, equal numbers from each label class leave, keeping both cost and label proportions constant. This makes the resulting performance change attributable to data composition rather than extra training instances or a changed optimization algorithm.
+
+The paper distinguishes two robustness regimes. More challenging annotated examples help challenge-OOD benchmarks, whereas simple generated data tends to help easier standard-OOD benchmarks. Prompting for longer and more complex synthetic examples seeks to close this split, turning generation complexity itself into a controllable property of the fine-tuning mixture.

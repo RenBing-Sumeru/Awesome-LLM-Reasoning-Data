@@ -1,0 +1,103 @@
+id: agenttrek-web-trajectories-2025
+title: 'AgentTrek: Agent Trajectory Synthesis via Guiding Replay with Web Tutorials'
+year: 2025
+venue: ICLR 2025 Spotlight
+authors:
+- Yiheng Xu
+- Dunjie Lu
+- Zhennan Shen
+- Junli Wang
+- Zekun Wang
+- Yuchen Mao
+- Caiming Xiong
+- Tao Yu
+source_role:
+- data_release
+- agent_environment
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+domains:
+- agentic-reasoning
+- web-agents
+training_use:
+- agent_training
+- sft
+construction_layer:
+- trace_writing
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2412.09605
+  arxiv: https://arxiv.org/abs/2412.09605
+  venue: https://openreview.net/forum?id=EEgYUccwsV
+  code: https://github.com/xlang-ai/AgentTrek
+  data: https://huggingface.co/datasets/xlangai/AgentTrek
+  project: https://agenttrek.github.io
+  huggingface: https://huggingface.co/datasets/xlangai/AgentTrek
+  doi: null
+  openreview: https://openreview.net/forum?id=EEgYUccwsV
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Public web tutorials transformed into browser tasks.
+  trace_author: VLM agent guided by tutorial instructions.
+  answer_format: Goal, observations, reasoning, actions, and terminal outcome.
+  process_fields:
+  - task
+  - observations
+  - reasoning
+  - actions
+  - evaluator_result
+  environment_or_substrate: Live web and GUI environments.
+  verifier_or_reward: VLM evaluator checks trajectory goal completion.
+  terminal_predicate: Evaluator accepts task completion.
+recipe_metadata:
+  base_model: See paper.
+  teacher: VLM agent and evaluator.
+  generator: Tutorial collection and guided replay.
+  filtering_rule: Retain checked trajectories.
+  sampling_protocol: See paper and release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See paper.
+  optimizer_or_scaffold: Supervised agent training.
+audit:
+  source_mixture: Public tutorials and live environment replay.
+  split: See paper.
+  decontamination: Audit websites and benchmark overlap before reuse.
+  license: Check tutorial, environment, and dataset terms.
+  lineage: 'Primary paper: https://arxiv.org/abs/2412.09605'
+  known_failure_modes:
+  - Tutorial drift
+  - Evaluator false positives
+  - Environment instability
+  citation_status: verified
+  confidence: high
+  notes: Full ICLR paper, code, dataset, and model artifacts checked 2026-07-15.
+inclusion_reason: It creates and releases checked agent trajectories that are directly consumed by agent post-training.
+related: []
+tags:
+- agent-training
+- web-agents
+- trajectory-synthesis
+status: verified
+one_line_summary: AgentTrek turns public web tutorials into checked multimodal agent trajectories for browser-agent training.
+reading_priority: essential
+paper_type: Agent trajectory synthesis and training-data release
+best_for: Readers studying web-agent data synthesis and post-training.
+confidence: high
+why_it_matters: It connects tutorial-derived tasks, live execution, and checked trajectories in one training-data pipeline.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, code, dataset, and project checked.
+category_ids:
+- training_usage_optimization_objectives

@@ -1,9 +1,12 @@
 {
-  "one_line_summary_ch": "ReDis 将教师生成的规则与执行过程筛成 SFT 和偏好样本，以提升归纳式上下文学习。",
-  "reading_priority_ch": "必读",
-  "paper_type_ch": "归纳推理蒸馏、数据过滤与偏好对齐论文",
-  "best_for_ch": "需要构造规则、步骤或假设级别训练信号的贡献者。",
+  "one_line_summary_ch": "ReDis 将规则生成和规则遵循蒸馏到较小模型中，以改善归纳式上下文学习。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据构造与监督微调论文",
+  "best_for_ch": "研究推理记录如何进入后训练的读者。",
   "confidence_ch": "高",
-  "authors_ch": "Nafis Sadeq、Xin Xu 等（UC San Diego、Intuit）",
-  "category_ids": ["training_usage_optimization_objectives"]
+  "authors_ch": "Nafis Sadeq, Xin Xu, Zhouhang Xie, Julian McAuley, Byungkyu Kang, Prarit Lamba, Xiang Gao",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:40:59Z"
 }

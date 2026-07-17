@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"EasyRL 从少量简单标注题出发，逐步选择一致或经反思解决的伪标注难题来扩展 GRPO 训练集。","reading_priority_ch":"必读","paper_type_ch":"渐进式伪标注选择与强化学习研究","best_for_ch":"适合把小规模已验证种子集和大量困难无标注池转化为分阶段推理训练课程的读者。","confidence_ch":"高","authors_ch":"Zhiyin Yu, Bo Zhang, Qibin Hou, Zhonghai Wu, Xiao Luo, Lei Bai","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-15T15:40:00Z"}

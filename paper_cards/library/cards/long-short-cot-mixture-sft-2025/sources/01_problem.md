@@ -1,3 +1,0 @@
-Long chain-of-thought targets can improve supervised reasoning, but they also teach a model to emit lengthy responses at inference time. Training only on short answers removes cost yet can erase the intermediate structure that makes difficult solutions reliable. The usual choice between long and short targets therefore turns a quality-versus-efficiency trade-off into an all-or-nothing data decision.
-
-This paper asks whether a model can learn both the detailed route and a compact route to an answer. It studies a mixed SFT corpus in which long reasoning traces are paired with shorter, structure-preserving rewrites, so that response length becomes part of the training objective rather than an afterthought at decoding.

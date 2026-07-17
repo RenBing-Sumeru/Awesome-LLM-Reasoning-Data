@@ -1,0 +1,3 @@
+The central assumption is not that every repeated statement is true. Instead, ACPO uses repeated agreement as a relative preference signal: within responses to the same question, a fact that recurs in several independently generated answers is treated as more trustworthy than a fact that appears only once.
+
+This changes factuality alignment from claim verification into record construction. Each question produces a small population of answers, their sentence facts are clustered by meaning, and the frequency pattern becomes a score that identifies which answer should be preferred during direct preference optimization.

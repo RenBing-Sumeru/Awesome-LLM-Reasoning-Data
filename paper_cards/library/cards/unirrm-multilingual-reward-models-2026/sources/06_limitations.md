@@ -1,0 +1,1 @@
+The system relies on oracle-generated analyses and a teacher-scored rubric component, so errors can become systematic across languages. The data release also spans different language counts across stages; users should pin the exact revision and evaluate calibration separately for the languages and decision formats they intend to deploy.

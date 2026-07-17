@@ -1,0 +1,16 @@
+{
+  "title": "REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.24760"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:29:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提供可调难度、程序可验证且可持续生成的推理环境，使 RLVR 的训练数据供给与验证奖励可被共同控制",
+    "updated_at": "2026-07-15T12:29:38Z"
+  }
+}

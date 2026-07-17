@@ -1,0 +1,1 @@
+Programmatic validation can reject unconventional but valid strategies and may miss semantic errors after a syntactically valid call. The dataset combines several sources and configurations, so users should inspect licenses, tool availability, and the exact verifier rules for each subset before training.

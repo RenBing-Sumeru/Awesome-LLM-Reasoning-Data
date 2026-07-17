@@ -1,0 +1,3 @@
+The contribution is not ordinary reward-model training with another loss. DORM makes the training record's weight a learned object tied to two distinct claims: uncertainty can signal learning opportunity, while prediction-label conflict can signal unreliability. The same record can therefore become more or less influential as the reward model and validation objective evolve.
+
+Unlike top-score filtering, this preserves a continuous path from a source record to its training influence. Unlike a fixed data mixture, it makes validation performance decide which preference sources matter. That change reaches downstream alignment because the resulting reward model is later used to create or score the preference supervision consumed by a policy.

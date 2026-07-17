@@ -1,0 +1,1 @@
+The main reading question is what each verifier actually certifies. Treat the code, prompt fields, and evaluation functions as part of the training data, because changing one of them changes the reward objective even if the policy and optimizer stay fixed.

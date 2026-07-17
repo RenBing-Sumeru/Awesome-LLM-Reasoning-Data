@@ -1,0 +1,1 @@
+Use DataPRM when an agent can replay analyses in a controlled environment and terminal success hides too many intermediate failures. Log state and tool outputs, test the active probes against known silent errors, and compare ternary process rewards with outcome-only rewards under identical task, tool, and rollout budgets.

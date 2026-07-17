@@ -1,0 +1,16 @@
+{
+  "title": "ToolRM: Towards Agentic Tool-Use Reward Modeling",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.419/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:32:57Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "可验证工具轨迹偏好直接服务 Agent 奖励建模，且有代码与 30K 数据",
+    "updated_at": "2026-07-15T12:32:57Z"
+  }
+}

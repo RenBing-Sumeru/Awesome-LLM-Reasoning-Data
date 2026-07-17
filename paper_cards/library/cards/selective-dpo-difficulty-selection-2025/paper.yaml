@@ -1,0 +1,65 @@
+id: selective-dpo-difficulty-selection-2025
+title: 'Principled Data Selection for Alignment: The Hidden Risks of Difficult Examples'
+year: 2025
+venue: arXiv preprint
+authors: [Chengqian Gao, Haonan Li, Liu Liu, Zeke Xie, Peilin Zhao, Zhiqiang Xu]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2502.09650
+  arxiv: https://arxiv.org/abs/2502.09650
+  venue: null
+  code: https://github.com/glorgao/SelectiveDPO
+  data: https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.09650
+data_object:
+  prompt_source: UltraFeedback-binarized and Argilla-dpo-mix-7k in reported studies.
+  trace_author: Upstream preference-dataset providers; the method does not create new response pairs.
+  answer_format: Prompt, chosen response, rejected response, validation-loss difficulty score, and selected flag.
+  process_fields: [prompt, chosen_response, rejected_response, validation_loss, learned_step, selected]
+  environment_or_substrate: Offline DPO with multiple reference models used to estimate preference-pair difficulty.
+  verifier_or_reward: Validation loss from independently trained reference models acts as a difficulty proxy.
+  terminal_predicate: Retain records below a model-capacity-calibrated difficulty threshold.
+recipe_metadata:
+  base_model: Mistral-7B, Llama-3-8B, Gemma-2-9B, and Qwen-2.5 models in reported experiments.
+  teacher: Six DPO reference models trained from random dataset partitions estimate validation loss.
+  generator: null
+  filtering_rule: Exclude the preference pairs with validation loss above the selected threshold.
+  sampling_protocol: The reference-model procedure uses three random two-way splits, yielding six models; the threshold is calibrated by validation loss.
+  rollout_count: null
+  temperature: null
+  inference_budget: Training multiple reference models adds substantial preprocessing cost before the final DPO run.
+  optimizer_or_scaffold: Selective DPO after difficulty scoring.
+audit:
+  source_mixture: Official arXiv paper and official code repository.
+  split: Reported analyses use UltraFeedback-binarized and Argilla-dpo-mix-7k; preserve original data splits in reuse.
+  decontamination: No dedicated contamination audit is reported; audit upstream datasets and AlpacaEval overlap separately.
+  license: Verify upstream-data, model, and code terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2502.09650'
+  known_failure_modes: [difficulty-proxy-error, capacity-miscalibration, reference-training-cost, upstream-data-leakage]
+  citation_status: verified
+  confidence: high
+  notes: Official paper and official code repository checked.
+inclusion_reason: Changes which preference pairs enter DPO according to difficulty relative to the training model's capacity.
+related: []
+tags: [data-selection, dpo, preference-learning, curriculum, difficulty]
+one_line: Selective DPO filters preference pairs that are too difficult for the current model capacity.
+why_it_matters: It treats data difficulty as a training-use decision rather than assuming every clean preference pair is beneficial.
+status: verified
+needs: []
+one_line_summary: Selective DPO filters preference pairs that are too difficult for the current model capacity.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and code repository checked.
+category_ids: [training_usage_optimization_objectives]

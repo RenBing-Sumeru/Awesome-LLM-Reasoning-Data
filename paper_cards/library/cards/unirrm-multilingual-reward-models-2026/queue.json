@@ -1,0 +1,16 @@
+{
+  "title": "UniRRM: Unified Reasoning Reward Models Across Languages and Evaluation Paradigms",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=laiK6TlhL2"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:32:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "覆盖多语言、结构化推理、RL 三类奖励范式，填补跨语言 RM 的核心空白",
+    "updated_at": "2026-07-15T12:32:50Z"
+  }
+}

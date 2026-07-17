@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:31:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用无参考模型、长度归一化的直接偏好目标，成为低成本偏好训练的重要基线",
+    "updated_at": "2026-07-17T12:31:23Z"
+  }
+}

@@ -1,0 +1,113 @@
+id: unified-data-selection-reasoning-2026
+title: Unified Data Selection for LLM Reasoning
+year: 2026
+venue: arXiv preprint; ICLR 2026 submission
+authors:
+- Xiaoyuan Li
+- Yubo Ma
+- Chengpeng Li
+- Fengbin Zhu
+- Yiyao Yu
+- Keqin Bao
+- Wenjie Wang
+- Fuli Feng
+- Dayiheng Liu
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- reasoning
+- mathematics
+- code
+- STEM
+training_use:
+- sft
+- rlvr
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2605.22389
+  arxiv: https://arxiv.org/abs/2605.22389
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.22389
+  openreview: https://openreview.net/forum?id=heVn5cNfje
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mixture-of-Thoughts for SFT; DeepScaleR for RFT and RL, as described in the paper.
+  trace_author: Existing reasoning datasets for SFT; model-generated candidate responses and rollouts for RFT and RL.
+  answer_format: Prompt paired with a long reasoning response or trajectory and its HES score.
+  process_fields:
+  - prompt
+  - reasoning_response
+  - token_entropy
+  - HES_score
+  - correctness_pool
+  environment_or_substrate: Math, STEM, and code reasoning tasks reported in the paper.
+  verifier_or_reward: Correctness filtering precedes RFT selection; RL uses correct and incorrect rollout pools with GRPO.
+  terminal_predicate: Task correctness for the reported RFT and RL pools; HES itself is a ranking signal, not a verifier.
+recipe_metadata:
+  base_model: Qwen3-8B-Base for main SFT; DeepSeek-R1-Distill-Qwen-7B for RFT; DeepSeek-R1-Distill-Qwen-1.5B for RL.
+  teacher: Not applicable for the HES metric.
+  generator: Existing responses for SFT; rollout models described in the paper for RFT and RL.
+  filtering_rule: Sum entropy of the top 0.5% token-entropy positions; rank records by HES.
+  sampling_protocol: Top 20% or bottom 20% SFT tests; correct-candidate selection for RFT; asymmetric positive/negative sampling
+    for RL.
+  rollout_count: 32
+  temperature: 0.6
+  inference_budget: RL maximum generation length 8192 tokens; see paper for other settings.
+  optimizer_or_scaffold: SFT and RFT training; GRPO-based RL implementation on the verl codebase.
+audit:
+  source_mixture: Mixture-of-Thoughts, DeepScaleR, OpenR1-Math-220k, and Open-Math-Reasoning are described as source collections.
+  split: Paper constructs approximately 100,000 examples per Math, Code, and STEM domain for its full-data baseline.
+  decontamination: Not described as a dedicated audit; verify source and benchmark overlap before reuse.
+  license: The paper reports licenses for several third-party datasets and models; verify each upstream release before reuse.
+  lineage: 'Primary sources: https://arxiv.org/abs/2605.22389; https://openreview.net/forum?id=heVn5cNfje'
+  known_failure_modes:
+  - Entropy rank may not transfer to open-ended or agentic tasks.
+  - Static pre-training score cannot adapt during optimization.
+  - No official implementation or standalone data release was declared in checked primary sources.
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv paper, author affiliations, experiments, limitations, and ICLR submission record checked on 2026-07-15.
+    No official code, project, or standalone data link found in checked primary sources.
+inclusion_reason: It specifies a concrete reasoning-record ranking signal and shows how the selected records are consumed
+  by SFT, RFT, and RL.
+related: []
+tags:
+- reasoning-data
+- data-selection
+- sft
+- rejection-fine-tuning
+- reinforcement-learning
+status: verified
+one_line_summary: High-Entropy Sum ranks long reasoning records by their most uncertain token decisions for unified SFT, RFT,
+  and RL selection.
+reading_priority: essential
+paper_type: Training-free reasoning-data selection study across SFT, RFT, and reinforcement learning
+best_for: Readers designing or auditing which long reasoning records enter post-training.
+confidence: high
+why_it_matters: It makes the selection signal and its downstream training consumer explicit across three post-training regimes.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and ICLR submission record checked; no official code, project, or standalone data release declared
+    in the checked primary sources.
+category_ids:
+- training_usage_optimization_objectives

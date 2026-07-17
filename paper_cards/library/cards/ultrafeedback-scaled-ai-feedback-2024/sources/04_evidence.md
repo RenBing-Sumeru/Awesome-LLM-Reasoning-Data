@@ -1,0 +1,3 @@
+The paper reports more than one million GPT-4 feedback items for 250,000 user-assistant conversations. This scale is paired with a deliberately mixed instruction pool and multiple candidate models, so the evidence concerns both the amount of feedback and the breadth of the situations in which it was collected.
+
+The released experiments evaluate the learned reward model and use it for best-of-n and PPO alignment. Those results support the practical claim that structured AI feedback can train useful downstream components, although they do not by themselves establish that GPT-4 judgments are an unbiased substitute for human judgment.

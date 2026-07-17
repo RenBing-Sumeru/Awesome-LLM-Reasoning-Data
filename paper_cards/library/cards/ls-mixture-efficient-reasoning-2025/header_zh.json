@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LS-Mixture SFT 将长推理轨迹与保留结构的短改写配对，以训练更高效的推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理数据构造与监督微调论文",
+  "best_for_ch": "研究推理记录如何进入后训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bin Yu, Hang Yuan, Haotian Li, Xueyin Xu, Yuliang Wei, Bailing Wang, Weizhen Qi, Kai Chen",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T21:30:00Z"
+}

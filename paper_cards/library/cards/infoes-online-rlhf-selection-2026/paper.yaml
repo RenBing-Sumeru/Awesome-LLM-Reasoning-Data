@@ -1,0 +1,105 @@
+id: infoes-online-rlhf-selection-2026
+title: 'Influence-based Online Experience Selection for Effective RLHF'
+year: 2026
+venue: ACL 2026
+authors:
+- Yifan Gong
+- Jing Yao
+- Xiting Wang
+- Xunlong Wang
+- Xiaoyuan Yi
+- Xing Xie
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- alignment
+- rlhf
+- online_rl
+training_use:
+- agent_training
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.2206/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.2206/
+  code: https://github.com/paraGONG/InfOES
+  data: null
+  project: https://github.com/paraGONG/InfOES
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.2206
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.2206/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: HH-RLHF, PKU-SafeRLHF, HelpSteer, UltraChat, UltraInteract, and related preference sources.
+  trace_author: The current policy generates online rollout experiences.
+  answer_format: Prompt, rollout response, reward, log probability, value, advantage, validation-gradient feature, influence score, and selection decision.
+  process_fields:
+  - prompt
+  - response
+  - reward
+  - advantage
+  - validation_gradient
+  - policy_gradient
+  - influence
+  - selected
+  environment_or_substrate: Online RLHF rollout buffer with objective-specific validation prompts.
+  verifier_or_reward: A TinyLlama-1.1B reward model provides feedback; the validation set embodies helpfulness or harmlessness objectives.
+  terminal_predicate: Experiences whose objective influence exceeds a threshold are used for the policy update.
+recipe_metadata:
+  base_model: TinyLlama-1.1B and Alpaca-7B.
+  teacher: A reward model trained on public preference mixtures plus validation prompts for the intended objective.
+  generator: The current policy produces rollout experiences at every RL round.
+  filtering_rule: Retain experiences with positive influence, measured by the inner product of validation-return gradient and per-experience RL gradient.
+  sampling_protocol: Greedily generate validation responses each round, collect a rollout buffer, score every experience, then filter before policy optimization.
+  rollout_count: null
+  temperature: null
+  inference_budget: The main threshold discards the 15% least influential experiences each round; eight validation prompts already give strong performance.
+  optimizer_or_scaffold: Plug-in selection for PPO, GRPO, and REINFORCE++ within OpenRLHF, using LoRA.
+audit:
+  source_mixture: Public helpfulness, harmlessness, conversation, math, and programming prompt sources.
+  split: Validation prompts are drawn from PKU-SafeRLHF; training evaluates HH-RLHF, PKU-SafeRLHF, and a 50K mixed-prompt dataset.
+  decontamination: No complete cross-dataset contamination audit is reported.
+  license: Verify all preference-source, model, reward-model, and repository terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2026.acl-long.2206/; https://github.com/paraGONG/InfOES'
+  known_failure_modes:
+  - Evaluations do not cover 32B-or-larger models.
+  - The method focuses on one alignment objective at a time.
+  - Reward-model errors can make relevant experiences appear harmful.
+  - Influence estimation adds gradient and storage overhead.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, objective, data, experiments, limitations, and declared repository were checked on 2026-07-15.
+inclusion_reason: It makes the contribution of a live rollout experience to a stated alignment objective decide whether that experience updates the policy.
+related: []
+tags:
+- rlhf
+- online-data-selection
+- influence-functions
+- policy-optimization
+- alignment
+status: verified
+one_line_summary: InfOES filters online RLHF experiences by their estimated influence on an objective-specific validation return before every policy update.
+reading_priority: essential
+paper_type: Objective-aware online RLHF experience-selection study
+best_for: Readers building RLHF systems that need to remove irrelevant or reward-corrupted rollouts while retaining compatibility with standard RL optimizers.
+confidence: high
+why_it_matters: It directly connects each training experience to the gradient of the desired alignment objective instead of relying on generic difficulty or length heuristics.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL full paper was checked; the paper declares code will be publicly available at the listed repository.
+category_ids:
+- training_usage_optimization_objectives

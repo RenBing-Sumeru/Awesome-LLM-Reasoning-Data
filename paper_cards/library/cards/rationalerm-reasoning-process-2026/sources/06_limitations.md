@@ -1,0 +1,1 @@
+The method depends on human checklist quality, the completeness of atomic decomposition, and the semantic matcher. A rationale may be useful yet absent from the checklist, so users should measure annotator coverage and inspect false matches before treating consistency as a universal truth signal.

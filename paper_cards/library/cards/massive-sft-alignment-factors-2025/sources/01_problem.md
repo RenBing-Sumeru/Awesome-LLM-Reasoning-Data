@@ -1,3 +1,0 @@
-Supervised fine-tuning choices are usually made together: a team changes the data mixture, the adapted layers, and the optimizer at the same time, then observes one final score. That practice makes a better score hard to attribute. A result may reflect the source data, a parameter-efficient adaptation choice, or a training schedule rather than an intrinsic advantage of the proposed recipe.
-
-This paper asks which of those controllable factors most shape alignment quality when they are measured systematically. Its answer is an experimental surface rather than a new prompting trick: train many comparable SFT variants, keep the factors explicit, and use their downstream evaluations to expose interactions that a single recipe cannot reveal.

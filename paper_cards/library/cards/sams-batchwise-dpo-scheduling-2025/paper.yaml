@@ -1,0 +1,65 @@
+id: sams-batchwise-dpo-scheduling-2025
+title: 'Adaptive Batch-Wise Sample Scheduling for Direct Preference Optimization'
+year: 2025
+venue: NeurIPS 2025
+authors: [Zixuan Huang, Yikun Ban, Lean Fu, Xiaojie Li, Zhongxiang Dai, Jianxin Li, Deqing Wang]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/36ecc1d1b883afc0e882876cbdd123ab-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2506.17252
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/36ecc1d1b883afc0e882876cbdd123ab-Abstract-Conference.html
+  code: https://github.com/hzx122/SamS
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.17252
+data_object:
+  prompt_source: Fixed offline preference datasets, including Anthropic-HH, SHP, and generated UltraFeedback preference data in the reported experiments.
+  trace_author: Upstream preference-data creators; SamS does not create a new preference corpus.
+  answer_format: Prompt, chosen response, rejected response, model-state representation, scheduler score, and selected-batch membership.
+  process_fields: [prompt, chosen_response, rejected_response, dpo_loss, preference_margin, model_uncertainty, scheduler_score, selected]
+  environment_or_substrate: Offline DPO training batches with a learned contextual-bandit scheduler.
+  verifier_or_reward: A combined batch-level loss-reduction reward and sample-level preference-margin plus uncertainty reward.
+  terminal_predicate: Select the top-K records scored by the scheduler from each incoming DPO batch.
+recipe_metadata:
+  base_model: Pythia-2.8B, Mistral-7B, Llama-3-8B, and Gemma-2-9B in the reported experiments.
+  teacher: PairRM and ArmoRM are used as automatic reward models in the reported evaluations; no teacher generates the source preference pairs.
+  generator: null
+  filtering_rule: At each round, retain the top-K records predicted to maximize a combined generalization and sample-level reward.
+  sampling_protocol: The reported main setting draws 64 preference pairs per batch and schedules 32 for the policy update.
+  rollout_count: null
+  temperature: null
+  inference_budget: The lagged scheduler update reuses training feedback; the paper reports marginal added overhead and reduced GPU-memory consumption.
+  optimizer_or_scaffold: Direct Preference Optimization with a contextual-bandit scheduler and exploration network.
+audit:
+  source_mixture: Official NeurIPS paper, official arXiv record, and official code repository.
+  split: The paper evaluates instruction following with AlpacaEval 2 and MT-Bench and studies generalization on Anthropic-HH and SHP.
+  decontamination: SamS reuses public preference data; downstream reuse must retain the original split and benchmark-leakage controls.
+  license: Verify the licenses and terms of every upstream preference dataset, model, and automatic judge before reuse.
+  lineage: 'Primary source: https://proceedings.neurips.cc/paper_files/paper/2025/file/36ecc1d1b883afc0e882876cbdd123ab-Paper-Conference.pdf'
+  known_failure_modes: [noisy_preferences, scheduler-misestimation, distribution_shift, upstream-data-license]
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS paper and official code repository checked; the work releases code rather than a new dataset.
+inclusion_reason: Changes which preference records are consumed at each DPO update by using the model's evolving learning feedback.
+related: []
+tags: [data-selection, dpo, preference-learning, sample-scheduling, alignment]
+one_line: SamS dynamically schedules the preference pairs used by each DPO batch from learning feedback.
+why_it_matters: It turns preference-data use from a static pre-filtering decision into a model-state-dependent training decision.
+status: verified
+needs: []
+one_line_summary: SamS dynamically schedules the preference pairs used by each DPO batch from learning feedback.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS paper, arXiv record, and code repository checked.
+category_ids: [training_usage_optimization_objectives]

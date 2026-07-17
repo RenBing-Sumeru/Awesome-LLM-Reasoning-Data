@@ -1,0 +1,26 @@
+id: dpo-direct-preference-optimization-2023
+title: 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model'
+year: 2023
+venue: NeurIPS 2023
+authors: [Rafael Rafailov, Archit Sharma, Eric Mitchell, Christopher D. Manning, Stefano Ermon, Chelsea Finn]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, dialogue, summarization]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts: {paper: https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2305.18290, venue: https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html, code: https://github.com/eric-mitchell/direct-preference-optimization, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2305.18290}
+data_object: {prompt_source: 'Offline pairwise human-preference datasets.', trace_author: 'Dataset providers supply chosen and rejected responses.', answer_format: 'Prompt, chosen response, rejected response, policy/reference log probabilities, and pairwise loss.', process_fields: [prompt, chosen_response, rejected_response, policy_logprob, reference_logprob], environment_or_substrate: 'Offline preference fine-tuning.', verifier_or_reward: 'Human pairwise preference labels; the reward is implicitly parameterized by policy/reference likelihood ratios.', terminal_predicate: 'Increase likelihood of chosen responses relative to rejected responses under the DPO objective.'}
+recipe_metadata: {base_model: 'Language models evaluated on sentiment control, summarization, and single-turn dialogue.', teacher: 'No separately trained reward model is required.', generator: null, filtering_rule: 'No data-selection rule; each supplied preference pair directly contributes to training.', sampling_protocol: 'Offline minibatches of chosen/rejected pairs.', rollout_count: null, temperature: null, inference_budget: 'Does not require on-policy sampling during fine-tuning.', optimizer_or_scaffold: 'Direct Preference Optimization.'}
+audit: {source_mixture: 'Official NeurIPS paper and official code repository.', split: 'Use the original preference-dataset train/validation/test splits.', decontamination: 'DPO does not itself prevent benchmark overlap; audit every upstream preference dataset.', license: 'Verify the repository, model, and source-data terms.', lineage: 'Primary source: https://arxiv.org/abs/2305.18290', known_failure_modes: [preference-noise, reference-model-choice, reward-hacking, distribution-shift], citation_status: verified, confidence: high, notes: 'Official paper and authors’ repository checked.'}
+inclusion_reason: Establishes a direct objective for consuming pairwise preference records without fitting a separate reward model.
+related: []
+tags: [dpo, preference-learning, alignment, pairwise-data]
+one_line: DPO directly optimizes a policy from chosen/rejected preference pairs using a reference-policy likelihood ratio.
+why_it_matters: It is the standard training consumer against which later preference-data selection and construction work is usually evaluated.
+status: verified
+needs: []
+one_line_summary: DPO directly optimizes a policy from chosen/rejected preference pairs using a reference-policy likelihood ratio.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official NeurIPS paper and code repository checked.'}
+category_ids: [training_usage_optimization_objectives]

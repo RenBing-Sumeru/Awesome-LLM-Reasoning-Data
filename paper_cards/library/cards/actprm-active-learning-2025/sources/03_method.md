@@ -1,0 +1,3 @@
+ActPRM uses Qwen2.5-Math-7B-Instruct with a shared backbone and several binary heads. It regularizes head diversity, forwards candidate trajectories, computes each step's mean and standard deviation, and retains a trajectory if either uncertainty condition occurs before or at the predicted first error. QwQ-32B labels only the retained trajectories; the ensemble is updated with the resulting step targets.
+
+For scaling, the authors generate 1,061,763 NuminaMath trajectories with Qwen2.5-Math-7B-Instruct and Qwen2.5-Math-72B-Instruct after benchmark decontamination. The uncertainty rule retains 563,030 trajectories for QwQ-32B labeling. The paper also continually fine-tunes an existing Qwen2.5-Math-PRM-7B on that selected set as ActPRM-X.

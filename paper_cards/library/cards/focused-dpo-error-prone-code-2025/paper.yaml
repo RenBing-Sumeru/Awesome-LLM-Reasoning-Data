@@ -1,0 +1,72 @@
+id: focused-dpo-error-prone-code-2025
+title: 'Focused-DPO: Enhancing Code Generation Through Focused Preference Optimization on Error-Prone Points'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Kechi Zhang, Ge Li, Jia Li, Yihong Dong, Jia Li, Zhi Jin]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [step_level]
+domains: [code_generation, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.498/
+  arxiv: https://arxiv.org/abs/2502.11475
+  venue: https://aclanthology.org/2025.findings-acl.498/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.498
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.498/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Programming concepts extracted from real repositories and synthesized coding problems.
+  trace_author: Each backbone samples code candidates and test cases; execution-derived ranking and common-prefix/suffix matching identify pairs.
+  answer_format: Problem, tests, chosen code, rejected code, common prefix, error-prone middle segment, common suffix, and rank gap.
+  process_fields: [problem, tests, chosen_code, rejected_code, prefix, chosen_mid, rejected_mid, suffix, rank]
+  environment_or_substrate: Executable Python code generation with test-based ranking and DPO.
+  verifier_or_reward: Generated tests and a PageRank-inspired ordering score executable candidates.
+  terminal_predicate: Select pairs whose different middle segment has high correctness impact while surrounding prefix and suffix are shared.
+recipe_metadata:
+  base_model: DeepSeekCoder-base-6.7B, Qwen2.5-Coder-7B, and reported instruction-tuned derivatives.
+  teacher: No human annotator; execution outcomes and generated tests provide supervision.
+  generator: Each backbone samples ten code candidates and corresponding tests for each problem at temperature 1.5.
+  filtering_rule: Maximize rank difference and shared-prefix/suffix length to isolate the high-impact divergent middle; retain 5,000 training and 1,000 validation examples per policy.
+  sampling_protocol: Ten candidates per prompt, ten training epochs, and focused middle weight two.
+  rollout_count: Ten code candidates per problem.
+  temperature: 1.5 for candidate and test generation.
+  inference_budget: Requires sampling, test generation, execution/ranking, and segment matching before DPO.
+  optimizer_or_scaffold: Focused-DPO, with a weighted middle-code reward and reduced rejected-suffix contribution.
+audit:
+  source_mixture: Repository-derived programming concepts, synthesized prompts, generated code, and generated executable tests.
+  split: HumanEval(+), MBPP(+), and LiveCodeBench evaluate final code; a constructed validation set analyzes segments.
+  decontamination: No broad contamination audit is reported.
+  license: Verify source repositories, generated tests, model, benchmark, and code terms before reproduction.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.498/'
+  known_failure_modes: [Generated tests can mis-rank code, Focus is limited to Python, Error localization depends on matching candidates, Evidence is concentrated in reported code benchmarks]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, experiments, and stated pipeline were checked on 2026-07-16; the paper states an automated construction method but does not declare a public repository in its ACL record.
+inclusion_reason: It constructs preference records around executable high-impact code differences and changes DPO so those differences dominate the training signal.
+related: []
+tags: [code-generation, preference-data, error-localization, dpo]
+status: verified
+one_line_summary: Focused-DPO identifies error-prone code segments from executable preference pairs and gives those segments greater DPO influence.
+reading_priority: essential
+paper_type: Executable preference-data construction and fine-grained optimization study
+best_for: Readers training code models where a few localized choices determine whether a program passes tests.
+confidence: high
+why_it_matters: It turns test-sensitive code differences into an explicit record field and optimization weight instead of averaging them with routine syntax.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper was checked; no public code or standalone generated dataset link is declared in the paper's ACL record.
+category_ids: [training_usage_optimization_objectives]

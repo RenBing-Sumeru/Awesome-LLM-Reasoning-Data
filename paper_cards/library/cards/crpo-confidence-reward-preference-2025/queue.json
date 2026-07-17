@@ -1,0 +1,18 @@
+{
+  "title": "CRPO: Confidence-Reward Driven Preference Optimization for Machine Translation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.31/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:30:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "同时利用奖励差和模型不确定性选择翻译偏好对，使 DPO 聚焦当前模型仍有学习空间的记录",
+    "updated_at": "2026-07-15T15:30:27Z"
+  }
+}

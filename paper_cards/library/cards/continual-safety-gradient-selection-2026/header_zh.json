@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该研究通过排除高梯度任务记录、保留中等梯度样本，在持续微调中缓解安全对齐漂移。","reading_priority_ch":"可读","paper_type_ch":"基于梯度的持续微调数据选择研究","best_for_ch":"适合把已对齐模型迁移到良性领域、又不希望额外加入安全回放集的读者。","confidence_ch":"高","authors_ch":"Thong Bach, Dung Nguyen, Thao Minh Le, Truyen Tran","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-15T16:15:00Z"}

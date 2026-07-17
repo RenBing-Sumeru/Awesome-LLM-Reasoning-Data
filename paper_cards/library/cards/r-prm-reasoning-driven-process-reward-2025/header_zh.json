@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "R-PRM 把步骤评估转化为显式推理，从有限标签自举，并以偏好数据进一步优化。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理驱动过程奖励模型与步骤级偏好数据论文",
+  "best_for_ch": "需要用有限步骤标注扩展过程奖励模型、并把生成式评判用于搜索或策略训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shuaijie She、Junxiao Liu、Yifeng Liu、Jiajun Chen、Xin Huang、Shujian Huang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

@@ -1,1 +1,0 @@
-The principal asset is an open recipe, not a dataset name or checkpoint. The 1.2M scale, controlled experiments, and three benchmark scores are concrete anchors, but reproducibility depends on versioning every generation and filtering decision as part of the experiment.

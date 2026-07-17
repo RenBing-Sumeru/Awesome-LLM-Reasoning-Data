@@ -1,0 +1,3 @@
+For each instruction and chosen-rejected pair, the model computes DPO's preference probability from policy-to-reference log-probability ratios. FocalPO replaces the usual negative log probability with a scaled version using a probability-to-the-gamma factor. Gradient analysis shows that this produces larger weights for pairs with accurate implicit reward order and smaller weights for pairs with incorrect order.
+
+The paper trains Mistral-Base-7B on UltraFeedback and Llama-3-Instruct-8B on Llama3-ultrafeedback-armorm, for one epoch with batch size 128. It fixes gamma at 0.05 and grid-searches learning rates. DPO, SimPO, KTO, and ORPO are compared, while a separate experiment applies the opposite focal direction to emphasize incorrectly ranked pairs.

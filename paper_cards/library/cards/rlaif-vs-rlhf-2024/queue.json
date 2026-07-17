@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:32:22Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "系统验证 AI 生成反馈可替代人工偏好，并区分奖励模型与直接 AI 奖励两种接口",
+    "updated_at": "2026-07-17T12:32:22Z"
+  }
+}

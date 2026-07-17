@@ -1,0 +1,3 @@
+Process reward models can score intermediate reasoning steps and improve test-time selection, but available open models have been trained mostly on mathematical traces. Their usefulness in law, biology, philosophy, or other knowledge-intensive reasoning is therefore uncertain; a model that ranks algebra steps well may not recognize an unsupported legal or scientific inference.
+
+VersaPRM asks how to make process supervision useful across domains without commissioning human labels for every reasoning trace. It addresses the problem by constructing a multi-domain dataset of generated chains of thought with step labels, then trains a reward model whose scores can choose or search among multiple candidate solutions.

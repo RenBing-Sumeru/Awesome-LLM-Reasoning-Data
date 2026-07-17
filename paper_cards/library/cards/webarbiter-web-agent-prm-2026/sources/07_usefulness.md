@@ -1,0 +1,1 @@
+Use this card when a web-agent project has replayable states and alternative actions but needs a richer learning signal than terminal success. Start by auditing state coverage and preference-label agreement, then compare outcome-only, pairwise-only, and principle-guided reward use under one fixed environment budget.

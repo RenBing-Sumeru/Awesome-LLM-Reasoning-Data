@@ -1,0 +1,18 @@
+{
+  "title": "Finding the Sweet Spot: Preference Data Construction for Scaling Preference Optimization",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.615/",
+    "code": "https://github.com/XYaoooo/DPO_Pair",
+    "data": "https://github.com/XYaoooo/DPO_Pair"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:47:48Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "明确研究偏好数据的规模、质量与优化效果之间的关系，适合指导数据构造预算",
+    "updated_at": "2026-07-15T14:47:48Z"
+  }
+}

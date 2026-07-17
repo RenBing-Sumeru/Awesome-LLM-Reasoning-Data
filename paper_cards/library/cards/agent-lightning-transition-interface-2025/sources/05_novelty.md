@@ -1,0 +1,3 @@
+Many agent-RL systems bind rollout collection, context serialization, reward handling, and optimization to one agent implementation. Agent Lightning changes the record boundary: it exposes framework-agnostic transitions and spans as the training interface, then applies hierarchical credit assignment after collection.
+
+Its novelty is the execution-to-transition contract and the disaggregated training architecture, rather than RL alone. The absence of a standalone dataset is intentional: the reusable artifact is the schema and system that converts each deployment environment’s experience into a trainable record.

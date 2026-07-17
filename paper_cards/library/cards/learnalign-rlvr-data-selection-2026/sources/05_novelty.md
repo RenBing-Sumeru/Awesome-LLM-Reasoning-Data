@@ -1,0 +1,3 @@
+The contribution is not generic gradient matching. LearnAlign changes what a gradient represents for RLVR selection by weighting it with a stochastic success-rate quantity. This preserves the insight that representative update directions matter, but prevents a sample from looking valuable merely because it has a short response or a large unnormalized gradient.
+
+It also makes the current policy capability part of the record decision. A question is most useful when the policy sometimes succeeds and sometimes fails, which is a different training-data objective from selecting highly difficult examples for SFT. The selected subset therefore encodes a curriculum-like boundary between solved, learnable, and presently unreachable reasoning problems.

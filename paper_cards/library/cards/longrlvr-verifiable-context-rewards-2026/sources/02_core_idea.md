@@ -1,0 +1,3 @@
+The training target is a grounded QA record: a long document split into chunks, a question, the identifiers of the useful chunks, and an answer. The policy must expose its evidence choice before answering, so that grounding becomes a visible training object rather than an inference hidden inside a final response.
+
+LongRLVR combines an F-score-style reward over those identifiers with answer correctness. The first term supplies credit for partially correct evidence selection, while the second keeps the policy tied to answering the question; the contribution is therefore a changed reward interface for RL, not merely another long-context dataset.

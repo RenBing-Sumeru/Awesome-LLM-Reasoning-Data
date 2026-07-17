@@ -1,0 +1,16 @@
+{
+  "title": "Select2Reason: Efficient Instruction-Tuning Data Selection for Long-CoT Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.331/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:07Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "直连 Long-CoT 数据选择与 SFT 消费，是 Track 09 的关键训练用法",
+    "updated_at": "2026-07-15T12:33:07Z"
+  }
+}

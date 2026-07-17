@@ -1,0 +1,3 @@
+KTO converts preference datasets by treating chosen outputs as desirable and rejected outputs as undesirable, and it can also use naturally binary feedback. Its loss uses separate weights for desirable and undesirable examples and estimates a KL-related reference point by pairing prompts with mismatched responses inside a microbatch.
+
+The experiments compare KTO with DPO, supervised fine-tuning, SLiC, conditional SFT, and an offline PPO variant. They use Anthropic-HH, OpenAssistant, and SHP data, evaluate model families from roughly 1B to 30B parameters, and test both closed-ended tasks and judged open-ended generations.

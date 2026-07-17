@@ -1,0 +1,104 @@
+id: tpo-visual-anchored-rewards-2025
+title: 'Token Preference Optimization with Self-Calibrated Visual-Anchored Rewards for Hallucination Mitigation'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Jihao Gu
+- Yingyao Wang
+- Meng Cao
+- Pi Bu
+- Jun Song
+- Yancheng He
+- Shilong Li
+- Bo Zheng
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- multimodal
+- alignment
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.1076/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.1076/
+  code: https://github.com/alibaba/TPO
+  data: null
+  project: https://github.com/alibaba/TPO
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1076
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.1076/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: RLHF-V's 5K multimodal preference pairs.
+  trace_author: Existing RLHF-V preference-data authors; TPO computes new token rewards during training.
+  answer_format: Image, prompt, chosen and rejected response tokens, corrupted-image logits, visual-anchor score, and self-calibrated reward.
+  process_fields:
+  - image
+  - corrupted_image
+  - prompt
+  - chosen_response
+  - rejected_response
+  - token_logit_difference
+  - visual_anchored_reward
+  - token_preference_loss
+  environment_or_substrate: Vision-language preference optimization for hallucination mitigation.
+  verifier_or_reward: Difference between token logits conditioned on the original image and a noise-corrupted image.
+  terminal_predicate: Higher visual sensitivity is rewarded in positive responses and inversely calibrated in negative responses.
+recipe_metadata:
+  base_model: LLaVA-1.5-7B, LLaVA-1.5-13B, and Qwen2-VL-7B.
+  teacher: The policy and reference models self-calibrate token rewards; no external token annotator is used.
+  generator: No new responses; corrupt the image embedding and rescore tokens at every training step.
+  filtering_rule: None; all tokens receive dynamic visual-anchored reward values, with stronger values for visually dependent tokens.
+  sampling_protocol: Use the 5K RLHF-V preference pairs without their fine-grained human annotations; test different image-noise steps and margin values.
+  rollout_count: null
+  temperature: null
+  inference_budget: Requires repeated image corruption and extra forward scoring during training; code is officially released.
+  optimizer_or_scaffold: Token Preference Optimization with a self-calibrated visual-anchored DPO objective.
+audit:
+  source_mixture: RLHF-V 5K preference data and image corruption generated online at training time.
+  split: AMBER, MMHal-Bench, HallusionBench, SEED-Bench, MMBench, LLaVA-Bench, and MM-Vet.
+  decontamination: No dedicated contamination audit is reported; source/evaluation overlap and image-license conditions need independent review.
+  license: Verify RLHF-V, official repository, backbone-model, and image-data terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2025.findings-emnlp.1076/; https://github.com/alibaba/TPO'
+  known_failure_modes:
+  - Noise level and reward margin require tuning; the paper finds a middle corruption level best.
+  - Token visual relevance may not capture every kind of hallucination or reasoning error.
+  - The method incurs additional per-step image corruption and scoring cost.
+  - The limitation section proposes broader object-specific corruption rather than demonstrating it.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP Findings paper, authors, affiliations, method, data use, results, limitations, and official code link were checked on 2026-07-16.
+inclusion_reason: It changes the reward weight consumed for every token in an existing multimodal preference pair according to dynamically measured visual grounding.
+related: []
+tags:
+- multimodal
+- token-reward
+- preference-optimization
+- hallucination
+- visual-grounding
+status: verified
+one_line_summary: TPO dynamically rewards preference-pair tokens by how much their predictions depend on the original image rather than a corrupted image.
+reading_priority: essential
+paper_type: Visual-grounded token-level preference-optimization study
+best_for: Readers training vision-language models with existing preference pairs but no scalable token-level hallucination annotations.
+confidence: high
+why_it_matters: It makes visual grounding a dynamic, per-token training reward instead of assigning the same preference signal to every response token.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP Findings paper and its declared GitHub repository were checked.
+category_ids:
+- training_usage_optimization_objectives

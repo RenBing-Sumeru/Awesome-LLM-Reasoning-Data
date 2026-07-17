@@ -1,0 +1,18 @@
+{
+  "title": "Less is More: Improving LLM Alignment via Preference Data Selection",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2502.14560",
+    "code": "https://github.com/xiangtanshi/DPO-Data-Selection",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:52:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用多来源奖励间隔筛出更可靠的偏好对，使 DPO 用更少数据获得更好的对齐效果",
+    "updated_at": "2026-07-16T07:52:27Z"
+  }
+}

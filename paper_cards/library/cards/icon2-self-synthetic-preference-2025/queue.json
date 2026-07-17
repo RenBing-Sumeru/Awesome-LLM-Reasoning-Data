@@ -1,0 +1,18 @@
+{
+  "title": "ICON2: Aligning Large Language Models Using Self-Synthetic Preference Data via Inherent Regulation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.196/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:56:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把模型内部表征同时用于筛选训练指令和直接构造偏好对，显著减少外部评审与多次采样成本",
+    "updated_at": "2026-07-16T07:56:38Z"
+  }
+}

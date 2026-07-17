@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-16T09:41:30Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用少量人工偏好种子迭代构造并修正自生成偏好记录",
+    "updated_at": "2026-07-16T09:41:30Z"
+  }
+}

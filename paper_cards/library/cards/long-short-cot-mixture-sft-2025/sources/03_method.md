@@ -1,3 +1,0 @@
-The method starts from long chain-of-thought solutions and constructs shorter versions that retain the solution's essential structure. It then creates an SFT mixture containing both forms. The training input is a reasoning problem; the supervised output is either a detailed trace or its compact counterpart followed by the answer.
-
-The trained models are evaluated for task accuracy and generation length. This makes response length a measurable cost rather than an unobserved side effect of rationale training. The paper reports an average accuracy gain of 2.3% together with a 47.61% reduction in response length; no official code or data release was confirmed from the primary paper page, so reproduction requires recovering its precise rewrite and mixture procedure.

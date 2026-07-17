@@ -1,0 +1,1 @@
+Use Agent Lightning when an existing agent has live tasks, traceable LLM calls, and a defensible reward source, but the team does not want to rewrite the agent around a new RL stack. Define state/action/reward fields first, compare terminal-only with intermediate rewards, and keep the task data, environment version, and reward implementation alongside the collected transitions.

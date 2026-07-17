@@ -1,0 +1,101 @@
+id: scalingrl-dynamic-selection-2025
+title: 'Scale Down to Speed Up: Dynamic Data Selection for Reinforcement Learning'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Zhuoyue Chen
+- Jihai Zhang
+- Ben Liu
+- Fangquan Lin
+- Wotao Yin
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- mathematics
+training_use:
+- rlvr
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.412/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.412/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.412
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.412/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: OpenR1-Math-220k problems originating from AIME, AMC, mathematical olympiads, and Art of Problem Solving.
+  trace_author: The training policy generates reasoning responses; DeepSeek-R1 is sampled to estimate difficulty and reasoning-path length during curation.
+  answer_format: Mathematical problem, answer and solution fields, quality and diversity filters, difficulty and reasoning-complexity scores, reward history, DES score, and dynamic sampling decision.
+  process_fields:
+  - problem
+  - answer
+  - solution
+  - difficulty_score
+  - reasoning_length
+  - reward_history
+  - data_effectiveness_score
+  - selected
+  environment_or_substrate: PPO post-training of Qwen2.5-MATH-7B-Instruct in OpenRLHF with rule-based mathematical-answer and format rewards.
+  verifier_or_reward: Correct boxed answer receives 1, an incorrect but correctly formatted answer receives -0.5, and a formatting error receives -1.
+  terminal_predicate: A prompt enters a training batch only when its temperature-normalized Data Effectiveness Score meets the current threshold.
+recipe_metadata:
+  base_model: Qwen2.5-MATH-7B-Instruct; appendix experiments also include DeepSeek-R1-Distill-1.5B.
+  teacher: DeepSeek-R1 provides repeated solutions for difficulty and reasoning-complexity estimation; Qwen models and Claude 3.5 Sonnet are used in the reported initial filtering pipeline.
+  generator: PPO policy rollouts generate responses for the selected mathematical prompts.
+  filtering_rule: Reduce 220K prompts to 8K using quality, diversity, and difficulty filters; rank the candidate pool by a learned weighted sum of difficulty, chain-of-thought complexity, and reward adaptability.
+  sampling_protocol: At each epoch, compute a temperature-controlled distribution from the Data Effectiveness Score, retain samples above a probability threshold, and progressively shift toward higher-scoring samples.
+  rollout_count: 8
+  temperature: Exploration rollouts use 1.2; sampling temperature decays by epoch.
+  inference_budget: The reported dynamic training subset contains 1.5K labeled problems after an 8K candidate construction stage.
+  optimizer_or_scaffold: PPO with rule-based correctness and format rewards, actor learning rate 5e-7, critic learning rate 9e-6, and KL coefficient 0.01.
+audit:
+  source_mixture: Public mathematical problems from the OpenR1-Math-220k mixture, including AIME, AMC, Olympiads, and AoPS.
+  split: 220K initial pool, 8K filtered candidate pool, and dynamically sampled 1.5K training subset; evaluation uses MATH500, AIME 2024/2025, AMC 2023, and OlympiadBench.
+  decontamination: The paper reports cleaning, validation, and source filtering, but no full benchmark-contamination audit.
+  license: Verify the terms for OpenR1-Math-220k, its upstream problem sources, the base model, and every evaluation set before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.412/'
+  known_failure_modes:
+  - Initial reduction from 220K to 8K depends on heuristic thresholds and model judgments.
+  - Evidence is limited to mathematical reasoning and PPO-style training.
+  - Difficulty and complexity estimation relies on external model rollouts.
+  - The paper does not declare an official release of its curated 8K or dynamic 1.5K subset.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It changes which mathematical prompts are consumed by RL at each training stage, using task difficulty, reasoning-path complexity, and current reward behavior to allocate optimization budget.
+related: []
+tags:
+- rlvr
+- dynamic-data-selection
+- curriculum
+- mathematics
+- ppo
+status: verified
+one_line_summary: ScalingRL turns a 220K mathematical prompt pool into a dynamically sampled 1.5K RL curriculum using difficulty, reasoning complexity, and reward adaptability.
+reading_priority: essential
+paper_type: Dynamic RL training-data selection study
+best_for: Readers designing compute-constrained mathematical RL who need an explicit, stage-dependent rule for deciding which prompts produce the next policy updates.
+confidence: high
+why_it_matters: It treats data use as an optimization schedule, rather than assuming that a fixed high-quality subset remains useful throughout RL.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper was checked; it cites an upstream public prompt collection but declares no official code or release of its curated training subset.
+category_ids:
+- training_usage_optimization_objectives

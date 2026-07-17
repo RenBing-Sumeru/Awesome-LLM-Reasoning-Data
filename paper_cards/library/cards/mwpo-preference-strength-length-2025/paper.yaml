@@ -1,0 +1,72 @@
+id: mwpo-preference-strength-length-2025
+title: 'MWPO: Enhancing LLMs Performance through Multi-Weight Preference Strength and Length Optimization'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Shiyue Xu, Fu Zhang, Jingwei Cheng, Linfeng Zhou]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1057/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.1057/
+  code: https://github.com/AIR-hl/MWPO
+  data: https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized
+  project: null
+  huggingface: https://huggingface.co/AIR-hl/Mistral-7B-Base-MWPO
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1057
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1057/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback-binarized preference pairs for base-model experiments, and PairRM-labeled Princeton Llama3 UltraFeedback pairs for instruction-tuned experiments.
+  trace_author: Existing chosen-rejected responses and their labels; MWPO adds dynamic weights calculated from the policy and response lengths.
+  answer_format: Instruction, chosen response, rejected response, implicit reward margin, length margin, reward-margin weight, length-controlled weight, and mixed training weight.
+  process_fields: [instruction, chosen, rejected, implicit_reward_margin, length_margin, reward_weight, length_weight, mixed_weight]
+  environment_or_substrate: Offline DPO-style preference optimization with a reference policy.
+  verifier_or_reward: Preference labels are supplied by the source datasets; the policy's implicit DPO reward and response-token lengths determine each pair weight.
+  terminal_predicate: A pair remains in training but contributes a geometrically mixed weight that favors reliable margins and discourages chosen-longer length bias.
+recipe_metadata:
+  base_model: Mistral-7B-Base, Qwen2.5-1.5B-Base, Llama-3.2-3B-Base, and Llama-3-8B-Instruct.
+  teacher: Existing dataset preference annotations or PairRM labels; no additional annotator or reward model is introduced by MWPO.
+  generator: No response-generation phase is added to the preference corpus.
+  filtering_rule: No hard deletion; multiply DPO loss by the geometric mixture of sigmoid implicit-reward margin and sigmoid scaled chosen-versus-rejected length margin.
+  sampling_protocol: Full-parameter tuning; reported preference-optimization searches use mixture coefficients 0.4, 0.6, and 0.8, with length scale 0.01.
+  rollout_count: Not applicable to the offline preference records.
+  temperature: 0.7 for AlpacaEval generation and 0.5 for the UltraFeedback test set in the reported evaluation settings.
+  inference_budget: No additional reward-model inference or rollouts during training; each update requires policy and reference log probabilities for both responses.
+  optimizer_or_scaffold: Multi-Weight Preference strength and length Optimization, a weighted DPO objective.
+audit:
+  source_mixture: UltraFeedback-binarized and Princeton Llama3 UltraFeedback preference records, combined with model-computed margins and token lengths.
+  split: AlpacaEval 2, GSM8K, ARC-Challenge, TruthfulQA, MMLU, and GPQA; the primary Mistral comparison uses length-controlled AlpacaEval win rate and average output length.
+  decontamination: No broad contamination audit is reported.
+  license: Verify the terms for UltraFeedback, PairRM-labeled data, models, evaluation services, and the released implementation before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.1057/'
+  known_failure_modes: [Implicit reward margin is correlated with length under the reported data, Strong length control can make outputs too brief, Results depend partly on LLM-judged evaluations, No new label-quality audit is supplied]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, PDF affiliations, repository, data pages named in the paper, method, and reported experiments were checked on 2026-07-16.
+inclusion_reason: It changes how every offline preference pair is consumed by combining model-relative preference confidence and response-length bias into the DPO loss weight.
+related: []
+tags: [preference-optimization, sample-weighting, length-control, dpo]
+status: verified
+one_line_summary: MWPO weights each DPO preference pair by its implicit reward margin and response-length margin to improve alignment while counteracting verbosity.
+reading_priority: essential
+paper_type: Preference-data weighting and optimization-objective study
+best_for: Readers designing offline preference optimization when uncertain pair labels and length bias can both distort the training update.
+confidence: high
+why_it_matters: It makes preference strength and length bias explicit record-level training signals rather than treating all chosen-rejected pairs equally.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: The official ACL paper, authors' public implementation, and the named UltraFeedback data release were checked.
+category_ids: [training_usage_optimization_objectives]

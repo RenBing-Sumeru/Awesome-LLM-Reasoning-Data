@@ -1,0 +1,18 @@
+{
+  "title": "Ambiguity Awareness Optimization: Towards Semantic Disambiguation for Direct Preference Optimization",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.460/",
+    "code": "https://github.com/InsLin/AAO",
+    "data": "https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:09:46Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以回答对内部的语义重叠决定词元级训练权重，直接处理含混监督",
+    "updated_at": "2026-07-16T07:09:46Z"
+  }
+}

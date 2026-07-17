@@ -1,0 +1,1 @@
+Read the data-conversion assumptions together with the ablations on imbalance, model scale, and SFT initialization. For an implementation, verify the microbatch construction, the desirable and undesirable weights, the KL-reference estimate, and the learning-rate range; these details determine whether the promised flexibility of binary feedback survives optimization.

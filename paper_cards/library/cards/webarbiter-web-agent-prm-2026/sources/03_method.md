@@ -1,0 +1,3 @@
+The authors distil structured justifications from a stronger model, then form pairwise preferences over alternative web-agent continuations. Their process reward model generates a principle, reasoning, and verdict; a second stage uses group-relative policy optimization with a binary verifiable reward.
+
+The official release contains 9,642 distilled justifications for supervised training and 18,921 preference records for reinforcement learning. Each preference record preserves the task context and the compared alternatives, so the reward-model input is inspectable rather than only a scalar logged after an episode.

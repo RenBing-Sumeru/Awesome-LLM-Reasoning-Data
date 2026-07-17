@@ -1,0 +1,72 @@
+id: systematic-preference-attributes-2025
+title: 'A Systematic Examination of Preference Learning through the Lens of Instruction-Following'
+year: 2025
+venue: NAACL 2025
+authors: [Joongwon Kim, Anirudh Goyal, Aston Zhang, Bo Xiong, Rui Hou, Melanie Kambadur, Dhruv Mahajan, Hannaneh Hajishirzi, Liang Tan]
+source_role: [construction_recipe]
+verification_contract: [programmatic]
+supervision_granularity: [answer_level]
+domains: [instruction_following, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.naacl-long.552/
+  arxiv: null
+  venue: https://aclanthology.org/2025.naacl-long.552/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.naacl-long.552
+  openreview: null
+  acl: https://aclanthology.org/2025.naacl-long.552/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Synthetic instruction-following prompts combining general requests with verifiable constraints.
+  trace_author: Llama-3.1-70B-Instruct generates prompts and candidate answers; a programmatic constraint verifier scores responses.
+  answer_format: Prompt, four to six constraints, chosen response, rejected response, constraint-satisfaction score, curation method, contrast level, and prompt difficulty.
+  process_fields: [prompt, constraints, chosen, rejected, score, shared_prefix, contrast, difficulty]
+  environment_or_substrate: Offline preference learning on synthetic instruction-following tasks with code-verifiable constraints.
+  verifier_or_reward: Programmatic checks for 23 constraints supply fine-grained response scores.
+  terminal_predicate: Form a preference pair from high and low verifier scores through rejection sampling or MCTS.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct in the reported preference-learning experiments.
+  teacher: Llama-3.1-70B-Instruct generates the synthetic prompts; a programmatic verifier scores candidates.
+  generator: Rejection sampling and Monte Carlo Tree Search produce candidate-response pairs.
+  filtering_rule: Control shared prefixes, chosen-rejected score contrast, and prompt difficulty while fixing training-set size.
+  sampling_protocol: About 48,000 prompts with four, five, or six non-conflicting verifiable constraints; preference pairs are curated by RS or MCTS.
+  rollout_count: Rejection-sampling count and MCTS search budget vary by experimental configuration.
+  temperature: Not reported as a universal setting.
+  inference_budget: MCTS is more compute-intensive than rejection sampling; the paper compares its marginal benefit against that cost.
+  optimizer_or_scaffold: Preference learning on automatically curated chosen-rejected pairs.
+audit:
+  source_mixture: Synthetic prompts and model-generated responses scored by programmatic instruction constraints.
+  split: Evaluates IFEval and synthetic instruction-following tasks at four, five, and six constraints.
+  decontamination: Synthetic prompt generation and semantic deduplication are described, but no broad pretraining-contamination audit is reported.
+  license: Verify Llama, prompt-source, verifier, and any reconstruction-code terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.naacl-long.552/'
+  known_failure_modes: [Only verifiable instruction constraints are studied, Experiments use 8B-scale models, Only RS and MCTS curation are compared, Findings may not transfer to subjective preferences]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, construction pipeline, experiments, and limitations were checked on 2026-07-15; no official code or data release is declared.
+inclusion_reason: It empirically identifies which controllable properties of preference records improve downstream preference learning, directly informing how such records should be constructed and consumed.
+related: []
+tags: [preference-data, instruction-following, pair-contrast, curriculum]
+status: verified
+one_line_summary: This paper measures how shared prefixes, pair contrast, response quality, and prompt difficulty alter the value of preference records for training.
+reading_priority: essential
+paper_type: Controlled preference-data curation and ablation study
+best_for: Readers designing preference pairs who need evidence about which structural and difficulty properties are worth preserving in a training corpus.
+confidence: high
+why_it_matters: It treats preference-data attributes as experimental variables, exposing which record-construction decisions change downstream alignment.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no official code or standalone data release is declared.
+category_ids: [training_usage_optimization_objectives]

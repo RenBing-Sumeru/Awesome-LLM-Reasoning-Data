@@ -1,0 +1,72 @@
+id: pfp-online-preference-debiasing-2025
+title: 'Debiasing Online Preference Learning via Preference Feature Preservation'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Dongyoung Kim, Jinsung Yoon, Jinwoo Shin, Jaehyung Kim]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, online_preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1034/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.1034/
+  code: https://github.com/kingdy2002/PFP
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1034
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1034/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback seed data and four disjoint online batches of 5,000 input prompts.
+  trace_author: The current policy generates paired responses; feature extraction and prompt synthesis use LLMs; SPA or an external reward labels pairs.
+  answer_format: Instruction, five-dimensional preference features, synthesized conditioning prefix or prefixes, two responses, chosen-rejected label, and iteration index.
+  process_fields: [instruction, preference_features, system_prompts, response_1, response_2, chosen, rejected, iteration]
+  environment_or_substrate: Batch-online preference learning with iterative DPO-style updates.
+  verifier_or_reward: SPA's implicit reward or an external reward model labels generated response pairs.
+  terminal_predicate: Preserve the initial preference-feature distribution while adding a newly labeled online batch to training.
+recipe_metadata:
+  base_model: Mistral-7B-v0.1 supervised fine-tuned on UltraChat, following the Zephyr recipe.
+  teacher: GPT-4o extracts preference features; an LLM synthesizes conditioning prefixes; SPA or PairRM provides preference judgments depending on the baseline.
+  generator: The policy samples two responses under separately synthesized conditioning prefixes.
+  filtering_rule: Distribution-preserving feature assignment maps online prompts to target preference features; system-prompt sampling temperature decreases across iterations.
+  sampling_protocol: A 10,000-sample UltraFeedback seed set plus four disjoint online prompt batches of 5,000 each.
+  rollout_count: Two responses per online instruction.
+  temperature: System-prompt sampling temperature is progressively reduced as a curriculum; exact schedule is part of the implementation.
+  inference_budget: Online learning requires feature extraction, prompt synthesis, pair generation, and pair labeling each iteration.
+  optimizer_or_scaffold: SPA-based online preference learning; comparisons include DPO and iterative DPO.
+audit:
+  source_mixture: UltraFeedback seed preferences and newly generated online response pairs.
+  split: Four non-overlapping online input batches; evaluation includes AlpacaEval 2.0, MT-Bench, and Anthropic-HHH.
+  decontamination: No broad contamination audit is reported.
+  license: Verify UltraFeedback, model, external-LLM, reward-model, and code terms before reconstructing the online pipeline.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.1034/'
+  known_failure_modes: [Feature extraction can misidentify why labels were chosen, Conditioning prefixes can reduce response diversity, Feature categories constrain the representation of preference, Online batches and external services affect reproducibility]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, experiment setup, results, and declared code URL were checked on 2026-07-15.
+inclusion_reason: It explicitly controls how newly generated preference records are conditioned, labeled, ordered, and added during online preference training to preserve a target distribution of preference features.
+related: []
+tags: [online-preference-learning, preference-features, curriculum, data-generation]
+status: verified
+one_line_summary: PFP preserves the feature distribution behind preference labels while generating and training on new online preference records.
+reading_priority: useful
+paper_type: Online preference-data construction and distribution-preserving optimization study
+best_for: Readers building iterative preference-learning pipelines that need to avoid feature collapse as self-generated feedback accumulates.
+confidence: high
+why_it_matters: It turns the feature mix behind binary preferences into a constraint on what data is generated and consumed in each online-training round.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its declared code URL were checked; no standalone data release is declared.
+category_ids: [training_usage_optimization_objectives]

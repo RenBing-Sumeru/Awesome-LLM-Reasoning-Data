@@ -1,0 +1,93 @@
+id: autods-mathematical-text-selection-2025
+title: Autonomous Data Selection with Zero-shot Generative Classifiers for Mathematical Texts
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Yifan Zhang
+- Yifan Luo
+- Yang Yuan
+- Andrew C. Yao
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+- continual-pretraining
+training_use:
+- unknown
+construction_layer:
+- prompt_sourcing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.216/
+  arxiv: https://arxiv.org/abs/2402.07625
+  venue: https://aclanthology.org/2025.findings-acl.216/
+  code: https://github.com/yifanzhang-pro/AutoMathText
+  data: https://huggingface.co/datasets/math-ai/AutoMathText
+  project: https://github.com/yifanzhang-pro/AutoMathText
+  huggingface: https://huggingface.co/datasets/math-ai/AutoMathText
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.216
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.216/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and release.
+  trace_author: See the official paper.
+  answer_format: Training record described in the Card source sections.
+  process_fields:
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official paper.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See the official paper.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.216/'
+  known_failure_modes:
+  - Selection signal may not transfer unchanged to a new pool or objective.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, affiliations, venue status, and listed artifacts checked on 2026-07-15.
+inclusion_reason: It changes how a training record, selection decision, or reward signal is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+- data-selection
+status: verified
+one_line_summary: AutoDS ranks mathematical text with zero-shot generative-classifier logits before continual pretraining.
+reading_priority: essential
+paper_type: Mathematical-text curation and continual-pretraining study
+best_for: Readers studying model-relative corpus selection and mathematical continual pretraining.
+confidence: high
+why_it_matters: It makes the connection between a data object and its training objective inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

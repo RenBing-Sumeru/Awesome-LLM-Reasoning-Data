@@ -1,0 +1,65 @@
+id: igds-interpretability-guided-selection-2026
+title: 'From Insight to Action: A Novel Framework for Interpretability-Guided Data Selection in Large Language Models'
+year: 2026
+venue: ACL 2026
+authors: [Ling Shi, Xinwei Wu, Xiaohu Zhao, Hao Wang, Heng Liu, Yangyang Liu, Linlong Xu, Longyue Wang, Deyi Xiong, Weihua Luo]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [programmatic]
+supervision_granularity: [answer_level]
+domains: [mathematical-reasoning, summarization, machine-translation]
+training_use: [sft]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.283/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.283/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.283
+data_object:
+  prompt_source: Task-specific instruction pools, including OpenR1-Math-220k, DialogSum, and WMT24 subsets.
+  trace_author: Existing task datasets; the method scores candidate records with activations from the target model.
+  answer_format: Input-output training example plus a feature-resonant score and selection rank.
+  process_fields: [task_feature_activations, causal_feature_set, feature_resonant_score, selection_rank]
+  environment_or_substrate: Supervised fine-tuning of base LLMs after sparse-autoencoder analysis.
+  verifier_or_reward: Intervention-induced gain on a held-out feature-identification set, then task metrics such as pass@8, ROUGE-1, or COMET.
+  terminal_predicate: Select the top-ranked records under the stated sampling ratio.
+recipe_metadata:
+  base_model: Gemma-2, LLaMA-3.1, and Qwen3 base models.
+  teacher: Instruction-tuned counterparts are used for task-feature identification.
+  generator: No new data generator; the method ranks an existing candidate pool.
+  filtering_rule: Retain records with the largest aggregate activation of causally validated task features.
+  sampling_protocol: Feature identification, selection pool, and final test data are separated by task.
+  rollout_count: null
+  temperature: null
+  inference_budget: Sparse-autoencoder feature extraction and intervention tests are required before scoring the pool.
+  optimizer_or_scaffold: SFT on the selected subset.
+audit:
+  source_mixture: Official ACL paper and its cited public task datasets.
+  split: Feature identification, candidate selection, and test sets are distinct in the reported experiments.
+  decontamination: The paper reports task-level data separation; external dataset overlap still needs reuse-specific audit.
+  license: Follow the licenses of each upstream dataset and model/SAE release.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.283/'
+  known_failure_modes: [SAE availability, intervention validity, task-specific feature transfer]
+  citation_status: verified
+  confidence: high
+  notes: Official paper does not provide a dedicated code or data release URL.
+inclusion_reason: Selects SFT records through causal internal features, directly connecting a data record to the downstream optimization objective.
+related: []
+tags: [data-selection, interpretability, sft, reasoning]
+one_line: IGDS selects SFT data that activates causally validated internal task features.
+why_it_matters: It turns feature-level interpretability evidence into a concrete training-data selection rule.
+status: verified
+needs: []
+one_line_summary: IGDS selects SFT data that activates causally validated internal task features.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no dedicated artifact link found in the paper.
+category_ids: [training_usage_optimization_objectives]

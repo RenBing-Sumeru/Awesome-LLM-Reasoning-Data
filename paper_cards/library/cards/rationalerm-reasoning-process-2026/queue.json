@@ -1,0 +1,16 @@
+{
+  "title": "Outcome Accuracy is Not Enough: Aligning the Reasoning Process of Reward Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2602.04649"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:20Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将理由一致性与结果准确率分开并用于奖励建模很有价值",
+    "updated_at": "2026-07-15T12:33:20Z"
+  }
+}

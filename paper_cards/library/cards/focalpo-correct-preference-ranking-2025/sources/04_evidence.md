@@ -1,0 +1,3 @@
+For Llama-3-Instruct-8B, FocalPO reports 49.8% AlpacaEval win rate, 54.7% length-controlled win rate, and 34.6% Arena-Hard win rate, compared with DPO at 47.5%, 48.2%, and 33.1%. For Mistral-Base-7B, it reports 20.4%, 23.9%, and 17.1%, compared with DPO at 18.6%, 20.6%, and 16.4%.
+
+The controlled ranking experiment is central evidence. Emphasizing incorrectly ranked pairs with the conventional focal direction performs worse than DPO, whereas emphasizing correctly ranked pairs with the proposed direction outperforms DPO. This supports the paper's claim that current ranking correctness is a useful signal for deciding how strongly a pair should affect training.

@@ -1,0 +1,16 @@
+{
+  "title": "Instruction Data Selection via Answer Divergence",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.214/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:32:07Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "该工作直接服务指令 SFT",
+    "updated_at": "2026-07-15T12:32:07Z"
+  }
+}

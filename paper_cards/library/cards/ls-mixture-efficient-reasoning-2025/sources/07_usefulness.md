@@ -1,0 +1,1 @@
+Use this work when long reasoning traces are available but deployment rewards shorter valid reasoning. Preserve the original trace, short rewrite, prompt wording, and answer when constructing the mixture, then compare long-only, short-only, and mixed SFT under the same token budget and verifier.

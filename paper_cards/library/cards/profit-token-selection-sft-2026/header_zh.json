@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ProFit 在监督微调中屏蔽低概率参考词元，使高概率语义锚点主导训练信号。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "概率引导的词元级监督微调研究",
+  "best_for_ch": "设计推理导向监督微调词元选择或掩码的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tao Liu, Taiqiang Wu, Runming Yang, Shaoning Sun, Junjie Wang, Yujiu Yang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T00:45:00Z"
+}

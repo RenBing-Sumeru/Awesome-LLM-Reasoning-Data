@@ -1,0 +1,104 @@
+id: rest-reinforced-self-training-2023
+title: Reinforced Self-Training (ReST) for Language Modeling
+year: 2023
+venue: arXiv preprint
+authors:
+- Caglar Gulcehre
+- Tom Le Paine
+- Srivatsan Srinivasan
+- Ksenia Konyushkova
+- Lotte Weerts
+- Abhishek Sharma
+- Aditya Siddhant
+- Alex Ahern
+- Miaosen Wang
+- Chenjie Gu
+- Wolfgang Macherey
+- Arnaud Doucet
+- Orhan Firat
+- Nando de Freitas
+source_role:
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- alignment
+- dialogue
+- machine_translation
+training_use:
+- sft
+- reward_modeling
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2308.08998
+  arxiv: https://arxiv.org/abs/2308.08998
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2308.08998
+data_object:
+  prompt_source: Task prompts sampled for policy generation.
+  trace_author: The current policy produces candidate samples; a reward function scores them.
+  answer_format: Prompt, policy sample, reward score, and selected offline-RL training record.
+  process_fields:
+  - prompt
+  - sampled_response
+  - reward
+  - selection_threshold
+  - policy_iteration
+  environment_or_substrate: Growing-batch offline reinforcement learning.
+  verifier_or_reward: Task reward or learned preference reward.
+  terminal_predicate: Select or weight generated samples according to reward before policy update.
+recipe_metadata:
+  base_model: Language models evaluated on alignment and text generation tasks.
+  teacher: A reward function scores policy-generated samples.
+  generator: The current LLM policy.
+  filtering_rule: Reward-based selection or weighting of generated samples.
+  sampling_protocol: Grow a batch by sampling the policy, score the batch, then improve the policy with offline RL.
+  rollout_count: null
+  temperature: null
+  inference_budget: Requires repeated sample generation and reward scoring per policy iteration.
+  optimizer_or_scaffold: Reinforced Self-Training.
+audit:
+  source_mixture: Official arXiv paper.
+  split: Keep prompts, generated batches, reward data, and held-out tests separate across iterations.
+  decontamination: Audit generated samples and benchmark overlap at every batch-growth cycle.
+  license: Verify prompt, model, and reward-source terms before redistribution.
+  lineage: 'Primary source: https://arxiv.org/abs/2308.08998'
+  known_failure_modes:
+  - reward-hacking
+  - self-training-bias
+  - selection-threshold-sensitivity
+  - distribution-shift
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper checked.
+inclusion_reason: Defines a classic generate-score-select-retrain loop that converts policy rollouts into the next offline
+  RL training batch.
+related: []
+tags:
+- rest
+- self-training
+- offline-rl
+- reward-filtering
+one_line: ReST repeatedly grows a policy-generated batch, scores it with rewards, and uses offline RL to improve the policy.
+why_it_matters: It makes generated trajectories a governed training asset whose reward and selection rule determine the next
+  policy update.
+status: verified
+needs: []
+one_line_summary: ReST repeatedly grows a policy-generated batch, scores it with rewards, and uses offline RL to improve the
+  policy.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper checked; no official artifact link verified.
+category_ids:
+- training_usage_optimization_objectives

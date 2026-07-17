@@ -1,0 +1,72 @@
+id: er-prm-entropy-process-reward-2025
+title: Entropy-Regularized Process Reward Model
+year: 2025
+venue: Transactions on Machine Learning Research 2025
+authors: [Hanning Zhang, Pengcheng Wang, Shizhe Diao, Yong Lin, Rui Pan, Hanze Dong, Dylan Zhang, Pavlo Molchanov, Tong Zhang]
+source_role: [process_supervision, construction_recipe, data_release]
+verification_contract: [programmatic]
+supervision_granularity: [process_reward]
+domains: [mathematical-reasoning]
+training_use: [process_supervision, sft, test_time_compute]
+construction_layer: reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=cSxDH7N3x9
+  arxiv: https://arxiv.org/abs/2412.11006
+  venue: https://openreview.net/forum?id=cSxDH7N3x9
+  code: https://github.com/hanningzhang/prm
+  data: https://huggingface.co/datasets/HanningZhang/ER-PRM-Data
+  project: https://hanningzhang.github.io/math-prm/
+  huggingface: https://huggingface.co/HanningZhang/Llama3.1-Math-PRM
+  doi: https://doi.org/10.48550/arXiv.2412.11006
+  openreview: https://openreview.net/forum?id=cSxDH7N3x9
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K and MATH problems, with OpenMathInstruct-2 also used in the rejection-sampling training mixture.
+  trace_author: Mistral-MetaMath-7B or DeepSeek-Math-7B-Instruct generates solution traces and completion rollouts.
+  answer_format: Problem, stepwise reasoning text, one entropy-regularized score per step, and a terminal answer checked against the benchmark answer.
+  process_fields: [prompt, reasoning_steps, completion_rollouts, terminal_correctness, eta, step_rewards]
+  environment_or_substrate: Mathematical-answer matching, reference-policy completion sampling, and KL-regularized process-reward estimation.
+  verifier_or_reward: A completion earns one for a correct final answer and zero otherwise; ER-PRM applies a log-sum-exp aggregation of those outcomes under the reference policy.
+  terminal_predicate: Retain a step score estimated from 16 completions of its partial chain, with correctness determined by the final-answer check.
+recipe_metadata:
+  base_model: Llama-3.1-8B reward model; Mistral-MetaMath-7B and DeepSeek-Math-7B-Instruct supply sampled reasoning data.
+  teacher: No separate judge; benchmark answer checking labels completed rollouts.
+  generator: The reference policy samples full solutions and conditional completions from partial chains.
+  filtering_rule: Score each step from completion outcomes; later use the lowest step score to rank a whole candidate response.
+  sampling_protocol: 15 generated solutions per problem and 16 completion paths for each step; about 260K records and 1.5M step annotations per source model.
+  rollout_count: 16.
+  temperature: null
+  inference_budget: Best-of-N and rejection-sampling use multiple candidate reasoning traces and PRM scores.
+  optimizer_or_scaffold: Next-token process-reward training plus PRM-ranked rejection-sampling fine-tuning.
+audit:
+  source_mixture: Public math problems, reference-policy traces, programmatically checked completions, and entropy-regularized process labels.
+  split: Evaluate on GSM8K test and MATH500; the RLHF mixture adds 12,500 OpenMathInstruct-2 questions to reduce exposure-related overfitting.
+  decontamination: The paper identifies prior exposure of policy models to GSM8K and MATH and adds OpenMathInstruct-2 for RLHF, but does not report a full contamination audit.
+  license: Verify the benchmark, generated-data, model, and repository terms before redistribution.
+  lineage: 'Primary source: https://openreview.net/forum?id=cSxDH7N3x9'
+  known_failure_modes: [High rollout cost, Reward hacking at large N, Sensitivity to eta, Mathematics-only evaluation, Stronger policies can expose reward-model mismatch]
+  citation_status: verified
+  confidence: high
+  notes: The TMLR paper, official project page, GitHub repository, 273K-row dataset page, and model page were checked on 2026-07-16.
+inclusion_reason: It converts programmatically checked rollout outcomes into entropy-regularized step labels and uses them for reward-model training and data selection.
+related: []
+tags: [process-reward-model, entropy-regularization, rollout-labeling, rejection-sampling, mathematical-reasoning]
+status: verified
+one_line_summary: ER-PRM derives process labels from reference-policy completion rollouts under a KL-consistent entropy formulation, then uses them to train and apply a math reward model.
+reading_priority: essential
+paper_type: Entropy-regularized process-label construction, reward modeling, and policy-selection study
+best_for: Readers studying how rollout outcomes become step rewards and how a reward model subsequently filters training rationales.
+confidence: high
+why_it_matters: It changes the aggregation rule that turns verified future completions into process-label targets, linking reward construction directly to the KL-regularized optimization objective.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official TMLR paper, project page, code repository, model, and dataset were checked.
+category_ids: [training_usage_optimization_objectives]

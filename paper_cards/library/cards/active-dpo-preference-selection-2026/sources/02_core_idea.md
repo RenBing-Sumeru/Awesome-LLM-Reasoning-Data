@@ -1,0 +1,3 @@
+In DPO, the policy induces an implicit reward for each response relative to a reference policy. ActiveDPO derives an upper bound on reward-difference estimation error and uses the norm of the difference between two implicit-reward gradients, weighted by information from earlier selections, as an uncertainty score.
+
+Large scores identify pairs that are both uncertain for the present policy and complementary to pairs already queried. This makes the acquisition rule policy-specific rather than relying on a separate reward model: a pair is valuable when labeling it is expected to change the reward geometry that DPO actually uses.

@@ -1,0 +1,3 @@
+Zhu, Erle, Dazhi Jiang, Yuan Wang, Xujun Li, Jiale Cheng, Yuxian Gu, Yilin Niu, Aohan Zeng, Jie Tang, Minlie Huang, and Hongning Wang. 2026. *Data-Efficient RLVR via Off-Policy Influence Guidance*. In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 46167–46192. https://aclanthology.org/2026.acl-long.2141/
+
+The official ACL entry, full paper, and paper-declared code URL were checked. The paper builds its training pool from existing mathematical datasets and does not declare an official release of its offline trajectories or phase-selected subsets.

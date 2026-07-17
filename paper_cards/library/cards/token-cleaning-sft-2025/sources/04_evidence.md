@@ -1,0 +1,3 @@
+The paper compares fixed-model and self-evolving cleaning with full-token training and sample-level selection baselines on multiple downstream tasks. It reports consistent improvements, including gains of up to 6.3% in the reported evaluations, while using the same underlying examples more selectively.
+
+The evidence is specific to the paper's models, data pools, masking choices, and downstream evaluations. It does not mean that each removed token is semantically wrong, or that the same threshold will preserve formatting, safety, and long-context requirements in every supervised-fine-tuning task.

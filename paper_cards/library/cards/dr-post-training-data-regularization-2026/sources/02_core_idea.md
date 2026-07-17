@@ -1,0 +1,3 @@
+The central idea is data-induced regularization. General records do not compete with target records for inclusion; their gradients define directions that an update is permitted to follow, while the target objective supplies the direction the model wants to take. This reframes data use as a geometric constraint on optimization.
+
+The data object is therefore a record together with its contribution to a layerwise gradient or feasible-update set. A projected update is accepted because it remains compatible with general-data structure while following the target objective. The closest alternatives are static top-k, threshold, or greedy selection rules, which are special approximations in the paper's broader feasible-set view.

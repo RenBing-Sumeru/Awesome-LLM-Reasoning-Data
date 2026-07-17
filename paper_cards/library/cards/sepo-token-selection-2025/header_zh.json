@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "SePO 训练一个小型 DPO oracle，从偏好对中选出高价值的入选 token 与低价值的拒绝 token 进行偏好优化。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "token 级选择性偏好优化研究",
+  "best_for_ch": "希望从既有成对数据中选择 token 级监督、降低偏好训练成本或噪声的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kailai Yang, Zhiwei Liu, Qianqian Xie, Jimin Huang, Erxue Min, Sophia Ananiadou",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-16T13:00:00Z"
+}

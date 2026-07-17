@@ -1,0 +1,1 @@
+Sample five answers; score their joint geometry; keep both dispersion and anisotropy; preserve coverage; and compare over repeated seeds. The main CoT/LLaMA3-8B result is 62.71, but the first audit asks whether disagreement is learning value or ambiguity.

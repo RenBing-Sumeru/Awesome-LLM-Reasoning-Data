@@ -1,0 +1,72 @@
+id: icon2-self-synthetic-preference-2025
+title: 'ICON2: Aligning Large Language Models Using Self-Synthetic Preference Data via Inherent Regulation'
+year: 2025
+venue: EMNLP 2025
+authors: [Qiyuan Chen, Hongsen Huang, Qian Shao, Jiahe Chen, Jintai Chen, Hongxia Xu, Renjie Hua, Chuan Ren, Jian Wu]
+source_role: [construction_recipe, data_release]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: trace_writing
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.196/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.196/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.196
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.196/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: One million English instructions self-synthesized from model-specific pre-query templates.
+  trace_author: Llama3-8B or Qwen2-7B generates two controlled responses for each filtered instruction.
+  answer_format: Instruction, assigned preference criterion, positive-steered response, negative-steered response, and consistency score.
+  process_fields: [instruction, criterion, consistency_score, chosen_response, rejected_response, control_layers, steering_strength]
+  environment_or_substrate: Offline preference-data construction followed by DPO.
+  verifier_or_reward: Layer-wise preference directions extracted from contrastive control instructions; no external judge labels the generated pairs.
+  terminal_predicate: Retain self-synthesized instructions with high inherent consistency and generate a positive-versus-negative controlled response pair.
+recipe_metadata:
+  base_model: Llama3-8B Base and Qwen2-7B Base after UltraChat-200k supervised fine-tuning.
+  teacher: Contrastive control instructions define honesty, harmlessness, helpfulness, and general preference directions.
+  generator: The target aligned model self-synthesizes instructions and generates positive- and negative-steered responses.
+  filtering_rule: Score every instruction by the maximum layerwise dot-product consistency with a criterion direction and retain the highest-scoring records.
+  sampling_protocol: One million raw instructions are reduced to 100,000, with 98,000 for training and 2,000 for validation; 1,024 Alpaca samples derive direction vectors.
+  rollout_count: 2
+  temperature: null
+  inference_budget: Direction extraction costs 2.2 GPU hours and 100K consistency calculations cost 8.6 GPU hours in the reported Llama3-8B comparison.
+  optimizer_or_scaffold: One offline DPO epoch with beta 0.1; global batch size 128 and learning rate 5e-7.
+audit:
+  source_mixture: Self-synthesized instructions, contrastive preference directions, and representation-steered response pairs.
+  split: 98K training and 2K validation records from a 100K filtered instruction collection.
+  decontamination: The paper reports a leakage analysis in its appendix; no full benchmark decontamination protocol is described in the main method.
+  license: Verify base-model, UltraChat, Alpaca, and any future release terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.emnlp-main.196/'
+  known_failure_modes: [No online-DPO validation, Single-turn preference construction, Base-model bias propagation, Steering hyperparameter sensitivity, No public code or data declared]
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper was checked on 2026-07-16; no paper-declared code or data release was found.
+inclusion_reason: It changes both instruction retention and preference-pair creation so that model-internal preference directions determine the records consumed by DPO.
+related: []
+tags: [synthetic-preference-data, representation-steering, instruction-selection, direct-preference-optimization]
+status: verified
+one_line_summary: ICON2 filters self-synthesized instructions by representation consistency and directly generates chosen and rejected responses through opposite internal steering directions.
+reading_priority: essential
+paper_type: Self-synthetic preference-data construction and DPO study
+best_for: Readers building target-model-specific preference corpora without repeated sampling or external judging.
+confidence: high
+why_it_matters: It makes a target model's representation space an explicit source of both data-selection and pair-construction decisions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper was checked; no paper-declared code or data release was found.
+category_ids: [training_usage_optimization_objectives]

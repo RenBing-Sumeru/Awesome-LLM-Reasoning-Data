@@ -1,0 +1,72 @@
+id: longdpo-stepwise-longform-preference-2025
+title: 'LongDPO: Unlock Better Long-form Generation Abilities for LLMs via Critique-augmented Stepwise Information'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Bowen Ping, Jiali Zeng, Fandong Meng, Shuo Wang, Jie Zhou, Shanghang Zhang]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [step_level]
+domains: [long_form_generation, alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.395/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.395/
+  code: https://github.com/pingbowen23/LongDPO
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.395
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.395/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A random 2,500-instruction sample from WildChat for stepwise collection, combined with UltraFeedback during training.
+  trace_author: LongWriter models generate tree nodes; Llama-3.1-70B-Instruct evaluates nodes, extracts facts, checks consistency, and produces critiques.
+  answer_format: Instruction, prefix steps, candidate next steps, seven-principle reward, factual-memory check, chosen and rejected step, and optional critique-guided revision.
+  process_fields: [instruction, prefix_steps, candidate_step, reward, memory_facts, consistency_check, chosen_step, rejected_step, critique, refined_step]
+  environment_or_substrate: MCTS data construction followed by stepwise DPO for long-form generation.
+  verifier_or_reward: Llama-3.1-70B-Instruct scores seven writing principles and checks factual consistency against a global memory pool.
+  terminal_predicate: Retain a consistent highest-reward sibling as chosen and a random sibling as rejected at every tree layer, refining low-reward chosen steps with external critiques.
+recipe_metadata:
+  base_model: LongWriter-Llama 3.1-8B or LongWriter-Qwen 2.5-7B-Instruct.
+  teacher: Llama-3.1-70B-Instruct provides node rewards, factual extraction, consistency checks, and external critiques.
+  generator: The LongWriter backbone expands an MCTS tree with four child nodes at each selected node.
+  filtering_rule: Reject candidates inconsistent with memory; pick the highest-reward consistent node as chosen and a random sibling as rejected; refine selected chosen steps with reward at or below 2.5.
+  sampling_protocol: MCTS maximum depth four, four children per expansion, 2,048-token nodes, temperature 0.7; train 250 steps after combining collected pairs with UltraFeedback.
+  rollout_count: Four child steps per expansion; tree depth at most four.
+  temperature: 0.7 during tree expansion.
+  inference_budget: Stepwise search requires reward evaluation, embedding-based fact retrieval, consistency checks, and up to three critique suggestions for selected low-reward steps.
+  optimizer_or_scaffold: Stepwise DPO plus vanilla DPO for the accompanying UltraFeedback data.
+audit:
+  source_mixture: WildChat instructions with MCTS-generated stepwise preference pairs and UltraFeedback preference records.
+  split: LongBench-Write-en and LongGenBench assess long-form behavior; TruthfulQA, MMLU, and GSM8K assess general capabilities.
+  decontamination: No broad contamination audit is reported.
+  license: Verify WildChat, UltraFeedback, LongWriter, Llama, Qwen, evaluator, embedding-model, and code terms before reproduction.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.395/'
+  known_failure_modes: [Reward assessment for creative writing is inherently uncertain, Benchmarks only assess generation to 32K length, External critic and reward costs are substantial, Seven evaluation principles may not cover all writing qualities]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, declared code URL, construction protocol, experiments, and stated limitations were checked on 2026-07-16.
+inclusion_reason: It constructs, filters, refines, and consumes stepwise preference pairs so long-form DPO learns from localized quality and factual-consistency decisions rather than only terminal outputs.
+related: []
+tags: [long-form-generation, preference-data, mcts, critique, stepwise-dpo]
+status: verified
+one_line_summary: LongDPO uses MCTS, factual memory, and external critiques to build stepwise preference pairs for fine-grained long-form DPO.
+reading_priority: essential
+paper_type: Stepwise preference-data construction and long-form alignment study
+best_for: Readers building long-form generation alignment pipelines where whole-answer preferences hide the location of factual or structural failures.
+confidence: high
+why_it_matters: It turns long-form training from an outcome-only preference problem into a sequence of selected and refined local decisions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and the public code repository declared in the paper were checked; no standalone generated preference-data release is declared.
+category_ids: [training_usage_optimization_objectives]

@@ -1,0 +1,107 @@
+id: data-whisperer-task-selection-2025
+title: 'Data Whisperer: Efficient Data Selection for Task-Specific LLM Fine-Tuning via Few-Shot In-Context Learning'
+year: 2025
+venue: ACL 2025
+authors:
+- Shaobo Wang
+- Xiangqi Jin
+- Ziming Wang
+- Jize Wang
+- Jiajun Zhang
+- Kaixin Li
+- Zichen Wen
+- Zhong Li
+- Conghui He
+- Xuming Hu
+- Linfeng Zhang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- task_specific_finetuning
+- reasoning
+- instruction_tuning
+training_use:
+- sft
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1135/
+  arxiv: null
+  venue: https://aclanthology.org/2025.acl-long.1135/
+  code: https://github.com/gszfwsb/Data-Whisperer
+  data: https://github.com/gszfwsb/Data-Whisperer
+  project: https://github.com/gszfwsb/Data-Whisperer
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1135
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1135/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Task-specific records from GSM8K, DialogSum, BioInstruct, and a synthetic DialogSum variant.
+  trace_author: Existing input-output records are repeatedly used as ICL demonstrations and receive performance and attention-derived selection scores.
+  answer_format: Input-output record, demonstration appearance, query performance score, attention weight, averaged selection score, and top-k inclusion decision.
+  process_fields:
+  - input
+  - output
+  - icl_demonstration_score
+  - attention_weight
+  - averaged_selection_score
+  - selected
+  environment_or_substrate: Task-specific LoRA fine-tuning after pre-training-stage ICL-based selection.
+  verifier_or_reward: Exact match for GSM8K and ROUGE-L for DialogSum and BioInstruct score the ICL queries.
+  terminal_predicate: The highest averaged attention-weighted demonstration scores form a budgeted top-k training subset.
+recipe_metadata:
+  base_model: Llama-3-8B-Instruct, Qwen-2.5-7B-Instruct, and Mistral-Nemo-Instruct-2407.
+  teacher: The same or a smaller model from the same family performs pre-training ICL scoring; no target-dataset scoring fine-tune is used.
+  generator: No new records are generated for the primary selection procedure.
+  filtering_rule: Average context-aware ICL demonstration scores across appearances and retain top-k records at the chosen budget.
+  sampling_protocol: Randomly sample disjoint demonstration and query sets, score query performance, weight demonstrations by a selected attention layer, and repeat until all records are scored.
+  rollout_count: null
+  temperature: null
+  inference_budget: The default ablation uses 10 demonstrations and 5 queries; selection-to-tuning ratios are measured on eight A100 GPUs.
+  optimizer_or_scaffold: LoRA fine-tuning for five epochs, repeated three times.
+audit:
+  source_mixture: Three public task datasets plus one manually reviewed synthetic DialogSum variant.
+  split: The paper reports task-specific training and test splits, but their licenses and exact preprocessed files require verification from upstream sources and the repository.
+  decontamination: No comprehensive benchmark-contamination audit is reported.
+  license: Verify the four upstream datasets, models, and repository terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2025.acl-long.1135/; https://github.com/gszfwsb/Data-Whisperer'
+  known_failure_modes:
+  - The method needs internal attention weights and therefore cannot directly score closed API models.
+  - The paper does not establish behavior on much larger models or datasets.
+  - ICL-score quality depends on task metrics and prompt templates.
+  - Selection prefers easier, lower-perplexity samples in very small-budget settings.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, author affiliations, selection algorithm, results, limitations, and official GitHub repository were checked on 2026-07-15.
+inclusion_reason: It turns task records into attention-weighted ICL demonstrations and makes their measured contribution determine which records reach fine-tuning.
+related: []
+tags:
+- data-selection
+- in-context-learning
+- attention
+- task-specific-finetuning
+- efficient-training
+status: verified
+one_line_summary: Data Whisperer selects task-specific fine-tuning records by measuring how attention-weighted few-shot demonstrations improve query performance before any scoring-model training.
+reading_priority: essential
+paper_type: Training-free task-data selection study
+best_for: Readers selecting compact task-specific SFT subsets when they can inspect model attention but cannot afford a target-corpus scoring fine-tune.
+confidence: high
+why_it_matters: It makes pre-training ICL behavior an explicit training-record utility signal and evaluates selection cost relative to the full fine-tuning budget.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and the paper-declared public code repository were checked.
+category_ids:
+- training_usage_optimization_objectives

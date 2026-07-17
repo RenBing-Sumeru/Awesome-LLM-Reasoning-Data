@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ASLEC 通过丢弃或回归掉首词元效应，消除基于似然的推理数据选择中的步骤长度偏差。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理数据选择审计、去偏方法与数据发布",
+  "best_for_ch": "用似然或自然性分数整理多步骤推理监督微调轨迹的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bing Wang, Rui Miao, Chen Shen, Shaotian Yan, Kaiyuan Liu, Ximing Li, Xiaosong Yuan, Sinan Fan, Jun Zhang, Jieping Ye",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T01:50:00Z"
+}

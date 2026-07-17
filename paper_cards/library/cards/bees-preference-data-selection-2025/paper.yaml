@@ -1,0 +1,72 @@
+id: bees-preference-data-selection-2025
+title: 'Less is More: Improving LLM Alignment via Preference Data Selection'
+year: 2025
+venue: NeurIPS 2025
+authors: [Xun Deng, Han Zhong, Rui Ai, Fuli Feng, Zheng Wang, Xiangnan He]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, summarization, dialogue]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2502.14560
+  arxiv: https://arxiv.org/abs/2502.14560
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025
+  code: https://github.com/xiangtanshi/DPO-Data-Selection
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.14560
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reddit TLDR, Anthropic Helpful and Harmless, UltraFeedback, and two on-policy UltraFeedback variants.
+  trace_author: Preference datasets provide chosen and rejected responses; iterative DPO generates new candidates from the current policy.
+  answer_format: Prompt, chosen response, rejected response, external and implicit reward margins, aggregated preference probability, and selected-subset flag.
+  process_fields: [prompt, chosen, rejected, external_margin, implicit_margin, aggregated_probability, selected]
+  environment_or_substrate: Offline and iterative DPO data-curation pipelines.
+  verifier_or_reward: Skywork-Reward-Llama-3.1-8B-v0.2 provides external margins; the small DPO model provides implicit margins.
+  terminal_predicate: Retain preference pairs with high Bayesian-aggregated confidence under all margin sources.
+recipe_metadata:
+  base_model: Llama-3.2-3B, Llama-3-8B, Mistral-7B, Qwen-2.5-7B, and Qwen-2.5-14B variants.
+  teacher: Skywork reward model for external-margin signals; GPT-4 is the reported proxy evaluator where a human oracle is unavailable.
+  generator: Original preference collections and current policies in iterative DPO.
+  filtering_rule: Estimate external and implicit margins, map them to preference probabilities, combine them with strict Bayesian aggregation, and select high-confidence pairs.
+  sampling_protocol: A 2,000-record seed trains the small implicit-margin model; main studies select 2,000 or 6,000 records, and iterative DPO retains 5,000 of 20,000 prompts per round.
+  rollout_count: 5
+  temperature: 0.7
+  inference_budget: Three iterative DPO rounds are reported for the online setting.
+  optimizer_or_scaffold: DPO with beta 0.1 except TLDR beta 0.5; selected subsets are also tested with IPO, KTO, and SLiC.
+audit:
+  source_mixture: Human or model-scored preference pairs, an external reward model, a seed DPO model, and optionally on-policy generated pairs.
+  split: TLDR, HH, UltraFeedback, Llama-UltraFeedback, and Mistral-UltraFeedback with reported task-specific evaluation splits.
+  decontamination: Not described as a dedicated contamination audit.
+  license: Verify all upstream dataset, model, evaluator, and repository terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2502.14560'
+  known_failure_modes: [Conditional-independence assumption for aggregation, Reward-model disagreement, Proxy evaluation, Dataset-specific margins, No dedicated contamination audit]
+  citation_status: verified
+  confidence: high
+  notes: Full NeurIPS version on arXiv and the paper-declared code URL were checked on 2026-07-16.
+inclusion_reason: It makes multi-source margin confidence an explicit decision rule for which preference records enter DPO training.
+related: []
+tags: [preference-data-selection, direct-preference-optimization, reward-margin, data-curation]
+status: verified
+one_line_summary: BeeS selects DPO pairs with high confidence across external and implicit reward margins, improving alignment while training on much less preference data.
+reading_priority: essential
+paper_type: Preference-data selection and direct preference optimization study
+best_for: Readers curating noisy preference pairs for data-efficient alignment training.
+confidence: high
+why_it_matters: It demonstrates that preference-pair selection can improve both alignment quality and training efficiency without changing the downstream loss.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv NeurIPS version and paper-declared code URL were checked.
+category_ids: [training_usage_optimization_objectives]

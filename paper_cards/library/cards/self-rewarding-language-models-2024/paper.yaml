@@ -1,0 +1,26 @@
+id: self-rewarding-language-models-2024
+title: 'Self-Rewarding Language Models'
+year: 2024
+venue: ICML 2024
+authors: [Weizhe Yuan, Richard Yuanzhe Pang, Kyunghyun Cho, Xian Li, Sainbayar Sukhbaatar, Jing Xu, Jason Weston]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction_following]
+training_use: [preference_learning, reward_modeling]
+construction_layer: self_play_anchor
+artifacts: {paper: https://proceedings.mlr.press/v235/yuan24d.html, arxiv: https://arxiv.org/abs/2401.10020, venue: https://icml.cc/virtual/2024/poster/35202, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2401.10020}
+data_object: {prompt_source: 'Instruction prompts sampled for iterative response generation.', trace_author: 'The evolving language model generates responses and judges candidate answers with an LLM-as-a-Judge prompt.', answer_format: 'Prompt, candidate answers, model-generated judgment, and chosen/rejected preference pair.', process_fields: [prompt, candidate_response, judge_rationale, judge_choice, chosen_response, rejected_response, iteration], environment_or_substrate: 'Iterative offline preference generation and DPO training.', verifier_or_reward: 'The language model itself acting as a prompted judge.', terminal_predicate: 'A self-judged preference pair is selected for Iterative DPO.'}
+recipe_metadata: {base_model: 'Llama 2 70B in the main iterative experiment.', teacher: 'The current language model acts as its own judge.', generator: 'The current language model generates candidate instruction-following answers.', filtering_rule: 'Use self-generated judgments to form preference pairs at each iteration.', sampling_protocol: 'Generate responses, self-judge them with a rubric prompt, then train with Iterative DPO.', rollout_count: null, temperature: null, inference_budget: 'Multiple generation-and-judgment rounds are required per iteration.', optimizer_or_scaffold: 'Iterative Direct Preference Optimization.'}
+audit: {source_mixture: 'Official ICML paper and PMLR record.', split: 'Preserve prompt and evaluation splits documented by the paper.', decontamination: 'Audit prompt sources and prevent overlap between self-generated training prompts and held-out evaluations.', license: 'The paper does not establish a universal license for every generated artifact; verify upstream prompt and model terms.', lineage: 'Primary source: https://arxiv.org/abs/2401.10020', known_failure_modes: [self-judge-bias, error-amplification, prompt-sensitivity, evaluation-contamination], citation_status: verified, confidence: high, notes: 'Official PMLR, ICML, and arXiv records checked.'}
+inclusion_reason: Establishes an iterative data pipeline in which the policy also generates the judgment signals that become its next preference-training records.
+related: []
+tags: [self-rewarding, iterative-dpo, llm-as-a-judge, preference-learning]
+one_line: A language model generates and judges its own candidate answers, then improves through iterative DPO on the resulting preference pairs.
+why_it_matters: It turns feedback generation from a fixed external dataset into an evolving training component that can improve together with the policy.
+status: verified
+needs: []
+one_line_summary: A language model generates and judges its own candidate answers, then improves through iterative DPO on the resulting preference pairs.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official PMLR, ICML, and arXiv records checked; no official implementation link verified.'}
+category_ids: [training_usage_optimization_objectives]

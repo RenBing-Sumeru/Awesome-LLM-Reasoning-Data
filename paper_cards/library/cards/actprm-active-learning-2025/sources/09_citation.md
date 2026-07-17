@@ -1,0 +1,1 @@
+Keyu Duan, Zichen Liu, Xin Mao, Tianyu Pang, Changyu Chen, Qiguang Chen, Michael Qizhe Shieh, and Longxu Dou. 2025. Efficient Process Reward Model Training via Active Learning. arXiv:2504.10559. https://arxiv.org/abs/2504.10559

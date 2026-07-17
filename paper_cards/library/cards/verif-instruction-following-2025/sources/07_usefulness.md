@@ -1,0 +1,1 @@
+Use it when an instruction-following task has identifiable constraints but lacks a single canonical answer. Write and test the hard checks first, isolate the residual soft requirements for a verifier model, and report verifier agreement alongside policy reward and task success.

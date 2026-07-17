@@ -1,1 +1,0 @@
-The important asset is the controllable generator plus verifier, not a fixed question list. The 35 families, easy/hard configurations, and BBEH gain are concrete evidence points, but their interpretation depends on the generated distribution and rule contract. Cross-family and cross-domain evaluations are required before claiming transferable reasoning.

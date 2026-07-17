@@ -1,0 +1,1 @@
+Environment probing can be expensive, incomplete, or unsafe, and the model may still mistake a passing computation for a sound scientific inference. The code is public, but the paper does not provide a separately versioned training-data release; replication must reconstruct the environments, tools, seeds, and annotation procedure before claiming comparable process supervision.

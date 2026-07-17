@@ -1,1 +1,0 @@
-Use this Card as a structured reading entry: follow the official paper, identify the concrete record and feedback contract, then decide whether the mechanism belongs in a target training pipeline. It is deliberately not a reproduction recipe until the paper-specific artifacts and settings have been verified.

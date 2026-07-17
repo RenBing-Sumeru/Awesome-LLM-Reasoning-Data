@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "LongRLVR 将证据块选择与最终答案同时纳入可验证奖励，使长上下文强化学习获得更稠密的定位反馈。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长上下文强化学习与可验证奖励设计论文（ICLR 2026）",
+  "best_for_ch": "研究长上下文问答、RLVR、证据定位与训练奖励设计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Guanzheng Chen, Michael Qizhe Shieh, Lidong Bing",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-15T12:00:00Z"
+}

@@ -1,0 +1,3 @@
+Across the reported 1B-to-30B experiments, KTO matches or exceeds the compared preference-based methods despite receiving only binary desirability signals. The paper also reports that KTO can tolerate strong class imbalance, including settings with far fewer desirable than undesirable examples.
+
+These findings support the claim that pair structure is not always necessary for effective alignment. They do not show that any binary label is sufficient in every deployment: performance remains sensitive to learning rate, model scale, the desirable-to-undesirable ratio, and the assumptions used when converting pairwise data.

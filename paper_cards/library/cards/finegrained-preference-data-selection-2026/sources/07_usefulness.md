@@ -1,0 +1,1 @@
+Use this paper when preference data already carries several interpretable criteria and a single preference label would hide conflicts. It provides an auditable way to decide data inclusion before DPO, while retaining the aspect labels and proxy scores needed to inspect why a record was filtered.

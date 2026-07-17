@@ -1,0 +1,1 @@
+Christopoulou, Fenia, Ronald Cardenas, Gerasimos Lampouras, Haitham Bou-Ammar, and Jun Wang. 2025. *SparsePO: Controlling Preference Alignment of LLMs via Sparse Token Masks*. In Findings of EMNLP 2025, pages 25477–25503. https://aclanthology.org/2025.findings-emnlp.1389/

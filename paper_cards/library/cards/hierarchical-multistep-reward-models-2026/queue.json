@@ -1,0 +1,16 @@
+{
+  "title": "Towards Hierarchical Multi-Step Reward Models for Enhanced Reasoning in Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.27/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:31:10Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "过程奖励的层级建模有参考价值，但训练记录、采样配置与去污染信息披露仍偏泛化，宜作为补充 PRM 案例",
+    "updated_at": "2026-07-15T12:31:10Z"
+  }
+}

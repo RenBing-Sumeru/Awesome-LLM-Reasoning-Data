@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "M²PO 将翻译候选集转为兼顾忠实度、质量与模型置信度的多对偏好监督，并以排序目标共同训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多视角偏好数据构造与多对偏好优化研究",
+  "best_for_ch": "适合构造翻译偏好数据，或研究流畅回答如何掩盖局部事实错误的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hao Wang 等（阿里巴巴集团、湖南大学）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:11:52Z"
+}

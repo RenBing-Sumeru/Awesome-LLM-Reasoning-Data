@@ -1,0 +1,3 @@
+The alignment-potential metric combines two views of a preference pair. The explicit margin comes from an external reward model and represents the desired ranking; the implicit margin comes from the current policy relative to its reference policy and represents its present ranking. Their discrepancy estimates how much alignment signal the pair can still provide.
+
+Pairs are ranked by this estimated potential and the top subset is used for preference optimization. The same score also guides an evolve-then-select pipeline: generated prompts and responses are annotated, then the metric keeps the generated pairs with the strongest estimated usefulness. The method therefore changes both the filtering of existing data and the consumption of self-generated data.

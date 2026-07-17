@@ -1,0 +1,3 @@
+For a task with one checkable final answer, a stronger model can provide a pseudo answer, or the policy's repeated samples can provide a majority answer. For programming, PFPO first obtains test inputs, generates multiple candidate programs, executes them, and takes the most frequent output for each input as a pseudo expected output. This generalizes self-consistency from one answer to a suite of tests.
+
+The policy then samples solutions and receives the fraction of pseudo tests passed. A winner need only pass enough tests and exceed a loser by a margin, which avoids requiring every pseudo test to be perfect. These scored solutions become outcome preference pairs; the same feedback can also rank continuations from a reasoning prefix for process preference training.

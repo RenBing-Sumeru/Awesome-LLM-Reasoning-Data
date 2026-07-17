@@ -1,0 +1,3 @@
+Static process-label datasets expose a reward model to a fixed set of errors. As a solver and its reward model become stronger, the remaining failures can be subtler than the original negatives, so a PRM trained on old corruptions may miss the errors that matter most during later search and selection.
+
+APRM asks how a process reward model can receive progressively harder negative steps without paying for manual labels. It frames data construction as an adversarial interaction: a generator tries to corrupt a correct step in a way that deceives the current PRM, while the PRM learns from those newly targeted failures.

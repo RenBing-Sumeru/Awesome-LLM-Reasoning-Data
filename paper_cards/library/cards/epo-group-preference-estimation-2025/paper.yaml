@@ -1,0 +1,98 @@
+id: epo-group-preference-estimation-2025
+title: 'Expectation Preference Optimization: Reliable Preference Estimation for Improving the Reasoning Capability of Large Language Models'
+year: 2025
+venue: EMNLP 2025 Main Conference
+authors:
+- Zelin Li
+- Dawei Song
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- reasoning
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1532/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.1532/
+  code: https://github.com/Vespertinus9/EPO
+  data: null
+  project: https://github.com/Vespertinus9/EPO
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.1532
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1532/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K, MetaMath, ARC-Easy, ARC-Challenge, MathQA, and SocialIQA training questions.
+  trace_author: The supervised model generates multiple candidate rationales per question; original rationales are included in the candidate pool.
+  answer_format: Prompt, a preferred group of correct responses, a dispreferred group of incorrect responses, response probabilities, and optional length truncation.
+  process_fields:
+  - prompt
+  - candidate_response
+  - final_answer
+  - correctness_label
+  - preferred_group
+  - dispreferred_group
+  - reference_probability
+  - truncated_response
+  environment_or_substrate: Self-improving preference optimization on tasks with programmatically checkable final answers.
+  verifier_or_reward: Rule-based answer correctness verifier; an additional analysis uses DeepSeek-Distill-Qwen-32B to inspect false positives.
+  terminal_predicate: Correct candidates enter the preferred group and incorrect candidates enter the dispreferred group; all-correct candidate sets are dropped.
+recipe_metadata:
+  base_model: Llama-3-8B, Llama-2-13B, Qwen2.5-7B, and Mistral-7B.
+  teacher: Original task rationales and programmatic correctness labels; Yi-Chat-34B creates some ARC and SocialIQA SFT rationales.
+  generator: Sample 20 responses per prompt from the SFT model at temperature 0.7, then group by final-answer correctness.
+  filtering_rule: Discard a prompt when sampled responses contain no incorrect answer; optionally truncate all group responses to a preset maximum length.
+  sampling_protocol: Construct group pairs after SFT, include the original rationale in each candidate pool, and train preference methods for three epochs.
+  rollout_count: '20'
+  temperature: '0.7'
+  inference_budget: Generation and preference training use 16 A100 80GB GPUs in the reported experiments; no separate cost estimate is stated.
+  optimizer_or_scaffold: Expectation Preference Optimization, which weights response log-ratios by reference probabilities within each group.
+audit:
+  source_mixture: Verifiable-answer math and commonsense datasets plus generated SFT rationales for selected datasets.
+  split: GSM8K, MetaMath subset, ARC-Easy, ARC-Challenge, MathQA, and SocialIQA test evaluations.
+  decontamination: No dedicated contamination audit is reported; released-task and evaluation overlap should be independently checked.
+  license: Verify each underlying dataset, model, and official repository license before reuse; authors note their models are non-commercial.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.1532/; https://github.com/Vespertinus9/EPO'
+  known_failure_modes:
+  - The demonstrated grouping rule relies on binary correct/incorrect answers.
+  - The method does not establish how to estimate group expectations for subjective alignment tasks.
+  - Rule-based correctness labels have false positives, which increase as more samples are drawn.
+  - Response length truncation discards supervision and needs tuning.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, authors, affiliations, method, results, limitations, and the official GitHub link declared in the paper were checked on 2026-07-16.
+inclusion_reason: It changes a preference record from one chosen/rejected pair into probability-weighted groups of correct and incorrect sampled responses.
+related: []
+tags:
+- preference-optimization
+- group-preference
+- self-training
+- reasoning
+- verifier
+status: verified
+one_line_summary: EPO learns from groups of correct and incorrect sampled responses, estimating a group expectation rather than trusting one preference pair.
+reading_priority: essential
+paper_type: Group-wise preference-estimation study for reasoning self-training
+best_for: Readers constructing preference data from multiple verifiable reasoning rollouts per prompt.
+confidence: high
+why_it_matters: It makes multi-sample grouping and within-group probability weighting part of the training signal rather than using one arbitrary response pair.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP paper and the official GitHub repository declared in the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

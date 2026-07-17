@@ -1,0 +1,1 @@
+When reproducing the pipeline, inspect the seed-data size, web-corpus provenance, instruction-generation prompt, evaluator and threshold, deduplication, and iteration boundary. Compare results with and without self-curation; the central question is not only how many examples are generated, but which generated records are trusted by the trainer.

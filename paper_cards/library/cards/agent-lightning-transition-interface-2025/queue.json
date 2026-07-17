@@ -1,0 +1,16 @@
+{
+  "title": "Agent Lightning: Train ANY AI Agents with Reinforcement Learning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2508.03680"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:42:02Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将任意智能体运行过程标准化为状态、动作、奖励 transition，并通过信用分配直接供给在线 RL 训练",
+    "updated_at": "2026-07-15T12:42:02Z"
+  }
+}

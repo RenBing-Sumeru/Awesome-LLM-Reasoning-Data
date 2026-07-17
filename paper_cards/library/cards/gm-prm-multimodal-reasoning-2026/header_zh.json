@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GM-PRM 训练生成式多模态奖励模型，对图像支撑的数学推理步骤进行判断和纠错。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态数学过程奖励模型与纠错数据论文",
+  "best_for_ch": "研究图文数学推理中步骤级判断、纠错和奖励模型训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jianghangfan Zhang、Yibo Yan、Kening Zheng、Xin Zou、Song Dai、Xuming Hu",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

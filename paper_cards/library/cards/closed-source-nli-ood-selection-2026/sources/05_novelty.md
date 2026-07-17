@@ -1,0 +1,3 @@
+Its novelty is practical rather than a new preference or loss objective. It formalizes data replacement as the available optimization surface when a provider locks the fine-tuning process. The explicit class-balanced replacement rule turns difficulty, uncertainty, and synthetic complexity into decisions about which records consume a fixed paid training budget.
+
+The paper also rejects the assumption that more synthetic data is automatically better. By showing different effects on easy and hard OOD sets, it frames generated-record complexity as a mixture variable that must be matched to the desired robustness target. This is a useful boundary case for data optimization: selecting for one generalization regime can degrade another.

@@ -1,0 +1,106 @@
+id: skill-aware-reasoning-distillation-2026
+title: Skill-Aware Data Selection and Fine-Tuning for Data-Efficient Reasoning Distillation
+year: 2026
+venue: ACL 2026 Short Papers
+authors:
+- Lechen Zhang
+- Yunxiang Zhang
+- Wei Hu
+- Lu Wang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- reasoning
+- mathematics
+- instruction-tuning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-short.49/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-short.49/
+  code: https://github.com/orange0629/skill-data-selection
+  data: https://github.com/orange0629/skill-data-selection
+  project: https://github.com/orange0629/skill-data-selection
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-short.49
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-short.49/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 100K unique OpenMathReasoning question-answer pairs.
+  trace_author: Teacher corpus plus Qwen2.5-32B-Instruct skill attribution.
+  answer_format: Math question, teacher solution, attributed root-to-leaf skill chains, and student skill profile.
+  process_fields:
+  - question
+  - solution
+  - skill_chain
+  - leaf_skill_accuracy
+  - sampling_probability
+  environment_or_substrate: Math reasoning distillation with a predefined skill hierarchy.
+  verifier_or_reward: Student correctness on leaf-skill evaluation and math benchmark accuracy.
+  terminal_predicate: Math benchmark correctness; per-skill accuracy is a selection signal.
+recipe_metadata:
+  base_model: Qwen3-4B, Qwen3-8B, and DeepSeek-R1-Distill-Llama-8B.
+  teacher: Qwen2.5-32B-Instruct for attribution; OpenMathReasoning teacher solutions.
+  generator: OpenMathReasoning and skill-tree attribution pipeline.
+  filtering_rule: Sample skills inversely to student leaf-skill accuracy with a capped inverse-accuracy rule.
+  sampling_protocol: Select 1,000 records from 100K; prepend full skill chain before solution for skill-aware SFT.
+  rollout_count: null
+  temperature: null
+  inference_budget: Five SFT epochs; Avg@8 evaluation.
+  optimizer_or_scaffold: Skill-aware supervised fine-tuning.
+audit:
+  source_mixture: 100K unique OpenMathReasoning pool; 1K selected subset per student profile.
+  split: Per-skill evaluation on corpus and five competition-style math benchmarks.
+  decontamination: No dedicated contamination audit claimed; inspect OpenMathReasoning and benchmark overlap.
+  license: Verify official repository and upstream OpenMathReasoning terms.
+  lineage: 'Primary sources: https://aclanthology.org/2026.acl-short.49/; https://github.com/orange0629/skill-data-selection'
+  known_failure_modes:
+  - Skill tree may not match student reasoning decomposition.
+  - Per-skill accuracy can be noisy.
+  - Attribution cost is significant.
+  - Math-focused validation may not transfer to other domains.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, method, experiments, limitations, and official code/data repository link checked on
+    2026-07-15.
+inclusion_reason: It changes which teacher reasoning records and explicit skill structures are consumed by student SFT based
+  on student-specific weaknesses.
+related: []
+tags:
+- reasoning-distillation
+- skill-aware
+- data-selection
+- sft
+status: verified
+one_line_summary: Skill-aware distillation samples teacher traces for the student’s weak skills and adds full skill chains
+  to the SFT target.
+reading_priority: essential
+paper_type: Skill-centric reasoning-data selection and distillation study
+best_for: Readers building student-adaptive subsets from a structured reasoning-teacher corpus.
+confidence: high
+why_it_matters: It makes the relationship between a reasoning record, a student weakness profile, and the SFT consumer explicit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and repository identified by the paper as code-and-dataset release were checked.
+category_ids:
+- training_usage_optimization_objectives

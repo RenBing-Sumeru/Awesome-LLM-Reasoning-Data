@@ -1,0 +1,16 @@
+{
+  "title": "From Verifiable Dot to Reward Chain: Harnessing Verifiable Reference-based Rewards for Reinforcement Learning of Open-ended Generation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.18533"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:11Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将高质量参考答案拆为可验证的内容与风格奖励链，直接扩展开放式生成中训练奖励如何构造与消费",
+    "updated_at": "2026-07-15T12:33:11Z"
+  }
+}

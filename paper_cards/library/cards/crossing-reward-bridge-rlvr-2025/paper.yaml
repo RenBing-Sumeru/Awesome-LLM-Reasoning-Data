@@ -1,0 +1,93 @@
+id: crossing-reward-bridge-rlvr-2025
+title: 'Crossing the Reward Bridge: Expanding Reinforcement Learning with Verifiable
+  Rewards Across Diverse Domains'
+year: 2025
+venue: ACL 2026
+authors:
+- Yi Su
+- Dian Yu
+- Linfeng Song
+- Juntao Li
+- Haitao Mi
+- Zhaopeng Tu
+- Min Zhang
+- Dong Yu
+source_role:
+- verifier_reward
+verification_contract: mixed
+supervision_granularity:
+- scalar_reward
+domains:
+- multi-domain-reasoning
+training_use:
+- rlvr
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.178/
+  arxiv: https://arxiv.org/abs/2503.23829
+  venue: https://aclanthology.org/2026.acl-long.178/
+  code: null
+  data: https://huggingface.co/collections/virtuoussy/rlvr
+  project: null
+  huggingface: https://huggingface.co/collections/virtuoussy/rlvr
+  doi: https://doi.org/10.18653/v1/2026.acl-long.178
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.178/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See official paper and release.
+  trace_author: teacher/policy/unknown
+  answer_format: Task-specific training record described in the paper.
+  process_fields:
+  - prompt
+  - response
+  - feedback
+  environment_or_substrate: See official paper.
+  verifier_or_reward: See official paper.
+  terminal_predicate: See official paper.
+recipe_metadata:
+  base_model: See official paper.
+  teacher: See official paper.
+  generator: See official paper.
+  filtering_rule: See official paper.
+  sampling_protocol: See official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: not fully disclosed
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See official paper.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.178/'
+  known_failure_modes:
+  - Feedback or selection signal may not transfer unchanged.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, artifact links, and available affiliation evidence
+    checked.
+inclusion_reason: The paper changes how a training record, selection signal, reward,
+  or trajectory is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+status: verified
+one_line_summary: This work distils cross-domain generative reward models from exploration-time
+  answer–judgement records and uses soft rewards for RLVR.
+why_it_matters: It makes the link between an explicit data object and a training objective
+  inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

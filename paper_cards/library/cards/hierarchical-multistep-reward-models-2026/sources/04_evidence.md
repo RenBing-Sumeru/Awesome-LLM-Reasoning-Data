@@ -1,0 +1,3 @@
+On PRM800K, the authors report that the hierarchical model with node compression gives more stable and reliable evaluation than the process-reward-model comparisons used in the paper. They also use tests on MATH500 and GSM8K to argue that the resulting reward behaviour generalizes across mathematical-reasoning datasets.
+
+The evidence is bounded by the paper's mathematical setting, its tree construction, and its process labels. It supports the claim that multi-scale supervision can improve reward evaluation there; it does not establish that a high process reward is a formal proof of correctness in another domain.

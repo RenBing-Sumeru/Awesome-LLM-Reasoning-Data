@@ -1,0 +1,1 @@
+Use this paper before generating expensive self-play preference pairs. It supports ranking prompts with the same policy and reward model, then allocating rollout budget to prompts likely to yield separable preference evidence.

@@ -1,0 +1,3 @@
+The authors design code-based verifiers for hard constraints and train or use language-model verifiers for softer requirements. These outputs are converted to reinforcement-learning rewards, allowing a policy to receive feedback even when no single reference response represents every compliant answer.
+
+The paper releases code and the VerInstruct resource so the verifier layer can be inspected separately from the policy. This separation is important: the policy is optimized against a stated contract, and failures can be traced to a particular hard checker or soft verifier rather than hidden inside a single reward score.

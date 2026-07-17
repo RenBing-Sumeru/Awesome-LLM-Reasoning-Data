@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"MMPO 将每个离线偏好回答对转化为归一化的最大边缘似然目标，并隐式提高优选回答的权重。","reading_priority_ch":"可读","paper_type_ch":"离线偏好优化目标研究","best_for_ch":"适合比较 DPO 类目标、希望稳定使用既有偏好数据集且不训练显式奖励模型的读者。","confidence_ch":"高","authors_ch":"Saeed Najafi, Alona Fyshe（阿尔伯塔大学）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T09:20:00Z"}

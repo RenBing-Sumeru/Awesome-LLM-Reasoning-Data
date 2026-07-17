@@ -1,0 +1,1 @@
+Christopoulou, Fenia, Ronald Cardenas, Gerasimos Lampouras, Haitham Bou-Ammar 和 Jun Wang。2025。*SparsePO：通过稀疏 token 掩码控制大语言模型偏好对齐*。EMNLP 2025 Findings 论文集，第 25477–25503 页。https://aclanthology.org/2025.findings-emnlp.1389/

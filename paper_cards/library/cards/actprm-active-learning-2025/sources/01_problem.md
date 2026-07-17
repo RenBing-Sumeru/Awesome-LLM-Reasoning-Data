@@ -1,0 +1,3 @@
+Process reward models need labels through the first incorrect reasoning step, but asking a strong judge to label every generated trajectory makes cost grow with the candidate pool. Randomly labeling a subset also wastes budget on examples that a current reward model already classifies confidently.
+
+ActPRM asks how to spend a finite process-labeling budget on records that will most improve a process reward model. It treats uncertainty as a data-acquisition signal: label a trajectory only when the current ensemble is unsure about a step relevant to first-error detection, then train on the queried labels.

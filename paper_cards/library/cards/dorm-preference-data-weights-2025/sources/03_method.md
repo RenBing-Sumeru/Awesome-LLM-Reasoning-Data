@@ -1,0 +1,3 @@
+The paper computes a prior weight exp(u minus gamma times q), where u is prediction variance across dropout passes and q is normalized label disagreement. It trains a Mistral NeMo 12B reward model with a 12-attribute regression head over HelpSteer2, OpenAssistant2, Magpie-Qwen-2.5, OffsetBias, and WildGuard after normalizing their rating scales.
+
+At the lower level, the weighted records train the reward model. At the upper level, validation loss adjusts their weights, with an L2 term keeping them near the uncertainty-disagreement prior; a first-order hypergradient avoids second-order Hessians. The resulting reward model labels an UltraFeedback DPO set for a Mistral-7B policy after one SFT epoch.

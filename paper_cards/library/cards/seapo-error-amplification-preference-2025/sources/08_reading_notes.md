@@ -1,0 +1,1 @@
+Read the method as data construction for an optimization target. Inspect the chosen source, error taxonomy, severity, and task mix together, because each decides which behavior receives negative probability pressure.

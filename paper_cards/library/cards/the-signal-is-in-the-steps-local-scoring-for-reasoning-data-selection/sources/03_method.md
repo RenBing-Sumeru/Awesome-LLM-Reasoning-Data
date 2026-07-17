@@ -1,3 +1,0 @@
-The authors collect answer-verified long responses from DeepSeek-R1, Qwen3-32B-Instruct, and QwQ-32B for the same prompts. GLM-4.5-Air segments each response into reasoning steps. A frozen pre-SFT student then scores every step conditioned on the prompt and a restricted prefix, and the average becomes the response's LALP score.
-
-For teacher selection, mean LALP ranks a teacher before any fine-tuning. For mixed-pool curation, the highest-LALP response is retained per prompt and used for SFT. The main comparison is GALP, which needs one forward pass per response; LALP incurs stepwise scoring passes but is a one-time preprocessing operation and can recover teacher ranking with 200 prompts in the reported setting.

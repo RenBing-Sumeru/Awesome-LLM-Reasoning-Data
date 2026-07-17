@@ -1,0 +1,3 @@
+On ProcessBench, FreePRM reports an average F1 of 53.0. This exceeds the Qwen2.5 model trained on Math-Shepherd labels at 28.9, Skywork-PRM-7B at 42.1, and EurusPRM-Stage2 at 31.3; it remains below the manually labeled PRM800K model at 56.5. The comparison is important because FreePRM excludes process labels during training.
+
+The paper also reports best-of-N gains across four policy generators and states that it matches or exceeds PRMs trained on automatically labeled process data. Ablations attribute improvement to both the random buffer factor and stronger final-step supervision; with all components, the reported ProcessBench average is 49.1 in that ablation setting.

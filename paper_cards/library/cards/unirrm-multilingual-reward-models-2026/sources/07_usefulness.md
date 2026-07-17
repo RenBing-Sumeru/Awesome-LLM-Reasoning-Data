@@ -1,0 +1,1 @@
+Use it when one application needs a reward model to compare responses in several languages or to switch among pairwise, listwise, and pointwise interfaces. Preserve the requested output schema, sample each format from held-out tasks, and test whether rubric quality and outcome accuracy fail in different ways.

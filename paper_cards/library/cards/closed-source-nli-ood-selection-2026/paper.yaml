@@ -1,0 +1,103 @@
+id: closed-source-nli-ood-selection-2026
+title: 'Improving the OOD Performance of Closed-Source LLMs on NLI Through Strategic Data Selection'
+year: 2026
+venue: Findings of EACL 2026
+authors:
+- Joe Stacey
+- Lisa Alazraki
+- Aran Ubhi
+- Beyza Ermis
+- Aaron Mueller
+- Marek Rei
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- natural_language_inference
+- robustness
+- closed_source_finetuning
+training_use:
+- sft
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-eacl.286/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-eacl.286/
+  code: https://github.com/joestacey/LLM_robustness_NLI
+  data: https://github.com/joestacey/LLM_robustness_NLI
+  project: https://github.com/joestacey/LLM_robustness_NLI
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-eacl.286
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-eacl.286/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A fixed-budget subset of human-annotated NLI training data, supplemented by generated NLI examples from new domains.
+  trace_author: Existing examples are ranked by uncertainty, difficulty, or prediction errors; LLMs create replacement premise-hypothesis-label triples.
+  answer_format: Premise, hypothesis, entailment/neutral/contradiction label, selection score or generation prompt, and fixed-budget inclusion decision.
+  process_fields:
+  - premise
+  - hypothesis
+  - label
+  - uncertainty
+  - difficulty_score
+  - generated_example
+  - selected
+  environment_or_substrate: API fine-tuning of closed-source NLI models under a 10,000-instance training budget.
+  verifier_or_reward: NLI label correctness and OOD benchmark accuracy; difficulty may be scored by an LLM.
+  terminal_predicate: Equal label-class counts are removed and added so the final training set keeps the original fixed size.
+recipe_metadata:
+  base_model: GPT-4o-mini and Gemini-2.0-Flash, with encoder and other LLM baselines.
+  teacher: The target LLM supplies uncertainty or errors; generation models create NLI instances from different domains and complexity prompts.
+  generator: Few-shot LLM generation of premise-hypothesis-label examples.
+  filtering_rule: Replace a class-balanced fraction of the initial training set with uncertain, difficult, misclassified, or generated examples.
+  sampling_protocol: Use an equally sized candidate pool outside the initial set when inference is needed, then preserve label proportions during replacement.
+  rollout_count: null
+  temperature: null
+  inference_budget: The main setting fixes fine-tuning to 10,000 instances and tests different replacement fractions.
+  optimizer_or_scaffold: Closed-source API fine-tuning; training procedure cannot be modified.
+audit:
+  source_mixture: Human NLI data plus LLM-generated examples; the paper evaluates in-domain, standard-OOD, and challenge-OOD NLI collections.
+  split: A fixed 10K training budget with a separately selected candidate pool; multiple NLI OOD datasets are used for evaluation.
+  decontamination: The paper does not report a full generation-to-evaluation contamination audit.
+  license: Verify source-NLI, generated-data, API model, and repository terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2026.findings-eacl.286/; https://github.com/joestacey/LLM_robustness_NLI'
+  known_failure_modes:
+  - Results are restricted to NLI and may not transfer to generative instruction tasks.
+  - Easy synthetic examples can improve standard OOD while harming challenge-OOD performance.
+  - Difficulty and uncertainty scores can depend on the target model and candidate pool.
+  - Closed API fine-tuning limits diagnosis of why selected records change robustness.
+  citation_status: verified
+  confidence: high
+  notes: Full EACL Findings paper, affiliations, data construction, results, limitations, and declared repository were checked on 2026-07-15.
+inclusion_reason: It makes fixed-budget training-data replacement the mechanism for trading in-domain fit against OOD robustness when the fine-tuning algorithm cannot be changed.
+related: []
+tags:
+- data-selection
+- synthetic-data
+- ood-robustness
+- nli
+- closed-source-llm
+status: verified
+one_line_summary: This study selects or replaces NLI fine-tuning records under a fixed API-training budget to improve OOD robustness of closed-source LLMs.
+reading_priority: useful
+paper_type: Fixed-budget robustness-oriented data selection study
+best_for: Readers using API fine-tuning who need to alter the training set rather than the objective or optimizer to improve distributional robustness.
+confidence: high
+why_it_matters: It shows that training-set composition can be the only controllable optimization lever for closed-source fine-tuning and measures the resulting OOD trade-offs.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official EACL full paper and paper-declared public repository were checked.
+category_ids:
+- training_usage_optimization_objectives

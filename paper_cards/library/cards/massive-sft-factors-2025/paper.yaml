@@ -1,0 +1,110 @@
+id: massive-sft-factors-2025
+title: Massive Supervised Fine-tuning Experiments Reveal How Data, Layer, and Training Factors Shape LLM Alignment Quality
+year: 2025
+venue: EMNLP 2025
+authors:
+- Yuto Harada
+- Yusuke Yamauchi
+- Yusuke Oda
+- Yohei Oseki
+- Yusuke Miyao
+- Yu Takagi
+source_role:
+- scaling_study
+- audit_failure
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- mathematics
+- code
+- multilingual
+training_use:
+- sft
+- evaluation
+- audit
+construction_layer:
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1138/
+  arxiv: https://arxiv.org/abs/2506.14681
+  venue: https://aclanthology.org/2025.emnlp-main.1138/
+  code: https://github.com/llm-jp/massive-sft
+  data: null
+  project: https://github.com/llm-jp/massive-sft
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.1138
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1138/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Ten upstream English instruction datasets grouped as general, code, math, and classic NLP sources.
+  trace_author: Upstream dataset authors and generators.
+  answer_format: Instruction-response record sampled at 1k or 20k examples per source.
+  process_fields:
+  - base_model
+  - source_dataset
+  - sample_size
+  - tuning_method
+  - benchmark_result
+  - perplexity
+  environment_or_substrate: Controlled SFT of 7–9B base models.
+  verifier_or_reward: Downstream benchmark scores and base-model perplexity analysis.
+  terminal_predicate: Benchmark-specific metrics; no universal verifier.
+recipe_metadata:
+  base_model: Twelve approximately 7B-scale English, Chinese, and Japanese base models.
+  teacher: Upstream source dependent.
+  generator: Upstream datasets.
+  filtering_rule: Remove samples exceeding the shared tokenizer maximum length; randomly sample 1k or 20k examples.
+  sampling_protocol: Per-source SFT and all-dataset mixture; compare full-parameter and LoRA tuning.
+  rollout_count: null
+  temperature: null
+  inference_budget: Reported SFT hyperparameters and epochs; see paper.
+  optimizer_or_scaffold: Full-parameter SFT and LoRA under controlled hyperparameters.
+audit:
+  source_mixture: Ten upstream datasets; 1,070 controlled SFT models and 12 benchmark families reported.
+  split: Shared preprocessing with 1k or 20k random samples; OpenCompass evaluation.
+  decontamination: No dedicated contamination audit claimed; inspect source and benchmark overlap.
+  license: Open-access upstream datasets; verify each upstream term independently.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.1138/; https://github.com/llm-jp/massive-sft'
+  known_failure_modes:
+  - Findings may not transfer beyond 7–9B models.
+  - English SFT limits multilingual conclusions.
+  - Perplexity is a proxy, not causal quality.
+  - Large model release requires substantial storage.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, official ACL record, GitHub resource page, affiliations, experiments, limitations, and release
+    description checked on 2026-07-15.
+inclusion_reason: It audits how source data, sample count, and tuning configuration change the records consumed by SFT and
+  the resulting capabilities.
+related: []
+tags:
+- sft
+- data-selection
+- perplexity
+- training-audit
+status: verified
+one_line_summary: A controlled release of 1,000+ SFT runs finds base-model perplexity is a strong compatibility signal for
+  choosing training data.
+reading_priority: essential
+paper_type: Large-scale supervised fine-tuning data and training-factor audit
+best_for: Readers validating SFT data-selection rules across base models and tasks.
+confidence: high
+why_it_matters: It shows that the data selection signal must be tied to the base model and downstream contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP paper and resource repository checked; repository provides evaluation results and model-release information,
+    not a new merged training dataset.
+category_ids:
+- training_usage_optimization_objectives

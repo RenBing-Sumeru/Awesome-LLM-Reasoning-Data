@@ -1,0 +1,3 @@
+Instruction-data selectors commonly score whether an input-response pair is difficult, diverse, or useful for predicting a target answer. Open-ended assistants also need to match how users prefer among plausible answers, so a subset that predicts references well can still teach the wrong response style for the task a model will actually serve.
+
+ProDS asks how target-set preference information can select SFT records. It represents preferences between better and worse target responses with DPO gradients, measures each training record's alignment with both an improving and a degrading direction, and keeps records that favor the former while avoiding the latter.

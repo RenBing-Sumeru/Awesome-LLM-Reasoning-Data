@@ -1,0 +1,16 @@
+{
+  "title": "Token-level Data Selection for Safe LLM Fine-tuning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.01185"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:32:54Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "明确将安全—效用权衡落实为逐 token 的 SFT 掩码，直接改变训练数据如何进入优化",
+    "updated_at": "2026-07-15T12:32:54Z"
+  }
+}

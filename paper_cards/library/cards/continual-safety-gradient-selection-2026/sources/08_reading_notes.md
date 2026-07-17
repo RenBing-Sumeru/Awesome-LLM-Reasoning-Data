@@ -1,0 +1,1 @@
+Read the result as evidence that training records have unequal safety cost. Check the loss outlier prefilter, the median-gradient rule, and the attack metrics together; a lower attack success rate is meaningful only if task performance and the target domain remain acceptable.

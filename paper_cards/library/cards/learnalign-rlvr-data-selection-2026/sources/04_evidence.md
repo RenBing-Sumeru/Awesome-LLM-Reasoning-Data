@@ -1,0 +1,3 @@
+On GSM8K with Qwen2.5-1.5B-Instruct, LearnAlign reaches 77.5% with 1,000 selected questions, exceeding the reported 77.0% full-data result; with 2,000 questions it reaches 78.3%. It outperforms the listed random, perplexity, IFD, token-length, uncertainty, and LIMR baselines at every reported selection size.
+
+Using 1,000 selected questions from DAPO-MATH-17K, it achieves a 42.4 average across GSM8K, MATH500, AMC2023, AIME2024, and CRUX for Qwen2.5-3B, versus 39.0 for LIMR and 34.8 for random; Qwen2.5-7B reaches 54.6 versus 50.7 for SelectIT. The selection plus training time is 11.3 hours versus 42.3 hours for full training in the 3B comparison, though the evidence remains concentrated on small models and reasoning datasets.

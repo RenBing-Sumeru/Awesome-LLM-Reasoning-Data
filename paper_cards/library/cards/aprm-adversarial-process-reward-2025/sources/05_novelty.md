@@ -1,0 +1,3 @@
+Most automatic PRM pipelines collect errors once, through rollouts, search, or fixed perturbation rules. APRM makes the negative generator a training participant whose objective is explicitly tied to current PRM failures, converting the reward model's error boundary into a moving data-collection target.
+
+Its other distinctive choice is preserving historical negatives alongside current ones. That turns the data mixture into a curriculum with memory: new examples target present blind spots, while past examples protect against forgetting. The card is included for this changing training-record policy, not for the game-theoretic optimizer alone.

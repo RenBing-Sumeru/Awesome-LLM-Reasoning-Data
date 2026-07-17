@@ -1,0 +1,26 @@
+id: kto-prospect-theoretic-optimization-2024
+title: 'KTO: Model Alignment as Prospect Theoretic Optimization'
+year: 2024
+venue: ICML 2024
+authors: [Kawin Ethayarajh, Winnie Xu, Niklas Muennighoff, Dan Jurafsky, Douwe Kiela]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [scalar_reward]
+domains: [alignment, instruction_following]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts: {paper: https://arxiv.org/abs/2402.01306, arxiv: https://arxiv.org/abs/2402.01306, venue: https://icml.cc/virtual/2024/poster/33352, code: https://github.com/ContextualAI/HALOs, data: null, project: https://github.com/ContextualAI/HALOs, huggingface: null, doi: https://doi.org/10.48550/arXiv.2402.01306}
+data_object: {prompt_source: 'Existing preference datasets or naturally binary feedback.', trace_author: 'Dataset providers or feedback collectors label individual responses as desirable or undesirable.', answer_format: 'Prompt, response, and binary desirable/undesirable label.', process_fields: [prompt, response, desirability_label, policy_logprob, reference_point_estimate], environment_or_substrate: 'Offline binary-feedback alignment.', verifier_or_reward: 'Human or automated binary judgments; paired datasets may be converted by splitting chosen and rejected outputs.', terminal_predicate: 'Raise utility for desirable responses and lower it for undesirable responses under the KTO loss.'}
+recipe_metadata: {base_model: 'Pythia, Llama, Mistral, Llama 3, and Qwen-family models in reported experiments.', teacher: 'No separately trained reward model is required.', generator: null, filtering_rule: 'Each labeled response directly enters training; pairwise data can be decomposed into binary labels.', sampling_protocol: 'Offline minibatches with mismatched responses used to estimate a batch reference point.', rollout_count: null, temperature: null, inference_budget: 'No on-policy sampling is required for offline fine-tuning.', optimizer_or_scaffold: 'Kahneman-Tversky Optimization.'}
+audit: {source_mixture: 'Official ICML paper and Contextual AI implementation repository.', split: 'Use the original feedback-dataset splits and document any pair-to-binary conversion.', decontamination: 'KTO does not prevent overlap inherited from upstream feedback or evaluation datasets.', license: 'Verify repository, model, and upstream dataset terms before reuse.', lineage: 'Primary source: https://arxiv.org/abs/2402.01306', known_failure_modes: [binary-label-noise, data-conversion-assumption, hyperparameter-sensitivity, distribution-shift], citation_status: verified, confidence: high, notes: 'Official ICML page, paper, and code repository checked.'}
+inclusion_reason: Establishes a direct alignment objective that consumes independent desirable/undesirable feedback rather than requiring paired preferences.
+related: []
+tags: [kto, binary-feedback, preference-learning, alignment]
+one_line: KTO directly aligns a policy from desirable and undesirable response labels using a prospect-theoretic objective.
+why_it_matters: It changes the minimal feedback record required by a direct alignment trainer from a pair to an independently labeled response.
+status: verified
+needs: []
+one_line_summary: KTO directly aligns a policy from desirable and undesirable response labels using a prospect-theoretic objective.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official ICML page, paper, and code repository checked.'}
+category_ids: [training_usage_optimization_objectives]

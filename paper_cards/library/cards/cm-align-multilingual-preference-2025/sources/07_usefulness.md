@@ -1,0 +1,1 @@
+Use CM-Align when multilingual preference data must be constructed from model outputs and direct translation is too brittle. It gives a clear separation between selecting a source-language anchor and selecting target-language pairs, which makes both decisions testable in an alignment pipeline.

@@ -1,0 +1,94 @@
+id: hierarchical-multistep-reward-models-2026
+title: Towards Hierarchical Multi-Step Reward Models for Enhanced Reasoning in Large Language Models
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Teng Wang
+- Jiang Zhangyi
+- Zhenqi He
+- Hailei Gong
+- Shenyang Tong
+- Wenhan Yang
+- Zeyu Li
+- Yanan Zheng
+- Zifan He
+- Zewen Ye
+- Shengjie Ma
+- Jianping Zhang
+source_role:
+- process_supervision
+verification_contract: mixed
+supervision_granularity:
+- process_reward
+domains:
+- mathematical-reasoning
+training_use:
+- process_supervision
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.27/
+  arxiv: https://arxiv.org/abs/2503.13551
+  venue: https://aclanthology.org/2026.findings-acl.27/
+  code: https://github.com/tengwang0318/hierarchial_reward_model
+  data: https://huggingface.co/datasets/LLM4OR/StructuredOR
+  project: null
+  huggingface: https://huggingface.co/datasets/LLM4OR/StructuredOR
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.27
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.27/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See official paper and release.
+  trace_author: teacher/policy/unknown
+  answer_format: Task-specific training record described in the paper.
+  process_fields:
+  - prompt
+  - response
+  - feedback
+  environment_or_substrate: See official paper.
+  verifier_or_reward: See official paper.
+  terminal_predicate: See official paper.
+recipe_metadata:
+  base_model: See official paper.
+  teacher: See official paper.
+  generator: See official paper.
+  filtering_rule: See official paper.
+  sampling_protocol: See official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: not fully disclosed
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See official paper.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.27/'
+  known_failure_modes:
+  - Feedback or selection signal may not transfer unchanged.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, artifact links, and available affiliation evidence checked.
+inclusion_reason: The paper changes how a training record, selection signal, reward, or trajectory is consumed by a post-training
+  objective.
+related: []
+tags:
+- post-training
+- training-usage
+status: verified
+one_line_summary: HRM scores individual and consecutive reasoning steps and augments process-supervision data through hierarchical
+  node compression.
+why_it_matters: It makes the link between an explicit data object and a training objective inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

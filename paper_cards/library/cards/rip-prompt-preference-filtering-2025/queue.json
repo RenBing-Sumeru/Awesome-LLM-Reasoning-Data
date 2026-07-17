@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-16T09:53:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用拒选回答质量与奖励间隔筛除低完整性提示，并支持高质量合成提示构造",
+    "updated_at": "2026-07-16T09:53:27Z"
+  }
+}

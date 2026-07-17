@@ -1,0 +1,16 @@
+{
+  "title": "Crossing the Reward Bridge: Expanding Reinforcement Learning with Verifiable Rewards Across Diverse Domains",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.178/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:43Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将自由文本参考答案转为软奖励，显著扩展 RLVR 的适用边界",
+    "updated_at": "2026-07-15T12:33:43Z"
+  }
+}

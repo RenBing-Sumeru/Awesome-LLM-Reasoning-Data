@@ -1,0 +1,1 @@
+The useful unit is not a generic web demonstration: it is a state-grounded comparison with an explicit reason for preferring one continuation. Before using it for policy optimization, inspect whether the displayed state is sufficient to justify the recorded winner.

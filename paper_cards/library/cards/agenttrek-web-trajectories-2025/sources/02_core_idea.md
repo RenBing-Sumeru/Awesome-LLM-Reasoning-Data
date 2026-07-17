@@ -1,0 +1,3 @@
+The central training record contains a high-level task, step instructions, HTML or screenshot observations, reasoning, actions, and the terminal outcome. This makes the data object an interactive trajectory rather than an isolated instruction-response pair, so success depends on both action grounding and the state changes observed along the way.
+
+AgentTrek uses tutorials to guide data synthesis instead of treating them as final demonstrations. A tutorial-derived plan steers a visual-language agent through a real web environment, while a separate evaluator decides whether the produced trajectory meets the goal; only this checked replay becomes training supervision.

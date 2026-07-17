@@ -1,0 +1,16 @@
+{
+  "title": "Data Mixing Optimization for Supervised Fine-Tuning of Large Language Models",
+  "candidate_links": {
+    "paper": "https://proceedings.mlr.press/v267/li25bh.html"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:44:12Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将固定预算下各领域 SFT 数据的分配建模为可审计的优化问题，是数据混合路线的基础工作",
+    "updated_at": "2026-07-15T13:44:12Z"
+  }
+}

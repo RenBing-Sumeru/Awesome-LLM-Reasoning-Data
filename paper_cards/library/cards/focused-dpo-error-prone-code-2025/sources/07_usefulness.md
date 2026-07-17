@@ -1,0 +1,1 @@
+Use Focused-DPO when executable feedback exists but whole-program preference pairs hide where correctness changes. It offers a concrete route from tests to localized training weights. It is less suitable for tasks without reliable execution or where generated tests cannot distinguish meaningful alternatives.

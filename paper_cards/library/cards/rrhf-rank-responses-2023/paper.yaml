@@ -1,0 +1,94 @@
+id: rrhf-rank-responses-2023
+title: 'RRHF: Rank Responses to Align Language Models with Human Feedback'
+year: 2023
+venue: NeurIPS 2023
+authors:
+- Zheng Yuan
+- Hongyi Yuan
+- Chuanqi Tan
+- Wei Wang
+- Songfang Huang
+- Fei Huang
+source_role:
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- alignment
+- dialogue
+training_use:
+- sft
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2304.05302
+  arxiv: https://arxiv.org/abs/2304.05302
+  venue: null
+  code: https://github.com/GanjinZero/RRHF
+  data: https://huggingface.co/datasets/Anthropic/hh-rlhf
+  project: https://github.com/GanjinZero/RRHF
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2304.05302
+data_object:
+  prompt_source: Helpful and Harmless dialogue prompts.
+  trace_author: Humans, language models, and the policy can contribute candidate responses with preference ranks.
+  answer_format: Prompt, multiple ranked responses, and conditional probabilities.
+  process_fields:
+  - prompt
+  - candidate_response
+  - rank
+  - policy_logprob
+  environment_or_substrate: Offline response-ranking fine-tuning.
+  verifier_or_reward: Human preference ranking or ranked responses from other sources.
+  terminal_predicate: Make the policy probability ordering agree with the supplied ranking.
+recipe_metadata:
+  base_model: Language models evaluated on Helpful and Harmless dialogue.
+  teacher: No separate reward model is required.
+  generator: Policy, other language models, and human experts can provide candidates.
+  filtering_rule: Ranking quality and candidate quality determine useful training examples.
+  sampling_protocol: Score ranked candidates under the policy and apply ranking loss.
+  rollout_count: null
+  temperature: null
+  inference_budget: Uses one to two models during tuning.
+  optimizer_or_scaffold: Response Ranking from Human Feedback.
+audit:
+  source_mixture: Official arXiv paper and authors’ repository.
+  split: Preserve Helpful and Harmless train and human-evaluation splits.
+  decontamination: Audit candidate-source and evaluation overlap.
+  license: Verify repository and Anthropic-HH terms.
+  lineage: 'Primary source: https://arxiv.org/abs/2304.05302'
+  known_failure_modes:
+  - sampling-quality
+  - rank-noise
+  - candidate-source-bias
+  - distribution-shift
+  citation_status: verified
+  confidence: high
+  notes: Official paper and code repository checked.
+inclusion_reason: Uses ranked multi-source responses directly as a simple alignment-training signal without PPO or a separate
+  reward model.
+related: []
+tags:
+- rrhf
+- response-ranking
+- preference-learning
+- alignment
+one_line: RRHF trains a policy to rank sampled responses in the same order as feedback, using a lightweight ranking loss.
+why_it_matters: It demonstrates that the value of feedback can be carried by an ordered candidate set rather than only by
+  a reward model or a binary pair.
+status: verified
+needs: []
+one_line_summary: RRHF trains a policy to rank sampled responses in the same order as feedback, using a lightweight ranking
+  loss.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and code repository checked.
+category_ids:
+- training_usage_optimization_objectives

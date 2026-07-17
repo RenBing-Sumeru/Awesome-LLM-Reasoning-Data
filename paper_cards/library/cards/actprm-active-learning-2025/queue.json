@@ -1,0 +1,18 @@
+{
+  "title": "Efficient Process Reward Model Training via Active Learning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.10559",
+    "code": "https://github.com/sail-sg/ActivePRM",
+    "data": "https://huggingface.co/datasets/sail/ActPRMData"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:49:51Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以模型不确定性筛选最值得标注的推理轨迹，在显著降低过程标签成本的同时维持或提升过程奖励模型性能",
+    "updated_at": "2026-07-16T07:49:51Z"
+  }
+}

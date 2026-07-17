@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"COPR 用历史最优策略分布约束持续偏好更新，使模型学习新反馈时不至于遗忘或压扁早期偏好。","reading_priority_ch":"可读","paper_type_ch":"持续偏好优化与策略正则化研究","best_for_ch":"适合构建持续接收偏好数据的对齐系统，并需在适应新任务时保留既有行为的读者。","confidence_ch":"高","authors_ch":"Han Zhang 等（哈尔滨工业大学、鹏城实验室、伦敦国王学院等）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-15T18:50:00Z"}

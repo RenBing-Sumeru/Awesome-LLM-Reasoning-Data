@@ -1,0 +1,18 @@
+{
+  "title": "VRPO: Rethinking Value Modeling for Robust RL under Noisy Supervision in LLM Post-Training",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1103/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:12:55Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过价值模型过滤带噪奖励对优势估计的影响，直接改变强化学习如何消费训练反馈",
+    "updated_at": "2026-07-16T07:12:55Z"
+  }
+}

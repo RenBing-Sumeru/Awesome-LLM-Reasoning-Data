@@ -1,0 +1,3 @@
+Using the answer-correct portion of OpenR1-Math, about 196,000 records, the paper compares selected subsets with full-pool fine-tuning and open baselines. In the reported Qwen2.5-Math-7B-Instruct setting, the selected 10% is competitive with or better than the compared alternatives on nine competition-mathematics benchmarks and four broader reasoning tasks.
+
+This is evidence that the ranking is useful under the paper's student model, data pool, and budget protocol. It is not evidence that a fixed ranking will transfer unchanged to another model, another answer filter, or a domain whose long reasoning has a different structure.

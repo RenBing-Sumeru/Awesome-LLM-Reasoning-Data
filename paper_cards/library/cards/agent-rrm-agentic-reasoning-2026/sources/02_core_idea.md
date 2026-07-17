@@ -1,0 +1,3 @@
+The central object is a structured judgement of an agent trajectory rather than a final-answer label alone. It preserves three complementary views of the same run: an explanation of the reasoning, a critique that identifies a failure or improvement point, and a scalar assessment of process quality.
+
+The authors use this judgement as a training interface. Natural-language critique can guide a revision, the score can serve as reward guidance, and the two can be combined; the released trajectory datasets make these alternatives comparable instead of treating reward modelling as a black-box evaluator.

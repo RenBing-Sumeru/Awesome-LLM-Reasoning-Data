@@ -1,0 +1,3 @@
+DPO makes offline preference training practical, but its usual formulation evaluates both the trainable policy and a frozen reference policy. That extra model raises memory and compute costs, and an unnormalized sequence likelihood can encourage a policy to exploit response length rather than improve response quality.
+
+SimPO asks whether paired chosen and rejected answers can be trained with a reward that follows the model’s own generation probabilities while removing the reference model. The objective is to preserve a direct training route from a preference record to the policy, with fewer runtime dependencies.

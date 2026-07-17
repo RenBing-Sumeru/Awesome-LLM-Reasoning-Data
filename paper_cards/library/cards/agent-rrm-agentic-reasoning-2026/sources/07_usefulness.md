@@ -1,0 +1,1 @@
+Use it when you have replayable agent trajectories but only sparse terminal outcomes: train or evaluate a reward model with the released records, then compare scalar-only, critique-only, and joint feedback under the same environment budget.

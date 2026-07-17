@@ -1,0 +1,3 @@
+The paper evaluates a LangChain text-to-SQL agent, an OpenAI Agents SDK retrieval-augmented generation agent, and an AutoGen math tool-use agent. In each setting, the controlled claim is that the same agent can be connected to the training interface with minimal modification and exhibit stable, continuous reward-curve improvement.
+
+This supports the framework’s interoperability and transition-level training design across the reported task types. It does not establish that automatic intermediate rewards are unbiased, that every observability signal deserves policy credit, or that the same reward shaping works in an unseen agent environment without task-specific auditing.

@@ -1,0 +1,18 @@
+{
+  "title": "Easy Samples Are All You Need: Self-Evolving LLMs via Data-Efficient Reinforcement Learning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.773/",
+    "code": "https://github.com/YuZhiyin/EasyRL",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:20:41Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "按不确定性分阶段接纳困难题的伪标注监督",
+    "updated_at": "2026-07-15T15:20:41Z"
+  }
+}

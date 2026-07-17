@@ -1,0 +1,3 @@
+MWPO derives a reward-margin weight from the current policy's implicit DPO rewards: a pair receives a larger signal when the chosen response is already assigned a stronger reward than the rejected response. This is intended to favor records whose preference direction is more reliable to the evolving policy, while reducing the effect of pairs with an apparently contradictory or weak direction.
+
+It also derives a length-controlled weight from the chosen-minus-rejected token-length margin. A pair whose chosen answer is much longer receives less influence. The two weights are fused with a geometric mixture and multiply the ordinary DPO loss, so quality confidence and anti-verbosity pressure must jointly support a high-impact update.

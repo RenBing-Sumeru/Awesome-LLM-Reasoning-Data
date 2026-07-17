@@ -1,0 +1,3 @@
+On Llama-3.1-8B-Base, AAO reports a 28.36% length-controlled AlpacaEval 2 win rate, 40.23% raw win rate, 7.52 MT-Bench score, 41.0% Arena-Hard win rate, and 91.29% harmless-response rate. The corresponding DPO values are 22.45%, 31.30%, 7.36, 26.0%, and 83.06%. On the instruction-tuned version, Arena-Hard rises from 29.6% for DPO to 42.7% for AAO.
+
+The method-specific evidence is the weighting ablation. On the Llama base setting, the proposed curve obtains 28.36% length-controlled win rate and 41.00% Arena-Hard, while its alternative curves range from 18.56% to 27.98% and 24.69% to 38.84%. The reported overhead is 62.50 MB and 78.12 versus 77.81 minutes of Mistral training, supporting the claim that the added weighting is lightweight in that setup.

@@ -1,0 +1,1 @@
+Use it for a controlled SFT study when data examples are broadly useful but internally noisy: apply the released scoring pipeline, preserve the original records, train on masked targets, and compare against equal-token full and sample-level filtering baselines.

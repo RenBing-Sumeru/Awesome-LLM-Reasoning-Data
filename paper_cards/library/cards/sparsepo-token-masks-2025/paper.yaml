@@ -1,0 +1,101 @@
+id: sparsepo-token-masks-2025
+title: 'SparsePO: Controlling Preference Alignment of LLMs via Sparse Token Masks'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Fenia Christopoulou
+- Ronald Cardenas
+- Gerasimos Lampouras
+- Haitham Bou-Ammar
+- Jun Wang
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- alignment
+- instruction-tuning
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.1389/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.1389/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1389
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.1389/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: IMDB, Anthropic HH, and Reddit TL;DR preference settings; appendices also study public code-preference collections.
+  trace_author: Existing dataset and preference-annotation authors; SparsePO creates masks rather than new response traces.
+  answer_format: Prompt, chosen and rejected response tokens, reward mask values, KL mask values, and a masked preference objective.
+  process_fields:
+  - prompt
+  - chosen_response
+  - rejected_response
+  - token
+  - reward_mask
+  - kl_mask
+  - masked_reward
+  - masked_kl
+  environment_or_substrate: Offline token-level preference optimization with learned or activation-derived masks.
+  verifier_or_reward: Pairwise preference labels and token-weighted reward/KL terms; no external verifier is required.
+  terminal_predicate: Sparse masks determine each token's contribution to reward and KL divergence during training, then are discarded at inference.
+recipe_metadata:
+  base_model: GPT2-Large, Pythia-1.4B, and GPT-J-6B in the reported principal studies.
+  teacher: Reference model activations or mask networks learned alongside preference optimization.
+  generator: No new response generation; mask computation reweights existing chosen and rejected responses.
+  filtering_rule: None; each token retains a continuous mask in [epsilon, 1], with ReLU-induced sparsity in learnable variants.
+  sampling_protocol: Preference optimization on proxy-preference and human-preference datasets; masks may be shared between reward and KL or learned independently.
+  rollout_count: null
+  temperature: null
+  inference_budget: Masks operate only during training; no official code or independent compute-cost report is declared.
+  optimizer_or_scaffold: SparsePO objective with token-level reward and KL masks, compared with DPO, TDPO, SimPO, SePO, and related methods.
+audit:
+  source_mixture: Synthetic IMDB preference pairs, Anthropic HH, Reddit TL;DR feedback data, and evaluation benchmark prompts.
+  split: Anthropic HH dialogue preference evaluation, Open LLM Leaderboard tasks, and TL;DR summary evaluation.
+  decontamination: No dedicated contamination audit is reported; public data and evaluation overlap requires independent review.
+  license: Verify all underlying dataset and model licenses before reuse; the paper does not declare an official implementation link.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.1389/'
+  known_failure_modes:
+  - Performance can be task-dependent and may not translate to every human-preference proxy.
+  - Sparse masks can be suboptimal for some summary-quality settings.
+  - Mask behavior interacts with beta and requires hyperparameter tuning.
+  - No official code or reusable mask release is declared.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP Findings paper, authors, affiliations, method, experiments, and limitations were checked on 2026-07-16; no official project or code release is declared in the paper.
+inclusion_reason: It changes the per-token reward and regularization signals consumed by preference optimization, instead of accepting a whole response pair as uniformly weighted supervision.
+related: []
+tags:
+- preference-optimization
+- token-mask
+- sparse-training
+- dpo
+- alignment
+status: verified
+one_line_summary: SparsePO learns sparse token masks that independently weight reward and KL contributions inside preference optimization.
+reading_priority: essential
+paper_type: Sparse token-level preference-optimization study
+best_for: Readers studying how token-level reward and regularization choices reshape preference-training signals without collecting new annotations.
+confidence: high
+why_it_matters: It makes each token's reward and KL contribution an explicit learnable part of the training record rather than an implicit consequence of a response-level loss.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP Findings paper was checked; it does not declare official code or a new data release.
+category_ids:
+- training_usage_optimization_objectives

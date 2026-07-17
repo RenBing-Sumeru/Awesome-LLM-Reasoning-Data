@@ -1,0 +1,16 @@
+{
+  "title": "DynaMiCS: Fine-tuning LLMs with Performance Constraints using Dynamic Mixtures",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2605.10770"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:43:53Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "在优化训练数据混合的同时显式保护约束任务表现，适合研究有多目标约束的数据使用",
+    "updated_at": "2026-07-15T13:43:53Z"
+  }
+}

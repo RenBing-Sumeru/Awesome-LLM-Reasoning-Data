@@ -1,9 +1,0 @@
-{
-  "one_line_summary_ch": "用长、短思维链混合监督微调，在保持推理表现的同时压缩生成长度。",
-  "reading_priority_ch": "可读",
-  "paper_type_ch": "思维链长度控制与监督微调数据混合论文",
-  "best_for_ch": "需要在推理质量和响应成本之间设计 SFT 目标的贡献者。",
-  "confidence_ch": "中",
-  "authors_ch": "Bin Yu、Hang Yuan 等",
-  "category_ids": ["training_usage_optimization_objectives"]
-}

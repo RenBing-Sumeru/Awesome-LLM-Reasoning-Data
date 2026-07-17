@@ -1,0 +1,1 @@
+Wang, Xiaobo, Zixia Jia, Jiaqi Li, Qi Liu 和 Zilong Zheng。2025。*Adaptive Preference Optimization：带不确定性感知效用锚点的自适应偏好优化*。EMNLP 2025 Findings 论文集，第 19204–19225 页。https://aclanthology.org/2025.findings-emnlp.1046/

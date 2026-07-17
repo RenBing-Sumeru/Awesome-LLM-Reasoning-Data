@@ -1,0 +1,72 @@
+id: freeprm-implicit-process-rewards-2025
+title: 'FreePRM: Training Process Reward Models Without Ground Truth Process Labels'
+year: 2025
+venue: arXiv preprint under review
+authors: [Lin Sun, Chuang Liu, Xiaofeng Ma, Tao Yang, Weijia Lu, Ning Wu]
+source_role: [process_supervision, construction_recipe]
+verification_contract: [programmatic]
+supervision_granularity: [process_reward]
+domains: [mathematical-reasoning]
+training_use: [process_supervision, test_time_compute]
+construction_layer: reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2506.03570
+  arxiv: https://arxiv.org/abs/2506.03570
+  venue: null
+  code: https://github.com/sunlin-ai/FreePRM
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.03570
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Math-Shepherd MATH and GSM8K problems and answers, while excluding the original process labels.
+  trace_author: Policy generators produce stepwise solution trajectories.
+  answer_format: Question, reasoning steps, terminal outcome label, trajectory-level pseudo labels, and predicted wrong-buffer-right probabilities per step.
+  process_fields: [question, steps, final_outcome, pseudo_step_label, wrong_probability, buffer_probability, right_probability]
+  environment_or_substrate: Final-answer correctness supplies weak supervision for stepwise reward classification.
+  verifier_or_reward: Correct final outcomes pseudo-label all steps positive and incorrect outcomes pseudo-label all steps negative; a buffer probability reduces the influence of uncertain labels.
+  terminal_predicate: The final step is more strongly supervised because it correlates most directly with terminal correctness.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B-Instruct.
+  teacher: No process-label teacher; final outcome correctness is the only training supervision.
+  generator: Qwen2.5-7B, MetaMath-Mistral-7B, Muggle-Math-13B, and Llama-3-70B-Instruct are used in evaluation generation settings.
+  filtering_rule: Keep trajectories with terminal labels; use a random buffer factor to prevent every step from collapsing into the uncertainty state.
+  sampling_protocol: Train with batch size 16 and learning rate 1e-4; best-of-N evaluation uses up to 128 candidate solutions per MATH-500 problem.
+  rollout_count: 128
+  temperature: 0.8
+  inference_budget: Candidate trajectories are scored stepwise and ranked using the last-step reward.
+  optimizer_or_scaffold: Three-way wrong-buffer-right classification with stochastic buffer use and an upweighted final-step loss.
+audit:
+  source_mixture: Public math questions and answers, generated reasoning trajectories, and terminal-correctness pseudo labels.
+  split: Evaluate ProcessBench and MATH-500 across several policy generators.
+  decontamination: The authors use Math-Shepherd prompts and answers but remove its process labels; no separate contamination audit is reported.
+  license: Verify Math-Shepherd, benchmark, code, and model terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2506.03570'
+  known_failure_modes: [Final answers do not determine every intermediate step, Buffer state can collapse without stochastic control, Mathematics-only evidence, Under-review status, Last-step score may hide earlier errors]
+  citation_status: verified
+  confidence: medium
+  notes: Full arXiv paper and paper-declared code repository were checked on 2026-07-16; no standalone data release was declared.
+inclusion_reason: It replaces costly step labels with terminal-outcome pseudo labels and makes uncertainty buffering part of the process-reward training record.
+related: []
+tags: [process-reward-model, weak-supervision, pseudo-labels, buffer-probability]
+status: verified
+one_line_summary: FreePRM learns step rewards from final-answer labels alone by adding a buffer state that absorbs uncertainty in trajectory-level pseudo supervision.
+reading_priority: essential
+paper_type: Weakly supervised process-label construction and process reward model training study
+best_for: Readers seeking process reward supervision when only final-answer correctness is cheaply available.
+confidence: medium
+why_it_matters: It turns the gap between outcome labels and step labels into an explicit uncertainty-aware training objective.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv paper and paper-declared code link were checked; no standalone dataset was declared.
+category_ids: [training_usage_optimization_objectives]

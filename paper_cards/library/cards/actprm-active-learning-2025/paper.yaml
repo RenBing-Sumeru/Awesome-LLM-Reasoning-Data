@@ -1,0 +1,72 @@
+id: actprm-active-learning-2025
+title: Efficient Process Reward Model Training via Active Learning
+year: 2025
+venue: COLM 2025
+authors: [Keyu Duan, Zichen Liu, Xin Mao, Tianyu Pang, Changyu Chen, Qiguang Chen, Michael Qizhe Shieh, Longxu Dou]
+source_role: [process_supervision, construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [process_reward]
+domains: [mathematical-reasoning]
+training_use: [process_supervision]
+construction_layer: reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2504.10559
+  arxiv: https://arxiv.org/abs/2504.10559
+  venue: https://openreview.net/forum?id=6c42b4cd1c9978c36fc15d30af6dbd19b08570d8
+  code: https://github.com/sail-sg/ActivePRM
+  data: https://huggingface.co/datasets/sail/ActPRMData
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.10559
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Decontaminated NuminaMath problems and policy-generated chain-of-thought trajectories.
+  trace_author: Qwen2.5-Math-7B-Instruct and Qwen2.5-Math-72B-Instruct generate trajectories; QwQ-32B labels retained uncertain trajectories.
+  answer_format: Problem, trajectory, ensemble step predictions, uncertainty flags, first predicted error, and judge-generated step labels.
+  process_fields: [question, trajectory, head_predictions, prediction_mean, prediction_std, uncertainty_flag, first_error, judge_labels]
+  environment_or_substrate: Pool-based and one-shot active learning for PRM labeling.
+  verifier_or_reward: A capable reasoning model judges only trajectories selected by aleatoric or epistemic PRM uncertainty.
+  terminal_predicate: Retain a trajectory if any step through its first predicted error is uncertain.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B-Instruct with multiple classification heads on a shared backbone.
+  teacher: QwQ-32B labels selected process trajectories.
+  generator: Qwen2.5-Math-7B-Instruct and Qwen2.5-Math-72B-Instruct.
+  filtering_rule: Discard high-confidence trajectories; retain samples whose ensemble mean lies near the decision boundary or whose head standard deviation exceeds threshold.
+  sampling_protocol: Start with 100K pool samples; filter 1,061,763 trajectories to 563,030 labeled records in the scale-up setting.
+  rollout_count: null
+  temperature: null
+  inference_budget: Uncertainty scoring precedes expensive labeling; standard PRM scoring is used at deployment.
+  optimizer_or_scaffold: Ensemble-head BCE training plus diversity regularization.
+audit:
+  source_mixture: NuminaMath questions, policy trajectories, ensemble uncertainty, and QwQ-32B labels.
+  split: The paper decontaminates against ProcessBench and PRMBench before data selection.
+  decontamination: Reported against ProcessBench and PRMBench for the NuminaMath pool; broader model contamination is not reported.
+  license: Verify NuminaMath, judge, model, and repository terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2504.10559'
+  known_failure_modes: [Uncertainty thresholds need tuning, Judge errors remain, Ensemble overhead, Labeling is not eliminated, Mathematics-centered evidence]
+  citation_status: verified
+  confidence: high
+  notes: COLM paper, paper-declared code, and the released dataset URL were checked on 2026-07-16.
+inclusion_reason: It makes PRM uncertainty an explicit data-selection rule that decides which trajectories consume expensive process labeling.
+related: []
+tags: [active-learning, process-reward-model, uncertainty, data-selection]
+status: verified
+one_line_summary: ActPRM spends process-labeling budget only on trajectories whose ensemble PRM predictions are uncertain, then retrains on that selected data.
+reading_priority: essential
+paper_type: Active process-label selection and process reward model training study
+best_for: Readers allocating costly judge or expert labeling budgets for process supervision.
+confidence: high
+why_it_matters: It turns uncertainty estimates into an auditable acquisition policy for training data rather than treating all generated trajectories as equally label-worthy.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official COLM paper, paper-declared code URL, and released dataset URL were checked.
+category_ids: [training_usage_optimization_objectives]

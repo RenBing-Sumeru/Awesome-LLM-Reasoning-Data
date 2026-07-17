@@ -1,0 +1,72 @@
+id: alignment-data-map-selection-2026
+title: 'Alignment Data Map for Efficient Preference Data Selection and Diagnosis'
+year: 2026
+venue: Findings of ACL 2026
+authors: [Seohyeong Lee, Eunwon Kim, Hwaran Lee, Buru Chang]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1906/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.1906/
+  code: https://github.com/01choco/Alignment-Data-Map
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1906
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1906/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback and Preference-Dissection preference records in the reported experiments.
+  trace_author: Candidate responses and their existing labels; alignment scores come from an LLM judge, a reward model, or reference-based similarity.
+  answer_format: Instruction, multiple candidate responses, per-response alignment scores, mean quality, score variance, region assignment, and optional label-score correlation.
+  process_fields: [instruction, responses, alignment_scores, quality, variability, region, label_correlation]
+  environment_or_substrate: Offline DPO and SimPO preference optimization.
+  verifier_or_reward: LLM-as-a-judge, a reward model, or reference-based scoring supplies response-level alignment scores.
+  terminal_predicate: Prioritize the high-quality low-variability region for preference training and flag low label-score correlation for diagnosis.
+recipe_metadata:
+  base_model: Mistral-7B and LLaMA-3-8B supervised-fine-tuned on UltraChat-200k.
+  teacher: GPT-4 labels and references, ArmoRM, or a selected scoring source depending on the experiment.
+  generator: Existing preference datasets; the method does not require new response generation.
+  filtering_rule: Partition data by response-score variability, then split low-variability records by average response quality and retain the high-average region.
+  sampling_protocol: Select 33% subsets from UltraFeedback and Preference-Dissection for DPO and SimPO comparisons.
+  rollout_count: Dataset-dependent number of candidate responses; UltraFeedback provides four and Preference-Dissection provides two in the reported setup.
+  temperature: Not reported as a central setting.
+  inference_budget: The paper estimates GPT-4o reference scoring at about $0.005 per sample and cites human preference annotation at about $0.67 per sample.
+  optimizer_or_scaffold: DPO and SimPO using the LLaMA Factory codebase.
+audit:
+  source_mixture: UltraFeedback and Preference-Dissection with LLM, reward-model, or reference-derived response scores.
+  split: Evaluation uses MT-Bench, Evol-Instruct, and AlpacaEval; the paper reports multiple random seeds for a subset of experiments.
+  decontamination: No broad contamination audit is reported.
+  license: Verify the terms of all input preference datasets, judge or reward-model services, and code before reconstructing selection.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.1906/'
+  known_failure_modes: [Automatic scoring and LLM judges can be biased, Quality and variability thresholds are design choices, Correlation is a diagnostic rather than ground truth, Evidence is limited to reported alignment benchmarks]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, experiments, limitations, and code URL were checked on 2026-07-15.
+inclusion_reason: It directly selects which preference records are used for optimization and diagnoses labels that disagree with the scoring evidence used for that decision.
+related: []
+tags: [preference-data, data-selection, label-diagnosis, dpo, simpo]
+status: verified
+one_line_summary: Alignment Data Map selects preference records by jointly measuring response quality and within-prompt variability, while exposing likely label mismatches.
+reading_priority: essential
+paper_type: Preference-data selection and annotation-diagnosis study
+best_for: Readers who need to select or audit preference data beyond a reward-margin heuristic before DPO or SimPO training.
+confidence: high
+why_it_matters: It makes absolute response quality and ambiguity jointly visible before a preference record is sent to training.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its declared code URL were checked; no new standalone data release is declared.
+category_ids: [training_usage_optimization_objectives]

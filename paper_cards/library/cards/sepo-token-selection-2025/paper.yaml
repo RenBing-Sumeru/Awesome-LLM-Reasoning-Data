@@ -1,0 +1,102 @@
+id: sepo-token-selection-2025
+title: 'Selective Preference Optimization via Token-Level Reward Function Estimation'
+year: 2025
+venue: EMNLP 2025 Main Conference
+authors:
+- Kailai Yang
+- Zhiwei Liu
+- Qianqian Xie
+- Jimin Huang
+- Erxue Min
+- Sophia Ananiadou
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- instruction-tuning
+- alignment
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.359/
+  arxiv: https://arxiv.org/abs/2408.13518
+  venue: https://aclanthology.org/2025.emnlp-main.359/
+  code: https://github.com/SteveKGYang/SePO
+  data: null
+  project: https://github.com/SteveKGYang/SePO
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.359
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.359/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraChat-200K and UltraFeedback for in-distribution experiments; HH-RLHF for weak out-of-distribution supervision.
+  trace_author: Existing preference-data authors; SePO does not generate new responses.
+  answer_format: Prompt, chosen and rejected response tokens, reference-model probabilities, oracle-model probabilities, token score, and binary selection mask.
+  process_fields:
+  - prompt
+  - chosen_response
+  - rejected_response
+  - token
+  - reference_log_probability
+  - oracle_log_probability
+  - token_reward_score
+  - token_selection_mask
+  environment_or_substrate: Offline preference optimization with an oracle scoring pass followed by selective training.
+  verifier_or_reward: The DPO-trained oracle/reference log-probability ratio estimates token-level reward; response preference labels train the oracle.
+  terminal_predicate: Keep top-scoring chosen tokens and bottom-scoring rejected tokens, then apply the selective contrastive objective.
+recipe_metadata:
+  base_model: TinyLLaMA-1.1B, Pythia 70M–1.4B, Pythia-2.8B/6.9B, LLaMA-3-Base-8B, LLaMA-2-Chat-7B/13B, and LLaMA-3-Instruct-8B.
+  teacher: A DPO oracle trained from a small reference/oracle pair on sampled target preference data.
+  generator: No response generation; oracle and reference models score existing response tokens.
+  filtering_rule: Per response, select the highest k percent scores in chosen responses and lowest k percent in rejected responses; main results use k=30 percent.
+  sampling_protocol: Train the oracle on a random moderate-scale target subset, then score all tokens in the target preference set.
+  rollout_count: null
+  temperature: null
+  inference_budget: Main experiments report 39.94–62.34 percent fewer GPU hours than comparison methods while optimizing 30 percent of tokens.
+  optimizer_or_scaffold: SFT reference model, DPO oracle model, then SePO contrastive preference optimization of the target policy.
+audit:
+  source_mixture: UltraChat-200K for SFT references, UltraFeedback for in-distribution preference learning, and HH-RLHF for weak-data experiments.
+  split: Arena-Hard, AlpacaEval 2.0, and MT-Bench, with GPT-4o judging.
+  decontamination: No dedicated contamination audit is reported; source and benchmark overlap should be reviewed independently.
+  license: Verify the official repository, all underlying preference datasets, and base-model licenses before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.359/; https://github.com/SteveKGYang/SePO'
+  known_failure_modes:
+  - The selection ratio is empirically chosen and can vary by source and target model.
+  - Scaling evidence does not cover stronger policy models such as 70B systems.
+  - Token scores depend on the quality and representativeness of the oracle training data.
+  - The paper uses LLM-judged public benchmarks rather than a dedicated human audit of token masks.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, authors, affiliations, method, results, limitations, and the official GitHub project declared in the paper were checked on 2026-07-16.
+inclusion_reason: It changes which individual tokens from existing chosen and rejected responses are consumed by preference training.
+related: []
+tags:
+- preference-optimization
+- token-selection
+- dpo
+- weak-to-strong
+- training-efficiency
+status: verified
+one_line_summary: SePO trains a small DPO oracle to select only high-value chosen tokens and low-value rejected tokens for preference optimization.
+reading_priority: essential
+paper_type: Token-level selective preference-optimization study
+best_for: Readers reducing preference-training cost or noise by selecting token-level supervision from existing pairwise data.
+confidence: high
+why_it_matters: It turns response-level preferences into an explicit token mask that determines which supervision signals reach the target policy.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP paper and the official code repository linked in the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,26 @@
+id: raft-reward-ranked-finetuning-2023
+title: 'RAFT: Reward rAnked FineTuning for Generative Foundation Model Alignment'
+year: 2023
+venue: arXiv preprint
+authors: [Junxian He, Chunting Zhou, Xuezhe Ma, Taylor Berg-Kirkpatrick, Graham Neubig]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [scalar_reward]
+domains: [alignment, text_generation]
+training_use: [sft, reward_modeling]
+construction_layer: optimizer_scaffold
+artifacts: {paper: https://arxiv.org/abs/2304.06767, arxiv: https://arxiv.org/abs/2304.06767, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2304.06767}
+data_object: {prompt_source: 'Conditional-generation prompts.', trace_author: 'Current policy and reward model.', answer_format: 'Prompt, multiple candidates, reward scores, top-ranked response.', process_fields: [prompt, candidate_response, reward, selected_response], environment_or_substrate: 'Iterative reward-ranked fine-tuning.', verifier_or_reward: 'Learned reward model.', terminal_predicate: 'Retain the highest-reward candidate.'}
+recipe_metadata: {base_model: 'Generative foundation models.', teacher: 'Reward model.', generator: 'Current policy.', filtering_rule: 'Keep the reward-best sampled response.', sampling_protocol: 'Sample, rank, select, and fine-tune iteratively.', rollout_count: null, temperature: null, inference_budget: 'Multiple candidates per prompt.', optimizer_or_scaffold: 'Reward rAnked FineTuning.'}
+audit: {source_mixture: 'Official arXiv paper.', split: 'Separate prompts, iterations, and evaluations.', decontamination: 'Audit prompt and benchmark overlap.', license: 'Verify all upstream terms.', lineage: 'Primary source: https://arxiv.org/abs/2304.06767', known_failure_modes: [reward-hacking, best-of-n-bias, diversity-collapse], citation_status: verified, confidence: high, notes: 'Official arXiv paper checked.'}
+inclusion_reason: Uses a reward model to select policy-generated records for the next supervised fine-tuning update.
+related: []
+tags: [raft, reward-ranking, self-training, alignment]
+one_line: RAFT samples candidates, selects the reward-best response, and fine-tunes the policy on it.
+why_it_matters: It turns a reward model into a data-selection mechanism rather than an online RL objective.
+status: verified
+needs: []
+one_line_summary: RAFT samples candidates, selects the reward-best response, and fine-tunes the policy on it.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official arXiv paper checked.'}
+category_ids: [training_usage_optimization_objectives]

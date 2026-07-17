@@ -1,0 +1,1 @@
+Use it when agent traces contain enough tool metadata to replay or validate calls. Keep the checker separate from the reward model, audit false preference pairs, and compare a generic text judge with a schema-aware reward model before using either signal for policy optimization.

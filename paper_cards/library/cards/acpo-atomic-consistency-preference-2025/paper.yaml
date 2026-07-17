@@ -1,0 +1,72 @@
+id: acpo-atomic-consistency-preference-2025
+title: Atomic Consistency Preference Optimization for Long-Form Question Answering
+year: 2025
+venue: IJCNLP-AACL 2025
+authors: [Jingfeng Chen, Raghuveer Thirukovalluru, Junlin Wang, Kaiwei Luo, Bhuwan Dhingra]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [long-form-question-answering, factuality]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.ijcnlp-long.106/
+  arxiv: https://arxiv.org/abs/2505.09039
+  venue: https://aclanthology.org/2025.ijcnlp-long.106/
+  code: https://github.com/JingfengSteven/ACPO
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.ijcnlp-long.106
+  openreview: https://openreview.net/forum?id=2zP2nlZ4oC
+  acl: https://aclanthology.org/2025.ijcnlp-long.106/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The 2,097-example LongFact training split supplies long-form factoid questions.
+  trace_author: The policy being aligned generates 30 stochastic long-form responses per question.
+  answer_format: Question, sentence-level atomic facts, semantic clusters, consistency labels, response scores, and chosen-rejected response pairs.
+  process_fields: [question, responses, atomic_facts, sentence_embeddings, clusters, consistency_threshold, response_score, chosen, rejected]
+  environment_or_substrate: Sentence tokenization, SimCSE embeddings, agglomerative clustering, and offline DPO.
+  verifier_or_reward: Cluster frequency is a self-supervised factuality proxy; facts in clusters of size at least two are rewarded and rarer facts are penalized.
+  terminal_predicate: For each question, sort sampled responses by atomic-consistency score and retain the highest-scoring response as chosen and the lowest as rejected.
+recipe_metadata:
+  base_model: Llama-3-8B-Instruct and Phi-3-mini-4k-instruct.
+  teacher: No external teacher or knowledge base; the model's own multiple sampled responses supply the signal.
+  generator: The base policy generates 30 responses per LongFact question.
+  filtering_rule: Cluster semantically similar sentence facts with cosine-distance threshold 0.15; classify clusters with count at least two as consistent; rank responses by plus-one or minus-one fact scores.
+  sampling_protocol: 30 responses per question; the reported consistency threshold is two.
+  rollout_count: 30.
+  temperature: null
+  inference_budget: Training-time sampling and clustering are required; direct decoding at deployment needs no additional selector.
+  optimizer_or_scaffold: DPO with beta 0.1 over self-constructed chosen-rejected pairs.
+audit:
+  source_mixture: LongFact prompts, policy-generated responses, sentence embeddings, frequency-derived clusters, and self-constructed preference pairs.
+  split: Train on LongFact's 2,097 examples; evaluate LongFact and BioGen test splits.
+  decontamination: The paper does not report a dedicated contamination audit beyond using the stated benchmark splits.
+  license: The paper states that used datasets and methods follow Apache 2.0 or MIT terms; verify upstream benchmark and repository terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.ijcnlp-long.106/'
+  known_failure_modes: [Frequent facts can still be wrong, Calibration differs across base models, Sentence splitting is a coarse atomic-fact proxy, A higher threshold can favor short answers, Repeated self-training can overfit]
+  citation_status: verified
+  confidence: high
+  notes: Full ACL Anthology paper and its reproducibility statement were read and the repository URL declared by the paper was checked on 2026-07-16.
+inclusion_reason: It transforms multiple generated answers into scored preference records and optimizes a DPO consumer with that self-supervised signal.
+related: []
+tags: [factuality, self-supervision, preference-data, dpo, long-form-generation]
+status: verified
+one_line_summary: ACPO turns agreement among sentence-level facts in sampled long-form answers into chosen-rejected pairs for factuality-oriented DPO.
+reading_priority: essential
+paper_type: Self-supervised preference-data construction and factuality alignment study
+best_for: Readers studying how repeated model outputs can become preference supervision without an external judge or knowledge base.
+confidence: high
+why_it_matters: It makes atomic agreement, cluster frequency, and response ranking explicit data-construction decisions rather than relying on a stronger factuality judge.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology, arXiv, OpenReview, and the code URL declared in the paper were checked.
+category_ids: [training_usage_optimization_objectives]

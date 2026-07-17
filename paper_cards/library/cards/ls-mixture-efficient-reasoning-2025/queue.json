@@ -1,0 +1,16 @@
+{
+  "title": "Long-Short Chain-of-Thought Mixture Supervised Fine-Tuning Eliciting Efficient Reasoning in Large Language Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.03469"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:40:46Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用保留推理结构的长短 CoT 成对记录控制 SFT 的能力—长度权衡，是推理数据消费方式的直接设计",
+    "updated_at": "2026-07-15T12:40:46Z"
+  }
+}

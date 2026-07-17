@@ -1,0 +1,1 @@
+Record the policy checkpoint that produced each batch, the reward version, selection rule, and offline update algorithm. Read Grow and Improve jointly: changing either component changes the distribution that later training treats as evidence.

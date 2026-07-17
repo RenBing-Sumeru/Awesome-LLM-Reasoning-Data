@@ -1,0 +1,18 @@
+{
+  "title": "SeaPO: Strategic Error Amplification for Robust Preference Optimization of Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-emnlp.898/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:21:31Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过按平均奖励剪除高难提示来改善自博弈偏好优化",
+    "updated_at": "2026-07-15T15:21:31Z"
+  }
+}

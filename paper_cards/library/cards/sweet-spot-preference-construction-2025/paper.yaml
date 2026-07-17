@@ -1,0 +1,108 @@
+id: sweet-spot-preference-construction-2025
+title: 'Finding the Sweet Spot: Preference Data Construction for Scaling Preference Optimization'
+year: 2025
+venue: ACL 2025 Long Papers
+authors:
+- Yao Xiao
+- Hai Ye
+- Linyao Chen
+- Hwee Tou Ng
+- Lidong Bing
+- Xiaoli Li
+- Roy Ka-Wei Lee
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- alignment
+training_use:
+- preference_learning
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.615/
+  arxiv: null
+  venue: https://aclanthology.org/2025.acl-long.615/
+  code: https://github.com/XYaoooo/DPO_Pair
+  data: https://github.com/XYaoooo/DPO_Pair
+  project: https://github.com/XYaoooo/DPO_Pair
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.615
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.615/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback prompts; UltraChat-200K prepares base-setting SFT models.
+  trace_author: On-policy responses sampled from SFT or instruction models.
+  answer_format: Prompt, multiple generated responses, reward scores, fitted per-prompt distribution, and chosen/rejected
+    pair.
+  process_fields:
+  - prompt
+  - response
+  - reward
+  - mean_reward
+  - reward_std
+  - reward_position
+  - chosen_response
+  - rejected_response
+  environment_or_substrate: On-policy DPO preference-data construction.
+  verifier_or_reward: Armorm reward model selects pairs; AlpacaEval 2 is downstream evidence.
+  terminal_predicate: Constructed pairs improve AlpacaEval 2 DPO policy performance.
+recipe_metadata:
+  base_model: LLaMA-3-8B and Mistral-7B in base and instruction-tuned settings.
+  teacher: Armorm reward model.
+  generator: Repeated on-policy response sampling and reward-distribution pair construction.
+  filtering_rule: Typically choose high reward (max or mean + 2σ) and reject response nearest mean − 2σ, rather than minimum.
+  sampling_protocol: Main grid samples 200 responses per prompt and tests 21 pair types; temperature 0.8.
+  rollout_count: '200'
+  temperature: '0.8'
+  inference_budget: DPO after preference construction; the paper explores 5–200 samples per prompt.
+  optimizer_or_scaffold: Direct Preference Optimization.
+audit:
+  source_mixture: UltraFeedback prompts and policy-generated responses; UltraChat-200K for base-setting SFT.
+  split: AlpacaEval 2 with 805 questions.
+  decontamination: No dedicated contamination audit claimed; inspect source and evaluation overlap.
+  license: Verify UltraFeedback, UltraChat, Armorm, repository, and base-model terms.
+  lineage: 'Primary sources: https://aclanthology.org/2025.acl-long.615/; https://github.com/XYaoooo/DPO_Pair'
+  known_failure_modes:
+  - Normal reward approximation may fail.
+  - Depends on reward model and temperature.
+  - 200-sample exploration is costly.
+  - Evidence mainly covers AlpacaEval 2 and four 7B/8B settings.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, method, experiments, limitations, and official code/data repository link checked on
+    2026-07-16.
+inclusion_reason: It directly determines which generated chosen and rejected responses are consumed by DPO as on-policy sample
+  scale increases.
+related: []
+tags:
+- preference-data
+- dpo
+- reward-distribution
+- data-construction
+status: verified
+one_line_summary: The paper constructs DPO pairs from reward-distribution positions, preferring a μ−2σ rejected response over
+  the minimum.
+reading_priority: essential
+paper_type: On-policy preference-data construction study
+best_for: Readers scaling response sampling for DPO without blindly using max-min pairs.
+confidence: high
+why_it_matters: It turns a reward-ranked response pool into a calibrated pair-selection policy for the DPO training consumer.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and repository declared in the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

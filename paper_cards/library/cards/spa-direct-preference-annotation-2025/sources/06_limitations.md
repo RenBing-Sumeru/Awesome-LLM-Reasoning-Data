@@ -1,0 +1,1 @@
+SPA can reinforce the current policy's biases because that policy generates and labels the records it later learns from. Confidence is only a proxy for label correctness, and distribution-shifted prompts can invalidate it. Reuse should audit seed coverage, generated-data duplication, and benchmark overlap.

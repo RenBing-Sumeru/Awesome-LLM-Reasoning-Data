@@ -1,0 +1,72 @@
+id: active-dpo-preference-selection-2026
+title: 'ActiveDPO: Active Direct Preference Optimization for Sample-Efficient Alignment'
+year: 2026
+venue: ICLR 2026
+authors: [Xiaoqiang Lin, Arun Verma, Zhongxiang Dai, Daniela Rus, See-Kiong Ng, Bryan Kian Hsiang Low]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, summarization, question-answering]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://openreview.net/forum?id=RD4XgyVyGh
+  arxiv: https://arxiv.org/abs/2505.19241
+  venue: https://openreview.net/forum?id=RD4XgyVyGh
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.19241
+  openreview: https://openreview.net/forum?id=RD4XgyVyGh
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: TLDR summarization prompts and WebGPT long-form question-answering prompts.
+  trace_author: The current aligned model regenerates response pairs during each active-learning iteration.
+  answer_format: Prompt, two regenerated responses, selected pairwise preference label, and projected LoRA-gradient feature.
+  process_fields: [prompt, response_a, response_b, preference_label, implicit_reward_gradient, acquisition_score]
+  environment_or_substrate: Iterative active preference collection followed by DPO training.
+  verifier_or_reward: Human preference labels are the target; experiments emulate newly requested labels with reward-model oracles trained on original human feedback.
+  terminal_predicate: A selected response pair receives a binary preference judgment.
+recipe_metadata:
+  base_model: Llama-2-7B, Gemma-2B, and Qwen3-4B in the reported experiments.
+  teacher: Human annotators in the intended loop; OpenAssistant reward models emulate the oracle in experiments.
+  generator: The latest DPO policy regenerates three responses per selected prompt each iteration.
+  filtering_rule: Select pairs maximizing a gradient-difference uncertainty score with a diversity matrix over prior selections.
+  sampling_protocol: 1000 prompts and three responses per prompt per iteration; select 50 pairwise records per iteration.
+  rollout_count: 3
+  temperature: null
+  inference_budget: LoRA gradients are randomly projected to 8192 dimensions before acquisition scoring.
+  optimizer_or_scaffold: Iterative DPO with LoRA rank 128, batch acquisition, gradient normalization, and random projection.
+audit:
+  source_mixture: Human-preference datasets, current-policy regenerated responses, model-specific gradient features, and preference labels.
+  split: TLDR and WebGPT tasks; 100 prompts per task are sampled for reported evaluation.
+  decontamination: Not reported as a dedicated contamination audit.
+  license: The paper reports MIT for TLDR and Apache-2.0 for WebGPT; verify upstream terms and model licenses before reuse.
+  lineage: 'Primary sources: https://openreview.net/forum?id=RD4XgyVyGh; https://arxiv.org/abs/2505.19241'
+  known_failure_modes: [High gradient-computation cost, Oracle rather than fresh human labels in experiments, Transformer-theory gap, No public implementation declared]
+  citation_status: verified
+  confidence: high
+  notes: Full ICLR 2026 paper and its official OpenReview record were checked on 2026-07-16; no code or data release is declared in the paper.
+inclusion_reason: It changes which preference pairs consume annotation budget by ranking model-specific gradient uncertainty before DPO training.
+related: []
+tags: [active-learning, direct-preference-optimization, preference-data-selection, gradient-uncertainty]
+status: verified
+one_line_summary: ActiveDPO uses the target policy's projected implicit-reward gradients to actively acquire diverse, high-uncertainty preference pairs for iterative DPO.
+reading_priority: essential
+paper_type: Active preference-data acquisition and direct preference optimization study
+best_for: Readers designing label-efficient preference optimization with costly human judgments.
+confidence: high
+why_it_matters: It turns the current policy's own gradient geometry into an explicit and theoretically motivated rule for purchasing preference labels.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official OpenReview paper and arXiv version were checked; the paper does not declare a code or data release.
+category_ids: [training_usage_optimization_objectives]

@@ -1,1 +1,0 @@
-The reading focus is the distinction between data volume and data value for the current policy. The 8,523-to-1,389 comparison is an experiment, not a general slogan about small data; changing the model, verifier, or training phase can change the ranking.

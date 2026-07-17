@@ -1,0 +1,1 @@
+The central decision is token retention, not example rejection. The official release contains a 50K pool and code; verify the reference model, masking format, and downstream task before carrying its threshold to another dataset.

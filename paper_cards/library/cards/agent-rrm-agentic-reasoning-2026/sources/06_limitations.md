@@ -1,0 +1,1 @@
+The reward model is itself an LLM judge, so its critiques and scores can encode judge error or preference bias. Reuse should audit agreement with task-grounded signals and check whether improvements survive on held-out environments.

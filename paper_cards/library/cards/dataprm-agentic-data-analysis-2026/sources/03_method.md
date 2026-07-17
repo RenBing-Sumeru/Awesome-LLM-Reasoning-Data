@@ -1,0 +1,3 @@
+The authors generate diverse trajectories, add knowledge-augmented step annotations, and construct more than 7,000 training instances. DataPRM then produces an environment-aware judgement and a ternary reward, using interaction to expose silent execution or grounding failures.
+
+The official implementation is integrated in the DataMind repository, which documents the DataPRM component and reports KDD 2026 acceptance. The paper uses the resulting feedback for best-of-N selection and for reinforcement learning; no standalone official training-data release was confirmed, so the paper’s reported instances should not be treated as a downloadable dataset.

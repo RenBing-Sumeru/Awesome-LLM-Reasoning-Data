@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SAI-DPO 按模型相对的知识弱点和自感知难度反复选择偏好训练记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "用于离线偏好优化的动态数学推理数据选择",
+  "best_for_ch": "为迭代数学推理训练构建学习者自适应偏好数据集的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jun Rao, Xuebo Liu, Hexuan Deng, Zepeng Lin, Zixiong Yu, Jiansheng Wei, Xiaojun Meng, Min Zhang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T03:15:00Z"
+}

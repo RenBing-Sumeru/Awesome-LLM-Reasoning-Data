@@ -1,0 +1,3 @@
+Long chain-of-thought instruction pools can contain far more records than a practitioner can afford to fine-tune on. Broad quality, diversity, or length heuristics do not answer the more specific question of which examples are likely to teach a particular student model something it does not already handle.
+
+Select2Reason asks how to form a compact supervised-fine-tuning subset from a long-reasoning pool. It treats data selection as a model-relative ranking problem: examples should be chosen for both their estimated difficulty to the intended student and the amount of non-redundant reasoning they contain.

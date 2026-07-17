@@ -1,0 +1,3 @@
+UltraFeedback treats scalable feedback construction as a structured annotation pipeline. It gathers instructions from several public sources, obtains answers from a pool of language models, and asks GPT-4 to critique and score those answers for instruction following, truthfulness, honesty, and helpfulness.
+
+The resulting resource preserves more than a final preference label. By retaining written critiques and dimension-specific evaluations, the same collection can support reward modeling, response ranking, critique modeling, and policy optimization instead of tying the data to a single training objective.

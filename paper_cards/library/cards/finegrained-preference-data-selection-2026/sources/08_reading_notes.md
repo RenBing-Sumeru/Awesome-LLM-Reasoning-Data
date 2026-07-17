@@ -1,0 +1,1 @@
+Read the divergence definition with the proxy-reward estimation procedure: the method is only as meaningful as the aspect taxonomy and the cross-aspect predictions. Its clearest claim is data efficiency under conflict, not that all disagreement is undesirable; a deployment should distinguish noisy labels from legitimate policy trade-offs before filtering.

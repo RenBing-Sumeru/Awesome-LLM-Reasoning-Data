@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ADG 依据从目标模型采样的多个答案的几何结构选择指令数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多样答案驱动的指令数据选择论文（ACL 2026）",
+  "best_for_ch": "研究指令数据筛选、模型中心评分和高效 SFT 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bo Li, Mingda Wang, Shikun Zhang, Wei Ye",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:15:52Z"
+}

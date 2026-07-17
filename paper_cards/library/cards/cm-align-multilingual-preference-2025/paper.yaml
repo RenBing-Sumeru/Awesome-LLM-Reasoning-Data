@@ -1,0 +1,26 @@
+id: cm-align-multilingual-preference-2025
+title: 'CM-Align: Consistency-based Multilingual Alignment for Large Language Models'
+year: 2025
+venue: Findings of EMNLP 2025
+authors: [Xue Zhang, Yunlong Liang, Fandong Meng, Songming Zhang, Yufeng Chen, Jinan Xu, Jie Zhou]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, multilingual, reasoning]
+training_use: [preference_learning]
+construction_layer: trace_writing
+artifacts: {paper: https://aclanthology.org/2025.findings-emnlp.1401/, arxiv: null, venue: https://aclanthology.org/2025.findings-emnlp.1401/, code: https://github.com/XZhang00/CM-Align, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1401}
+data_object: {prompt_source: 'Task prompts in English and other languages.', trace_author: 'The evaluated LLM generates multiple answers in each language.', answer_format: 'Prompt, English anchor responses, multilingual responses, consistency score, chosen/rejected label.', process_fields: [prompt, language, english_reference, responses, consistency_score, chosen, rejected], environment_or_substrate: 'Multilingual DPO.', verifier_or_reward: 'Task-specific self- and cross-lingual consistency criteria.', terminal_predicate: 'Use the most consistent target-language answer as chosen and least consistent as rejected.'}
+recipe_metadata: {base_model: 'Three LLMs in Math, Code, and general instruction-following experiments.', teacher: 'No separately aligned cross-lingual judge is required.', generator: 'The target model samples multiple responses per language.', filtering_rule: 'Choose a reliable English anchor by self-consistency, then construct pairs by cross-lingual consistency.', sampling_protocol: 'Multiple sampled responses for every prompt and language.', rollout_count: null, temperature: null, inference_budget: 'Requires multilingual response sampling and task-specific consistency scoring.', optimizer_or_scaffold: 'DPO.'}
+audit: {source_mixture: 'Official ACL paper and official code repository.', split: 'Evaluate in-domain and out-of-domain language generalization.', decontamination: 'Audit multilingual prompt sources, translations, and benchmark overlaps before reuse.', license: 'Verify code, model, and source-data licenses.', lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.1401.pdf', known_failure_modes: [english-anchor-error, consistency-metric-error, translationese, language-coverage], citation_status: verified, confidence: high, notes: 'Official paper and official code URL checked.'}
+inclusion_reason: Constructs chosen and rejected multilingual responses that DPO consumes from cross-lingual consistency decisions.
+related: []
+tags: [multilingual, preference-data-construction, dpo, consistency]
+one_line: CM-Align constructs multilingual DPO pairs by selecting a reliable English anchor and cross-lingually consistent responses.
+why_it_matters: It treats the English reference and target-language pair construction as explicit data-quality decisions.
+status: verified
+needs: []
+one_line_summary: CM-Align constructs multilingual DPO pairs by selecting a reliable English anchor and cross-lingually consistent responses.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-16', verified_by: curation, confidence: high, notes: 'Official paper and code URL checked.'}
+category_ids: [training_usage_optimization_objectives]

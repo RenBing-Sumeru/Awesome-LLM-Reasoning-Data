@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"DOSE 使用现成模型衡量文本质量和图文对齐度，再以分布感知的抽样保留质量而不牺牲覆盖范围。","reading_priority_ch":"必读","paper_type_ch":"多模态指令数据选择研究","best_for_ch":"适合希望在训练专用选择器代价过高或可能接触目标语料时，构建高效视觉指令微调子集的读者。","confidence_ch":"高","authors_ch":"Biao Wu, Yiwu Zhong, Meng Fang, Ling Chen","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-15T20:00:00Z"}

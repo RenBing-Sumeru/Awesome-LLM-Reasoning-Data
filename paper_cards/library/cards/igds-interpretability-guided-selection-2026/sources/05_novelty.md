@@ -1,0 +1,3 @@
+Prior selectors generally value examples through output quality, difficulty, likelihood, or coverage. IGDS changes the auditable decision object: a record is chosen because it activates a feature that has passed an explicit causal intervention test, not merely because a judge liked its answer or an embedding made it diverse.
+
+Sparse autoencoders and activation interventions are not new, nor is SFT subset selection. The new combination uses them in sequence to turn a model-internal causal claim into a reusable ranking rule. Before treating that rule as a training signal, inspect whether the intervention score is stable across seeds and whether its selected records remain beneficial when the base model, SAE, or task distribution changes.

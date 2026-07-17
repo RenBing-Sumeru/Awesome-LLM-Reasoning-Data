@@ -1,0 +1,103 @@
+id: fot-fine-grained-data-ordering-2026
+title: 'Fine-Grained Data Ordering Improves Fine-Tuning for Large Language Models'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Xiaomeng Hu
+- Yixuan Tang
+- Haoze Li
+- Hao Chen
+- Qi Zhang
+- Zhanming Shen
+- Yiming Zhang
+- Haobo Wang
+- Junbo Zhao
+source_role:
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- continued-pretraining
+- instruction-tuning
+training_use:
+- sft
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1021/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.1021/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1021
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1021/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: CodeParrot and RedPajama subsets for continued pre-training; MathInstruct and Magicoder for supervised fine-tuning.
+  trace_author: Existing corpus and instruction-dataset authors; no new response data are released.
+  answer_format: A training example paired with model loss, estimated pre-training-distribution score, and a resulting difficulty rank.
+  process_fields:
+  - training_example
+  - cross_entropy_loss
+  - pretraining_coverage_score
+  - difficulty_score
+  - curriculum_rank
+  - epoch_phase
+  environment_or_substrate: Continued pre-training and supervised fine-tuning with a per-example ordering schedule.
+  verifier_or_reward: None; model cross-entropy and an estimated pre-training token distribution define difficulty.
+  terminal_predicate: The first epoch consumes blocks from easy to hard; later epochs use global random shuffling.
+recipe_metadata:
+  base_model: Llama-3.2-1B, Llama-3.1-8B, Gemma-3-4B, and Qwen-3-4B.
+  teacher: The current pre-trained model supplies token probabilities; RedPajama approximates the unavailable original pre-training distribution.
+  generator: No new data generation; existing samples are scored and reordered.
+  filtering_rule: None; score every example by a weighted combination of cross-entropy loss and estimated pre-training coverage, then sort ascending.
+  sampling_protocol: The curriculum phase occupies the first of two epochs; sorted samples are block-shuffled to retain local randomness.
+  rollout_count: null
+  temperature: null
+  inference_budget: Requires a scoring pass over the training data before fine-tuning; no official code or cost estimate is reported.
+  optimizer_or_scaffold: Fine-Grained Order Fine-Tuning, followed by ordinary random-order training.
+audit:
+  source_mixture: CodeParrot and RedPajama are mixed 4:1 for roughly two billion tokens in continued pre-training; MathInstruct and Magicoder are used in supervised fine-tuning.
+  split: HumanEval, HumanEval+, MBPP, MBPP+, MMLU, CMMLU, GSM8K, and MATH.
+  decontamination: No dedicated contamination analysis is reported; corpus and benchmark overlap requires independent review.
+  license: Verify the terms of CodeParrot, RedPajama, MathInstruct, Magicoder, and each base model before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.1021/'
+  known_failure_modes:
+  - The original pre-training distribution is replaced by a RedPajama approximation.
+  - Results cover 1B to 8B models, not larger scales.
+  - Only the first epoch uses the curriculum, and the mechanism remains only partly interpretable.
+  - No official implementation or new ordered dataset is reported.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL Findings paper, authors, affiliations, method, experiments, and limitations were checked on 2026-07-16; no official code or data link is declared in the paper.
+inclusion_reason: It changes the order in which every retained training example is consumed, using model-relative difficulty rather than a static preprocessing subset.
+related: []
+tags:
+- curriculum-learning
+- data-ordering
+- fine-tuning
+- continued-pretraining
+- difficulty
+status: verified
+one_line_summary: FOT scores examples by model-relative difficulty, trains easy-to-hard in the first epoch, and restores random order thereafter.
+reading_priority: essential
+paper_type: Fine-grained training-data scheduling study
+best_for: Readers designing curriculum order for continued pre-training or supervised fine-tuning without discarding examples.
+confidence: high
+why_it_matters: It shows that the order in which data is consumed is itself a training decision, distinct from filtering or mixing the data beforehand.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper was checked; it does not declare official code or a new data release.
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,3 @@
+Outcome-only reinforcement learning with verifiable rewards gives credit only after a long-context model has both found all needed evidence and answered correctly. For multi-document questions, that joint event is rare early in training, so the learning signal for locating relevant passages can vanish even when the final-answer checker is reliable.
+
+LongRLVR asks how to make contextual grounding an optimizable part of long-context RL rather than an unobserved internal step. It introduces a grounded QA training record and a reward that evaluates selected evidence chunks as well as the final answer, producing 46K synthetic records for this purpose.

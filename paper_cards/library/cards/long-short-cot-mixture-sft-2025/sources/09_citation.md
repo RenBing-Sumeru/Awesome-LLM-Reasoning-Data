@@ -1,1 +1,0 @@
-Yu, B., Yuan, H., Li, H., Xu, X., Wei, Y., Wang, B., Qi, W., & Chen, K. (2025). Long-Short Chain-of-Thought Mixture Supervised Fine-Tuning Eliciting Efficient Reasoning in Large Language Models. https://arxiv.org/abs/2505.03469

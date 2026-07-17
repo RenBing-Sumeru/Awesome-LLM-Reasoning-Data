@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该方法将通用训练数据视为目标后训练更新的可行方向约束，而非一次性筛选的样本池。","reading_priority_ch":"必读","paper_type_ch":"后训练数据正则化与优化目标研究","best_for_ch":"适合需要同时利用少量高保真目标数据与大量通用数据的后训练研究者。","confidence_ch":"高","authors_ch":"Pingbang Hu、Xueshen Liu、Z. Morley Mao、Jiaqi W. Ma（伊利诺伊大学厄巴纳—香槟分校、密歇根大学）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T12:10:00Z"}

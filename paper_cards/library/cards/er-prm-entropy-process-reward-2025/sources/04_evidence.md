@@ -1,0 +1,3 @@
+With Mistral-MetaMath-7B as generator and Llama-3.1-8B reward models, ER-PRM reaches 89.5 on GSM8K and 41.3 on MATH500 at best-of-64. The corresponding soft-label PRM reaches 88.9 and 39.7, the hard-label PRM 89.1 and 40.1, and the outcome reward model 88.1 and 39.3. The reported margin is larger on the harder MATH500 setting.
+
+In rejection-sampling fine-tuning, Mistral-MetaMath-7B rises from 77.9 to 79.7 on GSM8K and from 28.6 to 32.5 on MATH; DeepSeek-Math-7B-Instruct rises from 82.0 to 83.4 and from 42.8 to 44.7. The paper also shows that performance changes with eta and can decline at larger candidate counts because reward hacking becomes visible.

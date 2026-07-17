@@ -1,0 +1,72 @@
+id: jpo-joint-instruction-response-preference-2025
+title: 'Comparing Bad Apples to Good Oranges: Aligning Large Language Models via Joint Preference Optimization'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Hritik Bansal, Ashima Suvarna, Gantavya Bhatt, Nanyun Peng, Kai-Wei Chang, Aditya Grover]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.39/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.39/
+  code: https://github.com/Hritikbansal/jpo
+  data: https://github.com/Hritikbansal/jpo
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.39
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.39/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Filtered TL;DR summarization and Anthropic Helpful single-turn dialogue instances.
+  trace_author: Existing responses are paired across either identical or non-identical instructions; GPT-3.5-Turbo and qualified human annotators supply comparisons.
+  answer_format: Two instruction-response pairs, a joint chosen-rejected label, feedback source, and optional conditional preference label.
+  process_fields: [instruction_1, response_1, instruction_2, response_2, chosen_pair, rejected_pair, feedback_source]
+  environment_or_substrate: Supervised fine-tuning followed by offline preference optimization.
+  verifier_or_reward: GPT-3.5-Turbo comparisons and human rankings; no separate reward model is trained.
+  terminal_predicate: Increase the joint probability of the selected instruction-response pair over its jointly rejected counterpart.
+recipe_metadata:
+  base_model: Mistral-7B, supervised fine-tuned before preference optimization.
+  teacher: GPT-3.5-Turbo-0125 provides most comparison labels; Amazon Mechanical Turk annotators provide human feedback analysis.
+  generator: Existing TL;DR and Anthropic Helpful responses; no new model-generation stage is required for pair construction.
+  filtering_rule: Remove duplicate instructions, sample one response per instance, and randomly match two different instruction-response records to form a joint comparison.
+  sampling_protocol: About 50K AI comparisons across protocols; 2,000 human comparisons for analysis; joint and conditional datasets are built at comparable sizes.
+  rollout_count: Not applicable.
+  temperature: 'Evaluation averages three sampling temperatures: 0.001, 0.5, and 1.0.'
+  inference_budget: Pairwise preference collection requires two order-reversed GPT-3.5-Turbo queries to reduce order bias.
+  optimizer_or_scaffold: Joint Preference Optimization, with conditional preferences treated as the identical-instruction special case.
+audit:
+  source_mixture: TL;DR and Anthropic Helpful instruction-response data with joint and conditional AI or human rankings.
+  split: Train comparisons are collected from source training splits; 500 unseen test instructions per dataset assess aligned models with the paper's GPT-3.5 evaluator.
+  decontamination: No broad contamination audit is reported.
+  license: Verify TL;DR, Anthropic Helpful, GPT-3.5-Turbo, crowdsourcing, base-model, and code terms before reproducing the collection pipeline.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.39/'
+  known_failure_modes: [Joint comparisons scale quadratically with available records, Rankings do not explain task-specific strengths or weaknesses, Different feedback forms can disagree, Main alignment evaluation uses a GPT-3.5 evaluator]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, data protocol, public code/data repository, results, and limitations were checked on 2026-07-16.
+inclusion_reason: It changes the preference record from a same-instruction response pair to a possibly cross-instruction pair and trains directly on that joint comparison.
+related: []
+tags: [joint-preferences, preference-acquisition, dpo, alignment]
+status: verified
+one_line_summary: JPO learns from comparisons between complete instruction-response pairs, expanding preference optimization beyond fixed-context response rankings.
+reading_priority: essential
+paper_type: Joint preference-acquisition and optimization-objective study
+best_for: Readers designing preference datasets that need to capture relative helpfulness or task fulfillment across non-identical instructions.
+confidence: high
+why_it_matters: It exposes preference signal that ordinary within-instruction rankings cannot record and makes that signal directly consumable by an alignment objective.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its public code/data repository were checked.
+category_ids: [training_usage_optimization_objectives]

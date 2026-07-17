@@ -1,0 +1,3 @@
+The core idea is an adaptive negative-data curriculum. A generator is rewarded only when it creates an invalid step that the PRM calls correct; the PRM is rewarded for correct classification. Their competition changes the negative distribution as the PRM's current weaknesses change.
+
+The resulting dataset is not merely synthetic text. Each record contains a reference-derived valid step, a perturbation, an oracle validity decision, and the versioned adversarial source that produced it. The PRM trains on an even mixture of gold steps and current or historical hard negatives so that it learns new mistakes without forgetting earlier ones.

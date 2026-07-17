@@ -1,0 +1,18 @@
+{
+  "title": "3DS: Medical Domain Adaptation of LLMs via Decomposed Difficulty-based Data Selection",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.983/",
+    "code": "https://github.com/PuppyKnightUniversity/3DS",
+    "data": "https://github.com/PuppyKnightUniversity/3DS"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:14:40Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "按目标模型知识兼容性与三维适度难度选择专业领域监督微调数据",
+    "updated_at": "2026-07-15T13:14:40Z"
+  }
+}

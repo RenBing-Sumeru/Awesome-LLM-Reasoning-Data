@@ -1,0 +1,3 @@
+Agent execution is formulated as an MDP. The Lightning Client runs the agent and emits structured spans to the Lightning Server; the server stores tasks, resources, trajectories, and training state. Observability signals, including tool-return status, can be converted by Automatic Intermediate Rewarding into intermediate feedback.
+
+LightningRL decomposes trajectories into transitions, assigns hierarchical credit, and updates policies through existing single-turn RL machinery. The open-source repository provides the interface, trainer, examples, and task-data upload path; it is a code artifact, not a released standalone research dataset, so this Card records data as environment-produced transitions.

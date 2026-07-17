@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "3DS 按目标模型质量、分解后的适度难度和多样性过滤领域监督微调记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "以模型为中心的领域指令数据选择研究",
+  "best_for_ch": "把已知模型适配到带噪专业指令池的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hongxin Ding, Yue Fang, Runchuan Zhu, Xinke Jiang, Jinyang Zhang, Yongxin Xu, Weibin Liao, Xu Chu, Junfeng Zhao, Yasha Wang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T06:00:00Z"
+}

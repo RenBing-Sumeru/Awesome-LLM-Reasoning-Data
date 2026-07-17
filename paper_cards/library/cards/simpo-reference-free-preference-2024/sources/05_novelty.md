@@ -1,0 +1,3 @@
+Reference-free objectives existed as an aspiration, but SimPO makes the simplification concrete in a pairwise direct-preference objective: it replaces the reference-relative reward with an average sequence log probability and adds an explicit margin target. The record format stays familiar while the computation consumed by the trainer changes.
+
+This is a consequential systems-level novelty because preference optimization normally doubles policy evaluation through the reference model. SimPO makes the reference policy unnecessary during optimization and addresses length confounding within the reward definition, not through a separate data filter or post hoc length penalty.

@@ -1,0 +1,18 @@
+{
+  "title": "LearnAlign: Data Selection for LLM Reinforcement Learning with Improved Gradient Alignment",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.2009/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:02:21Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以可学习性修正梯度长度偏差，直接选择能提升 RLVR 推理训练效率的样本",
+    "updated_at": "2026-07-15T15:02:21Z"
+  }
+}

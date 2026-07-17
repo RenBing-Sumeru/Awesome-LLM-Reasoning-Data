@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RRHF 让模型对多来源候选回答的概率排序与反馈排序一致，无需 PPO 或单独奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "排序响应驱动的轻量级偏好对齐研究",
+  "best_for_ch": "适合理解多候选回答与排序反馈如何直接进入训练目标的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zheng Yuan、Hongyi Yuan、Chuanqi Tan、Wei Wang、Songfang Huang、Fei Huang（阿里巴巴集团）",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-17T12:32:04Z"
+}

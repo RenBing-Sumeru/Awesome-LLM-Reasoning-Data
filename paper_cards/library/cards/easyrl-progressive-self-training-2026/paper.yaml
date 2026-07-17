@@ -1,0 +1,89 @@
+id: easyrl-progressive-self-training-2026
+title: 'Easy Samples Are All You Need: Self-Evolving LLMs via Data-Efficient Reinforcement Learning'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Zhiyin Yu
+- Bo Zhang
+- Qibin Hou
+- Zhonghai Wu
+- Xiao Luo
+- Lei Bai
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- mathematics
+- science
+training_use:
+- rlvr
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.773/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.773/
+  code: https://github.com/YuZhiyin/EasyRL
+  data: null
+  project: https://github.com/YuZhiyin/EasyRL
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.773
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.773/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 20K DeepMath-103K problems, split into 2K easy labeled problems at difficulty 3.0–4.5 and 18K harder unlabeled problems at difficulty 5.0–10.0.
+  trace_author: The warm-up and later policies generate candidate answers; a reflection procedure resolves selected uncertain cases.
+  answer_format: Mathematical problem, difficulty, multiple candidate answers, consistency or entropy decision, optional reflected pseudo-label, and round-specific inclusion status.
+  process_fields: [problem, difficulty, candidate_answers, consistency, entropy, pseudo_label, selected, iteration]
+  environment_or_substrate: GRPO post-training with answer verification on labeled data and pseudo-label agreement rewards during self-training.
+  verifier_or_reward: Correct labeled answer receives 1, format failure -0.5, and other incorrect output 0; pseudo-labeled training rewards agreement with the selected pseudo-label.
+  terminal_predicate: Only consistent low-uncertainty or reflection-resolved medium-uncertainty examples enter the current pseudo-labeled training set; high-uncertainty examples are deferred.
+recipe_metadata:
+  base_model: Qwen2.5-Math-1.5B, Qwen2.5-Math-7B, and Llama-3.2-3B-Instruct.
+  teacher: No external teacher; a GRPO-warmed policy provides candidates and later policies improve the pseudo-label pool.
+  generator: The current policy generates two candidate answers per unlabeled sample in the main configuration.
+  filtering_rule: Keep identical repeated answers; apply reflection to inconsistent cases whose answer entropy is at most 0.3; defer higher-entropy cases.
+  sampling_protocol: Warm up on easy labels, pseudo-label and select harder examples, train on labels plus selected pseudo-labels, then repeat on deferred examples.
+  rollout_count: 2 for the main consistency-selection configuration.
+  temperature: Greedy evaluation uses 0; no generation-temperature selection schedule is reported.
+  inference_budget: 2K labeled plus 18K unlabeled training problems; the main headline uses 10 percent of easy labeled data.
+  optimizer_or_scaffold: GRPO with a maximum sequence length of 4096.
+audit:
+  source_mixture: DeepMath-103K mathematics problems with an AoPS-based difficulty scale.
+  split: 2K easy labeled and 18K hard unlabeled problems; evaluation includes MATH, Minerva MATH, OlympiadBench, AIME24, AMC23, and GPQA science tasks.
+  decontamination: No full contamination audit is reported.
+  license: Verify DeepMath-103K, benchmark, base-model, and code-repository terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.773/'
+  known_failure_modes:
+  - Pseudo-label errors can accumulate after repeated self-training.
+  - Evidence focuses on verifiable-reward reasoning tasks.
+  - The split depends on a source-provided difficulty scale and threshold choices.
+  - The paper does not declare a release of its generated pseudo-label sets.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, code URL, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It changes how scarce labeled examples and progressively selected pseudo-labeled examples are consumed by RL, using uncertainty to decide which harder records are safe to add next.
+related: []
+tags: [rlvr, pseudo-labeling, curriculum, data-selection, self-training]
+status: verified
+one_line_summary: EasyRL grows a GRPO training set from a few easy labels by selecting consistent or reflection-resolved pseudo-labels from progressively harder problems.
+reading_priority: essential
+paper_type: Progressive pseudo-label selection and RL study
+best_for: Readers who need to turn a small verified seed set and a large difficult unlabeled pool into a staged reasoning-training curriculum.
+confidence: high
+why_it_matters: It makes pseudo-label acceptance and deferral an explicit training-data decision instead of treating every unlabeled example as equally ready for RL.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and paper-declared official code URL were checked; no pseudo-label dataset release is declared.
+category_ids: [training_usage_optimization_objectives]

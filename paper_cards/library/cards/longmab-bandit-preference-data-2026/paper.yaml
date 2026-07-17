@@ -1,0 +1,110 @@
+id: longmab-bandit-preference-data-2026
+title: 'Chunks as Arms: Multi-Armed Bandit-Guided Sampling for Long-Context LLM Preference Optimization'
+year: 2026
+venue: ACL 2026
+authors:
+- Shaohua Duan
+- Pengcheng Huang
+- Xinze Li
+- Zhenghao Liu
+- Xiaoyuan Yi
+- Yukun Yan
+- Shuo Wang
+- Yu Gu
+- Ge Yu
+- Maosong Sun
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- long_context
+- question_answering
+- reasoning
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.161/
+  arxiv: https://arxiv.org/abs/2508.13993
+  venue: https://aclanthology.org/2026.acl-long.161/
+  code: https://github.com/NEUIR/LongMab-PO
+  data: https://github.com/NEUIR/LongMab-PO
+  project: https://github.com/NEUIR/LongMab-PO
+  huggingface: https://huggingface.co/NEUIR/LongMab-PO
+  doi: https://doi.org/10.18653/v1/2026.acl-long.161
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.161/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MuSiQue training questions with contexts augmented by randomly sampled Wikipedia documents.
+  trace_author: The base LLM generates repeated answers from adaptively chosen context chunks.
+  answer_format: Long context, question, chunk selections, rollout answer, programmatic reward, and highest- versus lowest-reward preference pair.
+  process_fields:
+  - context
+  - question
+  - chunk_id
+  - chunk_selection_count
+  - estimated_chunk_reward
+  - rollout_response
+  - SubEM
+  - F1
+  - chosen_response
+  - rejected_response
+  environment_or_substrate: Long-context question answering with 8K–16K-token synthetic contexts.
+  verifier_or_reward: Mean of substring exact match and answer F1 against the ground-truth answer.
+  terminal_predicate: The maximum- and minimum-reward rollout responses become the chosen and rejected records for DPO.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct and Qwen-2.5-7B-Instruct; further results use Qwen2.5-14B-Instruct and Qwen3-8B.
+  teacher: A programmatic answer reward; MiniCPM-Embedding supplies a probe-based initialization signal for chunks.
+  generator: The same LLM repeatedly answers from selected subsets of long-context chunks.
+  filtering_rule: Use UCB scores to select K chunks on each rollout and select the highest- and lowest-reward generated responses.
+  sampling_protocol: Split context into chunks, initialize chunk utilities, perform 30 bandit rollouts with four 1,500-token chunks each, then construct DPO pairs.
+  rollout_count: 30
+  temperature: null
+  inference_budget: Thirty rollouts per example, four chunks per rollout, and 8K–16K-token synthesized contexts in the reported experiments.
+  optimizer_or_scaffold: LoRA DPO for two epochs with LLaMA-Factory.
+audit:
+  source_mixture: MuSiQue plus randomly sampled Wikipedia documents for training; LongBench and InfiniteBench tasks for evaluation.
+  split: Training data from MuSiQue; evaluation on MuSiQue, 2WikiMultihopQA, MultiFieldQA-En, NarrativeQA, and InfiniteBench En.QA.
+  decontamination: The paper describes synthetic context augmentation but does not provide a benchmark-contamination audit beyond its stated train/evaluation split.
+  license: The appendix states academic-use licenses for MuSiQue, LongBench components, and InfiniteBench; separately verify Wikipedia, model, and repository terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2026.acl-long.161/; https://github.com/NEUIR/LongMab-PO'
+  known_failure_modes:
+  - Thirty rollout steps can be expensive for extremely long contexts.
+  - Evidence centers on 7B–14B models and 8K–16K synthetic contexts.
+  - Exact-match and F1 rewards can miss answer quality not captured by the reference string.
+  - The construction depends on ground-truth answers, limiting direct use for open-ended tasks.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, construction procedure, release repository, reported results, and limitations were checked on 2026-07-15.
+inclusion_reason: It turns adaptive context-chunk exploration into programmatically scored chosen/rejected response pairs consumed by DPO.
+related: []
+tags:
+- preference-data
+- long-context
+- multi-armed-bandit
+- dpo
+- rollout-selection
+status: verified
+one_line_summary: LongMab uses bandit-guided context chunk rollouts to produce diverse, reward-ranked long-context response pairs for DPO.
+reading_priority: essential
+paper_type: Long-context preference-data construction study
+best_for: Readers constructing programmatically verifiable preference data for long-context question answering and studying how evidence selection changes the pair distribution.
+confidence: high
+why_it_matters: It makes the context subset that generated an answer part of the preference-data construction process, not merely an inference-time retrieval choice.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and public repository were checked; the repository provides code, a preference-data download path, training scripts, and a model link.
+category_ids:
+- training_usage_optimization_objectives

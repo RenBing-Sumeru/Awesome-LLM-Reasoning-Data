@@ -1,0 +1,26 @@
+id: simpo-reference-free-preference-2024
+title: 'SimPO: Simple Preference Optimization with a Reference-Free Reward'
+year: 2024
+venue: NeurIPS 2024
+authors: [Yu Meng, Mengzhou Xia, Danqi Chen]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction_following]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts: {paper: https://papers.neurips.cc/paper_files/paper/2024/hash/e099c1c9699814af0be873a175361713-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2405.14734, venue: https://papers.neurips.cc/paper_files/paper/2024/hash/e099c1c9699814af0be873a175361713-Abstract-Conference.html, code: https://github.com/princeton-nlp/SimPO, data: null, project: https://github.com/princeton-nlp/SimPO, huggingface: null, doi: https://doi.org/10.52202/079017-3946}
+data_object: {prompt_source: 'Offline paired preference datasets.', trace_author: 'Dataset providers supply chosen and rejected completions.', answer_format: 'Prompt, chosen response, rejected response, length-normalized policy log probabilities, and pairwise loss.', process_fields: [prompt, chosen_response, rejected_response, normalized_policy_logprob, reward_margin], environment_or_substrate: 'Offline preference fine-tuning.', verifier_or_reward: 'Pairwise preference labels; implicit reward is average response log probability.', terminal_predicate: 'Make the chosen response exceed the rejected response by the target implicit-reward margin.'}
+recipe_metadata: {base_model: 'Mistral, Llama 3, and Gemma 2 base and instruction-tuned models in reported experiments.', teacher: 'No separately trained reward model is required.', generator: null, filtering_rule: 'No selection rule; each supplied preference pair enters the objective.', sampling_protocol: 'Offline minibatches of chosen/rejected pairs.', rollout_count: null, temperature: null, inference_budget: 'A frozen reference model is not evaluated during fine-tuning.', optimizer_or_scaffold: 'Simple Preference Optimization.'}
+audit: {source_mixture: 'Official NeurIPS paper and Princeton NLP repository.', split: 'Use original preference-data splits and preserve preprocessing and chat-template decisions.', decontamination: 'SimPO does not prevent benchmark overlap inherited from upstream preference data.', license: 'Verify repository, model, and source-dataset terms before reuse.', lineage: 'Primary source: https://arxiv.org/abs/2405.14734', known_failure_modes: [preference-noise, margin-sensitivity, length-bias, distribution-shift], citation_status: verified, confidence: high, notes: 'Official NeurIPS paper and authors’ repository checked.'}
+inclusion_reason: Provides a widely used direct preference-training consumer that removes the reference policy and explicitly controls the reward margin.
+related: []
+tags: [simpo, preference-learning, alignment, pairwise-data]
+one_line: SimPO trains chosen/rejected preference pairs with a length-normalized implicit reward and no reference model.
+why_it_matters: It offers a lower-memory direct consumer for pairwise preference data and makes response-length handling part of the objective.
+status: verified
+needs: []
+one_line_summary: SimPO trains chosen/rejected preference pairs with a length-normalized implicit reward and no reference model.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official NeurIPS paper and authors’ repository checked.'}
+category_ids: [training_usage_optimization_objectives]

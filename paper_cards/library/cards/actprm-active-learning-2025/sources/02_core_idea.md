@@ -1,0 +1,3 @@
+A single probability cannot distinguish an example near the decision boundary from one on which different reward heads disagree. ActPRM combines aleatoric uncertainty, represented by a mean prediction close to the boundary, with epistemic uncertainty, represented by the spread of predictions from ensemble heads.
+
+The selection decision is trajectory-aware. It considers only steps before and including the first error predicted by the mean model, because later steps have no well-defined correctness after an earlier error. A costly judge therefore annotates a selected record only after the reward model has identified it as informative.

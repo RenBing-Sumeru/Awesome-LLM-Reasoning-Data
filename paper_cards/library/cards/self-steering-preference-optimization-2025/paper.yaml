@@ -1,0 +1,106 @@
+id: self-steering-preference-optimization-2025
+title: 'Self-Steering Optimization: Autonomous Preference Optimization for Large Language Models'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Hao Xiang
+- Bowen Yu
+- Hongyu Lin
+- Keming Lu
+- Yaojie Lu
+- Xianpei Han
+- Ben He
+- Le Sun
+- Jingren Zhou
+- Junyang Lin
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- alignment
+- preference_data
+- reasoning
+training_use:
+- preference_learning
+- reward_modeling
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.473/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.473/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.473
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.473/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback queries, with 8K queries used to optimize the generator and all queries used for policy alignment.
+  trace_author: The policy-derived data generator samples original, good-principle, and bad-principle responses.
+  answer_format: Query, contrastive good and bad principles, original response, preferred response, rejected response, and preference pair.
+  process_fields:
+  - query
+  - good_principle
+  - bad_principle
+  - original_response
+  - chosen_response
+  - rejected_response
+  environment_or_substrate: Automated preference-data generation followed by DPO or other xPO alignment.
+  verifier_or_reward: The generator objective controls response preference separation and rejected-response on-policy likelihood; later analyses use GPT-4 to judge sampled pair accuracy.
+  terminal_predicate: A principle-conditioned response pair is consumed by an xPO objective after generator optimization.
+recipe_metadata:
+  base_model: Qwen2-7B and Llama3-8B SFT and instruct models.
+  teacher: Qwen2.5-72B-Instruct generates contrastive principles in the main experiments; the policy-derived generator produces the responses.
+  generator: A copy optimized from the policy model with the SSO loss.
+  filtering_rule: No hard filtering is used; SSO shapes the distributions of good and rejected responses before pair generation.
+  sampling_protocol: Sample with top-p 0.8, temperature 0.7, and up to 2,048 new tokens; use good, bad, and unconditioned queries.
+  rollout_count: null
+  temperature: 0.7
+  inference_budget: Generator is optimized from 8K UltraFeedback queries; policy alignment uses the full 60K-query collection.
+  optimizer_or_scaffold: SSO generator loss followed by DPO in the main experiments; IPO is also evaluated.
+audit:
+  source_mixture: UltraFeedback prompts and generated contrastive principles and responses; an additional Skywork reward-data mixture is evaluated.
+  split: 8K UltraFeedback queries optimize the generator; full UltraFeedback is used for alignment; benchmarks include AlpacaEval, MT-Bench, IFEval, GSM8K, MATH, MMLU, and RewardBench.
+  decontamination: No comprehensive contamination audit is reported for the synthetic preference data or all evaluated benchmarks.
+  license: Verify UltraFeedback, base-model, principle-generator, and any judge-model terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.473/'
+  known_failure_modes:
+  - Preference-pair accuracy analysis uses GPT-4 judgment on only 200 samples.
+  - Principle-generator quality affects results, especially for Qwen2.
+  - Gains on already aligned models are smaller and some objective benchmarks do not improve.
+  - No official implementation or released generated preference dataset is declared.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL Findings paper, affiliations, construction process, experiments, and limitations were checked on 2026-07-15.
+inclusion_reason: It alters the generator that creates chosen and rejected responses so preference records are both accurate and close to the policy distribution before optimization.
+related: []
+tags:
+- automated-alignment
+- preference-data
+- dpo
+- on-policy
+- principle-conditioning
+status: verified
+one_line_summary: Self-Steering Optimization trains a policy-derived generator to synthesize accurate, near-on-policy preference pairs for later preference optimization.
+reading_priority: essential
+paper_type: Automated preference-data generation study
+best_for: Readers designing self-generated preference data who need to control both pair correctness and how probable rejected responses remain under the target policy.
+confidence: high
+why_it_matters: It makes response-distribution control part of the preference-record construction stage instead of assuming that principle prompting alone yields trainable pairs.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL full paper was checked; no official code, model, or generated-data release is declared.
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,1 @@
+The most important audit unit is the executable state, not the prose explanation. Before reusing the method, ask which facts the probe can actually observe, which tool calls are replayable, and whether the stated reward distinguishes exploratory failure from unsupported conclusion.

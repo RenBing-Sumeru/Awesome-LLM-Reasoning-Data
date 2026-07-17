@@ -1,0 +1,16 @@
+{
+  "title": "SPaCe: Unlocking Sample-Efficient Large Language Models Training With Self-Pace Curriculum Learning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.171/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:11:25Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以语义—难度聚类缩减训练池，再按模型实时进展动态调度强化微调样本",
+    "updated_at": "2026-07-15T13:11:25Z"
+  }
+}

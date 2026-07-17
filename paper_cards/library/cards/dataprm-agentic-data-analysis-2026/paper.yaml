@@ -1,0 +1,92 @@
+id: dataprm-agentic-data-analysis-2026
+title: 'Rewarding the Scientific Process: Process-Level Reward Modeling for Agentic
+  Data Analysis'
+year: 2026
+venue: KDD 2026
+authors:
+- Zhisong Qiu
+- Shuofei Qiao
+- Kewei Xu
+- Yuqi Zhu
+- Lun Du
+- Ningyu Zhang
+- Huajun Chen
+source_role:
+- process_supervision
+verification_contract: environmental
+supervision_granularity:
+- process_reward
+domains:
+- agentic-reasoning
+training_use:
+- agent_training
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.24198
+  arxiv: https://arxiv.org/abs/2604.24198
+  venue: null
+  code: https://github.com/zjunlp/DataMind
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See official paper and release.
+  trace_author: As specified in the official paper.
+  answer_format: Process-supervision record described in the official paper.
+  process_fields:
+  - task
+  - trace
+  - step feedback
+  environment_or_substrate: See official paper.
+  verifier_or_reward: See official paper.
+  terminal_predicate: See official paper.
+recipe_metadata:
+  base_model: See official paper.
+  teacher: See official paper.
+  generator: See official paper.
+  filtering_rule: See official paper.
+  sampling_protocol: See official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not fully disclosed.
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See official release.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release and its pinned revision.
+  lineage: 'Primary source: https://arxiv.org/abs/2604.24198'
+  known_failure_modes:
+  - Generated or learned process feedback can be miscalibrated.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, affiliation evidence, and official artifact links
+    checked; standalone data is null when no release was confirmed.
+inclusion_reason: The paper changes how process records, reward signals, or environment
+  feedback are consumed by post-training optimization.
+related: []
+tags:
+- post-training
+- process-supervision
+status: verified
+needs: []
+one_line_summary: DataPRM probes execution states and assigns reflection-aware process
+  rewards to train and guide data-analysis agents.
+why_it_matters: It exposes a process-feedback object and its consumer in post-training.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

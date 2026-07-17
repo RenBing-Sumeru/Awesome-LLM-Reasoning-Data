@@ -1,0 +1,16 @@
+{
+  "title": "Fine-Grained Data Ordering Improves Fine-Tuning for Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1021/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:48:45Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "证明训练记录的呈现顺序本身会影响微调结果，是低成本而直接的训练数据使用变量",
+    "updated_at": "2026-07-15T14:48:45Z"
+  }
+}

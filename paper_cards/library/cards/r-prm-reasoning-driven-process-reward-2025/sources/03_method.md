@@ -1,0 +1,3 @@
+The authors first use stronger language models and limited annotations to bootstrap seed reasoning data. They train the reward model to explain and judge each step, then sample alternative reasoning evaluations and form preference pairs for a second preference-optimization stage.
+
+At inference time the model can scale its own deliberation before assigning a process judgement. The official release exposes separate supervised-fine-tuning and preference-optimization splits, totalling 593,904 hosted rows; reuse must pin the chosen split and distinguish generated judgements from original human annotations.

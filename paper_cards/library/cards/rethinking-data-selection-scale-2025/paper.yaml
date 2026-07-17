@@ -1,0 +1,99 @@
+id: rethinking-data-selection-scale-2025
+title: 'Rethinking Data Selection at Scale: Random Selection is Almost All You Need'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Tingyu Xia
+- Bowen Yu
+- Kai Dang
+- An Yang
+- Yuan Wu
+- Yuan Tian
+- Yi Chang
+- Junyang Lin
+source_role:
+- scaling_study
+- audit_failure
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- data-selection
+training_use:
+- sft
+- audit
+construction_layer:
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.146/
+  arxiv: https://arxiv.org/abs/2410.09335
+  venue: https://aclanthology.org/2025.findings-emnlp.146/
+  code: https://github.com/xiatingyu/SFT-DataSelection-at-scale
+  data: https://www.modelscope.cn/datasets/xiatingyu/wildchat-en
+  project: https://github.com/xiatingyu/SFT-DataSelection-at-scale
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.146
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.146/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and release.
+  trace_author: See the official paper.
+  answer_format: Training record described in the Card source sections.
+  process_fields:
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official paper.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See the official paper.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.146/'
+  known_failure_modes:
+  - Selection signal may not transfer unchanged to a new pool or objective.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, affiliations, venue status, and listed artifacts checked on 2026-07-15.
+inclusion_reason: It changes how a training record, selection decision, or reward signal is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+- data-selection
+status: verified
+one_line_summary: A large-scale SFT audit finds that common self-scoring selectors often fail to reliably beat repeated random
+  sampling.
+reading_priority: essential
+paper_type: Large-scale SFT data-selection reproducibility study
+best_for: Readers designing instruction-data selection experiments and SFT ablations.
+confidence: high
+why_it_matters: It makes the connection between a data object and its training objective inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

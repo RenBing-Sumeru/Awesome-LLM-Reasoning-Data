@@ -1,0 +1,3 @@
+For every preference aspect, a smaller proxy reward model is trained with balanced length sampling and a length penalty. It predicts each aspect's reward gap on records from all other aspects; quantile scaling makes the gaps comparable, and their negative sum becomes the estimated preference-divergence score.
+
+The pipeline keeps the most negative records within a budget and applies standard DPO. The experiments construct aspect-specific collections from UltraFeedback and HelpSteer, compare 20 to 50 percent budgets, and use controlled datasets with different conflict rates to test the selection rule.

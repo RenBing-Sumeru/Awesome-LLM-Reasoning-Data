@@ -1,0 +1,18 @@
+{
+  "title": "Alignment Data Map for Efficient Preference Data Selection and Diagnosis",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1906/",
+    "code": "https://github.com/01choco/Alignment-Data-Map",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:13:24Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将回答质量与候选间波动共同用于偏好数据选择，并可定位疑似错标记录",
+    "updated_at": "2026-07-16T07:13:24Z"
+  }
+}

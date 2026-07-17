@@ -1,0 +1,1 @@
+The method depends on the rewriter preserving the needed reasoning structure, but a fluent short trace can still omit a decisive step. It also evaluates average response length rather than every safety or audit need; reuse should inspect rewrite fidelity, task-specific verifier outcomes, and the cost-quality frontier.

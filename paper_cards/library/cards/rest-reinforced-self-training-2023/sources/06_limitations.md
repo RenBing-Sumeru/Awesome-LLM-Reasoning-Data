@@ -1,0 +1,1 @@
+ReST can compound reward-model errors and self-sampling bias, and its batch policy can become stale after updates. It requires careful management of thresholds, diversity, replay age, and held-out evaluation; otherwise a larger replay buffer may simply preserve more correlated mistakes.

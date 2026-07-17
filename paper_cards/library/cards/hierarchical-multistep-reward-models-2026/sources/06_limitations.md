@@ -1,0 +1,1 @@
+HNC deliberately introduces controlled noise and inherits the reliability limits of MCTS labels. Users should test whether node merging changes semantics in their domain and should not treat a high reward as proof of a formally valid derivation.

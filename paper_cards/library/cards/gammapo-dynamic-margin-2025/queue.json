@@ -1,0 +1,18 @@
+{
+  "title": "Robust Preference Optimization via Dynamic Target Margins",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.282/",
+    "code": "https://github.com/sunjie279/gammaPO",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:19:41Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "按每个偏好对的置信度动态改变训练目标，减少模糊标签的错误牵引",
+    "updated_at": "2026-07-16T07:19:41Z"
+  }
+}

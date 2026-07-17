@@ -1,0 +1,18 @@
+{
+  "title": "VersaPRM: Multi-Domain Process Reward Model via Synthetic Reasoning Data",
+  "candidate_links": {
+    "paper": "https://proceedings.mlr.press/v267/zeng25h.html",
+    "code": "https://github.com/UW-Madison-Lee-Lab/VersaPRM",
+    "data": "https://huggingface.co/datasets/UW-Madison-Lee-Lab/MMLU-Pro-CoT-Train-Labeled"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:32:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开多领域步骤标签与 PRM 配方，直接证明过程监督的数据多样性决定跨领域效果",
+    "updated_at": "2026-07-16T07:32:23Z"
+  }
+}

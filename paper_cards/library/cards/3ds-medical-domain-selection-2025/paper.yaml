@@ -1,0 +1,111 @@
+id: 3ds-medical-domain-selection-2025
+title: '3DS: Medical Domain Adaptation of LLMs via Decomposed Difficulty-based Data Selection'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Hongxin Ding
+- Yue Fang
+- Runchuan Zhu
+- Xinke Jiang
+- Jinyang Zhang
+- Yongxin Xu
+- Weibin Liao
+- Xu Chu
+- Junfeng Zhao
+- Yasha Wang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- medical
+- instruction-tuning
+- law
+- general
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.983/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.983/
+  code: https://github.com/PuppyKnightUniversity/3DS
+  data: https://github.com/PuppyKnightUniversity/3DS
+  project: https://github.com/PuppyKnightUniversity/3DS
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.983
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.983/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: More than 1.9M Chinese medical instruction-response records from five named sources.
+  trace_author: Source datasets; 3DS ranks and selects existing records.
+  answer_format: Instruction, reference answer, target-model quality score, three difficulty scores, and diversity selection
+    state.
+  process_fields:
+  - instruction
+  - reference_answer
+  - quality_score
+  - understanding_difficulty
+  - confidence_difficulty
+  - correctness_difficulty
+  - attention_weights
+  environment_or_substrate: Specialized-domain supervised fine-tuning.
+  verifier_or_reward: Medical benchmark accuracy and open-answer lexical metrics; target-model scoring is a selection signal.
+  terminal_predicate: Selected 5K records improve named domain evaluations.
+recipe_metadata:
+  base_model: Baichuan2-13B-Chat, Qwen1.5-7B-Instruct, Qwen2.5-7B-Instruct, LLaMA3-8B-Instruct.
+  teacher: Target model rates quality; no fixed external judge is required.
+  generator: Prompt-driven quality gate, decomposed difficulty scoring, and k-center diversity sampling.
+  filtering_rule: Keep quality scores ≥90, retain model-specific middle difficulty percentiles, then apply k-center sampling.
+  sampling_protocol: 5K SFT budget; percentile bounds tuned on CMB holdout data.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pre-selection scores full pool before final 5K SFT.
+  optimizer_or_scaffold: Supervised fine-tuning.
+audit:
+  source_mixture: Five public and crawled Chinese medical sources aggregated into a 1.9M-plus pool.
+  split: CMB-Exam, MMCU-Med, and CMB-Clin; extra CaseHOLD and MMLU generalization studies.
+  decontamination: No dedicated contamination audit claimed; inspect source and benchmark overlap.
+  license: Verify repository and each upstream source before redistribution or medical use.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.983/; https://github.com/PuppyKnightUniversity/3DS'
+  known_failure_modes:
+  - Full-pool scoring cost.
+  - Static pre-SFT subset is not updated online.
+  - Thresholds vary by model and are holdout-tuned.
+  - Medical and Chinese-centric evidence.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, affiliations, method, experiments, limitations, and official repository link checked on 2026-07-16.
+inclusion_reason: It explicitly selects which specialized instruction records enter SFT based on target-model compatibility
+  and multi-axis difficulty.
+related: []
+tags:
+- medical
+- data-selection
+- difficulty
+- sft
+status: verified
+one_line_summary: 3DS filters domain SFT records by target-model quality, decomposed moderate difficulty, and diversity.
+reading_priority: essential
+paper_type: Model-centric domain instruction-data selection study
+best_for: Readers adapting a known model to a noisy specialized instruction pool.
+confidence: high
+why_it_matters: It makes target-model knowledge compatibility and learnable difficulty explicit before records are admitted
+  to SFT.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP paper and repository stated in the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

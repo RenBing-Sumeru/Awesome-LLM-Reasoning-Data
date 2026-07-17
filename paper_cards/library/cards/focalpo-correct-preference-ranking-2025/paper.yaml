@@ -1,0 +1,72 @@
+id: focalpo-correct-preference-ranking-2025
+title: 'FocalPO: Enhancing Preference Optimizing by Focusing on Correct Preference Rankings'
+year: 2025
+venue: ACL 2025 Short Papers
+authors: [Tong Liu, Xiao Yu, Wenxuan Zhou, Jindong Gu, Volker Tresp]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.acl-short.21/
+  arxiv: https://arxiv.org/abs/2501.06645
+  venue: https://aclanthology.org/2025.acl-short.21/
+  code: https://github.com/TongLiu-github/focalpo
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-short.21
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-short.21/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback for Mistral-Base-7B and Llama3-ultrafeedback-armorm for Llama-3-Instruct-8B.
+  trace_author: Existing chosen-rejected preference pairs; FocalPO adds no generation phase.
+  answer_format: Instruction, chosen response, rejected response, current implicit preference probability, ranking state, and focal loss weight.
+  process_fields: [instruction, chosen, rejected, preference_probability, ranking_state, focal_weight]
+  environment_or_substrate: Offline DPO-style preference optimization.
+  verifier_or_reward: Existing pair labels define preference; the current model's implicit reward determines reweighting.
+  terminal_predicate: Down-weight pairs the model currently misranks and give relatively greater influence to correctly ranked pairs.
+recipe_metadata:
+  base_model: Mistral-Base-7B or Llama-3-Instruct-8B.
+  teacher: Existing UltraFeedback-derived preference labels; no extra teacher is required.
+  generator: No generation stage is required.
+  filtering_rule: No hard filtering; the DPO loss is multiplied by a focal probability factor with fixed gamma 0.05.
+  sampling_protocol: One epoch and batch size 128 in the reported main setup; learning rates are grid searched per algorithm.
+  rollout_count: Not applicable.
+  temperature: Not a central reported variable.
+  inference_budget: No new reward-model or rollout inference is introduced during training.
+  optimizer_or_scaffold: Fixed-parameter focal preference optimization with a reference model.
+audit:
+  source_mixture: Public UltraFeedback-derived preference datasets.
+  split: AlpacaEval 2.0 and Arena-Hard evaluate alignment; appendix analysis examines correct and incorrect pair groups.
+  decontamination: No broad contamination audit is reported.
+  license: Verify dataset, model, benchmark, and code terms before reproduction.
+  lineage: 'Primary source: https://aclanthology.org/2025.acl-short.21/'
+  known_failure_modes: [Gamma is fixed and lightly explored, Evidence covers only two model families, Pair reweighting cannot repair incorrect labels, Main alignment metrics use LLM judges]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, code URL, method, results, and stated limitations were checked on 2026-07-16.
+inclusion_reason: It directly changes the loss weight assigned to each preference record according to whether the current model already ranks that record correctly.
+related: []
+tags: [preference-optimization, sample-weighting, focal-loss, dpo]
+status: verified
+one_line_summary: FocalPO reweights DPO so preference pairs with correct current implicit rankings contribute more than misranked pairs.
+reading_priority: essential
+paper_type: Preference-pair weighting and optimization-objective study
+best_for: Readers deciding whether hard, currently misranked preference pairs should dominate an offline alignment update.
+confidence: high
+why_it_matters: It challenges DPO's default emphasis on pairs the model currently gets wrong and makes ranking state an explicit training-use signal.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and the public code repository named in the paper were checked.
+category_ids: [training_usage_optimization_objectives]

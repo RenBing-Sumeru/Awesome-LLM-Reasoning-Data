@@ -1,0 +1,1 @@
+Read the release as two linked datasets rather than one undifferentiated corpus: the supervised split teaches an evaluator to reason, and the preference split selects among its evaluations. The first audit question is whether the selection criterion measures mathematical validity or only the style of an explanation.

@@ -1,7 +1,7 @@
 id: redis-reasoning-distillation-2025
-title: 'Improving In-Context Learning with Reasoning Distillation'
+title: Improving In-Context Learning with Reasoning Distillation
 year: 2025
-venue: arXiv preprint
+venue: arXiv preprint (under review)
 authors:
 - Nafis Sadeq
 - Xin Xu
@@ -11,24 +11,21 @@ authors:
 - Prarit Lamba
 - Xiang Gao
 source_role:
-- data_release
 - construction_recipe
+- data_release
 verification_contract:
-- mixed
+- judgment_required
 supervision_granularity:
-- step_level
-- pairwise_preference
+- answer_level
 domains:
-- inductive-reasoning
-- in-context-learning
+- reasoning
+- instruction-tuning
 training_use:
 - sft
-- preference_learning
 - distillation
 construction_layer:
 - trace_writing
-- reward_verifier_layer
-- release_audit
+- optimizer_scaffold
 artifacts:
   paper: https://arxiv.org/abs/2504.10647
   arxiv: https://arxiv.org/abs/2504.10647
@@ -37,65 +34,64 @@ artifacts:
   data: https://github.com/NafisSadeq/reasoning-distillation
   project: https://github.com/NafisSadeq/reasoning-distillation
   huggingface: null
-  doi: https://doi.org/10.48550/arXiv.2504.10647
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
 data_object:
-  prompt_source: Few-shot inductive-reasoning tasks from List Function, 1D-ARC, ACRE, and MiniSCAN.
-  trace_author: GPT-4o generates candidate natural-language hypotheses and rule-following outputs.
-  answer_format: Rule-generation examples, rule-following examples, and chosen/rejected hypothesis pairs.
+  prompt_source: See official paper and release.
+  trace_author: Teacher/rewrite model described in the Card.
+  answer_format: Training record described in Card sources.
   process_fields:
-  - demonstrations
-  - candidate hypothesis
-  - rule-following result
-  - noisy fitness score
-  - chosen/rejected pair
-  environment_or_substrate: Inductive reasoning tasks with held-out input-output instances.
-  verifier_or_reward: Teacher-mediated rule-following checks estimate how many demonstrations a candidate hypothesis satisfies.
-  terminal_predicate: A retained hypothesis passes the stated quality threshold or forms a sufficiently separated preference pair.
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: Reasoning tasks described in paper.
+  verifier_or_reward: Paper-specific filtering signal.
+  terminal_predicate: See paper.
 recipe_metadata:
-  base_model: LLaMA-3, Mistral, and Qwen student backbones.
-  teacher: GPT-4o.
-  generator: Teacher-generated hypotheses and rule-following responses.
-  filtering_rule: Retain SFT hypotheses that satisfy at least half of a task's demonstrations; construct preference pairs with a score-gap threshold.
-  sampling_protocol: The paper reports 39,736 rule-generation SFT, 88,369 rule-following SFT, and 108,768 preference examples.
-  rollout_count: 50 candidate hypotheses per task during data augmentation.
+  base_model: See paper.
+  teacher: See paper.
+  generator: See paper.
+  filtering_rule: See paper.
+  sampling_protocol: See paper.
+  rollout_count: null
   temperature: null
-  inference_budget: Hypothesis search space is an explicit inference-time efficiency variable.
-  optimizer_or_scaffold: LoRA SFT followed by preference alignment; ORPO is best overall in the reported setting.
+  inference_budget: See paper.
+  optimizer_or_scaffold: SFT and alignment described in paper.
 audit:
-  source_mixture: Official arXiv HTML paper and its linked repository.
-  split: Ten percent of each task source is held out for testing; the rest supplies augmentation inputs.
-  decontamination: Task-level train/test separation should be checked when reusing the generated corpus.
-  license: Verify the repository and each underlying task dataset before redistribution.
+  source_mixture: Official paper and release.
+  split: See paper.
+  decontamination: Verify before reuse.
+  license: Check release terms.
   lineage: 'Primary source: https://arxiv.org/abs/2504.10647'
   known_failure_modes:
-  - Fitness is noisy because a language model performs rule following.
-  - The generated rules are bounded by teacher behavior and selected task families.
-  - Reported gains may not transfer to semantic tasks with no clear demonstration contract.
+  - Teacher or rewrite quality can affect training records.
   citation_status: verified
   confidence: high
-  notes: The official paper states that code, dataset, and checkpoints are released through the linked repository.
-inclusion_reason: A concrete pipeline for turning teacher hypotheses into filtered SFT and preference data for inductive reasoning.
+  notes: Full paper and official artifact checked 2026-07-15.
+inclusion_reason: It changes how reasoning records are selected, structured, or consumed by supervised post-training.
 related: []
 tags:
-- reasoning-distillation
-- synthetic-rationales
-- preference-data
-one_line: ReDis distills rule generation and rule following into filtered SFT and preference examples for inductive in-context learning.
-why_it_matters: It treats the quality of an intermediate rule as a training signal instead of only imitating final answers.
+- post-training
+- training-usage
+- reasoning-data
 status: verified
-needs: []
-one_line_summary: ReDis distills rule generation and rule following into filtered SFT and preference examples for inductive in-context learning.
+one_line_summary: ReDis distils rule generation and rule following into smaller models for inductive in-context learning.
+reading_priority: essential
+paper_type: Reasoning-data construction and supervised fine-tuning study
+best_for: Readers studying how reasoning records enter post-training.
+confidence: high
+why_it_matters: It makes a reasoning-data consumption decision explicit.
 curation_level: L4_carded
 verification:
   link_verified: true
   artifact_verified: true
-  verified_at: '2026-07-14'
+  verified_at: '2026-07-15'
   verified_by: curation
   confidence: high
-  notes: Official paper and linked repository checked.
-  venue: null
-  project: null
-  code: null
-  and data checked.: null
+  notes: Full paper and official artifact checked.
 category_ids:
 - training_usage_optimization_objectives

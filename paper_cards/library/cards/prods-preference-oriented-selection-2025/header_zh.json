@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"ProDS 用目标任务的正反偏好方向衡量样本影响，从而选择更适合监督微调的指令记录。","reading_priority_ch":"必读","paper_type_ch":"偏好导向的指令数据选择研究","best_for_ch":"适合需要让监督微调数据贴合特定目标任务偏好的读者。","confidence_ch":"高","authors_ch":"Wenya Guo、Zhengkun Zhang、Xumeng Liu 等（南开大学、百度）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T13:00:00Z"}

@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"SPA 用模型 logits 直接标注新生成的回答对，并以噪声感知方式迭代训练。","reading_priority_ch":"必读","paper_type_ch":"自生成偏好标注与迭代对齐研究","best_for_ch":"适合只有少量人工偏好种子、但需要扩展训练记录的读者。","confidence_ch":"高","authors_ch":"Dongyoung Kim、Kimin Lee、Jinwoo Shin、Jaehyung Kim（韩国科学技术院、延世大学）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T16:00:00Z"}

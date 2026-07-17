@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Agent Lightning 将任意智能体执行转为标准 transition，用于解耦的强化学习训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体轨迹接口与强化学习框架论文",
+  "best_for_ch": "研究在线智能体数据如何进入 RL 训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xufang Luo, Yuge Zhang, Zhiyuan He, Zilong Wang, Siyun Zhao, Dongsheng Li, Luna K. Qiu, Yuqing Yang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T23:00:00Z"
+}

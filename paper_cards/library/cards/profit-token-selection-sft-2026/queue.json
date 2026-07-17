@@ -1,0 +1,16 @@
+{
+  "title": "ProFit: Leveraging High-Value Signals in SFT via Probability-Guided Token Selection",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.755/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:42:54Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将 SFT 监督边界细化到 token 级，明确规定保留记录中哪些 token 应主导训练",
+    "updated_at": "2026-07-15T13:42:54Z"
+  }
+}

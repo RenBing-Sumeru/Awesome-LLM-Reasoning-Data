@@ -1,0 +1,18 @@
+{
+  "title": "COPR: Continual Human Preference Learning via Optimal Policy Regularization",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.281/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:20:06Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把历史最优策略作为约束，使新到偏好数据能持续进入训练而不明显遗忘旧偏好",
+    "updated_at": "2026-07-16T07:20:06Z"
+  }
+}

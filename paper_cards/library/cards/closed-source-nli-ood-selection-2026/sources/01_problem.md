@@ -1,0 +1,3 @@
+API fine-tuning of closed-source models does not permit changing the optimizer, loss, or internal representations. Fine-tuning can improve NLI accuracy on its source distribution while sharply reducing performance on unseen distributions, so the only practical intervention may be which fixed number of records the API receives.
+
+The paper asks how a 10,000-example NLI training budget can be reallocated to preserve or improve OOD robustness. It selects more challenging existing records or replaces a class-balanced fraction with generated examples. The target is not a larger dataset, but a different training-record mixture that changes the robustness trade-off without changing the vendor's training procedure.

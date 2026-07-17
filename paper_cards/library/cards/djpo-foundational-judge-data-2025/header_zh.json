@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"DJPO 构造三类互补的 DPO 样本对，从批评、直接决策和回答反推训练可泛化的大语言模型评审器。","reading_priority_ch":"必读","paper_type_ch":"基础评审器偏好数据构造研究","best_for_ch":"从异质评测标注构建可复用大语言模型评审器或评审器奖励信号的读者。","confidence_ch":"高","authors_ch":"Peifeng Wang, Austin Xu, Yilun Zhou, Caiming Xiong, Shafiq Joty","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T16:00:00Z"}

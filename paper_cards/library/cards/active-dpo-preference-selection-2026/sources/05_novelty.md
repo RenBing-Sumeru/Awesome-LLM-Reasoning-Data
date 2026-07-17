@@ -1,0 +1,3 @@
+Earlier selection approaches commonly score preference pairs with an external reward model, a confidence heuristic, or a linear latent-reward approximation. ActiveDPO instead derives its criterion from the target DPO policy's own implicit reward and gradient features, connecting the record-selection decision directly to the model that will consume the labeled record.
+
+The diversity matrix also gives the criterion a sequential memory: pairs similar to already selected gradient directions are deprioritized. The contribution is therefore more than replacing one score with another; it defines an iterative contract in which regeneration, model-dependent uncertainty, diverse acquisition, labeling, and DPO updates are coupled.

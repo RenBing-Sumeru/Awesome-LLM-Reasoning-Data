@@ -1,0 +1,98 @@
+id: rlvrr-reward-chain-open-generation-2026
+title: 'From Verifiable Dot to Reward Chain: Harnessing Verifiable Reference-based Rewards for Reinforcement Learning of Open-ended
+  Generation'
+year: 2026
+venue: ICLR 2026
+authors:
+- Yuxin Jiang
+- Yufei Wang
+- Qiyuan Zhang
+- Xingshan Zeng
+- Liangyou Li
+- Jierun Chen
+- Chaofan Tao
+- Haoli Bai
+- Lifeng Shang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2601.18533
+  arxiv: https://arxiv.org/abs/2601.18533
+  venue: null
+  code: https://github.com/YJiangcm/RLVRR
+  data: https://github.com/YJiangcm/RLVRR
+  project: https://github.com/YJiangcm/RLVRR
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and artifact.
+  trace_author: See the official paper.
+  answer_format: Described in Card source sections.
+  process_fields:
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official paper.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Official paper and artifact release.
+  split: See the official paper.
+  decontamination: Verify before reuse.
+  license: Check official artifact release.
+  lineage: 'Primary source: https://arxiv.org/abs/2601.18533'
+  known_failure_modes:
+  - Transfer and contamination require task-specific audit.
+  citation_status: verified
+  confidence: high
+  notes: Official paper and artifact checked 2026-07-15.
+inclusion_reason: It changes how a training record, selection decision, or reward signal is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+- data-selection
+status: verified
+one_line_summary: RLVRR turns high-quality references into an ordered reward chain for RL on open-ended generation.
+reading_priority: essential
+paper_type: Training-data selection or reward-design study
+best_for: Readers studying post-training data consumption and optimization objectives.
+confidence: high
+why_it_matters: It makes the training-data decision inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and artifact checked.
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,1 @@
+Use R-PRM when a mathematical-reasoning project has partial traces and a small trusted label set but needs richer process feedback. Keep a held-out human-labelled audit set, compare direct scalar scoring with generated judgements, and evaluate whether reward gains survive when the policy and search budget are fixed.

@@ -1,0 +1,3 @@
+Prior process-reward work often improves labels with more rollouts, stronger judges, or consensus filters over a broad pool. ActPRM changes the order of these operations: the current reward model decides what deserves expensive labeling, so model uncertainty becomes a property of the data-selection policy.
+
+The paper also keeps first-error semantics in the acquisition rule rather than scoring an entire trace indiscriminately. Its contribution is not merely an ensemble architecture; it specifies a reusable record-selection contract—mean, disagreement, thresholds, first-error boundary, selected or not selected—and evaluates the downstream reward model trained on it.

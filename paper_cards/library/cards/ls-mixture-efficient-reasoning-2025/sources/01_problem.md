@@ -1,0 +1,3 @@
+SFT on long chain-of-thought data can transfer reasoning ability from a large reasoning model to a smaller student, but it can also transfer the teacher’s overthinking behavior. The student may produce verbose, redundant traces even when a shorter argument would solve the problem, increasing inference cost without improving the answer.
+
+The paper asks whether the distillation dataset itself can teach an appropriate reasoning length. Rather than treating concise output as a post-hoc decoding preference, it changes the SFT mixture so the same problem is observed with both detailed and compressed reasoning paths.

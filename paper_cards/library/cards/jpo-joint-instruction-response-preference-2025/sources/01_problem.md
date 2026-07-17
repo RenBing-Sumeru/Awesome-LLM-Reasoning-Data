@@ -1,0 +1,3 @@
+Ordinary preference datasets compare two answers only after fixing one instruction. This protocol captures which of two alternatives is better for that request, but it cannot express that a response to one request is more helpful, accurate, or useful than a response to a different request. It therefore narrows the set of human judgments that may become alignment data.
+
+JPO asks whether annotators can reliably compare complete instruction-response records across non-identical contexts, and whether a model can learn from those comparisons. It changes the training record itself: the competitor is no longer merely another answer to the same prompt, but another instruction-answer pair. The goal is to broaden what preference acquisition supplies to optimization.

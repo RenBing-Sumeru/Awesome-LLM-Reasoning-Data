@@ -1,0 +1,1 @@
+Inspect where candidates came from, how ties are handled, how ranks were acquired, and whether log probabilities are length-normalized. The sampling-quality analysis is essential: it identifies candidate generation, not just the loss, as a limiting training decision.

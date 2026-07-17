@@ -1,0 +1,3 @@
+Earlier automatic process labels commonly estimate the fraction of rollouts that end correctly, then use that quantity as a soft or thresholded hard target. ER-PRM changes the target-construction rule itself: it exponentially reweights verified futures before aggregation so that the label corresponds to the entropy-regularized control formulation rather than a plain success frequency.
+
+The contribution is therefore not only another reward-model architecture. It makes the reference policy, the number of completions, the terminal checker, eta, and the aggregation formula explicit properties of the training record. Those choices determine what a future policy is encouraged to preserve or prefer when the resulting reward model filters rationales.

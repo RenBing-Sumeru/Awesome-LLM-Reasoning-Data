@@ -1,1 +1,0 @@
-Use s1 as a transparent baseline for experiments on small SFT sets and inference budgets. Fix the base model and s1K revision, sweep several token budgets, and report generation length, stopping control, accuracy, and cost. It is not a direct recipe for models without a controllable thinking terminator or for tasks requiring an external step verifier.

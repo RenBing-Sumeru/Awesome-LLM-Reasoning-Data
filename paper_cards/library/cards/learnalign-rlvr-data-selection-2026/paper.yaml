@@ -1,0 +1,106 @@
+id: learnalign-rlvr-data-selection-2026
+title: 'LearnAlign: Data Selection for LLM Reinforcement Learning with Improved Gradient Alignment'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Shipeng Li
+- Zhiqin Yang
+- Shikun Li
+- Xiaobo Xia
+- Hengyu Liu
+- Xinghua Zhang
+- Gaode Chen
+- Dong Fang
+- Ying Tai
+- Zhe Peng
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- mathematics
+- code_generation
+training_use:
+- rlvr
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.2009/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.2009/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.2009
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.2009/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K and DAPO-MATH-17K reasoning questions, evaluated on math and code benchmarks.
+  trace_author: A warm-up policy produces multiple verifiable rollouts per question.
+  answer_format: Question, rollout success rate, learnability, projected policy gradient, pairwise gradient-alignment score, and top-N inclusion decision.
+  process_fields:
+  - question
+  - rollout
+  - success_rate
+  - learnability
+  - projected_gradient
+  - average_alignment_score
+  - selected
+  environment_or_substrate: RLVR post-training with binary correctness rewards and GRPO gradients.
+  verifier_or_reward: Exact answer or executable-code correctness yields binary success; learnability is p(1-p) over rollout success rate p.
+  terminal_predicate: Top-N questions by their average learnability-weighted gradient alignment enter RLVR training.
+recipe_metadata:
+  base_model: Qwen2.5-1.5B-Instruct, Qwen2.5-3B, and Qwen2.5-7B.
+  teacher: No external teacher; the warmed-up policy supplies rollouts, gradients, and success rates.
+  generator: The policy samples eight rollouts per question during exploration.
+  filtering_rule: Rank by mean pairwise cosine alignment of random-projected gradients, weighted by p(1-p), and retain top-N questions.
+  sampling_protocol: Warm up on a random subset, generate rollouts per data point, estimate learnability and gradients, project gradients, score all pairs, then sort.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: Warm-up uses 300 GSM8K or 1,000 DAPO-MATH-17K samples; the reported compact subset often has 1,000 questions.
+  optimizer_or_scaffold: GRPO-style RLVR with two epochs and LoRA-compatible policy training.
+audit:
+  source_mixture: GSM8K and DAPO-MATH-17K training sources; math and code benchmarks for evaluation.
+  split: GSM8K subsets of 100–2,000; DAPO-MATH-17K subsets of 1,000; evaluation includes GSM8K, MATH500, AMC2023, AIME2024, and CRUX.
+  decontamination: No full benchmark-contamination audit is reported.
+  license: Verify all source data, base-model, benchmark, and generated-rollout terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.2009/'
+  known_failure_modes:
+  - Evidence covers only 1.5B, 3B, and 7B models.
+  - Evaluation centers on math reasoning and one code benchmark.
+  - Warm-up subset choice affects scores.
+  - Pairwise gradient scoring grows costly without the proposed projection shortcuts.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL Findings paper, affiliations, method, results, and limitations were checked on 2026-07-16.
+inclusion_reason: It selects questions for RLVR according to whether their verifiable rollout success and gradient alignment indicate learnable, representative policy updates.
+related: []
+tags:
+- rlvr
+- data-selection
+- gradient-alignment
+- curriculum
+- reasoning
+status: verified
+one_line_summary: LearnAlign selects RLVR reasoning questions with success-rate-weighted gradient alignment, avoiding the response-length bias of raw gradient norms.
+reading_priority: essential
+paper_type: RLVR reasoning-data selection study
+best_for: Readers seeking a compact, model-relative reasoning subset for verifiable-reward training without external quality labels.
+confidence: high
+why_it_matters: It defines training-data utility through both current learnability and compatibility with the broader policy-update direction.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL full paper was checked; no official code or released selected subset is declared.
+category_ids:
+- training_usage_optimization_objectives

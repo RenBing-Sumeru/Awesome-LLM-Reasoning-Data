@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "技能感知蒸馏按学生薄弱技能抽取教师轨迹，并把完整技能链加入监督微调目标。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "以技能为中心的推理数据选择与蒸馏研究",
+  "best_for_ch": "从结构化推理教师语料构建学生自适应子集的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Lechen Zhang, Yunxiang Zhang, Wei Hu, Lu Wang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T01:25:00Z"
+}

@@ -1,0 +1,102 @@
+id: diverse-not-short-selection-2025
+title: 'Diverse, not Short: A Length-Controlled Data Selection Strategy for Improving Response Diversity of Language Models'
+year: 2025
+venue: EMNLP 2025 Main Conference
+authors:
+- Vijeta Deshpande
+- Debasmita Ghose
+- John D. Patterson
+- Roger Beaty
+- Anna Rumshisky
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- creative-generation
+- alignment
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1721/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.1721/
+  code: https://github.com/text-machine-lab/diverse-not-short
+  data: https://huggingface.co/datasets/text-machine-lab/diverse-not-short
+  project: https://github.com/text-machine-lab/diverse-not-short
+  huggingface: https://huggingface.co/datasets/text-machine-lab/diverse-not-short
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.1721
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1721/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Random three-word sets constructed from a curated word list.
+  trace_author: Llama-3.1-8B and Olmo-2-7B generate an ordinary story and a constrained rewrite.
+  answer_format: Prompt, ordinary response, diversity-constrained response, entropy score, quality score, word count, and chosen/rejected designation.
+  process_fields:
+  - prompt
+  - rejected_response
+  - chosen_response
+  - entropy
+  - reward_score
+  - word_count
+  - length_difference
+  - preference_label
+  environment_or_substrate: Creative short-story preference-data construction followed by DPO.
+  verifier_or_reward: Entropy measures lexical diversity; ArmoRM measures response quality.
+  terminal_predicate: A pair is retained only when the chosen rewrite is sufficiently good, more diverse, and within five words of the rejected response.
+recipe_metadata:
+  base_model: Llama-3.1-8B, Olmo-2-7B, and Olmo-2-13B.
+  teacher: Self-generated constrained rewrites and ArmoRM scoring.
+  generator: 'Two-stage sequential prompting: an ordinary story followed by a diversity-oriented rewrite.'
+  filtering_rule: Require chosen quality at least the rejected-quality median, chosen quality and entropy above rejected, and absolute length difference at most five words; select top entropy-gain pairs.
+  sampling_protocol: 20,000 prompts with ten first and ten rewritten responses per prompt, yielding 200,000 tuples per generator; DPO uses 3,000 pairs per method.
+  rollout_count: '200000'
+  temperature: '1.0'
+  inference_budget: Reported training takes about 100–150 minutes for 8B/7B and 200–220 minutes for 13B on one 48GB GPU.
+  optimizer_or_scaffold: Direct Preference Optimization.
+audit:
+  source_mixture: Synthetic creative-writing prompts and responses from Llama-3.1-8B and Olmo-2-7B.
+  split: Divergent Associations, Persona Generation, Alternate Uses, and Creative Writing tasks; human evaluation on Creative Writing.
+  decontamination: No dedicated contamination audit claimed; generated prompt and evaluation overlap should be checked before reuse.
+  license: Verify Hugging Face dataset, repository, generator-model, and reward-model terms before redistribution or commercial use.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.1721/; https://github.com/text-machine-lab/diverse-not-short; https://huggingface.co/datasets/text-machine-lab/diverse-not-short'
+  known_failure_modes:
+  - Entropy or TTR alone cannot cover lexical, semantic, syntactic, and novelty diversity.
+  - Evidence centers on short creative-story generation and one preference-tuning round.
+  - Strict filtering can leave a skew toward longer retained pairs despite pairwise length parity.
+  - Diversity can reduce factual accuracy in high-stakes factual tasks.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, authors, affiliations, method, results, limitations, and linked official code/data artifacts were checked on 2026-07-16.
+inclusion_reason: It determines which synthetic chosen/rejected records enter DPO by jointly controlling diversity, quality, and response length.
+related: []
+tags:
+- preference-data
+- dpo
+- data-selection
+- diversity
+- length-control
+status: verified
+one_line_summary: Diverse-NS creates DPO pairs whose chosen response is more diverse and better scored than the rejected response without exploiting shorter length.
+reading_priority: essential
+paper_type: Length-controlled preference-data selection study
+best_for: Readers building preference data for diverse open-ended generation while guarding against metric-driven length bias.
+confidence: high
+why_it_matters: It shows that a diversity objective changes the training record in a harmful way unless selection explicitly equalizes response length.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP paper and its declared GitHub and Hugging Face artifacts were checked.
+category_ids:
+- training_usage_optimization_objectives

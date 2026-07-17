@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"SimPO 以长度归一化的平均对数概率充当隐式奖励，并用目标间隔直接训练偏好对，无需参考模型。","reading_priority_ch":"必读","paper_type_ch":"无参考模型的直接偏好优化研究","best_for_ch":"适合理解偏好数据如何在较低显存成本下直接进入对齐训练的读者。","confidence_ch":"高","authors_ch":"Yu Meng、Mengzhou Xia、Danqi Chen（弗吉尼亚大学、普林斯顿大学）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-17T09:45:00Z"}

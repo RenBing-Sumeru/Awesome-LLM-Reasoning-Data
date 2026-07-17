@@ -1,0 +1,3 @@
+Contrastive control instructions can expose representation directions associated with honesty, harmlessness, helpfulness, and a general criterion. ICON2 uses PCA over positive-minus-negative hidden-state differences to obtain layerwise directions, then measures whether a synthesized instruction is internally consistent with one of them.
+
+The selected instruction's strongest criterion also controls record construction. Adding that direction to middle-layer token states generates the chosen response, while subtracting it generates the rejected response. Thus the signal used to retain an instruction is also the signal used to create its preference contrast.

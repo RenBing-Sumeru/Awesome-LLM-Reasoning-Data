@@ -1,0 +1,1 @@
+The record is unchanged but its loss mask changes; two references score token risk; top-risk tokens are masked; TOSS-Pro refines the harmful reference; and the representative 93.79 HEx-PHI result is a GPT-4o win rate.

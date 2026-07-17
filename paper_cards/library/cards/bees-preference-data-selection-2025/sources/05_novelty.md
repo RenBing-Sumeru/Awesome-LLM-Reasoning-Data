@@ -1,0 +1,3 @@
+Earlier preference curation often chooses examples from a single scorer, treats small reward gaps as informative hard cases, or changes the optimization loss instead of the input records. BeeS argues that noisy labels cause a different failure mode and uses the sign and magnitude of several margins to screen the records before ordinary DPO.
+
+Its distinctive choice is the conjunction across sources: evidence is not averaged so that one very confident judge can erase another judge's warning. The paper therefore makes disagreement itself operational in the training-data contract and tests whether the selected records transfer across model sizes and preference-learning losses.

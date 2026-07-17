@@ -1,0 +1,18 @@
+{
+  "title": "Self-Consistency Preference Optimization",
+  "candidate_links": {
+    "paper": "https://proceedings.mlr.press/v267/prasad25a.html",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:32:37Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把答案投票一致性和投票差距转为无标注偏好对，是自生成偏好数据的代表方法",
+    "updated_at": "2026-07-16T07:32:37Z"
+  }
+}

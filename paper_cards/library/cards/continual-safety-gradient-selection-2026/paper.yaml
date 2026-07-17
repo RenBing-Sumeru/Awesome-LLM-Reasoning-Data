@@ -1,0 +1,76 @@
+id: continual-safety-gradient-selection-2026
+title: Continual Safety Alignment via Gradient-Based Sample Selection
+year: 2026
+venue: Findings of ACL 2026
+authors: [Thong Bach, Dung Nguyen, Thao Minh Le, Truyen Tran]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, safety]
+training_use: [sft]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.942/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.942/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.942
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.942/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Benign continual domain-adaptation instruction datasets, including Dolly and Alpaca variants.
+  trace_author: Existing task instruction-response records.
+  answer_format: Input-output record, initial aligned-model loss, per-sample gradient norm, loss pre-filter decision, and moderate-gradient selection decision.
+  process_fields: [input, target, loss, gradient_norm, selected]
+  environment_or_substrate: Sequential supervised fine-tuning of already aligned models under safety and task-performance evaluation.
+  verifier_or_reward: Safety is measured by attack success rate and safety-basin metrics; task learning uses ordinary supervised loss.
+  terminal_predicate: After loss outlier filtering, retain records closest to the median gradient norm and exclude high-gradient records.
+recipe_metadata:
+  base_model: Qwen, Llama, and related aligned model families evaluated by the paper.
+  teacher: No teacher; gradients are measured on the initial aligned model.
+  generator: No synthetic generator.
+  filtering_rule: Compute per-record gradient norms, remove loss outliers, and retain the requested fraction closest to the median norm.
+  sampling_protocol: Apply selection independently at each task in a sequential continual-fine-tuning stream.
+  rollout_count: Not applicable.
+  temperature: Not applicable.
+  inference_budget: The main moderate-gradient selection ratio is 0.2, with robustness evaluated from 0.1 to 0.4.
+  optimizer_or_scaffold: Standard supervised fine-tuning; the method changes records rather than architecture or clipping.
+audit:
+  source_mixture: Benign continual task data; safety is tested with AdvBench, HarmBench, and related attack suites.
+  split: Multiple task sequences and orderings; no new release split is declared.
+  decontamination: No full contamination audit is reported.
+  license: Verify all task-data, model, and safety-benchmark terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.942/'
+  known_failure_modes:
+  - Per-sample gradient computation is an added selection cost.
+  - Evidence covers selected task families and model scales only.
+  - The method trades some task data coverage for safety preservation.
+  - No official code or selected datasets are declared.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It selects which benign fine-tuning records are allowed to update an aligned model, explicitly using gradient magnitude to control the safety-versus-task optimization trade-off.
+related: []
+tags: [data-selection, continual-fine-tuning, safety-alignment, gradients]
+status: verified
+one_line_summary: The paper preserves continual safety alignment by excluding high-gradient task records and training on moderate-gradient examples instead.
+reading_priority: useful
+paper_type: Gradient-based continual fine-tuning data-selection study
+best_for: Readers adapting aligned models to benign domains who need a data-level safeguard against safety drift without adding a safe replay set.
+confidence: high
+why_it_matters: It shows that even benign records have unequal alignment cost and makes that cost a direct training-selection criterion.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no official code or data release is declared.
+category_ids: [training_usage_optimization_objectives]

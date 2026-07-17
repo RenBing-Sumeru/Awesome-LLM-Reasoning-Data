@@ -1,0 +1,3 @@
+Human feedback can make language models more useful, but collecting it at the scale and diversity needed for broad alignment is expensive. Small preference sets also make it difficult to examine whether a reward model or policy is learning a general judgment rather than the habits of a narrow prompt collection.
+
+This work asks how AI feedback can turn heterogeneous instructions and candidate answers into a reusable training resource. Its target is not merely more responses: it is a record in which the judged answer, the reasons for that judgment, and several quality dimensions can all be consumed by later alignment stages.

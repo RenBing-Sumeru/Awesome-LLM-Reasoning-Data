@@ -1,0 +1,18 @@
+{
+  "title": "Focused-DPO: Enhancing Code Generation Through Focused Preference Optimization on Error-Prone Points",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.498/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:10:05Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它用可执行测试定位高影响代码差异，并让 DPO 聚焦这些易错片段",
+    "updated_at": "2026-07-16T07:10:05Z"
+  }
+}

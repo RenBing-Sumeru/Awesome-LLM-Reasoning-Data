@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "奠定了大规模 AI 反馈数据如何构造并供奖励模型、偏好学习和策略优化复用的实践范式",
+    "updated_at": "2026-07-17T12:31:10Z"
+  },
+  "updated_at": "2026-07-17T12:31:10Z"
+}

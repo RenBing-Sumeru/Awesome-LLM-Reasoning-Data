@@ -1,0 +1,103 @@
+id: djpo-foundational-judge-data-2025
+title: 'Direct Judgement Preference Optimization'
+year: 2025
+venue: EMNLP 2025 Main Conference
+authors:
+- Peifeng Wang
+- Austin Xu
+- Yilun Zhou
+- Caiming Xiong
+- Shafiq Joty
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- alignment
+- evaluation
+training_use:
+- preference_learning
+- reward_modeling
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.103/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.103/
+  code: https://github.com/SalesforceAIResearch/sfrjudge
+  data: https://github.com/SalesforceAIResearch/sfrjudge
+  project: https://github.com/SalesforceAIResearch/sfrjudge
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.103
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.103/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Human- and model-annotated evaluation datasets covering rating, pairwise comparison, classification, and response deduction.
+  trace_author: Llama-3.1-70B-Instruct generates candidate critique/judgment traces; Llama-3.1-8B-Instruct generates negative response deductions.
+  answer_format: Evaluation protocol, task input, response or responses, critique, judgment, and preferred/rejected output pair.
+  process_fields:
+  - evaluation_protocol
+  - task_input
+  - model_response
+  - critique
+  - judgment
+  - preference_label
+  - response_deduction
+  - training_task_type
+  environment_or_substrate: Large-scale foundational judge training through DPO plus SFT.
+  verifier_or_reward: Human or model ground-truth judgments determine whether generated judgments are positive or negative.
+  terminal_predicate: Candidate judge outputs whose final judgment matches ground truth are positive; others are negative.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct, NeMo-Instruct-12B, and Llama-3.1-70B-Instruct.
+  teacher: Llama-3.1-70B-Instruct for critique/judgment candidates and Llama-3.1-8B-Instruct for negative deductions.
+  generator: Sample 20 critique-and-judgment outputs per prompt at temperature 0.7, then derive direct-judgment and deduction pairs.
+  filtering_rule: Keep balanced label distributions across training tasks; classify candidate judgments by agreement with ground truth.
+  sampling_protocol: 680K preference pairs mixed 70:15:15 across critique, standard-judgment, and response-deduction tasks.
+  rollout_count: '20'
+  temperature: '0.7'
+  inference_budget: Judge inference requires generating a critique before the final judgment, which is slower than scalar classification reward models.
+  optimizer_or_scaffold: DPO with SFT on the preferred response across three complementary evaluation tasks.
+audit:
+  source_mixture: Modern human-annotated and model-annotated evaluation datasets, augmented with teacher-generated judge traces.
+  split: Seven pairwise, four single-rating, and two classification benchmarks; MetaCritique evaluates critique factuality.
+  decontamination: No dedicated contamination audit is reported; source and evaluation overlap should be independently examined.
+  license: Verify repository, teacher-model, and all constituent evaluation-dataset terms before redistribution.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.103/; https://github.com/SalesforceAIResearch/sfrjudge'
+  known_failure_modes:
+  - Requires human or model annotated judgments and periodic data refresh as models evolve.
+  - Does not establish process-level reward quality for partial reasoning traces.
+  - Critique generation increases inference time compared with scalar reward models.
+  - Evidence depends on the quality of ground-truth judgment labels and teacher traces.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, authors, affiliations, curation method, results, limitations, and the official repository were checked on 2026-07-16.
+inclusion_reason: It specifies how heterogeneous evaluation annotations and generated traces become three distinct preference-pair types consumed by judge-model training.
+related: []
+tags:
+- judge-model
+- preference-data
+- dpo
+- critique
+- reward-modeling
+status: verified
+one_line_summary: DJPO builds three complementary DPO pair types to train generalized LLM judges from critiques, direct decisions, and response deductions.
+reading_priority: essential
+paper_type: Foundational judge preference-data construction study
+best_for: Readers building reusable LLM judges or judge-derived reward signals from heterogeneous evaluation annotations.
+confidence: high
+why_it_matters: It turns judgment labels and generated critiques into structured preference data that train a judge to evaluate, explain, and understand responses.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP paper and its declared GitHub repository were checked.
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,1 @@
+The paper does not release code, curated traces, or the final selected subsets. Its dynamic threshold and embedding geometry can depend on the source pool, while strategy generation adds inference cost. The evaluation is centered on verified mathematical reasoning and does not establish behavior on open-ended or long-horizon agent data.

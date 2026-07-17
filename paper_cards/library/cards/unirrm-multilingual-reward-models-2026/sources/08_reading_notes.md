@@ -1,0 +1,1 @@
+Read the data releases together: MixReward defines the preference source, the supervised set teaches the evaluation chain, and the reinforcement-learning set defines the final optimization contract. Treat those as three different consumers of related records, not as interchangeable files.

@@ -1,0 +1,16 @@
+{
+  "title": "Exploring Reasoning Reward Model for Agents",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.95/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:32:46Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "“理由一致性”是重要的 RM 审计信号",
+    "updated_at": "2026-07-15T12:32:46Z"
+  }
+}

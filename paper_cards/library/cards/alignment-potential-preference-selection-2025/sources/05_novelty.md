@@ -1,0 +1,3 @@
+Earlier selection rules treat large explicit margins or small implicit margins as separate data-quality criteria. This work makes their disagreement the signal: a pair is valuable when the model's current comparative behavior is far from the reward-model target, not merely when one margin is extreme.
+
+Its contribution is a selection metric and executable pipeline, rather than a new preference corpus or a new preference-optimization objective. By using the same metric for both fixed data and generated data, it connects record scoring to a concrete training consumer and exposes the additional log-probability and reward-model dependencies needed to reproduce that decision.

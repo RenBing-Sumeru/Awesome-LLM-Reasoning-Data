@@ -1,0 +1,3 @@
+The official model release states that the resulting models support 103 languages and pairwise, listwise, and pointwise evaluation. It documents the two released training stages and the data sizes, providing an auditable account of how the reward model obtains its structured judgement behaviour.
+
+The available release evidence is strongest for the model and dataset construction. Any downstream comparison should still be read with its reported prompts, language distribution, and task mixture in mind; a unified interface does not by itself prove equally calibrated performance for every language or format.

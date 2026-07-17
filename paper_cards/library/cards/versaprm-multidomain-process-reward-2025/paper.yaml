@@ -1,0 +1,72 @@
+id: versaprm-multidomain-process-reward-2025
+title: 'VersaPRM: Multi-Domain Process Reward Model via Synthetic Reasoning Data'
+year: 2025
+venue: ICML 2025 Oral
+authors: [Thomas Zeng, Shuibai Zhang, Shutong Wu, Christian Classen, Daewon Chae, Ethan Ewer, Minjae Lee, Heeju Kim, Wonjun Kang, Jackson Kunde, Ying Fan, Jungtaek Kim, Hyung Il Koo, Kannan Ramchandran, Dimitris Papailiopoulos, Kangwook Lee]
+source_role: [process_supervision, construction_recipe, data_release]
+verification_contract: [judgment_required]
+supervision_granularity: [process_reward]
+domains: [mathematical-reasoning, science, law, philosophy, multi-domain-reasoning]
+training_use: [process_supervision, test_time_compute]
+construction_layer: reward_verifier_layer
+artifacts:
+  paper: https://proceedings.mlr.press/v267/zeng25h.html
+  arxiv: https://arxiv.org/abs/2502.06737
+  venue: https://proceedings.mlr.press/v267/zeng25h.html
+  code: https://github.com/UW-Madison-Lee-Lab/VersaPRM
+  data: https://huggingface.co/datasets/UW-Madison-Lee-Lab/MMLU-Pro-CoT-Train-Labeled
+  project: null
+  huggingface: https://huggingface.co/UW-Madison-Lee-Lab/VersaPRM
+  doi: null
+  openreview: https://openreview.net/forum?id=l19DmXbwPK
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/zeng25h.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Up to 500 MMLU-Pro questions per domain, selected disjointly from the evaluation subset.
+  trace_author: Llama-3.1-8B-Instruct generates candidate chain-of-thought traces; Llama-3.1-70B-Instruct supplies step judgments.
+  answer_format: Question, reference answer, category, chain-of-thought steps, earliest-error-derived step labels, and parsed answer correctness.
+  process_fields: [question, answer, category, source, chain_of_thoughts, labels, parsed_answer, parsed_answer_correctness]
+  environment_or_substrate: Multi-domain MMLU-Pro questions, synthetic chain-of-thought generation, LLM judging, and process-reward-model fine-tuning.
+  verifier_or_reward: A large-model judge uses the reference answer and GOOD, OK, BAD criteria to locate the earliest bad step; preceding steps become positive, the first bad step negative, and later steps are removed.
+  terminal_predicate: Keep traces whose answer can be parsed and whose length is at most 2,048 tokens; retain the labeled prefix through the first detected bad step.
+recipe_metadata:
+  base_model: LlamaPRM800K, itself based on Llama-3.1-8B-Instruct, is the final VersaPRM initialization.
+  teacher: Llama-3.1-70B-Instruct labels synthetic reasoning traces using the supplied reference answer.
+  generator: Llama-3.1-8B-Instruct generates 16 chain-of-thought responses per sampled question at temperature 0.8.
+  filtering_rule: Remove overlength traces and answers that cannot be parsed; for a judged error, drop all steps after the earliest bad step.
+  sampling_protocol: 5,750 MMLU-Pro questions, up to 500 per domain, and 16 generated traces per question; 84,098 traces remain after filtering.
+  rollout_count: 16.
+  temperature: 0.8 for generation and 0 for auto-labeling.
+  inference_budget: Weighted majority voting, best-of-N, beam search, and MCTS consume multiple candidate traces and PRM step scores at deployment.
+  optimizer_or_scaffold: LoRA fine-tuning for one epoch with cross-entropy over plus and minus labels at a special end-of-step classification token.
+audit:
+  source_mixture: MMLU-Pro questions and answers, Llama-generated traces, large-model step judgments, and first-error prefix filtering.
+  split: The train questions are disjoint from the MMLU-Pro-CoT-Eval subset; evaluation samples 150 questions per MMLU-Pro domain before duplicate removal.
+  decontamination: Training and evaluation subsets are reported disjoint, but a broader benchmark or generator-model contamination audit is not reported.
+  license: The published training dataset is MIT licensed; verify MMLU-Pro and model terms before downstream redistribution.
+  lineage: 'Primary source: https://proceedings.mlr.press/v267/zeng25h.html'
+  known_failure_modes: [Auto-label agreement is imperfect, The large judge can propagate bias, PRM misses some domain errors, Iterative refinement degraded pass-at-one, Test-time scaling adds sampling cost]
+  citation_status: verified
+  confidence: high
+  notes: Full ICML paper, official repository, model page, and 84,098-row training-data page were checked on 2026-07-16.
+inclusion_reason: It makes synthetic trace generation, process-label construction, and the reward-model training consumer a single reproducible multi-domain pipeline.
+related: []
+tags: [process-reward-model, synthetic-reasoning-data, step-labels, verifier, multi-domain]
+status: verified
+one_line_summary: VersaPRM creates and releases multi-domain step-labeled reasoning traces, then trains a process reward model that improves test-time selection beyond mathematics.
+reading_priority: essential
+paper_type: Synthetic process-supervision data release and multi-domain process reward model study
+best_for: Readers building process labels, reward models, or test-time search systems outside narrowly mathematical tasks.
+confidence: high
+why_it_matters: It demonstrates that diversity and label construction in process data determine where a reward model remains useful, not merely which optimizer is applied.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official PMLR paper, GitHub repository, model release, and MIT-licensed Hugging Face dataset were checked.
+category_ids: [training_usage_optimization_objectives]

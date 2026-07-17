@@ -1,0 +1,1 @@
+Influence estimates depend on the reference model and threshold, and removing tokens can damage a response whose meaning depends on long-range context. Reuse should inspect masked examples, pin the reference checkpoint, and test whether task formatting or safety constraints were removed.

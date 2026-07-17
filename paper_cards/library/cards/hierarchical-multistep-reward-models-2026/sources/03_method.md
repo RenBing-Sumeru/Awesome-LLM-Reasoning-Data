@@ -1,0 +1,3 @@
+The method starts from reasoning-tree paths and process labels generated or organized for the reward-model training setting. Hierarchical Node Compression merges consecutive nodes, producing additional examples that contain a compressed multi-step segment while preserving their relation to the original path.
+
+The hierarchical reward model is trained to evaluate both isolated steps and consecutive segments. At use time, this permits a process judgement to reflect local correctness together with nearby context. The paper studies the procedure on PRM800K and evaluates the resulting reward behaviour on mathematical-reasoning tasks.

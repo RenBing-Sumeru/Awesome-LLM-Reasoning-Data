@@ -1,0 +1,72 @@
+id: finegrained-preference-data-selection-2026
+title: Data Selection for LLM Alignment Using Fine-Grained Preferences
+year: 2026
+venue: ICLR 2026
+authors: [Jia Zhang, Yao Liu, Chen-Xi Zhang, Yi Liu, Yi-Xuan Jin, Lan-Zhe Guo, Yu-Feng Li]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://openreview.net/forum?id=FqFU3IrnEa
+  arxiv: https://arxiv.org/abs/2508.07638
+  venue: https://openreview.net/forum?id=FqFU3IrnEa
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2508.07638
+  openreview: https://openreview.net/forum?id=FqFU3IrnEa
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Fine-grained preference subsets derived from UltraFeedback and HelpSteer.
+  trace_author: Existing chosen and rejected response pairs, grouped by their annotated sub-preference aspect.
+  answer_format: Aspect label, prompt, chosen response, rejected response, proxy reward gaps, preference-divergence score, and selection flag.
+  process_fields: [sub_preference, prompt, chosen, rejected, proxy_reward_gaps, preference_divergence, selected]
+  environment_or_substrate: Offline DPO after cross-aspect preference-data selection.
+  verifier_or_reward: Small proxy reward models estimate each aspect's pseudo-reward gap on records from other aspects.
+  terminal_predicate: Retain records with the most negative estimated preference-divergence values under the selection budget.
+recipe_metadata:
+  base_model: Llama-3.1-8B and Qwen2.5 variants in the reported studies.
+  teacher: Fine-grained preference annotations from UltraFeedback and HelpSteer; smaller proxy reward models estimate cross-aspect signals.
+  generator: Not applicable; the main experiments filter existing pairwise preference data.
+  filtering_rule: Train de-biased proxy reward models, estimate cross-aspect gaps, quantile-normalize them, and retain the most negative preference-divergence records.
+  sampling_protocol: The main selection comparison uses a 30 percent budget; the paper also studies budgets from 20 to 50 percent.
+  rollout_count: null
+  temperature: null
+  inference_budget: Reported GPU-hour tables include proxy-model selection and final DPO training.
+  optimizer_or_scaffold: Standard DPO on the selected subset, with length-balanced proxy-reward training and a length penalty.
+audit:
+  source_mixture: Aspect-specific preference pairs, proxy reward models, cross-aspect pseudo-reward gaps, and selected records.
+  split: Fine-grained UltraFeedback and HelpSteer constructions; additional controlled conflict-level datasets are reported.
+  decontamination: Not described as a dedicated benchmark-contamination audit.
+  license: Verify all upstream preference data and model terms before reuse.
+  lineage: 'Primary sources: https://openreview.net/forum?id=FqFU3IrnEa; https://arxiv.org/abs/2508.07638'
+  known_failure_modes: [Proxy reward error, Fine-grained aspect availability, Length-bias sensitivity, No public implementation declared, No contamination audit]
+  citation_status: verified
+  confidence: high
+  notes: Full ICLR 2026 paper was checked on 2026-07-16; no paper-declared code or data release was found.
+inclusion_reason: It makes agreement among fine-grained preference aspects an explicit filter deciding which preference records train DPO.
+related: []
+tags: [fine-grained-preferences, data-selection, preference-divergence, direct-preference-optimization]
+status: verified
+one_line_summary: The method filters fine-grained preference records by cross-aspect consensus before standard DPO, retaining samples with the most negative preference divergence.
+reading_priority: essential
+paper_type: Fine-grained preference-data selection and alignment study
+best_for: Readers curating preference data with several annotated values or behavioral aspects.
+confidence: high
+why_it_matters: It turns cross-aspect conflict into a measurable training-data exclusion rule instead of asking a single holistic label to resolve every value tradeoff.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR paper and arXiv version were checked; the paper does not declare a code or data release.
+category_ids: [training_usage_optimization_objectives]

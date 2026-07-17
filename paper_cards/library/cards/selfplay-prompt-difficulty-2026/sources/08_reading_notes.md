@@ -1,0 +1,1 @@
+Read it as evidence that prompt selection is part of preference-data construction. Separate its empirical pruning result from a universal claim that hard data is useless; the paper itself finds a model-capacity interaction.

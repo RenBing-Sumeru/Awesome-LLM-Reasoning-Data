@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "SparsePO 学习稀疏 token 掩码，在偏好优化中分别加权奖励项和 KL 项的贡献。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "稀疏 token 级偏好优化研究",
+  "best_for_ch": "研究 token 级奖励和正则化选择如何重塑偏好训练信号、又不收集新标注的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Fenia Christopoulou, Ronald Cardenas, Gerasimos Lampouras, Haitham Bou-Ammar, Jun Wang",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-16T14:00:00Z"
+}

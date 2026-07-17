@@ -1,0 +1,3 @@
+The core object is a transition: the current execution state and LLM input, the policy action and LLM output, and a reward. A trajectory becomes a sequence of those transitions, which lets the training system ignore framework-specific orchestration while retaining the information needed for policy updates.
+
+LightningRL assigns credit to the transitions and can selectively optimize one or more agents. Training-Agent Disaggregation separates the runtime that produces spans and traces from the trainer that consumes them, so a change in agent tools or workflow need not force a change in the RL implementation.

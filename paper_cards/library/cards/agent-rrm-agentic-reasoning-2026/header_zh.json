@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Reagent 将 Agent 轨迹评为推理分析、批评与分数，并将这些反馈用于改写和强化训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体推理奖励模型与训练数据论文",
+  "best_for_ch": "需要把 Agent 轨迹转为可训练反馈、比较批评与奖励信号的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kaixuan Fan、Kaituo Feng、Manyuan Zhang、Tianshuo Peng、Zhixun Li、Yilei Jiang、Shuang Chen、Peng Pei、Xunliang Cai、Xiangyu Yue",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

@@ -1,0 +1,3 @@
+Long-horizon agents are usually rewarded only for whether a task eventually succeeds. That terminal signal treats a trajectory with a recoverable mistake and a trajectory with no useful reasoning in the same coarse way, leaving the policy little information about what to improve.
+
+This paper asks whether an agent trajectory can be converted into actionable process feedback without requiring a human to annotate every step. Its answer is to train a reasoning reward model that reads the whole trajectory and returns an analysis, a targeted critique, and an overall score for use during refinement or reinforcement learning.

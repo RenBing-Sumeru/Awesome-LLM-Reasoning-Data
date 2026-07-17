@@ -1,0 +1,93 @@
+id: adg-answer-divergence-selection-2026
+title: Instruction Data Selection via Answer Divergence
+year: 2026
+venue: ACL 2026
+authors:
+- Bo Li
+- Mingda Wang
+- Shikun Zhang
+- Wei Ye
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- reasoning
+training_use:
+- sft
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.214/
+  arxiv: https://arxiv.org/abs/2604.10448
+  venue: https://aclanthology.org/2026.acl-long.214/
+  code: https://github.com/WisdomShell/ADG
+  data: null
+  project: https://wisdomshell.github.io/ADG/
+  huggingface: https://huggingface.co/WisdomShell/ADG-CoT-LLaMa3-8B
+  doi: https://doi.org/10.18653/v1/2026.acl-long.214
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.214/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and release.
+  trace_author: See the official paper.
+  answer_format: Training record described in the Card source sections.
+  process_fields:
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official paper.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See the official paper.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.214/'
+  known_failure_modes:
+  - Selection signal may not transfer unchanged to a new pool or objective.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, affiliations, venue status, and listed artifacts checked on 2026-07-15.
+inclusion_reason: It changes how a training record, selection decision, or reward signal is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+- data-selection
+status: verified
+one_line_summary: ADG selects instruction data by the geometry of multiple answers sampled from the target model.
+reading_priority: essential
+paper_type: Multi-answer instruction-data selection study
+best_for: Readers studying model-relative instruction selection and efficient supervised fine-tuning.
+confidence: high
+why_it_matters: It makes the connection between a data object and its training objective inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

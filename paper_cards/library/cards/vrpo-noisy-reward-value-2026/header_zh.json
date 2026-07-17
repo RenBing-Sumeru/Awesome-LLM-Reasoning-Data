@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"VRPO 把价值模型变为强化学习中的噪声调节器，使不确定奖励产生更可靠的优势信号。","reading_priority_ch":"可读","paper_type_ch":"稳健强化学习目标与价值建模研究","best_for_ch":"适合用带噪规则奖励或学习奖励训练大模型，并需诊断奖励黑客与优势估计不稳定问题的读者。","confidence_ch":"高","authors_ch":"Dingwei Zhu 等（复旦大学、荣耀终端有限公司等）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-15T19:35:00Z"}

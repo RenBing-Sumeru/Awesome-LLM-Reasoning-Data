@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "超过 1,000 次受控监督微调表明，基础模型困惑度是选择训练数据的强兼容性信号。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模监督微调数据与训练因素审计",
+  "best_for_ch": "跨基础模型和任务验证监督微调数据选择规则的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuto Harada, Yusuke Yamauchi, Yusuke Oda, Yohei Oseki, Yusuke Miyao, Yu Takagi",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T00:30:00Z"
+}

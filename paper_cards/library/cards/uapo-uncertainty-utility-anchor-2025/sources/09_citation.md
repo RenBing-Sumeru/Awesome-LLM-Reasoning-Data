@@ -1,0 +1,1 @@
+Wang, Xiaobo, Zixia Jia, Jiaqi Li, Qi Liu, and Zilong Zheng. 2025. *Adaptive Preference Optimization with Uncertainty-aware Utility Anchor*. In Findings of EMNLP 2025, pages 19204–19225. https://aclanthology.org/2025.findings-emnlp.1046/

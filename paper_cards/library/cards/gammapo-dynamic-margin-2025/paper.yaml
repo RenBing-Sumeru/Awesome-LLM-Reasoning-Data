@@ -1,0 +1,72 @@
+id: gammapo-dynamic-margin-2025
+title: 'Robust Preference Optimization via Dynamic Target Margins'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Jie Sun, Junkang Wu, Jiancan Wu, Zhibo Zhu, Xingyu Lu, Jun Zhou, Lintao Ma, Xiang Wang]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.282/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.282/
+  code: https://github.com/sunjie279/gammaPO
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.282
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.282/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback Binarized and the preference datasets used by the reported DPO-style baselines.
+  trace_author: Existing chosen-rejected response pairs; the current preference objective derives pairwise reward margins.
+  answer_format: Prompt, chosen response, rejected response, pairwise reward margin, instance-specific target margin, and optimization loss contribution.
+  process_fields: [prompt, chosen, rejected, reward_margin, dynamic_target_margin, loss_weight]
+  environment_or_substrate: Offline DPO-style preference optimization for general conversational alignment.
+  verifier_or_reward: The policy objective's pairwise reward margin is used as a confidence proxy; no separate verifier is introduced.
+  terminal_predicate: Sharpen the target margin for high-confidence pairs and smooth the target for low-margin ambiguous pairs.
+recipe_metadata:
+  base_model: LLaMA-3-8B-Instruct, Mistral-7B-Instruct, Gemma-2-9B-Instruct, and Qwen-2.5-7B-Instruct.
+  teacher: Existing preference labels and the selected DPO-style objective.
+  generator: No new response generator; γ-PO consumes existing preference pairs.
+  filtering_rule: Do not delete pairs; dynamically calibrate each pair's target margin from its reward margin.
+  sampling_protocol: Reuse the reported preference datasets and apply instance-specific margin adjustment during optimization.
+  rollout_count: Not applicable.
+  temperature: Not applicable.
+  inference_budget: The paper reports negligible training-efficiency impact relative to the paired base objectives.
+  optimizer_or_scaffold: Plug-in dynamic target margins for DPO, SimPO, and other reward-margin-based objectives.
+audit:
+  source_mixture: The paper studies existing preference datasets rather than releasing a new response-pair corpus.
+  split: AlpacaEval2, Arena-Hard, and MT-Bench are used for reported downstream evaluation.
+  decontamination: No comprehensive contamination audit is reported.
+  license: Verify the terms of the reused preference dataset, base model, and code before adoption.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.282/'
+  known_failure_modes: [Reward margin may be an imperfect confidence proxy, Dynamic margins require hyperparameter selection, Evidence is limited to reported alignment benchmarks, Existing preference-label bias remains]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, experiments, limitations, and declared code URL were checked on 2026-07-15.
+inclusion_reason: It changes the training objective's treatment of every preference record according to its estimated ambiguity, directly altering how the preference data is consumed.
+related: []
+tags: [preference-optimization, target-margin, noisy-preferences, dynamic-weighting]
+status: verified
+one_line_summary: γ-PO converts each preference pair's reward margin into an instance-specific target, strengthening clear supervision and smoothing ambiguous supervision.
+reading_priority: useful
+paper_type: Dynamic target-margin preference optimization study
+best_for: Readers who already have preference pairs and need a model-aware way to reduce the influence of ambiguous labels without dropping them outright.
+confidence: high
+why_it_matters: It treats confidence in a preference record as an optimization-time data-use decision instead of a fixed property of the corpus.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its declared code URL were checked; no new data release is declared.
+category_ids: [training_usage_optimization_objectives]

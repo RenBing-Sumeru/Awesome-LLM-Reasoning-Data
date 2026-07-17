@@ -1,0 +1,26 @@
+id: spa-direct-preference-annotation-2025
+title: 'Spread Preference Annotation: Direct Preference Judgment for Efficient LLM Alignment'
+year: 2025
+venue: ICLR 2025
+authors: [Dongyoung Kim, Kimin Lee, Jinwoo Shin, Jaehyung Kim]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: frontier_pipeline
+artifacts: {paper: https://proceedings.iclr.cc/paper_files/paper/2025/file/342e5fc02b86dec9b24e41b22968e539-Paper-Conference.pdf, arxiv: https://arxiv.org/abs/2406.04412, venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/342e5fc02b86dec9b24e41b22968e539-Abstract-Conference.html, code: https://github.com/kingdy2002/SPA, data: null, project: null, huggingface: null, doi: null}
+data_object: {prompt_source: 'UltraFeedback seed and remaining prompt sets.', trace_author: 'SPA generates and self-annotates new response pairs.', answer_format: 'Prompt, two generated responses, direct preference label, confidence/noise flag.', process_fields: [prompt, response_pair, preference_label, confidence, noise_flag], environment_or_substrate: 'Iterative DPO.', verifier_or_reward: 'Policy/reference logits provide direct preference judgment and confidence-based refinement.', terminal_predicate: 'Train on self-generated pairs with refined labels.'}
+recipe_metadata: {base_model: 'Mistral-7B-0.1 SFT in the main experiments.', teacher: 'No external reward model is required for labeling.', generator: 'The current policy samples two responses per new prompt.', filtering_rule: 'Low-confidence generated labels receive refined treatment.', sampling_protocol: '2K UltraFeedback seed examples, then prompt sets of 8K, 20K, and 30K in the reported setup.', rollout_count: 2, temperature: null, inference_budget: 'Iterative generation and DPO; refinement reuses logits in DPO.', optimizer_or_scaffold: 'DPO with self-refined preference learning.'}
+audit: {source_mixture: 'Official ICLR paper and official code repository.', split: '2K of 60K UltraFeedback examples form the reported seed; later sets retain prompts only.', decontamination: 'Audit UltraFeedback and benchmark overlap before reuse.', license: 'Verify code, model, and upstream-data terms.', lineage: 'Primary source: https://proceedings.iclr.cc/paper_files/paper/2025/file/342e5fc02b86dec9b24e41b22968e539-Paper-Conference.pdf', known_failure_modes: [self-label-noise, distribution-shift, self-reinforcement], citation_status: verified, confidence: high, notes: 'Official paper and code checked.'}
+inclusion_reason: Expands a small human preference seed into self-annotated pairs that are directly consumed by iterative preference learning.
+related: []
+tags: [preference-annotation, synthetic-data, dpo, alignment]
+one_line: SPA expands a small preference seed with direct, model-logit preference judgments and noise-aware training.
+why_it_matters: It makes preference-label construction and label-confidence treatment explicit parts of the training pipeline.
+status: verified
+needs: []
+one_line_summary: SPA expands a small preference seed with direct, model-logit preference judgments and noise-aware training.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-16', verified_by: curation, confidence: high, notes: 'Official ICLR paper and code checked.'}
+category_ids: [training_usage_optimization_objectives]

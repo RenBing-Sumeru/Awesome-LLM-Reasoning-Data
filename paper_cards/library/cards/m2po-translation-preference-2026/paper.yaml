@@ -1,0 +1,125 @@
+id: m2po-translation-preference-2026
+title: 'M2PO: Multi-Perspective Multi-Pair Preference Optimization for Machine Translation'
+year: 2026
+venue: ACL 2026
+authors:
+- Hao Wang
+- Linlong Xu
+- Heng Liu
+- Yangyang Liu
+- Xiaohu Zhao
+- Bo Zeng
+- Liangying Shao
+- Yichen Dong
+- Xinwei Wu
+- Jiang Zhou
+- Tianyu Dong
+- Xiangxiang Zeng
+- Longyue Wang
+- Weihua Luo
+source_role:
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- machine_translation
+- preference_learning
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.469/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.469/
+  code: https://github.com/AIDC-AI/Marco-MT/tree/master/MMPO
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.469
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.469/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: WMT22, IWSLT, and FLORES-200 development source sentences.
+  trace_author: GPT-4o-mini and the base translation model generate candidate translations; quality estimators, a faithfulness
+    classifier, and model confidence supply supervision signals.
+  answer_format: Source sentence, eight candidate translations, quality and faithfulness signals, model confidence, ranked
+    candidates, and multiple chosen-rejected pairs.
+  process_fields:
+  - source
+  - candidates
+  - quality_score
+  - faithfulness_penalty
+  - confidence
+  - fused_reward
+  - ranked_candidates
+  - preference_pairs
+  environment_or_substrate: Offline preference optimization for neural machine translation.
+  verifier_or_reward: A quality-estimation proxy and a discrete semantic-alignment classifier jointly score candidates, with
+    model confidence introduced through a curriculum.
+  terminal_predicate: Rank candidates by the fused reward, retain hierarchical top-bottom pairs, and optimize local pairwise
+    plus global ranking consistency.
+recipe_metadata:
+  base_model: Qwen3-4B-Instruct and GemmaX2-28-9B.
+  teacher: GPT-4o-mini in the proprietary pipeline; the paper also reports an open-source candidate-generation and labeling
+    variant.
+  generator: Four candidates from GPT-4o-mini and four from the base model per source input in the main construction.
+  filtering_rule: Penalize semantic omissions and hallucinations, fuse quality and confidence with a curriculum, then weight
+    multi-pair contrasts by normalized fused-score gaps.
+  sampling_protocol: Eight candidates per source across six directions, ranked into four hierarchical preference pairs after
+    filtering.
+  rollout_count: Eight candidate translations per retained source input in the main M2PO-Prefer construction.
+  temperature: Candidate-pool decoding uses temperature 0.8 and top-p 0.8 in the reported construction.
+  inference_budget: The main dataset contains about 20,000 source inputs and about 160,000 candidates; reported fine-tuning
+    uses two H100 hours per model configuration.
+  optimizer_or_scaffold: Dynamic multi-pair CPO plus listwise ranking regularization; the framework is also tested with DPO,
+    KTO, SimPO, and ORPO.
+audit:
+  source_mixture: WMT22, IWSLT, and FLORES-200 development seeds; candidate translations from proprietary and base-model generators.
+  split: WMT23, FLORES-200 test, and WMT24 are held separate from the reported training seeds.
+  decontamination: The paper states test benchmarks are disjoint from training seeds but does not provide a broad pretraining-contamination
+    audit.
+  license: Verify the terms of WMT, IWSLT, FLORES-200, models, metric services, and released code before reconstructing the
+    pipeline.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.469/'
+  known_failure_modes:
+  - Quality-estimation blind spots remain possible
+  - Faithfulness classifier quality controls labels
+  - Candidate generation can depend on proprietary APIs
+  - Evidence is translation-domain specific
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, data construction, implementation, experiment tables, ablations, and code URL were
+    checked on 2026-07-15.
+inclusion_reason: It changes both the preference records and their optimization weights by turning a candidate set into faithfulness-aware,
+  confidence-scheduled multi-pair supervision.
+related: []
+tags:
+- preference-data
+- machine-translation
+- curriculum
+- multi-pair-optimization
+status: verified
+one_line_summary: M2PO converts translation candidate sets into faithfulness-aware multi-pair preferences and trains them
+  with a confidence-scheduled ranking objective.
+reading_priority: essential
+paper_type: Multi-perspective preference-data construction and multi-pair optimization study
+best_for: Readers designing preference data for translation or other tasks where fluent candidates can conceal partial factual
+  errors.
+confidence: high
+why_it_matters: It treats the full candidate set, rather than one best-worst pair, as the training object and ties data ranking
+  to a changing optimization objective.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its declared code URL were checked; no standalone training-data release is declared.
+category_ids:
+- training_usage_optimization_objectives

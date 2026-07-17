@@ -1,0 +1,3 @@
+Real alignment systems do not receive all preference data once. New tasks, users, and domains provide feedback over time, but repeatedly applying an offline preference objective to the newest batch can widen chosen-rejected probability gaps, reduce output diversity, and degrade earlier behavior. A static preference corpus hides this time-ordering problem.
+
+COPR asks how newly arriving preference records can be consumed without treating historical preferences as disposable. The paper frames continual alignment as constrained optimization: new preference data must improve the current task while historical optimal policies define what the update should not forget. It is concerned with the training use of sequential feedback, not with constructing new preference labels.

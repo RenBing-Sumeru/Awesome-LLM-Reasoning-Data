@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebArbiter 把网页状态与竞争行动转为由原则引导的过程判断，用于偏好学习和奖励引导的搜索。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "网页智能体过程奖励模型与偏好数据论文",
+  "best_for_ch": "需要用可审计的过程反馈训练或搜索网页智能体的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yao Zhang、Shijie Tang、Zeyu Li、Zhen Han、Volker Tresp",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

@@ -1,0 +1,72 @@
+id: dynamicfocalpo-adaptive-preference-optimization-2026
+title: 'DynamicFocalPO: Adaptive Focusing Strategy for Preference Optimization'
+year: 2026
+venue: Findings of ACL 2026
+authors: [Shu Zhou, Junan Chen, Rui Ling, Xin Wang, Tao Fan, Hao Wang]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1009/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.1009/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1009
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1009/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback for Mistral-Base-7B and Llama3-ultrafeedback-armorm for Llama-3-Instruct-8B.
+  trace_author: The paper consumes existing chosen-rejected preference pairs rather than generating new traces.
+  answer_format: Instruction, preferred response, dispreferred response, implicit reward margin, time-dependent focusing parameter, and loss weight.
+  process_fields: [instruction, chosen, rejected, implicit_reward_margin, focusing_parameter, gradient_weight, training_step]
+  environment_or_substrate: Offline preference optimization using DPO-style updates.
+  verifier_or_reward: Existing preference labels define the chosen-rejected ordering; no new reward model is introduced.
+  terminal_predicate: Begin by strongly suppressing misranked pairs and progressively allow them to affect optimization as the focusing parameter decays.
+recipe_metadata:
+  base_model: Mistral-Base-7B or Llama-3-Instruct-8B in the reported experiments.
+  teacher: Existing UltraFeedback-derived preference labels; no additional teacher is needed.
+  generator: No generation stage is required by the method.
+  filtering_rule: A time-varying focal factor reweights each preference pair according to its current implicit ranking; it is weighting rather than hard record removal.
+  sampling_protocol: One epoch with batch size 128 in the main setups; the paper compares linear, exponential, and cosine schedules.
+  rollout_count: Not applicable because the method trains on existing preference pairs.
+  temperature: Not a central reported control variable.
+  inference_budget: No extra response-generation or reward-model inference is introduced beyond the selected preference datasets and benchmark judges.
+  optimizer_or_scaffold: DynamicFocalPO, a scheduled extension of FocalPO and DPO.
+audit:
+  source_mixture: Public UltraFeedback-derived preference datasets for two base-model settings.
+  split: AlpacaEval 2.0 and Arena-Hard use external judges; OpenLLM tasks assess general capability; main results average three random seeds.
+  decontamination: No broad contamination audit is reported.
+  license: Verify the terms of the preference datasets, base models, evaluation suites, and judge services before reproduction.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.1009/'
+  known_failure_modes: [Evidence is limited to English tasks, Larger than 8B models are not tested, Schedule endpoints remain hyperparameters, Misranked samples may contain useful but delayed signal]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, reported datasets, results, and stated limitations were checked on 2026-07-15; no official code or standalone data release is declared.
+inclusion_reason: It changes when and how much each existing preference record contributes to optimization, implementing an easy-to-hard curriculum through a scheduled record-level loss weight.
+related: []
+tags: [preference-optimization, curriculum-learning, sample-weighting, dpo, alignment]
+status: verified
+one_line_summary: DynamicFocalPO schedules preference-pair weighting from easy, already-correctly-ranked records toward harder records as training progresses.
+reading_priority: useful
+paper_type: Curriculum-based preference-optimization study
+best_for: Readers who have an offline preference dataset and need a lightweight way to control the order in which ambiguous or misranked pairs influence DPO training.
+confidence: high
+why_it_matters: It makes training time an explicit part of how the optimizer consumes preference records instead of assigning every pair a fixed influence for the entire run.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper was checked; it does not declare a public code repository or a new standalone dataset release.
+category_ids: [training_usage_optimization_objectives]

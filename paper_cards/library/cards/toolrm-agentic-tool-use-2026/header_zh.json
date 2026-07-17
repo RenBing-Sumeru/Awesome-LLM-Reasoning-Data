@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ToolRM 从工具使用轨迹构造可验证的成对偏好，并训练生成式和判别式奖励模型服务智能体优化。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "工具调用奖励模型与成对偏好轨迹论文",
+  "best_for_ch": "需要从工具轨迹构造可验证偏好并训练智能体奖励模型的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Renhao Li、Jianhong Tu、Yang Su、Yantao Liu、Fei Huang、Hamid Alinejad-Rokny、Derek F. Wong、Junyang Lin、Min Yang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

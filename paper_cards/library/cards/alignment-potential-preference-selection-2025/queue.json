@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-16T09:57:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将外部奖励间隔与当前策略间隔结合，优先选择仍有最大对齐改进空间的偏好对",
+    "updated_at": "2026-07-16T09:57:29Z"
+  }
+}

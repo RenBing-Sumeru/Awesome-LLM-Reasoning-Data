@@ -1,0 +1,72 @@
+id: mmpo-marginal-likelihood-preference-2026
+title: 'Offline Preference Optimization via Maximum Marginal Likelihood Estimation'
+year: 2026
+venue: EACL 2026 Long Papers
+authors: [Saeed Najafi, Alona Fyshe]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.eacl-long.318/
+  arxiv: null
+  venue: https://aclanthology.org/2026.eacl-long.318/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.eacl-long.318
+  openreview: null
+  acl: https://aclanthology.org/2026.eacl-long.318/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Orca DPO Pairs and UltraFeedback-Binarized preference pairs in the reported preference-optimization stage.
+  trace_author: Existing public chosen-rejected response pairs; the method introduces no new response-generation step.
+  answer_format: Input, chosen response, rejected response, model and reference log probabilities, normalized scores, and MMPO loss contribution.
+  process_fields: [instruction, chosen, rejected, policy_log_probability, reference_log_probability, normalized_score, loss_weight]
+  environment_or_substrate: Offline preference optimization on a static pairwise dataset.
+  verifier_or_reward: Existing chosen-rejected labels provide supervision; MMPO requires no explicit reward model.
+  terminal_predicate: Maximize the marginal likelihood of the preferred output approximated by the two responses in each preference pair.
+recipe_metadata:
+  base_model: Instruction-tuned SmolLM2-135M, SmolLM2-360M, Llama-3.2-1B, or Llama-3-8B in the reported experiments.
+  teacher: Existing Orca and UltraFeedback-derived preference labels; no additional teacher is required.
+  generator: No generation stage is required by the offline objective.
+  filtering_rule: None; MMPO changes the pairwise objective through normalized log-sum-exp scores and an auxiliary DPO-style term.
+  sampling_protocol: Combine 12,359 Orca training pairs with 61,135 UltraFeedback-Binarized training pairs; train five epochs across beta values 0.01, 0.05, and 0.5 for analysis.
+  rollout_count: Not applicable because training consumes existing preference pairs.
+  temperature: Not a central reported control variable.
+  inference_budget: No new reward-model or rollout inference is required during optimization; AlpacaEval uses two external judges for evaluation.
+  optimizer_or_scaffold: Maximum-marginal-likelihood preference optimization with in-batch score normalization.
+audit:
+  source_mixture: Orca DPO Pairs and GPT-4-scored UltraFeedback-Binarized preference records.
+  split: Validation reward accuracy tunes hyperparameters; AlpacaEval 2 and ten zero-shot LM Harness tasks assess results.
+  decontamination: No broad contamination audit is reported.
+  license: Verify source-dataset, base-model, benchmark, and judge-service terms before reproducing the pipeline.
+  lineage: 'Primary source: https://aclanthology.org/2026.eacl-long.318/'
+  known_failure_modes: [The largest model uses LoRA and 8-bit optimization, Evidence is limited to static offline data, Results use LLM judges for alignment evaluation, Larger full-parameter models are untested]
+  citation_status: verified
+  confidence: high
+  notes: Official EACL paper, affiliations, datasets, method, ablations, results, and stated limitations were checked on 2026-07-16; no official code or standalone new data release is declared.
+inclusion_reason: It redefines how every chosen-rejected record contributes to offline preference optimization through an MML objective and data-dependent response weighting.
+related: []
+tags: [preference-optimization, maximum-marginal-likelihood, dpo, offline-alignment]
+status: verified
+one_line_summary: MMPO converts each offline preference pair into a normalized maximum-marginal-likelihood objective that implicitly up-weights the chosen response.
+reading_priority: useful
+paper_type: Offline preference-optimization objective study
+best_for: Readers comparing DPO-style objectives who need stable use of an existing preference dataset without training an explicit reward model.
+confidence: high
+why_it_matters: It changes the optimization consumer of an unchanged preference dataset and empirically studies the trade-off between alignment gain and retained general capability.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EACL paper was checked; no official code repository or new standalone data release is declared.
+category_ids: [training_usage_optimization_objectives]

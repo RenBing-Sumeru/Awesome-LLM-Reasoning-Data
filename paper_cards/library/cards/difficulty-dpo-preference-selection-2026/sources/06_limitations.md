@@ -1,0 +1,1 @@
+Small gaps can represent valuable boundary cases but can also arise from annotation ambiguity or a weak selector, so they are not a universal quality certificate. Scoring requires four forward passes per pair, the paper has no dedicated contamination audit, and its reported 10 to 15 percent optimum may depend on the source distribution, selector, and downstream capacity.

@@ -1,0 +1,1 @@
+Remember that the contribution is the feedback record—analysis, critique, and score—and the choice of how to consume it. The important audit is whether model-generated process feedback agrees with executable or human checks.

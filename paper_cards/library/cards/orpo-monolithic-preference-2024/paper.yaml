@@ -1,0 +1,26 @@
+id: orpo-monolithic-preference-2024
+title: 'ORPO: Monolithic Preference Optimization without Reference Model'
+year: 2024
+venue: EMNLP 2024
+authors: [Jiwoo Hong, Noah Lee, James Thorne]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction_following]
+training_use: [sft, preference_learning]
+construction_layer: optimizer_scaffold
+artifacts: {paper: https://aclanthology.org/2024.emnlp-main.626/, arxiv: https://arxiv.org/abs/2403.07691, venue: https://aclanthology.org/2024.emnlp-main.626/, code: https://github.com/xfactlab/orpo, data: https://huggingface.co/datasets/openbmb/UltraFeedback, project: https://github.com/xfactlab/orpo, huggingface: null, doi: https://doi.org/10.18653/V1/2024.EMNLP-MAIN.626}
+data_object: {prompt_source: 'UltraFeedback instruction prompts in the main reported fine-tuning setting.', trace_author: 'UltraFeedback supplies chosen and rejected answers; ORPO consumes the pair during supervised fine-tuning.', answer_format: 'Prompt, favored response, disfavored response, supervised likelihood term, and odds-ratio penalty.', process_fields: [prompt, chosen_response, rejected_response, chosen_logprob, rejected_odds_ratio], environment_or_substrate: 'Offline instruction and preference fine-tuning.', verifier_or_reward: 'Pairwise preference labels from the upstream data; no separately trained reward model.', terminal_predicate: 'Increase likelihood of favored responses while penalizing high odds for disfavored response styles.'}
+recipe_metadata: {base_model: 'Phi-2, Llama 2, and Mistral models from 125M to 7B parameters in reported experiments.', teacher: 'No separately trained reward model is required.', generator: 'Upstream UltraFeedback response generators.', filtering_rule: 'No separate selection stage; preference pairs are consumed within a unified SFT objective.', sampling_protocol: 'Offline minibatches of preferred and dispreferred response pairs.', rollout_count: null, temperature: null, inference_budget: 'No reference-model forward pass and no separate alignment phase are required.', optimizer_or_scaffold: 'Odds Ratio Preference Optimization.'}
+audit: {source_mixture: 'Official EMNLP paper, arXiv version, and xfactlab repository.', split: 'Preserve upstream UltraFeedback and evaluation splits.', decontamination: 'ORPO does not remove overlap inherited from UltraFeedback or benchmark data.', license: 'Verify code, released checkpoints, UltraFeedback, and underlying source terms before reuse.', lineage: 'Primary source: https://aclanthology.org/2024.emnlp-main.626/', known_failure_modes: [preference-noise, odds-ratio-weight-sensitivity, length-bias, distribution-shift], citation_status: verified, confidence: high, notes: 'Official ACL Anthology record and official repository checked.'}
+inclusion_reason: Shows how instruction likelihood and a pairwise preference penalty can be consumed by one reference-free training objective.
+related: []
+tags: [orpo, preference-learning, sft, alignment]
+one_line: ORPO unifies supervised fine-tuning and pairwise preference optimization through an odds-ratio penalty without a reference model.
+why_it_matters: It changes the training consumer so that a preference pair modifies SFT directly instead of being reserved for a later alignment stage.
+status: verified
+needs: []
+one_line_summary: ORPO unifies supervised fine-tuning and pairwise preference optimization through an odds-ratio penalty without a reference model.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official ACL Anthology record and official repository checked.'}
+category_ids: [training_usage_optimization_objectives]

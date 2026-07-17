@@ -1,0 +1,72 @@
+id: difficulty-dpo-preference-selection-2026
+title: Difficulty-Based Preference Data Selection by DPO Implicit Reward Gap
+year: 2026
+venue: arXiv preprint
+authors: [Xuan Qi, Rongwu Xu, Zhijing Jin]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, reward-modeling]
+training_use: [preference_learning, reward_modeling]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2508.04149
+  arxiv: https://arxiv.org/abs/2508.04149
+  venue: null
+  code: https://github.com/Difficulty-Based-Preference-Data-Select
+  data: https://github.com/Difficulty-Based-Preference-Data-Select
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2508.04149
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: SHP, Skywork, UltraFeedback, and RLHFlow preference collections.
+  trace_author: Existing chosen and rejected response pairs from human-annotated and synthetic datasets.
+  answer_format: Prompt, chosen response, rejected response, DPO-policy and reference-policy likelihoods, reward gap, and selection rank.
+  process_fields: [prompt, chosen, rejected, implicit_reward_gap, difficulty_rank, selected]
+  environment_or_substrate: One-time preference-data preprocessing before reward-model or DPO training.
+  verifier_or_reward: DPO implicit rewards from an aligned selector policy and its SFT reference checkpoint.
+  terminal_predicate: Retain the lowest implicit-reward-gap preference pairs within a fixed percentile budget.
+recipe_metadata:
+  base_model: Gemma-2-2B-it for reward modeling and Tulu3-Llama3.1-8B-SFT for DPO.
+  teacher: LLaMA3-iterative-DPO-final and LLaMA3-SFT calculate selector reward gaps.
+  generator: Not applicable; this method filters existing preference pairs.
+  filtering_rule: Compute chosen-minus-rejected DPO implicit reward gaps, rank ascending, and retain the lowest-gap percentile.
+  sampling_protocol: Main comparisons select 10 percent of each source collection; the paper studies 10 to 15 percent as the best range.
+  rollout_count: null
+  temperature: null
+  inference_budget: Four forward passes per pair are required for selector and reference scoring; values can be cached for multiple thresholds.
+  optimizer_or_scaffold: Bradley-Terry reward-model training or DPO on the selected subset.
+audit:
+  source_mixture: Human and synthetic pairwise preferences plus selector-policy likelihood ratios.
+  split: SHP 385K, Skywork 77K, UltraFeedback 61K, and RLHFlow 100K reported as source sizes.
+  decontamination: Not reported as a dedicated audit.
+  license: Verify all upstream dataset, model, and repository terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2508.04149'
+  known_failure_modes: [Selector-model dependence, Boundary pairs can include annotation ambiguity, Forward-pass cost, No dedicated contamination audit]
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv paper and paper-declared code/data repository were checked on 2026-07-16.
+inclusion_reason: It changes which pairwise records train reward models or DPO by ranking their model-relative preference difficulty.
+related: []
+tags: [preference-data-selection, dpo, implicit-reward, difficulty]
+status: verified
+one_line_summary: The method trains on preference pairs with the smallest DPO implicit reward gaps because those boundary cases provide the strongest learning signal.
+reading_priority: essential
+paper_type: Difficulty-based preference-data selection study
+best_for: Readers reducing alignment-training cost by ranking existing preference pairs before DPO or reward-model training.
+confidence: high
+why_it_matters: It provides a simple, model-aware criterion for turning DPO's implicit reward into a reusable data-selection decision.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and paper-declared code/data repository were checked.
+category_ids: [training_usage_optimization_objectives]

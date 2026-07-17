@@ -1,0 +1,1 @@
+Remember that no independent dataset is required for this contribution: the data object is produced online. The critical audit questions are whether a span really maps to a decision-relevant transition, which signals create intermediate rewards, and whether the trainer’s credit assignment improves terminal success rather than only monitoring metrics.

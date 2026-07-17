@@ -1,0 +1,3 @@
+For each problem, ScPO samples several rationale-plus-answer responses, parses the final answer, and counts answer frequencies. It selects a response from the largest answer cluster as chosen and a response from the smallest cluster as rejected. Problems with no answer receiving enough votes are dropped, so the method uses consensus both to filter prompts and to define the direction of a pair.
+
+The loss gives more influence to a larger chosen-minus-rejected vote gap. It combines weighted DPO with weighted likelihood of the chosen response, using the previous iteration as reference. The process may also generate new unlabeled problems and can mix true labeled pairs at weight one, but the unsupervised core does not require gold answers.

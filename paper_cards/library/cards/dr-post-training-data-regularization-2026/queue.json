@@ -1,0 +1,18 @@
+{
+  "title": "Dr. Post-Training: A Data Regularization Perspective on LLM Post-Training",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2605.07063",
+    "code": "https://github.com/TRAIS-Lab/Dr.Post-Training",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T08:55:47Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将通用数据变为目标后训练更新的正则约束",
+    "updated_at": "2026-07-16T08:55:47Z"
+  }
+}

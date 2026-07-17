@@ -1,0 +1,17 @@
+{
+  "title": "InstructDiff: Domain-Adaptive Data Selection via Contrastive Entropy for Efficient LLM Fine-Tuning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.486/",
+    "code": "https://github.com/zhuchichi56/Instruct-diff"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:07:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用模型校准前后的对比熵统一决定不同领域中哪些监督微调样本",
+    "updated_at": "2026-07-15T13:07:52Z"
+  }
+}

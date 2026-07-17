@@ -1,0 +1,72 @@
+id: groundedprm-tool-verified-process-2025
+title: 'GroundedPRM: Tree-Guided and Fidelity-Aware Process Reward Modeling for Step-Level Reasoning'
+year: 2025
+venue: NeurIPS 2025 LAW Workshop Poster
+authors: [Yao Zhang, Yu Wu, Haowei Zhang, Weiguo Li, Haokun Chen, Jingpei Wu, Guohao Li, Zhen Han, Volker Tresp]
+source_role: [process_supervision]
+verification_contract: [programmatic, mixed]
+supervision_granularity: [process_reward]
+domains: [mathematical-reasoning]
+training_use: [process_supervision]
+construction_layer: reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2510.14942
+  arxiv: https://arxiv.org/abs/2510.14942
+  venue: https://neurips.cc/virtual/2025/137239
+  code: https://github.com/YaoZ720/GroundedPRMCode
+  data: null
+  project: https://yaozhang.ai/groundedprm/
+  huggingface: null
+  doi: null
+  openreview: https://openreview.net/forum?id=tmUP8BNyJB
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH problems used to create training trajectories; ProcessBench and six math sets evaluate process scoring and reward-guided search.
+  trace_author: A policy LLM generates tree-structured intermediate reasoning steps through MCTS.
+  answer_format: Problem, ordered reasoning trace, tool query and outcome, step correctness, hybrid reward, binary label, and natural-language rationale.
+  process_fields: [problem, trajectory, step, tool_query, tool_verdict, outcome_correctness, hybrid_reward, binary_label, rationale]
+  environment_or_substrate: MCTS over reasoning states with Wolfram Alpha or SymPy-style mathematical verification and final-answer checking.
+  verifier_or_reward: External tool validation supplies step correctness; final outcome and backpropagated rollout values are fused into hybrid rewards.
+  terminal_predicate: Keep complete, consistent, tool-verifiable traces and format them as generative reward-label-plus-rationale supervision.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct for the reported PRM fine-tuning.
+  teacher: External mathematical tools provide step verification; no human step labels are required for the constructed 40K records.
+  generator: LLM generation expands MCTS nodes into candidate next reasoning steps and rollouts.
+  filtering_rule: Remove incomplete, inconsistent, or tool-unverifiable traces after multi-round MCTS and hybrid reward calculation.
+  sampling_protocol: LoRA rank 128, six epochs, per-device batch size four with eight gradient-accumulation steps, learning rate 3e-5.
+  rollout_count: Multi-round MCTS; exact aggregate rollout count is not reported in the paper.
+  temperature: Not a central reported variable.
+  inference_budget: Requires MCTS expansion, LLM rollouts, tool calls, final-answer checks, and reward aggregation before PRM training.
+  optimizer_or_scaffold: Generative PRM trained autoregressively to output correctness labels and rationales.
+audit:
+  source_mixture: MATH problems, model-generated MCTS trajectories, external tool results, final-answer correctness, and generated rationales.
+  split: ProcessBench F1 on GSM8K, MATH, OlympiadBench, and Omni-MATH; reward-guided greedy search on AMC23, AIME24, MATH, College Math, OlympiadBench, and Minerva.
+  decontamination: No broad contamination audit is reported.
+  license: Verify MATH, tool-service, model, benchmark, and code terms before reproduction.
+  lineage: 'Primary source: https://arxiv.org/abs/2510.14942'
+  known_failure_modes: [External tools cover mathematical steps better than open-ended claims, MCTS and tool calls add substantial construction cost, Rationale quality depends on generated explanations, Generalization outside math is untested]
+  citation_status: verified
+  confidence: high
+  notes: Official author project page, public code repository, workshop listing, full paper, affiliations, construction pipeline, and results were checked on 2026-07-16. The project page exposes a data link, but its exact public destination was not retrievable during verification, so paper.yaml does not claim a verified data URL.
+inclusion_reason: It constructs and consumes step-level reward records whose labels join executable verification with trajectory-level credit assignment.
+related: []
+tags: [process-reward-model, mcts, tool-verification, step-supervision]
+status: verified
+one_line_summary: GroundedPRM converts MCTS reasoning traces and external tool checks into rationale-enhanced, hybrid step-level reward supervision.
+reading_priority: essential
+paper_type: Tool-verified process-reward data construction and generative reward-model study
+best_for: Readers building process reward models who need to distinguish locally correct steps from trajectories that only happen to end correctly.
+confidence: high
+why_it_matters: It binds each process label to executable step evidence and a trajectory credit signal instead of relying only on final outcomes or LLM self-judgment.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official project page, paper, workshop record, and the public code repository were checked; an exact data URL was not independently resolved.
+category_ids: [training_usage_optimization_objectives]

@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该论文以平均奖励排序提示，仅保留最容易的 30% 来构造自博弈 DPO 偏好对。","reading_priority_ch":"必读","paper_type_ch":"自博弈偏好优化的提示难度选择研究","best_for_ch":"适合在构造偏好对前，需要先为自博弈 DPO 流程过滤提示、节省轨迹与奖励模型预算的读者。","confidence_ch":"高","authors_ch":"Yao Xiao, Jung-jae Kim, Roy Ka-wei Lee, Lidong Bing","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-15T16:45:00Z"}

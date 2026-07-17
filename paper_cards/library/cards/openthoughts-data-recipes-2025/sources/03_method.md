@@ -1,3 +1,0 @@
-The pipeline samples problems across domains, generates reasoning traces with teacher models, performs task-specific quality checks and deduplication, and trains OpenThinker models on the retained records. The authors vary individual pipeline choices in controlled experiments, then evaluate the resulting models on separate math, coding, and science benchmarks.
-
-A reproduction must pin the dataset revision, teacher checkpoint and decoding settings, prompt templates, filters, domain proportions, training tokens, and benchmark dates. Copying only the final dataset does not reproduce the ablation logic.

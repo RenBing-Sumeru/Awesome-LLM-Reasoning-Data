@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"RIP 通过拒选回答质量和偏好奖励间隔筛选提示，再构造用于 DPO 的记录。","reading_priority_ch":"必读","paper_type_ch":"提示完整性筛选与合成偏好数据构造研究","best_for_ch":"适合希望在偏好优化前筛除含糊或低价值提示的读者。","confidence_ch":"高","authors_ch":"Ping Yu、Weizhe Yuan、Olga Golovneva 等（Meta、纽约大学、加州大学伯克利分校）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T17:00:00Z"}

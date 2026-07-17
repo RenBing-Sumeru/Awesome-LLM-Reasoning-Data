@@ -1,0 +1,18 @@
+{
+  "title": "Preference Optimization for Reasoning with Pseudo Feedback",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2411.16345",
+    "code": "https://github.com/microsoft/unilm/tree/master/PFPO",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:33:57Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "利用伪测试与通过率构造数学、代码推理偏好对，训练信号设计清晰且可复用。",
+    "updated_at": "2026-07-16T07:33:57Z"
+  }
+}

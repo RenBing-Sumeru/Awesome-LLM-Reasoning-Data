@@ -1,0 +1,3 @@
+DPO gives large gradient emphasis to pairs whose current implicit reward ranks the rejected answer above the chosen answer. Yet prior evidence cited by the paper shows that training rarely repairs those misrankings. Letting such pairs dominate can therefore spend optimization effort on signals the model does not currently resolve reliably.
+
+FocalPO asks whether pair importance should depend on the model's current ability to rank the pair. It keeps the dataset fixed but changes its consumer: correctly ranked pairs become relatively more influential and misranked pairs less influential. The paper studies a training-use decision, not a new collection protocol.

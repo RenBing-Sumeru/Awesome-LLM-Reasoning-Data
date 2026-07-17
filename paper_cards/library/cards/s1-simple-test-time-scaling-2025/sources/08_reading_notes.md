@@ -1,1 +1,0 @@
-The essential distinction is between the training behavior supplied by 1,000 curated traces and the inference behavior imposed by budget forcing. The reported 27% comparison and 50%-to-57% AIME24 curve are useful anchors, but transfer depends on the token protocol, teacher style, budget definition, and decontamination boundary.

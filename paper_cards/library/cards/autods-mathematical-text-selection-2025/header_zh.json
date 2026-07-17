@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AutoDS 用零样本生成式分类器词元概率给数学文本排序，再决定哪些数据进入持续预训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数学文本筛选与持续预训练数据选择论文（Findings of ACL 2025）",
+  "best_for_ch": "研究数学语料筛选、持续预训练和模型相对数据质量的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yifan Zhang, Yifan Luo, Yang Yuan, Andrew C. Yao",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:16:31Z"
+}

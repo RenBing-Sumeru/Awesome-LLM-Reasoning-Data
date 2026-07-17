@@ -1,0 +1,3 @@
+Process reward models need a value for every intermediate reasoning step, yet direct human labels are expensive. Automatic rollout labeling is cheaper, but common step scores are calculated under an ordinary MDP while the downstream language-model optimization normally constrains policy drift with a KL term relative to a reference model.
+
+ER-PRM asks how to turn terminally verified rollout outcomes into step labels that match that KL-regularized objective. It derives an entropy-regularized partial reward from completion trajectories sampled by the initial policy, then trains a process reward model that can rank candidate solutions and select rationales for further policy training.

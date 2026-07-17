@@ -1,3 +1,0 @@
-The proposed long-short mixture keeps original long solutions but adds compact versions intended to preserve their solution structure. The aim is not merely to truncate tokens: the short target should still state the decisions that connect the problem to its final answer, giving the student an efficient alternative reasoning pattern.
-
-Mixing the two target types gives SFT a dual signal. Long traces preserve coverage for hard cases, while short traces reward concise execution. The feedback contract is empirical accuracy together with response length; a useful mixture is one that improves or retains task performance while reducing the cost of the generated rationale.

@@ -1,0 +1,16 @@
+{
+  "title": "JI²S: Joint Influence-Aware Instruction Data Selection for Efficient Fine-Tuning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.26/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:11:34Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把样本间的联合影响纳入指令数据选择，适合补充“减少冗余”的技术路线",
+    "updated_at": "2026-07-15T13:11:34Z"
+  }
+}

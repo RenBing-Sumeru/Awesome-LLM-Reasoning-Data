@@ -1,0 +1,1 @@
+Use this work when a fixed preference corpus contains examples that seem clean but destabilize a smaller alignment model. It provides a reproducible way to estimate a capacity-matched subset and a concrete warning against assuming that more preference data is always better.

@@ -1,0 +1,1 @@
+Use RIP when prompt quality, not only answer ranking, is suspected to limit a preference-training corpus. It provides an operational filter and a released example dataset, and it is especially useful before investing in response generation or expensive preference annotation for a broad prompt pool.

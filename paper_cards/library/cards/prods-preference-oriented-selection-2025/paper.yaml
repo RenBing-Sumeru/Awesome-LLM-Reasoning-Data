@@ -1,0 +1,65 @@
+id: prods-preference-oriented-selection-2025
+title: 'ProDS: Preference-oriented Data Selection for Instruction Tuning'
+year: 2025
+venue: arXiv preprint
+authors: [Wenya Guo, Zhengkun Zhang, Xumeng Liu, Ying Zhang, Ziyu Lu, Haoze Zhu, Xubo Liu, Ruxue Yan]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [instruction-following, alignment, reasoning]
+training_use: [sft, preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2505.12754
+  arxiv: https://arxiv.org/abs/2505.12754
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.12754
+data_object:
+  prompt_source: Existing instruction-response datasets and a target validation set.
+  trace_author: Upstream instruction datasets; a warmed-up model generates candidate dispreferred answers.
+  answer_format: Instruction, response, target-derived positive/negative preference gradients, influence score, and selection rank.
+  process_fields: [instruction, response, dpo_pairs, positive_preference, negative_preference, sample_influence, selection_score]
+  environment_or_substrate: Offline SFT data selection with SFT and DPO warm-up.
+  verifier_or_reward: GPT-4 judges consistency between model-generated and reference target responses when constructing warm-up DPO pairs.
+  terminal_predicate: Retain records with the highest annealed positive-minus-negative preference score.
+recipe_metadata:
+  base_model: Llama-3.2 models in the reported targeted experiments.
+  teacher: A warmed-up SFT model, DPO policy/reference models, and GPT-4 for response comparison.
+  generator: The warmed-up model produces candidate responses for DPO-pair construction.
+  filtering_rule: Prefer records whose influence aligns with positive and avoids negative target preference directions.
+  sampling_protocol: The paper uses 5% of training data for both SFT and DPO warm-up in reported settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: Offline DPO warm-up and gradient/influence computation are required before selection.
+  optimizer_or_scaffold: SFT on the selected instruction subset.
+audit:
+  source_mixture: Official arXiv paper and its cited public instruction datasets.
+  split: Target validation sets are constructed from benchmark test sets as specified in the paper.
+  decontamination: Target/test-derived preference signals make split provenance and benchmark leakage central reuse checks.
+  license: Verify upstream dataset, GPT-4-use, and model terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2505.12754'
+  known_failure_modes: [target leakage, judge bias, DPO-gradient approximation, offline-compute cost]
+  citation_status: verified
+  confidence: high
+  notes: No dedicated official code or data release link was found in the paper.
+inclusion_reason: Uses target-task preference directions to choose which SFT records a model should consume.
+related: []
+tags: [data-selection, preference-learning, instruction-tuning, sft]
+one_line: ProDS selects instruction records by their alignment with positive and negative target preference directions.
+why_it_matters: It treats preference alignment as a criterion for SFT-data selection rather than only a final optimization objective.
+status: verified
+needs: []
+one_line_summary: ProDS selects instruction records by their alignment with positive and negative target preference directions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official paper checked; no official code or data release found.
+category_ids: [training_usage_optimization_objectives]

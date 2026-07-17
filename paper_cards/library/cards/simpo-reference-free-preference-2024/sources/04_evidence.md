@@ -1,0 +1,3 @@
+The paper reports consistent gains over DPO and its compared variants on the main chat evaluations. Its reported largest improvements over DPO are 6.4 points on AlpacaEval 2 and 7.5 points on Arena-Hard, and the reported Gemma-2-9B-it model reaches a 72.4% length-controlled AlpacaEval 2 win rate.
+
+The evidence also tests the paper’s length claim rather than assuming that a higher judge score is enough. However, the reported recipe remains tied to the chosen preference datasets, model families, margins, and evaluation judges, so it should not be read as proof that eliminating a reference policy is universally harmless.

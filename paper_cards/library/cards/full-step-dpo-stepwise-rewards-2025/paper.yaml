@@ -1,0 +1,104 @@
+id: full-step-dpo-stepwise-rewards-2025
+title: 'Full-Step-DPO: Self-Supervised Preference Optimization with Step-wise Rewards for Mathematical Reasoning'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Huimin Xu
+- Xin Mao
+- Feng-Lin Li
+- Xiaobao Wu
+- Wang Chen
+- Wei Zhang
+- Anh Tuan Luu
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+domains:
+- mathematics
+- reasoning
+training_use:
+- preference_learning
+- process_supervision
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1249/
+  arxiv: https://arxiv.org/abs/2502.14356
+  venue: https://aclanthology.org/2025.findings-acl.1249/
+  code: https://github.com/Anna7355/Full-Step-DPO
+  data: https://github.com/Anna7355/Full-Step-DPO
+  project: https://github.com/Anna7355/Full-Step-DPO
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1249
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1249/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Step-DPO training prompts, MetaMath, MMIQC, and out-of-domain mathematical reasoning evaluations.
+  trace_author: The policy samples multiple reasoning solutions; a self-supervised process reward model scores their individual steps.
+  answer_format: Question, solution chain, step-level reward sequence, selected high- and low-scoring solutions, and step-wise preference loss weights.
+  process_fields:
+  - prompt
+  - reasoning_step
+  - step_reward
+  - solution_score
+  - chosen_solution
+  - rejected_solution
+  - stepwise_loss_weight
+  environment_or_substrate: Mathematical reasoning preference optimization with a self-supervised process reward model.
+  verifier_or_reward: Self-supervised process reward model trained from sampled rationales and final-answer correctness.
+  terminal_predicate: The reward model scores all steps; highest- and lowest-scoring solutions form preference pairs and every step contributes to the loss.
+recipe_metadata:
+  base_model: DeepSeekMath-Base-SFT and several mathematical reasoning base language models.
+  teacher: Self-supervised process reward model; final-answer checks label sampled reasoning paths.
+  generator: Sample reasoning solutions from the current model, then use step rewards to score and filter them.
+  filtering_rule: Select highest- and lowest-scoring solutions after aggregating self-supervised rewards across the full chain.
+  sampling_protocol: Train the process reward model from self-generated data, construct preference pairs, and apply step-wise DPO over all steps.
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper reports substantially reduced cost for PRM training-data construction relative to external step annotation; official code, data, and models are released.
+  optimizer_or_scaffold: Full-Step-DPO with a dynamically reward-weighted loss across the entire chain.
+audit:
+  source_mixture: Step-DPO training data, self-generated reasoning paths, MetaMath, MMIQC, and mathematical benchmark data.
+  split: In-domain math tasks plus GK2023, OCW, and five additional out-of-domain mathematics datasets.
+  decontamination: No dedicated contamination audit is reported; benchmark overlap and source terms require independent review.
+  license: Verify the official repository, Step-DPO dataset, and all math-source licenses before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2025.findings-acl.1249/; https://github.com/Anna7355/Full-Step-DPO'
+  known_failure_modes:
+  - Self-supervised process rewards can weaken for very strong base models.
+  - Discriminative reward models can outperform the reported PRM in some settings.
+  - Current evidence centers on mathematical reasoning; broader domains such as code remain future work.
+  - Step scores inherit error from final-answer-based self-supervision.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL Findings paper, affiliations, self-supervised PRM construction, results, limitations, and official code/data/models link were checked on 2026-07-16.
+inclusion_reason: It transforms full reasoning solutions into step-scored preference records and makes all steps, rather than one first error, contribute to preference optimization.
+related: []
+tags:
+- process-supervision
+- preference-optimization
+- stepwise-reward
+- mathematical-reasoning
+- self-supervision
+status: verified
+one_line_summary: Full-Step-DPO uses a self-supervised process reward model to score every reasoning step and weight preference optimization across the full chain.
+reading_priority: essential
+paper_type: Self-supervised step-wise preference optimization study
+best_for: Readers constructing process-supervised preference signals from reasoning rollouts without GPT-4 or human step labels.
+confidence: high
+why_it_matters: It changes both the construction and training consumer of reasoning preference data by retaining reward information from every step.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its declared code/data/models repository were checked.
+category_ids:
+- training_usage_optimization_objectives

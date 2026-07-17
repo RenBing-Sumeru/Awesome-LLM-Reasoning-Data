@@ -1,0 +1,3 @@
+Earlier reinforcement learning with verifiable rewards normally relies on a rule-based checker that returns a hard answer match. That interface is effective for structured mathematics and code, but it is too narrow for many reference-answer tasks whose correctness is expressed in natural language.
+
+This work makes a distilled generative verifier and its judgement probability a reusable reward interface. The contribution is not arbitrary language-model scoring: it is the construction and consumption of reference-response-judgement records that let a compact verifier provide soft rewards for optimization.

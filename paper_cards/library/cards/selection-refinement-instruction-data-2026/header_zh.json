@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "指令数据优化先识别有价值的记录，再在 SFT 前迭代改写较弱样本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "训练数据选择或奖励设计论文",
+  "best_for_ch": "研究后训练数据消费与优化目标的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hang Hu, Ziyan Liu, Rujie Wen, Ruihui Hou, Xueyan Wu, Mu Zhang, Jianxing Yu, Tong Ruan, Jingping Liu",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:28:56Z"
+}

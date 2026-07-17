@@ -1,0 +1,76 @@
+id: selfplay-prompt-difficulty-2026
+title: 'Revisiting Self-Play Preference Optimization: On the Role of Prompt Difficulty'
+year: 2026
+venue: Findings of ACL 2026
+authors: [Yao Xiao, Jung-jae Kim, Roy Ka-wei Lee, Lidong Bing]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.144/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.144/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.144
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.144/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Self-play preference-optimization prompt pool.
+  trace_author: The current policy samples multiple on-policy responses per prompt; a reward model selects chosen and rejected responses.
+  answer_format: Prompt, sampled responses, reward scores, mean reward difficulty estimate, chosen-rejected pair, and keep-or-prune decision.
+  process_fields: [prompt, responses, rewards, mean_reward, chosen, rejected, selected]
+  environment_or_substrate: DPO-based self-play preference optimization.
+  verifier_or_reward: A reward model scores sampled responses; mean reward across samples is used as prompt difficulty.
+  terminal_predicate: Keep the easiest portion of prompts by mean reward before constructing DPO pairs; the reported compact setting keeps 30 percent.
+recipe_metadata:
+  base_model: The paper studies instruction-tuned language models including Llama-3.1-8B-Instruct.
+  teacher: A reward model supplies response scores.
+  generator: The policy samples ten responses per prompt for stable difficulty ranking.
+  filtering_rule: Rank prompts by mean reward of sampled responses and prune low-mean-reward, difficult prompts.
+  sampling_protocol: Select highest-reward response as chosen and lowest-reward response as rejected, then train DPO on the retained prompt subset.
+  rollout_count: 10
+  temperature: Not reported as a selection parameter.
+  inference_budget: The reported compact policy retains the easiest 30 percent of prompts.
+  optimizer_or_scaffold: Direct Preference Optimization.
+audit:
+  source_mixture: Self-play prompt pool with AlpacaEval 2 and Arena-Hard downstream evaluation.
+  split: Prompts are sorted into difficulty quartiles and compact retained subsets; no new release is declared.
+  decontamination: No full contamination audit is reported.
+  license: Verify the prompt-pool, reward-model, base-model, and benchmark terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.144/'
+  known_failure_modes:
+  - Mean reward is a reward-model-dependent difficulty proxy.
+  - The easy-prompt conclusion may change with model capacity.
+  - Curriculum and chosen-response improvements failed in the reported setting.
+  - No official code or selected prompt release is declared.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It changes which prompts are permitted to generate self-play preference pairs, showing that prompt difficulty changes the utility of the downstream DPO data.
+related: []
+tags: [self-play, preference-optimization, prompt-selection, difficulty]
+status: verified
+one_line_summary: The paper improves self-play DPO by ranking prompts with mean reward and retaining only the easiest 30 percent rather than mixing in difficult prompts.
+reading_priority: essential
+paper_type: Prompt-difficulty selection study for self-play preference optimization
+best_for: Readers building self-play DPO pipelines who need a prompt-level filter before spending rollout and reward-model budget on preference pairs.
+confidence: high
+why_it_matters: It identifies the prompt as a first-class consumer-side decision in preference-data construction, not just a container for response sampling.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no official code or data release is declared.
+category_ids: [training_usage_optimization_objectives]

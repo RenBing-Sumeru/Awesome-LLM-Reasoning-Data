@@ -1,0 +1,18 @@
+{
+  "title": "M2PO: Multi-Perspective Multi-Pair Preference Optimization for Machine Translation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.469/",
+    "code": "https://github.com/AIDC-AI/Marco-MT/tree/master/MMPO",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:11:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用最大边缘似然重新定义已有偏好回答对的优化方式，并系统比较对齐收益与通用能力保留",
+    "updated_at": "2026-07-16T07:11:58Z"
+  }
+}

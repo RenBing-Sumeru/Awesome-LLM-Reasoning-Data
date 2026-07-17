@@ -1,0 +1,65 @@
+id: alignment-potential-preference-selection-2025
+title: 'Larger or Smaller Reward Margins to Select Preferences for LLM Alignment?'
+year: 2025
+venue: ICML 2025
+authors: [Kexin Huang, Junkang Wu, Ziqian Chen, Xue Wang, Jinyang Gao, Bolin Ding, Jiancan Wu, Xiangnan He, Xiang Wang]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://proceedings.mlr.press/v267/huang25al.html
+  arxiv: https://arxiv.org/abs/2503.01864
+  venue: https://proceedings.mlr.press/v267/huang25al.html
+  code: https://github.com/Hesse73/Alignment-Potential-Metric
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: Existing offline preference data and self-play-generated prompt-response pairs.
+  trace_author: Upstream preference-data providers or the paper's evolve-then-select generation pipeline.
+  answer_format: Prompt, preferred response, rejected response, explicit reward margin, implicit policy margin, alignment-potential score, and selection rank.
+  process_fields: [prompt, chosen_response, rejected_response, explicit_margin, implicit_margin, alignment_potential, selected]
+  environment_or_substrate: Offline preference optimization and self-play preference-data generation.
+  verifier_or_reward: An external reward model supplies explicit margins; the policy/reference likelihood ratio supplies implicit margins.
+  terminal_predicate: Keep the top-k pairs with the highest alignment-potential score.
+recipe_metadata:
+  base_model: The official code follows the SimPO alignment-training recipe; reported experiments compare multiple base models and objectives.
+  teacher: External reward models provide explicit reward-margin signals.
+  generator: The evolve-then-select pipeline evolves prompts, generates response pairs, and annotates them with a reward model.
+  filtering_rule: Select pairs with a large gap between the model's implicit reward margin and the explicit target reward margin.
+  sampling_protocol: Top-k subset selection after computing or saving response log probabilities.
+  rollout_count: null
+  temperature: null
+  inference_budget: Requires response log probabilities and external reward-model scoring; self-play generation adds prompt evolution and response generation.
+  optimizer_or_scaffold: SimPO-style alignment training after metric-based preference selection.
+audit:
+  source_mixture: Official ICML proceedings and official code repository.
+  split: The paper compares selected preference subsets across base models and optimization objectives; retain upstream splits when reproducing.
+  decontamination: Reward models and self-generated data may share source-model or evaluation overlap; audit these paths before reuse.
+  license: Verify the licenses of SimPO, upstream preference datasets, reward models, and generated-data sources.
+  lineage: 'Primary source: https://proceedings.mlr.press/v267/huang25al.html'
+  known_failure_modes: [reward-model-bias, logprob-dependence, selection-overfitting, self-play-feedback-loop]
+  citation_status: verified
+  confidence: high
+  notes: Official ICML proceedings and code repository checked; code provides selection and evolve-then-select scripts.
+inclusion_reason: Scores and selects preference records according to the gap between a current policy state and an external reward target.
+related: []
+tags: [data-selection, preference-learning, reward-margin, simpo, alignment]
+one_line: Alignment Potential selects preference pairs whose current policy margin differs most from the reward-model target margin.
+why_it_matters: It changes data use from selecting only easy or only high-reward pairs to selecting pairs with the most estimated room for alignment.
+status: verified
+needs: []
+one_line_summary: Alignment Potential selects preference pairs whose current policy margin differs most from the reward-model target margin.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ICML proceedings and code repository checked.
+category_ids: [training_usage_optimization_objectives]

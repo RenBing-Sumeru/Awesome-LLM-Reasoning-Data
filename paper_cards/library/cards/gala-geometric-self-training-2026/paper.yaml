@@ -1,0 +1,76 @@
+id: gala-geometric-self-training-2026
+title: 'GALA: Geometric Data Selection with Strategic Prospecting for Large Language Model Self-Training'
+year: 2026
+venue: Findings of ACL 2026
+authors: [Zhongwei Xie, Ruihao Liao, Zimo Wang, Chong Chen, Xian-Sheng Hua, Xiao Luo]
+source_role: [construction_recipe]
+verification_contract: [programmatic]
+supervision_granularity: [step_level]
+domains: [reasoning, mathematics]
+training_use: [sft, preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.500/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.500/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.500/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical benchmark seed questions with known final answers.
+  trace_author: The current model produces candidate reasoning paths, brainstorming variants, and reflections.
+  answer_format: Question, verified answer, embedding cluster and anchor, strategic reasoning trajectory, mini-batch quality score, and retained training record.
+  process_fields: [question, answer, embedding, cluster, anchor, trajectory, quality_score, selected]
+  environment_or_substrate: Iterative self-training; generated traces are verified against known answers and consumed by SFT or DPO.
+  verifier_or_reward: Exact final-answer matching verifies generated reasoning paths; dynamic validation filters low-quality mini-batches.
+  terminal_predicate: A record is used only if it comes from an anchor-selected subset, passes answer verification, and its mini-batch passes dynamic validation.
+recipe_metadata:
+  base_model: Llama-3.2-1B and Llama-3.1-8B.
+  teacher: No external teacher; the model generates trajectories and reflection-based refinements.
+  generator: The current self-training model generates candidate reasoning paths and strategy variants.
+  filtering_rule: Cluster latent sentence embeddings, choose geometrically representative anchors, verify outputs, and reject mini-batches below a data-adaptive quality threshold.
+  sampling_protocol: Select a nonredundant seed subset, prospect diverse reasoning trajectories, dynamically validate mini-batches, then train and iterate.
+  rollout_count: The diversity analysis reports 12 generated solutions per problem.
+  temperature: Not reported as a selection parameter.
+  inference_budget: Data-efficient subsets are compared with full-data baselines across multiple benchmark settings.
+  optimizer_or_scaffold: SFT and DPO self-training comparisons.
+audit:
+  source_mixture: GSM8K, MATH, MMLU-PRO mathematics, and ASDIV benchmark settings.
+  split: The paper reports benchmark-based self-training and evaluation, but no released final subset split.
+  decontamination: No full contamination audit is reported.
+  license: Verify all benchmark and model terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.500/'
+  known_failure_modes:
+  - The paper does not release its curated traces or code.
+  - Dynamic validation depends on data-adaptive thresholds.
+  - Evidence is limited to mathematics-oriented self-training benchmarks.
+  - Strategy brainstorming may add cost and has limited long-horizon validation.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It changes both which seed questions produce synthetic reasoning traces and which verified traces reach SFT or DPO self-training.
+related: []
+tags: [self-training, data-selection, trajectory-generation, dynamic-validation]
+status: verified
+one_line_summary: GALA selects geometrically representative problems, prospectively generates diverse verified traces, and validates mini-batches before self-training.
+reading_priority: useful
+paper_type: Self-training data selection and trajectory prospecting study
+best_for: Readers designing data-efficient verified-trace self-training pipelines that need to reduce redundant synthetic reasoning.
+confidence: high
+why_it_matters: It combines subset selection, trajectory construction, and mini-batch validation into the training-data consumer rather than treating them as separate offline filters.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL full paper checked; no official code, data, or project link is declared.
+category_ids: [training_usage_optimization_objectives]

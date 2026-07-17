@@ -1,1 +1,0 @@
-Use OpenThoughts to design an auditable reasoning-data pipeline: make source, teacher, prompt, filter, and training budget explicit, then change one variable at a time before scaling the final recipe. Report results separately for math, code, and science. It is not a reliable recipe when teacher lineage cannot be recovered or when no independent evaluation set exists.

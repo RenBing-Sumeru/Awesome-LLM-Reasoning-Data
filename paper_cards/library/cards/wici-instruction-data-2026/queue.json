@@ -1,0 +1,16 @@
+{
+  "title": "What Makes Good Instruction-Tuning Data? An In-Context Learning Perspective",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.45/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:29:28Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用加权上下文影响力衡量样本对相近指令的训练价值，为受限预算下的指令数据筛选提供模型相对信号",
+    "updated_at": "2026-07-15T12:29:28Z"
+  }
+}

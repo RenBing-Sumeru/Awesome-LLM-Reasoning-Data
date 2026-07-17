@@ -1,0 +1,72 @@
+id: congrad-multilingual-preference-filtering-2026
+title: 'CONGRAD: Conflicting Gradient Filtering for Multilingual Preference Alignment'
+year: 2026
+venue: EACL 2026 Long Papers
+authors: [Jiangnan Li, Thuy-Trang Vu, Christian Herold, Amirhossein Tebbifakhr, Shahram Khadivi, Gholamreza Haffari]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, multilingual_learning, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.eacl-long.299/
+  arxiv: null
+  venue: https://aclanthology.org/2026.eacl-long.299/
+  code: https://github.com/KagamiBaka/CONGRAD
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.eacl-long.299
+  openreview: null
+  acl: https://aclanthology.org/2026.eacl-long.299/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: One thousand prompts sampled from AlpaGasus and translated into nine languages, with English as the tenth language in the reported multilingual setup.
+  trace_author: The current policy generates four responses per prompt; the policy self-evaluates them to form preference pairs.
+  answer_format: Language-tagged instruction, four generated responses, self-evaluation scores, chosen-rejected pair, per-sample gradient similarity, and selection decision.
+  process_fields: [language, instruction, responses, self_reward, chosen, rejected, sample_gradient, consensus_similarity, selected]
+  environment_or_substrate: Iterative multilingual self-rewarding followed by length-penalized DPO.
+  verifier_or_reward: The current model self-evaluates generated responses; GPT-4o is used only for the reported Aya evaluation.
+  terminal_predicate: Retain the top-scoring preference samples whose gradients align with a de-conflicted cross-lingual consensus direction.
+recipe_metadata:
+  base_model: Llama 3-8B-Instruct or Gemma 2-2B-Instruct in the reported experiments.
+  teacher: No external preference annotator is required for construction; the current policy supplies self-reward judgments.
+  generator: The current multilingual policy generates four responses for each prompt in every iteration.
+  filtering_rule: Compute language gradient EMAs, de-conflict them with PCGrad, score each sample by cosine similarity to the resulting consensus gradient, and retain the top fraction per language.
+  sampling_protocol: Split one thousand prompts into ten non-overlapping language partitions of one hundred prompts; select the top 50% per language in the principal setup.
+  rollout_count: Four responses per prompt before preference-pair construction.
+  temperature: Generation settings are reported in the implementation details rather than treated as the contribution's control variable.
+  inference_budget: Five iterative rounds add response generation, self-evaluation, gradient filtering, and DPO; the reported Gemma 2-2B pipeline takes about 69 rather than 62 minutes for five epochs.
+  optimizer_or_scaffold: Iterative self-rewarding with length-penalized DPO and PCGrad-inspired conflict removal.
+audit:
+  source_mixture: AlpaGasus prompts translated with Google Translate and preference pairs generated and self-scored by the evolving policy.
+  split: Seen-language evaluation uses Aya; unseen-language analysis uses Hindi, Vietnamese, and Russian; alignment-tax checks use Global MMLU and multilingual ARC Challenge.
+  decontamination: No broad contamination audit is reported.
+  license: Verify AlpaGasus, Google Translate, base-model, evaluator, and code licenses or terms before reproducing the pipeline.
+  lineage: 'Primary source: https://aclanthology.org/2026.eacl-long.299/'
+  known_failure_modes: [Low-rank gradient compression introduces approximation noise, The evidence uses relatively balanced languages, Samples carrying culture-specific or untranslatable content can be discarded, Dynamic within-round selection is not evaluated]
+  citation_status: verified
+  confidence: high
+  notes: Official EACL paper, affiliations, method, experimental results, stated limitations, and public code repository were checked on 2026-07-15.
+inclusion_reason: It changes which newly self-generated preference pairs enter multilingual DPO by selecting records whose gradients support a shared cross-lingual update rather than conflict with it.
+related: []
+tags: [multilingual-alignment, preference-data, gradient-filtering, self-rewarding, dpo]
+status: verified
+one_line_summary: CONGRAD filters self-generated multilingual preference pairs by their alignment with a de-conflicted consensus gradient before DPO consumes them.
+reading_priority: essential
+paper_type: Multilingual preference-data filtering and iterative alignment study
+best_for: Readers designing multilingual preference-learning pipelines that must retain useful cross-lingual transfer without letting one language's updates damage another's.
+confidence: high
+why_it_matters: It operationalizes cross-language training interference as a record-selection criterion instead of treating all generated preference pairs as equally safe to optimize on.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official EACL paper and the public repository named by the paper were checked; no standalone dataset release is declared.
+category_ids: [training_usage_optimization_objectives]

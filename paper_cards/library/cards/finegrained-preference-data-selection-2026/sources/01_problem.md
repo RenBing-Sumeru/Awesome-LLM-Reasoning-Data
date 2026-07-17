@@ -1,0 +1,3 @@
+Fine-grained preference labels are easier to collect than one global judgment, but combining aspects such as helpfulness, honesty, and instruction following produces conflicts and noisy records. Standard DPO treats every pair as compatible evidence, so conflicting records can dilute or degrade the learned behavior.
+
+The paper asks which aspect-specific pairs should be retained when several preferences disagree. It treats cross-aspect agreement as a property of the training record: use a subset whose local preference is supported by the other preference aspects, then train ordinary DPO on that subset.

@@ -1,0 +1,99 @@
+id: dose-multimodal-selection-2026
+title: 'DOSE: Data Selection for Multi-Modal LLMs via Off-the-Shelf Models'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Biao Wu
+- Yiwu Zhong
+- Meng Fang
+- Ling Chen
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal
+- visual_instruction_tuning
+- reasoning
+training_use:
+- sft
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.45/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.45/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.45
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.45/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: LLaVA-1.5 visual-instruction-tuning collection and MathV360K.
+  trace_author: Existing image, instruction, and answer records are scored by off-the-shelf models before training.
+  answer_format: Image-text-instruction triple with an LLM text-quality score, a CLIP image-text relevance score, and a sampling decision.
+  process_fields:
+  - image
+  - instruction
+  - response
+  - text_quality_score
+  - image_text_relevance_score
+  - selection_probability
+  environment_or_substrate: Visual instruction tuning of LLaVA-1.5 models.
+  verifier_or_reward: Vicuna-7B yes-token probability for text quality and CLIP-ViT-B/32 similarity for image-text relevance.
+  terminal_predicate: A record enters the subset when weighted random sampling retains it under both score dimensions.
+recipe_metadata:
+  base_model: LLaVA-1.5-7B for general visual instruction tuning and LLaVA-1.5-13B for the MathV360K case study.
+  teacher: Vicuna-7B evaluates textual suitability; CLIP-ViT-B/32 evaluates image-text relevance.
+  generator: No new training records are generated; the method rescores and samples existing records.
+  filtering_rule: Construct separate weighted random samples from text-quality and CLIP-score distributions, then keep their intersection.
+  sampling_protocol: Kernel-density estimates define a shifted Gaussian target distribution that favors high scores without deterministic top-k truncation.
+  rollout_count: null
+  temperature: null
+  inference_budget: The main experiment selects 665K records, 20% of the LLaVA-1.5 instruction-tuning collection, using only pretrained scoring models.
+  optimizer_or_scaffold: Standard second-stage visual instruction tuning after selection, with frozen pretrained vision and language encoders in the main experiment.
+audit:
+  source_mixture: LLaVA-1.5 visual instruction data and MathV360K; their licenses and upstream provenance require separate verification before reuse.
+  split: Nine general VQA benchmarks plus a MathV360K-to-MathVista case study.
+  decontamination: The method avoids task-specific scorer training on the target corpus, but the paper does not provide a full contamination audit for all pretrained evaluators or source datasets.
+  license: No new dataset is released; verify each upstream collection and the pretrained-model terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.45/'
+  known_failure_modes:
+  - High-score records can cluster semantically and reduce diversity at small sampling ratios.
+  - The general benchmark evidence does not consistently beat full-data or seen-data selectors.
+  - Text quality is inferred without the image, so some multimodal usefulness can be missed.
+  - No official implementation or selected subset is linked from the ACL paper page.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL Findings paper, author affiliations, method, experimental setup, reported results, and artifact availability were checked on 2026-07-15.
+inclusion_reason: It turns multimodal training records into score-bearing sampling decisions, explicitly balancing sample quality and coverage before visual instruction tuning.
+related: []
+tags:
+- data-selection
+- multimodal
+- visual-instruction-tuning
+- weighted-sampling
+- training-efficiency
+status: verified
+one_line_summary: DOSE selects visual instruction data with off-the-shelf text-quality and image-text-alignment scores, then uses distribution-aware sampling to retain quality without collapsing coverage.
+reading_priority: essential
+paper_type: Multimodal instruction-data selection study
+best_for: Readers designing efficient visual instruction-tuning subsets when training a task-specific selector is too expensive or risks corpus exposure.
+confidence: high
+why_it_matters: It makes the selection distribution itself part of the training-data design, rather than treating high score alone as sufficient evidence of a useful example.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL full paper was checked; no official code, project page, or released selected dataset was declared in the paper or ACL entry.
+category_ids:
+- training_usage_optimization_objectives

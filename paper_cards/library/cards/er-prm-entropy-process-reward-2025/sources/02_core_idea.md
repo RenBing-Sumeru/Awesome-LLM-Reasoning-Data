@@ -1,0 +1,3 @@
+ER-PRM replaces a simple average of correct future completions with an entropy-controlled log-sum-exp aggregation. The coefficient eta determines how strongly high-reward completions influence a partial step: small values approach conventional soft labels, while very large values approach hard labels.
+
+The paper's central claim is that the step reward can be calculated from the initial reference policy rather than an unknown optimal policy. Thus the data recipe can construct process supervision before policy optimization, while retaining a mathematical connection between the labels and the KL-regularized objective later used to improve the policy.

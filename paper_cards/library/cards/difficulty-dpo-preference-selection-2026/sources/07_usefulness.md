@@ -1,0 +1,1 @@
+This paper is useful when a team already has a large preference dataset and wants a transparent ranking rule before spending training compute. It can be applied once, cached, and reused across several downstream budgets, provided that the selector and source licenses are verified and the selected boundary cases are audited for label quality.

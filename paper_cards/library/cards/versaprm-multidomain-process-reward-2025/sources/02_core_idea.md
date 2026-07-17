@@ -1,0 +1,3 @@
+The key design decision is to treat domain diversity as part of the reward-model training signal. Instead of adapting a mathematical process model with more mathematics, the authors draw questions from fourteen MMLU-Pro domains, generate several explanations per question, and create labels that locate the first bad step in each explanation.
+
+The resulting record preserves both positive and negative process supervision. Steps before the first detected error are retained as correct, the first error is marked incorrect, and later steps are discarded because they may merely inherit the earlier failure. A process reward model learns from those local labels and then aggregates them to rank whole solutions.

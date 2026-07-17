@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作按奖励分布位置构造 DPO 对，优先使用均值减二倍标准差的拒绝回答而非最小值。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "在线偏好数据构造研究",
+  "best_for_ch": "扩展 DPO 回答采样且不想盲目使用最大—最小对的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yao Xiao, Hai Ye, Linyao Chen, Hwee Tou Ng, Lidong Bing, Xiaoli Li, Roy Ka-Wei Lee",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T09:00:00Z"
+}

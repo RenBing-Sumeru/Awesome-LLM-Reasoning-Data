@@ -1,0 +1,18 @@
+{
+  "title": "Towards Understanding Valuable Preference Data for Large Language Model Alignment",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2510.13212",
+    "code": "https://github.com/tmlr-group/TIF_LossDiff-IRM",
+    "data": "https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T10:03:36Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "证明偏好数据价值取决于当前模型与验证目标，并用可扩展近似选择真正能改善对齐的样本",
+    "updated_at": "2026-07-16T10:03:36Z"
+  }
+}

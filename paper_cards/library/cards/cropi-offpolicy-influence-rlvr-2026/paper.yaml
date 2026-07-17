@@ -1,0 +1,107 @@
+id: cropi-offpolicy-influence-rlvr-2026
+title: Data-Efficient RLVR via Off-Policy Influence Guidance
+year: 2026
+venue: ACL 2026
+authors:
+- Erle Zhu
+- Dazhi Jiang
+- Yuan Wang
+- Xujun Li
+- Jiale Cheng
+- Yuxian Gu
+- Yilin Niu
+- Aohan Zeng
+- Jie Tang
+- Minlie Huang
+- Hongning Wang
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- reasoning
+- mathematics
+training_use:
+- rlvr
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.2141/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.2141/
+  code: https://github.com/thu-coai/CROPI
+  data: null
+  project: https://github.com/thu-coai/CROPI
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.2141
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.2141/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A 47K unique mathematical-question pool aggregated from GSM8K-Train, MATH-Train, and DeepScaleR-Preview-Dataset.
+  trace_author: The initial policy generates offline trajectories for every prompt before training; the evolving policy is optimized on selected prompts.
+  answer_format: Mathematical prompt, offline rollout trajectories, binary correctness return, off-policy policy gradient, sparse projection, validation-set influence rank, and phase-specific top-10-percent inclusion decision.
+  process_fields:
+  - prompt
+  - offline_trajectory
+  - correctness_reward
+  - off_policy_gradient
+  - projected_gradient
+  - validation_influence
+  - reciprocal_rank_score
+  - selected
+  environment_or_substrate: Multi-stage GRPO RLVR with deterministic final-answer correctness rewards and a small held-out validation set used only for selection.
+  verifier_or_reward: A deterministic binary final-answer correctness indicator supplies the trajectory return; group-normalized advantage defines the GRPO gradient.
+  terminal_predicate: At each phase, only the top alpha fraction of prompts by fused practical off-policy influence to the validation sets enters GRPO updates.
+recipe_metadata:
+  base_model: Qwen2.5-1.5B-Instruct, Qwen2.5-7B-Instruct, and DeepSeek-R1-Distill-Qwen-1.5B.
+  teacher: No teacher labels; a fixed initial behavior policy supplies offline trajectories.
+  generator: The behavior policy samples offline trajectories before training; GRPO produces online optimization rollouts only for selected prompts.
+  filtering_rule: Normalize sparse-projected off-policy gradients, score cosine influence against each validation set, fuse rankings with reciprocal-rank fusion, and retain the top alpha share.
+  sampling_protocol: At the beginning of every curriculum phase, re-score the whole pool with the current checkpoint, select the top 10 percent, run GRPO for E steps, and repeat.
+  rollout_count: Multiple offline trajectories per prompt; the exact count varies with the reported GRPO setup.
+  temperature: Not reported as a selection parameter.
+  inference_budget: The main selection ratio is 10 percent per phase; a 1.5B experiment uses a 47K-prompt pool and the 1.5B-R1 setting samples 25K prompts.
+  optimizer_or_scaffold: Multi-stage GRPO RLVR with a KL-constrained current policy and sparse random projection of full-parameter gradients.
+audit:
+  source_mixture: GSM8K-Train, MATH-Train, and DeepScaleR-Preview-Dataset, intersected into 47K unique mathematics queries.
+  split: Up to 20 percent of each designated test set, capped at 100 examples per set, forms selection-only validation data; reported test results exclude those validation examples.
+  decontamination: The authors exclude selection-validation examples from reported test performance, but do not provide a full upstream-contamination audit.
+  license: Verify the licenses and terms of all three training sources, the base models, the evaluation sets, and the code repository before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.2141/'
+  known_failure_modes:
+  - The analysis assumes first-order influence under SGD and does not bound off-policy estimation error, bias, or variance.
+  - Base-policy trajectories give zero gradient to prompts that are uniformly correct or incorrect.
+  - Selection still requires full-pool gradient computation at each phase.
+  - Experiments are single-turn mathematics tasks on models up to 7B parameters.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, code URL, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It repeatedly chooses which RLVR prompts receive GRPO updates by estimating each prompt's off-policy influence on held-out optimization targets.
+related: []
+tags:
+- rlvr
+- influence-functions
+- off-policy
+- curriculum
+- data-selection
+status: verified
+one_line_summary: CROPI uses offline trajectories and projected gradient influence to refresh the 10-percent RLVR subset that receives each stage of GRPO training.
+reading_priority: essential
+paper_type: Off-policy influence-guided RLVR data-selection study
+best_for: Readers building targeted or compute-limited RLVR systems who need a policy-dependent selection rule without paying for fresh rollouts over the full prompt pool.
+confidence: high
+why_it_matters: It connects a prompt-selection decision to an explicit approximation of its expected contribution to validation objectives, then refreshes that decision during training.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and the paper-declared official code URL were checked; no dataset release is declared by the paper.
+category_ids:
+- training_usage_optimization_objectives

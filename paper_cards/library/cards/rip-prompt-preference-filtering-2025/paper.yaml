@@ -1,0 +1,26 @@
+id: rip-prompt-preference-filtering-2025
+title: 'R.I.P.: Better Models by Survival of the Fittest Prompts'
+year: 2025
+venue: ICML 2025
+authors: [Ping Yu, Weizhe Yuan, Olga Golovneva, Tianhao Wu, Sainbayar Sukhbaatar, Jason Weston, Jing Xu]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: prompt_sourcing
+artifacts: {paper: https://arxiv.org/abs/2501.18578, arxiv: https://arxiv.org/abs/2501.18578, venue: 'https://openreview.net/forum?id=hE0uIz07cv', code: null, data: https://huggingface.co/datasets/facebook/Wildchat-RIP-Filtered-by-8b-Llama, project: null, huggingface: https://huggingface.co/datasets/facebook/Wildchat-RIP-Filtered-by-8b-Llama, doi: https://doi.org/10.48550/arXiv.2501.18578}
+data_object: {prompt_source: 'WildChat, HelpSteer2, and self-generated instruction prompts.', trace_author: 'Upstream prompt providers and Self-RIP generation.', answer_format: 'Prompt, chosen/rejected responses, rejected-response quality, reward gap, RIP score, selection status.', process_fields: [prompt, chosen_response, rejected_response, rejected_quality, reward_gap, rip_score, selected], environment_or_substrate: 'DPO and synthetic instruction generation.', verifier_or_reward: 'Reward-model scores of chosen and rejected responses.', terminal_predicate: 'Retain prompts with suitable rejected-response quality and reward gap.'}
+recipe_metadata: {base_model: 'Llama-3.1-8B-Instruct and Llama-3.3-70B-Instruct.', teacher: 'ArmoRM for reported preference-pair construction and validation.', generator: 'Seed model using Self-Instruct for Self-RIP.', filtering_rule: 'Filter prompts using rejected-response quality and chosen-versus-rejected reward gap.', sampling_protocol: 'Main reported WildChat setup uses 20K prompts before filtering.', rollout_count: 64, temperature: 0.8, inference_budget: 'Requires preference-pair scoring and optional self-instruction generation.', optimizer_or_scaffold: 'DPO.'}
+audit: {source_mixture: 'Official ICML paper, officially linked dataset, and upstream datasets.', split: 'Reported WildChat validation combines Humpback and Evol-Instruct examples.', decontamination: 'The paper removes AlpacaEval overlap from a stated evaluation set; audit all downstream reuse separately.', license: 'Verify WildChat, HelpSteer2, model, reward-model, and dataset terms.', lineage: 'Primary source: https://arxiv.org/abs/2501.18578', known_failure_modes: [reward-model-bias, prompt-distribution-shift, synthetic-data-feedback, filtering-threshold], citation_status: verified, confidence: high, notes: 'Official paper and released filtered dataset checked; no separate official code repository was located.'}
+inclusion_reason: Filters and generates training prompts using properties of the preference pairs that DPO will consume.
+related: []
+tags: [prompt-filtering, preference-learning, synthetic-data, dpo]
+one_line: RIP selects instruction prompts by rejected-answer quality and preference reward gap before DPO training.
+why_it_matters: It makes prompt integrity a measurable gate for preference-data construction and consumption.
+status: verified
+needs: []
+one_line_summary: RIP selects instruction prompts by rejected-answer quality and preference reward gap before DPO training.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-16', verified_by: curation, confidence: high, notes: 'Official paper and released filtered dataset checked.'}
+category_ids: [training_usage_optimization_objectives]

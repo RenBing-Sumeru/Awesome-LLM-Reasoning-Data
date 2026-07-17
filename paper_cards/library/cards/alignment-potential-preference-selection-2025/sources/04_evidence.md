@@ -1,0 +1,3 @@
+The ICML paper reports that training on alignment-potential-selected data consistently outperforms the compared margin metrics across base models and preference-optimization objectives. It also reports that the metric remains useful in self-play generation, improving as the generated dataset and the number of training iterations increase.
+
+The evidence comes from the published ICML evaluation and a released implementation that exposes dataset log-probability processing, top-k selection, and generated-data selection. It supports the claim that the two-margin discrepancy is useful in the authors' tested settings, but it does not prove that a reward model's target margin is unbiased or that the selected set is optimal for an untested deployment preference.

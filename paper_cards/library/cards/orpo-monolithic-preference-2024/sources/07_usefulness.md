@@ -1,0 +1,1 @@
+Use ORPO when instruction demonstrations and preferred/dispreferred alternatives are available together and the training system should remain a single SFT-like pass. It is useful for deciding whether rejected answers should be discarded, saved for a later alignment stage, or attached directly to the supervised objective as contrastive evidence.

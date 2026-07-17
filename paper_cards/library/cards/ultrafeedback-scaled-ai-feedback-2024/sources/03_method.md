@@ -1,0 +1,3 @@
+The instruction pool combines sources including TruthfulQA, FalseQA, Evol-Instruct, UltraChat, ShareGPT, and a stratified sample from FLAN. The authors collect responses from 17 models, then prompt GPT-4 with evaluation criteria and reference answers so that it writes a critique before assigning scores and ranks.
+
+They use the annotated collection to train a Llama 2 13B reward model, UltraRM, and also train a critique model. The paper then uses the learned reward model in best-of-n selection and PPO experiments, connecting the constructed feedback records to concrete policy-training consumers.

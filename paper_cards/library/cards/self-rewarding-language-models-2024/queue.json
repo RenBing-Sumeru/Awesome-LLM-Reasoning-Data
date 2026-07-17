@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:31:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "展示模型可同时生成回答和反馈标签，并通过迭代偏好训练共同提升两种能力",
+    "updated_at": "2026-07-17T12:31:38Z"
+  }
+}

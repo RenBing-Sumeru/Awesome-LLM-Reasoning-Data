@@ -1,0 +1,72 @@
+id: scpo-self-consistency-preference-2025
+title: Self-Consistency Preference Optimization
+year: 2025
+venue: ICML 2025
+authors: [Archiki Prasad, Weizhe Yuan, Richard Yuanzhe Pang, Jing Xu, Maryam Fazel-Zarandi, Mohit Bansal, Sainbayar Sukhbaatar, Jason E. Weston, Jane Yu]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [mathematical-reasoning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://proceedings.mlr.press/v267/prasad25a.html
+  arxiv: https://arxiv.org/abs/2411.04109
+  venue: https://proceedings.mlr.press/v267/prasad25a.html
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  openreview: https://openreview.net/forum?id=94G4eL3RWi
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/prasad25a.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Unlabeled seed reasoning problems and model-generated problems for GSM8K, MATH, and ZebraLogic settings.
+  trace_author: The current policy samples multiple rationale-plus-answer responses for each problem and generates additional unlabeled problems by few-shot prompting.
+  answer_format: Problem, sampled responses, parsed final answers, vote counts, chosen most-consistent response, rejected least-consistent response, and instance weight.
+  process_fields: [problem, responses, final_answer, vote_count, chosen, rejected, vote_margin, pair_weight]
+  environment_or_substrate: Iterative offline preference optimization with answer parsing and exact-match vote clustering.
+  verifier_or_reward: Relative frequency of a final answer across samples serves as the self-consistency proxy; available gold labels set weight one only in the semi-supervised variant.
+  terminal_predicate: Retain a pair when the highest-vote answer meets the vote threshold; weight the pair by normalized chosen-minus-rejected vote margin.
+recipe_metadata:
+  base_model: Llama-3 Base 8B for GSM8K and MATH, and Llama-3 Instruct 8B for ZebraLogic.
+  teacher: No teacher is required for unsupervised SCPO; gold answer labels are optionally mixed in semi-supervised SCPO.
+  generator: The current model samples k candidate solutions and generates new unlabeled problems from seed examples.
+  filtering_rule: Discard prompts lacking a sufficiently frequent answer; choose maximum- and minimum-vote responses and use their normalized vote gap as a loss weight.
+  sampling_protocol: Temperature 0.7, top-p 0.9, k equals eight for GSM8K and MATH; ZebraLogic uses k equals 16 in the reported setup.
+  rollout_count: Eight responses for GSM8K and MATH; 16 for ZebraLogic.
+  temperature: 0.7.
+  inference_budget: Multiple response samples per problem plus additional generated problems are required during construction, but no extra sampling is required at deployment.
+  optimizer_or_scaffold: Iterative weighted DPO plus weighted NLL, with the previous iteration as reference.
+audit:
+  source_mixture: Seed and model-generated prompts, policy-generated rationale answers, parsed vote clusters, and optionally gold-labeled pairs.
+  split: GSM8K, MATH, and ZebraLogic; reported train/dev/test partitions and exact-match metrics are described in the paper.
+  decontamination: The authors avoid instruction-tuned starting models for GSM8K and MATH due to possible gold-data exposure, but no broader contamination audit is reported.
+  license: Verify source benchmark, model, and generated-data terms before reuse.
+  lineage: 'Primary source: https://proceedings.mlr.press/v267/prasad25a.html'
+  known_failure_modes: [Self-consistency can be confidently wrong, Parsing final answers limits task coverage, High vote thresholds reduce data diversity, Iterations can reduce response diversity]
+  citation_status: verified
+  confidence: high
+  notes: Full ICML paper, PMLR record, OpenReview record, affiliations, method, and results were checked on 2026-07-16. No official code or standalone data release was declared in the checked primary records.
+inclusion_reason: It constructs and weights preference pairs directly from the current model's answer-vote distribution, then consumes them in an iterative DPO objective.
+related: []
+tags: [self-training, self-consistency, preference-data, dpo]
+status: verified
+one_line_summary: ScPO iteratively trains a model to prefer its most self-consistent answers over least-consistent alternatives, weighting each pair by its vote margin.
+reading_priority: essential
+paper_type: Self-generated preference-data construction and iterative optimization study
+best_for: Readers studying how to build reasoning preference pairs without gold answers or a reward model.
+confidence: high
+why_it_matters: It turns answer-vote agreement, pair margin, and filtering threshold into explicit training-data fields and objective weights.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official PMLR, arXiv, and OpenReview records were checked; no public code or standalone dataset was declared in the checked primary sources.
+category_ids: [training_usage_optimization_objectives]

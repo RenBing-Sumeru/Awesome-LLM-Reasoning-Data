@@ -1,0 +1,1 @@
+Use SimPO when paired preference records are available but a second frozen model is a deployment or memory bottleneck. It provides a strong reference point for comparing data-selection methods or preference-data constructions, because it keeps the same pairwise consumer while making length normalization and the required reward separation explicit.

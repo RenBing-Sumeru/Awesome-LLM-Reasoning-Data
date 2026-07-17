@@ -1,0 +1,106 @@
+id: writing-rl-adaptive-curriculum-2026
+title: 'Writing-RL: Advancing Long-form Writing via Adaptive Curriculum Reinforcement Learning'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Xuanyu Lei
+- Chenliang Li
+- Yuning Wu
+- Kaiming Liu
+- Weizhou Shen
+- Peng Li
+- Ming Yan
+- Fei Huang
+- Ya-Qin Zhang
+- Yang Liu
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- long-form-writing
+- instruction-tuning
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.255/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.255/
+  code: https://github.com/Tongyi-Zhiwen/Writing-RL
+  data: null
+  project: https://github.com/Tongyi-Zhiwen/Writing-RL
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.255
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.255/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: LongWriter training set and WritingBench training set.
+  trace_author: The initial policy plus Qwen-Plus, GPT-4o, Claude-3.7, and DeepSeek-R1 generate candidate writings.
+  answer_format: A writing instruction, scored candidate references, policy output, pairwise judge result, and a per-prompt reference pointer.
+  process_fields:
+  - instruction
+  - candidate_writing
+  - judge_score
+  - learning_potential
+  - reference_response
+  - policy_response
+  - pairwise_reward
+  - reference_pointer
+  environment_or_substrate: Long-form writing reinforcement-learning pipeline.
+  verifier_or_reward: A fine-tuned long-form judge selects data; Qwen-Plus gives pairwise win, tie, or loss rewards.
+  terminal_predicate: The policy is compared with a selected reference and advances to a stronger reference after a win.
+recipe_metadata:
+  base_model: Qwen2.5-7B, Qwen2.5-14B, and Llama3.1-8B writing models.
+  teacher: Qwen-Plus, GPT-4o, Claude-3.7, DeepSeek-R1, and a fine-tuned long-form judge.
+  generator: Candidate writings from the policy and four stronger systems for each instruction.
+  filtering_rule: Remove instructions on which every candidate scores poorly; rank the rest by the best competing score minus the initial-policy score.
+  sampling_protocol: Select 1,500 high-potential instructions from each of LongWriter and WritingBench.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pairwise judging is applied during RL; the reported reward judge cost is about 54 US dollars for the initial curation.
+  optimizer_or_scaffold: PPO and GRPO with pairwise comparison reward and asynchronous dynamic reference scheduling.
+audit:
+  source_mixture: Two existing writing corpora, candidate outputs from five systems, and LLM judging.
+  split: WritingBench, Creative-Writing-Bench, LongBench-Write, plus LongBench v2 transfer evaluation.
+  decontamination: No dedicated contamination analysis is reported; source and evaluation overlap should be checked before reuse.
+  license: Verify the terms of LongWriter, WritingBench, the model APIs, and the released repository before redistribution.
+  lineage: 'Primary sources: https://aclanthology.org/2026.acl-long.255/; https://github.com/Tongyi-Zhiwen/Writing-RL'
+  known_failure_modes:
+  - Reward quality depends on LLM judging and the selected reference set.
+  - Evidence is concentrated on 7B, 8B, and 14B writer models.
+  - The approach begins from supervised writer models rather than testing zero-RL from a base model.
+  - Candidate generation and repeated pairwise judging add external-model cost.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, authors, affiliations, method, numerical results, limitations, and the official repository declared in the paper were checked on 2026-07-16.
+inclusion_reason: It changes which writing instructions and reference responses are consumed by RL, then changes the reference difficulty as the policy improves.
+related: []
+tags:
+- long-form-writing
+- reinforcement-learning
+- curriculum
+- data-selection
+- pairwise-reward
+status: verified
+one_line_summary: Writing-RL selects long-form writing instructions by policy-to-reference quality margin and promotes the reference after each policy win.
+reading_priority: essential
+paper_type: Adaptive curriculum reinforcement-learning study for long-form writing
+best_for: Readers designing data selection and adaptive reference schedules for open-ended generation without verifiable answers.
+confidence: high
+why_it_matters: It makes the training record and reward target progressively harder instead of holding a static preference target throughout RL.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and the official code repository linked by the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

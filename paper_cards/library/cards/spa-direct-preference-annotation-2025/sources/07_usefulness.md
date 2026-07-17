@@ -1,0 +1,1 @@
+Use SPA when only a small human preference seed is available and an iterative, model-local expansion method is preferable to hiring a stronger judge. Its code and explicit seed-to-generated-data sequence make the data lineage inspectable.

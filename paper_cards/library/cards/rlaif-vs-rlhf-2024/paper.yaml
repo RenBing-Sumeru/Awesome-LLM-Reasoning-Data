@@ -1,0 +1,26 @@
+id: rlaif-vs-rlhf-2024
+title: 'RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback'
+year: 2024
+venue: ICML 2024
+authors: [Harrison Lee, Samrat Phatale, Hassan Mansoor, Thomas Mesnard, Johan Ferret, Kellie Ren Lu, Colton Bishop, Ethan Hall, Victor Carbune, Abhinav Rastogi, Sushant Prakash]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, dialogue, summarization]
+training_use: [reward_modeling, preference_learning]
+construction_layer: reward_verifier_layer
+artifacts: {paper: https://proceedings.mlr.press/v235/lee24t.html, arxiv: https://arxiv.org/abs/2309.00267, venue: https://proceedings.mlr.press/v235/lee24t.html, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2309.00267}
+data_object: {prompt_source: 'Summarization, helpful dialogue, and harmless dialogue task prompts.', trace_author: 'An off-the-shelf language model provides preference judgments over candidate responses.', answer_format: 'Prompt, candidate responses, AI preference label, reward-model score or direct AI reward.', process_fields: [prompt, candidate_response, ai_preference, reward_model_score, policy_update], environment_or_substrate: 'Offline preference labeling followed by reward-model RL or direct AI-reward RL.', verifier_or_reward: 'Off-the-shelf LLM judge or a reward model trained on its preferences.', terminal_predicate: 'Improve policy behavior according to AI-generated preference feedback.'}
+recipe_metadata: {base_model: 'Language models evaluated across summarization, helpful dialogue, and harmless dialogue.', teacher: 'An off-the-shelf LLM acts as AI labeler or direct reward source.', generator: 'The evolving policy supplies candidate responses.', filtering_rule: 'AI preference labels create the reward-model training set; d-RLAIF obtains rewards directly during RL.', sampling_protocol: 'Collect model responses, obtain AI feedback, train a reward model or query AI rewards online, then optimize the policy.', rollout_count: null, temperature: null, inference_budget: 'Direct-RLAIF requires LLM reward queries during reinforcement learning.', optimizer_or_scaffold: 'RLHF-style policy optimization, canonical RLAIF, and direct-RLAIF.'}
+audit: {source_mixture: 'Official ICML/PMLR paper and arXiv version.', split: 'Preserve task-specific train, validation, and human-evaluation splits.', decontamination: 'Audit overlap between labeler prompts, training prompts, and evaluation tasks.', license: 'Verify task-dataset and AI-service terms before reproducing labels.', lineage: 'Primary source: https://arxiv.org/abs/2309.00267', known_failure_modes: [ai-judge-bias, reward-hacking, service-version-drift, distribution-shift], citation_status: verified, confidence: high, notes: 'Official ICML record and arXiv version checked.'}
+inclusion_reason: Demonstrates how AI-generated preferences can replace human preference labels in a reward-model and policy-optimization pipeline.
+related: []
+tags: [rlaif, ai-feedback, reward-modeling, reinforcement-learning]
+one_line: RLAIF trains alignment systems from LLM-generated feedback and compares reward-model and direct-reward variants with human-feedback RL.
+why_it_matters: It makes the feedback labeler a scalable, replaceable training component rather than a human-only bottleneck.
+status: verified
+needs: []
+one_line_summary: RLAIF trains alignment systems from LLM-generated feedback and compares reward-model and direct-reward variants with human-feedback RL.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official ICML record and arXiv version checked; no official code link verified.'}
+category_ids: [training_usage_optimization_objectives]

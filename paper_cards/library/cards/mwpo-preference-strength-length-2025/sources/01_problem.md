@@ -1,0 +1,3 @@
+Offline DPO normally gives every chosen-rejected pair the same formal role. When two responses are close in quality, however, their label can be weak or noisy; the training loss can still push hard on it. A second distortion comes from preference corpora in which chosen answers are often longer, allowing optimization to reward verbosity rather than better task completion.
+
+MWPO asks whether the weight of an existing preference pair should reflect both how confidently the current policy separates its responses and how much their lengths favor verbosity. It does not collect a new corpus or ask for extra annotators. Instead, it changes the decision by which an offline record influences a DPO update.

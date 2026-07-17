@@ -1,0 +1,3 @@
+A reference model provides token-level influence estimates used to identify low-value supervision. The paper studies a fixed-model version that performs this estimation in one pass and a self-evolving version that refreshes the reference model as cleaning proceeds.
+
+A threshold converts the influence estimates into a mask over the response target, after which the masked targets are used for supervised fine-tuning. The official release provides code and a 50,000-example data resource, making the scoring and masking procedure inspectable rather than leaving it as an undocumented preprocessing step.

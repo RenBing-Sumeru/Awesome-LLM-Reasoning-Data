@@ -1,0 +1,16 @@
+{
+  "title": "Dynamic Sampling that Adapts: Self-Aware Iterative Data Persistent Optimization for Mathematical Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1412/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:10:33Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "让模型依据自身当前弱点与可学习难度动态重建下一轮偏好训练数据",
+    "updated_at": "2026-07-15T13:10:33Z"
+  }
+}

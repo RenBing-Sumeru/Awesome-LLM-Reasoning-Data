@@ -1,0 +1,1 @@
+This paper is useful when process supervision is limited by the cost of a strong model or expert judge and there is a large pool of candidate trajectories. It gives practitioners a concrete acquisition loop—score uncertainty, query selected records, retrain, and reassess—that can be audited separately from the final reward-model architecture.

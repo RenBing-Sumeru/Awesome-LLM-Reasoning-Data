@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "高熵和按长推理记录中最不确定的词元决策排序，并统一服务于监督、拒绝微调和强化学习选择。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "跨监督微调、拒绝微调与强化学习的免训练推理数据选择研究",
+  "best_for_ch": "设计或审计哪些长推理记录进入后训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoyuan Li, Yubo Ma, Chengpeng Li, Fengbin Zhu, Yiyao Yu, Keqin Bao, Wenjie Wang, Fuli Feng, Dayiheng Liu",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T23:30:00Z"
+}

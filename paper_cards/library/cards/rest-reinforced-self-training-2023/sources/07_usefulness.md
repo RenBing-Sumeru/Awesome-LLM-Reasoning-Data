@@ -1,0 +1,1 @@
+Use ReST when generated samples can be scored but fully online policy optimization is undesirable. It provides a useful blueprint for storing rollouts with rewards and deciding which generated records enter a replay-based update.

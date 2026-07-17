@@ -1,0 +1,16 @@
+{
+  "title": "GM-PRM: A Generative Multimodal Process Reward Model for Multimodal Mathematical Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.alvr-main.11/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:31:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态过程奖励覆盖了稀缺场景，但目前是 ACL Workshop、无代码链接且依赖判断式反馈，证据强度不足以列为主线",
+    "updated_at": "2026-07-15T12:31:29Z"
+  }
+}

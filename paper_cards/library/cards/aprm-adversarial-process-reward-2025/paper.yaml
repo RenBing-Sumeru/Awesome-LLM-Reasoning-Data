@@ -1,0 +1,72 @@
+id: aprm-adversarial-process-reward-2025
+title: Adversarial Training for Process Reward Models
+year: 2025
+venue: arXiv preprint under review
+authors: [Gurusha Juneja, Deepak Nathani, William Yang Wang]
+source_role: [process_supervision, construction_recipe]
+verification_contract: [mixed]
+supervision_granularity: [process_reward]
+domains: [mathematical-reasoning, scientific-reasoning]
+training_use: [process_supervision, test_time_compute]
+construction_layer: reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2511.22888
+  arxiv: https://arxiv.org/abs/2511.22888
+  venue: null
+  code: https://github.com/gurusha01/PRM_NIPS
+  data: null
+  project: https://gurusha01.github.io/PRM_NIPS/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2511.22888
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Gold reasoning steps from the MATH training split.
+  trace_author: A Llama-3.1-8B generator perturbs correct steps while a Llama-3.1-8B PRM learns to detect the perturbations.
+  answer_format: Question, partial solution, gold step, adversarially perturbed step, oracle validity label, and PRM classification.
+  process_fields: [question, partial_solution, gold_step, perturbed_step, oracle_label, prm_prediction, generator_version]
+  environment_or_substrate: Alternating two-player PPO training with an algorithmic step-validity oracle.
+  verifier_or_reward: The oracle combines cosine similarity, noun and number entity matching, and logical-operation order relative to a reference solution; the PRM receives plus or minus one for classification accuracy.
+  terminal_predicate: Retain a balanced mixture of gold steps and negatives sampled from current and historical generator versions.
+recipe_metadata:
+  base_model: Llama-3.1-8B for both generator and PRM.
+  teacher: Gold MATH solution steps and an algorithmic non-LLM validity oracle.
+  generator: An adversarial policy learns to turn correct steps into errors that the current PRM misclassifies as correct.
+  filtering_rule: Use 50 percent gold steps and 50 percent current or historical adversarial negatives to reduce PRM forgetting.
+  sampling_protocol: Alternate five gradient updates for one player while freezing the other.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation compares PRM-guided methods under matched test-time compute, including candidate sampling and reranking.
+  optimizer_or_scaffold: PPO with optimistic gradient descent-ascent, KL regularization, and entropy bonuses in a general-sum game.
+audit:
+  source_mixture: MATH gold steps, generator-produced perturbations, heuristic oracle labels, and historical negatives.
+  split: Train on MATH; evaluate MATH500, JEEBench, OlympiadBench, AIME25, and AMC.
+  decontamination: No dedicated contamination audit is reported.
+  license: Verify MATH, code, and downstream model terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2511.22888'
+  known_failure_modes: [Heuristic oracle can mislabel subtle errors, Extra adversarial training cost, Mathematics-centric construction, Large-scale game stability remains open, Under-review claims need independent replication]
+  citation_status: verified
+  confidence: medium
+  notes: Full arXiv paper and paper-declared project and code links were checked on 2026-07-16; the paper remains under review.
+inclusion_reason: It adaptively generates and mixes hard negative reasoning steps into PRM training instead of holding the error distribution fixed.
+related: []
+tags: [process-reward-model, adversarial-training, hard-negatives, process-labels]
+status: verified
+one_line_summary: APRM trains a generator to create PRM-deceiving wrong steps and continuously feeds those hard negatives back into process reward modeling.
+reading_priority: essential
+paper_type: Adversarial process-supervision construction and process reward model training study
+best_for: Readers designing adaptive negative-data curricula for step-level reward models.
+confidence: medium
+why_it_matters: It changes the source and hardness distribution of negative process labels as the reward model improves.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv paper and paper-declared project and code links were checked; no standalone dataset was declared.
+category_ids: [training_usage_optimization_objectives]

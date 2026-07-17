@@ -1,0 +1,16 @@
+{
+  "title": "Unified Data Selection for LLM Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2605.22389"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:42:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用统一的不确定性信号决定推理样本如何进入 SFT、RFT 和偏好训练，覆盖面与训练关联都很强",
+    "updated_at": "2026-07-15T13:42:27Z"
+  }
+}

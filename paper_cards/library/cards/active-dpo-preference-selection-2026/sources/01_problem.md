@@ -1,0 +1,3 @@
+Direct preference optimization needs pairwise labels, yet obtaining fresh human judgments is expensive. Selecting pairs at random can spend the limited labeling budget on comparisons that are redundant for the particular policy being aligned, while existing active methods either use heuristic confidence scores or impose restrictive reward assumptions.
+
+ActiveDPO asks which response pairs should be sent to annotators so that each judgment most improves the target policy under a fixed budget. It frames this as active data acquisition for a non-linear implicit reward function: the same language model that will be optimized supplies the uncertainty signal for deciding what to label.

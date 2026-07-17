@@ -1,0 +1,1 @@
+Read the dataset schema before interpreting the benchmark result. The practical contribution is the four-part step record—purpose, image alignment, logic, and correction—because it determines which process failures can be learned or audited.

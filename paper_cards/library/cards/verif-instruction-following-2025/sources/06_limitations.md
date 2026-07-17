@@ -1,0 +1,1 @@
+Hard checkers can under-specify an instruction and soft verifiers can inherit model bias or be gamed by surface wording. Before reuse, evaluate checker false positives and false negatives on held-out instructions and make sure the verifier functions are safe to execute in the target environment.

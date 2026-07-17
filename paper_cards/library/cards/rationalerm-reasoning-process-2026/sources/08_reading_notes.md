@@ -1,0 +1,1 @@
+The critical audit is the gap between a correct verdict and a correct reason. Read the matching definition and the checklist construction before reading RL gains, because those two choices define what the process reward can and cannot certify.

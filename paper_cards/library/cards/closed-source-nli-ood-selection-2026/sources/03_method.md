@@ -1,0 +1,3 @@
+Starting from an initial NLI subset, the authors build an incoming set and a removed set of equal class-specific size. Incoming examples can be selected by prediction uncertainty, model errors, or LLM-assigned difficulty. To control selection cost, examples outside the initial subset are considered only from a candidate pool with the same size as the initial training subset.
+
+The alternative incoming set is generated NLI data. LLMs produce premise-hypothesis-label triples from new domains, either with a short/simple prompt or a prompt that asks for more complex premises and hypotheses. The final fixed-size data mixture is API-fine-tuned for GPT-4o-mini and Gemini-2.0-Flash, then evaluated on in-distribution, standard-OOD, and challenge-OOD NLI datasets.

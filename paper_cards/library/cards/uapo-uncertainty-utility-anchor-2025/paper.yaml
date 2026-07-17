@@ -1,0 +1,100 @@
+id: uapo-uncertainty-utility-anchor-2025
+title: 'Adaptive Preference Optimization with Uncertainty-aware Utility Anchor'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Xiaobo Wang
+- Zixia Jia
+- Jiaqi Li
+- Qi Liu
+- Zilong Zheng
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- alignment
+- instruction-tuning
+training_use:
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.1046/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.1046/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1046
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.1046/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Princeton NLP preference datasets for Mistral, Llama-3, and Gemma-2 instruction models, including pairwise and multiple-dataset constructions.
+  trace_author: Existing preference-data authors; UAPO does not generate new response traces.
+  answer_format: Prompt, one or more preference responses, response log ratios, a prompt-conditioned utility anchor, and uncertainty-adjusted objective terms.
+  process_fields:
+  - prompt
+  - response
+  - preference_relation
+  - reference_log_ratio
+  - utility_anchor
+  - uncertainty_penalty
+  - dataset_membership
+  environment_or_substrate: Offline preference optimization over paired, unpaired, and multi-source preference data.
+  verifier_or_reward: A learned prompt-conditioned utility anchor models uncertain preference labels; no external verifier is required.
+  terminal_predicate: The anchor provides a reference utility against which response preference and uncertainty are optimized.
+recipe_metadata:
+  base_model: Mistral-Instruct, Llama-3-Instruct, and Gemma-2-Instruct.
+  teacher: Existing preference annotations and a learned utility-anchor representation.
+  generator: No new generation; the method reuses paired and unpaired records.
+  filtering_rule: None; construct multiple data forms so unpaired records can enter the objective rather than being discarded for lacking a win/lose partner.
+  sampling_protocol: Evaluate paired training and multiple-dataset training, including a SimUAPO variant with a constant reward anchor.
+  rollout_count: null
+  temperature: null
+  inference_budget: UAPO uses three forward/backward passes for three data pairs according to the paper; no official code or independent cost report is declared.
+  optimizer_or_scaffold: Adaptive preference optimization with uncertainty-aware utility anchoring.
+audit:
+  source_mixture: Princeton NLP preference datasets and constructed paired, unpaired, and multi-source forms.
+  split: AlpacaEval 2 and the paper's preference-optimization evaluations across three instruction-model families.
+  decontamination: No dedicated contamination audit is reported; source and evaluation overlap requires independent review.
+  license: Verify all underlying Hugging Face dataset and model terms before reuse; the paper declares no official implementation release.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.1046/'
+  known_failure_modes:
+  - Anchor quality depends on the source data mixture and may not improve every model distribution.
+  - The conceptual link between the learned anchor and real annotator uncertainty remains indirect.
+  - Results depend on choice of pairing/multiple-dataset construction and hyperparameters.
+  - No official code or released utility-anchor artifacts are declared.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP Findings paper, authors, affiliations, method, data-use claims, experiments, and artifact declarations were checked on 2026-07-16.
+inclusion_reason: It changes whether unpaired preference records are discarded or consumed and introduces a prompt-specific anchor that reweights their optimization signal.
+related: []
+tags:
+- preference-optimization
+- unpaired-data
+- uncertainty
+- utility-anchor
+- data-utilization
+status: verified
+one_line_summary: UAPO learns a prompt-conditioned utility anchor so paired and unpaired preference records can be used under an uncertainty-aware objective.
+reading_priority: useful
+paper_type: Uncertainty-aware offline preference-optimization study
+best_for: Readers trying to reuse imbalanced or unpaired preference records instead of dropping them to satisfy pairwise DPO requirements.
+confidence: high
+why_it_matters: It treats the availability and uncertainty of preference records as part of the objective rather than assuming every usable example already has a clean winner-loser pair.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP Findings paper was checked; it does not declare official code or a new data release.
+category_ids:
+- training_usage_optimization_objectives

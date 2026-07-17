@@ -1,0 +1,109 @@
+id: dorm-preference-data-weights-2025
+title: 'DORM: Preference Data Weights Optimization for Reward Modeling in LLM Alignment'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Rongzhi Zhang
+- Chenwei Zhang
+- Xinyang Zhang
+- Liang Qiu
+- Haoming Jiang
+- Yuchen Zhuang
+- Qingru Zhang
+- Hyokun Yun
+- Xian Li
+- Bing Yin
+- Tuo Zhao
+- Chao Zhang
+source_role:
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- alignment
+- reward_modeling
+- preference_data
+training_use:
+- reward_modeling
+- preference_learning
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.1237/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.1237/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1237
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.1237/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: HelpSteer2, OpenAssistant2, Magpie-Qwen-2.5, OffsetBias, and WildGuard preference records.
+  trace_author: Existing human-annotated and synthetic preference datasets are normalized and dynamically reweighted.
+  answer_format: Prompt, response, multi-attribute rating or preference label, uncertainty, label-disagreement value, initial weight, and optimized weight.
+  process_fields:
+  - prompt
+  - response
+  - rating
+  - uncertainty
+  - disagreement
+  - prior_weight
+  - optimized_weight
+  environment_or_substrate: Multi-objective reward-model training and downstream DPO alignment.
+  verifier_or_reward: A high-quality validation set supplies the upper-level objective; reward-model predictions supply uncertainty and disagreement signals.
+  terminal_predicate: A preference record remains in the weighted objective with a learned nonnegative importance determined by validation loss and its prior.
+recipe_metadata:
+  base_model: Mistral NeMo 12B-Instruct with a 12-attribute regression head.
+  teacher: Human and synthetic labels from five preference sources, plus validation loss as the meta-optimization signal.
+  generator: No new responses are generated; the method changes the contribution of existing records.
+  filtering_rule: Prior weight is exp(uncertainty minus gamma times disagreement), then bilevel optimization refines it toward validation performance.
+  sampling_protocol: Train and validation batches jointly update proxy parameters, reward-model parameters, and data weights with a first-order hypergradient method.
+  rollout_count: null
+  temperature: null
+  inference_budget: The reported reward model uses 50K training records and 5K validation records, trained for three epochs on 16 A100-80G GPUs.
+  optimizer_or_scaffold: First-order regularized bilevel optimization; downstream Mistral-7B is aligned through SFT followed by DPO.
+audit:
+  source_mixture: Five datasets spanning human annotations, synthetic SFT data, bias mitigation, and safety records.
+  split: 50K preference records for reward-model training with 5K validation; UltraFeedback is split into 20K SFT, 40K DPO, and 4K test records downstream.
+  decontamination: The authors select RewardBench baselines for contamination awareness, but no complete source-level contamination audit is supplied for all training collections.
+  license: Upstream data and model licenses must be verified before recreating the mixture or redistributing weighted records.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.1237/'
+  known_failure_modes:
+  - Current implementation assigns weights at dataset level, not per individual record.
+  - Results depend on the quality of the validation set.
+  - It requires high-memory bilevel training and reported experiments use 16 A100 GPUs.
+  - No official code or trained model is declared in the paper.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP Findings paper, affiliations, method, data mixture, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It changes which preference records train a reward model by learning their validation-grounded weights instead of treating all labels as equally useful.
+related: []
+tags:
+- reward-modeling
+- preference-data
+- data-reweighting
+- bilevel-optimization
+- alignment
+status: verified
+one_line_summary: DORM learns validation-regularized weights for heterogeneous preference data so reward-model training emphasizes informative uncertainty and downweights likely noise.
+reading_priority: essential
+paper_type: Preference-data reweighting study for reward modeling
+best_for: Readers mixing preference sources who need a principled alternative to hard filtering before reward-model or preference-learning training.
+confidence: high
+why_it_matters: It makes data importance a learned training object and carries that decision through reward modeling to downstream policy alignment.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP full paper was checked; no official code, project, model, or released weighted dataset is declared.
+category_ids:
+- training_usage_optimization_objectives

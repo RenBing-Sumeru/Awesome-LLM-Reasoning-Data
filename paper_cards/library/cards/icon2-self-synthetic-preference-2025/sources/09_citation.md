@@ -1,0 +1,1 @@
+Qiyuan Chen, Hongsen Huang, Qian Shao, Jiahe Chen, Jintai Chen, Hongxia Xu, Renjie Hua, Chuan Ren, and Jian Wu. 2025. ICON2: Aligning Large Language Models Using Self-Synthetic Preference Data via Inherent Regulation. Proceedings of EMNLP 2025. https://aclanthology.org/2025.emnlp-main.196/

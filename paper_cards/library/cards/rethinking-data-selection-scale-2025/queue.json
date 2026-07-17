@@ -1,0 +1,16 @@
+{
+  "title": "Rethinking Data Selection at Scale: Random Selection is Almost All You Need",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-emnlp.146/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:17Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它用重复随机基线和显著性检验审计大规模 SFT 选择器",
+    "updated_at": "2026-07-15T12:33:17Z"
+  }
+}

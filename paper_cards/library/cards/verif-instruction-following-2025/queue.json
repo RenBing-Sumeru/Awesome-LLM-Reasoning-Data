@@ -1,0 +1,16 @@
+{
+  "title": "VerIF: Verification Engineering for Reinforcement Learning in Instruction Following",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.1542/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:03:51Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "将硬/软指令约束工程化为可审计奖励，是非数学 RLVR 的代表工作",
+    "updated_at": "2026-07-15T12:03:51Z"
+  }
+}

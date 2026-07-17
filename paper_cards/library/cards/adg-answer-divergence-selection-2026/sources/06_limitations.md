@@ -1,0 +1,1 @@
+The fixed pooling/layer design may affect signal quality, and high divergence can come from an ambiguous or underspecified prompt. Inspect selected examples and add clarity filters for unreliable pools.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SPaCe 以语义—难度簇缩减推理池，再用感知进展的老虎机调度强化微调样本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "自定步强化微调的数据选择与调度研究",
+  "best_for_ch": "为可验证推理强化微调构建紧凑自适应课程的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dai Do, Manh Nguyen, Svetha Venkatesh, Hung Le",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T04:00:00Z"
+}

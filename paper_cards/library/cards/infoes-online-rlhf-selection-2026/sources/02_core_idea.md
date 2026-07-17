@@ -1,0 +1,3 @@
+InfOES treats a rollout buffer as a temporary attribution problem. Within one fixed policy round, the validation gradient describes the desired improvement and each experience has an RL-objective gradient. Their inner product estimates whether optimizing that experience will increase or decrease a surrogate return on the validation objective.
+
+This makes the validation set an explicit declaration of what the training consumer should optimize. Experiences above the influence threshold enter PPO, GRPO, or REINFORCE++ updates; those below it do not. Rather than claiming every hard sample is useful, the method permits objective-irrelevant math or code rollouts and reward-corrupted safety rollouts to be excluded when they conflict with the chosen objective.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VerIF 将硬约束和软约束指令验证器工程化为奖励信号，用于指令遵循的强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "指令遵循强化学习验证器与可验证数据论文",
+  "best_for_ch": "需要为复杂自然语言指令构造可审计强化学习奖励的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hao Peng、Yunjia Qi、Xiaozhi Wang、Bin Xu、Lei Hou、Juanzi Li",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

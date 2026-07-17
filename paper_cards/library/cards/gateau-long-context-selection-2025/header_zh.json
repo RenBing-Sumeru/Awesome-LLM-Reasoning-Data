@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GATEAU 以上下文窗口困惑度差和注意力—相关性对齐选择长监督微调记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长上下文指令数据选择研究",
+  "best_for_ch": "筛选必须教会真实长程依赖使用的长指令数据的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shuzheng Si, Haozhe Zhao, Gang Chen, Yunshui Li, Kangyang Luo, Chuancheng Lv, Kaikai An, Fanchao Qi, Baobao Chang, Maosong Sun",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:00:00Z"
+}

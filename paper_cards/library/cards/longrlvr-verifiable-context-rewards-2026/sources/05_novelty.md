@@ -1,0 +1,3 @@
+Standard RLVR treats evidence selection as latent behavior and rewards only the terminal answer. LongRLVR changes the record and objective so that chunk identifiers are emitted, compared against reference evidence, and rewarded before the final answer is evaluated.
+
+The novelty is the verifiable intermediate grounding contract and its non-vanishing-gradient argument, rather than GRPO itself or the generic idea of generating synthetic QA. Its value depends on whether a task can supply sufficiently complete reference chunks; it is not a replacement for an external retrieval system or an audit of source-document provenance.

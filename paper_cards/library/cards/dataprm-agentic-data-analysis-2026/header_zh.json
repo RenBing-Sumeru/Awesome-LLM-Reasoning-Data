@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DataPRM 探测执行状态并赋予反思感知的过程奖励，用于训练和引导数据分析智能体。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据分析智能体环境感知过程奖励模型论文",
+  "best_for_ch": "需要把可执行数据分析轨迹转成过程监督、搜索反馈或强化学习奖励的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhisong Qiu、Shuofei Qiao、Kewei Xu、Yuqi Zhu、Lun Du、Ningyu Zhang、Huajun Chen",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

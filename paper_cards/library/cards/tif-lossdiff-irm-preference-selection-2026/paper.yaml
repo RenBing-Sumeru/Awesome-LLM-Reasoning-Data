@@ -1,0 +1,65 @@
+id: tif-lossdiff-irm-preference-selection-2026
+title: 'Towards Understanding Valuable Preference Data for Large Language Model Alignment'
+year: 2026
+venue: ICLR 2026
+authors: [Zizhuo Zhang, Qizhou Wang, Shanshan Ye, Jianing Zhu, Jiangchao Yao, Bo Han, Masashi Sugiyama]
+source_role: [scaling_study, construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction-following]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2510.13212
+  arxiv: https://arxiv.org/abs/2510.13212
+  venue: https://openreview.net/forum?id=a0e54602e4a1f211ad9fc661a233aa290ce17903
+  code: https://github.com/tmlr-group/TIF_LossDiff-IRM
+  data: https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized
+  project: null
+  huggingface: https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized
+  doi: https://doi.org/10.48550/arXiv.2510.13212
+data_object:
+  prompt_source: UltraFeedback-Binarized preference pairs after UltraChat-200k SFT initialization.
+  trace_author: Existing chosen/rejected responses; the method adds model-relative influence scores.
+  answer_format: Prompt, chosen response, rejected response, truncated influence estimate, LossDiff score, IRM score, and selection flag.
+  process_fields: [prompt, chosen, rejected, tif, lossdiff, irm, selected]
+  environment_or_substrate: Offline DPO or SLiC preference alignment.
+  verifier_or_reward: Validation-data influence estimates and their scalable LossDiff-IRM approximation.
+  terminal_predicate: Retain pairs ranked by the combined LossDiff-IRM rule.
+recipe_metadata:
+  base_model: Llama-3.1-8B, Qwen3-8B-Base, and Pythia 410M/1.4B/2.8B.
+  teacher: A model warmed up on the training set and then on a validation set.
+  generator: No new pair generator.
+  filtering_rule: Combine LossDiff and IRM to approximate truncated influence and select high-value pairs.
+  sampling_protocol: A stratified 20% validation split from UltraFeedback-Binarized; remaining 80% is training data.
+  rollout_count: null
+  temperature: null
+  inference_budget: One-epoch warm-ups precede selection; exact influence is much slower than the approximation.
+  optimizer_or_scaffold: DPO and SLiC for two alignment epochs after selection.
+audit:
+  source_mixture: Official ICLR 2026/arXiv paper, official code, and public Hugging Face datasets.
+  split: Validation is stratified by GPT-4 score margin; final ID/OOD evaluation is separate.
+  decontamination: Validation influence makes split construction and benchmark overlap essential audit items.
+  license: Verify the code, UltraChat, and UltraFeedback terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2510.13212'
+  known_failure_modes: [model-dependent scores, noisy validation data, approximation error, judge-dependent margins]
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR PDF verifies the authors' five affiliations; the paper states that code and backbone datasets are public.
+inclusion_reason: Directly selects pairwise preference records using a model-relative estimate of their alignment benefit.
+related: []
+tags: [preference-data, data-selection, dpo, influence]
+one_line: LossDiff-IRM selects preference pairs by approximating their model-specific validation influence.
+why_it_matters: It shows that a preference pair's value is a model-relative training property, not an intrinsic label.
+status: verified
+needs: []
+one_line_summary: LossDiff-IRM selects preference pairs by approximating their model-specific validation influence.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR PDF, code, public dataset links, and author affiliations checked.
+category_ids: [training_usage_optimization_objectives]

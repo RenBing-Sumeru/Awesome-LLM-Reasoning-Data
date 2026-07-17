@@ -1,0 +1,65 @@
+id: dr-post-training-data-regularization-2026
+title: 'Dr. Post-Training: A Data Regularization Perspective on LLM Post-Training'
+year: 2026
+venue: arXiv preprint
+authors: [Pingbang Hu, Xueshen Liu, Z. Morley Mao, Jiaqi W. Ma]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [programmatic, judgment_required]
+supervision_granularity: [answer_level]
+domains: [instruction-following, alignment, reasoning]
+training_use: [sft, preference_learning, rlvr]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2605.07063
+  arxiv: https://arxiv.org/abs/2605.07063
+  venue: null
+  code: https://github.com/TRAIS-Lab/Dr.Post-Training
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.07063
+data_object:
+  prompt_source: A scarce target-data stream and an abundant, imperfectly aligned general-data stream.
+  trace_author: Upstream SFT, preference, and verifiable-reward datasets used by the reported settings.
+  answer_format: Training records with layerwise gradient-derived update directions.
+  process_fields: [target_gradient, general_data_gradient, feasible_update_set, projected_update]
+  environment_or_substrate: Post-training iterations for SFT, RLHF, and RLVR.
+  verifier_or_reward: The target objective supplies the desired update; general data constrains feasible update directions.
+  terminal_predicate: Apply the projected update rather than an unconstrained target-only update.
+recipe_metadata:
+  base_model: Llama-3.2-1B in the reported SFT experiments; additional models and settings appear in the paper.
+  teacher: Target objective and general-data gradients.
+  generator: No new data generator.
+  filtering_rule: General data defines a feasible update subspace or subset rather than being simply retained or discarded.
+  sampling_protocol: The paper reports held-out tests disjoint from regularization and training data and averages results over five seeds unless stated otherwise.
+  rollout_count: null
+  temperature: null
+  inference_budget: Layerwise gradient scoring and one- or two-pass implementation choices affect memory and compute.
+  optimizer_or_scaffold: Data-regularized projected updates for SFT, RLHF, and RLVR.
+audit:
+  source_mixture: Official arXiv paper and official code repository.
+  split: Reported held-out tests are disjoint from regularization and training data.
+  decontamination: Dataset overlap and task-specific evaluation leakage remain reuse checks.
+  license: Verify upstream dataset, model, and code licenses before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2605.07063'
+  known_failure_modes: [gradient approximation, correlated general data, memory cost, target-general mismatch]
+  citation_status: verified
+  confidence: high
+  notes: The paper reports a code repository but no dedicated new data release.
+inclusion_reason: Recasts how general data constrains SFT, RLHF, and RLVR updates, rather than treating selection as a static preprocessing step.
+related: []
+tags: [post-training, data-regularization, sft, rlhf, rlvr]
+one_line: Dr. Post-Training uses general data as a feasible-set regularizer for target post-training updates.
+why_it_matters: It makes data consumption part of the optimization geometry rather than a one-time selection decision.
+status: verified
+needs: []
+one_line_summary: Dr. Post-Training uses general data as a feasible-set regularizer for target post-training updates.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and repository checked.
+category_ids: [training_usage_optimization_objectives]

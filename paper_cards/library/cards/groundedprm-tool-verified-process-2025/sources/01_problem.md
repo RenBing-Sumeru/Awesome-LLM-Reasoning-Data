@@ -1,0 +1,3 @@
+Process reward models need labels for intermediate steps, but human labels are expensive. Outcome-only rollouts can misassign credit: a correct step is punished when a later step fails, and an incorrect step can be rewarded when a later recovery reaches the right answer. LLM self-judges scale more easily, yet can validate fluent but false arithmetic or logic.
+
+GroundedPRM asks how to build scalable process supervision whose individual step labels have executable factual support while still accounting for the trajectory's final result. It treats the reward record as the object to construct: a step must carry its path context, a tool verdict, a combined reward, and an explanation, rather than only a score inferred from completion success.

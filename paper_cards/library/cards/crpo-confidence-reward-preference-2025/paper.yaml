@@ -1,0 +1,72 @@
+id: crpo-confidence-reward-preference-2025
+title: 'CRPO: Confidence-Reward Driven Preference Optimization for Machine Translation'
+year: 2025
+venue: Findings of ACL 2025
+authors: [Guofeng Cui, Pichao Wang, Yang Liu, Zemian Ke, Zhu Liu, Vimal Bhat]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [machine_translation, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.31/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-acl.31/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.31
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.31/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: FLORES-200 source sentences and existing translation preference candidates.
+  trace_author: A reference policy generates translation candidates; a reward model scores them.
+  answer_format: Source sentence, candidate translations, reward values, reference-policy confidence, CR score, and selected preference pair.
+  process_fields: [source, candidates, reward, confidence, cr_score, chosen, rejected]
+  environment_or_substrate: Offline translation DPO and related preference fine-tuning.
+  verifier_or_reward: A pointwise reward model scores translation quality; reference-policy probability provides confidence.
+  terminal_predicate: Keep high reward-difference pairs whose confidence-reward score identifies a model-uncertain or underperforming learning opportunity.
+recipe_metadata:
+  base_model: ALMA-7B and NLLB-1.3B.
+  teacher: Reward model plus the reference policy's likelihood.
+  generator: The reference policy samples candidate translations.
+  filtering_rule: Combine response reward differences with reference-policy confidence to rank and retain preference pairs.
+  sampling_protocol: Generate or collect candidates, score them, calculate CR score, form selected chosen-rejected pairs, and optimize with DPO.
+  rollout_count: 64 candidates per FLORES-200 source sentence in the reported construction.
+  temperature: Not reported.
+  inference_budget: 3,065 FLORES-200 source sentences are used in the reported preference-training construction.
+  optimizer_or_scaffold: DPO; experiments also compare RSO, RS-DPO, and CPO.
+audit:
+  source_mixture: FLORES-200 and WMT-derived translation preference data.
+  split: Ten translation directions and separate WMT evaluation settings; no new selected-pair release is declared.
+  decontamination: No full contamination audit is reported.
+  license: Verify FLORES-200, WMT, model, and reward-model terms before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.31/'
+  known_failure_modes: [Selection depends on reward-model calibration, Confidence is model-specific, Evidence is translation focused, No official code or selected-pair release is declared]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It chooses translation preference records according to both quality separation and the current model's uncertainty, directly changing which pairs DPO consumes.
+related: []
+tags: [preference-data, data-selection, dpo, translation]
+status: verified
+one_line_summary: CRPO selects translation preference pairs with both reward contrast and model uncertainty, concentrating DPO on records with higher learning value.
+reading_priority: useful
+paper_type: Confidence-and-reward preference data selection study
+best_for: Readers constructing translation preference pairs who need to distinguish merely high-quality examples from examples that are still informative for the current model.
+confidence: high
+why_it_matters: It makes model confidence a selection signal alongside reward, so preference data is chosen for expected learning value rather than quality alone.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no official code or data release is declared.
+category_ids: [training_usage_optimization_objectives]

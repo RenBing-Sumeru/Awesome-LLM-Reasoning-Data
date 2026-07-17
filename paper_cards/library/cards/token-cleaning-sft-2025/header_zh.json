@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Token Cleaning 按模型更新对每个 token 的影响筛除低信息监督，以更细粒度方式构造 SFT 训练目标。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "监督微调 Token 级数据筛选论文",
+  "best_for_ch": "需要分析 SFT 样本内部监督质量、而非只做整条样本过滤的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jinlong Pang、Na Di、Zhaowei Zhu、Jiaheng Wei、Hao Cheng、Chen Qian、Yang Liu",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

@@ -1,0 +1,65 @@
+id: prefcleanbench-preference-cleaning-2025
+title: 'Clean First, Align Later: Benchmarking Preference Data Cleaning for Reliable LLM Alignment'
+year: 2025
+venue: NeurIPS 2025
+authors: [Samuel Yeh, Sharon Li]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, safety, instruction-following]
+training_use: [preference_learning]
+construction_layer: release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.23564
+  arxiv: https://arxiv.org/abs/2509.23564
+  venue: null
+  code: https://github.com/deeplearning-wisc/PrefCleanBench
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.23564
+data_object:
+  prompt_source: Anthropic-HH, UltraFeedback, PKU-SafeRLHF, and HelpSteer2 preference datasets.
+  trace_author: The original dataset providers; this work creates cleaned variants rather than a new preference corpus.
+  answer_format: Prompt, two response candidates, preference label, unreliability score, and removal or label-flip treatment.
+  process_fields: [prompt, chosen_response, rejected_response, preference_label, cleaning_score, treatment, cleaned_split]
+  environment_or_substrate: A standard SFT followed by preference-optimization evaluation pipeline.
+  verifier_or_reward: LLM judges, reward-model voting or reward gaps, and heuristic scores identify unreliable records; WinTie and held-out reward evaluate outcomes.
+  terminal_predicate: Remove or flip records classified as unreliable according to the selected cleaning method and fraction.
+recipe_metadata:
+  base_model: Llama-3-8B in the main setting, with additional backbone generalization experiments.
+  teacher: GPT-4o is used for one LLM-judge cleaning method and as an evaluation judge; reward-model committees are also used.
+  generator: null
+  filtering_rule: Compare removal and label-flip treatments after identifying unreliable preference pairs with one of thirteen methods.
+  sampling_protocol: The benchmark considers cleaning fractions including 10%, 20%, 30%, and 40% for applicable methods.
+  rollout_count: null
+  temperature: null
+  inference_budget: Some methods require LLM judging or trained reward models, so cleaning cost differs materially by method.
+  optimizer_or_scaffold: SFT followed by DPO in the main setting; code also supports CPO, AOT, KTO, IPO, SLiC, rDPO, and ORPO.
+audit:
+  source_mixture: Official NeurIPS paper, official arXiv record, and official MIT-licensed code repository.
+  split: The four target datasets retain their upstream splits; WinTie samples 200 test items in the reported main evaluation.
+  decontamination: Upstream preference datasets, trained reward models, and LLM judges must be audited for split overlap and benchmark leakage before reuse.
+  license: The code is MIT; verify all upstream dataset, model, and API terms separately.
+  lineage: 'Primary source: https://arxiv.org/abs/2509.23564'
+  known_failure_modes: [judge-bias, reward-model-bias, cleaning-fraction-tuning, upstream-label-noise, evaluation-cost]
+  citation_status: verified
+  confidence: high
+  notes: Official paper and code checked; the repository downloads and processes upstream datasets rather than distributing a new dataset.
+inclusion_reason: Establishes how preference-record cleaning decisions should be evaluated before those records are consumed by alignment objectives.
+related: []
+tags: [data-cleaning, preference-learning, dpo, alignment, benchmark]
+one_line: PrefCleanBench compares how cleaning preference records changes downstream alignment across data, models, and objectives.
+why_it_matters: It makes data cleaning a measured training-data decision rather than an untested preprocessing assumption.
+status: verified
+needs: []
+one_line_summary: PrefCleanBench compares how cleaning preference records changes downstream alignment across data, models, and objectives.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS paper, arXiv record, and MIT-licensed code repository checked.
+category_ids: [training_usage_optimization_objectives]

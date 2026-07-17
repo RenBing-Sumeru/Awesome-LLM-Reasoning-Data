@@ -1,0 +1,1 @@
+Use this work when a PRM must distinguish an isolated error from a self-corrected sequence: retain tree structure, construct a held-out set of step segments, and compare isolated-step, consecutive-step, and answer-level rewards.

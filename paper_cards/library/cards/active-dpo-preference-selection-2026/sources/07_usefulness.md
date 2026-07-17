@@ -1,0 +1,1 @@
+This paper is useful for teams that can generate many response pairs but can afford to annotate only a small fraction of them. It offers a concrete way to make the choice of preference data depend on the evolving target model, and it highlights the operational costs—gradient extraction, projection, and repeated regeneration—that must be budgeted alongside human labeling.

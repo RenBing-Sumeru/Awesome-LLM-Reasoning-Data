@@ -1,0 +1,13 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:33:32Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "清晰刻画“生成—奖励筛选—再训练”的迭代数据闭环，但仍是预印本工作",
+    "updated_at": "2026-07-17T12:33:32Z"
+  },
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ]
+}

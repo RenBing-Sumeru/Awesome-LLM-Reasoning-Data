@@ -1,0 +1,18 @@
+{
+  "title": "Data Whisperer: Efficient Data Selection for Task-Specific LLM Fine-Tuning via Few-Shot In-Context Learning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.1135/",
+    "code": "https://github.com/gszfwsb/Data-Whisperer",
+    "data": "https://github.com/gszfwsb/Data-Whisperer"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:52:11Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它用少样本上下文学习与注意力归因选择任务微调记录，同时明确衡量选择成本是否值得",
+    "updated_at": "2026-07-15T14:52:11Z"
+  }
+}

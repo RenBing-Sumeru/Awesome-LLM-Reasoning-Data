@@ -1,0 +1,3 @@
+Conventional data selection decides which samples enter training. Dr. Post-Training instead changes the optimization role of data that remains available: general records regularize the direction of a target update even when they are not the selected target batch.
+
+Gradient projection and data selection are not new independently. The novelty is a common feasible-set formulation that makes selection methods special cases and extends the same design to SFT, RLHF, and RLVR. Before reuse, compare the projected and unprojected update norms, verify target/general split provenance, and test whether correlated general-data gradients collapse the feasible space.

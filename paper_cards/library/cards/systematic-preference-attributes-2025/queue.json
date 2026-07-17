@@ -1,0 +1,18 @@
+{
+  "title": "A Systematic Examination of Preference Learning through the Lens of Instruction-Following",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.naacl-long.552/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:13:08Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用受控实验直接检验偏好对的前缀、对比度、回答质量和提示难度如何改变训练效果",
+    "updated_at": "2026-07-16T07:13:08Z"
+  }
+}

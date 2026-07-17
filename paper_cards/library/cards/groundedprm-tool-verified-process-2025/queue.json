@@ -1,0 +1,18 @@
+{
+  "title": "GroundedPRM: Tree-Guided and Fidelity-Aware Process Reward Modeling for Step-Level Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2510.14942",
+    "code": "https://github.com/YaoZ720/GroundedPRMCode",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:34:37Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把树搜索与外部工具验证绑定为步骤级奖励证据，是可审计过程监督的重要案例",
+    "updated_at": "2026-07-16T07:34:37Z"
+  }
+}

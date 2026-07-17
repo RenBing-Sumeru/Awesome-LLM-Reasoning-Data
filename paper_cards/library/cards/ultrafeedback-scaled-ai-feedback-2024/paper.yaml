@@ -1,0 +1,26 @@
+id: ultrafeedback-scaled-ai-feedback-2024
+title: 'UltraFeedback: Boosting Language Models with Scaled AI Feedback'
+year: 2024
+venue: ICML 2024
+authors: [Ganqu Cui, Lifan Yuan, Ning Ding, Guanming Yao, Bingxiang He, Wei Zhu, Yuan Ni, Guotong Xie, Ruobing Xie, Yankai Lin, Zhiyuan Liu, Maosong Sun]
+source_role: [construction_recipe, scaling_study]
+verification_contract: [judgment_required]
+supervision_granularity: [pairwise_preference]
+domains: [alignment, instruction_following, reasoning]
+training_use: [reward_modeling, preference_learning]
+construction_layer: reward_verifier_layer
+artifacts: {paper: https://icml.cc/virtual/2024/poster/34726, arxiv: https://arxiv.org/abs/2310.01377, venue: https://icml.cc/virtual/2024/poster/34726, code: https://github.com/OpenBMB/UltraFeedback, data: null, project: https://github.com/OpenBMB/UltraFeedback, huggingface: null, doi: https://doi.org/10.48550/arXiv.2310.01377}
+data_object: {prompt_source: 'A mixed instruction pool from TruthfulQA, FalseQA, Evol-Instruct, UltraChat, ShareGPT, and a stratified FLAN sample.', trace_author: 'Seventeen language models generate candidate responses; GPT-4 supplies critiques, scores, and ranks.', answer_format: 'Instruction, multiple candidate responses, written critique, four-aspect scores, and ranking.', process_fields: [instruction, candidate_response, critique, instruction_following_score, truthfulness_score, honesty_score, helpfulness_score, rank], environment_or_substrate: 'Offline AI-feedback collection and alignment training.', verifier_or_reward: 'GPT-4 feedback using criteria and reference answers.', terminal_predicate: 'A candidate is ranked and scored for instruction following, truthfulness, honesty, and helpfulness.'}
+recipe_metadata: {base_model: 'Llama 2 13B for the released UltraRM reward model.', teacher: 'GPT-4 is the feedback judge.', generator: 'A pool of 17 language models.', filtering_rule: 'The paper constructs an instruction mixture and retains GPT-4 critiques and multi-aspect judgments.', sampling_protocol: 'Collect candidate responses per instruction, then obtain GPT-4 critique, score, and rank annotations.', rollout_count: null, temperature: null, inference_budget: 'Best-of-n selection and PPO experiments use the learned reward model after collection.', optimizer_or_scaffold: 'Reward-model training followed by best-of-n selection or PPO.'}
+audit: {source_mixture: 'Official ICML paper and OpenBMB project repository.', split: 'Use the splits and evaluation protocol released with the resource or its documented revisions.', decontamination: 'Audit all mixed instruction sources and evaluation overlap before reuse.', license: 'Check the project repository and every upstream instruction source before redistribution.', lineage: 'Primary source: https://arxiv.org/abs/2310.01377', known_failure_modes: [judge-bias, proprietary-model-dependence, source-license-variation, distribution-shift], citation_status: verified, confidence: high, notes: 'Official conference page, paper, and project repository checked.'}
+inclusion_reason: Shows how structured AI feedback records can be constructed at scale and reused by reward-model and policy-training stages.
+related: []
+tags: [ai-feedback, reward-modeling, preference-learning, alignment]
+one_line: UltraFeedback combines diverse instructions, multi-model answers, and GPT-4 critiques and scores into a large-scale alignment resource.
+why_it_matters: It makes feedback construction itself a reusable training interface instead of reducing every judgment to a single final label.
+status: verified
+needs: []
+one_line_summary: UltraFeedback combines diverse instructions, multi-model answers, and GPT-4 critiques and scores into a large-scale alignment resource.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-17', verified_by: curation, confidence: high, notes: 'Official ICML paper and project repository checked.'}
+category_ids: [training_usage_optimization_objectives]

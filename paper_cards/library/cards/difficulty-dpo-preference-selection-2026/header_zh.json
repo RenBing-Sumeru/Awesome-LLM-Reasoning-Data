@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该方法选择 DPO 隐式奖励差最小的偏好对，因为这些决策边界样本能提供最强的学习信号。","reading_priority_ch":"必读","paper_type_ch":"基于难度的偏好数据选择研究","best_for_ch":"适合在 DPO 或奖励模型训练前为现有偏好对排序、降低对齐训练成本的读者。","confidence_ch":"高","authors_ch":"Xuan Qi、Rongwu Xu、Zhijing Jin（华盛顿大学、马克斯·普朗克智能系统研究所、多伦多大学等）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T23:30:00Z"}

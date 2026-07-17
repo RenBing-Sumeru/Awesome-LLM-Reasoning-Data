@@ -1,3 +1,0 @@
-The system processes pull-request context, builds a runnable environment, constructs tests that distinguish pre- and post-fix behavior, and synthesizes a task description. Verified instances then receive distilled trajectories for agent training.
-
-The paper reports processing 6 million pull requests from 5,200 repositories to construct a 100K-instance collection and distilling 71,498 trajectories, while the public release is smaller. Reproduction requires a pinned release, commits, image, test commands, teacher, tool interface, and token/turn budget, and must distinguish the paper-scale collection from the downloadable subset.

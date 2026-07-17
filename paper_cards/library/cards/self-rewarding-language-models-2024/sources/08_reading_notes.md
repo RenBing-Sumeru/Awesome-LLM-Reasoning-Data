@@ -1,0 +1,1 @@
+Read the judge prompt, candidate-generation procedure, and iteration boundaries as carefully as the DPO hyperparameters. When extending the method, measure agreement with independent evaluators and log the provenance of every self-generated label; otherwise later improvements cannot be separated from feedback drift.

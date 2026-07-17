@@ -1,0 +1,3 @@
+For each pair, the method computes an explicit reward difference from a reward model and an implicit difference from policy and reference-policy log probabilities. Their gap is the alignment-potential score. The implementation first adds the required log probabilities to a SimPO-format preference dataset, then uses a metric-selection script to retain the top-k examples.
+
+The released repository also contains an evolve-then-select path: it evolves prompts, generates response pairs, annotates them with a reward model, processes the resulting records, and selects a subset by the metric. The selected data are finally used in a SimPO-style alignment recipe, so the score is a data-use decision rather than a replacement loss.

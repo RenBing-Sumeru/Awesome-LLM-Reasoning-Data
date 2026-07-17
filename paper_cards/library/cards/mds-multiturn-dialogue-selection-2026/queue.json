@@ -1,0 +1,18 @@
+{
+  "title": "Data Selection for Multi-turn Dialogue Instruction Tuning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.130/",
+    "code": "https://github.com/WisdomShell/MDS",
+    "project": "https://wisdomshell.github.io/MDS/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:48:33Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "聚焦多轮对话记录的选择决策，弥补单轮指令数据选择无法覆盖的训练场景",
+    "updated_at": "2026-07-15T14:48:33Z"
+  }
+}

@@ -1,0 +1,104 @@
+id: mds-multiturn-dialogue-selection-2026
+title: Data Selection for Multi-turn Dialogue Instruction Tuning
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Bo Li
+- Shikun Zhang
+- Wei Ye
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- dialogue
+- instruction-tuning
+- customer-service
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.130/
+  arxiv: https://arxiv.org/abs/2604.07892
+  venue: https://aclanthology.org/2026.findings-acl.130/
+  code: https://github.com/WisdomShell/MDS
+  data: null
+  project: https://wisdomshell.github.io/MDS/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.130
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.130/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Baize general multi-turn corpus and Banking customer-service dialogues.
+  trace_author: Existing multi-turn dialogue corpora; MDS selects complete conversations.
+  answer_format: Ordered user-assistant turns, user-query trajectory embedding, entity structure scores, form score, and semantic
+    bin.
+  process_fields:
+  - dialogue
+  - user_queries
+  - assistant_answers
+  - trajectory_embedding
+  - entity_score
+  - form_score
+  - bin_id
+  environment_or_substrate: Dialogue-level LoRA supervised fine-tuning.
+  verifier_or_reward: Reference-free LLM evaluation, entity F1, embedding cosine similarity, and average rank.
+  terminal_predicate: Selected 10K dialogue subset improves multi-turn benchmarks.
+recipe_metadata:
+  base_model: LLaMA3-8B-Instruct and Qwen3-8B-Instruct.
+  teacher: Qwen3-8B-Instruct for local structural scoring; GPT-4o for evaluation.
+  generator: User-query trajectory coverage plus local entity/form structural selection.
+  filtering_rule: Keep top 50% per semantic bin globally, require form score at least 1.0, then choose top entity-score records
+    under bin quotas.
+  sampling_protocol: K=1,000 bins; select 10K dialogues and expand to turn-level supervision.
+  rollout_count: null
+  temperature: null
+  inference_budget: Offline selection; LoRA three epochs with r=64, alpha=128.
+  optimizer_or_scaffold: LoRA supervised fine-tuning.
+audit:
+  source_mixture: Baize and Banking pools; Banking test has 1,000 held-out dialogues.
+  split: MT-Eval, ConsistentChat, TopDial, and Banking Test.
+  decontamination: Banking Test is held out; no broader contamination audit claimed.
+  license: Verify Baize, Banking, repository, and project terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2026.findings-acl.130/; https://github.com/WisdomShell/MDS; https://wisdomshell.github.io/MDS/'
+  known_failure_modes:
+  - Contradictions are not substantially reduced.
+  - Structure scores depend on scorer and prompts.
+  - Limited corpora, languages, and 8B models.
+  - Offline preprocessing cost.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, method, experiments, limitations, official repository, and project link checked on
+    2026-07-16.
+inclusion_reason: It decides which complete multi-turn dialogue records are consumed by SFT using coverage and structural
+  criteria.
+related: []
+tags:
+- multi-turn-dialogue
+- data-selection
+- sft
+- coverage
+status: verified
+one_line_summary: MDS selects complete dialogue trajectories by combining user-intent coverage with entity-grounded and form-consistent
+  structure.
+reading_priority: essential
+paper_type: Multi-turn dialogue instruction-data selection study
+best_for: Readers curating coherent, diverse conversation histories for dialogue SFT.
+confidence: high
+why_it_matters: It moves the SFT admission decision from isolated turns to the complete dialogue trajectory.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper, repository, and project page were checked.
+category_ids:
+- training_usage_optimization_objectives

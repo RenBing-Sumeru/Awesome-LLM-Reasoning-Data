@@ -1,0 +1,1 @@
+The key output is a ranked SFT subset, not a new reasoning corpus. Its strongest evidence is the 10%-versus-full-pool comparison; before reuse, recompute difficulty for your student and pin the OpenR1 revision.

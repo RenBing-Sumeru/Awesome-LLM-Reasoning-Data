@@ -1,0 +1,3 @@
+The paper interprets successful alignment losses as human-aware losses: objectives whose shape reflects reference-dependent gains, losses, and diminishing sensitivity. It then derives Kahneman-Tversky Optimization from a prospect-theoretic utility model, optimizing the utility of a generation rather than the likelihood of a preference comparison.
+
+Each record is a prompt, a response, and a desirable or undesirable label. This makes binary approval data a first-class training input, while a batch-level estimate of a reference point preserves a constraint against indiscriminately increasing or decreasing every response probability.

@@ -1,0 +1,3 @@
+The pipeline first harvests tutorial-like web text and filters it with heuristics plus a FastText classifier. It then converts retained material into structured tasks and step-by-step instructions, which a VLM agent executes in real browser environments while observations, reasoning, and actions are logged.
+
+A VLM-based evaluator checks the completed trajectory, producing multimodal records with HTML/function-call actions as well as screenshot/pixel actions. The released project provides code, a Hugging Face trajectory dataset, and model artifacts; the reported collection cost is about $0.55 per accepted high-quality trajectory.

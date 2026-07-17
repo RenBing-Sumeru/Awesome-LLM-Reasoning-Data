@@ -1,0 +1,3 @@
+Online RLHF normally updates on every collected rollout, although some experiences are irrelevant to the stated alignment objective or carry incorrect reward feedback. Static pruning cannot respond to the changing policy, and heuristics such as length, perplexity, or difficulty do not say whether a particular rollout moves the policy toward helpfulness or harmlessness.
+
+The paper asks how to decide, at every RL round, which experiences deserve to update the policy. It estimates each experience's local effect on an objective-specific validation return and filters experiences with negative influence. The selection decision is thus tied to the intended policy improvement, not merely to an intrinsic property of a prompt or response.

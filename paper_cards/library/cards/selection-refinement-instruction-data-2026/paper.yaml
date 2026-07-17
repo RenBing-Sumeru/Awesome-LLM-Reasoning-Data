@@ -1,0 +1,97 @@
+id: selection-refinement-instruction-data-2026
+title: 'From Selection to Refinement: Iterative Optimization for Instruction Data'
+year: 2026
+venue: ACL 2026
+authors:
+- Hang Hu
+- Ziyan Liu
+- Rujie Wen
+- Ruihui Hou
+- Xueyan Wu
+- Mu Zhang
+- Jianxing Yu
+- Tong Ruan
+- Jingping Liu
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1889/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.1889/
+  code: https://github.com/surihuhang/From-Selection-to-Refinement--Iterative-Optimization-for-Instruction-Data
+  data: https://github.com/surihuhang/From-Selection-to-Refinement--Iterative-Optimization-for-Instruction-Data
+  project: https://github.com/surihuhang/From-Selection-to-Refinement--Iterative-Optimization-for-Instruction-Data
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1889/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and artifact.
+  trace_author: See the official paper.
+  answer_format: Described in Card source sections.
+  process_fields:
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official paper.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Official paper and artifact release.
+  split: See the official paper.
+  decontamination: Verify before reuse.
+  license: Check official artifact release.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.1889/'
+  known_failure_modes:
+  - Transfer and contamination require task-specific audit.
+  citation_status: verified
+  confidence: high
+  notes: Official paper and artifact checked 2026-07-15.
+inclusion_reason: It changes how a training record, selection decision, or reward signal is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+- data-selection
+status: verified
+one_line_summary: Instruction data optimization identifies valuable records and iteratively refines weak ones before SFT.
+reading_priority: essential
+paper_type: Training-data selection or reward-design study
+best_for: Readers studying post-training data consumption and optimization objectives.
+confidence: high
+why_it_matters: It makes the training-data decision inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and artifact checked.
+category_ids:
+- training_usage_optimization_objectives

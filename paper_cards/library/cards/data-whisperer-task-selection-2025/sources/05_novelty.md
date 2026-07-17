@@ -1,0 +1,3 @@
+The contribution is not merely a faster top-k filter. It changes the record-level selection signal from a proxy such as gradient norm to the candidate's observed role in a simulated few-shot learning episode. The attention term further attributes a shared query outcome to demonstrations according to the model's actual contextual use of each one.
+
+It also introduces selection-to-tuning ratio as a decision boundary for whether a data selector is operationally worthwhile. A selector that improves a subset but costs longer than fine-tuning the full dataset may not be a useful training-data intervention. This framing couples record quality, selection expense, and the eventual SFT consumer in one measurable pipeline.

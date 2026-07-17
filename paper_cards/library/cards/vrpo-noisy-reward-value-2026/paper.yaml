@@ -1,0 +1,72 @@
+id: vrpo-noisy-reward-value-2026
+title: 'VRPO: Rethinking Value Modeling for Robust RL under Noisy Supervision in LLM Post-Training'
+year: 2026
+venue: ACL 2026
+authors: [Dingwei Zhu, Shihan Dou, Zhiheng Xi, Senjie Jin, Guoqiang Zhang, Jiazheng Zhang, Junjie Ye, Mingxu Chai, Enyu Zhou, Ming Zhang, Yuhui Wang, Caishuang Huang, Chenhao Huang, Yunke Zhang, Yuran Wang, Tao Gui, Qi Zhang, Xipeng Qiu, Xuanjing Huang]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [reinforcement_learning, noisy_supervision, preference_learning]
+training_use: [rlvr, preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1103/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.1103/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1103
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1103/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Honor-Dialogue, Light-R1, and SuperGPQA in the reported noisy-reward experiments.
+  trace_author: Policy rollouts; rule-based majority-vote or learned reward models supply noisy reward supervision.
+  answer_format: Prompt or dialogue state, rollout tokens, noisy reward, value prediction, information-bottleneck latent, and token-level advantage estimates.
+  process_fields: [state, rollout, reward, value, advantage, entropy_tokens, perplexity_tokens]
+  environment_or_substrate: PPO-style LLM reinforcement learning under rule-based and learned noisy rewards.
+  verifier_or_reward: Majority-vote pseudo-label rewards or a dialogue reward model; VRPO improves the downstream value estimate rather than replacing the reward source.
+  terminal_predicate: Produce value estimates and advantages that resist reward noise before policy updates.
+recipe_metadata:
+  base_model: Qwen2.5, Qwen3, and Llama3.1 variants in task-specific experiments.
+  teacher: A frozen language model supplies entropy and perplexity signals; reward sources are rule-based votes or a learned dialogue reward model.
+  generator: Policy rollouts under the selected RL environment.
+  filtering_rule: Select high-entropy and high-perplexity token subsets for auxiliary value-model regularization; no corpus-level sample filter is central.
+  sampling_protocol: Five samples for training-time majority voting and 32 for test-time voting in the reported rule-based settings.
+  rollout_count: Configuration-dependent; five training-time and 32 test-time vote samples are reported.
+  temperature: Not reported as a universal setting.
+  inference_budget: Reported experiments run on eight NVIDIA A100 80GB GPUs.
+  optimizer_or_scaffold: PPO-style RL with variational information bottleneck and entropy/perplexity auxiliary value losses; comparisons include PPO, GRPO, Dr.GRPO, Reinforce++, KTAE, and lambda-GRPO.
+audit:
+  source_mixture: Dialogue, mathematics, and science tasks with noisy learned or majority-vote rewards.
+  split: Rule-based evaluation covers MATH500, AIME24, Minerva-Math, AMC23, SampleQA, GPQA, and HLE; dialogue uses the reported Honor-Dialogue setup.
+  decontamination: No broad contamination audit is reported.
+  license: Verify task datasets, model checkpoints, reward-model access, and the internal dialogue-data terms before reproduction.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.1103/'
+  known_failure_modes: [Does not solve all reward noise, Value-model regularization adds training complexity, Rule-based experiments cover only math and science, Some dialogue data and reward details are not publicly released]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, results, limitations, and artifact disclosures were checked on 2026-07-15; no official code or data release is declared.
+inclusion_reason: It changes how noisy reward records are converted into value targets and advantages for RL, directly altering the training objective's consumption of supervision.
+related: []
+tags: [rl, noisy-rewards, value-model, advantage-estimation]
+status: verified
+one_line_summary: VRPO makes the value model a noise-regulating part of RL training so uncertain rewards produce more reliable advantage signals.
+reading_priority: useful
+paper_type: Robust reinforcement-learning objective and value-modeling study
+best_for: Readers training LLMs with noisy rule-based or learned rewards who need to diagnose reward-hacking and unstable advantage estimates.
+confidence: high
+why_it_matters: It treats value estimation as the place where noisy training feedback can be filtered before it becomes a policy update.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no official code or standalone data release is declared.
+category_ids: [training_usage_optimization_objectives]

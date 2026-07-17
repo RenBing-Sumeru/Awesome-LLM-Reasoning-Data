@@ -1,0 +1,89 @@
+id: webarbiter-web-agent-prm-2026
+title: 'WebArbiter: A Principle-Guided Reasoning Process Reward Model for Web Agents'
+year: 2026
+venue: ICLR 2026
+authors:
+- Yao Zhang
+- Shijie Tang
+- Zeyu Li
+- Zhen Han
+- Volker Tresp
+source_role:
+- process_supervision
+verification_contract: mixed
+supervision_granularity:
+- process_reward
+domains:
+- agentic-reasoning
+training_use:
+- agent_training
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2601.21872
+  arxiv: https://arxiv.org/abs/2601.21872
+  venue: null
+  code: https://github.com/YaoZ720/WebArbiterCode
+  data: https://huggingface.co/datasets/ZYao720/WebArbiter-Data
+  project: https://yaozhang.ai/webarbiter/
+  huggingface: https://huggingface.co/datasets/ZYao720/WebArbiter-Data
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official release; see source sections.
+  trace_author: As described by the official paper.
+  answer_format: Training record described in the official paper.
+  process_fields:
+  - prompt
+  - response
+  - feedback
+  environment_or_substrate: See official paper.
+  verifier_or_reward: See official paper.
+  terminal_predicate: See official paper.
+recipe_metadata:
+  base_model: See official paper.
+  teacher: See official paper.
+  generator: See official paper.
+  filtering_rule: See official paper.
+  sampling_protocol: See official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not fully disclosed.
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See official paper and release.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release.
+  lineage: 'Primary source: https://arxiv.org/abs/2601.21872'
+  known_failure_modes:
+  - Verifier, selection, or reward signal may not transfer unchanged.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+inclusion_reason: The paper changes how a training record, selection signal, reward,
+  or trajectory is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+status: verified
+needs: []
+one_line_summary: WebArbiter turns web-agent state and competing actions into principle-guided
+  process judgements for preference learning and reward-guided search.
+why_it_matters: It makes the connection between a data object and a training objective
+  inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

@@ -1,0 +1,1 @@
+Jingfeng Chen、Raghuveer Thirukovalluru、Junlin Wang、Kaiwei Luo 和 Bhuwan Dhingra。2025。《面向长篇问答的原子一致性偏好优化》。载于第十四届国际自然语言处理联合会议暨第四届亚太计算语言学会会议论文集，第 1951–1963 页。https://doi.org/10.18653/v1/2025.ijcnlp-long.106

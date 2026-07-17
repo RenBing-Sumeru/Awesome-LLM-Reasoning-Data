@@ -1,0 +1,3 @@
+JPO treats the joint probability of an instruction and its response as the object of preference. Given two records, it upweights the selected joint pair relative to the rejected joint pair. A conventional conditional comparison is retained as the special case in which the two instructions are identical, so one objective can consume both familiar and newly acquired feedback.
+
+This framing enables labels that a fixed-context protocol hides. Two responses that are both rejected within their own prompts can still be judged decisively when placed beside one another, because annotators compare task fulfillment across the complete records. JPO makes such a judgment a valid optimization target instead of discarding it as incomparable.

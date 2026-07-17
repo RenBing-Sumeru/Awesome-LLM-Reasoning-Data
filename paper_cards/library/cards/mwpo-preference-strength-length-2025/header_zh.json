@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"MWPO 依据隐式奖励差距与回答长度差距为每个 DPO 偏好回答对赋权，以提升对齐表现并抑制冗长输出。","reading_priority_ch":"必读","paper_type_ch":"偏好数据加权与优化目标研究","best_for_ch":"适合设计离线偏好优化、且需要同时应对弱偏好标签与长度偏差的读者。","confidence_ch":"高","authors_ch":"Shiyue Xu、Fu Zhang、Jingwei Cheng、Linfeng Zhou（东北大学）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T13:30:00Z"}

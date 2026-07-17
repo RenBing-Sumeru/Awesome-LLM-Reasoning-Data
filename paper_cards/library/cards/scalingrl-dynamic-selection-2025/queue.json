@@ -1,0 +1,18 @@
+{
+  "title": "Scale Down to Speed Up: Dynamic Data Selection for Reinforcement Learning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-emnlp.412/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:19:51Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "动态决定每轮 RL 使用哪些数学题",
+    "updated_at": "2026-07-15T15:19:51Z"
+  }
+}

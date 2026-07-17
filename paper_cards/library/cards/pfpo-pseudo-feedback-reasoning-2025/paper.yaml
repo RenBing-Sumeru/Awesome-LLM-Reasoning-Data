@@ -1,0 +1,72 @@
+id: pfpo-pseudo-feedback-reasoning-2025
+title: 'Preference Optimization for Reasoning with Pseudo Feedback'
+year: 2025
+venue: ICLR 2025 Spotlight
+authors: [Fangkai Jiao, Geyang Guo, Xingxing Zhang, Nancy F. Chen, Shafiq Joty, Furu Wei]
+source_role: [construction_recipe]
+verification_contract: [programmatic, mixed]
+supervision_granularity: [answer_level, step_level]
+domains: [mathematical-reasoning, code-generation]
+training_use: [preference_learning]
+construction_layer: reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2411.16345
+  arxiv: https://arxiv.org/abs/2411.16345
+  venue: https://openreview.net/forum?id=jkUp3lybXf
+  code: https://github.com/microsoft/unilm/tree/master/PFPO
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  openreview: https://openreview.net/forum?id=jkUp3lybXf
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical and coding reasoning prompts, including MathScale-style questions and APPs-derived programming tasks in the reported experiments.
+  trace_author: The policy samples solutions; a frontier model or policy self-consistency supplies pseudo answers or pseudo test-case outputs.
+  answer_format: Problem, pseudo test cases, sampled solutions, test-pass score, chosen solution, rejected solution, and optional prefix-level continuation preference.
+  process_fields: [problem, pseudo_test_cases, solution, test_score, chosen, rejected, prefix, continuation_score]
+  environment_or_substrate: Answer extraction for single-test tasks and program execution for multi-test coding tasks.
+  verifier_or_reward: Pseudo answers or pseudo input-output test cases are used to calculate the fraction of tests passed by each solution.
+  terminal_predicate: Retain pairs where the winner exceeds a quality threshold and has a sufficient test-score margin over the loser.
+recipe_metadata:
+  base_model: Mathstral-7B, Llama-3.1-8B, and DeepSeek-Coder-7B-v1.5 in reported settings.
+  teacher: A frontier LLM can provide pseudo solutions or test inputs; self-feedback instead uses policy sampling and majority-voted outputs.
+  generator: The policy samples candidate reasoning solutions; for code, a general model generates inputs and a frontier or policy model generates candidate programs.
+  filtering_rule: Use pseudo test pass rate and a quality-plus-margin criterion; construct outcome pairs and optionally process pairs from prefix rollouts.
+  sampling_protocol: The official code documents iterative PFPO-LLM then PFPO-Self runs; exact settings differ by math and code experiment.
+  rollout_count: Multiple candidate solutions per problem; exact count varies by experiment.
+  temperature: Math inference examples in the code use temperature 1.0 and top-p 0.9 with eight samples.
+  inference_budget: Requires solution sampling, test-case generation or majority voting, execution or answer extraction, and iterative pair construction.
+  optimizer_or_scaffold: DPO and prefix-level DPO on pseudo-feedback preference pairs.
+audit:
+  source_mixture: Task prompts, LLM-generated pseudo answers or test cases, policy-generated solutions, execution outputs, and derived preference pairs.
+  split: MATH, GSM8K, College Math, APPs, LiveCodeBench, HumanEval, and MBPP.
+  decontamination: No broad contamination audit is reported.
+  license: Verify source-task, generated test, model, benchmark, and code terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2411.16345'
+  known_failure_modes: [Pseudo tests can encode a wrong majority answer, Execution coverage can miss incorrect programs, Frontier-model feedback adds dependence and cost, Iterative self-feedback can reinforce policy errors]
+  citation_status: verified
+  confidence: high
+  notes: Full ICLR paper, OpenReview record, paper affiliations, and Microsoft's public PFPO implementation were checked on 2026-07-16. The repository describes experiment data preparation but does not provide one pinned standalone training-data release.
+inclusion_reason: It turns pseudo test outcomes into chosen-rejected solution records and directly optimizes a reasoning policy on those records.
+related: []
+tags: [pseudo-feedback, preference-data, test-cases, dpo]
+status: verified
+one_line_summary: PFPO constructs preference pairs for math and code reasoning by evaluating sampled solutions against frontier-generated or self-consistent pseudo test cases.
+reading_priority: essential
+paper_type: Pseudo-feedback preference-data construction and reasoning-optimization study
+best_for: Readers who need scalable preference labels for reasoning tasks with executable or answer-checkable tests but lack expert annotations.
+confidence: high
+why_it_matters: It makes the test case, pass score, and pair-margin rule explicit training objects rather than assuming a human preference label already exists.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR/OpenReview record, arXiv paper, and Microsoft implementation were checked; no standalone data release was verified.
+category_ids: [training_usage_optimization_objectives]

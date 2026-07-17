@@ -1,0 +1,3 @@
+Agent frameworks produce rich multi-turn interactions, but conventional LLM RL usually assumes one prompt and one response. Concatenating a full agent trace into a single sequence hides credit assignment, mixes unrelated calls, and makes training tightly coupled to a particular orchestration framework.
+
+Agent Lightning asks how to convert the execution of an arbitrary agent into a training object without rewriting that agent. Its target is not a new static dataset: it is a standardized sequence of state, action, and reward transitions collected from live agent execution and then consumed by RL.

@@ -1,0 +1,102 @@
+id: agent-lightning-transition-interface-2025
+title: 'Agent Lightning: Train ANY AI Agents with Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Xufang Luo
+- Yuge Zhang
+- Zhiyuan He
+- Zilong Wang
+- Siyun Zhao
+- Dongsheng Li
+- Luna K. Qiu
+- Yuqing Yang
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- agentic-reasoning
+- tool-use
+training_use:
+- agent_training
+- rlvr
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2508.03680
+  arxiv: https://arxiv.org/abs/2508.03680
+  venue: null
+  code: https://github.com/microsoft/agent-lightning
+  data: null
+  project: https://microsoft.github.io/agent-lightning/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2508.03680
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Live agent tasks and runtime state.
+  trace_author: Agent runtime and observability instrumentation.
+  answer_format: State, action, reward transition sequence.
+  process_fields:
+  - state
+  - action
+  - reward
+  - span
+  - trajectory
+  environment_or_substrate: Agent execution with tools and environments.
+  verifier_or_reward: Terminal and optional monitoring-derived intermediate rewards.
+  terminal_predicate: Task-specific environment outcome.
+recipe_metadata:
+  base_model: Agent policy model.
+  teacher: None.
+  generator: Agent runtime.
+  filtering_rule: Task-specific.
+  sampling_protocol: Online agent rollouts.
+  rollout_count: null
+  temperature: null
+  inference_budget: Task-specific.
+  optimizer_or_scaffold: LightningRL with transition credit assignment.
+audit:
+  source_mixture: Deployment tasks and online agent trajectories.
+  split: Task-specific.
+  decontamination: Audit environment and task overlap.
+  license: MIT repository; verify task and environment terms.
+  lineage: 'Primary source: https://arxiv.org/abs/2508.03680'
+  known_failure_modes:
+  - Monitoring shortcut rewards
+  - Schema omissions
+  - Long-range credit errors
+  citation_status: verified
+  confidence: high
+  notes: Full paper and official code checked; no standalone dataset claimed.
+inclusion_reason: It specifies how online agent trajectories are serialized and consumed by RL training.
+related: []
+tags:
+- agent-training
+- trajectory
+- rl
+status: verified
+one_line_summary: Agent Lightning converts arbitrary agent execution into standardized transitions for decoupled RL training.
+reading_priority: essential
+paper_type: Agent trajectory interface and reinforcement-learning framework
+best_for: Readers designing how online agent data enters RL training.
+confidence: high
+why_it_matters: It makes the online training record and credit-assignment boundary explicit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and code checked; data is intentionally null.
+category_ids:
+- training_usage_optimization_objectives

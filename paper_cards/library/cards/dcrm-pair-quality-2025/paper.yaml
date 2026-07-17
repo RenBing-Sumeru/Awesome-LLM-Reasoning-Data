@@ -1,0 +1,72 @@
+id: dcrm-pair-quality-2025
+title: 'DCRM: A Heuristic to Measure Response Pair Quality in Preference Optimization'
+year: 2025
+venue: Findings of EMNLP 2025
+authors: [Chengyu Huang, Tanya Goyal]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [alignment, preference_learning]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.136/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.136/
+  code: https://github.com/HCY123902/DCRM
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.136
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.136/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: UltraFeedback seed prompts in the reported preference-data constructions.
+  trace_author: Candidate responses are sampled from the reference policy or other language models; a reward model supplies pair labels and margins.
+  answer_format: Prompt, chosen response, rejected response, reward margin, token edit distance, reference-policy log-probability difference, and DCRM score.
+  process_fields: [prompt, chosen, rejected, reward_margin, edit_distance, logprob_difference, dcrm_score]
+  environment_or_substrate: Offline preference optimization for conversational and instruction-following models.
+  verifier_or_reward: A reward model supplies the preference margin; the reference policy supplies response likelihoods.
+  terminal_predicate: Retain the candidate pair with the highest distance-calibrated reward margin from an available response pool.
+recipe_metadata:
+  base_model: LLaMA-2-7B-Chat, LLaMA-3.2-1B-Instruct, and Gemma-2B-IT.
+  teacher: A reward model for pairwise preference labels and scores.
+  generator: The reference policy and comparison models sample response candidates.
+  filtering_rule: Rank candidate response pairs by reward margin normalized by token edit distance and reference-policy log-probability difference.
+  sampling_protocol: Best-of-N-squared pairing evaluates candidate pairs from a response pool and selects the highest-scoring pair.
+  rollout_count: N is configuration-dependent; the paper names the selection rule Best-of-N-squared rather than fixing one universal N.
+  temperature: Not reported as a universal construction setting.
+  inference_budget: Pair scoring requires reward-model inference plus reference-policy likelihood computation for candidate responses.
+  optimizer_or_scaffold: DPO is held fixed for the central comparison; downstream evaluations include the reselected preference datasets.
+audit:
+  source_mixture: UltraFeedback seed prompts and responses sampled by the compared language-model sources.
+  split: Training constructions are evaluated on AlpacaEval, MT-Bench, and Arena-Hard; the paper does not announce a new standalone selected-pair release.
+  decontamination: No comprehensive contamination audit is reported.
+  license: Verify UltraFeedback, source-model, reward-model, and code terms before reusing a reconstructed dataset.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.136/'
+  known_failure_modes: [Reward-model margins can be miscalibrated, DCRM depends on the chosen reference policy, Pair selection incurs quadratic candidate comparisons, Evidence is limited to the reported conversational benchmarks]
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper, affiliations, method, experiment tables, limitations, and code URL were checked on 2026-07-15.
+inclusion_reason: It changes which response pairs preference optimization consumes by explicitly selecting dense desired differences rather than merely large reward gaps.
+related: []
+tags: [preference-data, response-pair-selection, dpo, reward-margin]
+status: verified
+one_line_summary: DCRM selects preference pairs whose reward-relevant contrast is large relative to their noisy lexical and model-probability differences.
+reading_priority: essential
+paper_type: Preference-pair quality metric and data-selection study
+best_for: Readers curating chosen-rejected response pairs for offline preference optimization who need an auditable criterion beyond reward-gap maximization.
+confidence: high
+why_it_matters: It makes the usefulness of a preference pair a training-data decision, connecting pair construction directly to downstream preference-optimization outcomes.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its declared code URL were checked; no official selected-pair dataset release is declared.
+category_ids: [training_usage_optimization_objectives]

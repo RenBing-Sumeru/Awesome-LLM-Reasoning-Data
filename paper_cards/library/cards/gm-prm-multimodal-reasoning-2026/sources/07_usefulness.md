@@ -1,0 +1,1 @@
+Use it when a multimodal reasoning system needs step-level feedback that distinguishes visual grounding from symbolic logic. Pin image access and source licenses, sample first-error corrections for human review, and compare a scalar reward with the model’s corrective feedback under the same candidate budget.

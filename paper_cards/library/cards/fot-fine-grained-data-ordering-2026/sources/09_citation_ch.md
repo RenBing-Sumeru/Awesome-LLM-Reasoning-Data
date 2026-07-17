@@ -1,0 +1,1 @@
+Hu, Xiaomeng, Yixuan Tang, Haoze Li, Hao Chen, Qi Zhang, Zhanming Shen, Yiming Zhang, Haobo Wang 和 Junbo Zhao。2026。*Fine-Grained Data Ordering：提升大语言模型微调的细粒度数据排序*。ACL 2026 Findings 论文集，第 20406–20418 页。https://aclanthology.org/2026.findings-acl.1021/

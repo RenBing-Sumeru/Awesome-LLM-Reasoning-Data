@@ -1,0 +1,3 @@
+Earlier agent datasets commonly rely on human demonstrations or synthetic instructions without a live execution trace. AgentTrek changes the construction interface by using web tutorials as plans for guided replay, then retaining trajectories only after an environment-facing agent and evaluator have produced a grounded record.
+
+Its contribution is therefore a scalable data-production and acceptance decision: tutorial text is not directly imitated, but converted into a task whose executed trace becomes training data. The browser agent and evaluator are important components, yet the novelty for post-training is the tutorial-to-verified-trajectory pipeline.

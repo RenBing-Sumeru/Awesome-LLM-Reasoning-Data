@@ -1,0 +1,3 @@
+Earlier automatic PRM data often derives a step label from future rollout success or from an LLM judge. GroundedPRM changes the record's evidence contract by storing both executable local verification and a trajectory-level signal, then training a generative model on their fused decision. It does not treat a correct final answer as proof that every preceding step deserves positive supervision.
+
+The construction also retains a rationale aligned with the verified binary label, so the consumer can be audited for whether it explains a real tool result rather than merely predicts a score. The novelty is not MCTS alone or a mathematics verifier alone; it is their use together to decide which process records train the reward model and how those records are consumed.

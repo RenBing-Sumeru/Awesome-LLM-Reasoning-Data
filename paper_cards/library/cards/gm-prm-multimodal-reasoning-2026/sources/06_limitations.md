@@ -1,0 +1,1 @@
+The annotations are model-generated and the images originate in an external source, so label fidelity and upstream licensing require separate checks. No official code release was confirmed in the cited release; users should not infer implementation details from the dataset alone.

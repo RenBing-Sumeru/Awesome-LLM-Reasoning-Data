@@ -1,0 +1,16 @@
+{
+  "title": "AgentTrek: Agent Trajectory Synthesis via Guiding Replay with Web Tutorials",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2412.09605"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:41:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将网页教程经真实环境引导回放和评估后转为多模态智能体轨迹，提供可复用的网页智能体训练数据生产链路",
+    "updated_at": "2026-07-15T12:41:52Z"
+  }
+}

@@ -1,0 +1,3 @@
+On Qwen2-7B SFT, SSO-DPO reports AlpacaEval length-controlled win rate 43.0 and MT-Bench 8.66, compared with 37.7 and 8.59 for principle-based DPO. On Llama3-8B SFT, it reports 35.0 and 7.96 versus 29.5 and 7.92. It also improves some objective evaluations, although the paper does not claim a consistent MMLU gain.
+
+For reward modeling, a Llama3-8B-Instruct model trained on 60K SSO pairs scores 80.0 average on RewardBench, above 79.5 for UltraFeedback and 78.9 for principle-based pairs. Mixing its synthetic pairs with Skywork-Reward-Preference-80K-v0.2 reaches 86.3 versus 84.5 for Skywork alone. A 200-query GPT-4 analysis reports improved pair accuracy and average response probability, but is limited evidence for those construction claims.

@@ -1,0 +1,3 @@
+Process reward models normally require a label for every reasoning step. Such labels are expensive to annotate and even automated rollout labels require many additional model calls. A final answer, however, is often cheap to check, but it does not reveal which intermediate step was sound or unsound.
+
+FreePRM asks whether terminal outcome labels alone can train a useful step-level reward model. It begins with deliberately noisy pseudo labels that assign the outcome label to all steps, then changes the training objective so uncertain steps can avoid being forced into an unjustified correct-or-wrong decision.

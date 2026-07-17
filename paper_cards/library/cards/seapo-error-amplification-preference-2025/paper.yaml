@@ -1,0 +1,76 @@
+id: seapo-error-amplification-preference-2025
+title: 'SeaPO: Strategic Error Amplification for Robust Preference Optimization of Large Language Models'
+year: 2025
+venue: Findings of EMNLP 2025
+authors: [Jun Rao, Yunjie Liao, Xuebo Liu, Zepeng Lin, Lian Lian, Dong Jin, Shengjun Cheng, Jun Yu, Min Zhang]
+source_role: [construction_recipe]
+verification_contract: [judgment_required]
+supervision_granularity: [answer_level]
+domains: [reasoning, code_generation, truthfulness]
+training_use: [preference_learning]
+construction_layer: optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.898/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.898/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.898
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.898/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Existing positive preference examples and their questions across reasoning, code, and truthfulness tasks.
+  trace_author: An error-injection model rewrites negative answers from positive-answer sources.
+  answer_format: Prompt, chosen answer, error type, injected-error rejected answer, and preference-training pair.
+  process_fields: [prompt, chosen, rejected, error_type, severity, selected]
+  environment_or_substrate: Preference optimization trained on synthetic chosen-rejected pairs.
+  verifier_or_reward: The objective lowers probability of injected negative answers relative to chosen answers; no external reward-model scoring is required for pair construction.
+  terminal_predicate: A pair enters training when the negative response contains a targeted strategic error and is paired with the original positive response.
+recipe_metadata:
+  base_model: Evaluations span 1.5B to 14B models including Llama and Qwen families.
+  teacher: A low-capability error injector creates negatives rather than a high-capability reward model selecting them.
+  generator: The error injector rewrites answers with correctness, logical, or hallucination-related error patterns.
+  filtering_rule: Construct negatives by injecting strategic errors; mix error types or choose task-relevant types for preference optimization.
+  sampling_protocol: Start from a positive answer, create an intentionally worse counterpart, then optimize the pair with an error-focused preference objective.
+  rollout_count: Not applicable.
+  temperature: Not reported.
+  inference_budget: The paper compares error types, error severity, source models, and optimization objectives rather than a fixed universal subset size.
+  optimizer_or_scaffold: Error-focused preference optimization.
+audit:
+  source_mixture: Open preference datasets and task sets covering mathematics, code, knowledge, translation, and truthfulness.
+  split: The paper reports multiple downstream evaluation sets; no new preference-pair release is declared.
+  decontamination: No full contamination audit is reported.
+  license: Verify the terms of each positive-data source and all downstream benchmarks before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.898/'
+  known_failure_modes:
+  - Injected errors may not match real deployment failures.
+  - Positive-pair quality varies across source datasets.
+  - Error-type benefits are task dependent.
+  - No official code or generated-pair release is declared.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL full paper, affiliations, method, results, and limitations were checked on 2026-07-15.
+inclusion_reason: It explicitly constructs the rejected side of preference records to make optimization target specific recurring error modes rather than weakly separated chosen-rejected pairs.
+related: []
+tags: [preference-optimization, synthetic-negatives, error-injection, data-construction]
+status: verified
+one_line_summary: SeaPO creates deliberately more erroneous rejected responses so preference optimization can suppress targeted reasoning, logic, and hallucination errors.
+reading_priority: essential
+paper_type: Synthetic preference-negative construction study
+best_for: Readers designing preference data when reward-model ranking produces weak or nearly tied negative responses.
+confidence: high
+why_it_matters: It changes the content and severity of negative preference evidence, making the data itself encode the failure modes training should reduce.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no official code or data release is declared.
+category_ids: [training_usage_optimization_objectives]

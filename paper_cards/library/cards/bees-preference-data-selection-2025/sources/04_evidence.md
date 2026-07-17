@@ -1,0 +1,3 @@
+With 2,000 selected examples, BeeS is best or second best across the reported TLDR, Helpful and Harmless, and UltraFeedback comparisons, while several single-margin and low-gap strategies fall below random selection on at least one task. On AlpacaEval 2.0, the reported 6,000-pair BeeS subsets outperform full UltraFeedback training in all four Llama-3-8B base or instruct settings.
+
+For iterative DPO, retaining 5,000 of 20,000 prompts per round yields a final reported length-controlled win rate of 48.49 and raw win rate of 54.99 for Llama-3-8B-Instruct, versus 44.51 and 53.12 for the unfiltered DPO row. The paper also reports that a 3,000-pair BeeS subset can match full-set performance in one online setting.

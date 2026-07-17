@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentTrek 将公开网页教程转为经检查的多模态智能体轨迹，用于训练浏览器智能体。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体轨迹合成与训练数据发布论文",
+  "best_for_ch": "研究网页智能体数据合成与后训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yiheng Xu, Dunjie Lu, Zhennan Shen, Junli Wang, Zekun Wang, Yuchen Mao, Caiming Xiong, Tao Yu",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T22:00:00Z"
+}

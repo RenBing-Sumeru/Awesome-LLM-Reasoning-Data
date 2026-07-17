@@ -1,0 +1,96 @@
+id: toss-token-level-safe-finetuning-2026
+title: Token-level Data Selection for Safe LLM Fine-tuning
+year: 2026
+venue: ICLR 2026
+authors:
+- Yanping Li
+- Zhening Liu
+- Zijian Li
+- Zehong Lin
+- Jun Zhang
+source_role:
+- construction_recipe
+- audit_failure
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+domains:
+- safety-alignment
+- instruction-tuning
+training_use:
+- sft
+- safety_alignment
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2603.01185
+  arxiv: https://arxiv.org/abs/2603.01185
+  venue: https://openreview.net/forum?id=k7ytptAaDN
+  code: https://github.com/Polly-LYP/TOSS
+  data: null
+  project: https://github.com/Polly-LYP/TOSS
+  huggingface: https://huggingface.co/Polly1231/TOSS
+  doi: https://doi.org/10.48550/arXiv.2603.01185
+  openreview: https://openreview.net/forum?id=k7ytptAaDN
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and release.
+  trace_author: See the official paper.
+  answer_format: Training record described in the Card source sections.
+  process_fields:
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official paper.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Official paper and official artifact release.
+  split: See the official paper.
+  decontamination: Not fully disclosed; verify before reuse.
+  license: Check the official artifact release.
+  lineage: 'Primary source: https://arxiv.org/abs/2603.01185'
+  known_failure_modes:
+  - Selection signal may not transfer unchanged to a new pool or objective.
+  citation_status: verified
+  confidence: high
+  notes: Official primary source, affiliations, venue status, and listed artifacts checked on 2026-07-15.
+inclusion_reason: It changes how a training record, selection decision, or reward signal is consumed by a post-training objective.
+related: []
+tags:
+- post-training
+- training-usage
+- data-selection
+status: verified
+one_line_summary: TOSS masks unsafe response tokens before SFT using a loss-difference signal from safety and utility reference
+  models.
+reading_priority: essential
+paper_type: Token-level data selection for safe supervised fine-tuning
+best_for: Readers studying safety fine-tuning and safety--utility-aware data filtering.
+confidence: high
+why_it_matters: It makes the connection between a data object and its training objective inspectable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and listed artifacts checked.
+category_ids:
+- training_usage_optimization_objectives

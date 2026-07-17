@@ -1,0 +1,3 @@
+Long-form answers can contain many plausible details, so a model may sound knowledgeable while quietly inserting unsupported facts. Existing factuality alignment commonly asks a stronger model or an external knowledge base to judge generated claims, but those resources can be costly, unavailable, or themselves unsuitable for scalable training.
+
+ACPO asks whether a model can construct factuality preference pairs from its own answers. It treats agreement among independently sampled sentence-level facts as a training signal, then uses the resulting comparison between a high-consistency and a low-consistency answer to make long-form question answering more reliable.
