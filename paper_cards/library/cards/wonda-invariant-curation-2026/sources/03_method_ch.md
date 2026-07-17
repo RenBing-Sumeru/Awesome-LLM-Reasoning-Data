@@ -1,1 +1,0 @@
-流程从含假设、程序和目标性质的验证查询开始。它取得 raw solver/verifier invariant，做结构化 AST 规范化，提出更清晰的语义等价候选，然后在程序验证环境中检查正确性/归纳性和充分性。通过的候选进入 SFT 数据；拒绝、超时和 UNKNOWN 必须保留为不同状态。发布实现使用 UAutomizer 和 runlim。复现需固定源程序、原始 invariant、改写模型/提示、AST 变换、候选数、verifier 版本、时限/内存与选择规则。

@@ -1,1 +1,0 @@
-Use the paper to add an audit layer to any Lean-based dataset: statement provenance, checker results, certificate type, toolchain version, and a field for semantic fidelity review. It also supplies concrete tests for deciding whether an apparent proof success is a valid training/evaluation outcome.

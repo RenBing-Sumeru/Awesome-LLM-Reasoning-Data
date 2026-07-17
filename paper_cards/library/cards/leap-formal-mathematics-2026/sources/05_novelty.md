@@ -1,3 +1,0 @@
-Prior systems often rely on one-shot generation, specialized prover models, or shallow proof search. LEAP combines human-style blueprints with formal sketches, an explicit AND-OR dependency structure, iterative Lean feedback, and a difficult new formal benchmark. Its 2026 direction signal is that long-horizon agent traces can be grounded by an exact terminal predicate rather than by judge-model preference.
-
-The top-institution quality signal is the Google DeepMind authorship and official benchmark/code release. The underlying formal checker is not new, and Lean feedback alone does not solve theorem selection, benchmark contamination, or the cost of search. Before reuse, inspect the encoded statement, toolchain version, retrieval context, and per-problem compute.

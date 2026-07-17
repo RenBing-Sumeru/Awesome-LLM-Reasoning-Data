@@ -1,1 +1,0 @@
-Read the introduction and benchmark section together: the contribution is both an agent scaffold and a new hard formal evaluation surface. Track the distinction between one-shot pass@k and iterative search. For data work, the most reusable unit is the tuple of theorem context, proof action, Lean feedback, provenance, compute budget, and checker result.

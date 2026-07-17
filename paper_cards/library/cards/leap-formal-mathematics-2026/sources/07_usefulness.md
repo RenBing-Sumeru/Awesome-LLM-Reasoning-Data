@@ -1,1 +1,0 @@
-Use LEAP as a reference design for verifier-in-the-loop agent datasets: serialize subgoal state, candidate artifact, exact tool feedback, search budget, and terminal acceptance. It is useful for formal-math evaluation, agent training research, and audits of whether a claimed reasoning gain is backed by an executable proof contract.

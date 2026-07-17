@@ -1,1 +1,0 @@
-既有 invariant 数据常直接保留 raw solver string，或在生成后没有明确的正确性边界。WONDA 的 ICML 2026 贡献是把“可学习性”当作清洗目标，但在每一步高风险改写后仍保留程序化验证门槛。AST 规范化与 formal checking 并不新；方向信号是它们与 LLM 扩增和公开训练/评测基础设施的整合。它说明数据质量可以被优化，而无需降低 verifier 契约。

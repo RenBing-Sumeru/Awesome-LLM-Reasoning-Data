@@ -1,1 +1,0 @@
-Formal validity is relative to the encoded program/query and verifier configuration. LLM rewriting may bias the retained distribution even when candidates remain valid. The verifier can time out or return UNKNOWN, while speed metrics are environment-dependent. Upstream C-program licenses and downstream benchmark overlap require separate review.
