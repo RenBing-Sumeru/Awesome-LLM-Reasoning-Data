@@ -88,11 +88,27 @@ function contextPrompts(context) {
   if (!context?.value) return defaultPrompts();
   const label = humanize(context.value);
   if (context.type === "track") {
+    if (isZh()) {
+      return [
+        `${label} 这个方向应该先读什么？`,
+        `对比 ${label} 里的数据对象与验证器类型。`,
+        `为 ${label} 生成一份审计清单。`,
+        `${label} 里哪些论文对新手最重要？`,
+      ];
+    }
     return [
       `What should I read first for the ${label} track?`,
       `Compare the data objects and verifier types in ${label}.`,
       `Generate an audit checklist for ${label}.`,
       `Which papers in ${label} matter most for a beginner?`,
+    ];
+  }
+  if (isZh()) {
+    return [
+      `把 ${label} 作为一篇后训练推理数据论文来解读。`,
+      `${label} 涉及哪些数据对象、验证器或奖励，以及什么训练用途？`,
+      `为 ${label} 生成一份审计清单。`,
+      `把 ${label} 与本图谱中的相关工作对比。`,
     ];
   }
   return [

@@ -1,435 +1,132 @@
-# 🔁 Rollout, Search, and Test-Time Trace Data
+# 🔁 05 · Rollout / Search / TTC Trace
 
 > Multiple rollouts, search trees, best-of-N samples, self-consistency traces, MCTS records, selected/rejected candidates, and test-time compute logs.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=rollout_search_test_time_trace_data&mode=find_papers)
-> Try: `What should I read first for 🔁 Rollout / Search / TTC Trace?`
-> Try: `Compare the data objects and verifier types in 🔁 Rollout / Search / TTC Trace.`
-> Try: `Generate an audit checklist for 🔁 Rollout / Search / TTC Trace.`
-
-## 1. What This Track Studies
+[Back to all tracks](README.md) · [Searchable site](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **103** cards · **58** Read first
 
 Use this track when the important data is not one answer but a set of sampled attempts, search paths, selector scores, or inference-budget traces.
 
-A growing part of reasoning data is produced by search. A model samples many attempts, a verifier or value function scores them, and the system keeps accepted candidates, sometimes with rejected traces, budgets, tree nodes, or pass-rate bands. These records connect data construction, process supervision, RLVR, and test-time compute.
+## Read first
 
-This track exists because search traces are often hidden inside other categories. If a paper relies on best-of-N, self-consistency, MCTS, rejection sampling, long-to-short reasoning, or repeated sampling, contributors should record the rollout budget and selector, not just the final chosen answer.
+| Paper | Year | Verified by | What it contributes |
+|---|---:|---|---|
+| [Adaptive Test-Time Compute Allocation for Reasoning LLMs via Constrained Policy Optimization](https://arxiv.org/abs/2604.14853) | 2026 | Programmatic | A budget-allocation method that turns repeated responses into supervised compute-policy labels. |
+| [AutoL2S: Auto Long-Short Reasoning for Efficient Large Language Models](https://aclanthology.org/2026.findings-acl.831/) | 2026 | Programmatic | A long-to-short reasoning-distillation recipe that attempts to retain correct concise traces. |
+| [CodeScout: An Effective Recipe for Reinforcement Learning of Code Search Agents](https://arxiv.org/abs/2603.17829) | 2026 | Programmatic | Releases 54,845 full terminal-search RL rollouts for CodeScout-14B and CodeScout-4B, preserving grouped attempts, component localization rewards, and 8,281 zero-reward failures rather than publishing only successful trajectories. |
+| [From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models](https://openreview.net/forum?id=r7uOjvZdzO) | 2026 | Programmatic | VLM-CapCurriculum releases 32,736 staged RLVR problems with 16 extracted Qwen3-VL-8B answers, per-answer correctness flags, and a pass rate per row, enabling capability-first and within-stage difficulty curricula without releasing the underlying full reasoning completions. |
+| [How Reasoning Evolves from Post-Training Data: An Empirical Study Using Chess](https://arxiv.org/abs/2604.05134) | 2026 | Programmatic | Releases a 120M-token chess SFT dataset and code spanning filtered Llama 4 Maverick responses, programmatic alpha-beta-style search traces, and engine-derived best-move and best-line targets, then studies their downstream RL behavior. |
+| [Lookahead Tree-Based Rollouts for Enhanced Trajectory-Level Exploration in Reinforcement Learning with Verifiable Rewards](https://openreview.net/forum?id=4nLvUk8edu) | 2026 | Programmatic | LATR generates diverse on-policy RLVR rollout groups by probability-gated branching, lookahead simulation, and similarity pruning, while its public data release contains processed Countdown and math prompt/reward rows rather than the raw rollout trees. |
+| [Making Slow Thinking Faster: Compressing LLM Chain-of-Thought via Step Entropy](https://arxiv.org/abs/2508.03346) | 2026 | Mixed | The paper ranks newline-delimited CoT steps by model-derived entropy, replaces low-entropy steps with [SKIP], and trains SFT-plus-GRPO models to generate shorter reasoning traces. |
+| [MMSearch-R1: Incentivizing LMMs to Search](https://aclanthology.org/2026.acl-long.114/) | 2026 | Mixed | MMSearch-R1: Incentivizing LMMs to Search records multi-round text/image search traces and cached image-search results under outcome reward plus search penalty. |
+| [NFT: Bridging Supervised Learning and Reinforcement Learning in Math Reasoning](https://arxiv.org/abs/2505.18116) | 2026 | Programmatic | NFT trains math reasoning from verifier-separated positive and negative rollouts instead of treating rejected answers as disposable. |
+| [On Data Engineering for Scaling LLM Terminal Capabilities](https://arxiv.org/abs/2602.21193) | 2026 | Mixed | Releases exactly 366,154 train-only terminal SFT episodes from dataset adapters and skill-based synthesis, while the paper's no-filter recipe retains incomplete and failed behavior but the public rows expose no normalized outcome or reward. |
+| [Optimal Self-Consistency for Efficient Reasoning with Large Language Models](https://arxiv.org/abs/2511.12309) | 2026 | Programmatic | A global self-consistency sampler that reallocates chain-of-thought calls toward uncertain questions without updating the model. |
+| [QED-Nano: Teaching a Tiny Model to Prove Hard Theorems](https://arxiv.org/abs/2604.04898) | 2026 | Judgment required | QED-Nano couples 128-attempt difficulty statistics, 16-rollout rubric-reward GRPO, and three-turn Reasoning-Cache training, while FineProofs-RL releases prompts, rubrics, and score arrays but not the proofs behind them. |
 
-For curation, the most important audit question is attribution: did performance improve because of better data, more samples, a stronger verifier, a different optimizer, or a larger inference budget?
+## All cards
 
-## 2. Why It Matters for Post-Training Reasoning Data
-
-Read this page as a data map, not only a bibliography. For each paper, ask what record is being produced, what feedback contract makes it trainable or evaluable, how it could enter SFT/RM/PRM/RLVR/agent training, and which audit failure would make the claim misleading.
-
-## 3. Subfield Navigator
-
-| Subfield | What it helps you read | Key audit risk |
-|---|---|---|
-| 🎲 Multiple rollouts / best-of-N | sets of sampled attempts and selected accepted answers | only accepted traces are visible |
-| 🌳 Search trees / MCTS | tree search, MCTS, verifier-guided search, and path selection | tree policy or value model is hidden |
-| 🔎 Rejection sampling traces | accepted and rejected candidates produced during filtering | rejected examples are not released |
-| 🧠 Self-consistency / repeated sampling | vote-based or agreement-based reasoning from repeated samples | sampling budget is not comparable |
-| ⏱️ Test-time compute logs | thinking budgets, inference-time scaling, and runtime search traces | training and inference budget effects are conflated |
-| ✂️ Long2short / distill-from-search | using long search traces to train shorter or cheaper behavior | teacher search artifacts become hidden data lineage |
-
-### Contents
-
-- [🎲 Multiple rollouts / best-of-N](#multiple-rollouts-best-of-n)
-- [🌳 Search trees / MCTS](#search-trees-mcts)
-- [🔎 Rejection sampling traces](#rejection-sampling-traces)
-- [🧠 Self-consistency / repeated sampling](#self-consistency-repeated-sampling)
-- [⏱️ Test-time compute logs](#test-time-compute-logs)
-- [✂️ Long2short / distill-from-search](#long2short-distill-from-search)
-
-## 4. Read First
-
-| Work | Year | Links | Data object | Feedback / verifier | Why it matters |
-|---|---:|---|---|---|---|
-| [SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168) | 2024 | [Paper](https://arxiv.org/abs/2407.13168) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/scicode-bench/SciCode) · [Project](https://scicode-bench.github.io/) · [Card](../../cards/benchmarks/scicode.md) | code solution evaluated with scientist-annotated tests or expected outputs.; process: domain, main problem, subproblem, background text, generated code, tests, gold solution, pass/fail.; scientific Python/code execution benchmark harness. | test cases and scientist-curated gold solutions. | It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests. |
-| [LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626) | 2023 | [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://zenodo.org/records/10114157) · [Project](https://leandojo.org/) · [Card](../../cards/agents/leandojo.md) | Lean tactic sequence or proof script checked by Lean.; process: repository commit, theorem, proof state, premises, retrieved context, tactic, Lean feedback, split.; Lean proof assistant environment and traced math-library repositories. | Lean checker and environment feedback. | It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record. |
-| [Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511) | 2023 | [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../../cards/recipes/self-rag.md) | generation with retrieval decisions, critique signals, and final answer.; process: query, retrieval decision token, retrieved passage, support critique, utility critique, final answer.; retriever plus generation model with special reflection tokens. | critique signals and task-specific factuality/answer-quality evaluation. | It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations. |
-| [Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374) | 2021 | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../../cards/benchmarks/evaluating-large-language-models-trained-on-code.md) | executable Python function.; process: prompt, generated code, unit-test results, sample count.; Python execution sandbox and test suite. | HumanEval tests and pass@k evaluation. | It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions. |
-| [HumanEval: Hand-Written Evaluation Set](https://arxiv.org/abs/2107.03374) | 2021 | [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../../cards/benchmarks/humaneval-hand-written-evaluation-set.md) | Python function completion; process: prompt, canonical solution, unit tests; Python execution harness | unit tests | It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes. |
-| [Measuring coding challenge competence with APPS](https://arxiv.org/abs/2105.09938) | 2021 | [Paper](https://arxiv.org/abs/2105.09938) · [OpenReview](https://openreview.net/forum?id=sD93GOzH3i5) · [Code](https://github.com/hendrycks/apps) · [Card](../../cards/benchmarks/apps.md) | Python code submission evaluated against test cases.; process: difficulty, prompt, starter code where available, generated solution, public/hidden test outcomes.; offline programming benchmark with executable Python tests. | unit-test pass/fail signal. | It is a pre-HumanEval large-scale code benchmark where the feedback-bearing object is a problem statement, generated program, and unit-test outcome. |
-| [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](https://arxiv.org/abs/2507.09075) | 2025 | [Paper](https://arxiv.org/abs/2507.09075) · [Card](../../cards/releases/opencodereasoning_ii.md) | question-solution-critique triple; process: solution, critique, language/runtime label; coding benchmark / compiler substrate | tests and critique model signals | Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique. |
-| [SWE-Gym](https://arxiv.org/abs/2412.21139) | 2025 | [Paper](https://arxiv.org/abs/2412.21139) · [Card](../../cards/agents/swe_gym.md) | full episode; state action level | environmental, programmatic | Repository-scale training environment showing substrate as data. |
-| [Leaky Thoughts](https://arxiv.org/abs/2506.15674) | 2025 | [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../../cards/failures/leaky-thoughts.md) | internal reasoning trace, final answer, and leakage/extraction outcome.; process: sensitive field, prompt-injection condition, reasoning length or budget, output leakage indicator.; personal-agent evaluation setting with hidden or internal reasoning traces. | extraction probes and agentic evaluations. | It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface. |
-| [The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786) | 2025 | [Paper](https://arxiv.org/abs/2510.13786) · [OpenReview](https://openreview.net/forum?id=FMjeC9Msws) · [Card](../../cards/recipes/the-art-of-scaling-rl-compute.md) | training runs, reward outcomes, validation curves, and ablation results.; process: loss aggregation, normalization, curriculum, off-policy choice, compute budget, asymptote, efficiency.; large-scale RL training experiments. | compute-performance curves and recipe ablations. | It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it. |
-
-## 5. Full Paper List
-
-### <a id="multiple-rollouts-best-of-n"></a>🎲 Multiple rollouts / best-of-N
-
-- 🧰 **[Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374)**
-  <sub>2021 · arXiv · 🧰 benchmark · 📦 data release · programmatic · evaluation · test time compute · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../../cards/benchmarks/evaluating-large-language-models-trained-on-code.md)
-  _Data object:_ executable Python function.; process: prompt, generated code, unit-test results, sample count.; Python execution sandbox and test suite.
-  _Feedback / verifier:_ HumanEval tests and pass@k evaluation.
-  _Recipe signal:_ teacher: benchmark authors and public code pretraining corpus context.; generator: model samples code completions.
-  _Audit focus:_ Small public benchmarks are easy to memorize., Unit tests can miss incorrect or insecure behavior., Repeated sampling can hide low single-sample reliability.
-  _Why it matters:_ It connects code reasoning data to executable verification: generated programs are judged by tests, not by surface similarity to reference solutions.
-- 🧰 **[HumanEval: Hand-Written Evaluation Set](https://arxiv.org/abs/2107.03374)**
-  <sub>2021 · arXiv / OpenAI dataset · 🧰 benchmark · 📦 data release · programmatic · evaluation · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2107.03374) · [Code](https://github.com/openai/human-eval) · [Card](../../cards/benchmarks/humaneval-hand-written-evaluation-set.md)
-  _Data object:_ Python function completion; process: prompt, canonical solution, unit tests; Python execution harness
-  _Feedback / verifier:_ unit tests
-  _Recipe signal:_ generator: benchmark authors; filtering rule: hand-written benchmark curation
-  _Audit focus:_ public benchmark contamination, unit-test coverage gaps
-  _Why it matters:_ It made unit-test execution a standard verifier for code reasoning, pass@k reporting, and later code-data filtering recipes.
-
-### <a id="search-trees-mcts"></a>🌳 Search trees / MCTS
-
-- 🏗️ **[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152)**
-  <sub>2024 · arXiv · 🏗️ construction recipe · 🚀 model report · programmatic · environmental · rlvr · agent training · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2408.08152) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL) · [Card](../../cards/recipes/deepseek-prover-v1-5.md)
-  _Data object:_ Lean proof script, proof-search path, feedback signal, and verification result.; process: theorem, proof attempt, Lean feedback, reward, search node, final proof, pass/fail result.; Lean 4 proof assistant plus RMaxTS search procedure.
-  _Feedback / verifier:_ proof assistant feedback used for RL and search selection.
-  _Recipe signal:_ teacher: Lean checker feedback and prior formal-proof dataset.; generator: model samples proof candidates and tree-search paths.
-  _Audit focus:_ Search budget can dominate model quality., Checker feedback is sparse and version-dependent., RL can optimize toward easy theorem families.
-  _Why it matters:_ It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.
-- 🪜 **[ReST-MCTS*](https://arxiv.org/abs/2406.03816)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🏗️ construction recipe · programmatic · mixed · process supervision · reward modeling · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2406.03816)
-  _Data object:_ reasoning trajectory with intermediate search states; process: node state, rollout candidate, process reward score; MCTS-style reasoning tree
-  _Feedback / verifier:_ process reward guided tree search
-  _Recipe signal:_ generator: policy rollouts expanded by MCTS; filtering rule: process-reward-guided trajectory selection
-  _Audit focus:_ search policy may overfit process reward artifacts, accepted traces can hide rejected rollout distribution, inference budget may be conflated with data quality
-  _Why it matters:_ It shows how a process reward can guide search-generated trajectories, so readers can separate data generation, verifier choice, and inference-budget effects.
-
-### <a id="rejection-sampling-traces"></a>🔎 Rejection sampling traces
-
-- 🧰 **[Introducing SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/)**
-  <sub>2024 · OpenAI / SWE-bench report · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L5_audit_ready</sub>
-  [Paper](https://openai.com/index/introducing-swe-bench-verified/) · [Venue](https://www.swebench.com/verified.html) · [Code](https://github.com/swe-bench/SWE-bench) · [Data](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified) · [Card](../../cards/agents/swe-bench-verified.md)
-  _Data object:_ patch diff applied to a repository plus test execution results.; process: repository, issue, base commit, patch, FAIL TO PASS tests, PASS TO PASS tests, human validation notes.; Dockerized repository checkout and unit-test harness.
-  _Feedback / verifier:_ post-patch unit tests plus human filtering of task validity.
-  _Recipe signal:_ teacher: resolved GitHub pull requests and human validators.; generator: dataset curation filters original SWE-bench instances for clarity, solvability, and test validity.
-  _Audit focus:_ Leaderboard scores can depend strongly on scaffold design., Tests may not cover all acceptable patches., Public benchmark tasks can become training targets over time.
-  _Why it matters:_ It is now a central coding-agent evaluation surface because the data object contains issue text, repository state, proposed patch, and test-backed success criteria.
-
-### <a id="self-consistency-repeated-sampling"></a>🧠 Self-consistency / repeated sampling
-
-- 🚀 **[DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300)**
-  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · rlvr · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2402.03300) · [Code](https://github.com/deepseek-ai/deepseek-math) · [HF](https://huggingface.co/collections/deepseek-ai/deepseek-math) · [Card](../../cards/recipes/deepseekmath.md)
-  _Data object:_ natural-language mathematical solution plus final answer, sometimes sampled multiple times.; process: data-selection score, training stage, problem, solution, final answer, verifier/evaluation result, sampling count.; offline math training and benchmark evaluation pipeline.
-  _Feedback / verifier:_ answer correctness and GRPO-style reward over math tasks.
-  _Recipe signal:_ teacher: math corpora, supervised examples, and verifiable benchmark answers.; generator: model produces solutions during SFT, RL, and self-consistency sampling.
-  _Audit focus:_ Self-consistency can hide weak single-sample accuracy., Web-data mining may import benchmark leakage., Final-answer rewards can miss flawed derivations.
-  _Why it matters:_ It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.
-- 📈 **[Self-consistency improves chain of thought reasoning in language models](https://arxiv.org/abs/2203.11171)**
-  <sub>2023 · ICLR · 📈 scaling study · 🧭 survey background · mixed · programmatic · evaluation · test time compute · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2203.11171) · [OpenReview](https://openreview.net/forum?id=1PL1NIMMrw) · [Card](../../cards/recipes/self-consistency-chain-of-thought.md)
-  _Data object:_ multiple rationales and final answers for the same prompt.; process: sampling temperature, number of paths, answer extraction, aggregation rule.; benchmark prompting setup.
-  _Feedback / verifier:_ majority or marginalization over sampled answers.
-  _Recipe signal:_ teacher: few-shot chain-of-thought exemplars.; generator: model samples many reasoning paths.
-  _Audit focus:_ More samples can amplify benchmark-specific shortcuts., Aggregation does not guarantee step faithfulness., Unmatched inference budgets can make methods look better than they are.
-  _Why it matters:_ It is the classic test-time compute baseline for reasoning: performance can improve by spending more samples and marginalizing over traces without changing training data.
-- 🧭 **[Large Language Monkeys: Scaling Inference Compute with Repeated Sampling](https://arxiv.org/abs/2407.21787)**
-  <sub>2024 · arXiv preprint arXiv:2407.21787 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2407.21787)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-
-### <a id="test-time-compute-logs"></a>⏱️ Test-time compute logs
-
-- 🧯 **[Leaky Thoughts](https://arxiv.org/abs/2506.15674)**
-  <sub>2025 · arXiv · 🧯 audit failure · 🧰 benchmark · judgment required · environmental · evaluation · safety alignment · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.15674) · [ACL](https://aclanthology.org/2025.emnlp-main.1347/) · [Code](https://github.com/parameterlab/leaky_thoughts) · [Card](../../cards/failures/leaky-thoughts.md)
-  _Data object:_ internal reasoning trace, final answer, and leakage/extraction outcome.; process: sensitive field, prompt-injection condition, reasoning length or budget, output leakage indicator.; personal-agent evaluation setting with hidden or internal reasoning traces.
-  _Feedback / verifier:_ extraction probes and agentic evaluations.
-  _Recipe signal:_ teacher: not applicable; this is an audit benchmark.; generator: models produce reasoning traces under normal or injected prompts.
-  _Audit focus:_ Hiding thoughts from users does not make them safe., Trace logging can create a new privacy dataset., Utility improvements from more reasoning may worsen leakage risk.
-  _Why it matters:_ It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can increase utility while enlarging the attack surface.
-- 📈 **[The Art of Scaling Reinforcement Learning Compute for LLMs](https://arxiv.org/abs/2510.13786)**
-  <sub>2025 · arXiv · 📈 scaling study · 🏗️ construction recipe · mixed · rlvr · test time compute · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2510.13786) · [OpenReview](https://openreview.net/forum?id=FMjeC9Msws) · [Card](../../cards/recipes/the-art-of-scaling-rl-compute.md)
-  _Data object:_ training runs, reward outcomes, validation curves, and ablation results.; process: loss aggregation, normalization, curriculum, off-policy choice, compute budget, asymptote, efficiency.; large-scale RL training experiments.
-  _Feedback / verifier:_ compute-performance curves and recipe ablations.
-  _Recipe signal:_ teacher: reward signal and validation tasks.; generator: RL policies under ablated recipes.
-  _Audit focus:_ Compute-heavy studies can be hard to reproduce., Best-practice recipes may depend on task/reward families., Scaling curves can encourage overconfidence if validation tasks are narrow.
-  _Why it matters:_ It gives atlas readers a framework for judging RL recipe claims: some choices move the ceiling, while others mostly change how cheaply the run reaches it.
-- 🏗️ **[s1: Simple Test-Time Scaling](https://arxiv.org/abs/2501.19393)**
-  <sub>2025 · arXiv · 🏗️ construction recipe · 📈 scaling study · mixed · sft · test time compute · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2501.19393) · [Card](../../cards/releases/s1.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ prompt sourcing; scaling report; sft
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It is a useful counterpoint to massive-data recipes: careful small-set curation plus inference-budget control can materially change reasoning performance.
-- 🧰 **[LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](https://arxiv.org/abs/2403.07974)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🧯 audit failure · programmatic · evaluation · audit · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2403.07974) · [OpenReview](https://openreview.net/forum?id=chfJJYC3iL) · [Code](https://github.com/livecodebench/livecodebench) · [Project](https://livecodebench.github.io/) · [Card](../../cards/benchmarks/livecodebench.md)
-  _Data object:_ program submission or code-related output evaluated by tests or task-specific checks.; process: problem release date, platform, prompt, generated code, tests, pass/fail result, evaluation window.; code execution and benchmark leaderboard infrastructure.
-  _Feedback / verifier:_ programmatic tests and task-specific correctness checks.
-  _Recipe signal:_ teacher: contest tests and problem statements provide correctness signal.; generator: models produce code or code-related predictions.
-  _Audit focus:_ Live benchmarks still become stale after release., Execution settings can affect pass/fail outcomes., Public leaderboard feedback can shape future training.
-  _Why it matters:_ It gives code-reasoning evaluation a moving-time-window design, making it harder to confuse memorized public problems with genuine coding capability.
-- 🚀 **[Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122)**
-  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · reward modeling · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2409.12122) · [Code](https://github.com/QwenLM/Qwen2.5-Math) · [HF](https://huggingface.co/Qwen/Qwen2.5-Math-7B) · [Project](https://qwenlm.github.io/blog/qwen2.5-math/) · [Card](../../cards/recipes/qwen2-5-math.md)
-  _Data object:_ math solution, final answer, optional tool/code execution trace, and reward-model score.; process: model stage, problem source, reasoning mode, tool use, answer, reward score, benchmark result.; Qwen math model family, GitHub evaluation scripts, and Hugging Face model releases.
-  _Feedback / verifier:_ math answer checks, reward model signals, and benchmark evaluations.
-  _Recipe signal:_ teacher: self-improvement pipeline and math reward/evaluation signals.; generator: math-specialized models generate solutions and tool-integrated traces.
-  _Audit focus:_ Tool-integrated results are not comparable to no-tool results., Reward models can favor format over proof validity., Model-family reports can blur data and inference effects.
-  _Why it matters:_ It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning, and multilingual math evaluation are tied together.
-- 🧪 **[Rewarding progress: Scaling automated process verifiers for LLM reasoning](https://arxiv.org/abs/2410.08146)**
-  <sub>2024 · ICLR · 🧪 verifier reward · 🪜 process supervision · programmatic · mixed · process supervision · reward modeling · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2410.08146) · [OpenReview](https://openreview.net/forum?id=A6Y7AqlzLW) · [Card](../../cards/verifiers/rewarding-progress.md)
-  _Data object:_ step-level process advantage score plus final answer/correctness signal.; process: problem, partial trace before step, step, future success estimate, verifier score, final outcome.; reasoning search and online RL setup using process rewards.
-  _Feedback / verifier:_ Process Advantage Verifier trained to predict progress toward correct answer.
-  _Recipe signal:_ teacher: automated success estimates from prover policies and final correctness signals.; generator: policies produce traces used to train process verifiers.
-  _Audit focus:_ Progress estimates can be policy-specific., Verifier-guided search can exploit reward artifacts., Step rewards can encourage short-term progress that hurts final correctness.
-  _Why it matters:_ It gives process supervision a concrete target beyond dense labels: measure progress under a prover policy and use that signal for search or RL.
-- 🧰 **[SciCode: A benchmark for scientific code generation and reasoning](https://arxiv.org/abs/2407.13168)**
-  <sub>2024 · NeurIPS Datasets and Benchmarks · 🧰 benchmark · 📦 data release · programmatic · judgment required · evaluation · audit · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2407.13168) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2024/hash/36850592258c8c41cecdaa3dea5ff7de-Abstract-Datasets_and_Benchmarks_Track.html) · [Code](https://github.com/scicode-bench/SciCode) · [Project](https://scicode-bench.github.io/) · [Card](../../cards/benchmarks/scicode.md)
-  _Data object:_ code solution evaluated with scientist-annotated tests or expected outputs.; process: domain, main problem, subproblem, background text, generated code, tests, gold solution, pass/fail.; scientific Python/code execution benchmark harness.
-  _Feedback / verifier:_ test cases and scientist-curated gold solutions.
-  _Recipe signal:_ teacher: scientists and AI researchers curate problems, decompositions, solutions, and tests.; generator: models produce code for subproblems and main problems.
-  _Audit focus:_ Models can pass narrow tests without scientific validity., Domain background can leak solution hints., Execution environments can change numerical results.
-  _Why it matters:_ It is a high-quality scientific-code benchmark where the data object links domain context, subproblem decomposition, code synthesis, and executable tests.
-- 🌐 **[ReAct: Synergizing reasoning and acting in language models](https://arxiv.org/abs/2210.03629)**
-  <sub>2023 · ICLR · 🌐 agent environment · 🏗️ construction recipe · environmental · mixed · agent training · evaluation · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2210.03629) · [OpenReview](https://openreview.net/forum?id=WE_vluYUL-X) · [Code](https://github.com/ysymyth/ReAct) · [Project](https://react-lm.github.io/) · [Card](../../cards/agents/react.md)
-  _Data object:_ trajectory containing reasoning note, action, observation, and final answer or task completion.; process: task state, action string, observation, reasoning note, final answer, success indicator.; Wikipedia API, embodied/web shopping environments, and task-specific simulators.
-  _Feedback / verifier:_ environment success, answer correctness, or task-specific evaluation.
-  _Recipe signal:_ teacher: few-shot trajectory exemplars demonstrate reasoning-action format.; generator: model samples interleaved reasoning and action steps.
-  _Audit focus:_ Reasoning notes can rationalize bad actions., Environment wrappers can change task difficulty., Few-shot exemplars may encode brittle action formats.
-  _Why it matters:_ It is a foundational agent-data pattern: the training/evaluation record is not just an answer but a trajectory of thought-like notes, actions, observations, and final response.
-- 🧰 **[Measuring coding challenge competence with APPS](https://arxiv.org/abs/2105.09938)**
-  <sub>2021 · NeurIPS · 🧰 benchmark · 📦 data release · programmatic · evaluation · sft · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2105.09938) · [OpenReview](https://openreview.net/forum?id=sD93GOzH3i5) · [Code](https://github.com/hendrycks/apps) · [Card](../../cards/benchmarks/apps.md)
-  _Data object:_ Python code submission evaluated against test cases.; process: difficulty, prompt, starter code where available, generated solution, public/hidden test outcomes.; offline programming benchmark with executable Python tests.
-  _Feedback / verifier:_ unit-test pass/fail signal.
-  _Recipe signal:_ teacher: benchmark tests and reference solutions provide supervision surface.; generator: models produce candidate programs from problem text.
-  _Audit focus:_ Programs can overfit weak tests., Syntax validity is not the same as functional correctness., Contamination can inflate code benchmark scores.
-  _Why it matters:_ It is a pre-HumanEval large-scale code benchmark where the feedback-bearing object is a problem statement, generated program, and unit-test outcome.
-- 🚀 **[Kimi K1.5: Scaling Reinforcement Learning with LLMs](https://arxiv.org/abs/2501.12599)**
-  <sub>2025 · arXiv · 🚀 model report · 📈 scaling study · mixed · rlvr · test time compute · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2501.12599) · [Card](../../cards/recipes/kimi_k15.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; scaling report; rlvr
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Frontier report used for long-context RL and scaling discussion.
-- 🚀 **[MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585)**
-  <sub>2025 · arXiv preprint arXiv:2506.13585 · 🚀 model report · 📈 scaling study · mixed · programmatic · rlvr · test time compute · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2506.13585) · [Code](https://github.com/MiniMax-AI/MiniMax-M1) · [Card](../../cards/recipes/minimax_m1.md)
-  _Data object:_ reasoning output, code/tool result, or agent task output; process: reasoning output, benchmark result, thinking budget; math, code, SWE, tool-use, and long-context evaluation surfaces
-  _Feedback / verifier:_ programmatic, environment, and benchmark feedback
-  _Recipe signal:_ frontier pipeline; optimizer scaffold; scaling report
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.
-- 📦 **[OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](https://arxiv.org/abs/2507.09075)**
-  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · mixed · sft · distillation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2507.09075) · [Card](../../cards/releases/opencodereasoning_ii.md)
-  _Data object:_ question-solution-critique triple; process: solution, critique, language/runtime label; coding benchmark / compiler substrate
-  _Feedback / verifier:_ tests and critique model signals
-  _Recipe signal:_ trace writing; optimizer scaffold; scaling report
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Large code-reasoning release with question-solution-critique triples, connecting distillation data to test-time self-critique.
-- 🏗️ **[TTRL: Test-Time Reinforcement Learning](https://arxiv.org/abs/2504.16084)**
-  <sub>2025 · arXiv preprint arXiv:2504.16084 · 🏗️ construction recipe · 📈 scaling study · mixed · rlvr · test time compute · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2504.16084) · [Card](../../cards/recipes/ttrl.md)
-  _Data object:_ candidate response with reward/adaptation signal; process: unlabeled input, rollout, reward signal; test-time task distribution
-  _Feedback / verifier:_ task-specific or learned reward used during adaptation
-  _Recipe signal:_ optimizer scaffold; reward verifier layer; scaling report
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Test-time reinforcement learning recipe that studies how unlabeled data and reward signals can adapt a model during inference-time training.
-- 🪜 **[OmegaPRM: Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2406.06592) · [Card](../../cards/verifiers/omegaprm.md)
-  _Data object:_ process supervision annotations; process: partial reasoning prefix, first-error signal, positive/negative step examples; offline math search tree
-  _Feedback / verifier:_ automated process reward signal
-  _Recipe signal:_ reward verifier layer; optimizer scaffold; process supervision
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Automated process-supervision recipe that uses search to locate first errors and generate PRM training signals without human labels.
-- 🧭 **[Reinforcement Learning for LLM Post-Training: A Survey](https://arxiv.org/abs/2407.16216)**
-  <sub>2024 · arXiv · 🧭 survey background · 📈 scaling study · mixed · programmatic · reward modeling · preference learning · L3_summary_ready</sub>
-  [Paper](https://arxiv.org/abs/2407.16216) · [DOI](https://doi.org/10.48550/arXiv.2407.16216)
-  _Data object:_ technical survey comparing RLHF and RLVR policy-gradient style post-training methods.; process: prompt sampling, response sampling, reward source; LLM post-training algorithms and reasoning tasks such as math and coding.
-  _Feedback / verifier:_ learned preference rewards, verifiable rewards, and policy-gradient objectives.
-  _Recipe signal:_ teacher: literature covering human feedback, verifiable rewards, and post-training optimization.; generator: technical survey and unified policy-gradient framework
-  _Audit focus:_ Method comparisons can mix data effects with optimizer and sampling-budget effects., RLHF and RLVR rewards are often discussed together despite different verification contracts., Implementation details can dominate reported gains if not separated from data quality.
-  _Why it matters:_ It connects classic RLHF and reward modeling to reasoning-oriented RLVR, helping readers avoid conflating human preference rewards with programmatic or verifiable rewards.
-- 🪜 **[ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding](https://arxiv.org/abs/2501.07861)**
-  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · mixed · process supervision · preference learning · L2_artifact_verified</sub>
-  [Paper](https://arxiv.org/abs/2501.07861) · [Code](https://github.com/Jeryi-Sun/ReARTeR)
-  _Data object:_ step-level preference data with process scores and explanations; process: retrieval context, reasoning step, process reward score; RAG reasoning pipeline
-  _Feedback / verifier:_ process reward model plus process explanation model
-  _Recipe signal:_ generator: MCTS-guided retrieval-augmented rollouts; filtering rule: trustworthy process rewarding and iterative preference optimization
-  _Audit focus:_ PRM and explanation model may disagree, retrieval context can leak answer evidence unevenly, early-step PRM bias can distort search
-  _Why it matters:_ It broadens the PRM track from math-only step labels to retrieval-grounded reasoning where process scores, explanations, and search all affect the reusable data object.
-
-### <a id="long2short-distill-from-search"></a>✂️ Long2short / distill-from-search
-
-_No verified primary-source entries are assigned here yet. Add official paper links and metadata through the contribution workflow._
-
-### <a id="other-related-work"></a>Other related work
-
-- 📦 **[LeanDojo: Theorem proving with retrieval-augmented language models](https://arxiv.org/abs/2306.15626)**
-  <sub>2023 · NeurIPS Datasets and Benchmarks · 📦 data release · 🧰 benchmark · environmental · programmatic · agent training · sft · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2306.15626) · [Venue](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) · [Code](https://github.com/lean-dojo/LeanDojo) · [Data](https://zenodo.org/records/10114157) · [Project](https://leandojo.org/) · [Card](../../cards/agents/leandojo.md)
-  _Data object:_ Lean tactic sequence or proof script checked by Lean.; process: repository commit, theorem, proof state, premises, retrieved context, tactic, Lean feedback, split.; Lean proof assistant environment and traced math-library repositories.
-  _Feedback / verifier:_ Lean checker and environment feedback.
-  _Recipe signal:_ teacher: Lean math-library proofs and proof-assistant feedback.; generator: data-extraction toolkit traces repositories and prover generates tactics.
-  _Audit focus:_ A prover can rely on retrieval leakage., Lean version drift can break proofs., Premise accessibility rules can change task difficulty.
-  _Why it matters:_ It turns formal proof work into reusable agent data: repository state, accessible premises, proof states, tactics, retrieval context, and verifier feedback are all part of the record.
-- 🏗️ **[Self-RAG: Learning to retrieve, generate, and critique through self-reflection](https://arxiv.org/abs/2310.11511)**
-  <sub>2023 · ICLR · 🏗️ construction recipe · 📦 data release · mixed · judgment required · sft · evaluation · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2310.11511) · [Venue](https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html) · [Code](https://github.com/akariasai/self-rag) · [Data](https://huggingface.co/datasets/selfrag/selfrag_train_data) · [HF](https://huggingface.co/selfrag/selfrag_llama2_7b) · [Project](https://selfrag.github.io/) · [Card](../../cards/recipes/self-rag.md)
-  _Data object:_ generation with retrieval decisions, critique signals, and final answer.; process: query, retrieval decision token, retrieved passage, support critique, utility critique, final answer.; retriever plus generation model with special reflection tokens.
-  _Feedback / verifier:_ critique signals and task-specific factuality/answer-quality evaluation.
-  _Recipe signal:_ teacher: critic and retrieval-supervision signals derived from task data and evidence checks.; generator: model learns special reflection tokens for retrieval and critique behavior.
-  _Audit focus:_ A model can retrieve irrelevant passages confidently., Critique tokens can become style markers without true verification., Retriever choice changes benchmark conclusions.
-  _Why it matters:_ It is a key retrieval-augmented reasoning recipe where the data object includes control tokens, retrieved passages, critiques, and final generations.
-- 🌐 **[R2E-Gym](https://arxiv.org/abs/2504.07164)**
-  <sub>2025 · arXiv · 🌐 agent environment · 🧰 benchmark · environmental · programmatic · agent training · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2504.07164) · [Card](../../cards/agents/r2e_gym.md)
-  _Data object:_ full episode; state action level
-  _Feedback / verifier:_ environmental, programmatic
-  _Recipe signal:_ search substrate; agent training; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verifiable SWE environment for reasoning-to-edit tasks.
-- 📦 **[SWE-Gym](https://arxiv.org/abs/2412.21139)**
-  <sub>2025 · arXiv · 📦 data release · 🌐 agent environment · environmental · programmatic · agent training · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2412.21139) · [Card](../../cards/agents/swe_gym.md)
-  _Data object:_ full episode; state action level
-  _Feedback / verifier:_ environmental, programmatic
-  _Recipe signal:_ prompt sourcing; search substrate; agent training
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Repository-scale training environment showing substrate as data.
-- 🧰 **[AndroidWorld: A dynamic benchmarking environment for autonomous agents](https://arxiv.org/abs/2405.14573)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2405.14573) · [Card](../../cards/agents/androidworld.md)
-  _Data object:_ Android action trajectory; process: screen observation, UI action, state transition; Android device/emulator environment
-  _Feedback / verifier:_ task-specific success evaluator
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Android tasks turn mobile UI state and action histories into evaluable agent trajectories.
-- 🧰 **[AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](https://arxiv.org/abs/2407.18901)**
-  <sub>2024 · arXiv · 🧰 benchmark · 🌐 agent environment · environmental · programmatic · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2407.18901) · [Card](../../cards/agents/appworld.md)
-  _Data object:_ API/tool action trajectory; process: tool call, state transition, observation; simulated app ecosystem with users and APIs
-  _Feedback / verifier:_ programmatic environment assertions
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Controllable app world for interactive agents where tool/API state and final task success form the feedback contract.
-- 🛠️ **[BrowserGym: A gym environment for web agents](https://arxiv.org/abs/2412.05467)**
-  <sub>2024 · arXiv · 🛠️ infrastructure · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2412.05467) · [Card](../../cards/agents/browsergym.md)
-  _Data object:_ browser trajectory; process: DOM/state observation, action, reward/result; gym-style browser environment
-  _Feedback / verifier:_ environment task evaluator
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ A web-agent substrate: useful less as a static dataset and more as a repeatable environment for trajectory collection and evaluation.
-- 🪜 **[Math-Shepherd](https://arxiv.org/abs/2312.08935)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · process supervision · reward modeling · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2312.08935) · [Card](../../cards/verifiers/math_shepherd.md)
-  _Data object:_ step-level rollout-value labels; process: reasoning step, rollout result, process reward score; offline math reasoning traces
-  _Feedback / verifier:_ rollout-derived process reward signal
-  _Recipe signal:_ generator: model rollouts from intermediate reasoning steps; filtering rule: rollout success rate converted to step reward
-  _Audit focus:_ rollout policy strength can leak into labels, step rewards may favor locally plausible continuations, generated solutions can inherit base-model shortcuts
-  _Why it matters:_ It is the clearest bridge between final-answer verifiers and step-level PRM data: the label is not a human judgment but a rollout-derived estimate of whether a partial step can still reach the right answer.
-- 🧰 **[OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](https://arxiv.org/abs/2404.07972)**
-  <sub>2024 · NeurIPS · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2404.07972) · [Card](../../cards/agents/osworld.md)
-  _Data object:_ GUI/OS action trajectory; process: observation, action, environment state; desktop operating-system environment
-  _Feedback / verifier:_ task completion evaluator
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open-ended computer-use benchmark that makes environment state, UI actions, and terminal outcomes central to reasoning-data evaluation.
-- 🛠️ **[OpenHands: An Open Platform for AI Software Developers as Generalist Agents](https://arxiv.org/abs/2407.16741)**
-  <sub>2024 · ICLR · 🛠️ infrastructure · 🌐 agent environment · environmental · mixed · agent training · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2407.16741) · [Code](https://github.com/All-Hands-AI/OpenHands) · [Project](https://www.openhands.dev/) · [Card](../../cards/agents/openhands.md)
-  _Data object:_ tool/action/observation trajectory; process: plan, shell command, file edit; sandboxed software-development runtime
-  _Feedback / verifier:_ task, test, or human-review outcome depending on benchmark
-  _Recipe signal:_ search substrate; optimizer scaffold; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.
-- 🧰 **[WebArena: A realistic web environment for building autonomous agents](https://arxiv.org/abs/2307.13854)**
-  <sub>2023 · ICLR · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2307.13854) · [Card](../../cards/agents/webarena.md)
-  _Data object:_ environment interaction trajectory; process: observation, action, state; browser-accessible web environment
-  _Feedback / verifier:_ task-specific success evaluator
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Realistic web tasks where the data object is an agent episode and the verifier is task completion in a live-like browser environment.
-- 🪜 **[PRIME: Process reinforcement through implicit rewards](https://arxiv.org/abs/2502.01456)**
-  <sub>2025 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · rlvr · process supervision · L2_artifact_verified</sub>
-  [Paper](https://arxiv.org/abs/2502.01456) · [Code](https://github.com/PRIME-RL/PRIME)
-  _Data object:_ rollout with implicit process reward signal; process: policy rollout, outcome label, implicit process reward; online RL training loop
-  _Feedback / verifier:_ implicit process rewards derived from outcome labels
-  _Recipe signal:_ generator: policy rollouts; filtering rule: outcome labels converted into implicit process rewards
-  _Audit focus:_ implicit rewards can inherit outcome-verifier shortcuts, online reward updates may introduce reward hacking, benchmark improvements may conflate optimizer and reward-contract changes
-  _Why it matters:_ It is a clean example of process supervision without manual dense labels, useful for comparing PRM data, outcome rewards, and RLVR optimization scaffolds.
-- 🪜 **[AutoPSV: Automated Process-Supervised Verifier](https://arxiv.org/abs/2405.16802)**
-  <sub>2024 · arXiv · 🪜 process supervision · 🧪 verifier reward · programmatic · mixed · process supervision · reward modeling · L2_artifact_verified</sub>
-  [Paper](https://arxiv.org/abs/2405.16802) · [Code](https://github.com/rookie-joe/AutoPSV)
-  _Data object:_ step-level confidence-change annotations; process: reasoning step, verifier confidence, relative confidence change; offline reasoning traces
-  _Feedback / verifier:_ answer-trained verifier converted into process annotations
-  _Recipe signal:_ generator: model-generated candidate reasoning; filtering rule: changes in verifier confidence across steps
-  _Audit focus:_ answer-level verifier confidence can mislabel intermediate steps, relative confidence changes may not identify causal first errors, commonsense and math tasks may require different error taxonomies
-  _Why it matters:_ It gives the PRM track a concrete automatic-labeling path between human step labels and rollout-value supervision.
-
-### ⚠️ Needs search or metadata
-
-- 📄 **pass@$(k,T)$: Re-examining the reasoning boundary for agentic RL**
-  <sub>2026 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧰 **VisualWebArena: Evaluating multimodal agents on realistic visual web tasks**
-  <sub>2024 · arXiv preprint · 🧰 benchmark · 🌐 agent environment · environmental · evaluation · agent training · L0_seeded</sub>
-  needs_search
-  _Data object:_ visual web tasks with screenshots and browser state
-  _Feedback / verifier:_ task success checks
-  _Recipe signal:_ search substrate; release audit; evaluation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Extends WebArena-style evaluation toward visual web interaction, useful when reasoning data includes screenshots and UI state.
-
-## 6. What to Audit
-
-- Are accepted and rejected rollouts both visible enough to audit selector behavior?
-- Is pass@k, search budget, sampling temperature, verifier score, or tree-search policy disclosed?
-- Can gains be attributed to data, search, verifier, or inference budget rather than a hidden scaffold?
-
-## 7. Open Problems
-
-- How much of a reasoning-data gain comes from search rather than the final dataset?
-- Should open releases include rejected rollouts and search trees by default?
-- How can pass@k and training-data scale be compared fairly?
-- Can selector behavior be audited without exposing proprietary verifier details?
-
-## 8. Related Cards
-
-- [Kimi K1.5: Scaling Reinforcement Learning with LLMs](../../cards/recipes/kimi_k15.md)
-- [Leaky Thoughts](../../cards/failures/leaky-thoughts.md)
-- [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](../../cards/recipes/minimax_m1.md)
-- [OpenCodeReasoning-II: A Simple Test Time Scaling Approach via Self-Critique](../../cards/releases/opencodereasoning_ii.md)
-- [R2E-Gym](../../cards/agents/r2e_gym.md)
-- [SWE-Gym](../../cards/agents/swe_gym.md)
-- [TTRL: Test-Time Reinforcement Learning](../../cards/recipes/ttrl.md)
-- [The Art of Scaling Reinforcement Learning Compute for LLMs](../../cards/recipes/the-art-of-scaling-rl-compute.md)
-- [s1: Simple Test-Time Scaling](../../cards/releases/s1.md)
-- [AndroidWorld: A dynamic benchmarking environment for autonomous agents](../../cards/agents/androidworld.md)
-- [AppWorld: A controllable world of apps and people for benchmarking interactive coding agents](../../cards/agents/appworld.md)
-- [BrowserGym: A gym environment for web agents](../../cards/agents/browsergym.md)
-- [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](../../cards/recipes/deepseek-prover-v1-5.md)
-- [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](../../cards/recipes/deepseekmath.md)
-- [Introducing SWE-bench Verified](../../cards/agents/swe-bench-verified.md)
-- [LiveCodeBench: Holistic and contamination-free evaluation of large language models for code](../../cards/benchmarks/livecodebench.md)
-- [Math-Shepherd](../../cards/verifiers/math_shepherd.md)
-- [OSWorld: Benchmarking multimodal agents for open-ended tasks in real computer environments](../../cards/agents/osworld.md)
-
-## Back to Map
-
-- [Paper atlas README](../README.md)
-- [Repository README](../../README.md)
+| Paper | Year | Venue | Verified by | Card |
+|---|---:|---|---|---|
+| [Adaptive Test-Time Compute Allocation for Reasoning LLMs via Constrained Policy Optimization](https://arxiv.org/abs/2604.14853) | 2026 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=adaptive-test-time-compute-constrained-policy-2026) |
+| [AutoL2S: Auto Long-Short Reasoning for Efficient Large Language Models](https://aclanthology.org/2026.findings-acl.831/) | 2026 | Findings of ACL 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=auto-l2s-2025) |
+| [BrowseConf: Confidence-Guided Test-Time Scaling for Web Agents](https://aclanthology.org/2026.findings-acl.21/) | 2026 | Findings of ACL 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=browseconf-2026) |
+| [CodeScout: An Effective Recipe for Reinforcement Learning of Code Search Agents](https://arxiv.org/abs/2603.17829) | 2026 | ACM CAIS 2026 Workshop on Agentic Software Engineering (non-archival) | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=codescout-code-search-rollouts-2026) |
+| [Demystifying Multi-Agent Debate: The Role of Confidence and Diversity](https://aclanthology.org/2026.findings-acl.1694/) | 2026 | Findings of ACL 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=demystifying-multi-agent-debate-2026) |
+| [Do What You Say: Steering Vision-Language-Action Models via Runtime Reasoning-Action Alignment Verification](https://arxiv.org/abs/2510.16281) | 2026 | ICRA 2026 | Environmental / Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=seal-vla-2025) |
+| [From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models](https://openreview.net/forum?id=r7uOjvZdzO) | 2026 | ICML 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=vlm-capability-curriculum-2026) |
+| [FS-Researcher: Test-Time Scaling for Long-Horizon Research Tasks with File-System-Based Agents](https://aclanthology.org/2026.acl-long.288/) | 2026 | ACL 2026 | Environmental / Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=fs-researcher-2026) |
+| [Go-Browse: Training Web Agents with Structured Exploration](https://arxiv.org/abs/2506.03533) | 2026 | ICLR 2026 | Judgment required / Environmental | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=go-browse-2025) |
+| [How Reasoning Evolves from Post-Training Data: An Empirical Study Using Chess](https://arxiv.org/abs/2604.05134) | 2026 | ICML 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=reasoning-evolves-chess-2026) |
+| [Learning Generative Selection for Best-of-N](https://arxiv.org/abs/2602.02143) | 2026 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=learning-generative-selection-2026) |
+| [Lookahead Tree-Based Rollouts for Enhanced Trajectory-Level Exploration in Reinforcement Learning with Verifiable Rewards](https://openreview.net/forum?id=4nLvUk8edu) | 2026 | ICLR 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=lookahead-tree-based-rollouts-2026) |
+| [Making Slow Thinking Faster: Compressing LLM Chain-of-Thought via Step Entropy](https://arxiv.org/abs/2508.03346) | 2026 | International Conference on Learning Representations (ICLR 2026) | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=making-slow-thinking-faster-step-entropy-2025) |
+| [MetaScale: Test-Time Scaling with Evolving Meta-Thoughts](https://aclanthology.org/2026.findings-acl.574/) | 2026 | Findings of the Association for Computational Linguistics: ACL 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=metascale-2025) |
+| [MMSearch-R1: Incentivizing LMMs to Search](https://aclanthology.org/2026.acl-long.114/) | 2026 | ACL 2026 (Long Papers) | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mmsearch-r1-2025) |
+| [ModeX: Evaluator-Free Best-of-N Selection for Open-Ended Generation](https://aclanthology.org/2026.acl-long.655/) | 2026 | ACL 2026 | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=modex-2026) |
+| [NFT: Bridging Supervised Learning and Reinforcement Learning in Math Reasoning](https://arxiv.org/abs/2505.18116) | 2026 | ICLR 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=negative-aware-fine-tuning-2025) |
+| [On Data Engineering for Scaling LLM Terminal Capabilities](https://arxiv.org/abs/2602.21193) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=terminal-capabilities-data-engineering-2026) |
+| [Optimal Self-Consistency for Efficient Reasoning with Large Language Models](https://arxiv.org/abs/2511.12309) | 2026 | ICML 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=optimal-self-consistency-efficient-reasoning-llms-2025) |
+| [Plan and Budget: Effective and Efficient Test-Time Scaling on Reasoning Large Language Models](https://arxiv.org/abs/2505.16122) | 2026 | ICLR 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=plan-and-budget-2025) |
+| [QED-Nano: Teaching a Tiny Model to Prove Hard Theorems](https://arxiv.org/abs/2604.04898) | 2026 | arXiv preprint | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qed-nano-2026) |
+| [Solve-Detect-Verify: Inference-Time Scaling with Flexible Generative Verifier](https://aclanthology.org/2026.acl-long.2190/) | 2026 | ACL 2026 Long Papers | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=solve-detect-verify-2025) |
+| [Strategic Scaling of Test-Time Compute: A Bandit Learning Approach](https://arxiv.org/abs/2506.12721) | 2026 | ICLR 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=strategic-scaling-test-time-compute-2025) |
+| [ThinkBooster: A Unified Framework for Seamless Test-Time Scaling of LLM Reasoning](https://aclanthology.org/2026.acl-demo.70/) | 2026 | ACL 2026 System Demonstrations | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=thinkbooster-2026) |
+| [Thinking-Free Policy Initialization Makes Distilled Reasoning Models More Effective and Efficient Reasoners](https://arxiv.org/abs/2509.26226) | 2026 | ICLR 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=thinking-free-policy-initialization-2025) |
+| [Tree Search for LLM Agent Reinforcement Learning](https://openreview.net/forum?id=ZpQwAFhU13) | 2026 | ICLR 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=tree-search-agent-rl-2026) |
+| [TreePO: Enhancing Policy Efficacy and Inference Efficiency with Tree Modeling](https://openreview.net/forum?id=npsWK8rgYO) | 2026 | ICML 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=treepo-2026) |
+| [Variation in Verification: Understanding Verification Dynamics in Large Language Models](https://arxiv.org/abs/2509.17995) | 2026 | ICLR 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=variation-in-verification-2025) |
+| [WebSeer: Training Deeper Search Agents through Reinforcement Learning with Self-Reflection](https://openreview.net/pdf?id=YCXWIfVakj) | 2026 | ICLR 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=webseer-2025) |
+| [A*-Thought: Efficient Reasoning via Bidirectional Compression for Low-Resource Settings](https://proceedings.neurips.cc/paper_files/paper/2025/hash/9ac5238b5c033fc49c2932a50df2bd47-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=a-star-thought-2025) |
+| [Accelerating Large Language Model Reasoning via Speculative Search](https://proceedings.mlr.press/v267/wang25di.html) | 2025 | ICML 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=speculative-search-2025) |
+| [AdaptThink: Reasoning Models Can Learn When to Think](https://aclanthology.org/2025.emnlp-main.184/) | 2025 | EMNLP 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=adaptthink-2025) |
+| [Agent-RLVR: Training Software Engineering Agents via Guidance and Environment Rewards](https://arxiv.org/abs/2506.11425) | 2025 | arXiv preprint | Environmental | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=agent-rlvr-2025) |
+| [Aligning Reasoning LLMs for Materials Discovery with Physics-aware Rejection Sampling](https://arxiv.org/abs/2509.00768) | 2025 | NeurIPS 2025 Workshop on AI for Science: The Reach and Limits of AI for Scientific Discovery (poster) | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=physics-aware-rs-materials-2025) |
+| [Answer Convergence as a Signal for Early Stopping in Reasoning](https://aclanthology.org/2025.emnlp-main.904/) | 2025 | EMNLP 2025 | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=answer-convergence-early-stopping-2025) |
+| [BPP-Search: Enhancing Tree of Thought Reasoning for Mathematical Modeling Problem Solving](https://aclanthology.org/2025.acl-long.40/) | 2025 | ACL 2025 | Programmatic / Judgment required / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=bpp-search-2025) |
+| [Co-Evolving LLM Coder and Unit Tester via Reinforcement Learning](https://arxiv.org/abs/2506.03136) | 2025 | NeurIPS 2025 (Spotlight) | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=co-evolving-llm-coder-unit-tester-reinforcement-learning-2025) |
+| [CoT-Valve: Length-Compressible Chain-of-Thought Tuning](https://aclanthology.org/2025.acl-long.300/) | 2025 | ACL 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=cot-valve-2025) |
+| [DAST: Difficulty-Adaptive Slow-Thinking for Large Reasoning Models](https://aclanthology.org/2025.emnlp-industry.160/) | 2025 | EMNLP 2025 Industry Track | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dast-difficulty-adaptive-slow-thinking-2025) |
+| [Deconstructing Long Chain-of-Thought: A Structured Reasoning Optimization Framework for Long CoT Distillation](https://arxiv.org/abs/2503.16385) | 2025 | arXiv preprint | Programmatic / Judgment required / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deconstructing-long-cot-2025) |
+| [DeepDiver: Adaptive Web-Search Intensity Scaling via Reinforcement Learning](https://proceedings.neurips.cc/paper_files/paper/2025/hash/180d4373aca26bd86bf45fc50d1a709f-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Environmental / Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepdiver-2025) |
+| [DeepResearcher: Scaling Deep Research via Reinforcement Learning in Real-world Environments](https://aclanthology.org/2025.emnlp-main.22/) | 2025 | EMNLP 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepresearcher-2025) |
+| [Don't Get Lost in the Trees: Streamlining LLM Reasoning by Overcoming Tree Search Exploration Pitfalls](https://aclanthology.org/2025.acl-long.1167/) | 2025 | ACL 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=fetch-2025) |
+| [DOTS: Learning to Reason Dynamically in LLMs via Optimal Reasoning Trajectories Search](https://proceedings.iclr.cc/paper_files/paper/2025/hash/5e5d6f9ac33ba9349ba7b2be9f21bad9-Abstract-Conference.html) | 2025 | ICLR 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dots-dynamic-reasoning-2025) |
+| [Dynamic Early Exit in Reasoning Models](https://arxiv.org/abs/2504.15895) | 2025 | ICLR 2026 | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dynamic-early-exit-reasoning-2025) |
+| [Dynamic Scaling of Unit Tests for Code Reward Modeling](https://aclanthology.org/2025.acl-long.343/) | 2025 | ACL 2025 (Long Papers) | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dynamic-scaling-unit-tests-code-reward-modeling-2025) |
+| [e3: Learning to Explore Enables Extrapolation of Test-Time Compute for LLMs](https://arxiv.org/abs/2506.09026) | 2025 | arXiv | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=e3-test-time-compute-exploration-2025) |
+| [Enhancing Logical Reasoning in Language Models via Symbolically-Guided Monte Carlo Process Supervision](https://aclanthology.org/2025.emnlp-main.1624/) | 2025 | Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025) | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=symbolically-guided-monte-carlo-process-supervision-2025) |
+| [Enhancing Reasoning through Process Supervision with Monte Carlo Tree Search](https://arxiv.org/abs/2501.01478) | 2025 | AAAI 2025 NeurMAD workshop (per arXiv comments) | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=enhancing-process-supervision-mcts-2025) |
+| [Enhancing the Outcome Reward-based RL Training of MLLMs with Self-Consistency Sampling](https://arxiv.org/abs/2511.10648) | 2025 | NeurIPS 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=enhancing-outcome-reward-based-rl-training-mllms-self-consistency-sampling-2025) |
+| [Every Rollout Counts: Optimal Resource Allocation for Efficient Test-Time Scaling](https://arxiv.org/abs/2506.15707) | 2025 | NeurIPS 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=every-rollout-counts-2025) |
+| [GenSelect: A Generative Approach to Best-of-N](https://openreview.net/forum?id=8LhnmNmUDb) | 2025 | 2nd AI for Math Workshop @ ICML 2025 (poster) | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=genselect-best-of-n-2025) |
+| [GroundedPRM: Tree-Guided and Fidelity-Aware Process Reward Modeling for Step-Level Reasoning](https://arxiv.org/abs/2510.14942) | 2025 | arXiv | Programmatic / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=groundedprm-2025) |
+| [Inference-Time Scaling for Generalist Reward Modeling](https://arxiv.org/abs/2504.02495) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-grm-inference-time-scaling-2025) |
+| [Is Best-of-N the Best of Them? Coverage, Scaling, and Optimality in Inference-Time Alignment](https://proceedings.mlr.press/v267/huang25c.html) | 2025 | ICML 2025 (PMLR 267) | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=bon-coverage-optimality-2025) |
+| [L1: Controlling How Long A Reasoning Model Thinks With Reinforcement Learning](https://openreview.net/forum?id=4jdIxXBNve) | 2025 | COLM 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=l1-controlling-thinking-length-2025) |
+| [Let LRMs Break Free from Overthinking via Self-Braking Tuning](https://papers.neurips.cc/paper_files/paper/2025/hash/02d028c3bf5d4875b5a4e4b4311087f7-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=self-braking-tuning-2025) |
+| [LIMOPro: Reasoning Refinement for Efficient and Effective Test-time Scaling](https://arxiv.org/abs/2505.19187) | 2025 | NeurIPS 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=limopro-reasoning-refinement-2025) |
+| [Logical Reasoning with Outcome Reward Models for Test-Time Scaling](https://aclanthology.org/2025.emnlp-main.1326/) | 2025 | EMNLP 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=logic-orm-test-time-scaling-2025) |
+| [Majority of the Bests: Improving Best-of-N via Bootstrapping](https://proceedings.neurips.cc/paper_files/paper/2025/hash/36556567e8437f137da23047309155dd-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=majority-bests-2025) |
+| [Marco-o1 v2: Towards Widening The Distillation Bottleneck for Reasoning Models](https://aclanthology.org/2025.acl-long.1145/) | 2025 | ACL 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=marco-o1-v2-2025) |
+| [MCTS-Judge: Test-Time Scaling in LLM-as-a-Judge for Code Correctness Evaluation](https://arxiv.org/abs/2502.12468) | 2025 | arXiv preprint | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mcts-judge-test-time-scaling-2025) |
+| [MCTS-RAG: Enhancing Retrieval-Augmented Generation with Monte Carlo Tree Search](https://aclanthology.org/2025.findings-emnlp.672/) | 2025 | Findings of the Association for Computational Linguistics: EMNLP 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mcts-rag-2025) |
+| [MM-PRM: Enhancing Multimodal Mathematical Reasoning with Scalable Step-Level Supervision](https://arxiv.org/abs/2505.13427) | 2025 | arXiv | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mm-prm-2025) |
+| [MT-RewardTree: A Comprehensive Framework for Advancing LLM-Based Machine Translation via Reward Modeling](https://aclanthology.org/2025.findings-emnlp.1007/) | 2025 | Findings of the Association for Computational Linguistics: EMNLP 2025 | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mt-rewardtree-2025) |
+| [Olympiad-level formal mathematical reasoning with reinforcement learning](https://www.nature.com/articles/s41586-025-09833-y) | 2025 | Nature 651 (2026) | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=alphaproof-olympiad-level-formal-mathematical-reasoning-2025) |
+| [One Missing Piece for Open-Source Reasoning Models: A Dataset to Mitigate Cold-Starting Short CoT LLMs in RL](https://aclanthology.org/2025.acl-industry.85/) | 2025 | Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 6: Industry Track) | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=long-cot-collection-2025) |
+| [Optimizing Test-Time Compute via Meta Reinforcement Finetuning](https://arxiv.org/abs/2503.07572) | 2025 | arXiv | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=optimizing-test-time-compute-meta-reinforcement-finetuning-2025) |
+| [Policy Guided Tree Search for Enhanced LLM Reasoning](https://proceedings.mlr.press/v267/li25bv.html) | 2025 | ICML 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=policy-guided-tree-search-2025) |
+| [Process Reward Models That Think](https://arxiv.org/abs/2504.16828) | 2025 | Transactions on Machine Learning Research (TMLR), 2026 | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=thinkprm-2025) |
+| [Replay Failures as Successes: Sample-Efficient Reinforcement Learning for Instruction Following](https://arxiv.org/abs/2512.23457) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=replay-failures-as-successes-2025) |
+| [Rethinking Optimal Verification Granularity for Compute-Efficient Test-Time Scaling](https://papers.nips.cc/paper_files/paper/2025/hash/8011b23e1dc3f57e1b6211ccad498919-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=rethinking-optimal-verification-granularity-2025) |
+| [ReVISE: Learning to Refine at Test-Time via Intrinsic Self-Verification](https://proceedings.mlr.press/v267/lee25ab.html) | 2025 | ICML 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=revise-intrinsic-self-verification-2025) |
+| [RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models](https://proceedings.mlr.press/v305/kwok25a.html) | 2025 | CoRL 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=robomonkey-vla-2025) |
+| [RPM-MCTS: Knowledge-Retrieval as Process Reward Model with Monte Carlo Tree Search for Code Generation](https://arxiv.org/abs/2511.19895) | 2025 | AAAI 2026 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=rpm-mcts-2025) |
+| [Sampling-Efficient Test-Time Scaling: Self-Estimating the Best-of-N Sampling in Early Decoding](https://arxiv.org/abs/2503.01422) | 2025 | NeurIPS 2025 Spotlight | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=st-bon-2025) |
+| [Scalable Best-of-N Selection for Large Language Models via Self-Certainty](https://proceedings.neurips.cc/paper_files/paper/2025/hash/1c7eff166a8e345f664f0faa8f4e4d2e-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=self-certainty-bon-2025) |
+| [SCALE: Selective Resource Allocation for Overcoming Performance Bottlenecks in Mathematical Test-time Scaling](https://arxiv.org/abs/2512.00466) | 2025 | AAAI 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=scale-selective-resource-allocation-2025) |
+| [Search-o1: Agentic Search-Enhanced Large Reasoning Models](https://aclanthology.org/2025.emnlp-main.276/) | 2025 | EMNLP 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=search-o1-2025) |
+| [Self-Consistency Preference Optimization](https://proceedings.mlr.press/v267/prasad25a.html) | 2025 | ICML 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=self-consistency-preference-optimization-2025) |
+| [Self-Training Elicits Concise Reasoning in Large Language Models](https://aclanthology.org/2025.findings-acl.1289/) | 2025 | Findings of the Association for Computational Linguistics: ACL 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=self-training-elicits-concise-reasoning-2025) |
+| [SETS: Leveraging Self-Verification and Self-Correction for Improved Test-Time Scaling](https://arxiv.org/abs/2501.19306) | 2025 | TMLR | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=sets-self-verification-self-correction-2025) |
+| [Skip-Thinking: Chunk-wise Chain-of-Thought Distillation Enable Smaller Language Models to Reason Better and Faster](https://aclanthology.org/2025.emnlp-main.610/) | 2025 | EMNLP 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=skip-thinking-2025) |
+| [Socratic-MCTS: Test-Time Visual Reasoning by Asking the Right Questions](https://aclanthology.org/2025.emnlp-main.1230/) | 2025 | EMNLP 2025 | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=socratic-mcts-2025) |
+| [SRA-MCTS: Self-driven Reasoning Augmentation with Monte Carlo Tree Search for Code Generation](https://www.ijcai.org/proceedings/2025/965) | 2025 | IJCAI 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=sra-mcts-2025) |
+| [StepSearch: Igniting LLMs Search Ability via Step-Wise Proximal Policy Optimization](https://arxiv.org/abs/2505.15107) | 2025 | EMNLP 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=stepsearch-2025) |
+| [Stepwise Reasoning Checkpoint Analysis: A Test Time Scaling Method to Enhance LLMs' Reasoning](https://aclanthology.org/2025.emnlp-main.866/) | 2025 | Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=stepwise-reasoning-checkpoint-analysis-2025) |
+| [T1: Advancing Language Model Reasoning through Reinforcement Learning and Inference Scaling](https://proceedings.mlr.press/v267/hou25e.html) | 2025 | Proceedings of the 42nd International Conference on Machine Learning (ICML 2025), PMLR 267 | Programmatic / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=t1-advancing-language-model-reasoning-2025) |
+| [Thought Anchors: Which LLM Reasoning Steps Matter?](https://arxiv.org/abs/2506.19143) | 2025 | arXiv preprint; submitted to ICLR 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=thought-anchors-2025) |
+| [TokenSqueeze: Performance-Preserving Compression for Reasoning LLMs](https://papers.nips.cc/paper_files/paper/2025/file/8442d394d8266db6fdf92583a4783e8c-Paper-Conference.pdf) | 2025 | NeurIPS 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=token-squeeze-2025) |
+| [TreeRL: LLM Reinforcement Learning with On-Policy Tree Search](https://aclanthology.org/2025.acl-long.604/) | 2025 | ACL 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=tree-rl-2025) |
+| [Unlocking Multimodal Mathematical Reasoning via Process Reward Model](https://papers.nips.cc/paper_files/paper/2025/hash/4757e472d97ca980c24a487622f7ff00-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=ursa-multimodal-math-reasoning-2025) |
+| [Value-Guided Search for Efficient Chain-of-Thought Reasoning](https://proceedings.neurips.cc/paper_files/paper/2025/hash/7a8a3a34ede2bae1fd2fb1876a7ba362-Abstract-Conference.html) | 2025 | NeurIPS 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=value-guided-search-cot-2025) |
+| [ViLBench: A Suite for Vision-Language Process Reward Modeling](https://aclanthology.org/2025.emnlp-main.344/) | 2025 | EMNLP 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=vilbench-2025) |
+| [Vision-Language Models Can Self-Improve Reasoning via Reflection](https://aclanthology.org/2025.naacl-long.447/) | 2025 | NAACL 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=vlm-self-improve-reflection-2025) |
+| [VisualPRM: An Effective Process Reward Model for Multimodal Reasoning](https://arxiv.org/abs/2503.10291) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=visualprm-2025) |
+| [Weaver: Shrinking the Generation-Verification Gap by Scaling Compute for Verification](https://arxiv.org/abs/2506.18203) | 2025 | NeurIPS 2025 | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=weaver-weak-verifiers-2025) |
+| [WebAgent-R1: Training Web Agents via End-to-End Multi-Turn Reinforcement Learning](https://aclanthology.org/2025.emnlp-main.401/) | 2025 | EMNLP 2025 | Environmental / Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=webagent-r1-2025) |
+| [WebEvolver: Enhancing Web Agent Self-Improvement with Co-evolving World Model](https://aclanthology.org/2025.emnlp-main.454/) | 2025 | EMNLP 2025 | Judgment required / Environmental | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=webevolver-2025) |
+| [Where LLM Agents Fail and How They can Learn From Failures](https://arxiv.org/abs/2509.25370) | 2025 | arXiv preprint | Environmental / Judgment required / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=agentdebug-failure-trajectories-2025) |
+| [Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search](https://proceedings.neurips.cc/paper_files/paper/2025/file/32dff2e27b0da1fb5f4209216a948544-Paper-Conference.pdf) | 2025 | NeurIPS 2025 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=wider-or-deeper-ab-mcts-2025) |
+| [Z1: Efficient Test-time Scaling with Code](https://aclanthology.org/2025.emnlp-industry.182/) | 2025 | EMNLP 2025 Industry Track | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=z1-efficient-test-time-scaling-code-2025) |
+| [Training Language Models to Self-Correct via Reinforcement Learning](https://arxiv.org/abs/2409.12917) | 2024 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=score-self-correct-rl-2024) |

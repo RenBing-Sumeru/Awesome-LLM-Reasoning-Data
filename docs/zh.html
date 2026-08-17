@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>大模型后训练推理数据精选</title>
-  <link rel="stylesheet" href="assets/site.css">
+  <title>推理数据论文卡片图谱</title>
+  <link rel="stylesheet" href="assets/site.css?v=6933a7118c">
 </head>
 <body>
   <header class="topbar">
     <div class="wrap">
-      <a class="brand" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">Awesome LLM Reasoning Data</a>
+      <a class="brand" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">大模型后训练推理数据</a>
       <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#tracks">研究方向</a>
+        <a href="#paths">阅读路径</a>
+        <a href="#contracts">验证契约</a>
+        <a href="#search">检索</a>
+        <a class="ask" href="ask/">问答 ↗</a>
         <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/README_zh.md">README</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/README.md">论文目录</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/cards/README.md">论文卡片</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_coverage.md">链接覆盖</a>
-        <a class="ask" href="ask/?lang=zh">问答 ↗</a>
         <a class="lang" href="./" lang="en">English</a>
       </nav>
     </div>
@@ -25,74 +25,92 @@
   <main class="wrap">
     <section class="hero">
       <div class="hero-text">
-        <p class="eyebrow">后训练推理数据的精选领域地图</p>
-        <h1>什么样的数据，<br>真正教会模型推理？</h1>
-        <p class="lede">每条论文条目都回答一个实际问题：当模型在后训练之后推理能力变强，是哪份数据记录、哪种反馈信号、验证器、奖励、环境或评审让它成为可能。</p>
+        <p class="eyebrow">后训练推理数据的双语论文卡片</p>
+        <h1>每张卡片都写清：<br>数据对象是什么，谁来验证它。</h1>
+        <p class="lede">每个条目都是一张完整的阅读卡片，而不是一条引用：九个章节全部依据原始论文写成——问题、核心思路、方法、证据、新意、局限与阅读要点。</p>
         <p class="statline">
-          <b id="totalEntries">280</b> 篇论文<span class="sep">|</span>
-          <b id="verifiedEntries">165</b> 篇已验证<span class="sep">|</span>
-          <b id="cardedEntries">87</b> 张卡片<span class="sep">|</span>
-          更新于 2026 年 6 月
+          <b>1285</b> 张卡片<span class="sep">|</span>
+          <b>14/14</b> 个方向已接入<span class="sep">|</span>
+          <b>676</b> 篇必读<span class="sep">|</span>
+          <b>23130</b> 个双语章节
         </p>
       </div>
-      <div class="hero-media"><img class="hero-art" src="assets/cover_zh.svg" alt="大模型后训练推理数据精选：三大板块十四个方向的繁花之树"></div>
+      <div class="hero-media"><img src="assets/coverage_zh.svg?v=6933a7118c" alt="按方向浏览"></div>
     </section>
 
-    <section>
+    <section id="tracks">
       <div class="sechead">
         <span class="secnum">01</span>
         <h2>按方向浏览</h2>
-        <p>十四个方向，编号与 README 目录一致。点击任意方向即可筛选下方论文。</p>
+        <p>三大板块共十四个方向。深色为已接入，浅色仅有跨标签卡片，破折号表示该批卡片尚未入库。</p>
       </div>
       <div id="trackGroups" class="groups"></div>
     </section>
 
-    <section>
+    <section id="paths">
       <div class="sechead">
         <span class="secnum">02</span>
         <h2>阅读路径</h2>
-        <p>为不同读者准备的阅读顺序。</p>
+        <p>面向不同目标的阅读路线。每条都是对卡片库的实时查询，新卡片入库后会自动进入所属路线。</p>
       </div>
       <div id="pathTabs" class="pathtabs"></div>
       <div id="pathPanel" class="pathpanel"></div>
     </section>
 
-    <section id="search">
+    <section id="contracts">
       <div class="sechead">
         <span class="secnum">03</span>
-        <h2>检索论文</h2>
-        <p>支持标题、作者、标签、摘要、发表处全文检索。</p>
+        <h2>按反馈契约筛选</h2>
+        <p>决定一张卡片能否被复用的元数据：答案由谁验证，又被什么消费。</p>
+      </div>
+      <div id="facetRows" class="facets"></div>
+    </section>
+
+    <section id="search">
+      <div class="sechead">
+        <span class="secnum">04</span>
+        <h2>检索卡片</h2>
+        <p>支持标题、作者、摘要、标签与领域的全文检索。</p>
       </div>
       <div class="searchbar">
-        <input id="q" type="search" placeholder="检索 280 篇论文——试试 “process reward”、“Lean”、“contamination”…">
-        <button id="reset" class="fbtn" type="button">重置</button>
+        <input id="q" type="search" placeholder="检索 1285 张卡片——试试「拒绝采样」、「SWE 智能体」、「裁判奖励」…">
+        <button id="reset" class="fbtn" type="button">全部重置</button>
       </div>
       <div class="filters">
-        <label>方向<select id="category"><option value="">全部方向</option></select></label>
-        <label>子方向<select id="subfield"><option value="">全部子方向</option></select></label>
-        <label>年份<select id="year"><option value="">全部年份</option></select></label>
-        <label>发表处<select id="venue"><option value="">全部发表处</option></select></label>
+        <label>研究方向<select id="track"><option value="">全部</option></select></label>
+        <label>年份<select id="year"><option value="">全部</option></select></label>
+        <label>阅读优先级<select id="priority"><option value="">全部</option></select></label>
       </div>
       <div class="resultmeta">
-        <span class="count" id="resultSummary">正在加载数据…</span>
-        <a id="sliceAsk" href="ask/?lang=zh">🤖 就当前筛选提问 →</a>
+        <span class="count" id="resultSummary">正在加载卡片…</span>
+        <span id="activeChips" class="chips"></span>
+        <a id="sliceAsk" class="sliceask" href="ask/">🤖 就当前筛选提问 →</a>
       </div>
-      <section id="results" class="cards" aria-live="polite"></section>
+      <div id="results" class="cards" aria-live="polite"></div>
+      <div id="moreWrap" class="morewrap" hidden><button id="more" class="fbtn" type="button"></button></div>
     </section>
   </main>
 
   <footer class="sitefooter">
     <div class="wrap">
-      <span>由结构化元数据生成。</span>
-      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/data/papers.yaml">data/papers.yaml</a>
-      <a href="assets/entries.json">entries.json</a>
-      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_check.md">链接检查</a>
-      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/LICENSE">MIT 许可证</a>
+      <span>由 library/ 生成——唯一的数据真源。</span>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">项目仓库</a>
+      <a href="assets/data/entries.json">entries.json</a>
     </div>
   </footer>
 
-  <script src="assets/atlas-data.js"></script>
-  <script src="assets/i18n.js"></script>
-  <script src="assets/site.js"></script>
+  <div id="drawer" class="drawer" hidden>
+    <div class="scrim" data-close></div>
+    <article class="panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="panelbar">
+        <span id="drawerCrumb" class="crumb"></span>
+        <button id="drawerLang" class="fbtn ghost" type="button"></button>
+        <button class="fbtn ghost" type="button" data-close>✕</button>
+      </div>
+      <div id="drawerBody" class="panelbody"></div>
+    </article>
+  </div>
+
+  <script src="assets/site.js?v=6933a7118c"></script>
 </body>
 </html>

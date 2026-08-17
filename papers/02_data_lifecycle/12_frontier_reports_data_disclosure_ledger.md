@@ -1,442 +1,133 @@
-# 🚀 Frontier Reports and Data Disclosure Ledger
+# 🚀 12 · Frontier Disclosure Ledger
 
 > DeepSeek-R1, Kimi, Qwen, Magistral, Phi, Nemotron, RLVR reports, and what each frontier-style report discloses or hides about data.
 
-> 🤖 **Ask about this track:** [Open Ask the Atlas](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/ask/?track=frontier_reports_data_disclosure_ledger&mode=find_papers)
-> Try: `What should I read first for 🚀 Frontier Disclosure Ledger?`
-> Try: `Compare the data objects and verifier types in 🚀 Frontier Disclosure Ledger.`
-> Try: `Generate an audit checklist for 🚀 Frontier Disclosure Ledger.`
-
-## 1. What This Track Studies
+[Back to all tracks](README.md) · [Searchable site](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/) · **104** cards · **78** Read first
 
 Use this track to read frontier model reports as partial data-disclosure documents rather than only model-performance announcements.
 
-Frontier reasoning reports shape the field even when they do not release full data. They disclose hints about SFT mixtures, distillation, RLVR rewards, verifier contracts, safety tuning, rejection sampling, inference budgets, and evaluation practices. This track turns those hints into a disclosure ledger.
+## Read first
 
-The goal is not to overclaim hidden recipes. The page should separate what is disclosed, what is inferred, and what remains unknown. That distinction is essential for a trusted Awesome project.
+| Paper | Year | Verified by | What it contributes |
+|---|---:|---|---|
+| [Claude Opus 4.6 System Card](https://www-cdn.anthropic.com/14e4fb01875d2a69f646fa5e574dea2b1c0ff7b5.pdf) | 2026 | Mixed | Claude Opus 4.6's system card partially discloses source categories, RLHF/RLAIF, prior-model reasoning-transcript initialization, a <0.01% reasoning workspace-reward error, and detailed safety/audit practice, but not the underlying data, reward, or reproducibility artifacts. |
+| [Claude Sonnet 4.6 System Card](https://www-cdn.anthropic.com/bbd8ef16d70b7a1665f14f306ee88b53f686aa75/Claude%20Sonnet%204.6%20System%20Card.pdf) | 2026 | Mixed | The Claude Sonnet 4.6 System Card reports broad proprietary training-source categories, deduplication/classification, post-training, reinforcement from AI feedback, and worker preference/safety roles, while record-level data, reward, and recipe details remain undisclosed. |
+| [GLM-5: from Vibe Coding to Agentic Engineering](https://arxiv.org/abs/2602.15763) | 2026 | Mixed | GLM-5 combines a 28.5T-token base pipeline with multi-task SFT, reasoning/agentic/general RL, cross-stage distillation, and 10K+ executable SWE plus terminal/search environments, while releasing weights and slime infrastructure but not the training records, exact mixtures, budgets, or safety ledger. |
+| [GPT-5.4 Thinking System Card](https://deploymentsafety.openai.com/gpt-5-4-thinking/gpt-5-4-thinking.pdf) | 2026 | Mixed | GPT-5.4 Thinking adds long-rollout self-reversion, configurable confirmation, prompt-injection, and cyber-safety training disclosures plus dynamic and production-like safety trajectories, CoT audits, and hidden-test agent evaluations, but not the training records, rewards, global split, or stable versioned artifacts. |
+| [Kimi K2.5: Visual Agentic Intelligence](https://arxiv.org/abs/2602.02276) | 2026 | Mixed | Kimi K2.5 reports 15T multimodal continual pretraining, zero-vision SFT, joint RL, GRMs, and PARL but not data, teachers, environments, rollouts, or reward calibration artifacts. |
+| [MiMo-V2-Flash Technical Report](https://arxiv.org/abs/2601.02780) | 2026 | Mixed | MiMo-V2-Flash describes MOPD plus agentic RL with teacher-KL, programmatic, judge, and multimodal feedback but withholds data, environments, teachers, and reward implementation. |
+| [MiniMax-M2.5](https://github.com/MiniMax-AI/MiniMax-M2.5) | 2026 | Mixed | MiniMax-M2.5 reports hundreds of thousands of work-derived RL environments, 200K+ software environments, Forge tree-merged asynchronous rollouts, and CISPO rewards, but releases only 229B FP8 weights and inference materials—not environments, reward systems, splits, or training lineage. |
+| [Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning](https://arxiv.org/abs/2606.15007) | 2026 | Mixed | Nemotron 3 Ultra releases weights, data collections, and recipes while disclosing multi-domain SFT, asynchronous RLVR with 16 rollouts, and two-stage teacher distillation; private inputs, complete reward calibration, and item-level provenance remain incomplete. |
+| [Phi-4-reasoning-vision-15B Technical Report](https://www.microsoft.com/en-us/research/publication/phi-4-reasoning-vision-15b-technical-report/) | 2026 | Mixed | Phi-4-reasoning-vision-15B reports a 200B-token, three-stage mixed-reasoning SFT pipeline with public source families and data-quality transformations, but withholds training records, internal/acquired data, verification details, and full audit artifacts. |
+| [Qwen-AgentWorld: Language World Models for General Agents](https://arxiv.org/abs/2606.24597) | 2026 | Mixed | Qwen-AgentWorld reports CPT, SFT, and GSPO RL over more than 10M seven-domain environment trajectories, releases 35B weights and the separate 2,170-sample AgentWorldBench test set, and leaves the training corpus and reward stack only partially auditable. |
+| [Qwen3-Coder-Next Technical Report](https://arxiv.org/abs/2603.00729) | 2026 | Mixed | Qwen3-Coder-Next discloses executable coding-task synthesis and Docker-based verification with staged agentic training, but not its training tasks, environments, trajectories, or audit records. |
+| [Qwen3.5: Towards Native Multimodal Agents](https://qwen.ai/blog?id=qwen3.5) | 2026 | Unknown | Qwen3.5 reports scaled multimodal and multi-turn RL with agent-oriented environments and releases a post-trained checkpoint, but not the tasks, traces, rewards, environment artifacts, or provenance needed to audit or reproduce that training. |
 
-Contributors should tag frontier reports across data types and lifecycle stages while using this track to summarize the report-level disclosure quality.
+## All cards
 
-## 2. Why It Matters for Post-Training Reasoning Data
-
-Read this page as a data map, not only a bibliography. For each paper, ask what record is being produced, what feedback contract makes it trainable or evaluable, how it could enter SFT/RM/PRM/RLVR/agent training, and which audit failure would make the claim misleading.
-
-## 3. Subfield Navigator
-
-| Subfield | What it helps you read | Key audit risk |
-|---|---|---|
-| 🚀 DeepSeek-R1 family | RLVR, distillation, reasoning traces, and public recipe disclosure | report describes outcomes but not enough data partitions |
-| 🌙 Kimi reasoning reports | long-context reasoning, RL compute, and frontier inference budgets | test-time compute is mixed with training-data effects |
-| 🐉 Qwen reasoning/math/code reports | math, code, PRM, and open-weight reasoning model families | release cards do not separate SFT, RLVR, and evaluation data |
-| 🧠 Magistral / Phi / Nemotron style reports | open-weight reasoning reports with partial data and reward disclosures | model-card claims cannot be mapped to concrete data objects |
-| 🧪 RLVR recipe reports | reports that expose reward contracts, rollout policies, or RL scaffolds | RL gains are attributed without verifier coverage |
-| 🧬 What is disclosed vs hidden | data sources, filters, lineage, safety mixtures, and undisclosed partitions | opaque mixtures are reused as open recipes |
-
-### Contents
-
-- [🚀 DeepSeek-R1 family](#deepseek-r1-family)
-- [🌙 Kimi reasoning reports](#kimi-reasoning-reports)
-- [🐉 Qwen reasoning/math/code reports](#qwen-reasoning-math-code-reports)
-- [🧠 Magistral / Phi / Nemotron style reports](#magistral-phi-nemotron-style-reports)
-- [🧪 RLVR recipe reports](#rlvr-recipe-reports)
-- [🧬 What is disclosed vs hidden](#what-is-disclosed-vs-hidden)
-
-## 4. Read First
-
-| Work | Year | Links | Data object | Feedback / verifier | Why it matters |
-|---|---:|---|---|---|---|
-| [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801) | 2025 | [Paper](https://arxiv.org/abs/2504.21801) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) · [Card](../../cards/recipes/deepseek-prover-v2.md) | subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: problem, subgoal decomposition, synthesized proof, Lean feedback, reward, benchmark result.; Lean 4 environment plus recursive theorem-proving pipeline. | Lean verification and RL reward over formal proof success. | It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification. |
-| [OpenThoughts: Data recipes for reasoning models](https://arxiv.org/abs/2506.04178) | 2025 | [Paper](https://arxiv.org/abs/2506.04178) · [Code](https://github.com/open-thoughts/open-thoughts) · [HF](https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M) · [Card](../../cards/releases/openthoughts.md) | reasoning traces and final answers; process: question, reasoning trace, answer; offline reasoning corpus | filters, benchmark feedback, and recipe ablations | It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance. |
-| [DeepSeek-Prover: Advancing theorem proving in LLMs](https://arxiv.org/abs/2405.14333) | 2024 | [Paper](https://arxiv.org/abs/2405.14333) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1) · [Card](../../cards/recipes/deepseek-prover.md) | Lean 4 theorem statement and proof script checked by Lean.; process: informal problem, formal statement, generated proof, Lean result, benchmark split.; Lean 4 proof assistant and formal theorem-proving benchmark harness. | Lean kernel/checker acceptance. | It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object. |
-| [Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120) | 2024 | [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../../cards/recipes/magicoder.md) | instruction-response coding example, often linked to a code reference or task scaffold.; process: source snippet, generated instruction, solution response, model family, benchmark result.; offline code-data generation and code benchmark evaluation. | coding benchmark pass rates and optional executable checks. | It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention. |
-| [Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535) | 2024 | [Paper](https://arxiv.org/abs/2405.01535) · [ACL](https://aclanthology.org/2024.emnlp-main.248/) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [Code](https://github.com/prometheus-eval/prometheus-eval) · [Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0) · [Card](../../cards/verifiers/prometheus-2.md) | rubric-conditioned scalar score, critique, or pairwise preference output.; process: instruction, candidate response, evaluation criterion, assessment format, score/ranking, reference judgment.; open evaluator model, GitHub code, ACL software/data artifacts, and HF weights. | Prometheus 2 judge output aligned against human/proprietary-judge benchmarks. | It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes. |
-| [Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124) | 2024 | [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md) | instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases. | mixture of preference labels, reward models, and verifiable rewards depending on stage. | It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together. |
-| [Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949) | 2025 | [Paper](https://arxiv.org/abs/2505.00949) · [Card](../../cards/recipes/llama_nemotron.md) | answer level | mixed | Mixed post-training corpus reference for reasoning, chat, and safety partitions. |
-| [DeepSeek-R1](https://arxiv.org/abs/2501.12948) | 2025 | [Paper](https://arxiv.org/abs/2501.12948) · [Card](../../cards/recipes/deepseek_r1.md) | answer level | mixed | It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior. |
-| [Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300) | 2025 | [Paper](https://arxiv.org/abs/2509.25300) · [Card](../../cards/recipes/scaling-behaviors-rl-post-training.md) | problem, generated solution/answer, reward outcome, and training curve metrics.; process: model size, data volume, compute budget, optimization steps, reward signal, validation performance.; RL post-training experiments over math tasks. | answer-level reward for mathematical reasoning and scaling curves. | It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance. |
-| [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152) | 2024 | [Paper](https://arxiv.org/abs/2408.08152) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL) · [Card](../../cards/recipes/deepseek-prover-v1-5.md) | Lean proof script, proof-search path, feedback signal, and verification result.; process: theorem, proof attempt, Lean feedback, reward, search node, final proof, pass/fail result.; Lean 4 proof assistant plus RMaxTS search procedure. | proof assistant feedback used for RL and search selection. | It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning. |
-
-## 5. Full Paper List
-
-### <a id="deepseek-r1-family"></a>🚀 DeepSeek-R1 family
-
-- 🚀 **[DeepSeek-R1](https://arxiv.org/abs/2501.12948)**
-  <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · distillation · rlvr · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2501.12948) · [Card](../../cards/recipes/deepseek_r1.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; distillation; rlvr
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It is a frontier reference for public RLVR discussion, showing how verifiable tasks, reward design, and distillation shape reasoning behavior.
-- 🧭 **[1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training (AM-DeepSeek-R1-Distilled)](https://arxiv.org/abs/2503.19633)**
-  <sub>2025 · arXiv preprint arXiv:2503.19633 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2503.19633)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-
-### <a id="kimi-reasoning-reports"></a>🌙 Kimi reasoning reports
-
-- 🚀 **[Kimi K1.5: Scaling Reinforcement Learning with LLMs](https://arxiv.org/abs/2501.12599)**
-  <sub>2025 · arXiv · 🚀 model report · 📈 scaling study · mixed · rlvr · test time compute · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2501.12599) · [Card](../../cards/recipes/kimi_k15.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; scaling report; rlvr
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Frontier report used for long-context RL and scaling discussion.
-- 📄 **[Kimi K2: Open Agentic Intelligence](https://arxiv.org/abs/2507.20534)**
-  <sub>2025 · arXiv preprint arXiv:2507.20534 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2507.20534)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-
-### <a id="qwen-reasoning-math-code-reports"></a>🐉 Qwen reasoning/math/code reports
-
-- 🚀 **[Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](https://arxiv.org/abs/2409.12122)**
-  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · reward modeling · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2409.12122) · [Code](https://github.com/QwenLM/Qwen2.5-Math) · [HF](https://huggingface.co/Qwen/Qwen2.5-Math-7B) · [Project](https://qwenlm.github.io/blog/qwen2.5-math/) · [Card](../../cards/recipes/qwen2-5-math.md)
-  _Data object:_ math solution, final answer, optional tool/code execution trace, and reward-model score.; process: model stage, problem source, reasoning mode, tool use, answer, reward score, benchmark result.; Qwen math model family, GitHub evaluation scripts, and Hugging Face model releases.
-  _Feedback / verifier:_ math answer checks, reward model signals, and benchmark evaluations.
-  _Recipe signal:_ teacher: self-improvement pipeline and math reward/evaluation signals.; generator: math-specialized models generate solutions and tool-integrated traces.
-  _Audit focus:_ Tool-integrated results are not comparable to no-tool results., Reward models can favor format over proof validity., Model-family reports can blur data and inference effects.
-  _Why it matters:_ It is a useful model-report case where math post-training data, reward models, tool-integrated reasoning, and multilingual math evaluation are tied together.
-- 🚀 **[Qwen3 Technical Report](https://arxiv.org/abs/2505.09388)**
-  <sub>2025 · arXiv · 🚀 model report · mixed · sft · rlvr · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2505.09388) · [Card](../../cards/recipes/qwen3.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; sft; rlvr
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open model-family report useful for coordinated release-tick analysis.
-
-### <a id="magistral-phi-nemotron-style-reports"></a>🧠 Magistral / Phi / Nemotron style reports
-
-- 🚀 **[Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949)**
-  <sub>2025 · arXiv · 🚀 model report · 📦 data release · mixed · sft · distillation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2505.00949) · [Card](../../cards/recipes/llama_nemotron.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; sft; distillation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Mixed post-training corpus reference for reasoning, chat, and safety partitions.
-- 🚀 **[Magistral](https://arxiv.org/abs/2506.10910)**
-  <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · rlvr · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2506.10910) · [Card](../../cards/recipes/magistral.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ frontier pipeline; reward verifier layer; rlvr
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Reasoning report illustrating reward-stack pinning and prompt-corpus cycling.
-- 🚀 **[MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585)**
-  <sub>2025 · arXiv preprint arXiv:2506.13585 · 🚀 model report · 📈 scaling study · mixed · programmatic · rlvr · test time compute · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2506.13585) · [Code](https://github.com/MiniMax-AI/MiniMax-M1) · [Card](../../cards/recipes/minimax_m1.md)
-  _Data object:_ reasoning output, code/tool result, or agent task output; process: reasoning output, benchmark result, thinking budget; math, code, SWE, tool-use, and long-context evaluation surfaces
-  _Feedback / verifier:_ programmatic, environment, and benchmark feedback
-  _Recipe signal:_ frontier pipeline; optimizer scaffold; scaling report
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Frontier-style model report connecting efficient long-context/test-time compute, RL training, and software/agent evaluation surfaces.
-- 🚀 **[Phi-4-reasoning Technical Report](https://arxiv.org/abs/2504.21318)**
-  <sub>2025 · arXiv · 🚀 model report · mixed · distillation · sft · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2504.21318) · [Card](../../cards/recipes/phi4_reasoning.md)
-  _Data object:_ answer level
-  _Feedback / verifier:_ mixed
-  _Recipe signal:_ trace writing; frontier pipeline; distillation
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Reasoning model report highlighting teacher distillation as trace writing.
-- 📄 **[Nemotron-Math: Reasoning Data with Tool-Integrated Reasoning Variants](https://arxiv.org/abs/2512.15489)**
-  <sub>2025 · arXiv preprint arXiv:2512.15489 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2512.15489)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-
-### <a id="rlvr-recipe-reports"></a>🧪 RLVR recipe reports
-
-- 🚀 **[DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](https://arxiv.org/abs/2504.21801)**
-  <sub>2025 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · rlvr · sft · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2504.21801) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V2) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) · [Card](../../cards/recipes/deepseek-prover-v2.md)
-  _Data object:_ subgoal chain, informal reasoning trace, Lean proof, and checker result.; process: problem, subgoal decomposition, synthesized proof, Lean feedback, reward, benchmark result.; Lean 4 environment plus recursive theorem-proving pipeline.
-  _Feedback / verifier:_ Lean verification and RL reward over formal proof success.
-  _Recipe signal:_ teacher: DeepSeek-V3-style decomposition and formal proof feedback.; generator: recursive pipeline creates subgoals and proof attempts.
-  _Audit focus:_ Subgoal decomposition can introduce false intermediate claims., Formal and informal reasoning scores are not directly comparable., Large-model teacher lineage can hide data provenance.
-  _Why it matters:_ It is a frontier formal-reasoning stack where data includes subgoals, informal reasoning, synthesized formal proofs, and proof-assistant verification.
-- 📈 **[Scaling Behaviors of LLM Reinforcement Learning Post-Training](https://arxiv.org/abs/2509.25300)**
-  <sub>2025 · arXiv · 📈 scaling study · 🏗️ construction recipe · programmatic · rlvr · evaluation · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2509.25300) · [Card](../../cards/recipes/scaling-behaviors-rl-post-training.md)
-  _Data object:_ problem, generated solution/answer, reward outcome, and training curve metrics.; process: model size, data volume, compute budget, optimization steps, reward signal, validation performance.; RL post-training experiments over math tasks.
-  _Feedback / verifier:_ answer-level reward for mathematical reasoning and scaling curves.
-  _Recipe signal:_ teacher: reward signal and math benchmark labels.; generator: RL policy rollouts during post-training.
-  _Audit focus:_ Math-only scaling can overstate transfer to open-ended reasoning., Repeated data reuse can improve metrics while increasing overfitting risk., Power-law fits can hide reward or benchmark artifacts.
-  _Why it matters:_ It helps turn RLVR from recipe folklore into a scaling problem: data reuse, optimization steps, and model size have different effects on learning efficiency and final performance.
-- 🏗️ **[DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](https://arxiv.org/abs/2408.08152)**
-  <sub>2024 · arXiv · 🏗️ construction recipe · 🚀 model report · programmatic · environmental · rlvr · agent training · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2408.08152) · [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL) · [Card](../../cards/recipes/deepseek-prover-v1-5.md)
-  _Data object:_ Lean proof script, proof-search path, feedback signal, and verification result.; process: theorem, proof attempt, Lean feedback, reward, search node, final proof, pass/fail result.; Lean 4 proof assistant plus RMaxTS search procedure.
-  _Feedback / verifier:_ proof assistant feedback used for RL and search selection.
-  _Recipe signal:_ teacher: Lean checker feedback and prior formal-proof dataset.; generator: model samples proof candidates and tree-search paths.
-  _Audit focus:_ Search budget can dominate model quality., Checker feedback is sparse and version-dependent., RL can optimize toward easy theorem families.
-  _Why it matters:_ It shows how proof-assistant feedback can become both a reward signal and a search guide for formal mathematical reasoning.
-- 🚀 **[DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](https://arxiv.org/abs/2402.03300)**
-  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · programmatic · mixed · sft · rlvr · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2402.03300) · [Code](https://github.com/deepseek-ai/deepseek-math) · [HF](https://huggingface.co/collections/deepseek-ai/deepseek-math) · [Card](../../cards/recipes/deepseekmath.md)
-  _Data object:_ natural-language mathematical solution plus final answer, sometimes sampled multiple times.; process: data-selection score, training stage, problem, solution, final answer, verifier/evaluation result, sampling count.; offline math training and benchmark evaluation pipeline.
-  _Feedback / verifier:_ answer correctness and GRPO-style reward over math tasks.
-  _Recipe signal:_ teacher: math corpora, supervised examples, and verifiable benchmark answers.; generator: model produces solutions during SFT, RL, and self-consistency sampling.
-  _Audit focus:_ Self-consistency can hide weak single-sample accuracy., Web-data mining may import benchmark leakage., Final-answer rewards can miss flawed derivations.
-  _Why it matters:_ It is an important bridge from data selection to RLVR: performance gains are attributed to both a math pretraining corpus and a more memory-efficient policy-optimization recipe.
-- 🧪 **[Prometheus 2: An open source language model specialized in evaluating other language models](https://arxiv.org/abs/2405.01535)**
-  <sub>2024 · EMNLP · 🧪 verifier reward · 🚀 model report · judgment required · reward modeling · preference learning · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2405.01535) · [ACL](https://aclanthology.org/2024.emnlp-main.248/) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.248) · [Code](https://github.com/prometheus-eval/prometheus-eval) · [Data](https://aclanthology.org/2024.emnlp-main.248.data.zip) · [HF](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0) · [Card](../../cards/verifiers/prometheus-2.md)
-  _Data object:_ rubric-conditioned scalar score, critique, or pairwise preference output.; process: instruction, candidate response, evaluation criterion, assessment format, score/ranking, reference judgment.; open evaluator model, GitHub code, ACL software/data artifacts, and HF weights.
-  _Feedback / verifier:_ Prometheus 2 judge output aligned against human/proprietary-judge benchmarks.
-  _Recipe signal:_ teacher: human judgments and strong evaluator references across direct and pairwise tasks.; generator: training pipeline merges evaluator capabilities across formats.
-  _Audit focus:_ Open judges can inherit rubric bias., Agreement with another judge is not the same as correctness., Pairwise and scalar formats can disagree.
-  _Why it matters:_ It gives the atlas a concrete open-source judge model whose training/evaluation data can be audited instead of treating proprietary judges as black boxes.
-- 🚀 **[Tulu 3: Pushing frontiers in open language model post-training](https://arxiv.org/abs/2411.15124)**
-  <sub>2024 · arXiv · 🚀 model report · 🏗️ construction recipe · mixed · programmatic · sft · preference learning · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2411.15124) · [OpenReview](https://openreview.net/forum?id=i1uGbfHHpH) · [Code](https://github.com/allenai/open-instruct) · [Data](https://huggingface.co/collections/allenai/tulu-3-datasets) · [Project](https://allenai.org/blog/tulu-3-technical) · [Card](../../cards/recipes/tulu-3.md)
-  _Data object:_ instruction-response examples, preference pairs, verifiable task outputs, and model-evaluation records.; process: dataset shard, objective stage, prompt, response, preference label or reward, evaluation split, decontamination status.; open-instruct training/evaluation stack and Hugging Face dataset/model releases.
-  _Feedback / verifier:_ mixture of preference labels, reward models, and verifiable rewards depending on stage.
-  _Recipe signal:_ teacher: synthetic instruction data, preference sources, reward signals, and verifiable tasks.; generator: open data curation and post-training pipeline produces model checkpoints and evaluation artifacts.
-  _Audit focus:_ Full-stack releases can obscure which component caused a gain., Evaluation suites can leak into data curation loops., RLVR improvements may be domain-specific.
-  _Why it matters:_ It is one of the clearest open references for modern post-training pipelines because it exposes data mixtures, objectives, decontamination, evaluation, and training infrastructure together.
-- 🧭 **[Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155)**
-  <sub>2022 · NeurIPS · 🧭 survey background · 🚀 model report · judgment required · sft · preference learning · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2203.02155) · [Card](../../cards/recipes/training-language-models-to-follow-instructions-with-human-feedback.md)
-  _Data object:_ pairwise preference; scalar reward
-  _Feedback / verifier:_ judgment required
-  _Recipe signal:_ prompt sourcing; reward verifier layer; sft
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It is the alignment-data baseline for separating supervised demonstrations, pairwise preferences, learned rewards, and policy optimization in later reasoning models.
-- 🧭 **[AM-Thinking-v1: Advancing the Frontier of Reasoning at 32B Scale](https://arxiv.org/abs/2505.08311)**
-  <sub>2025 · arXiv preprint arXiv:2505.08311 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2505.08311)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[Cognitive Behaviors that Enable Self-Improving Reasoners, or, Four Habits of Highly Effective STaRs](https://arxiv.org/abs/2503.01307)**
-  <sub>2025 · arXiv preprint arXiv:2503.01307 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2503.01307)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models](https://arxiv.org/abs/2512.02556)**
-  <sub>2025 · arXiv preprint arXiv:2512.02556 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2512.02556)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **[Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model](https://arxiv.org/abs/2503.24290)**
-  <sub>2025 · arXiv preprint arXiv:2503.24290 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2503.24290)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-
-### <a id="what-is-disclosed-vs-hidden"></a>🧬 What is disclosed vs hidden
-
-- 📄 **[Skywork Open Reasoner 1 Technical Report](https://arxiv.org/abs/2505.22312)**
-  <sub>2025 · arXiv preprint arXiv:2505.22312 · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2505.22312)
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **[rStar2-Agent: Agentic Reasoning Technical Report](https://arxiv.org/abs/2508.20722)**
-  <sub>2025 · arXiv preprint arXiv:2508.20722 · 🧭 survey background · unknown · unknown · L1_link_verified</sub>
-  [Paper](https://arxiv.org/abs/2508.20722)
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-
-### <a id="other-related-work"></a>Other related work
-
-- 📦 **[OpenThoughts: Data recipes for reasoning models](https://arxiv.org/abs/2506.04178)**
-  <sub>2025 · arXiv · 📦 data release · 🏗️ construction recipe · mixed · sft · distillation · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2506.04178) · [Code](https://github.com/open-thoughts/open-thoughts) · [HF](https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M) · [Card](../../cards/releases/openthoughts.md)
-  _Data object:_ reasoning traces and final answers; process: question, reasoning trace, answer; offline reasoning corpus
-  _Feedback / verifier:_ filters, benchmark feedback, and recipe ablations
-  _Recipe signal:_ prompt sourcing; trace writing; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ It is one of the most useful open references for how question sourcing, filtering, teacher traces, and answer generation choices change downstream reasoning performance.
-- 📦 **[DeepSeek-Prover: Advancing theorem proving in LLMs](https://arxiv.org/abs/2405.14333)**
-  <sub>2024 · arXiv · 📦 data release · 🏗️ construction recipe · programmatic · environmental · sft · agent training · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2405.14333) · [Data](https://huggingface.co/datasets/deepseek-ai/DeepSeek-Prover-V1) · [HF](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1) · [Card](../../cards/recipes/deepseek-prover.md)
-  _Data object:_ Lean 4 theorem statement and proof script checked by Lean.; process: informal problem, formal statement, generated proof, Lean result, benchmark split.; Lean 4 proof assistant and formal theorem-proving benchmark harness.
-  _Feedback / verifier:_ Lean kernel/checker acceptance.
-  _Recipe signal:_ teacher: formalization and proof-generation pipeline with Lean feedback.; generator: synthetic data pipeline translates informal math into formal statements and proofs.
-  _Audit focus:_ Formal statements can be wrong even if proofs verify., Pass@k hides low single-shot reliability., Lean/mathlib version drift can break reproducibility.
-  _Why it matters:_ It is a key formal-reasoning data recipe where synthetic formal statements, generated proofs, and Lean verification form a reusable post-training object.
-- 🏗️ **[Magicoder: Empowering code generation with OSS-instruct](https://arxiv.org/abs/2312.02120)**
-  <sub>2024 · ICML · 🏗️ construction recipe · 📦 data release · programmatic · mixed · sft · evaluation · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2312.02120) · [PMLR](https://proceedings.mlr.press/v235/wei24h.html) · [Code](https://github.com/ise-uiuc/magicoder) · [Data](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) · [HF](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B) · [Card](../../cards/recipes/magicoder.md)
-  _Data object:_ instruction-response coding example, often linked to a code reference or task scaffold.; process: source snippet, generated instruction, solution response, model family, benchmark result.; offline code-data generation and code benchmark evaluation.
-  _Feedback / verifier:_ coding benchmark pass rates and optional executable checks.
-  _Recipe signal:_ teacher: GPT-3.5-series teacher model for synthetic instruction generation.; generator: OSS-Instruct prompts the teacher with open-source code snippets.
-  _Audit focus:_ Synthetic code tasks can inherit license issues., Reference snippets may leak benchmark patterns., Teacher-generated solutions can be plausible but wrong.
-  _Why it matters:_ It is a strong code-data construction example because it grounds synthetic coding instructions in real open-source references rather than free-floating prompt invention.
-- 🏗️ **[Orca: Progressive learning from complex explanation traces of GPT-4](https://arxiv.org/abs/2306.02707)**
-  <sub>2023 · arXiv · 🏗️ construction recipe · 🚀 model report · judgment required · mixed · sft · distillation · L5_audit_ready</sub>
-  [Paper](https://arxiv.org/abs/2306.02707) · [Project](https://www.microsoft.com/en-us/research/publication/orca-progressive-learning-from-complex-explanation-traces-of-gpt-4/) · [Card](../../cards/recipes/orca.md)
-  _Data object:_ instruction response with detailed explanation, intermediate reasoning, and final answer.; process: prompt source, teacher identity, explanation trace, task type, response, evaluation benchmark.; offline synthetic-data distillation and evaluation pipeline.
-  _Feedback / verifier:_ downstream reasoning, exam, and benchmark evaluation rather than a single automatic verifier.
-  _Recipe signal:_ teacher: large foundation models that produce explanation traces and stepwise guidance.; generator: teacher-assisted data-generation pipeline over diverse instructions.
-  _Audit focus:_ Students can learn teacher style without robust reasoning., Synthetic traces can include teacher errors., Closed teacher data makes lineage hard to audit.
-  _Why it matters:_ It is an early and influential reasoning-distillation recipe: the reusable object is teacher-assisted explanation data plus careful evaluation against style-only imitation.
-- 🛠️ **[OpenHands: An Open Platform for AI Software Developers as Generalist Agents](https://arxiv.org/abs/2407.16741)**
-  <sub>2024 · ICLR · 🛠️ infrastructure · 🌐 agent environment · environmental · mixed · agent training · evaluation · L4_carded</sub>
-  [Paper](https://arxiv.org/abs/2407.16741) · [Code](https://github.com/All-Hands-AI/OpenHands) · [Project](https://www.openhands.dev/) · [Card](../../cards/agents/openhands.md)
-  _Data object:_ tool/action/observation trajectory; process: plan, shell command, file edit; sandboxed software-development runtime
-  _Feedback / verifier:_ task, test, or human-review outcome depending on benchmark
-  _Recipe signal:_ search substrate; optimizer scaffold; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open platform for software-development agents; useful for thinking about executable trajectories, sandbox state, and community-maintained agent scaffolds.
-
-### ⚠️ Needs search or metadata
-
-- 📄 **DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning**
-  <sub>2025 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **Introducing OpenAI o3 and o4-mini**
-  <sub>2025 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **Open-Reasoner-Zero: An open-source approach to RLVR for reasoning**
-  <sub>2025 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📦 **OpenR1-Math-220k**
-  <sub>2025 · Hugging Face / GitHub · 📦 data release · 🏗️ construction recipe · programmatic · sft · distillation · L0_seeded</sub>
-  [Code](https://github.com/huggingface/open-r1) · [HF](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) · [Card](../../cards/releases/openr1.md)
-  _Data object:_ math problem with reasoning trace and final answer; process: problem, reasoning trace, answer; offline math corpus
-  _Feedback / verifier:_ math answer verifier / filtering pipeline
-  _Recipe signal:_ prompt sourcing; trace writing; reward verifier layer
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Open R1 math dataset/reproduction asset with large-scale math questions and reasoning traces; read it through lineage, verifier, and filtering fields.
-- 📄 **Qwen2.5-Math-PRM**
-  <sub>2025 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🚀 **Qwen3-Coder**
-  <sub>2025 · GitHub / project report · 🚀 model report · 🏗️ construction recipe · programmatic · environmental · sft · rlvr · L0_seeded</sub>
-  [Code](https://github.com/QwenLM/Qwen3-Coder) · [Project](https://qwenlm.github.io/blog/qwen3-coder/) · [Card](../../cards/recipes/qwen3_coder.md)
-  _Data object:_ code solution, tool-call, or agent trajectory; process: code answer, tool call, execution result; code execution and agent task environments
-  _Feedback / verifier:_ unit tests, execution feedback, and agent task success signals
-  _Recipe signal:_ frontier pipeline; optimizer scaffold; release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Coding-agent recipe entry for studying how code data, tool-call tasks, verifiable execution, and agentic RL enter a frontier open model release.
-- 📄 **xLAM: A family of large action models to empower AI agent systems**
-  <sub>2025 · NAACL · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **FrontierMath: A benchmark for evaluating advanced mathematical reasoning in AI**
-  <sub>2024 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **Goedel-Prover: A frontier model for open-source automated theorem proving**
-  <sub>2024 · unknown · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 🧭 **Learning to reason with LLMs**
-  <sub>2024 · unknown · 🧭 survey background · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ survey background
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-- 📄 **The Llama 3 Herd of models**
-  <sub>2024 · arXiv preprint · unknown · unknown · L0_seeded</sub>
-  needs_search
-  _Data object:_ metadata pending
-  _Feedback / verifier:_ metadata pending
-  _Recipe signal:_ release audit
-  _Audit focus:_ check links, lineage, verifier, split, and contamination
-  _Why it matters:_ Verified citation waypoint; add a paper-specific data-object, verifier, and audit note before promoting it as a core read.
-
-## 6. What to Audit
-
-- Which data partitions and reward contracts are actually disclosed?
-- Can model gains be attributed to data, optimizer, scaffold, or inference budget?
-- Are distillation, RLVR, safety, and chat data separated?
-
-## 7. Open Problems
-
-- What should a standard frontier-report data-disclosure table include?
-- How can open projects cite frontier reports without overstating hidden details?
-- Which disclosed fields are most predictive of reproducibility?
-- How should model-family updates be versioned in the atlas?
-
-## 8. Related Cards
-
-- [DeepSeek-Prover-V2: Advancing formal mathematical reasoning via reinforcement learning](../../cards/recipes/deepseek-prover-v2.md)
-- [DeepSeek-R1](../../cards/recipes/deepseek_r1.md)
-- [Kimi K1.5: Scaling Reinforcement Learning with LLMs](../../cards/recipes/kimi_k15.md)
-- [Llama-Nemotron: Efficient Reasoning Models](../../cards/recipes/llama_nemotron.md)
-- [Magistral](../../cards/recipes/magistral.md)
-- [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](../../cards/recipes/minimax_m1.md)
-- [OpenThoughts: Data recipes for reasoning models](../../cards/releases/openthoughts.md)
-- [Phi-4-reasoning Technical Report](../../cards/recipes/phi4_reasoning.md)
-- [Qwen3 Technical Report](../../cards/recipes/qwen3.md)
-- [Scaling Behaviors of LLM Reinforcement Learning Post-Training](../../cards/recipes/scaling-behaviors-rl-post-training.md)
-- [DeepSeek-Prover-V1.5: Harnessing proof assistant feedback for reinforcement learning and Monte-Carlo tree search](../../cards/recipes/deepseek-prover-v1-5.md)
-- [DeepSeek-Prover: Advancing theorem proving in LLMs](../../cards/recipes/deepseek-prover.md)
-- [DeepSeekMath: Pushing the limits of mathematical reasoning in open language models](../../cards/recipes/deepseekmath.md)
-- [Magicoder: Empowering code generation with OSS-instruct](../../cards/recipes/magicoder.md)
-- [OpenHands: An Open Platform for AI Software Developers as Generalist Agents](../../cards/agents/openhands.md)
-- [Prometheus 2: An open source language model specialized in evaluating other language models](../../cards/verifiers/prometheus-2.md)
-- [Qwen2.5-Math technical report: Toward mathematical expert model via self-improvement](../../cards/recipes/qwen2-5-math.md)
-- [Tulu 3: Pushing frontiers in open language model post-training](../../cards/recipes/tulu-3.md)
-
-## Back to Map
-
-- [Paper atlas README](../README.md)
-- [Repository README](../../README.md)
+| Paper | Year | Venue | Verified by | Card |
+|---|---:|---|---|---|
+| [Claude Opus 4.6 System Card](https://www-cdn.anthropic.com/14e4fb01875d2a69f646fa5e574dea2b1c0ff7b5.pdf) | 2026 | Anthropic system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=anthropic-claude-opus-4-6-system-card-2026) |
+| [Claude Sonnet 4.6 System Card](https://www-cdn.anthropic.com/bbd8ef16d70b7a1665f14f306ee88b53f686aa75/Claude%20Sonnet%204.6%20System%20Card.pdf) | 2026 | Anthropic system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=anthropic-claude-sonnet-4-6-system-card-2026) |
+| [GLM-5: from Vibe Coding to Agentic Engineering](https://arxiv.org/abs/2602.15763) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=glm-5-agentic-engineering-2026) |
+| [GPT-5.3-Codex System Card](https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf) | 2026 | OpenAI system card | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-5-3-codex-system-card-2026) |
+| [GPT-5.4 Thinking System Card](https://deploymentsafety.openai.com/gpt-5-4-thinking/gpt-5-4-thinking.pdf) | 2026 | OpenAI system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-5-4-thinking-system-card-2026) |
+| [Kimi K2.5: Visual Agentic Intelligence](https://arxiv.org/abs/2602.02276) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-k2-5-2026) |
+| [MiMo-V2-Flash Technical Report](https://arxiv.org/abs/2601.02780) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mimo-v2-flash-2026) |
+| [MiniMax-M2.5](https://github.com/MiniMax-AI/MiniMax-M2.5) | 2026 | MiniMax official model release | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=minimax-m2-5-2026) |
+| [Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning](https://arxiv.org/abs/2606.15007) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=nvidia-nemotron-3-ultra-2026) |
+| [Phi-4-reasoning-vision-15B Technical Report](https://www.microsoft.com/en-us/research/publication/phi-4-reasoning-vision-15b-technical-report/) | 2026 | Microsoft Research Technical Report (MSR-TR-2026-10) | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=phi-4-reasoning-vision-15b-2026) |
+| [Qwen-AgentWorld: Language World Models for General Agents](https://arxiv.org/abs/2606.24597) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen-agentworld-2026) |
+| [Qwen3-Coder-Next Technical Report](https://arxiv.org/abs/2603.00729) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-coder-next-technical-report-2026) |
+| [Qwen3.5-Omni Technical Report](https://arxiv.org/abs/2604.15804) | 2026 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-5-omni-2026) |
+| [Qwen3.5: Towards Native Multimodal Agents](https://qwen.ai/blog?id=qwen3.5) | 2026 | Qwen official release blog | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-5-2026) |
+| [The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence](https://arxiv.org/abs/2605.26494) | 2026 | arXiv preprint | Environmental | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=minimax-m2-2026) |
+| [AceReason-Nemotron 1.1: Advancing Math and Code Reasoning through SFT and RL Synergy](https://arxiv.org/abs/2506.13284) | 2025 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=acereason-nemotron-1-1-2025) |
+| [Addendum to GPT-5 system card: GPT-5-Codex](https://cdn.openai.com/pdf/97cc5669-7a25-4e63-b15f-5fd5bdc4d149/gpt-5-codex-system-card.pdf) | 2025 | OpenAI system-card addendum | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-5-codex-system-card-2025) |
+| [Addendum to GPT-5.2 System Card: GPT-5.2-Codex](https://cdn.openai.com/pdf/ac7c37ae-7f4c-4442-b741-2eabdeaf77e0/oai_5_2_Codex.pdf) | 2025 | OpenAI system-card addendum | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-5-2-codex-system-card-2025) |
+| [Addendum to OpenAI o3 and o4-mini System Card: Codex](https://cdn.openai.com/pdf/8df7697b-c1b2-4222-be00-1fd3298f351d/codex_system_card.pdf) | 2025 | OpenAI system-card addendum | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-o3-o4-mini-codex-addendum-2025) |
+| [Agent Lightning: Train ANY AI Agents with Reinforcement Learning](https://arxiv.org/abs/2508.03680) | 2025 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=agent-lightning-2025) |
+| [Amazon Nova 2 Sonic - AWS AI Service Cards](https://docs.aws.amazon.com/ai/responsible-ai/nova-2-sonic/overview.html) | 2025 | AWS AI Service Card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=amazon-nova-2-sonic-service-card-2025) |
+| [AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning](https://arxiv.org/abs/2505.24298) | 2025 | NeurIPS 2025 | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=areal-2025) |
+| [AWS AI Service Cards: Amazon Nova 2 Lite](https://docs.aws.amazon.com/pdfs/ai/responsible-ai/nova-2-lite/nova-2-lite.pdf) | 2025 | AWS AI Service Card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=amazon-nova-2-lite-service-card-2025) |
+| [Claude 3.7 Sonnet System Card](https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf) | 2025 | Anthropic system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=anthropic-claude-3-7-sonnet-system-card-2025) |
+| [Claude 4 System Card](https://www-cdn.anthropic.com/6d8a8055020700718b0c49369f60816ba2a7c285/Claude%204%20System%20Card.pdf) | 2025 | Anthropic system card | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=claude-4-system-card-2025) |
+| [Claude Haiku 4.5 System Card](https://www-cdn.anthropic.com/7aad69bf12627d42234e01ee7c36305dc2f6a970.pdf) | 2025 | Anthropic system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=anthropic-claude-haiku-4-5-system-card-2025) |
+| [Claude Opus 4.5 System Card](https://www-cdn.anthropic.com/bf10f64990cfda0ba858290be7b8cc6317685f47.pdf) | 2025 | Anthropic system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=anthropic-claude-opus-4-5-system-card-2025) |
+| [Claude Sonnet 4.5 System Card](https://www-cdn.anthropic.com/963373e433e489a87a10c823c52a0a013e9172dd/Claude%20Sonnet%204.5%20System%20Card.pdf) | 2025 | Anthropic system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=anthropic-claude-sonnet-4-5-system-card-2025) |
+| [Deep Research System Card](https://cdn.openai.com/deep-research-system-card.pdf) | 2025 | OpenAI system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-deep-research-system-card-2025) |
+| [DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition](https://arxiv.org/abs/2504.21801) | 2025 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-prover-v2-2025) |
+| [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-r1-2025) |
+| [DeepSeek-V3.1](https://huggingface.co/deepseek-ai/DeepSeek-V3.1) | 2025 | Official DeepSeek Hugging Face model release | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-v3-1-release-2025) |
+| [DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models](https://arxiv.org/abs/2512.02556) | 2025 | arXiv preprint | Programmatic / Environmental / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-v3-2-pushing-frontier-2025) |
+| [DeepSeekMath-V2: Towards Self-Verifiable Mathematical Reasoning](https://arxiv.org/abs/2511.22570) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseekmath-v2-2025) |
+| [DR Tulu: Reinforcement Learning with Evolving Rubrics for Deep Research](https://arxiv.org/abs/2511.19399) | 2025 | ICML 2026 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=dr-tulu-2025) |
+| [ERNIE 4.5 Technical Report](https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf) | 2025 | official technical report | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=ernie-4-5-2025) |
+| [Frontier Safety Framework Report - Gemini 3 Pro (November, 2025) v2](https://storage.googleapis.com/deepmind-media/gemini/gemini_3_pro_fsf_report.pdf) | 2025 | Google DeepMind Frontier Safety Framework report | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gemini-3-pro-fsf-report-2025) |
+| [Gemini 2.5 Computer Use - Model Card](https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Computer-Use-Model-Card.pdf) | 2025 | Google DeepMind model card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gemini-2-5-computer-use-model-card-2025) |
+| [Gemini 2.5 Deep Think - Model Card](https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Deep-Think-Model-Card.pdf) | 2025 | Google DeepMind model card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gemini-2-5-deep-think-model-card-2025) |
+| [Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities](https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf) | 2025 | Google Technical Report | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gemini-2-5-technical-report-2025) |
+| [Gemini Robotics 1.5: Pushing the Frontier of Generalist Robots with Advanced Embodied Reasoning, Thinking, and Motion Transfer](https://arxiv.org/abs/2510.03342) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gemini-robotics-1-5-2025) |
+| [Gemini Robotics: Bringing AI into the Physical World](https://arxiv.org/abs/2503.20020) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gemini-robotics-physical-world-2025) |
+| [Gemma 3 Technical Report](https://arxiv.org/abs/2503.19786) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gemma-3-technical-report-2025) |
+| [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](https://arxiv.org/abs/2508.06471) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=glm-4-5-arc-foundation-models-2025) |
+| [GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning](https://arxiv.org/abs/2507.01006) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=glm-4-1v-4-5v-2025) |
+| [Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction](https://arxiv.org/abs/2508.03613) | 2025 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=goedel-prover-v2-2025) |
+| [GPT-5 System Card](https://openai.com/index/gpt-5-system-card/) | 2025 | OpenAI system card | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gpt-5-system-card-2025) |
+| [GPT-5.1-Codex-Max System Card](https://openai.com/index/gpt-5-1-codex-max-system-card/) | 2025 | OpenAI system card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-5-1-codex-max-system-card-2025) |
+| [gpt-oss-120b & gpt-oss-20b Model Card](https://arxiv.org/abs/2508.10925) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=gpt-oss-model-card-2025) |
+| [gpt-oss-safeguard technical report](https://cdn.openai.com/pdf/08b7dee4-8bc6-4955-a219-7793fb69090c/Technical_report__Research_Preview_of_gpt_oss_safeguard.pdf) | 2025 | OpenAI technical report | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-oss-safeguard-technical-report-2025) |
+| [Grok 4 Fast Model Card](https://data.x.ai/2025-09-19-grok-4-fast-model-card.pdf) | 2025 | xAI model card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=xai-grok-4-fast-model-card-2025) |
+| [Grok 4 Model Card](https://data.x.ai/2025-08-20-grok-4-model-card.pdf) | 2025 | xAI model card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=xai-grok-4-model-card-2025) |
+| [Grok 4.1 Model Card](https://data.x.ai/2025-11-17-grok-4-1-model-card.pdf) | 2025 | xAI model card | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=xai-grok-4-1-model-card-2025) |
+| [Hunyuan-A13B Technical Report](https://github.com/Tencent-Hunyuan/Hunyuan-A13B/blob/main/report/Hunyuan_A13B_Technical_Report.pdf) | 2025 | Technical report | Programmatic / Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=hunyuan-a13b-technical-report-2025) |
+| [Hunyuan-MT Technical Report](https://arxiv.org/abs/2509.05209) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=hunyuan-mt-2025) |
+| [Hunyuan-T1](https://tencent.github.io/llm.hunyuan.T1/README_EN.html) | 2025 | official release page | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=hunyuan-t1-2025) |
+| [Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought](https://arxiv.org/abs/2505.15431) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=hunyuan-turbos-2025) |
+| [INTELLECT-3: Technical Report](https://arxiv.org/abs/2512.16144) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=intellect-3-technical-report-2025) |
+| [Intern-S1: A Scientific Multimodal Foundation Model](https://arxiv.org/abs/2508.15763) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=intern-s1-2025) |
+| [Introducing MAI-DS-R1](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-mai-ds-r1/4405076) | 2025 | Microsoft Azure AI Foundry technical release | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=microsoft-mai-ds-r1-2025) |
+| [Kimi k1.5: Scaling Reinforcement Learning with LLMs](https://arxiv.org/abs/2501.12599) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-k1-5-2025) |
+| [Kimi K2: Open Agentic Intelligence](https://arxiv.org/abs/2507.20534) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-k2-open-agentic-intelligence-2025) |
+| [Kimi-Dev: Agentless Training as Skill Prior for SWE-Agents](https://arxiv.org/abs/2509.23045) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-dev-2025) |
+| [Kimi-VL Technical Report](https://arxiv.org/abs/2504.07491) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimi-vl-technical-report-2025) |
+| [Kimina-Prover Preview: Towards Large Formal Reasoning Models with Reinforcement Learning](https://arxiv.org/abs/2504.11354) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=kimina-prover-preview-2025) |
+| [Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=llama-nemotron-2025) |
+| [Magistral](https://arxiv.org/abs/2506.10910) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=magistral-2025) |
+| [MiMo-Embodied: X-Embodied Foundation Model Technical Report](https://arxiv.org/abs/2511.16518) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mimo-embodied-2025) |
+| [MiMo-VL Technical Report](https://arxiv.org/abs/2506.03569) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mimo-vl-2025) |
+| [MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining](https://arxiv.org/abs/2505.07608) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=mimo-reasoning-pretraining-posttraining-2025) |
+| [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](https://arxiv.org/abs/2506.13585) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=minimax-m1-2025) |
+| [Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models](https://arxiv.org/abs/2512.13607) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=nemotron-cascade-2025) |
+| [Nemotron-CrossThink: Scaling Self-Learning beyond Math Reasoning](https://arxiv.org/abs/2504.13941) | 2025 | arXiv preprint | Programmatic | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=nemotron-crossthink-2025) |
+| [NVIDIA Nemotron 3: Efficient and Open Intelligence](https://arxiv.org/abs/2512.20856) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=nvidia-nemotron-3-2025) |
+| [NVIDIA Nemotron Nano 2: An Accurate and Efficient Hybrid Mamba-Transformer Reasoning Model](https://arxiv.org/abs/2508.14444) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=nvidia-nemotron-nano-2-2025) |
+| [NVIDIA Nemotron Nano V2 VL](https://arxiv.org/abs/2511.03929) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=nemotron-nano-v2-vl-2025) |
+| [OLMo 2 32B: First fully open model to outperform GPT 3.5 and GPT 4o mini](https://allenai.org/blog/olmo2-32b) | 2025 | Ai2 technical release | Programmatic / Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=olmo-2-32b-2025) |
+| [OpenAI GPT-4.5 System Card](https://cdn.openai.com/gpt-4-5-system-card-2272025.pdf) | 2025 | OpenAI system card | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-4-5-system-card-2025) |
+| [OpenAI o3 and o4-mini System Card](https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf) | 2025 | OpenAI System Card | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-o3-o4-mini-system-card-2025) |
+| [OpenAI o3-mini System Card](https://cdn.openai.com/o3-mini-system-card-feb10.pdf) | 2025 | OpenAI System Card | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-o3-mini-system-card-2025) |
+| [Operator System Card](https://cdn.openai.com/operator_system_card.pdf) | 2025 | OpenAI System Card | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-operator-system-card-2025) |
+| [Phi-4-Mini-Reasoning: Exploring the Limits of Small Reasoning Language Models in Math](https://arxiv.org/abs/2504.21233) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=phi-4-mini-reasoning-2025) |
+| [Qwen2.5-Math-PRM](https://arxiv.org/abs/2501.07301) | 2025 | Qwen release | Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen2-5-math-prm-2025) |
+| [Qwen2.5-Omni Technical Report](https://arxiv.org/abs/2503.20215) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen2-5-omni-2025) |
+| [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen2-5-vl-2025) |
+| [Qwen3 Technical Report](https://arxiv.org/abs/2505.09388) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-2025) |
+| [Qwen3-Coder: Agentic Coding in the World](https://qwenlm.github.io/blog/qwen3-coder/) | 2025 | Qwen official release blog | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-coder-2025) |
+| [Qwen3-Next: Towards Ultimate Training & Inference Efficiency](https://qwen.ai/blog?id=qwen3-next) | 2025 | Qwen official release blog | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-next-2025) |
+| [Qwen3-VL Technical Report](https://arxiv.org/abs/2511.21631) | 2025 | arXiv preprint | Programmatic / Mixed / Judgment required | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3-vl-2025) |
+| [Qwen3Guard Technical Report](https://arxiv.org/abs/2510.14276) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwen3guard-2025) |
+| [QwQ-32B: Embracing the Power of Reinforcement Learning](https://qwenlm.github.io/blog/qwq-32b/) | 2025 | Qwen official blog | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=qwq-32b-2025) |
+| [Seed-Coder: Let the Code Model Curate Data for Itself](https://arxiv.org/abs/2506.03524) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=seed-coder-2025) |
+| [Seed-Prover 1.5: Mastering Undergraduate-Level Theorem Proving via Learning from Experience](https://arxiv.org/abs/2512.17260) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=seed-prover-1-5-2025) |
+| [Seed-Prover: Deep and Broad Reasoning for Automated Theorem Proving](https://arxiv.org/abs/2507.23726) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=seed-prover-2025) |
+| [Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning](https://arxiv.org/abs/2504.13914) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=seed1-5-thinking-2025) |
+| [Seed1.5-VL Technical Report](https://arxiv.org/abs/2505.07062) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=seed1-5-vl-technical-report-2025) |
+| [System Card Addendum: Claude Opus 4.1](https://www-cdn.anthropic.com/9fa30625273bafdf5af82c93719d7ca606485a16.pdf) | 2025 | Anthropic system-card addendum | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=anthropic-claude-opus-4-1-system-card-2025) |
+| [The Lessons of Developing Process Reward Models in Mathematical Reasoning](https://arxiv.org/abs/2501.07301) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=lessons-developing-process-reward-models-mathematical-reasoning-2025) |
+| [The Llama 4 Herd: The Beginning of a New Era of Natively Multimodal AI Innovation](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) | 2025 | Meta research publication | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=llama-4-herd-2025) |
+| [UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning](https://arxiv.org/abs/2509.02544) | 2025 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=ui-tars-2-2025) |
+| [Update to GPT-5 System Card: GPT-5.2](https://cdn.openai.com/pdf/3a4153c8-c748-4b71-8e31-aecbde944f8d/oai_5_2_system-card.pdf) | 2025 | OpenAI system-card update | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=openai-gpt-5-2-system-card-2025) |
+| [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437) | 2024 | arXiv preprint | Unknown | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=deepseek-v3-technical-report-2024) |
+| [Phi-4 Technical Report](https://arxiv.org/abs/2412.08905) | 2024 | Microsoft Research Technical Report MSR-TR-2024-57 | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=phi-4-technical-report-2024) |
+| [The Llama 3 Herd of Models](https://ai.meta.com/research/publications/the-llama-3-herd-of-models/) | 2024 | arXiv preprint | Mixed | [Card](https://renbing-sumeru.github.io/Awesome-LLM-Reasoning-Data/#card=llama-3-herd-2024) |

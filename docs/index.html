@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Awesome LLM Reasoning Data</title>
-  <link rel="stylesheet" href="assets/site.css">
+  <title>Reasoning Data Card Atlas</title>
+  <link rel="stylesheet" href="assets/site.css?v=6933a7118c">
 </head>
 <body>
   <header class="topbar">
     <div class="wrap">
       <a class="brand" href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">Awesome LLM Reasoning Data</a>
       <nav class="navlinks" aria-label="Primary navigation">
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data#readme">README</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/papers/README.md">Papers</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/cards/README.md">Cards</a>
-        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_coverage.md">Coverage</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#paths">Paths</a>
+        <a href="#contracts">Contracts</a>
+        <a href="#search">Search</a>
         <a class="ask" href="ask/">Ask ↗</a>
+        <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">GitHub</a>
         <a class="lang" href="zh.html" lang="zh-CN">中文</a>
       </nav>
     </div>
@@ -25,74 +25,92 @@
   <main class="wrap">
     <section class="hero">
       <div class="hero-text">
-        <p class="eyebrow">A curated field map of post-training reasoning data</p>
-        <h1>What data actually teaches a model to reason?</h1>
-        <p class="lede">Every entry answers one practical question: when a model becomes better at reasoning after post-training, which data record, feedback signal, verifier, reward, environment, or judge made that possible.</p>
+        <p class="eyebrow">Bilingual paper cards for post-training reasoning data</p>
+        <h1>Every card names the data object and the thing that verifies it.</h1>
+        <p class="lede">Each entry is a full reading card, not a citation: nine sections written from the primary source — the problem, the core idea, the method, the evidence, what is new, what breaks, and how to read it.</p>
         <p class="statline">
-          <b id="totalEntries">280</b> entries<span class="sep">|</span>
-          <b id="verifiedEntries">165</b> verified<span class="sep">|</span>
-          <b id="cardedEntries">87</b> cards<span class="sep">|</span>
-          updated June 2026
+          <b>1285</b> cards<span class="sep">|</span>
+          <b>14/14</b> tracks integrated<span class="sep">|</span>
+          <b>676</b> must-read<span class="sep">|</span>
+          <b>23130</b> bilingual sections
         </p>
       </div>
-      <div class="hero-media"><img class="hero-art" src="assets/cover.svg" alt="Awesome LLM Reasoning Data: a blossoming tree of 14 tracks in 3 groups"></div>
+      <div class="hero-media"><img src="assets/coverage.svg?v=6933a7118c" alt="Browse by track"></div>
     </section>
 
-    <section>
+    <section id="tracks">
       <div class="sechead">
         <span class="secnum">01</span>
         <h2>Browse by track</h2>
-        <p>Fourteen tracks, numbered as in the README contents. Click one to filter the collection below.</p>
+        <p>Fourteen tracks in three groups. Dark rows are integrated; faded rows only hold cross-tagged cards; dashed rows are waiting for their batch.</p>
       </div>
       <div id="trackGroups" class="groups"></div>
     </section>
 
-    <section>
+    <section id="paths">
       <div class="sechead">
         <span class="secnum">02</span>
         <h2>Reading paths</h2>
-        <p>Curated routes for different readers.</p>
+        <p>Routes for different goals. Each is a live query over the library, so a new batch joins the route it belongs to.</p>
       </div>
       <div id="pathTabs" class="pathtabs"></div>
       <div id="pathPanel" class="pathpanel"></div>
     </section>
 
-    <section id="search">
+    <section id="contracts">
       <div class="sechead">
         <span class="secnum">03</span>
+        <h2>Filter by feedback contract</h2>
+        <p>The metadata that makes a card reusable: who verifies the answer, and what consumes it.</p>
+      </div>
+      <div id="facetRows" class="facets"></div>
+    </section>
+
+    <section id="search">
+      <div class="sechead">
+        <span class="secnum">04</span>
         <h2>Search the collection</h2>
-        <p>Full-text over titles, authors, tags, summaries, venues.</p>
+        <p>Full text over titles, authors, summaries, tags, and domains.</p>
       </div>
       <div class="searchbar">
-        <input id="q" type="search" placeholder="Search 280 entries — try “process reward”, “Lean”, “contamination”…">
-        <button id="reset" class="fbtn" type="button">Reset</button>
+        <input id="q" type="search" placeholder="Search 1285 cards — try “rejection sampling”, “SWE agent”, “judge reward”…">
+        <button id="reset" class="fbtn" type="button">Reset all</button>
       </div>
       <div class="filters">
-        <label>Track<select id="category"><option value="">All tracks</option></select></label>
-        <label>Subfield<select id="subfield"><option value="">All subfields</option></select></label>
-        <label>Year<select id="year"><option value="">All years</option></select></label>
-        <label>Venue<select id="venue"><option value="">All venues</option></select></label>
+        <label>Track<select id="track"><option value="">All</option></select></label>
+        <label>Year<select id="year"><option value="">All</option></select></label>
+        <label>Priority<select id="priority"><option value="">All</option></select></label>
       </div>
       <div class="resultmeta">
-        <span class="count" id="resultSummary">Loading data…</span>
-        <a id="sliceAsk" href="ask/">🤖 Ask about this slice →</a>
+        <span class="count" id="resultSummary">Loading cards…</span>
+        <span id="activeChips" class="chips"></span>
+        <a id="sliceAsk" class="sliceask" href="ask/">🤖 Ask about this slice →</a>
       </div>
-      <section id="results" class="cards" aria-live="polite"></section>
+      <div id="results" class="cards" aria-live="polite"></div>
+      <div id="moreWrap" class="morewrap" hidden><button id="more" class="fbtn" type="button"></button></div>
     </section>
   </main>
 
   <footer class="sitefooter">
     <div class="wrap">
-      <span>Generated from structured metadata.</span>
-      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/data/papers.yaml">data/papers.yaml</a>
-      <a href="assets/entries.json">entries.json</a>
-      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/reports/link_check.md">link check</a>
-      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data/blob/main/LICENSE">MIT license</a>
+      <span>Generated from library/ — the only source of truth.</span>
+      <a href="https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data">Project repository</a>
+      <a href="assets/data/entries.json">entries.json</a>
     </div>
   </footer>
 
-  <script src="assets/atlas-data.js"></script>
-  <script src="assets/i18n.js"></script>
-  <script src="assets/site.js"></script>
+  <div id="drawer" class="drawer" hidden>
+    <div class="scrim" data-close></div>
+    <article class="panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="panelbar">
+        <span id="drawerCrumb" class="crumb"></span>
+        <button id="drawerLang" class="fbtn ghost" type="button"></button>
+        <button class="fbtn ghost" type="button" data-close>✕</button>
+      </div>
+      <div id="drawerBody" class="panelbody"></div>
+    </article>
+  </div>
+
+  <script src="assets/site.js?v=6933a7118c"></script>
 </body>
 </html>
